@@ -1,0 +1,2701 @@
+{
+  "actions": {
+    "CreateApmInstance": {
+      "document": "This API is used to create a business purchase in the APM business system.",
+      "input": "CreateApmInstanceRequest",
+      "name": "Creates an apm business system",
+      "output": "CreateApmInstanceResponse",
+      "status": "online"
+    },
+    "DescribeApmAgent": {
+      "document": "Obtaining APM Access Point.",
+      "input": "DescribeApmAgentRequest",
+      "name": "Retrieves the apm access point",
+      "output": "DescribeApmAgentResponse",
+      "status": "online"
+    },
+    "DescribeApmInstances": {
+      "document": "This API is used to obtain the list of APM business systems.",
+      "input": "DescribeApmInstancesRequest",
+      "name": "Retrieves a list of apm business systems",
+      "output": "DescribeApmInstancesResponse",
+      "status": "online"
+    },
+    "DescribeGeneralApmApplicationConfig": {
+      "document": "This API is used to query the application configuration information.",
+      "input": "DescribeGeneralApmApplicationConfigRequest",
+      "name": "This api is used to query the application configuration information",
+      "output": "DescribeGeneralApmApplicationConfigResponse",
+      "status": "online"
+    },
+    "DescribeGeneralMetricData": {
+      "document": "This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.\nThe API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.",
+      "input": "DescribeGeneralMetricDataRequest",
+      "name": "Retrieves metric data general API",
+      "output": "DescribeGeneralMetricDataResponse",
+      "status": "online"
+    },
+    "DescribeGeneralOTSpanList": {
+      "document": "General Query OpenTelemetry Call Chain List.",
+      "input": "DescribeGeneralOTSpanListRequest",
+      "name": "General query opentelemetry call chain list",
+      "output": "DescribeGeneralOTSpanListResponse",
+      "status": "online"
+    },
+    "DescribeGeneralSpanList": {
+      "document": "General Query Call Chain List.",
+      "input": "DescribeGeneralSpanListRequest",
+      "name": "General query call chain list",
+      "output": "DescribeGeneralSpanListResponse",
+      "status": "online"
+    },
+    "DescribeMetricRecords": {
+      "document": "This API is used to query metric list. To query metrics, it is recommended to use the DescribeGeneralMetricData API.",
+      "input": "DescribeMetricRecordsRequest",
+      "name": "General metric list API",
+      "output": "DescribeMetricRecordsResponse",
+      "status": "online"
+    },
+    "DescribeServiceOverview": {
+      "document": "This API is used to pull application overview data.",
+      "input": "DescribeServiceOverviewRequest",
+      "name": "Retrieves application overview data",
+      "output": "DescribeServiceOverviewResponse",
+      "status": "online"
+    },
+    "DescribeTagValues": {
+      "document": "This API is used to query dimensional data by dimension name and filter condition.",
+      "input": "DescribeTagValuesRequest",
+      "name": "Queries tag data",
+      "output": "DescribeTagValuesResponse",
+      "status": "online"
+    },
+    "ModifyApmInstance": {
+      "document": "This API is used to modify the APM business system.",
+      "input": "ModifyApmInstanceRequest",
+      "name": "Modifies the apm business system",
+      "output": "ModifyApmInstanceResponse",
+      "status": "online"
+    },
+    "ModifyGeneralApmApplicationConfig": {
+      "document": "OpenAPI available for external use. Customers can flexibly specify the fields to be modified, and then add the list of services to be modified.",
+      "input": "ModifyGeneralApmApplicationConfigRequest",
+      "name": "Modifies application configuration information",
+      "output": "ModifyGeneralApmApplicationConfigResponse",
+      "status": "online"
+    },
+    "TerminateApmInstance": {
+      "document": "Termination of APM business system.",
+      "input": "TerminateApmInstanceRequest",
+      "name": "Terminates a business system",
+      "output": "TerminateApmInstanceResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-06-22",
+    "serviceNameCN": "应用性能监控",
+    "serviceShortName": "apm"
+  },
+  "objects": {
+    "APMKV": {
+      "document": "APM floating-point number type key-value pair.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key value definition.",
+          "example": "Name",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value definition.",
+          "example": "CloudMonitor",
+          "member": "float",
+          "name": "Value",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "APMKVItem": {
+      "document": "Common kv structure of apm.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key value definition.",
+          "example": "Name",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value definition.",
+          "example": "CloudMonitor",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ApmAgentInfo": {
+      "document": "APM agent information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Agent download address.",
+          "example": "https://agent.tapm.tencentyun.com/DownloadAgent",
+          "member": "string",
+          "name": "AgentDownloadURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Collector reporting address.",
+          "example": "http://xxx.xxx.xx:8080",
+          "member": "string",
+          "name": "CollectorURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token information.",
+          "example": "14dac76ca10f4610f727ca68528758b43980251387493706d18988fa7d0621b7",
+          "member": "string",
+          "name": "Token",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network reporting address.",
+          "example": "http://xxx.xxx.xx:8080",
+          "member": "string",
+          "name": "PublicCollectorURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Self-Developed vpc report address.",
+          "example": "http://xxx.xxx.xx:8080",
+          "member": "string",
+          "name": "InnerCollectorURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private link reporting address.",
+          "example": "http://xxx.xxx.xx:8080",
+          "member": "string",
+          "name": "PrivateLinkCollectorURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApmApplicationConfigView": {
+      "document": "Application-Related configuration list items.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-059oXBfTL",
+          "member": "string",
+          "name": "InstanceKey",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application name\t.\t",
+          "example": "java-order-service\t",
+          "member": "string",
+          "name": "ServiceName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API filtering.",
+          "example": "RPCServer/market.MarketService2/(.*?)",
+          "member": "string",
+          "name": "OperationNameFilter",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error type filtering.",
+          "example": "io.grpc.StatusRuntimeException,java.sql.(.*?)\t",
+          "member": "string",
+          "name": "ExceptionFilter",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP status code filtering.",
+          "example": "400,500\t",
+          "member": "string",
+          "name": "ErrorCodeFilter",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application diagnosis switch (deprecated).",
+          "example": "true",
+          "member": "bool",
+          "name": "EventEnable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL convergence switch. 0: off; 1: on.",
+          "example": "1",
+          "member": "int64",
+          "name": "UrlConvergenceSwitch",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL convergence threshold.\t",
+          "example": "50",
+          "member": "int64",
+          "name": "UrlConvergenceThreshold",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL convergence rule in the form of a regular expression.\t",
+          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS\t",
+          "member": "string",
+          "name": "UrlConvergence",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL exclusion rule in the form of a regular expression.",
+          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS\t",
+          "member": "string",
+          "name": "UrlExclude",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log feature switch. 0: off; 1: on.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsRelatedLog",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log source.\t",
+          "example": "CLS",
+          "member": "string",
+          "name": "LogSource",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log set. ",
+          "example": "postgres",
+          "member": "string",
+          "name": "LogSet",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic.",
+          "example": "032f3078-10b6-46a0-978f-1696e8e79696",
+          "member": "string",
+          "name": "LogTopicID",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Method stack snapshot switch: true to enable, false to disable.",
+          "example": "false",
+          "member": "bool",
+          "name": "SnapshotEnable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Slow call listening trigger threshold.",
+          "example": "2000",
+          "member": "int64",
+          "name": "SnapshotTimeout",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Probe master switch.",
+          "example": "true",
+          "member": "bool",
+          "name": "AgentEnable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component list switch (deprecated).",
+          "example": "无",
+          "member": "Instrument",
+          "name": "InstrumentList",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Link compression switch (deprecated).",
+          "example": "true",
+          "member": "bool",
+          "name": "TraceSquash",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ApmField": {
+      "document": "Metric dimension information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric name.",
+          "example": "qps",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicator numerical value.",
+          "example": "0.01",
+          "member": "float",
+          "name": "Value",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Units corresponding to the metric.",
+          "example": "ms",
+          "member": "string",
+          "name": "Unit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Year-Over-Year result array, recommended to use.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[               {                 \"Key\": \"CompareByYesterday\",                 \"Value\": \"0.0%\"               }             ]",
+          "member": "APMKVItem",
+          "name": "CompareVals",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicator numerical value of the previous period in year-over-year comparison.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[               {                 \"Key\": \"CompareByYesterday\",                 \"Value\": 8.092753335107176               }             ]",
+          "member": "APMKV",
+          "name": "LastPeriodValue",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Year-On-Year metric value. deprecated, not recommended for use.",
+          "example": "0",
+          "member": "string",
+          "name": "CompareVal",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApmInstanceDetail": {
+      "document": "APM business system information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-52Dpv13GR",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business system name.",
+          "example": "测试 Demo",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business system description information.",
+          "example": "业务系统描述",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status of the business system.\n{Initializing; running; throttling}.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region where the business system belongs.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business system tag list.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AppID information.",
+          "example": "12653698",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator uin.",
+          "example": "12543625",
+          "member": "string",
+          "name": "CreateUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage used (unit: mb).",
+          "example": "100",
+          "member": "float",
+          "name": "AmountOfUsedStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of server applications of the business system.",
+          "example": "2",
+          "member": "int64",
+          "name": "ServiceCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average daily reported span count.",
+          "example": "100",
+          "member": "int64",
+          "name": "CountOfReportSpanPerDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Retention period of trace data (unit: days).",
+          "example": "7",
+          "member": "int64",
+          "name": "TraceDuration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business system report limit.",
+          "example": "500000",
+          "member": "int64",
+          "name": "SpanDailyCounters",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the business system billing is Activated (0 = not activated, 1 = activated).",
+          "example": "1",
+          "member": "int64",
+          "name": "BillingInstance",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error warning line (unit: %).",
+          "example": "30",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sampling rate (unit: %).",
+          "example": "1",
+          "member": "int64",
+          "name": "SampleRate",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error sampling switch (0: off, 1: on).",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorSample",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sampling slow call saving threshold (unit: ms).",
+          "example": "500",
+          "member": "int64",
+          "name": "SlowRequestSavedThreshold",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLS log region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "LogRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log source.",
+          "example": "CLS",
+          "member": "string",
+          "name": "LogSource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log feature switch (0: off; 1: on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsRelatedLog",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic id.",
+          "example": "cls-acv12b",
+          "member": "string",
+          "name": "LogTopicID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of client applications of the business system.",
+          "example": "3",
+          "member": "int64",
+          "name": "ClientCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The quantity of active applications in this business system in the last two days.",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLS log set.",
+          "example": "cls-v1241nb",
+          "member": "string",
+          "name": "LogSet",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Retention period of metric data (unit: days).",
+          "example": "30",
+          "member": "int64",
+          "name": "MetricDuration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of custom display tags.",
+          "example": "[\"custom_key_1\"]",
+          "member": "string",
+          "name": "CustomShowTags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business system billing mode (1: prepaid, 0: pay-as-you-go).",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the billing mode of the business system takes effect.",
+          "example": "true",
+          "member": "bool",
+          "name": "PayModeEffective",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response time warning line (unit: ms).",
+          "example": "500",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is free (0 = no; 1 = limited free; 2 = completely free), default 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Free",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether it is the default business system of tsf (0 = no, 1 = yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "DefaultTSF",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to associate the dashboard (0 = off, 1 = on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsRelatedDashboard",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated dashboard id.",
+          "example": "dashboard-vcav134",
+          "member": "string",
+          "name": "DashboardTopicID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable component vulnerability detection (0 = no, 1 = yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsInstrumentationVulnerabilityScan",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable sql injection analysis (0: off, 1: on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsSqlInjectionAnalysis",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasons for traffic throttling.\nOfficial version quota;.\nTrial version quota.\nTrial version expiration;.\nAccount in arrears.\n}.",
+          "example": "1",
+          "member": "int64",
+          "name": "StopReason",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApmMetricRecord": {
+      "document": "Metric list cell.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Field array, used for the query result of indicators.",
+          "example": "无",
+          "member": "ApmField",
+          "name": "Fields",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag array, used to distinguish the objects of groupby.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApmTag": {
+      "document": "Dimension (tag) object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dimension key (column name, Tag key).",
+          "example": "region",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dimension value (tag value).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateApmInstanceRequest": {
+      "document": "CreateApmInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system name.",
+          "example": "可观测-测试",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Business system description information.",
+          "example": "可观测-测试用的业务系统",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Retention period of trace data (unit: days, the default storage duration is 3 days).",
+          "example": "3",
+          "member": "int64",
+          "name": "TraceDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Business system tag list.",
+          "example": "[{ \t\t\"Key\": \"AppID\", \t\t\"Value\": \"123123422\" \t}]",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The report quota value of the business system. the default value is 0, indicating no limit on the report quota. (obsolete).",
+          "example": "100000000",
+          "member": "uint64",
+          "name": "SpanDailyCounters",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Billing model of the business system (0: pay-as-you-go, 1: prepaid).",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a free edition business system (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition).",
+          "example": "0",
+          "member": "int64",
+          "name": "Free",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApmInstanceResponse": {
+      "document": "CreateApmInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmAgentRequest": {
+      "document": "DescribeApmAgent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access method: currently supports access and reporting via skywalking, ot, and ebpf methods. if not specified, ot is used by default.",
+          "example": "ot",
+          "member": "string",
+          "name": "AgentType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reporting environment: currently supports pl (private network reporting), public (public network), and inner (self-developed vpc) environment reporting. if not specified, the default is public.",
+          "example": "public",
+          "member": "string",
+          "name": "NetworkMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Language reporting is now supported for java, golang, php, python, dotnet, nodejs. if not specified, golang is used by default.",
+          "example": "java",
+          "member": "string",
+          "name": "LanguageEnvironment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reporting method, deprecated.",
+          "example": "http",
+          "member": "string",
+          "name": "ReportMethod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmAgentResponse": {
+      "document": "DescribeApmAgent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Agent information.",
+          "example": "无",
+          "member": "ApmAgentInfo",
+          "name": "ApmAgent",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmInstancesRequest": {
+      "document": "DescribeApmInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag list.",
+          "example": "[{ \t\t\"Key\": \"AppId\", \t\t\"Value\": \"123123422\" \t}]",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by business system name.",
+          "example": "可观测-测试",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by business system id.",
+          "example": "[     \"apm-CVfliqa8U\",     \"apm-059oXBfTL\"   ]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to query the official demo business system (0 = non-demo business system, 1 = demo business system, default is 0).",
+          "example": "0",
+          "member": "int64",
+          "name": "DemoInstanceFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to query all regional business systems (0 = do not query all regions, 1 = query all regions, default is 0).",
+          "example": "1",
+          "member": "int64",
+          "name": "AllRegionsFlag",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmInstancesResponse": {
+      "document": "DescribeApmInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "APM business system list.",
+          "example": "无",
+          "member": "ApmInstanceDetail",
+          "name": "Instances",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralApmApplicationConfigRequest": {
+      "document": "DescribeGeneralApmApplicationConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application name.",
+          "example": "profile-service",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-059oXBfTL",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralApmApplicationConfigResponse": {
+      "document": "DescribeGeneralApmApplicationConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application configuration item.",
+          "example": "无",
+          "member": "ApmApplicationConfigView",
+          "name": "ApmApplicationConfigView",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralMetricDataRequest": {
+      "document": "DescribeGeneralMetricData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric name to be queried, which cannot be customized. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).",
+          "example": "[\"request_count\"、“duration”]",
+          "member": "string",
+          "name": "Metrics",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-ylTJfTSbn",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "View name. the input cannot be customized. [for details, see.](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1).",
+          "example": "service_metric",
+          "member": "string",
+          "name": "ViewName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The dimension information to be filtered; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).",
+          "example": "无",
+          "member": "GeneralFilter",
+          "name": "Filters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregated dimension; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).",
+          "example": "[\"service.name\"、\"span.kind\"]",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The timestamp of the start time, supporting the query of metric data within 30 days. (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The timestamp of the end time, supporting the query of metric data within 30 days. (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to aggregate by a fixed time span: enter 1 for values of 1 and greater, and 0 if not filled in.\n-If 0 is filled in, it calculates the metric data from the start time to the cutoff time.\n- if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.\n -If the time span is (0,12) hours, it is aggregated by one-minute granularity.\n -If the time span is [12,48] hours, it is aggregated at a five-minute granularity.\n -If the time span is (48, +∞) hours, it is aggregated at an hourly granularity.",
+          "example": "60",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort query metrics.\nKey: enter the tencentcloud api metric name. [for details, see](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1) .\nValue: specify the sorting method:.     \n-Asc: sorts query metrics in ascending order.\n- desc: sort query metrics in descending order.",
+          "example": "{ \t\"Key\": \"duration\",         \"Value\": \"desc\"",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of queried metrics. currently, up to 50 data entries can be displayed. the value range for pagesize is 1-50. submit pagesize to show the limited number based on the value of pagesize.",
+          "example": "5",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralMetricDataResponse": {
+      "document": "DescribeGeneralMetricData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicator result set.",
+          "example": "无",
+          "member": "Line",
+          "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralOTSpanListRequest": {
+      "document": "DescribeGeneralOTSpanList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Span query start timestamp (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Span query end timestamp (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Universal filter parameters.",
+          "example": "{             \"Key\": \"service.name\",             \"Type\": \"=\",             \"Value\": \"java-order-service\"         }",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort\n.\nThe currently supported keys are:.\n\n-StartTime (start time).\n-EndTime (end time).\n-Duration (response time).\n\nThe currently supported values are:.\n\n- desc: sort in descending order.\n-Asc - ascending order.",
+          "example": "{             \"Key\": \"startTime\",             \"Value\": \"desc\"         }",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The service name of the business itself. console users should fill in taw.",
+          "example": "taw",
+          "member": "string",
+          "name": "BusinessName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.",
+          "example": "15",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralOTSpanListResponse": {
+      "document": "DescribeGeneralOTSpanList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "200",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The trace structure containing the query results spans. the string after the opentelemetry standard trace structure is hashed. first, the trace is converted into a json string using ptrace.jsonmarshaler, then compressed with gzip, and finally converted into a base64 standard string.",
+          "example": "无",
+          "member": "string",
+          "name": "Spans",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralSpanListRequest": {
+      "document": "DescribeGeneralSpanList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Span query start timestamp (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Span query end timestamp (unit: seconds).",
+          "example": "1617123538",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Universal filter parameters.",
+          "example": "{             \"Key\": \"service.name\",             \"Type\": \"=\",             \"Value\": \"java-order-service\"         }",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort\n.\nThe currently supported keys are:.\n\n-StartTime (start time).\n-EndTime (end time).\n-Duration (response time).\n\nThe currently supported values are:.\n\n- desc: sort in descending order.\n-Asc - ascending order.",
+          "example": "{             \"Key\": \"startTime\",             \"Value\": \"desc\"         }",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The service name of the business itself. console users should fill in taw.",
+          "example": "taw",
+          "member": "string",
+          "name": "BusinessName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page, defaults to 10,000, valid values are 0 to 10,000.",
+          "example": "15",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGeneralSpanListResponse": {
+      "document": "DescribeGeneralSpanList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "200",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Span pagination list.",
+          "example": "无",
+          "member": "Span",
+          "name": "Spans",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMetricRecordsRequest": {
+      "document": "DescribeMetricRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric list.",
+          "example": "[{\"Compare\":\"1\",\"Compares\":[\"CompareByYesterday\",\"CompareByLastWeek\"],\"MetricName\":\"qps\"}]",
+          "member": "QueryMetricItem",
+          "name": "Metrics",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time (unit: sec).",
+          "example": "1618361193",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time (unit: seconds).",
+          "example": "1618361193",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "[{\"Type\":\"=\",\"Key\":\"span.kind\",\"Value\":\"server\"}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Or filter criteria.",
+          "example": "[{\"Type\":\"=\",\"Key\":\"span.kind\",\"Value\":\"server\"}]",
+          "member": "Filter",
+          "name": "OrFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation dimension.",
+          "example": "[\"service.instance\"]",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort\n.\nThe currently supported keys are:.\n\n-StartTime (start time).\n-EndTime (end time).\n-Duration (response time).\n\nThe currently supported values are:.\n\n- desc: sort in descending order.\n-Asc - ascending order.",
+          "example": "{\"Key\":\"service_duration_avg\",\"Value\":\"DESC\"}",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The service name of the business itself. console users should fill in taw.",
+          "example": "taw",
+          "member": "string",
+          "name": "BusinessName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Special handling of query results.",
+          "example": "service_runtime_thread_pool",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Size per page, defaults to 1,000, valid value range is 0 – 1,000.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging starting point.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageIndex",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page length.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMetricRecordsResponse": {
+      "document": "DescribeMetricRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicator result set.",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of metric query result sets.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceOverviewRequest": {
+      "document": "DescribeServiceOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric list.",
+          "example": "无",
+          "member": "QueryMetricItem",
+          "name": "Metrics",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-52Dpv13GR",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation dimension.",
+          "example": "service.name",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Start time (unit: sec).",
+          "example": "1618361193",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time (unit: seconds).",
+          "example": "1618361193",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method\n.\nValue: fill in.\n-Asc: sorts query metrics in ascending order.\n- desc: sort query metrics in descending order.",
+          "example": "无",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Page size.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging starting point.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceOverviewResponse": {
+      "document": "DescribeServiceOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicator result set.",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesRequest": {
+      "document": "DescribeTagValues request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dimension name.",
+          "example": "service.name",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-52Dpv13GR",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Start time (unit: sec).",
+          "example": "1734400800",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time (unit: seconds).",
+          "example": "1734415200",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Or filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "OrFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Usage type.",
+          "example": "agentConfig",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagValuesResponse": {
+      "document": "DescribeTagValues response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dimension value list.",
+          "example": "[\"sso-api\", \"auth-api\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Queries filter parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filtering method (=, !=, in).",
+          "example": "=",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Filter dimension name.",
+          "example": "service.name",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Filter value. uses commas to separate multiple values in in filtering method.",
+          "example": "sso-api",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "GeneralFilter": {
+      "document": "Queries filter parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter dimension name.",
+          "example": "serviceName",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Values after filtering.",
+          "example": "sso-api",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "Instrument": {
+      "document": "Component.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Component name.",
+          "example": "Redis",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component switch.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Line": {
+      "document": "Metric curve data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric name.",
+          "example": "qps",
+          "member": "string",
+          "name": "MetricName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metric chinese name.",
+          "example": "吞吐量",
+          "member": "string",
+          "name": "MetricNameCN",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time series.",
+          "example": "[1617124595, 1617124596, 1617124597]",
+          "member": "int64",
+          "name": "TimeSerial",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data sequence.",
+          "example": "[1.0, 2.0, 3.0]",
+          "member": "float",
+          "name": "DataSerial",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dimension list.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyApmInstanceRequest": {
+      "document": "ModifyApmInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-6Dxp7Nd0B",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Business system name.",
+          "example": "可观测-测试",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Business system description.",
+          "example": "可观测-测试用的业务系统",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Retention period of trace data (unit: days).",
+          "example": "7",
+          "member": "int64",
+          "name": "TraceDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Billing switch.",
+          "example": "true",
+          "member": "bool",
+          "name": "OpenBilling",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Business system report limit.",
+          "example": "10000000",
+          "member": "uint64",
+          "name": "SpanDailyCounters",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Error rate warning line. when the average error rate of the application exceeds this threshold, the system will give an abnormal note.",
+          "example": "11",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sampling rate (unit: %).",
+          "example": "11",
+          "member": "int64",
+          "name": "SampleRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Error sampling switch (0: off, 1: on).",
+          "example": "10",
+          "member": "int64",
+          "name": "ErrorSample",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sampling slow call saving threshold (unit: ms).",
+          "example": "500",
+          "member": "int64",
+          "name": "SlowRequestSavedThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Log feature switch (0: off; 1: on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsRelatedLog",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Log region, which takes effect after the log feature is enabled.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "LogRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CLS log topic id, which takes effect after the log feature is enabled.",
+          "example": "cls-1c1cac",
+          "member": "string",
+          "name": "LogTopicID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Logset, which takes effect only after the log feature is enabled.",
+          "example": "cls-av2q1f1",
+          "member": "string",
+          "name": "LogSet",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log source, which takes effect only after the log feature is enabled.",
+          "example": "CLS",
+          "member": "string",
+          "name": "LogSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of custom display tags.",
+          "example": "[\"oneTag\"]",
+          "member": "string",
+          "name": "CustomShowTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Modify billing mode (1: prepaid, 0: pay-as-you-go).",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Response time warning line.",
+          "example": "500",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is free (0 = paid edition; 1 = tsf restricted free edition; 2 = free edition), default 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Free",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to associate the dashboard (0 = off, 1 = on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsRelatedDashboard",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Associated dashboard id, which takes effect after the associated dashboard is enabled.",
+          "example": "dashboard-agv1br13b",
+          "member": "string",
+          "name": "DashboardTopicID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL injection detection switch (0: off, 1: on).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsSqlInjectionAnalysis",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable component vulnerability detection (0 = no, 1 = yes).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsInstrumentationVulnerabilityScan",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApmInstanceResponse": {
+      "document": "ModifyApmInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGeneralApmApplicationConfigRequest": {
+      "document": "ModifyGeneralApmApplicationConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-059oXBfTL",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fields to be modified. the key and value respectively specify the field name and field value.\n.\nFor specific fields, please refer to.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the application list that requires configuration modification.\t",
+          "example": "[\"stock-service\",\"profile-service28\",\"profile-service08\"]",
+          "member": "string",
+          "name": "ServiceNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGeneralApmApplicationConfigResponse": {
+      "document": "ModifyGeneralApmApplicationConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Description of the returned value.",
+          "example": "Success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrderBy": {
+      "document": "Sorting fields.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sort field (starttime, endtime, duration are supported).",
+          "example": "startTime",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ASC: sequential sorting / desc: reverse sorting.",
+          "example": "asc",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "QueryMetricItem": {
+      "document": "Querying.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric name.",
+          "example": "request_count",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Year-Over-Year comparison is now supported for comparebyyesterday (compared to yesterday) and comparebylastweek (compared to last week). ",
+          "example": "CompareByYesterday",
+          "member": "string",
+          "name": "Compares",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Year-On-Year, deprecated, not recommended for use.",
+          "example": "CompareByYesterday",
+          "member": "string",
+          "name": "Compare",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Span": {
+      "document": "Span object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Trace ID",
+          "example": "7a23429a8f7d6685",
+          "member": "string",
+          "name": "TraceID",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log.",
+          "example": "无",
+          "member": "SpanLog",
+          "name": "Logs",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "无",
+          "member": "SpanTag",
+          "name": "Tags",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Submit application service information.",
+          "example": "无",
+          "member": "SpanProcess",
+          "name": "Process",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated timestamp (ms).",
+          "example": "1621843224175",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Span name.",
+          "example": "span_foo3",
+          "member": "string",
+          "name": "OperationName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Association relationship.",
+          "example": "无",
+          "member": "SpanReference",
+          "name": "References",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated timestamp (ms).",
+          "example": "1621843224175963",
+          "member": "int64",
+          "name": "StartTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Duration (ms).",
+          "example": "500098",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Span ID",
+          "example": "7a23429a8f7d6685",
+          "member": "string",
+          "name": "SpanID",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated timestamp (ms).",
+          "example": "1621843224175",
+          "member": "int64",
+          "name": "StartTimeMillis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parent Span ID",
+          "example": "7a23429a8f7d6685",
+          "member": "string",
+          "name": "ParentSpanID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpanLog": {
+      "document": "Span log section.\n\n",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log timestamp.",
+          "example": "1621843224175",
+          "member": "int64",
+          "name": "Timestamp",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "tags[]",
+          "member": "SpanTag",
+          "name": "Fields",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpanProcess": {
+      "document": "Service information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application service name.",
+          "example": "broker-gz-test",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tags Tag array.",
+          "example": "tags[]",
+          "member": "SpanTag",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpanReference": {
+      "document": "Upstream and downstream relationships of span.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type of association relationship.",
+          "example": "CHILD_OF",
+          "member": "string",
+          "name": "RefType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Span ID",
+          "example": "7a23429a8f7d6685",
+          "member": "string",
+          "name": "SpanID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trace ID",
+          "example": "7a23429a8f7d6685",
+          "member": "string",
+          "name": "TraceID",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpanTag": {
+      "document": "Tag.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag type.",
+          "example": "string",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag key.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "status.code\"",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value\n.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TerminateApmInstanceRequest": {
+      "document": "TerminateApmInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system id.",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateApmInstanceResponse": {
+      "document": "TerminateApmInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

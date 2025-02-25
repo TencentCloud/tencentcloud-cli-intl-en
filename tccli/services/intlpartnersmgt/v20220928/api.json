@@ -1038,7 +1038,7 @@
         },
         {
           "disabled": false,
-          "document": "Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181).",
+          "document": "Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),\nsuch as \"kghy_01\".",
           "example": "kghy_01",
           "member": "string",
           "name": "TradeOne",
@@ -1047,7 +1047,7 @@
         },
         {
           "disabled": false,
-          "document": "Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181).",
+          "document": "Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181),\nsuch as \"kghy_0101\"",
           "example": "kghy_0101",
           "member": "string",
           "name": "TradeTwo",
