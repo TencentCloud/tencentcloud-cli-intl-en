@@ -1,5 +1,13 @@
 {
   "actions": {
+    "AcceptJoinShareUnitInvitation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AcceptJoinShareUnitInvitation\n<Common request parameters>\n\n{\n    \"UnitId\": \"shareUnit-xhreo**2p\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9ca56e2-1c27-483f-a78f-eaafc949b158\"\n    }\n}",
+        "title": "Accepting an Invitation to Join a Shared Unit"
+      }
+    ],
     "AddExternalSAMLIdPCertificate": [
       {
         "document": "This example shows you how to add SAML signing certificates.",
@@ -22,6 +30,30 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddPermissionPolicyToRoleConfiguration\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"z-29wm2iwn\",\n    \"RoleConfigurationId\": \"rc-aiwmsiw\",\n    \"RolePolicyType\": \"System\",\n    \"RolePolicyNames\": [\n        \"TestPolicy\"\n    ],\n    \"CustomPolicyDocument\": \"{\\\"statement\\\":{\\\"action\\\":[\\\"name/cvm:*\\\",\\\"name/vpc:*\\\",\\\"name/cos:*\\\",\\\"name/cmqtopic:*\\\",\\\"name/cmqqueue:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":\\\"*\\\"},\\\"version\\\":\\\"2.0\\\"}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "This example shows you how to add policies to permission configurations."
+      }
+    ],
+    "AddShareUnit": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=AddShareUnit\n&Name=myShareUnit\n&Area=ap-guangzhou\n&Description=share unit\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ef007aa-2dc5-4729-a880-b7ac69d94714\",\n        \"UnitId\": \"shareUnit-xhre**ra2p\"\n    }\n}",
+        "title": "Creating a Shared Unit"
+      }
+    ],
+    "AddShareUnitMembers": [
+      {
+        "document": "",
+        "input": "https://organization.tencentcloudapi.com/?Action=AddShareUnitMembers\n&UnitId=shareUnit-xhre**ra2p\n&Area=ap-guangzhou\n&Members.0.ShareMemberUin=333333333333\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ef007aa-2dc5-4729-a880-b7ac69d94714\"\n    }\n}",
+        "title": "Adding a Shared Unit Member"
+      }
+    ],
+    "AddShareUnitResources": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddShareUnitResources\n<Common request parameters>\n\n{\n    \"Area\": \"ap-guangzhou\",\n    \"Type\": \"secret\",\n    \"Resources\": [\n        {\n            \"ProductResourceId\": \"sec***002\"\n        }\n    ],\n    \"UnitId\": \"shareUnit-xhre**ra2p\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ef007aa-2dc5-4729-a880-b7ac69d94714\"\n    }\n}",
+        "title": "Adding Resources to a Shared Unit"
       }
     ],
     "AddUserToGroup": [
@@ -248,6 +280,30 @@
         "title": "Deleting a SCIM Key"
       }
     ],
+    "DeleteShareUnit": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=DeleteShareUnit\n&UnitId=shareUnit-xhreo**2p\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"42a5622f-d1bc-4d7f-b08a-01adc8d9cec9\"\n    }\n}",
+        "title": "Deleting a Shared Unit"
+      }
+    ],
+    "DeleteShareUnitMembers": [
+      {
+        "document": "",
+        "input": "https://organization.tencentcloudapi.com/?Action=DeleteShareUnitMembers\n&UnitId=shareUnit-xhre**ra2p\n&Area=ap-guangzhou\n&Members.0.ShareMemberUin=333333333333\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ef007aa-2dc5-4729-a880-b7ac69d94714\"\n    }\n}",
+        "title": "Deleting a Shared Unit Member"
+      }
+    ],
+    "DeleteShareUnitResources": [
+      {
+        "document": "",
+        "input": "https://organization.tencentcloudapi.com/?Action=DeleteShareUnitResources\n&UnitId=shareUnit-xhre**ra2p\n&Area=ap-guangzhou\n&Type=secret\n&Resources.0.ResourceId=shareResource-12**erte\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ef007aa-2dc5-4729-a880-b7ac69d94714\"\n    }\n}",
+        "title": "Deleting Shared Unit Resources"
+      }
+    ],
     "DeleteUser": [
       {
         "document": "This example shows you how to delete a user.",
@@ -318,6 +374,38 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationNodes\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"Name\": \"Root\",\n                \"NodeId\": 26,\n                \"ParentNodeId\": 0,\n                \"Remark\": \"\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 14:59:57\",\n                \"Name\": \"test\",\n                \"NodeId\": 27,\n                \"ParentNodeId\": 26,\n                \"Remark\": \"test\",\n                \"UpdateTime\": \"2021-04-16 14:59:57\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 15:55:53\",\n                \"Name\": \"test1\",\n                \"NodeId\": 29,\n                \"ParentNodeId\": 27,\n                \"Remark\": \"1\",\n                \"UpdateTime\": \"2021-04-16 15:55:53\"\n            }\n        ],\n        \"RequestId\": \"becff4cb-fe62-4288-ac6c-4fba115b94b3\",\n        \"Total\": 3\n    }\n}",
         "title": "Obtaining the Node List"
+      }
+    ],
+    "DescribeShareAreas": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=DescribeShareAreas\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Name\": \"Guangzhou\"\n                \"Area\": \"ap-guangzhou\",\n                \"AreaId\": 1\n            }\n        ],\n        \"RequestId\": \"094f71aa-bc7d-44e8-99e7-6b2135b017e3\"\n    }\n}",
+        "title": "Obtaining a Shared Region List"
+      }
+    ],
+    "DescribeShareUnitMembers": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=DescribeShareUnitMembers\n&UnitId=shareUnit-xhre**ra2p\n&Area=ap-guangzhou\n&Offset=0\n&Limit=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-03-06 17:08:38\",\n                \"ShareMemberUin\": 333333333333\n            }\n        ],\n        \"RequestId\": \"dd22e981-ad22-4676-865b-2d2184bf879b\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the Member List of a Shared Unit"
+      }
+    ],
+    "DescribeShareUnitResources": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeShareUnitResources\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Area\": \"ap-guangzhou\",\n    \"Limit\": 10,\n    \"UnitId\": \"shareUnit-xhre**ra2p\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-03-06 17:11:30\",\n                \"ResourceId\": \"shareUnit-12**erte\",\n                \"ProductResourceId\": \"sec***002\",\n                \"Type\": \"secret\",\n                \"SharedMemberNum\": 2,\n                \"SharedMemberUseNum\": 0,\n                \"ShareManagerUin\": 111111111111\n            }\n        ],\n        \"RequestId\": \"538e6bb8-704d-4594-b297-95bd2535ecc0\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the Resource List of a Shared Unit"
+      }
+    ],
+    "DescribeShareUnits": [
+      {
+        "document": "",
+        "input": "https://organization.tencentcloudapi.com/?Action=DescribeShareUnits\n&Area=ap-guangzhou\n&Offset=0\n&Limit=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Area\": \"ap-guangzhou\",\n                \"CreateTime\": \"2021-03-05 15:29:14\",\n                \"Description\": \"share unit\",\n                \"Name\": \"myShareUnit\",\n                \"OwnerUin\": 1111111111,\n                \"ShareMemberNum\": 0,\n                \"ShareResourceNum\": 0,\n                \"Uin\": 2222222222,\n                \"UnitId\": \"shareUnit-xhre**ra2p\"\n            }\n        ],\n        \"RequestId\": \"7e6a64bc-6522-4c33-b3c3-303570691d7b\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining a List of Shared Units"
       }
     ],
     "DismantleRoleConfiguration": [
@@ -468,7 +556,7 @@
       {
         "document": "This example shows you how to obtain the list of organization service settings.",
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListOrganizationService\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ServiceId\": 1,\n                \"ProductName\": \"CloudAudit\",\n                \"IsAssign\": 1,\n                \"CanAssignCount\": 5,\n                \"Description\": \"\",\n                \"MemberNum\": \"0\",\n                \"Document\": \"\",\n                \"ConsoleUrl\": \"\",\n                \"IsUsageStatus\": 2,\n                \"Product\": \"cloudaudit\",\n                \"ServiceGrant\": 2,\n                \"GrantStatus\": \"Disabled\",\n                \"IsSetManagementScope\": 2\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ServiceId\": 1,\n                \"ProductName\": \"CloudAudit\",\n                \"IsAssign\": 1,\n                \"CanAssignCount\": 5,\n                \"Description\": \"cloud audit service\",\n                \"MemberNum\": \"0\",\n                \"Document\": \"https://cloud.tencent.com/document/product/XXX\",\n                \"ConsoleUrl\": \"https://console.cloud.tencent.com\",\n                \"IsUsageStatus\": 2,\n                \"Product\": \"cloudaudit\",\n                \"ServiceGrant\": 2,\n                \"GrantStatus\": \"Disabled\",\n                \"IsSetManagementScope\": 2\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
         "title": "Obtaining the List of Organization Service Settings"
       }
     ],
@@ -568,6 +656,14 @@
         "title": "Exiting an Organization"
       }
     ],
+    "RejectJoinShareUnitInvitation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RejectJoinShareUnitInvitation\n<Common request parameters>\n\n{\n    \"UnitId\": \"shareUnit-xhreo**2p\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9ca56e2-1c27-483f-a78f-eaafc949b158\"\n    }\n}",
+        "title": "Rejecting an Invitation to Join a Shared Unit"
+      }
+    ],
     "RemoveExternalSAMLIdPCertificate": [
       {
         "document": "This example shows you how to remove SAML signing certificates.",
@@ -662,6 +758,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateSCIMSynchronizationStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\",\n    \"SCIMSynchronizationStatus\": \"Enabled\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"520e1475-6042-4353-b85a-7c67e5e98e58\"\n    }\n}",
         "title": "Updating SCIM Synchronization Status"
+      }
+    ],
+    "UpdateShareUnit": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=UpdateShareUnit\n&UnitId=shareUnit-xhreo**2p\n&Description=share unit\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"42a5622f-d1bc-4d7f-b08a-01adc8d9cec9\"\n    }\n}",
+        "title": "Updating a Shared Unit"
       }
     ],
     "UpdateUser": [

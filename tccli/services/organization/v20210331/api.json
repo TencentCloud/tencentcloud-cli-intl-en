@@ -1,5 +1,12 @@
 {
   "actions": {
+    "AcceptJoinShareUnitInvitation": {
+      "document": "This API is used to accept an invitation to join a shared unit.",
+      "input": "AcceptJoinShareUnitInvitationRequest",
+      "name": "Accepts an invitation to join a shared unit",
+      "output": "AcceptJoinShareUnitInvitationResponse",
+      "status": "online"
+    },
     "AddExternalSAMLIdPCertificate": {
       "document": "This API is used to add SAML signing certificates.",
       "input": "AddExternalSAMLIdPCertificateRequest",
@@ -19,6 +26,27 @@
       "input": "AddPermissionPolicyToRoleConfigurationRequest",
       "name": "Adds policies to permission configurations",
       "output": "AddPermissionPolicyToRoleConfigurationResponse",
+      "status": "online"
+    },
+    "AddShareUnit": {
+      "document": "This API is used to create a shared unit.",
+      "input": "AddShareUnitRequest",
+      "name": "Creates a shared unit",
+      "output": "AddShareUnitResponse",
+      "status": "online"
+    },
+    "AddShareUnitMembers": {
+      "document": "This API is used to add a shared unit member.",
+      "input": "AddShareUnitMembersRequest",
+      "name": "Adds a shared unit member",
+      "output": "AddShareUnitMembersResponse",
+      "status": "online"
+    },
+    "AddShareUnitResources": {
+      "document": "This API is used to add resources to a shared unit.",
+      "input": "AddShareUnitResourcesRequest",
+      "name": "Adds resources to a shared unit",
+      "output": "AddShareUnitResourcesResponse",
       "status": "online"
     },
     "AddUserToGroup": {
@@ -217,6 +245,27 @@
       "output": "DeleteSCIMCredentialResponse",
       "status": "online"
     },
+    "DeleteShareUnit": {
+      "document": "This API is used to delete a shared unit.",
+      "input": "DeleteShareUnitRequest",
+      "name": "Deletes a shared unit",
+      "output": "DeleteShareUnitResponse",
+      "status": "online"
+    },
+    "DeleteShareUnitMembers": {
+      "document": "This API is used to delete a shared unit member.",
+      "input": "DeleteShareUnitMembersRequest",
+      "name": "Deletes a shared unit member",
+      "output": "DeleteShareUnitMembersResponse",
+      "status": "online"
+    },
+    "DeleteShareUnitResources": {
+      "document": "This API is used to delete shared unit resources.",
+      "input": "DeleteShareUnitResourcesRequest",
+      "name": "Deletes shared unit resources",
+      "output": "DeleteShareUnitResourcesResponse",
+      "status": "online"
+    },
     "DeleteUser": {
       "document": "This API is used to delete a user.",
       "input": "DeleteUserRequest",
@@ -278,6 +327,34 @@
       "input": "DescribeOrganizationNodesRequest",
       "name": "Gets the list of organization nodes",
       "output": "DescribeOrganizationNodesResponse",
+      "status": "online"
+    },
+    "DescribeShareAreas": {
+      "document": "This API is used to obtain a list of shareable regions.",
+      "input": "DescribeShareAreasRequest",
+      "name": "Obtains a list of shareable regions",
+      "output": "DescribeShareAreasResponse",
+      "status": "online"
+    },
+    "DescribeShareUnitMembers": {
+      "document": "This API is used to obtain the member list of a shared unit.",
+      "input": "DescribeShareUnitMembersRequest",
+      "name": "Obtains the member list of a shared unit",
+      "output": "DescribeShareUnitMembersResponse",
+      "status": "online"
+    },
+    "DescribeShareUnitResources": {
+      "document": "This API is used to obtain the resource list of a shared unit.",
+      "input": "DescribeShareUnitResourcesRequest",
+      "name": "Obtains the resource list of a shared unit",
+      "output": "DescribeShareUnitResourcesResponse",
+      "status": "online"
+    },
+    "DescribeShareUnits": {
+      "document": "This API is used to obtain a list of shared units.",
+      "input": "DescribeShareUnitsRequest",
+      "name": "Obtains a list of shared units",
+      "output": "DescribeShareUnitsResponse",
       "status": "online"
     },
     "DismantleRoleConfiguration": {
@@ -497,6 +574,13 @@
       "output": "QuitOrganizationResponse",
       "status": "online"
     },
+    "RejectJoinShareUnitInvitation": {
+      "document": "This API is used to reject an invitation to join a shared unit.",
+      "input": "RejectJoinShareUnitInvitationRequest",
+      "name": "Rejects an invitation to join a shared unit",
+      "output": "RejectJoinShareUnitInvitationResponse",
+      "status": "online"
+    },
     "RemoveExternalSAMLIdPCertificate": {
       "document": "This API is used to remove SAML signing certificates.",
       "input": "RemoveExternalSAMLIdPCertificateRequest",
@@ -581,6 +665,13 @@
       "output": "UpdateSCIMSynchronizationStatusResponse",
       "status": "online"
     },
+    "UpdateShareUnit": {
+      "document": "This API is used to update a shared unit.",
+      "input": "UpdateShareUnitRequest",
+      "name": "Updates a shared unit",
+      "output": "UpdateShareUnitResponse",
+      "status": "online"
+    },
     "UpdateUser": {
       "document": "This API is used to modify user information.",
       "input": "UpdateUserRequest",
@@ -616,6 +707,33 @@
     "serviceShortName": "organization"
   },
   "objects": {
+    "AcceptJoinShareUnitInvitationRequest": {
+      "document": "AcceptJoinShareUnitInvitation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhreo**2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AcceptJoinShareUnitInvitationResponse": {
+      "document": "AcceptJoinShareUnitInvitation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AddExternalSAMLIdPCertificateRequest": {
       "document": "AddExternalSAMLIdPCertificate request structure.",
       "members": [
@@ -668,7 +786,7 @@
         {
           "disabled": false,
           "document": "Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).",
-          "example": "123",
+          "example": "101",
           "member": "uint64",
           "name": "ParentNodeId",
           "required": true,
@@ -677,7 +795,7 @@
         {
           "disabled": false,
           "document": "Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.",
-          "example": "test",
+          "example": "node_name",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -686,7 +804,7 @@
         {
           "disabled": false,
           "document": "Remarks.",
-          "example": "\"\"",
+          "example": "\"root node\"",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -695,7 +813,7 @@
         {
           "disabled": false,
           "document": "Department tag list, with a maximum of 10.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"key\",\"TagValue\":\"value\"}]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -798,6 +916,169 @@
       ],
       "type": "object"
     },
+    "AddShareUnitMembersRequest": {
+      "document": "AddShareUnitMembers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared member list. Maximum: 10.",
+          "example": "[{\"ShareMemberUin\": 333333333333}]",
+          "member": "ShareMember",
+          "name": "Members",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddShareUnitMembersResponse": {
+      "document": "AddShareUnitMembers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddShareUnitRequest": {
+      "document": "AddShareUnit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit name. It only supports combinations of uppercase and lowercase letters, digits, hyphens (-), and underscores (_), with 3 to 128 characters.",
+          "example": "myShareUnit",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region. You can obtain supported shared regions through the API [DescribeShareAreas](https://intl.cloud.tencent.com/document/product/850/103050?from_cn_redirect=1).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit description. Maximum: 128 characters.",
+          "example": "share unit",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sharing scope. Valid values: 1: Only sharing within a group organization is allowed; 2: Sharing with any account is allowed. Default value: 1",
+          "example": "1",
+          "member": "uint64",
+          "name": "ShareScope",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AddShareUnitResourcesRequest": {
+      "document": "AddShareUnitResources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource type. For supported shared resource types, see [Overview of Resource Sharing](https://intl.cloud.tencent.com/document/product/850/59489?from_cn_redirect=1).",
+          "example": "secret",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource list. Maximum: 10.",
+          "example": "[{\"ProductResourceId\":\"sec***002\"}]",
+          "member": "ProductResource",
+          "name": "Resources",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddShareUnitResourcesResponse": {
+      "document": "AddShareUnitResources response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddShareUnitResponse": {
+      "document": "AddShareUnit response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-er23t3fd",
+          "member": "string",
+          "name": "UnitId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AddUserToGroupRequest": {
       "document": "AddUserToGroup request structure.",
       "members": [
@@ -886,7 +1167,7 @@
         {
           "disabled": false,
           "document": "Policy ID, which can be obtained by calling [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).",
-          "example": "123",
+          "example": "101",
           "member": "int64",
           "name": "PolicyId",
           "required": true,
@@ -931,7 +1212,7 @@
         {
           "disabled": false,
           "document": "Policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).",
-          "example": "123",
+          "example": "101",
           "member": "int64",
           "name": "PolicyId",
           "required": true,
@@ -1057,21 +1338,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Organization service ID, which can be obtained through [ListOrganizationService](https://intl.cloud.tencent.com/document/product/850/109561?from_cn_redirect=1).",
-          "example": "1",
-          "member": "uint64",
-          "name": "ServiceId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "Uin list of the delegated admins, including up to 20 items.",
           "example": "[111111111111]",
           "member": "int64",
           "name": "MemberUins",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Organization service ID, which can be obtained through [ListOrganizationService](https://intl.cloud.tencent.com/document/product/850/109561?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": false,
+          "type": "int"
         },
         {
           "disabled": false,
@@ -1085,7 +1366,7 @@
         {
           "disabled": false,
           "document": "Uin list of the managed members. This parameter is valid when ManagementScope is 2.",
-          "example": "[]",
+          "example": "[100000000001]",
           "member": "int64",
           "name": "ManagementScopeUins",
           "required": false,
@@ -1094,7 +1375,7 @@
         {
           "disabled": false,
           "document": "ID list of the managed departments. This parameter is valid when ManagementScope is 2.",
-          "example": "[]",
+          "example": "[101]",
           "member": "int64",
           "name": "ManagementScopeNodeIds",
           "required": false,
@@ -1121,7 +1402,7 @@
         {
           "disabled": false,
           "document": "Identity name.",
-          "example": "test",
+          "example": "admin_identity",
           "member": "string",
           "name": "IdentityAliasName",
           "required": true,
@@ -1130,7 +1411,7 @@
         {
           "disabled": false,
           "document": "Identity policy.",
-          "example": "无",
+          "example": "[{            \"PolicyId\":1,            \"PolicyName\":\"AdministratorAccess\"      }]",
           "member": "IdentityPolicy",
           "name": "IdentityPolicy",
           "required": true,
@@ -1139,7 +1420,7 @@
         {
           "disabled": false,
           "document": "Identity description.",
-          "example": "\"\"",
+          "example": "\"admin identity\"",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1159,7 +1440,7 @@
           "name": "IdentityId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1230,7 +1511,7 @@
         {
           "disabled": false,
           "document": "Member access identity ID, which can be obtained through [DescribeOrganizationMemberAuthIdentities](https://intl.cloud.tencent.com/document/product/850/82936?from_cn_redirect=1).",
-          "example": "11",
+          "example": "101",
           "member": "int64",
           "name": "IdentityId",
           "required": true,
@@ -1254,12 +1535,12 @@
         {
           "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "example": "1001",
           "member": "int64",
           "name": "PolicyId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1421,7 +1702,7 @@
         {
           "disabled": false,
           "document": "Member access identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
-          "example": "11",
+          "example": "101",
           "member": "int64",
           "name": "IdentityId",
           "required": true,
@@ -1445,12 +1726,12 @@
         {
           "disabled": false,
           "document": "Policy ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "example": "1001",
           "member": "int64",
           "name": "PolicyId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1472,20 +1753,20 @@
         {
           "disabled": false,
           "document": "Organization ID.",
-          "example": "123",
+          "example": "101",
           "member": "uint64",
           "name": "OrgId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's nickname.",
-          "example": "test",
+          "example": "nick_name",
           "member": "string",
           "name": "NickName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1910,20 +2191,20 @@
       "members": [
         {
           "disabled": false,
-          "document": "Organization service ID, which can be obtained through [ListOrganizationService](https://intl.cloud.tencent.com/document/product/850/109561?from_cn_redirect=1).",
-          "example": "1",
-          "member": "uint64",
-          "name": "ServiceId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "Uin of the delegated admin.",
           "example": "111111111111",
           "member": "int64",
           "name": "MemberUin",
           "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Organization service ID, which can be obtained through [ListOrganizationService](https://intl.cloud.tencent.com/document/product/850/109561?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "ServiceId",
+          "required": false,
           "type": "int"
         }
       ],
@@ -2010,7 +2291,7 @@
         {
           "disabled": false,
           "document": "Access policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).",
-          "example": "123",
+          "example": "1001",
           "member": "uint64",
           "name": "PolicyId",
           "required": true,
@@ -2265,6 +2546,132 @@
       ],
       "type": "object"
     },
+    "DeleteShareUnitMembersRequest": {
+      "document": "DeleteShareUnitMembers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Member list.",
+          "example": "[\"ShareMemberUin\": 333333333333]",
+          "member": "ShareMember",
+          "name": "Members",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareUnitMembersResponse": {
+      "document": "DeleteShareUnitMembers response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareUnitRequest": {
+      "document": "DeleteShareUnit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhreo**2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareUnitResourcesRequest": {
+      "document": "DeleteShareUnitResources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource type. For supported shared resource types, see [Overview of Resource Sharing](https://intl.cloud.tencent.com/document/product/850/59489?from_cn_redirect=1).",
+          "example": "secret",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource list. Maximum: 10.",
+          "example": "[{\"ProductResourceId\":\"sec***002\"}]",
+          "member": "ShareResource",
+          "name": "Resources",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareUnitResourcesResponse": {
+      "document": "DeleteShareUnitResources response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteShareUnitResponse": {
+      "document": "DeleteShareUnit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteUserRequest": {
       "document": "DeleteUser request structure.",
       "members": [
@@ -2457,7 +2864,7 @@
         {
           "disabled": false,
           "document": "Policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).",
-          "example": "11",
+          "example": "1001",
           "member": "int64",
           "name": "PolicyId",
           "required": true,
@@ -2472,12 +2879,12 @@
         {
           "disabled": false,
           "document": "List\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"CreateTime\":\"2021-07-14 21:00:59\",\"IdentityId\":1,\"IdentityRoleAliasName\":\"admin\",\"IdentityRoleName\":\"OrganizationAccessControlRole\",\"OrgSubAccountUin\":222222222222,\"PolicyId\":1001,\"PolicyName\":\"policy_name\",\"UpdateTime\":\"2021-07-14 21:00:59\",\"OrgSubAccountName\":\"sub_name\"}]",
           "member": "OrgMemberAuthAccount",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2487,7 +2894,7 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2531,7 +2938,7 @@
         {
           "disabled": false,
           "document": "Identity ID. At least one of the input parameters MemberUin and IdentityId must be provided. It can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
-          "example": "123",
+          "example": "1",
           "member": "uint64",
           "name": "IdentityId",
           "required": false,
@@ -2546,12 +2953,12 @@
         {
           "disabled": false,
           "document": "List of authorizable identities\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"CreateTime\":\"2021-07-14 20:17:34\",\"Description\":\"AdministratorAccess\",\"IdentityId\":1,\"IdentityRoleAliasName\":\"admin\",\"IdentityRoleName\":\"OrganizationAccessControlRole\",\"IdentityType\":1,\"UpdateTime\":\"2021-07-14 20:17:34\"}]",
           "member": "OrgMemberAuthIdentity",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2561,7 +2968,7 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2620,22 +3027,22 @@
         {
           "disabled": false,
           "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"CreateTime\":\"2021-07-14 20:22:30\",\"Description\":\"admin policy\",\"IdentityId\":1,\"IdentityRoleAliasName\":\"admin\",\"IdentityRoleName\":\"OrganizationAccessControlRole\",\"PolicyId\":1001,\"PolicyName\":\"policy_name\",\"UpdateTime\":\"2021-07-14 20:22:30\"}]",
           "member": "OrgMemberPolicy",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2",
+          "example": "1",
           "member": "uint64",
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2679,7 +3086,7 @@
         {
           "disabled": false,
           "document": "Search by member name or ID.",
-          "example": "\"\"",
+          "example": "member_name",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -2688,7 +3095,7 @@
         {
           "disabled": false,
           "document": "Entity name.",
-          "example": "\"\"",
+          "example": "auth_name",
           "member": "string",
           "name": "AuthName",
           "required": false,
@@ -2697,7 +3104,7 @@
         {
           "disabled": false,
           "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
-          "example": "\"\"",
+          "example": "config",
           "member": "string",
           "name": "Product",
           "required": false,
@@ -2706,7 +3113,7 @@
         {
           "disabled": false,
           "document": "Member tag search list, with a maximum of 10.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"key\"}]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -2721,7 +3128,7 @@
         {
           "disabled": false,
           "document": "Member list.",
-          "example": "无",
+          "example": "[{\"CreateTime\":\"2021-04-17 12:19:07\",\"MemberType\":\"Invite\",\"MemberUin\":111111111111,\"Name\":\"member_name\",\"NodeId\":101,\"NodeName\":\"node_name\",\"IsAllowQuit\":\"Denied\",\"OrgPermission\":[{\"Id\":1,\"Name\":\"允许主账号查看子账号的消费信息\"},{\"Id\":2,\"Name\":\"允许主账号查看子账号的财务信息\"}],\"OrgPolicyName\":\"财务管理\",\"OrgPolicyType\":\"Financial\",\"Remark\":\"member1\",\"PayUin\":\"\",\"PayName\":\"\",\"OrgIdentity\":[],\"BindStatus\":\"Unbound\",\"PermissionStatus\":\"Confirmed\",\"UpdateTime\":\"2021-04-17 12:19:07\"}]",
           "member": "OrgMember",
           "name": "Items",
           "output_required": true,
@@ -2771,7 +3178,7 @@
         {
           "disabled": false,
           "document": "Department tag search list, with a maximum of 10.",
-          "example": "[]",
+          "example": "[\"TagKey\":\"key\"]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -2786,22 +3193,22 @@
         {
           "disabled": false,
           "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "3",
+          "example": "1",
           "member": "int64",
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List details.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"CreateTime\":\"2021-04-16 11:49:39\",\"Name\":\"Root\",\"NodeId\":101,\"ParentNodeId\":0,\"Remark\":\"\",\"UpdateTime\":\"2021-04-16 11:49:39\"}]",
           "member": "OrgNode",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2827,7 +3234,7 @@
         {
           "disabled": false,
           "document": "Abbreviation of the trusted service, which is required during querying the trusted service admin.",
-          "example": "test",
+          "example": "config",
           "member": "string",
           "name": "Product",
           "required": false,
@@ -2842,12 +3249,12 @@
         {
           "disabled": false,
           "document": "Organization ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1234",
+          "example": "101",
           "member": "int64",
           "name": "OrgId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2857,17 +3264,17 @@
           "name": "HostUin",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "host_name",
           "member": "string",
           "name": "NickName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2877,7 +3284,7 @@
           "name": "OrgType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2887,17 +3294,17 @@
           "name": "IsManager",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Policy type. Valid values: `Financial` (finance management).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "Finical",
+          "example": "Financial",
           "member": "string",
           "name": "OrgPolicyType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2907,17 +3314,17 @@
           "name": "OrgPolicyName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of member financial permissions.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Id\":1,\"Name\":\"viewBill\"},{\"Id\":2,\"Name\":\"viewBalance\"}]",
           "member": "OrgPermission",
           "name": "OrgPermission",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2927,7 +3334,7 @@
           "name": "RootNodeId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2937,7 +3344,7 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2947,7 +3354,7 @@
           "name": "JoinTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2957,27 +3364,27 @@
           "name": "IsAllowQuit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Payer UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "\"100000000001\"",
           "member": "string",
           "name": "PayUin",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Payer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "\"host_name\"",
           "member": "string",
           "name": "PayName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2987,7 +3394,7 @@
           "name": "IsAssignManager",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2997,7 +3404,293 @@
           "name": "IsAuthManager",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareAreasRequest": {
+      "document": "DescribeShareAreas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Valid values: en (Tencent Cloud International); zh (Tencent Cloud).",
+          "example": "zh",
+          "member": "string",
+          "name": "Lang",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareAreasResponse": {
+      "document": "DescribeShareAreas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details.",
+          "example": "[{\"Name\":\"广州\",\"Area\":\"ap-guangzhou\",\"AreaId\":1}]",
+          "member": "ShareArea",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitMembersRequest": {
+      "document": "DescribeShareUnitMembers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Its value must be an integer multiple of the limit. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit. Value range: 1–50.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keyword. Member UIN search is supported.",
+          "example": "333333333333",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitMembersResponse": {
+      "document": "DescribeShareUnitMembers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit member list.",
+          "example": "[{\"CreateTime\":\"2021-03-06 17:08:38\",\"ShareMemberUin\":333333333333}]",
+          "member": "ShareUnitMember",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitResourcesRequest": {
+      "document": "DescribeShareUnitResources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Its value must be an integer multiple of the limit. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit. Value range: 1–50.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keyword. Product resource ID search is supported.",
+          "example": "sec***002",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource type. For supported shared resource types, see [Overview of Resource Sharing](https://intl.cloud.tencent.com/document/product/850/59489?from_cn_redirect=1).",
+          "example": "secret",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitResourcesResponse": {
+      "document": "DescribeShareUnitResources response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit resource list.",
+          "example": "[{\"CreateTime\":\"2021-03-06 17:11:30\",\"ResourceId\":\"shareUnit-12**erte\",\"ProductResourceId\":\"sec***002\",\"Type\":\"secret\",\"SharedMemberNum\":2,\"SharedMemberUseNum\":0,\"ShareManagerUin\":111111111111}]",
+          "member": "ShareUnitResource",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitsRequest": {
+      "document": "DescribeShareUnits request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit region. You can obtain supported shared regions through the API [DescribeShareAreas](https://intl.cloud.tencent.com/document/product/850/103050?from_cn_redirect=1).",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Its value must be an integer multiple of the limit. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit. Value range: 1–50.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keyword. UnitId and Name search is supported.",
+          "example": "myShareUnit",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeShareUnitsResponse": {
+      "document": "DescribeShareUnits response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit list.",
+          "example": "[{\"Area\":\"ap-guangzhou\",\"CreateTime\":\"2021-03-05 15:29:14\",\"Description\":\"share unit\",\"Name\":\"myShareUnit\",\"OwnerUin\":1111111111,\"ShareMemberNum\":0,\"ShareResourceNum\":0,\"Uin\":2222222222,\"UnitId\":\"shareUnit-xhre**ra2p\"}]",
+          "member": "ManagerShareUnit",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4352,7 +5045,7 @@
           "example": "1",
           "member": "uint64",
           "name": "ServiceId",
-          "required": true,
+          "required": false,
           "type": "int"
         }
       ],
@@ -4369,17 +5062,17 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of the delegated admins.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"ServiceId\":1,\"ProductName\":\"CloudAudit\",\"MemberUin\":111111111111,\"MemberName\":\"mamber_name\",\"UsageStatus\":2,\"CreateTime\":\"2022-03-12 12:19:12\",\"ManagementScope\":1,\"ManagementScopeMembers\":[],\"ManagementScopeNodes\":[]}]",
           "member": "OrganizationServiceAssignMember",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4414,7 +5107,7 @@
         {
           "disabled": false,
           "document": "Search by name.",
-          "example": "test",
+          "example": "identity_name",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -4452,17 +5145,17 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Item details.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"IdentityId\":1,\"IdentityAliasName\":\"identity_name\",\"Description\":\"\",\"IdentityPolicy\":[{\"PolicyId\":1,\"PolicyName\":\"AdministratorAccess\"}],\"IdentityType\":1,\"UpdateTime\":\"2021-07-15 21:08:38\"}]",
           "member": "OrgIdentity",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4497,7 +5190,7 @@
         {
           "disabled": false,
           "document": "Keyword for search by name.",
-          "example": "\"\"",
+          "example": "cloudaudit",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -4517,17 +5210,17 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization service list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"ServiceId\":1,\"ProductName\":\"CloudAudit\",\"IsAssign\":1,\"CanAssignCount\":5,\"Description\":\"\",\"MemberNum\":\"0\",\"Document\":\"\",\"ConsoleUrl\":\"\",\"IsUsageStatus\":2,\"Product\":\"cloudaudit\",\"ServiceGrant\":2,\"GrantStatus\":\"Disabled\",\"IsSetManagementScope\":2}]",
           "member": "OrganizationServiceAssign",
           "name": "Items",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5535,6 +6228,112 @@
       ],
       "type": "object"
     },
+    "ManagerShareUnit": {
+      "document": "Details of my shared unit list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhre**ra2p",
+          "member": "string",
+          "name": "UnitId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit name.",
+          "example": "myShareUnit",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit administrator UIN.",
+          "example": "222222222222",
+          "member": "int64",
+          "name": "Uin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit administrator OwnerUin.",
+          "example": "111111111111",
+          "member": "int64",
+          "name": "OwnerUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "share unit",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-05 12:21:21",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of resources in a shared unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "ShareResourceNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of members in a shared unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ShareMemberNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sharing scope. Valid values: 1: Only sharing within a group organization is allowed; 2: Sharing with any account is allowed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ShareScope",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "MemberIdentity": {
       "document": "Member management identity",
       "members": [
@@ -5544,19 +6343,19 @@
           "example": "10",
           "member": "int64",
           "name": "IdentityId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_name",
           "member": "string",
           "name": "IdentityAliasName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5567,22 +6366,22 @@
         {
           "disabled": false,
           "document": "Member UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100000006533",
+          "example": "100000000001",
           "member": "int64",
           "name": "MemberUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member name j.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "testa",
+          "example": "member_name",
           "member": "string",
           "name": "MemberName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5697,37 +6496,37 @@
           "name": "IdentityId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_name",
           "member": "string",
           "name": "IdentityAliasName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "admin identity",
           "member": "string",
           "name": "Description",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"PolicyId\":1,\"PolicyName\":\"AdministratorAccess\"}]",
           "member": "IdentityPolicy",
           "name": "IdentityPolicy",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5737,7 +6536,7 @@
           "name": "IdentityType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5747,7 +6546,7 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5763,17 +6562,17 @@
           "name": "MemberUin",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "tt",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5783,17 +6582,17 @@
           "name": "MemberType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Relationship policy type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "Finical",
+          "example": "Financial",
           "member": "string",
           "name": "OrgPolicyType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5803,17 +6602,17 @@
           "name": "OrgPolicyName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Relationship policy permission\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Id\":1,\"Name\":\"viewBill\"},{\"Id\":2,\"Name\":\"viewBalance\"}]",
           "member": "OrgPermission",
           "name": "OrgPermission",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5823,7 +6622,7 @@
           "name": "NodeId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5833,17 +6632,17 @@
           "name": "NodeName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "tt",
+          "example": "member1",
           "member": "string",
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5853,7 +6652,7 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5863,7 +6662,7 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5873,37 +6672,37 @@
           "name": "IsAllowQuit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Payer UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "\"100000000001\"",
           "member": "string",
           "name": "PayUin",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Payer name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "\"host_member\"",
           "member": "string",
           "name": "PayName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Management identity\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"IdentityId\":1,\"IdentityAliasName\":\"admin\"}]",
           "member": "MemberIdentity",
           "name": "OrgIdentity",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5913,7 +6712,7 @@
           "name": "BindStatus",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5923,17 +6722,17 @@
           "name": "PermissionStatus",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"key\",\"TagValue\":\"value\"}]",
           "member": "Tag",
           "name": "Tags",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5947,29 +6746,29 @@
           "example": "1000001",
           "member": "int64",
           "name": "OrgSubAccountUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "11",
+          "example": "1001",
           "member": "int64",
           "name": "PolicyId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "policy_name",
           "member": "string",
           "name": "PolicyName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5977,19 +6776,19 @@
           "example": "12",
           "member": "int64",
           "name": "IdentityId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test1",
+          "example": "identity_role",
           "member": "string",
           "name": "IdentityRoleName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5997,9 +6796,9 @@
           "example": "策略管理",
           "member": "string",
           "name": "IdentityRoleAliasName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6007,9 +6806,9 @@
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6017,19 +6816,19 @@
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sub-account name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "sub_name",
           "member": "string",
           "name": "OrgSubAccountName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6040,42 +6839,42 @@
         {
           "disabled": false,
           "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "111",
+          "example": "1",
           "member": "int64",
           "name": "IdentityId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Role name of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_role",
           "member": "string",
           "name": "IdentityRoleName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Role alias of an identity\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_name",
           "member": "string",
           "name": "IdentityRoleAliasName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity description.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "admin identity",
           "member": "string",
           "name": "Description",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6085,7 +6884,7 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6095,7 +6894,7 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6105,7 +6904,7 @@
           "name": "IdentityType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6115,7 +6914,7 @@
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6125,17 +6924,17 @@
           "name": "MemberUin",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "member_test",
+          "example": "member_name",
           "member": "string",
           "name": "MemberName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6146,22 +6945,22 @@
         {
           "disabled": false,
           "document": "Policy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "10",
+          "example": "1001",
           "member": "int64",
           "name": "PolicyId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Policy name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "policy_name",
           "member": "string",
           "name": "PolicyName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6169,39 +6968,39 @@
           "example": "1",
           "member": "int64",
           "name": "IdentityId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_role",
           "member": "string",
           "name": "IdentityRoleName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Identity role alias.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "identity_name",
           "member": "string",
           "name": "IdentityRoleAliasName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "admin identity",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6209,9 +7008,9 @@
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6219,9 +7018,9 @@
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6237,17 +7036,17 @@
           "name": "NodeId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "node_name",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6257,17 +7056,17 @@
           "name": "ParentNodeId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "root node",
           "member": "string",
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6277,7 +7076,7 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6287,17 +7086,17 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"key\",\"TagValue\":\"value\"}]",
           "member": "Tag",
           "name": "Tags",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6339,7 +7138,7 @@
           "name": "ServiceId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6349,7 +7148,7 @@
           "name": "ProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6359,17 +7158,17 @@
           "name": "IsAssign",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization service description.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "CloudAudit Service",
           "member": "string",
           "name": "Description",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6379,27 +7178,27 @@
           "name": "MemberNum",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Help documentation.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "https://cloud.tencent.com/document/product",
           "member": "string",
           "name": "Document",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Console path of the organization service product.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "https://console.cloud.tencent.com",
           "member": "string",
           "name": "ConsoleUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6409,7 +7208,7 @@
           "name": "IsUsageStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6419,7 +7218,7 @@
           "name": "CanAssignCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6429,7 +7228,7 @@
           "name": "Product",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6439,7 +7238,7 @@
           "name": "ServiceGrant",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6449,7 +7248,7 @@
           "name": "GrantStatus",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6459,7 +7258,7 @@
           "name": "IsSetManagementScope",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6475,7 +7274,7 @@
           "name": "ServiceId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6485,7 +7284,7 @@
           "name": "ProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6495,7 +7294,7 @@
           "name": "MemberUin",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6505,7 +7304,7 @@
           "name": "MemberName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6515,7 +7314,7 @@
           "name": "UsageStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6525,7 +7324,7 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6535,27 +7334,27 @@
           "name": "ManagementScope",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Uin list of managed members. This parameter is valid when ManagementScope is 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[100000000001]",
           "member": "MemberMainInfo",
           "name": "ManagementScopeMembers",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID list of the managed departments. This parameter is valid when ManagementScope is 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[101]",
           "member": "NodeMainInfo",
           "name": "ManagementScopeNodes",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6587,6 +7386,30 @@
         }
       ],
       "usage": "both"
+    },
+    "ProductResource": {
+      "document": "Product resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product resource ID.",
+          "example": "sec***002",
+          "member": "string",
+          "name": "ProductResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "The last section of the six-segment resource description.",
+          "example": "secret/creatorUin/1111111111111/sec***002",
+          "member": "string",
+          "name": "ResourceGrantLast",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "ProvisionRoleConfigurationRequest": {
       "document": "ProvisionRoleConfiguration request structure.",
@@ -6658,7 +7481,7 @@
         {
           "disabled": false,
           "document": "Organization ID.",
-          "example": "1234",
+          "example": "101",
           "member": "uint64",
           "name": "OrgId",
           "required": true,
@@ -6669,6 +7492,33 @@
     },
     "QuitOrganizationResponse": {
       "document": "QuitOrganization response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RejectJoinShareUnitInvitationRequest": {
+      "document": "RejectJoinShareUnitInvitation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhreo**2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RejectJoinShareUnitInvitationResponse": {
+      "document": "RejectJoinShareUnitInvitation response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7719,6 +8569,187 @@
       ],
       "type": "object"
     },
+    "ShareArea": {
+      "document": "Shared region",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region name.",
+          "example": "广州",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region identifier.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Area",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "AreaId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ShareMember": {
+      "document": "Shared member information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared member UIN.",
+          "example": "333333333333",
+          "member": "int64",
+          "name": "ShareMemberUin",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "ShareResource": {
+      "document": "Shared resources",
+      "members": [
+        {
+          "disabled": true,
+          "document": "Shared resource ID.",
+          "example": "shareResource-12**erte",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product resource ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sec***002",
+          "member": "string",
+          "name": "ProductResourceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ShareUnitMember": {
+      "document": "Shared unit members",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared member UIN.",
+          "example": "333333333333",
+          "member": "int64",
+          "name": "ShareMemberUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-03-05 12:12:01",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ShareUnitResource": {
+      "document": "Shared unit resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared resource ID.",
+          "example": "shareResource-12**erte",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared resource type.",
+          "example": "secret",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-02-12 23:32:23",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product resource ID.",
+          "example": "sec***002",
+          "member": "string",
+          "name": "ProductResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of members in a shared unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SharedMemberNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of shared unit members in use.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SharedMemberUseNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shared administrator OwnerUin.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "111111111111",
+          "member": "int64",
+          "name": "ShareManagerUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Tag": {
       "document": "Tag key-value pair.",
       "members": [
@@ -8046,7 +9077,7 @@
         {
           "disabled": false,
           "document": "Identity description.",
-          "example": "\"\"",
+          "example": "admin identity",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -8055,7 +9086,7 @@
         {
           "disabled": false,
           "document": "Identity policy.",
-          "example": "无",
+          "example": "[{\"PolicyId\":1,\"PolicyName\":\"AdministratorAccess\"}]",
           "member": "IdentityPolicy",
           "name": "IdentityPolicy",
           "required": true,
@@ -8091,7 +9122,7 @@
         {
           "disabled": false,
           "document": "Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.",
-          "example": "name",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -8100,7 +9131,7 @@
         {
           "disabled": false,
           "document": "Remarks, which contain up to 40 characters.",
-          "example": "remark",
+          "example": "create member",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -8109,7 +9140,7 @@
         {
           "disabled": false,
           "document": "Relationship policy type. When PolicyType is not empty, PermissionIds cannot be empty. Value: Financial.",
-          "example": "\"\"",
+          "example": "Financial",
           "member": "string",
           "name": "PolicyType",
           "required": false,
@@ -8118,7 +9149,7 @@
         {
           "disabled": false,
           "document": "List of member financial permission IDs. When PermissionIds is not empty, PolicyType cannot be empty.\nValid values: 1: View bills. 2: View balance. 3: Allocate funds. 4: Consolidate bills. 5: Issue invoices. 6: Inherit discounts. 7: Pay on behalf. 8: Analyze costs. 1 and 2 are required by default.",
-          "example": "无",
+          "example": "[1,2]",
           "member": "uint64",
           "name": "PermissionIds",
           "required": false,
@@ -8127,7 +9158,7 @@
         {
           "disabled": false,
           "document": "Whether to allow members to exit an organization. Valid values: Allow: permitted, Denied: not permitted.",
-          "example": "\"\"",
+          "example": "allow",
           "member": "string",
           "name": "IsAllowQuit",
           "required": false,
@@ -8136,7 +9167,7 @@
         {
           "disabled": false,
           "document": "Payer UIN, which is required when pay-on-behalf mode is used in member financial permission. The value is the principal administrator UIN of the corresponding member.",
-          "example": "\"\"",
+          "example": "100000000001",
           "member": "string",
           "name": "PayUin",
           "required": false,
@@ -8346,6 +9377,60 @@
     },
     "UpdateSCIMSynchronizationStatusResponse": {
       "document": "UpdateSCIMSynchronizationStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateShareUnitRequest": {
+      "document": "UpdateShareUnit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared unit ID.",
+          "example": "shareUnit-xhreo**2p",
+          "member": "string",
+          "name": "UnitId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit name. It only supports combinations of uppercase and lowercase letters, digits, hyphens (-), and underscores (_), with 3 to 128 characters.",
+          "example": "myShareUnit",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared unit description. Maximum: 128 characters.",
+          "example": "share unit",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sharing scope. Valid values: 1: Only sharing within a group organization is allowed; 2: Sharing with any account is allowed. Default value: 1",
+          "example": "1",
+          "member": "uint64",
+          "name": "ShareScope",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateShareUnitResponse": {
+      "document": "UpdateShareUnit response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
