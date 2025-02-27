@@ -2358,7 +2358,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
-          "example": "base64编码",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -2376,7 +2376,7 @@
         {
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/card/MLIDPassportOCR/MLIDPassportOCR1.png",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -2461,7 +2461,7 @@
         {
           "disabled": false,
           "document": "Alarm codes\n-9102 Alarm for photocopy on a paper document (including black & white and color ones)\n-9103 Alarm for photocopy on an electronic device\n-9106 Alarm for covered card",
-          "example": "[]",
+          "example": "[-9103]",
           "member": "int64",
           "name": "Warn",
           "output_required": true,
@@ -2471,7 +2471,7 @@
         {
           "disabled": false,
           "document": "Identity photo",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "output_required": true,
@@ -2481,7 +2481,7 @@
         {
           "disabled": false,
           "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
-          "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
+          "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
           "output_required": true,
@@ -2531,7 +2531,7 @@
         {
           "disabled": false,
           "document": "Type (in Machine Readable Zone)",
-          "example": "无",
+          "example": "P",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -2541,7 +2541,7 @@
         {
           "disabled": false,
           "document": "Document content in Information Zone",
-          "example": "无",
+          "example": "{\"DateOfBirth\":\"11 Apr 1990\"}",
           "member": "PassportRecognizeInfos",
           "name": "PassportRecognizeInfos",
           "output_required": true,
@@ -6829,6 +6829,16 @@
           "example": "Mr. **** Tun",
           "member": "string",
           "name": "EnName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Surname in Thai",
+          "example": "ลุงซอ",
+          "member": "string",
+          "name": "ThaiSurName",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false

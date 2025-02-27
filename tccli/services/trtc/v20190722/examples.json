@@ -227,7 +227,7 @@
     "SetUserBlockedByStrRoomId": [
       {
         "document": " ",
-        "input": "https://trtc.tencentcloudapi.com/?Action=SetUserBlockedByStrRoomId\n&SdkAppId=1400188366\n&StrRoomId=”10006“\n&UserId=“29376”\n&IsMute=1\n&<Common request parameters>",
+        "input": "https://trtc.tencentcloudapi.com/?Action=SetUserBlockedByStrRoomId\n&SdkAppId=1400188366\n&StrRoomId=\"10006\"\n&UserId=\"29376\"\n&IsMute=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"44e494f6-8010-4bb2-9a9d-ba5fd191353a\"\n    }\n}",
         "title": "Disabling the audio and video of a user (string-type room ID)"
       }

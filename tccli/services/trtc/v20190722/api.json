@@ -3997,7 +3997,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable the user’s audio and video. 0: Enable; 1: Disable.",
+          "document": "Controls the activation state of audio and video.\n0: Enable audio and video,\n1: Disable audio and video,\n2: Disable audio only,\n3: Disable video only.",
           "example": "1",
           "member": "uint64",
           "name": "IsMute",
@@ -4034,7 +4034,7 @@
         {
           "disabled": false,
           "document": "The room ID (number).",
-          "example": "1111",
+          "example": "1001",
           "member": "uint64",
           "name": "RoomId",
           "required": true,
@@ -4043,7 +4043,7 @@
         {
           "disabled": false,
           "document": "The user ID.",
-          "example": "aaaa",
+          "example": "user_1",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -4051,7 +4051,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable the user’s audio and video. 0: Enable; 1: Disable.",
+          "document": "Controls the activation state of audio and video.\n0: Enable audio and video,\n1: Disable audio and video,\n2: Disable audio only,\n3: Disable video only.",
           "example": "1",
           "member": "uint64",
           "name": "IsMute",

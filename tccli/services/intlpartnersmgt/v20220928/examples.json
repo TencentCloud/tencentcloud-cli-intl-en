@@ -4,7 +4,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateCreditPool\n<Common request parameters>\n\n{\n    \"SubAgentUin\": 23427433726,\n    \"Credit\": 234.345\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCredit\": 345365,\n        \"RemainingCredit\": 3214.345,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCredit\": 345365,\n        \"RemainingCredit\": 3214.345,\n        \"RequestId\": \"xsakjf-asjfda-sadf\"\n    }\n}",
         "title": "Allocating Credit Pools"
       }
     ],
@@ -42,38 +42,44 @@
     ],
     "DescribeBillDetail": [
       {
-        "document": "This example shows you how to query the customer bill details.\n\t\nPOST / HTTP/1.1\n\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerBillDetail\n<Common request parameters>\n\n",
+        "document": "This example shows you how to query the sub-customer L3 bill details.\n\t\nPOST / HTTP/1.1\n\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerBillDetail\n<Common request parameters>\n\n\n\n",
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillDetail\n<Common request parameters>\n\n{\n    \"Month\": \"2023-02\",\n    \"PayMode\": \"postPay\",\n    \"ActionType\": \"postpay_deduct_h\",\n    \"PageSize\": \"10\",\n    \"Page\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"DetailSet\": [\n            {\n                \"PayerAccountId\": 1230,\n                \"OwnerAccountId\": 132,\n                \"OperatorAccountId\": 321,\n                \"ProductName\": \"cloud block storage\",\n                \"BillingMode\": \"Pay-As-You-Go resources\",\n                \"ProjectName\": \"default\",\n                \"Region\": \"East Chinaxa0(Shanghai)\",\n                \"AvailabilityZone\": \"Shanghai Zone 1\",\n                \"InstanceId\": \"123456\",\n                \"InstanceName\": \"the name\",\n                \"SubProductName\": \"HDD cloud block storage\",\n                \"TransactionType\": \"Hourly settlement\",\n                \"TransactionId\": \"2023010112345678\",\n                \"TransactionTime\": \"2023-01-01 00:01:02\",\n                \"UsageStartTime\": \"2023-01-01 00:01:02\",\n                \"UsageEndTime\": \"2023-01-01 00:01:02\",\n                \"ComponentType\": \"volume size\",\n                \"ComponentName\": \"HDD cloud block storage-volume size\",\n                \"ComponentListPrice\": \"0.1\",\n                \"ComponentPriceMeasurementUnit\": \"USD/GB/Second\",\n                \"ComponentUsage\": \"100\",\n                \"ComponentUsageUnit\": \"GB\",\n                \"UsageDuration\": \"100\",\n                \"DurationUnit\": \"Second\",\n                \"OriginalCost\": \"10\",\n                \"Currency\": \"USD\",\n                \"TotalCost\": \"10\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
-        "title": "Querying the customer bill details"
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"DetailSet\": [\n            {\n                \"PayerAccountId\": 1230,\n                \"OwnerAccountId\": 132,\n                \"OperatorAccountId\": 321,\n                \"ProductName\": \"cloud block storage\",\n                \"BillingMode\": \"Pay-As-You-Go resources\",\n                \"ProjectName\": \"default\",\n                \"Region\": \"East Chinaxa0(Shanghai)\",\n                \"AvailabilityZone\": \"Shanghai Zone 1\",\n                \"InstanceId\": \"disk-4jrmzpvk\",\n                \"InstanceName\": \"the name\",\n                \"SubProductName\": \"HDD cloud block storage\",\n                \"TransactionType\": \"Hourly settlement\",\n                \"TransactionId\": \"2023010112345678\",\n                \"TransactionTime\": \"2023-01-01 00:01:02\",\n                \"UsageStartTime\": \"2023-01-01 00:01:02\",\n                \"UsageEndTime\": \"2023-01-01 00:01:02\",\n                \"ComponentType\": \"volume size\",\n                \"ComponentName\": \"HDD cloud block storage-volume size\",\n                \"ComponentListPrice\": \"0.1\",\n                \"ComponentPriceMeasurementUnit\": \"USD/GB/Second\",\n                \"ComponentUsage\": \"100\",\n                \"ComponentUsageUnit\": \"GB\",\n                \"UsageDuration\": \"100\",\n                \"DurationUnit\": \"Second\",\n                \"OriginalCost\": \"10\",\n                \"Currency\": \"USD\",\n                \"TotalCost\": \"10\"\n            }\n        ],\n        \"RequestId\": \"asdfgh\"\n    }\n}",
+        "title": "DescribeBillDetail"
       }
     ],
     "DescribeBillDownloadUrl": [
       {
-        "document": "This example shows you how to download billing files and return billing file URLs by customers.",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillDownloadUrl\n<Public request parameters>\n\n{\n    \"Month\": \"2023-10\",\n    \"FileType\": \"L3\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv\",\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "DescribeBillDownloadUrl"
+        "document": "Sub-customer retrieves their billing link. Request for file generation is in progress, please wait for the file generation to complete before downloading again.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillDownloadUrl\n<Common request parameters>\n\n{\n    \"Month\": \"2023-12\",\n    \"FileType\": \"L3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"\",\n        \"Ready\": 0,\n        \"RequestId\": \"1737bf56-fbb4-4a57-a08b-73901b74abf3\"\n    }\n}",
+        "title": "DescribeBillDownloadUrl-1"
+      },
+      {
+        "document": "Sub-customer retrieves their billing link. The file has been generated, please use the download link to get the file.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillDownloadUrl\n<Common request parameters>\n\n{\n    \"Month\": \"2024-12\",\n    \"FileType\": \"L2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv\",\n        \"Ready\": 1,\n        \"RequestId\": \"845ac46e-20a7-4cab-8930-d5e6d2104885\"\n    }\n}",
+        "title": "DescribeBillDownloadUrl-2"
       }
     ],
     "DescribeBillSummary": [
       {
-        "document": "This example shows you how to view the API and tag dimension statistics in customer billing center L1 bill by customers.",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"tag\",\n    \"TagKey\": [\n        \"abc\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"CVM Dedicated Host\",\n                        \"BusinessCode\": \"p_cdh\",\n                        \"OriginalCost\": \"12.11\",\n                        \"VoucherPayAmount\": \"1.1\",\n                        \"RICost\": \"0.1\",\n                        \"TotalCost\": \"12.1\"\n                    }\n                ],\n                \"OriginalCost\": \"12.1\",\n                \"VoucherPayAmount\": \"1.1\",\n                \"RICost\": \"1.1\",\n                \"TotalCost\": \"2.2\",\n                \"GroupKey\": \"abc\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Summarizing DescribeBillSummary by tag dimension"
+        "document": "This example shows you how to perform API statistics on the L1 bill of the sub-customer billing center by tag dimension.\n\nPOST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>\n\n{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"tag\",\n    \"TagKey\": [\n        \"dev_tag_key\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"CVM Dedicated Host\",\n                        \"BusinessCode\": \"p_cdh\",\n                        \"OriginalCost\": \"12.11\",\n                        \"VoucherPayAmount\": \"1.1\",\n                        \"RICost\": \"0.1\",\n                        \"TotalCost\": \"12.1\"\n                    }\n                ],\n                \"OriginalCost\": \"12.1\",\n                \"VoucherPayAmount\": \"1.1\",\n                \"RICost\": \"1.1\",\n                \"TotalCost\": \"2.2\",\n                \"GroupKey\": \"dev_tag_key\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc123\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary By Tag Dimension"
       },
       {
-        "document": "This example shows you how to view the API and project dimension statistics in customer billing center L1 bill by customers.",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n< Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"project\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"cloud block storage\",\n                        \"BusinessCode\": \"p_cbs\",\n                        \"OriginalCost\": \"148.40000000\",\n                        \"VoucherPayAmount\": \"129.70000000\",\n                        \"RICost\": \"0.00000000\",\n                        \"TotalCost\": \"18.70000000\"\n                    }\n                ],\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"0\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Summarizing DescribeBillSummary by project dimension"
+        "document": "This example shows you how to perform API statistics on the L1 bill of the sub-customer billing center by project dimension.\n\nPOST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>\n\n{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"project\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"cloud block storage\",\n                        \"BusinessCode\": \"p_cbs\",\n                        \"OriginalCost\": \"148.40000000\",\n                        \"VoucherPayAmount\": \"129.70000000\",\n                        \"RICost\": \"0.00000000\",\n                        \"TotalCost\": \"18.70000000\"\n                    }\n                ],\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"0\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc123\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary By Project Dimension"
       },
       {
-        "document": "This example shows you how to view the API and product dimension statistics in customer billing center L1 bill by customers.",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n< Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"product\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": null,\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"p_cbs\",\n                \"GroupValue\": \"cloud block storage\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Summarizing DescribeBillSummary by product dimension"
+        "document": "This example shows you how to perform API statistics on the L1 bill of the sub-customer billing center by product dimension.\n\nPOST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Common request parameters>\n\n{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"product\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [],\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"p_cbs\",\n                \"GroupValue\": \"cloud block storage\"\n            }\n        ],\n        \"RequestId\": \"abc123\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary By Product Dimension"
       }
     ],
     "DescribeBillSummaryByPayMode": [
@@ -144,10 +150,10 @@
     ],
     "DescribeCustomerInfo": [
       {
-        "document": "This example shows you how to query the customer information.",
-        "input": "POST / HTTP/1.1Host: intlpartnersmgt.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeCustomerInfo<Common request parameters>{    \"CustomerUin\": [        200000000000,        200000000001,        200000000002    ]}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CustomerUin\": \"abc\",\n                \"Email\": \"abc\",\n                \"Phone\": \"abc\",\n                \"Mark\": \"abc\",\n                \"Name\": \"abc\",\n                \"BindTime\": \"abc\",\n                \"AccountStatus\": \"abc\",\n                \"AuthStatus\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Querying the customer information"
+        "document": "This example shows you how to query the sub-customer information.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerInfo\n<Common request parameters>\n\n{\n    \"CustomerUin\": [\n        200000000000,\n        200000000001,\n        200000000002\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CustomerUin\": \"200000000000\",\n                \"Email\": \"test@gmail.com\",\n                \"Phone\": \"18888888\",\n                \"Mark\": \"for test\",\n                \"Name\": \"tom\",\n                \"BindTime\": \"2020-01-01 08:00:00\",\n                \"AccountStatus\": \"0\",\n                \"AuthStatus\": \"0\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying Sub-Customer Information"
       }
     ],
     "DescribeCustomerUin": [
@@ -170,8 +176,8 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetCountryCodes\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"EnName\": \"Albania\",\n                \"Name\": \"Albania\",\n                \"Code\": \"355\"\n            },\n            {\n                \"EnName\": \"Algeria\",\n                \"Name\": \"Algeria\",\n                \"Code\": \"213\"\n            }\n        ],\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
-        "title": "Obtaining country/region codes"
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Code\": \"355\",\n                \"EnName\": \"Albania\",\n                \"IOS2\": \"AL\",\n                \"IOS3\": \"ALB\",\n                \"Name\": \"Albania\"\n            }\n        ],\n        \"RequestId\": \"e25eaf3f-22e7-45ea-9ecb-ca366ffcfdac\"\n    }\n}",
+        "title": "Obtaining Country/Region Codes"
       }
     ],
     "GetTradeConfigList": [
@@ -214,14 +220,6 @@
         "title": "Querying the credit of users in the list"
       }
     ],
-    "QueryCreditQuota": [
-      {
-        "document": "This example shows you how to query customer credits.",
-        "input": "POST / HTTP/1.1Host: xxx.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: QueryCreditQuota<Common request parameters>{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Querying customer credits"
-      }
-    ],
     "QueryCustomerBillingQuota": [
       {
         "document": " ",
@@ -234,8 +232,8 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryCustomersCredit\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"ClientUin\": 1,\n                \"Name\": \"abcdefg@tencent.com\",\n                \"Mobile\": \"131123456789\",\n                \"RecentExpiry\": \"2022-10-13 20:09:03\",\n                \"RemainingCredit\": 100,\n                \"Remark\": \"remark\",\n                \"Credit\": 100,\n                \"AssociationTime\": \"2022-10-13 20:09:03\",\n                \"IdentifyType\": 1,\n                \"Type\": \"new\",\n                \"Email\": \"abcd*********@tencent.com\",\n                \"Arrears\": \"-\"\n            }\n        ],\n        \"RequestId\": \"2b7c676e-bb4b-449d-89e6-4866132036c4\"\n    }\n}",
-        "title": "Querying a the credits of customers"
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"ClientUin\": 1,\n                \"Name\": \"abcdefg@tencent.com\",\n                \"Mobile\": \"131123456789\",\n                \"RecentExpiry\": \"2022-10-13 20:09:03\",\n                \"RemainingCredit\": 100,\n                \"Remark\": \"remark\",\n                \"Credit\": 100,\n                \"Force\": 0,\n                \"AssociationTime\": \"2022-10-13 20:09:03\",\n                \"IdentifyType\": 1,\n                \"Type\": \"new\",\n                \"Email\": \"abcd*********@tencent.com\",\n                \"Arrears\": \"Fixed as -\"\n            }\n        ],\n        \"RequestId\": \"2b7c676e-bb4b-449d-89e6-4866132036c4\"\n    }\n}",
+        "title": "Querying a the Credits Of Customers"
       }
     ],
     "QueryDirectCustomersCredit": [
@@ -273,25 +271,25 @@
     "QueryVoucherAmountByUin": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherAmountByUin\n<Common Request Parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"TotalAmount\": 0.0,\n                \"ClientUin\": 0,\n                \"RemainAmount\": 0.0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the voucher quota based on the customer UIN"
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherAmountByUin\n<Common request parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientUin\": 0,\n                \"TotalAmount\": 0,\n                \"RemainAmount\": 0\n            }\n        ],\n        \"RequestId\": \"9d8660fce37404d36e5710f13f0191fd\"\n    }\n}",
+        "title": "Querying the Voucher Quota Based On the Customer UIN"
       }
     ],
     "QueryVoucherListByUin": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherListByUin\n<Common Request Parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ],\n    \"Status\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"TotalCount\": 0,\n                \"ClientUin\": 0,\n                \"Data\": [\n                    {\n                        \"VoucherId\": \"xx\",\n                        \"TotalAmount\": 0.0,\n                        \"RemainAmount\": 0.0,\n                        \"VoucherStatus\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying the voucher list based on the customer UIN"
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherListByUin\n<Common request parameters>\n\n{\n    \"ClientUins\": [\n        800000190982\n    ],\n    \"Status\": \"Used\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientUin\": 0,\n                \"TotalCount\": 0,\n                \"Data\": [\n                    {\n                        \"VoucherId\": \"TVSYNGAEJTSZX9EWXJ1DK9\",\n                        \"VoucherStatus\": \"Used\",\n                        \"TotalAmount\": 0,\n                        \"RemainAmount\": 0\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"9d8660fce37404d36e5710f13f0191fd\"\n    }\n}",
+        "title": "Querying the Voucher List Based On the Customer UIN"
       }
     ],
     "QueryVoucherPool": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherPool\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"TotalQuota\": 0.0,\n        \"IssuedNum\": 0,\n        \"RemainingQuota\": 0.0,\n        \"RequestId\": \"xx\",\n        \"AccountType\": 0,\n        \"AgentName\": \"xx\"\n    }\n}",
-        "title": "Querying the voucher quota pool"
+        "output": "{\n    \"Response\": {\n        \"TotalQuota\": 0,\n        \"IssuedNum\": 0,\n        \"RemainingQuota\": 0,\n        \"RequestId\": \"11a37bf2-7d12-429f-8d25-c7df44dcc434\",\n        \"AccountType\": 0,\n        \"AgentName\": \"Company Name\"\n    }\n}",
+        "title": "Querying the Voucher Quota Pool"
       }
     ],
     "SendVerifyCode": [
