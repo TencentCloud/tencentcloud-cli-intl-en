@@ -72,6 +72,14 @@
         "title": "Creating a Key Pair"
       }
     ],
+    "CreateLaunchTemplate": [
+      {
+        "document": "This example shows you how to create an instance in Guangzhou Zone 2 using the image `img-pmqg1cw7` and the instance launch template `test`. All other parameters keep the default values. ",
+        "input": "https://cvm.tencentcloudapi.com/?Action=CreateLaunchTemplate\n&Placement.Zone=ap-guangzhou-2\n&ImageId=img-pmqg1cw7\n&LaunchTemplateName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"LaunchTemplateId\": \"lt-lobxe2yo\",\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec309\"\n    }\n}",
+        "title": "Creating an instance launch template with minimal parameters"
+      }
+    ],
     "CreateLaunchTemplateVersion": [
       {
         "document": "This example shows you how to create a new launch template version in Guangzhou Zone 1.",
