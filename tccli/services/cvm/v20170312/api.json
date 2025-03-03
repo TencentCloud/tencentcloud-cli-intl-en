@@ -64,7 +64,7 @@
       "status": "online"
     },
     "CreateLaunchTemplate": {
-      "document": "This API is used to create an instance launch template.\n\nAn instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.\n\nWhen a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.",
+      "document": "This API is used to create an instance launch template.\n\nAn instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.\n\nWhen a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it's not specified, the default template version is used.",
       "input": "CreateLaunchTemplateRequest",
       "name": "Creates an instance launch template",
       "output": "CreateLaunchTemplateResponse",
@@ -551,7 +551,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -562,18 +562,18 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Extended data\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "{\"ReleaseAddress\":\"true\"}",
+          "example": "无",
           "member": "Externals",
           "name": "Externals",
           "output_required": true,
           "required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1794,6 +1794,24 @@
           "name": "InstanceChargePrepaid",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableApiTermination",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Instance launch template tag description list. By specifying the TemplateTag parameter, you can bind tags to the instance launch template.",
+          "example": "无",
+          "member": "TagSpecification",
+          "name": "LaunchTemplateTagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2145,7 +2163,7 @@
           "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2156,7 +2174,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2167,7 +2185,7 @@
           "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2178,7 +2196,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2189,7 +2207,7 @@
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2200,7 +2218,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2211,7 +2229,7 @@
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5775,7 +5793,7 @@
           "output_required": true,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5786,7 +5804,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6933,7 +6951,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -8941,7 +8959,7 @@
           "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9037,7 +9055,7 @@
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9048,7 +9066,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9388,9 +9406,10 @@
           "example": "instance",
           "member": "string",
           "name": "ResourceType",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9398,9 +9417,10 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
+          "output_required": true,
           "required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
