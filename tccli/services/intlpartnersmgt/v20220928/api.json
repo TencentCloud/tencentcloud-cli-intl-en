@@ -2415,7 +2415,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dealer policy code.",
+          "document": " Policy code.",
           "example": "StandardPolicy2024",
           "member": "string",
           "name": "PolicyCode",
@@ -2425,7 +2425,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 1 code. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The code of the ProductName field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "p_cvm",
           "member": "string",
           "name": "ProductCode",
@@ -2435,7 +2435,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 1 name. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The ProductName field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "Cloud Virtual Machine(CVM)",
           "member": "string",
           "name": "ProductName",
@@ -2445,7 +2445,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 2 code. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The code of the SubProduct field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "sp_cvm_oc3",
           "member": "string",
           "name": "SubProductCode",
@@ -2455,7 +2455,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 2 name. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The SubProduct field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "CVM Offline Computing OC3",
           "member": "string",
           "name": "SubProductName",
@@ -2465,7 +2465,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 3 code. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The code of the ComponentType field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "v_cpu",
           "member": "string",
           "name": "ComponentTypeCode",
@@ -2475,7 +2475,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 3 name. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The ComponentType field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "volume size",
           "member": "string",
           "name": "ComponentTypeName",
@@ -2485,7 +2485,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 4 code. If the return value is *, any item at this level is included in the policy product range.",
+          "document": "The code of the Component field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "sv_cpu",
           "member": "string",
           "name": "ComponentCode",
@@ -2495,7 +2495,7 @@
         },
         {
           "disabled": false,
-          "document": "Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.",
+          "document": "The Component field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
           "example": "Balanced SSD cloud block storage-volume size",
           "member": "string",
           "name": "ComponentName",
@@ -3319,7 +3319,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dealer policy code.",
+          "document": "Policy code.",
           "example": "StandardPolicy2024",
           "member": "string",
           "name": "PolicyCode",
@@ -3328,7 +3328,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 1 code.",
+          "document": "The code of the ProductName field in the  bill data.",
           "example": "p_cvm",
           "member": "string",
           "name": "ProductCode",
@@ -3337,7 +3337,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 1 name.",
+          "document": "The ProductName field value in the billing data.",
           "example": "Cloud Virtual Machine(CVM)",
           "member": "string",
           "name": "ProductName",
@@ -3346,7 +3346,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 2 code.",
+          "document": "The code of the SubProductName field in the  bill data.",
           "example": "sp_cvm_oc3",
           "member": "string",
           "name": "SubProductCode",
@@ -3355,7 +3355,7 @@
         },
         {
           "disabled": false,
-          "document": "Product level 2 name.",
+          "document": "The SubProductName field value in the billing data.",
           "example": "CVM Offline Computing OC3",
           "member": "string",
           "name": "SubProductName",
@@ -3388,7 +3388,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dealer policy product list.",
+          "document": "policy product list.",
           "example": "[...]",
           "member": "PolicyProductList",
           "name": "ProductList",

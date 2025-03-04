@@ -43,7 +43,7 @@
       "status": "online"
     },
     "CreateDisasterRecoverGroup": {
-      "document": "This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1), ",
+      "document": "This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1),",
       "input": "CreateDisasterRecoverGroupRequest",
       "name": "Creates a spread placement group",
       "output": "CreateDisasterRecoverGroupResponse",
@@ -1309,6 +1309,24 @@
           "name": "ClientToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3",
+          "member": "int64",
+          "name": "Affinity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of tag description. By specifying this parameter, the tag can be bound to the placement group.",
+          "example": "[     {         \"ResourceType\": \"ps\",         \"Tags\": [             {                 \"Key\": \"myTag\",                 \"Value\": \"cloud\"             }         ]     } ]",
+          "member": "TagSpecification",
+          "name": "TagSpecification",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2616,6 +2634,15 @@
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<li> `tag-key` - String - Optional - Filter by the tag key.</li>\n<li>`tag-value` - String - Optional - Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. Replace `tag-key` with the actual tag keys.</li>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`.",
+          "example": "[     {         \"Name\": \"tag-key \",         \"Values\": [             \"myTag\"         ]     } ]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3802,7 +3829,7 @@
           "name": "InstanceIds",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3812,7 +3839,17 @@
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of tags associated with the placement group.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4083,22 +4120,20 @@
         {
           "disabled": false,
           "document": "Filters.",
-          "example": "无",
+          "example": "zone",
           "member": "string",
           "name": "Name",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Filter values.",
-          "example": "无",
+          "example": "[\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Values",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
