@@ -1,5 +1,13 @@
 {
   "actions": {
+    "BindLinearAssemblyCDNDomainWithChannel": [
+      {
+        "document": "The channel is bound to the CDN playback domain name.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindLinearAssemblyCDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"XXX123\",\n    \"CdnDomain\": \"testcdn.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"XXXREQ\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "BindNewLVBDomainWithChannel": [
       {
         "document": " ",
@@ -157,6 +165,22 @@
         "document": "批量删除媒体包装SourceLocation。",
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeLinearAssemblyCDNDomainWithChannel": [
+      {
+        "document": "Query the CDN domain name associated with the LinearAssembly channel.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLinearAssemblyCDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"XXX123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"TotalSize\": 1,\n            \"Records\": [\n                {\n                    \"CdnDomain\": \"testcdn.com\",\n                    \"Region\": \"ap-tokyo\",\n                    \"ChannelId\": \"XXX123\",\n                    \"Id\": \"XXX124\"\n                }\n            ]\n        },\n        \"RequestId\": \"XXXREQ\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeLinearAssemblyCDNDomainWithChannels": [
+      {
+        "document": "Query the CDN domain names associated with all LinearAssembly channels.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLinearAssemblyCDNDomainWithChannels\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"TotalSize\": 1,\n            \"Records\": [\n                {\n                    \"CdnDomain\": \"testcdn.com\",\n                    \"Region\": \"ap-tokyo\",\n                    \"ChannelId\": \"XXX123\",\n                    \"Id\": \"XXX124\"\n                }\n            ]\n        },\n        \"RequestId\": \"XXXREQ\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -389,6 +413,14 @@
         "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=UnbindCdnDomainWithChannel\n&ChannelId=AAAAA\n&CdnDomain=cdn.liveplay.myqcloud.com\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5532214ssffasdf\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "UnbindLinearAssemblyCDNDomainWithChannel": [
+      {
+        "document": "Unbind LinearAssembly channel with CDN domain name.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindLinearAssemblyCDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"XXX123\",\n    \"CdnDomain\": \"testcdn.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"XXXREQ\"\n    }\n}",
         "title": "Sample request"
       }
     ]

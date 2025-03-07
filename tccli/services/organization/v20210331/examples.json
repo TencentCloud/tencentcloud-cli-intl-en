@@ -16,6 +16,14 @@
         "title": "Adding SAML Signing Certificates"
       }
     ],
+    "AddOrganizationMemberEmail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddOrganizationMemberEmail\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"Email\": \"12***@qq.com\",\n    \"CountryCode\": \"86\",\n    \"Phone\": \"18***11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BindId\": 1,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Adding an Organization Member Mailbox"
+      }
+    ],
     "AddOrganizationNode": [
       {
         "document": " ",
@@ -350,6 +358,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberAuthIdentities\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 20:17:34\",\n                \"Description\": \"AdministratorAccess\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"IdentityType\": 1,\n                \"UpdateTime\": \"2021-07-14 20:17:34\"\n            }\n        ],\n        \"RequestId\": \"55fa3e27-1166-45e1-bdac-6198c3c38534\",\n        \"Total\": 1\n    }\n}",
         "title": "Obtaining the list of manageable identities of an organization member"
+      }
+    ],
+    "DescribeOrganizationMemberEmailBind": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberEmailBind\n<Common request parameters>\n\n{\n    \"MemberUin\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\",\n        \"BindId\": 1,\n        \"ApplyTime\": \"2022-01-13 12:09:08\",\n        \"Email\": \"123@qq.com\",\n        \"Phone\": \"18***32\",\n        \"BindStatus\": \"Success\",\n        \"BindTime\": \"2022-01-13 18:09:08\",\n        \"Description\": \"success\",\n        \"PhoneBind\": 0,\n        \"CountryCode\": \"86\"\n    }\n}",
+        "title": "Querying Detailed Information About Member Mailbox Binding"
       }
     ],
     "DescribeOrganizationMemberPolicies": [
@@ -688,6 +704,14 @@
         "title": "Removing Users from a User Group"
       }
     ],
+    "SendOrgMemberAccountBindEmail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendOrgMemberAccountBindEmail\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"BindId\": 12\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Resending an Email for Activating the Member's Bound Mailbox"
+      }
+    ],
     "SetExternalSAMLIdentityProvider": [
       {
         "document": "This example shows you how to configure the SAML identity provider information.",
@@ -726,6 +750,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"remark\",\n    \"MemberUin\": 111111111111,\n    \"Name\": \"name\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3a1f4733-a2ff-406d-9ff6-44c1d2d3f33a\"\n    }\n}",
         "title": "Updating Organization Member Information"
+      }
+    ],
+    "UpdateOrganizationMemberEmailBind": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationMemberEmailBind\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"BindId\": 12,\n    \"Email\": \"12***@qq.com\",\n    \"CountryCode\": \"86\",\n    \"Phone\": \"18***32\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Modifying the Bound Member's Mailbox"
       }
     ],
     "UpdateOrganizationNode": [

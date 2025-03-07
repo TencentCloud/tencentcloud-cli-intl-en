@@ -514,6 +514,14 @@
         "title": "Modifying the projects of two instances"
       }
     ],
+    "ModifyInstancesRenewFlag": [
+      {
+        "document": "This example shows you how to modify the renewal tags of two instances.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesRenewFlag\n&InstanceIds.0=ins-r8hr2upy\n&InstanceIds.1=ins-5d8a23rs\n&RenewFlag=NOTIFY_AND_AUTO_RENEW\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Modifying the Renewal Flags of Two Instances"
+      }
+    ],
     "ModifyInstancesVpcAttribute": [
       {
         "document": "This example shows you how to migrate the `r8hr2upy` and `5d8a23rs` instances to the `dcs9x3gz` subnet of the `1urkhbj4` VPC and specify 10.0.0.18 as the private IP of the `r8hr2upy` instance and 10.0.0.19 as that of the `5d8a23rs` instance.",
