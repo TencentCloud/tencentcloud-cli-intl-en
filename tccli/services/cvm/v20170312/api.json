@@ -3536,7 +3536,7 @@
         {
           "disabled": false,
           "document": "Dry run. Default value: false.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "DryRun",
           "required": false,
@@ -3599,6 +3599,7 @@
           "example": "4",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3608,6 +3609,7 @@
           "example": "无",
           "member": "ReservedInstancesOffering",
           "name": "ReservedInstancesOfferingsSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4840,7 +4842,7 @@
         {
           "disabled": false,
           "document": "The ID of the reserved instance offering.",
-          "example": "无",
+          "example": "noew0342-324f-f3ab-9uut-wrlnth53dcee",
           "member": "string",
           "name": "ReservedInstancesOfferingId",
           "required": true,
@@ -4858,7 +4860,7 @@
         {
           "disabled": false,
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.",
-          "example": "无",
+          "example": "59337876-b254-4c21-847f-7d57d840d227",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -7408,7 +7410,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "For one or more instance IDs to be operated, you can obtain the instance ID through the `instanceid` in the returned value from the API [describeinstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances that can be operated for each request is 100.",
+          "document": "For one or more instance IDs to be operated. You can obtain the instance ID through the `instanceid` in the returned value from the API [DescribeInstances](https://cloud.tencent.com/document/api/213/15728). The maximum number of instances that can be operated for each request is 100.",
           "example": "[\"ins-r8hr2upy\",\"ins-5d8a23rs\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7417,7 +7419,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Valid values: <br><li>notify_and_auto_renew: Notifies of expiration and performs auto-renewal.</li><li>notify_and_manual_renew: Notifies of expiration but does not perform auto-renewal.</li><li>disable_notify_and_manual_renew: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to notify_and_auto_renew, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.",
+          "document": "Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notifies of expiration and performs auto-renewal.</li><li>NOTIFY_AND_MANUAL_RENEW: Notifies of expiration but does not perform auto-renewal.</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -7747,7 +7749,7 @@
         {
           "disabled": false,
           "document": "The ID of the Reserved Instance.",
-          "example": "无",
+          "example": "13d8e599-b8dc-4e8a-80b4-7dce9eb27043",
           "member": "string",
           "name": "ReservedInstancesOfferingId",
           "required": true,
@@ -7756,7 +7758,7 @@
         {
           "disabled": false,
           "document": "Dry run",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "DryRun",
           "required": false,
@@ -7765,7 +7767,7 @@
         {
           "disabled": false,
           "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.<br>For more information, see Ensuring Idempotency.",
-          "example": "无",
+          "example": "a521b4e4-c903-4d37-9de6-8906e3ad8eb7",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -7774,7 +7776,7 @@
         {
           "disabled": false,
           "document": "Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>",
-          "example": "test",
+          "example": "myReservedInstance",
           "member": "string",
           "name": "ReservedInstanceName",
           "required": false,
@@ -7792,6 +7794,7 @@
           "example": "ri-rxfkvm5i",
           "member": "string",
           "name": "ReservedInstanceId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8024,7 +8027,7 @@
         {
           "disabled": false,
           "document": "Original upfront payment, in USD.",
-          "example": "无",
+          "example": "0.01",
           "member": "float",
           "name": "OriginalFixedPrice",
           "output_required": true,
@@ -8034,7 +8037,7 @@
         {
           "disabled": false,
           "document": "Discounted upfront payment, in USD.",
-          "example": "无",
+          "example": "0.01",
           "member": "float",
           "name": "DiscountFixedPrice",
           "output_required": true,
@@ -8044,7 +8047,7 @@
         {
           "disabled": false,
           "document": "Original subsequent unit price, in USD/hr.",
-          "example": "无",
+          "example": "0.01",
           "member": "float",
           "name": "OriginalUsagePrice",
           "output_required": true,
@@ -8054,7 +8057,7 @@
         {
           "disabled": false,
           "document": "Discounted subsequent unit price, in USD/hr.",
-          "example": "无",
+          "example": "0.01",
           "member": "float",
           "name": "DiscountUsagePrice",
           "output_required": true,
@@ -8064,7 +8067,7 @@
         {
           "disabled": false,
           "document": "Discount on upfront cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "20.0",
           "member": "float",
           "name": "FixedPriceDiscount",
           "output_required": false,
@@ -8074,7 +8077,7 @@
         {
           "disabled": false,
           "document": "Discount on subsequent cost. For example, 20.0 indicates 80% off. Note: This field may return null, indicating that no valid value is found.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "20.0",
           "member": "float",
           "name": "UsagePriceDiscount",
           "output_required": false,
@@ -8332,90 +8335,90 @@
         {
           "disabled": false,
           "document": "The availability zones in which the Reserved Instance can be purchased, such as ap-guangzhou-1.\nValid value: <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Availability Zones</a>",
-          "example": "",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The billing currency of the Reserved Instance you are purchasing. It's specified using ISO 4217 standard currency.\nValue: USD.",
-          "example": "",
+          "example": "USD",
           "member": "string",
           "name": "CurrencyCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The **validity** of the Reserved Instance in seconds, which is the purchased usage period. For example, 31536000.\nUnit: second",
-          "example": "",
+          "example": "31536000",
           "member": "int64",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The purchase price of the Reserved Instance, such as 4000.0.\nUnit: this field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.",
-          "example": "",
+          "example": "0.01",
           "member": "float",
           "name": "FixedPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The instance model of the Reserved Instance, such as S3.MEDIUM4.\nValid values: please see <a href=\"https://intl.cloud.tencent.com/document/product/213/11518\">Reserved Instance Types</a>",
-          "example": "",
+          "example": "S5.LARGE4",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The payment term of the Reserved Instance, such as **All Upfront**.\nValid value: All Upfront.",
-          "example": "",
+          "example": "All Upfront",
           "member": "string",
           "name": "OfferingType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The ID of the Reserved Instance offering, such as 650c138f-ae7e-4750-952a-96841d6e9fc1.",
-          "example": "",
+          "example": "650c138f-ae7e-4750-952a-96841d6e9fc1",
           "member": "string",
           "name": "ReservedInstancesOfferingId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The operating system of the Reserved Instance, such as **linux**.\nValid value: linux.",
-          "example": "",
+          "example": "linux",
           "member": "string",
           "name": "ProductDescription",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The hourly usage price of the Reserved Instance, such as 0.0.\nCurrently, the only supported payment mode is **All Upfront**, so the default value of `UsagePrice` is 0 USD/hr.\nUnit: USD/hr. This field uses the currency code specified in `currencyCode`, and only supports “USD” at this time.",
-          "example": "",
+          "example": "0.01",
           "member": "float",
           "name": "UsagePrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }

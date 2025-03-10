@@ -442,7 +442,7 @@
       "status": "online"
     },
     "DeleteCompliancePolicyItemFromWhitelist": {
-      "document": "产品重构优化，这几个接口已经没有调用了\n\nThis API is used to remove the specified check item from the allowlist.",
+      "document": "This API is used to remove the specified check item from the allowlist.",
       "input": "DeleteCompliancePolicyItemFromWhitelistRequest",
       "name": "Unignores check items",
       "output": "DeleteCompliancePolicyItemFromWhitelistResponse",

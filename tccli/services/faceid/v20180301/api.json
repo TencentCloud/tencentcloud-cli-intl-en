@@ -730,7 +730,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Hong Kong ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hong Kong ID (China) Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HKIDCard",
           "name": "HKIDCard",
@@ -810,7 +810,7 @@
         },
         {
           "disabled": false,
-          "document": "ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InternationalIDPassport",
           "name": "InternationalIDPassport",
@@ -860,7 +860,7 @@
         },
         {
           "disabled": false,
-          "document": "Macao ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Macao (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MacaoIDCard",
           "name": "MacaoIDCard",
@@ -870,7 +870,7 @@
         },
         {
           "disabled": false,
-          "document": "TaiWan ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "TaiWan (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaiWanIDCard",
           "name": "TaiWanIDCard",
@@ -986,7 +986,7 @@
         },
         {
           "disabled": false,
-          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\nWhen the value of `IdCardType` is `PhilippinesUMID`:\n- Surname (string): Surname.\n- MiddleName (string):Middle name.\n- GivenName (string): Given name.\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- CRN (string): Common reference number (CRN).\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\nWhen the value of `IdCardType` is `PhilippinesUMID`:\n- Surname (string): Surname.\n- MiddleName (string):Middle name.\n- GivenName (string): Given name.\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- CRN (string): Common reference number (CRN).\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong (China) /Macao (China) /Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoOcrJson",
@@ -2542,11 +2542,11 @@
       "type": "object"
     },
     "HKIDCard": {
-      "document": "Hong Kong ID card.",
+      "document": "Hong Kong (China) ID card.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.\nExample:  SAN, Nan",
           "example": "申能",
           "member": "string",
           "name": "CnName",
@@ -2648,7 +2648,7 @@
       "usage": "out"
     },
     "HMTPermit": {
-      "document": "Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan",
+      "document": "Exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China)",
       "members": [
         {
           "disabled": false,
@@ -2996,7 +2996,7 @@
       "usage": "out"
     },
     "InternationalIDPassport": {
-      "document": "ID cards of Hong Kong, Macao and Taiwan (China), and international passport.",
+      "document": "ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.",
       "members": [
         {
           "disabled": false,
@@ -3370,7 +3370,7 @@
       "usage": "out"
     },
     "MacaoIDCard": {
-      "document": "Macao ID Card",
+      "document": "Macao (China) IDCard",
       "members": [
         {
           "disabled": false,
@@ -3476,7 +3476,7 @@
       "usage": "out"
     },
     "MainlandIDCard": {
-      "document": "Mainland ID Card OCR",
+      "document": "Mainland (China) ID Card OCR",
       "members": [
         {
           "disabled": false,
@@ -3735,7 +3735,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Hong Kong ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hong Kong (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NormalHKIDCard",
           "name": "HKIDCard",
@@ -3815,7 +3815,7 @@
         },
         {
           "disabled": false,
-          "document": "ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InternationalIDPassport",
           "name": "InternationalIDPassport",
@@ -3865,7 +3865,7 @@
         },
         {
           "disabled": false,
-          "document": "Macao ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Macao (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MacaoIDCard",
           "name": "MacaoIDCard",
@@ -3875,7 +3875,7 @@
         },
         {
           "disabled": false,
-          "document": "Mainland ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Mainland (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MainlandIDCard",
           "name": "MainlandIDCard",
@@ -3895,7 +3895,7 @@
         },
         {
           "disabled": false,
-          "document": "Taiwan ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Taiwan (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaiWanIDCard",
           "name": "TaiWanIDCard",
@@ -3905,7 +3905,7 @@
         },
         {
           "disabled": false,
-          "document": "exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HMTPermit",
           "name": "HMTPermitCard",
@@ -3917,7 +3917,7 @@
       "usage": "out"
     },
     "NormalHKIDCard": {
-      "document": "Hong Kong ID card.",
+      "document": "Hong Kong (China) ID card.",
       "members": [
         {
           "disabled": false,
@@ -5191,7 +5191,7 @@
       "usage": "out"
     },
     "TaiWanIDCard": {
-      "document": "Taiwan ID card.",
+      "document": "Taiwan (China) ID card.",
       "members": [
         {
           "disabled": false,
@@ -5562,7 +5562,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.\n10.IndonesiaDrivingLicense:Indonesia driving license\n11.ThailandIDCard: Thailand ID card\n12.ThailandDrivingLicense: Thailand driving license\n13.MLDrivingLicense: Malaysia driving license\n14.SingaporeIDCard: Singapore ID card\n15.SingaporeDrivingLicense: Singapore driving license\n16.JapanIDCard: Japan ID card\n17.JapanDrivingLicense: Japan driving license\n18.PhilippinesIDCard: Philippines ID card\n19.MainlandIDCard: Mainland ID card\n20.MacaoIDCard: Macao ID card\nExample: HKIDCard",
+          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.\n10.IndonesiaDrivingLicense:Indonesia driving license\n11.ThailandIDCard: Thailand ID card\n12.ThailandDrivingLicense: Thailand driving license\n13.MLDrivingLicense: Malaysia driving license\n14.SingaporeIDCard: Singapore ID card\n15.SingaporeDrivingLicense: Singapore driving license\n16.JapanIDCard: Japan ID card\n17.JapanDrivingLicense: Japan driving license\n18.PhilippinesIDCard: Philippines ID card\n19.MainlandIDCard: Mainland (China) ID card\n20.MacaoIDCard: Macao (China) ID card\nExample: HKIDCard",
           "example": "HKIDCard",
           "member": "string",
           "name": "IDCardType",
