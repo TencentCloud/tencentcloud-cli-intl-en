@@ -473,7 +473,7 @@
         "document": "",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionRules\n&RegistryId=tcr-12345\n&NamespaceName=test\n&Limit=20\n&Offset=1\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7abb9f2-9440-43ea-a12f-ae58875acf3d\",\n        \"RetentionPolicyList\": [\n            {\n                \"NextExecutionTime\": \"2024-06-24\",\n                \"RetentionId\": 1,\n                \"NamespaceName\": \"aaaa\",\n                \"RetentionRuleList\": [\n                    {\n                        \"Key\": \"latestPushedK\",\n                        \"Value\": 10\n                    }\n                ],\n                \"CronSetting\": \"weekly\",\n                \"Disabled\": false\n            }\n        ],\n        \"TotalCount\": 0\n    }\n}",
-        "title": "查询镜像版本保留规则"
+        "title": "Querying Image Version Retention Rules"
       }
     ],
     "DescribeWebhookTrigger": [

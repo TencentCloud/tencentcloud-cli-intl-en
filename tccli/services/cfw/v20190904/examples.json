@@ -126,10 +126,10 @@
     ],
     "DescribeBlockByIpTimesList": [
       {
-        "document": "DescribeBlockByIpTimesList 告警中心阻断IP折线图",
+        "document": "This example shows you how to obtain the line chart of blocked IP addresses in the alarm center by using DescribeBlockByIpTimesList.",
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlockByIpTimesList\n<common request parameters>\n\n{\n    \"Direction\": \"0\",\n    \"EdgeId\": \"vpc\",\n    \"EndTime\": \"2024-11-01 11:43:13\",\n    \"Ip\": \"80.75.212.46\",\n    \"LogSource\": \"move\",\n    \"Source\": \"3\",\n    \"StartTime\": \"2024-10-25 11:43:13\",\n    \"Zone\": \"ap-beijing\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Num\": 1,\n                \"StatTime\": \"10-25 00:00\"\n            },\n            {\n                \"Num\": 3,\n                \"StatTime\": \"10-26 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"10-27 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"10-28 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"10-29 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"10-30 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"10-31 00:00\"\n            },\n            {\n                \"Num\": 0,\n                \"StatTime\": \"11-01 00:00\"\n            }\n        ],\n        \"RequestId\": \"269ab1ff-475a-4d65-93b1-623a16870f22\"\n    }\n}",
-        "title": "DescribeBlockByIpTimesList 告警中心阻断IP折线图"
+        "title": "Obtaining the Line Chart of Blocked IP Addresses in the Alarm Center by Using DescribeBlockByIpTimesList"
       }
     ],
     "DescribeBlockIgnoreList": [

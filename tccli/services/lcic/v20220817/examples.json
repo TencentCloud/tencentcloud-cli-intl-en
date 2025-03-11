@@ -194,22 +194,22 @@
     ],
     "DescribeDocument": [
       {
-        "document": "pdf 示例",
+        "document": "PDF example.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocument\n<common request parameters>\n\n{\n    \"DocumentId\": \"omxxxsdc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DocumentId\": \"omxxxsdc\",\n        \"DocumentName\": \"滴滴电子发票 (1).pdf\",\n        \"DocumentSize\": 38673,\n        \"DocumentType\": \"pdf\",\n        \"DocumentUrl\": \"https://tcic-source.qcloudclass.com/uploads/5390248a-5eb7-4fe8-be27-c43dbad1380f/3520371/1679021408_KzpMGD38.pdf\",\n        \"Owner\": \"2N1zP0mW7E3Vr3xJ2ZQ9GeFDK4t\",\n        \"Permission\": 0,\n        \"RequestId\": \"ee3fdca0-c88c-43f1-81b4-4f51f9e50521\",\n        \"SdkAppId\": 3520371,\n        \"TranscodeInfo\": \"\",\n        \"TranscodeProgress\": 100,\n        \"TranscodeResult\": \"https://tcic-test-1257307760.qcloudclass.com/doc/01aq2v7djsh31noat9gc_tiw/picture/\",\n        \"TranscodeState\": 3,\n        \"TranscodeType\": 1,\n        \"UpdateTime\": 1679021410\n    }\n}",
-        "title": "测试示例"
+        "output": "{\n  \"Response\": {\n    \"DocumentId\": \"omxxxsdc\",\n    \"DocumentName\": \"Didi Electronic Invoice (1).pdf\",\n    \"DocumentSize\": 38673,\n    \"DocumentType\": \"pdf\",\n    \"DocumentUrl\": \"https://tcic-source.qcloudclass.com/uploads/5390248a-5eb7-4fe8-be27-c43dbad1380f/3520371/1679021408_KzpMGD38.pdf\",\n    \"Owner\": \"2N1zP0mW7E3Vr3xJ2ZQ9GeFDK4t\",\n    \"Permission\": 0,\n    \"RequestId\": \"ee3fdca0-c88c-43f1-81b4-4f51f9e50521\",\n    \"SdkAppId\": 3520371,\n    \"TranscodeInfo\": \"\",\n    \"TranscodeProgress\": 100,\n    \"TranscodeResult\": \"https://tcic-test-1257307760.qcloudclass.com/doc/01aq2v7djsh31noat9gc_tiw/picture/\",\n    \"TranscodeState\": 3,\n    \"TranscodeType\": 1,\n    \"UpdateTime\": 1679021410\n  }\n}",
+        "title": "Test Example"
       },
       {
-        "document": "示例",
+        "document": "Example.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocument\n<common request parameters>\n\n{\n    \"DocumentId\": \"ntxsfrzk\"\n}",
         "output": "{\n    \"Response\": {\n        \"DocumentId\": \"ntxsfrzk\",\n        \"DocumentName\": \"test.pptx\",\n        \"DocumentSize\": 15814364,\n        \"DocumentType\": \"pptx\",\n        \"DocumentUrl\": \"https://tcic-source.qcloudclass.com/uploads/5390248a-5eb7-4fe8-be27-c43dbad1380f/3520371/1677202414_85bt9f0X.pptx\",\n        \"Owner\": \"2M04q0j5mhsbq1lAEbCW1dhRvA2\",\n        \"Permission\": 0,\n        \"RequestId\": \"d97f98d7-de89-455a-a1f3-b9dae84d84bb\",\n        \"SdkAppId\": 3520371,\n        \"TranscodeInfo\": \"Microsoft Macintosh PowerPoint\",\n        \"TranscodeProgress\": 100,\n        \"TranscodeResult\": \"https://tcic-test-1257307760.qcloudclass.com/doc/gsutgbm7ssh31ns71sfc_tiw/h5/index.html\",\n        \"TranscodeState\": 3,\n        \"TranscodeType\": 1,\n        \"UpdateTime\": 1677202419\n    }\n}",
-        "title": "获取文档详情"
+        "title": "Obtaining Document Details"
       },
       {
-        "document": "课件预览示例",
+        "document": "Courseware preview example.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocument\n<common request parameters>\n\n{\n    \"DocumentId\": \"ntxsfrzk\"\n}",
         "output": "{\n    \"Response\": {\n        \"DocumentId\": \"ntxsfrzk\",\n        \"DocumentName\": \"test.pptx\",\n        \"DocumentSize\": 15814364,\n        \"DocumentType\": \"pptx\",\n        \"DocumentUrl\": \"https://tcic-source.qcloudclass.com/uploads/5390248a-5eb7-4fe8-be27-c43dbad1380f/3520371/1677202414_85bt9f0X.pptx\",\n        \"Owner\": \"2M04q0j5mhsbq1lAEbCW1dhRvA2\",\n        \"Permission\": 0,\n        \"RequestId\": \"8a7bafba-bc67-4040-8203-475532db535f\",\n        \"SdkAppId\": 3520371,\n        \"TranscodeInfo\": \"Microsoft Macintosh PowerPoint\",\n        \"TranscodeProgress\": 100,\n        \"TranscodeResult\": \"https://tcic-test-1257307760.qcloudclass.com/doc/gsutgbm7ssh31ns71sfc_tiw/h5/index.html\",\n        \"TranscodeState\": 3,\n        \"TranscodeType\": 1,\n        \"UpdateTime\": 1677202419\n    }\n}",
-        "title": "示例"
+        "title": "Example"
       }
     ],
     "DescribeDocuments": [
@@ -238,16 +238,16 @@
     ],
     "DescribeGroupList": [
       {
-        "document": "TeacherId和MemberId都不填的返回结果",
+        "document": "The output result when neither TeacherId nor MemberId is filled in.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGroupList\n<common request parameters>\n\n{\n    \"SdkAppId\": 3618809\n}",
-        "output": "{\n    \"Response\": {\n        \"GroupInfos\": [\n            {\n                \"GroupId\": \"cfmsqfu2r378uak93i70\",\n                \"GroupName\": \"修改测试群组名称\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n            },\n            {\n                \"GroupId\": \"cfmst8u2r378uak93i90\",\n                \"GroupName\": \"批量创建群组1\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"\"\n            },\n            {\n                \"GroupId\": \"cfmst8u2r378uak93i9g\",\n                \"GroupName\": \"批量创建群组2\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"\"\n            },\n            {\n                \"GroupId\": \"cfmthke2r378uak93ii0\",\n                \"GroupName\": \"测试修改群组\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n            },\n            {\n                \"GroupId\": \"cjdipop7qk6r714q0fh0\",\n                \"GroupName\": \"lukatest\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"\"\n            }\n        ],\n        \"RequestId\": \"5b261337-70dc-49a9-92cb-820641958626\",\n        \"Total\": 5\n    }\n}",
-        "title": "示例1"
+        "output": "{\n  \"Response\": {\n    \"GroupInfos\": [\n      {\n        \"GroupId\": \"cfmsqfu2r378uak93i70\",\n        \"GroupName\": \"Test group name modification\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n      },\n      {\n        \"GroupId\": \"cfmst8u2r378uak93i90\",\n        \"GroupName\": \"Batch creation group 1\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"\"\n      },\n      {\n        \"GroupId\": \"cfmst8u2r378uak93i9g\",\n        \"GroupName\": \"Batch creation group 2\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"\"\n      },\n      {\n        \"GroupId\": \"cfmthke2r378uak93ii0\",\n        \"GroupName\": \"Test group modification\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n      },\n      {\n        \"GroupId\": \"cjdipop7qk6r714q0fh0\",\n        \"GroupName\": \"lukatest\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"\"\n      }\n    ],\n    \"RequestId\": \"5b261337-70dc-49a9-92cb-820641958626\",\n    \"Total\": 5\n  }\n}",
+        "title": "Example 1"
       },
       {
-        "document": "查询TeacherId的结果",
+        "document": "Result for querying TeacherId.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGroupList\n<common request parameters>\n\n{\n    \"SdkAppId\": 3618809,\n    \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n}",
-        "output": "{\n    \"Response\": {\n        \"GroupInfos\": [\n            {\n                \"GroupId\": \"cfmsqfu2r378uak93i70\",\n                \"GroupName\": \"修改测试群组名称\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n            },\n            {\n                \"GroupId\": \"cfmthke2r378uak93ii0\",\n                \"GroupName\": \"测试修改群组\",\n                \"GroupType\": 0,\n                \"SubGroupIds\": null,\n                \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n            }\n        ],\n        \"RequestId\": \"a69c412e-1da6-4d27-bd37-c74a2703f94a\",\n        \"Total\": 2\n    }\n}",
-        "title": "示例2"
+        "output": "{\n  \"Response\": {\n    \"GroupInfos\": [\n      {\n        \"GroupId\": \"cfmsqfu2r378uak93i70\",\n        \"GroupName\": \"Test group name modification\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n      },\n      {\n        \"GroupId\": \"cfmthke2r378uak93ii0\",\n        \"GroupName\": \"Test group modification\",\n        \"GroupType\": 0,\n        \"SubGroupIds\": null,\n        \"TeacherId\": \"2LoDvr6M9TvI4x4dMFBpGRzxZXr\"\n      }\n    ],\n    \"RequestId\": \"a69c412e-1da6-4d27-bd37-c74a2703f94a\",\n    \"Total\": 2\n  }\n}",
+        "title": "Example 2"
       }
     ],
     "DescribeGroupMemberList": [
@@ -274,10 +274,10 @@
         "title": "Getting the details of a room"
       },
       {
-        "document": "获取房间信息",
+        "document": "This example shows you how to obtain the room information.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoom\n<common request parameters>\n\n{\n    \"RoomId\": 331450358\n}",
-        "output": "{\n    \"Response\": {\n        \"Assistants\": [],\n        \"AudienceType\": 1,\n        \"AudioQuality\": 0,\n        \"AutoMic\": 0,\n        \"DisableRecord\": 0,\n        \"EnableDirectControl\": 0,\n        \"EndTime\": 1687943391,\n        \"GroupId\": \"\",\n        \"InteractionMode\": 1,\n        \"IsGradingRequiredPostClass\": 0,\n        \"MaxMicNumber\": 2,\n        \"Name\": \"测试1\",\n        \"RecordUrl\": \"\",\n        \"RequestId\": \"a8dea9b9-5172-4c01-a53d-5a53437f7fdf\",\n        \"Resolution\": 1,\n        \"RoomType\": 1,\n        \"SdkAppId\": 3923193,\n        \"StartTime\": 1687943339,\n        \"Status\": 0,\n        \"SubType\": \"video\",\n        \"TeacherId\": \"2O2bjPEXxStIac3NC9kfH3mHeBC\",\n        \"VideoOrientation\": 1,\n        \"VideoDuration\": 0\n    }\n}",
-        "title": "示例"
+        "output": "{\n  \"Response\": {\n    \"Assistants\": [],\n    \"AudienceType\": 1,\n    \"AudioQuality\": 0,\n    \"AutoMic\": 0,\n    \"DisableRecord\": 0,\n    \"EnableDirectControl\": 0,\n    \"EndTime\": 1687943391,\n    \"GroupId\": \"\",\n    \"InteractionMode\": 1,\n    \"IsGradingRequiredPostClass\": 0,\n    \"MaxMicNumber\": 2,\n    \"Name\": \"Test1\",\n    \"RecordUrl\": \"\",\n    \"RequestId\": \"a8dea9b9-5172-4c01-a53d-5a53437f7fdf\",\n    \"Resolution\": 1,\n    \"RoomType\": 1,\n    \"SdkAppId\": 3923193,\n    \"StartTime\": 1687943339,\n    \"Status\": 0,\n    \"SubType\": \"video\",\n    \"TeacherId\": \"2O2bjPEXxStIac3NC9kfH3mHeBC\",\n    \"VideoDuration\": 0,\n    \"VideoOrientation\": 1\n  }\n}",
+        "title": "Example"
       }
     ],
     "DescribeRoomStatistics": [
@@ -354,10 +354,10 @@
     ],
     "KickUserFromRoom": [
       {
-        "document": "示例",
+        "document": "Example.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: KickUserFromRoom\n<common request parameters>\n\n{\n    \"RoomId\": 313337981,\n    \"SdkAppId\": 3520371,\n    \"UserId\": \"2PMcgEVHi9CMWq6tmfNnPGUkEGn\",\n    \"KickType\": 2,\n    \"Duration\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3f156f86-9939-4ea0-aee7-81d32fa46c3f\"\n    }\n}",
-        "title": "永久踢除用户"
+        "title": "Permanently Kicking out a User"
       }
     ],
     "LoginOriginId": [
@@ -400,10 +400,10 @@
         "title": "Modifying room parameters"
       },
       {
-        "document": "修改类型",
+        "document": "This example shows you how to modify the type.",
         "input": "POST / HTTP/1.1\nHost: lcic.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoom\n<common request parameters>\n\n{\n    \"RoomId\": 368760996,\n    \"SdkAppId\": 3520371\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"50034c8f-cd77-43f2-815e-afe990fb023d\"\n    }\n}",
-        "title": "示例"
+        "title": "Example"
       }
     ],
     "ModifyUserProfile": [

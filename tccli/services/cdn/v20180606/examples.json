@@ -91,7 +91,7 @@
     "DescribeCertDomains": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCertDomains\n<Common request parameters>\n\n{\n    \"Cert\": \"\\无\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCertDomains\n<Common request parameters>\n\n{\n    \"Cert\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1abbe623-4b0e-4727-ab51-7624902d47f4\",\n        \"Domains\": [\n            \"test.tencentyun.com\",\n            \"httpstest.tencentyun.com\"\n        ],\n        \"CertifiedDomains\": [\n            \"httpstest.tencentyun.com\"\n        ]\n    }\n}",
         "title": "Getting configurable domain names in an SSL certificate"
       }

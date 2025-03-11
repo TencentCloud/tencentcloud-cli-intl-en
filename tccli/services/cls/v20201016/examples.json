@@ -664,10 +664,10 @@
         "title": "Previewing the Logs of Kafka Data Import Tasks"
       },
       {
-        "document": "导出结果预览",
+        "document": "This example shows you how to preview the export results.",
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PreviewKafkaRecharge\n<common request parameters>\n\n{\n    \"PreviewType\": 2,\n    \"KafkaType\": 0,\n    \"KafkaInstance\": \"ckafka-l4rped7z\",\n    \"UserKafkaTopics\": \"topic_111b1f24-1ce6-45a3-a515-6e293429f111,topic_11161155-0ea3-4e53-9626-72b4837a4111,topic_111f125e-86f6-41c9-9dcc-360594290111\",\n    \"ConsumerGroupName\": \"\",\n    \"Offset\": -2,\n    \"LogRechargeRule\": {\n        \"RechargeType\": \"minimalist_log\",\n        \"LogRegex\": \"\",\n        \"UnMatchLogSwitch\": true,\n        \"UnMatchLogKey\": \"LogParseFailure\",\n        \"UnMatchLogTimeSrc\": 0,\n        \"EncodingFormat\": 0,\n        \"DefaultTimeSwitch\": true,\n        \"DefaultTimeSrc\": 0,\n        \"TimeKey\": \"\",\n        \"TimeRegex\": \"\",\n        \"TimeFormat\": \"\",\n        \"TimeZone\": \"UTC+08:00\",\n        \"Metadata\": [\n            \"kafka_topic\",\n            \"kafka_partition\",\n            \"kafka_offset\",\n            \"kafka_timestamp\"\n        ],\n        \"Keys\": []\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"LogSample\": \"{\\\"x-intranet-proxy-region\\\":\\\"sh\\\",\\\"x-intranet-proxy-socket-local-address\\\":\\\"::ffff:11.179.111.111\\\",\\\"x-intranet-proxy-socket-local-port\\\":\\\"8443\\\"\",\n        \"LogData\": \"{\\\"__CONTENT__\\\":\\\"{\\\\\\\"x-intranet-proxy-region\\\\\\\":\\\\\\\"sh\\\\\\\",\\\\\\\"x-intranet-proxy-socket-local-address\\\\\\\":\\\\\\\"::ffff:11.179.111.111\\\\\\\",\\\\\\\"x-intranet-proxy-socket-local-port\\\\\\\":\\\\\\\"8443\\\\\\\"\",\n        \"RequestId\": \"d3218ba6-4d98-480a-a97b-8db0ae87ef31\"\n    }\n}",
-        "title": "Kafaka导入数据预览"
+        "title": "Preview of Data Imported from Kafka"
       }
     ],
     "QueryMetric": [

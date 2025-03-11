@@ -26,10 +26,10 @@
     ],
     "CreateMailProfile": [
       {
-        "document": "创建定期生成/数据库巡检的邮件发送模板。",
+        "document": "This example shows you how to create an email sending template for scheduled generation/database inspection.",
         "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateMailProfile\n&Product=mysql\n&ProfileLevel=Instance\n&ProfileName=scheduler_cdb-test\n&ProfileType= scheduler_mail_configuration\n&BindInstanceIds.0=cdb-test\n&ProfileInfo.Language=zh\n&ProfileInfo.MailConfiguration.SendMail=1\n&ProfileInfo.MailConfiguration.Region.0=ap-guangzhou\n&ProfileInfo.MailConfiguration.HealthStatus.0=HEALTH\n&ProfileInfo.MailConfiguration.ContactPerson.0=1\n&ProfileInfo.MailConfiguration.ContactGroup.0=1\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
-        "title": "创建定期生成/数据库巡检的邮件发送模板"
+        "title": "Creating an Email Sending Template for Scheduled Generation/Database Inspection"
       }
     ],
     "CreateSchedulerMailProfile": [
