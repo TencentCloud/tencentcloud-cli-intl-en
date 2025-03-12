@@ -2765,6 +2765,15 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "False",
+          "member": "bool",
+          "name": "IsDedicatedAddressPool",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
           "document": "Network egress. It defaults to `center_egress1`.",
           "example": "center_egress1",
           "member": "string",

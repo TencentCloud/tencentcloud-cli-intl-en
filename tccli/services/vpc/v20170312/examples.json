@@ -51,8 +51,8 @@
       },
       {
         "document": "This example shows you how to update the idempotency parameter if an idempotent request fails.",
-        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateAddresses\n<common request parameters>\n\n{\n    \"ClientToken\": \"b8fcdf80-248a-4095-bfa3-7f59df1aec\"\n}",
-        "output": "{\n  \"Response\": {\n    \"Error\": {\n      \"Code\": \"UnsupportedOperation.DeliveryFailed\",\n      \"Message\": \"Delivery failed. Please update the ClientToken and try again.\"\n    },\n    \"RequestId\": \"8e176c15-f087-4816-a270-306cf87229a6\"\n  }\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateAddresses\n<common request parameters>\n{\n\t\"ClientToken\": \"b8fcdf80-248a-4095-bfa3-7f59df1aec\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"UnsupportedOperation.DeliveryFailed\",\n            \"Message\": \"Delivery failed. Please update the ClientToken and try again.\"\n        },\n        \"RequestId\": \"8e176c15-f087-4816-a270-306cf87229a6\"\n    }\n}",
         "title": "Failing to Applying for an EIP"
       }
     ],

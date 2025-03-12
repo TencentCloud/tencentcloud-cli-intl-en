@@ -190,6 +190,33 @@
           "name": "SegmentRate",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "EmotionCategory",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "int64",
+          "name": "EmotionIntensity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "FastVoiceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
