@@ -976,7 +976,7 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.",
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.",
           "example": "云服务器CVM-标准型S1",
           "member": "string",
           "name": "ProductCodeName",
@@ -1152,7 +1152,7 @@
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1162,7 +1162,7 @@
           "name": "BusinessCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1172,7 +1172,7 @@
           "name": "ProductCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1182,7 +1182,7 @@
           "name": "ActionType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1192,7 +1192,7 @@
           "name": "RegionId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1212,7 +1212,7 @@
           "name": "PriceInfo",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1222,7 +1222,7 @@
           "name": "AssociatedOrder",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1232,7 +1232,7 @@
           "name": "Formula",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1242,7 +1242,7 @@
           "name": "FormulaUrl",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1252,7 +1252,7 @@
           "name": "BillDay",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1262,7 +1262,7 @@
           "name": "BillMonth",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1272,7 +1272,7 @@
           "name": "Id",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1282,7 +1282,7 @@
           "name": "RegionType",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1292,7 +1292,7 @@
           "name": "RegionTypeName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1302,7 +1302,37 @@
           "name": "ReserveDetail",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "the discount object for the current consumption item, such as official website discount, user discount, and event discount.",
+          "example": "用户折扣",
+          "member": "string",
+          "name": "DiscountObject",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "the discount type for the current consumption item, such as discount and contract price.\n",
+          "example": "折扣",
+          "member": "string",
+          "name": "DiscountType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "supplementary description of the discount type, such as 0.2.",
+          "example": "0.7",
+          "member": "string",
+          "name": "DiscountContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1318,7 +1348,7 @@
           "name": "PrepayPurchase",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1328,7 +1358,7 @@
           "name": "PrepayRenew",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1338,7 +1368,7 @@
           "name": "PrepayModifyUp",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1348,7 +1378,7 @@
           "name": "ReverseOrder",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1358,7 +1388,7 @@
           "name": "NewOrder",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1368,7 +1398,7 @@
           "name": "Original",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1454,7 +1484,7 @@
           "name": "RealTotalMeasure",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1464,7 +1494,7 @@
           "name": "DeductedMeasure",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1564,7 +1594,7 @@
           "name": "TransferPayAmount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1574,7 +1604,7 @@
           "name": "ItemCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1584,7 +1614,7 @@
           "name": "ComponentCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1594,7 +1624,7 @@
           "name": "ContractPrice",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1604,7 +1634,7 @@
           "name": "InstanceType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1614,7 +1644,7 @@
           "name": "RiTimeSpan",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1624,7 +1654,7 @@
           "name": "OriginalCostWithRI",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1634,7 +1664,7 @@
           "name": "SPDeductionRate",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
@@ -1654,7 +1684,7 @@
           "name": "OriginalCostWithSP",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1664,7 +1694,7 @@
           "name": "BlendedDiscount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1674,7 +1704,7 @@
           "name": "ComponentConfig",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1720,7 +1750,7 @@
           "name": "Name",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1730,7 +1760,7 @@
           "name": "Value",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4962,7 +4992,7 @@
         },
         {
           "disabled": false,
-          "document": "Quantity, maximum is 100",
+          "document": "Quantity, maximum is 300",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -5095,7 +5125,7 @@
         {
           "disabled": false,
           "document": "Details list",
-          "example": "[{\"ActionType\":\"pre_to_post\",\"ActionTypeName\":\"包年包月转按量\",\"AssociatedOrder\":{\"PrepayPurchase\":\"20230707400000442656611\",\"PrepayRenew\":\"20230707400000442695851,20230707400000442708571\"},\"BillDay\":\"2023-07-17 00:00:00\",\"BillId\":\"20230707400000442821061\",\"BusinessCode\":\"p_cvm\",\"BusinessCodeName\":\"云服务器CVM\",\"BillMonth\":\"2023-07-01 00:00:00\",\"ComponentSet\":[{\"BlendedDiscount\":\"1.00000000\",\"CashPayAmount\":\"-80.43264806\",\"ComponentCode\":\"virtual_v_cvm_compute\",\"ComponentCodeName\":\"运算组件\",\"ComponentConfig\":[{\"Name\":\"项目\",\"Value\":\"element_test\"},{\"Name\":\"主机\",\"Value\":\"ins-wxf3fmq8\"},{\"Name\":\"内网IP\",\"Value\":\"10.12.0.42\"},{\"Name\":\"所属网络\",\"Value\":\"私有网络\"},{\"Name\":\"可用区\",\"Value\":\"广州二区\"}],\"ContractPrice\":\"-80.89000000\",\"Cost\":\"-80.89000000\",\"DeductedMeasure\":\"-\",\"Discount\":\"1\",\"IncentivePayAmount\":\"-0.45735194\",\"InstanceType\":\"\",\"ItemCode\":\"virtual_v_cvm_compute_s2\",\"ItemCodeName\":\"运算组件-标准型S2-2核4G\",\"OriginalCostWithRI\":\"0.00000000\",\"OriginalCostWithSP\":\"0.00000000\",\"PriceUnit\":\"元/个/月\",\"RealCost\":\"-80.89000000\",\"RealTotalMeasure\":\"-\",\"ReduceType\":\"折扣\",\"RiTimeSpan\":\"0.00000000\",\"SPDeduction\":\"0.00000000\",\"SPDeductionRate\":\"0.00000000\",\"SinglePrice\":\"-80.89000000\",\"SpecifiedPrice\":\"-80.89000000\",\"TimeSpan\":\"1\",\"TimeUnitName\":\"月\",\"TransferPayAmount\":\"0\",\"UsedAmount\":\"1\",\"UsedAmountUnit\":\"个\",\"VoucherPayAmount\":\"0\"}],\"FeeBeginTime\":\"2023-07-07 16:14:21\",\"FeeEndTime\":\"2023-07-07 16:14:21\",\"Formula\":\"退款：343.12元，现金券： 0元,代金券/折扣券不退（订单号20230707400000442656611：部件cvm:现金支付88.81元-已使用第一阶梯按量:0.02元=剩余88.79元;订单号20230707400000442656611：部件bandwidth:现金支付0元=剩余0元;订单号20230707400000442695851：部件cvm:现金支付172.92元=剩余172.92元;订单号20230707400000442695851：部件bandwidth:现金支付0元=剩余0元;订单号20230707400000442708571：部件cvm:现金支付84.12元-原价95.6*使用时间3.2258%*折扣:88=剩余81.41元;\",\"FormulaUrl\":\"https://buy.cloud.tencent.com/price/cvm\",\"Id\":\"1725547686519644160\",\"OperateUin\":\"909619400\",\"OrderId\":\"20230707400000442821061\",\"OwnerUin\":\"909619400\",\"PayModeName\":\"包年包月\",\"PayTime\":\"2023-07-07 16:14:18\",\"PayerUin\":\"909619400\",\"PriceInfo\":[\"操作系统: linux\",\"连续使用时长T: 不分阶梯\",\"平台: 云平\"],\"ProductCode\":\"sp_cvm_s2\",\"ProductCodeName\":\"云服务器CVM-标准型S2\",\"ProjectId\":1002227,\"ProjectName\":\"element_test\",\"RegionId\":\"1\",\"RegionName\":\"华南地区（广州）\",\"ResourceId\":\"ins-wxf3fmq8\",\"ResourceName\":\"\",\"Tags\":[],\"ZoneName\":\"广州二区\"}]",
+          "example": "无",
           "member": "BillDetail",
           "name": "DetailSet",
           "output_required": true,
@@ -5110,7 +5140,7 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5120,7 +5150,7 @@
           "name": "Context",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
