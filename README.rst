@@ -30,3 +30,8 @@ Usage
 
 
 Note: If a parameter is not a basic type (number or string), you need to specify a json string format. For example, above parameter `Placement` is a dictionary object, so its format is a quoted json string `'{"Zone":"ap-guangzhou-2"}'`. For list type parameter, such as `SecurityGroupIds`, its format is a quoted json string like `["sg-1q2w3e4r"]`.
+
+Compliance Notice
+=====
+
+Please prioritize using the ​default domain names configured in the SDK for each product. If using other domains, note that ​overseas domains may pose ​data compliance risks.
