@@ -1,0 +1,45 @@
+{
+  "actions": {
+    "CreateRecTask": [
+      {
+        "document": "Request the recording recognition service by using an audio URL (SourceType set to 0). The engine is 16k_zh (EngineModelType set to 16k_zh), and the audio format is WAV (sampling rate: 16 kHz; channel mode: mono).",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: CreateRecTask\nX-TC-Timestamp: 1599142560\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=524ed61a4a71de417f4fa41249dcb428a0c51013890f24f3492068ca7cd16953\n<Common request parameters>\n\n{\n    \"Url\": \"http://test.cos.ap-guangzhou.myqcloud.com/test.wav\",\n    \"ChannelNum\": 1,\n    \"EngineModelType\": \"16k_zh\",\n    \"ResTextFormat\": 0,\n    \"SourceType\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Data\": {\n            \"TaskId\": 1393265\n        }\n    }\n}",
+        "title": "Calling the API by using an audio URL"
+      },
+      {
+        "document": "Request the recording recognition service by uploading the audio data (SourceType set to 1). The engine is 16k_zh (EngineModelType set to 16k_zh), and the audio format is WAV (sampling rate: 16 kHz; channel mode: mono).",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: CreateRecTask\nX-TC-Timestamp: 1599142560\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=524ed61a4a71de417f4fa41249dcb428a0c51013890f24f3492068ca7cd16953\n<Common request parameters>\n\n{\n    \"ChannelNum\": 1,\n    \"EngineModelType\": \"16k_zh\",\n    \"ResTextFormat\": 0,\n    \"Data\": \"eGNmYXNkZmFzZmFzZGZhc2RmCg==\",\n    \"SourceType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Data\": {\n            \"TaskId\": 1396665\n        }\n    }\n}",
+        "title": "Calling the API by uploading the audio data"
+      }
+    ],
+    "DescribeTaskStatus": [
+      {
+        "document": "Retrieve the recognition result through polling. The task fails. You can check the value of ErrorMsg in the returned result for the failure cause.",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: DescribeTaskStatus\nX-TC-Timestamp: 1599142563\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=6647fa852c9329ac5aa355c68c838358139c2d941f4ed175dd5858978f5d79c8\nContent-Length: 21\n<Common request parameters>\n\n{\n    \"TaskId\": 522931820\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8824366f-0e8f-4bd4-8924-af5e84127caa\",\n        \"Data\": {\n            \"TaskId\": 522931820,\n            \"Status\": 3,\n            \"StatusStr\": \"failed\",\n            \"AudioDuration\": 0,\n            \"Result\": \"\",\n            \"ErrorMsg\": \"Failed to download audio file!\",\n            \"ResultDetail\": []\n        }\n    }\n}",
+        "title": "Performing polling to obtain the result - task failed"
+      },
+      {
+        "document": "Retrieve the recognition result through polling. The task is successful, and the recognition result is returned.",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: DescribeTaskStatus\nX-TC-Timestamp: 1599142563\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=6647fa852c9329ac5aa355c68c838358139c2d941f4ed175dd5858978f5d79c8\nContent-Length: 21\n<Common request parameters>\n\n{\n    \"TaskId\": 522931820\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a73b14a6-5044-41cb-bf32-e735d5bd69de\",\n        \"Data\": {\n            \"TaskId\": 9266418,\n            \"Status\": 2,\n            \"StatusStr\": \"success\",\n            \"AudioDuration\": 2.38,\n            \"Result\": \"[0:0.020,0:2.380] Welcome to Tencent Cloud ASR,\\n\",\n            \"ResultDetail\": [\n                {\n                    \"FinalSentence\": \"Welcome to Tencent Cloud ASR,\",\n                    \"SliceSentence\": \"Welcome to  Tencent Cloud  ASR,\",\n                    \"StartMs\": 20,\n                    \"EndMs\": 2380,\n                    \"SpeechSpeed\": 5.9,\n                    \"WordsNum\": 4,\n                    \"EmotionalEnergy\": 0,\n                    \"SpeakerId\": 0,\n                    \"SilenceTime\": 0,\n                    \"EmotionType\": [\n                        \"happy\"\n                    ],\n                    \"Words\": [\n                        {\n                            \"OffsetStartMs\": 120,\n                            \"OffsetEndMs\": 780,\n                            \"Word\": \"Tencent Cloud\"\n                        },\n                        {\n                            \"OffsetStartMs\": 780,\n                            \"OffsetEndMs\": 1530,\n                            \"Word\": \"ASR\"\n                        },\n                        {\n                            \"OffsetStartMs\": 1530,\n                            \"OffsetEndMs\": 1860,\n                            \"Word\": \"Welcome to\"\n                        },\n                        {\n                            \"OffsetStartMs\": 1860,\n                            \"OffsetEndMs\": 2250,\n                            \"Word\": \" \"\n                        }\n                    ],\n                }\n            ],\n            \"ErrorMsg\": \"\"\n        }\n    }\n}",
+        "title": "Performing polling to obtain the result - task successful"
+      },
+      {
+        "document": "Retrieve the recognition result through polling. The task is waiting, which means that the task is still in the queue. You need to wait patiently.",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: DescribeTaskStatus\nX-TC-Timestamp: 1599142563\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=6647fa852c9329ac5aa355c68c838358139c2d941f4ed175dd5858978f5d79c8\nContent-Length: 21\n<Common request parameters>\n\n{\n    \"TaskId\": 522931820\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8824366f-0e8f-4bd4-8924-af5e84127caa\",\n        \"Data\": {\n            \"TaskId\": 522931820,\n            \"Status\": 0,\n            \"StatusStr\": \"waiting\",\n            \"AudioDuration\": 0,\n            \"Result\": \"\",\n            \"ErrorMsg\": \"\",\n            \"ResultDetail\": []\n        }\n    }\n}",
+        "title": "Performing polling to obtain the result - task waiting"
+      },
+      {
+        "document": "Retrieve the recognition result through polling. The task is in progress, which means that recognition has started. You need to wait patiently.",
+        "input": "POST / HTTP/1.1\nHost: asr.tencentcloudapi.com\nContent-Type: application/json; charset=utf-8\nX-TC-Version: 2019-06-14\nX-TC-Region: ap-shanghai\nX-TC-Action: DescribeTaskStatus\nX-TC-Timestamp: 1599142563\nAuthorization: TC3-HMAC-SHA256 Credential=xxx/2020-09-03/asr/tc3_request, SignedHeaders=content-type;host, Signature=6647fa852c9329ac5aa355c68c838358139c2d941f4ed175dd5858978f5d79c8\nContent-Length: 21\n<Common request parameters>\n\n{\n    \"TaskId\": 522931820\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8824366f-0e8f-4bd4-8924-af5e84127caa\",\n        \"Data\": {\n            \"TaskId\": 522931820,\n            \"Status\": 1,\n            \"StatusStr\": \"doing\",\n            \"AudioDuration\": 0,\n            \"Result\": \"\",\n            \"ErrorMsg\": \"\",\n            \"ResultDetail\": []\n        }\n    }\n}",
+        "title": "Performing polling to obtain the result - task in progress"
+      }
+    ]
+  },
+  "version": "1.0"
+}

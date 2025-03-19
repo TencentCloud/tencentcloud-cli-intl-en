@@ -1,84 +1,105 @@
 {
   "actions": {
     "AllocateCreditPool": {
-      "document": "This API is used to allocate credit pools to second-level resellers by distributors.",
+      "document": "This API is used to allocate credit pools to second-level resellers by distributors.\nCallable roles: Distributor",
       "input": "AllocateCreditPoolRequest",
       "name": "Allocates credit pools to second-level resellers",
       "output": "AllocateCreditPoolResponse",
       "status": "online"
     },
     "AllocateCustomerCredit": {
-      "document": "This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.\n1. The credit is valid permanently and will not be zeroed regularly.\n2. The customer's service will be suspended when its available credit is set to 0, so caution should be exercised with this operation.\n3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.\n4. The set credit is an increment of the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates that it will be repossessed. The available credit can be set to 0 at the minimum.",
+      "document": "This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.\n1. The credit is valid permanently and will not be zeroed regularly.\n2. The customer's service will be suspended when its available credit is set to 0, so caution should be exercised with this operation.\n3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.\n4. The set credit is an increment of the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates that it will be repossessed. The available credit can be set to 0 at the minimum.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "AllocateCustomerCreditRequest",
       "name": "Allocates credit to customers by a partner",
       "output": "AllocateCustomerCreditResponse",
       "status": "online"
     },
+    "ApproveClientApply": {
+      "document": "Description: This API is used by resellers to review applications to become sub-customers. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.\n\nCallable roles: Reseller, Distributer, Second-level reseller",
+      "input": "ApproveClientApplyRequest",
+      "name": "Approve sub-customer application",
+      "output": "ApproveClientApplyResponse",
+      "status": "online"
+    },
     "CreateAccount": {
-      "document": "This API is used to create Tencent Cloud customer accounts for first-level resellers/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:\n1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.\n2.  Customers need to add personal information when logging in for the first time.\n3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.",
+      "document": "This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:\n1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.\n2. Customers need to add personal information when logging in for the first time.\n3. This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "CreateAccountRequest",
       "name": "Creates a customer account",
       "output": "CreateAccountResponse",
       "status": "online"
     },
+    "CreateAndSendClientInvitationMail": {
+      "document": "This API is used to apply for the allowlist. If needed, please contact your business representative.Directions:\n1.This API is used to create an invitation link, which you can send to a specified email address.\n2.Customer need to click the invitation link in the email, fill in and submit the required information.\n3.You can review the customer's application in customer management  after submission.\n\nNote:This API is used to manually send the invitation link to the customer if the specified email does not receive it.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
+      "input": "CreateAndSendClientInvitationMailRequest",
+      "name": "Creates an invitation link for the customer",
+      "output": "CreateAndSendClientInvitationMailResponse",
+      "status": "online"
+    },
     "DescribeBillDetail": {
-      "document": "This API is used to query bill details by customers.",
+      "document": "Description: End-customer queries its own bill details.\nCallable role: End-customer.",
       "input": "DescribeBillDetailRequest",
       "name": "Queries the bill details",
       "output": "DescribeBillDetailResponse",
       "status": "online"
     },
     "DescribeBillDownloadUrl": {
-      "document": "This API is used to download billing files and return billing file URLs by customers.",
+      "document": "Description: This API is used to download billing files and return billing file URLs for sub-customers.\nCallable role: Enb-customer.",
       "input": "DescribeBillDownloadUrlRequest",
       "name": "Downloads billing file links by customers",
       "output": "DescribeBillDownloadUrlResponse",
       "status": "online"
     },
     "DescribeBillSummary": {
-      "document": "External API for the L1 billing of the customer billing center",
+      "document": "Description: External API for L1 billing of Sub-customer billing center.\nCallable role: End-customer.",
       "input": "DescribeBillSummaryRequest",
       "name": "External API for the L1 billing of the customer billing center",
       "output": "DescribeBillSummaryResponse",
       "status": "online"
     },
     "DescribeBillSummaryByPayMode": {
-      "document": "This API is used to obtain the total amount of customer bills by payment mode.",
+      "document": "This API is used to obtain the total amount of customer bills by payment mode.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "DescribeBillSummaryByPayModeRequest",
       "name": "Obtains the total amount of customer bills by payment mode",
       "output": "DescribeBillSummaryByPayModeResponse",
       "status": "online"
     },
     "DescribeBillSummaryByProduct": {
-      "document": "This API is used to obtain the total amount of customer bills by product.",
+      "document": "Description: Obtain the summarized value of sub - account bills by product dimension.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "DescribeBillSummaryByProductRequest",
       "name": "Obtains the total amount of customer bills by product",
       "output": "DescribeBillSummaryByProductResponse",
       "status": "online"
     },
     "DescribeBillSummaryByRegion": {
-      "document": "This API is used to obtain the total amount of customer bills by region.",
+      "document": "Description: Obtain the summarized value of sub - account bills by region through API.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "DescribeBillSummaryByRegionRequest",
       "name": "Obtains the total amount of customer bills by region",
       "output": "DescribeBillSummaryByRegionResponse",
       "status": "online"
     },
     "DescribeCustomerBillDetail": {
-      "document": "This API is used to query the customer bill details by resellers.",
+      "document": "This API is used to query the customer bill details by resellers.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "DescribeCustomerBillDetailRequest",
       "name": "Queries the customer bill details",
       "output": "DescribeCustomerBillDetailResponse",
       "status": "online"
     },
+    "DescribeCustomerBillDownloadUrl": {
+      "document": "This API is used to get the URL for downloading the customer bill file by reseller. The download conditions are as follows:\n1. Detailed bills (billDetail and billDetailPack) can be downloaded starting from June 2022; resource bills (billResource and billResourcePack) can be downloaded starting from November 2023.\n2. Bill packages (billDetailPack and billResourcePack) can only be downloaded after billing.",
+      "input": "DescribeCustomerBillDownloadUrlRequest",
+      "name": "Get the URL for downloading the customer bill file by reseller",
+      "output": "DescribeCustomerBillDownloadUrlResponse",
+      "status": "online"
+    },
     "DescribeCustomerBillSummary": {
-      "document": "This API is used to query the total amount of customer bills.",
+      "document": "This API is used to query the total amount of customer bills.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "DescribeCustomerBillSummaryRequest",
       "name": "Queries the total amount of customer bills",
       "output": "DescribeCustomerBillSummaryResponse",
       "status": "online"
     },
     "DescribeCustomerInfo": {
-      "document": "This API is used to query the customer information.",
+      "document": "This API is used to query the customer information.\n\nCallable roles: Distributor, Reseller",
       "input": "DescribeCustomerInfoRequest",
       "name": "Queries the customer information",
       "output": "DescribeCustomerInfoResponse",
@@ -92,7 +113,7 @@
       "status": "online"
     },
     "ForceQN": {
-      "document": "This API is used to set and cancel forced service suspension.Reseller need to be allowlisted to use the API.",
+      "document": "Forced Service Suspension settings and cancellation can be used only after the reseller is whitelisted.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "ForceQNRequest",
       "name": "Sets and cancels forced service suspension",
       "output": "ForceQNResponse",
@@ -105,85 +126,106 @@
       "output": "GetCountryCodesResponse",
       "status": "online"
     },
+    "GetTradeConfigList": {
+      "document": "This API is used to query industry information, including layer-1 industry and layer-2 industry.\n\nCallable roles: Distributor, Second-level reseller, Reseller,End-customer",
+      "input": "GetTradeConfigListRequest",
+      "name": "Queries the industry list",
+      "output": "GetTradeConfigListResponse",
+      "status": "online"
+    },
     "ModifyClientRemark": {
-      "document": "This API is used to modify customer remarks.",
+      "document": "This API is used to modify customer remarks.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "ModifyClientRemarkRequest",
       "name": "Modifies customer remarks",
       "output": "ModifyClientRemarkResponse",
       "status": "online"
     },
     "QueryAccountVerificationStatus": {
-      "document": "This API is used to query the account verification status.",
+      "document": "This API is used to query the account verification status.\nCallable roles: Distributor, Reseller",
       "input": "QueryAccountVerificationStatusRequest",
       "name": "Queries the account verification status",
       "output": "QueryAccountVerificationStatusResponse",
       "status": "online"
     },
     "QueryCreditAllocationHistory": {
-      "document": "This API is used to query all the credit allocation records of a single customer.",
+      "document": "This API is used to query all the credit allocation records of a single customer.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "QueryCreditAllocationHistoryRequest",
       "name": "Queries credit allocation records",
       "output": "QueryCreditAllocationHistoryResponse",
       "status": "online"
     },
     "QueryCreditByUinList": {
-      "document": "This API is used to query the credit of users in the list.",
+      "document": "This API is used to query the credit of users in the list.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "QueryCreditByUinListRequest",
       "name": "Queries credit by UIN list",
       "output": "QueryCreditByUinListResponse",
       "status": "online"
     },
-    "QueryCreditQuota": {
-      "document": "This API is used to query customer credits.",
-      "input": "QueryCreditQuotaRequest",
-      "name": "Queries customer credits",
-      "output": "QueryCreditQuotaResponse",
+    "QueryCustomerBillingQuota": {
+      "document": "Description: This API is used for a sub-customer to real-time query its own total credit and remaining credit in USD.\n\nCallable roles: Sub-customer",
+      "input": "QueryCustomerBillingQuotaRequest",
+      "name": "Query sub-customer credit",
+      "output": "QueryCustomerBillingQuotaResponse",
       "status": "online"
     },
     "QueryCustomersCredit": {
-      "document": "This API is used for a partner to the credits and basic information of cutomers.",
+      "document": "This API is used for a partner to the credits and basic information of cutomers.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "QueryCustomersCreditRequest",
       "name": "Queries the credits of customers",
       "output": "QueryCustomersCreditResponse",
       "status": "online"
     },
     "QueryDirectCustomersCredit": {
-      "document": "This API is used to query the credits of direct customers.",
+      "document": "This API is used to query the credits of direct customers.\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "QueryDirectCustomersCreditRequest",
       "name": "Queries the credits of direct customers",
       "output": "QueryDirectCustomersCreditResponse",
       "status": "online"
     },
     "QueryPartnerCredit": {
-      "document": "This API is used for a partner to query its own total credit, available credit, and used credit in USD.",
+      "document": "This API is used for a partner to query its own total credit, available credit, and used credit in USD.\n\nCallable roles: Distributor, Second-level reseller, Reseller",
       "input": "QueryPartnerCreditRequest",
       "name": "Queries a partner's credit",
       "output": "QueryPartnerCreditResponse",
       "status": "online"
     },
+    "QueryPendingClientsV2": {
+      "document": "Description: This API is used by resellers to query the list of sub-customers pending review. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.\n\nCallable roles: Reseller, Distributer, Second-level reseller",
+      "input": "QueryPendingClientsV2Request",
+      "name": "Querying sub-customers in application",
+      "output": "QueryPendingClientsV2Response",
+      "status": "online"
+    },
+    "QueryPolicyProductListByCode": {
+      "document": "This API is used to query the product list information within the specified policy range. To call this API, contact your business manager to apply for adding it to the allowlist.\nCallable roles: Distributor, Second-level reseller, Reseller",
+      "input": "QueryPolicyProductListByCodeRequest",
+      "name": "Queries the policy product range",
+      "output": "QueryPolicyProductListByCodeResponse",
+      "status": "online"
+    },
     "QueryVoucherAmountByUin": {
-      "document": "This API is used to query the voucher quota based on the customer UIN.",
+      "document": "This API is used by primary/secondary resellers to query the voucher quota based on the customer UIN.\nCallable roles: Reseller, Distributor, Second-level reseller",
       "input": "QueryVoucherAmountByUinRequest",
       "name": "Queries the voucher quota based on the customer UIN",
       "output": "QueryVoucherAmountByUinResponse",
       "status": "online"
     },
     "QueryVoucherListByUin": {
-      "document": "This API is used to query the voucher list based on the customer UIN.",
+      "document": "This API is used by primary/secondary resellers to query the voucher list based on the customer UIN.\nCallable roles: Reseller, Distributor, Second-level reseller",
       "input": "QueryVoucherListByUinRequest",
       "name": "Queries the voucher list based on the customer UIN",
       "output": "QueryVoucherListByUinResponse",
       "status": "online"
     },
     "QueryVoucherPool": {
-      "document": "This API is used to query the voucher quota pool.",
+      "document": "This API is used by primary/secondary resellers to query the voucher quota pool.\nCallable roles: Distributor, First-level reseller, Second-level reseller",
       "input": "QueryVoucherPoolRequest",
       "name": "Queries the voucher quota pool",
       "output": "QueryVoucherPoolResponse",
       "status": "online"
     },
     "SendVerifyCode": {
-      "document": "This API is used to send a verification code for account registration.",
+      "document": "This API is used to send a verification code for account registration.\n\nCallable roles: Distributor, Second-level reseller, Reseller,End-customer",
       "input": "SendVerifyCodeRequest",
       "name": "Sends a verification code for account registration",
       "output": "SendVerifyCodeResponse",
@@ -201,53 +243,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Transaction type code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transaction type code.",
           "example": "postpay_deduct_h",
           "member": "string",
           "name": "ActionType",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Transaction type name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transaction type name.",
           "example": "Hourly settlement",
           "member": "string",
           "name": "ActionTypeName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Actual total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "OriginalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher payment amount, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -285,7 +327,7 @@
           "example": "343452",
           "member": "float",
           "name": "RemainingCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -295,7 +337,7 @@
           "example": "34532.2341",
           "member": "float",
           "name": "TotalCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -323,7 +365,7 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "1234",
+          "example": "800000232018",
           "member": "uint64",
           "name": "ClientUin",
           "required": true,
@@ -341,7 +383,7 @@
           "example": "20",
           "member": "float",
           "name": "TotalCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -351,12 +393,57 @@
           "example": "10.23",
           "member": "float",
           "name": "RemainingCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApproveClientApplyRequest": {
+      "document": "ApproveClientApply request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sub-customer uin.",
+          "example": "1000000000",
+          "member": "int64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Approval type. only supports pass and reject.",
+          "example": "pass",
+          "member": "string",
+          "name": "ApproveType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reason for rejection. required only when approvetype is reject.",
+          "example": "miss accout info",
+          "member": "string",
+          "name": "RejectReason",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApproveClientApplyResponse": {
+      "document": "ApproveClientApply response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -369,313 +456,313 @@
       "members": [
         {
           "disabled": false,
-          "document": "Reseller account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "reseller account.",
+          "example": "800000448722",
           "member": "int64",
           "name": "PayerAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Customer account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "Subaccount.",
+          "example": "800000448824",
           "member": "int64",
           "name": "OwnerAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Operator account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "Operator account.",
+          "example": "800000448824",
           "member": "int64",
           "name": "OperatorAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Product name.",
+          "example": "cloud block storage",
           "member": "string",
           "name": "ProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing mode\n`Monthly subscription` (Monthly subscription)\n`Pay-As-You-Go resources` (Pay-as-you-go)\n`Standard RI` (Reserved instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Billing mode\n.\nMonthly subscription (annual and monthly).\nPay-As-You-Go resources.\nStandard ri reserved instance.",
+          "example": "Pay-As-You-Go resources",
           "member": "string",
           "name": "BillingMode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Project name.\n.\n",
+          "example": "default",
           "member": "string",
           "name": "ProjectName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource region\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource region.",
+          "example": "East China (Shanghai)",
           "member": "string",
           "name": "Region",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource available zone.",
+          "example": "Shanghai Zone 1",
           "member": "string",
           "name": "AvailabilityZone",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Instance id.",
+          "example": "disk-ekoob7ok",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Instance name.",
+          "example": "HDD cloud",
           "member": "string",
           "name": "InstanceName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Subproduct name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Sub-Product name\n.\n",
+          "example": "HDD cloud block storage",
           "member": "string",
           "name": "SubProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Settlement type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Settlement type.",
+          "example": "Hourly settlement",
           "member": "string",
           "name": "TransactionType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Transaction ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "<Transaction id>.",
+          "example": "20230228722000247298552",
           "member": "string",
           "name": "TransactionId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Settlement time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Settlement time.\n",
+          "example": "2023-02-28 13:01:23",
           "member": "string",
           "name": "TransactionTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Start time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "<Resource start time>.",
+          "example": "2023-02-28 12:00:00",
           "member": "string",
           "name": "UsageStartTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "End time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "<Resource end usage time>.",
+          "example": "2023-02-28 12:59:59",
           "member": "string",
           "name": "UsageEndTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component.",
+          "example": "volume size",
           "member": "string",
           "name": "ComponentType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component name.",
+          "example": "HDD cloud block storage-volume size",
           "member": "string",
           "name": "ComponentName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component list price\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component list price.",
+          "example": "0.00000003",
           "member": "string",
           "name": "ComponentListPrice",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Price unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Price unit.",
+          "example": "USD/GB/Second",
           "member": "string",
           "name": "ComponentPriceMeasurementUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component usage\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component usage.",
+          "example": "250",
           "member": "string",
           "name": "ComponentUsage",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component usage unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component usage unit.",
+          "example": "GB",
           "member": "string",
           "name": "ComponentUsageUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource usage duration.",
+          "example": "478",
           "member": "string",
           "name": "UsageDuration",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Duration unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "duration unit.",
+          "example": "Second",
           "member": "string",
           "name": "DurationUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original cost\nOriginal cost = component list price * component usage * usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total original price.\nOriginal cost = component list price * component usage * usage duration.",
+          "example": "0.003585",
           "member": "string",
           "name": "OriginalCost",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount, which defaults to `1`, indicating there is no discount.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Discount (default is 1).",
+          "example": "1",
           "member": "string",
           "name": "DiscountRate",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Currency\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Currency.",
+          "example": "USD",
           "member": "string",
           "name": "Currency",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted total\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total cost after discount.",
+          "example": "0.003585",
           "member": "string",
           "name": "TotalAmountAfterDiscount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Voucher deduction amount.",
+          "example": "0",
           "member": "string",
           "name": "VoucherDeduction",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total cost = discounted total - voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "= Total Amount After Discount - Voucher Deduction",
+          "example": "0.003585",
           "member": "string",
           "name": "TotalCost",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID\nNote: The return value may be null, indicating that no valid data can be obtained.",
-          "example": "无",
+          "document": "Identifier (id).",
+          "example": "4998689516778477313",
           "member": "string",
           "name": "Id",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -685,63 +772,63 @@
       "members": [
         {
           "disabled": false,
-          "document": "ProductNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Product name.",
           "example": "Cloud Virtual Machine",
           "member": "string",
           "name": "BusinessCodeName",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Product codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Product code.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Original price.",
           "example": "12.2",
           "member": "string",
           "name": "OriginalCost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Voucher amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher amount.",
           "example": "1.1",
           "member": "string",
           "name": "VoucherPayAmount",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Daily deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "RI deduction.",
           "example": "1.2",
           "member": "string",
           "name": "RICost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total amount.",
           "example": "13.2",
           "member": "string",
           "name": "TotalCost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -751,53 +838,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Product code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Product code.",
           "example": "p_cbs",
           "member": "string",
           "name": "BusinessCode",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Product name.",
           "example": "cloud block storage",
           "member": "string",
           "name": "BusinessCodeName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List price accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List price, keep 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "OriginalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher payment amount, keep 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Consumption amount, keep 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -872,7 +959,7 @@
         },
         {
           "disabled": false,
-          "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
+          "document": "Registered email address, which should be valid and correct.\nsuch as \"account@qq.com\"",
           "example": "account@qq.com",
           "member": "string",
           "name": "Mail",
@@ -882,7 +969,7 @@
         {
           "disabled": false,
           "document": "Account password.\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
-          "example": "无",
+          "example": "Bejs%2745!",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -891,7 +978,7 @@
         {
           "disabled": false,
           "document": "The confirmed password, which must be the same as that entered in the `Password` field.",
-          "example": "无",
+          "example": "Bejs%2745!",
           "member": "string",
           "name": "ConfirmPassword",
           "required": true,
@@ -899,7 +986,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's mobile number. \nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. \nThe system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
+          "document": "Customer's mobile number.\nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.\nThe system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
           "example": "18888888888",
           "member": "string",
           "name": "PhoneNum",
@@ -908,7 +995,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".\nParameter value is not allowed to be 7,380,86.",
+          "document": "Customer's country/region code, which can be obtained via the  [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416), such as \"852\".\nParameter value is not allowed to be 7,380,86.",
           "example": "852",
           "member": "string",
           "name": "CountryCode",
@@ -917,7 +1004,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
+          "document": "Customer's ISO2 standard country/region code, which can be obtained via the [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416). It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
           "member": "string",
           "name": "Area",
@@ -926,8 +1013,17 @@
         },
         {
           "disabled": false,
+          "document": "VerifyCode. This parameter is required. \nUse the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.",
+          "example": "584265",
+          "member": "string",
+          "name": "VerifyCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Extension field, which is left empty by default.",
-          "example": "**********",
+          "example": "other info",
           "member": "string",
           "name": "Extended",
           "required": false,
@@ -935,10 +1031,19 @@
         },
         {
           "disabled": false,
-          "document": "Verification code. \nIt will be used to verify the validity of the mobile number you provide. \nWhen the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.",
-          "example": "123456",
+          "document": "Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),\nsuch as \"kghy_01\".",
+          "example": "kghy_01",
           "member": "string",
-          "name": "VerifyCode",
+          "name": "TradeOne",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181),\nsuch as \"kghy_0101\"",
+          "example": "kghy_0101",
+          "member": "string",
+          "name": "TradeTwo",
           "required": false,
           "type": "string"
         }
@@ -951,10 +1056,47 @@
         {
           "disabled": false,
           "document": "Account UIN",
-          "example": "无",
+          "example": "200000000000",
           "member": "string",
           "name": "Uin",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAndSendClientInvitationMailRequest": {
+      "document": "CreateAndSendClientInvitationMail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Email address that receives the customer invitation link.",
+          "example": "abc@gmail.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAndSendClientInvitationMailResponse": {
+      "document": "CreateAndSendClientInvitationMail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the invitation link for the customer.",
+          "example": "https://www.tencentcloud.com/reseller-customer/invitation?RegisterToken=28**********2f",
+          "member": "string",
+          "name": "InvitationLink",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -972,293 +1114,293 @@
       "members": [
         {
           "disabled": false,
-          "document": "Reseller account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "Distributor account.",
+          "example": "800000400309",
           "member": "int64",
           "name": "PayerAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Customer account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "Sub-Customer account.",
+          "example": "800000425835",
           "member": "int64",
           "name": "OwnerAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Operator account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2000111111",
+          "document": "Operator account.",
+          "example": "800000425835",
           "member": "int64",
           "name": "OperatorAccountId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Product name.",
+          "example": "Cloud Virtual Machine(CVM)",
           "member": "string",
           "name": "ProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing mode\n`Monthly subscription` (Monthly subscription)\n`Pay-As-You-Go resources` (Pay-as-you-go)\n`Standard RI` (Reserved instance)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Billing mode\n.\nMonthly subscription.\nPay-As-You-Go resources.\nStandard ri reserved instances.",
+          "example": "Pay-As-You-Go resources",
           "member": "string",
           "name": "BillingMode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Project name.\n.\n",
+          "example": "default",
           "member": "string",
           "name": "ProjectName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource region\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource region.",
+          "example": "Southeast Asia (Singapore)",
           "member": "string",
           "name": "Region",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource AZ\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource availability zone.",
+          "example": "Singapore Zone ",
           "member": "string",
           "name": "AvailabilityZone",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Instance id.",
+          "example": "ins-kxzoyw6c",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Instance name.",
+          "example": "cdz_i18n_xjp",
           "member": "string",
           "name": "InstanceName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Subproduct name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Sub-Product name\n.\n",
+          "example": "CVM Standard S5",
           "member": "string",
           "name": "SubProductName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Settlement type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Settlement type.",
+          "example": "Hourly settlement",
           "member": "string",
           "name": "TransactionType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Transaction ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Transaction flow id.",
+          "example": "20231024309000174935042",
           "member": "string",
           "name": "TransactionId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Settlement time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Settlement time.\n",
+          "example": "2023-10-24 20:14:37",
           "member": "string",
           "name": "TransactionTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Start time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource start time.",
+          "example": "2023-10-24 13:00:00",
           "member": "string",
           "name": "UsageStartTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "End time of resource use\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource end time.",
+          "example": "2023-10-24 13:59:59",
           "member": "string",
           "name": "UsageEndTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component.",
+          "example": "memory",
           "member": "string",
           "name": "ComponentType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component name.",
+          "example": "Memory S5",
           "member": "string",
           "name": "ComponentName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component list price\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component list price.",
+          "example": "0.00000311",
           "member": "string",
           "name": "ComponentListPrice",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Price unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Price unit.",
+          "example": "USD/GiB/Second",
           "member": "string",
           "name": "ComponentPriceMeasurementUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component usage\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component usage.",
+          "example": "4",
           "member": "string",
           "name": "ComponentUsage",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Component usage unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Component usage unit.",
+          "example": "GiB",
           "member": "string",
           "name": "ComponentUsageUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource usage duration.",
+          "example": "3600",
           "member": "string",
           "name": "UsageDuration",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Duration unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "duration unit.",
+          "example": "Second",
           "member": "string",
           "name": "DurationUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original cost\nOriginal cost = component list price * component usage * usage duration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total original price.\nOriginal cost = component list price * component usage * usage duration.",
+          "example": "0.044784",
           "member": "string",
           "name": "OriginalCost",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Currency\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Currency.",
+          "example": "USD",
           "member": "string",
           "name": "Currency",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total cost = discounted total - voucher deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "= Total Amount After Discount - Voucher Deduction",
+          "example": "0.044784",
           "member": "string",
           "name": "TotalCost",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID\nNote: The return value may be null, indicating that no valid data can be obtained.",
-          "example": "无",
+          "document": "Id identifier.",
+          "example": "6383749774386128833",
           "member": "string",
           "name": "Id",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tag informationNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag information.",
           "example": "[\"tagKey\": \"1\", \"tagValue\":\"2\"]",
           "member": "TagInfo",
           "name": "Tags",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1268,7 +1410,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The queried month in the format of \"YYYY-MM\", such as 2023-01.",
+          "document": "Inquiry month, in the format of YYYY-MM, such as 2023-01",
           "example": "2023-04",
           "member": "string",
           "name": "Month",
@@ -1277,7 +1419,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200]",
+          "document": "Page parameter: number of entries per page. Value range: [1, 200]",
           "example": "20",
           "member": "int64",
           "name": "PageSize",
@@ -1286,7 +1428,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the current page number. The minimum value is 1.",
+          "document": "Page parameter: current page number. The minimum value is 1.",
           "example": "1",
           "member": "int64",
           "name": "Page",
@@ -1295,7 +1437,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `prePay` (Monthly subscription), postPay` (Pay-As-You-Go resources).",
+          "document": "Billing mode. Valid values: prePay (Monthly subscription) and postPay (Pay-As-You-Go resources)",
           "example": "postPay",
           "member": "string",
           "name": "PayMode",
@@ -1304,7 +1446,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type. Valid values: `prepay_purchase` (Purchase), `prepay_renew` (Renewal), `prepay_modify` (Upgrade/Downgrade), `prepay_return` ( Monthly subscription refund), `postpay_deduct` (Pay-as-you-go), `postpay_deduct_h` (Hourly settlement), `postpay_deduct_d` (Daily settlement), `postpay_deduct_m` (Monthly settlement), `offline_deduct` (Offline project deduction), `online_deduct` (Offline product deduction), `recon_deduct` (Adjustment - deduction), `recon_increase` (Adjustment - compensation), `ripay_purchase` (One-off RI Fee), `postpay_deduct_s` (Spot), `ri_hour_pay` (Hourly RI fee), `prePurchase` (New monthly subscription), `preRenew` (Monthly subscription renewal), `preUpgrade` (Upgrade/Downgrade), `preDowngrade` (Upgrade/Downgrade), `svp_hour_pay` (Hourly Savings Plan fee), `recon_guarantee` (Minimum spend deduction), `pre_purchase` (New monthly subscription), `pre_renew` (Monthly subscription renewal), `pre_upgrade` (Upgrade/Downgrade), `pre_downgrade` (Upgrade/Downgrade).",
+          "document": "Transaction type. Valid values: prepay_purchase (Purchase), prepay_renew (Renewal), prepay_modify (Upgrade/Downgrade), prepay_return ( Monthly subscription refund), postpay_deduct (Pay-as-you-go), postpay_deduct_h (Hourly settlement), postpay_deduct_d (Daily settlement), postpay_deduct_m (Monthly settlement), offline_deduct (Offline project deduction), online_deduct (Offline product deduction), recon_deduct (Adjustment - deduction), recon_increase (Adjustment - compensation), ripay_purchase (One-off RI Fee), postpay_deduct_s (Spot), ri_hour_pay (Hourly RI fee), prePurchase (New monthly subscription), preRenew (Monthly subscription renewal), preUpgrade (Upgrade/Downgrade), preDowngrade (Upgrade/Downgrade), svp_hour_pay (Hourly Savings Plan fee), recon_guarantee (Minimum spend deduction), pre_purchase (New monthly subscription), pre_renew (Monthly subscription renewal), pre_upgrade (Upgrade/Downgrade), pre_downgrade (Upgrade/Downgrade)",
           "example": "postpay_deduct_h",
           "member": "string",
           "name": "ActionType",
@@ -1319,23 +1461,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data details\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Data details.",
+          "example": "[...]",
           "member": "CustomerBillDetailData",
           "name": "DetailSet",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total number of data entries\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total number of entries.",
           "example": "1",
           "member": "int64",
           "name": "Total",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1351,7 +1493,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Bill month in the format of \"yyyy-mm\"; the earliest month available for query is June, 2022. Current month's billing data may be inaccurate; please download the current month's bill after it is generated at 1:00 on the 5th of the next month.",
+          "document": "The month to which the bill belongs, formatted as YYYY-MM; the earliest month available for query is June, 2022. Current month's billing data may be inaccurate; please download the current month's bill after it is generated at 1:00 on the 5th of the next month.",
           "example": "2023-02",
           "member": "string",
           "name": "Month",
@@ -1375,12 +1517,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "File download address, valid for one hour.",
+          "document": "File download link, with a file validity period of 1 hour",
           "example": "https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv",
           "member": "string",
           "name": "DownloadUrl",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File generation status. 0: generating; 1: generated.",
+          "example": "1",
+          "member": "int64",
+          "name": "Ready",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -1407,7 +1559,7 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456",
+          "example": "800000400309",
           "member": "int64",
           "name": "CustomerUin",
           "required": true,
@@ -1421,15 +1573,16 @@
       "members": [
         {
           "disabled": false,
-          "document": "Payment mode details in the customer bill data totaled by payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Get the payment mode details of the sub-customer bill summary through the api.",
           "example": "{...}",
           "member": "PayModeSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1452,7 +1605,7 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456",
+          "example": "800000400309",
           "member": "int64",
           "name": "CustomerUin",
           "required": true,
@@ -1466,15 +1619,16 @@
       "members": [
         {
           "disabled": false,
-          "document": "Bill details from the product dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Detailed information of product dimension.",
           "example": "{...}",
           "member": "BusinessSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1497,7 +1651,7 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456",
+          "example": "800000425835",
           "member": "int64",
           "name": "CustomerUin",
           "required": true,
@@ -1511,15 +1665,16 @@
       "members": [
         {
           "disabled": false,
-          "document": "Region details in the customer bill data totaled by region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Get the region details of the customer bill data totaled by region through the api.",
           "example": "[...]",
           "member": "RegionSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1532,7 +1687,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Bill month in the format of \"yyyy-mm\".",
+          "document": "The month to which the bill belongs, formatted as YYYY-MM.",
           "example": "2023-02",
           "member": "string",
           "name": "Month",
@@ -1565,13 +1720,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Detailed summary by billing dimensionNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[   {     \"Business\": [       {         \"BusinessCodeName\": \"cloud block storage\",         \"BusinessCode\": \"p_cbs\",         \"OriginalCost\": \"0.003585\",         \"VoucherPayAmount\": \"0\",         \"RICost\": \"0\",         \"TotalCost\": \"0.003585\"       }     ],     \"OriginalCost\": \"0.003585\",     \"VoucherPayAmount\": \"0\",     \"RICost\": \"0\",     \"TotalCost\": \"0.003585\"     \"GroupKey\": \"0\",     \"GroupValue\": \"default\"   } ]",
+          "document": "Detailed summary by billing dimension.",
+          "example": "[{\"Business\":[],\"OriginalCost\": \"0.003585\",\"VoucherPayAmount\":\"0\",\"RICost\":\"0\",\"TotalCost\":\"0.003585\",\"GroupKey\":\"0\",\"GroupValue\":\"default\"}]",
           "member": "SummaryDetails",
           "name": "SummaryDetail",
-          "output_required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1587,7 +1742,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Customer UIN",
+          "document": "Sub-account UIN",
           "example": "123456",
           "member": "uint64",
           "name": "CustomerUin",
@@ -1596,7 +1751,7 @@
         },
         {
           "disabled": false,
-          "document": "The queried month in \"YYYY-MM\" format, such as 2023-01.",
+          "document": "Inquiry month, in the format of YYYY-MM, such as 2023-01",
           "example": "2023-02",
           "member": "string",
           "name": "Month",
@@ -1605,7 +1760,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200]",
+          "document": "Page parameter: number of entries per page. Value range: [1, 200]",
           "example": "1",
           "member": "int64",
           "name": "PageSize",
@@ -1614,7 +1769,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the current page number. The minimum value is 1.",
+          "document": "Page parameter: current page number. The minimum value is 1.",
           "example": "10",
           "member": "int64",
           "name": "Page",
@@ -1623,7 +1778,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values:\n`prePay` (Monthly subscription)\n`postPay` (Pay-as-you-go)",
+          "document": "Billing mode. Valid values:\nprePay (Monthly subscription)\npostPay (Pay-As-You-Go resources)",
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
@@ -1632,7 +1787,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type. Valid values:\n`prepay_purchase` (Purchase)\n`prepay_renew` (Renewal)\n`prepay_modify` (Upgrade/Downgrade)\n`prepay_return` ( Monthly subscription refund)\n`postpay_deduct` (Pay-as-you-go)\n`postpay_deduct_h` (Hourly settlement)\n`postpay_deduct_d` (Daily settlement)\n`postpay_deduct_m` (Monthly settlement)\n`offline_deduct` (Offline project deduction)\n`online_deduct` (Offline product deduction)\n`recon_deduct` (Adjustment - deduction)\n`recon_increase` (Adjustment - compensation)\n`ripay_purchase` (One-off RI Fee)\n`postpay_deduct_s` (Spot)\n`ri_hour_pay` (Hourly RI fee)\n`prePurchase` (New monthly subscription)\n`preRenew` (Monthly subscription renewal)\n`preUpgrade` (Upgrade/Downgrade)\n`preDowngrade` (Upgrade/Downgrade)\n`svp_hour_pay` (Hourly Savings Plan fee)\n`recon_guarantee` (Minimum spend deduction)\n`pre_purchase` (New monthly subscription)\n`pre_renew` (Monthly subscription renewal)\n`pre_upgrade` (Upgrade/Downgrade)\n`pre_downgrade` (Upgrade/Downgrade)",
+          "document": "Transaction type. Valid values:\nprepay_purchase (Purchase)\nprepay_renew (Renewal)\nprepay_modify (Upgrade/Downgrade)\nprepay_return ( Monthly subscription refund)\npostpay_deduct (Pay-as-you-go)\npostpay_deduct_h (Hourly settlement)\npostpay_deduct_d (Daily settlement)\npostpay_deduct_m (Monthly settlement)\noffline_deduct (Offline project deduction)\nonline_deduct (Offline product deduction)\nrecon_deduct (Adjustment - deduction)\nrecon_increase (Adjustment - compensation)\nripay_purchase (One-off RI Fee)\npostpay_deduct_s (Spot)\nri_hour_pay (Hourly RI fee)\nprePurchase (New monthly subscription)\npreRenew (Monthly subscription renewal)\npreUpgrade (Upgrade/Downgrade)\npreDowngrade (Upgrade/Downgrade)\nsvp_hour_pay (Hourly Savings Plan fee)\nrecon_guarantee (Minimum spend deduction)\npre_purchase (New monthly subscription)\npre_renew (Monthly subscription renewal)\npre_upgrade (Upgrade/Downgrade)\npre_downgrade (Upgrade/Downgrade)",
           "example": "pre_upgrade",
           "member": "string",
           "name": "ActionType",
@@ -1641,7 +1796,7 @@
         },
         {
           "disabled": false,
-          "document": "Payment status\n`0`: N/A\n`1`: Paid\n`2`: Unpaid",
+          "document": "Payment status\n0: not distinguished\n1: paid\n2: unpaid",
           "example": "1",
           "member": "string",
           "name": "IsConfirmed",
@@ -1666,13 +1821,96 @@
         },
         {
           "disabled": false,
-          "document": "Data details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data detailsNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{...}",
           "member": "BillDetailData",
           "name": "DetailSet",
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillDownloadUrlRequest": {
+      "document": "DescribeCustomerBillDownloadUrl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The month to which the bill belongs, formatted as yyyy-mm; the earliest month available for query is june, 2022. current month's billing data may be inaccurate; please download the current month's bill after it is generated at 1:00 on the 5th of the next month.",
+          "example": "2023-02",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill type. valid values: [billResource, billDetail, billResourcePack, billDetailPack]. `billResource`: resource bill; `billDetail`: detailed bill; `billResourcePack`: resource bill package; `billDetailPack`: detailed bill package.",
+          "example": "billResource",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Customer type. valid values: [Customer, Reseller, ResellerCustomer]. `Customer`: direct customer; `Reseller`: secondary reseller; `ResellerCustomer`: reseller's customers",
+          "example": "Customer",
+          "member": "string",
+          "name": "CustomerUinType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Language. valid values: [zh_cn, en]. default is `en` (english).",
+          "example": "zh_cn",
+          "member": "string",
+          "name": "FileLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Customer uin. when downloading the bill package (FileType is billResourcePack or billDetailPack), CustomerUin is not passed",
+          "example": "800000450234",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerBillDownloadUrlResponse": {
+      "document": "DescribeCustomerBillDownloadUrl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File download link, with a file validity period of 1 hour.",
+          "example": "https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv",
+          "member": "string",
+          "name": "DownloadUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File generation status. 0: generating; 1: generated.",
+          "example": "1",
+          "member": "int64",
+          "name": "Ready",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1697,7 +1935,7 @@
         },
         {
           "disabled": false,
-          "document": "The queried month in “YYYY-MM” format, such as 2023-01.",
+          "document": "The queried month in \"YYYY-MM\" format, such as 2023-01.",
           "example": "2023-02",
           "member": "string",
           "name": "Month",
@@ -1747,7 +1985,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1760,83 +1998,83 @@
       "members": [
         {
           "disabled": false,
-          "document": "Customer UIN Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sub-Account uin.",
           "example": "200000000000",
           "member": "string",
           "name": "CustomerUin",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Email Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Contact email.",
           "example": "abc@xxx.com",
           "member": "string",
           "name": "Email",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mobile number Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Contact phone number.",
           "example": "1888888888",
           "member": "string",
           "name": "Phone",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Remarks Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "document": "Remarks.",
+          "example": "for test",
           "member": "string",
           "name": "Mark",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Displayed name Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "document": "Display name.",
+          "example": "tom",
           "member": "string",
           "name": "Name",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Binding time Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Binding time.",
           "example": "2000-01-01 19:17:18",
           "member": "string",
           "name": "BindTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account status\n0: Normal\n1: Forcibly mandatory (this function is not supported yet)\n2. Mandatory arrears\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "document": "Account status\n.\n0: normal.\n1: forcibly mandatory (this function is not supported yet).\n2: mandatory arrears. ",
           "example": "1",
           "member": "string",
           "name": "AccountStatus",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Identity verification status\n-1: Files not uploaded\n0: Not submitted for review\n1: Under review\n2: Review error\n3: Approved\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "document": "Identity verification status.\n-1: files not uploaded.\n0: not submitted for review.\n1: under review.\n2: review error.\n3: approved.",
           "example": "1",
           "member": "string",
           "name": "AuthStatus",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1861,16 +2099,16 @@
       "members": [
         {
           "disabled": false,
-          "document": "Customer information Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sub-Customer information.",
           "example": "无",
           "member": "DescribeCustomerInfoData",
           "name": "Data",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1942,7 +2180,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1979,23 +2217,23 @@
       "members": [
         {
           "disabled": true,
-          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Status (deprecated).",
           "example": "0",
           "member": "int64",
           "name": "C",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
-          "document": "msg\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "document": "Msg (deprecated).",
+          "example": "success",
           "member": "string",
           "name": "M",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2017,15 +2255,42 @@
         {
           "disabled": false,
           "document": "List of country/region codes",
-          "example": "[]",
+          "example": "[       {         \"Code\": \"355\",         \"EnName\": \"Albania\",         \"IOS2\": \"AL\",         \"IOS3\": \"ALB\",         \"Name\": \"阿尔巴尼亚\"       }     ]",
           "member": "CountryCodeItem",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTradeConfigListRequest": {
+      "document": "GetTradeConfigList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetTradeConfigListResponse": {
+      "document": "GetTradeConfigList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Industry information.",
+          "example": "无",
+          "member": "TradeOneNode",
+          "name": "TradeList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2066,7 +2331,7 @@
           "example": "new user",
           "member": "string",
           "name": "ClientRemark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2084,63 +2349,179 @@
       "members": [
         {
           "disabled": false,
-          "document": "Billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Payment mode.",
           "example": "postPay",
           "member": "string",
           "name": "PayMode",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing mode name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Payment mode name.",
           "example": "Pay-As-You-Go resources",
           "member": "string",
           "name": "PayModeName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Actual total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "OriginalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bill details in each payment mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Bill details in each payment mode.",
           "example": "[{...}]",
           "member": "ActionSummaryOverviewItem",
           "name": "Detail",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher payment amount, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PolicyProductList": {
+      "document": "Policy product list entity response parameters structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": " Policy code.",
+          "example": "StandardPolicy2024",
+          "member": "string",
+          "name": "PolicyCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The code of the ProductName field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ProductName field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "Cloud Virtual Machine(CVM)",
+          "member": "string",
+          "name": "ProductName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The code of the SubProduct field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "sp_cvm_oc3",
+          "member": "string",
+          "name": "SubProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The SubProduct field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "CVM Offline Computing OC3",
+          "member": "string",
+          "name": "SubProductName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The code of the ComponentType field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "v_cpu",
+          "member": "string",
+          "name": "ComponentTypeCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ComponentType field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "volume size",
+          "member": "string",
+          "name": "ComponentTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The code of the Component field in the  bill data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "sv_cpu",
+          "member": "string",
+          "name": "ComponentCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Component field value in the billing data. If the return value is *, any item at this level is included in the policy product range.",
+          "example": "Balanced SSD cloud block storage-volume size",
+          "member": "string",
+          "name": "ComponentName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy effective time.",
+          "example": "2024-01-01 00:00:00",
+          "member": "string",
+          "name": "StartDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy expiration time.",
+          "example": "2024-12-31 00:00:00",
+          "member": "string",
+          "name": "EndDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2174,7 +2555,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2227,13 +2608,13 @@
         },
         {
           "disabled": false,
-          "document": "Available credits after allocation\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "document": "Available credits after allocation.",
           "example": "123456.78",
           "member": "float",
           "name": "ClientCreditAfter",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2244,7 +2625,7 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456",
+          "example": "800000318074",
           "member": "uint64",
           "name": "ClientUin",
           "required": true,
@@ -2276,26 +2657,26 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of records\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total number of historical records.",
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of record details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Detailed list of historical information.",
           "example": "{..}",
           "member": "QueryCreditAllocationHistoryData",
           "name": "History",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2327,12 +2708,12 @@
           "example": "{...}",
           "member": "QueryDirectCustomersCreditData",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2340,16 +2721,111 @@
       ],
       "type": "object"
     },
-    "QueryCreditQuotaRequest": {
-      "document": "QueryCreditQuota request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "QueryCreditQuotaResponse": {
-      "document": "QueryCreditQuota response structure.",
+    "QueryCustomerBillingQuotaData": {
+      "document": "Sub-customer credit balance data",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "Total credit limit (unit: cny), accurate down to two decimal places.",
+          "example": "0.00",
+          "member": "float",
+          "name": "TotalCredit",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining credit limit (unit: cny), accurate down to two decimal places.",
+          "example": "0.00",
+          "member": "float",
+          "name": "RemainingCredit",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining total voucher amount (unit: cny), accurate down to two decimal places.",
+          "example": "0.00",
+          "member": "float",
+          "name": "RemainingVoucher",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forced status\n.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Force",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid frozen amount.",
+          "example": "0.00",
+          "member": "float",
+          "name": "PrepayFrozen",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Postpaid frozen amount.",
+          "example": "0.00",
+          "member": "float",
+          "name": "PostpayFrozen",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryCustomerBillingQuotaRequest": {
+      "document": "QueryCustomerBillingQuota request structure.",
+      "members": [
+        {
+          "disabled": true,
+          "document": "Event id, used to tag the request event, usually a random number.",
+          "example": "237427342",
+          "member": "int64",
+          "name": "EventId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "Source of the request.",
+          "example": "console",
+          "member": "string",
+          "name": "ComponentName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryCustomerBillingQuotaResponse": {
+      "document": "QueryCustomerBillingQuota response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Limit data.",
+          "example": "{...}",
+          "member": "QueryCustomerBillingQuotaData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2366,7 +2842,7 @@
           "example": "cedarzuo",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2376,7 +2852,7 @@
           "example": "1",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2386,7 +2862,7 @@
           "example": "110",
           "member": "string",
           "name": "Mobile",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2396,17 +2872,17 @@
           "example": "cedarzuo@tencent.com",
           "member": "string",
           "name": "Email",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Overdue payment flag",
-          "example": "-",
+          "example": "固定为-",
           "member": "string",
           "name": "Arrears",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2416,7 +2892,7 @@
           "example": "2021-08-18",
           "member": "string",
           "name": "AssociationTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2426,17 +2902,17 @@
           "example": "2024-08-18",
           "member": "string",
           "name": "RecentExpiry",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456",
+          "example": "234762534723",
           "member": "uint64",
           "name": "ClientUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2446,7 +2922,7 @@
           "example": "123456.78",
           "member": "float",
           "name": "Credit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2456,7 +2932,7 @@
           "example": "0.01",
           "member": "float",
           "name": "RemainingCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2466,7 +2942,7 @@
           "example": "1",
           "member": "uint64",
           "name": "IdentifyType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2476,7 +2952,7 @@
           "example": "tencent",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2486,7 +2962,7 @@
           "example": "1",
           "member": "int64",
           "name": "Force",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2508,7 +2984,7 @@
         {
           "disabled": false,
           "document": "Search condition",
-          "example": "123456",
+          "example": "partner名称",
           "member": "string",
           "name": "Filter",
           "required": false,
@@ -2549,13 +3025,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of queried customers\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Queries the list of customers.",
           "example": "{...}",
           "member": "QueryCustomersCreditData",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2563,12 +3039,12 @@
           "example": "12",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2626,12 +3102,12 @@
           "example": "{...}",
           "member": "QueryDirectCustomersCreditData",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2698,7 +3174,240 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPendingClientsV2Request": {
+      "document": "QueryPendingClientsV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, starting from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity. page size [1-100].",
+          "example": "20",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPendingClientsV2Response": {
+      "document": "QueryPendingClientsV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details of customers in application.",
+          "example": "无",
+          "member": "QueryPendingCustomersItem",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of customers in application.",
+          "example": "20",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPendingCustomersItem": {
+      "document": "Pending review sub-customer",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application time.",
+          "example": "1",
+          "member": "string",
+          "name": "ApplyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-Account uin.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ClientUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Email.",
+          "example": "1",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.",
+          "example": "1",
+          "member": "string",
+          "name": "Mobile",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name.",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Approval status.",
+          "example": "1",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-Customer type.",
+          "example": "1",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "QueryPolicyProductListByCodeRequest": {
+      "document": "QueryPolicyProductListByCode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy code.",
+          "example": "StandardPolicy2024",
+          "member": "string",
+          "name": "PolicyCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The code of the ProductName field in the  bill data.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "ProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The ProductName field value in the billing data.",
+          "example": "Cloud Virtual Machine(CVM)",
+          "member": "string",
+          "name": "ProductName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The code of the SubProductName field in the  bill data.",
+          "example": "sp_cvm_oc3",
+          "member": "string",
+          "name": "SubProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The SubProductName field value in the billing data.",
+          "example": "CVM Offline Computing OC3",
+          "member": "string",
+          "name": "SubProductName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page parameter: current page number. The minimum value is 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200], default is 200.",
+          "example": "200",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPolicyProductListByCodeResponse": {
+      "document": "QueryPolicyProductListByCode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "policy product list.",
+          "example": "[...]",
+          "member": "PolicyProductList",
+          "name": "ProductList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of data entries",
+          "example": "55",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2712,10 +3421,10 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456789",
+          "example": "700001031242",
           "member": "int64",
           "name": "ClientUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2725,7 +3434,7 @@
           "example": "1",
           "member": "float",
           "name": "TotalAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2735,7 +3444,7 @@
           "example": "1",
           "member": "float",
           "name": "RemainAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -2763,15 +3472,15 @@
         {
           "disabled": false,
           "document": "Customer voucher quota information",
-          "example": "[]",
+          "example": "无",
           "member": "QueryVoucherAmountByUinItem",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2785,10 +3494,10 @@
         {
           "disabled": false,
           "document": "Customer UIN",
-          "example": "123456789",
+          "example": "800000190982",
           "member": "int64",
           "name": "ClientUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2798,7 +3507,7 @@
           "example": "12",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2808,7 +3517,7 @@
           "example": "1",
           "member": "QueryVoucherListByUinVoucherItem",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -2845,15 +3554,15 @@
         {
           "disabled": false,
           "document": "Customer voucher information",
-          "example": "[]",
+          "example": "无",
           "member": "QueryVoucherListByUinItem",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2867,10 +3576,10 @@
         {
           "disabled": false,
           "document": "Voucher ID",
-          "example": "xxx",
+          "example": "OXSFSQSHNUSGCP7BAM87KD",
           "member": "string",
           "name": "VoucherId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2880,7 +3589,7 @@
           "example": "Used",
           "member": "string",
           "name": "VoucherStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2890,7 +3599,7 @@
           "example": "1",
           "member": "float",
           "name": "TotalAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2900,7 +3609,7 @@
           "example": "1",
           "member": "float",
           "name": "RemainAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -2921,7 +3630,7 @@
           "example": "名字",
           "member": "string",
           "name": "AgentName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2931,7 +3640,7 @@
           "example": "20000",
           "member": "int64",
           "name": "AccountType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2941,7 +3650,7 @@
           "example": "10",
           "member": "float",
           "name": "TotalQuota",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2951,7 +3660,7 @@
           "example": "10",
           "member": "float",
           "name": "RemainingQuota",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2961,12 +3670,12 @@
           "example": "1",
           "member": "int64",
           "name": "IssuedNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2979,53 +3688,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Region id.",
           "example": "8",
           "member": "string",
           "name": "RegionId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Region name.",
           "example": "North China (Beijing)",
           "member": "string",
           "name": "RegionName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The actual total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Actual total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "OriginalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The deducted voucher amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher payment amount, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total consumption amount accurate down to eight decimal places\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total consumption, up to 8 decimal places.",
           "example": "100.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3044,7 +3753,7 @@
         },
         {
           "disabled": false,
-          "document": "Mobile number.",
+          "document": "Mobile number.\nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.No need to add CountryCode before mobile number.",
           "example": "18888888888",
           "member": "string",
           "name": "PhoneNum",
@@ -3071,73 +3780,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "Product information list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Product information list.",
           "example": "[{   \"BusinessCodeName\": \"cloud block storage\",   \"BusinessCode\": \"p_cbs\",   \"OriginalCost\": \"0.003585\",   \"VoucherPayAmount\": \"0\",   \"RICost\": \"0\",   \"TotalCost\": \"0.003585\" }]",
           "member": "BusinessInfo",
           "name": "Business",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Original price.",
           "example": "12.1",
           "member": "string",
           "name": "OriginalCost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Voucher amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Voucher amount.",
           "example": "1.1",
           "member": "string",
           "name": "VoucherPayAmount",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Daily deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "RI deduction.",
           "example": "1.2",
           "member": "string",
           "name": "RICost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<TOTAL_AMOUNT>.",
           "example": "123.1",
           "member": "string",
           "name": "TotalCost",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Summary key by classification dimension Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Classification dimension summary key.",
           "example": "key",
           "member": "string",
           "name": "GroupKey",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": " Summary value by classification dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Summary value by classification dimension.",
           "example": "value",
           "member": "string",
           "name": "GroupValue",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3147,23 +3856,95 @@
       "members": [
         {
           "disabled": false,
-          "document": "Tag keyNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag key.",
           "example": "key",
           "member": "string",
           "name": "TagKey",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tag valueNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag value.",
           "example": "value",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TradeOneNode": {
+      "document": "Primary Industry Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Layer-1 industry id.",
+          "example": "kghy_01",
+          "member": "string",
+          "name": "Id",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Layer-1 industry name.",
+          "example": "农林牧渔业",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Layer-2 industries corresponding to the layer-1 industry.",
+          "example": "[{\"id\": \"kghy_0101\",\"name\": \"农业\",\"trade_info\": \"kghy_01\"},{\"id\": \"kghy_0102\",\"name\": \"林业\",\"trade_info\": \"kghy_01\"}]",
+          "member": "TradeTwoNode",
+          "name": "Children",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TradeTwoNode": {
+      "document": "Secondary Industry Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Secondary industry id.",
+          "example": "kghy_0101",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Secondary industry name.",
+          "example": "农业",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Industry information.",
+          "example": "kghy_0101",
+          "member": "string",
+          "name": "TradeInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

@@ -154,6 +154,13 @@
       "output": "DescribeCostSummaryByResourceResponse",
       "status": "online"
     },
+    "DescribeDealsByCond": {
+      "document": "Querying orders",
+      "input": "DescribeDealsByCondRequest",
+      "name": "query order data",
+      "output": "DescribeDealsByCondResponse",
+      "status": "online"
+    },
     "DescribeDosageCosDetailByDate": {
       "document": "This API is used to query COS usage details.",
       "input": "DescribeDosageCosDetailByDateRequest",
@@ -969,7 +976,7 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.",
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.",
           "example": "云服务器CVM-标准型S1",
           "member": "string",
           "name": "ProductCodeName",
@@ -1145,7 +1152,7 @@
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1155,7 +1162,7 @@
           "name": "BusinessCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1165,7 +1172,7 @@
           "name": "ProductCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1175,7 +1182,7 @@
           "name": "ActionType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1185,7 +1192,7 @@
           "name": "RegionId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1205,7 +1212,7 @@
           "name": "PriceInfo",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1215,7 +1222,7 @@
           "name": "AssociatedOrder",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1225,7 +1232,7 @@
           "name": "Formula",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1235,7 +1242,7 @@
           "name": "FormulaUrl",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1245,7 +1252,7 @@
           "name": "BillDay",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1255,17 +1262,17 @@
           "name": "BillMonth",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Billing record IDNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1234",
+          "example": "1852019429362647040",
           "member": "string",
           "name": "Id",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1275,7 +1282,7 @@
           "name": "RegionType",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1285,7 +1292,7 @@
           "name": "RegionTypeName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1295,7 +1302,37 @@
           "name": "ReserveDetail",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "the discount object for the current consumption item, such as official website discount, user discount, and event discount.",
+          "example": "用户折扣",
+          "member": "string",
+          "name": "DiscountObject",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "the discount type for the current consumption item, such as discount and contract price.\n",
+          "example": "折扣",
+          "member": "string",
+          "name": "DiscountType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "supplementary description of the discount type, such as 0.2.",
+          "example": "0.7",
+          "member": "string",
+          "name": "DiscountContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1311,7 +1348,7 @@
           "name": "PrepayPurchase",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1321,7 +1358,7 @@
           "name": "PrepayRenew",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1331,7 +1368,7 @@
           "name": "PrepayModifyUp",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1341,7 +1378,7 @@
           "name": "ReverseOrder",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1351,7 +1388,7 @@
           "name": "NewOrder",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1361,7 +1398,7 @@
           "name": "Original",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1447,7 +1484,7 @@
           "name": "RealTotalMeasure",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1457,7 +1494,7 @@
           "name": "DeductedMeasure",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1531,7 +1568,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash account",
+          "document": "Cash credit: The amount paid from the user's cash account\n",
           "example": "0.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -1541,7 +1578,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit\n",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -1551,13 +1588,13 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "TransferPayAmount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1567,7 +1604,7 @@
           "name": "ItemCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1577,7 +1614,7 @@
           "name": "ComponentCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1587,7 +1624,7 @@
           "name": "ContractPrice",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1597,7 +1634,7 @@
           "name": "InstanceType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1607,7 +1644,7 @@
           "name": "RiTimeSpan",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1617,7 +1654,7 @@
           "name": "OriginalCostWithRI",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1627,7 +1664,7 @@
           "name": "SPDeductionRate",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
@@ -1647,7 +1684,7 @@
           "name": "OriginalCostWithSP",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1657,17 +1694,47 @@
           "name": "BlendedDiscount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration description: The specification configuration of an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Name\":\"项目\",\"Value\":\"element_test\"},{\"Name\":\"主机\",\"Value\":\"ins-wxf3fmq8\"},{\"Name\":\"内网IP\",\"Value\":\"10.12.0.42\"}]",
           "member": "BillDetailComponentConfig",
           "name": "ComponentConfig",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The tax rate.",
+          "example": "0.7",
+          "member": "string",
+          "name": "TaxRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The tax amount.",
+          "example": "10",
+          "member": "string",
+          "name": "TaxAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The currency used for the settlement of a component.",
+          "example": "USD",
+          "member": "string",
+          "name": "Currency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1683,7 +1750,7 @@
           "name": "Name",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1693,7 +1760,7 @@
           "name": "Value",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2099,7 +2166,7 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.",
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.",
           "example": "实时音视频-音视频通话",
           "member": "string",
           "name": "ProductCodeName",
@@ -2230,7 +2297,7 @@
         {
           "disabled": false,
           "document": "Extended field 1: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef1",
           "member": "string",
           "name": "ExtendField1",
           "output_required": true,
@@ -2240,7 +2307,7 @@
         {
           "disabled": false,
           "document": "Extended field 2: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef2",
           "member": "string",
           "name": "ExtendField2",
           "output_required": true,
@@ -2279,7 +2346,7 @@
         },
         {
           "disabled": false,
-          "document": "Total amount after discount",
+          "document": "Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount",
           "example": "7.00000000",
           "member": "string",
           "name": "RealTotalCost",
@@ -2299,7 +2366,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash account",
+          "document": "Cash credit: The amount paid from the user's cash account\n",
           "example": "7.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -2309,7 +2376,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit\n",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2319,7 +2386,7 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "TransferPayAmount",
@@ -2330,7 +2397,7 @@
         {
           "disabled": false,
           "document": "Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef3",
           "member": "string",
           "name": "ExtendField3",
           "output_required": true,
@@ -2340,7 +2407,7 @@
         {
           "disabled": false,
           "document": "Extended field 4: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef4",
           "member": "string",
           "name": "ExtendField4",
           "output_required": true,
@@ -2350,7 +2417,7 @@
         {
           "disabled": false,
           "document": "Extended field 5: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef5",
           "member": "string",
           "name": "ExtendField5",
           "output_required": true,
@@ -2360,7 +2427,7 @@
         {
           "disabled": false,
           "document": "Tag information. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"项目\",\"TagValue\":\"element_test\"}]",
           "member": "BillTagInfo",
           "name": "Tags",
           "output_required": true,
@@ -2370,7 +2437,7 @@
         {
           "disabled": false,
           "document": "Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.",
-          "example": "xxx",
+          "example": "909619411",
           "member": "string",
           "name": "PayerUin",
           "output_required": true,
@@ -2380,7 +2447,7 @@
         {
           "disabled": false,
           "document": "Owner account ID: The account ID of the actual resource user",
-          "example": "xxx",
+          "example": "909619412",
           "member": "string",
           "name": "OwnerUin",
           "output_required": true,
@@ -2390,7 +2457,7 @@
         {
           "disabled": false,
           "document": "Operator account ID: The account or role ID of the operator who purchases or activates a resource.",
-          "example": "xxx",
+          "example": "909619413",
           "member": "string",
           "name": "OperateUin",
           "output_required": true,
@@ -2486,20 +2553,20 @@
         {
           "disabled": false,
           "document": "Cost allocation tag key",
-          "example": "",
+          "example": "游戏",
           "member": "string",
           "name": "TagKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "王者",
           "member": "string",
           "name": "TagValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4241,6 +4308,272 @@
       ],
       "type": "object"
     },
+    "Deal": {
+      "document": "Order data object",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order ID.",
+          "example": "20210920187006321686341",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The status of the order. 1: unpaid; 2: paid; 3: shipping; 4: shipped; 5: shipment failed; 6: refunded; 7: closed case; 8: order expired; 9: order invalidated; 10: product invalidated; 11: third-party payment refused; 12: payment in process",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payer",
+          "example": "1234567",
+          "member": "string",
+          "name": "Payer",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2022-01-07 12:01:01",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator",
+          "example": "1234567",
+          "member": "string",
+          "name": "Creator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Actual payment amount (pent)",
+          "example": "10000",
+          "member": "int64",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher offset amount (pent)",
+          "example": "10000",
+          "member": "int64",
+          "name": "VoucherDecline",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "12345",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product category ID",
+          "example": "1234567",
+          "member": "int64",
+          "name": "GoodsCategoryId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product details",
+          "example": "p_xxxx",
+          "member": "ProductInfo",
+          "name": "ProductInfo",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Duration",
+          "example": "1",
+          "member": "float",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time unit",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currency unit",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discount rate",
+          "example": "100",
+          "member": "float",
+          "name": "Policy",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unit price (cents)",
+          "example": "10000",
+          "member": "float",
+          "name": "Price",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original price (cents)",
+          "example": "10000",
+          "member": "float",
+          "name": "TotalCost",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product code\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_xxxx",
+          "member": "string",
+          "name": "ProductCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code",
+          "example": "sp_xxxx",
+          "member": "string",
+          "name": "SubProductCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Large order number.",
+          "example": "20210920187006321686342",
+          "member": "string",
+          "name": "BigDealId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refund formula\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "Formula",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refund involves order information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20210920187006321686342",
+          "member": "string",
+          "name": "RefReturnDeals",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type\n\n`modifyNetworkMode`: Adjusting bandwidth mode\n`modifyNetworkSize`: Adjusting bandwidth size\n`refund`: Refund\n`downgrade`: Downgrade\nupgrade (upgrade)\nrenew\npurchase\npreMoveOut annual and monthly subscription resources\npreMoveIn annual and monthly subscription resources\npreToPost prepaid to postpaid\npostMoveOut move out pay-as-you-go resources\npostMoveIn move in pay-as-you-go resources\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "purchase",
+          "member": "string",
+          "name": "Action",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product code Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "云服务器",
+          "member": "string",
+          "name": "ProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "云服务器-s5",
+          "member": "string",
+          "name": "SubProductName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"ins-12454fgd\"]",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAllocationTagRequest": {
       "document": "DeleteAllocationTag request structure.",
       "members": [
@@ -4282,7 +4615,7 @@
           "example": "10000",
           "member": "int64",
           "name": "Balance",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4292,7 +4625,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Uin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4302,7 +4635,7 @@
           "example": "1",
           "member": "float",
           "name": "RealBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4312,7 +4645,7 @@
           "example": "1",
           "member": "float",
           "name": "CashAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4322,7 +4655,7 @@
           "example": "1",
           "member": "float",
           "name": "IncomeIntoAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4332,7 +4665,7 @@
           "example": "1",
           "member": "float",
           "name": "PresentAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4342,7 +4675,7 @@
           "example": "1",
           "member": "float",
           "name": "FreezeAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4352,7 +4685,7 @@
           "example": "1",
           "member": "float",
           "name": "OweAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4362,7 +4695,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsAllowArrears",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4372,7 +4705,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsCreditLimited",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4382,7 +4715,7 @@
           "example": "1",
           "member": "float",
           "name": "CreditAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4392,7 +4725,7 @@
           "example": "1",
           "member": "float",
           "name": "CreditBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4402,7 +4735,7 @@
           "example": "1",
           "member": "float",
           "name": "RealCreditBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4659,7 +4992,7 @@
         },
         {
           "disabled": false,
-          "document": "Quantity, maximum is 100",
+          "document": "Quantity, maximum is 300",
           "example": "1",
           "member": "uint64",
           "name": "Limit",
@@ -4740,7 +5073,7 @@
         },
         {
           "disabled": false,
-          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
@@ -4807,7 +5140,7 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4817,7 +5150,7 @@
           "name": "Context",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5061,8 +5394,8 @@
           "type": "string"
         },
         {
-          "disabled": false,
-          "document": "The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "disabled": true,
+          "document": "The period type. byUsedTime",
           "example": "byPayTime",
           "member": "string",
           "name": "PeriodType",
@@ -5072,7 +5405,7 @@
         {
           "disabled": false,
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "NeedRecordNum",
           "required": false,
@@ -5080,7 +5413,7 @@
         },
         {
           "disabled": false,
-          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -5098,7 +5431,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)",
+          "document": "Billing mode: prePay/postPay",
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
@@ -5117,7 +5450,7 @@
         {
           "disabled": false,
           "document": "The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.",
-          "example": "无",
+          "example": "909619400",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -5150,7 +5483,7 @@
         {
           "disabled": false,
           "document": "Resource summary list",
-          "example": "无",
+          "example": "[{\"PayerUin\":\"909619400\",\"OwnerUin\":\"909619400\",\"OperateUin\":\"909619400\",\"BusinessCodeName\":\"COS 对象存储\",\"ProductCodeName\":\"COS 标准存储\",\"BusinessCode\":\"p_cos\",\"ProductCode\":\"sp_cos_std\",\"PayModeName\":\"按量计费\",\"ProjectName\":\"默认项目\",\"RegionName\":\"华东地区（上海）\",\"RegionId\":4,\"ZoneName\":\"上海一区\",\"ResourceId\":\"sta-19039\",\"ResourceName\":\"sta-3\",\"ActionTypeName\":\"按量计费日结\",\"OrderId\":\"12321-abdef-342132-aac23\",\"PayTime\":\"0000-00-00 00:00:00\",\"FeeBeginTime\":\"2024-11-01 00:00:00\",\"FeeEndTime\":\"2024-11-13 23:59:59\",\"BillMonth\":\"2024-11-01 00:00:00\",\"ConfigDesc\":\"COS 标准存储存储容量: 0.39 GB\",\"ExtendField1\":\"ef 1\",\"ExtendField2\":\"ef 2\",\"ExtendField3\":\"ef 3\",\"ExtendField4\":\"ef 4\",\"ExtendField5\":\"ef 5\",\"TotalCost\":\"0.00007068\",\"Discount\":\"0.232072\",\"ReduceType\":\"折扣\",\"RealTotalCost\":\"0.00124116\",\"VoucherPayAmount\":\"0.00000000\",\"CashPayAmount\":\"0.00000000\",\"IncentivePayAmount\":\"0.00114116\",\"TransferPayAmount\":\"0.00000000\",\"InstanceType\":\"it\",\"OriginalCostWithRI\":\"0.00000000\",\"SPDeduction\":\"0.00000000\",\"OriginalCostWithSP\":\"0.00000000\",\"Tags\":[]}]",
           "member": "BillResourceSummary",
           "name": "ResourceSummarySet",
           "output_required": true,
@@ -6424,6 +6757,116 @@
       ],
       "type": "object"
     },
+    "DescribeDealsByCondRequest": {
+      "document": "DescribeDealsByCond request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time \nExample :2016-01-01 00:00:00",
+          "example": "2016-01-01 00:00:00",
+          "member": "datetime",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time \nExample:2016-02-01 00:00:00. \nIt is recommended that the span does not exceed 3 months.",
+          "example": "2016-02-01 00:00:00",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The page number the records start from, starting from 0. The default is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Order status, default is 4 (successful order)\nStatus of the order\n1: unpaid\n2: paid \n3: shipment in progress\n4: shipped\n5`: Shipment Failed\n6`: Refunded\n7`: Ticket closed\n8`: Order expired\n9`: Order invalid\n10: product invalidated\n11: third-party payment refused\n12: payment in process",
+          "example": "4",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sub-order number\nExample: 202202021234567",
+          "example": "202202021234567",
+          "member": "string",
+          "name": "OrderId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Large order number.\nExample: 202202021234566",
+          "example": "202202021234566",
+          "member": "string",
+          "name": "BigDealId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID\nExample:ins-a2bb34",
+          "example": "ins-a2bb34",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDealsByCondResponse": {
+      "document": "DescribeDealsByCond response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order list",
+          "example": "无",
+          "member": "Deal",
+          "name": "Deals",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of orders",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDosageCosDetailByDateRequest": {
       "document": "DescribeDosageCosDetailByDate request structure.",
       "members": [
@@ -7270,6 +7713,32 @@
         }
       ],
       "usage": "out"
+    },
+    "ProductInfo": {
+      "document": "Product details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product detail name identifier",
+          "example": "",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product details",
+          "example": "",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ProjectSummaryOverviewItem": {
       "document": "Detailed summary of purchases by project",

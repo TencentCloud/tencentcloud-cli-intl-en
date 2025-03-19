@@ -2108,7 +2108,7 @@
         },
         {
           "disabled": false,
-          "document": "Waiting time for application pre-launch.",
+          "document": "Waiting time for pre-launch.",
           "example": "10",
           "member": "string",
           "name": "PreloadDuration",

@@ -1,0 +1,13 @@
+{
+  "actions": {
+    "DescribeRiskAssessment": [
+      {
+        "document": "describe risk assessment",
+        "input": "POST / HTTP/1.1\nHost: rce.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRiskAssessment\n<Common request parameters>\n\n{\n    \"BizCryptoData\": {\n        \"IsAuthorized\": \"1\",\n        \"CryptoType\": \"1\",\n        \"CryptoContent\": \"tLMs/D/1SHZD/DfNsGCu48LX******JTUiY3xLw=\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"UUid\": \"c9fca58f-de00-44b8-8c42-50b91a092f9c\",\n            \"Code\": 0,\n            \"Message\": \"OK\",\n            \"Value\": {\n                \"RiskLevel\": \"pass\",\n                \"RiskType\": [\n                    1,\n                    101,\n                    201,\n                    2012\n                ]\n            }\n        },\n        \"RequestId\": \"a6227506-5f00-43cf-9a4c-66fe931cefc9\"\n    }\n}",
+        "title": "DescribeRiskAssessment"
+      }
+    ]
+  },
+  "version": "1.0"
+}

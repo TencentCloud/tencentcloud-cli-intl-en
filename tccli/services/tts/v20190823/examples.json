@@ -2,10 +2,10 @@
   "actions": {
     "TextToVoice": [
       {
-        "document": "This example shows you how to use TTS through API call.",
-        "input": "POST / HTTP/1.1\nHost: tts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextToVoice\n<Common request parameters>\n\n{\n    \"Text\": \"Hello World\",\n    \"ModelType\": \"1\",\n    \"Volume\": \"1\",\n    \"SessionId\": \"session-1234\",\n    \"Codec\": \"wav\",\n    \"ProjectId\": \"0\",\n    \"SampleRate\": \"16000\",\n    \"PrimaryLanguage\": \"1\",\n    \"Speed\": \"1\",\n    \"EnableSubtitle\": true\n}",
-        "output": "{\n    \"Response\": {\n        \"Audio\": \"UklGRlR/AABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YSx9AAD+////AQD//wAAAAAAAAIAAQADAAMABgAEAAYABQAGAAUABwAIAAgACQAAE......AAgACAAEAAgADAAIAAwACAAQAAwACAAIAAgADAAMAAgACAAIAAwABAAAAAAAAAAAAAAD/////AAAAAAAA//8AAP///v/9//7//v///////v8AAP///////wAA/////wAA/////wAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n        \"RequestId\": \"9a7a1615-3e09-4db2-8032-5c6f497f7e6a\",\n        \"SessionId\": \"session-1234\",\n        \"Subtitles\": [\n            {\n                \"Text\": \"Hello\",\n                \"BeginTime\": 250,\n                \"EndTime\": 450,\n                \"BeginIndex\": 0,\n                \"EndIndex\": 1\n            },\n            {\n                \"Text\": \"World\",\n                \"BeginTime\": 450,\n                \"EndTime\": 700,\n                \"BeginIndex\": 1,\n                \"EndIndex\": 2\n            }\n        ]\n    }\n}",
-        "title": "Using TTS through API call"
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextToVoice\n<common request parameters>\n\n{\n    \"Text\": \"hello\",\n    \"SessionId\": \"session-1234\",\n    \"Volume\": 1,\n    \"Speed\": 1,\n    \"ProjectId\": 0,\n    \"ModelType\": 1,\n    \"VoiceType\": 1001,\n    \"PrimaryLanguage\": 1,\n    \"SampleRate\": 16000,\n    \"Codec\": \"wav\",\n    \"EnableSubtitle\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"Audio\": \"UklGRqRwAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YYBwAAAA......AAAAA=\",\n        \"RequestId\": \"d91f1496-0514-4281-932e-15a022b67d16\",\n        \"SessionId\": \"session-1234\",\n        \"Subtitles\": [\n            {\n                \"BeginIndex\": 0,\n                \"BeginTime\": 250,\n                \"EndIndex\": 1,\n                \"EndTime\": 430,\n                \"Phoneme\": \"ni2\",\n                \"Text\": \"hello\"\n            },\n            {\n                \"BeginIndex\": 1,\n                \"BeginTime\": 430,\n                \"EndIndex\": 2,\n                \"EndTime\": 670,\n                \"Phoneme\": \"hao3\",\n                \"Text\": \"hello\"\n            }\n        ]\n    }\n}",
+        "title": "Example of Calling the Basic Text-to-Speech Synthesization API"
       }
     ]
   },

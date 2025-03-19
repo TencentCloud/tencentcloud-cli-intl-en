@@ -84,6 +84,13 @@
       "output": "DetectFaceAttributesResponse",
       "status": "online"
     },
+    "DetectFaceSimilarity": {
+      "document": "Compare the faces in the two pictures for similarity and return the face similarity score. If you need to determine \"whether this person is someone\", that is, to verify whether the person in a picture is someone with a known identity, such as a common face login scenario, it is recommended to use [VerifyFace] (https://www.tencentcloud.com/document/product/1059/36972) or [VerifyPerson] (https://www.tencentcloud.com/document/product/1059/36971) inferface. \nPlease use the V3 version for the signature method in the public parameters, that is, configure the SignatureMethod parameter to TC3-HMAC-SHA256",
+      "input": "DetectFaceSimilarityRequest",
+      "name": "Face similarity detect",
+      "output": "DetectFaceSimilarityResponse",
+      "status": "online"
+    },
     "DetectLiveFace": {
       "document": "This API is used to detect the liveness of a face in a static image uploaded by a user. Compared with dynamic liveness detection, static liveness detection does not require moving lips, shaking head, or blinking for recognition.\n\nImage-based liveness detection is suitable for scenarios where the image is a selfie or the requirement for attack defense is not high. If you have a higher security requirement for liveness detection, please use [FaceID](https://intl.cloud.tencent.com/product/faceid?from_cn_redirect=1).\n\n>     \n- The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless. This API is suitable for selfie scenarios, and the score returned in other scenarios will be meaningless.\n\n>\n- During the process, please directly face the camera and keep a suitable distance to completely display your face in the recognition frame. During the recognition, keep your device still and fully show your face. You are advised to perform the detection in an environment with appropriate light and without filters.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the parameter `SignatureMethod` to `TC3-HMAC-SHA256`.",
       "input": "DetectLiveFaceRequest",
@@ -1113,6 +1120,79 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DetectFaceSimilarityRequest": {
+      "document": "DetectFaceSimilarity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "A image base64 data.\n - The size after base64 encoding cannot exceed 5M. \n- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. \n- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageA",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "B image base64 data.\n - The size after base64 encoding cannot exceed 5M. \n- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. \n- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageB",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "A URL for the image. \n- The size of the corresponding image after base64 encoding cannot exceed 5M. \n- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. \n- A The URL and Image of the picture must be provided. If both are provided, only the Url will be used. \n- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. \n- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. \n- If the picture contains multiple faces, only the face with the largest face area is selected. \n- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.",
+          "example": "http://test.image.myqcloud.com/testA.jpg",
+          "member": "string",
+          "name": "UrlA",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "B The URL of the image. \n- The size of the corresponding image after base64 encoding cannot exceed 5M. \n- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. \n- B The URL and Image of the picture must be provided. If both are provided, only the Url will be used. \n- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. \n- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. \n- If the picture contains multiple faces, only the face with the largest face area is selected. \n- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.",
+          "example": "http://test.image.myqcloud.com/testB.jpg",
+          "member": "string",
+          "name": "UrlB",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image quality control. \n- Value range: 0: No control; 1: Lower quality requirements, the image is very blurry, and the eyes, nose, and mouth cover at least one or more of them; 2: General quality requirements, the image is bright, Dark, blurry or generally blurred, eyebrows covered, cheeks covered, chin covered, at least three of them; 3: High quality requirements, the image may be brighter, darker, generally blurry, eyebrows blocked, cheeks blocked, chin blocked, one or two of them; 4: Very high quality requirements, all dimensions are the best or the most , there is a slight problem in one dimension; default is 0. \n- If the image quality does not meet the requirements, the returned result will prompt that the image quality test does not meet the requirements.",
+          "example": "0",
+          "member": "uint64",
+          "name": "QualityControl",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DetectFaceSimilarityResponse": {
+      "document": "DetectFaceSimilarity response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value range is [0.00, 100.00]. It is recommended that when the similarity is greater than or equal to 70, the person can be judged to be the same person, and the threshold can be adjusted according to the specific scenario (the false pass rate for a threshold of 70 is one in 1,000, and the false pass rate for a threshold of 80 is one in 10,000).",
+          "example": "0.999",
+          "member": "float",
+          "name": "Score",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

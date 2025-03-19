@@ -1,0 +1,1888 @@
+{
+  "actions": {
+    "BatchDeleteDevices": {
+      "document": "This API is used to delete devices in batches.",
+      "input": "BatchDeleteDevicesRequest",
+      "name": "Delete devices in batches",
+      "output": "BatchDeleteDevicesResponse",
+      "status": "online"
+    },
+    "BatchDeletePolicy": {
+      "document": "This API is used to batch delete and modify permission configurations.",
+      "input": "BatchDeletePolicyRequest",
+      "name": "Delete permissions in batches",
+      "output": "BatchDeletePolicyResponse",
+      "status": "online"
+    },
+    "CreateDevice": {
+      "document": "This API is used to create a device.",
+      "input": "CreateDeviceRequest",
+      "name": "Creates a device",
+      "output": "CreateDeviceResponse",
+      "status": "online"
+    },
+    "CreateProject": {
+      "document": "This API is used to create a project.",
+      "input": "CreateProjectRequest",
+      "name": "Create the project",
+      "output": "CreateProjectResponse",
+      "status": "online"
+    },
+    "DeleteProject": {
+      "document": "This API is used to delete a project.",
+      "input": "DeleteProjectRequest",
+      "name": "Delete the project",
+      "output": "DeleteProjectResponse",
+      "status": "online"
+    },
+    "DescribeDeviceInfo": {
+      "document": "This API is used to get specified device information.",
+      "input": "DescribeDeviceInfoRequest",
+      "name": "Query device information",
+      "output": "DescribeDeviceInfoResponse",
+      "status": "online"
+    },
+    "DescribeDeviceSessionList": {
+      "document": "Getting the device session list",
+      "input": "DescribeDeviceSessionListRequest",
+      "name": "Get the device session list",
+      "output": "DescribeDeviceSessionListResponse",
+      "status": "online"
+    },
+    "DescribeProjectInfo": {
+      "document": "This API is used to get project information.",
+      "input": "DescribeProjectInfoRequest",
+      "name": "Query project information",
+      "output": "DescribeProjectInfoResponse",
+      "status": "online"
+    },
+    "DescribeProjectList": {
+      "document": "This API is used to get project lists.",
+      "input": "DescribeProjectListRequest",
+      "name": "Gets project lists",
+      "output": "DescribeProjectListResponse",
+      "status": "online"
+    },
+    "DescribeRecentSessionList": {
+      "document": "Get the latest device session list",
+      "input": "DescribeRecentSessionListRequest",
+      "name": "Get the latest device session list",
+      "output": "DescribeRecentSessionListResponse",
+      "status": "online"
+    },
+    "DescribeSessionStatistics": {
+      "document": "Get session statistical values",
+      "input": "DescribeSessionStatisticsRequest",
+      "name": "Get session statistical values",
+      "output": "DescribeSessionStatisticsResponse",
+      "status": "online"
+    },
+    "DescribeSessionStatisticsByInterval": {
+      "document": "Getting session statistics for each time period",
+      "input": "DescribeSessionStatisticsByIntervalRequest",
+      "name": "Get session statistical values for each time period",
+      "output": "DescribeSessionStatisticsByIntervalResponse",
+      "status": "online"
+    },
+    "GetDeviceLicense": {
+      "document": "Obtain the quantity of available authorizations already bound to the device",
+      "input": "GetDeviceLicenseRequest",
+      "name": "Get the number of device authorizations",
+      "output": "GetDeviceLicenseResponse",
+      "status": "online"
+    },
+    "GetDevices": {
+      "document": "Query the authorization binding status of user devices",
+      "input": "GetDevicesRequest",
+      "name": "Device authorization list",
+      "output": "GetDevicesResponse",
+      "status": "online"
+    },
+    "GetLicenseStat": {
+      "document": "Statistics of license types and quantities",
+      "input": "GetLicenseStatRequest",
+      "name": "Licenses statistics",
+      "output": "GetLicenseStatResponse",
+      "status": "online"
+    },
+    "GetLicenses": {
+      "document": "View the license list by authorization",
+      "input": "GetLicensesRequest",
+      "name": "View the license list",
+      "output": "GetLicensesResponse",
+      "status": "online"
+    },
+    "ModifyDevice": {
+      "document": "This API is used to modify device information.",
+      "input": "ModifyDeviceRequest",
+      "name": "Modify device information",
+      "output": "ModifyDeviceResponse",
+      "status": "online"
+    },
+    "ModifyPolicy": {
+      "document": "This API is used to modify permission configuration.",
+      "input": "ModifyPolicyRequest",
+      "name": "Modify permissions",
+      "output": "ModifyPolicyResponse",
+      "status": "online"
+    },
+    "ModifyProject": {
+      "document": "This API is used to modify project information.",
+      "input": "ModifyProjectRequest",
+      "name": "Modifies a project",
+      "output": "ModifyProjectResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-03-25",
+    "serviceNameCN": "实时互动-工业能源版",
+    "serviceShortName": "trro"
+  },
+  "objects": {
+    "BatchDeleteDevicesRequest": {
+      "document": "BatchDeleteDevices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id of the targeted deleted device.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id array of the targeted deleted device.",
+          "example": "[\"dev1\",\"dev2\"]",
+          "member": "string",
+          "name": "DeviceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteDevicesResponse": {
+      "document": "BatchDeleteDevices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of device ids with deletion failed.",
+          "example": "[\"dev1\"]",
+          "member": "string",
+          "name": "FailedDeviceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeletePolicyRequest": {
+      "document": "BatchDeletePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id of the deleted permission configuration.",
+          "example": "f3glr49rc96pralw",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remote device id list of the deleted permission configuration.",
+          "example": "[\"test1\",\"test2\"]",
+          "member": "string",
+          "name": "RemoteDeviceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Permission mode of the deleted permission configuration, black for blocklist, white for allowlist.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeletePolicyResponse": {
+      "document": "BatchDeletePolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Remote device id list with failed permission configuration deletion.",
+          "example": "[\"test1\"]",
+          "member": "string",
+          "name": "FailedRemoteDeviceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDeviceRequest": {
+      "document": "CreateDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Create the project id to which the device belongs.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Create a device id, which must be unique within the project, consisting of lowercase english letters, numbers, and underscores, with a length not exceeding 18.",
+          "example": "test_device1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Create a device name, with a length of less than 24, which can include chinese, numbers, english letters, and underscores.",
+          "example": "vin123",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device type, field for on-site device (controlled device), remote for remote device (control device), default is field if not specified.",
+          "example": "field",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device authentication password, consisting of uppercase and lowercase english letters and digits, must be 16 characters.",
+          "example": "abcd1234abcd1234",
+          "member": "string",
+          "name": "DeviceToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDeviceResponse": {
+      "document": "CreateDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectRequest": {
+      "document": "CreateProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project name, up to 24 characters.",
+          "example": "project1",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project description, up to 120 characters, default is empty if not filled.",
+          "example": "test project",
+          "member": "string",
+          "name": "ProjectDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Permission mode, black for blocklist, white for allowlist. defaults to black if not specified.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectResponse": {
+      "document": "CreateProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id, length is 16 characters.",
+          "example": "f3glr49rc96pralw",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectRequest": {
+      "document": "DeleteProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "f3glr49r3axn0fu2",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectResponse": {
+      "document": "DeleteProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceInfoRequest": {
+      "document": "DescribeDeviceInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id to which the target device belongs.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceInfoResponse": {
+      "document": "DescribeDeviceInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "test device1",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device type: \"field\" specifies on-site devices (controlled party), and \"remote\" specifies remote devices (controlling party).",
+          "example": "field",
+          "member": "string",
+          "name": "DeviceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device status: offline means offline, ready means online and ready, connected means in session.",
+          "example": "offline",
+          "member": "string",
+          "name": "DeviceStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last updated time of device status.",
+          "example": "2022-03-12T09:20:20+08:00",
+          "member": "datetime_iso",
+          "name": "LastReportTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time of device information.",
+          "example": "2022-03-12T08:20:20+08:00",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceSessionListRequest": {
+      "document": "DescribeDeviceSessionList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "m82k5408n123phvb",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, beginning from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device id.",
+          "example": "trro_dev",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1650000050",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceSessionListResponse": {
+      "document": "DescribeDeviceSessionList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Conversation list.",
+          "example": "无",
+          "member": "SessionInfo",
+          "name": "DeviceSessionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of items on this page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Num",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectInfoRequest": {
+      "document": "DescribeProjectInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target project id. required parameter.",
+          "example": "f3glr49r3axn0fu2",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectInfoResponse": {
+      "document": "DescribeProjectInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project name.",
+          "example": "project1",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project description.",
+          "example": "test project",
+          "member": "string",
+          "name": "ProjectDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project permission mode, black for blocklist, white for allowlist.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project information modification time.",
+          "example": "2022-03-22T09:25:00+08:00",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectListRequest": {
+      "document": "DescribeProjectList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The maximum number of projects returned per page. the default value is 10 if it is not filled in.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The current page number. the default value is 1 (homepage) if it is not filled in.",
+          "example": "0",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectListResponse": {
+      "document": "DescribeProjectList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Array of project information.",
+          "example": "无",
+          "member": "ProjectInfo",
+          "name": "Projects",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of projects.",
+          "example": "16",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of projects returned in this request.",
+          "example": "10",
+          "member": "int64",
+          "name": "Num",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecentSessionListRequest": {
+      "document": "DescribeRecentSessionList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "m82k5408n123phvb",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, beginning from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device id, supports filtering by remote device or on-site device.",
+          "example": "trro_dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the time range. the maximum time range is the last two hours. if not specified or out of range, the start time is calculated as two hours ago.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the time range. the maximum time range is the last two hours. if not specified or out of range, the end time is calculated as the current time.",
+          "example": "1650000050",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRecentSessionListResponse": {
+      "document": "DescribeRecentSessionList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Conversation list.",
+          "example": "无",
+          "member": "RecentSessionInfo",
+          "name": "RecentSessionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of items on this page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Num",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSessionStatisticsByIntervalRequest": {
+      "document": "DescribeSessionStatisticsByInterval request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Statistical time interval: hour|day|month.",
+          "example": "hour",
+          "member": "string",
+          "name": "StatisticInterval",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time in seconds.",
+          "example": "1600000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in seconds.",
+          "example": "1610000000",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSessionStatisticsByIntervalResponse": {
+      "document": "DescribeSessionStatisticsByInterval response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Session statistics for each time period.",
+          "example": "无",
+          "member": "SessionIntervalStatistic",
+          "name": "SessionStatistics",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSessionStatisticsRequest": {
+      "document": "DescribeSessionStatistics request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time, unit: seconds.",
+          "example": "1600000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in seconds.",
+          "example": "1610000000",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSessionStatisticsResponse": {
+      "document": "DescribeSessionStatistics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of sessions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "SessionNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Call duration, unit: minutes.",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalDuration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of active on-site devices.",
+          "example": "30",
+          "member": "uint64",
+          "name": "ActiveFieldDeviceNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of active remote devices.",
+          "example": "60",
+          "member": "uint64",
+          "name": "ActiveRemoteDeviceNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Proportion of excellent sessions, unit: %.",
+          "example": "90",
+          "member": "uint64",
+          "name": "NotBadSessionRatio",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Device": {
+      "document": "Query the authorization binding status of user devices",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device id.",
+          "example": "\"dev1\"",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "\"devname\"",
+          "member": "string",
+          "name": "DeviceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of bound licenses.",
+          "example": "2",
+          "member": "int64",
+          "name": "LicenseCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining days: days.",
+          "example": "30",
+          "member": "int64",
+          "name": "RemainDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time: s.",
+          "example": "167840945",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service duration: s.",
+          "example": "86400",
+          "member": "string",
+          "name": "Duration",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound license ids.",
+          "example": "[\"341c4a1d-3852-4eeb-bbdd-7e216f5c7345\"]",
+          "member": "string",
+          "name": "LicenseIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Monthly license duration limit.",
+          "example": "66000",
+          "member": "int64",
+          "name": "MonthlyRemainTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Monthly maximum duration (minutes).",
+          "example": "60000",
+          "member": "int64",
+          "name": "LimitedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GetDeviceLicenseRequest": {
+      "document": "GetDeviceLicense request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id to which the target device belongs.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeviceLicenseResponse": {
+      "document": "GetDeviceLicense response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the number of available licenses bound to the specified device.",
+          "example": "12",
+          "member": "int64",
+          "name": "AvailableCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicesRequest": {
+      "document": "GetDevices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "m82k5408n123phvb",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id.",
+          "example": "trro_dev",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicesResponse": {
+      "document": "GetDevices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device authorization list.",
+          "example": "无",
+          "member": "Device",
+          "name": "Devices",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of tables in the list.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLicenseStatRequest": {
+      "document": "GetLicenseStat request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetLicenseStatResponse": {
+      "document": "GetLicenseStat response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Valid authorization.",
+          "example": "10",
+          "member": "int64",
+          "name": "Valid",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bound authorization.",
+          "example": "8",
+          "member": "int64",
+          "name": "Bound",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unbound authorization.",
+          "example": "2",
+          "member": "int64",
+          "name": "UnBound",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expired authorization.",
+          "example": "1",
+          "member": "int64",
+          "name": "Expire",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of authorization timeouts for the current month.",
+          "example": "0",
+          "member": "int64",
+          "name": "MonthlyExpire",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLicensesRequest": {
+      "document": "GetLicenses request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "projectId",
+          "example": "m82k5408n123phvb",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DeviceId",
+          "example": "trro_dev",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "License status. 0: unbound; 1: bound; 2: service suspension; 3: refund.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLicensesResponse": {
+      "document": "GetLicenses response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "License list.",
+          "example": "无",
+          "member": "License",
+          "name": "Licenses",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of license list items.",
+          "example": "4",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "License": {
+      "document": "License list viewed by authorization",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of licenses of this type.",
+          "example": "3",
+          "member": "int64",
+          "name": "Count",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License status. 0: unbound; 1: bound; 2: service suspension; 3: refund.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration timestamp: s.",
+          "example": "1678503945",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service duration: s.",
+          "example": "86400",
+          "member": "string",
+          "name": "Duration",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining days: days.",
+          "example": "30",
+          "member": "int64",
+          "name": "RemainDay",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of license ids of this type.",
+          "example": "[ \"478c67c3-19a1-4e5d-ae11-ad68883793ec\",                     \"6d05a06f-db82-4f61-8dd2-996c3378ec26\" ]",
+          "member": "string",
+          "name": "LicenseIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyDeviceRequest": {
+      "document": "ModifyDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The target project id to modify the device's affiliated project.",
+          "example": "f3glr49ry0i0xlm7",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The target device id to modify the device.",
+          "example": "dev_1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The modified device name; if not filled in, no modification will be made.",
+          "example": "testdevice1",
+          "member": "string",
+          "name": "DeviceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The modified device authentication password; if not filled in, no modification will be made.",
+          "example": "abcd1234ABCD5678",
+          "member": "string",
+          "name": "DeviceToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDeviceResponse": {
+      "document": "ModifyDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPolicyRequest": {
+      "document": "ModifyPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id for modifying permission configuration.",
+          "example": "f3glr49rc96pralw",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remote device id for modifying permission configuration.",
+          "example": "test1",
+          "member": "string",
+          "name": "RemoteDeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Array of on-site device ids involved in permission modification.",
+          "example": "[\"dev1\",\"dev2\"]",
+          "member": "string",
+          "name": "FieldDeviceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The target permission mode to modify, black for blocklist, white for allowlist.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modification mode, add for adding (associating on-site devices), remove for deletion (dissociating on-site devices), set for setting (updating on-site device association).",
+          "example": "add",
+          "member": "string",
+          "name": "ModifyMode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPolicyResponse": {
+      "document": "ModifyPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of on-site device ids with association failed.",
+          "example": "[\"trro_dev1\"]",
+          "member": "string",
+          "name": "FailedInsertIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of on-site device ids with disassociation failed.",
+          "example": "[\"trro_dev2\"]",
+          "member": "string",
+          "name": "FailedDeleteIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectRequest": {
+      "document": "ModifyProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id of the target project to modify.",
+          "example": "f3glr49rc96pralw",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified project name, leave blank if not modifying.",
+          "example": "mytest",
+          "member": "string",
+          "name": "ProjectName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified project description, leave blank if not modifying.",
+          "example": "test project",
+          "member": "string",
+          "name": "ProjectDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The modified permission mode, black for blocklist, white for allowlist. if not specified, no modification will be made.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectResponse": {
+      "document": "ModifyProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ProjectInfo": {
+      "document": "Project information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project id.",
+          "example": "f3glr49rc96pralw",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name.",
+          "example": "project1",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project description.",
+          "example": "project1 description",
+          "member": "string",
+          "name": "ProjectDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project permission mode, black for blocklist, white for allowlist.",
+          "example": "black",
+          "member": "string",
+          "name": "PolicyMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project information modification time.",
+          "example": "2022-03-25T09:12:11+08:00",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RecentSessionInfo": {
+      "document": "Latest session information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Session id.",
+          "example": "0a6b3e53-9307-4358-a5b6-76e3e4d027da-0",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remote device id.",
+          "example": "ctrl1",
+          "member": "string",
+          "name": "RemoteDeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "On-Site device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "FieldDeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target resolution.",
+          "example": "1920*1080",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session start time.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last updated time.",
+          "example": "1650000060",
+          "member": "uint64",
+          "name": "LatestUpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SessionInfo": {
+      "document": "Session information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Session id.",
+          "example": "6c03e6d8-cac1-44bd-3c17-90148b37d1a8-0",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remote device id.",
+          "example": "ctrl1",
+          "member": "string",
+          "name": "RemoteDeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "On-Site device id.",
+          "example": "dev1",
+          "member": "string",
+          "name": "FieldDeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target resolution.",
+          "example": "1920*1080",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session start time.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session end time.",
+          "example": "1650000060",
+          "member": "uint64",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Call quality: good|normal|bad.",
+          "example": "good",
+          "member": "string",
+          "name": "Quality",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SessionIntervalStatistic": {
+      "document": "Session statistics data in a unit time interval",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of active on-site devices.",
+          "example": "10",
+          "member": "uint64",
+          "name": "ActiveFieldDeviceNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of active remote devices.",
+          "example": "20",
+          "member": "uint64",
+          "name": "ActiveRemoteDeviceNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of sessions.",
+          "example": "50",
+          "member": "uint64",
+          "name": "SessionNum",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session age, unit: minutes.",
+          "example": "30",
+          "member": "uint64",
+          "name": "TotalDuration",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp in seconds.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp in seconds.",
+          "example": "1650000000",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Proportion of excellent sessions, unit: %.",
+          "example": "30",
+          "member": "uint64",
+          "name": "NotBadSessionRatio",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

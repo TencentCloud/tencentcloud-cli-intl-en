@@ -18,9 +18,9 @@
     ],
     "GetCountryCodes": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://ip.tencentcloudapi.com/?Action=GetCountryCodes\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"EnName\": \"Albania\",\n                \"Name\": \"阿尔巴尼亚\",\n                \"Code\": \"355\"\n            },\n            {\n                \"EnName\": \"Algeria\",\n                \"Name\": \"阿尔及利亚\",\n                \"Code\": \"213\"\n            }\n        ],\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"EnName\": \"Albania\",\n                \"Name\": \"Albania\",\n                \"Code\": \"355\"\n            },\n            {\n                \"EnName\": \"Algeria\",\n                \"Name\": \"Algeria\",\n                \"Code\": \"213\"\n            }\n        ],\n        \"RequestId\": \"a9e390a7-a1af-42cd-8178-13bd046337a7\"\n    }\n}",
         "title": "Obtaining country and region codes"
       }
     ],

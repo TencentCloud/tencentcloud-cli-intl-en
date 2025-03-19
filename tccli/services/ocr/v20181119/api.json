@@ -77,6 +77,13 @@
       "output": "PermitOCRResponse",
       "status": "online"
     },
+    "RecognizeBrazilDriverLicenseOCR": {
+      "document": "This interface supports identification of the front and back of Brazilian driver's license. The identification fields include name, driver's license category, number, validity period, etc.",
+      "input": "RecognizeBrazilDriverLicenseOCRRequest",
+      "name": "Brazil Driver License",
+      "output": "RecognizeBrazilDriverLicenseOCRResponse",
+      "status": "online"
+    },
     "RecognizeGeneralInvoice": {
       "document": "This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).\n\nA maximum of 5 requests can be initiated per second for this API.\n\n\nThe invoice/ticket subtype (SubType), subtype description (TypeDescription), and parent type (Type) can be returned, as described below:\n<table style=\"width:715px\">\n      <thead>\n        <tr>\n          <th style=\"width:200px\">SubType</th>\n          <th style=\"width:200px\">TypeDescription</th>\n          <th >Type</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td> VatSpecialInvoice</td>\n          <td> Special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatCommonInvoice</td>\n          <td> General VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicCommonInvoice </td>\n          <td> Electronic general VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoice </td>\n          <td> Electronic special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceBlockchain</td>\n          <td> Blockchain electronic invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceToll</td>\n          <td> Electronic general VAT invoice (toll)</td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoiceFull</td>\n          <td> Electronic invoice (special)</td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceFull</td>\n          <td> Electronic invoice (general) </td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> MotorVehicleSaleInvoice </td>\n          <td> Motor vehicle sales invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> UsedCarPurchaseInvoice </td>\n          <td> Used car invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> VatInvoiceRoll </td>\n          <td> General VAT invoice (roll) </td>\n          <td> 11 </td>\n        </tr>\n        <tr>\n          <td> TaxiTicket </td>\n          <td> Taxi receipt </td>\n          <td> 0 </td>\n        </tr>\n        <tr>\n          <td> QuotaInvoice </td>\n          <td> Quota invoice </td>\n          <td> 1 </td>\n        </tr>\n        <tr>\n          <td> TrainTicket </td>\n          <td> Train ticket </td>\n          <td> 2 </td>\n        </tr>\n        <tr>\n          <td> AirTransport </td>\n          <td> Itinerary/Receipt of e-ticket for air transportation </td>\n          <td> 5 </td>\n        </tr>\n        <tr>\n          <td> MachinePrintedInvoice </td>\n          <td> General machine-printed invoice </td>\n          <td> 8 </td>\n        </tr>\n        <tr>\n          <td> BusInvoice </td>\n          <td> Bus ticket </td>\n          <td> 9 </td>\n        </tr>\n        <tr>\n          <td> ShippingInvoice </td>\n          <td> Ship ticket </td>\n          <td> 10 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeGeneralBill </td>\n          <td> General receipt for non-tax revenue </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeElectronicBill </td>\n          <td> General payment voucher for non-tax revenue (electronic) </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> TollInvoice </td>\n          <td> Toll receipt </td>\n          <td> 13 </td>\n        </tr>\n        <tr>\n          <td> OtherInvoice </td>\n          <td> Other </td>\n          <td> -1 </td>\n        </tr>\n      </tbody>\n    </table>",
       "input": "RecognizeGeneralInvoiceRequest",
@@ -175,6 +182,13 @@
       "output": "RecognizeThaiIDCardOCRResponse",
       "status": "online"
     },
+    "RecognizeThaiPinkCard": {
+      "document": "This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.\nCurrently, this API is not generally available. For more information, please [contact your sales rep](https://intl.cloud.tencent.com/about/connect?from_cn_redirect=1).\n\nA maximum of 5 requests can be initiated per second for this API.",
+      "input": "RecognizeThaiPinkCardRequest",
+      "name": "Recognizes a Thai pink card",
+      "output": "RecognizeThaiPinkCardResponse",
+      "status": "online"
+    },
     "SealOCR": {
       "document": "This API is used to recognize various types of seals, including invoice seals and finance seals. It is suitable for scenarios such as official document and invoice/ticket OCR.\n\nA maximum of 5 requests can be initiated per second for this API.",
       "input": "SealOCRRequest",
@@ -187,6 +201,13 @@
       "input": "SmartStructuralOCRV2Request",
       "name": "Smart Structured Information OCR V2",
       "output": "SmartStructuralOCRV2Response",
+      "status": "online"
+    },
+    "SmartStructuralPro": {
+      "document": "This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.\n\nA maximum of 10 requests can be initiated per second for this API.",
+      "input": "SmartStructuralProRequest",
+      "name": "Smart Structured Information OCR Pro",
+      "output": "SmartStructuralProResponse",
       "status": "online"
     },
     "TableOCR": {
@@ -858,20 +879,20 @@
         {
           "disabled": false,
           "document": "Horizontal coordinate",
-          "example": "",
+          "example": "480",
           "member": "int64",
           "name": "X",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Vertical coordinate",
-          "example": "",
+          "example": "640",
           "member": "int64",
           "name": "Y",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2164,7 +2185,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -2172,8 +2193,17 @@
         },
         {
           "disabled": false,
+          "document": "Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "The URL of an image. (This field is not available outside the Chinese mainland.)\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be low.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -2181,8 +2211,17 @@
         },
         {
           "disabled": false,
+          "document": "The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Whether to return an image. Default value: `false`.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "RetImage",
           "required": false,
@@ -2247,7 +2286,7 @@
         {
           "disabled": false,
           "document": "Identity photo",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "output_required": true,
@@ -2286,6 +2325,16 @@
         },
         {
           "disabled": false,
+          "document": "Number on the back of Malaysia ID card ",
+          "example": "800***-**-****-05-02",
+          "member": "string",
+          "name": "MyKadNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
           "example": "[-9101]",
           "member": "int64",
@@ -2309,7 +2358,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
-          "example": "base64编码",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -2327,7 +2376,7 @@
         {
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/card/MLIDPassportOCR/MLIDPassportOCR1.png",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -2412,7 +2461,7 @@
         {
           "disabled": false,
           "document": "Alarm codes\n-9102 Alarm for photocopy on a paper document (including black & white and color ones)\n-9103 Alarm for photocopy on an electronic device\n-9106 Alarm for covered card",
-          "example": "[]",
+          "example": "[-9103]",
           "member": "int64",
           "name": "Warn",
           "output_required": true,
@@ -2422,7 +2471,7 @@
         {
           "disabled": false,
           "document": "Identity photo",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "output_required": true,
@@ -2432,7 +2481,7 @@
         {
           "disabled": false,
           "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
-          "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
+          "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
           "output_required": true,
@@ -2482,7 +2531,7 @@
         {
           "disabled": false,
           "document": "Type (in Machine Readable Zone)",
-          "example": "无",
+          "example": "P",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -2492,7 +2541,7 @@
         {
           "disabled": false,
           "document": "Document content in Information Zone",
-          "example": "无",
+          "example": "{\"DateOfBirth\":\"11 Apr 1990\"}",
           "member": "PassportRecognizeInfos",
           "name": "PassportRecognizeInfos",
           "output_required": true,
@@ -4220,40 +4269,40 @@
         {
           "disabled": false,
           "document": "The coordinates of the upper-left vertex.",
-          "example": "",
+          "example": "20",
           "member": "Coord",
           "name": "LeftTop",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the upper-right vertex.",
-          "example": "",
+          "example": "20",
           "member": "Coord",
           "name": "RightTop",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the lower-left vertex.",
-          "example": "",
+          "example": "80",
           "member": "Coord",
           "name": "RightBottom",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the lower-right vertex.",
-          "example": "",
+          "example": "80",
           "member": "Coord",
           "name": "LeftBottom",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -4365,6 +4414,229 @@
         }
       ],
       "usage": "out"
+    },
+    "RecognizeBrazilDriverLicenseOCRRequest": {
+      "document": "RecognizeBrazilDriverLicenseOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Picture switch. The default is false, and the base64 encoding of the avatar photo is not returned. When set to true, the base64 encoding of the portrait photo is returned.",
+          "example": "false",
+          "member": "bool",
+          "name": "CropPortrait",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeBrazilDriverLicenseOCRResponse": {
+      "document": "RecognizeBrazilDriverLicenseOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "ZHANG SAN",
+          "member": "string",
+          "name": "NOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Driving license type",
+          "example": "B",
+          "member": "string",
+          "name": "CatHab",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CNH number",
+          "example": "23*****110",
+          "member": "string",
+          "name": "CNHNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid date",
+          "example": " 07/08/2024",
+          "member": "string",
+          "name": "VALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Qualification",
+          "example": " 23/05/2012",
+          "member": "string",
+          "name": "QUALIFICATION",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID number",
+          "example": " F048**** DIREX EX",
+          "member": "string",
+          "name": "IDENTIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPF",
+          "example": " 238.***.758-75",
+          "member": "string",
+          "name": "CPF",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday",
+          "example": " 28/03/1992",
+          "member": "string",
+          "name": "NASCIMENTO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Membership",
+          "example": " JINJI PAN/WEIHONG CHEN",
+          "member": "string",
+          "name": "MEMBERSHIP",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Registration number",
+          "example": "073****3357",
+          "member": "string",
+          "name": "REGISTRO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remark",
+          "example": "A",
+          "member": "string",
+          "name": "OBSERVATIONS",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue date",
+          "example": "15/02/2022",
+          "member": "string",
+          "name": "IssueDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue location",
+          "example": " SAO PAULO, SP",
+          "member": "string",
+          "name": "LOCAL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number in the back of the card",
+          "example": " 51******489/SP8******10",
+          "member": "string",
+          "name": "BackNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Field confidence",
+          "example": "无",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PortraitImage base64",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RecognizeGeneralInvoiceRequest": {
       "document": "RecognizeGeneralInvoice request structure.",
@@ -6266,10 +6538,28 @@
         },
         {
           "disabled": false,
+          "document": "Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.",
           "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "BackImageUrl",
           "required": false,
           "type": "string"
         },
@@ -6420,6 +6710,16 @@
         },
         {
           "disabled": false,
+          "document": "LaserID in the back of the card.",
+          "example": "JC4-1841713-14",
+          "member": "string",
+          "name": "LaserID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Identity photo",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
@@ -6444,6 +6744,221 @@
           "example": "{\"ID\":{\"Confidence\":\"0.9500\"},\"ThaiName\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeThaiPinkCardRequest": {
+      "document": "RecognizeThaiPinkCard request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.\nWhen this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.",
+          "example": "false",
+          "member": "bool",
+          "name": "CropPortrait",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeThaiPinkCardResponse": {
+      "document": "RecognizeThaiPinkCard response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Country",
+          "example": "เมียนมา(Myanmar)",
+          "member": "string",
+          "name": "Country",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID number",
+          "example": " 00 8401 ****** 9",
+          "member": "string",
+          "name": "IDNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name in Thai",
+          "example": "นาย ** ทุน",
+          "member": "string",
+          "name": "ThaiName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name in English",
+          "example": "Mr. **** Tun",
+          "member": "string",
+          "name": "EnName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Surname in Thai",
+          "example": "ลุงซอ",
+          "member": "string",
+          "name": "ThaiSurName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth in Thai",
+          "example": "14 ก.พ. 2529",
+          "member": "string",
+          "name": "ThaiDOB",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth in English",
+          "example": "14 Feb. 1986",
+          "member": "string",
+          "name": "EnDOB",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Photo number",
+          "example": "8401-02***90",
+          "member": "string",
+          "name": "PhotoNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Address in Thai",
+          "example": " 8/102 หมู่ที่ 2 ต.ครี********",
+          "member": "string",
+          "name": "ThaiAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of issue in Thai",
+          "example": "10 ส.ค. 2565",
+          "member": "string",
+          "name": "ThaiDateOfIssue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of issue in English",
+          "example": " 10 Aug. 2022",
+          "member": "string",
+          "name": "DateOfIssue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date in Thai",
+          "example": " 9 ส.ค. 2575",
+          "member": "string",
+          "name": "ThaiDateOfExpiry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date in English",
+          "example": "9 Aug. 2032",
+          "member": "string",
+          "name": "DateOfExpiry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issuing agency",
+          "example": " (นายธนาคม จงจิระ) ผู้อำนวยการทะเบียนกลาง",
+          "member": "string",
+          "name": "IssuingAgency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ref number",
+          "example": " (CI) CC7444457",
+          "member": "string",
+          "name": "RefNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Field confidence:\n { \"ID\": { \"Confidence\": 0.9999 }, \"ThaiName\": { \"Confidence\": 0.9996 } }",
+          "example": "无",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Identity photo",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "PortraitImage",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7114,6 +7629,117 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SmartStructuralProRequest": {
+      "document": "SmartStructuralPro request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/document/SmartStructuralOCR/SmartStructuralPro1.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The names of the fields you want to return for the structured information recognition.\nFor example, if you want to return only the recognition result of the \"Name\" and \"Gender\" fields, set this parameter as follows:\nItemNames=[\"Name\",\"Gender\"]",
+          "example": "[\"姓名\",\"性别\"]",
+          "member": "string",
+          "name": "ItemNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable recognition of all fields.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReturnFullText",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration ID support: General \n-- General scenarios; InvoiceEng \n-- Ocean bill of lading, international invoice template; \n-- Ocean shipment order template; WayBillEng \n-- CustomsDeclaration\n-- WeightNote\n-- MedicalMeter",
+          "example": "General",
+          "member": "string",
+          "name": "ConfigId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enable recognition of coordinate values in full-text fields",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableCoord",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SmartStructuralProResponse": {
+      "document": "SmartStructuralPro response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.",
+          "example": "0",
+          "member": "float",
+          "name": "Angle",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The structural information (key-value).",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "StructuralList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The recognized text information.",
+          "example": "无",
+          "member": "WordItem",
+          "name": "WordList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

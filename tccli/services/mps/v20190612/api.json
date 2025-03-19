@@ -42,6 +42,13 @@
       "output": "CreateImageSpriteTemplateResponse",
       "status": "online"
     },
+    "CreateLiveRecordTemplate": {
+      "document": "This API is used to create a live recording template.",
+      "input": "CreateLiveRecordTemplateRequest",
+      "name": "Creates a live recording template",
+      "output": "CreateLiveRecordTemplateResponse",
+      "status": "online"
+    },
     "CreatePersonSample": {
       "document": "This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.",
       "input": "CreatePersonSampleRequest",
@@ -145,6 +152,13 @@
       "input": "DeleteImageSpriteTemplateRequest",
       "name": "Deletes an image sprite generating template",
       "output": "DeleteImageSpriteTemplateResponse",
+      "status": "online"
+    },
+    "DeleteLiveRecordTemplate": {
+      "document": "This API is used to delete a live recording template.",
+      "input": "DeleteLiveRecordTemplateRequest",
+      "name": "Deletes a live recording template",
+      "output": "DeleteLiveRecordTemplateResponse",
       "status": "online"
     },
     "DeletePersonSample": {
@@ -252,6 +266,13 @@
       "output": "DescribeImageSpriteTemplatesResponse",
       "status": "online"
     },
+    "DescribeLiveRecordTemplates": {
+      "document": "This API is used to get a live recording template.",
+      "input": "DescribeLiveRecordTemplatesRequest",
+      "name": "Gets a live recording template",
+      "output": "DescribeLiveRecordTemplatesResponse",
+      "status": "online"
+    },
     "DescribeMediaMetaData": {
       "document": "This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.",
       "input": "DescribeMediaMetaDataRequest",
@@ -292,6 +313,13 @@
       "input": "DescribeSnapshotByTimeOffsetTemplatesRequest",
       "name": "Gets the list of time point screencapturing templates",
       "output": "DescribeSnapshotByTimeOffsetTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeStreamLinkSecurityGroup": {
+      "document": "This API is used to query a security group.",
+      "input": "DescribeStreamLinkSecurityGroupRequest",
+      "name": "Queries a Security Group",
+      "output": "DescribeStreamLinkSecurityGroupResponse",
       "status": "online"
     },
     "DescribeTaskDetail": {
@@ -427,6 +455,13 @@
       "output": "ModifyImageSpriteTemplateResponse",
       "status": "online"
     },
+    "ModifyLiveRecordTemplate": {
+      "document": "This API is used to modify a live recording template.",
+      "input": "ModifyLiveRecordTemplateRequest",
+      "name": "Modifies a live recording template",
+      "output": "ModifyLiveRecordTemplateResponse",
+      "status": "online"
+    },
     "ModifyPersonSample": {
       "document": "This API is used to modify image samples by image ID. You can use it to modify the name and description of an image sample and add/delete/reset facial features or tags. There must be at least one image left after the deletion of facial features; otherwise, please reset instead of delete the facial features.",
       "input": "ModifyPersonSampleRequest",
@@ -495,6 +530,13 @@
       "input": "ParseNotificationRequest",
       "name": "Parses an event notification",
       "output": "ParseNotificationResponse",
+      "status": "online"
+    },
+    "ProcessImage": {
+      "document": "This API is used to initiate image processing. Its features include:\n1. Format conversion;\n2. Image enhancement;",
+      "input": "ProcessImageRequest",
+      "name": "Initiates image processing",
+      "output": "ProcessImageResponse",
       "status": "online"
     },
     "ProcessLiveStream": {
@@ -1376,7 +1418,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -1387,13 +1429,24 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The subtitle file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MediaInputInfo",
           "name": "Subtitle",
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle name.\nNote: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubtitleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2380,9 +2433,19 @@
           "example": "无",
           "member": "SegmentRecognitionItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video abstract, used for offline scenarios.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "Abstract",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2708,6 +2771,26 @@
         },
         {
           "disabled": false,
+          "document": "Segment title.",
+          "example": "分段标题",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment keywords.",
+          "example": "[\"words1\",\"words2\"]",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Segmentation start time point, in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
@@ -2977,41 +3060,51 @@
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "3.204",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "7.204",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Recognized text.",
-          "example": "",
+          "example": "腾讯云媒体处理",
           "member": "string",
           "name": "Text",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word timestamp information.",
+          "example": "无",
+          "member": "WordResult",
+          "name": "Wordlist",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3469,6 +3562,17 @@
           "output_required": true,
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User extension field, which does not need to be filled in for general scenarios.",
+          "example": "无",
+          "member": "string",
+          "name": "UserExtPara",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4101,7 +4205,7 @@
           "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4111,7 +4215,7 @@
           "example": "17.45",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4121,7 +4225,7 @@
           "example": "29.99",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4131,7 +4235,7 @@
           "example": "你好",
           "member": "string",
           "name": "Text",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4141,8 +4245,18 @@
           "example": "Hello",
           "member": "string",
           "name": "Trans",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word timestamp information.",
+          "example": "无",
+          "member": "WordResult",
+          "name": "Wordlist",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -7763,7 +7877,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\n\nWhen the value is 0:\n\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.",
+          "document": "Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.\nWhen the value is 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\nWhen the value is 0.\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.\n\nNote:\n\nThis value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.",
           "example": "0",
           "member": "uint64",
           "name": "PureAudio",
@@ -8108,6 +8222,61 @@
           "document": "Unique ID of an image sprite generating template.",
           "example": "1008",
           "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLiveRecordTemplateRequest": {
+      "document": "CreateLiveRecordTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HLS configuration parameters.",
+          "example": "无",
+          "member": "HLSConfigureInfo",
+          "name": "HLSConfigure",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Recording template name. Length limit: 64 characters.",
+          "example": "录制模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template description, with a length limit of 256 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLiveRecordTemplateResponse": {
+      "document": "CreateLiveRecordTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the recording template.",
+          "example": "20001",
+          "member": "int64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
@@ -9095,6 +9264,33 @@
       ],
       "type": "object"
     },
+    "DeleteLiveRecordTemplateRequest": {
+      "document": "DeleteLiveRecordTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the recording template.",
+          "example": "20001",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLiveRecordTemplateResponse": {
+      "document": "DeleteLiveRecordTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeletePersonSampleRequest": {
       "document": "DeletePersonSample request structure.",
       "members": [
@@ -9537,7 +9733,7 @@
         {
           "disabled": false,
           "document": "Template type filter. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
-          "example": "“”",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -9545,7 +9741,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is an audio-only template. 0: video template. 1: audio-only template.",
+          "document": "Whether it is an audio-only template. 0: video template. 1: audio-only template.\n\nDefault value: 0",
           "example": "0",
           "member": "uint64",
           "name": "PureAudio",
@@ -9555,7 +9751,7 @@
         {
           "disabled": false,
           "document": "Filter condition for adaptive transcoding template identifiers, with a length limit of 64 characters.",
-          "example": "\"\"",
+          "example": "Presetting HLS",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -9845,6 +10041,89 @@
       ],
       "type": "object"
     },
+    "DescribeLiveRecordTemplatesRequest": {
+      "document": "DescribeLiveRecordTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the recording template unique identifier filter condition, with an array length limit of 100.",
+          "example": "[20001]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Paging offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the template type filter condition. If left empty, all templates are returned. Valid values:\n* Preset: System preset template;\n* Custom",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the recording template identifier filter condition, with a length limit of 64 characters.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLiveRecordTemplatesResponse": {
+      "document": "DescribeLiveRecordTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet filter conditions.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recording template details list.",
+          "example": "无",
+          "member": "LiveRecordTemplate",
+          "name": "LiveRecordTemplateSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMediaMetaDataRequest": {
       "document": "DescribeMediaMetaData request structure.",
       "members": [
@@ -10016,7 +10295,7 @@
         {
           "disabled": false,
           "document": "Filter condition for media quality inspection template identifiers, with a length limit of 64 characters.",
-          "example": "“”",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -10295,6 +10574,43 @@
           "name": "SnapshotByTimeOffsetTemplateSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLinkSecurityGroupRequest": {
+      "document": "DescribeStreamLinkSecurityGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group ID.",
+          "example": "1111",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamLinkSecurityGroupResponse": {
+      "document": "DescribeStreamLinkSecurityGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information on the input security group.",
+          "example": "无",
+          "member": "SecurityGroupInfo",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -10630,6 +10946,24 @@
           "example": "\"\"",
           "member": "string",
           "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Optional values: \nnormal: General transcoding scenario: General transcoding and compression scenario. \npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \nno_config: Not configured.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Optional values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nno_config: Not configured.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
           "required": false,
           "type": "string"
         }
@@ -11122,7 +11456,7 @@
         },
         {
           "disabled": false,
-          "document": "The clip mode. Valid values: `normal` (default), `fast`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Editing mode. Optional values:\nnormal (default): Precise editing\nfast: Fast editing, with faster processing speed but lower precision to some extent\nNote: fast only supports individual files, and the default output transcoding format of normal is h264.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "fast",
           "member": "string",
           "name": "Type",
@@ -11675,6 +12009,45 @@
       ],
       "usage": "in"
     },
+    "HLSConfigureInfo": {
+      "document": "HLS configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Duration of a single TS file in seconds. Value range: 5-30 seconds.\n\nIf this parameter is left empty, 30 seconds will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "ItemDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Recording cycle in seconds. Value range: 10 minutes to 12 hours.\n\nIf this parameter is left empty, 10 minutes (3600 seconds) will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "3600",
+          "member": "int64",
+          "name": "Interval",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resume recording waiting time, unit: seconds. Value range: 60-1800 seconds.\nIf this parameter is left empty, 0 (resume recording not enabled) will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "60",
+          "member": "int64",
+          "name": "ContinueTimeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "HdrConfig": {
       "document": "HDR configuration.",
       "members": [
@@ -11776,6 +12149,84 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageEncodeConfig": {
+      "document": "Image encoding format parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "JPEG",
+          "member": "string",
+          "name": "Format",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "50",
+          "member": "int64",
+          "name": "Quality",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageEnhanceConfig": {
+      "document": "Image enhancement parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Super-resolution configuration.\n",
+          "example": "无",
+          "member": "SuperResolutionConfig",
+          "name": "SuperResolution",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Color enhancement configuration.\n",
+          "example": "无",
+          "member": "ColorEnhanceConfig",
+          "name": "ColorEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Detail enhancement configuration.\n",
+          "example": "无",
+          "member": "SharpEnhanceConfig",
+          "name": "SharpEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Face enhancement configuration.\n",
+          "example": "无",
+          "member": "FaceEnhanceConfig",
+          "name": "FaceEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ImageQualityEnhanceConfig": {
       "document": "Overall enhancement configuration.",
@@ -12019,6 +12470,34 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageTaskInput": {
+      "document": "Image task input parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image encoding configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageEncodeConfig",
+          "name": "EncodeConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image enhancement configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageEnhanceConfig",
+          "name": "EnhanceConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ImageWatermarkInput": {
       "document": "Input parameter of an image watermarking template",
@@ -12322,6 +12801,82 @@
         }
       ],
       "usage": "both"
+    },
+    "LiveRecordTemplate": {
+      "document": "Live recording template details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the recording template unique identifier.",
+          "example": "20001",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HLS configuration parameters",
+          "example": "hls",
+          "member": "HLSConfigureInfo",
+          "name": "HLSConfigure",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recording template name.",
+          "example": "“”",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template description.\n",
+          "example": "“”",
+          "member": "string",
+          "name": "Comment",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template type. Valid values:\n<li>Preset: system-preset template;</li>\n<li>Custom: Custom template.</li>",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "“”",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "LiveScheduleLiveRecordTaskResult": {
       "document": "The result of a live scheme's live recording task.",
@@ -13556,10 +14111,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.\n\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
+          "document": "Notification type:\n\n\"CMQ\": Callback messages are written to the CMQ queue; \n\"URL\": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).\n\n<font color=\"red\">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
+          "example": "http://www.qq.com/callback",
+          "member": "string",
+          "name": "NotifyUrl",
           "output_required": true,
           "required": false,
           "type": "string",
@@ -13604,17 +14170,6 @@
           "example": "test",
           "member": "string",
           "name": "TopicName",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
-          "example": "http://www.qq.com/callback",
-          "member": "string",
-          "name": "NotifyUrl",
           "output_required": true,
           "required": false,
           "type": "string",
@@ -13722,7 +14277,7 @@
         {
           "disabled": false,
           "document": "Operation type. Valid values:\n<ul>\n<li>Abort: task termination. Description:\n<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>\n<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>\n</li></ul>",
-          "example": "",
+          "example": "Abort",
           "member": "string",
           "name": "OperationType",
           "required": true,
@@ -13731,7 +14286,7 @@
         {
           "disabled": false,
           "document": "Video processing task ID.",
-          "example": "",
+          "example": "2000000081-WorkflowTask-2ea2172665eea4aa4f4d6dbcd61b16a9tt7",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -13825,6 +14380,26 @@
           "name": "Confidence",
           "output_required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent description title.",
+          "example": "标题",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent description keywords.",
+          "example": "[\"word1\",\"word2\"]",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -15867,7 +16442,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.\nNote: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.",
+          "document": "Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.\n\nNote:\n\n1. The frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.\n2. When modifying substream information, all field values must be fully modified and added; otherwise, fields not filled in will use default values.",
           "example": "无",
           "member": "AdaptiveStreamTemplate",
           "name": "StreamInfos",
@@ -15877,7 +16452,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "\"\"",
+          "example": "\"描述\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -15885,7 +16460,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\n\nWhen the value is 0:\n\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.",
+          "document": "Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.\nWhen the value is 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\nWhen the value is 0.\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.\n\nNote:\n\nThis value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.",
           "example": "0",
           "member": "uint64",
           "name": "PureAudio",
@@ -16221,6 +16796,60 @@
     },
     "ModifyImageSpriteTemplateResponse": {
       "document": "ModifyImageSpriteTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLiveRecordTemplateRequest": {
+      "document": "ModifyLiveRecordTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the recording template unique identifier.",
+          "example": "20001",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "HLS configuration parameters.",
+          "example": "无",
+          "member": "HLSConfigureInfo",
+          "name": "HLSConfigure",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Recording template name. Length limit: 64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template description, with a length limit of 256 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLiveRecordTemplateResponse": {
+      "document": "ModifyLiveRecordTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -17269,7 +17898,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Live stream processing result type, including:\n<li>AiReviewResult: content moderation result;</li>\n<li>AiRecognitionResult: content recognition result;</li>\n<li>LiveRecordResult: live recording result;</li>\n<li>ProcessEof: live stream processing result.</li>",
+          "document": "Live stream processing result type, including:\n<li>AiReviewResult: content auditing result.</li>\n<li>AiRecognitionResult: content recognition result.</li>\n<li>LiveRecordResult: live recording result.</li>\n<li>AiQualityControlResult: media quality inspection result.</li>\n<li>ProcessEof: live stream processing result.</li>",
           "example": "ProcessEof",
           "member": "string",
           "name": "NotificationType",
@@ -17289,7 +17918,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamProcessErrorInfo",
           "name": "ProcessEofInfo",
@@ -17299,7 +17928,7 @@
         },
         {
           "disabled": false,
-          "document": "Content audit result, which is valid when `NotificationType` is `AiReviewResult`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Content audit result, which is valid when `NotificationType` is `AiReviewResult`.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamAiReviewResultInfo",
           "name": "AiReviewResultInfo",
@@ -17319,7 +17948,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content analysis result, which is valid if `NotificationType` is `AiAnalysisResult`.",
           "example": "无",
           "member": "LiveStreamAiAnalysisResultInfo",
           "name": "AiAnalysisResultInfo",
@@ -17329,7 +17958,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Media quality inspection result, which is valid if `NotificationType` is `AiQualityControlResult`.",
           "example": "无",
           "member": "LiveStreamAiQualityControlResultInfo",
           "name": "AiQualityControlResultInfo",
@@ -17339,7 +17968,7 @@
         },
         {
           "disabled": false,
-          "document": "Live recording result is valid when NotificationType is LiveRecordResult.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Live recording result is valid when NotificationType is LiveRecordResult.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamRecordResultInfo",
           "name": "LiveRecordResultInfo",
@@ -17366,6 +17995,26 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "- Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Sign",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -18099,6 +18748,70 @@
       ],
       "usage": "in"
     },
+    "ProcessImageRequest": {
+      "document": "ProcessImage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File input information for image processing.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Target storage for image processing output files. If left blank, it inherits the storage location in InputInfo.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.",
+          "example": "无",
+          "member": "string",
+          "name": "OutputDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image processing parameter.",
+          "example": "无",
+          "member": "ImageTaskInput",
+          "name": "ImageTask",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessImageResponse": {
+      "document": "ProcessImage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ProcessLiveStreamRequest": {
       "document": "ProcessLiveStream request structure.",
       "members": [
@@ -18683,7 +19396,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Quality inspection item name. Valid values:\n<li>LowEvaluation: no-reference scoring.</li>\n<li>Mosaic: mosaic detection.</li>\n<li>CrashScreen: screen glitch detection.</li>\n<li>VideoFreezedFrame: video freezing.</li>\n<li>Blur: blur detection.</li>\n<li>BlackWhiteEdge: black and white edges detection.</li>\n<li>SolidColorScreen: solid color screen detection.</li>\n<li>LowLighting: low light.</li>\n<li>HighLighting: overexposure.</li>\n<li>NoVoice: no voice detection.</li>\n<li>LowVoice: low voice detection.</li>\n<li>HighVoice: high voice detection.</li>\n<li>Jitter: jitter detection.</li>\n<li>Noise: noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: barcode detection.</li>\n<li>AppletCode: mini program code detection.</li>\n<li>VideoResolutionChanged: video resolution change.</li>\n<li>AudioSampleRateChanged: audio sample rate change.</li>\n<li>AudioChannelsChanged: audio channel quantity change.</li>\n<li>ParameterSetsChanged: stream parameter set information change.</li>\n<li>DarOrSarInvalid: video aspect ratio exception.</li>\n<li>TimestampFallback: DTS timestamp rollback.</li>\n<li>DtsJitter: DTS jitter too high.</li>\n<li>PtsJitter: PTS jitter too high.</li>\n<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: audio frame dropping.</li>\n<li>VideoDroppingFrames: video frame dropping.</li>\n<li>AVTimestampInterleave: improper audio-video interleaving.</li>\n<li>PtsLessThanDts: PTS less than DTS for media streams.</li>\n<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>\n<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>\n<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>\n<li>StreamOpenFailed: stream open failure.</li>\n<li>StreamEnd: stream end.</li>\n<li>StreamParseFailed: stream parsing failure.</li>\n<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>\n<li>AudioStreamLack: no audio stream.</li>\n<li>VideoStreamLack: no video stream.</li>\n<li>LackAudioRecover: missing audio stream recovery.</li>\n<li>LackVideoRecover: missing video stream recovery.</li>\n<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>\n<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>\n<li>VideoDecodeFailed: video decoding error.</li>\n<li>AudioDecodeFailed: audio decoding error.</li>\n<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>\n<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>\n<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>\n<li>VideoRotation: video rotation.</li>\n<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>\n<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: invalid M3U8 file.</li>\n<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>\n<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>\n<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>\n<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>\n<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
+          "document": "Quality control item name. The quality control item values are as follows:\n<li>LowEvaluation: No reference score.</li>\n<li>Mosaic: Mosaic detection.</li>\n<li>CrashScreen: Screen crash detection.</li>\n<li>Blur: Blur detection.</li>\n<li>BlackWhiteEdge: Black and white edge detection.</li>\n<li>SolidColorScreen: Solid color screen detection.</li>\n<li>LowLighting: Low lighting.</li>\n<li>HighLighting: Overexposure.</li>\n<li>NoVoice: Silence detection.</li>\n<li>LowVoice: Low voice detection.</li>\n<li>HighVoice: High voice detection.</li>\n<li>Jitter: Jitter detection.</li>\n<li>Noise: Noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: Barcode detection.</li>\n<li>AppletCode: Applet code detection.</li>\n<li>VideoResolutionChanged: The video resolution changed.</li>\n<li>AudioSampleRateChanged: The audio sampling rate changed.</li>\n<li>AudioChannelsChanged: The audio channel count changed.</li>\n<li>ParameterSetsChanged: The stream parameter set information changed.</li>\n<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>\n<li>TimestampFallback: DTS timestamp fallback.</li>\n<li>DtsJitter: Excessive DTS jitter.</li>\n<li>PtsJitter: Excessive PTS jitter.</li>\n<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: Audio frame loss.</li>\n<li>VideoDroppingFrames: Video frame loss.</li>\n<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>\n<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>\n<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>\n<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>\n<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>\n<li>StreamOpenFailed: Stream opening failed.</li>\n<li>StreamEnd: The stream ended.</li>\n<li>StreamParseFailed: Stream parsing failed.</li>\n<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>\n<li>AudioStreamLack: No audio stream.</li>\n<li>VideoStreamLack: No video stream.</li>\n<li>LackAudioRecover: Lack of audio stream recovery.</li>\n<li>LackVideoRecover: Lack of video stream recovery.</li>\n<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>\n<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>\n<li>VideoDecodeFailed: Video decoding error.</li>\n<li>AudioDecodeFailed: Audio decoding error.</li>\n<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>\n<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>\n<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>\n<li>VideoRotation: Video image rotation.</li>\n<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>\n<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: Invalid m3u8 file.</li>\n<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>\n<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>\n<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>\n<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -19149,7 +19862,7 @@
         {
           "disabled": false,
           "document": "The AWS S3 bucket.",
-          "example": "test",
+          "example": "aws-125678",
           "member": "string",
           "name": "S3Bucket",
           "output_required": false,
@@ -19160,7 +19873,7 @@
         {
           "disabled": false,
           "document": "The region of the AWS S3 bucket.",
-          "example": "ap-southeast-1",
+          "example": "us-east-1 ",
           "member": "string",
           "name": "S3Region",
           "output_required": false,
@@ -19182,7 +19895,7 @@
         {
           "disabled": false,
           "document": "The key ID required to access the AWS S3 object.",
-          "example": "\"\"",
+          "example": "6bb5******eff",
           "member": "string",
           "name": "S3SecretId",
           "output_required": false,
@@ -19193,7 +19906,7 @@
         {
           "disabled": false,
           "document": "The key required to access the AWS S3 object.",
-          "example": "\"\"",
+          "example": "6bbc5******eff",
           "member": "string",
           "name": "S3SecretKey",
           "output_required": false,
@@ -19943,6 +20656,72 @@
       ],
       "usage": "both"
     },
+    "SecurityGroupInfo": {
+      "document": "Security group information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group ID.",
+          "example": "test",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Security group name.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist list.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "Whitelist",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound input streams.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "testinput",
+          "member": "string",
+          "name": "OccupiedInputs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Security group address.",
+          "example": "ap-mumbai",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound output streams.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "testoutput",
+          "member": "string",
+          "name": "OccupiedOutputs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "SegmentRecognitionItem": {
       "document": "",
       "members": [
@@ -19988,6 +20767,16 @@
         },
         {
           "disabled": false,
+          "document": "Segment cover.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CovImgUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Segment title.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -20002,6 +20791,36 @@
           "example": "无",
           "member": "string",
           "name": "Summary",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Segmentation keywords.",
+          "example": "无",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The start time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2024-10-21T17:18:34+08:00",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The end time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2024-10-21T17:26:19+08:00",
+          "member": "string",
+          "name": "EndTime",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -20318,7 +21137,7 @@
         {
           "disabled": false,
           "document": "The URL of the subtitles to add to the video.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "address",
           "member": "string",
           "name": "Path",
           "output_required": false,
@@ -20340,7 +21159,7 @@
         {
           "disabled": false,
           "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "simhei.ttf",
+          "example": "simkai.ttf",
           "member": "string",
           "name": "FontType",
           "output_required": false,
@@ -21377,6 +22196,16 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding template alias.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "AliasName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -21982,7 +22811,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "document": "Maximum value of the video stream width (or long edge) in px. Value range: 0 and [128, 4096].\n<li>If both Width and Height are 0, the resolution is the same as the source.</li>\n<li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>\n<li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>\n<li>If both Width and Height are not 0, the resolution is as specified by the user.</li>\nDefault value: 0.\nNote: If Codec is set to MV-HEVC, the maximum value can be 7680.",
           "example": "0",
           "member": "uint64",
           "name": "Width",
@@ -21993,7 +22822,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
+          "document": "Maximum value of the video stream height (or short edge) in px. Value range: 0 and [128, 4,096].\n<li>If both Width and Height are 0, the resolution is the same as the source.</li>\n<li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>\n<li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>\n<li>If both Width and Height are not 0, the resolution is as specified by the user.</li>\nDefault value: 0.\nNote: If Codec is set to MV-HEVC, the maximum value can be 7680.",
           "example": "0",
           "member": "uint64",
           "name": "Height",
@@ -22026,7 +22855,7 @@
         },
         {
           "disabled": false,
-          "document": "Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is \"filling\". Optional filling modes:\n<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be \"flattened\" or \"stretched\".</li>\n<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>\n<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>\n<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.\nNote: Only stretch and black are supported for adaptive bitrate streaming.",
+          "document": "Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is \"padding\". Optional filling method:\n<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.",
           "example": "black",
           "member": "string",
           "name": "FillType",
@@ -22037,7 +22866,7 @@
         },
         {
           "disabled": false,
-          "document": "Control factor for constant video bitrate. Value range: [0, 51].\nIf this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).\nIt is recommended not to specify this parameter if there are no special requirements.\n\nNote:\nIf Mode is set to ABR, the Vcrf value does not need to be configured.\nIf Mode is set to CBR, the Vcrf value does not need to be configured.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the constant bitrate control factor for the video. Value range: [0, 51]. Leaving this parameter blank sets it to \"Automatic\". It is recommended not to specify this parameter unless necessary.\nIf the Mode parameter is set to VBR and the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.\nIf the Mode parameter is set to CRF, the Bitrate setting will be invalid, and encoding will be based on the Vcrf value.\nIf the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Vcrf",
@@ -22048,7 +22877,7 @@
         },
         {
           "disabled": false,
-          "document": "Average segment duration. Value range: (0-10], unit: second\nDefault value: 10\nNote: It can be used only in the container format of hls.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Average segment duration. Value range: (0-10], unit: second.\nThis parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.\nNote: It can be used only in the container format of hls.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "10",
           "member": "uint64",
           "name": "HlsTime",
@@ -22059,7 +22888,7 @@
         },
         {
           "disabled": false,
-          "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment.</li>\n<li>2: HLS+TS byte range.</li>\n<li>7: HLS+MP4 segment.</li>\n<li>5: HLS+MP4 byte range.</li>\nDefault value: 0\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment</li>\n<li>2: HLS+TS byte range</li>\n<li>7: HLS+MP4 segment</li>\n<li>5: HLS+MP4 byte range</li>\nDefault value: 0\n\nNote: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "SegmentType",
@@ -22191,13 +23020,46 @@
         },
         {
           "disabled": false,
-          "document": "Special segment configuration\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Segment duration at startup.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SegmentSpecificInfo",
           "name": "SegmentSpecificInfo",
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the template enables scenario-based settings. \n0: disable. \n1: enable \n \nDefault value: 0\t\n\t\nNote: The values of SceneType and CompressType fields only take effect when this field value is 1.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ScenarioBased",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Valid values: \nnormal: General transcoding scenario: General transcoding and compression scenario.\npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Valid values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -22208,7 +23070,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: AV1 encoding containers currently only support mp4, webm, and mkv.\nNote: H.266 encoding containers currently only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers currently only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers currently only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: \nAV1 encoding containers currently only support mp4, webm, and mkv.\nH.266 encoding containers currently only support mp4, hls, ts, and move. \nVP8 and VP9 encoding containers currently only support webm and mkv.\nMPEG2 and DNxHD encoding containers currently only support mxf.\nMV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "h264",
           "member": "string",
           "name": "Codec",
@@ -22252,7 +23114,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>",
+          "document": "Maximum value of the video stream width (or long edge) in px. Value range: 0 and [128, 4096].\n<li>If both Width and Height are 0, the resolution is the same as the source.</li>\n<li>If Width is 0 but Height is not 0, the width will be proportionally scaled.</li>\n<li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>\n<li>If both Width and Height are not 0, the resolution is as specified by the user.</li>\nNote: If Codec is set to MV-HEVC, the maximum value can be 7680.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Width",
@@ -22263,7 +23125,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].",
+          "document": "Maximum value of the video stream height (or short edge) in px. Value range: 0 and [128, 4,096].\nNote: If Codec is set to MV-HEVC, the maximum value can be 7680.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Height",
@@ -22296,7 +23158,7 @@
         },
         {
           "disabled": false,
-          "document": "Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is \"filling\". Optional filling modes:\n <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be \"flattened\" or \"stretched\".</li>\n<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>\n<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>\n<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.\n\nNote: Only stretch and black are supported for adaptive bitrate streaming.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:\n <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be \"flattened\" or \"stretched\".</li>\n<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>\n<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "black",
           "member": "string",
           "name": "FillType",
@@ -22307,7 +23169,7 @@
         },
         {
           "disabled": false,
-          "document": "Control factor for constant video bitrate. Value range: [0, 51] and 100.\nIt is recommended not to specify this parameter if there are no special requirements.\n\nNote:\nWhen you need to set it to auto, fill in 100.\nIf Mode is set to ABR, the Vcrf value does not need to be configured.\nIf Mode is set to CBR, the Vcrf value does not need to be configured.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The control factor of video constant bitrate. Value range: [0, 51]. If not specified, it means \"auto\". It is recommended not to specify this parameter unless necessary.\nWhen the Mode parameter is set to VBR, if the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.\nWhen the Mode parameter is set to CRF, the Bitrate setting will be invalid, and the encoding will be based on the Vcrf value.\nWhen the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.\nNote: When you need to set it to auto, fill in 100.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Vcrf",
@@ -22340,7 +23202,7 @@
         },
         {
           "disabled": false,
-          "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment.</li>\n<li>2: HLS+TS byte range.</li>\n<li>7: HLS+MP4 segment.</li>\n<li>5: HLS+MP4 byte range.</li>\nDefault value: 0\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment</li>\n<li>2: HLS+TS byte range</li>\n<li>7: HLS+MP4 segment</li>\n<li>5: HLS+MP4 byte range</li>\nDefault value: 0\n\nNote: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "SegmentType",
@@ -22472,13 +23334,46 @@
         },
         {
           "disabled": false,
-          "document": "Special segment configuration\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Segment duration at startup.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SegmentSpecificInfo",
           "name": "SegmentSpecificInfo",
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to enable scenario-based settings for the template. \n0: Disable. \n1: enable \n \nDefault value: 0\t\n\t\nNote: This value takes effect only when the value of this field is 1.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ScenarioBased",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Valid values: \nnormal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.\nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Valid values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. \nhigh_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. \nlow_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. \nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -22705,6 +23600,42 @@
           "name": "CoordinateOrigin",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WordResult": {
+      "document": "Word information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Word text.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "Word",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word start timestamp, in seconds.",
+          "example": "3.204",
+          "member": "float",
+          "name": "Start",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word end timestamp, in seconds.",
+          "example": "5.404",
+          "member": "float",
+          "name": "End",
+          "output_required": false,
+          "type": "float",
           "value_allowed_null": false
         }
       ],

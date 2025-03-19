@@ -1,0 +1,21 @@
+{
+  "actions": {
+    "DescribeImageAnimateJob": [
+      {
+        "document": "Successful API call example",
+        "input": "POST / HTTP/1.1\nHost: vclm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImageAnimateJob\n<Common request parameters>\n\n{\n    \"JobId\": \"1194931538865782784\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"\",\n        \"ErrorMessage\": \"\",\n        \"RequestId\": \"a06a2134-0306-4554-aa9a-232271bfda4f\",\n        \"ResultVideoUrl\": \"\",\n        \"Status\": \"RUN\"\n    }\n}",
+        "title": "Successful API call example"
+      }
+    ],
+    "SubmitImageAnimateJob": [
+      {
+        "document": "Successful API call example",
+        "input": "POST / HTTP/1.1\nHost: vclm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitImageAnimateJob\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://xxx/image-animate/user_input/1.png\",\n    \"TemplateId\": \"ke3\",\n    \"EnableAudio\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1194931538865782784\",\n        \"RequestId\": \"4e6722ba-367b-454e-add0-681a5c50fe20\"\n    }\n}",
+        "title": "Successful API call example"
+      }
+    ]
+  },
+  "version": "1.0"
+}

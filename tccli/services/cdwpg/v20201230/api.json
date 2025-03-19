@@ -1,0 +1,1804 @@
+{
+  "actions": {
+    "CreateInstanceByApi": {
+      "document": "This API is used to create  instance",
+      "input": "CreateInstanceByApiRequest",
+      "name": "Create Instance",
+      "output": "CreateInstanceByApiResponse",
+      "status": "online"
+    },
+    "DescribeInstance": {
+      "document": "This API is used to query the instance information by an instance ID.",
+      "input": "DescribeInstanceRequest",
+      "name": "Describe instance information",
+      "output": "DescribeInstanceResponse",
+      "status": "online"
+    },
+    "DescribeInstanceInfo": {
+      "document": "This API is used to get instance information.",
+      "input": "DescribeInstanceInfoRequest",
+      "name": "Get Instance information",
+      "output": "DescribeInstanceInfoResponse",
+      "status": "online"
+    },
+    "DescribeInstanceState": {
+      "document": "This API is used to display instance status, process progress, etc., in the instance details page.",
+      "input": "DescribeInstanceStateRequest",
+      "name": "Get the status of a instance",
+      "output": "DescribeInstanceStateResponse",
+      "status": "online"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to get a list of  instances.",
+      "input": "DescribeInstancesRequest",
+      "name": "Gets a list of  instances",
+      "output": "DescribeInstancesResponse",
+      "status": "online"
+    },
+    "DescribeSimpleInstances": {
+      "document": "This API is used to get a list of instance",
+      "input": "DescribeSimpleInstancesRequest",
+      "name": "Get a list that includes the simplified information of instance",
+      "output": "DescribeSimpleInstancesResponse",
+      "status": "online"
+    },
+    "DestroyInstanceByApi": {
+      "document": "This API is used to destroy instance.",
+      "input": "DestroyInstanceByApiRequest",
+      "name": "Destroy Instance",
+      "output": "DestroyInstanceByApiResponse",
+      "status": "online"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to modify instance information. Only the name of an instance can be modified currently.",
+      "input": "ModifyInstanceRequest",
+      "name": "Modifies instance information",
+      "output": "ModifyInstanceResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2020-12-30",
+    "serviceNameCN": "云数据仓库 PostgreSQL",
+    "serviceShortName": "cdwpg"
+  },
+  "objects": {
+    "AccessInfo": {
+      "document": "Access information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10.0.0.89:9000",
+          "member": "string",
+          "name": "Address",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tcp",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CBSSpec": {
+      "document": "Disk specifications.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Disk type.",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size.",
+          "example": "20",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number.",
+          "example": "10",
+          "member": "int64",
+          "name": "DiskCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CBSSpecInfo": {
+      "document": "Disk information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Disk type.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "DiskSize",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "DiskCount",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ChargeProperties": {
+      "document": "Billing time parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "1: requires auto-renewal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Order time range.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time unit. Valid values: h and m.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing type: 0 indicates pay-as-you-go and 1 indicates monthly subscription.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "PREPAID and POSTPAID_BY_HOUR\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "ChargeType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateInstanceByApiRequest": {
+      "document": "CreateInstanceByApi request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "cdwpg-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone.",
+          "example": "ap-beijing-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Virtual Private Cloud (VPC).",
+          "example": "vpc-xxx",
+          "member": "string",
+          "name": "UserVPCId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet.",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "UserSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Billing method.",
+          "example": "无",
+          "member": "ChargeProperties",
+          "name": "ChargeProperties",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Instance password.",
+          "example": "无",
+          "member": "string",
+          "name": "AdminPassword",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource information.",
+          "example": "无",
+          "member": "ResourceSpecNew",
+          "name": "Resources",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "无",
+          "member": "string",
+          "name": "ProductVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceByApiResponse": {
+      "document": "CreateInstanceByApi response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceInfoRequest": {
+      "document": "DescribeInstanceInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID.",
+          "example": "cdwpg-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceInfoResponse": {
+      "document": "DescribeInstanceInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance simple information",
+          "example": "无",
+          "member": "SimpleInstanceInfo",
+          "name": "SimpleInstanceInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error Message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceRequest": {
+      "document": "DescribeInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID.",
+          "example": "cdwpg-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceResponse": {
+      "document": "DescribeInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance description information.",
+          "example": "无",
+          "member": "InstanceInfo",
+          "name": "InstanceInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStateRequest": {
+      "document": "DescribeInstanceState request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": " Instance id",
+          "example": "\"cdwpg-sss\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStateResponse": {
+      "document": "DescribeInstanceState response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance status. Example: serving.",
+          "example": "\"Serving\"",
+          "member": "string",
+          "name": "InstanceState",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of instance operation.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"2023-04-10 15:30:00\"",
+          "member": "string",
+          "name": "FlowCreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance operation name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"create\"",
+          "member": "string",
+          "name": "FlowName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance operation progress.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "75",
+          "member": "float",
+          "name": "FlowProgress",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster status description. Example: running.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"运行中\"",
+          "member": "string",
+          "name": "InstanceStateDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance process error messages. Example: \"Creation failed, insufficient resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"dd\"",
+          "member": "string",
+          "name": "FlowMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The name of the current step. Example: \"Purchasing resources.\"Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"create\"",
+          "member": "string",
+          "name": "ProcessName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Enabling status of the instance backup task.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "BackupStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The name of the Instance ID for the search.",
+          "example": "cdwpg-xxxx",
+          "member": "string",
+          "name": "SearchInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The instance name for the search.",
+          "example": "\"ddd\"",
+          "member": "string",
+          "name": "SearchInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameter. The first page is 0, and the second page is 10.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameter. Pagination step length. It is 10 by default.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Searched tag list.",
+          "example": "无",
+          "member": "SearchTags",
+          "name": "SearchTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "18",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance array.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"cdwpg-ccs\",\"cdwpg-ddd\"]",
+          "member": "InstanceInfo",
+          "name": "InstancesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " -Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"cc\"",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSimpleInstancesRequest": {
+      "document": "DescribeSimpleInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Search Instance Id",
+          "example": "无",
+          "member": "string",
+          "name": "SearchInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search Instance Name",
+          "example": "无",
+          "member": "string",
+          "name": "SearchInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "\t\nOffset",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search Tags",
+          "example": "无",
+          "member": "string",
+          "name": "SearchTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSimpleInstancesResponse": {
+      "document": "DescribeSimpleInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total Count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instances List\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceSimpleInfoNew",
+          "name": "InstancesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " Error Message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstanceByApiRequest": {
+      "document": "DestroyInstanceByApi request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id. Example: \"cdwpg-xxxx\".",
+          "example": "\"cdwpg-xxxx\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstanceByApiResponse": {
+      "document": "DestroyInstanceByApi response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Destroy  process ID.",
+          "example": "1254",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DiskSpecPlus": {
+      "document": "Disk specifications.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Disk Count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Max Disk Size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "MaxDiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Min Disk Size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "MinDiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk Type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cvm Class\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CvmClass",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "InstanceInfo": {
+      "document": "instance information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "cn/dn or others.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-cn",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Name\n.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-xxxx",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Status ,such as  2\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Status  Description ,such as Running.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "运行中",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance State Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceStateInfo",
+          "name": "InstanceStateInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CreateTime ,such as 2022-09-05 20:00:01\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-09-05 20:00:01",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region ,such as ap-chongqing.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chongqing",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone : This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chongqing-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "region",
+          "member": "string",
+          "name": "RegionDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zone",
+          "member": "string",
+          "name": "ZoneDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "v3",
+          "member": "string",
+          "name": "Version",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Character set.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zone",
+          "member": "string",
+          "name": "Charset",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CN node list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceNodeGroup",
+          "name": "CNNodes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "DN node list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceNodeGroup",
+          "name": "DNNodes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " Region Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RegionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Vpc Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expire Time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pay Mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "RenewFlag",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessInfo",
+          "name": "AccessDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceNodeGroup": {
+      "document": "Instance node information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Spec Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SpecName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data Disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiskSpecPlus",
+          "name": "DataDisk",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cvm Count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CvmCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceSimpleInfoNew": {
+      "document": "Simplified instance information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wu",
+          "member": "int64",
+          "name": "ID",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Version",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RegionId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region Desc\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RegionDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ZoneId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone Desc\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Vpc Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CreateTime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ExpireTime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccessInfo",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pay Mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceStateInfo": {
+      "document": "Instance State Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance status. Example: serving.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceState",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of instance operation.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowCreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance operation name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance operation progress.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "int64",
+          "name": "FlowProgress",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status description. Example: running.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceStateDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance process error messages. Example: \"Creation failed, insufficient resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowMsg",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The name of the current step. Example: \"Purchasing resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "ProcessName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether there is a backup task in the instance. 1 indicates yes and 0 indicates no.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "int64",
+          "name": "BackupStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Request Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RequestId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Backup Open Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "BackupOpenStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdwch-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the newly modified instance.",
+          "example": "cdwch-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResourceInfo": {
+      "document": "Resource information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "nc2.large",
+          "member": "string",
+          "name": "SpecName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource count.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
+          "member": "int64",
+          "name": "Count",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{ \"DiskType\": \"CLOUD_HSSD\", \"DiskSize\": 20, \"DiskCount\": 10 }",
+          "member": "CBSSpecInfo",
+          "name": "DiskSpec",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Local",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceSpecNew": {
+      "document": "Resource specifications.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource name.",
+          "example": "nc2.large",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource count.",
+          "example": "200",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Disk information.",
+          "example": "{ \"DiskType\": \"CLOUD_HSSD\", \"DiskSize\": 20, \"DiskCount\": 10 }",
+          "member": "CBSSpec",
+          "name": "DiskSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Resource type, DATA.",
+          "example": "Local",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "SearchTags": {
+      "document": "List of tags searched on the list page.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.",
+          "example": "标签一",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value.",
+          "example": "标签值一",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "1 means only the Tag key is entered without a value, and 0 means both the key and the value are entered.",
+          "example": "1",
+          "member": "int64",
+          "name": "AllValue",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SimpleInstanceInfo": {
+      "document": "Cluster information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wu",
+          "member": "int64",
+          "name": "ID",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Version",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserVPCID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserSubnetID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CreateTime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ExpireTime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AccessInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RenewFlag",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Charge Properties\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ChargeProperties",
+          "name": "ChargeProperties",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resources\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResourceInfo",
+          "name": "Resources",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tags\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Tag description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.",
+          "example": "标签一",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value.",
+          "example": "内容一",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  }
+}

@@ -10,16 +10,16 @@
     ],
     "CreateAudioModerationTask": [
       {
-        "document": "This example shows you how to create an audio moderation task.",
-        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAudioModerationTask\n<Common request parameters>\n\n{\n    \"Type\": \"AUDIO\",\n    \"Tasks\": [\n        {\n            \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n            \"Input\": {\n                \"Url\": \"https://test.myqcloud.com/test.mp3\"\n            }\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n                \"TaskId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\",\n                \"Code\": \"OK\",\n                \"Message\": \"Success\"\n            }\n        ],\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
-        "title": "Creating audio moderation task"
-      },
-      {
         "document": "If you configure `Seed` when creating a moderation task, we will add the signature parameter to the callback to ensure the data security.\nSignature algorithm: add the `X-Signature` field to the returned HTTP header, whose value is the SHA256-encoded hex string of `seed` + `body`.\n\nFor example:\nIf your ` CallbackUrl` is `http://example.com` and `Seed` is `dedb6dcc1cb7c63fde8fa5abfd57`, and the returned callback data is: \n```{\"TaskId\": \"task-video-X0zpcRUMzVidxj20\",\"DataId\":\"test\",\"Suggestion\": \"Block\"}```,\nThen, after completing the moderation, we will pass in `X-Signature` with the following value in the HTTP header when calling `http://example.com`:\n`74f0ae6d1f1e4eb1ffe4162da480a812f8a4dc19fe5a52bacbcd2c862d3edcfd`\n\n> Note: for the callback body format, see the API for task details query.",
         "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAudioModerationTask\n<Common request parameters>\n\n{\n    \"Type\": \"AUDIO\",\n    \"CallbackUrl\": \"https://apis.example.com/callback/audio\",\n    \"Seed\": \"dedb6dcc1cb7c63fde8fa5abfd57\",\n    \"Tasks\": [\n        {\n            \"DataId\": \"test\",\n            \"Input\": {\n                \"Url\": \"https://test.myqcloud.com/test.mp3\"\n            }\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"DataId\": \"test\",\n                \"TaskId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\",\n                \"Code\": \"OK\",\n                \"Message\": \"Success\"\n            }\n        ],\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
         "title": "Sample callback signature"
+      },
+      {
+        "document": "This example shows you how to create an audio moderation task.",
+        "input": "POST / HTTP/1.1\nHost: ams.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAudioModerationTask\n<Common request parameters>\n\n{\n    \"Type\": \"AUDIO\",\n    \"Tasks\": [\n        {\n            \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n            \"Input\": {\n                \"Url\": \"https://test.myqcloud.com/test.mp3\"\n            }\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"DataId\": \"0a782332-c9db-4cf5-a66e-20d60b4ea469\",\n                \"TaskId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\",\n                \"Code\": \"OK\",\n                \"Message\": \"Success\"\n            }\n        ],\n        \"RequestId\": \"c933aca1-90d2-4ab8-b045-f1b08069d76f\"\n    }\n}",
+        "title": "Creating audio moderation task"
       }
     ],
     "DescribeTaskDetail": [

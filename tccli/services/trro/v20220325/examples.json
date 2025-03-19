@@ -1,0 +1,157 @@
+{
+  "actions": {
+    "BatchDeleteDevices": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchDeleteDevices\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49ry0i0xlm7\",\n    \"DeviceIds\": [\n        \"dev1\",\n        \"dev2\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedDeviceIds\": [],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Delete Device Examples In Batches"
+      }
+    ],
+    "BatchDeletePolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchDeletePolicy\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49ry0i0xlm7\",\n    \"RemoteDeviceIds\": [\n        \"test1\",\n        \"test2\"\n    ],\n    \"PolicyMode\": \"black\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedRemoteDeviceIds\": [],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Batch Deleting Permission Example"
+      }
+    ],
+    "CreateDevice": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDevice\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49r2nwpey5c\",\n    \"DeviceId\": \"test2\",\n    \"DeviceName\": \"test_device\",\n    \"DeviceType\": \"field\",\n    \"DeviceToken\": \"abcd1234abcd1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Create a Device Example"
+      }
+    ],
+    "CreateProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProject\n<Common request parameters>\n\n{\n    \"ProjectName\": \"my_project\",\n    \"ProjectDescription\": \"project description info\",\n    \"PolicyMode\": \"black\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"ProjectId\": \"f3glr49r3axn0fu2\"\n    }\n}",
+        "title": "Example Of Creating a Project"
+      }
+    ],
+    "DeleteProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteProject\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49rc96pralw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Example Of Deleting a Project"
+      }
+    ],
+    "DescribeDeviceInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeviceInfo\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49ry0i0xlm7\",\n    \"DeviceId\": \"test1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DeviceName\": \"test device1\",\n        \"LastReportTime\": \"2022-03-22T09:00:00+08:00\",\n        \"DeviceStatus\": \"offline\",\n        \"DeviceType\": \"field\",\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"ModifyTime\": \"2022-03-22T08:00:00+08:00\"\n    }\n}",
+        "title": "Getting Device Information Example"
+      }
+    ],
+    "DescribeDeviceSessionList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeviceSessionList\n<Common request parameters>\n\n{\n    \"PageNumber\": \"1\",\n    \"PageSize\": \"10\",\n    \"ProjectId\": \"abcdefg\",\n    \"DeviceId\": \"dev2\",\n    \"StartTime\": \"0\",\n    \"EndTime\": \"1670000000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DeviceSessionList\": [\n            {\n                \"EndTime\": 1650000060,\n                \"FieldDeviceId\": \"dev2\",\n                \"Quality\": \"good\",\n                \"RemoteDeviceId\": \"dev2\",\n                \"Resolution\": \"1920*1080\",\n                \"SessionId\": \"abcdefg-50f7-4c60-9c89-e7076c8529a9-0\",\n                \"StartTime\": 1650000000\n            }\n        ],\n        \"RequestId\": \"abcdefg-186d-4dc5-9a36-6849446dd921\",\n        \"Total\": 1,\n        \"Num\": 1\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
+    "DescribeProjectInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectInfo\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49r3axn0fu2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"ModifyTime\": \"2022-03-22T13:08:04+08:00\",\n        \"ProjectName\": \"project1\",\n        \"ProjectDescription\": \"test project\",\n        \"PolicyMode\": \"black\"\n    }\n}",
+        "title": "Obtain Project Information Example"
+      }
+    ],
+    "DescribeProjectList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectList\n<Common request parameters>\n\n{\n    \"PageSize\": 10,\n    \"PageNumber\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"Num\": 2,\n        \"Total\": 2,\n        \"Projects\": [\n            {\n                \"ModifyTime\": \"2022-03-22T13:08:04+08:00\",\n                \"ProjectName\": \"mytest2\",\n                \"ProjectId\": \"f3glr49r2nwpey5c\",\n                \"ProjectDescription\": \"test2\",\n                \"PolicyMode\": \"black\"\n            },\n            {\n                \"ModifyTime\": \"2022-03-22T13:08:04+08:00\",\n                \"ProjectName\": \"project1\",\n                \"ProjectId\": \"f3glr49r3axn0fu2\",\n                \"ProjectDescription\": \"test project\",\n                \"PolicyMode\": \"black\"\n            }\n        ]\n    }\n}",
+        "title": "Getting Project List Example"
+      }
+    ],
+    "DescribeRecentSessionList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecentSessionList\n<Common request parameters>\n\n{\n    \"PageNumber\": \"1\",\n    \"PageSize\": \"10\",\n    \"ProjectId\": \"abcdefg\",\n    \"DeviceId\": \"dev2\",\n    \"StartTime\": \"0\",\n    \"EndTime\": \"1670000000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RecentSessionList\": [\n            {\n                \"LatestUpdateTime\": 1650000060,\n                \"FieldDeviceId\": \"dev2\",\n                \"RemoteDeviceId\": \"dev2\",\n                \"Resolution\": \"1920*1080\",\n                \"SessionId\": \"abcdefg-50f7-4c60-9c89-e7076c8529a9-0\",\n                \"StartTime\": 1650000000\n            }\n        ],\n        \"RequestId\": \"abcdefg-186d-4dc5-9a36-6849446dd921\",\n        \"Total\": 1,\n        \"Num\": 1\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
+    "DescribeSessionStatistics": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSessionStatistics\n<Common request parameters>\n\n{\n    \"ProjectId\": \"abcdefg\",\n    \"EndTime\": \"1670000000\",\n    \"DeviceId\": \"dev2\",\n    \"StartTime\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ActiveFieldDeviceNum\": 1,\n        \"ActiveRemoteDeviceNum\": 1,\n        \"NotBadSessionRatio\": 100,\n        \"RequestId\": \"abcdefg-1d31-47bc-8725-76124984f005\",\n        \"SessionNum\": 6,\n        \"TotalDuration\": 604\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
+    "DescribeSessionStatisticsByInterval": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSessionStatisticsByInterval\n<Common request parameters>\n\n{\n    \"ProjectId\": \"abcdefg\",\n    \"EndTime\": \"1670000000\",\n    \"StatisticInterval\": \"hour\",\n    \"DeviceId\": \"dev2\",\n    \"StartTime\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abcdefg-774e-4756-9f5b-8faa55ae1e5b\",\n        \"SessionStatistics\": [\n            {\n                \"ActiveFieldDeviceNum\": 1,\n                \"ActiveRemoteDeviceNum\": 0,\n                \"SessionNum\": 1,\n                \"StartTime\": 1661151600,\n                \"EndTime\": 1661152600,\n                \"TotalDuration\": 20,\n                \"NotBadSessionRatio\": 50\n            },\n            {\n                \"ActiveFieldDeviceNum\": 1,\n                \"ActiveRemoteDeviceNum\": 0,\n                \"SessionNum\": 2,\n                \"StartTime\": 1661162400,\n                \"EndTime\": 1661152600,\n                \"TotalDuration\": 20,\n                \"NotBadSessionRatio\": 10\n            },\n            {\n                \"ActiveFieldDeviceNum\": 1,\n                \"ActiveRemoteDeviceNum\": 1,\n                \"SessionNum\": 4,\n                \"StartTime\": 1661166000,\n                \"EndTime\": 1661176000,\n                \"TotalDuration\": 604,\n                \"NotBadSessionRatio\": 20\n            },\n            {\n                \"ActiveFieldDeviceNum\": 1,\n                \"ActiveRemoteDeviceNum\": 0,\n                \"SessionNum\": 1,\n                \"StartTime\": 1661166000,\n                \"EndTime\": 1661176000,\n                \"TotalDuration\": 10,\n                \"NotBadSessionRatio\": 30\n            }\n        ]\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "GetDeviceLicense": [
+      {
+        "document": "Get the available license quantity for a device",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetDeviceLicense\n<Common request parameters>\n\n{\n    \"ProjectId\": \"m82k5408n675phvb\",\n    \"DeviceId\": \"dev1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AvailableCount\": 12,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Getting Device License"
+      }
+    ],
+    "GetDevices": [
+      {
+        "document": "Query the list of licenses purchased by the user and device binding status",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetDevices\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 10,\n    \"ProjectId\": \"m82k5408n675phvb\",\n    \"DeviceId\": \"dev1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"468bf31b-b5f7-44c4-8663-8d9548693cf5\",\n        \"Devices\": [\n            {\n                \"DeviceId\": \"dev1\",\n                \"DeviceName\": \"vin234\",\n                \"LicenseCount\": 2,\n                \"RemainDay\": 30,\n                \"ExpireTime\": \"167840945\",\n                \"Duration\": \"86400\",\n                \"MonthlyRemainTime\": 66000,\n                \"LimitedTime\": 60000,\n                \"LicenseIds\": [\n                    \"trro-2e24a74a-67ea-1732-076d-75bf772529a\",\n                    \"trro-2e24a74a-67ea-1732-073d-75bf772579a\"\n                ]\n            },\n            {\n                \"DeviceId\": \"dev1\",\n                \"DeviceName\": \"vin123\",\n                \"LicenseCount\": 2,\n                \"RemainDay\": 30,\n                \"ExpireTime\": \"167840945\",\n                \"Duration\": \"86400\",\n                \"MonthlyRemainTime\": 66000,\n                \"LimitedTime\": 60000,\n                \"LicenseIds\": [\n                    \"trro-2e24a74a-67ea-1732-076d-75bf772529a\",\n                    \"trro-2e24a74a-67ea-1732-073d-75bf772579a\"\n                ]\n            }\n        ],\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Query License List"
+      }
+    ],
+    "GetLicenseStat": [
+      {
+        "document": "Statistics of license quantity by type",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetLicenseStat\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Valid\": 10,\n        \"Bound\": 8,\n        \"UnBound\": 2,\n        \"Expire\": 1,\n        \"MonthlyExpire\": 0,\n        \"RequestId\": \"72e27b83-97e4-4325-f4e3-cac52c5ed9e3\"\n    }\n}",
+        "title": "License Statistics"
+      }
+    ],
+    "GetLicenses": [
+      {
+        "document": "Query the list of licenses purchased by the user and device binding status",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetLicenses\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"Licenses\": [\n            {\n                \"Status\": 0,\n                \"Duration\": \"86400\",\n                \"ExpireTime\": \"1686362610\",\n                \"RemainDay\": 82,\n                \"Count\": 2,\n                \"LicenseIds\": [\n                    \"trro-2e24a74a-67ea-1732-076d-75bf772529a\",\n                    \"trro-2e24a74a-67ea-1732-073d-75bf772579a\"\n                ]\n            },\n            {\n                \"Status\": 0,\n                \"Duration\": \"186400\",\n                \"ExpireTime\": \"1689386610\",\n                \"RemainDay\": 117,\n                \"LicenseIds\": [\n                    \"trro-2e24a74a-67ea-1732-076d-75bf772529a\",\n                    \"trro-2e24a74a-67ea-1732-073d-75bf772579a\"\n                ],\n                \"Count\": 2\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"33086049-513e-561c-8bce-484e18244613\"\n    }\n}",
+        "title": "License List"
+      }
+    ],
+    "ModifyDevice": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDevice\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49ry0i0xlm7\",\n    \"DeviceId\": \"test1\",\n    \"DeviceName\": \"test_device\",\n    \"DeviceToken\": \"abcd1234abcd1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Modifying Device Information Example"
+      }
+    ],
+    "ModifyPolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPolicy\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49rc96pralw\",\n    \"RemoteDeviceId\": \"test3\",\n    \"FieldDeviceIds\": [\n        \"dev2\",\n        \"dev3\"\n    ],\n    \"PolicyMode\": \"black\",\n    \"ModifyMode\": \"add\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedInsertIds\": [],\n        \"FailedDeleteIds\": [],\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Example Of Modifying Permissions"
+      }
+    ],
+    "ModifyProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trro.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProject\n<Common request parameters>\n\n{\n    \"ProjectId\": \"f3glr49rc96pralw\",\n    \"ProjectName\": \"mytest\",\n    \"ProjectDescription\": \"test2\",\n    \"PolicyMode\": \"black\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Example Of Modifying Project API"
+      }
+    ]
+  },
+  "version": "1.0"
+}

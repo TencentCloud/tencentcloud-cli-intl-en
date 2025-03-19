@@ -1,7 +1,7 @@
 {
   "actions": {
     "ApplyCardVerification": {
-      "document": "The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:  \n<table> <thead> <tr> <td>Nationality</td> <td style=\"width:200px\">CardType</td> <td style=\"width:200px\">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Taiwan</td> <td>ID Card</td> <td>Yes</td> </tr> </tbody> </table>",
+      "document": "The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:  \n<table> <thead> <tr> <td>Nationality</td> <td style=\"width:200px\">CardType</td> <td style=\"width:200px\">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Driving License</td> <td>No</td> </tr> <tr> <td>Taiwan</td> <td>ID Card</td> <td>Yes</td> </tr>  <tr> <td>Bangladesh</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Nigeria</td> <td>Driving License</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Pakistan</td> <td>Driving License</td> <td>Yes</td> </tr> </tbody> </table>",
       "input": "ApplyCardVerificationRequest",
       "name": "ApplyCardVerification",
       "output": "ApplyCardVerificationResponse",
@@ -15,7 +15,7 @@
       "status": "online"
     },
     "ApplySdkVerificationToken": {
-      "document": "This API is used to apply for a token before calling the Identity Verification SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "document": "This API is used to apply for a token before calling the eKYC SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
       "input": "ApplySdkVerificationTokenRequest",
       "name": "Applies for tokens for SDK-based verification",
       "output": "ApplySdkVerificationTokenResponse",
@@ -64,7 +64,7 @@
       "status": "online"
     },
     "GenerateReflectSequence": {
-      "document": "This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the identity verification process.\nThe data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.",
+      "document": "This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the eKYC process.\nThe data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.",
       "input": "GenerateReflectSequenceRequest",
       "name": "Obtains light sequences",
       "output": "GenerateReflectSequenceResponse",
@@ -85,7 +85,7 @@
       "status": "online"
     },
     "GetFaceIdTokenIntl": {
-      "document": "This API is used to apply for an SDK token before calling the liveness detection and face comparison SDK each time. The SDK token is used throughout the identity verification process and to get the verification result after the verification is completed. A token is valid for one identity verification process only.",
+      "document": "This API is used to apply for an SDK token before calling the selfie verification SDK each time. The SDK token is used throughout the eKYC process and to get the verification result after the verification is completed. A token is valid for one eKYC process only.",
       "input": "GetFaceIdTokenIntlRequest",
       "name": "Gets the SDK token for liveness detection and face comparison",
       "output": "GetFaceIdTokenIntlResponse",
@@ -251,7 +251,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Please select the country code of ID document.\nIDN: Indonesia\nHKG: Hong Kong\nTHA: Thailand\nMYS: Malaysia\nSGP: Singapore\nJPN: Japan\nTWN:Taiwan\nAUTO: Automatic Identification",
+          "document": "Please select the country code of ID document.\nIDN: Indonesia\nHKG: Hong Kong\nTHA: Thailand\nMYS: Malaysia\nSGP: Singapore\nJPN: Japan\nTWN:Taiwan\nBGD:Bangladesh \nNGA:Nigeria\nPAK:Pakistan\nAUTO: Automatic Identification",
           "example": "IDN",
           "member": "string",
           "name": "Nationality",
@@ -659,12 +659,78 @@
       ],
       "usage": "out"
     },
+    "BangladeshIDCard": {
+      "document": "Bangladesh ID card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Age.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issued country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CardInfo": {
       "document": "License OCR result",
       "members": [
         {
           "disabled": false,
-          "document": "Hong Kong ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hong Kong ID (China) Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HKIDCard",
           "name": "HKIDCard",
@@ -744,7 +810,7 @@
         },
         {
           "disabled": false,
-          "document": "ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InternationalIDPassport",
           "name": "InternationalIDPassport",
@@ -794,7 +860,7 @@
         },
         {
           "disabled": false,
-          "document": "Macao ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Macao (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MacaoIDCard",
           "name": "MacaoIDCard",
@@ -804,7 +870,7 @@
         },
         {
           "disabled": false,
-          "document": "TaiWan ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "TaiWan (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaiWanIDCard",
           "name": "TaiWanIDCard",
@@ -818,6 +884,56 @@
           "example": "无",
           "member": "JapanIDCard",
           "name": "JapanIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bangladesh ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BangladeshIDCard",
+          "name": "BangladeshIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nigeria ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NigeriaIDCard",
+          "name": "NigeriaIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nigeria driving license\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NigeriaDrivingLicense",
+          "name": "NigeriaDrivingLicense",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pakistan ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PakistanIDCard",
+          "name": "PakistanIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pakistan driving license\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PakistanDrivingLicense",
+          "name": "PakistanDrivingLicense",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -870,7 +986,7 @@
         },
         {
           "disabled": false,
-          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\nWhen the value of `IdCardType` is `PhilippinesUMID`:\n- Surname (string): Surname.\n- MiddleName (string):Middle name.\n- GivenName (string): Given name.\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- CRN (string): Common reference number (CRN).\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.\n(1) Hong Kong (China) identity card\nWhen the value of `IdCardType` is `HK`:\n- CnName (string): Name in Chinese.\n- EnName (string): Name in English.\n- TelexCode (string): The code corresponding to the name in Chinese.\n- Sex (string): Gender. Valid values: `M` (male) and `F` (female).\n- Birthday (string): Date of birth.\n- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).\n- IdNum (string): Identity card number.\n- Symbol (string): The ID symbol below the date of birth, such as \"***AZ\".\n- FirstIssueDate (string): Month and year of first registration.\n- CurrentIssueDate (string): The date of latest issuance.\n\n(2) Malaysian identity card\nWhen the value of `IdCardType` is `ML`:\n- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).\n- Birthday (string): Date of birth.\n- ID (string): Identity card number.\n- Name (string): Name.\n- Address (string): Address.\n- Type (string): Identity document type.\n\n(3) Philippine identity document\nWhen the value of `IdCardType` is `PhilippinesVoteID`:\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- VIN (string): Voter's identification number (VIN).\n- CivilStatus (string): Civil status.\n- Citizenship (string): Citizenship.\n- PrecinctNo (string): Precinct.\n\nWhen the value of `IdCardType` is `PhilippinesDrivingLicense`:\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Name (string): Name.\n- Address (string): Address.\n- LastName (string): Last name.\n- FirstName (string): First name.\n- MiddleName (string): Middle name.\n- Nationality (string): Nationality.\n- LicenseNo (string): License number.\n- ExpiresDate (string): Expiration date.\n- AgencyCode (string): Agency code.\n\nWhen the value of `IdCardType` is `PhilippinesTinID`:\n- LicenseNumber (string): Tax identification number (TIN).\n- FullName (string): Full name.\n- Address (string): Address.\n- Birthday (string): Date of birth.\n- IssueDate (string): Issue date.\n\nWhen the value of `IdCardType` is `PhilippinesSSSID`:\n- LicenseNumber (string): Common reference number (CRN).\n- FullName (string): Full name.\n- Birthday (string): Date of birth.\n\nWhen the value of `IdCardType` is `PhilippinesUMID`:\n- Surname (string): Surname.\n- MiddleName (string):Middle name.\n- GivenName (string): Given name.\n- Sex (string): Gender.\n- Birthday (string): Date of birth.\n- Address (string): Address.\n- CRN (string): Common reference number (CRN).\n\n(4) Indonesian identity card\nWhen the value of `IdCardType` is `IndonesiaIDCard`:\n- NIK (string): Single Identity Number.\n- Nama (string): Full name.\n- TempatTglLahir (string): Place and date of birth.\n- JenisKelamin (string): Gender.\n- GolDarah (string): Blood type.\n- Alamat (string): Address.\n- RTRW (string): Street.\n- KelDesa (string): Village.\n- Kecamatan (string): Region.\n- Agama (string): Religion.\n- StatusPerkawinan (string): Marital status.\n- Perkerjaan (string): Occupation.\n- KewargaNegaraan (string): Nationality.\n- BerlakuHingga (string): Expiry date.\n- IssuedDate (string): Issue date.\n\n(5) A passport issued in Hong Kong (China) /Macao (China) /Taiwan (China) or other countries/regions\nWhen the value of `IdCardType` is `MLIDPassport`:\n- FullName (string): Full name.\n- Surname (string): Surname.\n- GivenName (string): Given name.\n- Birthday (string): Date of birth.\n- Sex (string): Gender. Valid values: `F` (female) and `M` (male).\n- DateOfExpiration (string): Expiration date.\n- IssuingCountry (string): Issuing country.\n- NationalityCode (string): Country/region code.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoOcrJson",
@@ -936,8 +1052,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Base64 value of photos used for face comparison. \nThe size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length:61944)KiiK//2Q==\"",
+          "document": "Base64 string of the image for face comparison.\n- The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\n- Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the encoding specification.",
+          "example": "/9j/4AAQSk...KiiK//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": true,
@@ -945,8 +1061,8 @@
         },
         {
           "disabled": false,
-          "document": "Base64 value of videos used for face comparison. \nThe size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length: 597242)U7JbKxuf/Z\"",
+          "document": "Base64 string of the video for liveness detection.\n- The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\n-Use standard Base64 encoding (with = padding), following RFC4648.",
+          "example": "/9j/4AAQSk...U7JbKxuf/Z",
           "member": "string",
           "name": "VideoBase64",
           "required": true,
@@ -954,8 +1070,8 @@
         },
         {
           "disabled": false,
-          "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.\nExample value: \"SILENT\"",
-          "example": "\"SILENT\"",
+          "document": "Liveness detection type.\n-Values:\nACTION is action mode.\nSILENT is silent mode.\n-Choose one of the two modes to pass in.",
+          "example": "SILENT",
           "member": "string",
           "name": "LivenessType",
           "required": true,
@@ -963,8 +1079,8 @@
         },
         {
           "disabled": false,
-          "document": "When the \"LivenessType\" parameter is \"ACTION\", it must be specified.\nIt is used to control the action sequence. Action types: \n1 (open mouth)\n2 (blink)\n3 (nod)\n4 (shake head). \nSelect one or two from the four actions.\nExample of passing single action parameter: \"1\".\nExample of passing multiple action parameters: \"4,2\".\nWhen the \"LivenessType\" parameter value is \"SILENT\", it shall be unspecified.\nExample value: \"\"",
-          "example": "\"\"",
+          "document": "Control the action sequence. Action types include: 1 (open mouth), 2 (blink), 3 (nod), 4 (shake head). Supports one or two actions.\n-Required when the LivenessType parameter is set to ACTION.\n-Single action example: \"1\".\n-Multiple actions parameter passing example: \"4,2\".\n-When the LivenessType parameter is set to SILENT, leave it blank.",
+          "example": "1",
           "member": "string",
           "name": "ValidateData",
           "required": false,
@@ -978,8 +1094,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Service error code. When the return value is \"Success\", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). \nExample Value: \"Success\".",
-          "example": "\"Success\"",
+          "document": "Business Error Codes.\n-When the return value is \"Success\", it indicates that liveness detection and face comparison passed. Determined to be the same person.\n-When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.\n-For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)",
+          "example": "Success",
           "member": "string",
           "name": "Result",
           "output_required": true,
@@ -988,8 +1104,8 @@
         },
         {
           "disabled": false,
-          "document": "Description of business results. \nExample value: \"Success\"",
-          "example": "\"Success\"",
+          "document": "The service result description",
+          "example": "Success",
           "member": "string",
           "name": "Description",
           "output_required": true,
@@ -998,7 +1114,7 @@
         },
         {
           "disabled": false,
-          "document": "This value is valid when the \"Result\" parameter is \"Success\" or \"FailedOperation.CompareLowSimilarity.\" \nThis value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 10,000. \nExample value: 80.00",
+          "document": "This value indicates the similarity of face comparison. Value range: 0.00-100.00.\n- The false acceptance rate for a threshold of 70 is 0.1%, and for a threshold of 80, it is 0.01%.\n- This value is valid when the Result parameter is \"Success\" or \"FailedOperation.CompareLowSimilarity\".",
           "example": "80.00",
           "member": "float",
           "name": "Sim",
@@ -1008,8 +1124,8 @@
         },
         {
           "disabled": false,
-          "document": "The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return \"null\", indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length:142036)s97n//2Q==\"",
+          "document": "The best screenshot photo from the video after verification, encoded in BASE64, in jpg format.\nThe optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return \"null\", indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
+          "example": "/9j/4AAQSk...s97n//2Q==",
           "member": "string",
           "name": "BestFrameBase64",
           "output_required": true,
@@ -1234,7 +1350,7 @@
         {
           "disabled": false,
           "document": "Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.",
-          "example": "iVBORw0KGgoAA......",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "FaceInput",
           "required": false,
@@ -1243,7 +1359,7 @@
         {
           "disabled": false,
           "document": "The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter",
-          "example": "true",
+          "example": "1",
           "member": "int64",
           "name": "FaceInputType",
           "required": false,
@@ -1261,7 +1377,7 @@
         {
           "disabled": false,
           "document": "Encrypted ciphertext; The data format before encryption is as follows:{\"FaceInput\":\"AAAAA\",\"FaceInputType\":1}",
-          "example": "无",
+          "example": "fH6Fc1xHm......UrjSoYE",
           "member": "string",
           "name": "EncryptedBody",
           "required": false,
@@ -1799,7 +1915,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.",
+          "document": "The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the eKYC process.",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
           "name": "ReflectSequenceUrl",
@@ -1928,7 +2044,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
+          "document": "The ID of the SDK-based selfie verification process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
           "example": "aeee6d62-b2b2-4634-9662-919a5ac729ab",
           "member": "string",
           "name": "SdkToken",
@@ -1943,7 +2059,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Liveness detection and face comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
+          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Selfie verification comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
           "example": "0",
           "member": "string",
           "name": "Result",
@@ -1979,7 +2095,7 @@
         },
         {
           "disabled": false,
-          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "89.99",
           "member": "float",
           "name": "Similarity",
@@ -2009,7 +2125,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Liveness detection and face comparison.\nDefault value: `liveness`.",
+          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Selfie verification.\nDefault value: `liveness`.",
           "example": "liveness",
           "member": "string",
           "name": "CheckMode",
@@ -2251,7 +2367,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Selfie Verification (Mobile HTML5) Error Codes</a>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -2426,11 +2542,11 @@
       "type": "object"
     },
     "HKIDCard": {
-      "document": "Hong Kong ID card.",
+      "document": "Hong Kong (China) ID card.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.\nExample:  SAN, Nan",
           "example": "申能",
           "member": "string",
           "name": "CnName",
@@ -2532,7 +2648,7 @@
       "usage": "out"
     },
     "HMTPermit": {
-      "document": "Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan",
+      "document": "Exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China)",
       "members": [
         {
           "disabled": false,
@@ -2880,7 +2996,7 @@
       "usage": "out"
     },
     "InternationalIDPassport": {
-      "document": "ID cards of Hong Kong, Macao and Taiwan (China), and international passport.",
+      "document": "ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.",
       "members": [
         {
           "disabled": false,
@@ -3254,7 +3370,7 @@
       "usage": "out"
     },
     "MacaoIDCard": {
-      "document": "Macao ID Card",
+      "document": "Macao (China) IDCard",
       "members": [
         {
           "disabled": false,
@@ -3360,7 +3476,7 @@
       "usage": "out"
     },
     "MainlandIDCard": {
-      "document": "Mainland ID Card OCR",
+      "document": "Mainland (China) ID Card OCR",
       "members": [
         {
           "disabled": false,
@@ -3442,12 +3558,184 @@
       ],
       "usage": "both"
     },
+    "NigeriaDrivingLicense": {
+      "document": "Nigeria driving license",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name.\nNote: This field may return null, indicating that no valid values can be obtained.\n",
+          "example": "无",
+          "member": "string",
+          "name": "LastName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Age.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issued country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpirationDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issued date.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gender.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": " 无",
+          "member": "string",
+          "name": "Sex",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "NigeriaIDCard": {
+      "document": "Nigeria ID card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Age.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issued country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gender.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Sex",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "NormalCardInfo": {
       "document": "License OCR result",
       "members": [
         {
           "disabled": false,
-          "document": "Hong Kong ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hong Kong (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NormalHKIDCard",
           "name": "HKIDCard",
@@ -3527,7 +3815,7 @@
         },
         {
           "disabled": false,
-          "document": "ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InternationalIDPassport",
           "name": "InternationalIDPassport",
@@ -3577,7 +3865,7 @@
         },
         {
           "disabled": false,
-          "document": "Macao ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Macao (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MacaoIDCard",
           "name": "MacaoIDCard",
@@ -3587,7 +3875,7 @@
         },
         {
           "disabled": false,
-          "document": "Mainland ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Mainland (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MainlandIDCard",
           "name": "MainlandIDCard",
@@ -3607,7 +3895,7 @@
         },
         {
           "disabled": false,
-          "document": "Taiwan ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Taiwan (China) ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaiWanIDCard",
           "name": "TaiWanIDCard",
@@ -3617,7 +3905,7 @@
         },
         {
           "disabled": false,
-          "document": "exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HMTPermit",
           "name": "HMTPermitCard",
@@ -3629,7 +3917,7 @@
       "usage": "out"
     },
     "NormalHKIDCard": {
-      "document": "Hong Kong ID card.",
+      "document": "Hong Kong (China) ID card.",
       "members": [
         {
           "disabled": false,
@@ -4194,6 +4482,138 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PakistanDrivingLicense": {
+      "document": "Pakistan driving license",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Age.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gender.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PakistanIDCard": {
+      "document": "Pakistan ID card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Age.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issued country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4771,7 +5191,7 @@
       "usage": "out"
     },
     "TaiWanIDCard": {
-      "document": "Taiwan ID card.",
+      "document": "Taiwan (China) ID card.",
       "members": [
         {
           "disabled": false,
@@ -5133,7 +5553,7 @@
         },
         {
           "disabled": false,
-          "document": "Detection mode, parameter values are as follows:\n1: OCR+living detection & face comparison;\n2: Living detection & face comparison;\n3: Living detection;\nThe default value is 2.\nExample value: 3",
+          "document": "Detection mode, parameter values are as follows:\n1: OCR+living detection & face comparison;\n2: Living detection & face comparison;\n3: Living detection;\n4: OCR;\nThe default value is 2.\nExample value: 3",
           "example": "1",
           "member": "int64",
           "name": "CheckMode",
@@ -5142,7 +5562,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.\n10.IndonesiaDrivingLicense:Indonesia driving license\n11.ThailandIDCard: Thailand ID card\n12.ThailandDrivingLicense: Thailand driving license\n13.MLDrivingLicense: Malaysia driving license\n14.SingaporeIDCard: Singapore ID card\n15.SingaporeDrivingLicense: Singapore driving license\n16.JapanIDCard: Japan ID card\n17.JapanDrivingLicense: Japan driving license\n18.PhilippinesIDCard: Philippines ID card\n19.MainlandIDCard: Mainland ID card\n20.MacaoIDCard: Macao ID card\nExample: HKIDCard",
+          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.\n10.IndonesiaDrivingLicense:Indonesia driving license\n11.ThailandIDCard: Thailand ID card\n12.ThailandDrivingLicense: Thailand driving license\n13.MLDrivingLicense: Malaysia driving license\n14.SingaporeIDCard: Singapore ID card\n15.SingaporeDrivingLicense: Singapore driving license\n16.JapanIDCard: Japan ID card\n17.JapanDrivingLicense: Japan driving license\n18.PhilippinesIDCard: Philippines ID card\n19.MainlandIDCard: Mainland (China) ID card\n20.MacaoIDCard: Macao (China) ID card\nExample: HKIDCard",
           "example": "HKIDCard",
           "member": "string",
           "name": "IDCardType",
@@ -5220,6 +5640,15 @@
           "name": "ActionList",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control liveness retry number.The value range is 1-99.",
+          "example": "3",
+          "member": "int64",
+          "name": "LivenessRetryLimit",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"

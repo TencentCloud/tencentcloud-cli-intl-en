@@ -11,7 +11,7 @@
     "BindApiApp": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=BindApiApp\n&ApiAppId=app-kzofrjbl\n&Environment=test\n&ServiceId=service-ody35h5e\n&ApiId=api-c6piso8y\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=BindApiApp\n&ApiAppId=app-kzofrjbl\n&Environment=test\n&ServiceId=service-ody35h51\n&ApiId=api-c6piso8y\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"a6c567f9-7a55-43b9-81d2-f721da5e271a\"\n    }\n}",
         "title": "BindApiApp"
       }
@@ -35,9 +35,9 @@
     "BindSecretIds": [
       {
         "document": "\t\nThis example shows you how to bind a key to a usage plan.",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common Request Parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"fcc3e46c-931d-4c58-88e9-f3cfc2251769\"\n    }\n}",
-        "title": "Binding a key to a usage plan"
+        "title": "Binding a Key to a Usage Plan"
       }
     ],
     "BindSubDomain": [
@@ -334,6 +334,14 @@
         "title": "Querying API status"
       }
     ],
+    "DescribeExclusiveInstanceRegions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: apigateway.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExclusiveInstanceRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e6e4a58-8059-4734-a2bf-c8fb3dfe0b19\"\n    }\n}",
+        "title": "Obtaining the Region List"
+      }
+    ],
     "DescribeIPStrategy": [
       {
         "document": " ",
@@ -356,6 +364,14 @@
         "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeIPStrategysStatus\n&ServiceId=service-ody35h5e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"StrategySet\": [\n                {\n                    \"ServiceId\": \"service-ody35h5e\",\n                    \"StrategyId\": \"IPStrategy-0ez0c8to\",\n                    \"StrategyName\": \"xx\",\n                    \"StrategyType\": \"WHITE\",\n                    \"StrategyData\": \"2.2.2.2\",\n                    \"CreatedTime\": \"2020-02-13T16:39:08Z\",\n                    \"ModifiedTime\": \"2020-02-16T07:16:09Z\",\n                    \"BindApiTotalCount\": null,\n                    \"BindApis\": null\n                }\n            ]\n        },\n        \"RequestId\": \"cc167968-9ada-41b8-8724-62a497eedaad\"\n    }\n}",
         "title": "DescribeIPStrategysStatus"
+      }
+    ],
+    "DescribeInstancesNetworkConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: apigateway.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstancesNetworkConfig\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f2bee379-c9e4-4ffb-a18b-56ba15ea6af9\"\n    }\n}",
+        "title": ""
       }
     ],
     "DescribeLogSearch": [

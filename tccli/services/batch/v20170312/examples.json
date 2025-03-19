@@ -10,7 +10,7 @@
     ],
     "CreateComputeEnv": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://batch.tencentcloudapi.com/?Action=CreateComputeEnv\n&Placement.Zone=ap-guangzhou-2\n&ComputeEnv.EnvName=test compute env\n&ComputeEnv.EnvDescription=test compute env\n&ComputeEnv.EnvType=MANAGED\n&ComputeEnv.EnvData.InstanceType=S1.SMALL2\n&ComputeEnv.EnvData.ImageId=img-bd78fy2t\n&ComputeEnv.DesiredComputeNodeCount=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"EnvId\": \"env-3dhmblr3\",\n        \"RequestId\": \"b2ac2379-6453-4eab-8f63-7ade00cb67b0\"\n    }\n}",
         "title": "Creating a compute environment"

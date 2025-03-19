@@ -16,6 +16,14 @@
         "title": "Creating an Endpoint and an Endpoint Service Simultaneously"
       }
     ],
+    "CreateExtendEndpoint": [
+      {
+        "document": "This example shows you how to create a CLB endpoint service as a forwarding target",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExtendEndpoint\n<Common request parameters>\n\n{\n    \"EndpointName\": \"Test endpoint\"\n    \"EndpointRegion\": \"ap-guangzhou\",\n    \"ForwardIp\": {\n        \"AccessType\": \"CLB\",\n        \"Host\": \"10.110.2.8\",\n        \"Port\": 53,\n        \"IpNum\": 1,\n        \"VpcId\": \"vpc-xxxxxxx\",\n        \"SubnetId\": \"subnet-xxxxxxx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0a4303be-e127-4b90-a524-e87803b84ff1\",\n        \"EndpointId\": \"eid-xxxxxxxxx\",\n        \"EndpointName\": \"Test endpoint\"\n    }\n}",
+        "title": "Creating a CLB Endpoint Service as a Forwarding Target"
+      }
+    ],
     "CreateForwardRule": [
       {
         "document": " ",
@@ -58,6 +66,22 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePrivateZoneRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-123456\",\n    \"RecordType\": \"PTR\",\n    \"SubDomain\": \"1.1.1\",\n    \"RecordValue\": \"qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a98891db-9d73-514a-8751422197b540cd\",\n        \"RecordId\": 1111\n    }\n}",
         "title": "Private domain - adding a PTR record"
+      }
+    ],
+    "DeleteEndPoint": [
+      {
+        "document": "Deletes an endpoint",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteEndPoint\n<Common request parameters>\n\n{\n    \"EndPointId\": \"eid-juygvf672i\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
+        "title": "Deletes an endpoint"
+      }
+    ],
+    "DeleteForwardRule": [
+      {
+        "document": "This example shows you how to delete a forwarding rule.",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteForwardRule\n<Common request parameters>\n\n{\n    \"RuleIdSet\": [\n        \"fid-123456\",\n        \"fid-789abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
+        "title": "Deleting a Forwarding Rule"
       }
     ],
     "DeletePrivateZoneRecord": [
@@ -104,6 +128,30 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEndPointList\n<Common request parameters>\n\n{\n    \"Limit\": 200,\n    \"Offset\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"EndPointName\",\n            \"Values\": [\n                \"Endpoint name.\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointId\",\n            \"Values\": [\n                \"eid-24ed8e6319\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointServiceId\",\n            \"Values\": [\n                \"vpcsvc-prvrnrlt\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointVip\",\n            \"Values\": [\n                \"11.149.7.14\",\n                \"11.149.7.141\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a4ea9cc-b1df-f8f8-ffe7efbe98f9ff85\",\n        \"TotalCount\": 5,\n        \"EndPointSet\": [\n            {\n                \"EndPointId\": \"eid-24ed8e6319\",\n                \"EndPointName\": \"Name.\",\n                \"EndPointServiceId\": \"vpcsvc-prvrnrlt\",\n                \"EndPointVipSet\": [\n                    \"10.0.0.17:53\"\n                ],\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"abc\",\n                        \"TagValue\": \"abc\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "Obtaining the Endpoint List"
+      }
+    ],
+    "DescribeEndPointRegion": [
+      {
+        "document": "This example shows you how to query the available regions for the endpoint",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEndPointRegion\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RegionSet\": [\n            {\n                \"CnName\": \"Beijing\",\n                \"EnName\": \"bj\",\n                \"RegionCode\": \"ap-beijing\",\n                \"RegionId\": 8\n            },\n            {\n                \"CnName\": \"Guangzhou\",\n                \"EnName\": \"gz\",\n                \"RegionCode\": \"ap-guangzhou\",\n                \"RegionId\": 1\n            },\n            {\n                \"CnName\": \"Nanjing\",\n                \"EnName\": \"nj\",\n                \"RegionCode\": \"ap-nanjing\",\n                \"RegionId\": 33\n            },\n            {\n                \"CnName\": \"Shanghai\",\n                \"EnName\": \"sh\",\n                \"RegionCode\": \"ap-shanghai\",\n                \"RegionId\": 4\n            }\n        ],\n        \"RequestId\": \"036e44eb-02af-44cf-b46e-924a0e04ea4a\"\n    }\n}",
+        "title": "Querying the Available Regions for the Endpoint"
+      }
+    ],
+    "DescribeExtendEndpointList": [
+      {
+        "document": "This example shows you how to obtain the outbound endpoint list.",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExtendEndpointList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3a0ce2a9-d277-4fb9-9f58-93f78aa375c1\",\n        \"TotalCount\": 4,\n        \"OutboundEndpointSet\": [\n            {\n                \"EndpointId\": \"eid-xxxxxxxx\",\n                \"EndpointName\": \"Test endpoint.\"\n                \"Region\": \"ap-guangzhou\",\n                \"Tags\": [],\n                \"EndpointServiceSet\": [\n                    {\n                        \"AccessType\": \"CLB\",\n                        \"Vip\": \"11.158.31.145\",\n                        \"Vport\": \"10118\",\n                        \"Pip\": \"10.110.2.8\",\n                        \"Pport\": \"53\",\n                        \"Proto\": \"udp\",\n                        \"VpcId\": \"vpc-xxxxxxx\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"SnatVipCidr\": \"11.163.0.0/16\"\n                    }\n                ]\n            },\n            {\n                \"EndpointId\": \"eid-xxxxxxxx\",\n                \"EndpointName\": \"Test endpoint\"\n                \"Region\": \"ap-guangzhou\",\n                \"Tags\": [],\n                \"EndpointServiceSet\": [\n                    {\n                        \"AccessType\": \"CLB\",\n                        \"Vip\": \"11.158.31.145\",\n                        \"Vport\": \"10118\",\n                        \"Pip\": \"10.110.2.8\",\n                        \"Pport\": \"53\",\n                        \"Proto\": \"udp\",\n                        \"VpcId\": \"vpc-xxxxxxx\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"SnatVipCidr\": \"11.163.0.0/16\"\n                    }\n                ]\n            },\n            {\n                \"EndpointId\": \"eid-6cb19fe2b6\",\n                \"EndpointName\": \"Test endpoint\",\n                \"Region\": \"ap-guangzhou\",\n                \"Tags\": [],\n                \"EndpointServiceSet\": [\n                    {\n                        \"AccessType\": \"CCN\",\n                        \"Vip\": \"11.158.31.145\",\n                        \"Vport\": \"10493\",\n                        \"Pip\": \"10.111.111.111\",\n                        \"Pport\": \"53\",\n                        \"Proto\": \"udp\",\n                        \"VpcId\": \"vpc-xxxxxxx\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"SnatVipSet\": \"10.110.1.4;10.110.1.13\"\n                    }\n                ]\n            },\n            {\n                \"EndpointId\": \"eid-xxxxxxx\",\n                \"EndpointName\": \"Test endpoint\",\n                \"Region\": \"ap-guangzhou\",\n                \"Tags\": [],\n                \"EndpointServiceSet\": [\n                    {\n                        \"AccessType\": \"CLB\",\n                        \"Vip\": \"11.158.31.145\",\n                        \"Vport\": \"10118\",\n                        \"Pip\": \"10.110.2.8\",\n                        \"Pport\": \"53\",\n                        \"Proto\": \"udp\",\n                        \"VpcId\": \"vpc-xxxxxxx\",\n                        \"Region\": \"ap-xxxxxxxx\",\n                        \"SnatVipCidr\": \"11.163.0.0/16\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the Outbound Endpoint List"
+      }
+    ],
+    "DescribeForwardRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeForwardRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"fid-af2f9nkug\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\",\n        \"ForwardRule\": {\n            \"Domain\": \"qq.com\",\n            \"ZoneId\": \"zone-s8cs72d9\",\n            \"RuleId\": \"fid-fa2c8misu\",\n            \"ForwardAddress\": [\n                \"1.1.11.1:53\"\n            ],\n            \"RuleType\": \"DOWN\",\n            \"VpcSet\": [\n                {\n                    \"Region\": \"ap-guangzhou\",\n                    \"UniqVpcId\": \"vpc-as3bsfml\"\n                }\n            ],\n            \"EndPointName\": \"Endpoint name.\"\n            \"EndPointId\": \"eid-fc9iuxhg4\",\n            \"RuleName\": \"Forwarding rule name.\"\n            \"UpdatedAt\": \"2022-09-09 10:45:44\",\n            \"CreatedAt\": \"2022-09-09 10:45:44\"\n        }\n    }\n}",
+        "title": "Querying Forwarding Rule"
       }
     ],
     "DescribeForwardRuleList": [
@@ -160,6 +208,14 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRequestData\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"Vpc\",\n            \"Values\": [\n                \"vpc-qxxxxx5\"\n            ]\n        },\n        {\n            \"Name\": \"ZoneId\",\n            \"Values\": [\n                \"vpc-asdfasdf\"\n            ]\n        },\n        {\n            \"Name\": \"Region\",\n            \"Values\": [\n                \"ap-guangzhou\"\n            ]\n        }\n    ],\n    \"TimeRangeBegin\": \"2020-11-22 00:00:00\",\n    \"TimeRangeEnd\": \"2020-11-23 23:59:59\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e7b6e0f8-df16-afcf-507dea8b6958343d\",\n        \"Data\": [\n            {\n                \"Resource\": \"all\",\n                \"Metric\": \"request_count\",\n                \"DataSet\": [\n                    {\n                        \"Date\": \"2020-11-22 00:00:00\",\n                        \"Value\": 0\n                    },\n                    {\n                        \"Date\": \"2020-11-22 01:00:00\",\n                        \"Value\": 0\n                    }\n                ]\n            }\n        ],\n        \"Interval\": \"hour\"\n    }\n}",
         "title": "Getting the DNS request volume of private domain"
+      }
+    ],
+    "ModifyForwardRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyForwardRule\n<Common request parameters>\n\n{\n    \"RuleName\": \"Forwarding rule name.\"\n    \"EndPointId\": \"eid-xlsjc8qojg\",\n    \"RuleId\": \"fid-xiwus89no\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\"\n    }\n}",
+        "title": "Modifying a Forwarding Rule"
       }
     ],
     "ModifyPrivateZone": [

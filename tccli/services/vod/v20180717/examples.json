@@ -175,8 +175,8 @@
     "CreateDomainVerifyRecord": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainVerifyRecord\n<Public Request Parameter>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"DNSVerifyInfo\": {\n            \"SubDomain\": \"abc\",\n            \"Record\": \"abc\",\n            \"RecordType\": \"abc\"\n        },\n        \"FileVerifyInfo\": {\n            \"FileVerifyUrl\": \"abc\",\n            \"FileVerifyDomains\": [\n                \"abc\"\n            ],\n            \"FileVerifyName\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainVerifyRecord\n<Public Request Parameter>\n\n{\n    \"Domain\": \"abc.explame.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DNSVerifyInfo\": {\n            \"SubDomain\": \"_cdnauth\",\n            \"Record\": \"20241211104123bab0a442ce4c4618209f\",\n            \"RecordType\": \"TXT\"\n        },\n        \"FileVerifyInfo\": {\n            \"FileVerifyUrl\": \"http://explame.com/verification.html\",\n            \"FileVerifyDomains\": [\n                \"explame.com\",\n                \"abc.explame.com\"\n            ],\n            \"FileVerifyName\": \"verification.html\"\n        },\n        \"RequestId\": \"bffb15f07530b57bc1aabb01fac74bcb\"\n    }\n}",
         "title": "CreateDomainVerifyRecord"
       }
     ],
@@ -286,10 +286,16 @@
     ],
     "CreateRoundPlay": [
       {
-        "document": "This example shows you how to create a playlist and specify the files on the list.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoundPlay\n&<Common Request Parameters>\n\n{\n    \"StartTime\": \"2022-06-01T00:00:00+08:00\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ]\n}",
+        "document": "Create a new carousel playlist and specify the carousel list.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoundPlay\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-06-01T00:00:00+08:00\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n        \"Url\": \"http://domain/round-play/bffb15f07530b57bc1aabb01fac74bca/playlist.m3u8\",\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Creating a playlist"
+        "title": "Creating a Carousel Playlist"
+      },
+      {
+        "document": "Create a new carousel playlist that expires after 2024-12-10T20:00:00+08:00.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoundPlay\n<Common request parameters>\n\n{\n    \"StartTime\": \"2022-06-01T00:00:00+08:00\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ],\n    \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bcb\",\n    \"ExpiredTime\": \"2024-12-10T20:00:00+08:00\"\n}\n\n",
+        "output": "{\n    \"Response\": {\n        \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bcb\",\n        \"Url\": \"http://domain/round-play/bffb15f07530b57bc1aabb01fac74bcb/playlist.m3u8\",\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
+        "title": "Create a Carousel Playlist, Which Expires After 2024-12-10T20:00:00+08:00"
       }
     ],
     "CreateSampleSnapshotTemplate": [
@@ -720,6 +726,14 @@
         "title": "Get a specified number of content review templates"
       }
     ],
+    "DescribeCurrentPlaylist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DesribeCurrentPlaylistForCtrip\n<Common request parameters>\n\n{\n    \"RoundPlayId\": \"1323\",\n    \"SubAppId\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"CurrentPlaylist\": [\n            {\n                \"ItemId\": \"a001\",\n                \"FileId\": \"528xxx5487985271487\",\n                \"StartPlayTime\": \"2024-07-25T10:12:00+08:00\",\n                \"Duration\": 100\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Query Current Playlist Of the Round Play"
+      }
+    ],
     "DescribeDailyPlayStatFileList": [
       {
         "document": " ",
@@ -749,7 +763,7 @@
         "document": " ",
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeEventConfig\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Mode\": \"PUSH\",\n        \"NotificationUrl\": \"http://mydemo.com/receiveevent\",\n        \"UploadMediaCompleteEventSwitch\": \"ON\",\n        \"DeleteMediaCompleteEventSwitch\": \"OFF\",\n        \"PersistenceCompleteEventSwitch\": \"OFF\",\n        \"RequestId\": \"27217d38-95c0-4335-8532-e5154ffb03aa\"\n    }\n}",
-        "title": "查询事件通知配置"
+        "title": "Querying Event Notification Configuration"
       }
     ],
     "DescribeFileAttributes": [
@@ -895,9 +909,9 @@
     "DescribeRoundPlays": [
       {
         "document": "Get the playlist, name, description and other detailed information of all carousel playlists.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoundPlays\n<Public Request Parameter>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"RoundPlaySet\": [\n            {\n                \"Name\": \"Demo\",\n                \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n                \"StartTime\": \"2022-06-01T00:00:00+08:00\",\n                \"Desc\": \"Demo\",\n                \"Url\": \"http://123.vod-qcloud.com/rplay/v1/xxxx/playlist.m3u8\",\n                \"Status\": \"Enabled\",\n                \"PlayBackMode\": \"Loop\",\n                \"RoundPlaylist\": [\n                    {\n                        \"AudioVideoType\": \"Transcode\",\n                        \"Definition\": 100,\n                        \"FileId\": \"528xxx5487985271487\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Describe Round Plays"
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoundPlays\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"RoundPlaySet\": [\n            {\n                \"Name\": \"Demo\",\n                \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n                \"StartTime\": \"2022-06-01T00:00:00+08:00\",\n                \"Desc\": \"Demo\",\n                \"Url\": \"http://123.vod-qcloud.com/rplay/v1/xxxx/playlist.m3u8\",\n                \"Status\": \"Enabled\",\n                \"PlayBackMode\": \"Loop\",\n                \"RoundPlaylist\": [\n                    {\n                        \"ItemId\": \"a01\",\n                        \"AudioVideoType\": \"Transcode\",\n                        \"Definition\": 100,\n                        \"FileId\": \"528xxx5487985271487\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Get Carousel Playlist"
       }
     ],
     "DescribeSampleSnapshotTemplates": [
@@ -1144,6 +1158,20 @@
         "input": "https://vod.tencentcloudapi.com/?Action=ForbidMediaDistribution\n&FileIds.0=7447398156998994860\n&SubAppId=1\n&Operation=forbid\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-1d4b-5594145287e1\",\n        \"NotExistFileIdSet\": []\n    }\n}",
         "title": "Disabling the playback of certain media files"
+      }
+    ],
+    "HandleCurrentPlaylist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleCurrentPlaylist\n<Common request parameters>\n\n{\n    \"SubAppId\": 123,\n    \"RoundPlayId\": \"130\",\n    \"Operation\": \"Insert\",\n    \"ItemId\": \"a003\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RoundPlaylist\": [\n            {\n                \"ItemId\": \"a01\",\n                \"AudioVideoType\": \"Transcode\",\n                \"Definition\": 100,\n                \"FileId\": \"528xxx5487985271487\"\n            }\n        ],\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
+        "title": "Insert a Program After Program A003 In the Current Playlist"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleCurrentPlaylist\n<Common request parameters>\n\n{\n    \"SubAppId\": 123,\n    \"RoundPlayId\": \"130\",\n    \"Operation\": \"Delete\",\n    \"RoundPlaylist\": [\n        {\n            \"ItemId\": \"a004\",\n            \"FileId\": \"\",\n            \"AudioVideoType\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RoundPlaylist\": [\n            {\n                \"ItemId\": \"a004\",\n                \"AudioVideoType\": \"\",\n                \"Definition\": 100,\n                \"FileId\": \"\"\n            }\n        ],\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
+        "title": "Delete the Program In the Playlist"
       }
     ],
     "InspectMediaQuality": [
@@ -1408,10 +1436,16 @@
     ],
     "ModifyRoundPlay": [
       {
-        "document": "This example shows you how to modify a playlist. You can use this API to modify the videos on a list, the playlist name, and the description.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoundPlay\n&<Common Request Parameters>\n\n{\n    \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6xxxxe3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Modifying a playlist"
+        "document": "This example shows you how to modify carousel information. You can use this API to modify the playlist file, the playlist name, the description, etc.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoundPlay\n<Common request parameters>\n\n{\n    \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n    \"RoundPlaylist\": [\n        {\n            \"FileId\": \"528xxx5487985271487\",\n            \"AudioVideoType\": \"Transcode\",\n            \"Definition\": 100210\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7b9d6abb-4ec1-4ef3-b904-2b11e24012f3\"\n    }\n}",
+        "title": "Modify the Playlist"
+      },
+      {
+        "document": "Change the expiration time of the playlist bffb15f07530b57bc1aabb01fac74bca to 2024-12-10T23:00:00+08:00.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoundPlay\n<Common request parameters>\n\n{\n    \"RoundPlayId\": \"bffb15f07530b57bc1aabb01fac74bca\",\n    \"ExpiredTime\": \"2024-12-10T23:00:00+08:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7b9d6abb-4ec1-4ef3-b904-2b11e24012f5\"\n    }\n}",
+        "title": "Modify the Playlist Expiration Time To 2024-12-10T23:00:00+08:00"
       }
     ],
     "ModifySampleSnapshotTemplate": [

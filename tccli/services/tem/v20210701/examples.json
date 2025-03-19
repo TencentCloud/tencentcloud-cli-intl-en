@@ -344,10 +344,10 @@
     ],
     "RestartApplication": [
       {
-        "document": "服务重启",
+        "document": "This example shows you how to restart a service.",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartApplication\n<common request parameters>\n\n{\n    \"ApplicationId\": \"abc\",\n    \"SourceChannel\": 0,\n    \"EnvironmentId\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "服务重启"
+        "title": "Restarting a Service"
       }
     ],
     "RestartApplicationPod": [

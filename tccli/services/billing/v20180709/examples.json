@@ -224,6 +224,14 @@
         "title": "Obtaining consumption details summarized by resource"
       }
     ],
+    "DescribeDealsByCond": [
+      {
+        "document": "This example shows you how to get an order.",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDealsByCond\n<Common request parameters>\n\n{\n    \"EndTime\": \"2016-02-01 00:00:00\",\n    \"Limit\": \"20\",\n    \"StartTime\": \"2016-01-01 00:00:00\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Deals\": [\n            {\n                \"GoodsCategoryId\": 100019,\n                \"TimeSpan\": 1,\n                \"Policy\": 100,\n                \"Formula\": \"Refund: xxxxx CNY, voucher not refundable (xxxxxxxx\",\n                \"Status\": 4,\n                \"SubProductCode\": \"sp_abc\",\n                \"ResourceId\": [\n                    \"ins-abscde\"\n                ],\n                \"Price\": 0.0,\n                \"ProductInfo\": [\n                    {\n                        \"Name\": \"Specification Name\",\n                        \"Value\": \"Specification Value\",\n                    }\n                ],\n                \"TotalCost\": 0.0,\n                \"ProductCode\": \"p_abc\",\n                \"Payer\": \"1007416710\",\n                \"RealTotalCost\": 17000,\n                \"ProjectId\": 0,\n                \"BigDealId\": \"20220214710000851640801\",\n                \"PayMode\": \"1\",\n                \"RefReturnDeals\": \"\",\n                \"Action\": \"purchase\",\n                \"OrderId\": \"20220214710000851640811\",\n                \"VoucherDecline\": 0,\n                \"Creator\": \"1007416710\",\n                \"ProductName\": \"xx Product\",\n                \"Currency\": \"CNY\",\n                \"SubProductName\": \"xx Product\"\n                \"TimeUnit\": \"m\",\n                \"CreateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"c33d6ae6-c0de-4a55-8318-0950b5bdc79e\"\n    }\n}",
+        "title": "Getting an Order Example"
+      }
+    ],
     "DescribeDosageCosDetailByDate": [
       {
         "document": "This example shows you how to query COS usage details.",

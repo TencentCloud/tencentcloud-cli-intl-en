@@ -176,7 +176,7 @@
       "status": "online"
     },
     "DescribeDocuments": {
-      "document": "有新接口替换\n\nA new API is offered for this action now.\n\nThis API is used to query courseware. It has been deprecated. Please use `BatchDescribeDocument` instead.",
+      "document": "A new API is offered for this action now.\n\nThis API is used to query courseware. It has been deprecated. Please use `BatchDescribeDocument` instead.",
       "input": "DescribeDocumentsRequest",
       "name": "Queries courseware information",
       "output": "DescribeDocumentsResponse",
@@ -2366,7 +2366,7 @@
         {
           "disabled": false,
           "document": "The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "Permission",
           "required": true,
@@ -2375,7 +2375,7 @@
         {
           "disabled": false,
           "document": "The user ID of the courseware owner. If you do not specify this parameter, all courseware under the school ID will be returned.",
-          "example": "无",
+          "example": "978HopHp",
           "member": "string",
           "name": "Owner",
           "required": false,
@@ -2384,7 +2384,7 @@
         {
           "disabled": false,
           "document": "The filename keyword.",
-          "example": "无",
+          "example": "mpLOdp",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -2393,7 +2393,7 @@
         {
           "disabled": false,
           "document": "The courseware IDs. Non-existent IDs will be ignored.",
-          "example": "无",
+          "example": "23423",
           "member": "string",
           "name": "DocumentId",
           "required": false,
@@ -2408,9 +2408,10 @@
         {
           "disabled": false,
           "document": "The total number of records that meet the conditions.",
-          "example": "无",
+          "example": "50",
           "member": "int64",
           "name": "Total",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2420,6 +2421,7 @@
           "example": "无",
           "member": "DocumentInfo",
           "name": "Documents",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3409,52 +3411,52 @@
         {
           "disabled": false,
           "document": "The document ID. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "example": "fdsfdsd",
           "member": "string",
           "name": "DocumentId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The document's original URL. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "example": "https://sdffdsjhgfcgh-2347283829d265a6414f8.pdf",
           "member": "string",
           "name": "DocumentUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The document title. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "example": "课堂文档",
           "member": "string",
           "name": "DocumentName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The user ID of the document's owner. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "abc",
+          "example": "teacher_123",
           "member": "string",
           "name": "Owner",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The application ID. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "example": "3782108",
           "member": "uint64",
           "name": "SdkAppId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3464,7 +3466,7 @@
           "name": "Permission",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3474,7 +3476,7 @@
           "name": "TranscodeResult",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3484,7 +3486,7 @@
           "name": "TranscodeType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3494,7 +3496,7 @@
           "name": "TranscodeProgress",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3504,7 +3506,7 @@
           "name": "TranscodeState",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3514,7 +3516,7 @@
           "name": "TranscodeInfo",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3524,7 +3526,7 @@
           "name": "DocumentType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3534,7 +3536,7 @@
           "name": "DocumentSize",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3544,7 +3546,7 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3554,7 +3556,7 @@
           "name": "Pages",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3564,7 +3566,7 @@
           "name": "Width",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3574,7 +3576,7 @@
           "name": "Height",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3584,17 +3586,37 @@
           "name": "Cover",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Document preview address",
-          "example": "abc",
+          "example": "https://sdffdsjhgfcgh-2347283829d265a6414f8.pdf",
           "member": "string",
           "name": "Preview",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document resolution.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "793x1122",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum resolution of a transcoded document, consistent with the parameters provided when the document is created.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1280x720",
+          "member": "string",
+          "name": "MinScaleResolution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

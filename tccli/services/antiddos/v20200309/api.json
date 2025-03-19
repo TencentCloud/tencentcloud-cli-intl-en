@@ -571,7 +571,7 @@
         },
         {
           "disabled": false,
-          "document": "EIP of the Anti-DDoS instance ID",
+          "document": "EIP of the Anti-DDoS instance ID.",
           "example": "1.1.1.1",
           "member": "string",
           "name": "Eip",
