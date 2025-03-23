@@ -120,6 +120,14 @@
         "title": "RecognizeBrazilDriverLicenseOCR example"
       }
     ],
+    "RecognizeBrazilIDCardOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilDriverLicenseOCR\n<public parameter>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"BackImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"BackImageUrl\": \"\",\n    \"ReturnHeadImage\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"CPF\": \"400123456/99\",\n        \"DNI\": \"\",\n        \"DataNascimento\": \"09/09/1999\",\n        \"DispatchDate\": \"21/09/2017\",\n        \"DocOrigem\": \"XXXX-SP XXXXX DE XXXXX CN:LV.A91/XXXX.111/N 1111\",\n        \"Fatorrh\": \"\",\n        \"IssuingAgency\": \"XXXX-SP\",\n        \"MemberShip\": \"XXXX XXX XXX/XXXX XXX XXX\",\n        \"NaturalIDade\": \"XXXX- SP\",\n        \"Nome\": \"XXXX XXXX XXX\",\n        \"Observations\": \"\",\n        \"PortraitImage\": \"\",\n        \"Registro\": \"\",\n        \"RegistroGeral\": \"52.111.11-4 2 via\",\n        \"RequestId\": \"ace7b820-6476-440f-be2f-0dd1ce762562\"\n    }\n}",
+        "title": "RecognizeBrazilIDCardOCR Example"
+      }
+    ],
     "RecognizeGeneralInvoice": [
       {
         "document": "This example shows you how to recognize a general invoice or ticket (advanced).",

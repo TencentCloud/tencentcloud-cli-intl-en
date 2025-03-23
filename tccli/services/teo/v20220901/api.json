@@ -616,6 +616,13 @@
       "output": "DescribeSecurityIPGroupInfoResponse",
       "status": "online"
     },
+    "DescribeSecurityPolicy": {
+      "document": "This API is used to query the web and security protection configurations.",
+      "input": "DescribeSecurityPolicyRequest",
+      "name": "Query security protection configuration details",
+      "output": "DescribeSecurityPolicyResponse",
+      "status": "online"
+    },
     "DescribeSecurityTemplateBindings": {
       "document": "This API is used to query bindings of a policy template.",
       "input": "DescribeSecurityTemplateBindingsRequest",
@@ -1493,7 +1500,7 @@
         {
           "disabled": false,
           "document": "The unit of the IP ban duration. Values:\n<li>`second`: Second</li>\n<li>`minutes`: Minute</li>\n<li>`hour`: Hour</li>Default value: `second`.",
-          "example": "min",
+          "example": "second",
           "member": "string",
           "name": "PunishTimeUnit",
           "output_required": true,
@@ -2623,6 +2630,23 @@
         }
       ],
       "type": "object"
+    },
+    "BlockIPActionParameters": {
+      "document": "Additional parameter for SecurityAction `BlockIP`.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.",
+          "example": "80s",
+          "member": "string",
+          "name": "Duration",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "BotConfig": {
       "document": "Bot security configuration",
@@ -6287,6 +6311,106 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CustomRule": {
+      "document": "Custom rule configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The custom rule name.",
+          "example": "SampleBasicACLRule",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The specifics of the custom rule, must comply with the expression grammar, please refer to product documentation for details.",
+          "example": "${http.request.ip} in ['1.1.1.1', '10.10.10.0/24', ${security.ip_group['123'@'zone-2xsnpvkhdjes']} ]",
+          "member": "string",
+          "name": "Condition",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Action for custom rules. The Name parameter of SecurityAction supports: <li>`Deny`: block;</li> <li>`Monitor`: observe;</li> <li>`ReturnCustomPage`: block with customized page;</li> <li>`Redirect`: Redirect to URL;</li> <li>`BlockIP`: IP blocking;</li> <li>`JSChallenge`: JavaScript challenge;</li> <li>`ManagedChallenge`: managed challenge;</li> <li>`Allow`: Allow.</li>.",
+          "example": "参考SecurityAction结构",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The custom rule status. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom rule ID. <br>Different rule configuration operations are supported by rule ID : <br> - Add a new rule: ID is empty or the ID parameter is not specified; <br> - Modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - Delete an existing rule: existing rules not included in the Rules parameter will be deleted.",
+          "example": "1492837231",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type of custom rule. Values: <li>`BasicAccessRule`: basic access control;</li> <li>`PreciseMatchRule`: exact custom rule, default;</li> <li>`ManagedAccessRule`: expert customized rule, output parameter only.</li>The default value is PreciseMatchRule.",
+          "example": "PreciseMatchRule",
+          "member": "string",
+          "name": "RuleType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Customize the priority of custom rule. Range: 0-100, the default value is 0, this parameter only supports PreciseMatchRule.",
+          "example": "10",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CustomRules": {
+      "document": "Custom rules configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.",
+          "example": "参考 CustomRule 结构",
+          "member": "CustomRule",
+          "name": "Rules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10295,6 +10419,70 @@
       ],
       "type": "object"
     },
+    "DescribeSecurityPolicyRequest": {
+      "document": "DescribeSecurityPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "test.com",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "`SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>\t",
+          "example": "Host",
+          "member": "string",
+          "name": "Entity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the policy Template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.",
+          "example": "temp-wj86oi2",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityPolicyResponse": {
+      "document": "DescribeSecurityPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security policy configuration.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "参考SecurityPolicy结构",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicy",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSecurityTemplateBindingsRequest": {
       "document": "DescribeSecurityTemplateBindings request structure.",
       "members": [
@@ -11341,6 +11529,112 @@
         }
       ],
       "usage": "out"
+    },
+    "DetectLengthLimitCondition": {
+      "document": "Length limit detection condition configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name of the matched condition. Values:.\n<li>`body_depth`: detection depth of the request body packet part.</li>",
+          "example": "body_depth",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value of the matched condition, used in pairs with the `Name` parameter.\nWhen the `Name` value is body_depth, `Values` only support passing in a single value. Values:\n<li>`8KB`;</li>\n<li>`64KB`;</li>\n<li>`128KB`.</li>",
+          "example": "[\"10KB\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DetectLengthLimitConfig": {
+      "document": "Length limit detection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of rules that detect length limits.",
+          "example": "无",
+          "member": "DetectLengthLimitRule",
+          "name": "DetectLengthLimitRules",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DetectLengthLimitRule": {
+      "document": "Length limit detection rule details configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule Id, output parameter only.",
+          "example": "10468982785",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule name, output parameter only.",
+          "example": "请求正文最大检测长度",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule description, output parameter only.",
+          "example": "在检查请求正文内容时，安全策略仅检测一定长度范围内的请求正文数据，超过该范围的数据不会触发安全策略。您可以选择如何处理正文超长的请求。",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule configuration conditions, output parameter only.",
+          "example": "无",
+          "member": "DetectLengthLimitCondition",
+          "name": "Conditions",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Handling method. Values:.\n<li>`skip`: when request body data exceeds the detection depth set by `body_depth` in `Conditions` output parameters, skip all request body content detection.</li>.\n<li>`scan`: detect at the detection depth set by `body_depth` in the `Conditions` output parameters only. Truncate the excess part of the request body content directly, the excess part of the request body will not go through security detection.</li> Output paramter only.",
+          "example": "scan",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DiffIPWhitelist": {
       "document": "Differences between the newest and existing intermediate IPs",
@@ -14586,6 +14880,284 @@
       ],
       "usage": "both"
     },
+    "ManagedRuleAction": {
+      "document": "Action for specific RuleId.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.\t",
+          "example": "4312344811",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.",
+          "example": "参考 SecurityAction 结构",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagedRuleAutoUpdate": {
+      "document": "Managed rule automatic update option.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "AutoUpdateToLatestVersion",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.",
+          "example": "2023-12-21T12:00:32Z",
+          "member": "string",
+          "name": "RulesetVersion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagedRuleDetail": {
+      "document": "Managed rule detail.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Managed rule Id.",
+          "example": "4401213776",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.",
+          "example": "extreme",
+          "member": "string",
+          "name": "RiskLevel",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule description.",
+          "example": "针对嵌入式数据库中，使用 create_alias 进行代码执行的操作",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule tag. Some types of rules do not have tags.",
+          "example": "[\"OWASP\"]",
+          "member": "string",
+          "name": "Tags",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule version.",
+          "example": "2023-12-21T12:00:32Z",
+          "member": "string",
+          "name": "RuleVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagedRuleGroup": {
+      "document": "Managed rule group configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.",
+          "example": "wafmanagedrulegroup-file-upload-attacks",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.",
+          "example": "loose",
+          "member": "string",
+          "name": "SensitivityLevel",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.",
+          "example": "参考 SecurityAction 结构。",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.",
+          "example": "参考 ManagedRuleAction 结构。",
+          "member": "ManagedRuleAction",
+          "name": "RuleActions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ManagedRuleGroup detailed information, output parameter only.",
+          "example": "参考 ManagedRuleGroupMeta 结构。",
+          "member": "ManagedRuleGroupMeta",
+          "name": "MetaData",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagedRuleGroupMeta": {
+      "document": "Managed rule group meta information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ManagedRuleGroup detailed information, output parameter only.",
+          "example": "SQL 注入攻击防护",
+          "member": "string",
+          "name": "GroupDetail",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ManagedRuleGroup name, output parameter only.",
+          "example": "SQL 注入攻击防护",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "All sub-rules information under current ManagedRuleGroup, output parameter only.",
+          "example": "参考 ManagedRulesMeta 结构。",
+          "member": "ManagedRuleDetail",
+          "name": "RuleDetails",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagedRules": {
+      "document": "Managed rules configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "DetectionOnly",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.",
+          "example": "on",
+          "member": "string",
+          "name": "SemanticAnalysis",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed rule automatic update option.",
+          "example": "参考 ManagedRulesAutoUpdate 结构",
+          "member": "ManagedRuleAutoUpdate",
+          "name": "AutoUpdate",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.",
+          "example": "参考 ManagedRuleGroup 结构",
+          "member": "ManagedRuleGroup",
+          "name": "ManagedRuleGroups",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "MaxAge": {
       "document": "Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.",
       "members": [
@@ -16437,7 +17009,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Zone ID.",
           "example": "zone-225qgrnvbi9w",
           "member": "string",
           "name": "ZoneId",
@@ -16446,7 +17018,7 @@
         },
         {
           "disabled": false,
-          "document": "Security configuration.",
+          "document": "Security policy configuration. <li>When the `CustomRule` in the `SecurityPolicy` parameter is set, the `AclConfg` and `IpTableConfg` in the `SecurityConfig` parameter will be ignored;</li> <li>when the `ManagedRule` in the `SecurityPolicy` parameter is set, the `WafConfig` in the `SecurityConfig` parameter will be ignored.</li> <li>For custom rules and managed rule policy configuration, using `SecurityPolicy` parameter to configure settings is recommended.</li>",
           "example": "无",
           "member": "SecurityConfig",
           "name": "SecurityConfig",
@@ -16455,8 +17027,17 @@
         },
         {
           "disabled": false,
-          "document": "Subdomain/application name.\n\nNote: When both this parameter and the TemplateId parameter are specified, this parameter will not take effect. Do not specify this parameter and the TemplateId parameter at the same time.",
-          "example": "a.test.com",
+          "document": "Security policy configuration. The parameter is recommended to use for custom policies and managed rule configurations of web protection, it supports configuring security policies with expression grammar.\t",
+          "example": "参考\tSecurityPolicy 结构",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "`SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>\t",
+          "example": "Host",
           "member": "string",
           "name": "Entity",
           "required": false,
@@ -16464,7 +17045,16 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the policy template ID, or the site's global policy.\n- To configure a policy template, specify the policy template ID.\n- To configure the site's global policy, use the @ZoneLevel@Domain parameter value.\n\nNote: When this parameter is used, the Entity parameter will not take effect. Do not use this parameter and the Entity parameter at the same time.",
+          "document": "Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the policy template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.",
           "example": "temp-wj86oi2",
           "member": "string",
           "name": "TemplateId",
@@ -18653,6 +19243,23 @@
       ],
       "usage": "out"
     },
+    "RedirectActionParameters": {
+      "document": "Additional parameter for SecurityAction `Redirect`.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Redirect URL.",
+          "example": "https://www.tencent.com",
+          "member": "string",
+          "name": "URL",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RenewFlag": {
       "document": "Auto-renewal configuration item in a prepaid plan.",
       "members": [
@@ -18892,6 +19499,34 @@
           "name": "StartAt",
           "output_required": false,
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ReturnCustomPageActionParameters": {
+      "document": "Additional parameter for SecurityAction `ReturnCustomPage`.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response custom status code.",
+          "example": "404",
+          "member": "string",
+          "name": "ResponseCode",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response custom page ID.",
+          "example": "p-2yr7ncnju1yk",
+          "member": "string",
+          "name": "ErrorPageId",
+          "output_required": true,
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -20153,8 +20788,58 @@
       ],
       "usage": "out"
     },
+    "SecurityAction": {
+      "document": "Action for security operation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specific action name for security operation. Values:\n<li>`Deny`: block</li> <li>`Monitor`: monitor</li> <li>`ReturnCustomPage`: block with customized page</li> <li>`Redirect`: Redirect to URL</li> <li>`BlockIP`: IP block</li> <li>`JSChallenge`: javaScript challenge</li> <li>`ManagedChallenge`: managed challenge</li> <li>`Disabled`: disabled</li> <li>`Allow`: allow</li>.",
+          "example": "Deny",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameter when Name is BlockIP.",
+          "example": "参考 BlockIPActionParameters 结构",
+          "member": "BlockIPActionParameters",
+          "name": "BlockIPActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameter when Name is ReturnCustomPage.",
+          "example": "参考 ReturnCustomPageActionParameters 结构",
+          "member": "ReturnCustomPageActionParameters",
+          "name": "ReturnCustomPageActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameter when Name is Redirect.",
+          "example": "参考 RedirectActionParameters 结构",
+          "member": "RedirectActionParameters",
+          "name": "RedirectActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SecurityConfig": {
-      "document": "Security configuration",
+      "document": "Web security configuration.",
       "members": [
         {
           "disabled": false,
@@ -20265,6 +20950,45 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Detect the length limit configuration, output parameter only.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "DetectLengthLimitConfig",
+          "name": "DetectLengthLimitConfig",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SecurityPolicy": {
+      "document": "Web security policy.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "参考 CustomRules 示例",
+          "member": "CustomRules",
+          "name": "CustomRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "参考 ManagedRules 示例",
+          "member": "ManagedRules",
+          "name": "ManagedRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -21696,6 +22420,7 @@
           "example": "off",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -21706,6 +22431,7 @@
           "example": "strict",
           "member": "string",
           "name": "Level",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -21716,6 +22442,7 @@
           "example": "block",
           "member": "string",
           "name": "Mode",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -21726,6 +22453,7 @@
           "example": "无",
           "member": "WafRule",
           "name": "WafRule",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -21736,6 +22464,7 @@
           "example": "无",
           "member": "AiRule",
           "name": "AiRule",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
