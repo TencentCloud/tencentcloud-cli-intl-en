@@ -248,6 +248,14 @@
         "title": "Querying the latest operation and status"
       }
     ],
+    "DescribeInstancesAttributes": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstancesAttributes\n<Common request parameters>\n\n{\n    \"Attributes\": [\n        \"UserData\"\n    ],\n    \"InstanceIds\": [\n        \"ins-pgklxcq0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"Attributes\": {\n                    \"UserData\": \"TXlVc2VyRGF0YQo=\"\n                },\n                \"InstanceId\": \"ins-pgklxcq0\"\n            }\n        ],\n        \"RequestId\": \"bd249418-331b-43c7-b872-3ae94fe84af9\"\n    }\n}",
+        "title": "Querying the List of Attributes of Specified Instances"
+      }
+    ],
     "DescribeInstancesOperationLimit": [
       {
         "document": " ",

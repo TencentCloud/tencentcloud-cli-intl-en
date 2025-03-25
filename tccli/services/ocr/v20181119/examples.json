@@ -220,8 +220,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeSingaporeIDCardOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birthday\": \"12/04/1988\",\n        \"ChName\": \"夏*阳\",\n        \"CountryOfBirth\": \"CHINA\",\n        \"DateOfExpiration\": \"\",\n        \"DateOfIssue\": \"\",\n        \"EnName\": \"XIA ***YANG\",\n        \"ID\": \"S7***22E\",\n        \"NRICCode\": \"\",\n        \"Photo\": \"\",\n        \"PostCode\": \"\",\n        \"Race\": \"CHINESE\",\n        \"RequestId\": \"65b41f06-2759-4a7f-b5dd-639f1e676e28\",\n        \"Sex\": \"M\",\n        \"WarnCardInfos\": [\n            -9104\n        ]\n    }\n}",
-        "title": "RecognizeSingaporeIDCardOCR Call"
+        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birthday\": \"12/04/1988\",\n        \"ChName\": \"***\",\n        \"CountryOfBirth\": \"CHINA\",\n        \"DateOfExpiration\": \"\",\n        \"DateOfIssue\": \"\",\n        \"EnName\": \"XIA ***YANG\",\n        \"ID\": \"S7***22E\",\n        \"NRICCode\": \"\",\n        \"Photo\": \"\",\n        \"PostCode\": \"\",\n        \"Race\": \"CHINESE\",\n        \"RequestId\": \"65b41f06-2759-4a7f-b5dd-639f1e676e28\",\n        \"Sex\": \"M\",\n        \"WarnCardInfos\": [\n            -9104\n        ]\n    }\n}",
+        "title": "RecognizeSingaporeIDCardOCR"
       }
     ],
     "RecognizeTableAccurateOCR": [
