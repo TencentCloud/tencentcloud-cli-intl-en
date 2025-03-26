@@ -6761,7 +6761,7 @@
       "usage": "in"
     },
     "ComposeMediaConfig": {
-      "document": "The information of a video editing/compositing task.\n\nThe figure below outlines the relationships among tracks, elements, and the timeline.\n\n![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item.png)",
+      "document": "The information of a video editing/compositing task.\n\nThe figure below outlines the relationships among tracks, elements, and the timeline.\n\n![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item-en.png)",
       "members": [
         {
           "disabled": false,
@@ -11527,7 +11527,7 @@
         },
         {
           "disabled": false,
-          "document": "Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.",
+          "document": "Task priority. The higher the value, the higher the priority. Value range: -10 - 10. If this parameter is left empty, 0 will be used.",
           "example": "无",
           "member": "int64",
           "name": "TasksPriority",

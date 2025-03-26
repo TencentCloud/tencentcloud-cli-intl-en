@@ -14054,7 +14054,7 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "cls-123deabc",
+          "example": "cls-qbc3zefo",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -14081,7 +14081,7 @@
         {
           "disabled": false,
           "document": "Add-on parameters in a base64-encoded JSON string. You can query add-on parameters via `DescribeAddonValues`.",
-          "example": "WyJyZWdpc3RyeS5hZGRyZXNzPWh0dHBzOi8vY2NyLmNjcy50ZW5jZW50eXVuLmNvbSIsImFnZW50LmRvd25sb2FkUmF0ZT0yMDk3MTUyMCIsImt1YmV2ZXJzaW9uPTEuMjYuMSIsInJlcGxpY2FzPTIiXQ==",
+          "example": "eyJ2cGNDbmkiOnsic2VjdXJpdHlHcm91cHMiOnsic2VjdXJpdHlHcm91cHMiOltdfX19",
           "member": "string",
           "name": "RawValues",
           "required": false,
