@@ -56,6 +56,14 @@
         "title": "Creating an animated image generating template"
       }
     ],
+    "CreateAsrHotwords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAsrHotwords\n<Common request parameters>\n\n{\n    \"Type\": 0,\n    \"Name\": \"HotwordsNameExample\",\n    \"Content\": \"Tencent Cloud|10,Automatic Speech Recognition|5,ASR|10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\",\n        \"RequestId\": \"1ebaa15b-14b5-480c-9904-ec90c536e701\"\n    }\n}",
+        "title": "CreateAsrHotwordsExample"
+      }
+    ],
     "CreateContentReviewTemplate": [
       {
         "document": "This example shows you how to create a custom AI content moderation template to detect pornographic, terrorist, and politically sensitive content in images using the default thresholds for rule violation and manual recognition, without specifying a filter tag.",
@@ -134,6 +142,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSchedule\n<Common request parameters>\n\n{\n    \"ScheduleName\": \"evan_test7\",\n    \"Trigger\": {\n        \"Type\": \"CosFileUpload\",\n        \"CosFileUploadTrigger\": {\n            \"Bucket\": \"evan-test-1300828900\",\n            \"Region\": \"ap-guangzhou\",\n            \"Dir\": \"/input/\",\n            \"Formats\": [\n                \"mp4\",\n                \"flv\"\n            ]\n        }\n    },\n    \"Activities\": [\n        {\n            \"ActivityType\": \"input\",\n            \"ReardriveIndex\": [\n                1,\n                2\n            ]\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                3\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                6,\n                7\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                4,\n                5\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                10\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                10\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                10\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                8\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                9\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"action-trans\",\n            \"ReardriveIndex\": [\n                10\n            ],\n            \"ActivityPara\": {\n                \"TranscodeTask\": {\n                    \"Definition\": 10\n                }\n            }\n        },\n        {\n            \"ActivityType\": \"output\",\n            \"ActivityPara\": {}\n        }\n    ],\n    \"OutputStorage\": {\n        \"Type\": \"COS\",\n        \"CosOutputStorage\": {\n            \"Bucket\": \"evan-test-1300828900\",\n            \"Region\": \"ap-nanjing\"\n        }\n    },\n    \"OutputDir\": \"output/\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"ScheduleId\": 157482\n    }\n}",
         "title": "Configuring a transcoding rule"
+      }
+    ],
+    "CreateSmartSubtitleTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"Example\"\n    \"VideoSrcLanguage\": \"zh\",\n    \"SubtitleType\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 202281,\n        \"RequestId\": \"42dc919b-2ec7-412c-85f0-88f003813d04\"\n    }\n}",
+        "title": "Creating a Template"
       }
     ],
     "CreateSnapshotByTimeOffsetTemplate": [
@@ -226,6 +242,14 @@
         "title": "Deleting an animated image generating template"
       }
     ],
+    "DeleteAsrHotwords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAsrHotwords\n<Common request parameters>\n\n{\n    \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b3529414-e832-400d-9629-d9998a4e170c\"\n    }\n}",
+        "title": "DeleteAsrHotwords"
+      }
+    ],
     "DeleteContentReviewTemplate": [
       {
         "document": "This example shows you how to delete a custom content moderation template.",
@@ -280,6 +304,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSchedule\n<Common request parameters>\n\n{\n    \"ScheduleId\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Deleting a scheme"
+      }
+    ],
+    "DeleteSmartSubtitleTemplate": [
+      {
+        "document": "This example shows you how to delete a user-defined smart subtitle template.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 202281\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a7922ab4-645f-413a-abd9-c0dfba945e3c\"\n    }\n}",
+        "title": "Deleting a Smart Subtitle Template"
       }
     ],
     "DeleteSnapshotByTimeOffsetTemplate": [
@@ -366,10 +398,26 @@
     ],
     "DescribeAnimatedGraphicsTemplates": [
       {
-        "document": " ",
-        "input": "https://mps.tencentcloudapi.com/?Action=DescribeAnimatedGraphicsTemplates\n&Definitions.0=10001\n&<common request parameters>",
-        "output": "{\n  \"Response\": {\n    \"AnimatedGraphicsTemplateSet\": [\n      {\n        \"Comment\": \"\",\n        \"CreateTime\": \"2018-10-01T10:00:00Z\",\n        \"Definition\": 10001,\n        \"Format\": \"gif\",\n        \"Fps\": 30,\n        \"Height\": 540,\n        \"Name\": \"Animated image generating template 1\",\n        \"Quality\": 0.0,\n        \"ResolutionAdaptive\": \"open\",\n        \"Type\": \"Preset\",\n        \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n        \"Width\": 960\n      }\n    ],\n    \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\",\n    \"TotalCount\": 1\n  }\n}",
-        "title": "Obtaining the List of Animated Image Generating Templates "
+        "document": " Obtaining a List of Screenshot Templates",
+        "input": "https://mps.tencentcloudapi.com/?Action=DescribeAnimatedGraphicsTemplates\n&Definitions.0=10001\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AnimatedGraphicsTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"screenshot template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"Width\": 960,\n                \"Format\": \"gif\",\n                \"Fps\": 30,\n                \"ResolutionAdaptive\": \"open\",\n                \"Type\": \"Preset\",\n                \"Quality\": 0.0,\n                \"Comment\": \"\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Obtaining a List of Screenshot Templates"
+      }
+    ],
+    "DescribeAsrHotwords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAsrHotwords\n<Common request parameters>\n\n{\n    \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Content\": \"Tencent Cloud|10,Automatic Speech Recognition|5,ASR|10\",\n        \"CreateTime\": \"2025-03-19T03:29:06Z\",\n        \"FileName\": \"\",\n        \"HotWords\": [\n            {\n                \"Id\": 1,\n                \"Text\": \"Tencent Cloud\",\n                \"Weight\": 10\n            },\n            {\n                \"Id\": 2,\n                \"Text\": \"Automatic Speech Recognition\",\n                \"Weight\": 5\n            },\n            {\n                \"Id\": 3,\n                \"Text\": \"ASR\",\n                \"Weight\": 10\n            }\n        ],\n        \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\",\n        \"Limit\": 0,\n        \"Name\": \"HotwordsNameExample\",\n        \"Offset\": 0,\n        \"RequestId\": \"bad606d3-8a49-427f-a6a6-26c9f1fe1dc3\",\n        \"Status\": 0,\n        \"Type\": 0,\n        \"UpdateTime\": \"2025-03-19T03:29:06Z\",\n        \"WordCount\": 3\n    }\n}",
+        "title": "DescribeAsrHotwords"
+      }
+    ],
+    "DescribeAsrHotwordsList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAsrHotwordsList\n<Common request parameters>\n\n{\n    \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AsrHotwordsSet\": [\n            {\n                \"CreateTime\": \"2025-03-19T03:29:06Z\",\n                \"FileName\": \"\",\n                \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\",\n                \"Name\": \"HotwordsNameExample\",\n                \"Status\": 0,\n                \"Type\": 0,\n                \"UpdateTime\": \"2025-03-19T03:29:06Z\",\n                \"WordCount\": 3\n            }\n        ],\n        \"Limit\": 0,\n        \"Offset\": 0,\n        \"RequestId\": \"0beec64c-8390-43dd-8b3a-14df16cc9ca7\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "DescribeAsrHotwordsList"
       }
     ],
     "DescribeContentReviewTemplates": [
@@ -440,6 +488,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSchedules\n<Common request parameters>\n\n{\n    \"ScheduleIds\": [\n        0\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ScheduleInfoSet\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Querying a scheme"
+      }
+    ],
+    "DescribeSmartSubtitleTemplates": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSmartSubtitleTemplates\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f89a1f41-1a26-4cda-9be1-2747cb44a045\",\n        \"SmartSubtitleTemplateSet\": [\n            {\n                \"AliasName\": \"Generate_Chinese_And_English_Subtitle_For_English_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 212,\n                \"Name\": \"English source video—Generate English and Chinese subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 2,\n                \"TranslateDstLanguage\": \"zh\",\n                \"TranslateSwitch\": \"ON\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"en\"\n            },\n            {\n                \"AliasName\": \"Generate_Chinese_Subtitle_For_English_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 211,\n                \"Name\": \"English source video—Generate Chinese subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 1,\n                \"TranslateDstLanguage\": \"zh\",\n                \"TranslateSwitch\": \"ON\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"en\"\n            },\n            {\n                \"AliasName\": \"Generate_English_Subtitle_For_English_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 200,\n                \"Name\": \"English source video—Generate English subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"en\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"en\"\n            },\n            {\n                \"AliasName\": \"Generate_Chinese_And_English_Subtitle_For_Chinese_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 122,\n                \"Name\": \"Chinese source video—Generate English and Chinese subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 2,\n                \"TranslateDstLanguage\": \"en\",\n                \"TranslateSwitch\": \"ON\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"Generate_English_Subtitle_For_Chinese_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 121,\n                \"Name\": \"Chinese source video—Generate English subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 1,\n                \"TranslateDstLanguage\": \"en\",\n                \"TranslateSwitch\": \"ON\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"Generate_Chinese_Subtitle_For_Chinese_Video\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"Definition\": 100,\n                \"Name\": \"Chinese source video—Generate Chinese subtitles\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"en\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2025-02-11T15:41:29+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-03-04T18:18:35+08:00\",\n                \"Definition\": 202226,\n                \"Name\": \"aaaaa\",\n                \"SubtitleFormat\": \"\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Custom\",\n                \"UpdateTime\": \"2025-03-04T18:18:35+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"hwd-390af315ba0c31545156\",\n                    \"Switch\": \"ON\"\n                },\n                \"AsrHotWordsLibraryName\": \"ValidName\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-21T16:26:37+08:00\",\n                \"Definition\": 201309,\n                \"Name\": \"0221\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Custom\",\n                \"UpdateTime\": \"2025-02-21T16:26:37+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"\",\n                    \"Switch\": \"OFF\"\n                },\n                \"AsrHotWordsLibraryName\": \"\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-21T16:13:06+08:00\",\n                \"Definition\": 201308,\n                \"Name\": \"0221\",\n                \"SubtitleFormat\": \"vtt\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Custom\",\n                \"UpdateTime\": \"2025-02-21T16:13:06+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            },\n            {\n                \"AliasName\": \"\",\n                \"AsrHotWordsConfigure\": {\n                    \"LibraryId\": \"hwd-f1d930ebc6d9a7d910\",\n                    \"Switch\": \"ON\"\n                },\n                \"AsrHotWordsLibraryName\": \"HotwordsName1\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2025-02-21T16:08:45+08:00\",\n                \"Definition\": 201307,\n                \"Name\": \"0221\",\n                \"SubtitleFormat\": \"\",\n                \"SubtitleType\": 0,\n                \"TranslateDstLanguage\": \"\",\n                \"TranslateSwitch\": \"OFF\",\n                \"Type\": \"Custom\",\n                \"UpdateTime\": \"2025-02-21T17:50:15+08:00\",\n                \"VideoSrcLanguage\": \"zh\"\n            }\n        ],\n        \"TotalCount\": 21\n    }\n}",
+        "title": "Querying a Smart Subtitle Template"
       }
     ],
     "DescribeSnapshotByTimeOffsetTemplates": [
@@ -648,6 +704,14 @@
         "title": "Modifying an animated image generating template"
       }
     ],
+    "ModifyAsrHotwords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAsrHotwords\n<Common request parameters>\n\n{\n    \"HotwordsId\": \"hwd-aexxxxxxxxxxxxxx1481\",\n    \"Name\": \"HotwordsNameNew\",\n    \"Content\": \"Tencent Cloud|10,Automatic Speech Recognition|5,ASR|10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bebd190b-4864-4911-b919-ec713c102498\"\n    }\n}",
+        "title": "ModifyAsrHotwords"
+      }
+    ],
     "ModifyContentReviewTemplate": [
       {
         "document": "This example shows you how to modify a custom AI content moderation template to enable porn detection. The default thresholds for rule violation and manual recognition are used, and no tags are specified.",
@@ -732,6 +796,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySchedule\n<Common request parameters>\n\n{\n    \"ScheduleId\": 22435,\n    \"Trigger\": {\n        \"Type\": \"AwsS3FileUpload\",\n        \"AwsS3FileUploadTrigger\": {\n            \"S3Bucket\": \"evanxia-test\",\n            \"S3Region\": \"us-east-1\",\n            \"Dir\": \"/input/\"\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Modifying a scheme"
+      }
+    ],
+    "ModifySmartSubtitleTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 202281,\n    \"TranslateSwitch\": \"ON\",\n    \"Name\": \"New name\",\n    \"SubtitleType\": 1,\n    \"TranslateDstLanguage\": \"en\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"569d5d19-d01c-4efc-97dc-4ea53ae95647\"\n    }\n}",
+        "title": "Modifying a Smart Subtitle Template"
       }
     ],
     "ModifySnapshotByTimeOffsetTemplate": [
