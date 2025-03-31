@@ -1008,10 +1008,28 @@
     ],
     "UpdateAddon": [
       {
-        "document": "This example shows you how to query the version and parameters of an add-on.",
-        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddon\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-123deabc\",\n    \"AddonName\": \"cbs\",\n    \"AddonVersion\": \"1.1.0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Updating an add-on"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddon\n<common request parameters>\n\n{\n    \"ClusterId\": \"cls-qbc3zefo\",\n    \"AddonName\": \"cbs\",\n    \"RawValues\": \"eyJ0b2xlcmF0aW9ucyI6W3siZWZmZWN0IjoiTm9FeGVjdXRlIiwia2V5IjoiZ3B1LW5vdC1yZWFkeSIsIm9wZXJhdG9yIjoiRXF1YWwiLCJ0b2xlcmF0aW9uU2Vjb25kcyI6MzAwLCJ2YWx1ZSI6InRydWUifSx7ImtleSI6ImlwLW5vdC1yZWFkeSIsIm9wZXJhdG9yIjoiRXhpc3RzIn1dfQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f55aaa93-c681-47c9-860a-59ae16af648\"\n    }\n}",
+        "title": ""
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddon\n<common request parameters>\n\n{\n    \"ClusterId\": \"cls-qbc3zefo\",\n    \"AddonName\": \"eniipamd\",\n    \"RawValues\": \"eyJ2cGNDbmkiOnsic2VjdXJpdHlHcm91cHMiOnsic2VjdXJpdHlHcm91cHMiOltdfX19\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f55aaa93-c681-47c9-860a-59ae16ade268\"\n    }\n}",
+        "title": ""
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddon\n<common request parameters>\n\n{\n    \"ClusterId\": \"cls-qbc3zefo\",\n    \"AddonName\": \"tke-log-agent\",\n    \"RawValues\": \"eyJrYWZrYWxpc3RlbmVyIjp7ImVuYWJsZWQiOnRydWV9fQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f55aaa93-c681-47c9-860a-59ae16ajgf1\"\n    }\n}",
+        "title": ""
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddon\n<common request parameters>\n\n{\n    \"ClusterId\": \"cls-qbc3zefo\",\n    \"AddonName\": \"cluster-autoscaler\",\n    \"RawValues\": \"eyJleHRyYUFyZ3MiOnsic2NhbGUtZG93bi1lbmFibGVkIjpmYWxzZX19\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b0a2e412-6e5e-4a93-9a22-edf5102e9eae\"\n    }\n}",
+        "title": ""
       }
     ],
     "UpdateClusterKubeconfig": [

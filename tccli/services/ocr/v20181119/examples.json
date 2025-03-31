@@ -90,10 +90,10 @@
     ],
     "MLIDPassportOCR": [
       {
-        "document": "This example shows you how to recognize a non-Chinese mainland passport.",
+        "document": "",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MLIDPassportOCR\n<common request parameters>\n\n{\n    \"ImageBase64\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/card/MLIDPassportOCR/MLIDPassportOCR1.png\"\n}",
         "output": "{\n    \"Response\": {\n        \"AdvancedInfo\": \"\",\n        \"CodeCrc\": \"4567123452USA9004117F2107268713843748<708026\",\n        \"CodeSet\": \"P<USACARTER<<ESTHER<<<<<<<<<<<<<<<<<<<<<<<<<\",\n        \"DateOfBirth\": \"19900411\",\n        \"DateOfExpiration\": \"20210726\",\n        \"GivenName\": \"ESTHER\",\n        \"ID\": \"456712345\",\n        \"Image\": \"\",\n        \"IssuingCountry\": \"USA\",\n        \"Name\": \"CARTER ESTHER\",\n        \"Nationality\": \"USA\",\n        \"PassportRecognizeInfos\": {\n            \"DateOfBirth\": \"11 Apr 1990\",\n            \"DateOfExpiration\": \"26 Jul 2021\",\n            \"DateOfIssuance\": \"27 Jul 2011\",\n            \"GivenName\": \"ESTHER\",\n            \"IssuePlace\": \"\",\n            \"IssuingAuthority\": \"\",\n            \"IssuingCountry\": \"USA\",\n            \"Name\": \"\",\n            \"Nationality\": \"UNITED STATES OF AMERICA\",\n            \"PassportID\": \"456712345\",\n            \"Sex\": \"F\",\n            \"Signature\": \"\",\n            \"Surname\": \"CARTER\",\n            \"Type\": \"P\"\n        },\n        \"RequestId\": \"dad946b2-1288-4df9-a0b4-6abfaba1e170\",\n        \"Sex\": \"F\",\n        \"Surname\": \"CARTER\",\n        \"Type\": \"P\",\n        \"Warn\": [\n            -9108,\n            -9102\n        ],\n        \"WarnCardInfos\": [\n            -9109\n        ]\n    }\n}",
-        "title": "Example Code for Recognition of a Non-Chinese Mainland Passport"
+        "title": ""
       }
     ],
     "MainlandPermitOCR": [
@@ -118,6 +118,14 @@
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilDriverLicenseOCR\n<public parameter>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\"\n}",
         "output": "{\n    \"Response\": {\n        \"AdvancedInfo\": \"{\\\"NOME\\\":0.71914065,\\\"CatHab\\\":0.46235353,\\\"CNHNumber\\\":0.64985657,\\\"VALIDADE\\\":0.73679197,\\\"QUALIFICATION\\\":0.7534424,\\\"IDENTIDADE\\\":0.7685954,\\\"CPF\\\":0.74205434,\\\"NASCIMENTO\\\":0.73850095,\\\"MEMBERSHIP\\\":0.8054733,\\\"REGISTRO\\\":0.67544556}\",\n        \"CNHNumber\": \"235*****10\",\n        \"CPF\": \"238.550.758-75\",\n        \"CatHab\": \"B\",\n        \"IDENTIDADE\": \"F048055D DIREX EX\",\n        \"MEMBERSHIP\": \"JINJI PAN/WEIHONG CHEN\",\n        \"NASCIMENTO\": \"28/03/1992\",\n        \"NOME\": \"ZHAOLIN PAN\",\n        \"PortraitImage\": \"\",\n        \"QUALIFICATION\": \"23/05/2012\",\n        \"REGISTRO\": \"07343723357\",\n        \"RequestId\": \"667fbb53-8bf9-46e2-b411-e53ae8cea7e1\",\n        \"VALIDADE\": \"07/08/2024\"\n    }\n}",
         "title": "RecognizeBrazilDriverLicenseOCR example"
+      }
+    ],
+    "RecognizeBrazilIDCardOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilDriverLicenseOCR\n<public parameter>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"BackImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"BackImageUrl\": \"\",\n    \"ReturnHeadImage\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"CPF\": \"400123456/99\",\n        \"DNI\": \"\",\n        \"DataNascimento\": \"09/09/1999\",\n        \"DispatchDate\": \"21/09/2017\",\n        \"DocOrigem\": \"XXXX-SP XXXXX DE XXXXX CN:LV.A91/XXXX.111/N 1111\",\n        \"Fatorrh\": \"\",\n        \"IssuingAgency\": \"XXXX-SP\",\n        \"MemberShip\": \"XXXX XXX XXX/XXXX XXX XXX\",\n        \"NaturalIDade\": \"XXXX- SP\",\n        \"Nome\": \"XXXX XXXX XXX\",\n        \"Observations\": \"\",\n        \"PortraitImage\": \"\",\n        \"Registro\": \"\",\n        \"RegistroGeral\": \"52.111.11-4 2 via\",\n        \"RequestId\": \"ace7b820-6476-440f-be2f-0dd1ce762562\"\n    }\n}",
+        "title": "RecognizeBrazilIDCardOCR Example"
       }
     ],
     "RecognizeGeneralInvoice": [
@@ -212,8 +220,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeSingaporeIDCardOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birthday\": \"12/04/1988\",\n        \"ChName\": \"夏*阳\",\n        \"CountryOfBirth\": \"CHINA\",\n        \"DateOfExpiration\": \"\",\n        \"DateOfIssue\": \"\",\n        \"EnName\": \"XIA ***YANG\",\n        \"ID\": \"S7***22E\",\n        \"NRICCode\": \"\",\n        \"Photo\": \"\",\n        \"PostCode\": \"\",\n        \"Race\": \"CHINESE\",\n        \"RequestId\": \"65b41f06-2759-4a7f-b5dd-639f1e676e28\",\n        \"Sex\": \"M\",\n        \"WarnCardInfos\": [\n            -9104\n        ]\n    }\n}",
-        "title": "RecognizeSingaporeIDCardOCR Call"
+        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birthday\": \"12/04/1988\",\n        \"ChName\": \"***\",\n        \"CountryOfBirth\": \"CHINA\",\n        \"DateOfExpiration\": \"\",\n        \"DateOfIssue\": \"\",\n        \"EnName\": \"XIA ***YANG\",\n        \"ID\": \"S7***22E\",\n        \"NRICCode\": \"\",\n        \"Photo\": \"\",\n        \"PostCode\": \"\",\n        \"Race\": \"CHINESE\",\n        \"RequestId\": \"65b41f06-2759-4a7f-b5dd-639f1e676e28\",\n        \"Sex\": \"M\",\n        \"WarnCardInfos\": [\n            -9104\n        ]\n    }\n}",
+        "title": "RecognizeSingaporeIDCardOCR"
       }
     ],
     "RecognizeTableAccurateOCR": [
