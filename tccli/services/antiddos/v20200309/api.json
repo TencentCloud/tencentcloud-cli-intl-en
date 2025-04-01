@@ -238,13 +238,6 @@
       "output": "DescribeBizTrendResponse",
       "status": "online"
     },
-    "DescribeBlackWhiteIpList": {
-      "document": "接口变更\n\nThis API is used to get an Anti-DDoS IP blocklist/allowlist.",
-      "input": "DescribeBlackWhiteIpListRequest",
-      "name": "Gets an Anti-DDoS IP blocklist/allowlist",
-      "output": "DescribeBlackWhiteIpListResponse",
-      "status": "deprecated"
-    },
     "DescribeCCLevelList": {
       "document": "Gets the list of CC protection levels",
       "input": "DescribeCCLevelListRequest",
@@ -385,13 +378,6 @@
       "output": "DescribeListPacketFilterConfigResponse",
       "status": "online"
     },
-    "DescribeListProtectThresholdConfig": {
-      "document": "接口变更\n\nThis API is used to get a list of protection threshold configurations for AI protection switch, protection level, and CC threshold switch.",
-      "input": "DescribeListProtectThresholdConfigRequest",
-      "name": "Gets a list of protection threshold configurations",
-      "output": "DescribeListProtectThresholdConfigResponse",
-      "status": "deprecated"
-    },
     "DescribeListProtocolBlockConfig": {
       "document": "This API is used to get a list of Anti-DDoS protocol blocking configurations.",
       "input": "DescribeListProtocolBlockConfigRequest",
@@ -520,9 +506,9 @@
           "example": "200",
           "member": "uint64",
           "name": "NormalBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -530,9 +516,9 @@
           "example": "60",
           "member": "uint64",
           "name": "ForwardRulesLimit",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -540,9 +526,9 @@
           "example": "0",
           "member": "uint64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -550,9 +536,9 @@
           "example": "2022-06-18 18:36:44",
           "member": "string",
           "name": "CurDeadline",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -683,7 +669,7 @@
           "example": "无",
           "member": "InstanceRelation",
           "name": "InstanceDetail",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -693,7 +679,7 @@
           "example": "无",
           "member": "BGPIPInstanceSpecification",
           "name": "SpecificationLimit",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -703,7 +689,7 @@
           "example": "无",
           "member": "BGPIPInstanceUsages",
           "name": "Usage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -713,7 +699,7 @@
           "example": "无",
           "member": "RegionInfo",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -723,7 +709,7 @@
           "example": "idle",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -733,7 +719,7 @@
           "example": "2020-06-09 23:12:23",
           "member": "datetime",
           "name": "ExpiredTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -743,7 +729,7 @@
           "example": "2020-05-09 23:12:23",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -753,7 +739,7 @@
           "example": "Test",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -763,7 +749,7 @@
           "example": "无",
           "member": "PackInfo",
           "name": "PackInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -773,7 +759,7 @@
           "example": "无",
           "member": "StaticPackRelation",
           "name": "StaticPackRelation",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -783,9 +769,9 @@
           "example": "1",
           "member": "uint64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -793,9 +779,9 @@
           "example": "1",
           "member": "uint64",
           "name": "Tgw",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -803,9 +789,9 @@
           "example": "UNBIND",
           "member": "string",
           "name": "EipAddressStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -813,9 +799,9 @@
           "example": "1",
           "member": "int64",
           "name": "EipFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -823,7 +809,7 @@
           "example": "无",
           "member": "EipAddressPackRelation",
           "name": "EipAddressPackRelation",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -833,7 +819,7 @@
           "example": "无",
           "member": "EipAddressRelation",
           "name": "EipAddressInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -843,9 +829,9 @@
           "example": "www.8cname.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -853,7 +839,7 @@
           "example": "0",
           "member": "uint64",
           "name": "DamDDoSStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -863,9 +849,9 @@
           "example": "0",
           "member": "uint64",
           "name": "V6Flag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -873,9 +859,9 @@
           "example": "0",
           "member": "uint64",
           "name": "BGPIPChannelFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -883,9 +869,9 @@
           "example": "null",
           "member": "TagInfo",
           "name": "TagInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -893,7 +879,7 @@
           "example": "无",
           "member": "AnycastOutPackRelation",
           "name": "AnycastOutPackRelation",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -903,19 +889,19 @@
           "example": "0",
           "member": "uint64",
           "name": "InstanceVersion",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Convoy instance ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "ConvoyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -923,9 +909,9 @@
           "example": "1000",
           "member": "uint64",
           "name": "ElasticBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -933,9 +919,9 @@
           "example": "0",
           "member": "uint64",
           "name": "EOFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1022,30 +1008,30 @@
         {
           "disabled": false,
           "document": "Number of used port rules",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "PortRulesUsage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of used domain name rules",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "DomainRulesUsage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of attack times in the last 7 days",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Last7DayAttackCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1061,7 +1047,7 @@
           "example": "{\"EipList\":[\"175.27.164.158\"],\"InstanceId\":\"bgp-0000015a\"}",
           "member": "InstanceRelation",
           "name": "InstanceDetail",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1071,7 +1057,7 @@
           "example": "{\"ProtectBandwidth\":30000,\"ProtectCountLimit\":10,\"ProtectIPNumbe",
           "member": "BGPInstanceSpecification",
           "name": "SpecificationLimit",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1081,7 +1067,7 @@
           "example": "{\"ProtectCountUsage\":0,\"ProtectIPNumberUsage\":1,\"Last7DayAttackC",
           "member": "BGPInstanceUsages",
           "name": "Usage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1091,7 +1077,7 @@
           "example": "{\"Region\":\"ap-nanjing\"}",
           "member": "RegionInfo",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1101,7 +1087,7 @@
           "example": "idle",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1111,7 +1097,7 @@
           "example": "2021-04-25 23:04:10",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1121,17 +1107,17 @@
           "example": "2021-07-25 23:04:10",
           "member": "datetime",
           "name": "ExpiredTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name of the Anti-DDoS Pro instance",
-          "example": "“”",
+          "example": "“id-123”",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1141,7 +1127,7 @@
           "example": "null",
           "member": "PackInfo",
           "name": "PackInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1151,7 +1137,7 @@
           "example": "[{\"Ip\":\"175.27.164.158\",\"BizType\":\"public\",\"DeviceType\":\"cvm\",\"I",
           "member": "EipProductInfo",
           "name": "EipProductInfos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1161,7 +1147,7 @@
           "example": "idle",
           "member": "string",
           "name": "BoundStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1171,7 +1157,7 @@
           "example": "defalut",
           "member": "string",
           "name": "DDoSLevel",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1181,7 +1167,7 @@
           "example": "1",
           "member": "int64",
           "name": "CCEnable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1191,7 +1177,7 @@
           "example": "null",
           "member": "TagInfo",
           "name": "TagInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1201,7 +1187,7 @@
           "example": "1",
           "member": "uint64",
           "name": "IpCountNewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1211,7 +1197,7 @@
           "example": "1",
           "member": "uint64",
           "name": "VitalityVersion",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1221,9 +1207,9 @@
           "example": "1",
           "member": "uint64",
           "name": "Line",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1231,7 +1217,7 @@
           "example": "1",
           "member": "uint64",
           "name": "ElasticServiceBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1241,7 +1227,7 @@
           "example": "50",
           "member": "int64",
           "name": "GiftServiceBandWidth",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1257,7 +1243,7 @@
           "example": "1",
           "member": "uint64",
           "name": "ProtectBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1267,7 +1253,7 @@
           "example": "10",
           "member": "uint64",
           "name": "ProtectCountLimit",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1277,7 +1263,7 @@
           "example": "10",
           "member": "uint64",
           "name": "ProtectIPNumberLimit",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1287,7 +1273,7 @@
           "example": "0",
           "member": "uint64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1297,9 +1283,9 @@
           "example": "0",
           "member": "uint64",
           "name": "UnionPackFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1307,9 +1293,9 @@
           "example": "0",
           "member": "uint64",
           "name": "ServiceBandWidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1317,9 +1303,9 @@
           "example": "0",
           "member": "uint64",
           "name": "BattleEditionFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1327,9 +1313,9 @@
           "example": "0",
           "member": "uint64",
           "name": "ChannelEditionFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1337,9 +1323,9 @@
           "example": "0",
           "member": "uint64",
           "name": "EnterpriseFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1347,9 +1333,9 @@
           "example": "0",
           "member": "uint64",
           "name": "ElasticLimit",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1357,9 +1343,9 @@
           "example": "1",
           "member": "uint64",
           "name": "DownGradeProtect",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1370,30 +1356,30 @@
         {
           "disabled": false,
           "document": "Number of used protection chances",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ProtectCountUsage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of protected IPs",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ProtectIPNumberUsage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of attack times in the last 7 days",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Last7DayAttackCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1465,6 +1451,7 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1475,6 +1462,7 @@
           "example": "public",
           "member": "string",
           "name": "BizType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1485,6 +1473,7 @@
           "example": "none",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1495,6 +1484,7 @@
           "example": "cvm",
           "member": "string",
           "name": "DeviceType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1505,6 +1495,7 @@
           "example": "5",
           "member": "uint64",
           "name": "IspCode",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1518,70 +1509,70 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "bgp-xxx",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Ip",
-          "example": "",
+          "example": "192.168.1.1",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Protocol",
-          "example": "",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Domain name",
-          "example": "",
+          "example": "www.a.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Protection level. Values: `default`, `loose` and `strict`.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "Level",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024-01-01",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Modification time",
-          "example": "",
+          "example": "2024-01-01",
           "member": "datetime",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1597,6 +1588,7 @@
           "example": "value",
           "member": "string",
           "name": "FieldType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1607,6 +1599,7 @@
           "example": "srcip",
           "member": "string",
           "name": "FieldName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1617,6 +1610,7 @@
           "example": "1.2.3.4",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1627,6 +1621,7 @@
           "example": "equal",
           "member": "string",
           "name": "ValueOperator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1640,90 +1635,90 @@
         {
           "disabled": false,
           "document": "Policy ID",
-          "example": "",
+          "example": "id-xxx",
           "member": "string",
           "name": "PolicyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "bgp-xxx",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IP address",
-          "example": "",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Protocol",
-          "example": "",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Domain name",
-          "example": "",
+          "example": "www.a.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
-          "example": "",
+          "example": "drop",
           "member": "string",
           "name": "PolicyAction",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of policies",
-          "example": "",
+          "example": "list",
           "member": "CCPrecisionPlyRecord",
           "name": "PolicyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024-01-01",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Modification time",
-          "example": "",
+          "example": "2024-01-01",
           "member": "datetime",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1736,9 +1731,10 @@
         {
           "disabled": false,
           "document": "Sampling interval (in seconds). Valid values: `1`, `10`, `30`, and `60`.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1746,9 +1742,10 @@
         {
           "disabled": false,
           "document": "Number of requests. Value range: 1-2000.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "RequestNum",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1756,9 +1753,10 @@
         {
           "disabled": false,
           "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
-          "example": "",
+          "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1766,9 +1764,10 @@
         {
           "disabled": false,
           "document": "Sets an interval of the frequency limit policy. Value range: 1-86400 (in seconds).",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ExecuteDuration",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1776,9 +1775,10 @@
         {
           "disabled": false,
           "document": "Filters values of configuration fields. `include`: The value is included. `equal`: The value matches the configuration field.",
-          "example": "",
+          "example": "include",
           "member": "string",
           "name": "Mode",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1786,9 +1786,10 @@
         {
           "disabled": false,
           "document": "URI, which cannot be used together with `User-Agent` and `Cookie`.",
-          "example": "",
+          "example": "www.a.com",
           "member": "string",
           "name": "Uri",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1796,9 +1797,10 @@
         {
           "disabled": false,
           "document": "User-Agent, which cannot be used together with `Uri` and `Cookie`.",
-          "example": "",
+          "example": "Agent",
           "member": "string",
           "name": "UserAgent",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1806,9 +1808,10 @@
         {
           "disabled": false,
           "document": "Cookie, which cannot be used together with `Uri` and `User-Agent`.",
-          "example": "",
+          "example": "Cookie",
           "member": "string",
           "name": "Cookie",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2007,6 +2010,7 @@
           "example": "oversea",
           "member": "string",
           "name": "RegionType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2017,6 +2021,7 @@
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2024,9 +2029,10 @@
         {
           "disabled": false,
           "document": "Configuration ID, which is generated after a configuration is added. This field is only required to modify or delete a configuration.",
-          "example": "0",
+          "example": "ccGeoip-00000111",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2037,6 +2043,7 @@
           "example": "100025",
           "member": "int64",
           "name": "AreaList",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -2159,17 +2166,17 @@
           "example": "无",
           "member": "InsL7Rules",
           "name": "L7Rules",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Certificate ID",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "CertId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2236,7 +2243,7 @@
         {
           "disabled": false,
           "document": "Anti-DDoS instance ID",
-          "example": "bgp-000000xe",
+          "example": "bgp-000000x1",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -2281,7 +2288,7 @@
           "example": "无",
           "member": "SuccessCode",
           "name": "Success",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2318,7 +2325,7 @@
         {
           "disabled": false,
           "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
-          "example": "HTTP",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2390,7 +2397,7 @@
         {
           "disabled": false,
           "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
-          "example": "HTTP",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2489,7 +2496,7 @@
         {
           "disabled": false,
           "document": "Protocol",
-          "example": "bgp-multip",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2841,7 +2848,7 @@
           "example": "无",
           "member": "SuccessCode",
           "name": "Success",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3032,20 +3039,20 @@
         {
           "disabled": false,
           "document": "AI protection switch. Valid values:\n`on`: enabled\n`off`: disabled\n]",
-          "example": "",
+          "example": "on",
           "member": "string",
           "name": "DDoSAI",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Anti-DDoS instance configured",
-          "example": "",
+          "example": "bgp-xxx",
           "member": "InstanceRelation",
           "name": "InstanceDetailList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3130,9 +3137,10 @@
         {
           "disabled": false,
           "document": "Rate limit mode. Valid values:\n`1`: rate limit based on the real server IP\n`2`: rate limit based on the destination port\n]",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Mode",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -3140,9 +3148,10 @@
         {
           "disabled": false,
           "document": "Rate limit value. This field contains at least one valid rate limit type. Note that only up to one value of each type is supported.",
-          "example": "",
+          "example": "1",
           "member": "SpeedValue",
           "name": "SpeedValues",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -3150,9 +3159,10 @@
         {
           "disabled": false,
           "document": "This field is replaced with a new field DstPortList.",
-          "example": "",
+          "example": "DstPortList",
           "member": "PortSegment",
           "name": "DstPortScopes",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -3160,9 +3170,10 @@
         {
           "disabled": false,
           "document": "",
-          "example": "",
+          "example": "id-xx",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3170,9 +3181,10 @@
         {
           "disabled": false,
           "document": "IP protocol number. Valid values:\n`ALL`: all protocols\n`TCP`: TCP protocol\n`UDP`: UDP protocol\n`SMP`: SMP protocol\n`1;2–100`: user-defined protocol with up to 8 ranges\n]\nNote: For custom protocol ranges, only protocol number is supported. Multiple ranges are separated by \";\". If the value is `ALL`, any other protocol or protocol number should be excluded.",
-          "example": "",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "ProtocolList",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3180,9 +3192,10 @@
         {
           "disabled": false,
           "document": "Port range list, which contains up to 8 ranges. Use \";\" to separate multiple ports and \"–\" to indicate a range of ports, as described in the following formats: `0–65535`, `80;443;1000–2000`.",
-          "example": "",
+          "example": "80",
           "member": "string",
           "name": "DstPortList",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3222,9 +3235,10 @@
         {
           "disabled": false,
           "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "AlarmType",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3232,9 +3246,10 @@
         {
           "disabled": false,
           "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "AlarmThreshold",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3635,7 +3650,7 @@
         {
           "disabled": false,
           "document": "List of IP resources",
-          "example": "[\"\\u20181.1.1.1\\u2019\\r\\n\"]",
+          "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "IpList",
           "required": false,
@@ -3644,7 +3659,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "id-xx",
           "member": "string",
           "name": "IdList",
           "required": false,
@@ -3653,7 +3668,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "guangzhou ",
           "member": "uint64",
           "name": "FilterRegion",
           "required": false,
@@ -3662,7 +3677,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "CnameWafIdList",
           "required": false,
@@ -3692,7 +3707,7 @@
           "name": "CLBData",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3702,7 +3717,7 @@
           "name": "CnameWafData",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3779,10 +3794,10 @@
         {
           "disabled": false,
           "document": "Values of the samples",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "DataList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3792,7 +3807,7 @@
           "example": "10",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3802,7 +3817,7 @@
           "example": "intraffic",
           "member": "string",
           "name": "MetricName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3812,7 +3827,7 @@
           "example": "1",
           "member": "uint64",
           "name": "MaxData",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3912,7 +3927,7 @@
           "example": "无",
           "member": "HttpStatusMap",
           "name": "HttpStatusMap",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3931,7 +3946,7 @@
         {
           "disabled": false,
           "document": "Statistical method. Valid values: `max`, `min`, `avg`, `sum`. It can only be `max` if the statistical dimension is traffic rate or packet rate.",
-          "example": "xx",
+          "example": "max",
           "member": "string",
           "name": "Statistics",
           "required": true,
@@ -3940,7 +3955,7 @@
         {
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
-          "example": "xx",
+          "example": "bgp",
           "member": "string",
           "name": "Business",
           "required": true,
@@ -3976,7 +3991,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "xx",
+          "example": "bgp-0000",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -3985,7 +4000,7 @@
         {
           "disabled": false,
           "document": "Metric. Valid values: `connum`, `new_conn`, `inactive_conn`, `intraffic`, `outtraffic`, `inpkg`, `outpkg`, `qps`",
-          "example": "xx",
+          "example": "intraffic",
           "member": "string",
           "name": "MetricName",
           "required": true,
@@ -3994,7 +4009,7 @@
         {
           "disabled": false,
           "document": "You can query data by specifying a domain name when the metric is `qps`.",
-          "example": "xx",
+          "example": "test.tencentddos.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -4018,10 +4033,10 @@
         {
           "disabled": false,
           "document": "Value at a time point on the curve",
-          "example": "无",
+          "example": "[1.2,2.2]",
           "member": "float",
           "name": "DataList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4031,55 +4046,8 @@
           "example": "intraffic",
           "member": "string",
           "name": "MetricName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBlackWhiteIpListRequest": {
-      "document": "DescribeBlackWhiteIpList request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Anti-DDoS instance ID",
-          "example": "bgpip-00001001",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeBlackWhiteIpListResponse": {
-      "document": "DescribeBlackWhiteIpList response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "IP blocklist",
-          "example": "[\"123.123.123.1\"]",
-          "member": "string",
-          "name": "BlackIpList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "IP allowlist",
-          "example": "[\"123.123.123.2\"]",
-          "member": "string",
-          "name": "WhiteIpList",
-          "required": true,
-          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -4124,7 +4092,7 @@
         {
           "disabled": false,
           "document": "ID of the specified instance",
-          "example": "无",
+          "example": "bgp-xxxx",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -4142,7 +4110,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4152,7 +4120,7 @@
           "example": "无",
           "member": "CCLevelPolicy",
           "name": "LevelList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4198,7 +4166,7 @@
         {
           "disabled": false,
           "document": "Protocol. Values: `HTTP`，`HTTPS`",
-          "example": "HTTP",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -4216,7 +4184,7 @@
           "example": "loose",
           "member": "string",
           "name": "Level",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4262,7 +4230,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "无",
+          "example": "bgp-xxxx",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -4307,7 +4275,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4317,7 +4285,7 @@
           "example": "无",
           "member": "CCPrecisionPolicy",
           "name": "PrecisionPolicyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4363,7 +4331,7 @@
         {
           "disabled": false,
           "document": "ID of the specified instance",
-          "example": "无",
+          "example": "ins-xxx",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -4381,7 +4349,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4391,7 +4359,7 @@
           "example": "无",
           "member": "CCThresholdPolicy",
           "name": "ThresholdList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4419,7 +4387,7 @@
         {
           "disabled": false,
           "document": "Instance IP",
-          "example": "3.3.3.3",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -4491,7 +4459,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Count",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4501,7 +4469,7 @@
           "example": "bgp",
           "member": "string",
           "name": "Business",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4511,7 +4479,7 @@
           "example": "3.3.3.3",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4521,7 +4489,7 @@
           "example": "300",
           "member": "int64",
           "name": "Period",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4531,7 +4499,7 @@
           "example": "2018-08-27 15:05:10",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4541,7 +4509,7 @@
           "example": "2018-08-27 16:05:10",
           "member": "datetime",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4551,7 +4519,7 @@
           "example": "[1234]",
           "member": "uint64",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4561,9 +4529,9 @@
           "example": "bgp-00000010",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4571,7 +4539,7 @@
           "example": "inqps",
           "member": "string",
           "name": "MetricName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4680,7 +4648,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4690,7 +4658,7 @@
           "example": "无",
           "member": "CcBlackWhiteIpPolicy",
           "name": "CcBlackWhiteIpList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4781,7 +4749,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4791,7 +4759,7 @@
           "example": "无",
           "member": "CcGeoIpPolicyNew",
           "name": "CcGeoIpPolicyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4882,7 +4850,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Count",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4892,7 +4860,7 @@
           "example": "bgp",
           "member": "string",
           "name": "Business",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4902,7 +4870,7 @@
           "example": "3.3.3.3",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4912,7 +4880,7 @@
           "example": "3600",
           "member": "int64",
           "name": "Period",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4922,7 +4890,7 @@
           "example": "2018-08-27 15:05:10",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4932,7 +4900,7 @@
           "example": "2018-08-27 16:05:10",
           "member": "datetime",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4942,7 +4910,7 @@
           "example": "[1234]",
           "member": "uint64",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4952,9 +4920,9 @@
           "example": "bgp-00000010",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4962,7 +4930,7 @@
           "example": "bps",
           "member": "string",
           "name": "MetricName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5035,7 +5003,7 @@
           "example": "无",
           "member": "IpBlockData",
           "name": "List",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5081,7 +5049,7 @@
           "example": "无",
           "member": "CertIdInsL7Rules",
           "name": "CertSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5154,7 +5122,7 @@
         {
           "disabled": false,
           "document": "Name filter",
-          "example": "test",
+          "example": "name",
           "member": "string",
           "name": "FilterName",
           "required": false,
@@ -5172,7 +5140,7 @@
         {
           "disabled": false,
           "document": "Anti-DDoS Advanced instance binding status filter. Valid values: `BINDING`, `BIND`, `UNBINDING`, `UNBIND`. This filter is only valid when `FilterEipType = 1`.",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "FilterEipEipAddressStatus",
           "required": false,
@@ -5208,7 +5176,7 @@
         {
           "disabled": false,
           "document": "Filters by the instance ID",
-          "example": "无",
+          "example": "id-xxxx",
           "member": "string",
           "name": "FilterInstanceIdList",
           "required": false,
@@ -5217,7 +5185,7 @@
         {
           "disabled": false,
           "document": "Searches by tag",
-          "example": "无",
+          "example": "tag",
           "member": "TagFilter",
           "name": "FilterTag",
           "required": false,
@@ -5226,7 +5194,7 @@
         {
           "disabled": false,
           "document": "Filters by package type.",
-          "example": "无",
+          "example": "type",
           "member": "string",
           "name": "FilterPackType",
           "required": false,
@@ -5235,7 +5203,7 @@
         {
           "disabled": false,
           "document": "Filters out Convoy instances",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "FilterConvoy",
           "required": false,
@@ -5253,7 +5221,7 @@
           "example": "2",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5263,7 +5231,7 @@
           "example": "无",
           "member": "BGPIPInstance",
           "name": "InstanceList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5327,7 +5295,7 @@
         {
           "disabled": false,
           "document": "Filters by name.",
-          "example": "test",
+          "example": "name",
           "member": "string",
           "name": "FilterName",
           "required": false,
@@ -5444,7 +5412,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5454,7 +5422,7 @@
           "example": "无",
           "member": "BGPInstance",
           "name": "InstanceList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5518,7 +5486,7 @@
           "example": "2",
           "member": "int64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5528,7 +5496,7 @@
           "example": "无",
           "member": "BlackWhiteIpRelation",
           "name": "IpList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5943,7 +5911,7 @@
           "example": "1",
           "member": "int64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5953,99 +5921,7 @@
           "example": "无",
           "member": "PacketFilterRelation",
           "name": "ConfigList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeListProtectThresholdConfigRequest": {
-      "document": "DescribeListProtectThresholdConfig request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
-          "example": "0",
-          "member": "uint64",
-          "name": "Offset",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
-          "example": "25",
-          "member": "uint64",
-          "name": "Limit",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
-          "example": "bgpip-0000011x",
-          "member": "string",
-          "name": "FilterInstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "IP filter",
-          "example": "1.1.1.1",
-          "member": "string",
-          "name": "FilterIp",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Domain name filter for querying CC protection thresholds of domain names and protocols",
-          "example": "无",
-          "member": "string",
-          "name": "FilterDomain",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Protocol filter for querying CC protection thresholds of domain names and protocols",
-          "example": "无",
-          "member": "string",
-          "name": "FilterProtocol",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeListProtectThresholdConfigResponse": {
-      "document": "DescribeListProtectThresholdConfig response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Total number of lists",
-          "example": "1",
-          "member": "uint64",
-          "name": "Total",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of protection threshold configurations",
-          "example": "无",
-          "member": "ProtectThresholdRelation",
-          "name": "ConfigList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6138,7 +6014,7 @@
         {
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
-          "example": "0",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -6174,7 +6050,6 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6184,7 +6059,6 @@
           "example": "无",
           "member": "SchedulingDomainInfo",
           "name": "DomainList",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6248,7 +6122,7 @@
           "example": "1",
           "member": "int64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6258,7 +6132,7 @@
           "example": "无",
           "member": "WaterPrintRelation",
           "name": "ConfigList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6286,7 +6160,7 @@
         {
           "disabled": false,
           "document": "List of rule IDs",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "RuleIdList",
           "required": false,
@@ -6304,7 +6178,7 @@
           "example": "无",
           "member": "KeyValue",
           "name": "ErrHealths",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6314,7 +6188,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6342,7 +6216,7 @@
         {
           "disabled": false,
           "document": "(Optional) Searches by rule status. Valid values: `0` (Successfully configured), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Deletion failed), `6` (awaiting configuration), `7` (awaiting deletion), and `8` (awaiting certificate configuration).",
-          "example": "无",
+          "example": "[1,2]",
           "member": "uint64",
           "name": "StatusList",
           "required": false,
@@ -6351,7 +6225,7 @@
         {
           "disabled": false,
           "document": "(Optional) Searches by domain name.",
-          "example": "无",
+          "example": "www.abc.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -6360,7 +6234,7 @@
         {
           "disabled": false,
           "document": "(Optional) Searches by IP.",
-          "example": "无",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
           "required": false,
@@ -6369,7 +6243,7 @@
         {
           "disabled": false,
           "document": "Number of items in a page. Returned results are not paged if you enter “0”.",
-          "example": "无",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -6378,7 +6252,7 @@
         {
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -6387,7 +6261,7 @@
         {
           "disabled": false,
           "document": "(Optional) Searches by forwarding protocol. Values: [http, https, http/https]",
-          "example": "无",
+          "example": "http",
           "member": "string",
           "name": "ProtocolList",
           "required": false,
@@ -6414,7 +6288,7 @@
           "example": "无",
           "member": "NewL7RuleEntry",
           "name": "Rules",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6424,7 +6298,7 @@
           "example": "无",
           "member": "L7RuleHealth",
           "name": "Healths",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6434,7 +6308,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6507,7 +6381,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6517,7 +6391,7 @@
           "example": "无",
           "member": "OverviewDDoSEvent",
           "name": "EventList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6678,9 +6552,9 @@
           "example": "hk",
           "member": "string",
           "name": "EipAddressRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6688,9 +6562,9 @@
           "example": "ins-xx",
           "member": "string",
           "name": "EipBoundRscIns",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6698,9 +6572,9 @@
           "example": "eni-xx",
           "member": "string",
           "name": "EipBoundRscEni",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6708,9 +6582,9 @@
           "example": "x.x.x.x",
           "member": "string",
           "name": "EipBoundRscVip",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6718,9 +6592,9 @@
           "example": "2021-01-01 00:00:00",
           "member": "string",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6731,9 +6605,10 @@
         {
           "disabled": false,
           "document": "IP address",
-          "example": "",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6741,9 +6616,10 @@
         {
           "disabled": false,
           "document": "Cloud product category. Valid values:\n`public`: CVM\n`bm`: BM\n`eni`: ENI\n`vpngw`: VPN gateway\n `natgw`: NAT gateway\n`waf`: WAF\n`fpc`: financial products\n`gaap`: GAAP \n`other`: hosted IP\n]",
-          "example": "",
+          "example": "cvm",
           "member": "string",
           "name": "BizType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6751,9 +6627,10 @@
         {
           "disabled": false,
           "document": "Cloud sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).",
-          "example": "",
+          "example": "cvm",
           "member": "string",
           "name": "DeviceType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6761,9 +6638,10 @@
         {
           "disabled": false,
           "document": "Cloud instance ID of the IP. This field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.",
-          "example": "",
+          "example": "id-xxx",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6919,9 +6797,10 @@
         {
           "disabled": false,
           "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "AlarmType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -6929,9 +6808,10 @@
         {
           "disabled": false,
           "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "AlarmThreshold",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -6939,9 +6819,10 @@
         {
           "disabled": false,
           "document": "Anti-DDoS instance configured",
-          "example": "",
+          "example": "bgp-xxx",
           "member": "InstanceRelation",
           "name": "InstanceDetailList",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -6958,6 +6839,7 @@
           "example": "bgp",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6968,6 +6850,7 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "Eip",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6978,6 +6861,7 @@
           "example": "abcdefg",
           "member": "string",
           "name": "Cname",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6988,6 +6872,7 @@
           "example": "0",
           "member": "int64",
           "name": "ResourceFlag",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7004,6 +6889,7 @@
           "example": "8",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7014,6 +6900,7 @@
           "example": "www.xxx.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7024,6 +6911,7 @@
           "example": "https",
           "member": "string",
           "name": "Protocol",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7034,6 +6922,7 @@
           "example": "bgpip-000001eo",
           "member": "string",
           "name": "InsId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7044,6 +6933,7 @@
           "example": "251008915",
           "member": "string",
           "name": "AppId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7054,6 +6944,7 @@
           "example": "443",
           "member": "string",
           "name": "VirtualPort",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7064,6 +6955,7 @@
           "example": "kneSCNrZ",
           "member": "string",
           "name": "SSLId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7077,7 +6969,7 @@
         {
           "disabled": false,
           "document": "Instance IP",
-          "example": "",
+          "example": "[1.1.1.1]",
           "member": "string",
           "name": "EipList",
           "required": true,
@@ -7087,7 +6979,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "bgpip-0000011x",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7103,50 +6995,50 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "Blocked",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "2024.10.1",
           "member": "datetime",
           "name": "BlockTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "2024.10.2",
           "member": "datetime",
           "name": "UnBlockTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "user",
           "member": "string",
           "name": "ActionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7156,7 +7048,7 @@
           "example": "10000",
           "member": "uint64",
           "name": "ProtectFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -7195,20 +7087,20 @@
         {
           "disabled": false,
           "document": "IP",
-          "example": "无",
+          "example": "key",
           "member": "string",
           "name": "Key",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Status of the IP. Values: `1` (blocked); `2` (normal); `3` (being attacked)",
-          "example": "无",
+          "example": "value",
           "member": "string",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -7221,9 +7113,10 @@
         {
           "disabled": false,
           "document": "IP or domain name for forwarding.",
-          "example": "无",
+          "example": "source",
           "member": "string",
           "name": "Source",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7231,9 +7124,10 @@
         {
           "disabled": false,
           "document": "Weight. Value range: [0,100].",
-          "example": "无",
+          "example": "100",
           "member": "uint64",
           "name": "Weight",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7241,9 +7135,10 @@
         {
           "disabled": false,
           "document": "8000\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "8000",
           "member": "uint64",
           "name": "Port",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -7251,12 +7146,13 @@
         {
           "disabled": false,
           "document": "Secondary origin server. `1`: secondary origin server; `0`: general origin server.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "backup",
           "member": "uint64",
           "name": "Backup",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7267,9 +7163,10 @@
         {
           "disabled": false,
           "document": "Session persistence duration, in seconds.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "KeepTime",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7277,9 +7174,10 @@
         {
           "disabled": false,
           "document": "Forwarding domain name.",
-          "example": "无",
+          "example": "www.abc.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7287,9 +7185,10 @@
         {
           "disabled": false,
           "document": "Forwarding protocol. Valid values: `http` and `https`.",
-          "example": "无",
+          "example": "80",
           "member": "string",
           "name": "Protocol",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7297,9 +7196,10 @@
         {
           "disabled": false,
           "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "SourceType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7307,9 +7207,10 @@
         {
           "disabled": false,
           "document": "Load balancing method. Valid value: `1` (weighed polling).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "LbType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7320,6 +7221,7 @@
           "example": "无",
           "member": "L4RuleSource",
           "name": "SourceList",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7327,9 +7229,10 @@
         {
           "disabled": false,
           "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "KeepEnable",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7337,9 +7240,10 @@
         {
           "disabled": false,
           "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7347,9 +7251,10 @@
         {
           "disabled": false,
           "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "RuleId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7357,9 +7262,10 @@
         {
           "disabled": false,
           "document": "CC protection threshold based on HTTPS.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCThreshold",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7367,9 +7273,10 @@
         {
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
-          "example": "无",
+          "example": "key",
           "member": "string",
           "name": "PrivateKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7377,9 +7284,10 @@
         {
           "disabled": false,
           "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7387,19 +7295,21 @@
         {
           "disabled": false,
           "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disable) and `1` (enable). It defaults to `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "HttpsToHttpEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CertType",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7407,9 +7317,10 @@
         {
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
-          "example": "无",
+          "example": "cert",
           "member": "string",
           "name": "Cert",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7417,9 +7328,10 @@
         {
           "disabled": false,
           "document": "CC protection level based on HTTPS.",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "CCLevel",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7427,9 +7339,10 @@
         {
           "disabled": false,
           "document": "Rule description.",
-          "example": "无",
+          "example": "name",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7437,9 +7350,10 @@
         {
           "disabled": false,
           "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCStatus",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7447,19 +7361,21 @@
         {
           "disabled": false,
           "document": "Access port number.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "80",
           "member": "uint64",
           "name": "VirtualPort",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "SSLId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7467,9 +7383,10 @@
         {
           "disabled": false,
           "document": "ID of the rule",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7477,9 +7394,10 @@
         {
           "disabled": false,
           "document": "Intelligent CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCAIEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7493,9 +7411,10 @@
         {
           "disabled": false,
           "document": "Configuration status. Values: `0` (normal), `1` (configuration in progress) and `2` (configuration failed).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7503,9 +7422,10 @@
         {
           "disabled": false,
           "document": "Switch. Values: `1`: Enable; `0`: Disable.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Enable",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7513,9 +7433,10 @@
         {
           "disabled": false,
           "document": "ID of the rule",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "RuleId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7523,9 +7444,10 @@
         {
           "disabled": false,
           "document": "HTTP request path. The default value is /.",
-          "example": "无",
+          "example": "url",
           "member": "string",
           "name": "Url",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7533,9 +7455,10 @@
         {
           "disabled": false,
           "document": "Health check interval. Unit: second.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Interval",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7543,9 +7466,10 @@
         {
           "disabled": false,
           "document": "Healthy threshold, which specifies the number of consecutive successful health checks.",
-          "example": "无",
+          "example": "10",
           "member": "uint64",
           "name": "AliveNum",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7553,9 +7477,10 @@
         {
           "disabled": false,
           "document": "Unhealthy threshold, which specifies the number of consecutive failed health checks.",
-          "example": "无",
+          "example": "2",
           "member": "uint64",
           "name": "KickNum",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7563,9 +7488,10 @@
         {
           "disabled": false,
           "document": "HTTP request method. Values: `HEAD` and `GET`.",
-          "example": "无",
+          "example": "GET",
           "member": "string",
           "name": "Method",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7573,9 +7499,10 @@
         {
           "disabled": false,
           "document": "Status code that signifies a normal state. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "StatusCode",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -7583,9 +7510,10 @@
         {
           "disabled": false,
           "document": "Whether to deploy both HTTP and HTTPS health check rules",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "ProtocolFlag",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7593,9 +7521,10 @@
         {
           "disabled": false,
           "document": "Enables passive detection. Values: `1` (enable) and `0` (disable).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "PassiveEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7603,9 +7532,10 @@
         {
           "disabled": false,
           "document": "Blocking period in the passive detection configuration",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "BlockInter",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7613,9 +7543,10 @@
         {
           "disabled": false,
           "document": "Time interval between passive detections",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "FailedCountInter",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7623,9 +7554,10 @@
         {
           "disabled": false,
           "document": "Unhealthy threshold in the passive detection configuration",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "FailedThreshold",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7633,9 +7565,10 @@
         {
           "disabled": false,
           "document": "Status code that signals that the passive detection considers the status normal. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "PassiveStatusCode",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7643,9 +7576,10 @@
         {
           "disabled": false,
           "document": "Configuration status of the passive health check. Values: `0` (Normal), `1` (configuration in progress) and `2` (configuration failed).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "PassiveStatus",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -7728,6 +7662,7 @@
           "example": "www.baidu.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7738,6 +7673,7 @@
           "example": "1",
           "member": "ProxyTypeInfo",
           "name": "ProxyTypeList",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7748,6 +7684,7 @@
           "example": "1.1.1.1",
           "member": "SourceServer",
           "name": "RealServers",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7755,9 +7692,10 @@
         {
           "disabled": false,
           "document": "Information of the Anti-DDoS instance",
-          "example": "xxx",
+          "example": "detail",
           "member": "InstanceRelation",
           "name": "InstanceDetails",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -7765,9 +7703,10 @@
         {
           "disabled": false,
           "document": "Information of the Anti-DDoS instance configured",
-          "example": "xxx",
+          "example": "detail",
           "member": "RuleInstanceRelation",
           "name": "InstanceDetailRule",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -7775,9 +7714,10 @@
         {
           "disabled": false,
           "document": "Protocol",
-          "example": "无",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7785,61 +7725,16 @@
         {
           "disabled": false,
           "document": "Port number",
-          "example": "无",
+          "example": "80",
           "member": "int64",
           "name": "Vport",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
         }
       ],
       "usage": "both"
-    },
-    "ListenerCcThreholdConfig": {
-      "document": "CC protection thresholds of the domain name and protocol",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Domain name",
-          "example": "www.8cname.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Protocol. Value: `https`.",
-          "example": "https",
-          "member": "string",
-          "name": "Protocol",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Status. Valid values: `0` (disabled), `1` (enabled).",
-          "example": "1",
-          "member": "int64",
-          "name": "CCEnable",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "CC protection threshold",
-          "example": "1",
-          "member": "int64",
-          "name": "CCThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
     },
     "ModifyCCPrecisionPolicyRequest": {
       "document": "ModifyCCPrecisionPolicy request structure.",
@@ -8036,7 +7931,7 @@
         {
           "disabled": false,
           "document": "Domain name",
-          "example": "test",
+          "example": "name",
           "member": "string",
           "name": "DomainUserName",
           "required": true,
@@ -8099,7 +7994,7 @@
           "example": "无",
           "member": "SuccessCode",
           "name": "Success",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -8154,9 +8049,10 @@
         {
           "disabled": false,
           "document": "Forwarding protocol. Valid values: `http` and `https`.",
-          "example": "无",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8164,9 +8060,10 @@
         {
           "disabled": false,
           "document": "Forwarding domain name.",
-          "example": "无",
+          "example": "www.abc.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8174,9 +8071,10 @@
         {
           "disabled": false,
           "document": "Load balancing method. Valid value: `1` (weighed polling).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "LbType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8184,9 +8082,10 @@
         {
           "disabled": false,
           "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "KeepEnable",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8194,9 +8093,10 @@
         {
           "disabled": false,
           "document": "Session persistence duration, in seconds.",
-          "example": "无",
+          "example": "15",
           "member": "uint64",
           "name": "KeepTime",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8204,9 +8104,10 @@
         {
           "disabled": false,
           "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "SourceType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8217,6 +8118,7 @@
           "example": "无",
           "member": "L4RuleSource",
           "name": "SourceList",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -8224,9 +8126,10 @@
         {
           "disabled": false,
           "document": "Region code.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Region",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8234,9 +8137,10 @@
         {
           "disabled": false,
           "document": "Resource ID.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8244,9 +8148,10 @@
         {
           "disabled": false,
           "document": "Anti-DDoS instance IP address.",
-          "example": "无",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8254,9 +8159,10 @@
         {
           "disabled": false,
           "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "RuleId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8264,9 +8170,10 @@
         {
           "disabled": false,
           "document": "Rule description.",
-          "example": "无",
+          "example": "name",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8274,9 +8181,10 @@
         {
           "disabled": false,
           "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CertType",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8284,9 +8192,10 @@
         {
           "disabled": false,
           "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
-          "example": "无",
+          "example": "id-xx",
           "member": "string",
           "name": "SSLId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8294,9 +8203,10 @@
         {
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
-          "example": "无",
+          "example": "cert",
           "member": "string",
           "name": "Cert",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8304,9 +8214,10 @@
         {
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
-          "example": "无",
+          "example": "key",
           "member": "string",
           "name": "PrivateKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8314,9 +8225,10 @@
         {
           "disabled": false,
           "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8324,9 +8236,10 @@
         {
           "disabled": false,
           "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCStatus",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8334,9 +8247,10 @@
         {
           "disabled": false,
           "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8344,9 +8258,10 @@
         {
           "disabled": false,
           "document": "CC protection threshold based on HTTPS.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CCThreshold",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8354,9 +8269,10 @@
         {
           "disabled": false,
           "document": "CC protection level based on HTTPS.",
-          "example": "无",
+          "example": "loose",
           "member": "string",
           "name": "CCLevel",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8364,9 +8280,10 @@
         {
           "disabled": false,
           "document": "Modification time.",
-          "example": "无",
+          "example": "2024.10.01",
           "member": "datetime",
           "name": "ModifyTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8374,9 +8291,10 @@
         {
           "disabled": false,
           "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). It defaults to `0`.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "HttpsToHttpEnable",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8384,19 +8302,21 @@
         {
           "disabled": false,
           "document": "Access port number.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "80",
           "member": "uint64",
           "name": "VirtualPort",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Specifies whether to forcibly redirect HTTP to HTTPS. `1`: Enable. `0`: Disable.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "RewriteHttps",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8404,9 +8324,10 @@
         {
           "disabled": false,
           "document": "Returns an error code when the rule configuration fails (only valid when `Status=2`). `1001`: The certificate does not exist. `1002`: Failed to obtain the certificate. `1003`: Failed to upload the certificate. `1004`: The certificate has expired.",
-          "example": "无",
+          "example": "100",
           "member": "uint64",
           "name": "ErrCode",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8417,9 +8338,10 @@
           "example": "2",
           "member": "uint64",
           "name": "Version",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -8433,7 +8355,7 @@
           "example": "ddosev-00000424",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8443,7 +8365,7 @@
           "example": "10.24.145.26",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8453,7 +8375,7 @@
           "example": "2021-03-17 12:32:12",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8463,7 +8385,7 @@
           "example": "2021-03-17 12:32:12",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8473,7 +8395,7 @@
           "example": "SYNFLOOD",
           "member": "string",
           "name": "AttackType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8483,7 +8405,7 @@
           "example": "0",
           "member": "uint64",
           "name": "AttackStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8493,7 +8415,7 @@
           "example": "23526",
           "member": "uint64",
           "name": "Mbps",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8503,7 +8425,7 @@
           "example": "235623",
           "member": "uint64",
           "name": "Pps",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8513,7 +8435,7 @@
           "example": "bgpip",
           "member": "string",
           "name": "Business",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8523,17 +8445,17 @@
           "example": "bgpip-00001001",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Anti-DDoS instance name",
-          "example": "无",
+          "example": "高防实例名称",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8546,9 +8468,10 @@
         {
           "disabled": false,
           "document": "Package type. Valid values:\n`staticpack`: non-BGP package\n`insurance`: guarantee package\n]",
-          "example": "",
+          "example": "staticpack",
           "member": "string",
           "name": "PackType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8556,9 +8479,10 @@
         {
           "disabled": false,
           "document": "Package ID",
-          "example": "",
+          "example": "bgp-xxx",
           "member": "string",
           "name": "PackId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8575,6 +8499,7 @@
           "example": "tcp",
           "member": "string",
           "name": "Protocol",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8585,6 +8510,7 @@
           "example": "1000",
           "member": "int64",
           "name": "SportStart",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8595,6 +8521,7 @@
           "example": "1001",
           "member": "int64",
           "name": "SportEnd",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8605,6 +8532,7 @@
           "example": "1000",
           "member": "int64",
           "name": "DportStart",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8615,6 +8543,7 @@
           "example": "1001",
           "member": "int64",
           "name": "DportEnd",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8625,6 +8554,7 @@
           "example": "300",
           "member": "int64",
           "name": "PktlenMin",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8635,6 +8565,7 @@
           "example": "500",
           "member": "int64",
           "name": "PktlenMax",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8645,6 +8576,7 @@
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8655,6 +8587,7 @@
           "example": "begin_l5",
           "member": "string",
           "name": "MatchBegin",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8665,6 +8598,7 @@
           "example": "sunday",
           "member": "string",
           "name": "MatchType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8675,6 +8609,7 @@
           "example": "\\x313233",
           "member": "string",
           "name": "Str",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8685,6 +8620,7 @@
           "example": "500",
           "member": "int64",
           "name": "Depth",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8695,6 +8631,7 @@
           "example": "100",
           "member": "int64",
           "name": "Offset",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8705,6 +8642,7 @@
           "example": "0",
           "member": "int64",
           "name": "IsNot",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8715,6 +8653,7 @@
           "example": "none",
           "member": "string",
           "name": "MatchLogic",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8725,6 +8664,7 @@
           "example": "begin_l5",
           "member": "string",
           "name": "MatchBegin2",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8735,6 +8675,7 @@
           "example": "sunday",
           "member": "string",
           "name": "MatchType2",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8745,6 +8686,7 @@
           "example": "\\x313233",
           "member": "string",
           "name": "Str2",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8755,6 +8697,7 @@
           "example": "500",
           "member": "int64",
           "name": "Depth2",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8765,6 +8708,7 @@
           "example": "200",
           "member": "int64",
           "name": "Offset2",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8775,6 +8719,7 @@
           "example": "0",
           "member": "int64",
           "name": "IsNot2",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8782,9 +8727,10 @@
         {
           "disabled": false,
           "document": "A rule ID is generated after a feature filtering configuration is added successfully. Leave this field empty when adding a new feature filtering configuration.",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8795,6 +8741,7 @@
           "example": "50",
           "member": "int64",
           "name": "PktLenGT",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -8844,9 +8791,10 @@
         {
           "disabled": false,
           "document": "Start port. Value range: 1–65535.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "BeginPort",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8854,191 +8802,16 @@
         {
           "disabled": false,
           "document": "End port. The value should be in the range 1–65535 and cannot be less than that of the start port.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "EndPort",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         }
       ],
       "usage": "both"
-    },
-    "ProtectThresholdRelation": {
-      "document": "Protection threshold configuration information",
-      "members": [
-        {
-          "disabled": false,
-          "document": "DDoS protection level:\n`low`: loose protection\n`middle`: medium protection\n`high`: strict protection\n]",
-          "example": "无",
-          "member": "string",
-          "name": "DDoSLevel",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "DDoS cleansing threshold (in Mbps)",
-          "example": "无",
-          "member": "uint64",
-          "name": "DDoSThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "DDoS AI protection switch:\n`on`: enabled\n`off`: disabled\n]",
-          "example": "无",
-          "member": "string",
-          "name": "DDoSAI",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "CC cleansing switch\n`0`: disabled\n`1`: enabled\n]",
-          "example": "无",
-          "member": "uint64",
-          "name": "CCEnable",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "CC cleansing threshold (in QPS)",
-          "example": "无",
-          "member": "uint64",
-          "name": "CCThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Anti-DDoS instance configured",
-          "example": "无",
-          "member": "InstanceRelation",
-          "name": "InstanceDetailList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Domain name and protocol protection thresholds",
-          "example": "无",
-          "member": "ListenerCcThreholdConfig",
-          "name": "ListenerCcThresholdList",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "SYN traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "SynFloodThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "SYN packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "SynFloodPktThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "UDP traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "UdpFloodThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "UDP packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "UdpFloodPktThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "ACK traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "AckFloodThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "ACK packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "AckFloodPktThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "SYNACK traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "SynAckFloodThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "SYNACK packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "SynAckFloodPktThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "RST traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "RstFloodThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "RST packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1000",
-          "member": "uint64",
-          "name": "RstFloodPktThreshold",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "ProtocolBlockConfig": {
       "document": "Protocol blocking configuration",
@@ -9148,22 +8921,20 @@
         {
           "disabled": false,
           "document": "Protocol. Valid values: `tcp`, `udp`",
-          "example": "无",
+          "example": "tcp",
           "member": "string",
           "name": "Protocol",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Port",
-          "example": "无",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -9174,9 +8945,10 @@
         {
           "disabled": false,
           "document": "List of forwarding listening ports. Value range: 1–65535.",
-          "example": "",
+          "example": "80",
           "member": "int64",
           "name": "ProxyPorts",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9184,9 +8956,10 @@
         {
           "disabled": false,
           "document": "Forwarding protocol:\n`http`: HTTP protocol\n`https`: HTTPS protocol\n]",
-          "example": "",
+          "example": "http",
           "member": "string",
           "name": "ProxyType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9200,9 +8973,10 @@
         {
           "disabled": false,
           "document": "Region name, such as `ap-guangzhou`",
-          "example": "",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9219,7 +8993,8 @@
           "example": "[1.1.1.1]",
           "member": "string",
           "name": "EipList",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -9229,7 +9004,8 @@
           "example": "bgpip-0000011x",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9239,12 +9015,13 @@
           "example": "abcdefg",
           "member": "string",
           "name": "Cname",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "SchedulingDomainInfo": {
       "document": "Scheduling domain name details",
@@ -9252,82 +9029,82 @@
         {
           "disabled": false,
           "document": "Scheduling domain name",
-          "example": "",
+          "example": "www.abc.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of line IPs",
-          "example": "",
+          "example": "[1]",
           "member": "IPLineInfo",
           "name": "LineIPList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Scheduling mode. Valid value: `priority` (priority scheduling).",
-          "example": "",
+          "example": "priority",
           "member": "string",
           "name": "Method",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "TTL value recorded from the scheduling domain name resolution",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TTL",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Running status. Valid values:\n`0`: not running\n`1`: running\n`2`: abnormal\n]",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024.12.1",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Last modification time",
-          "example": "",
+          "example": "2024.12.2",
           "member": "datetime",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "name",
           "member": "string",
           "name": "UsrDomainName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9338,9 +9115,10 @@
         {
           "disabled": false,
           "document": "Types of the real server address, such as IP or domain name.",
-          "example": "无",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "RealServer",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9348,9 +9126,10 @@
         {
           "disabled": false,
           "document": "Types of the real server address:\n`1`: domain name\n`2`: IP\n]",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "RsType",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9358,9 +9137,10 @@
         {
           "disabled": false,
           "document": "Forward weight of the real server. Value range: 1–100.",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Weight",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9368,9 +9148,10 @@
         {
           "disabled": false,
           "document": "Port number. Value range: 0-65535.",
-          "example": "无",
+          "example": "80",
           "member": "int64",
           "name": "Port",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -9384,9 +9165,10 @@
         {
           "disabled": false,
           "document": "Rate limit value types:\n`1`: packets per second (pps)\n`2`: bits per second (bps)\n]",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9394,9 +9176,10 @@
         {
           "disabled": false,
           "document": "Value",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9410,52 +9193,52 @@
         {
           "disabled": false,
           "document": "Base protection bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "ProtectBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Application bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "NormalBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Forwarding rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ForwardRulesLimit",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Auto-renewal flag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Expiration time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "\"2024.12.1\"",
           "member": "string",
           "name": "CurDeadline",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9466,20 +9249,20 @@
         {
           "disabled": false,
           "document": "Description",
-          "example": "无",
+          "example": "msg",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Success/Error code",
-          "example": "无",
+          "example": "200",
           "member": "string",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9541,18 +9324,16 @@
           "member": "string",
           "name": "TagKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "无",
+          "example": "232",
           "member": "string",
           "name": "TagValue",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -9592,6 +9373,7 @@
           "example": "0",
           "member": "int64",
           "name": "Offset",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9602,6 +9384,7 @@
           "example": "0",
           "member": "int64",
           "name": "OpenStatus",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9612,6 +9395,7 @@
           "example": "[{80,TCP}]",
           "member": "ForwardListener",
           "name": "Listeners",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9619,9 +9403,10 @@
         {
           "disabled": false,
           "document": "A list of watermark keys is generated after a watermark is added successfully. Each watermark can have up to 2 keys. When there is only one valid key, it cannot be deleted.",
-          "example": "[]",
+          "example": "[\"key\"]",
           "member": "WaterPrintKey",
           "name": "Keys",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -9632,6 +9417,7 @@
           "example": "checkall",
           "member": "string",
           "name": "Verify",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9642,9 +9428,10 @@
           "example": "1",
           "member": "int64",
           "name": "CloudSdkProxy",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9655,9 +9442,10 @@
         {
           "disabled": false,
           "document": "Key version",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "KeyVersion",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9665,9 +9453,10 @@
         {
           "disabled": false,
           "document": "Key content",
-          "example": "无",
+          "example": "0090-12301-1212",
           "member": "string",
           "name": "KeyContent",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9675,9 +9464,10 @@
         {
           "disabled": false,
           "document": "Key ID",
-          "example": "无",
+          "example": "id-xxx",
           "member": "string",
           "name": "KeyId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9685,9 +9475,10 @@
         {
           "disabled": false,
           "document": "Key status. Valid value: `1` (enabled).",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "KeyOpenStatus",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9695,9 +9486,10 @@
         {
           "disabled": false,
           "document": "Key creation time",
-          "example": "无",
+          "example": "2024.10.1",
           "member": "datetime",
           "name": "CreateTime",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false

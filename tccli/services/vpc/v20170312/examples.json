@@ -1614,6 +1614,20 @@
         "title": "Disabling the VPN gateway traffic monitoring"
       }
     ],
+    "DisableRoutes": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DisableRoutes\n&RouteTableId=rtb-9wzwlnhc\n&RouteIds.0=18292\n&RouteIds.1=18293\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
+        "title": "Disabling Subnet Routes"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DisableRoutes\n&RouteTableId=rtb-12345678\n&RouteItemIds.0=rti-12345678\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
+        "title": "Disabling Subnet Routes by Unique ID"
+      }
+    ],
     "DisableSnapshotPolicies": [
       {
         "document": " ",
@@ -1708,6 +1722,20 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=EnableGatewayFlowMonitor\n&GatewayId=vpngw-gree226l\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
         "title": "Enabling the VPN gateway traffic monitoring"
+      }
+    ],
+    "EnableRoutes": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=EnableRoutes\n&RouteTableId=rtb-9wzwlnhc\n&RouteIds.0=18292\n&RouteIds.1=18293\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
+        "title": "Enabling Subnet Routes"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=EnableRoutes\n&RouteTableId=rtb-12345678\n&RouteItemIds.0=rti-12345678\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"627c2362-890f-4f9e-9158-5e457b80d48b\"\n    }\n}",
+        "title": "Enabling Subnet Routes by Unique ID"
       }
     ],
     "EnableSnapshotPolicies": [
