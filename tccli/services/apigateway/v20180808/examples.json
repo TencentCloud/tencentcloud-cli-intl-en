@@ -2,7 +2,7 @@
   "actions": {
     "AttachPlugin": [
       {
-        "document": " ",
+        "document": " AttachPlugin",
         "input": "https://apigateway.tencentcloudapi.com/?Action=AttachPlugin\n&ServiceId=Service-3fasdgrg\n&PluginId=Plugin-3datbg1f\n&EnvironmentName=release\n&ApiIds.0=api-gesv1rfa\n&ApiIds.1=api-9ads3g\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
         "title": "AttachPlugin"
