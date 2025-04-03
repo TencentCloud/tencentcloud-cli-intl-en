@@ -6601,7 +6601,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio track input type. valid values:.\ntrask: indicates usage of the audio track id.\nTask_channel: indicates usage of the audio track id and sound channel id.\nDefault: trask.\nIf the original aduio track is multichannel, recommend using trask_channel.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Audio track input type. valid values:.\ntrask: indicates usage of the audio track id.\ntrask_channel: indicates usage of the audio track id and sound channel id.\nDefault: trask.\nIf the original aduio track is multichannel, recommend using trask_channel.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "trask",
           "member": "string",
           "name": "SelectType",
@@ -11511,7 +11511,7 @@
         {
           "disabled": false,
           "document": "Security group ID.",
-          "example": "1111",
+          "example": "019202e96d9f09dc0f325e7f7a2a",
           "member": "string",
           "name": "Id",
           "required": true,
