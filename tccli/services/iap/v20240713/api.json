@@ -1,0 +1,470 @@
+{
+  "actions": {
+    "CreateIAPUserOIDCConfig": {
+      "document": "This API is used to create a user OIDC configuration. Only one user OIDC IdP can be created, and the user SAML SSO IdP will be automatically disabled after it is created.",
+      "input": "CreateIAPUserOIDCConfigRequest",
+      "name": "Creates an IAP service OIDC configuration",
+      "output": "CreateIAPUserOIDCConfigResponse",
+      "status": "online"
+    },
+    "DescribeIAPLoginSessionDuration": {
+      "document": "This API is used to query login session duration.",
+      "input": "DescribeIAPLoginSessionDurationRequest",
+      "name": "Queries IAP login session duration",
+      "output": "DescribeIAPLoginSessionDurationResponse",
+      "status": "online"
+    },
+    "DescribeIAPUserOIDCConfig": {
+      "document": "This API is used to query a user OIDC configuration.",
+      "input": "DescribeIAPUserOIDCConfigRequest",
+      "name": "Queries an IAP service OIDC configuration",
+      "output": "DescribeIAPUserOIDCConfigResponse",
+      "status": "online"
+    },
+    "DisableIAPUserSSO": {
+      "document": "This API is used to disable user SSO.",
+      "input": "DisableIAPUserSSORequest",
+      "name": "Disables IAP service SSO",
+      "output": "DisableIAPUserSSOResponse",
+      "status": "online"
+    },
+    "ModifyIAPLoginSessionDuration": {
+      "document": "This API is used to modify login session duration.",
+      "input": "ModifyIAPLoginSessionDurationRequest",
+      "name": "Modifies IAP login session duration",
+      "output": "ModifyIAPLoginSessionDurationResponse",
+      "status": "online"
+    },
+    "UpdateIAPUserOIDCConfig": {
+      "document": "This API is used to modify a user OIDC configuration.",
+      "input": "UpdateIAPUserOIDCConfigRequest",
+      "name": "Modifies an IAP service OIDC configuration",
+      "output": "UpdateIAPUserOIDCConfigResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2024-07-13",
+    "serviceNameCN": "身份识别平台",
+    "serviceShortName": "iap"
+  },
+  "objects": {
+    "CreateIAPUserOIDCConfigRequest": {
+      "document": "CreateIAPUserOIDCConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "OpenID Connect IdP URL. It corresponds to the value of the \"issuer\" field in the Openid-configuration provided by the enterprise IdP.",
+          "example": "https://xxx.qq.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID registered with the OpenID Connect IdP.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "OpenID Connect IdP authorization endpoint. It corresponds to the value of the \"authorization_endpoint\" field in the Openid-configuration provided by the enterprise IdP.",
+          "example": "https://console.authing.cn/console/get-started/61adcf00620c31e3d",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response type, which is always id_token.",
+          "example": "id_token",
+          "member": "string",
+          "name": "ResponseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response mode. Valid values: form_post (recommended); fragment.",
+          "example": "fragment",
+          "member": "string",
+          "name": "ResponseMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mapping field name. It indicates which field in the id_token of the IdP is mapped to the username of a sub-user. It is usually the sub or name field.",
+          "example": "sub",
+          "member": "string",
+          "name": "MappingFiled",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Signature public key, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.",
+          "example": "baz****",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization information scope. Valid values: openid (default); email; profile.",
+          "example": "openid",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "idp name",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIAPUserOIDCConfigResponse": {
+      "document": "CreateIAPUserOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIAPLoginSessionDurationRequest": {
+      "document": "DescribeIAPLoginSessionDuration request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeIAPLoginSessionDurationResponse": {
+      "document": "DescribeIAPLoginSessionDuration response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Login session duration.",
+          "example": "172800",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIAPUserOIDCConfigRequest": {
+      "document": "DescribeIAPUserOIDCConfig request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeIAPUserOIDCConfigResponse": {
+      "document": "DescribeIAPUserOIDCConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IdP type. 13: IAP user OIDC IdP.",
+          "example": "13",
+          "member": "uint64",
+          "name": "ProviderType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IdP URL.",
+          "example": "https://xxx.qq.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public key for signature.",
+          "example": "baz****",
+          "member": "string",
+          "name": "IdentityKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client ID.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status. 0: Not set; 2: Disabled; 11: Enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The verification fingerprint of the HTTPS CA certificate. English letters and digits are allowed, and each fingerprint is 40 characters long, with a maximum of 5 fingerprints.",
+          "example": "[\"902ef2deeb3c5b13ea4c3d5193629309e231****\"]",
+          "member": "string",
+          "name": "Fingerprints",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the automatic use of the OIDC signature public key. 1: Yes, 2: No (default).",
+          "example": "2",
+          "member": "uint64",
+          "name": "EnableAutoPublicKey",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization endpoint.",
+          "example": "https://console.authing.cn/console/get-started/61adcf00620c31e3d",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization scope.",
+          "example": "openid",
+          "member": "string",
+          "name": "Scope",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response type.",
+          "example": "id_token",
+          "member": "string",
+          "name": "ResponseType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response mode.",
+          "example": "fragment",
+          "member": "string",
+          "name": "ResponseMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mapping field name.",
+          "example": "sub",
+          "member": "string",
+          "name": "MappingFiled",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "idp name",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableIAPUserSSORequest": {
+      "document": "DisableIAPUserSSO request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DisableIAPUserSSOResponse": {
+      "document": "DisableIAPUserSSO response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIAPLoginSessionDurationRequest": {
+      "document": "ModifyIAPLoginSessionDuration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Login session duration.",
+          "example": "172800",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIAPLoginSessionDurationResponse": {
+      "document": "ModifyIAPLoginSessionDuration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateIAPUserOIDCConfigRequest": {
+      "document": "UpdateIAPUserOIDCConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "OpenID Connect IdP URL. It corresponds to the value of the \"issuer\" field in the Openid-configuration provided by the enterprise IdP.",
+          "example": "https://xxx.qq.cn/oidc",
+          "member": "string",
+          "name": "IdentityUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID registered with the OpenID Connect IdP.",
+          "example": "61adcf00620c31e3ddbc9546",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "OpenID Connect IdP authorization endpoint. It corresponds to the value of the \"authorization_endpoint\" field in the Openid-configuration provided by the enterprise IdP.",
+          "example": "https://console.authing.cn/console/get-started/61adcf00620c31e3d",
+          "member": "string",
+          "name": "AuthorizationEndpoint",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response type, which is always id_token.",
+          "example": "id_token",
+          "member": "string",
+          "name": "ResponseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization response mode. Valid values: form_post (recommended); fragment.",
+          "example": "fragment",
+          "member": "string",
+          "name": "ResponseMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mapping field name. It indicates which field in the id_token of the IdP is mapped to the username of a sub-user. It is usually the sub or name field.",
+          "example": "sub",
+          "member": "string",
+          "name": "MappingFiled",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "RSA signature public key in the JWKS format, which is used to verify the OpenID Connect IdP's ID token and must be Base64-encoded. For the security of your account, we recommend you rotate it regularly.",
+          "example": "ewogICJ***IF0KfQ==",
+          "member": "string",
+          "name": "IdentityKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization information scope. Valid values: openid (default); email; profile.",
+          "example": "openid",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Description, with a length of 1 to 255 English or Chinese characters. It is empty by default.",
+          "example": "idp name",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateIAPUserOIDCConfigResponse": {
+      "document": "UpdateIAPUserOIDCConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "version": "1.0"
+}

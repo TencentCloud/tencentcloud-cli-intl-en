@@ -1,0 +1,59 @@
+{
+  "actions": {
+    "CreateIAPUserOIDCConfig": [
+      {
+        "document": "This example shows you how to create IAP's OIDC configuration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIAPUserOIDCConfig\n<Common request parameters>\n\n{\n    \"IdentityUrl\": \"https://accounts.g**gle.com\",\n    \"ClientId\": \"47***4801-pu***e7tj.apps.g**gleusercontent.com\",\n    \"AuthorizationEndpoint\": \"https://accounts.g**gle.com/o/oauth2/v2/auth\",\n    \"ResponseType\": \"id_token\",\n    \"ResponseMode\": \"form_post\",\n    \"MappingFiled\": \"email\",\n    \"IdentityKey\": \"ewogICAgImtleXMiOiBb*******gICBdCn0=\",\n    \"Scope\": [\n        \"openid\",\n        \"email\",\n        \"profile\"\n    ],\n    \"Description\": \"111\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3ccecfc6-14a0-4aaa-bcf4-0d5b77835bfb\"\n    }\n}",
+        "title": "Creating IAP's OIDC Configuration"
+      }
+    ],
+    "DescribeIAPLoginSessionDuration": [
+      {
+        "document": "This example shows you how to query valid login duration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIAPLoginSessionDuration\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Duration\": 10000,\n        \"RequestId\": \"4ad66203-95eb-41cf-b011-af9c9be78e49\"\n    }\n}",
+        "title": "Querying Valid Login Duration"
+      },
+      {
+        "document": "This example shows you how to query login session duration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIAPLoginSessionDuration\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Duration\": 10000,\n        \"RequestId\": \"4ad66203-95eb-41cf-b011-af9c9be78e49\"\n    }\n}",
+        "title": "Querying Login Session Duration"
+      }
+    ],
+    "DescribeIAPUserOIDCConfig": [
+      {
+        "document": "This example shows you how to query IAP's OIDC configuration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIAPUserOIDCConfig\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"AuthorizationEndpoint\": \"https://accounts.g**gle.com/o/oauth2/v2/auth\",\n        \"ClientId\": \"47***01-pu1e*****7tj.apps.g**gleusercontent.com\",\n        \"Description\": \"222\",\n        \"IdentityKey\": \"ewogICAgImtletVUkttZ0I***GTHVVRUJkdyIKICAgICAgICB9CiAgICBdCn0=\",\n        \"IdentityUrl\": \"https://accounts.g**gle.com\",\n        \"MappingFiled\": \"email\",\n        \"ProviderType\": 13,\n        \"RequestId\": \"f87e5dab-426a-4a50-ac5b-1c08151cd6a2\",\n        \"ResponseMode\": \"form_post\",\n        \"ResponseType\": \"id_token\",\n        \"Scope\": [\n            \"openid\",\n            \"email\",\n            \"profile\"\n        ],\n        \"Status\": 2\n    }\n}",
+        "title": " Querying IAP's OIDC Configuration"
+      }
+    ],
+    "DisableIAPUserSSO": [
+      {
+        "document": "This example shows you how to disable IAP.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableIAPUserSSO\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0054eaee-a5f7-4c53-9288-f4f06488fc94\"\n    }\n}",
+        "title": "Disabling IAP"
+      }
+    ],
+    "ModifyIAPLoginSessionDuration": [
+      {
+        "document": "This example shows you how to set login session duration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIAPLoginSessionDuration\n<Common request parameters>\n\n{\n    \"Duration\": 3600\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"27211afb-4f91-4473-bf32-1b73ac5c37f8\"\n    }\n}",
+        "title": "Setting Login Session Duration"
+      }
+    ],
+    "UpdateIAPUserOIDCConfig": [
+      {
+        "document": "This example shows you how to modify IAP's OIDC configuration.",
+        "input": "POST / HTTP/1.1\nHost: iap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateIAPUserOIDCConfig\n<Common request parameters>\n\n{\n    \"IdentityUrl\": \"https://accounts.g**gle.com\",\n    \"ClientId\": \"47***01-pu***mvj4lj1de7tj.apps.g**gleusercontent.com\",\n    \"AuthorizationEndpoint\": \"https://accounts.g**gle.com/o/oauth2/v2/auth\",\n    \"ResponseType\": \"id_token\",\n    \"ResponseMode\": \"form_post\",\n    \"MappingFiled\": \"email\",\n    \"IdentityKey\": \"ewogICAgImtle***xkd09GTHVVRUJkdyIKICAgICAgICB9CiAgICBdCn0=\",\n    \"Scope\": [\n        \"openid\",\n        \"email\",\n        \"profile\"\n    ],\n    \"Description\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b83e3152-6d18-4617-986d-ff4c666750ed\"\n    }\n}",
+        "title": "Modifying IAP's OIDC Configuration"
+      }
+    ]
+  },
+  "version": "1.0"
+}

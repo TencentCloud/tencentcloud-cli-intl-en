@@ -223,9 +223,10 @@
         {
           "disabled": false,
           "document": "VpcId: vpc-xadsafsdasd",
-          "example": "无",
+          "example": "vpc-hgje12gt",
           "member": "string",
           "name": "UniqVpcId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -233,22 +234,24 @@
         {
           "disabled": false,
           "document": "VPC region: ap-guangzhou, ap-shanghai\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC account: 123456789\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "123456789",
+          "example": "10005630010",
           "member": "string",
           "name": "Uin",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -256,9 +259,10 @@
           "example": "testname",
           "member": "string",
           "name": "VpcName",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -987,7 +991,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Associates the private domain to a VPC when it is created",
           "example": "无",
           "member": "VpcInfo",
@@ -1025,7 +1029,7 @@
           "example": "41",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1035,7 +1039,7 @@
           "example": "a.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
