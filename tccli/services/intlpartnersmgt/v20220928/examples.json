@@ -276,6 +276,14 @@
         "title": "Querying Policy List Data"
       }
     ],
+    "QueryT1IndirectCustomersDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryT1IndirectCustomersDetail\n<Common request parameters>\n\n{\n\n    \"Page\": 1,\n    \"PageSize\": 1,\n    \"SubAgentUin\": 800000000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"********\",\n        \"Total\": 10,\n        \"SubAgentUin\": 800000000000,\n\"SubAgentName\": \"Zhang San\"\n        \"Data\": [\n            {\n                \"ClientUin\": 8000002100,\n\"ClientName\": \"Li Si\"\n                \"ClientBindTime\": \"2024-02-02 09:25:38\"\n            }\n        ]\n    }\n}",
+        "title": "Query Indirect Sub-Customers of a First-Level Distributor"
+      }
+    ],
     "QueryVoucherAmountByUin": [
       {
         "document": " ",
