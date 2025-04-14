@@ -636,7 +636,7 @@
         {
           "disabled": false,
           "document": "Unique ID of intelligent analysis template.",
-          "example": "0",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
           "output_required": true,
@@ -646,7 +646,7 @@
         {
           "disabled": false,
           "document": "Intelligent analysis template name.",
-          "example": "“”",
+          "example": "智能分析模板",
           "member": "string",
           "name": "Name",
           "output_required": true,
@@ -656,7 +656,7 @@
         {
           "disabled": false,
           "document": "Intelligent analysis template description.",
-          "example": "“”",
+          "example": "智能分析模板描述",
           "member": "string",
           "name": "Comment",
           "output_required": true,
@@ -706,7 +706,7 @@
         {
           "disabled": false,
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
-          "example": "“”",
+          "example": "2017-01-01T00:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -716,7 +716,7 @@
         {
           "disabled": false,
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
-          "example": "“”",
+          "example": "2017-01-01T00:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -726,7 +726,7 @@
         {
           "disabled": false,
           "document": "The template type. Valid values:\n* Preset\n* Custom\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "“”",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -1453,7 +1453,7 @@
         {
           "disabled": false,
           "document": "Audio parameter information.",
-          "example": "null",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "Audio",
           "output_required": true,
@@ -1464,7 +1464,7 @@
         {
           "disabled": false,
           "document": "Video parameter information.",
-          "example": "null",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "Video",
           "output_required": true,
@@ -1496,7 +1496,7 @@
         },
         {
           "disabled": false,
-          "document": "List of audio parameter information.\nThe parameter array has a maximum length of 64.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Audio parameter information list.\nThe parameter is only used when merging multiple audio tracks with self-adaptive transcoding. the maximum length of the parameter array is 64.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioList",
@@ -1514,7 +1514,7 @@
         {
           "disabled": false,
           "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "subtitle-stream",
           "member": "string",
           "name": "Type",
           "output_required": false,
@@ -1536,7 +1536,7 @@
         {
           "disabled": false,
           "document": "Subtitle name.\nNote: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "字幕1",
           "member": "string",
           "name": "SubtitleName",
           "output_required": false,
@@ -1669,10 +1669,10 @@
         {
           "disabled": false,
           "document": "Intelligent video categorization template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1767,10 +1767,10 @@
         {
           "disabled": false,
           "document": "Intelligent video cover generating template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1875,7 +1875,7 @@
         {
           "disabled": false,
           "document": "Intelligent removal template ID.",
-          "example": "无",
+          "example": "293034",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
@@ -1891,7 +1891,7 @@
         {
           "disabled": false,
           "document": "Path of a file after removal.",
-          "example": "无",
+          "example": "\t/output/test-result.mp4",
           "member": "string",
           "name": "Path",
           "output_required": true,
@@ -1911,7 +1911,7 @@
         {
           "disabled": false,
           "document": "Path of a subtitle file extracted from a video.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "/output/1869644145.vtt",
           "member": "string",
           "name": "OriginSubtitlePath",
           "output_required": false,
@@ -1921,7 +1921,7 @@
         {
           "disabled": false,
           "document": "Path of a subtitle translation file extracted from a video.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "/output/1869644146.vtt",
           "member": "string",
           "name": "TranslateSubtitlePath",
           "output_required": false,
@@ -1937,7 +1937,7 @@
         {
           "disabled": false,
           "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -1947,7 +1947,7 @@
         {
           "disabled": false,
           "document": "Error code. `0`: Task successful. Other values: Task failed.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -1957,7 +1957,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -1993,10 +1993,10 @@
         {
           "disabled": false,
           "document": "Intelligent description template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2081,10 +2081,10 @@
         {
           "disabled": false,
           "document": "Intelligent frame-specific video tagging template ID.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2179,10 +2179,10 @@
         {
           "disabled": false,
           "document": "Opening and closing segments recognition template ID.",
-          "example": "无",
+          "example": "319919",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2195,20 +2195,20 @@
         {
           "disabled": false,
           "document": "Opening segment PTS.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "float",
           "name": "HeadTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Closing segment PTS.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "float",
           "name": "TailTimeOffset",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         }
@@ -2221,7 +2221,7 @@
         {
           "disabled": false,
           "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -2231,7 +2231,7 @@
         {
           "disabled": false,
           "document": "Error code. `0`: Task successful. Other values: Task failed.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -2241,7 +2241,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -2277,10 +2277,10 @@
         {
           "disabled": false,
           "document": "The ID of the intelligent highlight generation template.",
-          "example": "",
+          "example": "26",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2319,7 +2319,7 @@
         {
           "disabled": false,
           "document": "The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -2329,7 +2329,7 @@
         {
           "disabled": false,
           "document": "Error code. `0`: The task succeeded; other values: The task failed.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -2339,7 +2339,7 @@
         {
           "disabled": false,
           "document": "The error message.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -2391,7 +2391,7 @@
         {
           "disabled": false,
           "document": "Intelligent landscape-to-portrait video list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "/output/htv-process-result.mp4",
           "member": "string",
           "name": "Path",
           "output_required": false,
@@ -2411,7 +2411,7 @@
         {
           "disabled": false,
           "document": "Confidence.\t\n\t\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "float",
           "name": "Confidence",
           "output_required": false,
@@ -2427,7 +2427,7 @@
         {
           "disabled": false,
           "document": "Task status, including PROCESSING, SUCCESS, and FAIL.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": false,
@@ -2437,7 +2437,7 @@
         {
           "disabled": false,
           "document": "Error code. 0: Task successful. Other values: Task failed.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "40000",
           "member": "int64",
           "name": "ErrCode",
           "output_required": false,
@@ -2447,7 +2447,7 @@
         {
           "disabled": false,
           "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": false,
@@ -2511,10 +2511,10 @@
         {
           "disabled": false,
           "document": "Splitting task template ID.",
-          "example": "无",
+          "example": "27",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2537,7 +2537,7 @@
         {
           "disabled": false,
           "document": "Video abstract, used for offline scenarios.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "xx",
+          "example": "This video introduces Tencent cloud streaming products, including Stream Live, Stream Link, and Stream Package.",
           "member": "string",
           "name": "Abstract",
           "output_required": false,
@@ -2553,7 +2553,7 @@
         {
           "disabled": false,
           "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -2563,7 +2563,7 @@
         {
           "disabled": false,
           "document": "Error code. `0`: Task successful. Other values: Task failed.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -2573,7 +2573,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -2641,7 +2641,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -2651,7 +2651,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -2661,7 +2661,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -2671,7 +2671,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -2859,7 +2859,7 @@
         {
           "disabled": false,
           "document": "Segment summary.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "This video highlights the live streaming services provided by Ten Cent Cloud Media Services",
           "member": "string",
           "name": "Summary",
           "output_required": false,
@@ -2869,7 +2869,7 @@
         {
           "disabled": false,
           "document": "Segment title.",
-          "example": "分段标题",
+          "example": "Tencent Cloud Media Services: Streamlining Live Streaming Solutions",
           "member": "string",
           "name": "Title",
           "output_required": false,
@@ -2889,7 +2889,7 @@
         {
           "disabled": false,
           "document": "Segmentation start time point, in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2.532",
           "member": "float",
           "name": "StartTimeOffset",
           "output_required": false,
@@ -2899,7 +2899,7 @@
         {
           "disabled": false,
           "document": "Segmentation end time point, in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "5.532",
           "member": "float",
           "name": "EndTimeOffset",
           "output_required": false,
@@ -3029,7 +3029,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -3039,7 +3039,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -3049,7 +3049,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -3059,7 +3059,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -3105,10 +3105,10 @@
         {
           "disabled": false,
           "document": "Full speech recognition template ID.",
-          "example": "",
+          "example": "10101",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3213,7 +3213,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -3223,7 +3223,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -3233,7 +3233,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -3243,7 +3243,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -3279,10 +3279,10 @@
         {
           "disabled": false,
           "document": "Speech keyword recognition template ID.",
-          "example": "",
+          "example": "20",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3295,20 +3295,20 @@
         {
           "disabled": false,
           "document": "Speech keyword.",
-          "example": "",
+          "example": "关键词",
           "member": "string",
           "name": "Word",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of time segments that contain the speech keyword.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskAsrWordsSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3337,30 +3337,30 @@
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "4.096",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "5.546",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -3373,7 +3373,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -3383,7 +3383,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -3393,7 +3393,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -3403,7 +3403,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -3439,10 +3439,10 @@
         {
           "disabled": false,
           "document": "Face recognition template ID.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3535,7 +3535,7 @@
         {
           "disabled": false,
           "document": "The person’s profile.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "\"\"",
+          "example": "知名歌手，代表作xxx",
           "member": "string",
           "name": "Abstract",
           "output_required": true,
@@ -3575,7 +3575,7 @@
         {
           "disabled": false,
           "document": "The screenshot URL.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "\"\"",
+          "example": "https://test-result.com/face-recognition-person1.jpg",
           "member": "string",
           "name": "Url",
           "output_required": true,
@@ -3607,40 +3607,40 @@
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "0.033",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "0.035",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "95",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.",
-          "example": "",
+          "example": " [807,345,985,523]",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3664,7 +3664,7 @@
         {
           "disabled": false,
           "document": "User extension field, which does not need to be filled in for general scenarios.",
-          "example": "无",
+          "example": "{\"ParaTest\":\"test\"}",
           "member": "string",
           "name": "UserExtPara",
           "output_required": false,
@@ -3681,7 +3681,7 @@
         {
           "disabled": false,
           "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -3691,7 +3691,7 @@
         {
           "disabled": false,
           "document": "Error code. `0`: Task successful. Other values: Task failed.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -3701,7 +3701,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "无",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -3737,10 +3737,10 @@
         {
           "disabled": false,
           "document": "Object recognition template ID.",
-          "example": "",
+          "example": "20",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3753,20 +3753,20 @@
         {
           "disabled": false,
           "document": "Name of a recognized object.",
-          "example": "",
+          "example": "人脸",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of segments that contain the object.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskObjectSeqmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3795,40 +3795,40 @@
         {
           "disabled": false,
           "document": "Start time offset of a recognized segment, in seconds.",
-          "example": "",
+          "example": "1.034",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognized segment, in seconds.",
-          "example": "",
+          "example": "1.035",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a recognized segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.",
-          "example": "",
+          "example": "[932,342,1275,787]",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3907,10 +3907,10 @@
         {
           "disabled": false,
           "document": "Full text recognition template ID.",
-          "example": "",
+          "example": "20",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3939,30 +3939,30 @@
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "2.035",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "2.035",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Recognition segment result set.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskOcrFullTextSegmentTextItem",
           "name": "TextSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3975,30 +3975,30 @@
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.",
-          "example": "",
+          "example": " [1592,84,1774,131]",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Recognized text.",
-          "example": "",
+          "example": "腾讯云",
           "member": "string",
           "name": "Text",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4093,20 +4093,20 @@
         {
           "disabled": false,
           "document": "Text keyword.",
-          "example": "",
+          "example": "关键词",
           "member": "string",
           "name": "Word",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of segments that contain a text keyword.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskOcrWordsSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4135,40 +4135,40 @@
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "4.096",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "5.546",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.",
-          "example": "",
+          "example": "[729,939,1159,1014]",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4181,7 +4181,7 @@
         {
           "disabled": false,
           "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -4191,7 +4191,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -4201,7 +4201,7 @@
         {
           "disabled": false,
           "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -4211,7 +4211,7 @@
         {
           "disabled": false,
           "document": "The error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -4257,10 +4257,10 @@
         {
           "disabled": false,
           "document": "The translation template ID.",
-          "example": "123",
+          "example": "10103",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4531,10 +4531,10 @@
         {
           "disabled": false,
           "document": "ID of a porn information detection template.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4547,30 +4547,30 @@
         {
           "disabled": false,
           "document": "Score of the ASR-detected porn information in text from 0 to 100.",
-          "example": "",
+          "example": "75",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for the ASR-detected porn information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video segments that contain the ASR-detected porn information in text.",
-          "example": "",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4583,10 +4583,10 @@
         {
           "disabled": false,
           "document": "ID of a porn information detection template.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4599,30 +4599,30 @@
         {
           "disabled": false,
           "document": "Score of the OCR-detected porn information in text from 0 to 100.",
-          "example": "",
+          "example": "75",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for the OCR-detected porn information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video segments that contain the OCR-detected porn information in text.",
-          "example": "",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4652,40 +4652,40 @@
         {
           "disabled": false,
           "document": "Score of the detected porn information in video from 0 to 100.",
-          "example": "",
+          "example": "75",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for the detected porn information. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag of the detected porn information in video. Valid values:\n<li>porn: Porn.</li>\n<li>sexy: Sexiness.</li>\n<li>vulgar: Vulgarity.</li>\n<li>intimacy: Intimacy.</li>",
-          "example": "",
+          "example": "porn",
           "member": "string",
           "name": "Label",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video segments that contain the detected porn information.",
-          "example": "",
+          "example": "无",
           "member": "MediaContentReviewSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4698,10 +4698,10 @@
         {
           "disabled": false,
           "document": "Prohibited information detection template ID.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4714,30 +4714,30 @@
         {
           "disabled": false,
           "document": "Score of ASR-detected prohibited information in speech between 0 and 100.",
-          "example": "",
+          "example": "90",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for ASR-detected prohibited information in speech. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video segments that contain the ASR-detected prohibited information in speech.",
-          "example": "",
+          "example": "无",
           "member": "MediaContentReviewAsrTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4750,10 +4750,10 @@
         {
           "disabled": false,
           "document": "Prohibited information detection template ID.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4766,30 +4766,30 @@
         {
           "disabled": false,
           "document": "Score of OCR-detected prohibited information in text between 0 and 100.",
-          "example": "",
+          "example": "90",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for OCR-detected prohibited information in text. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video segments that contain the OCR-detected prohibited information in text.",
-          "example": "",
+          "example": "无",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -5000,7 +5000,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5010,7 +5010,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5020,7 +5020,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -5030,7 +5030,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5066,7 +5066,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5076,7 +5076,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5086,7 +5086,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -5096,7 +5096,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5132,7 +5132,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5142,7 +5142,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5152,7 +5152,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -5162,7 +5162,7 @@
         {
           "disabled": false,
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5198,7 +5198,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5208,7 +5208,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5218,7 +5218,7 @@
         {
           "disabled": false,
           "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -5228,7 +5228,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5264,7 +5264,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5274,7 +5274,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5284,7 +5284,7 @@
         {
           "disabled": false,
           "document": "Error code. 0: success; other values: failure.\n<li>40000: invalid input parameter. Please check it;</li>\n<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>\n<li>70000: internal service error. Please try again.</li>",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -5294,7 +5294,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5330,7 +5330,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "\"\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5340,7 +5340,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "\"\"",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5360,7 +5360,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "\"\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5396,7 +5396,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "\"\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -5406,7 +5406,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "\"\"",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -5426,7 +5426,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "\"\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -5481,17 +5481,17 @@
           "example": "0",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The suggestion for handling the sensitive information detected based on OCR. Valid values:\n<li>pass</li>\n<li>review</li>\n<li>block</li>",
-          "example": "\"\"",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5501,7 +5501,7 @@
           "example": "NULL",
           "member": "MediaContentReviewOcrTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -5576,20 +5576,20 @@
         {
           "disabled": false,
           "document": "Face image ID.",
-          "example": "",
+          "example": "151***",
           "member": "string",
           "name": "FaceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Face image address.",
-          "example": "",
+          "example": "http://1234567.vod2.myqcloud.com/****/95f****d-****-****-****-132c8****9c73.jpeg",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -5677,7 +5677,7 @@
           "example": "9527",
           "member": "string",
           "name": "PersonId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5687,7 +5687,7 @@
           "example": "Default",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5697,7 +5697,7 @@
           "example": "张三",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5707,7 +5707,7 @@
           "example": "NULL",
           "member": "AiSampleFaceInfo",
           "name": "FaceInfoSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5717,7 +5717,7 @@
           "example": "NULL",
           "member": "string",
           "name": "TagSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5727,27 +5727,27 @@
           "example": "NULL",
           "member": "string",
           "name": "UsageSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "“”",
+          "example": "2025-03-25T06:16:39Z\t",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "“”",
+          "example": "2025-03-25T06:16:39Z\t",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -5868,7 +5868,7 @@
         {
           "disabled": false,
           "document": "Animated image generating template ID.",
-          "example": "无",
+          "example": "20000",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
@@ -5879,7 +5879,7 @@
         {
           "disabled": false,
           "document": "Start time of an animated image in a video in seconds.",
-          "example": "无",
+          "example": "1.5",
           "member": "float",
           "name": "StartTimeOffset",
           "output_required": true,
@@ -5890,7 +5890,7 @@
         {
           "disabled": false,
           "document": "End time of an animated image in a video in seconds.",
-          "example": "无",
+          "example": "11.2",
           "member": "float",
           "name": "EndTimeOffset",
           "output_required": true,
@@ -5912,7 +5912,7 @@
         {
           "disabled": false,
           "document": "Output path of a file after animated image generating, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).\nRelative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.",
-          "example": "无",
+          "example": "文件名_{变量名}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
           "output_required": true,
@@ -6055,9 +6055,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6065,9 +6066,10 @@
         {
           "disabled": false,
           "document": "The strength. Valid values:\n<li>weak</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "weak",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6107,22 +6109,20 @@
         {
           "disabled": false,
           "document": "Switch of a full speech recognition task. Valid values:\n<li>ON: Enables an intelligent full speech recognition task;</li>\n<li>OFF: Disables an intelligent full speech recognition task.</li>",
-          "example": "无",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Format of the generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid value:\n<li>vtt: Generates a WebVTT subtitles file.</li>",
-          "example": "无",
+          "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -6283,9 +6283,10 @@
         {
           "disabled": false,
           "document": "Switch of a speech keyword recognition task. Valid values:\n<li>ON: Enables a speech keyword recognition task;</li>\n<li>OFF: Disables a speech keyword recognition task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6293,9 +6294,10 @@
         {
           "disabled": false,
           "document": "Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"明星\",\"艺人\"]",
           "member": "string",
           "name": "LabelSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -6309,22 +6311,20 @@
         {
           "disabled": false,
           "document": "Switch of a speech keyword recognition task. Valid values:\n<li>ON: Enables a speech keyword recognition task;</li>\n<li>OFF: Disables a speech keyword recognition task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"明星\",\"艺人\"]",
           "member": "string",
           "name": "LabelSet",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -6335,7 +6335,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -6346,7 +6346,7 @@
         {
           "disabled": false,
           "document": "The audio improvement options. You can specify multiple options. Valid values:\n<li>`declick`: Noise removal.</li>\n<li>`deesser`: De-essing.</li>\nDefault: `declick`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "declick",
           "member": "string",
           "name": "Types",
           "output_required": true,
@@ -6363,7 +6363,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -6430,7 +6430,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -6441,7 +6441,7 @@
         {
           "disabled": false,
           "document": "The scenario. Valid values:\n<li>`normal`: Separate voice and background audio.</li>\n<li>`music`: Separate vocals and instrumentals.</li>\nDefault value: `normal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "normal",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -6452,7 +6452,7 @@
         {
           "disabled": false,
           "document": "The output audio track. Valid values:\n<li>`vocal`: Voice.</li>\n<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>\nDefault value: `vocal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "vocal",
           "member": "string",
           "name": "Track",
           "output_required": true,
@@ -6468,7 +6468,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audio stream encoding format.\nWhen audio transcoding is not needed, the value is:\n<li>copy.</li>\nWhen the outer parameter Container is mp3, the value is:\n<li>mp3.</li>\nWhen the outer parameter Container is ogg or flac, the value is:\n<li>flac.</li>\nWhen the outer parameter Container is m4a, valid values are:\n<li>aac;</li>\n<li>ac3.</li>\nWhen the outer parameter Container is mp4 or flv, valid values are:\n<li>aac: more suitable for mp4;</li>\n<li>mp3: more suitable for flv;</li>\n<li>mp2.</li>\nWhen the outer parameter Container is hls, valid values are:\n<li>aac;</li>\n<li>mp3.</li>",
+          "document": "Specifies the encoding format of the audio stream.\nWhen audio transcoding is not needed, the optional values are:.\n<li>copy.</li>\nWhen the outer parameter Container is mp3, the valid values are:.\n<li>mp3.</li>\nWhen the outer parameter Container is ogg or flac, the valid values are:.\n<li>flac.</li>\nWhen the outer parameter Container is m4a, valid values are:.\n<li>aac;</li>\n<li>ac3.</li>\nWhen the outer parameter Container is mp4 or flv, valid values are:.\n<li>aac: more suitable for mp4;</li>.\n<li>mp3: more suitable for flv;</li>.\n<li>mp2.</li>\nWhen the outer parameter Container is hls, valid values are:.\n<li>aac;</li>\n<li>mp3;</li>\n<li>eac3: used when merging adaptive transcoding audio tracks.</li>.",
           "example": "aac",
           "member": "string",
           "name": "Codec",
@@ -6479,7 +6479,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio stream bitrate in Kbps. Value range: 0 and [26, 256].\nIf the value is 0, the bitrate of the audio stream will be the same as that of the original audio.",
+          "document": "The bitrate of the audio stream. value ranges from 0 to 26 and in the range of [26, 256]. measurement unit: kbps.\nIf the value is 0, the audio bitrate will be the same as that of the original audio.\nSpecifies that when using the TrackChannelInfo parameter for adaptive transcoding audio track merging, the valid values are:.\nCannot be set to 0.\n2). when Codec is aac, valid values: [26, 256].\n3). when Codec is ac3, valid values: [26, 640].\n4) when Codec is eac3, value range: [26, 6144]. remark: when SampleRate is 44100HZ, maximum value: 5644. when SampleRate is 48000HZ, maximum value: 6144.\n\n",
           "example": "0",
           "member": "int64",
           "name": "Bitrate",
@@ -6490,7 +6490,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio stream sample rate. Valid values:\n<li>32,000</li>\n<li>44,100</li>\n<li>48,000</li>\nIn Hz.",
+          "document": "The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.\nUnit: Hz.\nPlease ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -6551,7 +6551,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio stream sample rate. Valid values:\n<li>32,000</li>\n<li>44,100</li>\n<li>48,000</li>\nIn Hz.",
+          "document": "The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.\nPlease ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -6590,7 +6590,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable audio mix. valid values:.\n0: indicates not enabling audio mix.\n1: Indicates enabling audio mix.\nDefault value: 0\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Whether to enable the feature of multi-audio track mixing. valid values:\n0: indicates not enabling multi-audio track mix.\n1: Indicates enabling multi-audio track mixing.\nDefault value: 0\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ChannelsRemix",
@@ -6601,8 +6601,8 @@
         },
         {
           "disabled": false,
-          "document": "Audio track input type. valid values:.\ntrask: indicates usage of the audio track id.\ntrask_channel: indicates usage of the audio track id and sound channel id.\nDefault: trask.\nIf the original aduio track is multichannel, recommend using trask_channel.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "trask",
+          "document": "Set the selector type for the input audio track. valid values:\nTrack: indicates the usage of audio track id;.\nTrack_channel: indicates the usage of the audio track id and sound channel id.\nDefault: track.\nIf the original video has multiple channels, it is recommended to use track_channel.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "track",
           "member": "string",
           "name": "SelectType",
           "output_required": false,
@@ -6630,9 +6630,10 @@
         {
           "disabled": false,
           "document": "The AWS S3 bucket bound to the scheme.",
-          "example": "test",
+          "example": "mps-test-s3",
           "member": "string",
           "name": "S3Bucket",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6640,9 +6641,10 @@
         {
           "disabled": false,
           "document": "The region of the AWS S3 bucket.",
-          "example": "无",
+          "example": "us-east-1 ",
           "member": "string",
           "name": "S3Region",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6650,9 +6652,10 @@
         {
           "disabled": false,
           "document": "The bucket directory bound. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.\t",
-          "example": "无",
+          "example": "/Dir/",
           "member": "string",
           "name": "Dir",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6660,9 +6663,10 @@
         {
           "disabled": false,
           "document": "The file formats that will trigger the scheme, such as [\"mp4\", \"flv\", \"mov\"]. If you do not specify this, the upload of files in any format will trigger the scheme.\t",
-          "example": "无",
+          "example": "[\"mp4\", \"flv\", \"mov\"]",
           "member": "string",
           "name": "Formats",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -6670,9 +6674,10 @@
         {
           "disabled": false,
           "document": "The key ID of the AWS S3 bucket.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6680,9 +6685,10 @@
         {
           "disabled": false,
           "document": "The key of the AWS S3 bucket.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6693,6 +6699,7 @@
           "example": "无",
           "member": "AwsSQS",
           "name": "AwsSQS",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6717,7 +6724,7 @@
         {
           "disabled": false,
           "document": "The name of the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "mps123_s3_sqs",
           "member": "string",
           "name": "SQSQueueName",
           "output_required": false,
@@ -6728,7 +6735,7 @@
         {
           "disabled": false,
           "document": "The key ID required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretId",
           "output_required": false,
@@ -6739,7 +6746,7 @@
         {
           "disabled": false,
           "document": "The key required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretKey",
           "output_required": false,
@@ -6756,9 +6763,10 @@
         {
           "disabled": false,
           "document": "Switch of intelligent categorization task. Valid values:\n<li>ON: enables intelligent categorization task;</li>\n<li>OFF: disables intelligent categorization task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6788,9 +6796,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6798,9 +6807,10 @@
         {
           "disabled": false,
           "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "weak",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7198,7 +7208,7 @@
         {
           "disabled": false,
           "document": "The material ID, which can be found in `FileInfos`.",
-          "example": "无",
+          "example": "f4",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -7207,7 +7217,7 @@
         {
           "disabled": false,
           "document": "The start time of the material. The following two formats are supported.\n<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>\nu200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>\nDefault value: `0s`.",
-          "example": "无",
+          "example": "1s",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -7216,7 +7226,7 @@
         {
           "disabled": false,
           "document": "The end time of the material. This parameter and `StartTime` determine which time segment of the material is used. The following two formats are supported:\n<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>\nu200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>\nIf the track duration is set, the default value is `StartTime` plus the track duration. If not, the default value is `StartTime` plus 1 second.\nNote: `EndTime` must be at least 0.02 seconds later than `StartTime`.\n",
-          "example": "无",
+          "example": "12.2s",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -7231,7 +7241,7 @@
         {
           "disabled": false,
           "document": "The style ID, which identifies an element style.\nNote: The style ID can be up to 32 characters long and can contain letters, digits, and special characters -_",
-          "example": "无",
+          "example": "s1",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -7240,7 +7250,7 @@
         {
           "disabled": false,
           "document": "The type. Valid values:\n<li>`Subtitle`: The subtitle style. </li>",
-          "example": "无",
+          "example": "Subtitle",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -7264,7 +7274,7 @@
         {
           "disabled": false,
           "document": "The subtitle style ID, which corresponds to the `Id` field of `ComposeStyles`.",
-          "example": "无",
+          "example": "s1",
           "member": "string",
           "name": "StyleId",
           "required": true,
@@ -7273,7 +7283,7 @@
         {
           "disabled": false,
           "document": "The subtitle text.",
-          "example": "无",
+          "example": "测试字幕中文",
           "member": "string",
           "name": "Text",
           "required": true,
@@ -7297,7 +7307,7 @@
         {
           "disabled": false,
           "document": "The subtitle height. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>\nThe default value is the value of `FontSize`.",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -7306,7 +7316,7 @@
         {
           "disabled": false,
           "document": "The bottom margin. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas height. For example, `10%` means that the margin is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>\nDefault value: `0px`.",
-          "example": "无",
+          "example": "10px",
           "member": "string",
           "name": "MarginBottom",
           "required": false,
@@ -7315,7 +7325,7 @@
         {
           "disabled": false,
           "document": "The font type. Valid values:\n<li>`SimHei`(default): Chinese font Heiti. </li>\n<Li>`SimSun`: Chinese font Songti. </li>",
-          "example": "无",
+          "example": "SimHei",
           "member": "string",
           "name": "FontType",
           "required": false,
@@ -7324,7 +7334,7 @@
         {
           "disabled": false,
           "document": "The font size. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the size as a percentage of the canvas height. For example, `10%` means that the size is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the size in pixels. For example, `100px` means that the size is 100 pixels. </li>\nDefault value: `2%`.",
-          "example": "无",
+          "example": "2%",
           "member": "string",
           "name": "FontSize",
           "required": false,
@@ -7333,7 +7343,7 @@
         {
           "disabled": false,
           "document": "Whether to bold the text (some fonts may not support bold). Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "FontBold",
           "required": false,
@@ -7342,7 +7352,7 @@
         {
           "disabled": false,
           "document": "Whether to italicize the text (some fonts may not support italics). Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "FontItalic",
           "required": false,
@@ -7351,7 +7361,7 @@
         {
           "disabled": false,
           "document": "The font color (#RRGGBBAA).  \nDefault value: `0x000000FF` (black).  \nNote: `AA` in the color notation defines the opacity of the color. It's optional.\n",
-          "example": "无",
+          "example": "0x000000FF",
           "member": "string",
           "name": "FontColor",
           "required": false,
@@ -7360,7 +7370,7 @@
         {
           "disabled": false,
           "document": "The text alignment. Valid values:\n<li>`Center`(default) </li>\n<li>`Left` </li>\n<li>`Right` </li>",
-          "example": "无",
+          "example": "Center",
           "member": "string",
           "name": "FontAlign",
           "required": false,
@@ -7369,7 +7379,7 @@
         {
           "disabled": false,
           "document": "The margin for left/right align.\n<li>If `FontAlign` is `Left`, this parameter specifies the left margin of the subtitles. </li>\n<li>If `FontAlign` is `Right`, this parameter specifies the right margin of the subtitles. </li>\nTwo formats are supported:\nu200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas width. For example, `10%` means that the margin is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "FontAlignMargin",
           "required": false,
@@ -7378,7 +7388,7 @@
         {
           "disabled": false,
           "document": "The subtitle border width. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the width as a percentage of the canvas height. For example, `10%` means that the width is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the width is 100 pixels. </li>\nThe default value is `0`, which means the subtitles will have no borders.",
-          "example": "无",
+          "example": "10px",
           "member": "string",
           "name": "BorderWidth",
           "required": false,
@@ -7387,7 +7397,7 @@
         {
           "disabled": false,
           "document": "The border color, whose format is the same as that for `FontColor`. This parameter is valid if `BorderWidth` is not `0`.",
-          "example": "无",
+          "example": "0x000000FF",
           "member": "string",
           "name": "BorderColor",
           "required": false,
@@ -7396,7 +7406,7 @@
         {
           "disabled": false,
           "document": "The text background color, whose format is the same as that for `FontColor`.  \nThe default value is an empty string, which means the subtitles will not have a background color.",
-          "example": "无",
+          "example": "0x000000FF",
           "member": "string",
           "name": "BottomColor",
           "required": false,
@@ -7462,7 +7472,7 @@
         {
           "disabled": false,
           "document": "The time when the element starts on the track.\n<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates the time when 3.5 seconds of the video elapses.</li>\nNote: If this parameter is not specified, the start time will be the end time of the previous element. Therefore, you can also use the placeholder parameter `ComposeEmptyItem` to configure the start time.",
-          "example": "无",
+          "example": "0s",
           "member": "string",
           "name": "Start",
           "required": false,
@@ -7471,7 +7481,7 @@
         {
           "disabled": false,
           "document": "The element duration.\n<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` means 3.5 seconds.</li>\nThe default value is the material duration, which is determined by `EndTime` and `StartTime` of `ComposeSourceMedia`. If `ComposeSourceMedia` is not specified, the duration will be 1 second.",
-          "example": "无",
+          "example": "12s",
           "member": "string",
           "name": "Duration",
           "required": false,
@@ -7486,7 +7496,7 @@
         {
           "disabled": false,
           "document": "The element duration. <li>The value of this parameter ends with `s`, which means seconds. For example, `3s` indicates 3 seconds. </li>\nDefault value: `1s`.\nNote\n<li>The number before `s` must be an integer. Non-integers will be rounded down to the nearest integer. </li>\n<li>The transition element must be between two non-empty elements. </li>\n<li>The duration of the transition element must be shorter than that of the preceding element and the following element. </li>\nu200c<li>The start time of the following element on the track will be automatically changed to the end time of the preceding element minus the duration of the transition element. </li>",
-          "example": "无",
+          "example": "1s",
           "member": "string",
           "name": "Duration",
           "required": false,
@@ -7510,7 +7520,7 @@
         {
           "disabled": false,
           "document": "The transition type.\n\nThe image transition, which connects two video segments.\n<li>`ImageFadeInFadeOut` </li>\nu200c<li>`BowTieHorizontal` </li>\nu200c<li>`BowTieVertical` </li>\nu200c<li>`ButterflyWaveScrawler` </li>\n<li>`Cannabisleaf` </li>\n<li>`Circle` </li>\n<li>`CircleCrop` </li>\nu200c<li>`Circleopen` </li>\n<li>`Crosswarp` </li>\n<li>`Cube` </li>\n<li>`DoomScreenTransition` </li>\n<li>`Doorway` </li>\n<li>`Dreamy` </li>\n<li>`DreamyZoom` </li>\n<li>`FilmBurn` </li>\n<li>`GlitchMemories` </li>\n<li>`Heart` </li>\n<li>`InvertedPageCurl` </li>\n<li>`Luma` </li>\n<li>`Mosaic` </li>\n<li>`Pinwheel` </li>\n<li>`PolarFunction` </li>\n<li>`PolkaDotsCurtain` </li>\n<li>`Radial` </li>\n<li>`RotateScaleFade` </li>\n<li>`Squeeze` </li>\n<li>`Swap` </li>\n<li>`Swirl` </li>\n<li>`UndulatingBurnOutSwirl` </li>\n<li>`Windowblinds` </li>\n<li>`WipeDown` </li>\n<li>`WipeLeft` </li>\n<li>`WipeRight` </li>\n<li>`WipeUp` </li>\n<li>`ZoomInCircles` </li> \nThe audio transition, which connects two audio segments.\n<li>`AudioFadeInFadeOut` </li>",
-          "example": "无",
+          "example": "ImageFadeInFadeOut",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -7808,9 +7818,10 @@
         {
           "disabled": false,
           "document": "Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.",
-          "example": "",
+          "example": "CosVideoFile-125xxx88",
           "member": "string",
           "name": "Bucket",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7818,9 +7829,10 @@
         {
           "disabled": false,
           "document": "Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.",
-          "example": "",
+          "example": "ap-nanjing",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7828,9 +7840,10 @@
         {
           "disabled": false,
           "document": "Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.",
-          "example": "",
+          "example": "/trigger-dir/",
           "member": "string",
           "name": "Dir",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7838,9 +7851,10 @@
         {
           "disabled": false,
           "document": "Format list of files that can trigger a workflow, such as [\"mp4\", \"flv\", \"mov\"]. If this parameter is left empty, files in all formats can trigger the workflow.",
-          "example": "",
+          "example": "[\"mp4\",\"flv\",\"mov\"]",
           "member": "string",
           "name": "Formats",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -7916,9 +7930,10 @@
         {
           "disabled": false,
           "document": "Switch of intelligent cover generating task. Valid values:\n<li>ON: enables intelligent cover generating task;</li>\n<li>OFF: disables intelligent cover generating task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -12862,9 +12877,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12875,6 +12891,7 @@
           "example": "0",
           "member": "float",
           "name": "Intensity",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": true
@@ -12888,9 +12905,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12901,6 +12919,7 @@
           "example": "0",
           "member": "uint64",
           "name": "Fps",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -12914,9 +12933,10 @@
         {
           "disabled": false,
           "document": "Switch of intelligent frame-specific tagging task. Valid values:\n<li>ON: enables intelligent frame-specific tagging task;</li>\n<li>OFF: disables intelligent frame-specific tagging task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -12985,7 +13005,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -12996,7 +13016,7 @@
         {
           "disabled": false,
           "document": "Type. Valid values:\n<li>HDR10</li>\n<li>HLG</li>\nDefault Value: HDR10.\nNote: The video encoding method should be H.265.\nNote: The video encoding bit depth is 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "HDR10",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -13185,9 +13205,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -13195,9 +13216,10 @@
         {
           "disabled": false,
           "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "weak",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -13211,7 +13233,7 @@
         {
           "disabled": false,
           "document": "ID of an image sprite generating template.",
-          "example": "无",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
@@ -13233,7 +13255,7 @@
         {
           "disabled": false,
           "document": "Output path of a captured sprite image file, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.",
-          "example": "无",
+          "example": "xxx_imageSprite_10001_0.png",
           "member": "string",
           "name": "OutputObjectPath",
           "output_required": true,
@@ -13244,7 +13266,7 @@
         {
           "disabled": false,
           "document": "Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.",
-          "example": "无",
+          "example": "xxx_imageSprite_10001_0.vtt",
           "member": "string",
           "name": "WebVttObjectName",
           "output_required": true,
@@ -13456,7 +13478,7 @@
         {
           "disabled": false,
           "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.",
-          "example": "无",
+          "example": "AKIAABC*******12345W",
           "member": "string",
           "name": "ImageContent",
           "required": true,
@@ -13465,7 +13487,7 @@
         {
           "disabled": false,
           "document": "Width of a watermark, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Width` of a watermark is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>\n<li>If a string ends with px, the `Width` of a watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>\n\nWhen width and height are not specified or set to 0, the default value is 10%.",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -13474,7 +13496,7 @@
         {
           "disabled": false,
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>\nDefault value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -13483,7 +13505,7 @@
         {
           "disabled": false,
           "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
-          "example": "无",
+          "example": "once",
           "member": "string",
           "name": "RepeatType",
           "required": false,
@@ -13498,7 +13520,7 @@
         {
           "disabled": false,
           "document": "String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.",
-          "example": "无",
+          "example": "AKIAABC*******12345W",
           "member": "string",
           "name": "ImageContent",
           "required": false,
@@ -13507,7 +13529,7 @@
         {
           "disabled": false,
           "document": "Watermark width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "Width",
           "required": false,
@@ -13516,7 +13538,7 @@
         {
           "disabled": false,
           "document": "Height of a watermark, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Height` of a watermark is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>\n<li>If a string ends with px, the `Height` of a watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>\n\n",
-          "example": "无",
+          "example": "10%",
           "member": "string",
           "name": "Height",
           "required": false,
@@ -13525,7 +13547,7 @@
         {
           "disabled": false,
           "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
-          "example": "无",
+          "example": "once",
           "member": "string",
           "name": "RepeatType",
           "required": false,
@@ -13540,40 +13562,40 @@
         {
           "disabled": false,
           "document": "Watermark image address.",
-          "example": "",
+          "example": "http://test-watermark.com/image-watermark.png",
           "member": "string",
           "name": "ImageUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Watermark width. % and px formats are supported:\n<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>",
-          "example": "",
+          "example": "10px",
           "member": "string",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Watermark height. % and px formats are supported:\n<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>\n`0px` means that `Height` will be proportionally scaled according to the video width.",
-          "example": "",
+          "example": "10px",
           "member": "string",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Repeat type of an animated watermark. Valid values:\n<li>once: no longer appears after watermark playback ends.</li>\n<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>\n<li>repeat (default): repeats the playback until the video ends.</li>",
-          "example": "",
+          "example": "repeat",
           "member": "string",
           "name": "RepeatType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -15202,9 +15224,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -15212,9 +15235,10 @@
         {
           "disabled": false,
           "document": "The strength. Valid values:\n<li>normal</li>\nDefault value: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "normal",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -15264,20 +15288,20 @@
         {
           "disabled": false,
           "document": "Name of intelligently generated category.",
-          "example": "",
+          "example": "影视",
           "member": "string",
           "name": "Classification",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of intelligently generated category between 0 and 100.",
-          "example": "",
+          "example": "99.50",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -15290,20 +15314,20 @@
         {
           "disabled": false,
           "document": "Storage path of intelligently generated cover.",
-          "example": "",
+          "example": "/xxx.jpg",
           "member": "string",
           "name": "CoverPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of intelligently generated cover between 0 and 100.",
-          "example": "",
+          "example": "70",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -15372,30 +15396,30 @@
         {
           "disabled": false,
           "document": "Frame-specific tag name.",
-          "example": "",
+          "example": "寺庙",
           "member": "string",
           "name": "Tag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "",
+          "example": "[\"场景\",\"人文建筑\"]",
           "member": "string",
           "name": "CategorySet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of intelligently generated frame-specific tag between 0 and 100.",
-          "example": "",
+          "example": "60",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -15408,30 +15432,30 @@
         {
           "disabled": false,
           "document": "Start time offset of frame-specific tag.",
-          "example": "",
+          "example": "10.052",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of frame-specific tag.",
-          "example": "",
+          "example": "15.052",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of tags in time period.",
-          "example": "",
+          "example": "[{\"Tag\": \"寺庙\",\"CategorySet\":[\"场景\", \"人文建筑\"],\"Confidence\": 26}]",
           "member": "MediaAiAnalysisFrameTagItem",
           "name": "TagSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -15444,7 +15468,7 @@
         {
           "disabled": false,
           "document": "The URL of the highlight segments.",
-          "example": "无",
+          "example": "/AItest/hht-20250321xxx-021234545678E_172343423310test-0.mp4",
           "member": "string",
           "name": "HighlightPath",
           "output_required": true,
@@ -15454,7 +15478,7 @@
         {
           "disabled": false,
           "document": "The URL of the thumbnail.",
-          "example": "无",
+          "example": "/AItest/hht-20250321xxx-021234545678E_172343423310test-0.jpg",
           "member": "string",
           "name": "CovImgPath",
           "output_required": true,
@@ -15464,7 +15488,7 @@
         {
           "disabled": false,
           "document": "The confidence score. Value range: 0-100.",
-          "example": "无",
+          "example": "92.56",
           "member": "float",
           "name": "Confidence",
           "output_required": true,
@@ -15474,7 +15498,7 @@
         {
           "disabled": false,
           "document": "The duration of the highlights.",
-          "example": "无",
+          "example": "43.76",
           "member": "float",
           "name": "Duration",
           "output_required": true,
@@ -15500,20 +15524,20 @@
         {
           "disabled": false,
           "document": "Tag name.",
-          "example": "",
+          "example": "影视综艺,影视片段",
           "member": "string",
           "name": "Tag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of tag between 0 and 100.",
-          "example": "",
+          "example": "77.00",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -15526,110 +15550,110 @@
         {
           "disabled": false,
           "document": "Storage location of a generated animated image file.",
-          "example": "",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "Storage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Path to a generated animated image file.",
-          "example": "",
+          "example": "/xxx.gif",
           "member": "string",
           "name": "Path",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).",
-          "example": "",
+          "example": "20000",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Animated image format, such as gif.",
-          "example": "",
+          "example": "gif",
           "member": "string",
           "name": "Container",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Height of an animated image in px.",
-          "example": "",
+          "example": "1080",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Width of an animated image in px.",
-          "example": "",
+          "example": "1920",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Bitrate of an animated image in bps.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Size of an animated image in bytes.",
-          "example": "",
+          "example": "1048576",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "MD5 value of an animated image.",
-          "example": "",
+          "example": "xxxx1b3082d8b18de1xxxx",
           "member": "string",
           "name": "Md5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Start time offset of an animated image in the video in seconds.",
-          "example": "",
+          "example": "1.5",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of an animated image in the video in seconds.",
-          "example": "",
+          "example": "5.5",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -15688,50 +15712,50 @@
         {
           "disabled": false,
           "document": "Start time offset of a suspected segment in seconds.",
-          "example": "",
+          "example": "10.05",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a suspected segment in seconds.",
-          "example": "",
+          "example": "15.00",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a suspected segment.",
-          "example": "",
+          "example": "90.00",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for suspected segment audit. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "pass",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of suspected keywords.",
-          "example": "",
+          "example": "[\"张三\"]",
           "member": "string",
           "name": "KeywordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -15744,80 +15768,80 @@
         {
           "disabled": false,
           "document": "Start time offset of a suspected segment in seconds.",
-          "example": "",
+          "example": "10.05",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a suspected segment in seconds.",
-          "example": "",
+          "example": "15.00",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Confidence of a suspected segment.",
-          "example": "",
+          "example": "90",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for suspected segment audit. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "",
+          "example": "review",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of suspected keywords.",
-          "example": "",
+          "example": "['张三']",
           "member": "string",
           "name": "KeywordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Zone coordinates (at the pixel level) of suspected text: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.",
-          "example": "",
+          "example": "[500,150,700,300]",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "URL of a suspected image (which will not be permanently stored\nand will be deleted after `PicUrlExpireTime`).",
-          "example": "",
+          "example": "http://xxx.jpg",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "",
+          "example": "2025-03-23T07:14:47+08:00",
           "member": "string",
           "name": "PicUrlExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -15926,70 +15950,70 @@
         {
           "disabled": false,
           "document": "Start time offset of a suspected segment in seconds.",
-          "example": "0",
+          "example": "0.04",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a suspected segment in seconds.",
-          "example": "0",
+          "example": "6.04",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Score of a suspected porn segment.",
-          "example": "0",
+          "example": "88",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag of porn information detection result of a suspected segment.",
-          "example": "\"\"",
+          "example": "sexy",
           "member": "string",
           "name": "Label",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Suggestion for porn information detection of a suspected segment. Valid values:\n<li>pass.</li>\n<li>review.</li>\n<li>block.</li>",
-          "example": "\"\"",
+          "example": "block",
           "member": "string",
           "name": "Suggestion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "URL of a suspected image (which will not be permanently stored\n and will be deleted after `PicUrlExpireTime`).",
-          "example": "\"\"",
+          "example": "http://252452.test.myqcloud.com/1a168abcd12345560/419f9123123_01.jpg",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "\"\"",
+          "example": "2023-03-28T10:12:16.948Z",
           "member": "string",
           "name": "PicUrlExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -18761,9 +18785,10 @@
         {
           "disabled": false,
           "document": "Start value of the `{number}` variable. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "InitialValue",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18771,9 +18796,10 @@
         {
           "disabled": false,
           "document": "Increment of the `{number}` variable. Default value: 1.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Increment",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18781,9 +18807,10 @@
         {
           "disabled": false,
           "document": "Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "MinLength",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18791,9 +18818,10 @@
         {
           "disabled": false,
           "document": "Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "string",
           "name": "PlaceHolder",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -20922,9 +20950,10 @@
         {
           "disabled": false,
           "document": "Watermark type. Valid values:\n<li>image: image watermark.</li>",
-          "example": "",
+          "example": "image",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -20932,9 +20961,10 @@
         {
           "disabled": false,
           "document": "Origin position, which currently can only be:\n<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>\nDefault value: TopLeft.",
-          "example": "",
+          "example": "TopLeft",
           "member": "string",
           "name": "CoordinateOrigin",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -20942,9 +20972,10 @@
         {
           "disabled": false,
           "document": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "",
+          "example": "100px",
           "member": "string",
           "name": "XPos",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -20952,9 +20983,10 @@
         {
           "disabled": false,
           "document": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "",
+          "example": "80px",
           "member": "string",
           "name": "YPos",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -20962,9 +20994,10 @@
         {
           "disabled": false,
           "document": "Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.",
-          "example": "",
+          "example": "{     \"ImageContent\": {         \"Type\": \"URL\",         \"UrlInputInfo\": {             \"Url\": \"https://xxxxx.cos.ap-nanjing.myqcloud.com/test.jpeg\"         }     } }",
           "member": "RawImageWatermarkInput",
           "name": "ImageTemplate",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -21095,7 +21128,7 @@
         {
           "disabled": false,
           "document": "The AWS S3 bucket.",
-          "example": "aws-125678",
+          "example": "mps-us-125678",
           "member": "string",
           "name": "S3Bucket",
           "output_required": false,
@@ -21156,7 +21189,7 @@
         {
           "disabled": false,
           "document": "The AWS S3 bucket.",
-          "example": "test",
+          "example": "mps-test",
           "member": "string",
           "name": "S3Bucket",
           "output_required": false,
@@ -21167,7 +21200,7 @@
         {
           "disabled": false,
           "document": "The region of the AWS S3 bucket.",
-          "example": "ap-southeast-1",
+          "example": "us-east-1",
           "member": "string",
           "name": "S3Region",
           "output_required": false,
@@ -21178,7 +21211,7 @@
         {
           "disabled": false,
           "document": "The key ID required to upload files to the AWS S3 object.",
-          "example": "\"\"",
+          "example": "AKI**********5W",
           "member": "string",
           "name": "S3SecretId",
           "output_required": false,
@@ -21189,7 +21222,7 @@
         {
           "disabled": false,
           "document": "The key required to upload files to the AWS S3 object.",
-          "example": "\"\"",
+          "example": "d6abvc123********ABCS",
           "member": "string",
           "name": "S3SecretKey",
           "output_required": false,
@@ -21955,9 +21988,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -21965,9 +21999,10 @@
         {
           "disabled": false,
           "document": "The strength. Value range: 0.0-1.0\nDefault value: 0.0\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "0.5",
           "member": "float",
           "name": "Intensity",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": true
@@ -22047,7 +22082,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "85.32",
           "member": "float",
           "name": "Confidence",
           "output_required": true,
@@ -22057,7 +22092,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "0",
           "member": "float",
           "name": "StartTimeOffset",
           "output_required": true,
@@ -22067,7 +22102,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "59.52",
           "member": "float",
           "name": "EndTimeOffset",
           "output_required": true,
@@ -22077,7 +22112,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "http://www.example.com/mps/test.mp4",
           "member": "string",
           "name": "SegmentUrl",
           "output_required": true,
@@ -22087,7 +22122,7 @@
         {
           "disabled": false,
           "document": "Segment cover.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "http://www.example.com/mps/test.jpg",
           "member": "string",
           "name": "CovImgUrl",
           "output_required": true,
@@ -22097,7 +22132,7 @@
         {
           "disabled": false,
           "document": "Segment title.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "上海风云",
           "member": "string",
           "name": "Title",
           "output_required": false,
@@ -22107,7 +22142,7 @@
         {
           "disabled": false,
           "document": "Segment summary.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "本段描述从鸦片战争到民国时期，上海经历了巨大的变迁",
           "member": "string",
           "name": "Summary",
           "output_required": false,
@@ -22117,7 +22152,7 @@
         {
           "disabled": false,
           "document": "Segmentation keywords.",
-          "example": "无",
+          "example": "[\"明星\"，\"歌后\"]",
           "member": "string",
           "name": "Keywords",
           "output_required": false,
@@ -22202,9 +22237,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -22215,6 +22251,7 @@
           "example": "0",
           "member": "float",
           "name": "Intensity",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": true
@@ -22277,7 +22314,7 @@
         {
           "disabled": false,
           "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
-          "example": "无",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": false,
@@ -22297,7 +22334,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "无",
+          "example": "task fail",
           "member": "string",
           "name": "Message",
           "output_required": false,
@@ -22669,7 +22706,7 @@
         {
           "disabled": false,
           "document": "Name of the hotword lexicon associated with the template.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "HotwordsName1",
           "member": "string",
           "name": "AsrHotWordsLibraryName",
           "output_required": false,
@@ -22729,7 +22766,7 @@
         {
           "disabled": false,
           "document": "Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
-          "example": "无",
+          "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -22739,7 +22776,7 @@
         {
           "disabled": false,
           "document": "Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
-          "example": "无",
+          "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -22801,7 +22838,7 @@
         {
           "disabled": false,
           "document": "Smart subtitle template ID.\t",
-          "example": "123",
+          "example": "110167",
           "member": "uint64",
           "name": "Definition",
           "output_required": false,
@@ -23038,7 +23075,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource ID.\nIt supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).",
+          "document": "Resource tagging. the field content is user-customized.\nIt supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).",
           "example": "123xx",
           "member": "string",
           "name": "ResourceId",
@@ -23049,8 +23086,8 @@
         },
         {
           "disabled": false,
-          "document": "Access address of the DRM vendor.\n\nNote: Different DRM vendors have different limits on the number of substreams. For example, PallyCon limits the number of substreams to no more than 5, and DRMtoday supports encryption of up to 9 substreams.",
-          "example": "https://kms.pallycon.com/v2/cpix/getKey?enc-token=xxx",
+          "document": "DRM manufacturer access address. the field content is obtained from the drm manufacturer.\n\nNote: different DRM manufacturers have different limitations on the number of substreams. for example, PallyCon limits the number of substreams to no more than 5, and DRMtoday only supports encryption of up to 9 substreams.",
+          "example": "https://fe.drmtoday.com/frontend/cpix/v1/xxxxx?ticket=xxxxx",
           "member": "string",
           "name": "KeyServerUrl",
           "output_required": false,
@@ -23060,7 +23097,7 @@
         },
         {
           "disabled": false,
-          "document": "Initialization vector (32-byte string) for encryption.",
+          "document": "Encryption initialization vector (32-byte string). the field content is user-customized.",
           "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
           "member": "string",
           "name": "Vector",
@@ -23234,22 +23271,20 @@
         {
           "disabled": false,
           "document": "Watermark width, which supports six formats of px, %, W%, H%, S%, and L%:\n<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px; if `0px` is entered\n and `Height` is not `0px`, the watermark width will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark width will be the width of the source SVG image;</li>\n<li>If the string ends in `W%`, the `Width` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Width` is 10% of the video width;</li>\n<li>If the string ends in `H%`, the `Width` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Width` is 10% of the video height;</li>\n<li>If the string ends in `S%`, the `Width` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Width` is 10% of the short side of the video;</li>\n<li>If the string ends in `L%`, the `Width` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Width` is 10% of the long side of the video;</li>\n<li>If the string ends in %, the meaning is the same as `W%`.</li>\nDefault value: 10W%.",
-          "example": "",
+          "example": "10%",
           "member": "string",
           "name": "Width",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:\n<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered\n and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>\n<li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>\n<li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>\n<li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>\n<li>If the string ends in %, the meaning is the same as `H%`.\nDefault value: 0 px.",
-          "example": "",
+          "document": "Watermark Height, which supports six formats of px, %, W%, H%, S%, and L%:\n<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered\n and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark size will be the size of the source SVG image;</li>\n<li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>\n<li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>\n<li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>\n<li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>\n<li>If the string ends in %, the meaning is the same as `W%`.</li>\nDefault value: 0px.",
+          "example": "0px",
           "member": "string",
           "name": "Height",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -23316,9 +23351,10 @@
         {
           "disabled": false,
           "document": "Switch of intelligent tagging task. Valid values:\n<li>ON: enables intelligent tagging task;</li>\n<li>OFF: disables intelligent tagging task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -23403,7 +23439,7 @@
         {
           "disabled": false,
           "document": "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
-          "example": "test",
+          "example": "mps_notify",
           "member": "string",
           "name": "TopicName",
           "output_required": true,
@@ -23414,7 +23450,7 @@
         {
           "disabled": false,
           "document": "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
-          "example": "\"\"",
+          "example": "mps_que",
           "member": "string",
           "name": "QueueName",
           "output_required": true,
@@ -23436,7 +23472,7 @@
         {
           "disabled": false,
           "document": "The key used to generate the callback signature.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0se***9idaY",
           "member": "string",
           "name": "NotifyKey",
           "output_required": false,
@@ -23489,7 +23525,7 @@
         {
           "disabled": false,
           "document": "Task ID.",
-          "example": "无",
+          "example": "24022-WorkflowTask-99f82fb306909",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -23499,7 +23535,7 @@
         {
           "disabled": false,
           "document": "Task type. Valid values:\n<li> WorkflowTask: Workflow processing task;</li>\n<li> LiveProcessTask: Live stream processing task.</li>",
-          "example": "无",
+          "example": "WorkflowTask",
           "member": "string",
           "name": "TaskType",
           "output_required": true,
@@ -23509,7 +23545,7 @@
         {
           "disabled": false,
           "document": "Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "无",
+          "example": "2024-05-17T08:56:12Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -23519,7 +23555,7 @@
         {
           "disabled": false,
           "document": "Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.",
-          "example": "无",
+          "example": "2024-05-17T08:56:26Z",
           "member": "string",
           "name": "BeginProcessTime",
           "output_required": true,
@@ -23529,7 +23565,7 @@
         {
           "disabled": false,
           "document": "End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.",
-          "example": "无",
+          "example": "2024-05-17T08:56:56Z",
           "member": "string",
           "name": "FinishTime",
           "output_required": true,
@@ -23539,7 +23575,7 @@
         {
           "disabled": false,
           "document": "The subtask type.",
-          "example": "无",
+          "example": "[\"Transcode\", \"AiRecognition\"]",
           "member": "string",
           "name": "SubTaskTypes",
           "output_required": true,
@@ -23773,7 +23809,7 @@
         {
           "disabled": false,
           "document": "Font type. Currently, two types are supported:\n<li>simkai.ttf: Both Chinese and English are supported;</li>\n<li>arial.ttf: Only English is supported.</li>",
-          "example": "无",
+          "example": "arial.ttf",
           "member": "string",
           "name": "FontType",
           "output_required": true,
@@ -23784,7 +23820,7 @@
         {
           "disabled": false,
           "document": "Font size, in the format of Npx. N is a numerical value with a value range of [0, 1] or [8, 4096].",
-          "example": "无",
+          "example": "10px",
           "member": "string",
           "name": "FontSize",
           "output_required": true,
@@ -23795,7 +23831,7 @@
         {
           "disabled": false,
           "document": "Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).",
-          "example": "无",
+          "example": "0xFFFFFF",
           "member": "string",
           "name": "FontColor",
           "output_required": true,
@@ -23806,7 +23842,7 @@
         {
           "disabled": false,
           "document": "Text transparency. Value range: (0, 1]\n<li>0: Completely transparent</li>\n<li>1: Completely opaque</li>\nDefault value: 1.",
-          "example": "无",
+          "example": "0.5",
           "member": "float",
           "name": "FontAlpha",
           "output_required": true,
@@ -23817,7 +23853,7 @@
         {
           "disabled": false,
           "document": "Text content, up to 100 characters.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "mps水印测试",
           "member": "string",
           "name": "TextContent",
           "output_required": false,
@@ -23870,7 +23906,7 @@
         {
           "disabled": false,
           "document": "Text content, up to 100 characters.",
-          "example": "无",
+          "example": "mps水印测试",
           "member": "string",
           "name": "TextContent",
           "required": false,
@@ -23895,8 +23931,8 @@
         },
         {
           "disabled": false,
-          "document": "Sound channel volume. specifies the volume of the sound channel.\nWhen the value of AudioChannel is 1, the value length is 1.\nWhen the value of AudioChannel is 2, the value length is 2.\nWhen the value of AudioChannel is 6, the length of this value is greater than 2.\nThe array value of this parameter has a valid value range of [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 means doubling the original volume. the default value is -60.\nSupports 3 decimal places.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "[-60, 6]",
+          "document": "Sound channel volume. specifies the volume of the sound channel.\nSpecifies that when the value of AudioChannel is 1, the length of this array is 1, for example: [6].\nSpecifies that when the value of AudioChannel is 2, the array length is 2. for example: [0,6].\nWhen the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].\nSpecifies the value array of this parameter. the value range is [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 indicates doubling the original volume. the default value is -60.\nNote: supports 3 decimal places.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "[-60, 0, 6]",
           "member": "float",
           "name": "ChannelVolume",
           "output_required": false,
@@ -24207,7 +24243,7 @@
         {
           "disabled": false,
           "document": "Switch of a full speech recognition task. Valid values:\n<li>ON: Enables an intelligent full speech recognition task;</li>\n<li>OFF: Disables an intelligent full speech recognition task.</li>",
-          "example": "无",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -24218,7 +24254,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "zh",
           "member": "string",
           "name": "SourceLanguage",
           "output_required": true,
@@ -24229,7 +24265,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "en",
           "member": "string",
           "name": "DestinationLanguage",
           "output_required": true,
@@ -24240,7 +24276,7 @@
         {
           "disabled": false,
           "document": "Generated subtitle file format. Leaving it as an empty string means no subtitle file will be generated. Valid value:\n<li>vtt: Generate a WebVTT subtitle file.</li>\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
           "output_required": false,
@@ -24273,9 +24309,10 @@
         {
           "disabled": false,
           "document": "Switch of a custom speech audit task. Valid values:\n<li>ON: Enables a custom speech audit task;</li>\n<li>OFF: Disables a custom speech audit task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -24283,9 +24320,10 @@
         {
           "disabled": false,
           "document": "Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"自定义语音过滤标签1\"]",
           "member": "string",
           "name": "LabelSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -24293,9 +24331,10 @@
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24303,9 +24342,10 @@
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "85",
           "member": "int64",
           "name": "ReviewConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24319,42 +24359,38 @@
         {
           "disabled": false,
           "document": "Switch of a custom speech audit task. Valid values:\n<li>ON: Enables a custom speech audit task;</li>\n<li>OFF: Disables a custom speech audit task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"自定义语音过滤标签1\"]",
           "member": "string",
           "name": "LabelSet",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
-          "example": "",
+          "example": "85",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -24437,9 +24473,10 @@
         {
           "disabled": false,
           "document": "Switch of a custom figure audit task. Valid values:\n<li>ON: Enables a custom figure audit task;</li>\n<li>OFF: Disables a custom figure audit task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -24447,9 +24484,10 @@
         {
           "disabled": false,
           "document": "Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"自定义人物过滤标签1\"]",
           "member": "string",
           "name": "LabelSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -24457,9 +24495,10 @@
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24467,9 +24506,10 @@
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "85",
           "member": "int64",
           "name": "ReviewConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24483,42 +24523,38 @@
         {
           "disabled": false,
           "document": "Switch of a custom figure audit task. Valid values:\n<li>ON: Enables a custom figure audit task;</li>\n<li>OFF: Disables a custom figure audit task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"自定义人物过滤标签1\"]",
           "member": "string",
           "name": "LabelSet",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
-          "example": "",
+          "example": "85",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -24529,9 +24565,10 @@
         {
           "disabled": false,
           "document": "Switch of a custom text audit task. Valid values:\n<li>ON: Enables a custom text audit task;</li>\n<li>OFF: Disables a custom text audit task.</li>",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -24539,9 +24576,10 @@
         {
           "disabled": false,
           "document": "Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "[\"自定义文本过滤标签1\"]",
           "member": "string",
           "name": "LabelSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -24549,9 +24587,10 @@
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BlockConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24559,9 +24598,10 @@
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.",
-          "example": "",
+          "example": "85",
           "member": "int64",
           "name": "ReviewConfidence",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -24575,7 +24615,7 @@
         {
           "disabled": false,
           "document": "Switch of a custom text audit task. Valid values:\n<li>ON: Enables a custom text audit task;</li>\n<li>OFF: Disables a custom text audit task.</li>",
-          "example": "无",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -24584,7 +24624,7 @@
         {
           "disabled": false,
           "document": "Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "无",
+          "example": "[\"entertainment\", \"sport\"]",
           "member": "string",
           "name": "LabelSet",
           "required": false,
@@ -24593,7 +24633,7 @@
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
-          "example": "无",
+          "example": "90",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
@@ -24602,7 +24642,7 @@
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
-          "example": "无",
+          "example": "80",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
@@ -24617,9 +24657,10 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: ON.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -24627,9 +24668,10 @@
         {
           "disabled": false,
           "document": "The strength. Valid values:\n<li>weak</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "weak",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -24880,7 +24922,7 @@
         {
           "disabled": false,
           "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment</li>\n<li>2: HLS+TS byte range</li>\n<li>7: HLS+MP4 segment</li>\n<li>5: HLS+MP4 byte range</li>\nDefault value: 0\n\nNote: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "SegmentType",
           "output_required": false,
@@ -24901,8 +24943,8 @@
         },
         {
           "disabled": false,
-          "document": "3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:\n<li>side_by_side: side-by-side view.</li>\n<li>top_bottom: top-bottom view.</li>\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.\n<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.\n<li>top_bottom: vertical layout arrangement of original video content.</li>.\nSubmit the amount and cost based on the segmented resolution size.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "side_by_side",
           "member": "string",
           "name": "Stereo3dType",
           "output_required": false,
@@ -25194,7 +25236,7 @@
         {
           "disabled": false,
           "document": "HLS segment type. Valid values:\n<li>0: HLS+TS segment</li>\n<li>2: HLS+TS byte range</li>\n<li>7: HLS+MP4 segment</li>\n<li>5: HLS+MP4 byte range</li>\nDefault value: 0\n\nNote: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "SegmentType",
           "output_required": false,
@@ -25215,8 +25257,8 @@
         },
         {
           "disabled": false,
-          "document": "3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:\n<li>side_by_side: side-by-side view.</li>\n<li>top_bottom: top-bottom view.</li>\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.\n<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.\n<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.\nThe usage and charges will be reported based on the segmented resolution dimensions.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "side_by_side",
           "member": "string",
           "name": "Stereo3dType",
           "output_required": false,
@@ -25376,7 +25418,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
-          "example": "“”",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": true,
@@ -25387,7 +25429,7 @@
         {
           "disabled": false,
           "document": "The type. Valid values:\n<li>`loudNorm`: Loudness normalization.</li>\n<li>`gainControl`: Volume leveling.</li>\nDefault value: `loudNorm`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "loudNorm",
           "member": "string",
           "name": "Type",
           "output_required": true,

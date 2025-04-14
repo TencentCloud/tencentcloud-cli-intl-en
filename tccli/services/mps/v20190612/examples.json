@@ -509,8 +509,8 @@
     "DescribeStreamLinkSecurityGroup": [
       {
         "document": "This example shows you how to query a security group.",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLinkSecurityGroup\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"abc\",\n            \"Name\": \"abc\",\n            \"Whitelist\": [\n                \"abc\"\n            ],\n            \"OccupiedInputs\": [\n                \"abc\"\n            ],\n            \"Region\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLinkSecurityGroup\n<Common request parameters>\n\n{\n    \"Id\": \"019202e96d9f09dc0f325e7f7a2a\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"019202e96d9f09dc0f325e7f7a2a\",\n            \"Name\": \"live_test\",\n            \"Whitelist\": [\n                \"0.0.0.0\"\n            ],\n            \"OccupiedInputs\": [\n                \"01937702c54509dc0f3269ca341f\"\n            ],\n            \"Region\": \"ap-shanghai\"\n        },\n        \"RequestId\": \"01941bb7827509dc0f320a9d3426\"\n    }\n}",
         "title": "Request Example"
       }
     ],
