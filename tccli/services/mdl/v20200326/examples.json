@@ -80,14 +80,6 @@
         "title": "Sample request"
       }
     ],
-    "DescribeMediaLiveHighlightResult": [
-      {
-        "document": "This example shows you how to query the information of a StreamLive channel.",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMediaLiveHighlightResult\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1,\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": [\n            {\n                \"TaskId\": \"abc\",\n                \"SegmentUrl\": \"abc\",\n                \"CovImgUrl\": \"abc\",\n                \"CreateTime\": 1,\n                \"StartTime\": 0,\n                \"EndTime\": 0,\n                \"Duration\": 0\n            }\n        ],\n        \"Id\": \"abc\",\n        \"ChannelId\": \"abc\",\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
     "DescribeStreamLiveChannel": [
       {
         "document": " ",
