@@ -330,6 +330,14 @@
         "title": "Querying the configurable parameter list of an instance"
       }
     ],
+    "DescribeMaintenanceSpan": [
+      {
+        "document": " ",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMaintenanceSpan\n&InstanceId=mssql-6upluvd5\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"160c730d-b563-4a43-b377-428191d77f39\",\n        \"Span\": 6,\n        \"StartTime\": \"00:00\",\n        \"Weekly\": [\n            1\n        ]\n    }\n}",
+        "title": "Query the maintenance time window of the instance"
+      }
+    ],
     "DescribeMigrationDetail": [
       {
         "document": " ",

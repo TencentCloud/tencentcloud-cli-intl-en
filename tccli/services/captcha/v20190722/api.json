@@ -140,17 +140,17 @@
           "name": "CaptchaMsg",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "This parameter returns the result of imperceptible verification. This parameter is not available for Tencent Cloud International yet.\n`0`: The request is trusted.\n`100`: The request is malicious.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "This parameter returns the result of imperceptible verification. \n`0`: The request is trusted.\n`100`: The request is malicious.",
           "example": "0",
           "member": "int64",
           "name": "EvilLevel",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -160,7 +160,7 @@
           "name": "GetCaptchaTime",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -184,8 +184,8 @@
         },
         {
           "disabled": false,
-          "document": "Device Risk Category",
-          "example": "\"\"",
+          "document": "Device Risk Category.",
+          "example": "\"301\"",
           "member": "string",
           "name": "DeviceRiskCategory",
           "output_required": false,
