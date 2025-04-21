@@ -128,6 +128,14 @@
         "title": "RecognizeBrazilIDCardOCR Example"
       }
     ],
+    "RecognizeBrazilRNEOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilDriverLicenseOCR\n<public parameter>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"BackImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"BackImageUrl\": \"\",\n    \"ReturnHeadImage\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"CLASSIFICATION\": \"PERMANENTE\",\n        \"DateOfBirth\": \"01/01/2001\",\n        \"DispatchDate\": \"01/01/2001\",\n        \"EntryDate\": \"01/01/2001\",\n        \"IssuingAgency\": \"CGPI/DIREX/DPF\",\n        \"MRZ\": \"AAAAA AAAA AAAA 111111\",\n        \"Membership\": \"\",\n        \"NACIONALIDADE\": \"CHINESA\",\n        \"NATURALIDADE\": \"REP.POPULAR DA CHINA\",\n        \"NOME\": \"XXXX CHEN\",\n        \"PortraitImage\": \"\",\n        \"RNE\": \"G1111-8\",\n        \"RequestId\": \"9681c688-e523-4f7e-9672-238e817b4e64\",\n        \"Sex\": \"M\",\n        \"VALIDADE\": \"26/10/2025\",\n        \"VIA\": \"1\"\n    }\n}",
+        "title": "RecognizeBrazilRNEOCR example"
+      }
+    ],
     "RecognizeGeneralInvoice": [
       {
         "document": "This example shows you how to recognize a general invoice or ticket (advanced).",
