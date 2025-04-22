@@ -7,6 +7,34 @@
       "output": "CreateInstanceByApiResponse",
       "status": "online"
     },
+    "DescribeAccounts": {
+      "document": "This API is used to obtain the account list corresponding to the instance.",
+      "input": "DescribeAccountsRequest",
+      "name": "Describe accounts",
+      "output": "DescribeAccountsResponse",
+      "status": "online"
+    },
+    "DescribeDBConfigHistory": {
+      "document": "Describe DBConfig History",
+      "input": "DescribeDBConfigHistoryRequest",
+      "name": "Describe DBConfig History",
+      "output": "DescribeDBConfigHistoryResponse",
+      "status": "online"
+    },
+    "DescribeDBParams": {
+      "document": "This API is used to describe instance configurations.",
+      "input": "DescribeDBParamsRequest",
+      "name": "Describes instance configurations",
+      "output": "DescribeDBParamsResponse",
+      "status": "online"
+    },
+    "DescribeErrorLog": {
+      "document": "This API is used to query error logs.",
+      "input": "DescribeErrorLogRequest",
+      "name": "Describe error logs",
+      "output": "DescribeErrorLogResponse",
+      "status": "online"
+    },
     "DescribeInstance": {
       "document": "This API is used to query the instance information by an instance ID.",
       "input": "DescribeInstanceRequest",
@@ -17,8 +45,22 @@
     "DescribeInstanceInfo": {
       "document": "This API is used to get instance information.",
       "input": "DescribeInstanceInfoRequest",
-      "name": "Get Instance information",
+      "name": "Describe Instance information",
       "output": "DescribeInstanceInfoResponse",
+      "status": "online"
+    },
+    "DescribeInstanceNodes": {
+      "document": "This API is used to list nodes.",
+      "input": "DescribeInstanceNodesRequest",
+      "name": "Describe Instance Nodes",
+      "output": "DescribeInstanceNodesResponse",
+      "status": "online"
+    },
+    "DescribeInstanceOperations": {
+      "document": "This API is used to get operations of the instance .",
+      "input": "DescribeInstanceOperationsRequest",
+      "name": "Describe Instance Operations",
+      "output": "DescribeInstanceOperationsResponse",
       "status": "online"
     },
     "DescribeInstanceState": {
@@ -42,6 +84,27 @@
       "output": "DescribeSimpleInstancesResponse",
       "status": "online"
     },
+    "DescribeSlowLog": {
+      "document": "This API is used to query slow SQL logs.",
+      "input": "DescribeSlowLogRequest",
+      "name": "Queries slow SQL logs",
+      "output": "DescribeSlowLogResponse",
+      "status": "online"
+    },
+    "DescribeUpgradeList": {
+      "document": "This API is used to obtain instance upgrade records.",
+      "input": "DescribeUpgradeListRequest",
+      "name": "Obtains instance upgrade records",
+      "output": "DescribeUpgradeListResponse",
+      "status": "online"
+    },
+    "DescribeUserHbaConfig": {
+      "document": "Describe User HbaConfig.",
+      "input": "DescribeUserHbaConfigRequest",
+      "name": "Describe User HbaConfig",
+      "output": "DescribeUserHbaConfigResponse",
+      "status": "online"
+    },
     "DestroyInstanceByApi": {
       "document": "This API is used to destroy instance.",
       "input": "DestroyInstanceByApiRequest",
@@ -49,11 +112,60 @@
       "output": "DestroyInstanceByApiResponse",
       "status": "online"
     },
+    "ModifyDBParameters": {
+      "document": "This API is used to modify instance configurations",
+      "input": "ModifyDBParametersRequest",
+      "name": "Modify instance configurations",
+      "output": "ModifyDBParametersResponse",
+      "status": "online"
+    },
     "ModifyInstance": {
       "document": "This API is used to modify instance information. Only the name of an instance can be modified currently.",
       "input": "ModifyInstanceRequest",
       "name": "Modifies instance information",
       "output": "ModifyInstanceResponse",
+      "status": "online"
+    },
+    "ModifyUserHba": {
+      "document": "This API is used to modify user Hba configurations.",
+      "input": "ModifyUserHbaRequest",
+      "name": "Modifies user Hba",
+      "output": "ModifyUserHbaResponse",
+      "status": "online"
+    },
+    "ResetAccountPassword": {
+      "document": "This API is used to change account password.",
+      "input": "ResetAccountPasswordRequest",
+      "name": "Resets the password",
+      "output": "ResetAccountPasswordResponse",
+      "status": "online"
+    },
+    "RestartInstance": {
+      "document": "This API is used by users to proactively restart instances in the console.",
+      "input": "RestartInstanceRequest",
+      "name": "Restarts instance",
+      "output": "RestartInstanceResponse",
+      "status": "online"
+    },
+    "ScaleOutInstance": {
+      "document": "This API is used to scale out instance.",
+      "input": "ScaleOutInstanceRequest",
+      "name": "Scale Out Instance",
+      "output": "ScaleOutInstanceResponse",
+      "status": "online"
+    },
+    "ScaleUpInstance": {
+      "document": "This API is used to scale up instance in the console.",
+      "input": "ScaleUpInstanceRequest",
+      "name": "Scales up instance",
+      "output": "ScaleUpInstanceResponse",
+      "status": "online"
+    },
+    "UpgradeInstance": {
+      "document": "This API is used to upgrade Instance.",
+      "input": "UpgradeInstanceRequest",
+      "name": "Upgrade Instance",
+      "output": "UpgradeInstanceResponse",
       "status": "online"
     }
   },
@@ -74,7 +186,7 @@
           "name": "Address",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -84,7 +196,43 @@
           "name": "Protocol",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccountInfo": {
+      "document": "Description of the account name and instance IDs under the account",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdwpg-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "cdwpg",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account attribute.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[superuser]",
+          "member": "string",
+          "name": "Perms",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -94,36 +242,39 @@
       "members": [
         {
           "disabled": false,
-          "document": "Disk type.",
+          "document": "Disk type.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Size.",
+          "document": "Size.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20",
           "member": "int64",
           "name": "DiskSize",
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number.",
+          "document": "Number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
           "name": "DiskCount",
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "CBSSpecInfo": {
       "document": "Disk information.",
@@ -137,7 +288,7 @@
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -148,7 +299,7 @@
           "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -159,7 +310,57 @@
           "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CNResourceSpec": {
+      "document": "Description of resource specifications",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node type.",
+          "example": "cn/dn",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model.\n\n",
+          "example": "S_8_32_P_CN",
+          "member": "string",
+          "name": "SpecName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "Count",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk information.",
+          "example": "{\"DiskType\":\"CLOUD_HSSD\",\"DiskSize\":400,\"DiskCount\":1}",
+          "member": "CBSSpec",
+          "name": "DiskSpec",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -176,7 +377,7 @@
           "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -187,7 +388,7 @@
           "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -198,7 +399,7 @@
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -209,7 +410,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -220,7 +421,142 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConfigHistory": {
+      "document": "ConfigHistory1",
+      "members": [
+        {
+          "disabled": false,
+          "document": "id",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "cdwpg-sssccasd",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\n",
+          "example": "2012-12-12 12:12:12",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "2012-12-12 12:12:12",
+          "member": "datetime_iso",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "dn/cn",
+          "example": "dn",
+          "member": "string",
+          "name": "NodeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "param",
+          "member": "string",
+          "name": "ParamName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New parameter value.",
+          "example": "new",
+          "member": "string",
+          "name": "ParamNewValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Old parameter value.",
+          "example": "old",
+          "member": "string",
+          "name": "ParamOldValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values: doing and success.",
+          "example": "doing/success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConfigParams": {
+      "document": "Parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Name",
+          "member": "string",
+          "name": "ParameterName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "value",
+          "member": "string",
+          "name": "ParameterValue",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value before modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "value",
+          "member": "string",
+          "name": "ParameterOldValue",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -240,7 +576,7 @@
         {
           "disabled": false,
           "document": "Availability zone.",
-          "example": "ap-beijing-2",
+          "example": "ap-beijing-6",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -249,7 +585,7 @@
         {
           "disabled": false,
           "document": "Virtual Private Cloud (VPC).",
-          "example": "vpc-xxx",
+          "example": "vpc-1asw4o72",
           "member": "string",
           "name": "UserVPCId",
           "required": true,
@@ -258,7 +594,7 @@
         {
           "disabled": false,
           "document": "Subnet.",
-          "example": "subnet-xxx",
+          "example": "subnet-rdlodajh",
           "member": "string",
           "name": "UserSubnetId",
           "required": true,
@@ -267,7 +603,7 @@
         {
           "disabled": false,
           "document": "Billing method.",
-          "example": "无",
+          "example": "{\"ChargeType\":\"POSTPAID_BY_HOUR\",\"RenewFlag\":0,\"TimeSpan\":1,\"TimeUnit\":\"h\"}",
           "member": "ChargeProperties",
           "name": "ChargeProperties",
           "required": true,
@@ -276,7 +612,7 @@
         {
           "disabled": false,
           "document": "Instance password.",
-          "example": "无",
+          "example": "cdw_2025",
           "member": "string",
           "name": "AdminPassword",
           "required": true,
@@ -285,7 +621,7 @@
         {
           "disabled": false,
           "document": "Resource information.",
-          "example": "无",
+          "example": "[{\"Count\":2,\"DiskSpec\":{\"DiskCount\":1,\"DiskSize\":200,\"DiskType\":\"CLOUD_HSSD\"},\"SpecName\":\"S_4_16_H_CN\",\"Type\":\"cn\"},{\"Count\":2,\"DiskSpec\":{\"DiskCount\":10,\"DiskSize\":20,\"DiskType\":\"CLOUD_HSSD\"},\"SpecName\":\"S_4_16_H\",\"Type\":\"dn\"}]",
           "member": "ResourceSpecNew",
           "name": "Resources",
           "required": true,
@@ -293,8 +629,8 @@
         },
         {
           "disabled": false,
-          "document": "Tag list.",
-          "example": "无",
+          "document": "Tag list.Deprecated, use TagItems.",
+          "example": "{\"TagKey\":\"k1\",\"TagValue\":\"v1\"}",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -303,11 +639,20 @@
         {
           "disabled": false,
           "document": "Version.",
-          "example": "无",
+          "example": "3.16.9.4",
           "member": "string",
           "name": "ProductVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": " TagItems list.",
+          "example": "[{\"TagKey\":\"k1\",\"TagValue\":\"v1\"}]",
+          "member": "Tag",
+          "name": "TagItems",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -318,32 +663,319 @@
         {
           "disabled": false,
           "document": "Process ID.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "example": "1123",
           "member": "string",
           "name": "FlowId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "cdwpg-xxx",
+          "example": "cdwpg-dfsgdxdfs",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "message",
           "member": "string",
           "name": "ErrorMsg",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsRequest": {
+      "document": "DescribeAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdwpg-cdxfxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountsResponse": {
+      "document": "DescribeAccounts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of instances.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account array.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"InstanceId\":\"cdwpg-rzshdeh1\",\"Perms\":[\"Create role\",\"Create DB\"],\"Username\":\"dbadmin\"}]",
+          "member": "AccountInfo",
+          "name": "Accounts",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBConfigHistoryRequest": {
+      "document": "DescribeDBConfigHistory request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdwpg-as",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBConfigHistoryResponse": {
+      "document": "DescribeDBConfigHistory response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DBConfig history.",
+          "example": "[{\"CreatedAt\":\"2025-03-17T18:07:25+08:00\",\"Id\":4615,\"InstanceId\":\"cdwpg-9jcyk7yp\",...},...]",
+          "member": "ConfigHistory",
+          "name": "ConfigHistory",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBParamsRequest": {
+      "document": "DescribeDBParams request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cn/dn",
+          "example": "cn/dn",
+          "member": "string",
+          "name": "NodeTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-xxdfsxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBParamsResponse": {
+      "document": "DescribeDBParams response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameters information.",
+          "example": "[{\"Details\":[{\"DefaultValue\":\"off\",\"LatestValue\":\"off\",\"NeedRestart\":false,\"ParamName\":\"enable_audit\",\"ParameterName\":\"enable_audit\",\"RunningValue\":\"off\",..},..],\"NodeName\":\"cn0002\",\"NodeType\":\"cn\",\"TotalCount\":5}]",
+          "member": "ParamItem",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeErrorLogRequest": {
+      "document": "DescribeErrorLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdwpg-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2021-12-12 12:12:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2021-12-12 12:12:12",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeErrorLogResponse": {
+      "document": "DescribeErrorLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count of messages returned.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error log details.",
+          "example": "[{\"Database\":\"postgres\",\"ErrorMessage\":\"2025-03-20 12:12:05.850 CST [unknown] 9.0.107.9(48928) postgres tbase 347135 0ERROR:  function fn_stat_get_activity\",\"UserName\":\"tbase\"}]",
+          "member": "ErrorLogDetail",
+          "name": "ErrorLogDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -359,8 +991,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "instance ID.",
-          "example": "cdwpg-12345678",
+          "document": "Instance ID.",
+          "example": "cdwpg-cch1234",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -374,8 +1006,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance simple information",
-          "example": "无",
+          "document": "Instance description information.",
+          "example": "{\"AccessInfo\":\"192.168.22.104:9000\",\"ChargeProperties\":{\"ChargeType\":\"POSTPAID_BY_HOUR\",\"RenewFlag\":0,\"TimeSpan\":1,\"TimeUnit\":\"h\"},\"CreateTime\":\"2025-03-03 14:25:01\",\"ExpireTime\":\"0000.00.00 00:00:00\",.....,\"Version\":\"3.16.9.3\",\"Zone\":\"eu-frankfurt-1\"}",
           "member": "SimpleInstanceInfo",
           "name": "SimpleInstanceInfo",
           "output_required": false,
@@ -384,13 +1016,143 @@
         },
         {
           "disabled": false,
-          "document": "Error Message",
-          "example": "无",
+          "document": "Error message.",
+          "example": "Error: ...",
           "member": "string",
           "name": "ErrorMsg",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesRequest": {
+      "document": "DescribeInstanceNodes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-cdfsfsxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesResponse": {
+      "document": "DescribeInstanceNodes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "error msg\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node list.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"NodeIp\":\"9.0.45.12\",\"NodeType\":\"cn\",\"NodeId\":101},...]",
+          "member": "InstanceNode",
+          "name": "InstanceNodes",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceOperationsRequest": {
+      "document": "DescribeInstanceOperations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2024-12-21 12:12:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2024-12-21 12:12:12",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceOperationsResponse": {
+      "document": "DescribeInstanceOperations response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count of operation records.",
+          "example": "20",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "operation records.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Action\":\"修改hba配置\",...,\"UpdateTime\":\"2025-03-25 11:35:11\"},{\"Action\":\"修改集群配置\",....,\"UpdateTime\":\"2025-03-25 11:18:02\"}",
+          "member": "InstanceOperation",
+          "name": "Operations",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -407,7 +1169,7 @@
         {
           "disabled": false,
           "document": "instance ID.",
-          "example": "cdwpg-12345678",
+          "example": "cdwpg-fsdsxxdd",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -422,7 +1184,7 @@
         {
           "disabled": false,
           "document": "Instance description information.",
-          "example": "无",
+          "example": "{\"InstanceId\":\"cdwpg-rzshdeh1\",\"InstanceName\":\"hugogao_test\",...\"ZoneId\":190001}",
           "member": "InstanceInfo",
           "name": "InstanceInfo",
           "output_required": true,
@@ -443,8 +1205,8 @@
       "members": [
         {
           "disabled": false,
-          "document": " Instance id",
-          "example": "\"cdwpg-sss\"",
+          "document": " InstanceId.",
+          "example": "cdwpg-cdsxxxx",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -459,7 +1221,7 @@
         {
           "disabled": false,
           "document": "Instance status. Example: serving.",
-          "example": "\"Serving\"",
+          "example": "Serving",
           "member": "string",
           "name": "InstanceState",
           "output_required": true,
@@ -469,22 +1231,22 @@
         {
           "disabled": false,
           "document": "Creation time of instance operation.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"2023-04-10 15:30:00\"",
+          "example": "2023-04-10 15:30:00",
           "member": "string",
           "name": "FlowCreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance operation name.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"create\"",
+          "example": "create",
           "member": "string",
           "name": "FlowName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -494,37 +1256,37 @@
           "name": "FlowProgress",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cluster status description. Example: running.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"运行中\"",
+          "document": "Instance status description. Example: running.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "运行中",
           "member": "string",
           "name": "InstanceStateDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance process error messages. Example: \"Creation failed, insufficient resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"dd\"",
+          "example": "Error:...",
           "member": "string",
           "name": "FlowMsg",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The name of the current step. Example: \"Purchasing resources.\"Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"create\"",
+          "example": "create",
           "member": "string",
           "name": "ProcessName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -534,7 +1296,7 @@
           "name": "BackupStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -550,7 +1312,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The name of the Instance ID for the search.",
+          "document": "Searches by instance ID.",
           "example": "cdwpg-xxxx",
           "member": "string",
           "name": "SearchInstanceId",
@@ -559,8 +1321,8 @@
         },
         {
           "disabled": false,
-          "document": "The instance name for the search.",
-          "example": "\"ddd\"",
+          "document": "Searches by instance name.",
+          "example": "cdwpg_test",
           "member": "string",
           "name": "SearchInstanceName",
           "required": false,
@@ -568,7 +1330,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination parameter. The first page is 0, and the second page is 10.",
+          "document": "Offset.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -577,7 +1339,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination parameter. Pagination step length. It is 10 by default.",
+          "document": "Limit.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -587,7 +1349,7 @@
         {
           "disabled": false,
           "document": "Searched tag list.",
-          "example": "无",
+          "example": "[{\"TagKey\":\"k1\",\"TagValue\":\"v1\",\"AllValue\":1}]",
           "member": "SearchTags",
           "name": "SearchTags",
           "required": false,
@@ -601,18 +1363,18 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "18",
+          "document": "Total count of instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance array.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[\"cdwpg-ccs\",\"cdwpg-ddd\"]",
+          "example": "[{\"InstanceId\":\"cdwpg-rzshdeh1\",\"InstanceName\":\"hugogao_test\",...\"ZoneId\":190001},{\"InstanceId\":\"cdwpg-rzshdfds\",\"InstanceName\":\"hugogao_test1\",...\"ZoneId\":190001}]",
           "member": "InstanceInfo",
           "name": "InstancesList",
           "output_required": true,
@@ -621,13 +1383,13 @@
         },
         {
           "disabled": false,
-          "document": " -Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"cc\"",
+          "document": "Error message.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:...",
           "member": "string",
           "name": "ErrorMsg",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -643,8 +1405,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Search Instance Id",
-          "example": "无",
+          "document": "Searches by instance ID.",
+          "example": "cdwpg-fsds123xxs",
           "member": "string",
           "name": "SearchInstanceId",
           "required": false,
@@ -652,8 +1414,8 @@
         },
         {
           "disabled": false,
-          "document": "Search Instance Name",
-          "example": "无",
+          "document": "Searches by instance name.",
+          "example": "cdwpg_test001",
           "member": "string",
           "name": "SearchInstanceName",
           "required": false,
@@ -661,8 +1423,8 @@
         },
         {
           "disabled": false,
-          "document": "\t\nOffset",
-          "example": "无",
+          "document": "Offset.",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -670,8 +1432,8 @@
         },
         {
           "disabled": false,
-          "document": "Limit",
-          "example": "无",
+          "document": "Limit.",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -679,8 +1441,8 @@
         },
         {
           "disabled": false,
-          "document": "Search Tags",
-          "example": "无",
+          "document": "Searches by tag list.",
+          "example": "k1",
           "member": "string",
           "name": "SearchTags",
           "required": false,
@@ -694,33 +1456,264 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total Count\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total count of instance lists.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instances List\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Instance list details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"ID\":1094,\"InstanceId\":\"cdwpg-rzshdeh1\",....\"Zone\":\"ap-chongqing-1\"},{ID\":1089,\"InstanceId\":\"cdwpg-9jcyk7yp\",....\"Zone\":\"ap-chongqing-1\"}]",
           "member": "InstanceSimpleInfoNew",
           "name": "InstancesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogRequest": {
+      "document": "DescribeSlowLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-cdsbxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2012-12-12 12:12:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2012-12-12 13:12:12",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Database.",
+          "example": "cdwpg",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method.",
+          "example": "CallTimes",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Ascending or descending order.",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration.",
+          "example": "10000",
+          "member": "float",
+          "name": "Duration",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogResponse": {
+      "document": "DescribeSlowLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count of messages returned.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Slow SQL log details.",
+          "example": "{\"NormalQuerys\":[{\"CallTimes\":1,\"ClientIp\":\"9.0.116.10\",...\"WriteCostTime\":0}],\"TotalCallTimes\":1,\"TotalTime\":10403.899}",
+          "member": "SlowLogDetail",
+          "name": "SlowLogDetails",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUpgradeListRequest": {
+      "document": "DescribeUpgradeList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUpgradeListResponse": {
+      "document": "DescribeUpgradeList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details of instance upgrade records.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"TaskName\":\"test\",\"SourceVersion\":\"3.16.4.7\",\"TargetVersion\":\"3.16.4.8\",\"CreateTime\":\"2025-01-06 12:12:12\",\"EndTime\":\"2025-01-06 12:18:12\",\"Status\":\"2\",\"OperateUin\":\"102213435355\"}",
+          "member": "UpgradeItem",
+          "name": "UpgradeItems",
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": " Error Message\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total count of upgrade records.",
+          "example": "20",
           "member": "string",
-          "name": "ErrorMsg",
+          "name": "TotalCount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserHbaConfigRequest": {
+      "document": "DescribeUserHbaConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-cdxb1xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserHbaConfigResponse": {
+      "document": "DescribeUserHbaConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of instances.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hba Config array.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Address\":\"0.0.0.0/0\",\"Database\":\"all\",\"Mask\":\"\",\"Method\":\"md5\",\"Type\":\"host\",\"User\":\"all\"},{\"Address\":\"::0/0\",\"Database\":\"all\",\"Mask\":\"\",\"Method\":\"md5\",\"Type\":\"host\",\"User\":\"all\"}]",
+          "member": "HbaConfig",
+          "name": "HbaConfigs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -783,63 +1776,187 @@
       "members": [
         {
           "disabled": false,
-          "document": "Disk Count\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "DiskCount",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Max Disk Size\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Maximum disk capacity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "32000",
           "member": "int64",
           "name": "MaxDiskSize",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Min Disk Size\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Minimum disk capacity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
           "member": "int64",
           "name": "MinDiskSize",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Disk Type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Disk Description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Disk type details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "高性能云硬盘",
           "member": "string",
           "name": "DiskDesc",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cvm Class\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Model type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "STANDARD",
           "member": "string",
           "name": "CvmClass",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ErrorLogDetail": {
+      "document": "Error log details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Username.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tbase",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postgres",
+          "member": "string",
+          "name": "Database",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time an error was reported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-20 12:08:05",
+          "member": "string",
+          "name": "ErrorTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-20 12:08:05.847 CST [unknown] 9.0.107.9(44402) postgres tbase 342423 0ERROR",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HbaConfig": {
+      "document": "user_config",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type.",
+          "example": "host",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database.",
+          "example": "all",
+          "member": "string",
+          "name": "Database",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User.",
+          "example": "all",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP address.",
+          "example": "0.0.0.0/0",
+          "member": "string",
+          "name": "Address",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Method.",
+          "example": "md5",
+          "member": "string",
+          "name": "Method",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to perform overwriting.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "Mask",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -850,57 +1967,57 @@
         {
           "disabled": false,
           "document": "Instance ID \nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
+          "example": "101",
           "member": "int64",
           "name": "ID",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "cn/dn or others.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "cdwpg-cn",
+          "document": "Kernel version type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TbaseV3",
           "member": "string",
           "name": "InstanceType",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Name\n.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "cdwpg-xxxx",
+          "document": "Cluster name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg_test",
           "member": "string",
           "name": "InstanceName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Status ,such as  2\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "Running",
+          "document": "Cluster status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Serving",
           "member": "string",
           "name": "Status",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Status  Description ,such as Running.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Cluster status details.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance State Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster status information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"BackupOpenStatus\":1,\"BackupStatus\":0,\"FlowCreateTime\":\"\",\"FlowMsg\":\"\",\"FlowName\":\"\",\"FlowProgress\":0,\"InstanceState\":\"Serving\",\"InstanceStateDesc\":\"运行中\",\"ProcessName\":\"\",\"RequestId\":\"\"}",
           "member": "InstanceStateInfo",
           "name": "InstanceStateInfo",
           "output_required": false,
@@ -909,203 +2026,239 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID \nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "document": "Cluster ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-xdfsfds",
           "member": "string",
           "name": "InstanceID",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CreateTime ,such as 2022-09-05 20:00:01\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2022-09-05 20:00:01",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region ,such as ap-chongqing.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Region.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-chongqing",
           "member": "string",
           "name": "Region",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone : This field may return null, indicating that no valid values can be obtained.",
+          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-chongqing-1",
           "member": "string",
           "name": "Zone",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "region",
+          "document": "Region details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chongqing",
           "member": "string",
           "name": "RegionDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "zone",
+          "document": "Region details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chongqing-1",
           "member": "string",
           "name": "ZoneDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"k1\",\"TagValue\":\"v1\"}]",
           "member": "Tag",
           "name": "Tags",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "v3",
+          "document": "Kernel version.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.16.9.3",
           "member": "string",
           "name": "Version",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Character set.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "zone",
+          "example": "utf-8",
           "member": "string",
           "name": "Charset",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "CN node list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Cpu\":4,\"CvmCount\":2,...\"SyncType\":\"sync2async\",\"Type\":\"slave\",\"UsedStorage\":0},{\"Cpu\":4,\"CvmCount\":2,...\"Type\":\"slave\",\"UsedStorage\":0}]",
           "member": "InstanceNodeGroup",
           "name": "CNNodes",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DN node list.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Cpu\":4,\"CvmCount\":2,...\"SyncType\":\"sync2async\",\"Type\":\"slave\",\"UsedStorage\":0},{\"Cpu\":4,\"CvmCount\":2,...\"Type\":\"slave\",\"UsedStorage\":0}]",
           "member": "InstanceNodeGroup",
           "name": "DNNodes",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": " Region Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "19",
           "member": "int64",
           "name": "RegionId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "190001",
           "member": "int64",
           "name": "ZoneId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Vpc Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Virtual Private Cloud (VPC).\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-1asw4o73",
           "member": "string",
           "name": "VpcId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Subnet Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Subnet.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-rdlodajk",
           "member": "string",
           "name": "SubnetId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Expire Time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Expiration time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0000.00.00 00:00:00",
           "member": "string",
           "name": "ExpireTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Pay Mode\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Billing mode.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "PayMode",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Automatic renewal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "RenewFlag",
           "output_required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-cdsxxx",
           "member": "string",
           "name": "InstanceId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Access information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"address\":\"10.0.16.19:9000\",\"protocol\":\"tcp\"}]",
           "member": "AccessInfo",
           "name": "AccessDetails",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceNode": {
+      "document": "Instance node",
+      "members": [
+        {
+          "disabled": false,
+          "document": "id",
+          "example": "1",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cn",
+          "example": "cn",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ip",
+          "example": "9.0.0.1",
+          "member": "string",
+          "name": "NodeIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1115,33 +2268,129 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spec Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Model.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "S_4_16_P_CN",
           "member": "string",
           "name": "SpecName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Data Disk\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Disk information.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"CvmClass\":\"STANDARD\",\"DiskCount\":1,\"DiskDesc\":\"高性能云硬盘\",\"DiskType\":\"CLOUD_PREMIUM\",\"MaxDiskSize\":32000,\"MinDiskSize\":200}",
           "member": "DiskSpecPlus",
           "name": "DataDisk",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cvm Count\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of machines.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
           "member": "int64",
           "name": "CvmCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceOperation": {
+      "document": "Cluster operation description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation name, such as create_instance, and scaleout_instance",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation name description, such as creating, and modifying the cluster name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "创建",
+          "member": "string",
+          "name": "Action",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation start time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-09-08 12:00:08",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation end time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-09-08 12:00:08",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation context.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"AppID\":1301xxxx13,\"Uin\":\"10001269xxxx7\",\"Region\":\"ap-chongqing\",UserVPCID\"...}",
+          "member": "string",
+          "name": "Context",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-09-08 12:00:08",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123123124",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1152,172 +2401,172 @@
         {
           "disabled": false,
           "document": "ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "wu",
+          "example": "1323",
           "member": "int64",
           "name": "ID",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-dscxxxx",
           "member": "string",
           "name": "InstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-test",
           "member": "string",
           "name": "InstanceName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Kernel version.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.16.4.8",
           "member": "string",
           "name": "Version",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "Region",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8",
           "member": "int64",
           "name": "RegionId",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region Desc\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "RegionDesc",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing-6",
           "member": "string",
           "name": "Zone",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "800005",
           "member": "int64",
           "name": "ZoneId",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone Desc\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing-6",
           "member": "string",
           "name": "ZoneDesc",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Vpc Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Virtual Private Cloud (VPC).\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-1asw4o73",
           "member": "string",
           "name": "VpcId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Subnet Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Subnet.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-rdlodajk",
           "member": "string",
           "name": "SubnetId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CreateTime\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Start time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-02-20 11:37:11",
           "member": "string",
           "name": "CreateTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ExpireTime\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Expiration time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0000.00.00 00:00:00",
           "member": "string",
           "name": "ExpireTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Access Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Access address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"address\":\"10.0.16.27:9000\",\"protocol\":\"tcp\"}]",
           "member": "string",
           "name": "AccessInfo",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Pay Mode\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Billing mode.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "PayMode",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Automatic renewal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "RenewFlag",
-          "required": false,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1328,113 +2577,159 @@
         {
           "disabled": false,
           "document": "Instance status. Example: serving.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "Serving",
           "member": "string",
           "name": "InstanceState",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time of instance operation.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "2023-04-10 15:30:00",
           "member": "string",
           "name": "FlowCreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance operation name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "create",
           "member": "string",
           "name": "FlowName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance operation progress.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "50",
           "member": "int64",
           "name": "FlowProgress",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance status description. Example: running.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "运行中",
           "member": "string",
           "name": "InstanceStateDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance process error messages. Example: \"Creation failed, insufficient resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "Error:...",
           "member": "string",
           "name": "FlowMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The name of the current step. Example: \"Purchasing resources.\"\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "create",
           "member": "string",
           "name": "ProcessName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Indicates whether there is a backup task in the instance. 1 indicates yes and 0 indicates no.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "1",
           "member": "int64",
           "name": "BackupStatus",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Request Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Request ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ad9e5842-e932-47d1-83a0-a388ccc5c19e",
           "member": "string",
           "name": "RequestId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Backup Open Status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Indicates whether there is a backup task in the cluster. 1 indicates yes and 0 indicates no.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "BackupOpenStatus",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
+    },
+    "ModifyDBParametersRequest": {
+      "document": "ModifyDBParameters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-dsxrfxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Node parameter.",
+          "example": "[{\"NodeType\":\"cn\",\"ConfigParams\":[{\"ParameterName\":\"max_connections\",\"ParameterValue\":630,\"ParameterOldValue\":\"625\"}]}]",
+          "member": "NodeConfigParams",
+          "name": "NodeConfigParams",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBParametersResponse": {
+      "document": "ModifyDBParameters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous process ID.",
+          "example": "1223",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyInstanceRequest": {
       "document": "ModifyInstance request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
-          "example": "cdwch-12345678",
+          "document": "InstanceId.",
+          "example": "cdwpg-xsdfe12345678",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1443,7 +2738,7 @@
         {
           "disabled": false,
           "document": "Name of the newly modified instance.",
-          "example": "cdwch-test",
+          "example": "cdwpg-test100",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -1464,19 +2759,509 @@
       ],
       "type": "object"
     },
+    "ModifyUserHbaRequest": {
+      "document": "ModifyUserHba request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-cdsfxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Hba array.",
+          "example": "[{\"Type\":\"host\",\"Database\":\"all\",\"User\":\"all\",\"Address\":\"9.0.0.0/24\",\"Mask\":0,\"Method\":\"md5\"},{\"Type\":\"host\",\"Database\":\"all\",\"User\":\"all\",\"Address\":\"0.0.0.0/0\",\"Mask\":\"\",\"Method\":\"md5\"}]",
+          "member": "HbaConfig",
+          "name": "HbaConfigs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserHbaResponse": {
+      "document": "ModifyUserHba response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "18",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NodeConfigParams": {
+      "document": "Node parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node type.",
+          "example": "cn",
+          "member": "string",
+          "name": "NodeType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter.",
+          "example": "[{\"ParameterName\":\"max_connections\",\"ParameterValue\":630,\"ParameterOldValue\":\"625\"}]",
+          "member": "ConfigParams",
+          "name": "ConfigParams",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "NormQueryItem": {
+      "document": "Slow query item information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of calls.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "CallTimes",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of read-only shared memory blocks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "SharedReadBlocks",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of write-only shared memory blocks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "SharedWriteBlocks",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cran",
+          "member": "string",
+          "name": "DatabaseName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statement after masking.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "insert into row1 select * from row1;",
+          "member": "string",
+          "name": "NormalQuery",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The statement with the longest execution time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "insert into row1 select * from row1;",
+          "member": "string",
+          "name": "MaxElapsedQuery",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total consumption time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10403.899",
+          "member": "float",
+          "name": "CostTime",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client IP address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "9.0.116.10",
+          "member": "string",
+          "name": "ClientIp",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "dbadmin",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Proportion of total count.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "float",
+          "name": "TotalCallTimesPercent",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Proportion of total consumption time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "float",
+          "name": "TotalCostTimePercent",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum consumption time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10403.899",
+          "member": "float",
+          "name": "MinCostTime",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum consumption time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10403.899",
+          "member": "float",
+          "name": "MaxCostTime",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time of the earliest item.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-25 12:07:49",
+          "member": "string",
+          "name": "FirstTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time of the latest item.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-25 12:07:49",
+          "member": "string",
+          "name": "LastTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total consumption time of I/O reading.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.0",
+          "member": "float",
+          "name": "ReadCostTime",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total consumption time I/O writing.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.0",
+          "member": "float",
+          "name": "WriteCostTime",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ParamDetail": {
+      "document": "ParamDetail",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vacuum_delta",
+          "member": "string",
+          "name": "ParamName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
+          "member": "string",
+          "name": "DefaultValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the restart is required.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "NeedRestart",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2000",
+          "member": "string",
+          "name": "RunningValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value range.",
+          "example": "{\"Enum\":[\"\"],\"Range\":{\"Max\":\"2000\",\"Min\":\"50\"},\"String\":\"\",\"Type\":\"section\"}",
+          "member": "ValueRange",
+          "name": "ValueRange",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "string",
+          "name": "Unit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Introduction in English.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "The time period before which VACUUM and HOT cleanup could clean the transactions, if any",
+          "member": "string",
+          "name": "ShortDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vacuum_delta",
+          "member": "string",
+          "name": "ParameterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamItem": {
+      "document": "ParamItem information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node type. Valid values: cn and dn.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cn",
+          "member": "string",
+          "name": "NodeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cn0001",
+          "member": "string",
+          "name": "NodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"DefaultValue\":\"off\",\"LatestValue\":\"off\",...},{\"DefaultValue\":\"30000\",\"LatestValue\":\"30000\",...}]",
+          "member": "ParamDetail",
+          "name": "Details",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Range": {
+      "document": "Range",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Minimum value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Min",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "string",
+          "name": "Max",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResetAccountPasswordRequest": {
+      "document": "ResetAccountPassword request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instanceid.",
+          "example": "cdwpg-cdwsfsxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The username to be modified.",
+          "example": "dbadmin",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New password.",
+          "example": "cdwpg123456",
+          "member": "string",
+          "name": "NewPassword",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetAccountPasswordResponse": {
+      "document": "ResetAccountPassword response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:..",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResourceInfo": {
       "document": "Resource information.",
       "members": [
         {
           "disabled": false,
           "document": "Resource name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "nc2.large",
+          "example": "S_4_16_H_CN",
           "member": "string",
           "name": "SpecName",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1487,7 +3272,7 @@
           "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1498,18 +3283,18 @@
           "output_required": false,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resource type.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "Local",
+          "document": "Node type. Valid values: cn and dn.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cn",
           "member": "string",
           "name": "Type",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1520,7 +3305,7 @@
         {
           "disabled": false,
           "document": "Resource name.",
-          "example": "nc2.large",
+          "example": "S_4_16_H_CN",
           "member": "string",
           "name": "SpecName",
           "required": true,
@@ -1547,7 +3332,7 @@
         {
           "disabled": false,
           "document": "Resource type, DATA.",
-          "example": "Local",
+          "example": "cn",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1555,6 +3340,210 @@
         }
       ],
       "usage": "in"
+    },
+    "RestartInstanceRequest": {
+      "document": "RestartInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name. Example: cdwpg-xxxx.",
+          "example": "\"cdwpg-13456\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Types of node that need to restart. Valid values: gtm, cn, dn and fn.",
+          "example": "[\"cn0001\",\"dn0001\"]",
+          "member": "string",
+          "name": "NodeTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies th ID of nodes that need to restart.",
+          "example": "[\"1223\",\"1234\"]",
+          "member": "string",
+          "name": "NodeIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartInstanceResponse": {
+      "document": "RestartInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "FlowId.",
+          "example": "1232",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceRequest": {
+      "document": "ScaleOutInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-cddfsxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Node type.",
+          "example": "dn",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of scale-out nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "ScaleOutCount",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceResponse": {
+      "document": "ScaleOutInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "FlowId.",
+          "example": "1342",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleUpInstanceRequest": {
+      "document": "ScaleUpInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-xxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the resource type.",
+          "example": "scale_up_instance",
+          "member": "string",
+          "name": "Case",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified parameters.",
+          "example": "{\"Type\":\"cn\",\"SpecName\":\"S_8_32_P_CN\",\"Count\":2,\"DiskSpec\":{\"DiskType\":\"CLOUD_HSSD\",\"DiskSize\":400,\"DiskCount\":1}}",
+          "member": "CNResourceSpec",
+          "name": "ModifySpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "cdwpg-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleUpInstanceResponse": {
+      "document": "ScaleUpInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "FlowId.",
+          "example": "43",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specific error.",
+          "example": "Error:..",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SearchTags": {
       "document": "List of tags searched on the list page.",
@@ -1598,181 +3587,217 @@
         {
           "disabled": false,
           "document": "ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "wu",
+          "example": "1232",
           "member": "int64",
           "name": "ID",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-dscxxxx",
           "member": "string",
           "name": "InstanceId",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwpg-test",
           "member": "string",
           "name": "InstanceName",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Kernel version.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.16.4.8",
           "member": "string",
           "name": "Version",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "eu-frankfurt",
           "member": "string",
           "name": "Region",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Zone\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "eu-frankfurt-1",
           "member": "string",
           "name": "Zone",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Virtual Private Cloud (VPC).\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-5wsen2rn",
           "member": "string",
           "name": "UserVPCID",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Subnet.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-d05spb5o",
           "member": "string",
           "name": "UserSubnetID",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CreateTime\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Start time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-03 14:25:01",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ExpireTime\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Expiration time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0000.00.00 00:00:00",
           "member": "string",
           "name": "ExpireTime",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Access Infomation\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Access address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "192.168.22.104:9000",
           "member": "string",
           "name": "AccessInfo",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Renew Flag\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Automatic renewal switch. 0 indicates automatic renewal is not enabled, and 1 indicates automatic renewal is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "RenewFlag",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Charge Properties\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Billing mode.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ChargeType\":\"POSTPAID_BY_HOUR\",\"RenewFlag\":0,\"TimeSpan\":1,\"TimeUnit\":\"h\"}",
           "member": "ChargeProperties",
           "name": "ChargeProperties",
           "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resources\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Resource collection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Count\":2,\"DiskSpec\":{\"DiskCount\":10,\"DiskSize\":20,\"DiskType\":\"CLOUD_HSSD\"},\"SpecName\":\"S_4_16_H_CN\",\"Type\":\"cn\"},{\"Count\":2,\"DiskSpec\":{\"DiskCount\":10,\"DiskSize\":20,\"DiskType\":\"CLOUD_HSSD\"},\"SpecName\":\"S_4_16_H\",\"Type\":\"dn\"}]",
           "member": "ResourceInfo",
           "name": "Resources",
           "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tags\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Tag list.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"TagKey\":\"k1\"，\"TagValue\":\"v1\"}",
           "member": "Tag",
           "name": "Tags",
           "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Cluster status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
+    },
+    "SlowLogDetail": {
+      "document": "Slow SQL logs",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total consumption time.",
+          "example": "10403.899",
+          "member": "float",
+          "name": "TotalTime",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of calls.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCallTimes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Slow SQL.",
+          "example": "[{\"CallTimes\":1,\"ClientIp\":\"9.0.116.10\",\"CostTime\":10403.899,\"DatabaseName\":\"evidev\",\"FirstTime\":\"2025-03-25 12:07:49\",\"LastTime\":\"2025-03-25 12:07:49\",...,\"TotalCostTimePercent\":1,\"UserName\":\"dbadmin\",\"WriteCostTime\":0}]",
+          "member": "NormQueryItem",
+          "name": "NormalQuerys",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Tag": {
       "document": "Tag description.",
@@ -1799,6 +3824,191 @@
         }
       ],
       "usage": "both"
+    },
+    "UpgradeInstanceRequest": {
+      "document": "UpgradeInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "InstanceId.",
+          "example": "cdwpg-csvvxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Installation package version.",
+          "example": "3.16.9.3",
+          "member": "string",
+          "name": "PackageVersion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceResponse": {
+      "document": "UpgradeInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "FlowId.",
+          "example": "1232",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "Error:...",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeItem": {
+      "document": "Upgrade information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UpgradeTo3.15.2.0_2023-02-16 00:12:44",
+          "member": "string",
+          "name": "TaskName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original kernel version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.15.0.1",
+          "member": "string",
+          "name": "SourceVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target kernel version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.15.2.0",
+          "member": "string",
+          "name": "TargetVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-17 11:56:15",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-17 11:56:15",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task completion status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100021289373",
+          "member": "string",
+          "name": "OperateUin",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ValueRange": {
+      "document": "ValueRange",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter types. Valid values: enum, string, and section. Enum indicates enumeration, namely utf8, latin1, gbk. String indicates that the returned parameter value is a string. Section indicates that the returned parameter value is a value range, for example, 4-8.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "section",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response parameter when the type is a section.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"Max\":\"2000\",\"Min\":\"50\"}",
+          "member": "Range",
+          "name": "Range",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response parameter when the type is an enum.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "Enum",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response parameter when the type is a string.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cran",
+          "member": "string",
+          "name": "String",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   }
 }
