@@ -99,7 +99,7 @@
       "status": "online"
     },
     "DescribeCustomerInfo": {
-      "document": "This API is used to query the customer information.\n\nCallable roles: Distributor, Reseller",
+      "document": "This API is used to query sub-customer information.\nInvocation roles: reseller, first-level distributor.",
       "input": "DescribeCustomerInfoRequest",
       "name": "Queries the customer information",
       "output": "DescribeCustomerInfoResponse",
@@ -2081,7 +2081,7 @@
         },
         {
           "disabled": false,
-          "document": "Account status\n.\n0: normal.\n1: forcibly mandatory (this function is not supported yet).\n2: mandatory arrears. ",
+          "document": "Account status.\n0: normal.\n1: forcibly mandatory (this function is not supported yet).\n2: mandatory arrears. ",
           "example": "1",
           "member": "string",
           "name": "AccountStatus",
@@ -2091,12 +2091,62 @@
         },
         {
           "disabled": false,
-          "document": "Identity verification status.\n-1: files not uploaded.\n0: not submitted for review.\n1: under review.\n2: review error.\n3: approved.",
+          "document": "Specifies the identity verification status.\n-999: account information not found.\n-1: file not uploaded.\n0: pending review.\nUnder review.\nError in review: 2.\n3: pass review.",
           "example": "1",
           "member": "string",
           "name": "AuthStatus",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Real-Name type.\n-1: default value. no such information. \n0: personal type. \n1: enterprise type.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuthType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the registration time of the cid.",
+          "example": "2025",
+          "member": "string",
+          "name": "CidRegisterTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the registration time of the uin.",
+          "example": "2025",
+          "member": "string",
+          "name": "UinRegisterTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time when real-name authentication passed.",
+          "example": "2025",
+          "member": "string",
+          "name": "AuthPassTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether there is consumption.\n0: no consumption; 1: consumption.",
+          "example": "1",
+          "member": "int64",
+          "name": "HasExpense",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
