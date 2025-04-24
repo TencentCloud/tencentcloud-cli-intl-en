@@ -828,7 +828,7 @@
         {
           "disabled": false,
           "document": "Start timestamp.",
-          "example": "123",
+          "example": "1145",
           "member": "int64",
           "name": "NotBefore",
           "output_required": true,
@@ -838,7 +838,7 @@
         {
           "disabled": false,
           "document": "End timestamp\n.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "1146",
           "member": "int64",
           "name": "NotAfter",
           "output_required": true,
@@ -1238,7 +1238,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Prompt variable.",
           "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
           "member": "Variable",
@@ -1294,28 +1294,10 @@
         },
         {
           "disabled": false,
-          "document": "## Identity\nYou are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.\n\n## Style Guardrails\nBe Concise: Respond succinctly, addressing one topic at most.\nEmbrace Variety: Use diverse language and rephrasing to enhance clarity without repeating content.\nBe Conversational: Use everyday language, making the chat feel like talking to a friend.\nBe Proactive: Lead the conversation, often wrapping up with a question or next-step suggestion.\nAvoid multiple questions in a single response.\nGet clarity: If the user only partially answers a question, or if the answer is unclear, keep asking to get clarity.\nUse a colloquial way of referring to the date (like Friday, January 14th, or Tuesday, January 12th, 2024 at 8am).\n\n## Response Guideline\nAdapt and Guess: Try to understand transcripts that may contain transcription errors. Avoid mentioning \"transcription error\" in the response.\nStay in Character: Keep conversations within your role's scope, guiding them back creatively without repeating.\nEnsure Fluid Dialogue: Respond in a role-appropriate, direct manner to maintain a smooth conversation flow.\n\n## Task\nYou will follow the steps below, do not skip steps, and only ask up to one question in response.\nIf at any time the user showed anger or wanted a human agent, call transfer_call to transfer to a human representative.\n1. Begin with a self-introduction and verify if callee is Cindy.\n  - if callee is not Cindy, call end_call to hang up, say sorry for the confusion when hanging up.\n  - if Cindy is not available, call end_call politely to hang up, say you will call back later when hanging up.\n2. Inform Cindy she has an annual body check coming up on April 4th, 2024 at 10am PDT. Check if Cindy is available.\n  - If not, tell Cindy to reschedule online and jump to step 5.\n3. Ask Cindy if there's anything that the doctor should know before the annual checkup.\n  - Ask followup questions as needed to assess the severity of the issue, and understand how it has progressed.\n4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.\n5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.\n  - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.\n  - If user do not have any questions, call function end_call to hang up.",
-          "example": "示例值请看上方描述",
-          "member": "string",
-          "name": "SystemPrompt",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
           "document": "Model interface protocol types, currently compatible with three protocol types:\n\n- OpenAI protocol (including GPT, DeepSeek, etc.):\"openai\"\n- Azure protocol:\"azure\"\n- Minimax protocol:\"minimax\"",
           "example": "openai",
           "member": "string",
           "name": "LLMType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Model name, such as\n\n- OpenAI protocol\n\"gpt-4o-mini\",\"gpt-4o\",\"deepseek-chat\";\n\n- Azure protocol\n\"gpt-4o-mini\", \"gpt-4o\";\n\n- Minimax protocol\n\"deepseek-chat\".",
-          "example": "gpt-4o-mini",
-          "member": "string",
-          "name": "Model",
           "required": true,
           "type": "string"
         },
@@ -1335,6 +1317,24 @@
           "member": "string",
           "name": "APIUrl",
           "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "## Identity\nYou are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.\n\n## Style Guardrails\nBe Concise: Respond succinctly, addressing one topic at most.\nEmbrace Variety: Use diverse language and rephrasing to enhance clarity without repeating content.\nBe Conversational: Use everyday language, making the chat feel like talking to a friend.\nBe Proactive: Lead the conversation, often wrapping up with a question or next-step suggestion.\nAvoid multiple questions in a single response.\nGet clarity: If the user only partially answers a question, or if the answer is unclear, keep asking to get clarity.\nUse a colloquial way of referring to the date (like Friday, January 14th, or Tuesday, January 12th, 2024 at 8am).\n\n## Response Guideline\nAdapt and Guess: Try to understand transcripts that may contain transcription errors. Avoid mentioning \"transcription error\" in the response.\nStay in Character: Keep conversations within your role's scope, guiding them back creatively without repeating.\nEnsure Fluid Dialogue: Respond in a role-appropriate, direct manner to maintain a smooth conversation flow.\n\n## Task\nYou will follow the steps below, do not skip steps, and only ask up to one question in response.\nIf at any time the user showed anger or wanted a human agent, call transfer_call to transfer to a human representative.\n1. Begin with a self-introduction and verify if callee is Cindy.\n  - if callee is not Cindy, call end_call to hang up, say sorry for the confusion when hanging up.\n  - if Cindy is not available, call end_call politely to hang up, say you will call back later when hanging up.\n2. Inform Cindy she has an annual body check coming up on April 4th, 2024 at 10am PDT. Check if Cindy is available.\n  - If not, tell Cindy to reschedule online and jump to step 5.\n3. Ask Cindy if there's anything that the doctor should know before the annual checkup.\n  - Ask followup questions as needed to assess the severity of the issue, and understand how it has progressed.\n4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.\n5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.\n  - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.\n  - If user do not have any questions, call function end_call to hang up.",
+          "example": "示例值请看上方描述",
+          "member": "string",
+          "name": "SystemPrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model name, such as\n\n- OpenAI protocol\n\"gpt-4o-mini\",\"gpt-4o\",\"deepseek-chat\";\n\n- Azure protocol\n\"gpt-4o-mini\", \"gpt-4o\";\n\n- Minimax protocol\n\"deepseek-chat\".",
+          "example": "gpt-4o-mini",
+          "member": "string",
+          "name": "Model",
+          "required": false,
           "type": "string"
         },
         {
@@ -1491,7 +1491,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Prompt word variable.",
           "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
           "member": "Variable",
@@ -1751,7 +1751,7 @@
           "example": "3",
           "member": "uint64",
           "name": "IvrId",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -1857,7 +1857,7 @@
         {
           "disabled": false,
           "document": "Skill group name.",
-          "example": "test",
+          "example": "foobar技能组",
           "member": "string",
           "name": "SkillGroupName",
           "required": true,
@@ -2102,7 +2102,7 @@
         {
           "disabled": false,
           "document": "List of calling numbers.",
-          "example": "无",
+          "example": "[00861,00862]",
           "member": "string",
           "name": "Callers",
           "required": false,
@@ -2111,7 +2111,7 @@
         {
           "disabled": false,
           "document": "Custom variable.",
-          "example": "无",
+          "example": "{\"name\":\"foo-bar\"}",
           "member": "Variable",
           "name": "Variables",
           "required": false,
@@ -3217,7 +3217,7 @@
         {
           "disabled": false,
           "document": "Registered password.",
-          "example": "xxxxx",
+          "example": "foobarfoobar",
           "member": "string",
           "name": "Password",
           "output_required": true,
@@ -3295,7 +3295,7 @@
         {
           "disabled": false,
           "document": "Fuzzy query field (fuzzy query for extension number, extension name, agent email, and agent name).",
-          "example": "xxx",
+          "example": "foobar",
           "member": "string",
           "name": "FuzzingKeyWord",
           "required": false,
@@ -4192,7 +4192,7 @@
         {
           "disabled": false,
           "document": "Skill group id.",
-          "example": "123",
+          "example": "1145",
           "member": "int64",
           "name": "SkillGroupId",
           "required": false,
@@ -4217,7 +4217,7 @@
         {
           "disabled": false,
           "document": "Agent user information list.",
-          "example": "[{\"Name\":\"xiao\",\"Mail\":\"1000273@qq.com\",\"Phone\":\"008617636049517\",\"Nick\":\"测试3\",\"StaffNumber\":\"125\",\"RoleId\":1,\"SkillGroupList\":[{\"SkillGroupId\":53,\"SkillGroupName\":\"ALL-dingoding-测试\",\"Priority\":3,\"Type\":\"ALL\"},{\"SkillGroupId\":82,\"SkillGroupName\":\"uu\",\"Priority\":1,\"Type\":\"IM\"}],\"LastModifyTimestamp\":1613988825}]",
+          "example": "[{\"Name\":\"n\",\"Mail\":\"m@e.com\",\"Phone\":\"123\",\"Nick\":\"t\",\"StaffNumber\":\"1\",\"RoleId\":1,\"SkillGroupList\":[{\"SkillGroupId\":1,\"SkillGroupName\":\"sg\",\"Priority\":1,\"Type\":\"IM\"}],\"LastModifyTimestamp\":1}]",
           "member": "StaffInfo",
           "name": "StaffList",
           "output_required": true,
@@ -4931,7 +4931,7 @@
         {
           "disabled": false,
           "document": "TTS prompt content.",
-          "example": "无",
+          "example": "您好",
           "member": "string",
           "name": "TTSPrompt",
           "output_required": false,
@@ -5788,7 +5788,7 @@
         {
           "disabled": false,
           "document": "Reset password.",
-          "example": "xxxx",
+          "example": "foobar",
           "member": "string",
           "name": "Password",
           "output_required": true,
@@ -6439,7 +6439,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "User role id.",
           "example": "1",
           "member": "uint64",
