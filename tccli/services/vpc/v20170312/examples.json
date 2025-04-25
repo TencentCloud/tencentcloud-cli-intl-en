@@ -1134,6 +1134,14 @@
         "title": "Querying the IPv6 Information Based on IPv6AddressIds"
       }
     ],
+    "DescribeInstanceJumbo": [
+      {
+        "document": "This example shows you how to inquire whether a specified CVM supports jumbo frames.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceJumbo\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-70w096mg\",\n        \"ins-71b1qyss\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceJumboSet\": [\n            {\n                \"InstanceId\": \"ins-70w096mg\",\n                \"JumboState\": false\n            }\n        ],\n        \"RequestId\": \"7fc40006-3629-44de-a520-74ffd2cf1882\"\n    }\n}",
+        "title": "Query Whether a Specified CVM Supports Jumbo Frames"
+      }
+    ],
     "DescribeIp6Addresses": [
       {
         "document": "Query IPv6 information based on the filter",
