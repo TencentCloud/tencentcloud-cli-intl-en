@@ -1,5 +1,13 @@
 {
   "actions": {
+    "AddProjectUserRole": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddProjectUserRole\n<Common request parameters>\n\n{\n    \"RoleIds\": [\n        \"3083352602237440\"\n    ],\n    \"UserIds\": [\n        \"1000037715\"\n    ],\n    \"ProjectId\": \"6924757540804752\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c315db4-27fd-4bb3-8626-f9c9d3efda\",\n        \"Data\": true\n    }\n}",
+        "title": "Successful Example"
+      }
+    ],
     "BatchCreateIntegrationTaskAlarms": [
       {
         "document": " ",
@@ -1018,6 +1026,20 @@
         "title": "Sample 1"
       }
     ],
+    "DescribeRoleList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoleList\n<Common request parameters>\n\n{\n    \"ShowAllRoles\": true,\n    \"IncludeRoleTypes\": [\n        \"abc\"\n    ],\n    \"DescribeMemberCount\": true,\n    \"DescribeOperator\": true,\n    \"DescribeSystemRoleOnly\": true,\n    \"DescribeCustomRoleOnly\": true,\n    \"DescribePrivileges\": true,\n    \"RoleIds\": [\n        \"abc\"\n    ],\n    \"ProjectId\": \"abc\",\n    \"PageNumber\": 0,\n    \"PageSize\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"OrderFields\": [\n        {\n            \"Name\": \"abc\",\n            \"Direction\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Rows\": [\n                {\n                    \"RoleId\": \"abc\",\n                    \"RoleName\": \"abc\",\n                    \"DisplayName\": \"abc\",\n                    \"Description\": \"abc\",\n                    \"RoleType\": \"abc\",\n                    \"SystemDefault\": true,\n                    \"Parameters\": \"abc\",\n                    \"MemberCount\": 0,\n                    \"Privileges\": [\n                        {\n                            \"PrivilegeId\": \"abc\",\n                            \"PrivilegeName\": \"abc\",\n                            \"RestPath\": \"abc\",\n                            \"RestMethod\": \"abc\",\n                            \"Description\": \"abc\"\n                        }\n                    ],\n                    \"Operator\": {\n                        \"UserId\": \"abc\",\n                        \"UserName\": \"abc\",\n                        \"DisplayName\": \"abc\"\n                    },\n                    \"OperateTime\": 1,\n                    \"CreateTime\": 1,\n                    \"CreateTimeStr\": \"abc\",\n                    \"UpdateTimeStr\": \"abc\",\n                    \"ProjectId\": \"abc\"\n                }\n            ],\n            \"PageNumber\": 0,\n            \"PageSize\": 0,\n            \"TotalCount\": 0,\n            \"TotalPageNumber\": 0\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "test"
+      },
+      {
+        "document": "test1",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoleList\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1554879954290339840\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"PageNumber\": 1,\n            \"PageSize\": 10,\n            \"Rows\": [\n                {\n                    \"CreateTime\": null,\n                    \"CreateTimeStr\": \"1600938213660\",\n                    \"Creator\": null,\nResponsible for daily project management, including member addition and role assignment.\n\"DisplayName\": \"ProjectManager\"\n                    \"MemberCount\": null,\n                    \"OperateTime\": null,\n                    \"Operator\": null,\n                    \"Parameters\": null,\n                    \"Privileges\": null,\n                    \"ProjectId\": null,\n                    \"RoleId\": \"308335260274237440\",\n                    \"RoleName\": \"ProjectManager\",\n                    \"RoleType\": null,\n                    \"SystemDefault\": null,\n                    \"UpdateTime\": null,\n                    \"UpdateTimeStr\": \"1629985314500\"\n                },\n                {\n                    \"CreateTime\": null,\n                    \"CreateTimeStr\": \"1600938213684\",\n                    \"Creator\": null,\nResponsible for data integration, data development and service development\n\"DisplayName\": \"DataEngineer\"\n                    \"MemberCount\": null,\n                    \"OperateTime\": null,\n                    \"Operator\": null,\n                    \"Parameters\": null,\n                    \"Privileges\": null,\n                    \"ProjectId\": null,\n                    \"RoleId\": \"308335260676890624\",\n                    \"RoleName\": \"DataEngineer\",\n                    \"RoleType\": null,\n                    \"SystemDefault\": null,\n                    \"UpdateTime\": null,\n                    \"UpdateTimeStr\": \"1629985314533\"\n                },\n                {\n                    \"CreateTime\": null,\n                    \"CreateTimeStr\": \"1600938213690\",\n                    \"Creator\": null,\nOps center, responsible for platform and business ops. Platform ops mainly refers to operations in a private cloud environment.\n\"DisplayName\": \"OperationEngineer\"\n                    \"MemberCount\": null,\n                    \"OperateTime\": null,\n                    \"Operator\": null,\n                    \"Parameters\": null,\n                    \"Privileges\": null,\n                    \"ProjectId\": null,\n                    \"RoleId\": \"308335260844662784\",\n                    \"RoleName\": \"OperationEngineer\",\n                    \"RoleType\": null,\n                    \"SystemDefault\": null,\n                    \"UpdateTime\": null,\n                    \"UpdateTimeStr\": \"1629985314558\"\n                },\n                {\n                    \"CreateTime\": null,\n                    \"CreateTimeStr\": \"1600938213696\",\n                    \"Creator\": null,\nRead-only account\n\"DisplayName\": \"Visitor\"\n                    \"MemberCount\": null,\n                    \"OperateTime\": null,\n                    \"Operator\": null,\n                    \"Parameters\": null,\n                    \"Privileges\": null,\n                    \"ProjectId\": null,\n                    \"RoleId\": \"308335260945326080\",\n                    \"RoleName\": \"Visitor\",\n                    \"RoleType\": null,\n                    \"SystemDefault\": null,\n                    \"UpdateTime\": null,\n                    \"UpdateTimeStr\": \"1629985314587\"\n                }\n            ],\n            \"TotalCount\": 4,\n            \"TotalPageNumber\": 0\n        },\n        \"RequestId\": \"8de3d3ad-978c-426b-83bb-f1af8b534ff1\"\n    }\n}",
+        "title": "test1"
+      }
+    ],
     "DescribeRule": [
       {
         "document": " ",
@@ -1924,6 +1946,14 @@
         "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnlockIntegrationTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"a64893b7dff394c3f89ae305796ba2\",\n    \"ProjectId\": \"1102250839970304\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": true,\n        \"RequestId\": \"bhy893-bc394c3-f89av79-6obah\"\n    }\n}",
         "title": "Unlock Integration Task"
+      }
+    ],
+    "UpdateProjectUserRole": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateProjectUserRole\n<Common request parameters>\n\n{\n    \"RoleIds\": [\n        \"3083526074237440\"\n    ],\n    \"UserIds\": [\n        \"10000377159\"\n    ],\n    \"ProjectId\": \"69244775408074752\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c315ddb4-27fd-4bb3-826-f9c9ddefda\"\n    }\n}",
+        "title": "Successful Example"
       }
     ],
     "UpdateWorkflowOwner": [
