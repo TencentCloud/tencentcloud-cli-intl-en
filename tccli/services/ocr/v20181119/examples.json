@@ -136,6 +136,14 @@
         "title": "RecognizeBrazilRNEOCR example"
       }
     ],
+    "RecognizeBrazilRNMOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilRNMOCR\n<public parameters>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"BackImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"BackImageUrl\": \"\",\n    \"ReturnHeadImage\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"AMPAROLEGAL\": \"AAAA. 37, XXX.\",\n        \"CLASSIFICATION\": \"AAAA\",\n        \"CPF\": \"111.111.111-11\",\n        \"DATADENASCIMENTO\": \"10/06/1992\",\n        \"ISSUANCE\": \"29/11/2020 XX/XX/XX\",\n        \"MEMBERSHIP\": \"BBBB AAA/XXX XXX\",\n        \"MRZ\": \"I BBBBB 4 00000AAA0000 6 AAA\",\n        \"NACIONALIDADE\": \"AAAA\",\n        \"NOME\": \"AAAA\",\n        \"PRAZODERESIDENCIA\": \"Indeterminado\",\n        \"PortraitImage\": \"\",\n        \"PortraitImageBack\": \"\",\n        \"RNM\": \"V11111-P\",\n        \"RequestId\": \"50a1a4d1-1468-4097-a44e-bea39e17bf47\",\n        \"SEXO\": \"\",\n        \"SOBRENOME\": \"XXXX\",\n        \"VALIDADE\": \"07/07/2031\"\n    }\n}",
+        "title": "RecognizeBrazilRNMOCR"
+      }
+    ],
     "RecognizeGeneralInvoice": [
       {
         "document": "This example shows you how to recognize a general invoice or ticket (advanced).",
@@ -146,10 +154,10 @@
     ],
     "RecognizeIndonesiaIDCardOCR": [
       {
-        "document": "This example shows you how to recognize an Indonesian identity card.",
-        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeIndonesiaIDCardOCR\n<Common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeIndonesiaIDCardOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
         "output": "{\n    \"Response\": {\n        \"Agama\": \"ATHOLIK\",\n        \"Alamat\": \"BANJARSARI\",\n        \"BerlakuHingga\": \"SEUMUR HIDUP\",\n        \"GolDarah\": \"O\",\n        \"IssuedDate\": \"15-05-2015\",\n        \"JenisKelamin\": \"LAKEI AKI\",\n        \"Kecamatan\": \"\",\n        \"KelDesa\": \"PAKEMBINANGUN\",\n        \"KewargaNegaraan\": \"INM\",\n        \"NIK\": \"360000000006\",\n        \"Nama\": \"\",\n        \"Perkerjaan\": \"KARYAWAN SWASTA\",\n        \"Photo\": \"\",\n        \"RTRW\": \"00/000\",\n        \"RequestId\": \"0000-0000-0000-0001\",\n        \"StatusPerkawinan\": \"KAWFN\",\n        \"TempatTglLahir\": \"JAKARTA 13-01-1987\",\n        \"Provinsi\": \"DKI JAKARTA\",\n        \"Kota\": \"DKI JAKARTA\"\n    }\n}",
-        "title": "RecognizeIndonesiaIDCardOCR"
+        "title": ""
       }
     ],
     "RecognizeKoreanDrivingLicenseOCR": [

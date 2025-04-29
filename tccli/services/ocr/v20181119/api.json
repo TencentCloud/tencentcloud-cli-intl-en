@@ -98,6 +98,13 @@
       "output": "RecognizeBrazilRNEOCRResponse",
       "status": "online"
     },
+    "RecognizeBrazilRNMOCR": {
+      "document": "This interface supports identification of the front and back of Brazilian RNM license. The default interface request frequency limit is 5 times per second.",
+      "input": "RecognizeBrazilRNMOCRRequest",
+      "name": "Brazil RNM OCR",
+      "output": "RecognizeBrazilRNMOCRResponse",
+      "status": "online"
+    },
     "RecognizeGeneralInvoice": {
       "document": "This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).\n\nA maximum of 5 requests can be initiated per second for this API.\n\n\nThe invoice/ticket subtype (SubType), subtype description (TypeDescription), and parent type (Type) can be returned, as described below:\n<table style=\"width:715px\">\n      <thead>\n        <tr>\n          <th style=\"width:200px\">SubType</th>\n          <th style=\"width:200px\">TypeDescription</th>\n          <th >Type</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td> VatSpecialInvoice</td>\n          <td> Special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatCommonInvoice</td>\n          <td> General VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicCommonInvoice </td>\n          <td> Electronic general VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoice </td>\n          <td> Electronic special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceBlockchain</td>\n          <td> Blockchain electronic invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceToll</td>\n          <td> Electronic general VAT invoice (toll)</td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoiceFull</td>\n          <td> Electronic invoice (special)</td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceFull</td>\n          <td> Electronic invoice (general) </td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> MotorVehicleSaleInvoice </td>\n          <td> Motor vehicle sales invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> UsedCarPurchaseInvoice </td>\n          <td> Used car invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> VatInvoiceRoll </td>\n          <td> General VAT invoice (roll) </td>\n          <td> 11 </td>\n        </tr>\n        <tr>\n          <td> TaxiTicket </td>\n          <td> Taxi receipt </td>\n          <td> 0 </td>\n        </tr>\n        <tr>\n          <td> QuotaInvoice </td>\n          <td> Quota invoice </td>\n          <td> 1 </td>\n        </tr>\n        <tr>\n          <td> TrainTicket </td>\n          <td> Train ticket </td>\n          <td> 2 </td>\n        </tr>\n        <tr>\n          <td> AirTransport </td>\n          <td> Itinerary/Receipt of e-ticket for air transportation </td>\n          <td> 5 </td>\n        </tr>\n        <tr>\n          <td> MachinePrintedInvoice </td>\n          <td> General machine-printed invoice </td>\n          <td> 8 </td>\n        </tr>\n        <tr>\n          <td> BusInvoice </td>\n          <td> Bus ticket </td>\n          <td> 9 </td>\n        </tr>\n        <tr>\n          <td> ShippingInvoice </td>\n          <td> Ship ticket </td>\n          <td> 10 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeGeneralBill </td>\n          <td> General receipt for non-tax revenue </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeElectronicBill </td>\n          <td> General payment voucher for non-tax revenue (electronic) </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> TollInvoice </td>\n          <td> Toll receipt </td>\n          <td> 13 </td>\n        </tr>\n        <tr>\n          <td> OtherInvoice </td>\n          <td> Other </td>\n          <td> -1 </td>\n        </tr>\n      </tbody>\n    </table>",
       "input": "RecognizeGeneralInvoiceRequest",
@@ -5068,6 +5075,229 @@
       ],
       "type": "object"
     },
+    "RecognizeBrazilRNMOCRRequest": {
+      "document": "RecognizeBrazilRNMOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.",
+          "example": "https://ocr-demo-1234566.cos.ap-guangzhou.com/***/demo.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return portrait photos.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeBrazilRNMOCRResponse": {
+      "document": "RecognizeBrazilRNMOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Last name",
+          "example": "LI",
+          "member": "string",
+          "name": "SOBRENOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name",
+          "example": "HUA",
+          "member": "string",
+          "name": "NOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of Birth",
+          "example": "01/01/1900",
+          "member": "string",
+          "name": "DATADENASCIMENTO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gender",
+          "example": "F",
+          "member": "string",
+          "name": "SEXO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parents name",
+          "example": "DA LI",
+          "member": "string",
+          "name": "MEMBERSHIP",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nationality",
+          "example": "CHINESA",
+          "member": "string",
+          "name": "NACIONALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiry Date",
+          "example": "01/01/2000",
+          "member": "string",
+          "name": "VALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RNM",
+          "example": "X123456-Y",
+          "member": "string",
+          "name": "RNM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPF",
+          "example": "000.000.000-00",
+          "member": "string",
+          "name": "CPF",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "RESIDENTE",
+          "member": "string",
+          "name": "CLASSIFICATION",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "01/01/1950",
+          "member": "string",
+          "name": "PRAZODERESIDENCIA",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue Date",
+          "example": "01/01/1999 CGPI/DIREX/PF",
+          "member": "string",
+          "name": "ISSUANCE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Legal basis",
+          "example": "AMPARO LEGAL",
+          "member": "string",
+          "name": "AMPAROLEGAL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Machine readable zone code",
+          "example": "NOMENOME NOME NOME V123456M 1ABC1234567A1234567 V123456M 1ABC1234567A1234567",
+          "member": "string",
+          "name": "MRZ",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PortraitImage",
+          "example": "PortraitImage",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PortraitImage(Back)",
+          "example": "PortraitImageBack",
+          "member": "string",
+          "name": "PortraitImageBack",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RecognizeGeneralInvoiceRequest": {
       "document": "RecognizeGeneralInvoice request structure.",
       "members": [
@@ -5184,7 +5414,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
-          "example": "image",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -5193,7 +5423,7 @@
         {
           "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -5211,7 +5441,7 @@
         {
           "disabled": false,
           "document": "The scene, which defaults to `V1`.\nValid values:\nV1\nV2",
-          "example": "无",
+          "example": "V1",
           "member": "string",
           "name": "Scene",
           "required": false,
@@ -5376,7 +5606,7 @@
         {
           "disabled": false,
           "document": "The photo.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Photo",
           "output_required": true,
@@ -5386,7 +5616,7 @@
         {
           "disabled": false,
           "document": "The province, which is supported when the value of `Scene` is `V2`.",
-          "example": "无",
+          "example": "DKI JAKARTA",
           "member": "string",
           "name": "Provinsi",
           "output_required": true,
@@ -5396,7 +5626,7 @@
         {
           "disabled": false,
           "document": "The city, which is supported when the value of `Scene` is `V2`.",
-          "example": "无",
+          "example": "DKI JAKARTA",
           "member": "string",
           "name": "Kota",
           "output_required": true,
