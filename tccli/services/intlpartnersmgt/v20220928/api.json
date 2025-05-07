@@ -225,9 +225,9 @@
       "status": "online"
     },
     "QueryT1IndirectCustomersDetail": {
-      "document": "This API is used to query the indirect sub-customers of a first-level distributor.\nInvokable role type: first-level reseller.",
+      "document": "This API is used to query the indirect sub-customers of a distributor.\nInvokable role type: Distributor",
       "input": "QueryT1IndirectCustomersDetailRequest",
-      "name": "Query indirect sub-customers of a first-level distributor",
+      "name": "Query indirect sub-customers of distributor",
       "output": "QueryT1IndirectCustomersDetailResponse",
       "status": "online"
     },
@@ -3904,7 +3904,7 @@
         {
           "disabled": false,
           "document": "Second-level reseller UIN.",
-          "example": "20000000",
+          "example": "200000000000",
           "member": "int64",
           "name": "SubAgentUin",
           "required": true,
@@ -3936,7 +3936,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The number of indirect sub-customers of a first-level distributor.",
+          "document": "The number of indirect sub-customers of a distributor.",
           "example": "30",
           "member": "int64",
           "name": "Total",
@@ -3947,7 +3947,7 @@
         {
           "disabled": false,
           "document": "Second-level reseller UIN.",
-          "example": "2000000000",
+          "example": "200000000000",
           "member": "int64",
           "name": "SubAgentUin",
           "output_required": false,
