@@ -1,0 +1,4772 @@
+{
+  "actions": {
+    "CreateRabbitMQServerlessBinding": {
+      "document": "This API is used to create RabbitMQ binding relationships.",
+      "input": "CreateRabbitMQServerlessBindingRequest",
+      "name": "Creates a RabbitMQ binding relationship",
+      "output": "CreateRabbitMQServerlessBindingResponse",
+      "status": "online"
+    },
+    "CreateRabbitMQServerlessExchange": {
+      "document": "This API is used to create a RabbitMQ exchange.",
+      "input": "CreateRabbitMQServerlessExchangeRequest",
+      "name": "Creates a RabbitMQ exchange",
+      "output": "CreateRabbitMQServerlessExchangeResponse",
+      "status": "online"
+    },
+    "CreateRabbitMQServerlessQueue": {
+      "document": "This API is used to create an RabbitMQ queue.",
+      "input": "CreateRabbitMQServerlessQueueRequest",
+      "name": "Create an RabbitMQ queue",
+      "output": "CreateRabbitMQServerlessQueueResponse",
+      "status": "online"
+    },
+    "CreateRabbitMQServerlessUser": {
+      "document": "This API is used to create a user for RabbitMQ.",
+      "input": "CreateRabbitMQServerlessUserRequest",
+      "name": "Creates a user for RabbitMQ",
+      "output": "CreateRabbitMQServerlessUserResponse",
+      "status": "online"
+    },
+    "CreateRabbitMQServerlessVirtualHost": {
+      "document": "This API is used to create a vhost for RabbitMQ.",
+      "input": "CreateRabbitMQServerlessVirtualHostRequest",
+      "name": "This api is used to create a vhost for RabbitMQ",
+      "output": "CreateRabbitMQServerlessVirtualHostResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessBinding": {
+      "document": "This API is used to unbind RabbitMQ binding relationships.",
+      "input": "DeleteRabbitMQServerlessBindingRequest",
+      "name": "Unbinds a RabbitMQ binding relationship",
+      "output": "DeleteRabbitMQServerlessBindingResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessExchange": {
+      "document": "This API is used to delete the RabbitMQ exchange.",
+      "input": "DeleteRabbitMQServerlessExchangeRequest",
+      "name": "Deletes a RabbitMQ exchange",
+      "output": "DeleteRabbitMQServerlessExchangeResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessPermission": {
+      "document": "This API is used to delete the permission of RabbitMQ.",
+      "input": "DeleteRabbitMQServerlessPermissionRequest",
+      "name": "Deletes the permission of RabbitMQ",
+      "output": "DeleteRabbitMQServerlessPermissionResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessQueue": {
+      "document": "This API is used to delete an RabbitMQ queue.",
+      "input": "DeleteRabbitMQServerlessQueueRequest",
+      "name": "Deleting a RabbitMQ queue",
+      "output": "DeleteRabbitMQServerlessQueueResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessUser": {
+      "document": "This API is used to delete the user of RabbitMQ.",
+      "input": "DeleteRabbitMQServerlessUserRequest",
+      "name": "Delete the user of RabbitMQ",
+      "output": "DeleteRabbitMQServerlessUserResponse",
+      "status": "online"
+    },
+    "DeleteRabbitMQServerlessVirtualHost": {
+      "document": "This API is used to delete a vhost for RabbitMQ.",
+      "input": "DeleteRabbitMQServerlessVirtualHostRequest",
+      "name": "Deletes a vhost for RabbitMQ",
+      "output": "DeleteRabbitMQServerlessVirtualHostResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessBindings": {
+      "document": "This API is used to retrieve the binding relationship list.",
+      "input": "DescribeRabbitMQServerlessBindingsRequest",
+      "name": "Queries the RabbitMQ binding relationship list",
+      "output": "DescribeRabbitMQServerlessBindingsResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessConnection": {
+      "document": "This API is used to query RabbitMQ connection list.",
+      "input": "DescribeRabbitMQServerlessConnectionRequest",
+      "name": "Queries the RabbitMQ connection list",
+      "output": "DescribeRabbitMQServerlessConnectionResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessConsumers": {
+      "document": "This API is used to query RabbitMQ queue consumer list.",
+      "input": "DescribeRabbitMQServerlessConsumersRequest",
+      "name": "Queries the RabbitMQ queue consumer list",
+      "output": "DescribeRabbitMQServerlessConsumersResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessExchangeDetail": {
+      "document": "This API is used to query RabbitMQ exchange details.",
+      "input": "DescribeRabbitMQServerlessExchangeDetailRequest",
+      "name": "Queries RabbitMQ exchange details",
+      "output": "DescribeRabbitMQServerlessExchangeDetailResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessExchanges": {
+      "document": "This API is used to query the list of RabbitMQ exchanges.",
+      "input": "DescribeRabbitMQServerlessExchangesRequest",
+      "name": "Queries a RabbitMQ exchange list",
+      "output": "DescribeRabbitMQServerlessExchangesResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessInstance": {
+      "document": "This API is used to retrieve dedicated instance information for a single RabbitMQ.",
+      "input": "DescribeRabbitMQServerlessInstanceRequest",
+      "name": "Retrieve overall information of a rabbitmq serverless instance",
+      "output": "DescribeRabbitMQServerlessInstanceResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessPermission": {
+      "document": "This API is used to query RabbitMQ permission list.",
+      "input": "DescribeRabbitMQServerlessPermissionRequest",
+      "name": "Queries the RabbitMQ permission list",
+      "output": "DescribeRabbitMQServerlessPermissionResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessQueueDetail": {
+      "document": "This API is used to query RabbitMQ queue details.",
+      "input": "DescribeRabbitMQServerlessQueueDetailRequest",
+      "name": "Queries RabbitMQ queue details",
+      "output": "DescribeRabbitMQServerlessQueueDetailResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessQueues": {
+      "document": "This API is used to query a RabbitMQ queue list.",
+      "input": "DescribeRabbitMQServerlessQueuesRequest",
+      "name": "Queries a RabbitMQ queue list",
+      "output": "DescribeRabbitMQServerlessQueuesResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessUser": {
+      "document": "This API is used to query RabbitMQ user list.",
+      "input": "DescribeRabbitMQServerlessUserRequest",
+      "name": "Queries a RabbitMQ user list",
+      "output": "DescribeRabbitMQServerlessUserResponse",
+      "status": "online"
+    },
+    "DescribeRabbitMQServerlessVirtualHost": {
+      "document": "This API is used to query a RabbitMQ vhost list.",
+      "input": "DescribeRabbitMQServerlessVirtualHostRequest",
+      "name": "Queries a RabbitMQ vhost list",
+      "output": "DescribeRabbitMQServerlessVirtualHostResponse",
+      "status": "online"
+    },
+    "ListRabbitMQServerlessInstances": {
+      "document": "This API is used to obtain instance lists.",
+      "input": "ListRabbitMQServerlessInstancesRequest",
+      "name": "Retrieves a list of RabbitMQ Serverless clusters",
+      "output": "ListRabbitMQServerlessInstancesResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessExchange": {
+      "document": "This API is used to modify the RabbitMQ exchange.",
+      "input": "ModifyRabbitMQServerlessExchangeRequest",
+      "name": "Modifies the RabbitMQ exchange",
+      "output": "ModifyRabbitMQServerlessExchangeResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessInstance": {
+      "document": "This API is used to modify cluster information.",
+      "input": "ModifyRabbitMQServerlessInstanceRequest",
+      "name": "Modify the information of a rabbitmq serverless instance",
+      "output": "ModifyRabbitMQServerlessInstanceResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessPermission": {
+      "document": "This API is used to modify the permission of RabbitMQ.",
+      "input": "ModifyRabbitMQServerlessPermissionRequest",
+      "name": "Modify the permission of RabbitMQ",
+      "output": "ModifyRabbitMQServerlessPermissionResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessQueue": {
+      "document": "This API is used to modify an RabbitMQ queue.",
+      "input": "ModifyRabbitMQServerlessQueueRequest",
+      "name": "Modifies an RabbitMQ queue",
+      "output": "ModifyRabbitMQServerlessQueueResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessUser": {
+      "document": "This API is used to modify the user of RabbitMQ.",
+      "input": "ModifyRabbitMQServerlessUserRequest",
+      "name": "Modify the user of RabbitMQ",
+      "output": "ModifyRabbitMQServerlessUserResponse",
+      "status": "online"
+    },
+    "ModifyRabbitMQServerlessVirtualHost": {
+      "document": "This API is used to modify a vhost for RabbitMQ.",
+      "input": "ModifyRabbitMQServerlessVirtualHostRequest",
+      "name": "Modifies RabbitMQ vhost information",
+      "output": "ModifyRabbitMQServerlessVirtualHostResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2023-04-18",
+    "serviceNameCN": "消息队列 RabbitMQ Serverless 版",
+    "serviceShortName": "trabbit"
+  },
+  "objects": {
+    "CreateRabbitMQServerlessBindingRequest": {
+      "document": "CreateRabbitMQServerlessBinding request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source exchange.",
+          "example": "source-exchange",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target type. valid values: queue or exchange.",
+          "example": "queue",
+          "member": "string",
+          "name": "DestinationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target queue or exchange.",
+          "example": "des-queue",
+          "member": "string",
+          "name": "Destination",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Binding key.",
+          "example": "some-routing-key",
+          "member": "string",
+          "name": "RoutingKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessBindingResponse": {
+      "document": "CreateRabbitMQServerlessBinding response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "binding Id.",
+          "example": "1000012",
+          "member": "int64",
+          "name": "BindingId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessExchangeRequest": {
+      "document": "CreateRabbitMQServerlessExchange request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VHost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the exchange type. valid values: \"fanout\", \"direct\", \"topic\", \"headers\".",
+          "example": "fanout",
+          "member": "string",
+          "name": "ExchangeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark for exchange.",
+          "example": "测试交换机",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is a persistent exchange. when the cluster restarts, all exchanges with this field set to \"false\" will be cleared.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to auto-delete this exchange. if set to \"true\", the exchange will be automatically deleted when all routing relationships on the current exchange are unbound.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoDelete",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is an internal exchange. if set to \"true\", messages cannot be directly delivered to this exchange. they need to be forwarded through another exchange in the routing settings.",
+          "example": "false",
+          "member": "bool",
+          "name": "Internal",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Alternative exchange. if a message cannot be sent to the current exchange, it will be sent to this alternative exchange.",
+          "example": "alternative.exchange1",
+          "member": "string",
+          "name": "AlternateExchange",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessExchangeResponse": {
+      "document": "CreateRabbitMQServerlessExchange response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessQueueRequest": {
+      "document": "CreateRabbitMQServerlessQueue request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VHost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Supports only classic.",
+          "example": "classic",
+          "member": "string",
+          "name": "QueueType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Durable flag. specifies that for the classic type, it must be passed in. for the quorum type, there is no need to pass it in and it is fixed as true.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic cleanup. the classic type must be passed. the quorum type does not need to be passed and is fixed as false.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoDelete",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "测试队列",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The MessageTTL parameter specifies settings dedicated to the classic type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MessageTTL",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The AutoExpire parameter, in milliseconds, indicates that the queue will be deleted if it is not used within a specified time.",
+          "example": "1000",
+          "member": "int64",
+          "name": "AutoExpire",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "MaxLength parameter. specifies the maximum number of entries the queue can hold. if the limit is exceeded, it will be handled according to the overview behavior.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxLength",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The MaxLengthBytes parameter specifies the maximum length in bytes. if the value exceeds the limit, it will be handled according to the overview behavior.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxLengthBytes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "DeliveryLimit parameter. specifies the parameter dedicated to the quorum type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "DeliveryLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "OverflowBehaviour parameter specifies a value of drop-head, reject-publish, or reject-publish-dlx.",
+          "example": "drop-head",
+          "member": "string",
+          "name": "OverflowBehaviour",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The DeadLetterExchange parameter specifies that expired or rejected messages can be routed to a designated dead letter exchange.",
+          "example": "testDeadLetterExchange",
+          "member": "string",
+          "name": "DeadLetterExchange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The DeadLetterRoutingKey parameter specifies that it can only contain letters, digits, \".\", \"-\", \"@\", and \"_\".",
+          "example": "testDeadLetterRoutingKey",
+          "member": "string",
+          "name": "DeadLetterRoutingKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The SingleActiveConsumer parameter. if enabled, ensure that there is only one consumer consuming from the queue every time.",
+          "example": "true",
+          "member": "bool",
+          "name": "SingleActiveConsumer",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "MaximumPriority parameter. specifies that it is dedicated for the classic type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaximumPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "LazyMode parameter. specifies that it is dedicated for the classic type.",
+          "example": "true",
+          "member": "bool",
+          "name": "LazyMode",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The MasterLocator parameter, dedicated to the classic type, specifies a value of min-masters, client-local, or random.",
+          "example": "testMasterLocator",
+          "member": "string",
+          "name": "MasterLocator",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "MaxInMemoryLength parameter, dedicated for quorum type. specifies the maximum number of messages in memory for quorum queues.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxInMemoryLength",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The MaxInMemoryBytes parameter is dedicated to the quorum type. it specifies the maximum total message size in memory for quorum queues.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxInMemoryBytes",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Node parameter. optional. specifies the node where the specified creation queue is located.",
+          "example": "rabbit@amqp-xxxxxxxx-1",
+          "member": "string",
+          "name": "Node",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Consistency policy for dead-letter in arbitrating queues. specifies valid values: at-most-once, at-least-once. at-most-once is selected by default.",
+          "example": "at-most-once",
+          "member": "string",
+          "name": "DeadLetterStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the leader election strategy for the arbitration queue. valid values are client-local and balanced. the default value is client-local.",
+          "example": "client-local",
+          "member": "string",
+          "name": "QueueLeaderLocator",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the initial replica group size of the arbitration queue. the default value is 3.",
+          "example": "3",
+          "member": "int64",
+          "name": "QuorumInitialGroupSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessQueueResponse": {
+      "document": "CreateRabbitMQServerlessQueue response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "queue1",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessUserRequest": {
+      "document": "CreateRabbitMQServerlessUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username used when logging in.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password. specifies the password used when logging in.",
+          "example": "abc123",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "测试用户",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The serverless instance field is invalid.",
+          "example": "monitoring",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of connections for this user. if not specified, there is no limit.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxConnections",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of channels for the user. if not specified, there is no limit.",
+          "example": "2000",
+          "member": "int64",
+          "name": "MaxChannels",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessUserResponse": {
+      "document": "CreateRabbitMQServerlessUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the username used when logging in.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessVirtualHostRequest": {
+      "document": "CreateRabbitMQServerlessVirtualHost request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost name",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information",
+          "example": "测试vhost",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Message trace switch. specifies that the value \"true\" turns it on, \"false\" turns it off. indicates that it is off by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "TraceFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to create a mirrored queue policy. the default value is true.",
+          "example": "true",
+          "member": "bool",
+          "name": "MirrorQueuePolicyFlag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRabbitMQServerlessVirtualHostResponse": {
+      "document": "CreateRabbitMQServerlessVirtualHost response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vhost name",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessBindingRequest": {
+      "document": "DeleteRabbitMQServerlessBinding request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "binding relationship Id.",
+          "example": "127469",
+          "member": "int64",
+          "name": "BindingId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessBindingResponse": {
+      "document": "DeleteRabbitMQServerlessBinding response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "binding relationship Id.",
+          "example": "127469",
+          "member": "int64",
+          "name": "BindingId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessExchangeRequest": {
+      "document": "DeleteRabbitMQServerlessExchange request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessExchangeResponse": {
+      "document": "DeleteRabbitMQServerlessExchange response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessPermissionRequest": {
+      "document": "DeleteRabbitMQServerlessPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username used when logging in.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessPermissionResponse": {
+      "document": "DeleteRabbitMQServerlessPermission response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessQueueRequest": {
+      "document": "DeleteRabbitMQServerlessQueue request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessQueueResponse": {
+      "document": "DeleteRabbitMQServerlessQueue response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessUserRequest": {
+      "document": "DeleteRabbitMQServerlessUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username used when logging in.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessUserResponse": {
+      "document": "DeleteRabbitMQServerlessUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessVirtualHostRequest": {
+      "document": "DeleteRabbitMQServerlessVirtualHost request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRabbitMQServerlessVirtualHostResponse": {
+      "document": "DeleteRabbitMQServerlessVirtualHost response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessBindingsRequest": {
+      "document": "DescribeRabbitMQServerlessBindings request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination Limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords. do fuzzy search based on source exchange name, target resource name or binding key.",
+          "example": "testSearchWord",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search and filter precisely according to the source Exchange.",
+          "example": "srcExchange",
+          "member": "string",
+          "name": "SourceExchange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies precise search filter based on target QueueName. cannot set simultaneously with DestinationExchange filter.",
+          "example": "testQueueName",
+          "member": "string",
+          "name": "QueueName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Precise search filter based on target Exchange. cannot set it simultaneously with QueueName filter.",
+          "example": "destExchange",
+          "member": "string",
+          "name": "DestinationExchange",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessBindingsResponse": {
+      "document": "DescribeRabbitMQServerlessBindings response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Route relationship list",
+          "example": "无",
+          "member": "RabbitMQBindingListInfo",
+          "name": "BindingInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessConnectionRequest": {
+      "document": "DescribeRabbitMQServerlessConnection request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID\t\t",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessConnectionResponse": {
+      "document": "DescribeRabbitMQServerlessConnection response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return the number of connections.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of connection details.",
+          "example": "无",
+          "member": "RabbitMQConnection",
+          "name": "Connections",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessConsumersRequest": {
+      "document": "DescribeRabbitMQServerlessConsumers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueueName",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords",
+          "example": "testSearchWord",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessConsumersResponse": {
+      "document": "DescribeRabbitMQServerlessConsumers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Consumer list information.",
+          "example": "无",
+          "member": "RabbitMQConsumersListInfo",
+          "name": "ConsumerInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessExchangeDetailRequest": {
+      "document": "DescribeRabbitMQServerlessExchangeDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessExchangeDetailResponse": {
+      "document": "DescribeRabbitMQServerlessExchangeDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchangeName",
+          "member": "string",
+          "name": "ExchangeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "测试交换机",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is a persistent exchange. when the cluster restarts, all exchanges with this field set to \"false\" will be cleared.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to auto-delete this exchange. if set to \"true\", the exchange will be automatically deleted when all routing relationships on the current exchange are unbound.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoDelete",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is an internal exchange. if set to \"true\", messages cannot be directly delivered to this exchange. they need to be forwarded through another exchange in the routing settings.",
+          "example": "false",
+          "member": "bool",
+          "name": "Internal",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alternative exchange. if a message does not match all queues or exchanges bound to the current exchange, it will be sent to this alternative exchange.",
+          "example": "alternative.exchange1",
+          "member": "string",
+          "name": "AlternateExchange",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the exchange type. valid values: \"fanout\", \"direct\", \"topic\", \"headers\".",
+          "example": "fanout",
+          "member": "string",
+          "name": "ExchangeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VHost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "exchange creator. valid values: `system` (generated by the system), `user` (user-created).",
+          "example": "user",
+          "member": "string",
+          "name": "ExchangeCreator",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters key-value string.",
+          "example": "map",
+          "member": "string",
+          "name": "Arguments",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessExchangesRequest": {
+      "document": "DescribeRabbitMQServerlessExchanges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paging offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paginate limit.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords support fuzzy matching.",
+          "example": "testSearchWord",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the filter type for each selected element in the array of exchange types.",
+          "example": "[\"fanout\",\"direct\"]",
+          "member": "string",
+          "name": "ExchangeTypeFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the exchange creation source. valid values: \"system\" (generated by the system), \"user\" (user-created).",
+          "example": "[\"system\"]",
+          "member": "string",
+          "name": "ExchangeCreatorFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "exchange name. specifies that it is used for exact matching.",
+          "example": "exchange1",
+          "member": "string",
+          "name": "ExchangeName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field.\nMessageRateInOut specifies the total production and consumption rate.\nMessageRateIn specifies the production rate.\nMessageRateOut specifies the consumption rate.",
+          "example": "MessageRateInOut",
+          "member": "string",
+          "name": "SortElement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. valid values: ascend or descend.",
+          "example": "descend",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessExchangesResponse": {
+      "document": "DescribeRabbitMQServerlessExchanges response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchanges list.",
+          "example": "无",
+          "member": "RabbitMQExchangeListInfo",
+          "name": "ExchangeInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total count of exchanges.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessInstanceRequest": {
+      "document": "DescribeRabbitMQServerlessInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessInstanceResponse": {
+      "document": "DescribeRabbitMQServerlessInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster information.",
+          "example": "无",
+          "member": "RabbitMQClusterInfo",
+          "name": "ClusterInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the cluster specification information.",
+          "example": "无",
+          "member": "RabbitMQClusterSpecInfo",
+          "name": "ClusterSpecInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the quota information of the vhost.",
+          "example": "无",
+          "member": "VirtualHostQuota",
+          "name": "VirtualHostQuota",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the exchange quota information.",
+          "example": "无",
+          "member": "ExchangeQuota",
+          "name": "ExchangeQuota",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the quota information of the queue.",
+          "example": "无",
+          "member": "QueueQuota",
+          "name": "QueueQuota",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network information.",
+          "example": "无",
+          "member": "RabbitMQServerlessAccessInfo",
+          "name": "ClusterNetInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network allowlist information.",
+          "example": "无",
+          "member": "RabbitMQServerlessWhiteListInfo",
+          "name": "ClusterWhiteListInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the quota information of the user.",
+          "example": "无",
+          "member": "UserQuota",
+          "name": "UserQuota",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessPermissionRequest": {
+      "document": "DescribeRabbitMQServerlessPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username for query filtering. if not provided, all will be queried.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name. used for query filtering. if it is not provided, query all.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessPermissionResponse": {
+      "document": "DescribeRabbitMQServerlessPermission response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return the number of permissions.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of permission details.",
+          "example": "无",
+          "member": "RabbitMQPermission",
+          "name": "RabbitMQPermissionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessQueueDetailRequest": {
+      "document": "DescribeRabbitMQServerlessQueueDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessQueueDetailResponse": {
+      "document": "DescribeRabbitMQServerlessQueueDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the queue type. the valid values are classic or quorum.",
+          "example": "classic",
+          "member": "string",
+          "name": "QueueType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of online consumers.",
+          "example": "10",
+          "member": "int64",
+          "name": "Consumers",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Durable flag.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Automatic cleanup.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoDelete",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "测试队列",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MessageTTL parameter, dedicated for classic type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MessageTTL",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AutoExpire parameter.",
+          "example": "1000",
+          "member": "int64",
+          "name": "AutoExpire",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaxLength parameter.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxLength",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaxLengthBytes parameter.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxLengthBytes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DeliveryLimit parameter. specifies the parameter dedicated to the quorum type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "DeliveryLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "OverflowBehaviour parameter specifies a value of drop-head, reject-publish, or reject-publish-dlx.",
+          "example": "drop-head",
+          "member": "string",
+          "name": "OverflowBehaviour",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DeadLetterExchange parameter.",
+          "example": "testDeadLetterExchange",
+          "member": "string",
+          "name": "DeadLetterExchange",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The DeadLetterRoutingKey parameter.",
+          "example": "testDeadLetterRoutingKey",
+          "member": "string",
+          "name": "DeadLetterRoutingKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SingleActiveConsumer parameter.",
+          "example": "true",
+          "member": "bool",
+          "name": "SingleActiveConsumer",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaximumPriority parameter. specifies that it is dedicated for the classic type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaximumPriority",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "LazyMode parameter, dedicated for classic type.",
+          "example": "true",
+          "member": "bool",
+          "name": "LazyMode",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MasterLocator parameter, dedicated for classic type.",
+          "example": "testMasterLocator",
+          "member": "string",
+          "name": "MasterLocator",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaxInMemoryLength parameter, dedicated for quorum type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxInMemoryLength",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The MaxInMemoryBytes parameter is dedicated to the quorum type.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxInMemoryBytes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Create timestamp, in seconds.",
+          "example": "1669174535",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node.",
+          "example": "rabbit@rabbitmq-broker-0.rabbitmq-broker-internal.amqp-xxx.",
+          "member": "string",
+          "name": "Node",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Arbitration queue dead letter consistency policy.",
+          "example": "at-most-once",
+          "member": "string",
+          "name": "DeadLetterStrategy",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Leadership election policy for arbitration queue.",
+          "example": "client-local",
+          "member": "string",
+          "name": "QueueLeaderLocator",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the initial replica group size of the arbitration queue.",
+          "example": "3",
+          "member": "int64",
+          "name": "QuorumInitialGroupSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an exclusive queue.",
+          "example": "true",
+          "member": "bool",
+          "name": "Exclusive",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the policy that takes effect.",
+          "example": "test-policy",
+          "member": "string",
+          "name": "Policy",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters key-value.",
+          "example": "{\"x-ordered\": false}",
+          "member": "string",
+          "name": "Arguments",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessQueuesRequest": {
+      "document": "DescribeRabbitMQServerlessQueues request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords",
+          "example": "testSearchWord",
+          "member": "string",
+          "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the queue type filter criteria. if it is left blank or set to \"all\", it indicates classic and quorum queues; if set to \"classic\", it filters classic queues; if set to \"quorum\", it filters quorum queues.",
+          "example": "all",
+          "member": "string",
+          "name": "QueueType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field.\nConsumerNumber: specifies the number of online consumers.\nMessageHeapCount specifies the number of message backlogs.\nMessageRateInOut specifies the total production and consumption rate.\nMessageRateIn specifies the production rate.\nMessageRateOut specifies the consumption rate.",
+          "example": "MessageHeapCount",
+          "member": "string",
+          "name": "SortElement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. valid values: ascend or descend.",
+          "example": "ascend",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessQueuesResponse": {
+      "document": "DescribeRabbitMQServerlessQueues response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue list information.",
+          "example": "无",
+          "member": "RabbitMQQueueListInfo",
+          "name": "QueueInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessUserRequest": {
+      "document": "DescribeRabbitMQServerlessUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Retrieves usernames. supports prefix match and suffix matching.",
+          "example": "test_user",
+          "member": "string",
+          "name": "SearchUser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username for an exact query.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User tag. filters by Tag filter list.",
+          "example": "[\"tag1\",\"tag2\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessUserResponse": {
+      "document": "DescribeRabbitMQServerlessUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of returned users.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currently created RabbitMQ list of users.",
+          "example": "[                     {                         \"InstanceId\": \"ramqp-cpssyrct\",                         \"User\": \"testUser\",                         \"Password\": \"\",                         \"Description\": \"\",                         \"Tags\": [],                         \"CreateTime\": \"2024-10-21 15:52:45:000\",                         \"ModifyTime\": \"2024-10-21 15:52:45:000\",                         \"Type\": \"default\",                         \"MaxConnections\": null,                         \"MaxChannels\": null                     }                 ]",
+          "member": "RabbitMQUser",
+          "name": "RabbitMQUserList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessVirtualHostRequest": {
+      "document": "DescribeRabbitMQServerlessVirtualHost request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name. if it is not provided, query all.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "search-virtual-host: specifies fuzzy name search of vhost names. earlier, it supported both prefix and suffix matching.",
+          "example": "test",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field.\nMessageHeapCount specifies the number of message backlogs.\nMessageRateInOut specifies the total production and consumption rate.\nMessageRateIn specifies the production rate.\nMessageRateOut specifies the consumption rate.",
+          "example": "MessageHeapCount",
+          "member": "string",
+          "name": "SortElement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. valid values: ascend or descend.",
+          "example": "ascend",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRabbitMQServerlessVirtualHostResponse": {
+      "document": "DescribeRabbitMQServerlessVirtualHost response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return the number of vhosts.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the list of details of the vhost.",
+          "example": "无",
+          "member": "RabbitMQVirtualHostInfo",
+          "name": "VirtualHostList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExchangeQuota": {
+      "document": "Specifies the exchange usage quota information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of exchanges that can be created.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxExchange",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number of exchanges that have been created.",
+          "example": "5",
+          "member": "int64",
+          "name": "UsedExchange",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Filter": {
+      "document": "Filter parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "name.",
+          "example": "instanceName",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Value.",
+          "example": "amqp-slpvmqwcna",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ListRabbitMQServerlessInstancesRequest": {
+      "document": "ListRabbitMQServerlessInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Page size.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Starting index value for pagination.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListRabbitMQServerlessInstancesResponse": {
+      "document": "ListRabbitMQServerlessInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance list",
+          "example": "无",
+          "member": "RabbitMQServerlessInstance",
+          "name": "Instances",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessExchangeRequest": {
+      "document": "ModifyRabbitMQServerlessExchange request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id.",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "测试资源",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessExchangeResponse": {
+      "document": "ModifyRabbitMQServerlessExchange response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchange",
+          "member": "string",
+          "name": "ExchangeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessInstanceRequest": {
+      "document": "ModifyRabbitMQServerlessInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster name.",
+          "example": "test-cluster",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "测试集群",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether trace is enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "TraceFlag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessInstanceResponse": {
+      "document": "ModifyRabbitMQServerlessInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessPermissionRequest": {
+      "document": "ModifyRabbitMQServerlessPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username, which is the user associated with the permission.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. declare related operations. for the user, it is operable to perform operations on the resource name under the vhost that matches the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "ConfigRegexp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. message write related operations. the user can operate on the resource names under the vhost that match the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "WriteRegexp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. message read related operations. the user can operate on the resource name under the vhost that matches the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "ReadRegexp",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessPermissionResponse": {
+      "document": "ModifyRabbitMQServerlessPermission response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessQueueRequest": {
+      "document": "ModifyRabbitMQServerlessQueue request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Newly modified remark.",
+          "example": "testRemark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessQueueResponse": {
+      "document": "ModifyRabbitMQServerlessQueue response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueue",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessUserRequest": {
+      "document": "ModifyRabbitMQServerlessUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password. specifies the password.",
+          "example": "abc123",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description. if not provided, no modification will be made.",
+          "example": "test user",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User tag. specifies to determine the access permission scope of this user to RabbitMQ Management. if it is not passed in, no modification will be made.",
+          "example": "monitoring",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of connections for this user. if not provided, it will not be modified.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxConnections",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of channels for this user. if not provided, it will not be modified.",
+          "example": "2000",
+          "member": "int64",
+          "name": "MaxChannels",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessUserResponse": {
+      "document": "ModifyRabbitMQServerlessUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessVirtualHostRequest": {
+      "document": "ModifyRabbitMQServerlessVirtualHost request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the description information of the vhost.",
+          "example": "测试 vhost",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Message trace switch. specifies that the value true turns on the switch and the value false turns it off.",
+          "example": "false",
+          "member": "bool",
+          "name": "TraceFlag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRabbitMQServerlessVirtualHostResponse": {
+      "document": "ModifyRabbitMQServerlessVirtualHost response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueueQuota": {
+      "document": "Specifies the queue usage quota information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of queues that can be created.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxQueue",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of queues created.",
+          "example": "5",
+          "member": "int64",
+          "name": "UsedQueue",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQBindingListInfo": {
+      "document": "Rabbitmq binding relationship list member.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "binding id.",
+          "example": "127469",
+          "member": "int64",
+          "name": "BindingId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vhost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source exchange name.",
+          "example": "testSource",
+          "member": "string",
+          "name": "Source",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target type. valid values: queue or exchange.",
+          "example": "queue",
+          "member": "string",
+          "name": "DestinationType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target resource name.",
+          "example": "testDestination",
+          "member": "string",
+          "name": "Destination",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Binding key.",
+          "example": "testRoutingKey",
+          "member": "string",
+          "name": "RoutingKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source exchange type.",
+          "example": "testSourceExchangeType",
+          "member": "string",
+          "name": "SourceExchangeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2023-11-20 11:15:47.612",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2023-11-20 11:15:47.612",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQClusterInfo": {
+      "document": "RabbitMQ cluster basic information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "amqp-slrlpeddnr",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster name.",
+          "example": "测试集群",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region information",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, in milliseconds",
+          "example": "1728907454000",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster description remark information",
+          "example": "dev开发环境",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC and network information.",
+          "example": "无",
+          "member": "VpcEndpointInfo",
+          "name": "Vpcs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone information",
+          "example": "[190001]",
+          "member": "int64",
+          "name": "ZoneIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "number of virtual hosts.",
+          "example": "10",
+          "member": "int64",
+          "name": "VirtualHostNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of queues",
+          "example": "10",
+          "member": "int64",
+          "name": "QueueNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of messages produced per second (measurement unit: messages/second).",
+          "example": "2.3",
+          "member": "float",
+          "name": "MessagePublishRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of accumulated messages. valid values: pieces.",
+          "example": "5",
+          "member": "int64",
+          "name": "MessageStackNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time",
+          "example": "1666257531143",
+          "member": "int64",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "number of channels.",
+          "example": "10",
+          "member": "int64",
+          "name": "ChannelNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "number of connections.",
+          "example": "10",
+          "member": "int64",
+          "name": "ConnectionNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of consumers.",
+          "example": "10",
+          "member": "int64",
+          "name": "ConsumerNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of Exchanges.",
+          "example": "10",
+          "member": "int64",
+          "name": "ExchangeNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster exception information.",
+          "example": "异常信息",
+          "member": "string",
+          "name": "ExceptionInformation",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status. 0 indicates creating in progress. 1 indicates normal. 2 indicates isolated. 3 indicates terminated. 4 indicates exception. 5 indicates delivery failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ClusterStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0 indicates the default status (If the default status is not configured, manual renewal is enabled), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (configured by the user).",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the mirrored queue strategy is enabled. 1 indicates enabled, and 0 indicates not enabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "MirrorQueuePolicyFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of messages consumed per second (measurement unit: messages/second).",
+          "example": "1.0",
+          "member": "float",
+          "name": "MessageConsumeRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the cluster version information.",
+          "example": "3.8.30",
+          "member": "string",
+          "name": "ClusterVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode. valid values: 0 (postpaid), 1 (prepaid).",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the cluster type.",
+          "example": "1",
+          "member": "uint64",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the message retention time, in hours.",
+          "example": "72",
+          "member": "uint64",
+          "name": "MessageRetainTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQClusterSpecInfo": {
+      "document": "RabbitMQ cluster specification information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the cluster specification name.",
+          "example": "BASIC",
+          "member": "string",
+          "name": "SpecName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Max tps.",
+          "example": "5000",
+          "member": "uint64",
+          "name": "MaxTps",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of queues.",
+          "example": "500",
+          "member": "uint64",
+          "name": "MaxQueueNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of exchanges.",
+          "example": "500",
+          "member": "uint64",
+          "name": "MaxExchangeNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of vhosts.",
+          "example": "100",
+          "member": "uint64",
+          "name": "MaxVhostNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of connections.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxConnNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of users.",
+          "example": "20",
+          "member": "uint64",
+          "name": "MaxUserNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Peak bandwidth. abandoned.",
+          "example": "3",
+          "member": "uint64",
+          "name": "MaxBandWidth",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network bandwidth. abandoned.",
+          "example": "3",
+          "member": "uint64",
+          "name": "PublicNetworkTps",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQConnection": {
+      "document": "RabbitMQ connection detail.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Connection name.",
+          "example": "1.1.1.1:2340 -> 10.1.1.1:5672",
+          "member": "string",
+          "name": "ConnectionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client IP",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "PeerHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the connection status, including starting, tuning, opening, running, flow, blocking, blocked, closing, and closed.",
+          "example": "running",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User that who has created this connection.",
+          "example": "admin",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether ssl is enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "SSL",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Connection protocol.",
+          "example": "AMQP 0-9-1",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number of channels under the connection.",
+          "example": "1",
+          "member": "int64",
+          "name": "Channels",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQConsumersListInfo": {
+      "document": "Queue consumer list information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client Ip.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "ClientIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer Tag.",
+          "example": "testConsumerTag",
+          "member": "string",
+          "name": "ConsumerTag",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQExchangeListInfo": {
+      "document": "RabbitMQ exchange list member information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "exchange name.",
+          "example": "testExchangeName",
+          "member": "string",
+          "name": "ExchangeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "testRemark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the exchange type. valid values: \"fanout\", \"direct\", \"topic\", \"headers\".",
+          "example": "fanout",
+          "member": "string",
+          "name": "ExchangeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VHost parameter.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "exchange creator. valid values: `system` (generated by the system), `user` (user-created).",
+          "example": "user",
+          "member": "string",
+          "name": "ExchangeCreator",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "exchange creation time.",
+          "example": "2016-11-09 11:44:44",
+          "member": "string",
+          "name": "CreateTimeStamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "exchange modification time.",
+          "example": "2016-11-09 11:44:44",
+          "member": "string",
+          "name": "ModTimeStamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input message rate.",
+          "example": "0.0",
+          "member": "float",
+          "name": "MessageRateIn",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output message rate.",
+          "example": "0.0",
+          "member": "float",
+          "name": "MessageRateOut",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is a persistent exchange. true indicates persistent, and false indicates non-persistent.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to automatically delete the switch. true indicates automatic deletion, and false indicates non-automatic deletion.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an internal switch. valid values: true (indicating an internal switch).",
+          "example": "true",
+          "member": "bool",
+          "name": "Internal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the ID of the associated instance to which the switch belongs.",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the effective policy.",
+          "example": "test-policy",
+          "member": "string",
+          "name": "Policy",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters key-value objects.",
+          "example": "{\"x-ordered\": false}",
+          "member": "string",
+          "name": "Arguments",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of unscheduled delayed messages.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MessagesDelayed",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQPermission": {
+      "document": "RabbitMQ permission details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username, which is the user associated with the permission.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. declare related operations. for the user, it is operable to perform operations on the resource name under the vhost that matches the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "ConfigRegexp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. message write related operations. the user can operate on the resource names under the vhost that match the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "WriteRegexp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Types of permissions. message read related operations. the user can operate on the resource name under the vhost that matches the regular expression.",
+          "example": ".*",
+          "member": "string",
+          "name": "ReadRegexp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2023-08-29 14:06:38.067",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2023-08-29 14:06:38.067",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQQueueListConsumerDetailInfo": {
+      "document": "RabbitMQ queue list consumer information response parameters structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of consumers.",
+          "example": "1",
+          "member": "int64",
+          "name": "ConsumersNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQQueueListInfo": {
+      "document": "RabbitMQ queue list member information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queue name.",
+          "example": "testQueueName",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "testRemark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer information.",
+          "example": "无",
+          "member": "RabbitMQQueueListConsumerDetailInfo",
+          "name": "ConsumerDetail",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the queue type. the valid values are \"classic\" and \"quorum\".",
+          "example": "classic",
+          "member": "string",
+          "name": "QueueType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of message backlogs.",
+          "example": "20",
+          "member": "int64",
+          "name": "MessageHeapCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message production rate per second.",
+          "example": "0.0",
+          "member": "float",
+          "name": "MessageRateIn",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message consumption rate per second.",
+          "example": "0.0",
+          "member": "float",
+          "name": "MessageRateOut",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2024-01-03 11:58:39.447",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2024-01-03 11:58:39.447",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the queue is persistent. true indicates persistent, and false indicates non-persistent.",
+          "example": "true",
+          "member": "bool",
+          "name": "Durable",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the queue is an auto-delete queue. true indicates auto-delete, and false indicates non-auto-delete.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "instanceId to which the queue belongs.",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the virtual host to which the queue belongs.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the primary node where the queue is located.",
+          "example": "rabbit@amqp-xxx.rabbitmq-broker-0",
+          "member": "string",
+          "name": "Node",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the effective policy.",
+          "example": "test-policy",
+          "member": "string",
+          "name": "Policy",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters key-value objects.",
+          "example": "{\"x-ordered\": false}",
+          "member": "string",
+          "name": "Arguments",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an exclusive queue.",
+          "example": "false",
+          "member": "bool",
+          "name": "Exclusive",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQServerlessAccessInfo": {
+      "document": "Public network access information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network domain.",
+          "example": "http://127.4.5.1",
+          "member": "string",
+          "name": "PublicAccessEndpoint",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network status.",
+          "example": "on",
+          "member": "string",
+          "name": "PublicDataStreamStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQServerlessEndpoint": {
+      "document": "Access point.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "vpc id",
+          "example": "vpc-5ghsr4p9",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "subnet id",
+          "example": "subnet-67y9wi",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access address",
+          "example": "http://145.10.3.4",
+          "member": "string",
+          "name": "VpcEndpoint",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access address status.",
+          "example": "on",
+          "member": "string",
+          "name": "VpcDataStreamEndpointStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a public network.",
+          "example": "true",
+          "member": "bool",
+          "name": "PublicNetwork",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the access policy.",
+          "example": "127.5.4.1",
+          "member": "string",
+          "name": "AccessStrategy",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bandwidth",
+          "example": "20",
+          "member": "int64",
+          "name": "Bandwidth",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQServerlessInstance": {
+      "document": "TDMQ for rabbitmq serverless instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "amqp-xxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "测试实例",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance version.",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "InstanceVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status. 0 indicates creating in progress. 1 indicates normal. 2 indicates isolated. 3 indicates terminated. 4 indicates exception. 5 indicates delivery failed.",
+          "example": "集群状态",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaxTPS",
+          "example": "500",
+          "member": "int64",
+          "name": "MaxTps",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MaxBandwidth",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxBandWidth",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time of the cluster.",
+          "example": "1738330089000",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0 indicates the default status (If the default status is not configured, manual renewal is enabled), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (configured by the user).",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "0: Postpaid, 1: Prepaid",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "测试集群",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster specifications",
+          "example": "专业版",
+          "member": "string",
+          "name": "SpecName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exception information.",
+          "example": "获取列表失败",
+          "member": "string",
+          "name": "ExceptionInformation",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network access point.",
+          "example": "http://127.1.1.1",
+          "member": "string",
+          "name": "PublicAccessEndpoint",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The virtual private cloud (vpc) network access point.",
+          "example": "无",
+          "member": "RabbitMQServerlessEndpoint",
+          "name": "Vpcs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status. 0 indicates creating in progress. 1 indicates normal. 2 indicates isolated. 3 indicates terminated. 4 indicates exception. 5 indicates delivery failed.\n",
+          "example": "1",
+          "member": "int64",
+          "name": "ClusterStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the cluster type: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time",
+          "example": "1738330089000",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "For compatibility with the managed version, the fixed value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "NodeCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "For compatibility with the managed version, the fixed value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "MaxStorage",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Isolation time",
+          "example": "1738330089000",
+          "member": "uint64",
+          "name": "IsolatedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQServerlessWhiteListInfo": {
+      "document": "Public network allowlist information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network data stream allowlist.",
+          "example": "1.2.3.4,5.6.7.8",
+          "member": "string",
+          "name": "PublicDataStreamWhiteList",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network data stream allowlist status.",
+          "example": "OFF/ON/MODIFYING",
+          "member": "string",
+          "name": "PublicDataStreamWhiteListStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQUser": {
+      "document": "RabbitMQ user info detail.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username used when logging in.",
+          "example": "test_user",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Password. specifies the password used when logging in.",
+          "example": "abc123",
+          "member": "string",
+          "name": "Password",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User description",
+          "example": "测试账号",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User tag. specifies to determine the access permission scope of this user to RabbitMQ Management.",
+          "example": "monitoring",
+          "member": "string",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User creation time",
+          "example": "2022-11-11 11:11:11",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time of the user.",
+          "example": "2022-11-11 11:11:11",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type of User. specifies that \"System\" indicates System creation and \"User\" indicates User-created.",
+          "example": "System",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of connections allowed for this user.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxConnections",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The maximum number of channels allowed for this user.",
+          "example": "1000",
+          "member": "int64",
+          "name": "MaxChannels",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQVirtualHostInfo": {
+      "document": "RabbitMQ vhost detail.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "instance ID",
+          "example": "amqp-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vhost name.",
+          "example": "testVhost",
+          "member": "string",
+          "name": "VirtualHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the description information of the vhost.",
+          "example": "hello",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the Tag of the vhost.",
+          "example": "shop,account",
+          "member": "string",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2022-11-11 11:11:11",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2022-11-11 11:11:11",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the overview statistics information of the vhost.",
+          "example": "无",
+          "member": "RabbitMQVirtualHostStatistics",
+          "name": "VirtualHostStatistics",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vhost status. specifies the status that corresponds to the native console and can be running, partial, stopped, or unknown.",
+          "example": "running",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number of message backlogs.",
+          "example": "0",
+          "member": "int64",
+          "name": "MessageHeapCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input message rate.",
+          "example": "0",
+          "member": "float",
+          "name": "MessageRateIn",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output message rate.",
+          "example": "0",
+          "member": "float",
+          "name": "MessageRateOut",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether a mirrored queue policy exists. true indicates existence, and false indicates non-existence.",
+          "example": "true",
+          "member": "bool",
+          "name": "MirrorQueuePolicyFlag",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RabbitMQVirtualHostStatistics": {
+      "document": "vhost overview statistical information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of queues of the current vhost.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentQueues",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of exchanges in the current vhost.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentExchanges",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of current connections of the vhost.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentConnections",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of channels for the current vhost.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentChannels",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of users of the current vhost.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentUsers",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UserQuota": {
+      "document": "Number of users quota.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum number of users.",
+          "example": "200",
+          "member": "int64",
+          "name": "MaxUser",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Used number of users.",
+          "example": "150",
+          "member": "int64",
+          "name": "UsedUser",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VirtualHostQuota": {
+      "document": "Virtual host quota.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum number of virtual hosts.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxVirtualHost",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of already used virtual hosts.",
+          "example": "10",
+          "member": "uint64",
+          "name": "UsedVirtualHost",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VpcEndpointInfo": {
+      "document": "VPC access point information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vpc access point information.",
+          "example": "ip:port",
+          "member": "string",
+          "name": "VpcEndpoint",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vpc access point status.\nOFF/ON/CREATING/DELETING",
+          "example": "OFF/ON/CREATING/DELETING",
+          "member": "string",
+          "name": "VpcDataStreamEndpointStatus",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}
