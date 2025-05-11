@@ -64,9 +64,9 @@
       "status": "online"
     },
     "CreateLaunchTemplate": {
-      "document": "This API is used to create an instance launch template.\n\nAn instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.\n\nWhen a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it's not specified, the default template version is used.",
+      "document": "This interface (CreateLaunchTemplate) is used for instance launch template creation.\n\nAn instance launch template is a configuration data and can be used to create instances. Its content includes configurations required to create instances, such as instance type, types and sizes of data disk and system disk, and security group and other information.\n\nThis API is used to create an instance launch template. After the initial creation of the instance template, its template version is the default version 1. A new version can be created using CreateLaunchTemplateVersion (https://intl.cloud.tencent.com/document/product/213/66326?from_cn_redirect=1), and the version number will increment. By default, when specifying an instance launch template in RunInstances (https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1), if the template version number is not specified, the default version will be used.",
       "input": "CreateLaunchTemplateRequest",
-      "name": "Creates an instance launch template",
+      "name": "Create an instance launch template",
       "output": "CreateLaunchTemplateResponse",
       "status": "online"
     },
@@ -565,7 +565,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Timer action. Valid value: `TerminateInstances`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Timer action currently only supports terminating one value: TerminateInstances.",
           "example": "TerminateInstances",
           "member": "string",
           "name": "TimerAction",
@@ -576,7 +576,7 @@
         },
         {
           "disabled": false,
-          "document": "Action time, which follows the ISO8601 standard and uses UTC time. It must be 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Execution time, in standard ISO8601 representation and using UTC time. format: YYYY-MM-DDThh:MM:ssZ. for example, 2018-05-29T11:26:40Z. the execution time must be later than the current time by 5 minutes.",
           "example": "2024-05-29T11:26:40Z",
           "member": "string",
           "name": "ActionTime",
@@ -587,7 +587,7 @@
         },
         {
           "disabled": false,
-          "document": "Extended data\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Extension data. only used as output usage.",
           "example": "无",
           "member": "Externals",
           "name": "Externals",
@@ -598,7 +598,7 @@
         },
         {
           "disabled": false,
-          "document": "Timer ID.",
+          "document": "Timer ID. only used as output usage.",
           "example": "57z0f8ef-8112-460f-8203-fab753580f68",
           "member": "string",
           "name": "ActionTimerId",
@@ -609,7 +609,7 @@
         },
         {
           "disabled": false,
-          "document": "Timer status. Valid values:\n\nUNDO: Not triggered.\nDOING: Triggering.\nDONE: Triggered already.\n",
+          "document": "Timer status, for output usage only. value ranges from: <li>UNDO: unexecuted</li> <li>DOING: executing</li> <li>DONE: execution completed.</li>.",
           "example": "UNDO",
           "member": "string",
           "name": "Status",
@@ -620,7 +620,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID corresponding to a timer.",
+          "document": "Instance ID corresponding to a timer. used only for output.",
           "example": "ins-dpa3e3at",
           "member": "string",
           "name": "InstanceId",
@@ -1619,7 +1619,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance launch template name. It can include 2-128 characters.",
+          "document": "Name of an instance launch template. It contains 2 to 128 English or Chinese characters.",
           "example": "MyLaunchTemplate",
           "member": "string",
           "name": "LaunchTemplateName",
@@ -1628,7 +1628,7 @@
         },
         {
           "disabled": false,
-          "document": "Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone, project, and CDH (for dedicated CVMs)",
+          "document": "Location of the instance. You can specify attributes such as availability zone, project, and host (specified when creating a instance on the CDH) to which the instance belongs through this parameter.",
           "example": "无",
           "member": "Placement",
           "name": "Placement",
@@ -1637,7 +1637,7 @@
         },
         {
           "disabled": false,
-          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
+          "document": "Specify an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. there are four image types: <li>PUBLIC image</li> <li>custom image</li> <li>shared image</li> <li>service market image</li>  you can obtain available mirror ids in the following ways: <li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ids of `service market image` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li> <li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.",
           "example": "img-dkwyg6sr",
           "member": "string",
           "name": "ImageId",
@@ -1646,7 +1646,7 @@
         },
         {
           "disabled": false,
-          "document": "Description of instance launch template versions. This parameter can contain 2-256 characters.",
+          "document": "Version description of an instance launch template. It contains 2 to 256 English or Chinese characters.",
           "example": "MyLaunchTemplateVersionDesc",
           "member": "string",
           "name": "LaunchTemplateVersionDescription",
@@ -1655,7 +1655,7 @@
         },
         {
           "disabled": false,
-          "document": "The instance model. Different resource specifications are specified for different instance models.\n<br><li>To view specific values for `PREPAID` or `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will specify the default model according to the dynamic resource sales in the current region. <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, you need to specify this parameter as `CDH_1C1G`.",
+          "document": "Instance model. Different instance models specify different resource specifications.\n\n<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained BY calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix \"CDH_\" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.",
           "example": "S5.16XLARGE256",
           "member": "string",
           "name": "InstanceType",
@@ -1664,7 +1664,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
+          "document": "Instance system disk configuration information. If this parameter is not specified, it will be assigned based on the system default values.",
           "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
@@ -1673,7 +1673,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of instance data disks. If this parameter is not specified, no data disk will be purchased by default. When purchasing, you can specify 21 data disks, which can contain at most 1 LOCAL_BASIC or LOCAL_SSD data disk, and at most 20 CLOUD_BASIC, CLOUD_PREMIUM, or CLOUD_SSD data disks.",
+          "document": "Instance data disk configuration information. if not specified, no data disks are purchased by default. support specifying 21 data disks at the time of purchase, among which a maximum of 1 LOCAL_BASIC data disk or LOCAL_SSD data disk can be included, and a maximum of 20 CLOUD_BASIC data disks, CLOUD_PREMIUM data disks or CLOUD_SSD data disks can be included.",
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
@@ -1682,7 +1682,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information of VPC. This parameter is used to specify VPC ID and subnet ID, etc. If this parameter is not specified, the classic network is used by default. If a VPC IP is specified in this parameter, it indicates the primary ENI IP of each instance. The value of parameter InstanceCount must be same as the number of VPC IPs, which cannot be greater than 20.",
+          "document": "VPC-related information configuration. You can specify information such as VPC ID and subnet ID through this parameter. If this parameter is not specified, use the basic network by default. If a VPC IP is specified in this parameter, it indicates the primary network interface card IP of each instance. In addition, the number of the InstanceCount parameter should be consistent with the number of the VPC IP and should not exceed 20.",
           "example": "无",
           "member": "VirtualPrivateCloud",
           "name": "VirtualPrivateCloud",
@@ -1691,7 +1691,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
+          "document": "Public bandwidth-related settings. If this parameter is not specified, the public bandwidth is 0 Mbps by default.",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
@@ -1700,7 +1700,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances to be purchased. Value range for monthly-subscribed instances: [1, 300]. Value range for pay-as-you-go instances: [1, 100]. Default value: 1. The specified number of instances to be purchased cannot exceed the remaining quota allowed for the user. For more information on quota, see CVM instance [Purchase Limits](https://intl.cloud.tencent.com/document/product/213/2664).",
+          "document": "Number of instances to purchase. value range for monthly subscription instances: [1, 300]. value range for pay-as-you-go instances: [1, 100]. default value: 1. the number of instances to purchase must not exceed the remaining user quota. for specific quota limitations, see [CVM instance purchase limitations](https://intl.cloud.tencent.com/document/product/213/2664?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "InstanceCount",
@@ -1709,7 +1709,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name to be displayed. <br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default. </li><li>If you purchase multiple instances at the same time and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string, `server_{R:3}`. If you only purchase 1 instance, the instance will be named `server_3`; if you purchase 2, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`. </li><li>If you purchase multiple instances at the same time and do not specify a pattern string, the instance names will be suffixed by `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase 2 instances and the instance name body is `server_`, the instance names will be `server_1` and `server_2`. </li><li>This parameter can contain up to 60 characters, including the pattern string.",
+          "document": "Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.",
           "example": "MyInstance",
           "member": "string",
           "name": "InstanceName",
@@ -1718,7 +1718,7 @@
         },
         {
           "disabled": false,
-          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "document": "Instance login settings. this parameter allows you to set the instance login method to key or maintain the original login settings of the image.",
           "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
@@ -1727,7 +1727,7 @@
         },
         {
           "disabled": false,
-          "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response. If this parameter is not specified, the instance will be associated with default security groups.",
+          "document": "Security group to which an instance belongs. this parameter can be obtained by calling the sgId field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.",
           "example": "[\"sg-rf6ogz49\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -1736,7 +1736,7 @@
         },
         {
           "disabled": false,
-          "document": "Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
+          "document": "Enhanced services. You can specify whether to enable services such as Cloud Security and Cloud Monitor through this parameter. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled for public images by default, but not enabled for custom images and marketplace images by default. Instead, they use services retained in the images.",
           "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
@@ -1745,7 +1745,7 @@
         },
         {
           "disabled": false,
-          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "document": "A string used to ensure the idempotence of the request. This string is generated by the customer and should be unique across different requests, with a maximum length of 64 ASCII characters. If this parameter is not specified, the idempotence of the request cannot be guaranteed.",
           "example": "a521b4e4-c903-4d37-9de6-8906e3ad8eb7",
           "member": "string",
           "name": "ClientToken",
@@ -1754,7 +1754,7 @@
         },
         {
           "disabled": false,
-          "document": "Host name of the CVM. <br><li>Dots (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name. <br><li>For Windows instances, the host name must be 2-15 characters long and can contain uppercase and lowercase letters, numbers, and hyphens (-). It cannot contain dots (.) or contain only numbers. <br><li>For other instances, such as Linux instances, the host name must be 2-60 characters long. It supports multiple dots (.) and allows uppercase and lowercase letters, numbers, and hyphens (-) between any two dots (.).",
+          "document": "Specifies the HostName of the cloud virtual machine.<br><li>the dot (.) and hyphen (-) cannot be used at the beginning or end of the HostName, and cannot be used consecutively.</li><li>for Windows instances: the character length is 2 to 15. it consists of letters (case insensitive), digits, and hyphens (-). dots (.) are not supported, and it cannot be all digits.</li><li>for other types (such as Linux) instances: the character length is 2 to 60. multiple dots are allowed. each segment between dots can include letters (case insensitive), digits, and hyphens (-).</li>.",
           "example": "myHost",
           "member": "string",
           "name": "HostName",
@@ -1763,7 +1763,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.",
+          "document": "Scheduled task. You can specify a scheduled task for the instance through this parameter. Currently, only scheduled termination is supported.",
           "example": "无",
           "member": "ActionTimer",
           "name": "ActionTimer",
@@ -1772,7 +1772,7 @@
         },
         {
           "disabled": false,
-          "document": "Placement group ID. You can only specify one.",
+          "document": "Placement group ID. Only one can be specified.",
           "example": "[\"ps-3p88qhfo\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
@@ -1781,7 +1781,7 @@
         },
         {
           "disabled": false,
-          "document": "The tag description list. This parameter is used to bind a tag to a resource instance. A tag can only be bound to CVM instances.",
+          "document": "List of tag descriptions. You can bind tags to corresponding resource instances at the same time by specifying this parameter. Currently, only binding tags to the CVM is supported.",
           "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
@@ -1790,7 +1790,7 @@
         },
         {
           "disabled": false,
-          "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
+          "document": "Market-Related options of the instance, such as relevant parameters of the bidding instance. this parameter is required if the payment mode of the specified instance is spot payment.",
           "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
@@ -1799,7 +1799,7 @@
         },
         {
           "disabled": false,
-          "document": "User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).",
+          "document": "User data provided for an instance must be encoded in base64. valid values for maximum data size are up to 16 KB. for details on obtaining this parameter, see running commands at startup for Windows (https://intl.cloud.tencent.com/document/product/213/17526?from_cn_redirect=1) and Linux (https://intl.cloud.tencent.com/document/product/213/17525?from_cn_redirect=1).",
           "example": "YmFzZTY0Cg==",
           "member": "string",
           "name": "UserData",
@@ -1808,7 +1808,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the request is a dry run only.\ntrue: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\nfalse (default value): send a normal request and create instance(s) if all the requirements are met.",
+          "document": "Whether it is a pre-check for this request only.\ntrue: sends a check request without creating an instance. check items include whether required parameters are filled in, request format, service limits, and cvm inventory.\nIf the check fails, return the corresponding error code.\nIf the check passed, return RequestId.\nfalse (default): sends a normal request. after passing the check, creates an instance directly.",
           "example": "false",
           "member": "bool",
           "name": "DryRun",
@@ -1817,7 +1817,7 @@
         },
         {
           "disabled": false,
-          "document": "CAM role name, which can be obtained from the `roleName` field in the response of the [`DescribeRoleList`](https://intl.cloud.tencent.com/document/product/598/13887?from_cn_redirect=1) API.",
+          "document": "CAM role name. it can be obtained through the roleName in the return value from the API DescribeRoleList.",
           "example": "testroleName001",
           "member": "string",
           "name": "CamRoleName",
@@ -1826,7 +1826,7 @@
         },
         {
           "disabled": false,
-          "document": "HPC cluster ID. The HPC cluster must and can only be specified for a high-performance computing instance.",
+          "document": "High-performance computing cluster ID. If the created instance is a high-performance computing instance, the cluster where the instance is placed should be specified. Otherwise, it cannot be specified.",
           "example": "hpc-a5n666lo",
           "member": "string",
           "name": "HpcClusterId",
@@ -1835,7 +1835,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance [Billing Mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). Valid values: <br><li>`PREPAID`: prepaid, i.e., billed for monthly-subscribed instances <br><li>`POSTPAID_BY_HOUR`: pay-as-you-go on an hourly basis <br><li>`CDHPAID`: billed for CDH instances, not the CVMs running on the CDHs. <br><li>`SPOTPAID`: billed for spot instances. <br>Default value: POSTPAID_BY_HOUR.",
+          "document": "Instance [billing mode](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1).<br><li>PREPAID: prepaid, that is, monthly subscription.</li><li>POSTPAID_BY_HOUR: pay-as-you-go by hour.</li><li>CDHPAID: CDH instance (created based on CDH; the resources of the host are free of charge).</li><li>SPOTPAID: spot payment.</li>Default value: POSTPAID_BY_HOUR.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -1844,7 +1844,7 @@
         },
         {
           "disabled": false,
-          "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
+          "document": "Prepaid mode, that is, annual and monthly subscription related parameter settings. Through this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to set auto-renewal, etc. If the specified instance's billing mode is the prepaid mode, this parameter must be passed.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -1853,7 +1853,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.",
+          "document": "Instance destruction protection flag: indicates whether an instance is allowed to be deleted through an api. value ranges from: - **TRUE**: indicates that instance protection is enabled, deletion through apis is not allowed. - **FALSE**: indicates that instance protection is disabled, deletion through apis is allowed.  default value: FALSE.",
           "example": "false",
           "member": "bool",
           "name": "DisableApiTermination",
@@ -1862,12 +1862,30 @@
         },
         {
           "disabled": false,
-          "document": "Instance launch template tag description list. By specifying the TemplateTag parameter, you can bind tags to the instance launch template.",
+          "document": "Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.",
           "example": "无",
           "member": "TagSpecification",
           "name": "LaunchTemplateTagSpecification",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.\nNote: this field is in beta test.",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadata",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.\n\n-Update: if template t contains this parameter with a value of Update and metadata=[k1:v1, k2:v2], then RunInstances (with metadata=[k2:v3]) + t creates a cvm using metadata=[k1:v1, k2:v3]. \n-Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. \nNote: this field is in beta test.",
+          "example": "Update",
+          "member": "string",
+          "name": "TemplateDataModifyAction",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1877,7 +1895,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of successfully created instance launch template. This parameter will be returned when the instance launch template is created through the `CreateLaunchTemplate` API.",
+          "document": "Specifies the ID of the successfully created instance launch template when this parameter is returned by creating an instance launch template through this interface.",
           "example": "lt-a5n123lo",
           "member": "string",
           "name": "LaunchTemplateId",
@@ -1944,7 +1962,7 @@
         },
         {
           "disabled": false,
-          "document": "The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are four types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><li>Marketplace images (for Chinese mainland only)</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). For marketplace images, go to [Cloud Marketplace](https://market.cloud.tencent.com/list). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>",
+          "document": "Assign an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format like `img-xxx`. there are four image types: <br/><li>PUBLIC image</li><li>custom image</li><li>shared image</li><li>cloud image market</li><br/>you can obtain available mirror ids in the following ways: <br/><li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ID of `cloud image market` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li><li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.",
           "example": "img-irmer45l",
           "member": "string",
           "name": "ImageId",
@@ -1998,7 +2016,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name.<br><li>If this parameter is not specified, \"Unnamed\" will be displayed by default.</li><li>If you purchase multiple instances and specify a pattern string `{R:x}`, numbers `[x, x+n-1]` will be generated, where `n` represents the number of instances purchased. For example, you specify a pattern string `server_{R:3}`. If you purchase only one instance, the instance will be named `server_3`; if you purchase two, they will be named `server_3` and `server_4`. You can specify multiple pattern strings in the format of `{R:x}`.</li><li>If you purchase multiple instances without specifying a pattern string, the instance names will be suffixed with `1, 2...n`, where `n` represents the number of instances purchased. For example, if you purchase two instances with the name `server_`, the instance names will be `server_1` and `server_2`.</li><li>This parameter can contain up to 60 characters (including pattern strings).</li>",
+          "document": "Instance display name. <li>if the instance display name is not specified, it will display by default as 'unnamed'.</li> <li>when purchasing multiple instances, if the pattern string `{R:x}` is specified, it indicates generating numbers `[x, x+n-1]`, where `n` represents the number of purchased instances. for example, `server_{R:3}` will result in instance display names as `server_3` when purchasing 1 instance; when purchasing 2 instances, the instance display names will be `server_3` and `server_4` respectively. it supports specifying multiple pattern strings `{R:x}`.</li> <li>when purchasing multiple instances, if no pattern string is specified, a suffix `1, 2...n` will be added to the instance display name, where `n` represents the number of purchased instances. for example, for `server_`, when purchasing 2 instances, the instance display names will be `server_1` and `server_2` respectively.</li> <li>it supports up to 128 characters (including pattern strings).</li>.",
           "example": "my_instance",
           "member": "string",
           "name": "InstanceName",
@@ -2007,7 +2025,7 @@
         },
         {
           "disabled": false,
-          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "document": "Instance login settings. you can use this parameter to set the instance's login method to key or keep the original login settings of the image.",
           "example": "{     \"KeyIds\": [         \"skey-9tzxxb4j\"     ] }",
           "member": "LoginSettings",
           "name": "LoginSettings",
@@ -2025,7 +2043,7 @@
         },
         {
           "disabled": false,
-          "document": "Enhanced service. You can use this parameter to specify whether to enable services such as Anti-DDoS and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Anti-DDoS are enabled for public images by default. However, for custom images and images from the marketplace, Anti-DDoS and Cloud Monitor are not enabled by default. The original services in the image will be retained.",
+          "document": "Enhanced service. this parameter can be used to specify whether to enable services such as cloud security and cloud monitoring. if this parameter is not specified, cloud monitor and cloud security services are enabled for public images by default; for custom images and marketplace images, cloud monitor and cloud security services are not enabled by default, and the services retained in the image will be used.",
           "example": "{     \"SecurityService\": {         \"Enabled\": \"true\"     } }",
           "member": "EnhancedService",
           "name": "EnhancedService",
@@ -2148,6 +2166,24 @@
           "name": "DisableApiTermination",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.\nNote: this field is in beta test.",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadata",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies that only the Update and Replace parameters are allowed. this parameter is valid only when custom Metadata is used in the template and Metadata is also transmitted in RunInstances. defaults to Replace.\n\n-Update: if template t contains this parameter with a value of Update and metadata=[k1:v1, k2:v2], then RunInstances (with metadata=[k2:v3]) + t creates a cvm using metadata=[k1:v1, k2:v3]. \n-Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. \nNote: this field is in beta test.",
+          "example": "Update",
+          "member": "string",
+          "name": "TemplateDataModifyAction",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2179,7 +2215,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.",
+          "document": "Data disk size, unit: GiB. the minimum adjustment step size is 10 GiB. the value ranges of different data disk types vary. for specific limitations, see the storage overview (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). the default value is 0, which means no data disk purchase. for more restrictions, see the product document.",
           "example": "50",
           "member": "int64",
           "name": "DiskSize",
@@ -2201,7 +2237,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk ID. Note that it's not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
+          "document": "Specifies the data disk ID.\nThis parameter currently only serves as a response parameter for query apis such as `DescribeInstances`, and cannot be used as an input parameter for write apis such as `RunInstances`.",
           "example": "disk-ciezoimt",
           "member": "string",
           "name": "DiskId",
@@ -2212,7 +2248,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the data disk is terminated with the Cloud Virtual Machine (CVM). Valid values:\n\n<li>true: Terminate the data disk when the CVM is terminated. Only the pay-as-you-go cloud disk billed by hour is supported.</li>\n<li>\n  false: Retain the data disk when the CVM is terminated.<br />\n  Default value: true.<br />\n  This parameter is currently only used for the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Whether the data disk is terminated with the instance. value range: <li>true: when the instance is terminated, the data disk is also terminated. only hourly postpaid cloud disks are supported. <li>false: when the instance is terminated, the data disk is retained. <br>default value: true <br>currently, this parameter is only used for the API `RunInstances`.",
           "example": "true",
           "member": "bool",
           "name": "DeleteWithInstance",
@@ -2223,7 +2259,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Data disk snapshot ID. the size of the selected data disk snapshot must be less than the data disk size.",
           "example": "snap-6yczrj8x",
           "member": "string",
           "name": "SnapshotId",
@@ -2234,7 +2270,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether a data disk is encrypted. Valid values:\n<li>true: encrypted.</li>\n<li>\n  false: not encrypted.<br/>\n  Default value: false.<br/>\n  This parameter is currently used only in the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Specifies whether the data disk is encrypted. value range: <li>true: encrypted</li> <li>false: unencrypted</li><br/> default value: false<br/> this parameter is currently only used for the `RunInstances` api.",
           "example": "false",
           "member": "bool",
           "name": "Encrypt",
@@ -2245,7 +2281,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the custom CMK in the format of UUID or \"kms-abcd1234\". This parameter is used to encrypt cloud disks.\n\nCurrently, this parameter is only used in the `RunInstances` API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom CMK's corresponding ID, with a value of UUID or something similar to kms - abcd1234. used for encrypting cloud disks.\n\nThis parameter is currently only used for the `RunInstances` api.",
           "example": "kms-abcd1234",
           "member": "string",
           "name": "KmsKeyId",
@@ -2256,7 +2292,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud disk performance, in MB/s\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the cloud disk performance (unit: MiB/s). using this parameter allows you to purchase additional performance for the cloud disk.\nCurrently only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD).",
           "example": "20",
           "member": "int64",
           "name": "ThroughputPerformance",
@@ -2267,7 +2303,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the dedicated cluster to which the instance belongs.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the exclusive cluster ID it belongs to.",
           "example": "cdc-1648zauv",
           "member": "string",
           "name": "CdcId",
@@ -2278,7 +2314,7 @@
         },
         {
           "disabled": false,
-          "document": "Burst performance.\n\n <b>Note: This field is in beta test.</b>\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Burst performance.\n\n<B>Note: this feature is in beta test.</b>.",
           "example": "false",
           "member": "bool",
           "name": "BurstPerformance",
@@ -2289,7 +2325,7 @@
         },
         {
           "disabled": false,
-          "document": "Disk name, with a length of not more than 128 characters.\n\nThis parameter is in invite-only testing and is not yet open for use.",
+          "document": "Disk name, with a length not exceeding 128 characters.",
           "example": "MyDiskName",
           "member": "string",
           "name": "DiskName",
@@ -4240,7 +4276,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Release address\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Release Address",
           "example": "true",
           "member": "bool",
           "name": "ReleaseAddress",
@@ -4251,7 +4287,7 @@
         },
         {
           "disabled": false,
-          "document": "Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0\nNote: This field may return null, indicating that no valid value was found.",
+          "document": "Unsupported network type. valid values: <br><li>BASIC: BASIC network</li><li>VPC1.0: private network VPC1.0</li>.",
           "example": "VPC1.0",
           "member": "string",
           "name": "UnsupportNetworks",
@@ -4262,7 +4298,7 @@
         },
         {
           "disabled": false,
-          "document": "Attributes of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Specifies the HDD local storage attributes.",
           "example": "无",
           "member": "StorageBlock",
           "name": "StorageBlockAttr",
@@ -5953,7 +5989,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Subscription period (in month). Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48’, `60`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Subscription period in months. value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -5964,7 +6000,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Valid values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify of expiration and automatically renew.</li><br><li>NOTIFY_AND_MANUAL_RENEW: Notify of expiration and manually renew.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify of expiration and do not automatically renew.</li><br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is set to NOTIFY_AND_AUTO_RENEW, an instance will be automatically renewed monthly after expiration, provided that the account balance is sufficient.\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "AUTO-Renewal flag. value ranges:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY of expiration AND automatically RENEW.</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY of expiration but do not automatically RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: do not NOTIFY of expiration AND do not automatically RENEW.</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed monthly after expiration, provided that the account balance is sufficient.",
           "example": "DISABLE_NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -6007,7 +6043,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spot-related options\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Relevant options for spot instances.",
           "example": "0.12",
           "member": "SpotMarketOptions",
           "name": "SpotOptions",
@@ -6018,7 +6054,7 @@
         },
         {
           "disabled": false,
-          "document": "Market type. Valid value: `spot`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Market option type. The value can only be spot currently.",
           "example": "spot",
           "member": "string",
           "name": "MarketType",
@@ -6330,7 +6366,7 @@
         },
         {
           "disabled": false,
-          "document": "Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.",
+          "document": "Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.",
           "example": "bwp-h1ro",
           "member": "string",
           "name": "BandwidthPackageId",
@@ -7165,12 +7201,57 @@
         },
         {
           "disabled": false,
-          "document": "Maintains the original settings of the image. This parameter cannot be specified simultaneously with Password or KeyIds.N. It can be set to true only when an instance is created with a custom image, shared image, or externally imported image. Valid values: <li>true: indicates that the login settings of the image are maintained</li><li>false: indicates that the login settings of the image are not maintained</li>Default value: false.\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Retain the original settings of the image. this parameter cannot be specified simultaneously with Password or KeyIds.N. it can be set to true only when an instance is created with a custom image, shared image, or externally imported image. value ranges from true to false: <li>true: indicates that the login settings of the image are retained</li><li>false: indicates that the login settings of the image are not retained</li>. default value: false.",
           "example": "true",
           "member": "string",
           "name": "KeepImageLogin",
           "output_required": false,
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Metadata": {
+      "document": "Custom metadata.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "A list of custom metadata key-value pairs.",
+          "example": "[{\"Key\": \"key\", \"Value\": \"value\"}]",
+          "member": "MetadataItem",
+          "name": "Items",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MetadataItem": {
+      "document": "Custom metadata key and value.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom metadata key. it must comply with the regular expression ^[a-zA-Z0-9_-]+$. the length is less than or equal to 128 bytes (case-sensitive).\n",
+          "example": "\"key\"",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies a custom metadata value. it supports any data . The size is &le; 256 KB. it is case-sensitive.",
+          "example": "\"value\"",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9356,7 +9437,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.",
+          "document": "Whether to enable the cloud monitor service. value ranges from: <li>true: indicates enabling the cloud monitor service</li> <li>false: indicates disabling the cloud monitor service</li> default value: true.",
           "example": "true",
           "member": "bool",
           "name": "Enabled",
@@ -9452,7 +9533,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Bidding price",
+          "document": "Bid price.",
           "example": "0.01",
           "member": "string",
           "name": "MaxPrice",
@@ -9463,7 +9544,7 @@
         },
         {
           "disabled": false,
-          "document": "Bidding request type. Currently only \"one-time\" is supported.",
+          "document": "Bid request type. valid values: one-time. currently, only the one-time type is supported.",
           "example": "one-time",
           "member": "string",
           "name": "SpotInstanceType",
@@ -9561,7 +9642,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Local HDD storage type. Value: LOCAL_PRO.\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "HDD LOCAL storage type specifies the value: LOCAL_PRO.",
           "example": "LOCAL_PRO",
           "member": "string",
           "name": "Type",
@@ -9572,7 +9653,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum capacity of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Specifies the minimum HDD local storage capacity. measurement unit: GiB.",
           "example": "100",
           "member": "int64",
           "name": "MinSize",
@@ -9583,7 +9664,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum capacity of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Specifies the maximum capacity of HDD local storage. measurement unit: GiB.",
           "example": "200",
           "member": "int64",
           "name": "MaxSize",
@@ -9717,7 +9798,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "System disk type. For the restrictions on the system disk type, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value values:<br>\n<li>LOCAL_BASIC: Local Disk</li>\n<li>LOCAL_SSD: Local SSD</li>\n<li>CLOUD_BASIC: Basic Cloud Disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium Disk</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: Tremendous SSD</li><br>\nDefault value: Current disk types with inventory available.",
+          "document": "Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>.\n<Li>LOCAL_BASIC: specifies a local hard disk.</li>.\n<Li>LOCAL_SSD: specifies a local ssd.</li>.\n<Li>CLOUD_BASIC: ordinary cloud disk.</li>.\n<Li>CLOUD_SSD: ssd cloud disk</li>.\n<Li>CLOUD_PREMIUM: high-performance cloud block storage.</li>.\n<Li>CLOUD_BSSD: universal type ssd cloud disk</li>.\n<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.\n<li>CLOUD_TSSD: ultra-fast SSD cbs</li.\nDefault value: Current disk types with inventory available.",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
@@ -9728,7 +9809,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
+          "document": "Specifies the system disk ID.\nThis parameter currently only serves as a response parameter for query apis such as `DescribeInstances`, and cannot be used as an input parameter for write apis such as `RunInstances`.",
           "example": "disk-xyzw1234",
           "member": "string",
           "name": "DiskId",
@@ -9739,7 +9820,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk size; unit: GB; default value: 50 GB.",
+          "document": "System disk size; unit: GiB; default value: 50 GiB.",
           "example": "50",
           "member": "int64",
           "name": "DiskSize",
@@ -9750,7 +9831,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the dedicated cluster to which the instance belongs.",
+          "document": "Specifies the exclusive cluster ID it belongs to.",
           "example": "cdc-xxxxxx",
           "member": "string",
           "name": "CdcId",
@@ -9761,7 +9842,7 @@
         },
         {
           "disabled": false,
-          "document": "Disk name, with a length of not more than 128 characters.\n\nThis parameter is in invite-only testing and is not yet open for use.\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Disk name, which specifies a length not exceeding 128 characters.",
           "example": "name",
           "member": "string",
           "name": "DiskName",
@@ -9806,7 +9887,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource type. Valid values: `instance` (CVM), `host` (CDH), `image` (for image), and `keypair` (for key).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Tag-Bound resource type. \"instance\" for cloud virtual machine, \"host\" for cdh, \"image\" for mirror, and \"keypair\" for key.",
           "example": "instance",
           "member": "string",
           "name": "ResourceType",
@@ -9817,7 +9898,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag pairs\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Tag pair list",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -9907,7 +9988,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.",
+          "document": "vpc subnet ID, in the form of `subnet-xxx`. valid vpc subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/subnet?rid=1); or they can be obtained from the `SubnetId` field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1). if SubnetId and VpcId are both input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.",
           "example": "subnet-2ks",
           "member": "string",
           "name": "SubnetId",

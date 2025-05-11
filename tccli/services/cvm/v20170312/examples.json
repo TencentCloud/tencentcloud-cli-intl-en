@@ -74,10 +74,10 @@
     ],
     "CreateLaunchTemplate": [
       {
-        "document": "This example shows you how to create an instance in Guangzhou Zone 2 using the image `img-pmqg1cw7` and the instance launch template `test`. All other parameters keep the default values. ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=CreateLaunchTemplate\n&Placement.Zone=ap-guangzhou-2\n&ImageId=img-pmqg1cw7\n&LaunchTemplateName=test\n&<Common request parameters>",
+        "document": "This example shows you how to only pass the required parameters such as Zone, image id and launch template ID, while other parameters use system default values. Specific configuration is as follows: The instance location is Guangzhou Zone 2, the image id is img-pmqg1cw7, and the instance launch template name is myTemplate.",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchTemplate\n<Common request parameters>\n\n{\n    \"LaunchTemplateName\": \"myTemplate\",\n    \"Placement\": {\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"ImageId\": \"img-pmqg1cw7\"\n}",
         "output": "{\n    \"Response\": {\n        \"LaunchTemplateId\": \"lt-lobxe2yo\",\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec309\"\n    }\n}",
-        "title": "Creating an instance launch template with minimal parameters"
+        "title": "Use the Simplest Parameters to Create an Instance Launch Template"
       }
     ],
     "CreateLaunchTemplateVersion": [
