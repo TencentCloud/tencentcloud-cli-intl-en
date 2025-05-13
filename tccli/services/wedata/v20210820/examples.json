@@ -16,6 +16,20 @@
         "title": "BatchCreateIntegrationTaskAlarms"
       }
     ],
+    "BatchCreateTaskVersionAsync": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchCreateTaskVersionAsync\n<Common request parameters>\n\n{\n    \"Tasks\": [\n        {\n            \"TaskId\": \"20250227112817430\",\n            \"VersionRemark\": \"test\"\n        }\n    ],\n    \"AutoRun\": true,\n    \"AlarmWays\": \"true\",\n    \"AlarmRecipientTypes\": \"all\",\n    \"ProjectId\": \"1470547050521227264\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"JobId\": 1\n        },\n        \"RequestId\": \"2c66cc14-ea0a-4f25-bb2c-3a315bd9b606\"\n    }\n}",
+        "title": "Example"
+      },
+      {
+        "document": "Incorrect example",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BatchCreateTaskVersionAsync\n<Common request parameters>\n\n{\n    \"Tasks\": [\n        {\n            \"TaskId\": \"20230425181533351\",\n            \"VersionRemark\": \"ces\"\n        }\n    ],\n    \"AutoRun\": true,\n    \"AlarmWays\": \"email\",\n    \"AlarmRecipientTypes\": \"2\",\n    \"ProjectId\": \"1470561602745229312\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation\",\n            \"Message\": \"Operation failed.\"\n        },\n        \"RequestId\": \"6218d665-282f-4e43-972a-262dc311618e\"\n    }\n}",
+        "title": "Incorrect Example"
+      }
+    ],
     "BatchDeleteIntegrationTasks": [
       {
         "document": " ",
@@ -294,10 +308,10 @@
     ],
     "CreateTask": [
       {
-        "document": "Creating task",
-        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTask\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1\",\n    \"WorkflowId\": \"34e51bc4-0cd9-11ed-8909-bc97e105ba60\",\n    \"TaskExt\": [\n        {\n            \"Key\": \"aa\",\n            \"Value\": \"vv\"\n        }\n    ],\n    \"TaskName\": \"aaab\",\n    \"TaskType\": \"35\"\n}",
+        "document": "Create a task",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTask\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1\",\n    \"WorkflowId\": \"34e51bc4-0cd9-11ed-8909-bc97e105ba60\",\n    \"TaskExt\": [\n        {\n            \"Key\": \"key1\",\n            \"Value\": \"val1\"\n        }\n    ],\n    \"TaskName\": \"aaab\",\n    \"TaskType\": 35\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2eeae735-b9c1-4c99-a4dd-54f3e8da674f\",\n        \"Data\": {\n            \"Id\": \"20220801203612642\"\n        }\n    }\n}",
-        "title": "Example"
+        "title": "Sample"
       }
     ],
     "CreateTaskAlarmRegular": [
@@ -314,6 +328,14 @@
         "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTaskFolder\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1522676572149563392\",\n    \"FolderName\": \"FFFOOOLLLDDDEERR\",\n    \"ParentFolderId\": \"6cccb832-b76a-11ed-b7fc-043f72e73c62\",\n    \"WorkflowId\": \"63b3878f-0602-11ee-b7fc-043f72e73c62\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": \"277e97b2-8475-11ee-bfeb-b8cef68a6637\",\n        \"RequestId\": \"7d1d9f10-fb66-40c3-b704-5e174ebc95dd\"\n    }\n}",
         "title": "Create Workflow Task Directory Interface"
+      }
+    ],
+    "CreateTaskNew": [
+      {
+        "document": "Create a task",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTaskNew\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1460947878944567296\",\n    \"WorkflowId\": \"c3ebf6b9-d34b-4dff-bc5d-334f8ce11ad1\",\n    \"TaskName\": \"test342342\",\n    \"TaskType\": 35,\n    \"TaskExt\": [\n        {\n            \"Key\": \"extraInfo\",\n            \"Value\": \"eyJmcm9tTWFwcGluZyI6ZmFsc2V9\"\n        }\n    ],\n    \"ProductName\": \"DATA_DEV\",\n    \"LeftCoordinate\": 224,\n    \"TopCoordinate\": 224,\n    \"Content\": \"IyEvYmluL2Jhc2gKIyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiMKIyNhdXRob3I6IGtldmlubmllCiMjY3JlYXRlIHRpbWU6IDIwMjQtMTEtMDcgMTA6NTQ6MzUKIyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiMK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": \"20241107105820356\",\n        \"RequestId\": \"a8b7605c-c3d8-4f92-8e23-4bfb4a57cfd8\"\n    }\n}",
+        "title": "Create a Task"
       }
     ],
     "CreateTaskVersionDs": [
@@ -1714,6 +1736,14 @@
         "title": "Add Parent Task Dependency"
       }
     ],
+    "ModifyTaskLinksDs": [
+      {
+        "document": "successful example",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTaskLinksDs\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1492511691706699776\",\n    \"TaskFrom\": \"20240307211633923\",\n    \"TaskTo\": \"20240307211852581\",\n    \"LinkDependencyType\": \"real_real\",\n    \"WorkflowId\": \"ca1253e8-dc84-11ee-8d13-a4ae120f8272\",\n    \"RealFromWorkflowId\": \"ca1253e8-dc84-11ee-8d13-a4ae120f82sda\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": true,\n        \"LinkId\": \"ca125988-dc84-11ee-8d13-a4ae120f8272\",\n        \"RequestId\": \"ca1sad259-dc84-11ee-8d13-a4ae120f8272\"\n    }\n}",
+        "title": "Successful Example"
+      }
+    ],
     "ModifyTaskName": [
       {
         "document": " ",
@@ -1740,16 +1770,16 @@
     ],
     "ModifyWorkflowSchedule": [
       {
-        "document": "Update Workflow Scheduling",
-        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkflowSchedule\n<Common request parameters>\n\n{\n    \"WorkflowId\": \"34e51bc4-0cd9-11ed-89e105ba60\",\n    \"StartupTime\": \"47483648\",\n    \"SelfDepend\": \"1\",\n    \"ProjectId\": \"1\",\n    \"ExecutionEndTime\": \"\",\n    \"TaskAction\": \"\",\n    \"DelayTime\": \"1\",\n    \"DependencyWorkflow\": \"no\",\n    \"StartTime\": \"2022-03-03 11:12:59\",\n    \"ExecutionStartTime\": \"\",\n    \"EndTime\": \"2022-09-03 11:12:59\",\n    \"CycleType\": \"1\",\n    \"CycleStep\": \"3\",\n    \"CrontabExpression\": \"\"\n}",
+        "document": "This example shows you how to update workflow scheduling.",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkflowSchedule\n<Common request parameters>\n\n{\n    \"WorkflowId\": \"34e51bc4-0cd9-11ed-89e105ba60\",\n    \"StartupTime\": 1712883299,\n    \"SelfDepend\": 2,\n    \"ProjectId\": \"1\",\n    \"ExecutionEndTime\": \"\",\n    \"TaskAction\": \"\",\n    \"DelayTime\": 0,\n    \"DependencyWorkflow\": \"no\",\n    \"StartTime\": \"2022-03-03 11:12:59\",\n    \"ExecutionStartTime\": \"\",\n    \"EndTime\": \"2022-09-03 11:12:59\",\n    \"CycleType\": 1,\n    \"CycleStep\": 10,\n    \"CrontabExpression\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc5397bb-74e6f734102c\",\n        \"Data\": {\n            \"Running\": 0,\n            \"Success\": 0,\n            \"Failed\": 0,\n            \"Total\": 0\n        }\n    }\n}",
-        "title": "Update Workflow Scheduling Example 1"
+        "title": "Update Workflow Scheduling Sample 1"
       },
       {
-        "document": "Update Workflow Scheduling",
-        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkflowSchedule\n<Common request parameters>\n\n{\n    \"WorkflowId\": \"34e51bc4-0cd9-1105ba60\",\n    \"StartupTime\": \"47483648\",\n    \"SelfDepend\": \"1\",\n    \"ProjectId\": \"1\",\n    \"ExecutionEndTime\": \"\",\n    \"TaskAction\": \"\",\n    \"DelayTime\": \"1\",\n    \"DependencyWorkflow\": \"no\",\n    \"StartTime\": \"2022-03-03 11:12:59\",\n    \"ExecutionStartTime\": \"\",\n    \"EndTime\": \"2022-09-03 11:12:59\",\n    \"CycleType\": \"1\",\n    \"CycleStep\": \"3\",\n    \"CrontabExpression\": \"\"\n}",
+        "document": "This example shows you how to update workflow scheduling.",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkflowSchedule\n<Common request parameters>\n\n{\n    \"WorkflowId\": \"34e51bc4-0cd9-1105ba60\",\n    \"StartupTime\": 1712883299,\n    \"SelfDepend\": 2,\n    \"ProjectId\": \"1\",\n    \"ExecutionEndTime\": \"\",\n    \"TaskAction\": \"\",\n    \"DelayTime\": 0,\n    \"DependencyWorkflow\": \"no\",\n    \"StartTime\": \"2022-03-03 11:12:59\",\n    \"ExecutionStartTime\": \"\",\n    \"EndTime\": \"2022-09-03 11:12:59\",\n    \"CycleType\": 1,\n    \"CycleStep\": 10,\n    \"CrontabExpression\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c20f7fea-d73f-44cd-94a5-1d9f884df5cf\",\n        \"Data\": {\n            \"Running\": 0,\n            \"Success\": 0,\n            \"Failed\": 0,\n            \"Total\": 0\n        }\n    }\n}",
-        "title": "Update Workflow Scheduling Example 2"
+        "title": "Update Workflow Scheduling Sample 2"
       }
     ],
     "MoveTasksToFolder": [
@@ -1758,6 +1788,14 @@
         "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MoveTasksToFolder\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1522676572149563392\",\n    \"WorkflowId\": \"63b3878f-0602-11ee-b7fc-043f72e73c62\",\n    \"TaskFolderId\": \"1029cb2d-58f4-4400-b65a-6a3db680955f\",\n    \"TaskIds\": [\n        \"bf8c8d93-da0b-4665-aec9-92890baa9a18\"\n    ],\n    \"VirtualTaskIds\": []\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": true,\n        \"RequestId\": \"bf8c8d93-da0b-4665-aec9-92890baa9a18\"\n    }\n}",
         "title": "Orchestration Space - Workflow - Example of Moving Task to Workflow Folder"
+      }
+    ],
+    "RegisterDsEvent": [
+      {
+        "document": "Create new event",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RegisterDsEvent\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1492511691706699776\",\n    \"Name\": \"test_event_1\",\n    \"EventSubType\": \"DAY\",\n    \"TimeToLive\": \"30\",\n    \"TimeUnit\": \"DAYS\",\n    \"Owner\": \"micofywang\",\n    \"Description\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"CreationTs\": null,\n            \"Description\": \"test\",\n            \"DimensionFormat\": \"yyyyMMdd\",\n            \"EventBroadcastType\": \"BROADCAST\",\n            \"EventSubType\": \"DAY\",\n            \"EventType\": \"TIME_SERIES\",\n            \"Listeners\": null,\n            \"Name\": \"test_event_1\",\n            \"Owner\": \"micofywang\",\n            \"ProjectId\": \"1492511691706699776\",\n            \"ProjectName\": \"\",\n            \"Properties\": null,\n            \"TimeToLive\": 30,\n            \"TimeUnit\": \"DAYS\"\n        },\n        \"RequestId\": \"7bf51807-efe1-499a-952f-d6b040effaa0\"\n    }\n}",
+        "title": "Register Event (Create New Event)"
       }
     ],
     "RegisterEvent": [
@@ -1788,6 +1826,22 @@
         "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveWorkflowDs\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1460947878944567296\",\n    \"WorkflowId\": \"a09dac50-ed66-11ed-8909-bc97e105ba60\"\n}",
         "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation\",\n            \"Message\": \"Workflow to be deleted does not exist\"\n        },\n        \"RequestId\": \"9849acb3-fde9-4c6e-806c-9230fe4ccf01\"\n    }\n}",
         "title": "Workflow does not exist"
+      }
+    ],
+    "RenewWorkflowOwnerDs": [
+      {
+        "document": "demo",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewWorkflowOwnerDs\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1460947878944567296\",\n    \"Owner\": \"jaydenjhu\",\n    \"OwnerId\": \"100028664112\",\n    \"WorkflowIds\": [\n        \"f5d1b42f-ed67-11ed-8909-bc97e105ba60\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Failed\": 0,\n            \"Success\": 1,\n            \"Total\": 1\n        },\n        \"RequestId\": \"6bedbc71-7c98-4223-a4b9-f43a072be9ec\"\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
+    "RenewWorkflowSchedulerInfoDs": [
+      {
+        "document": "demo",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewWorkflowSchedulerInfoDs\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1460947878944567296\",\n    \"WorkflowId\": \"e5b0945c-ed6d-11ed-8909-bc97e105ba60\",\n    \"DelayTime\": 0,\n    \"SelfDepend\": \"serial\",\n    \"StartTime\": \"2023-05-13 12:44:29\",\n    \"EndTime\": \"2023-05-12 23:59:59\",\n    \"TaskAction\": \"\",\n    \"CycleType\": \"DAY_CYCLE\",\n    \"CycleStep\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Failed\": 0,\n            \"Success\": 0,\n            \"Total\": 0\n        },\n        \"RequestId\": \"59a4462b-66f3-4cc2-80a2-46c416726c46\"\n    }\n}",
+        "title": "Example 1"
       }
     ],
     "ResumeIntegrationTask": [
@@ -1896,10 +1950,10 @@
     ],
     "SubmitWorkflow": [
       {
-        "document": "Submit Workflow",
-        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitWorkflow\n<Common request parameters>\n\n{\n    \"StartScheduling\": \"true\",\n    \"WorkflowId\": \"9e993c1d-0cd9-11ed-8e105ba60\",\n    \"VersionRemark\": \"aa\",\n    \"ProjectId\": \"1\"\n}",
+        "document": "Submit a workflow",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitWorkflow\n<Common request parameters>\n\n{\n    \"StartScheduling\": true,\n    \"WorkflowId\": \"9e993c1d-0cd9-11ed-8e105ba60\",\n    \"VersionRemark\": \"v1\",\n    \"ProjectId\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"TaskIds\": [\n                \"20230629153735945\",\n                \"20230629153757617\",\n                \"20230703141549308\"\n            ],\n            \"Result\": true,\n            \"ErrorDesc\": null,\n            \"ErrorId\": null\n        },\n        \"RequestId\": \"1c56c530-b6c9-4976-afd4-3b96fa2bd6bd\"\n    }\n}",
-        "title": "Submit Workflow Example"
+        "title": "Submit a Workflow Example"
       }
     ],
     "SuspendIntegrationTask": [
@@ -1954,6 +2008,14 @@
         "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateProjectUserRole\n<Common request parameters>\n\n{\n    \"RoleIds\": [\n        \"3083526074237440\"\n    ],\n    \"UserIds\": [\n        \"10000377159\"\n    ],\n    \"ProjectId\": \"69244775408074752\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c315ddb4-27fd-4bb3-826-f9c9ddefda\"\n    }\n}",
         "title": "Successful Example"
+      }
+    ],
+    "UpdateWorkflowInfo": [
+      {
+        "document": "This example shows you how to update the common configuration (basic information & parameters) of the workflow.",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateWorkflowInfo\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1470547050521227264\",\n    \"OperatorName\": \"kevinnie\",\n    \"WorkflowId\": \"3dfadfde-af87-11ee-8ec8-b8599f277de5\",\n    \"Owner\": \"zhanglin\",\n    \"OwnerId\": \"100028579801\",\n    \"WorkflowDesc\": \"fd\",\n    \"WorkflowName\": \"bp_ext_clone_01\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": true,\n        \"RequestId\": \"947beddf-ecac-472e-8727-fba35e8cb96e\"\n    }\n}",
+        "title": "Update and Integrate Workflow API"
       }
     ],
     "UpdateWorkflowOwner": [

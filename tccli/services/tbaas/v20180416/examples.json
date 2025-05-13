@@ -1,0 +1,37 @@
+{
+  "actions": {
+    "DescribeFabricBlock": [
+      {
+        "document": "DescribeFabricBlock",
+        "input": "POST / HTTP/1.1\nHost: tbaas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFabricBlock\n<Common request parameters>\n\n{\n    \"ClusterId\": \"fabric-65z42qi150\",\n    \"ChannelId\": \"channel-9xej4d\",\n    \"BlockHeight\": 4\n}",
+        "output": "{\n    \"Response\": {\n        \"BlockHash\": \"e0421ecc20340425a2cf01808469b2523651f8100da92a0287b3769115e57370\",\n        \"BlockHeight\": 4,\n        \"CreateTimestamp\": \"2023-08-05 07:44:04\",\n        \"PreBlockHash\": \"f69b2b5a1884e5bbb077a3025378e2210b83bbada23b5c17045b0bf537a53bd0\",\nProposerOrg: Blockchain test organization pettychen\n        \"RequestId\": \"a6288649-01c0-4d8f-bdd4-ba02163d0721\",\n        \"TransactionList\": [\n            {\n                \"BlockHeight\": 4,\n                \"ChaincodeName\": \"_lifecycle\",\n                \"CreateTime\": \"2023-08-05 15:44:04\",\nSender: Blockchain test organization\n                \"TxId\": \"03389f4a5af1883347ecdb15471e70abf3a8e6cf5b6648dc789674af7930e229\"\n            }\n        ],\n        \"TxCount\": 1\n    }\n}",
+        "title": "DescribeFabricBlock"
+      }
+    ],
+    "DescribeFabricTransaction": [
+      {
+        "document": "DescribeFabricTransaction",
+        "input": "POST / HTTP/1.1\nHost: tbaas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFabricTransaction\n<Common request parameters>\n\n{\n    \"ClusterId\": \"fabric-65z42qi150\",\n    \"ChannelId\": \"channel-9xej4d\",\n    \"TxId\": \"03389f4a5af1883347ecdb15471e70abf3a8e6cf5b6648dc789674af7930e229\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BlockHeight\": 4,\n        \"ChaincodeName\": \"_lifecycle\",\n        \"CreateTime\": \"2023-08-05 15:44:04\",\n        \"JoinOrgList\": [\n            \"org-xxxx.fabric-ian2bqtylk\"\n        ],\n        \"RequestId\": \"b5221353-8f20-4547-8260-c550b4b0175c\",\n        \"Sender\": \"org-xxxx.fabric-ian2bqtylk\",\n        \"TransactionData\": \"eyJjaGFpbmNvZGVfc3BlYyI6eyJjaGFpbmNvZGVfaWQiOnsibmFtZSI6Il9saWZlY3ljbGUiLCJwYXRoIjoiIiwidmVyc2lvbiI6IiJ9LCJpbnB1dCI6eyJhcmdzIjpbIkNvbW1pdENoYWluY29kZURlZmluaXRpb24iLCJcdTAwMDhcdTAwMDFcdTAwMTJcdTAwMDNteWNcdTAwMWFcdTAwMDR2MS4wXCJcdTAwMDRlc2NjKlx1MDAwNHZzY2MyMVxuL1x1MDAxMlx1MDAwOFx1MDAxMlx1MDAwNlx1MDAwOFx1MDAwMVx1MDAxMlx1MDAwMlx1MDAwOFx1MDAwMFx1MDAxYSNcdTAwMTIhXG5cdTAwMWZvcmctMjUxMDA1NzQ2LmZhYnJpYy02NXo0MnFpMTUwOlx1MDAwMCJdLCJkZWNvcmF0aW9ucyI6e30sImlzX2luaXQiOmZhbHNlfSwidGltZW91dCI6MCwidHlwZSI6IlVOREVGSU5FRCJ9fQ==\",\n        \"TxHash\": \"8e5b978d33cfbc0510b4e60406f8481f8ec00e390131d5b6ea6d38604e1bcb46\",\n        \"TxId\": \"03389f4a5af1883347ecdb15471e70abf3a8e6cf5b6648dc789674af7930e229\",\n        \"TxStatus\": \"VALID\"\n    }\n}",
+        "title": "DescribeFabricTransaction"
+      }
+    ],
+    "InvokeFabricChaincode": [
+      {
+        "document": "InvokeFabricChaincode",
+        "input": "POST / HTTP/1.1\nHost: tbaas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InvokeFabricChaincode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"fabric-65z42qi150\",\n    \"ChannelId\": \"channel-9xej4d\",\n    \"ChaincodeName\": \"fact\",\n    \"FuncName\": \"Set\",\n    \"FuncParam\": [\n        \"D\",\n        \"40\"\n    ],\n    \"WithAsyncResult\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bab100f3-be40-415c-b29b-3a44c77b25fe\",\n        \"TxId\": \"0595a33e308170b035e0d97c1a79274ac55badf048c0c8fc569719e14a2990c5\",\n        \"TxResult\": \"\",\n        \"TxStatus\": \"VALID\"\n    }\n}",
+        "title": "InvokeFabricChaincode"
+      }
+    ],
+    "QueryFabricChaincode": [
+      {
+        "document": "QueryFabricChaincode",
+        "input": "POST / HTTP/1.1\nHost: tbaas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryFabricChaincode\n<Common request parameters>\n\n{\n    \"ClusterId\": \"fabric-65z42qi150\",\n    \"ChannelId\": \"channel-9xej4d\",\n    \"ChaincodeName\": \"fact\",\n    \"FuncName\": \"Get\",\n    \"FuncParam\": [\n        \"A\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e431d04c-2a5c-43b4-a480-f127b3f46eb6\",\n        \"TxId\": \"030acb112f9f2aa2ce537fea9d94d2f3c9ec6cf8e05aa62f5d3746167825dbe8\",\n        \"TxResult\": \"10\",\n        \"TxStatus\": \"VALID\"\n    }\n}",
+        "title": "QueryFabricChaincode"
+      }
+    ]
+  },
+  "version": "1.0"
+}

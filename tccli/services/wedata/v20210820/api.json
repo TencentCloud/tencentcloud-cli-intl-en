@@ -14,6 +14,13 @@
       "output": "BatchCreateIntegrationTaskAlarmsResponse",
       "status": "online"
     },
+    "BatchCreateTaskVersionAsync": {
+      "document": "This API is used to asynchronously create task versions in batches.",
+      "input": "BatchCreateTaskVersionAsyncRequest",
+      "name": "Async batch create task versions",
+      "output": "BatchCreateTaskVersionAsyncResponse",
+      "status": "online"
+    },
     "BatchDeleteIntegrationTasks": {
       "document": "Batch Delete Integration Tasks.",
       "input": "BatchDeleteIntegrationTasksRequest",
@@ -246,9 +253,9 @@
       "status": "online"
     },
     "CreateTask": {
-      "document": "Creating task",
+      "document": "This API is used to create a task. This API is deprecated. Use the CreateTaskNew API.",
       "input": "CreateTaskRequest",
-      "name": "Creating task",
+      "name": "Create a task (Deprecated)",
       "output": "CreateTaskResponse",
       "status": "online"
     },
@@ -264,6 +271,13 @@
       "input": "CreateTaskFolderRequest",
       "name": "Create Task Folder",
       "output": "CreateTaskFolderResponse",
+      "status": "online"
+    },
+    "CreateTaskNew": {
+      "document": "This API is used to aggregate task creation.",
+      "input": "CreateTaskNewRequest",
+      "name": "Aggregate task creation",
+      "output": "CreateTaskNewResponse",
       "status": "online"
     },
     "CreateTaskVersionDs": {
@@ -1394,10 +1408,17 @@
       "status": "online"
     },
     "ModifyTaskLinks": {
-      "document": "<p style=\"color:red;\">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>\nAdd Parent Task Dependency",
+      "document": "<p style=\"color:red;\">[Note: This version is only available to some whitelist customers in the Guangzhou zone]</p>.\nAdd parent task dependency. This API is deprecated. Use API ModifyTaskLinksDs.",
       "input": "ModifyTaskLinksRequest",
-      "name": "Add Parent Task Dependency",
+      "name": "Add parent task dependency (Deprecated)",
       "output": "ModifyTaskLinksResponse",
+      "status": "online"
+    },
+    "ModifyTaskLinksDs": {
+      "document": "This API is used to add parent task dependency.",
+      "input": "ModifyTaskLinksDsRequest",
+      "name": "Add parent task dependency for the current task",
+      "output": "ModifyTaskLinksDsResponse",
       "status": "online"
     },
     "ModifyTaskName": {
@@ -1415,16 +1436,16 @@
       "status": "online"
     },
     "ModifyWorkflowInfo": {
-      "document": "Update Workflow Information",
+      "document": "This API is used to update workflow information. (deprecated). Use API UpdateWorkflowInfo.",
       "input": "ModifyWorkflowInfoRequest",
-      "name": "Update Workflow Information",
+      "name": "Updates workflow information (Deprecated)",
       "output": "ModifyWorkflowInfoResponse",
       "status": "online"
     },
     "ModifyWorkflowSchedule": {
-      "document": "Update Workflow Scheduling",
+      "document": "This API is used to update workflow scheduling. This API is deprecated. Use the RenewWorkflowSchedulerInfoDs API instead.",
       "input": "ModifyWorkflowScheduleRequest",
-      "name": "Update Workflow Scheduling",
+      "name": "Updates workflow scheduling (Deprecated)",
       "output": "ModifyWorkflowScheduleResponse",
       "status": "online"
     },
@@ -1435,10 +1456,17 @@
       "output": "MoveTasksToFolderResponse",
       "status": "online"
     },
+    "RegisterDsEvent": {
+      "document": "This API is used to register an event.",
+      "input": "RegisterDsEventRequest",
+      "name": "Register an event",
+      "output": "RegisterDsEventResponse",
+      "status": "online"
+    },
     "RegisterEvent": {
-      "document": "<p style=\"color:red;\">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>\nRegistration Event",
+      "document": "<p style=\"color:red;\">[Note: This version is only available for partial allowlisted customers in the Guangzhou region]</p>.\nThis API is used to register events. This API is deprecated. Use API RegisterDsEvent.",
       "input": "RegisterEventRequest",
-      "name": "Registration Event (Create New Event)",
+      "name": "Register event (Deprecated)",
       "output": "RegisterEventResponse",
       "status": "online"
     },
@@ -1454,6 +1482,20 @@
       "input": "RemoveWorkflowDsRequest",
       "name": "Delete orchestration space workflow",
       "output": "RemoveWorkflowDsResponse",
+      "status": "online"
+    },
+    "RenewWorkflowOwnerDs": {
+      "document": "This API is used to batch update the task owner under a workflow.",
+      "input": "RenewWorkflowOwnerDsRequest",
+      "name": "Batch updates the task owner under a workflow",
+      "output": "RenewWorkflowOwnerDsResponse",
+      "status": "online"
+    },
+    "RenewWorkflowSchedulerInfoDs": {
+      "document": "This API is used to update task scheduling information under a workflow.",
+      "input": "RenewWorkflowSchedulerInfoDsRequest",
+      "name": "Updates the task scheduling information under a workflow",
+      "output": "RenewWorkflowSchedulerInfoDsResponse",
       "status": "online"
     },
     "ResumeIntegrationTask": {
@@ -1534,9 +1576,9 @@
       "status": "online"
     },
     "SubmitTask": {
-      "document": "<p style=\"color:red;\">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>\nSubmit a Task",
+      "document": "<p style=\"color:red;\">[Note: This version is only available for partial whitelist customers in the Guangzhou zone]</p>.\nThis API is used to submit tasks. This API is deprecated. Use the CreateTaskVersionDs API.",
       "input": "SubmitTaskRequest",
-      "name": "Submit a Task",
+      "name": "Submit tasks (Deprecated)",
       "output": "SubmitTaskResponse",
       "status": "online"
     },
@@ -1548,9 +1590,9 @@
       "status": "online"
     },
     "SubmitWorkflow": {
-      "document": "Submit Workflow",
+      "document": "Submit a workflow. This API is deprecated. Use the BatchCreateTaskVersionAsync API.",
       "input": "SubmitWorkflowRequest",
-      "name": "Submit Workflow",
+      "name": "Submits a workflow (Deprecated)",
       "output": "SubmitWorkflowResponse",
       "status": "online"
     },
@@ -1576,9 +1618,9 @@
       "status": "online"
     },
     "TriggerEvent": {
-      "document": "<p style=\"color:red;\">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>\nTrigger events",
+      "document": "<p style=\"color:red;\">[Note: This version is only available to some allowlisted customers in the Guangzhou region]</p>.\nThis API is used to trigger event. This API is deprecated. Use API TriggerDsEvent.",
       "input": "TriggerEventRequest",
-      "name": "Trigger Events to Generate Event Instance",
+      "name": "Trigger event to generate event instance (Deprecated)",
       "output": "TriggerEventResponse",
       "status": "online"
     },
@@ -1596,10 +1638,17 @@
       "output": "UpdateProjectUserRoleResponse",
       "status": "online"
     },
+    "UpdateWorkflowInfo": {
+      "document": "This API is developed in ds.\nThis API is used to update a workflow, including its basic information and workflow parameters.",
+      "input": "UpdateWorkflowInfoRequest",
+      "name": "Updates workflow information [integrated]",
+      "output": "UpdateWorkflowInfoResponse",
+      "status": "online"
+    },
     "UpdateWorkflowOwner": {
-      "document": "Modifying Workflow Person in Charge",
+      "document": "This API is used to modify the workflow owner. Deprecated. Use the RenewWorkflowOwnerDs API.",
       "input": "UpdateWorkflowOwnerRequest",
-      "name": "Modifying Workflow Person in Charge",
+      "name": "Modify the workflow owner (Deprecated)",
       "output": "UpdateWorkflowOwnerResponse",
       "status": "online"
     },
@@ -3325,6 +3374,88 @@
       ],
       "type": "object"
     },
+    "BatchCreateTaskVersionAsyncRequest": {
+      "document": "BatchCreateTaskVersionAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task information",
+          "example": "taskinfo",
+          "member": "BatchCreateTaskVersionDTO",
+          "name": "Tasks",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1470547050521227264",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to run automatically",
+          "example": "FALSE",
+          "member": "bool",
+          "name": "AutoRun",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Alert method: email-email; sms-sms; wecom-wecom",
+          "example": "email",
+          "member": "string",
+          "name": "AlarmWays",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm object: 1. Project Administrator. 2. Task Owner",
+          "example": "1",
+          "member": "string",
+          "name": "AlarmRecipientTypes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether validation is required to check if the parent task has been submitted to scheduling",
+          "example": "无",
+          "member": "bool",
+          "name": "NeedCheckParentSubmitted",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchCreateTaskVersionAsyncResponse": {
+      "document": "BatchCreateTaskVersionAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Batch Operation Return\nNote: This field may return null, indicating that no valid values can be obtained",
+          "example": "无",
+          "member": "BatchTaskOperateNew",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "BatchCreateTaskVersionDTO": {
       "document": "Used by BatchCreateTaskVersion, describes task information",
       "members": [
@@ -3924,6 +4055,16 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unique id of the asynchronous operation record.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "111222",
+          "member": "string",
+          "name": "AsyncActionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4092,6 +4233,42 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchResultDs": {
+      "document": "Batch execution result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of successes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Success",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Failure count.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Failed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4653,6 +4830,22 @@
         }
       ],
       "type": "object"
+    },
+    "BatchTaskOperateNew": {
+      "document": "Batch operation output parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "JobId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "BatchUpdateIntegrationTasksRequest": {
       "document": "BatchUpdateIntegrationTasks request structure.",
@@ -8067,6 +8260,142 @@
         {
           "disabled": false,
           "document": "Task Folder ID, null if creation failed\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTaskNewRequest": {
+      "document": "CreateTaskNew request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1888532523621",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow ID",
+          "example": "55411f22-516b-4c8c-1111-5d4242a00",
+          "member": "string",
+          "name": "WorkflowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task Name",
+          "example": "task_test",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "26 offline synchronization,30 Python,31 PySpark,32 DLC,33 Impala,34 Hive SQL,35 Shell,36 Spark SQL,39 Spark,40 CDW PG,92 MapReduce.",
+          "example": "26",
+          "member": "int64",
+          "name": "TaskType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Extended Attribute",
+          "example": "sql.file.name=\"\"",
+          "member": "TaskExtInfo",
+          "name": "TaskExt",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Product Name",
+          "example": "DATA_DEV",
+          "member": "string",
+          "name": "ProductName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the task instance initialization strategy",
+          "example": "T+1",
+          "member": "string",
+          "name": "InstanceInitStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The horizontal axis of the canvas coordinate",
+          "example": "1.0",
+          "member": "float",
+          "name": "LeftCoordinate",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "The vertical axis of the canvas coordinate",
+          "example": "1.0",
+          "member": "float",
+          "name": "TopCoordinate",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow Directory ID",
+          "example": "bf8c8d93-da0b-4665-aec9-92890baa9a18",
+          "member": "string",
+          "name": "TaskFolderId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the script content, base64 encoded",
+          "example": "c2VsZWN0IDE7",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Code Template ID",
+          "example": "20250306102407751",
+          "member": "string",
+          "name": "CodeTemplateId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTaskNewResponse": {
+      "document": "CreateTaskNew response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "None\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Data",
@@ -21404,6 +21733,249 @@
       ],
       "usage": "out"
     },
+    "EventDsDto": {
+      "document": "Event management - event entity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Event name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "event",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event type GENERAL, TIME_SERIES.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "GENERAL",
+          "member": "string",
+          "name": "EventType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Survival time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeToLive",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Lifetime unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DAYS",
+          "member": "string",
+          "name": "TimeUnit",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event segmentation type: SECOND, MIN, HOUR, DAY.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SECOND",
+          "member": "string",
+          "name": "EventSubType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event BROADCAST type: SINGLE, BROADCAST.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SINGLE",
+          "member": "string",
+          "name": "EventBroadcastType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "yyyyMMdd",
+          "member": "string",
+          "name": "DimensionFormat",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-04-21T03:42:04.707Z",
+          "member": "string",
+          "name": "CreationTs",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event owner.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "张三",
+          "member": "string",
+          "name": "Owner",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Attribute.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Properties",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description information\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "测试",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event listener information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EventListenerDTO",
+          "name": "Listeners",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EventListenerDTO": {
+      "document": "Event listener information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Keyword, generally the task id.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "REST_API,KAFKA\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "REST_API",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreationTs",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration information\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamInfoDs",
+          "name": "PropertiesList",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EventName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Listener task information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EventListenerTaskInfo",
+          "name": "TaskInfo",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project id to which the event belongs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EventProjectId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "EventListenerOpsDto": {
       "document": "Event Listener",
       "members": [
@@ -21459,6 +22031,100 @@
         }
       ],
       "usage": "out"
+    },
+    "EventListenerTaskInfo": {
+      "document": "Listener task information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task Name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "测试",
+          "member": "string",
+          "name": "TaskName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Workflow id.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "433",
+          "member": "string",
+          "name": "WorkflowId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Workflow name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "工作流",
+          "member": "string",
+          "name": "WorkflowName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task type id.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "32",
+          "member": "int64",
+          "name": "TaskTypeId",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task type name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DLC",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "765",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task cycle type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HOUR_CYCLE",
+          "member": "string",
+          "name": "CycleType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "EventOpsDto": {
       "document": "Event details",
@@ -29616,6 +30282,116 @@
       ],
       "type": "object"
     },
+    "ModifyTaskLinksDsRequest": {
+      "document": "ModifyTaskLinksDs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1492511691706699776",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parent Task ID",
+          "example": "20240307211633923",
+          "member": "string",
+          "name": "TaskFrom",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtask ID",
+          "example": "20240307211852581",
+          "member": "string",
+          "name": "TaskTo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtask Workflow",
+          "example": "ca1253e8-dc84-11ee-8d13-a4ae120f8272",
+          "member": "string",
+          "name": "WorkflowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parent task Workflow",
+          "example": "ca1253e8-dc84-11ee-8d13-a4ae120f82dasd",
+          "member": "string",
+          "name": "RealFromWorkflowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Request source, WEB frontend; CLIENT CLIENT.",
+          "example": "无",
+          "member": "string",
+          "name": "RequestFromSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Dependency relationship between parent and child tasks.\nEnable all instances that normally depend on the parent task.\n    normal_all(1),\nnormal dependent on parent task first one.\nSpecifies the normal dependent on parent task, which is the last one (3).\nValid values: normal, any one of dependent on parent tasks (4).\nnormal dependent on parent task a specified one.\nself-Dependency, cannot use.\n\nInvalid dependent parent task for all instances. enable (forward dependency for tomorrow).\n    non_normal_all_forward(11),\nnon-normal dependent on parent task. first one forward (12).\nnon-normal dependent on parent task, last one.\nNot normal, dependent on parent task, any one.\nSpecifies a non-normal task that depends on the parent task and designates one.\n\nSpecifies that all instances dependent on a non-normal parent task are enabled (backward dependency on yesterday).\n    non_normal_all_backward(21),\nnon-normal dependent on parent task. first one backward (22).\nNot normal dependent on parent task last one backward.\nnon-normal dependent on parent task, any one.\nSpecifies a non-normal task that depends on the parent task.",
+          "example": "normal_all",
+          "member": "string",
+          "name": "LinkDependencyType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Additional attribute information such as branch node and merge node information.",
+          "example": "无",
+          "member": "string",
+          "name": "LinkExt",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTaskLinksDsResponse": {
+      "document": "ModifyTaskLinksDs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Succeeded or Failed\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Data",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "linkID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LinkId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyTaskLinksRequest": {
       "document": "ModifyTaskLinks request structure.",
       "members": [
@@ -31591,6 +32367,32 @@
       ],
       "usage": "both"
     },
+    "ParamInfoDs": {
+      "document": "Parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "无",
+          "member": "string",
+          "name": "ParamKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value",
+          "example": "无",
+          "member": "string",
+          "name": "ParamValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Partition": {
       "document": "Partition Parameter",
       "members": [
@@ -32201,6 +33003,124 @@
       ],
       "usage": "out"
     },
+    "RegisterDsEventRequest": {
+      "document": "RegisterDsEvent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1470547050521227264",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event Name",
+          "example": "test_event",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event cycle type: \n1. minute: MIN\n2. HOUR: HOUR \n3. DAY: DAY",
+          "example": "DAY",
+          "member": "string",
+          "name": "EventSubType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event ttl. specifies a value that is an integer above 0",
+          "example": "1",
+          "member": "string",
+          "name": "TimeToLive",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Lifetime unit of the event: 1. day: DAYS 2. minute: MINUTES",
+          "example": "DAYS",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event Owner Account Nickname",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event Description",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Event type GENERAL, TIME_SERIES",
+          "example": "TIME_SERIES",
+          "member": "string",
+          "name": "EventType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Event BROADCAST type: SINGLE, BROADCAST",
+          "example": "BROADCAST",
+          "member": "string",
+          "name": "EventBroadcastType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Time Format",
+          "example": "yyyymmdd",
+          "member": "string",
+          "name": "DimensionFormat",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterDsEventResponse": {
+      "document": "RegisterDsEvent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Event information.\nNote: This field may return null, indicating that no valid values can be obtained",
+          "example": "无",
+          "member": "EventDsDto",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RegisterEventListenerRequest": {
       "document": "RegisterEventListener request structure.",
       "members": [
@@ -32280,7 +33200,7 @@
         {
           "disabled": false,
           "document": "Project ID",
-          "example": "\"1492511691706699776\"",
+          "example": "1492511691706699776",
           "member": "string",
           "name": "ProjectId",
           "required": true,
@@ -32289,7 +33209,7 @@
         {
           "disabled": false,
           "document": "Event Name, supports English, numbers, and underscores, up to 20 characters long, cannot start with a number or underscore.",
-          "example": "\"test_event\"",
+          "example": "test_event",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -32298,7 +33218,7 @@
         {
           "disabled": false,
           "document": "Event Segmentation Type, cycle types: DAY, HOUR, MIN, SECOND",
-          "example": "\"DAY\"",
+          "example": "DAY",
           "member": "string",
           "name": "EventSubType",
           "required": true,
@@ -32307,7 +33227,7 @@
         {
           "disabled": false,
           "document": "Broadcast: BROADCAST, Unicast: SINGLE",
-          "example": "\"SINGLE\"",
+          "example": "SINGLE",
           "member": "string",
           "name": "EventBroadcastType",
           "required": true,
@@ -32316,7 +33236,7 @@
         {
           "disabled": false,
           "document": "For cycle types of day and hour: HOURS, For minutes: MINUTES, For seconds: SECONDS",
-          "example": "\"DAY\"",
+          "example": "DAYS",
           "member": "string",
           "name": "TimeUnit",
           "required": true,
@@ -32325,7 +33245,7 @@
         {
           "disabled": false,
           "document": "Event Owner",
-          "example": "\"tom\"",
+          "example": "tom",
           "member": "string",
           "name": "Owner",
           "required": true,
@@ -32333,8 +33253,8 @@
         },
         {
           "disabled": false,
-          "document": "Event Type, default value: TIME_SERIES",
-          "example": "\"TIME_SERIES\"",
+          "document": "Required. event type. default value: TIME_SERIES.",
+          "example": "TIME_SERIES",
           "member": "string",
           "name": "EventType",
           "required": false,
@@ -32342,8 +33262,8 @@
         },
         {
           "disabled": false,
-          "document": "Corresponding DAY: yyyyMMdd, Corresponding HOUR: yyyyMMddHH, Corresponding MIN: yyyyMMddHHmm, Corresponding SECOND: yyyyMMddHHmmss",
-          "example": "\"yyyyMMdd\"",
+          "document": "Required. corresponds to day: yyyyMMdd, corresponds to HOUR: yyyyMMddHH, corresponds to MIN: yyyyMMddHHmm, corresponds to SECOND: yyyyMMddHHmmss. default value: yyyyMMdd.",
+          "example": "yyyyMMdd",
           "member": "string",
           "name": "DimensionFormat",
           "required": false,
@@ -32361,7 +33281,7 @@
         {
           "disabled": false,
           "document": "Event Description",
-          "example": "\"天事件\"",
+          "example": "天事件",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -32455,6 +33375,287 @@
           "output_required": true,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewWorkflowOwnerDsRequest": {
+      "document": "RenewWorkflowOwnerDs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Workflow ID",
+          "example": "1460947878944567296",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Responsible Person",
+          "example": "jaydjhu",
+          "member": "string",
+          "name": "Owner",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Responsible Person ID",
+          "example": "100028664882",
+          "member": "string",
+          "name": "OwnerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow ID List",
+          "example": "[\"f5d1b42f-ed67-11ed-8909-bc97e105ba60\"]",
+          "member": "string",
+          "name": "WorkflowIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewWorkflowOwnerDsResponse": {
+      "document": "RenewWorkflowOwnerDs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Execution Result",
+          "example": "无",
+          "member": "BatchResultDs",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewWorkflowSchedulerInfoDsRequest": {
+      "document": "RenewWorkflowSchedulerInfoDs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow ID",
+          "example": "无",
+          "member": "string",
+          "name": "WorkflowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Delay Time",
+          "example": "无",
+          "member": "uint64",
+          "name": "DelayTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start Time",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartupTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task Dependency",
+          "example": "无",
+          "member": "string",
+          "name": "SelfDepend",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start Time",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End Time",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified Running Time",
+          "example": "无",
+          "member": "string",
+          "name": "TaskAction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduling Cycle Time Unit",
+          "example": "无",
+          "member": "string",
+          "name": "CycleType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduling Cycle",
+          "example": "无",
+          "member": "int64",
+          "name": "CycleStep",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Execution Time Left Closed Interval",
+          "example": "无",
+          "member": "string",
+          "name": "ExecutionStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Execution Time Right Closed Interval",
+          "example": "无",
+          "member": "string",
+          "name": "ExecutionEndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task initialization strategy. valid values: T_PLUS_1, T_PLUS_0, T_MINUS_1",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceInitStrategy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow dependency. valid values: yes or no",
+          "example": "无",
+          "member": "string",
+          "name": "DependencyWorkflow",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CrontabExpression",
+          "example": "无",
+          "member": "string",
+          "name": "CrontabExpression",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0: Do not modify \n1: Change the upstream dependency configuration of the task to the default value",
+          "example": "0、1",
+          "member": "string",
+          "name": "ModifyCycleValue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether calendar scheduling is enabled. 1 means enabled, and 0 means disabled.",
+          "example": "无",
+          "member": "string",
+          "name": "CalendarOpen",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Calendar name.",
+          "example": "无",
+          "member": "string",
+          "name": "CalendarName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Calendar id.",
+          "example": "无",
+          "member": "string",
+          "name": "CalendarId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time zone.",
+          "example": "无",
+          "member": "string",
+          "name": "ScheduleTimeZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically clean up links to unsupported tasks.",
+          "example": "true",
+          "member": "bool",
+          "name": "ClearLink",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewWorkflowSchedulerInfoDsResponse": {
+      "document": "RenewWorkflowSchedulerInfoDs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BatchResultDs",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -42720,6 +43921,142 @@
     "UpdateProjectUserRoleResponse": {
       "document": "UpdateProjectUserRole response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateWorkflowInfoRequest": {
+      "document": "UpdateWorkflowInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1470547050521227264",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operator Name",
+          "example": "kevinnie",
+          "member": "string",
+          "name": "OperatorName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow ID",
+          "example": "3dfadfde-af87-11ee-8ec8-b8599f277de5",
+          "member": "string",
+          "name": "WorkflowId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Responsible Person",
+          "example": "kevinnie",
+          "member": "string",
+          "name": "Owner",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Responsible Person ID",
+          "example": "1000285798991",
+          "member": "string",
+          "name": "OwnerId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "更新工作流",
+          "member": "string",
+          "name": "WorkflowDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow Name",
+          "example": "workflow2",
+          "member": "string",
+          "name": "WorkflowName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Folder ID",
+          "example": "3dfadfde-af87-11ee-8ec8-b85900277de5",
+          "member": "string",
+          "name": "FolderId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow user group id. if there are multiple, separate them with a semicolon: a;b;c",
+          "example": "1000285798900",
+          "member": "string",
+          "name": "UserGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow user group name if there are multiple, separate with semicolons: a;b;c",
+          "example": "kevinnie",
+          "member": "string",
+          "name": "UserGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow Parameter List",
+          "example": "[{\"ParamKey\":\"aa\",\"ParamValue\":\"ss\"}]",
+          "member": "ParamInfo",
+          "name": "WorkflowParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies configuration optimization parameters (such as threads, memory, and number of CPU cores), which apply to Spark SQL nodes. separate multiple parameters with semicolons.",
+          "example": "[{\"Type\":\"SPARK_SQL\",\"Value\":\"spark.executor=1\"}]",
+          "member": "GeneralTaskParam",
+          "name": "GeneralTaskParams",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateWorkflowInfoResponse": {
+      "document": "UpdateWorkflowInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "true indicates success; false indicates failure.",
+          "example": "无",
+          "member": "bool",
+          "name": "Data",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",

@@ -108,7 +108,7 @@
       {
         "document": "This example shows you how to recognize an exit/entry permit for traveling to and from Hong Kong, Macao, or Taiwan.",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PermitOCR\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://xx/a.jpg \"\n}",
-        "output": "{\n    \"Response\": {\n        \"Name\": \"李明\",\n        \"EnglishName\": \"LIMING\",\n        \"Number\": \"C00000000\",\n        \"Sex\": \"男\",\n        \"ValidDate\": \"2018.10.09-2028.10.08\",\n        \"IssueAuthority\": \"公安部出入境管理局\",\n        \"IssueAddress\": \"广东\",\n        \"Birthday\": \"1981.08.03\",\n        \"RequestId\": \"3090debe-3662-4ef1-8784-6ef2fb59f75e\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"\",\n        \"EnglishName\": \"LIMING\",\n        \"Number\": \"C00000000\",\n        \"Sex\": \"\",\n        \"ValidDate\": \"2018.10.09-2028.10.08\",\n        \"IssueAuthority\": \"\",\n        \"IssueAddress\": \"\",\n        \"Birthday\": \"1981.08.03\",\n        \"RequestId\": \"3090debe-3662-4ef1-8784-6ef2fb59f75e\"\n    }\n}",
         "title": "Recognizing an exit/entry permit for traveling to and from Hong Kong, Macao, or Taiwan"
       }
     ],
