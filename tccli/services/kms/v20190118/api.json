@@ -510,7 +510,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.",
+          "document": "Specifies that the ciphertext encrypted with PublicKey is Base64 encoded. the original ciphertext format needs to be C1C3C2_ASN1. the length of the original ciphertext cannot exceed 256 bytes.",
           "example": "MG0CICuRefoqE7g5bpsZNYq+9d909cZl7nFuYFHiDhOqz8GAAiEA4lqmt3nGqpbu0qhbWsStkexXA2cA12nVWjgruFP5WKkEIG6JwYejm9gEr7CPOOhbirsGhga3W7J6C7kwdmf6VebRBATH1o2G",
           "member": "string",
           "name": "Ciphertext",
@@ -575,7 +575,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
+          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service's features.",
           "example": "resourceId",
           "member": "string",
           "name": "ResourceId",
@@ -756,7 +756,7 @@
         },
         {
           "disabled": false,
-          "document": "CMK description",
+          "document": "Specifies the description of the CMK.",
           "example": "这是一个test描述",
           "member": "string",
           "name": "Description",
@@ -786,7 +786,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error",
+          "document": "Return code of Tag operation. `0`: success; `1`: cls internal error; `2`: business processing error.",
           "example": "0",
           "member": "uint64",
           "name": "TagCode",
@@ -796,7 +796,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag operation return information",
+          "document": "Response information of Tag operation.",
           "example": "ok",
           "member": "string",
           "name": "TagMsg",
@@ -806,7 +806,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "HSM cluster ID (valid only for exclusive or managed version KMS service instances).",
           "example": "cls-hsm-1234abcd",
           "member": "string",
           "name": "HsmClusterId",
@@ -900,7 +900,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag operation return code. 0: success; 1: internal error; 2: business processing error",
+          "document": "Return code of Tag operation. `0`: success; `1`: internal error; `2`: business processing error.",
           "example": "0",
           "member": "uint64",
           "name": "TagCode",
@@ -910,7 +910,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag operation return message",
+          "document": "Response information of Tag operation.",
           "example": "ok",
           "member": "string",
           "name": "TagMsg",
@@ -1075,7 +1075,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Key attribute information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the attribute information of the key.",
           "example": "{\"Alias\":\"test11lzc\",\"CreateTime\":1730357927,\"CreatorUin\":700001224419,\"DeletionDate\":0,\"Description\":\"倒入外部密钥\",\"HsmClusterId\":\"\",\"KeyId\":\"93866e69-9755-11ef-8e65-52540089bc41\",\"KeyRotationEnabled\":false}",
           "member": "KeyMetadata",
           "name": "KeyMetadata",
@@ -1112,7 +1112,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of returned attribute information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The attribute information list returned.",
           "example": "{\"Alias\":\"test11lzc\",\"CreateTime\":1730357927,\"CreatorUin\":700001224419,\"DeletionDate\":0,\"Description\":\"倒入外部密钥\",\"HsmClusterId\":\"\",\"KeyId\":\"93866e69-9755-11ef-8e65-52540089bc41\",\"KeyRotationEnabled\":false}",
           "member": "KeyMetadata",
           "name": "KeyMetadatas",
@@ -1260,7 +1260,7 @@
         },
         {
           "disabled": false,
-          "document": "Total white-box keys.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total number of white-box keys.",
           "example": "4",
           "member": "uint64",
           "name": "TotalCount",
@@ -1357,7 +1357,7 @@
         },
         {
           "disabled": false,
-          "document": "Description, such as IP and device name. Length limit: 1,024 bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Description information, such as IP and device name, with a maximum of 1024 bytes.",
           "example": "lzctest",
           "member": "string",
           "name": "Description",
@@ -1778,6 +1778,32 @@
       ],
       "type": "object"
     },
+    "ExclusiveHSM": {
+      "document": "Exclusive edition cluster.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dedicated cluster Id.",
+          "example": "cls-hsm-3dflmo9g",
+          "member": "string",
+          "name": "HsmClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dedicated cluster name.",
+          "example": "cls-hsm-3dflmo9g-name",
+          "member": "string",
+          "name": "HsmClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "GenerateDataKeyRequest": {
       "document": "GenerateDataKey request structure.",
       "members": [
@@ -2106,7 +2132,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of supported regions\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Available region list.",
           "example": "[       \"ap-guangzhou\",       \"ap-hongkong\",       \"ap-taipei\",       \"ap-shanghai\",       \"ap-jakarta\"     ]",
           "member": "string",
           "name": "Regions",
@@ -2143,7 +2169,7 @@
         },
         {
           "disabled": false,
-          "document": "Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released",
+          "document": "Service unavailability type: 0-not purchased, 1-normal, 2-service suspended due to overdue payments, 3-resource release.",
           "example": "1",
           "member": "int64",
           "name": "InvalidType",
@@ -2163,7 +2189,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time of the KMS Ultimate edition. It’s represented in a Unix Epoch timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the expiry time (Epoch Unix Timestamp) of the flagship edition.",
           "example": "1603701385",
           "member": "uint64",
           "name": "ProExpireTime",
@@ -2173,7 +2199,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically renew Ultimate Edition. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies whether the flagship edition is automatically renewed: 0 - no automatic renewal, 1 - automatic renewal.",
           "example": "1",
           "member": "uint64",
           "name": "ProRenewFlag",
@@ -2183,7 +2209,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Unique identifier for the purchase record of the flagship edition. if the flagship edition is enabled, the return value is null.",
           "example": "kms_pro_12345",
           "member": "string",
           "name": "ProResourceId",
@@ -2193,7 +2219,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to activate Managed KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable the KMS-managed version.",
           "example": "false",
           "member": "bool",
           "name": "ExclusiveVSMEnabled",
@@ -2203,7 +2229,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to activate Exclusive KMS\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable the exclusive edition of KMS.",
           "example": "false",
           "member": "bool",
           "name": "ExclusiveHSMEnabled",
@@ -2213,12 +2239,42 @@
         },
         {
           "disabled": false,
-          "document": "KMS subscription information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the KMS subscription information.",
           "example": "Prepaid_KMS",
           "member": "string",
           "name": "SubscriptionInfo",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returns the amount of KMS user secret keys used.",
+          "example": "10",
+          "member": "uint64",
+          "name": "CmkUserCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returns the specification quantity of KMS user secret keys.",
+          "example": "200",
+          "member": "uint64",
+          "name": "CmkLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return dedicated cluster group.",
+          "example": "[{\"HsmClusterId\":\"cls-hsm-a1b2c3d4\",\"HsmClusterName\":\"cls-hsm-a1b2c3d4-name\"},{\"HsmClusterId\":\"cls-hsm-a1b2cd5\",\"HsmClusterName\":\"cls-hsm-a1b2c3d5-name\"}]",
+          "member": "ExclusiveHSM",
+          "name": "ExclusiveHSMList",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -2415,7 +2471,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled deletion time",
+          "document": "The time when scheduled deletion occurs.",
           "example": "0",
           "member": "uint64",
           "name": "DeletionDate",
@@ -2425,7 +2481,7 @@
         },
         {
           "disabled": false,
-          "document": "CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "CMK key material type. the type created by KMS is TENCENT_KMS. the user-imported type is EXTERNAL.",
           "example": "EXTERNAL",
           "member": "string",
           "name": "Origin",
@@ -2435,7 +2491,7 @@
         },
         {
           "disabled": false,
-          "document": "It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Valid when Origin is EXTERNAL. indicates the validity date of the key material. 0 means no expiration.",
           "example": "0",
           "member": "uint64",
           "name": "ValidTo",
@@ -2455,12 +2511,32 @@
         },
         {
           "disabled": false,
-          "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "HSM cluster ID (valid only for exclusive or managed version KMS service instances).",
           "example": "cls-hsm-1a2b3c4d",
           "member": "string",
           "name": "HsmClusterId",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Key rotation period (days).",
+          "example": "365",
+          "member": "uint64",
+          "name": "RotateDays",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last disorderly rotation time (Unix timestamp).",
+          "example": "1730716649",
+          "member": "uint64",
+          "name": "LastRotateTime",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2624,7 +2700,7 @@
         },
         {
           "disabled": false,
-          "document": "List of returned attribute information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the returned attribute information list.",
           "example": "[       {         \"Alias\": \"Weijiali_test_000000005\",         \"CreateTime\": 1725354067,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"weijiali_test_00000000000005\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"0ed49d3e-69d3-11ef-9841-52540089bc41\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ASYMMETRIC_SIGN_VERIFY_SM2\",         \"LastRotateTime\": 1725354067,         \"NextRotateTime\": 1756890067,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/0ed49d3e-69d3-11ef-9841-52540089bc41\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       },       {         \"Alias\": \"Weijiali_test_00000000000004\",         \"CreateTime\": 1725354055,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"Weijiali_test_00000000000004\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"07ad2031-69d3-11ef-9841-52540089bc41\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ASYMMETRIC_DECRYPT_SM2\",         \"LastRotateTime\": 1725354055,         \"NextRotateTime\": 1756890055,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/07ad2031-69d3-11ef-9841-52540089bc41\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       },       {         \"Alias\": \"weijiali_test_00000000000003\",         \"CreateTime\": 1725354040,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"weijiali_test_00000000000003\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"fea98175-69d2-11ef-910d-525400d834e5\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ENCRYPT_DECRYPT\",         \"LastRotateTime\": 1725354040,         \"NextRotateTime\": 1756890040,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/fea98175-69d2-11ef-910d-525400d834e5\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       }     ]",
           "member": "KeyMetadata",
           "name": "KeyMetadatas",
@@ -2688,7 +2764,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CMK list array",
+          "document": "CMK list array.",
           "example": "[       {         \"KeyId\": \"515d337d-70b4-11ef-bc87-02ac442a5a1f\"       },       {         \"KeyId\": \"0ed49d3e-69d3-11ef-9841-52540089bc41\"       }     ]",
           "member": "Key",
           "name": "Keys",
@@ -3258,7 +3334,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
+          "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service's features.",
           "example": "resourceId",
           "member": "string",
           "name": "ResourceId",
@@ -3540,7 +3616,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether there is a device fingerprint bound to the current key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies whether there is a device fingerprint bound to the current key.",
           "example": "false",
           "member": "bool",
           "name": "DeviceFingerprintBind",
