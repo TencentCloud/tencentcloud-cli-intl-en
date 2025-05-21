@@ -16,6 +16,32 @@
         "title": "Adding resource to a bandwidth package"
       }
     ],
+    "AddTemplateMember": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AddTemplateMember\n&TemplateId=ipm-88t6207k\n&TemplateMember.0.Member=10.0.0.1\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=172.20.0.1/24\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the IP Address Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AddTemplateMember\n&TemplateId=ipmg-dih8xdbq\n&TemplateMember.0.Member=ipm-88t6207k\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=ipm-mdunqeb6\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the IP Address Group Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AddTemplateMember\n&TemplateId=ppm-6zwa44xm\n&TemplateMember.0.Member=TCP:80\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=TCP:443\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the Protocol Port Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=AddTemplateMember\n&TemplateId=ppmg-ms7c7gcr\n&TemplateMember.0.Member=ppm-6zwa44xm\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=ppm-4tw1bxlq\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the Protocol Port Group Type"
+      }
+    ],
     "AdjustPublicAddress": [
       {
         "document": "This example show you how to change the public IP of a CVM instance.",
@@ -812,6 +838,32 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=DeleteSubnet\r\n&Version=2017-03-12\r\n&SubnetId=subnet-pxir56ns\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting a subnet"
+      }
+    ],
+    "DeleteTemplateMember": [
+      {
+        "document": "This example shows you how to delete a parameter template of the IP address type.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteTemplateMember\n&TemplateId=ipm-test1234\n&TemplateMember.0.Member=10.0.0.1\n&TemplateMember.1.Member=172.20.0.1/24\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Deleting a Parameter Template of the IP Address Type"
+      },
+      {
+        "document": "This example shows you how to delete a parameter template of the IP address group type.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteTemplateMember\n&TemplateId=ipmg-test1234\n&TemplateMember.0.Member=ipm-test1234\n&TemplateMember.1.Member=ipm-demo1234\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Deleting a Parameter Template of the IP Address Group Type"
+      },
+      {
+        "document": "This example shows you how to add a parameter template of the protocol port type.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteTemplateMember\n&TemplateId=ppm-test1234\n&TemplateMember.0.Member=TCP:80\n&TemplateMember.1.Member=TCP:443\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the Protocol Port Type"
+      },
+      {
+        "document": "This example shows you how to add a parameter template of the protocol port group type.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteTemplateMember\n&TemplateId=ppmg-test1234\n&TemplateMember.0.Member=ppm-test1234\n&TemplateMember.1.Member=ppm-demo1234\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Adding a Parameter Template of the Protocol Port Group Type"
       }
     ],
     "DeleteTrafficPackages": [
@@ -2228,6 +2280,32 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=ModifySubnetAttribute\n&SubnetId=subnet-test1234\n&SubnetName=NewSubnetName\n&EnableBroadcast=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"20569756-56ba-4a13-b545-e1528d5cb239\"\n    }\n}",
         "title": "Modifying the attributes of a subnet"
+      }
+    ],
+    "ModifyTemplateMember": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyTemplateMember\n&TemplateId=ipm-h0fk8lfc\n&OriginalTemplateMember.0.Member=10.0.0.1\n&OriginalTemplateMember.0.Description=demo\n&OriginalTemplateMember.1.Member=172.20.0.1/24\n&TemplateMember.0.Member=10.0.0.2\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=192.168.0.1/24\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Modifying a Parameter Template of the IP Address Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyTemplateMember\n&TemplateId=ipmg-h0fk8lfc\n&OriginalTemplateMember.0.Member=ipm-hj3he929\n&OriginalTemplateMember.0.Description=demo\n&OriginalTemplateMember.1.Member=ipm-nswq8wkq\n&TemplateMember.0.Member=ipm-pnpcflil\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=ipm-4d8a10a1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Modifying a Parameter Template of the IP Address Group Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyTemplateMember\n&TemplateId=ppm-4d8a10a1\n&OriginalTemplateMember.0.Member=TCP:80\n&OriginalTemplateMember.0.Description=demo\n&OriginalTemplateMember.1.Member=TCP:443\n&TemplateMember.0.Member=TCP:8080\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=TCP:6278\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Modifying a Parameter Template of the Protocol Port Type"
+      },
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyTemplateMember\n&TemplateId=ppmg-hj3he929\n&OriginalTemplateMember.0.Member=ppm-4d8a10a1\n&OriginalTemplateMember.0.Description=demo\n&OriginalTemplateMember.1.Member=ppm-pnpcflil\n&TemplateMember.0.Member=ppm-4d8a10a1\n&TemplateMember.0.Description=demo\n&TemplateMember.1.Member=ppm-4t7fr3fi\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba7c7681-e051-469a-b0fc-210a373490a4\"\n    }\n}",
+        "title": "Modifying a Parameter Template of the Protocol Port Group Type"
       }
     ],
     "ModifyVpcAttribute": [
