@@ -105,13 +105,13 @@
     "CreateLoadBalancer": [
       {
         "document": "This example shows you how to create a public network CLB instance in a VPC.",
-        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancer\n<Common request parameters>\n\n\n\n{\n    \"Forward\": 1,\n    \"ProjectId\": 0,\n    \"LoadBalancerType\": \"OPEN\",\n    \"VpcId\": \"vpc-30xqxt9p\",\n    \"LoadBalancerName\": \"test\"\n}",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancer\n<Common request parameters>\n\n{\n    \"Forward\": 1,\n    \"ProjectId\": 0,\n    \"LoadBalancerType\": \"OPEN\",\n    \"VpcId\": \"vpc-30xqxt9p\",\n    \"LoadBalancerName\": \"test-open\"\n}",
         "output": "{\n    \"Response\": {\n        \"LoadBalancerIds\": [\n            \"lb-6efswuxa\"\n        ],\n        \"DealName\": \"20220101660009831340631\",\n        \"RequestId\": \"9b3f0b57-fb64-4918-8dd6-ce02604fb52c\"\n    }\n}",
         "title": "Creating a Public Network CLB Instance"
       },
       {
         "document": "This example shows you how to create a private network CLB instance in a VPC.",
-        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancer\n<Common request parameters>\n\n\n\n{\n    \"Forward\": 1,\n    \"SubnetId\": \"subnet-k57djpow\",\n    \"LoadBalancerType\": \"INTERNAL\",\n    \"VpcId\": \"vpc-30xqxt9p\",\n    \"LoadBalancerName\": \"test_internal\"\n}",
+        "input": "POST / HTTP/1.1\nHost: clb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLoadBalancer\n<Common request parameters>\n\n{\n    \"Forward\": 1,\n    \"SubnetId\": \"subnet-k57djpow\",\n    \"LoadBalancerType\": \"INTERNAL\",\n    \"VpcId\": \"vpc-30xqxt9p\",\n    \"LoadBalancerName\": \"test_internal\"\n}",
         "output": "{\n    \"Response\": {\n        \"LoadBalancerIds\": [\n            \"lb-kmfrnqci\"\n        ],\n        \"DealName\": \"20211230660009761735781\",\n        \"RequestId\": \"7ffa6830-cd1b-4bc4-8e24-1688885f594a\"\n    }\n}",
         "title": "Creating a Private Network CLB Instance"
       }
