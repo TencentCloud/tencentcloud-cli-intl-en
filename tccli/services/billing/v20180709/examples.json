@@ -24,6 +24,14 @@
         "title": "Checking the account balance "
       }
     ],
+    "DescribeAllocationUnitDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllocationUnitDetail\n<Common request parameters>\n\n{\n    \"Id\": \"6\",\n    \"Month\": \"2022-10-01\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 6,\n        \"Uin\": \"909619400\",\n        \"Name\": \"Product Department 1\",\n        \"ParentId\": 4,\n        \"SourceName\": \"A group\",\n        \"SourceId\": \"asd221\",\n        \"Remark\": \"Remark 1\",\n        \"TreeNodeUniqKey\": \"909619400-6358ee8995950\",\n        \"RuleId\": 23,\n        \"RequestId\": \"e93a707c-f31f-417f-a39b-e72380132dbb\"\n    }\n}",
+        "title": "Query Allocation Unit Details"
+      }
+    ],
     "DescribeBillAdjustInfo": [
       {
         "document": "This example shows you how to obtain bill exception adjustment information by month.",
