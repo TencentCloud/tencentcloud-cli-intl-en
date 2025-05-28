@@ -3941,7 +3941,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria, support the following filter parameters.\nNote: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.\nName: filter criteria based on customer name.\nSubAgentUin: specifies the uin of the second-level reseller.\nRemark: remark.\nMobile: specifies the mobile number.\nSpecifies the mailbox.\nClientUin: specifies the sub-customer uin.",
+          "document": "Filter criteria, support the following filter parameters.\nNote: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.The following are the definitions of filtering  items:\n\nName: specifies second-level reseller name.\nSubAgentUin: specifies the uin of the second-level reseller.\nRemark: specifies remark.\nMobile: specifies the mobile number.\nEmail: specifies email address.\nClientUin: specifies the Indirect customer uin.",
           "example": "Name",
           "member": "string",
           "name": "FilterType",

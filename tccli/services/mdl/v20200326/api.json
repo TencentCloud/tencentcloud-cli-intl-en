@@ -4125,11 +4125,11 @@
       "usage": "out"
     },
     "InputSettingInfo": {
-      "document": "The input settings.\nThe format of an RTMP_PUSH address is ${InputAddress}/${AppName}/${StreamName}.\nThe format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.",
+      "document": "The input settings.\nThe format of an RTMP_PUSH/RTMPS_PUSH address is ${InputAddress}/${AppName}/${StreamName}.\nThe format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.",
       "members": [
         {
           "disabled": false,
-          "document": "Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Application name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "live",
           "member": "string",
           "name": "AppName",
@@ -4140,7 +4140,7 @@
         },
         {
           "disabled": false,
-          "document": "Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Stream name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "streamid",
           "member": "string",
           "name": "StreamName",
@@ -4184,7 +4184,7 @@
         },
         {
           "disabled": false,
-          "document": "Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`\nValue range: 0 (default) or 10000-600000\nThe value must be a multiple of 1,000.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`.\nValue range: 0 (default) or 10000-600000.\nThe value must be a multiple of 1,000.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "0",
           "member": "int64",
           "name": "DelayTime",
