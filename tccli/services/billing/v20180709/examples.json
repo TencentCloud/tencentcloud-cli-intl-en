@@ -8,12 +8,34 @@
         "title": "Batch setting cost allocation tags"
       }
     ],
+    "CreateAllocationUnit": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAllocationUnit\n<Common request parameters>\n\n{\n    \"Name\": \"Finance Department\",\n    \"ParentId\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 2,\n        \"RequestId\": \"5ac3b178-3434-452e-9a1e-dc8b8089a2d8\"\n    }\n}",
+        "title": "Create Ordinary Allocation Unit"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAllocationUnit\n<Common request parameters>\n\n{\n    \"ParentId\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 1,\n        \"RequestId\": \"ebe202d2-9746-4c9a-a931-f569651e5894\"\n    }\n}",
+        "title": "Create a Cost Allocation Directory Tree Root Node"
+      }
+    ],
     "DeleteAllocationTag": [
       {
         "document": "This example shows you how to batch cancel cost allocation tags.",
         "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAllocationTag\n<Common request parameters>\n\n{\n    \"TagKey\": [\n        \"Test7\",\n        \"Test3\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c0edd0d-81a7-4e25-a292-e2a281c612ed\"\n    }\n}",
         "title": "Batch canceling cost allocation tags"
+      }
+    ],
+    "DeleteAllocationUnit": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAllocationUnit\n<Common request parameters>\n\n{\n    \"Id\": \"18\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"169af64e-15a9-49f3-a9df-0b6f0afbe525\"\n    }\n}",
+        "title": "Delete Cost Allocation Units"
       }
     ],
     "DescribeAccountBalance": [
@@ -270,6 +292,14 @@
         "input": "https://billing.tencentcloudapi.com/?Action=DescribeVoucherUsageDetails\n&Limit=10\n&Offset=1\n&VoucherId=\"abc\"\n&Operator=\"abc\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": \"1\",\n        \"TotalUsedAmount\": 18000000000,\n        \"UsageRecords\": [\n            {\n                \"UsedAmount\": 18000000000,\n                \"UsedTime\": \"2021-01-01 00:00:00\",\n                \"UsageDetails\": [\n                    {\n                        \"ProductName\": \"Lighthouse\",\n                        \"SubProductName\": \"Lighthouse (General - 2-core 2 GB - 50 GB - 500 GB)\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"76cf663e-f683-41b9-b44d-849123783bf4\"\n    }\n}",
         "title": "Querying voucher usage details"
+      }
+    ],
+    "ModifyAllocationUnit": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllocationUnit\n<Common request parameters>\n\n{\n    \"SourceName\": \"Group 1 of Department 5\",\n    \"SourceId\": \"asd123\",\n    \"Remark\": \"Cost allocation\",\n    \"Name\": \"Product Department 5\",\n    \"Id\": \"13\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb9b55-2d4f-4178-9898-f6757b174117\"\n    }\n}",
+        "title": "Edit Allocation Unit Information"
       }
     ]
   },

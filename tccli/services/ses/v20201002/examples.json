@@ -8,6 +8,14 @@
         "title": "Adding a batch sending task"
       }
     ],
+    "CreateAddressUnsubscribeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAddressUnsubscribeConfig\n<Common request parameters>\n\n{\n    \"Address\": \"test@example.com\",\n    \"UnsubscribeConfig\": \"7\",\n    \"Status\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c30ca2e0-71d7-40dc-8808-fce32493b1f7\"\n    }\n}",
+        "title": "Successful Example"
+      }
+    ],
     "CreateEmailAddress": [
       {
         "document": " ",
@@ -52,6 +60,14 @@
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReceiverDetail\n<Common request parameters>\n\n{\n    \"ReceiverId\": 123,\n    \"Emails\": [\n        \"123\",\n        \"456@bc.com\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
         "title": "Creating a recipient"
+      }
+    ],
+    "DeleteAddressUnsubscribeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAddressUnsubscribeConfig\n<Common request parameters>\n\n{\n    \"Address\": \"test@example.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"003fc71e-55d3-443e-b72e-eb8b4e8c1379\"\n    }\n}",
+        "title": "Successful Example"
       }
     ],
     "DeleteBlackList": [
@@ -132,6 +148,14 @@
         "title": "Getting statistics"
       }
     ],
+    "ListAddressUnsubscribeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAddressUnsubscribeConfig\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": \"10\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AddressUnsubscribeConfigList\": [\n            {\n                \"Address\": \"test@example.com\",\n                \"Status\": 1,\n                \"UnsubscribeConfig\": \"1\"\n            }\n        ],\n        \"RequestId\": \"a4f27645-5c17-4f27-aa9f-746c2e2d821d\",\n        \"Total\": 1\n    }\n}",
+        "title": "Successful Example"
+      }
+    ],
     "ListBlackEmailAddress": [
       {
         "document": " ",
@@ -198,6 +222,14 @@
         "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendEmail\n<Common request parameters>\n\n{\n    \"FromEmailAddress\": \"QCLOUDTEAM <noreply@mail.qcloud.com>\",\n    \"ReplyToAddresses\": \"qcloud@tencent.com\",\n    \"Destination\": [\n        \"user@example.com\"\n    ],\n    \"Template\": {\n        \"TemplateID\": \"100091\",\n        \"TemplateData\": \"{\\\"code\\\":\\\"1234\\\"}\"\n    },\n    \"Subject\": \"YourTestSubject\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\",\n        \"MessageId\": \"qcloud-ses-messageid\"\n    }\n}",
         "title": "Sending an email by using a template"
+      }
+    ],
+    "UpdateAddressUnsubscribeConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAddressUnsubscribeConfig\n<Common request parameters>\n\n{\n    \"Address\": \"test@example.com\",\n    \"UnsubscribeConfig\": \"1\",\n    \"Status\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"962cdec7-08bf-40f0-b3cf-0acb944bff4d\"\n    }\n}",
+        "title": "Successful Example"
       }
     ],
     "UpdateEmailIdentity": [

@@ -210,11 +210,25 @@
       "output": "DescribeBackupConfigResponse",
       "status": "online"
     },
+    "DescribeBackupDownloadRestriction": {
+      "document": "This API is used to query the download source limit of the default backup configured by the user in the current region.",
+      "input": "DescribeBackupDownloadRestrictionRequest",
+      "name": "Query a backup download limit",
+      "output": "DescribeBackupDownloadRestrictionResponse",
+      "status": "online"
+    },
     "DescribeBackupDownloadUrl": {
       "document": "This API is used to query the download link of cluster backup files.",
       "input": "DescribeBackupDownloadUrlRequest",
       "name": "Queries the download address of a backup file",
       "output": "DescribeBackupDownloadUrlResponse",
+      "status": "online"
+    },
+    "DescribeBackupDownloadUserRestriction": {
+      "document": "This API is used to query the default backup download access restrictions of user-level settings in the current region.",
+      "input": "DescribeBackupDownloadUserRestrictionRequest",
+      "name": "Query user-level backup download limit",
+      "output": "DescribeBackupDownloadUserRestrictionResponse",
       "status": "online"
     },
     "DescribeBackupList": {
@@ -292,6 +306,13 @@
       "input": "DescribeClusterPasswordComplexityRequest",
       "name": "Queries the details of password complexity for a cluster",
       "output": "DescribeClusterPasswordComplexityResponse",
+      "status": "online"
+    },
+    "DescribeClusterReadOnly": {
+      "document": "This API is used to query the cluster read-only switch.",
+      "input": "DescribeClusterReadOnlyRequest",
+      "name": "Query a cluster's read-only switch",
+      "output": "DescribeClusterReadOnlyResponse",
       "status": "online"
     },
     "DescribeClusterTransparentEncryptInfo": {
@@ -595,6 +616,20 @@
       "output": "ModifyBackupConfigResponse",
       "status": "online"
     },
+    "ModifyBackupDownloadRestriction": {
+      "document": "This API is used to modify the download source limit of the backup file for the user in the current region. It can be configured to allow downloads from both private and public networks, only the private network, or a designated vpc or ip within the private network.",
+      "input": "ModifyBackupDownloadRestrictionRequest",
+      "name": "Modify the cluster backup download limit",
+      "output": "ModifyBackupDownloadRestrictionResponse",
+      "status": "online"
+    },
+    "ModifyBackupDownloadUserRestriction": {
+      "document": "This API is used to modify the download source restrictions for backup files in the user's current region. It can be configured to allow downloads from both private and public networks, only from a private network, or from a designated vpc or ip within the private network.",
+      "input": "ModifyBackupDownloadUserRestrictionRequest",
+      "name": "Modify user backup download limit",
+      "output": "ModifyBackupDownloadUserRestrictionResponse",
+      "status": "online"
+    },
     "ModifyBackupName": {
       "document": "This API is used to rename a backup file.",
       "input": "ModifyBackupNameRequest",
@@ -642,6 +677,13 @@
       "input": "ModifyClusterPasswordComplexityRequest",
       "name": "Modifies the password complexity for a cluster",
       "output": "ModifyClusterPasswordComplexityResponse",
+      "status": "online"
+    },
+    "ModifyClusterReadOnly": {
+      "document": "This API is used to modify the read-only switch of a cluster.",
+      "input": "ModifyClusterReadOnlyRequest",
+      "name": "Modify the read-only switch of a cluster",
+      "output": "ModifyClusterReadOnlyResponse",
       "status": "online"
     },
     "ModifyClusterSlaveZone": {
@@ -1653,6 +1695,123 @@
       ],
       "usage": "out"
     },
+    "BackupLimitClusterRestriction": {
+      "document": "Specifies the backup download cluster restrictions parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-adf80234",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Download limit configuration.",
+          "example": "无",
+          "member": "BackupLimitRestriction",
+          "name": "BackupLimitRestriction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "BackupLimitRestriction": {
+      "document": "Specifies the backup download limit parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Restriction type.",
+          "example": "NoLimit",
+          "member": "string",
+          "name": "LimitType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specified ips can download; specified ips are not allowed to download.",
+          "example": "NotIn",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vpc setting for download restrictions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Region\": \"ap-guangzhou\", \"VpcList\": [\"vpc-kas1\"] } ]",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpcs",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the ip settings for limiting downloads.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[127.0.0.1,127.0.0.2]",
+          "member": "string",
+          "name": "LimitIps",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BackupLimitVpcItem": {
+      "document": "VPC settings for restricting backup download sources.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the region for limiting download sources. currently only supports the current region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Limit the vpc list for downloads.",
+          "example": "[\"vpc-a2wef\"]",
+          "member": "string",
+          "name": "VpcList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "BillingResourceInfo": {
       "document": "Billable resource information",
       "members": [
@@ -2081,22 +2240,22 @@
         {
           "disabled": false,
           "document": "Process ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "example": "147187",
           "member": "int64",
           "name": "FlowId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "149284",
           "member": "int64",
           "name": "TaskId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2325,6 +2484,58 @@
           "name": "NodeList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterReadOnlyValue": {
+      "document": "Cluster read-only switch list.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-jl17y89v",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the value of the read-only switch.",
+          "example": "ON",
+          "member": "string",
+          "name": "ReadOnlyValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterTaskId": {
+      "document": "Cluster task ID.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-0lxfuag5",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "176545",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -6550,6 +6761,43 @@
       ],
       "type": "object"
     },
+    "DescribeBackupDownloadRestrictionRequest": {
+      "document": "DescribeBackupDownloadRestriction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "['cynosdbmysql-abk12sf1']",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadRestrictionResponse": {
+      "document": "DescribeBackupDownloadRestriction response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster backup download limit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackupLimitClusterRestriction",
+          "name": "BackupLimitClusterRestrictions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupDownloadUrlRequest": {
       "document": "DescribeBackupDownloadUrl request structure.",
       "members": [
@@ -6570,6 +6818,15 @@
           "name": "BackupId",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Backup download source restriction condition.",
+          "example": "无",
+          "member": "BackupLimitRestriction",
+          "name": "DownloadRestriction",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6580,11 +6837,76 @@
         {
           "disabled": false,
           "document": "Backup download address",
-          "example": "https://ncdb-bj-pitr-1258***699.cos.ap-beijing.myqcloud.com/cynosdb/data/mysqldump/****9fd2-691a-11ef-b99a-b02628437590/2024-10-28/1879681/data_backup_1879681_20241028022147.xb?q-sign-algorithm=sha1&q-ak=************&q-sign-time=1730079993%3B1730123193&q-key-time=1730079993%3B1730123193&q-header-list=host&q-url-param-list=&q-signature=*****************",
+          "example": "https://ncdb-bj-pitr-1258***699.cos.ap-beijing.myqcloud.com/cynosdb/data/mysqldump/****9fd2-691a-11ef-b99a-b02628437590/2024-10-28/1879681/data_backup_1879681_20241028022147.xb?q-sign-algorithm=sha1&q-ak=************&q-sign-time=1730079993%3B1730123193",
           "member": "string",
           "name": "DownloadUrl",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadUserRestrictionRequest": {
+      "document": "DescribeBackupDownloadUserRestriction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination size",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to query only user-level download limits. true - yes, false - no.",
+          "example": "false",
+          "member": "bool",
+          "name": "OnlyUserRestriction",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupDownloadUserRestrictionResponse": {
+      "document": "DescribeBackupDownloadUserRestriction response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster backup download limit information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackupLimitClusterRestriction",
+          "name": "BackupLimitClusterRestrictions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of entries",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6818,6 +7140,15 @@
           "name": "BinlogId",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Backup download source restriction condition.",
+          "example": "无",
+          "member": "BackupLimitRestriction",
+          "name": "DownloadRestriction",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6828,7 +7159,7 @@
         {
           "disabled": false,
           "document": "Download address",
-          "example": "https://ncdb-cdc-bj-1258***699.cos.ap-beijing.myqcloud.com/cynosdb/cdc/BinlogCapture/71***d45-8cfd-11ef-b99a-b02628437590/29.18.12.168_20650_1/mysql-bin.001002/file?q-sign-algorithm=sha1&q-ak=**************&q-sign-time=17300***57%3B1730123657&q-key-time=17300***57%3B1730123657&q-header-list=host&q-url-param-list=&q-signature=**************",
+          "example": "https://ncdb-cdc-bj-1258***699.cos.ap-beijing.myqcloud.com/cynosdb/cdc/BinlogCapture/71***d45-8cfd-11ef-b99a-b02628437590/29.18.12.168_20650_1/mysql-bin.001002/file?q-sign-algorithm=sha1&q-ak=**************&q-sign-time=17300***57%3B1730123657",
           "member": "string",
           "name": "DownloadUrl",
           "output_required": true,
@@ -7357,6 +7688,43 @@
           "name": "ValidatePasswordSpecialCharCount",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterReadOnlyRequest": {
+      "document": "DescribeClusterReadOnly request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of cluster IDs",
+          "example": "[\"cynosdbmysql-jl17y89v\",\"cynosdbmysql-2d9pq38h\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterReadOnlyResponse": {
+      "document": "DescribeClusterReadOnly response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of cluster read-only switches.",
+          "example": "无",
+          "member": "ClusterReadOnlyValue",
+          "name": "ClusterReadOnlyValues",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -11071,7 +11439,7 @@
         {
           "disabled": false,
           "document": "Audit rule after modification",
-          "example": "无",
+          "example": "[{\"Type\": \"sqlType\",\"Compare\": \"INC\",\"Value\": \"UPDATE\"}]",
           "member": "RuleFilters",
           "name": "RuleFilters",
           "required": false,
@@ -11262,6 +11630,141 @@
     },
     "ModifyBackupConfigResponse": {
       "document": "ModifyBackupConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionRequest": {
+      "document": "ModifyBackupDownloadRestriction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-bzxxrmtq",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "LimitType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified ips can download; specified ips are not allowed to download.",
+          "example": "In",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit the vpc settings for downloads.",
+          "example": "[{\"Region\": \"ap-guangzhou\", \"VpcList\": [\"vpc-kas1\"] } ]",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpcs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the ip settings for limiting downloads.",
+          "example": "[127.0.0.1,127.0.0.2]",
+          "member": "string",
+          "name": "LimitIps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadRestrictionResponse": {
+      "document": "ModifyBackupDownloadRestriction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadUserRestrictionRequest": {
+      "document": "ModifyBackupDownloadUserRestriction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).",
+          "example": "NoLimit",
+          "member": "string",
+          "name": "LimitType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.",
+          "example": "In",
+          "member": "string",
+          "name": "VpcComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified ips can download; specified ips are not allowed to download.",
+          "example": "In",
+          "member": "string",
+          "name": "IpComparisonSymbol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit the vpc settings for downloads.",
+          "example": "[{\"Region\": \"ap-guangzhou\", \"VpcList\": [\"vpc-kas1\"] } ]",
+          "member": "BackupLimitVpcItem",
+          "name": "LimitVpcs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the ip settings for limiting downloads.",
+          "example": "[127.0.0.1,127.0.0.2]",
+          "member": "string",
+          "name": "LimitIps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupDownloadUserRestrictionResponse": {
+      "document": "ModifyBackupDownloadUserRestriction response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -11623,6 +12126,61 @@
           "name": "FlowId",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterReadOnlyRequest": {
+      "document": "ModifyClusterReadOnly request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of cluster IDs",
+          "example": "[\"cynosdbmysql-0lxfuag5\",\"cynosdbmysql-2d9pq38h\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster read-only switch, valid values: ON, OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "ReadOnlyOperation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: `yes` (modify in maintenance window), `no` (execute now by default).",
+          "example": "yes",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterReadOnlyResponse": {
+      "document": "ModifyClusterReadOnly response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of cluster task ids.",
+          "example": "无",
+          "member": "ClusterTaskId",
+          "name": "ClusterTaskIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -12978,9 +13536,9 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.",
-          "example": "无",
+          "example": "[{\"RuleFilters\": [{\"Type\": \"host\",\"Compare\": \"INC\",\"Value\": [\"172.1.1.1\"]}]}]",
           "member": "AuditRuleFilters",
           "name": "AuditRuleFilters",
           "required": false,

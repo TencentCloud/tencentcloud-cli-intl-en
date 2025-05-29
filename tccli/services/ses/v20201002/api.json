@@ -7,6 +7,13 @@
       "output": "BatchSendEmailResponse",
       "status": "online"
     },
+    "CreateAddressUnsubscribeConfig": {
+      "document": "This API is used to create an address-level unsubscribe configuration.",
+      "input": "CreateAddressUnsubscribeConfigRequest",
+      "name": "Create an address-level unsubscribe configuration",
+      "output": "CreateAddressUnsubscribeConfigResponse",
+      "status": "online"
+    },
     "CreateEmailAddress": {
       "document": "After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as \"Tencent Cloud\") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.",
       "input": "CreateEmailAddressRequest",
@@ -40,6 +47,13 @@
       "input": "CreateReceiverDetailRequest",
       "name": "Adds recipient email addresses",
       "output": "CreateReceiverDetailResponse",
+      "status": "online"
+    },
+    "DeleteAddressUnsubscribeConfig": {
+      "document": "Remove address-level unsubscribe configuration.",
+      "input": "DeleteAddressUnsubscribeConfigRequest",
+      "name": "Remove address-level unsubscribe configuration",
+      "output": "DeleteAddressUnsubscribeConfigResponse",
       "status": "online"
     },
     "DeleteBlackList": {
@@ -105,6 +119,13 @@
       "output": "GetStatisticsReportResponse",
       "status": "online"
     },
+    "ListAddressUnsubscribeConfig": {
+      "document": "This API is used to get the address and unsubscribe configuration list.",
+      "input": "ListAddressUnsubscribeConfigRequest",
+      "name": "Get address and unsubscribe configuration list",
+      "output": "ListAddressUnsubscribeConfigResponse",
+      "status": "online"
+    },
     "ListBlackEmailAddress": {
       "document": "The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.",
       "input": "ListBlackEmailAddressRequest",
@@ -154,6 +175,13 @@
       "output": "SendEmailResponse",
       "status": "online"
     },
+    "UpdateAddressUnsubscribeConfig": {
+      "document": "This API is used to update address-level unsubscribe configurations.",
+      "input": "UpdateAddressUnsubscribeConfigRequest",
+      "name": "Update address and unsubscribe configuration",
+      "output": "UpdateAddressUnsubscribeConfigResponse",
+      "status": "online"
+    },
     "UpdateEmailIdentity": {
       "document": "This API is used to verify whether your DNS configuration is correct.",
       "input": "UpdateEmailIdentityRequest",
@@ -182,6 +210,45 @@
     "serviceShortName": "ses"
   },
   "objects": {
+    "AddressUnsubscribeConfigData": {
+      "document": "Address-Level unsubscribe configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "test@example.com",
+          "member": "string",
+          "name": "Address",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unsubscription link option 0: do not include unsubscription link 1: simplified chinese 2: english 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.",
+          "example": "0",
+          "member": "string",
+          "name": "UnsubscribeConfig",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "0: disabled; 1: enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Attachment": {
       "document": "Attachment structure, including attachment name and Base64-encoded attachment content",
       "members": [
@@ -366,6 +433,51 @@
         }
       ],
       "usage": "out"
+    },
+    "CreateAddressUnsubscribeConfigRequest": {
+      "document": "CreateAddressUnsubscribeConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "test@exmaple.com",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai",
+          "example": "0",
+          "member": "string",
+          "name": "UnsubscribeConfig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0: disabled; 1: enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAddressUnsubscribeConfigResponse": {
+      "document": "CreateAddressUnsubscribeConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateEmailAddressRequest": {
       "document": "CreateEmailAddress request structure.",
@@ -663,6 +775,33 @@
         }
       ],
       "usage": "out"
+    },
+    "DeleteAddressUnsubscribeConfigRequest": {
+      "document": "DeleteAddressUnsubscribeConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "test@example.com",
+          "member": "string",
+          "name": "Address",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAddressUnsubscribeConfigResponse": {
+      "document": "DeleteAddressUnsubscribeConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteBlackListRequest": {
       "document": "DeleteBlackList request structure.",
@@ -1123,6 +1262,62 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAddressUnsubscribeConfigRequest": {
+      "document": "ListAddressUnsubscribeConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "specifies the maximum number of entries to retrieve, with a cap of 100.",
+          "example": "10",
+          "member": "string",
+          "name": "Limit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAddressUnsubscribeConfigResponse": {
+      "document": "ListAddressUnsubscribeConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Address-Level unsubscribe configuration.",
+          "example": "无",
+          "member": "AddressUnsubscribeConfigData",
+          "name": "AddressUnsubscribeConfigList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2121,6 +2316,51 @@
         }
       ],
       "usage": "in"
+    },
+    "UpdateAddressUnsubscribeConfigRequest": {
+      "document": "UpdateAddressUnsubscribeConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "test@example.com",
+          "member": "string",
+          "name": "Address",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unsubscribe link option. 0: Do not add unsubscribe link; 1: English 2: Simplified Chinese; 3: Traditional Chinese; 4: Spanish; 5: French; 6: German; 7: Japanese; 8: Korean; 9: Arabic; 10: Thai",
+          "example": "0",
+          "member": "string",
+          "name": "UnsubscribeConfig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0: disable; 1: enable.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAddressUnsubscribeConfigResponse": {
+      "document": "UpdateAddressUnsubscribeConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateEmailIdentityRequest": {
       "document": "UpdateEmailIdentity request structure.",
