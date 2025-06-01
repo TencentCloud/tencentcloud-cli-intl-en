@@ -1,5 +1,13 @@
 {
   "actions": {
+    "CreateAllocationRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAllocationRule\n<Common request parameters>\n\n{\n    \"RuleList\": {\n        \"Name\": \"Test 1\",\n        \"Type\": \"2\",\n        \"RatioDetail\": [\n            {\n                \"Ratio\": \"25\",\n                \"NodeId\": \"6\"\n            },\n            {\n                \"Ratio\": \"25\",\n                \"NodeId\": \"7\"\n            },\n            {\n                \"Ratio\": \"25\",\n                \"NodeId\": \"8\"\n            },\n            {\n                \"Ratio\": \"25\",\n                \"NodeId\": \"9\"\n            }\n        ],\n        \"RuleDetail\": {\n            \"Connectors\": \"and\",\n            \"Children\": [\n                {\n                    \"RuleKey\": \"ownerUin\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"700000384179\"\n                    ]\n                },\n                {\n                    \"RuleKey\": \"businessCode\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"p_cbs\"\n                    ]\n                },\n                {\n                    \"Connectors\": \"or\",\n                    \"Children\": [\n                        {\n                            \"RuleKey\": \"itemCode\",\n                            \"Operator\": \"in\",\n                            \"RuleValue\": [\n                                \"sv_cbs_memspace_premium\",\n                                \"sv_cdn_cn_flux_package\",\n                                \"sv_ci_pkg_co_re_10\"\n                            ]\n                        }\n                    ]\n                },\n                {\n                    \"RuleKey\": \"projectId\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"0\"\n                    ]\n                }\n            ]\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 33,\n        \"RequestId\": \"aab8393d-ceba-44e2-819f-6d4fd0ebf987\"\n    }\n}",
+        "title": "Create a Sharing Rule1"
+      }
+    ],
     "CreateAllocationTag": [
       {
         "document": "This example shows you how to batch set cost allocation tags.",
@@ -22,6 +30,28 @@
         "title": "Create a Cost Allocation Directory Tree Root Node"
       }
     ],
+    "CreateGatherRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGatherRule\n<Common request parameters>\n\n{\n    \"Id\": \"6\",\n    \"RuleList\": {\n        \"RuleDetail\": {\n            \"Connectors\": \"and\",\n            \"Children\": [\n                {\n                    \"RuleKey\": \"businessCode\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"p_cvm\",\n                        \"p_nat\"\n                    ]\n                }\n            ]\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 23,\n        \"RequestId\": \"215ccaa8-3b2b-425c-b53b-375df0c491e6\"\n    }\n}",
+        "title": "Create a Collection Rule"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGatherRule\n<Common request parameters>\n\n{\n    \"Id\": \"8\",\n    \"RuleList\": {\n        \"RuleDetail\": {\n            \"Connectors\": \"and\",\n            \"Children\": [\n                {\n                    \"RuleKey\": \"businessCode\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"p_cvm\",\n                        \"p_nat\"\n                    ]\n                },\n                {\n                    \"RuleKey\": \"regionId\",\n                    \"Operator\": \"in\",\n                    \"RuleValue\": [\n                        \"9\",\n                        \"5\"\n                    ]\n                },\n                {\n                    \"Connectors\": \"and\",\n                    \"Children\": [\n                        {\n                            \"RuleKey\": \"projectId\",\n                            \"Operator\": \"not in\",\n                            \"RuleValue\": [\n                                \"1270522\"\n                            ]\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 24,\n        \"RequestId\": \"4c396774-36bc-4897-a03d-41a18357d63d\"\n    }\n}",
+        "title": "Create a Nested Collection Rule"
+      }
+    ],
+    "DeleteAllocationRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAllocationRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"21\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e0f48e2a-e884-4ebc-83ee-eb98ff194bfa\"\n    }\n}",
+        "title": "Rule Deletion Example"
+      }
+    ],
     "DeleteAllocationTag": [
       {
         "document": "This example shows you how to batch cancel cost allocation tags.",
@@ -38,12 +68,44 @@
         "title": "Delete Cost Allocation Units"
       }
     ],
+    "DeleteGatherRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGatherRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"18\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3f217f8c-7fca-489c-872f-f0780ee3b147\"\n    }\n}",
+        "title": "Delete a Collection Rule Example"
+      }
+    ],
     "DescribeAccountBalance": [
       {
         "document": " ",
         "input": "https://billing.tencentcloudapi.com/?Action=DescribeAccountBalance\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uin\": \"90961\",\n        \"RealBalance\": 9647442,\n        \"CashAccountBalance\": 1299806668,\n        \"IncomeIntoAccountBalance\": 0,\n        \"PresentAccountBalance\": 209512,\n        \"FreezeAmount\": 1290368738,\n        \"OweAmount\": 0,\n        \"RequestId\": \"1323\",\n        \"IsAllowArrears\": true,\n        \"IsCreditLimited\": true,\n        \"Balance\": -6188426,\n        \"CreditAmount\": 200,\n        \"CreditBalance\": -6188226,\n        \"RealCreditBalance\": -6188226\n    }\n}",
         "title": "Checking the account balance "
+      }
+    ],
+    "DescribeAllocationRuleDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllocationRuleDetail\n<Common request parameters>\n\n{\n    \"Month\": \"202210\",\n    \"RuleId\": \"24\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 24,\n        \"Uin\": \"909619400\",\n        \"Name\": \"test_allocation2\",\n        \"Type\": 1,\n        \"RuleDetail\": {\n            \"Connectors\": \"and\",\n            \"Children\": [\n                {\n                    \"RuleKey\": \"businessCode\",\n                    \"Operator\": \"=\",\n                    \"RuleValue\": [\n                        \"p_cvm\"\n                    ]\n                },\n                {\n                    \"RuleKey\": \"regionId\",\n                    \"Operator\": \"=\",\n                    \"RuleValue\": [\n                        \"9\"\n                    ]\n                },\n                {\n                    \"Connectors\": \"and\",\n                    \"Children\": [\n                        {\n                            \"RuleKey\": \"projectId\",\n                            \"Operator\": \"=\",\n                            \"RuleValue\": [\n                                \"1270522\"\n                            ]\n                        }\n                    ]\n                }\n            ]\n        },\n        \"RatioDetail\": [\n            {\n                \"NodeId\": 6,\n                \"Ratio\": 40\n            },\n            {\n                \"NodeId\": 7,\n                \"Ratio\": 60\n            }\n        ],\n        \"RequestId\": \"b9fd53c2-d5d3-4f49-8a6d-dd0b2e9c02bf\"\n    }\n}",
+        "title": "Query Public Area Rule Details"
+      }
+    ],
+    "DescribeAllocationRuleSummary": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllocationRuleSummary\n<Common request parameters>\n\n{\n    \"Month\": \"2022-11\",\n    \"Limit\": \"2\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 2,\n        \"RuleList\": [\n            {\n                \"RuleId\": 33,\n                \"RuleName\": \"Test 1\",\n                \"Type\": 2,\n                \"UpdateTime\": \"2022-10-30 17:26:16\",\n                \"AllocationNode\": [\n                    {\n                        \"NodeId\": 6,\n                        \"TreeNodeUniqKeyName\": \"Product Department 1\"\n                    },\n                    {\n                        \"NodeId\": 7,\n                        \"TreeNodeUniqKeyName\": \"Business Division II Products\"\n                    },\n                    {\n                        \"NodeId\": 8,\n                        \"TreeNodeUniqKeyName\": \"Product Division 3\"\n                    },\n                    {\n                        \"NodeId\": 9,\n                        \"TreeNodeUniqKeyName\": \"Product Department 4\"\n                    }\n                ]\n            },\n            {\n                \"RuleId\": 29,\n                \"RuleName\": \"test_allocation2\",\n                \"Type\": 1,\n                \"UpdateTime\": \"2022-10-24 12:05:04\",\n                \"AllocationNode\": [\n                    {\n                        \"NodeId\": 2,\n                        \"TreeNodeUniqKeyName\": \"Finance Department\"\n                    },\n                    {\n                        \"NodeId\": 5,\n                        \"TreeNodeUniqKeyName\": \"Organization Department\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"78933c15-099c-4958-9ca0-8c148bc1da04\"\n    }\n}",
+        "title": "Query Sharing Rule Overview"
+      }
+    ],
+    "DescribeAllocationTree": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAllocationTree\n<Common request parameters>\n\n{\n    \"Month\": \"2022-11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 11,\n        \"Name\": \"Organization\",\n        \"TreeNodeUniqKey\": \"200029082654-6735f4b4562b1\",\n        \"Children\": [\n            {\n                \"Id\": 12,\n                \"Name\": \"group1\",\n                \"TreeNodeUniqKey\": \"200029082654-6735f4c4f1767\",\n                \"Children\": []\n            },\n            {\n                \"Id\": 13,\n                \"Name\": \"group2\",\n                \"TreeNodeUniqKey\": \"200029082654-6735f4cccbf84\",\n                \"Children\": []\n            }\n        ],\n        \"RequestId\": \"682fedd32597b\"\n    }\n}",
+        "title": "Query the Entire Tree"
       }
     ],
     "DescribeAllocationUnitDetail": [
@@ -270,6 +332,14 @@
         "title": "Querying COS usage details by bucket name"
       }
     ],
+    "DescribeGatherRuleDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGatherRuleDetail\n<Common request parameters>\n\n{\n    \"Id\": \"17\",\n    \"Month\": \"2022-11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": 17,\n        \"Uin\": \"909619400\",\n        \"UpdateTime\": \"2022-10-21 17:44:22\",\n        \"RuleDetail\": {\n            \"Connectors\": \"and\",\n            \"Children\": [\n                {\n                    \"RuleKey\": \"businessCode\",\n                    \"Operator\": \"=\",\n                    \"RuleValue\": [\n                        \"p_cvm\"\n                    ]\n                },\n                {\n                    \"RuleKey\": \"regionId\",\n                    \"Operator\": \"=\",\n                    \"RuleValue\": [\n                        \"9\"\n                    ]\n                },\n                {\n                    \"Connectors\": \"and\",\n                    \"Children\": [\n                        {\n                            \"RuleKey\": \"projectId\",\n                            \"Operator\": \"=\",\n                            \"RuleValue\": [\n                                \"1270522\"\n                            ]\n                        }\n                    ]\n                }\n            ]\n        },\n        \"RequestId\": \"fcbfb5c0-9589-4c78-a01b-481ab01cbf76\"\n    }\n}",
+        "title": "Query Collection Rule Details"
+      }
+    ],
     "DescribeTagList": [
       {
         "document": "This example shows you how to query tags.",
@@ -294,12 +364,40 @@
         "title": "Querying voucher usage details"
       }
     ],
+    "ModifyAllocationRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllocationRule\n<Common request parameters>\n\n{\n    \"Name\": \"test_allocation2\",\n    \"RuleDetail\": {\n        \"Connectors\": \"and\",\n        \"Children\": [\n            {\n                \"RuleKey\": \"businessCode\",\n                \"Operator\": \"\",\n                \"RuleValue\": [\n                    \"p_cvm\"\n                ]\n            },\n            {\n                \"RuleKey\": \"regionId\",\n                \"Operator\": \"\",\n                \"RuleValue\": [\n                    \"9\"\n                ]\n            },\n            {\n                \"Connectors\": \"and\",\n                \"Children\": [\n                    {\n                        \"RuleKey\": \"projectId\",\n                        \"Operator\": \"\",\n                        \"RuleValue\": [\n                            \"1270522\"\n                        ]\n                    }\n                ]\n            }\n        ]\n    },\n    \"Type\": \"1\",\n    \"RatioDetail\": [\n        {\n            \"Ratio\": \"40\",\n            \"NodeId\": \"13\"\n        },\n        {\n            \"Ratio\": \"60\",\n            \"NodeId\": \"14\"\n        }\n    ],\n    \"RuleId\": \"24\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"297a49ab-623b-4b3f-bd3a-1309cae4f76b\"\n    }\n}",
+        "title": "Edit Sharing Rules"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllocationRule\n<Common request parameters>\n\n{\n    \"Name\": \"test_allocation1\",\n    \"RuleDetail\": {\n        \"Connectors\": \"and\",\n        \"Children\": [\n            {\n                \"RuleKey\": \"businessCode\",\n                \"Operator\": \"\",\n                \"RuleValue\": [\n                    \"p_nat\"\n                ]\n            }\n        ]\n    },\n    \"Type\": \"2\",\n    \"RatioDetail\": [\n        {\n            \"Ratio\": \"50\",\n            \"NodeId\": \"13\"\n        },\n        {\n            \"Ratio\": \"50\",\n            \"NodeId\": \"14\"\n        }\n    ],\n    \"RuleId\": \"22\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"937c1611-0e37-4a9d-8e01-f4854937a555\"\n    }\n}",
+        "title": "Edit Sharing Rules Example"
+      }
+    ],
     "ModifyAllocationUnit": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllocationUnit\n<Common request parameters>\n\n{\n    \"SourceName\": \"Group 1 of Department 5\",\n    \"SourceId\": \"asd123\",\n    \"Remark\": \"Cost allocation\",\n    \"Name\": \"Product Department 5\",\n    \"Id\": \"13\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0dbb9b55-2d4f-4178-9898-f6757b174117\"\n    }\n}",
         "title": "Edit Allocation Unit Information"
+      }
+    ],
+    "ModifyGatherRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGatherRule\n<Common request parameters>\n\n{\n    \"Id\": \"23\",\n    \"RuleDetail\": {\n        \"Connectors\": \"and\",\n        \"Children\": [\n            {\n                \"RuleKey\": \"businessCode\",\n                \"Operator\": \"not in\",\n                \"RuleValue\": [\n                    \"p_cvm\",\n                    \"p_nat\"\n                ]\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"73c8c569-7791-4b2d-bc40-f3c18c5f40d2\"\n    }\n}",
+        "title": "Edit an Collection Rule"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyGatherRule\n<Common request parameters>\n\n{\n    \"Id\": \"24\",\n    \"RuleDetail\": {\n        \"Connectors\": \"and\",\n        \"Children\": [\n            {\n                \"RuleKey\": \"businessCode\",\n                \"Operator\": \"in\",\n                \"RuleValue\": [\n                    \"p_cvm\",\n                    \"p_nat\"\n                ]\n            },\n            {\n                \"RuleKey\": \"regionId\",\n                \"Operator\": \"in\",\n                \"RuleValue\": [\n                    \"9\",\n                    \"5\"\n                ]\n            },\n            {\n                \"Connectors\": \"and\",\n                \"Children\": [\n                    {\n                        \"RuleKey\": \"projectId\",\n                        \"Operator\": \"not in\",\n                        \"RuleValue\": [\n                            \"1270522\"\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"901c2178-fa8d-4878-8680-952ea3788a59\"\n    }\n}",
+        "title": "Edit Aggregation Rule 1"
       }
     ]
   },

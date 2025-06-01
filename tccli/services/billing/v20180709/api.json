@@ -1,5 +1,12 @@
 {
   "actions": {
+    "CreateAllocationRule": {
+      "document": "Create a sharing rule.",
+      "input": "CreateAllocationRuleRequest",
+      "name": "Create a sharing rule",
+      "output": "CreateAllocationRuleResponse",
+      "status": "online"
+    },
     "CreateAllocationTag": {
       "document": "This API is used to batch set cost allocation tags.",
       "input": "CreateAllocationTagRequest",
@@ -12,6 +19,20 @@
       "input": "CreateAllocationUnitRequest",
       "name": "Creates a cost allocation unit",
       "output": "CreateAllocationUnitResponse",
+      "status": "online"
+    },
+    "CreateGatherRule": {
+      "document": "Create a collection rule.",
+      "input": "CreateGatherRuleRequest",
+      "name": "Create a collection rule",
+      "output": "CreateGatherRuleResponse",
+      "status": "online"
+    },
+    "DeleteAllocationRule": {
+      "document": "Delete sharing rule interface.",
+      "input": "DeleteAllocationRuleRequest",
+      "name": "Delete sharing rules API",
+      "output": "DeleteAllocationRuleResponse",
       "status": "online"
     },
     "DeleteAllocationTag": {
@@ -28,11 +49,39 @@
       "output": "DeleteAllocationUnitResponse",
       "status": "online"
     },
+    "DeleteGatherRule": {
+      "document": "Delete a collection rule.",
+      "input": "DeleteGatherRuleRequest",
+      "name": "Delete an collection rule",
+      "output": "DeleteGatherRuleResponse",
+      "status": "online"
+    },
     "DescribeAccountBalance": {
       "document": "This API is used to check the Tencent Cloud account balance.",
       "input": "DescribeAccountBalanceRequest",
       "name": "Checks account balance",
       "output": "DescribeAccountBalanceResponse",
+      "status": "online"
+    },
+    "DescribeAllocationRuleDetail": {
+      "document": "This API is used to query sharing rule details.",
+      "input": "DescribeAllocationRuleDetailRequest",
+      "name": "Query sharing rule details",
+      "output": "DescribeAllocationRuleDetailResponse",
+      "status": "online"
+    },
+    "DescribeAllocationRuleSummary": {
+      "document": "This API is used to query all sharing rule overviews.",
+      "input": "DescribeAllocationRuleSummaryRequest",
+      "name": "Query all sharing rule overviews",
+      "output": "DescribeAllocationRuleSummaryResponse",
+      "status": "online"
+    },
+    "DescribeAllocationTree": {
+      "document": "This API is used to query the cost tree.",
+      "input": "DescribeAllocationTreeRequest",
+      "name": "Query cost allocation tree",
+      "output": "DescribeAllocationTreeResponse",
       "status": "online"
     },
     "DescribeAllocationUnitDetail": {
@@ -189,6 +238,13 @@
       "output": "DescribeDosageCosDetailByDateResponse",
       "status": "online"
     },
+    "DescribeGatherRuleDetail": {
+      "document": "This API is used to query the collection rule details.",
+      "input": "DescribeGatherRuleDetailRequest",
+      "name": "Query collection rule details",
+      "output": "DescribeGatherRuleDetailResponse",
+      "status": "online"
+    },
     "DescribeTagList": {
       "document": "This API is used to get cost allocation tags.",
       "input": "DescribeTagListRequest",
@@ -210,11 +266,25 @@
       "output": "DescribeVoucherUsageDetailsResponse",
       "status": "online"
     },
+    "ModifyAllocationRule": {
+      "document": "Edit sharing rules.",
+      "input": "ModifyAllocationRuleRequest",
+      "name": "Edit sharing rules",
+      "output": "ModifyAllocationRuleResponse",
+      "status": "online"
+    },
     "ModifyAllocationUnit": {
       "document": "This API is used to modify cost allocation unit information.",
       "input": "ModifyAllocationUnitRequest",
       "name": "Modify a cost allocation unit",
       "output": "ModifyAllocationUnitResponse",
+      "status": "online"
+    },
+    "ModifyGatherRule": {
+      "document": "Edit a collection rule.",
+      "input": "ModifyGatherRuleRequest",
+      "name": "Edit a collection rule",
+      "output": "ModifyGatherRuleResponse",
       "status": "online"
     }
   },
@@ -401,6 +471,273 @@
         }
       ],
       "usage": "both"
+    },
+    "AllocationRationExpression": {
+      "document": "Expression for sharing proportion.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation unit ID that the sharing rule belongs to.",
+          "example": "11",
+          "member": "uint64",
+          "name": "NodeId",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing proportion occupied by allocation unit, pass 0 for allocation by proportion.",
+          "example": "40.51",
+          "member": "float",
+          "name": "Ratio",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AllocationRuleExpression": {
+      "document": "Cost allocation regular expression.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RuleKey: cost allocation dimension.\nEnumeration value.\nownerUin - user UIN.\nOperator UIN.\nbusinessCode - product-level code.\nproductCode - 2-tier product code.\nitemCode - 4-tier product code.\nprojectId - specifies the project ID.\nregionId.\nresourceId - specifies the resource ID.\ntag - tag key-value pair.\npayMode - billing mode.\ninstanceType - instance type.\nactionType - transaction type.",
+          "example": "businessCode",
+          "member": "string",
+          "name": "RuleKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the dimension rules for cost allocation.\nEnumeration value.\nin.\nnot in.",
+          "example": "=",
+          "member": "string",
+          "name": "Operator",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation dimension value. for example, when RuleKey is businessCode, [\"p_cbs\",\"p_sqlserver\"] indicates the cost of products at the \"p_cbs\",\"p_sqlserver\" level.",
+          "example": "[\"p_cbs\",\"p_sqlserver\"]",
+          "member": "string",
+          "name": "RuleValue",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Logical connection for cost allocation, enumeration values are as follows:.\nCreate and bind a policy query an instance reset the access password of an instance.\nCreate and bind a policy query an instance reset the access password of an instance.",
+          "example": "and",
+          "member": "string",
+          "name": "Connectors",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nested rule.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "Children",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AllocationRuleOverview": {
+      "document": "Overview of sharing rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing rule name.",
+          "example": "规则名称",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public area policy type.\nEnumeration value.\n1 - custom sharing proportion. \n2 - proportional allocation. \n3 - allocation by proportion.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time of the sharing rules.",
+          "example": "2022-10-13 19:13:11",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Overview of cost allocation units.",
+          "example": "无",
+          "member": "AllocationUnit",
+          "name": "AllocationNode",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AllocationRulesSummary": {
+      "document": "List of sharing rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Add new sharing rule name.",
+          "example": "公摊规则",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sharing rule policy type. the enumeration values are as follows:.\n1 - custom sharing proportion. \n2 - proportional allocation.\n3 - allocation by proportion.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing rule expression.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing proportion expression, allocation by proportion not passed.",
+          "example": "无",
+          "member": "AllocationRationExpression",
+          "name": "RatioDetail",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AllocationTree": {
+      "document": "Cost allocation tree.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of a cost allocation unit.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation unit name.",
+          "example": "财务部",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique identifier of a cost allocation unit",
+          "example": "9096-asd",
+          "member": "string",
+          "name": "TreeNodeUniqKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtree.",
+          "example": "无",
+          "member": "AllocationTree",
+          "name": "Children",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AllocationUnit": {
+      "document": "Specifies the ID and name of a cost allocation unit.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation unit ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "NodeId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of a cost allocation rule.",
+          "example": "财务部",
+          "member": "string",
+          "name": "TreeNodeUniqKeyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AnalyseActionTypeDetail": {
       "document": "Cost analysis transaction type complex type",
@@ -4309,6 +4646,52 @@
       ],
       "usage": "out"
     },
+    "CreateAllocationRuleRequest": {
+      "document": "CreateAllocationRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of sharing rules.",
+          "example": "无",
+          "member": "AllocationRulesSummary",
+          "name": "RuleList",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Month, the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAllocationRuleResponse": {
+      "document": "CreateAllocationRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Add new sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAllocationTagRequest": {
       "document": "CreateAllocationTag request structure.",
       "members": [
@@ -4390,6 +4773,61 @@
           "name": "TreeNodeUniqKey",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGatherRuleRequest": {
+      "document": "CreateGatherRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation unit ID that the rule belongs to.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Collection rule details.",
+          "example": "无",
+          "member": "GatherRuleSummary",
+          "name": "RuleList",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGatherRuleResponse": {
+      "document": "CreateGatherRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Collection  rule ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4667,6 +5105,42 @@
       ],
       "usage": "out"
     },
+    "DeleteAllocationRuleRequest": {
+      "document": "DeleteAllocationRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The deleted sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "月份，默认当前月",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAllocationRuleResponse": {
+      "document": "DeleteAllocationRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteAllocationTagRequest": {
       "document": "DeleteAllocationTag request structure.",
       "members": [
@@ -4720,6 +5194,42 @@
     },
     "DeleteAllocationUnitResponse": {
       "document": "DeleteAllocationUnit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGatherRuleRequest": {
+      "document": "DeleteGatherRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The deleted collection rule ID.",
+          "example": "13",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGatherRuleResponse": {
+      "document": "DeleteGatherRule response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4866,6 +5376,252 @@
           "name": "RealCreditBalance",
           "output_required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationRuleDetailRequest": {
+      "document": "DescribeAllocationRuleDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The queried sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationRuleDetailResponse": {
+      "document": "DescribeAllocationRuleDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing rule ownership UIN.",
+          "example": "9096",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing rule name.",
+          "example": "规则名称",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the public area policy type. the enumeration values are as follows:.\n1 - custom sharing proportion. \n2 - proportional allocation. \n3 - allocation by proportion.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public sharing rule expression.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharing proportion expression. returns when Type is 1 or 2.",
+          "example": "无",
+          "member": "AllocationRationExpression",
+          "name": "RatioDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationRuleSummaryRequest": {
+      "document": "DescribeAllocationRuleSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the data quantity per fetch. the maximum value is 1000.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset",
+          "example": "2",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public area policy type, for filtering.\nEnumeration values are as follows:. \n1 - custom sharing proportion. \n2 - proportional allocation. \n3 - allocation by proportion.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sharing rule name or cost allocation unit name, used for fuzzy filter criteria.",
+          "example": "产品部",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationRuleSummaryResponse": {
+      "document": "DescribeAllocationRuleSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sharing rule expression.",
+          "example": "无",
+          "member": "AllocationRuleOverview",
+          "name": "RuleList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of rules.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationTreeRequest": {
+      "document": "DescribeAllocationTree request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Month, the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAllocationTreeResponse": {
+      "document": "DescribeAllocationTree response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation unit ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of a cost allocation unit.",
+          "example": "财务部",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique identifier of a cost allocation unit",
+          "example": "9096-asd",
+          "member": "string",
+          "name": "TreeNodeUniqKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies a subtree.",
+          "example": "无",
+          "member": "AllocationTree",
+          "name": "Children",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -7176,6 +7932,82 @@
       ],
       "type": "object"
     },
+    "DescribeGatherRuleDetailRequest": {
+      "document": "DescribeGatherRuleDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the ID of the queried collection rule.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGatherRuleDetailResponse": {
+      "document": "DescribeGatherRuleDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the collection rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated UIN of the collection rule.",
+          "example": "9096",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Collection rule last update time.",
+          "example": "2022-11-14 09:45:24",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Collection rule details.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTagListRequest": {
       "document": "DescribeTagList request structure.",
       "members": [
@@ -7863,6 +8695,93 @@
       ],
       "usage": "out"
     },
+    "GatherRuleSummary": {
+      "document": "List of collection rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation regular expression.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyAllocationRuleRequest": {
+      "document": "ModifyAllocationRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The edited sharing rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Edited sharing rule name.",
+          "example": "规则名称",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public sharing policy types, enumeration values are as follows: 1 - custom sharing proportion 2 - proportional allocation 3 - allocation by proportion.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Edited share rules expression.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Edited sharing proportion expression.",
+          "example": "无",
+          "member": "AllocationRationExpression",
+          "name": "RatioDetail",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAllocationRuleResponse": {
+      "document": "ModifyAllocationRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyAllocationUnitRequest": {
       "document": "ModifyAllocationUnit request structure.",
       "members": [
@@ -7925,6 +8844,51 @@
     },
     "ModifyAllocationUnitResponse": {
       "document": "ModifyAllocationUnit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGatherRuleRequest": {
+      "document": "ModifyGatherRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Edit collection rule ID.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule detail of the edited collection rule.",
+          "example": "无",
+          "member": "AllocationRuleExpression",
+          "name": "RuleDetail",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Month, which is the current month by default if not provided.",
+          "example": "2022-10-01 00:00:00",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGatherRuleResponse": {
+      "document": "ModifyGatherRule response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
