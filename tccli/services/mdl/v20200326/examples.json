@@ -200,6 +200,14 @@
         "title": "Sample request"
       }
     ],
+    "GetAbWatermarkPlayUrl": [
+      {
+        "document": "Get AB watermark play url",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetAbWatermarkPlayUrl\n\n{\n    \"Uuid\": 1,\n    \"StreamPackageChannelId\": \"5E7818810943216A1234\",\n    \"Url\": \"https://demo.com/live/demo.m3u8\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Url\": \"https://demo.com/wmt:{token}/live/demo.m3u8\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "ModifyStreamLiveChannel": [
       {
         "document": " ",
