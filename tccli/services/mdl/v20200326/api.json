@@ -3687,7 +3687,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Client UUID, 32-bit unsigned integer.",
+          "document": "Client UUID, 32-bit unsigned integer, [0, 4294967295].",
           "example": "1",
           "member": "uint64",
           "name": "Uuid",

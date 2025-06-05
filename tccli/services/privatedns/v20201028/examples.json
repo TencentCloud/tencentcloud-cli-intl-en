@@ -202,6 +202,14 @@
         "title": "Querying the user’s quota usage"
       }
     ],
+    "DescribeRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-abcd1234\",\n    \"RecordId\": \"10008374\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b19115c-8732-4940-9199-98952a13f159\",\n        \"RecordInfo\": {\n            \"RecordId\": \"716\",\n            \"ZoneId\": \"zone-o85nq234g\",\n            \"SubDomain\": \"aaaa\",\n            \"RecordType\": \"A\",\n            \"RecordValue\": \"1.1.1.35\",\n            \"TTL\": 300,\n            \"MX\": 0,\n            \"Enabled\": 1,\n            \"CreatedOn\": \"2025-03-17 18:56:16\",\n            \"UpdatedOn\": \"2025-05-27 16:25:23\",\n            \"Remark\": \"\",\n            \"Weight\": 20\n        }\n    }\n}",
+        "title": "Get Private Domain Records Example"
+      }
+    ],
     "DescribeRequestData": [
       {
         "document": " ",
