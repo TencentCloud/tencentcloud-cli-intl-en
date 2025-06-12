@@ -1,5 +1,12 @@
 {
   "actions": {
+    "BatchProcessMedia": {
+      "document": "This API is used to initiate batch processing tasks for URL video links, with features including:\nSmart subtitle (full speech, speech hotword, and speech translation)",
+      "input": "BatchProcessMediaRequest",
+      "name": "Enters multiple video URLs and initiates multiple tasks",
+      "output": "BatchProcessMediaResponse",
+      "status": "online"
+    },
     "CreateAIAnalysisTemplate": {
       "document": "This API is used to create a custom content analysis template. Up to 50 templates can be created.",
       "input": "CreateAIAnalysisTemplateRequest",
@@ -294,6 +301,13 @@
       "output": "DescribeAsrHotwordsListResponse",
       "status": "online"
     },
+    "DescribeBatchTaskDetail": {
+      "document": "This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "input": "DescribeBatchTaskDetailRequest",
+      "name": "Queries the details of a batch task",
+      "output": "DescribeBatchTaskDetailResponse",
+      "status": "online"
+    },
     "DescribeContentReviewTemplates": {
       "document": "This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.",
       "input": "DescribeContentReviewTemplatesRequest",
@@ -306,6 +320,13 @@
       "input": "DescribeImageSpriteTemplatesRequest",
       "name": "Gets the list of image sprite generating templates",
       "output": "DescribeImageSpriteTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeImageTaskDetail": {
+      "document": "This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "input": "DescribeImageTaskDetailRequest",
+      "name": "Queries the image processing task details",
+      "output": "DescribeImageTaskDetailResponse",
       "status": "online"
     },
     "DescribeLiveRecordTemplates": {
@@ -596,7 +617,7 @@
       "status": "online"
     },
     "ProcessImage": {
-      "document": "This API is used to initiate image processing. Its features include:\n1. Format conversion;\n2. Image enhancement;",
+      "document": "This API is used to initiate image processing, with features including:\n1. Format conversion.\n2. Image enhancement.\n3. Image erasure.",
       "input": "ProcessImageRequest",
       "name": "Initiates image processing",
       "output": "ProcessImageResponse",
@@ -6165,7 +6186,7 @@
         },
         {
           "disabled": false,
-          "document": "Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.\nIf the Status value is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.\nIf the Status value is not 0, it indicates that the hotword lexicon cannot be deleted.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.\nIf the value of Status is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.\nIf the value of Status is not 0, it indicates that the hotword lexicon cannot be deleted.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -6751,6 +6772,177 @@
         }
       ],
       "usage": "both"
+    },
+    "BatchProcessMediaRequest": {
+      "document": "BatchProcessMedia request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Path of the input file.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Storage bucket for the output file. If it is left blank, the storage location in InputInfo will be inherited.\nNote: When InputInfo.Type is URL, this parameter is required.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Storage directory for the output file. It should start and end with a slash (/), such as `/movie/201907/`.\nIf left blank, it indicates that the directory is the same as the one where the file is located in InputInfo.",
+          "example": "/movie/test/",
+          "member": "string",
+          "name": "OutputDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Smart subtitle.",
+          "example": "无",
+          "member": "SmartSubtitlesTaskInput",
+          "name": "SmartSubtitlesTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Event notification information of the task. If left blank, it indicates that no event notification will be obtained.",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Source context, which is used to pass through the user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.",
+          "example": "UserDefinedInfo",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.",
+          "example": "vts-24000123-0",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to skip metadata acquisition. Valid values:\n0: do not skip.\n1: skip.\nDefault value: 0\t\t",
+          "example": "0",
+          "member": "int64",
+          "name": "SkipMateData",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchProcessMediaResponse": {
+      "document": "BatchProcessMedia response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchSmartSubtitlesResult": {
+      "document": "Smart subtitle task result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input information for smart subtitle tasks.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskResultInput",
+          "name": "Input",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output information for smart subtitle tasks.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskBatchOutput",
+          "name": "Outputs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BatchSubTaskResult": {
+      "document": "Results of subtasks for a batch task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input information for a batch task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Metadata of the original video.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "Metadatas",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution result of the smart subtitle task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "BatchSmartSubtitlesResult",
+          "name": "SmartSubtitlesTaskResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ClassificationConfigureInfo": {
       "document": "Control parameter of intelligent categorization task",
@@ -9030,7 +9222,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfli: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -9293,7 +9485,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Additional parameter, which is a serialized JSON string.",
           "example": "{\\\"video_info\\\":{\\\"keep_gop\\\":0}}",
           "member": "string",
           "name": "StdExtInfo",
@@ -10738,6 +10930,153 @@
       ],
       "type": "object"
     },
+    "DescribeBatchTaskDetailRequest": {
+      "document": "DescribeBatchTaskDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Video processing task ID.",
+          "example": "235303****-BatchTask-80108cc3380155d98b2e3573a48a******",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBatchTaskDetailResponse": {
+      "document": "DescribeBatchTaskDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task type. Currently, the valid values include:\n<Li>BatchTask: batch processing task for video workflows.</li>.",
+          "example": "BatchTask",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values:\n<Li>WAITING: waiting.</li>\n<Li>PROCESSING: processing.</li>\n<li>FINISH: completed.</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:27Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Media processing task ID.",
+          "example": "2xxxx-BatchTask-123456789",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video processing task information. This field has a value only when TaskType is BatchTask.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "BatchSubTaskResult",
+          "name": "BatchTaskResult",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event notification information of the task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Priority of the task flow, with a value range of [-10, 10].",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "An identifier for deduplication. If there has been a request with the same identifier within the past seven days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using a null string indicates no deduplication is required.",
+          "example": "ctx-sessionid",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source context, which is used to pass through user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.",
+          "example": "ctx-sessionctx",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional information field, only used in specific scenarios.",
+          "example": "{\"ExtInfo\": \"\"}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeContentReviewTemplatesRequest": {
       "document": "DescribeContentReviewTemplates request structure.",
       "members": [
@@ -10894,6 +11233,83 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageTaskDetailRequest": {
+      "document": "DescribeImageTaskDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image processing task ID.",
+          "example": "235303****-WorkflowTask-80108cc3380155d98b2e3573a48a******",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageTaskDetailResponse": {
+      "document": "DescribeImageTaskDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task type. Currently, the valid values include:\n<Li>WorkflowTask: workflow processing task.</li>\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "WorkflowTask",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values:\n<Li>WAITING: waiting.</li>\n<Li>PROCESSING: processing.</li>\n<li>FINISH: completed.</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution status and results of the image processing task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageProcessTaskResult",
+          "name": "ImageProcessTaskResultSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2019-07-16T06:21:27Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -13136,7 +13552,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Type of the box selection area in the image. Valid values:\n<li>logo: icon</li>\n<li>text: text</li>\nDefault value: logo.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Type of the box selection area in the image. Valid values:\n<li>logo: icon.</li>\n<li>Text: text.</li>\nDefault value: logo.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "logo",
           "member": "string",
           "name": "Type",
@@ -13158,13 +13574,41 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.\n - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).\n -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "[0.1, 0.1, 0.2, 0.2]",
           "member": "float",
           "name": "BoundingBox",
           "output_required": false,
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageDenoiseConfig": {
+      "document": "Image denoising configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capability configuration enabling status. Valid values:\n<li>ON: enabled.</li>\n<li>OFF: disabled.</li>\nDefault value: ON.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type, with valid values including:\n<li>weak</li>\n<li>strong</li>\nDefault value: weak.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -13214,6 +13658,28 @@
         },
         {
           "disabled": false,
+          "document": "Denoising configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageDenoiseConfig",
+          "name": "Denoise",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Comprehensive enhancement configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageQualityEnhanceConfig",
+          "name": "ImageQualityEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Color enhancement configuration.\n",
           "example": "无",
           "member": "ColorEnhanceConfig",
@@ -13240,6 +13706,17 @@
           "example": "无",
           "member": "FaceEnhanceConfig",
           "name": "FaceEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Low-light enhancement configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "LowLightEnhanceConfig",
+          "name": "LowLightEnhance",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -13281,7 +13758,7 @@
         },
         {
           "disabled": false,
-          "document": "Multiple box selection areas to be erased. Note: The value array of this parameter can contain up to 2 values.\nNote: This field may return null, indicating that no valid value can be obtained.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Multiple box selection areas that need to be erased, with a maximum of 16 areas available.\nNote: This field may return null, indicating that no valid value can be obtained.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ImageAreaBoxInfo",
           "name": "ImageAreaBoxes",
@@ -13292,6 +13769,78 @@
         }
       ],
       "usage": "both"
+    },
+    "ImageProcessTaskOutput": {
+      "document": "Image processing result information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Path of the output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "/output/test.jpeg",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Storage location of the output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ImageProcessTaskResult": {
+      "document": "Result type of the image processing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, including PROCESSING, SUCCESS, and FAIL.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding task output.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageProcessTaskOutput",
+          "name": "Output",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding progress, with a value range of [0-100].\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ImageQualityEnhanceConfig": {
       "document": "Overall enhancement configuration.",
@@ -17712,7 +18261,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Hotword lexicon ID. \n \nEither Name or Content should be specified if the hotword lexicon is a text-based hotword lexicon.\nOne of Name, FileContent, and FileName should be specified if the hotword lexicon is a file-based hotword lexicon.\n",
+          "document": "Hotword lexicon ID. \n \nEither Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon.\nEither Name, FileContent, or FileName should be specified if the hotword lexicon is a file-based hotword lexicon.\n",
           "example": "hwd-aexxxxxxxxxxxxxx1481",
           "member": "string",
           "name": "HotwordsId",
@@ -18434,7 +18983,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfli: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -20942,7 +21491,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Smart subtitle language type.\n0: source language1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.",
+          "document": "Smart subtitle language type.\n0: source language\n1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.",
           "example": "0",
           "member": "int64",
           "name": "SubtitleType",
@@ -20953,7 +21502,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfli: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -21088,6 +21637,28 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameter, which is a serialized JSON string.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "{\"video_info\":{\"color_prim\":\"bt709\"}}",
+          "member": "string",
+          "name": "StdExtInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Audio/Video enhancement configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -22599,6 +23170,72 @@
           "name": "Wordlist",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SmartSubtitleTaskBatchOutput": {
+      "document": "Output information for smart subtitle tasks.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task progress.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "task fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Translation task output information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskTransTextResultOutput",
+          "name": "TransTextTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output information on the full speech recognition task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskAsrFullTextResultOutput",
+          "name": "AsrFullTextTask",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

@@ -85,7 +85,7 @@
       "status": "online"
     },
     "DescribeCustomerBillDetail": {
-      "document": "This API is used to query the customer bill details by resellers.\nCallable roles: Distributor, Second-level reseller, Reseller",
+      "document": "This API is used to query the customer bill details by resellers.\nCallable roles: Distributor, Second-level reseller, Reseller.",
       "input": "DescribeCustomerBillDetailRequest",
       "name": "Queries the customer bill details",
       "output": "DescribeCustomerBillDetailResponse",
@@ -1865,7 +1865,7 @@
         },
         {
           "disabled": false,
-          "document": "Inquiry month, in the format of YYYY-MM, such as 2023-01",
+          "document": "Inquiry month, in the format of YYYY-MM, such as 2023-01.",
           "example": "2023-02",
           "member": "string",
           "name": "Month",

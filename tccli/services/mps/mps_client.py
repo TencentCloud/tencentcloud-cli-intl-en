@@ -69,7 +69,7 @@ def doDescribeAsrHotwords(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteAnimatedGraphicsTemplate(args, parsed_globals):
+def doCreateSnapshotByTimeOffsetTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -98,11 +98,11 @@ def doDeleteAnimatedGraphicsTemplate(args, parsed_globals):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteAnimatedGraphicsTemplateRequest()
+    model = models.CreateSnapshotByTimeOffsetTemplateRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteAnimatedGraphicsTemplate(model)
+        rsp = client.CreateSnapshotByTimeOffsetTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -225,6 +225,58 @@ def doDeleteWatermarkTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeBatchTaskDetail(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBatchTaskDetailRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeBatchTaskDetail(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyLiveRecordTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -329,7 +381,7 @@ def doEditMedia(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateSnapshotByTimeOffsetTemplate(args, parsed_globals):
+def doDeleteAnimatedGraphicsTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -358,11 +410,11 @@ def doCreateSnapshotByTimeOffsetTemplate(args, parsed_globals):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateSnapshotByTimeOffsetTemplateRequest()
+    model = models.DeleteAnimatedGraphicsTemplateRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateSnapshotByTimeOffsetTemplate(model)
+        rsp = client.DeleteAnimatedGraphicsTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1369,6 +1421,58 @@ def doExecuteFunction(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doBatchProcessMedia(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.BatchProcessMediaRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.BatchProcessMedia(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeSnapshotByTimeOffsetTemplates(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -1403,6 +1507,58 @@ def doDescribeSnapshotByTimeOffsetTemplates(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeSnapshotByTimeOffsetTemplates(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteSampleSnapshotTemplate(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteSampleSnapshotTemplateRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DeleteSampleSnapshotTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2877,7 +3033,7 @@ def doDeleteWordSamples(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateImageSpriteTemplate(args, parsed_globals):
+def doCreateWatermarkTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2906,11 +3062,11 @@ def doCreateImageSpriteTemplate(args, parsed_globals):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateImageSpriteTemplateRequest()
+    model = models.CreateWatermarkTemplateRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateImageSpriteTemplate(model)
+        rsp = client.CreateWatermarkTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3605,7 +3761,7 @@ def doDescribeWatermarkTemplates(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateWatermarkTemplate(args, parsed_globals):
+def doCreateImageSpriteTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -3634,11 +3790,11 @@ def doCreateWatermarkTemplate(args, parsed_globals):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateWatermarkTemplateRequest()
+    model = models.CreateImageSpriteTemplateRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateWatermarkTemplate(model)
+        rsp = client.CreateImageSpriteTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4125,7 +4281,7 @@ def doDeleteLiveRecordTemplate(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteSampleSnapshotTemplate(args, parsed_globals):
+def doDescribeImageTaskDetail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -4154,11 +4310,11 @@ def doDeleteSampleSnapshotTemplate(args, parsed_globals):
     client = mod.MpsClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteSampleSnapshotTemplateRequest()
+    model = models.DescribeImageTaskDetailRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteSampleSnapshotTemplate(model)
+        rsp = client.DescribeImageTaskDetail(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4657,12 +4813,13 @@ MODELS_MAP = {
 
 ACTION_MAP = {
     "DescribeAsrHotwords": doDescribeAsrHotwords,
-    "DeleteAnimatedGraphicsTemplate": doDeleteAnimatedGraphicsTemplate,
+    "CreateSnapshotByTimeOffsetTemplate": doCreateSnapshotByTimeOffsetTemplate,
     "CreateAnimatedGraphicsTemplate": doCreateAnimatedGraphicsTemplate,
     "DeleteWatermarkTemplate": doDeleteWatermarkTemplate,
+    "DescribeBatchTaskDetail": doDescribeBatchTaskDetail,
     "ModifyLiveRecordTemplate": doModifyLiveRecordTemplate,
     "EditMedia": doEditMedia,
-    "CreateSnapshotByTimeOffsetTemplate": doCreateSnapshotByTimeOffsetTemplate,
+    "DeleteAnimatedGraphicsTemplate": doDeleteAnimatedGraphicsTemplate,
     "DescribeAIAnalysisTemplates": doDescribeAIAnalysisTemplates,
     "DeleteSmartSubtitleTemplate": doDeleteSmartSubtitleTemplate,
     "ParseLiveStreamProcessNotification": doParseLiveStreamProcessNotification,
@@ -4682,7 +4839,9 @@ ACTION_MAP = {
     "DescribeTasks": doDescribeTasks,
     "CreateTranscodeTemplate": doCreateTranscodeTemplate,
     "ExecuteFunction": doExecuteFunction,
+    "BatchProcessMedia": doBatchProcessMedia,
     "DescribeSnapshotByTimeOffsetTemplates": doDescribeSnapshotByTimeOffsetTemplates,
+    "DeleteSampleSnapshotTemplate": doDeleteSampleSnapshotTemplate,
     "CreateContentReviewTemplate": doCreateContentReviewTemplate,
     "CreateSampleSnapshotTemplate": doCreateSampleSnapshotTemplate,
     "DeleteAIAnalysisTemplate": doDeleteAIAnalysisTemplate,
@@ -4711,7 +4870,7 @@ ACTION_MAP = {
     "DescribeWorkflows": doDescribeWorkflows,
     "ModifyWatermarkTemplate": doModifyWatermarkTemplate,
     "DeleteWordSamples": doDeleteWordSamples,
-    "CreateImageSpriteTemplate": doCreateImageSpriteTemplate,
+    "CreateWatermarkTemplate": doCreateWatermarkTemplate,
     "DescribePersonSamples": doDescribePersonSamples,
     "ParseNotification": doParseNotification,
     "DeleteAIRecognitionTemplate": doDeleteAIRecognitionTemplate,
@@ -4725,7 +4884,7 @@ ACTION_MAP = {
     "ModifyWordSample": doModifyWordSample,
     "DescribeImageSpriteTemplates": doDescribeImageSpriteTemplates,
     "DescribeWatermarkTemplates": doDescribeWatermarkTemplates,
-    "CreateWatermarkTemplate": doCreateWatermarkTemplate,
+    "CreateImageSpriteTemplate": doCreateImageSpriteTemplate,
     "DescribeContentReviewTemplates": doDescribeContentReviewTemplates,
     "DeleteSchedule": doDeleteSchedule,
     "DescribeStreamLinkSecurityGroup": doDescribeStreamLinkSecurityGroup,
@@ -4735,7 +4894,7 @@ ACTION_MAP = {
     "EnableSchedule": doEnableSchedule,
     "ProcessLiveStream": doProcessLiveStream,
     "DeleteLiveRecordTemplate": doDeleteLiveRecordTemplate,
-    "DeleteSampleSnapshotTemplate": doDeleteSampleSnapshotTemplate,
+    "DescribeImageTaskDetail": doDescribeImageTaskDetail,
     "CreateAsrHotwords": doCreateAsrHotwords,
     "CreatePersonSample": doCreatePersonSample,
     "DescribeQualityControlTemplates": doDescribeQualityControlTemplates,
