@@ -1,5 +1,33 @@
 {
   "actions": {
+    "CheckAttributeLabelExist": {
+      "document": "This API is used to check if the label name under an attribute exist.",
+      "input": "CheckAttributeLabelExistRequest",
+      "name": "Check Label Value Existence",
+      "output": "CheckAttributeLabelExistResponse",
+      "status": "online"
+    },
+    "CheckAttributeLabelRefer": {
+      "document": "This API is used to check attribute label references.",
+      "input": "CheckAttributeLabelReferRequest",
+      "name": "Check Label Reference",
+      "output": "CheckAttributeLabelReferResponse",
+      "status": "online"
+    },
+    "CreateApp": {
+      "document": "This API is used to create knowledge engine applications.",
+      "input": "CreateAppRequest",
+      "name": "Application Creation",
+      "output": "CreateAppResponse",
+      "status": "online"
+    },
+    "CreateAttributeLabel": {
+      "document": "This API is used to create attributes.",
+      "input": "CreateAttributeLabelRequest",
+      "name": "Attribute Label Creation",
+      "output": "CreateAttributeLabelResponse",
+      "status": "online"
+    },
     "CreateCorp": {
       "document": "This API is used to create enterprises.",
       "input": "CreateCorpRequest",
@@ -7,11 +35,39 @@
       "output": "CreateCorpResponse",
       "status": "online"
     },
+    "CreateDocCate": {
+      "document": "This API is used to create doc categories.",
+      "input": "CreateDocCateRequest",
+      "name": "Doc Category Creation",
+      "output": "CreateDocCateResponse",
+      "status": "online"
+    },
+    "CreateQA": {
+      "document": "This API is used to enter Q&As.",
+      "input": "CreateQARequest",
+      "name": "Q&A Entry",
+      "output": "CreateQAResponse",
+      "status": "online"
+    },
+    "CreateQACate": {
+      "document": "This API is used to create Q&A categories.",
+      "input": "CreateQACateRequest",
+      "name": "Q&A Category Creation",
+      "output": "CreateQACateResponse",
+      "status": "online"
+    },
     "CreateReconstructDocumentFlow": {
       "document": "This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.\nDocument parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order.\nDuring the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.",
       "input": "CreateReconstructDocumentFlowRequest",
       "name": "Document Parsing Task Creation",
       "output": "CreateReconstructDocumentFlowResponse",
+      "status": "online"
+    },
+    "CreateRejectedQuestion": {
+      "document": "This API is used to create rejected questions.",
+      "input": "CreateRejectedQuestionRequest",
+      "name": "Rejected Question Creation",
+      "output": "CreateRejectedQuestionResponse",
       "status": "online"
     },
     "CreateRelease": {
@@ -28,11 +84,25 @@
       "output": "DeleteAppResponse",
       "status": "online"
     },
+    "DeleteAttributeLabel": {
+      "document": "This API is used to delete attribute labels.",
+      "input": "DeleteAttributeLabelRequest",
+      "name": "Label Deletion",
+      "output": "DeleteAttributeLabelResponse",
+      "status": "online"
+    },
     "DeleteDoc": {
       "document": "This API is used to delete documents.",
       "input": "DeleteDocRequest",
       "name": "Document Deletion",
       "output": "DeleteDocResponse",
+      "status": "online"
+    },
+    "DeleteDocCate": {
+      "document": "This API is used to delete Doc categories.",
+      "input": "DeleteDocCateRequest",
+      "name": "Doc Category Deletion",
+      "output": "DeleteDocCateResponse",
       "status": "online"
     },
     "DeleteQA": {
@@ -54,6 +124,13 @@
       "input": "DeleteRejectedQuestionRequest",
       "name": "Rejected Question Deletion",
       "output": "DeleteRejectedQuestionResponse",
+      "status": "online"
+    },
+    "DescribeApp": {
+      "document": "This API is used to obtain application details under the corporate.",
+      "input": "DescribeAppRequest",
+      "name": "Obtain corporate application details",
+      "output": "DescribeAppResponse",
       "status": "online"
     },
     "DescribeAttributeLabel": {
@@ -84,6 +161,13 @@
       "output": "DescribeConcurrencyUsageGraphResponse",
       "status": "online"
     },
+    "DescribeCorp": {
+      "document": "This API is used to query corporate details.",
+      "input": "DescribeCorpRequest",
+      "name": "Query Corporate Details",
+      "output": "DescribeCorpResponse",
+      "status": "online"
+    },
     "DescribeDoc": {
       "document": "This API is used to query document details.",
       "input": "DescribeDocRequest",
@@ -105,11 +189,32 @@
       "output": "DescribeKnowledgeUsagePieGraphResponse",
       "status": "online"
     },
+    "DescribeQA": {
+      "document": "This API is used to query Q&A details.",
+      "input": "DescribeQARequest",
+      "name": "Query Q&A Details",
+      "output": "DescribeQAResponse",
+      "status": "online"
+    },
+    "DescribeRefer": {
+      "document": "This API is used to get the reference source details list.",
+      "input": "DescribeReferRequest",
+      "name": "Get the list of source details",
+      "output": "DescribeReferResponse",
+      "status": "online"
+    },
     "DescribeRelease": {
       "document": "This API is used to query release details.",
       "input": "DescribeReleaseRequest",
       "name": "Query Release Details",
       "output": "DescribeReleaseResponse",
+      "status": "online"
+    },
+    "DescribeReleaseInfo": {
+      "document": "This API is used to pull the release button status and last release time.",
+      "input": "DescribeReleaseInfoRequest",
+      "name": "Pull Release Button Status and Last Release Time",
+      "output": "DescribeReleaseInfoResponse",
       "status": "online"
     },
     "DescribeRobotBizIDByAppKey": {
@@ -124,6 +229,20 @@
       "input": "DescribeSearchStatsGraphRequest",
       "name": "Query Line Chart for Search Service Calls",
       "output": "DescribeSearchStatsGraphResponse",
+      "status": "online"
+    },
+    "DescribeSegments": {
+      "document": "This API is used to get fragment details.",
+      "input": "DescribeSegmentsRequest",
+      "name": "Get Fragment Details",
+      "output": "DescribeSegmentsResponse",
+      "status": "online"
+    },
+    "DescribeStorageCredential": {
+      "document": "This API is used to get the temporary key for file upload.",
+      "input": "DescribeStorageCredentialRequest",
+      "name": "Get Temporary Key for File Upload",
+      "output": "DescribeStorageCredentialResponse",
       "status": "online"
     },
     "DescribeTokenUsage": {
@@ -147,6 +266,13 @@
       "output": "DescribeUnsatisfiedReplyContextResponse",
       "status": "online"
     },
+    "ExportAttributeLabel": {
+      "document": "This API is used to export attribute labels.",
+      "input": "ExportAttributeLabelRequest",
+      "name": "Label Export",
+      "output": "ExportAttributeLabelResponse",
+      "status": "online"
+    },
     "ExportQAList": {
       "document": "This API is used to export Q&A list.",
       "input": "ExportQAListRequest",
@@ -168,11 +294,53 @@
       "output": "GenerateQAResponse",
       "status": "online"
     },
+    "GetAnswerTypeDataCount": {
+      "document": "This API is used to get response type data statistics.",
+      "input": "GetAnswerTypeDataCountRequest",
+      "name": "Response Type Data Statistics",
+      "output": "GetAnswerTypeDataCountResponse",
+      "status": "online"
+    },
+    "GetAppKnowledgeCount": {
+      "document": "This API is used to get a model list.",
+      "input": "GetAppKnowledgeCountRequest",
+      "name": "Get Number of Knowledge Q&As",
+      "output": "GetAppKnowledgeCountResponse",
+      "status": "online"
+    },
+    "GetAppSecret": {
+      "document": "This API is used to get application secret keys.",
+      "input": "GetAppSecretRequest",
+      "name": "Get Application Key",
+      "output": "GetAppSecretResponse",
+      "status": "online"
+    },
+    "GetDocPreview": {
+      "document": "This API is used to get document preview information.",
+      "input": "GetDocPreviewRequest",
+      "name": "Get Document Preview Information",
+      "output": "GetDocPreviewResponse",
+      "status": "online"
+    },
+    "GetLikeDataCount": {
+      "document": "This API is used to get likes and dislikes data statistics.",
+      "input": "GetLikeDataCountRequest",
+      "name": "Likes and Dislikes Data Statistics",
+      "output": "GetLikeDataCountResponse",
+      "status": "online"
+    },
     "GetMsgRecord": {
       "document": "This API is used to obtain chat history based on the session ID (only historical session data within the past 180 days will be retained).",
       "input": "GetMsgRecordRequest",
       "name": "Get Chat History Request",
       "output": "GetMsgRecordResponse",
+      "status": "online"
+    },
+    "GetReconstructDocumentResult": {
+      "document": "This is an asynchronous APIs, used to get document parsing task results.",
+      "input": "GetReconstructDocumentResultRequest",
+      "name": "Query Document Parsing Task Results",
+      "output": "GetReconstructDocumentResultResponse",
       "status": "online"
     },
     "GetTaskStatus": {
@@ -189,6 +357,20 @@
       "output": "GetWsTokenResponse",
       "status": "online"
     },
+    "GroupDoc": {
+      "document": "DocGroup.",
+      "input": "GroupDocRequest",
+      "name": "DocGroup",
+      "output": "GroupDocResponse",
+      "status": "online"
+    },
+    "GroupQA": {
+      "document": "Q&A Group.",
+      "input": "GroupQARequest",
+      "name": "Q&A Group",
+      "output": "GroupQAResponse",
+      "status": "online"
+    },
     "IgnoreUnsatisfiedReply": {
       "document": "This API is used to ignore dissatisfied responses.",
       "input": "IgnoreUnsatisfiedReplyRequest",
@@ -203,11 +385,53 @@
       "output": "ListAppResponse",
       "status": "online"
     },
+    "ListAppCategory": {
+      "document": "This API is used to get list of application types.",
+      "input": "ListAppCategoryRequest",
+      "name": "Get Application Type List",
+      "output": "ListAppCategoryResponse",
+      "status": "online"
+    },
+    "ListAppKnowledgeDetail": {
+      "document": "This API is used to query the knowledge base capacity details in a list.",
+      "input": "ListAppKnowledgeDetailRequest",
+      "name": "List Query Knowledge Base Capacity Details",
+      "output": "ListAppKnowledgeDetailResponse",
+      "status": "online"
+    },
     "ListAttributeLabel": {
       "document": "This API is used to query attribute label lists.",
       "input": "ListAttributeLabelRequest",
       "name": "Query Label List",
       "output": "ListAttributeLabelResponse",
+      "status": "online"
+    },
+    "ListDoc": {
+      "document": "This API is used to get document list.",
+      "input": "ListDocRequest",
+      "name": "Get Document List",
+      "output": "ListDocResponse",
+      "status": "online"
+    },
+    "ListDocCate": {
+      "document": "This API is used to get document category.",
+      "input": "ListDocCateRequest",
+      "name": "Get Document Category",
+      "output": "ListDocCateResponse",
+      "status": "online"
+    },
+    "ListModel": {
+      "document": "This API is used to get the model list.",
+      "input": "ListModelRequest",
+      "name": "Get Model List",
+      "output": "ListModelResponse",
+      "status": "online"
+    },
+    "ListQA": {
+      "document": "This API is used to query Q&A lists.",
+      "input": "ListQARequest",
+      "name": "Query Q&A List",
+      "output": "ListQAResponse",
       "status": "online"
     },
     "ListQACate": {
@@ -224,11 +448,39 @@
       "output": "ListRejectedQuestionResponse",
       "status": "online"
     },
+    "ListRejectedQuestionPreview": {
+      "document": "This API is used to release a preview of rejected questions.",
+      "input": "ListRejectedQuestionPreviewRequest",
+      "name": "Release Rejected Question Preview",
+      "output": "ListRejectedQuestionPreviewResponse",
+      "status": "online"
+    },
+    "ListRelease": {
+      "document": "This API is used to get the release list.",
+      "input": "ListReleaseRequest",
+      "name": "Get Release List",
+      "output": "ListReleaseResponse",
+      "status": "online"
+    },
     "ListReleaseConfigPreview": {
       "document": "This API is used to preview the release configuration items.",
       "input": "ListReleaseConfigPreviewRequest",
       "name": "Preview Release Configuration Items",
       "output": "ListReleaseConfigPreviewResponse",
+      "status": "online"
+    },
+    "ListReleaseDocPreview": {
+      "document": "This API is used to preview released documents.",
+      "input": "ListReleaseDocPreviewRequest",
+      "name": "Preview Released Document",
+      "output": "ListReleaseDocPreviewResponse",
+      "status": "online"
+    },
+    "ListReleaseQAPreview": {
+      "document": "List of documents.",
+      "input": "ListReleaseQAPreviewRequest",
+      "name": "Release Q&A Preview",
+      "output": "ListReleaseQAPreviewResponse",
       "status": "online"
     },
     "ListSelectDoc": {
@@ -320,6 +572,13 @@
       "input": "RateMsgRecordRequest",
       "name": "Comment Messages",
       "output": "RateMsgRecordResponse",
+      "status": "online"
+    },
+    "RenameDoc": {
+      "document": "This API is used to rename a document.",
+      "input": "RenameDocRequest",
+      "name": "Rename Document",
+      "output": "RenameDocResponse",
       "status": "online"
     },
     "RetryDocAudit": {
@@ -1468,6 +1727,21 @@
       ],
       "usage": "both"
     },
+    "AttributeFilters": {
+      "document": "Export knowledge label filter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Retrieve, attribute or label name.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "AttributeLabel": {
       "document": "Label value.",
       "members": [
@@ -1672,6 +1946,237 @@
       ],
       "usage": "out"
     },
+    "CateInfo": {
+      "document": "Category information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Category ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Category name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of records (such as documents, synonyms, etc.) under the category.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is possible to add.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanAdd",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it can be edited.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it can be deleted.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subcategory.",
+          "example": "无",
+          "member": "CateInfo",
+          "name": "Children",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CheckAttributeLabelExistRequest": {
+      "document": "CheckAttributeLabelExist request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute name.",
+          "example": "无",
+          "member": "string",
+          "name": "LabelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AttributeBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to the user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to the user's sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scroll loading, the last attribute label ID.",
+          "example": "无",
+          "member": "string",
+          "name": "LastLabelBizId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckAttributeLabelExistResponse": {
+      "document": "CheckAttributeLabelExist response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether it exists.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsExist",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckAttributeLabelReferRequest": {
+      "document": "CheckAttributeLabelRefer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute label.",
+          "example": "无",
+          "member": "string",
+          "name": "LabelBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AttributeBizId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckAttributeLabelReferResponse": {
+      "document": "CheckAttributeLabelRefer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to reference.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsRefer",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ClassifyConfig": {
       "document": "Label extraction configuration.",
       "members": [
@@ -1826,6 +2331,144 @@
       ],
       "usage": "out"
     },
+    "CreateAppRequest": {
+      "document": "CreateApp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application type; knowledge_qa - knowledge qa management.",
+          "example": "无",
+          "member": "string",
+          "name": "AppType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Basic application configuration.",
+          "example": "无",
+          "member": "BaseConfig",
+          "name": "BaseConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAppResponse": {
+      "document": "CreateApp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the account application list permissions are customized. A user interaction prompt.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsCustomList",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAttributeLabelRequest": {
+      "document": "CreateAttributeLabel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "1826933901291945900",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Label name.",
+          "example": "汽车类型",
+          "member": "string",
+          "name": "AttrName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Label value.",
+          "example": "[             {                 \"LabelName\": \"SUV\",                 \"SimilarLabels\": [                     \"运动型多用途汽车\",                     \"越野\"                 ]             }         ]",
+          "member": "AttributeLabel",
+          "name": "Labels",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Label identification (not effective, no need to fill in) . Abolished.",
+          "example": "无",
+          "member": "string",
+          "name": "AttrKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAttributeLabelResponse": {
+      "document": "CreateAttributeLabel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Label ID.",
+          "example": "123123213",
+          "member": "string",
+          "name": "AttrBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCorpRequest": {
       "document": "CreateCorp request structure.",
       "members": [
@@ -1877,6 +2520,312 @@
           "example": "无",
           "member": "string",
           "name": "CorpBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocCateRequest": {
+      "document": "CreateDocCate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parent business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ParentBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category name.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocCateResponse": {
+      "document": "CreateDocCate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether it is possible to add.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "CanAdd",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is editable.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it can be deleted.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "CanDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQACateRequest": {
+      "document": "CreateQACate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parent business id. pass the string \"0\" when creating a top-level category.",
+          "example": "无",
+          "member": "string",
+          "name": "ParentBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category name.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQACateResponse": {
+      "document": "CreateQACate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether it is possible to add.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "CanAdd",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is editable.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it can be deleted.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "CanDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQARequest": {
+      "document": "CreateQA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Question.",
+          "example": "无",
+          "member": "string",
+          "name": "Question",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Answer.",
+          "example": "无",
+          "member": "string",
+          "name": "Answer",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Applicable scope of labels: 1. all; 2. by conditions.",
+          "example": "1：全部，2：按条件",
+          "member": "uint64",
+          "name": "AttrRange",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "CustomParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Label reference.",
+          "example": "无",
+          "member": "AttrLabelRefer",
+          "name": "AttrLabels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effective start time, unix timestamp.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireStart",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effective end time, unix timestamp. 0 indicates permanent validity.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireEnd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Similar question content.",
+          "example": "无",
+          "member": "string",
+          "name": "SimilarQuestions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Question description.",
+          "example": "无",
+          "member": "string",
+          "name": "QuestionDesc",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateQAResponse": {
+      "document": "CreateQA response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Q&A ID.",
+          "example": "无",
+          "member": "string",
+          "name": "QaBizId",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1996,6 +2945,60 @@
       ],
       "type": "object"
     },
+    "CreateRejectedQuestionRequest": {
+      "document": "CreateRejectedQuestion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "1844287616635371520",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rejected question",
+          "example": "你是谁你来自哪里你要到哪里去",
+          "member": "string",
+          "name": "Question",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the data source for the rejected question - \"2\" will be returned when the rejected question is not satisfied - The rejected question comes from manual addition.",
+          "example": "2",
+          "member": "uint64",
+          "name": "BusinessSource",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the data source for the rejected question.\n\n",
+          "example": "无",
+          "member": "string",
+          "name": "BusinessId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRejectedQuestionResponse": {
+      "document": "CreateRejectedQuestion response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateReleaseRequest": {
       "document": "CreateRelease request structure.",
       "members": [
@@ -2042,6 +3045,52 @@
       ],
       "type": "object"
     },
+    "Credentials": {
+      "document": "Temporary key structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Token.",
+          "example": "无",
+          "member": "string",
+          "name": "Token",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Temporary license key ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TmpSecretId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Temporary license key.",
+          "example": "无",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Temporary license appid.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteAppRequest": {
       "document": "DeleteApp request structure.",
       "members": [
@@ -2068,6 +3117,96 @@
     },
     "DeleteAppResponse": {
       "document": "DeleteApp response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAttributeLabelRequest": {
+      "document": "DeleteAttributeLabel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Label ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AttributeBizIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to user's sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAttributeLabelResponse": {
+      "document": "DeleteAttributeLabel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDocCateRequest": {
+      "document": "DeleteDocCate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDocCateResponse": {
+      "document": "DeleteDocCate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2213,6 +3352,181 @@
     "DeleteRejectedQuestionResponse": {
       "document": "DeleteRejectedQuestion response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppRequest": {
+      "document": "DescribeApp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.",
+          "example": "无",
+          "member": "string",
+          "name": "AppType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the configuration after release.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsRelease",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAppResponse": {
+      "document": "DescribeApp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.",
+          "example": "knowledge_qa",
+          "member": "string",
+          "name": "AppType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application type description.",
+          "example": "无",
+          "member": "string",
+          "name": "AppTypeDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application type description.",
+          "example": "无",
+          "member": "BaseConfig",
+          "name": "BaseConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application configuration.",
+          "example": "无",
+          "member": "AppConfig",
+          "name": "AppConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the avatar is under appeal.",
+          "example": "无",
+          "member": "bool",
+          "name": "AvatarInAppeal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the role description is under appeal.",
+          "example": "无",
+          "member": "bool",
+          "name": "RoleInAppeal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the name is under appeal.",
+          "example": "无",
+          "member": "bool",
+          "name": "NameInAppeal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the welcome words are under appeal.",
+          "example": "无",
+          "member": "bool",
+          "name": "GreetingInAppeal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the response message for unknown questions is under appeal.",
+          "example": "无",
+          "member": "bool",
+          "name": "BareAnswerInAppeal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "App key of the application.",
+          "example": "无",
+          "member": "string",
+          "name": "AppKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application status. 1: offline; 2: running; 3: disabled.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AppStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "无",
+          "member": "string",
+          "name": "AppStatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2675,6 +3989,93 @@
       ],
       "type": "object"
     },
+    "DescribeCorpRequest": {
+      "document": "DescribeCorp request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCorpResponse": {
+      "document": "DescribeCorp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Corporate ID.\n",
+          "example": "无",
+          "member": "string",
+          "name": "CorpBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application quota.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RobotQuota",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Full name of the corporate.\n",
+          "example": "无",
+          "member": "string",
+          "name": "FullName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to try out.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsTrial",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the trial has expired.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsTrialExpired",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of available applications.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AvailableAppQuota",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether custom model configuration is supported.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsSupportCustomModel",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDocRequest": {
       "document": "DescribeDoc request structure.",
       "members": [
@@ -3045,6 +4446,463 @@
       ],
       "type": "object"
     },
+    "DescribeQARequest": {
+      "document": "DescribeQA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Q&A business ID.\n",
+          "example": "1903999940055016768",
+          "member": "string",
+          "name": "QaBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "1887842680054218000",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQAResponse": {
+      "document": "DescribeQA response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Q&A business ID.\n",
+          "example": "1903999940055016768",
+          "member": "string",
+          "name": "QaBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Question.\n",
+          "example": "哪吒2",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Answer.\n",
+          "example": "《哪吒之魔童闹海》（亦称《哪吒贰之魔童闹海》，简称《哪吒2》",
+          "member": "string",
+          "name": "Answer",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "CustomParam",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source:\n1 - Q&A pairs generated from documents.\n2 - Q&A pairs imported in batches.\n3 - Q&A pairs input manually one by one.\n\n",
+          "example": "3",
+          "member": "uint64",
+          "name": "Source",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source description.\n",
+          "example": "手动录入",
+          "member": "string",
+          "name": "SourceDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.\n\n",
+          "example": "1742783938",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status<br>1 - pending verification; 2 - not released; 3 - releasing; 4 - released; 5 - release failed; 6 - not approved; 7 - under review; 8 - review failed, 9 - review failed, pending manual review after appeal; 11 - review failed, manual review not passed after appeal; 12 - expired; 13 - excessive invalid; 14 - excessive invalid recovered; 19 - learning; 20 - learning failed.\n\n",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.\n\n",
+          "example": "未发布",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID.\n",
+          "example": "1887842680872108032",
+          "member": "string",
+          "name": "CateBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether verification is allowed.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowAccept",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether deletion is allowed.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether editing is allowed.\n",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.\n",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document name.\n",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document type.\n",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment ID.\n",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment content.",
+          "example": "无",
+          "member": "string",
+          "name": "PageContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment highlight content.",
+          "example": "无",
+          "member": "Highlight",
+          "name": "Highlights",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment content.\n",
+          "example": "无",
+          "member": "string",
+          "name": "OrgData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Applicable scope of label.",
+          "example": "无",
+          "member": "int64",
+          "name": "AttrRange",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Label.",
+          "example": "无",
+          "member": "AttrLabel",
+          "name": "AttrLabels",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective start time, unix timestamp.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireStart",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective end time, unix timestamp. 0 indicates permanent validity.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireEnd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Similar question list information.",
+          "example": "无",
+          "member": "SimilarQuestion",
+          "name": "SimilarQuestions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Review status of Q&A text: 1 - review failed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "QaAuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Review status of image in Q&A: 1-review failed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PicAuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Review status of video in Q&A: 1 - review failed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "VideoAuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Question description.",
+          "example": "无",
+          "member": "string",
+          "name": "QuestionDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReferRequest": {
+      "document": "DescribeRefer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quota ID",
+          "example": "无",
+          "member": "string",
+          "name": "ReferBizIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log in to the user's root account (required in the integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login user sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReferResponse": {
+      "document": "DescribeRefer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Reference list.",
+          "example": "无",
+          "member": "ReferDetail",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseInfoRequest": {
+      "document": "DescribeReleaseInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReleaseInfoResponse": {
+      "document": "DescribeReleaseInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The last release time.",
+          "example": "无",
+          "member": "string",
+          "name": "LastTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release status: 1: pending release; 2: releasing; 3: release successful; 4: release failed; 5: under review; 6: review successful; 7: review failed; 8: release successful, callback processing; 9: release paused; 10: appeal under review; 11: appeal approved; 12: appeal rejected.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it has been edited. When it is true, it means it can be released.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsUpdated",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Msg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeReleaseRequest": {
       "document": "DescribeRelease request structure.",
       "members": [
@@ -3248,6 +5106,206 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSegmentsRequest": {
+      "document": "DescribeSegments request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document fragment ID.",
+          "example": "无",
+          "member": "string",
+          "name": "SegBizId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSegmentsResponse": {
+      "document": "DescribeSegments response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fragment list.",
+          "example": "无",
+          "member": "DocSegment",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageCredentialRequest": {
+      "document": "DescribeStorageCredential request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID. The parameter still needs to be filled in. Different combinations of parameters will result in different permissions. For details, see https://cloud.tencent.com/document/product/1759/116238.",
+          "example": "177106121651545*****",
+          "member": "string",
+          "name": "BotBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File type, normal file name type suffixes, such as xlsx, pdf, docx, png, etc.",
+          "example": "pdf",
+          "member": "string",
+          "name": "FileType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is used to select a scenario when uploading a file or an image. When uploading an image in a chat, \"Ispublic\" is \"true.\" When uploading a file (including files in the document library, images, etc. and files in a chat), \"Ispublic\" is \"false.\"\n",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPublic",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.",
+          "example": "offline",
+          "member": "string",
+          "name": "TypeKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageCredentialResponse": {
+      "document": "DescribeStorageCredential response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key information.",
+          "example": "无",
+          "member": "Credentials",
+          "name": "Credentials",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time.",
+          "example": "无",
+          "member": "int64",
+          "name": "ExpiredTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud object storage bucket.",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS availability zone.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud file storage directory.",
+          "example": "无",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage type.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary account.",
+          "example": "无",
+          "member": "string",
+          "name": "CorpUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image storage directory.",
+          "example": "无",
+          "member": "string",
+          "name": "ImagePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Upload storage path to a specific file.",
+          "example": "/corp/1768567877186617344/1768574873671565312/doc/XIEVIQBxpnltliscsSAu-1796171935184060416.pdf",
+          "member": "string",
+          "name": "UploadPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3652,6 +5710,209 @@
       ],
       "usage": "both"
     },
+    "DocFilterFlag": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "is_created_qa",
+          "member": "string",
+          "name": "Flag",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Value",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
+    "DocSegment": {
+      "document": "Document fragment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fragment ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BusinessId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "File type (markdown, word, txt).",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document segment type (segment, table).",
+          "example": "无",
+          "member": "string",
+          "name": "SegmentType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Title.",
+          "example": "无",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Paragraph content.",
+          "example": "无",
+          "member": "string",
+          "name": "PageContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original paragraph.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Article ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document URL.",
+          "example": "无",
+          "member": "string",
+          "name": "DocUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ExportAttributeLabelRequest": {
+      "document": "ExportAttributeLabel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AttributeBizIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Export according to the filtered data.",
+          "example": "无",
+          "member": "AttributeFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportAttributeLabelResponse": {
+      "document": "ExportAttributeLabel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Export task ID.",
+          "example": "0",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ExportQAListRequest": {
       "document": "ExportQAList request structure.",
       "members": [
@@ -3903,6 +6164,556 @@
       ],
       "type": "object"
     },
+    "GetAnswerTypeDataCountRequest": {
+      "document": "GetAnswerTypeDataCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start date.",
+          "example": "1716368386",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End date.",
+          "example": "1716454119",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "1747088166522585088",
+          "member": "string",
+          "name": "AppBizId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Message source (1. shared from user end; 2. chat API; 3. chat test, 4. application evaluation).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAnswerTypeDataCountResponse": {
+      "document": "GetAnswerTypeDataCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of messages.",
+          "example": "45",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of direct responses by the large model.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ModelReplyCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of knowledge-based responses.",
+          "example": "2",
+          "member": "uint64",
+          "name": "KnowledgeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of task flow responses.",
+          "example": "3",
+          "member": "uint64",
+          "name": "TaskFlowCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of search engine responses.",
+          "example": "4",
+          "member": "uint64",
+          "name": "SearchEngineCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of image understanding responses.",
+          "example": "5",
+          "member": "uint64",
+          "name": "ImageUnderstandingCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of responses to rejected questions.",
+          "example": "6",
+          "member": "uint64",
+          "name": "RejectCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of sensitive responses.",
+          "example": "7",
+          "member": "uint64",
+          "name": "SensitiveCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of responses for concurrency exceeded.",
+          "example": "8",
+          "member": "uint64",
+          "name": "ConcurrentLimitCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of unknown question responses.",
+          "example": "9",
+          "member": "uint64",
+          "name": "UnknownIssuesCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAppKnowledgeCountRequest": {
+      "document": "GetAppKnowledgeCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type: doc - document; qa - Q&A pair.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAppKnowledgeCountResponse": {
+      "document": "GetAppKnowledgeCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAppSecretRequest": {
+      "document": "GetAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "1801166480814637056",
+          "member": "string",
+          "name": "AppBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAppSecretResponse": {
+      "document": "GetAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application key.",
+          "example": "无",
+          "member": "string",
+          "name": "AppKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to release.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsRelease",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether there is permission to view.",
+          "example": "无",
+          "member": "bool",
+          "name": "HasPermission",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDocPreviewRequest": {
+      "document": "GetDocPreview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Document BizID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.",
+          "example": "offline",
+          "member": "string",
+          "name": "TypeKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDocPreviewResponse": {
+      "document": "GetDocPreview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filename. The release end always uses this name.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File type.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS path.\n",
+          "example": "无",
+          "member": "string",
+          "name": "CosUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS temporary url.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS bucket.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "It is the new name in the case of document renaming. It shall be used preferentially on the evaluation end.",
+          "example": "无",
+          "member": "string",
+          "name": "NewName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLikeDataCountRequest": {
+      "document": "GetLikeDataCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start date.",
+          "example": "1716368386",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End date.",
+          "example": "1716454119",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "1747088166522585088",
+          "member": "string",
+          "name": "AppBizId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Message source (1. shared from user end, 2. chat api).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetLikeDataCountResponse": {
+      "document": "GetLikeDataCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of messages that can be evaluated.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of comments.",
+          "example": "10",
+          "member": "uint64",
+          "name": "AppraisalTotal",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Participation rate.",
+          "example": "0.5",
+          "member": "float",
+          "name": "ParticipationRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of likes.",
+          "example": "8",
+          "member": "uint64",
+          "name": "LikeTotal",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Like rate.",
+          "example": "0.8",
+          "member": "float",
+          "name": "LikeRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of dislikes.",
+          "example": "2",
+          "member": "uint64",
+          "name": "DislikeTotal",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dislike rate.",
+          "example": "0.2",
+          "member": "float",
+          "name": "DislikeRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetMsgRecordRequest": {
       "document": "GetMsgRecord request structure.",
       "members": [
@@ -3994,6 +6805,63 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetReconstructDocumentResultRequest": {
+      "document": "GetReconstructDocumentResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetReconstructDocumentResultResponse": {
+      "document": "GetReconstructDocumentResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.",
+          "example": "无",
+          "member": "string",
+          "name": "DocumentRecognizeResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number information where document parsing failed this time.",
+          "example": "无",
+          "member": "ReconstructDocumentFailedPage",
+          "name": "FailedPages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4226,6 +7094,135 @@
         }
       ],
       "type": "object"
+    },
+    "GroupDocRequest": {
+      "document": "GroupDoc request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of business IDs of operation objects.",
+          "example": "无",
+          "member": "string",
+          "name": "BizIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupDocResponse": {
+      "document": "GroupDoc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupQARequest": {
+      "document": "GroupQA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of QaBizIDs.",
+          "example": "无",
+          "member": "string",
+          "name": "QaBizIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupQAResponse": {
+      "document": "GroupQA response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Highlight": {
+      "document": "Fragment highlight content.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Highlight starting position.",
+          "example": "无",
+          "member": "string",
+          "name": "StartPos",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Highlight end position.",
+          "example": "无",
+          "member": "string",
+          "name": "EndPos",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Highlight subtext.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "HistorySummary": {
       "document": "Multiple rounds of historical information.",
@@ -4466,6 +7463,56 @@
         }
       ],
       "usage": "out"
+    },
+    "KnowledgeDetail": {
+      "document": "Application usage details of knowledge library capacity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application name.",
+          "example": "无",
+          "member": "string",
+          "name": "AppName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of used characters.",
+          "example": "无",
+          "member": "string",
+          "name": "UsedCharSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage proportion.",
+          "example": "无",
+          "member": "float",
+          "name": "Proportion",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Exceeding character count.",
+          "example": "无",
+          "member": "string",
+          "name": "ExceedCharSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "KnowledgeQaConfig": {
       "document": "Knowledge Q&A configuration.",
@@ -5085,6 +8132,134 @@
       ],
       "usage": "out"
     },
+    "ListAppCategoryRequest": {
+      "document": "ListAppCategory request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ListAppCategoryResponse": {
+      "document": "ListAppCategory response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application type list.",
+          "example": "无",
+          "member": "ListAppCategoryRspOption",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAppCategoryRspOption": {
+      "document": "Application type details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type name.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type value.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type log.",
+          "example": "无",
+          "member": "string",
+          "name": "Logo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ListAppKnowledgeDetailRequest": {
+      "document": "ListAppKnowledgeDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID list.",
+          "example": "无",
+          "member": "string",
+          "name": "AppBizIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAppKnowledgeDetailResponse": {
+      "document": "ListAppKnowledgeDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of lists.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of knowledge base capacity usage by application.",
+          "example": "无",
+          "member": "KnowledgeDetail",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ListAppRequest": {
       "document": "ListApp request structure.",
       "members": [
@@ -5260,6 +8435,581 @@
       ],
       "type": "object"
     },
+    "ListDocCateRequest": {
+      "document": "ListDocCate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDocCateResponse": {
+      "document": "ListDocCate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List.",
+          "example": "无",
+          "member": "CateInfo",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDocItem": {
+      "document": "Description of document list details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "File name.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The new document name after renaming. This name remains until the document is published after the renaming submission.",
+          "example": "无",
+          "member": "string",
+          "name": "NewName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File type.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS path.",
+          "example": "无",
+          "member": "string",
+          "name": "CosUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document status.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document status description.",
+          "example": "无",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reason.",
+          "example": "无",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to refer to an answer.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsRefer",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of Q&A pairs.",
+          "example": "无",
+          "member": "int64",
+          "name": "QaNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it has been deleted.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDeleted",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document source.",
+          "example": "无",
+          "member": "int64",
+          "name": "Source",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document source description.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether regeneration is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowRestart",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the Q&A has been deleted.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDeletedQa",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the Q&A is being generated.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsCreatingQa",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether deletion is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow operation reference switch.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowRefer",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether Q&A has been generated.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsCreatedQa",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document character count.",
+          "example": "无",
+          "member": "string",
+          "name": "DocCharSize",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Applicable range of attribute label.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AttrRange",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Attribute label.",
+          "example": "无",
+          "member": "AttrLabel",
+          "name": "AttrLabels",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether editing is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "External reference URL type, 0: system URL; 1: custom URL.\nWhen the value is 1, the WebUrl field cannot be empty; otherwise, it will not take effect.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReferUrlType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Web page URL (or custom URL) .",
+          "example": "无",
+          "member": "string",
+          "name": "WebUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Effective start time, unix timestamp.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireStart",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Effective end time, unix timestamp. 0 indicates permanent validity.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireEnd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether retries are allowed, 0: no, 1: yes.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowRetry",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "0: document comparison processing; 1: Q&A generation from document.",
+          "example": "无",
+          "member": "int64",
+          "name": "Processing",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time when the document was created and stored into the database.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID of the document's category.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User-defined ID of the document.",
+          "example": "无",
+          "member": "string",
+          "name": "CustomerKnowledgeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Attribute label of the document. 0: Do not perform external user permission verification.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AttributeFlags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ListDocRequest": {
+      "document": "ListDoc request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query content.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query type: filename - document; attribute - label.",
+          "example": "无",
+          "member": "string",
+          "name": "QueryType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File type classification and filtering.",
+          "example": "[\"txt\",\"jpg\"]",
+          "member": "string",
+          "name": "FileTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Document list filter flag",
+          "example": "无",
+          "member": "DocFilterFlag",
+          "name": "FilterFlag",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDocResponse": {
+      "document": "ListDoc response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Quantity of documents.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of documents.",
+          "example": "无",
+          "member": "ListDocItem",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListModelRequest": {
+      "document": "ListModel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.",
+          "example": "无",
+          "member": "string",
+          "name": "AppType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application mode standard: standard; agent; single_workflow.",
+          "example": "无",
+          "member": "string",
+          "name": "Pattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model category: \nGenerate: Generative model\nThought: Thinking model",
+          "example": "无",
+          "member": "string",
+          "name": "ModelCategory",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListModelResponse": {
+      "document": "ListModel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model list.",
+          "example": "无",
+          "member": "ModelInfo",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ListQACateRequest": {
       "document": "ListQACate request structure.",
       "members": [
@@ -5283,6 +9033,528 @@
           "document": "List.",
           "example": "无",
           "member": "QACate",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListQARequest": {
+      "document": "ListQA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query a question.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Verification status (1: not verified 2: adopted 3: not adopted).",
+          "example": "无",
+          "member": "int64",
+          "name": "AcceptStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Release status (2: pending release; 3: releasing; 4: released; 7: under review; 8: review failed; 9: under manual appeal; 11: manual appeal failed; 12: expired; 13: excessive invalid; 14: excessive invalid recovered).",
+          "example": "无",
+          "member": "int64",
+          "name": "ReleaseStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source (1: generated from document; 2: import in batches; 3: manually added).",
+          "example": "无",
+          "member": "int64",
+          "name": "Source",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query an answer.",
+          "example": "无",
+          "member": "string",
+          "name": "QueryAnswer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CateBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Q&A business ID list.",
+          "example": "无",
+          "member": "string",
+          "name": "QaBizIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query type: filename; attribute label.",
+          "example": "无",
+          "member": "string",
+          "name": "QueryType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListQAResponse": {
+      "document": "ListQA response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Q&A quantity.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of pending verification Q&As.",
+          "example": "无",
+          "member": "string",
+          "name": "WaitVerifyTotal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of not adopted Q&As.",
+          "example": "无",
+          "member": "string",
+          "name": "NotAcceptedTotal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of adopted Q&As.",
+          "example": "无",
+          "member": "string",
+          "name": "AcceptedTotal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Q&As details.",
+          "example": "无",
+          "member": "ListQaItem",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListQaItem": {
+      "document": "Q&A details data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Q&A ID.",
+          "example": "无",
+          "member": "string",
+          "name": "QaBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Question.",
+          "example": "无",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Answer.",
+          "example": "无",
+          "member": "string",
+          "name": "Answer",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "无",
+          "member": "int64",
+          "name": "Source",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source description.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "无",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether editing is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowEdit",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether deletion is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowDelete",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether verification is allowed.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsAllowAccept",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document name.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document type.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of Q&A characters.",
+          "example": "无",
+          "member": "string",
+          "name": "QaCharSize",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective start time, unix timestamp.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireStart",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective end time, unix timestamp. 0 indicates permanent validity.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpireEnd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Applicable range of attribute label, 1: all, 2: by conditions.",
+          "example": "无",
+          "member": "int64",
+          "name": "AttrRange",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Attribute label.",
+          "example": "无",
+          "member": "AttrLabel",
+          "name": "AttrLabels",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Count of similar questions.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SimilarQuestionNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return similar questions associated with the Q&A and perform linked search. Only one similar question will be displayed.",
+          "example": "无",
+          "member": "string",
+          "name": "SimilarQuestionTips",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ListRejectedQuestionPreviewRequest": {
+      "document": "ListRejectedQuestionPreview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query content.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Release ticket ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReleaseBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Status (1: newly-added; 2: updated; 3:  deleted).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Actions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListRejectedQuestionPreviewResponse": {
+      "document": "ListRejectedQuestionPreview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Quantity of documents.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of documents.",
+          "example": "无",
+          "member": "ReleaseRejectedQuestion",
           "name": "List",
           "output_required": false,
           "type": "list",
@@ -5476,6 +9748,396 @@
           "document": "Configuration item list.",
           "example": "无",
           "member": "ReleaseConfigs",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseDocPreviewRequest": {
+      "document": "ListReleaseDocPreview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query content.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Release ticket ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReleaseBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Status (1: newly-added; 2: modified; 3: deleted).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Actions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseDocPreviewResponse": {
+      "document": "ListReleaseDocPreview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Document quantity.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document list.",
+          "example": "无",
+          "member": "ReleaseDoc",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseItem": {
+      "document": "Details of release list.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReleaseBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Releaser.",
+          "example": "无",
+          "member": "string",
+          "name": "Operator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release description.",
+          "example": "无",
+          "member": "string",
+          "name": "Desc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release status.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release status description.",
+          "example": "无",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure.",
+          "example": "无",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of successful releases.",
+          "example": "无",
+          "member": "int64",
+          "name": "SuccessCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of failed releases.",
+          "example": "无",
+          "member": "int64",
+          "name": "FailCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ListReleaseQAPreviewRequest": {
+      "document": "ListReleaseQAPreview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query content.",
+          "example": "无",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Release ticket ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReleaseBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Status (1: newly-added; 2: modified; 3: deleted).",
+          "example": "无",
+          "member": "uint64",
+          "name": "Actions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Release status (4: release successful; 5: release failed).",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReleaseStatus",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseQAPreviewResponse": {
+      "document": "ListReleaseQAPreview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Document quantity.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of documents.",
+          "example": "无",
+          "member": "ReleaseQA",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseRequest": {
+      "document": "ListRelease request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Robot ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListReleaseResponse": {
+      "document": "ListRelease response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of release lists.",
+          "example": "无",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release list.",
+          "example": "无",
+          "member": "ListReleaseItem",
           "name": "List",
           "output_required": false,
           "type": "list",
@@ -5764,6 +10426,249 @@
         }
       ],
       "type": "object"
+    },
+    "ModelInfo": {
+      "document": "Model information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model name.",
+          "example": "无",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model description.",
+          "example": "无",
+          "member": "string",
+          "name": "ModelDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model name.",
+          "example": "无",
+          "member": "string",
+          "name": "AliasName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource status, 1: available; 2: exhausted.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ResourceStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Character limit of prompt content.",
+          "example": "[\"8K\", \"256K\"]",
+          "member": "string",
+          "name": "PromptWordsLimit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "By controlling the diversity of content generation through core sampling, a higher Top P value will lead to more diverse content generation.",
+          "example": "无",
+          "member": "ModelParameter",
+          "name": "TopP",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Temperature control randomness.",
+          "example": "无",
+          "member": "ModelParameter",
+          "name": "Temperature",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum quantity of tokens that can be generated.",
+          "example": "无",
+          "member": "ModelParameter",
+          "name": "MaxTokens",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model source, Hunyuan: Tencent Hunyuan; Industry: Tencent Cloud industry large model; Experience: new model experience.",
+          "example": "Hunyuan",
+          "member": "string",
+          "name": "Source",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model icon.",
+          "example": "无",
+          "member": "string",
+          "name": "Icon",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is free.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsFree",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum characters input in the model dialog box.",
+          "example": "无",
+          "member": "uint64",
+          "name": "InputLenLimit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Workflow support levels:\n0 - Not supported by the model;\n1 - Supported by the model;\n2 - Poorly supported by the model.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SupportWorkflowStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model categories:\nGenerate: Generative model\nThought: Thinking model",
+          "example": "无",
+          "member": "string",
+          "name": "ModelCategory",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the default model.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDefault",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum characters of role prompt words.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoleLenLimit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an exclusive concurrency model.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsExclusive",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The model supports intelligent call effects.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SupportAiCallStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModelParameter": {
+      "document": "Model parameter value range.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Default value.",
+          "example": "无",
+          "member": "float",
+          "name": "Default",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Minimum value.",
+          "example": "无",
+          "member": "float",
+          "name": "Min",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum value.",
+          "example": "无",
+          "member": "float",
+          "name": "Max",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ModifyAppRequest": {
       "document": "ModifyApp request structure.",
@@ -7474,6 +12379,158 @@
       ],
       "type": "object"
     },
+    "ReconstructDocumentFailedPage": {
+      "document": "Document parsing failure record.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Failure page number.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ReferDetail": {
+      "document": "Reference source details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Reference ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ReferBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document type (1: Q&A; 2: document paragraph).",
+          "example": "无",
+          "member": "uint64",
+          "name": "DocType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document name.",
+          "example": "无",
+          "member": "string",
+          "name": "DocName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fragment content.",
+          "example": "无",
+          "member": "string",
+          "name": "PageContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Question.",
+          "example": "无",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Answer.",
+          "example": "无",
+          "member": "string",
+          "name": "Answer",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Confidence.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mark.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Mark",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fragment highlight content.",
+          "example": "无",
+          "member": "Highlight",
+          "name": "Highlights",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original content.",
+          "example": "无",
+          "member": "string",
+          "name": "OrgData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page number information.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PageInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sheet information.",
+          "example": "无",
+          "member": "string",
+          "name": "SheetInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RejectedQuestion": {
       "document": "Release rejected questions.",
       "members": [
@@ -7625,6 +12682,346 @@
         }
       ],
       "usage": "out"
+    },
+    "ReleaseDoc": {
+      "document": "Release document details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File name.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File type.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "无",
+          "member": "string",
+          "name": "ActionDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ReleaseQA": {
+      "document": "Release Q&A.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Question.",
+          "example": "无",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "无",
+          "member": "string",
+          "name": "ActionDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source, 1: documentation generation; 2: batch import; 3: manual addition.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Source",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source description.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Filename.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document type.",
+          "example": "无",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release status.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ReleaseStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Q&A ID.",
+          "example": "无",
+          "member": "string",
+          "name": "QaBizId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document business ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ReleaseRejectedQuestion": {
+      "document": "Release rejected questions.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Question.",
+          "example": "无",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Action",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "无",
+          "member": "string",
+          "name": "ActionDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RenameDocRequest": {
+      "document": "RenameDoc request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Login to user's root account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Login to user's sub-account (required in integrator mode).\t",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "无",
+          "member": "string",
+          "name": "BotBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document ID.",
+          "example": "无",
+          "member": "string",
+          "name": "DocBizId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New document name, which needs to include the suffix.",
+          "example": "新文档名.docx",
+          "member": "string",
+          "name": "NewName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenameDocResponse": {
+      "document": "RenameDoc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RetryDocAuditRequest": {
       "document": "RetryDocAudit request structure.",
