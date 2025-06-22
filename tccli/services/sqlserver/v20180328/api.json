@@ -1599,7 +1599,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup storage policy. 0: Follow the custom backup retention policy; 1: Follow the instance lifecycle until the instance is eliminated. Default value: 0.",
           "example": "0",
           "member": "int64",
           "name": "StorageStrategy",

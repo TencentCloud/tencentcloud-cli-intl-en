@@ -17521,7 +17521,7 @@
         {
           "disabled": false,
           "document": "The DNS server address assigned to the user when connecting a site to EO via NS. You need to switch the NameServer of the domain name to this address.",
-          "example": "无",
+          "example": "[\"ns1.qeodns.com.\",\"ns2.qeodns.com.\"]",
           "member": "string",
           "name": "NameServers",
           "output_required": true,
@@ -17705,6 +17705,16 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
+          "document": "current configured origin HOST header.",
+          "example": "www.tencentcloud.com\t",
+          "member": "string",
+          "name": "HostHeader",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "disabled": true,
           "document": "MO sub-application ID",
           "example": "无",
@@ -17730,6 +17740,26 @@
           "example": "无",
           "member": "string",
           "name": "VodeoBucketId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD origin-pull range. this parameter returns a value when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the VodBucketId parameter.</li>.\n</li>",
+          "example": "bucket",
+          "member": "string",
+          "name": "VodOriginScope",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional application.",
+          "example": "9lh4zav2ctts0ao",
+          "member": "string",
+          "name": "VodBucketId",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -18050,6 +18080,15 @@
           "type": "list"
         },
         {
+          "disabled": false,
+          "document": "Custom origin HOST header, this parameter only takes effect when OriginType=IP_DOMAIN. \n\n- If OriginType=COS or AWS_S3, the origin HOST header will be consistent with the origin domain name. \n- If OriginType=ORIGIN_GROUP, the origin HOST header follows the configuration within the origin group;if not configured, it defaults to the acceleration domain name. \n- If OriginType=VOD or SPACE, there is no need to configure this header, and it will take effect according to the corresponding origin domain name.",
+          "example": "www.tencentcloud.com",
+          "member": "string",
+          "name": "HostHeader",
+          "required": false,
+          "type": "string"
+        },
+        {
           "disabled": true,
           "document": "VODEO sub-application ID. This parameter is required when OriginType is VODEO.",
           "example": "无",
@@ -18073,6 +18112,24 @@
           "example": "无",
           "member": "string",
           "name": "VodeoBucketId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VOD origin-pull scope. this parameter is valid only when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the parameter VodBucketId.</li>.\n</li>",
+          "example": "bucket",
+          "member": "string",
+          "name": "VodOriginScope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional edition application.",
+          "example": "9lh4zav2ctts0ao",
+          "member": "string",
+          "name": "VodBucketId",
           "required": false,
           "type": "string"
         }
@@ -18530,7 +18587,7 @@
         {
           "disabled": false,
           "document": "The parameter value.",
-          "example": "无",
+          "example": "AKID************",
           "member": "string",
           "name": "Value",
           "output_required": true,
