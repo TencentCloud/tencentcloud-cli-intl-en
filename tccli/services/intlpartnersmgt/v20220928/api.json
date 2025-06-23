@@ -602,7 +602,7 @@
         },
         {
           "disabled": false,
-          "document": "Project name.\n.\n",
+          "document": "Project name.\n",
           "example": "default",
           "member": "string",
           "name": "ProjectName",
@@ -802,7 +802,7 @@
         },
         {
           "disabled": false,
-          "document": "Discount (default is 1).",
+          "document": "Discount (default is 1) - abandoned.",
           "example": "1",
           "member": "string",
           "name": "DiscountRate",
@@ -856,6 +856,16 @@
           "example": "4998689516778477313",
           "member": "string",
           "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "customer discount rate. The discount rate applied to the reseller's customer, which set by reseller, default value equal to 1.",
+          "example": "1",
+          "member": "string",
+          "name": "CustomerDiscountRate",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1856,7 +1866,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sub-account UIN",
+          "document": "Sub-account UIN.",
           "example": "123456",
           "member": "uint64",
           "name": "CustomerUin",

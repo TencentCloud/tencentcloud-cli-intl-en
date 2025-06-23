@@ -949,7 +949,7 @@
         },
         {
           "disabled": false,
-          "document": "A time point screencapturing task.",
+          "document": "A time point screenshot task.",
           "example": "无",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "SnapshotByTimeOffsetTask",
@@ -960,7 +960,7 @@
         },
         {
           "disabled": false,
-          "document": "A sampled screencapturing task.",
+          "document": "A sampled screenshot task.",
           "example": "无",
           "member": "SampleSnapshotTaskInput",
           "name": "SampleSnapshotTask",
@@ -971,7 +971,7 @@
         },
         {
           "disabled": false,
-          "document": "An image sprite generation task.",
+          "document": "An image sprite screenshot task.",
           "example": "无",
           "member": "ImageSpriteTaskInput",
           "name": "ImageSpriteTask",
@@ -2323,7 +2323,7 @@
         },
         {
           "disabled": false,
-          "document": "The storage location of the highlight segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The storage location of the highlight segments.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -4655,7 +4655,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of a porn detection template.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The ID of a porn detection template.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -6361,7 +6361,7 @@
         },
         {
           "disabled": false,
-          "document": "The audio improvement options. You can specify multiple options. Valid values:\n<li>`declick`: Noise removal.</li>\n<li>`deesser`: De-essing.</li>\nDefault: `declick`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The audio improvement options. You can specify multiple options. Valid values:\n<li>`declick`: Noise removal.</li>\n<li>`deesser`: De-essing.</li>\nDefault: `declick`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "declick",
           "member": "string",
           "name": "Types",
@@ -6395,7 +6395,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The audio noise reduction configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The audio noise reduction configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AudioDenoiseConfig",
           "name": "Denoise",
@@ -6406,7 +6406,7 @@
         },
         {
           "disabled": false,
-          "document": "The audio separation configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The audio separation configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AudioSeparateConfig",
           "name": "Separate",
@@ -6417,7 +6417,7 @@
         },
         {
           "disabled": false,
-          "document": "The volume equalization configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The volume equalization configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VolumeBalanceConfig",
           "name": "VolumeBalance",
@@ -6428,7 +6428,7 @@
         },
         {
           "disabled": false,
-          "document": "The audio improvement configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The audio improvement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AudioBeautifyConfig",
           "name": "Beautify",
@@ -6456,7 +6456,7 @@
         },
         {
           "disabled": false,
-          "document": "The scenario. Valid values:\n<li>`normal`: Separate voice and background audio.</li>\n<li>`music`: Separate vocals and instrumentals.</li>\nDefault value: `normal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The scenario. Valid values:\n<li>`normal`: Separate voice and background audio.</li>\n<li>`music`: Separate vocals and instrumentals.</li>\nDefault value: `normal`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "normal",
           "member": "string",
           "name": "Type",
@@ -6467,7 +6467,7 @@
         },
         {
           "disabled": false,
-          "document": "The output audio track. Valid values:\n<li>`vocal`: Voice.</li>\n<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>\nDefault value: `vocal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The output audio track. Valid values:\n<li>`vocal`: Voice.</li>\n<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>\nDefault value: `vocal`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vocal",
           "member": "string",
           "name": "Track",
@@ -6728,7 +6728,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The region of the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The region of the SQS queue.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-southeast-1",
           "member": "string",
           "name": "SQSRegion",
@@ -6739,7 +6739,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The name of the SQS queue.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "mps123_s3_sqs",
           "member": "string",
           "name": "SQSQueueName",
@@ -6750,7 +6750,7 @@
         },
         {
           "disabled": false,
-          "document": "The key ID required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The key ID required to read from/write to the SQS queue.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretId",
@@ -6761,7 +6761,7 @@
         },
         {
           "disabled": false,
-          "document": "The key required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The key required to read from/write to the SQS queue.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "AKIA*******123W",
           "member": "string",
           "name": "S3SecretKey",
@@ -12740,7 +12740,7 @@
         },
         {
           "disabled": false,
-          "document": "The AES-128 encryption details.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The AES-128 encryption details.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SimpleAesDrm",
           "name": "SimpleAesDrm",
@@ -12801,7 +12801,7 @@
         },
         {
           "disabled": false,
-          "document": "The ID of the material associated with an element. This parameter is required for video compositing tasks.\n\nNote: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The ID of the material associated with an element. This parameter is required for video compositing tasks.\n\nNote: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "id1",
           "member": "string",
           "name": "Id",
@@ -12818,7 +12818,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "mp4",
           "member": "string",
           "name": "Container",
@@ -13128,7 +13128,7 @@
         },
         {
           "disabled": false,
-          "document": "The audio enhancement configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The audio enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AudioEnhanceConfig",
           "name": "AudioEnhance",
@@ -13458,7 +13458,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The opening segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The opening segments.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
           "member": "MediaInputInfo",
           "name": "HeadSet",
@@ -13469,7 +13469,7 @@
         },
         {
           "disabled": false,
-          "document": "The closing segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The closing segments.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
           "member": "MediaInputInfo",
           "name": "TailSet",
@@ -14261,7 +14261,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The output of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The output of a live recording task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveScheduleLiveRecordTaskResult",
           "name": "LiveRecordTask",
@@ -14297,7 +14297,7 @@
         },
         {
           "disabled": false,
-          "document": "The task output.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The task output.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveActivityResItem",
           "name": "LiveActivityResItem",
@@ -14313,7 +14313,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The URL of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The URL of the recording file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://xxx.m3u8",
           "member": "string",
           "name": "Url",
@@ -14323,7 +14323,7 @@
         },
         {
           "disabled": false,
-          "document": "The size of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The size of the recording file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1024",
           "member": "int64",
           "name": "Size",
@@ -14333,7 +14333,7 @@
         },
         {
           "disabled": false,
-          "document": "The duration of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The duration of the recording file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
           "name": "Duration",
@@ -14343,7 +14343,7 @@
         },
         {
           "disabled": false,
-          "document": "The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2025-03-23T07:14:27+08:00",
           "member": "string",
           "name": "StartTime",
@@ -14353,7 +14353,7 @@
         },
         {
           "disabled": false,
-          "document": "The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2025-03-23T07:16:17+08:00",
           "member": "string",
           "name": "EndTime",
@@ -14369,7 +14369,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The storage of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The storage of the recording file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -14379,7 +14379,7 @@
         },
         {
           "disabled": false,
-          "document": "The recording segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The recording segments.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveRecordFile",
           "name": "FileList",
@@ -14406,7 +14406,7 @@
         },
         {
           "disabled": false,
-          "document": "The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -14417,7 +14417,7 @@
         },
         {
           "disabled": false,
-          "document": "The output path of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The output path of the recording file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "/xxx-LiveScheduleTask-xxx",
           "member": "string",
           "name": "OutputObjectPath",
@@ -14530,7 +14530,7 @@
         },
         {
           "disabled": false,
-          "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -14540,7 +14540,7 @@
         },
         {
           "disabled": false,
-          "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
@@ -14550,7 +14550,7 @@
         },
         {
           "disabled": false,
-          "document": "The error message.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "record failed.",
           "member": "string",
           "name": "Message",
@@ -14560,7 +14560,7 @@
         },
         {
           "disabled": false,
-          "document": "The input of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The input of a live recording task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveRecordTaskInput",
           "name": "Input",
@@ -14570,7 +14570,7 @@
         },
         {
           "disabled": false,
-          "document": "The output of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The output of a live recording task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveRecordResult",
           "name": "Output",
@@ -14580,7 +14580,7 @@
         },
         {
           "disabled": false,
-          "document": "The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2025-03-22T23:14:20+08:00",
           "member": "string",
           "name": "BeginProcessTime",
@@ -14590,7 +14590,7 @@
         },
         {
           "disabled": false,
-          "document": "The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2025-03-22T23:22:44+08:00",
           "member": "string",
           "name": "FinishTime",
@@ -14606,7 +14606,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of a live scheme subtask.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The ID of a live scheme subtask.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "TaskId",
@@ -14616,7 +14616,7 @@
         },
         {
           "disabled": false,
-          "document": "The task status. Valid values:\n<li>`PROCESSING`</li>\n<li>`FINISH` </li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The task status. Valid values:\n<li>`PROCESSING`</li>\n<li>`FINISH` </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Status",
@@ -14626,7 +14626,7 @@
         },
         {
           "disabled": false,
-          "document": "If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ErrCode",
@@ -14636,7 +14636,7 @@
         },
         {
           "disabled": false,
-          "document": "If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Message",
@@ -14646,7 +14646,7 @@
         },
         {
           "disabled": false,
-          "document": "The URL of the live stream.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The URL of the live stream.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Url",
@@ -14656,7 +14656,7 @@
         },
         {
           "disabled": false,
-          "document": "The task output.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The task output.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveActivityResult",
           "name": "LiveActivityResultSet",
@@ -17152,7 +17152,7 @@
         },
         {
           "disabled": false,
-          "document": "List of animated image generating tasks.",
+          "document": "List of animated image screenshot tasks.",
           "example": "NULL",
           "member": "AnimatedGraphicTaskInput",
           "name": "AnimatedGraphicTaskSet",
@@ -17162,7 +17162,7 @@
         },
         {
           "disabled": false,
-          "document": "List of time point screencapturing tasks.",
+          "document": "List of time point screenshot tasks.",
           "example": "NULL",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "SnapshotByTimeOffsetTaskSet",
@@ -17172,7 +17172,7 @@
         },
         {
           "disabled": false,
-          "document": "List of sampled screencapturing tasks.",
+          "document": "List of sampled screenshot tasks.",
           "example": "NULL",
           "member": "SampleSnapshotTaskInput",
           "name": "SampleSnapshotTaskSet",
@@ -17182,7 +17182,7 @@
         },
         {
           "disabled": false,
-          "document": "List of image sprite generating tasks.",
+          "document": "List of image sprite screenshot tasks.",
           "example": "NULL",
           "member": "ImageSpriteTaskInput",
           "name": "ImageSpriteTaskSet",
@@ -17208,7 +17208,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<li>Transcode: Transcoding</li>\n<li>AnimatedGraphics: Animated image generating</li>\n<li>SnapshotByTimeOffset: Time point screencapturing</li>\n<li>SampleSnapshot: Sampled screencapturing</li>\n<li>ImageSprites: Image sprite generating</li>\n<li>CoverBySnapshot: Screencapturing for cover image</li>\n<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>",
+          "document": "Task type. Valid values:\n<li>Transcode: Transcoding</li>\n<li>AnimatedGraphics: Animated image generating</li>\n<li>SnapshotByTimeOffset: Time point screenshot</li>\n<li>SampleSnapshot: Sampled screenshot</li>\n<li>ImageSprites: Image sprite screenshot</li>\n<li>CoverBySnapshot: Screenshot for cover image</li>\n<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>",
           "example": "",
           "member": "string",
           "name": "Type",
@@ -17238,7 +17238,7 @@
         },
         {
           "disabled": false,
-          "document": "Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Query result of a time point screenshot task, which is valid when task type is `SnapshotByTimeOffset`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "",
           "member": "MediaProcessTaskSnapshotByTimeOffsetResult",
           "name": "SnapshotByTimeOffsetTask",
@@ -17248,7 +17248,7 @@
         },
         {
           "disabled": false,
-          "document": "Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Query result of a sampled screenshot task, which is valid when task type is `SampleSnapshot`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "",
           "member": "MediaProcessTaskSampleSnapshotResult",
           "name": "SampleSnapshotTask",
@@ -17258,7 +17258,7 @@
         },
         {
           "disabled": false,
-          "document": "Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Query result of an image sprite screenshot task, which is valid when task type is `ImageSprite`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "",
           "member": "MediaProcessTaskImageSpriteResult",
           "name": "ImageSpriteTask",
@@ -17280,7 +17280,7 @@
       "usage": "out"
     },
     "MediaProcessTaskSampleSnapshotResult": {
-      "document": "Result type of a sampled screencapturing task",
+      "document": "Result type of a sampled screenshot task",
       "members": [
         {
           "disabled": false,
@@ -17324,7 +17324,7 @@
         },
         {
           "disabled": false,
-          "document": "Input for a sampled screencapturing task.",
+          "document": "Input for a sampled screenshot task.",
           "example": "NULL",
           "member": "SampleSnapshotTaskInput",
           "name": "Input",
@@ -17334,19 +17334,39 @@
         },
         {
           "disabled": false,
-          "document": "Output of a sampled screencapturing task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Output of a sampled screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
     "MediaProcessTaskSnapshotByTimeOffsetResult": {
-      "document": "Result type of a time point screencapturing task",
+      "document": "Result type of a time point screenshot task",
       "members": [
         {
           "disabled": false,
@@ -17390,7 +17410,7 @@
         },
         {
           "disabled": false,
-          "document": "Input for a time point screencapturing task.",
+          "document": "Input for a time point screenshot task.",
           "example": "NULL",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "Input",
@@ -17400,12 +17420,32 @@
         },
         {
           "disabled": false,
-          "document": "Output of a time point screencapturing task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Output of a time point screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The time when the task started executing, in ISO date format.",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The time when the task finished, in ISO date format.",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -17492,7 +17532,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).",
+          "document": "Sampled screenshot specification ID. For more information, please see [Sampled Screenshot Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).",
           "example": "10",
           "member": "int64",
           "name": "Definition",
@@ -17558,7 +17598,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).",
+          "document": "Specification of a time point screenshot template. ",
           "example": "",
           "member": "int64",
           "name": "Definition",
@@ -19696,7 +19736,7 @@
         },
         {
           "disabled": false,
-          "document": "An extended field for transcoding.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "An extended field for transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "StdExtInfo",
@@ -19707,7 +19747,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file to add.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The subtitle file to add.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -21953,11 +21993,11 @@
       "usage": "both"
     },
     "SampleSnapshotTaskInput": {
-      "document": "Input parameter type of a sampled screencapturing task.",
+      "document": "Input parameter type of a sampled screenshot task.",
       "members": [
         {
           "disabled": false,
-          "document": "Sampled screencapturing template ID.",
+          "document": "Sampled screenshot template ID.",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -22014,11 +22054,11 @@
       "usage": "both"
     },
     "SampleSnapshotTemplate": {
-      "document": "Details of a sampled screencapturing template",
+      "document": "Details of a sampled screenshot template",
       "members": [
         {
           "disabled": false,
-          "document": "Unique ID of a sampled screencapturing template.",
+          "document": "Unique ID of a sampled screenshot template.",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -22038,7 +22078,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of a sampled screencapturing template.",
+          "document": "Name of a sampled screenshot template.",
           "example": "采样截图模板test",
           "member": "string",
           "name": "Name",
@@ -22098,7 +22138,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampled screencapturing type.",
+          "document": "Sampled screenshot type.",
           "example": "Time",
           "member": "string",
           "name": "SampleType",
@@ -22600,7 +22640,7 @@
         },
         {
           "disabled": false,
-          "document": "The scheme type. Valid values:\n <li>`Preset`</li>\n<li>`Custom` </li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The scheme type. Valid values:\n <li>`Preset`</li>\n<li>`Custom` </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -22983,7 +23023,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The URI of decryption key.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The URI of decryption key.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://test.qq.com?vid=xxx",
           "member": "string",
           "name": "Uri",
@@ -22994,7 +23034,7 @@
         },
         {
           "disabled": false,
-          "document": "The encryption key (a 32-byte string).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The encryption key (a 32-byte string).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "14367588ab31370e32ae000544bd007d",
           "member": "string",
           "name": "Key",
@@ -23005,7 +23045,7 @@
         },
         {
           "disabled": false,
-          "document": "The initialization vector for encryption (a 32-byte string).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The initialization vector for encryption (a 32-byte string).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
           "member": "string",
           "name": "Vector",
@@ -23657,11 +23697,11 @@
       "usage": "both"
     },
     "SnapshotByTimeOffsetTaskInput": {
-      "document": "Input parameter type of a time point screencapturing task",
+      "document": "Input parameter type of a time point screenshot task",
       "members": [
         {
           "disabled": false,
-          "document": "ID of a time point screencapturing template.",
+          "document": "ID of a time point screenshot template.",
           "example": "11028",
           "member": "uint64",
           "name": "Definition",
@@ -23740,11 +23780,11 @@
       "usage": "both"
     },
     "SnapshotByTimeOffsetTemplate": {
-      "document": "Details of a time point screencapturing template.",
+      "document": "Details of a time point screenshot template.",
       "members": [
         {
           "disabled": false,
-          "document": "Unique ID of a time point screencapturing template.",
+          "document": "Unique ID of a time point screenshot template.",
           "example": "239287",
           "member": "uint64",
           "name": "Definition",
@@ -23764,7 +23804,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of a time point screencapturing template.",
+          "document": "Name of a time point screenshot template.",
           "example": "时间点截图模板",
           "member": "string",
           "name": "Name",
@@ -23921,7 +23961,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The URL of the subtitles to add to the video.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The URL of the subtitles to add to the video.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "address",
           "member": "string",
           "name": "Path",
@@ -23932,7 +23972,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
           "name": "StreamIndex",
@@ -23943,7 +23983,7 @@
         },
         {
           "disabled": false,
-          "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "simkai.ttf",
           "member": "string",
           "name": "FontType",
@@ -23954,7 +23994,7 @@
         },
         {
           "disabled": false,
-          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5px",
           "member": "string",
           "name": "FontSize",
@@ -23965,7 +24005,7 @@
         },
         {
           "disabled": false,
-          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0xRRGGBB",
           "member": "string",
           "name": "FontColor",
@@ -23976,7 +24016,7 @@
         },
         {
           "disabled": false,
-          "document": "The text transparency. Value range: 0-1.\n<li>`0`: Fully transparent.</li>\n<li>`1`: Fully opaque.</li>\nDefault value: 1.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The text transparency. Value range: 0-1.\n<li>`0`: Fully transparent.</li>\n<li>`1`: Fully opaque.</li>\nDefault value: 1.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "float",
           "name": "FontAlpha",
@@ -24110,7 +24150,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The TSC type. Valid values:\n<li>`TEHD-100`: TSC-100 (video TSC). </li>\n<li>`TEHD-200`: TSC-200 (audio TSC). </li>\nIf this parameter is left blank, no modification will be made.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The TSC type. Valid values:\n<li>`TEHD-100`: TSC-100 (video TSC). </li>\n<li>`TEHD-200`: TSC-200 (audio TSC). </li>\nIf this parameter is left blank, no modification will be made.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "TEHD-100",
           "member": "string",
           "name": "Type",
@@ -24121,7 +24161,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum video bitrate. If this parameter is not specified, no modifications will be made.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The maximum video bitrate. If this parameter is not specified, no modifications will be made.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "MaxVideoBitrate",
@@ -24258,7 +24298,7 @@
         },
         {
           "disabled": false,
-          "document": "The key used to generate the callback signature.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The key used to generate the callback signature.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0se***9idaY",
           "member": "string",
           "name": "NotifyKey",
@@ -24275,7 +24315,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The storage type for a media processing output file. Valid values:\n<li>`COS`: Tencent Cloud COS</li>\n<li>`>AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>",
+          "document": "The storage type for a media processing output file. Valid values:\n<li>`COS`: Tencent Cloud COS</li>\n<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>",
           "example": "NULL",
           "member": "string",
           "name": "Type",
@@ -25730,7 +25770,7 @@
         },
         {
           "disabled": false,
-          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.\n<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.\n<li>top_bottom: vertical layout arrangement of original video content.</li>.\nSubmit the amount and cost based on the segmented resolution size.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:\n<Li>side_by_side: the original video content is arranged in a left-right layout.</li>\n<li>top_bottom: vertical layout arrangement of original video content.</li>\nSubmit the amount and cost based on the segmented resolution size.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "side_by_side",
           "member": "string",
           "name": "Stereo3dType",
@@ -25890,7 +25930,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: \nAV1 encoding containers currently only support mp4, webm, and mkv.\nH.266 encoding containers currently only support mp4, hls, ts, and move. \nVP8 and VP9 encoding containers currently only support webm and mkv.\nMPEG2 and DNxHD encoding containers currently only support mxf.\nMV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: \nAV1 encoding containers currently only support mp4, webm, and mkv.\nH.266 encoding containers currently only support mp4, hls, ts, and mov. \nVP8 and VP9 encoding containers currently only support webm and mkv.\nMPEG2 and DNxHD encoding containers currently only support mxf.\nMV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "h264",
           "member": "string",
           "name": "Codec",
@@ -26044,7 +26084,7 @@
         },
         {
           "disabled": false,
-          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.\n<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.\n<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.\nThe usage and charges will be reported based on the segmented resolution dimensions.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:\n<Li>side_by_side: the original video content is arranged in a left-right layout.</li>\n<Li>top_bottom: layout arrangement of the original video content from top to bottom.</li>\nThe usage and charges will be reported based on the segmented resolution dimensions.\nDefault value: side_by_side.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "side_by_side",
           "member": "string",
           "name": "Stereo3dType",
@@ -26215,7 +26255,7 @@
         },
         {
           "disabled": false,
-          "document": "The type. Valid values:\n<li>`loudNorm`: Loudness normalization.</li>\n<li>`gainControl`: Volume leveling.</li>\nDefault value: `loudNorm`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The type. Valid values:\n<li>`loudNorm`: Loudness normalization.</li>\n<li>`gainControl`: Volume leveling.</li>\nDefault value: `loudNorm`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "loudNorm",
           "member": "string",
           "name": "Type",

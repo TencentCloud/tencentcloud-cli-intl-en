@@ -3124,22 +3124,22 @@
         {
           "disabled": false,
           "document": "The published price.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "8.30",
           "member": "string",
           "name": "OriginalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "8.01",
           "member": "string",
           "name": "DiscountCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3147,9 +3147,9 @@
           "example": "s",
           "member": "string",
           "name": "Unit",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3157,7 +3157,7 @@
           "example": "无",
           "member": "PriceResource",
           "name": "PriceSpec",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3167,9 +3167,9 @@
           "example": "true",
           "member": "bool",
           "name": "SupportSpotPaid",
-          "required": true,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3789,30 +3789,21 @@
         },
         {
           "disabled": false,
-          "document": "List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
-          "example": "[\"emr-vm-jv1s4zas\\r\\n\"]",
-          "member": "string",
-          "name": "ResourceIds",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.",
-          "example": "无",
-          "member": "Placement",
-          "name": "Placement",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "disabled": false,
           "document": "Instance billing mode.",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
+          "example": "[\"emr-vm-jv1s4zas\\r\\n\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": false,
+          "type": "list"
         },
         {
           "disabled": false,
@@ -3834,12 +3825,39 @@
         },
         {
           "disabled": false,
+          "document": "Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.",
+          "example": "无",
+          "member": "Placement",
+          "name": "Placement",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes",
           "example": "1",
           "member": "int64",
           "name": "ModifyPayMode",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedDetail",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "emr-21adfa",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3850,41 +3868,65 @@
         {
           "disabled": false,
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "898.9",
           "member": "float",
           "name": "OriginalCost",
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "596.54",
           "member": "float",
           "name": "DiscountCost",
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Unit of time for instance renewal.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "m",
           "member": "string",
           "name": "TimeUnit",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "How long the instance will be renewed for.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "TimeSpan",
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "PriceDetail",
+          "name": "PriceDetail",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "NodeRenewPriceDetail",
+          "name": "NodeRenewPriceDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3984,6 +4026,33 @@
           "name": "MasterCount",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The type can be ComputeResource, EMR, or a default value. The default value is EMR.",
+          "example": "ComputeResource",
+          "member": "string",
+          "name": "ResourceBaseType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Computing resource ID.",
+          "example": "emr-cr-xxxxx",
+          "member": "string",
+          "name": "ComputeResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scale-out resource type.",
+          "example": "HOST",
+          "member": "string",
+          "name": "HardwareResourceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3994,32 +4063,32 @@
         {
           "disabled": false,
           "document": "Original price.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2.54",
           "member": "string",
           "name": "OriginalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Discounted price.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1.52",
           "member": "string",
           "name": "DiscountCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Time unit of scale-out. Valid value:\n<li>s: Second.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "s",
           "member": "string",
           "name": "Unit",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4027,7 +4096,7 @@
           "example": "无",
           "member": "PriceResource",
           "name": "PriceSpec",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4037,12 +4106,12 @@
           "example": "无",
           "member": "EmrPrice",
           "name": "MultipleEmrPrice",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4590,7 +4659,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4601,7 +4670,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4612,7 +4681,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5327,6 +5396,92 @@
       ],
       "usage": "out"
     },
+    "NodeRenewPriceDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "ChargeType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "erm-vm-6jdsa17c",
+          "member": "string",
+          "name": "EmrResourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Master",
+          "member": "string",
+          "name": "NodeType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10.0.0.12",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2025-02-24 20:45:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "50",
+          "member": "float",
+          "name": "OriginalCost",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "25",
+          "member": "float",
+          "name": "DiscountCost",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RenewPriceDetail",
+          "name": "RenewPriceDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "NodeResourceSpec": {
       "document": "Resource details",
       "members": [
@@ -5606,6 +5761,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5616,12 +5772,13 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "PodNewParameter": {
       "document": "The custom pod permission and parameter.",
@@ -6151,17 +6308,17 @@
           "example": "emr-vm-xxxxxxxx",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The price formula",
-          "example": "无",
+          "example": "(1).变配订单金额：X 元[ 新配置单价X*时长Y*折扣Z% - 旧配置单价M*时长N*折扣O%]<br/>(2).时长:S月",
           "member": "string",
           "name": "Formula",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6171,7 +6328,7 @@
           "example": "4.3",
           "member": "float",
           "name": "OriginalCost",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -6181,7 +6338,7 @@
           "example": "3.2",
           "member": "float",
           "name": "DiscountCost",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -6194,132 +6351,188 @@
         {
           "disabled": false,
           "document": "Target specification\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "CVM.SA5",
           "member": "string",
           "name": "Spec",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "6",
           "member": "uint64",
           "name": "StorageType",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "System disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "70",
           "member": "int64",
           "name": "RootSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Memory size.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "8193",
           "member": "int64",
           "name": "MemSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of CPUs.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "4",
           "member": "int64",
           "name": "Cpu",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Disk size.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "200",
           "member": "int64",
           "name": "DiskSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of cloud disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MultiDisk",
           "name": "MultiDisks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "DiskCnt",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Specification\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "SA5.LARGE8",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "DiskNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of local disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "LocalDiskNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RenewPriceDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "云SSD 70G",
+          "member": "string",
+          "name": "BillingName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0.5",
+          "member": "float",
+          "name": "Policy",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Quantity",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "50",
+          "member": "float",
+          "name": "OriginalCost",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "25",
+          "member": "float",
+          "name": "DiscountCost",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7342,7 +7555,7 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "depart-xxx",
           "member": "string",
           "name": "TagKey",
           "required": false,
@@ -7352,7 +7565,7 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "Intelligent-xxx",
           "member": "string",
           "name": "TagValue",
           "required": false,

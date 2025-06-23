@@ -140,6 +140,20 @@
       "output": "DescribeHostUpdateRecordDetailResponse",
       "status": "online"
     },
+    "DescribeHostUploadUpdateRecord": {
+      "document": "This API is used to query the record list of cloud resource updates for certificates (certificate ID unchanged).",
+      "input": "DescribeHostUploadUpdateRecordRequest",
+      "name": "Query certificate cloud resource updates (certificate ID unchanged) record list",
+      "output": "DescribeHostUploadUpdateRecordResponse",
+      "status": "online"
+    },
+    "DescribeHostUploadUpdateRecordDetail": {
+      "document": "This API is used to query the deployment record details of certificate update records (certificate ID unchanged).",
+      "input": "DescribeHostUploadUpdateRecordDetailRequest",
+      "name": "Query certificate update record (certificate ID unchanged) deployment record details",
+      "output": "DescribeHostUploadUpdateRecordDetailResponse",
+      "status": "online"
+    },
     "DownloadCertificate": {
       "document": "This API is used to download a certificate.",
       "input": "DownloadCertificateRequest",
@@ -173,6 +187,13 @@
       "input": "ModifyCertificateResubmitRequest",
       "name": "Re-submits a certificate review application",
       "output": "ModifyCertificateResubmitResponse",
+      "status": "online"
+    },
+    "ModifyCertificatesExpiringNotificationSwitch": {
+      "document": "Modify to ignore certificate expiration notifications. Enable or disable certificate expiration notifications.",
+      "input": "ModifyCertificatesExpiringNotificationSwitchRequest",
+      "name": "Modify whether to ignore certificate expiration notification",
+      "output": "ModifyCertificatesExpiringNotificationSwitchResponse",
       "status": "online"
     },
     "ReplaceCertificate": {
@@ -222,6 +243,27 @@
       "input": "UploadConfirmLetterRequest",
       "name": "Uploads the confirmation letter for a certificate",
       "output": "UploadConfirmLetterResponse",
+      "status": "online"
+    },
+    "UploadUpdateCertificateInstance": {
+      "document": "This API is used to update certificate content (certificate ID unchanged) and update associated Tencent Cloud resources. This is an asynchronous API. After calling, a DeployRecordId of 0 indicates that the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If the task is not successfully created, an exception will be thrown.",
+      "input": "UploadUpdateCertificateInstanceRequest",
+      "name": "Update certificate content (certificate ID unchanged) and update associated tencent cloud resources",
+      "output": "UploadUpdateCertificateInstanceResponse",
+      "status": "online"
+    },
+    "UploadUpdateCertificateRecordRetry": {
+      "document": "Cloud Resource Update (Certificate ID Unchanged) Deployment Retry Record.",
+      "input": "UploadUpdateCertificateRecordRetryRequest",
+      "name": "Cloud resource update (certificate ID unchanged) deployment retry after failure record",
+      "output": "UploadUpdateCertificateRecordRetryResponse",
+      "status": "online"
+    },
+    "UploadUpdateCertificateRecordRollback": {
+      "document": "This API is used to roll back the full task when cloud resource update succeeds with unchanged certificate ID.",
+      "input": "UploadUpdateCertificateRecordRollbackRequest",
+      "name": "Update cloud resources (certificate ID unchanged) and roll back the record",
+      "output": "UploadUpdateCertificateRecordRollbackResponse",
       "status": "online"
     }
   },
@@ -2468,6 +2510,344 @@
       ],
       "type": "object"
     },
+    "DeployRecord": {
+      "document": "Managed records.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total successes",
+          "example": "无",
+          "member": "int64",
+          "name": "SuccessTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total failed deployments.",
+          "example": "无",
+          "member": "int64",
+          "name": "FailedTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment in progress total number.",
+          "example": "无",
+          "member": "int64",
+          "name": "RunningTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment record type 0 specifies deployment, 1 indicates rollback.",
+          "example": "无",
+          "member": "int64",
+          "name": "Type",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment record detail list.",
+          "example": "无",
+          "member": "DeployRecordList",
+          "name": "RecordDetailList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hosted resource deployment state: `0` (awaiting deployment), `1` (deployment successful), `2` (deployment failed), `3` (deploying), `4` (rollback successful), `5` (rollback failure).",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed resource creation time.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeployRecordItem": {
+      "document": "Deployment record details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Deployment record detail ID.",
+          "example": "17990",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bound certificate ID.",
+          "example": "ehy**nsn",
+          "member": "string",
+          "name": "OldCertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment instance ID.",
+          "example": "lb-****",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the deployment instance name.",
+          "example": "zrh",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deploy the listener ID.",
+          "example": "lbl-****",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment domain name list.",
+          "example": "[\"www.**.com\"]",
+          "member": "string",
+          "name": "Domains",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deploy listener protocol.",
+          "example": "https",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment state.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment error information.",
+          "example": "no domain",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the creation time of the deployment record detail.",
+          "example": "2028-09-08 23:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the last update time of the deployment record detail.",
+          "example": "2028-09-08 24:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deploy listener name.",
+          "example": "zrh",
+          "member": "string",
+          "name": "ListenerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether SNI is enabled.",
+          "example": "0",
+          "member": "int64",
+          "name": "SniSwitch",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS bucket name.",
+          "example": "cos-****",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Namespace name.",
+          "example": "zrhname",
+          "member": "string",
+          "name": "Namespace",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The secret name.",
+          "example": "testSc",
+          "member": "string",
+          "name": "SecretName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port",
+          "example": "90",
+          "member": "int64",
+          "name": "Port",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployed TCB region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLB type. valid values: 0 (classic clb); 1 (application clb).",
+          "example": "0",
+          "member": "int64",
+          "name": "Forward",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate authentication mode: UNIDIRECTIONAL for one-way authentication, MUTUAL for MUTUAL authentication.",
+          "example": "UNIDIRECTIONAL",
+          "member": "string",
+          "name": "SSLMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource type.",
+          "example": "clb",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeployRecordList": {
+      "document": "Managed record detailed information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Deployment resource type.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource detail list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DeployRecordItem",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total count of deployment resources.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeCSRRequest": {
       "document": "DescribeCSR request structure.",
       "members": [
@@ -4367,6 +4747,126 @@
       ],
       "type": "object"
     },
+    "DescribeHostUploadUpdateRecordDetailRequest": {
+      "document": "DescribeHostUploadUpdateRecordDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hosting record ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. default is 10, maximum is 200. exceeds 200 will be set to 200.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUploadUpdateRecordDetailResponse": {
+      "document": "DescribeHostUploadUpdateRecordDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hosting record detail list.",
+          "example": "无",
+          "member": "DeployRecord",
+          "name": "DeployRecordDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUploadUpdateRecordRequest": {
+      "document": "DescribeHostUploadUpdateRecord request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset, starting from 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. default is 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Original certificate ID",
+          "example": "egts**hehsy",
+          "member": "string",
+          "name": "OldCertificateId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUploadUpdateRecordResponse": {
+      "document": "DescribeHostUploadUpdateRecord response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate deployment record list.",
+          "example": "无",
+          "member": "UploadUpdateRecordInfo",
+          "name": "DeployRecordList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DownloadCertificateRequest": {
       "document": "DownloadCertificate request structure.",
       "members": [
@@ -5049,6 +5549,52 @@
           "name": "CertificateId",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCertificatesExpiringNotificationSwitchRequest": {
+      "document": "ModifyCertificatesExpiringNotificationSwitch request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Certificate ID list. maximum of 50.",
+          "example": "[\"heh***js\"]",
+          "member": "string",
+          "name": "CertificateIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "0: do not ignore notifications. 1: ignore notifications.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SwitchStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCertificatesExpiringNotificationSwitchResponse": {
+      "document": "ModifyCertificatesExpiringNotificationSwitch response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Certificate ID list.",
+          "example": "[\"heysh**hejs\"]",
+          "member": "string",
+          "name": "CertificateIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -7590,6 +8136,228 @@
         }
       ],
       "type": "object"
+    },
+    "UploadUpdateCertificateInstanceRequest": {
+      "document": "UploadUpdateCertificateInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Old Certificate ID for One-Click Update. Query the tencent cloud resources bound to this certificate ID and use the new certificate to update these resources.",
+          "example": "hey**shje",
+          "member": "string",
+          "name": "OldCertificateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource type that needs to be deployed, parameter value (lowercase): clb.",
+          "example": "[\"clb\"]",
+          "member": "string",
+          "name": "ResourceTypes",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Public key certificate.",
+          "example": "-----BEGIN CERTIFICATE----****",
+          "member": "string",
+          "name": "CertificatePublicKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private key certificate.",
+          "example": "-----BEGIN RSA PRIVATE KEY----***",
+          "member": "string",
+          "name": "CertificatePrivateKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The list of regions where cloud resources need to be deployed. The cloud resource type supported in the region is required. Value: clb.",
+          "example": "无",
+          "member": "ResourceTypeRegions",
+          "name": "ResourceTypesRegions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateCertificateInstanceResponse": {
+      "document": "UploadUpdateCertificateInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The tencent cloud resource update task ID. DeployRecordId equals 0 indicates the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If not successfully created, an exception will be thrown.",
+          "example": "17636",
+          "member": "uint64",
+          "name": "DeployRecordId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update task creation status: 1 indicates successful creation; 0 indicates an existing ongoing update task, and no new update task was created. The return value DeployRecordId represents the ID of the ongoing update task.",
+          "example": "1",
+          "member": "int64",
+          "name": "DeployStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Create progress details for asynchronous update tasks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UpdateSyncProgress",
+          "name": "UpdateSyncProgress",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateCertificateRecordRetryRequest": {
+      "document": "UploadUpdateCertificateRecordRetry request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Retry deployment record ID, obtained through UpdateCertificateInstance to get the deployment record ID. If this parameter is not provided, DeployRecordDetailId must be provided.",
+          "example": "748939",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Retry deployment record detail ID, obtained through the DescribeHostUpdateRecordDetail API. If this parameter is not provided, DeployRecordId must be provided.",
+          "example": "6637737",
+          "member": "int64",
+          "name": "DeployRecordDetailId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateCertificateRecordRetryResponse": {
+      "document": "UploadUpdateCertificateRecordRetry response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateCertificateRecordRollbackRequest": {
+      "document": "UploadUpdateCertificateRecordRollback request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Record ID of the certificate pending rollback, obtained through the UpdateCertificateInstance API.",
+          "example": "7377374",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateCertificateRecordRollbackResponse": {
+      "document": "UploadUpdateCertificateRecordRollback response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadUpdateRecordInfo": {
+      "document": "Deployment record list information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Record ID",
+          "example": "178837",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original certificate ID",
+          "example": "hesy*8he",
+          "member": "string",
+          "name": "OldCertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource type list.",
+          "example": "[\"CLB\"]",
+          "member": "string",
+          "name": "ResourceTypes",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment state.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment time.",
+          "example": "2018-09-10 12:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time.",
+          "example": "2018-09-10 12:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "VODInstanceList": {
       "document": "Details of VOD instances - data structure of an async task for querying associated cloud resources",

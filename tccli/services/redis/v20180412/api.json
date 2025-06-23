@@ -760,17 +760,17 @@
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Account name.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "test",
+          "example": "example_account_name",
           "member": "string",
           "name": "AccountName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -780,7 +780,7 @@
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -790,7 +790,7 @@
           "name": "Privilege",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -800,7 +800,7 @@
           "name": "ReadonlyPolicy",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -810,7 +810,7 @@
           "name": "Status",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -820,7 +820,7 @@
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1029,7 +1029,7 @@
           "name": "Region",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1039,7 +1039,7 @@
           "name": "AvailableZones",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1122,50 +1122,50 @@
         {
           "disabled": false,
           "document": "Database",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "DB",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Big key",
-          "example": "",
+          "example": "keyName",
           "member": "string",
           "name": "Key",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Type",
-          "example": "",
+          "example": "Set",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Size",
-          "example": "",
+          "example": "1024",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data timestamp",
-          "example": "",
+          "example": "1736409407",
           "member": "int64",
           "name": "Updatetime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1178,40 +1178,40 @@
         {
           "disabled": false,
           "document": "Type",
-          "example": "",
+          "example": "Set",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Count",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Count",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Size",
-          "example": "",
+          "example": "1024",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Timestamp",
-          "example": "",
+          "example": "1736409407",
           "member": "int64",
           "name": "Updatetime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1227,7 +1227,7 @@
           "example": "125639021",
           "member": "int64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1237,7 +1237,7 @@
           "example": "1",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1247,7 +1247,7 @@
           "example": "100002",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1257,7 +1257,7 @@
           "example": "crs-cdc-p8ktf94h",
           "member": "string",
           "name": "RedisClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1267,7 +1267,7 @@
           "example": "1",
           "member": "int64",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1277,7 +1277,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1287,7 +1287,7 @@
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1297,7 +1297,7 @@
           "example": "测试实例1",
           "member": "string",
           "name": "ClusterName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1307,7 +1307,7 @@
           "example": "2022-05-06 20:01:23",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1317,7 +1317,7 @@
           "example": "2022-06-06 20:01:23",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1327,7 +1327,7 @@
           "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1337,7 +1337,7 @@
           "example": "无",
           "member": "ResourceBundle",
           "name": "BaseBundles",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1347,7 +1347,7 @@
           "example": "无",
           "member": "ResourceBundle",
           "name": "ResourceBundles",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1357,7 +1357,7 @@
           "example": "cluster-0astoh6a",
           "member": "string",
           "name": "DedicatedClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2612,7 +2612,7 @@
         {
           "disabled": false,
           "document": "Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.",
-          "example": "crs-4y9t57vt",
+          "example": "crs-4y9t5***",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2621,7 +2621,7 @@
         {
           "disabled": false,
           "document": "Backup ID, which can be obtained through the response parameter **RedisBackupSet** of the API [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1).",
-          "example": "678362566696298532848117",
+          "example": "67836256600000000****",
           "member": "string",
           "name": "BackupId",
           "required": true,
@@ -2686,7 +2686,7 @@
         {
           "disabled": false,
           "document": "Backup remarks.",
-          "example": "\"\"",
+          "example": "\"mark message\"",
           "member": "string",
           "name": "Remark",
           "output_required": true,
@@ -2902,7 +2902,7 @@
       "document": "DescribeBackupUrl response structure.",
       "members": [
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Public network download address (valid for six hours). This field will be disused soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
@@ -2912,7 +2912,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Private network download address (valid for six hours). This field will be disused soon.",
           "example": "[\"http://example.com/download/rdb/1.rdb\"]",
           "member": "string",
@@ -2922,7 +2922,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Filename. This field will be disused soon.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"1.rdb\"]",
           "member": "string",
@@ -2939,7 +2939,7 @@
           "name": "BackupInfos",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3023,7 +3023,7 @@
         {
           "disabled": false,
           "document": "List of VPC IDs",
-          "example": "crs-deindi7de",
+          "example": "[1120,1121]",
           "member": "int64",
           "name": "VpcIds",
           "required": false,
@@ -3050,7 +3050,7 @@
         {
           "disabled": false,
           "document": "Instance ID filter information list, with a maximum array length of 100.",
-          "example": "[\"crs-nh47ubwr\\n\"]",
+          "example": "[\"crs-xjhsdj****\\n\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3309,7 +3309,7 @@
           "name": "Accounts",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3319,7 +3319,7 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3457,7 +3457,7 @@
           "name": "JobId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3467,7 +3467,7 @@
           "name": "JobName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3477,7 +3477,7 @@
           "name": "Status",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3487,7 +3487,7 @@
           "name": "StatusDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3497,7 +3497,7 @@
           "name": "Offset",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3507,7 +3507,7 @@
           "name": "CutDownTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3517,7 +3517,7 @@
           "name": "SrcInfo",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3527,7 +3527,7 @@
           "name": "DstInfo",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3549,7 +3549,7 @@
           "name": "RegionId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3559,7 +3559,7 @@
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3569,7 +3569,7 @@
           "name": "SetId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3579,7 +3579,7 @@
           "name": "ZoneId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3589,7 +3589,7 @@
           "name": "Type",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3599,7 +3599,7 @@
           "name": "InstanceName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3609,7 +3609,7 @@
           "name": "Vip",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3619,7 +3619,7 @@
           "name": "Status",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4239,7 +4239,7 @@
           "name": "Proxy",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4259,7 +4259,7 @@
           "name": "Redis",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4279,7 +4279,7 @@
           "name": "Tendis",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5838,7 +5838,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Slow query log details. This parameter has been deprecated and will be replaced by InstanceSlowLogDetail because it is not properly named.",
           "example": "无",
           "member": "InstanceSlowlogDetail",
@@ -6037,7 +6037,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "The field `OperatorUin` has been disused and replaced by `OperateUin`.",
           "example": "[10002274123]",
           "member": "int64",
@@ -6281,7 +6281,7 @@
           "name": "TaskId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6365,14 +6365,14 @@
       "document": "EnableReplicaReadonly response structure.",
       "members": [
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Valid values: `ERROR`, `OK`. This field has been disused.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OK",
           "member": "string",
           "name": "Status",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6382,7 +6382,7 @@
           "name": "TaskId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6434,7 +6434,7 @@
           "name": "GroupName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6464,17 +6464,17 @@
           "name": "Instances",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "备注信息",
           "member": "string",
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6505,7 +6505,7 @@
         {
           "disabled": false,
           "document": "Number of accesses for the hot key in a specified time period.",
-          "example": "123",
+          "example": "112",
           "member": "int64",
           "name": "Count",
           "output_required": true,
@@ -6521,80 +6521,80 @@
         {
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
-          "example": "",
+          "example": "ACCEPT",
           "member": "string",
           "name": "Action",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
-          "example": "",
+          "example": "set",
           "member": "string",
           "name": "AddressModule",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
-          "example": "",
+          "example": "0.0.0.0/0",
           "member": "string",
           "name": "CidrIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description.",
-          "example": "",
+          "example": "XX上云安全组默认入站规则",
           "member": "string",
           "name": "Desc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
-          "example": "",
+          "example": "ALL",
           "member": "string",
           "name": "IpProtocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Port.",
-          "example": "",
+          "example": "ALL",
           "member": "string",
           "name": "PortRange",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
-          "example": "",
+          "example": "redis",
           "member": "string",
           "name": "ServiceModule",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
-          "example": "",
+          "example": "set",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6717,7 +6717,7 @@
           "name": "Price",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6781,7 +6781,7 @@
           "name": "Price",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7126,102 +7126,102 @@
         {
           "disabled": false,
           "document": "Parameter name",
-          "example": "",
+          "example": "cluster-node-timeout",
           "member": "string",
           "name": "ParamName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter type: Integer",
-          "example": "",
+          "example": "integer",
           "member": "string",
           "name": "ValueType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether restart is required after a modification is made. Valid values: true, false",
-          "example": "",
+          "example": "false",
           "member": "string",
           "name": "NeedRestart",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Default value of the parameter",
-          "example": "",
+          "example": "15000",
           "member": "string",
           "name": "DefaultValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Current value",
-          "example": "",
+          "example": "15000",
           "member": "string",
           "name": "CurrentValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter description",
-          "example": "",
+          "example": "集群模式下当节点在指定时间内(毫秒)不可达则被认为处于失败状态",
           "member": "string",
           "name": "Tips",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Minimum value of the parameter",
-          "example": "",
+          "example": "15000",
           "member": "string",
           "name": "Min",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum value of the parameter",
-          "example": "",
+          "example": "120000",
           "member": "string",
           "name": "Max",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter status. 1: modifying; 2: modified",
-          "example": "",
+          "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter unit\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "ms",
           "member": "string",
           "name": "Unit",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7508,7 +7508,7 @@
         {
           "disabled": false,
           "document": "Instance name.",
-          "example": "test",
+          "example": "生产-***实例",
           "member": "string",
           "name": "InstanceName",
           "output_required": true,
@@ -7518,7 +7518,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
-          "example": "crs-7asi981q",
+          "example": "crs-7asi9***",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
@@ -7528,7 +7528,7 @@
         {
           "disabled": false,
           "document": "App ID of a user, which is an application ID that uniquely corresponds to the account ID. Some Tencent Cloud products use this app ID.\n",
-          "example": "12345",
+          "example": "1310******",
           "member": "int64",
           "name": "Appid",
           "output_required": true,
@@ -7636,7 +7636,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This parameter has been deprecated. Obtain the memory capacity used by the instance through the TCOP API [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1).",
           "example": "0",
           "member": "float",
@@ -7758,7 +7758,7 @@
         {
           "disabled": false,
           "document": "Anti-affinity tag.",
-          "example": "test",
+          "example": "antiaffinity-tag-name",
           "member": "string",
           "name": "Tags",
           "output_required": true,
@@ -7843,7 +7843,7 @@
           "name": "InstanceTags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7853,7 +7853,7 @@
           "name": "ProjectName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7863,7 +7863,7 @@
           "name": "NoAuth",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7873,7 +7873,7 @@
           "name": "ClientLimit",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7883,7 +7883,7 @@
           "name": "DtsStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7893,7 +7893,7 @@
           "name": "NetLimit",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7903,7 +7903,7 @@
           "name": "PasswordFree",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7913,7 +7913,7 @@
           "name": "Vip6",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7923,7 +7923,7 @@
           "name": "IPv6",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7933,7 +7933,7 @@
           "name": "ReadOnly",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7943,7 +7943,7 @@
           "name": "RemainBandwidthDuration",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7953,7 +7953,7 @@
           "name": "DiskSize",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7963,7 +7963,7 @@
           "name": "MonitorVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7973,7 +7973,7 @@
           "name": "ClientLimitMin",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7983,7 +7983,7 @@
           "name": "ClientLimitMax",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7993,7 +7993,7 @@
           "name": "NodeSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8003,7 +8003,7 @@
           "name": "Region",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8013,7 +8013,7 @@
           "name": "WanAddress",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8023,7 +8023,7 @@
           "name": "PolarisServer",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8033,7 +8033,7 @@
           "name": "RedisClusterId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8043,7 +8043,7 @@
           "name": "DedicatedClusterId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8053,7 +8053,7 @@
           "name": "ProductVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8063,7 +8063,7 @@
           "name": "CurrentProxyVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8073,7 +8073,7 @@
           "name": "CurrentRedisVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8083,7 +8083,7 @@
           "name": "UpgradeProxyVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8093,7 +8093,7 @@
           "name": "UpgradeRedisVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8103,7 +8103,7 @@
           "name": "BackupMode",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -8114,60 +8114,60 @@
         {
           "disabled": false,
           "document": "Slow log duration",
-          "example": "",
+          "example": "11",
           "member": "int64",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Client address",
-          "example": "",
+          "example": "101.32.**.**",
           "member": "string",
           "name": "Client",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Command",
-          "example": "",
+          "example": "ZREVRANGE",
           "member": "string",
           "name": "Command",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Command line details",
-          "example": "",
+          "example": "ZREVRANGE student scores",
           "member": "string",
           "name": "CommandLine",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Execution duration",
-          "example": "",
+          "example": "2025-01-09 16:13:46",
           "member": "string",
           "name": "ExecuteTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node ID",
-          "example": "",
+          "example": "af5c3a1d70187f0005e3f03a6285a5f622******",
           "member": "string",
           "name": "Node",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8180,7 +8180,7 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "test",
+          "example": "tag-key",
           "member": "string",
           "name": "TagKey",
           "output_required": true,
@@ -8191,7 +8191,7 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "123",
+          "example": "tag-value",
           "member": "string",
           "name": "TagValue",
           "output_required": true,
@@ -8379,7 +8379,7 @@
           "name": "DiskSize",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8419,7 +8419,7 @@
           "name": "Vip6",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8429,7 +8429,7 @@
           "name": "IPv6",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8571,7 +8571,7 @@
           "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8582,7 +8582,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8593,7 +8593,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8604,7 +8604,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9518,7 +9518,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This parameter is currently being deprecated and can still be used by existing users. It is recommended that new users use InstanceIds.",
           "example": "crs-rhlppeye",
           "member": "string",
@@ -9527,7 +9527,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Disused",
           "example": "crs-rhlppeye",
           "member": "string",
@@ -9536,7 +9536,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This parameter has been deprecated.",
           "example": "1",
           "member": "int64",
@@ -9887,80 +9887,80 @@
         {
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
-          "example": "",
+          "example": "DROP",
           "member": "string",
           "name": "Action",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
-          "example": "",
+          "example": "set",
           "member": "string",
           "name": "AddressModule",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
-          "example": "",
+          "example": "9.9.0.0/16",
           "member": "string",
           "name": "CidrIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description.",
-          "example": "",
+          "example": "**上云安全组默认入站规则",
           "member": "string",
           "name": "Desc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
-          "example": "",
+          "example": "ALL",
           "member": "string",
           "name": "IpProtocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Port.",
-          "example": "",
+          "example": "6379",
           "member": "string",
           "name": "PortRange",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
-          "example": "",
+          "example": "redis",
           "member": "string",
           "name": "ServiceModule",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
-          "example": "",
+          "example": "set",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10022,7 +10022,7 @@
           "example": "slowlog-log-slower-than",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10032,7 +10032,7 @@
           "example": "integer",
           "member": "string",
           "name": "ParamType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10042,7 +10042,7 @@
           "example": "10",
           "member": "string",
           "name": "Default",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10052,7 +10052,7 @@
           "example": "Over this time the command is recorded in us.a negative number d",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10062,7 +10062,7 @@
           "example": "5",
           "member": "string",
           "name": "CurrentValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10072,7 +10072,7 @@
           "example": "0",
           "member": "int64",
           "name": "NeedReboot",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10082,9 +10082,9 @@
           "example": "1",
           "member": "string",
           "name": "Max",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10092,19 +10092,19 @@
           "example": "1000",
           "member": "string",
           "name": "Min",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[\"yes\",\"no\"]",
           "member": "string",
           "name": "EnumValue",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10233,7 +10233,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Due to spelling inconsistency in this parameter name, it is recommended to use the **EnableReplicaReadOnly** parameter instead. Its meaning refers to whether the Read-Only Replica is supported.\n- true: Supported.\n- false: Not supported.",
           "example": "false",
           "member": "bool",
@@ -10250,7 +10250,7 @@
           "name": "EnableReplicaReadOnly",
           "output_required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10266,7 +10266,7 @@
           "name": "NodeId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10276,7 +10276,7 @@
           "name": "ZoneId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10290,7 +10290,7 @@
           "example": "\"2022-03-24 11:52:20\"",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10300,7 +10300,7 @@
           "example": "\"999b6b89c60-f01a-11eb-9d37-7d65897b5c22\"",
           "member": "string",
           "name": "BackupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10310,7 +10310,7 @@
           "example": "\"1\"",
           "member": "string",
           "name": "BackupType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10320,17 +10320,17 @@
           "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Backup remarks",
-          "example": "\"\"",
+          "example": "\"描述该备份的信息\"",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10340,7 +10340,7 @@
           "example": "0",
           "member": "int64",
           "name": "Locked",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10350,9 +10350,9 @@
           "example": "0",
           "member": "int64",
           "name": "BackupSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10360,9 +10360,9 @@
           "example": "0",
           "member": "int64",
           "name": "FullBackup",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10370,9 +10370,9 @@
           "example": "0",
           "member": "int64",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10380,7 +10380,7 @@
           "example": "crs-7iw94215",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10390,7 +10390,7 @@
           "example": "测试实例",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10400,7 +10400,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10410,7 +10410,7 @@
           "example": "\"2022-03-24 11:59:20\"",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10420,7 +10420,7 @@
           "example": "\"RDB-Redis 5.0\"",
           "member": "string",
           "name": "FileType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10430,7 +10430,7 @@
           "example": "\"2022-03-31 11:52:20\"",
           "member": "string",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10594,7 +10594,7 @@
           "name": "ID",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10604,7 +10604,7 @@
           "name": "InstanceId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10614,7 +10614,7 @@
           "name": "InstanceName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10624,7 +10624,7 @@
           "name": "Type",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10634,7 +10634,7 @@
           "name": "Grade",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10644,7 +10644,7 @@
           "name": "ExecutionDate",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10654,7 +10654,7 @@
           "name": "StartTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10664,7 +10664,7 @@
           "name": "EndTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10674,7 +10674,7 @@
           "name": "LatestExecutionDate",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10684,7 +10684,7 @@
           "name": "Status",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10694,7 +10694,7 @@
           "name": "TaskEndTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10704,7 +10704,7 @@
           "name": "EffectInfo",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10714,7 +10714,7 @@
           "name": "InitialExecutionDate",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10873,50 +10873,50 @@
         {
           "disabled": false,
           "document": "Region ID",
-          "example": "",
+          "example": "ap-bangkok",
           "member": "string",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Region name",
-          "example": "",
+          "example": "曼谷",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Region abbreviation",
-          "example": "",
+          "example": "TH",
           "member": "string",
           "name": "RegionShortName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name of the area where a region is located",
-          "example": "",
+          "example": "亚太东南",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZ information",
-          "example": "",
+          "example": "无",
           "member": "ZoneCapacityConf",
           "name": "ZoneSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -11233,7 +11233,7 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "test",
+          "example": "tag-key",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -11242,7 +11242,7 @@
         {
           "disabled": false,
           "document": "The value corresponding to the tag key",
-          "example": "123",
+          "example": "tag-value",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -11312,70 +11312,70 @@
         {
           "disabled": false,
           "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss.",
-          "example": "",
+          "example": "2024-04-09 12:39:12",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Project ID.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Security group ID.",
-          "example": "",
+          "example": "sg-5yb3e***",
           "member": "string",
           "name": "SecurityGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Security group name.",
-          "example": "",
+          "example": "安全组名称",
           "member": "string",
           "name": "SecurityGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Security group remarks.",
-          "example": "",
+          "example": "安全组备注或者描述",
           "member": "string",
           "name": "SecurityGroupRemark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Outbound rule.",
-          "example": "",
+          "example": "无",
           "member": "Outbound",
           "name": "Outbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Inbound rule.",
-          "example": "",
+          "example": "无",
           "member": "Inbound",
           "name": "Inbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -11428,7 +11428,7 @@
         {
           "disabled": false,
           "document": "Security group remarks",
-          "example": "test",
+          "example": "该安全组的描述",
           "member": "string",
           "name": "SecurityGroupRemark",
           "output_required": true,
@@ -11585,7 +11585,7 @@
       "document": "StartupInstance response structure.",
       "members": [
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This parameter has been deprecated. Determine whether the instance has been deisolated based on the status obtained through the instance query API.",
           "example": "1203",
           "member": "int64",
@@ -11750,7 +11750,7 @@
           "name": "TaskId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11760,7 +11760,7 @@
           "name": "StartTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11770,17 +11770,17 @@
           "name": "TaskType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance name \nNote:  This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "生产-***Redis",
           "member": "string",
           "name": "InstanceName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11790,7 +11790,7 @@
           "name": "InstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11800,7 +11800,7 @@
           "name": "ProjectId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11810,7 +11810,7 @@
           "name": "Progress",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11820,7 +11820,7 @@
           "name": "EndTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11830,7 +11830,7 @@
           "name": "Result",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -11877,50 +11877,50 @@
         {
           "disabled": false,
           "document": "Execution time",
-          "example": "",
+          "example": "2025-01-07 11:01:49",
           "member": "string",
           "name": "ExecuteTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Duration of the slow query (ms)",
-          "example": "",
+          "example": "531",
           "member": "int64",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Command",
-          "example": "",
+          "example": "eval",
           "member": "string",
           "name": "Command",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Command line details",
-          "example": "",
+          "example": "eval local key = KEYS[1] ; ",
           "member": "string",
           "name": "CommandLine",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node ID",
-          "example": "",
+          "example": "fc87a1796e9f0cd689da8f0b49e4f9c830******",
           "member": "string",
           "name": "Node",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -11933,120 +11933,120 @@
         {
           "disabled": false,
           "document": "Order ID, which is used when a TencentCloud API is called.",
-          "example": "",
+          "example": "192314****",
           "member": "string",
           "name": "DealId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Long order ID, which is used when an order issue is submitted for assistance.",
-          "example": "",
+          "example": "2024112**",
           "member": "string",
           "name": "DealName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZ ID",
-          "example": "",
+          "example": "100002",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of instances associated with the order",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "GoodsNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator UIN",
-          "example": "",
+          "example": "10001464****",
           "member": "string",
           "name": "Creater",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Order creation time",
-          "example": "",
+          "example": "2024-11-25 18:12:34",
           "member": "string",
           "name": "CreatTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Order timeout period",
-          "example": "",
+          "example": "2024-12-10 18:12:34",
           "member": "string",
           "name": "OverdueTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Order completion time",
-          "example": "",
+          "example": "2024-11-25 18:30:34",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying",
-          "example": "",
+          "example": "4",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Order status description",
-          "example": "",
+          "example": "发货中",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Actual total price of the order in 0.01 CNY",
-          "example": "",
+          "document": "Order actual total price (in cents)",
+          "example": "1039",
           "member": "int64",
           "name": "Price",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "100035***,100036***",
           "member": "string",
           "name": "InstanceIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -12059,7 +12059,7 @@
         {
           "disabled": false,
           "document": "The ID of instance to be modified.",
-          "example": "crs-5qlrlhux",
+          "example": "crs-5qlr****",
           "member": "string",
           "name": "InstanceId",
           "required": true,

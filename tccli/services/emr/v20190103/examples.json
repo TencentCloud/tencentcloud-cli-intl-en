@@ -98,22 +98,16 @@
     ],
     "InquiryPriceRenewInstance": [
       {
-        "document": "Querying Price of Renewal",
-        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewInstance\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-4\"\n    },\n    \"Currency\": \"CNY\",\n    \"TimeSpan\": \"1\",\n    \"PayMode\": \"1\",\n    \"ResourceIds\": [\n        \"emr-vm-jv1s4zas\"\n    ],\n    \"TimeUnit\": \"m\"\n}",
+        "document": "This example shows you how to query the renewal price.",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewInstance\n<Common request parameters>\n\n\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-4\"\n    },\n    \"Currency\": \"USD\",\n    \"TimeSpan\": \"1\",\n    \"PayMode\": \"1\",\n    \"ResourceIds\": [\n        \"emr-vm-jv1s4zas\"\n    ],\n    \"TimeUnit\": \"m\"\n}",
         "output": "{\n    \"Response\": {\n        \"DiscountCost\": 596.54,\n        \"OriginalCost\": 898.9,\n        \"RequestId\": \"223c838e-ce27-4adf-9a41-89661fe7ad21\",\n        \"TimeSpan\": 1,\n        \"TimeUnit\": \"m\"\n    }\n}",
-        "title": "Querying Price of Renewal"
-      },
-      {
-        "document": "Querying Price of Renewal",
-        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewInstance\n<Common request parameters>\n\n{\n    \"TimeUnit\": \"abc\",\n    \"TimeSpan\": 1,\n    \"ResourceIds\": [\n        \"abc\"\n    ],\n    \"Currency\": \"abc\",\n    \"Placement\": {\n        \"ProjectId\": 0,\n        \"Zone\": \"abc\"\n    },\n    \"PayMode\": 0,\n    \"ModifyPayMode\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"DiscountCost\": 596.54,\n        \"OriginalCost\": 898.9,\n        \"RequestId\": \"223c838e-ce27-4adf-9a41-89661fe7ad21\",\n        \"TimeSpan\": 1,\n        \"TimeUnit\": \"m\"\n    }\n}",
-        "title": "Querying Price of Renewal"
+        "title": "Querying the Renewal Price"
       }
     ],
     "InquiryPriceScaleOutInstance": [
       {
         "document": "Querying Price of Scale-out",
-        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceScaleOutInstance\n<Common request parameters>\n\n{\n    \"TimeSpan\": \"3600\",\n    \"InstanceId\": \"emr-3ida6zmi\",\n    \"CoreCount\": \"1\",\n    \"ZoneId\": \"100003\",\n    \"PayMode\": \"0\",\n    \"Currency\": \"CNY\",\n    \"TaskCount\": \"0\",\n    \"TimeUnit\": \"s\",\n    \"RouterCount\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: emr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceScaleOutInstance\n<Common request parameters>\n\n{\n    \"TimeSpan\": \"3600\",\n    \"InstanceId\": \"emr-3ida6zmi\",\n    \"CoreCount\": \"1\",\n    \"ZoneId\": \"100003\",\n    \"PayMode\": \"0\",\n    \"Currency\": \"USD\",\n    \"TaskCount\": \"0\",\n    \"TimeUnit\": \"s\",\n    \"RouterCount\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"DiscountCost\": \"1.26\",\n        \"PriceSpec\": {\n            \"InstanceType\": \"S5\",\n            \"DiskCnt\": 1,\n            \"StorageType\": 1,\n            \"DiskNum\": 1,\n            \"DiskType\": \"2\",\n            \"LocalDiskNum\": 0,\n            \"Cpu\": 0,\n            \"DiskSize\": 100,\n            \"MemSize\": 100,\n            \"RootSize\": 50,\n            \"Spec\": \"S5.2XLARGE8\"\n        },\n        \"Unit\": \"s\",\n        \"OriginalCost\": \"1.74\",\n        \"MultipleEmrPrice\": [\n            {\n                \"DiscountCost\": \"1.26\",\n                \"PriceSpec\": {\n                    \"InstanceType\": \"S5\",\n                    \"DiskCnt\": 1,\n                    \"StorageType\": 1,\n                    \"DiskNum\": 1,\n                    \"DiskType\": \"2\",\n                    \"LocalDiskNum\": 0,\n                    \"Cpu\": 0,\n                    \"DiskSize\": 100,\n                    \"MemSize\": 100,\n                    \"RootSize\": 50,\n                    \"Spec\": \"S5.2XLARGE8\"\n                },\n                \"Unit\": \"s\",\n                \"OriginalCost\": \"1.74\"\n            }\n        ],\n        \"RequestId\": \"04daa603-e1e7-4243-b25d-31e6a6736528\"\n    }\n}",
         "title": "Querying Price of Scale-out"
       }
