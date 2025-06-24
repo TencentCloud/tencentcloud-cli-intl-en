@@ -71,7 +71,7 @@
       "status": "online"
     },
     "DetectFace": {
-      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommend evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1. [Creating](https://intl.cloud.tencent.com/document/product/867/45014?from_cn_redirect=1)/[Adding](https://intl.cloud.tencent.com/document/product/867/45016?from_cn_redirect=1) a person in a group: this is to ensure the quality of the face information to facilitate subsequent processing.\n\n2. [Face search](https://intl.cloud.tencent.com/document/product/867/44994?from_cn_redirect=1): this is to ensure the quality of the input image to quickly find the corresponding person.\n\n3. [Face verification](https://intl.cloud.tencent.com/document/product/867/44983?from_cn_redirect=1): this is to ensure the quality of the face information to avoid cases where the verification incorrectly fails.\n\n4. Face fusion: this is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.\n\n",
+      "document": "This API is used to detect the position, attributes, and quality information of a face in the given image. The position information includes (x, y, w, h); the face attributes include gender, age, expression, beauty, glass, hair, mask, and pose (pitch, roll, yaw); and the face quality information includes the overall quality score, sharpness, brightness, and completeness.\n\n \nThe face quality information is mainly used to evaluate the quality of the input face image. When using the Face Recognition service, we recommend evaluating the quality of the input face image first to improve the effects of subsequent processing. Application scenarios of this feature include:\n\n1. [Creating](https://intl.cloud.tencent.com/document/product/867/45014?from_cn_redirect=1)/[Adding](https://intl.cloud.tencent.com/document/product/867/45016?from_cn_redirect=1) a person in a group: this is to ensure the quality of the face information to facilitate subsequent processing.\n\n2. [Face search](https://intl.cloud.tencent.com/document/product/867/44994?from_cn_redirect=1): this is to ensure the quality of the input image to quickly find the corresponding person.\n\n3. [Face verification](https://intl.cloud.tencent.com/document/product/867/44983?from_cn_redirect=1): this is to ensure the quality of the face information to avoid cases where the verification incorrectly fails.\n\n4. Face fusion: this is to ensure the quality of the uploaded face images to improve the fusion effect.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
       "input": "DetectFaceRequest",
       "name": "Detects and analyzes face",
       "output": "DetectFaceResponse",
@@ -1021,6 +1021,7 @@
       "document": "DetectFace request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Maximum number of processable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. \nThis parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.",
           "example": "1",
           "member": "uint64",
@@ -1029,30 +1030,34 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Minimum height and width of face in px.\nDefault value: 34. We recommend keeping it at or above 34.\nFaces below the `MinFaceSize` value will not be detected.",
-          "example": "40",
+          "example": "34",
           "member": "uint64",
           "name": "MinFaceSize",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
-          "example": "http://test.image.myqcloud.com/testB.jpg",
+          "example": "https://test.image.myqcloud.com/testB.jpg",
           "member": "string",
           "name": "Url",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. \nIf the value is not 1, it will be deemed as no need to return, and `FaceAttributesInfo` is meaningless in this case.  \nThe face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.  \nExtracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.",
           "example": "0",
           "member": "uint64",
@@ -1061,6 +1066,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to enable quality detection. 0: no; 1: yes. Default value: 0. \nIf the value is not 1, it will be deemed not to perform quality detection.\nThe face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  \nWe recommend enabling this feature for the face adding operation.",
           "example": "0",
           "member": "uint64",
@@ -1069,14 +1075,16 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
-          "example": "0",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -1091,35 +1099,47 @@
       "document": "DetectFace response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Width of requested image.",
+          "example": "640",
           "member": "int64",
           "name": "ImageWidth",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Height of requested image.",
+          "example": "440",
           "member": "int64",
           "name": "ImageHeight",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Face information list, including face coordinate information, attribute information (if needed), and quality score information (if needed).",
+          "example": "无",
           "member": "FaceInfo",
           "name": "FaceInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Algorithm model version used for face recognition.",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1395,98 +1415,122 @@
       "document": "Face attributes, including gender, age, expression, \nbeauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1. The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.",
       "members": [
         {
+          "disabled": false,
           "document": "Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "example": "40",
           "member": "int64",
           "name": "Gender",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "example": "39",
           "member": "int64",
           "name": "Age",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "example": "13",
           "member": "int64",
           "name": "Expression",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "example": "true",
           "member": "bool",
           "name": "Glass",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. \nWe recommend selecting images in the [-10,10] range for adding faces.",
+          "example": "13",
           "member": "int64",
           "name": "Pitch",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. \nWe recommend selecting images in the [-10,10] range for adding faces.",
+          "example": "21",
           "member": "int64",
           "name": "Yaw",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  \nWe recommend selecting images in the [-20,20] range for adding faces.",
+          "example": "54",
           "member": "int64",
           "name": "Roll",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
+          "example": "50",
           "member": "int64",
           "name": "Beauty",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "Hat",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Mask",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FaceHairAttributesInfo",
           "name": "Hair",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "EyeOpen",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         }
@@ -1653,26 +1697,32 @@
       "document": "Hair information in face attributes.",
       "members": [
         {
+          "disabled": false,
           "document": "0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Length",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "0: with bangs, 1: no bangs\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "Bang",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "0: black, 1: golden, 2: brown, 3: gray\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "Color",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1683,50 +1733,62 @@
       "document": "Face information list.",
       "members": [
         {
+          "disabled": false,
           "document": "Horizontal coordinate of the top-left vertex of the face frame.\nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.",
+          "example": "35",
           "member": "int64",
           "name": "X",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Vertical coordinate of the top-left vertex of the face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.",
+          "example": "61",
           "member": "int64",
           "name": "Y",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Face frame width.",
+          "example": "10",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Face frame height.",
+          "example": "8",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Face attributes, including gender, age, expression, \nbeauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.",
+          "example": "无",
           "member": "FaceAttributesInfo",
           "name": "FaceAttributesInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FaceQualityInfo",
           "name": "FaceQualityInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -1737,50 +1799,62 @@
       "document": "Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.",
       "members": [
         {
+          "disabled": false,
           "document": "Eyebrow completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,80], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "70",
           "member": "int64",
           "name": "Eyebrow",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,80], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "60",
           "member": "int64",
           "name": "Eye",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,60], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "30",
           "member": "int64",
           "name": "Nose",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,70], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "int64",
           "name": "Cheek",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,50], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "int64",
           "name": "Mouth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,70], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "80",
           "member": "int64",
           "name": "Chin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1791,34 +1865,42 @@
       "document": "Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.",
       "members": [
         {
+          "disabled": false,
           "document": "Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. \nIn normal cases, you only need to use `Score` as the overall quality standard score. Specific item scores such as `Sharpness`, `Brightness`, `Completeness` are for reference only.\nReference range: [0,40]: poor; [40,60]: fine; [60,80]: good; [80,100]: excellent. \nWe recommend selecting images with a score above 70 for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "80",
           "member": "int64",
           "name": "Score",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. \nReference range: [0,40]: very blurry; [40,60]: blurry; [60,80]: fine; [80,100]: sharp. \nWe recommend selecting images with a score above 80 for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
           "member": "int64",
           "name": "Sharpness",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Brightness. Value range: [0,100]. The brighter the image, the higher the score. \nReference range: [0,30]: dark; [30,70]: normal; [70,100]: bright. \nWe recommend selecting images in the [30,70] range for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "30",
           "member": "int64",
           "name": "Brightness",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "FaceQualityCompleteness",
           "name": "Completeness",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
