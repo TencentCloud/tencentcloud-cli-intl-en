@@ -192,6 +192,14 @@
         "title": "Example of a Chinese Mainland ID Card"
       }
     ],
+    "RecognizeMexicoVTID": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeMexicoVTID\n<public parameters>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"ReturnHeadImage\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"Address\": \"C. xxx 3080 xxxx 11111, xxxx.\",\n        \"Birth\": \"19/01/1980\",\n        \"CURP\": \"xxx11112222\",\n        \"City\": \"\",\n        \"EMISION\": \"\",\n        \"IssueDate\": \"2003 01\",\n        \"Locality\": \"\",\n        \"Name\": \"xxxx xxxx\",\n        \"PortraitImage\": \"\",\n        \"RequestId\": \"6e773a78-69d6-4330-8001-d81f1840550b\",\n        \"SECCION\": \"0703\",\n        \"Sex\": \"H\",\n        \"State\": \"\",\n        \"ValidDate\": \"2022-2032\",\n        \"VotePIN\": \"xxxxx\"\n    }\n}",
+        "title": "RecognizeMexicoVTID Example"
+      }
+    ],
     "RecognizePhilippinesDrivingLicenseOCR": [
       {
         "document": " ",
