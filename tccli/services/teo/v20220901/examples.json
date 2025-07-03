@@ -44,6 +44,14 @@
         "title": "Querying the CNAME status of a domain name"
       }
     ],
+    "ConfirmOriginACLUpdate": [
+      {
+        "document": "The selected site with ZoneId 'zone-276zs184g93m' confirms the latest origin ACLs have been updated to the origin server firewall.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConfirmOriginACLUpdate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"af0a2b4f-df6d-4d2a-ac39-1706cbf8a868\"\n    }\n}",
+        "title": "Confirm Updated to the Latest Origin ACLs"
+      }
+    ],
     "CreateAccelerationDomain": [
       {
         "document": "This example shows you how to create an acceleration domain name for a domain-name origin server.",
@@ -790,6 +798,14 @@
         "title": "Querying the LoadBalancer List"
       }
     ],
+    "DescribeOriginACL": [
+      {
+        "document": "This example shows you how to query the binding relationship between the L7 acceleration domain/L4 proxy instance and the origin IP range, as well as the origin IP range details for the selected site with ZoneId 'zone-276zs184g93m'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"de0a2b4f-df6d-4d2a-ac39-1706cbf8a797\",\n        \"OriginACLInfo\": {\n            \"L7Hosts\": [\n                \"www.example.com\"\n            ],\n            \"L4ProxyIds\": [\n                \"proxy-19389e5dwwxfs\"\n            ],\n            \"CurrentOriginACL\": {\n                \"EntireAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                },\n                \"Version\": \"mlc-1.0.1-20250421\",\n                \"ActiveTime\": \"2014-11-30T10:00:00Z\",\n                \"IsPlaned\": \"false\"\n            },\n            \"Status\": \"online\",\n            \"NextOriginACL\": {\n                \"Version\": \"mlc-1.0.1-20250422\",\n                \"PlannedActiveTime\": \"2014-12-30T10:00:00Z\",\n                \"EntireAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\",\n                        \"22.22.22.22/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                },\n                \"AddedAddresses\": {\n                    \"IPv4\": [\n                        \"22.22.22.22/24\"\n                    ],\n                    \"IPv6\": []\n                },\n                \"RemovedAddresses\": {\n                    \"IPv4\": [],\n                    \"IPv6\": []\n                },\n                \"NoChangeAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                }\n            }\n        }\n    }\n}",
+        "title": "Querying Origin Protection Detail"
+      }
+    ],
     "DescribeOriginGroup": [
       {
         "document": "This example shows you how to query the list of origin groups by a specified ID.",
@@ -990,6 +1006,14 @@
         "title": "Terminating Billing Plan"
       }
     ],
+    "DisableOriginACL": [
+      {
+        "document": "This example shows you how to disable 'Origin Protection' for a site with ZoneId 'zone-276zs184g93m'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ce0a2b4f-df6d-4d2a-ac39-1706cbf8a863\"\n    }\n}",
+        "title": "Disable Origin Protection"
+      }
+    ],
     "DownloadL4Logs": [
       {
         "document": " ",
@@ -1004,6 +1028,44 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DownloadL7Logs\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"StartTime\": \"2022-05-04T03:27:00+08:00\",\n    \"EndTime\": \"2022-05-10T23:59:00+08:00\",\n    \"ZoneIds\": [\n        \"zone-2mzegj4vln5f\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"6f07d593-44d7-4bac-a119-e1923ab5b377\",\n        \"Data\": [\n            {\n                \"Area\": \"mainland\",\n                \"Domain\": \"test-add4.wellsjiang.com\",\n                \"LogPacketName\": \"20220811-02-test-add4.wellsjiang.com\",\n                \"LogTime\": 1660212000,\n                \"LogStartTime\": \"2023-07-26T06:00:00+08:00\",\n                \"LogEndTime\": \"2023-07-26T07:00:00+08:00\",\n                \"Size\": 7539,\n                \"Url\": \"https://log-down07-cn.edgeone.qcloud.com/2022081102-test-add4.wellsjiang.com.log.gz\"\n            },\n            {\n                \"Area\": \"overseas\",\n                \"Domain\": \"test.codegun.work\",\n                \"LogEndTime\": \"2023-07-26T07:14:59+08:00\",\n                \"LogPacketName\": \"20230725-2300-luatest3.codegun.work\",\n                \"LogStartTime\": \"2023-07-26T07:00:00+08:00\",\n                \"LogTime\": 1690326000,\n                \"Size\": 708,\n                \"Url\": \"https://log-down07-ov-test.edgeone.qcloud.com/20230725/23/251233206/202307252300-test.codegun.work.log.gz\"\n            }\n        ]\n    }\n}",
         "title": "Downloading L7 Offline Logs"
+      }
+    ],
+    "EnableOriginACL": [
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure the L7 acceleration domain 'www.qq.com' and the L4 proxy instance 'sid-19389e5dwwxfs' to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L7EnableMode\": \"specific\",\n    \"L7Hosts\": [\n        \"www.qq.com\"\n    ],\n    \"L4EnableMode\": \"specific\",\n    \"L4ProxyIds\": [\n        \"sid-19389e5dwwxfs\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706cbf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for designated L7 acceleration domains and L4 proxy instances."
+      },
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure the L7 acceleration domain 'www.qq.com' to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L7EnableMode\": \"specific\",\n    \"L7Hosts\": [\n        \"www.qq.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706cbf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for designated L7 acceleration domains."
+      },
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure the L4 proxy instance 'sid-19389e5dwwxfs' to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L4EnableMode\": \"specific\",\n    \"L4ProxyIds\": [\n        \"sid-19389e5dwwxfs\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706cbf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for designated L4 proxy instances."
+      },
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure all L7 acceleration domains and L4 proxy instances to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L7EnableMode\": \"all\",\n    \"L4EnableMode\": \"all\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706wdf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for all L7 acceleration domains and L4 proxy instances."
+      },
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure all L7 acceleration domains to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L7EnableMode\": \"all\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706wdf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for all L7 acceleration domains."
+      },
+      {
+        "document": "Enable origin protection for the site with ZoneId 'zone-276zs184g93m', and configure all L4 proxy instances to use origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"L4EnableMode\": \"all\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e0a2b4f-df6d-4d2a-ac39-1706wdf8a869\"\n    }\n}",
+        "title": "Enable origin protection for the site for the first time and configure it to use origin IP ranges for all L4 proxy instances."
       }
     ],
     "ExportZoneConfig": [
@@ -1314,6 +1376,20 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoadBalancer\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2ju9lrnpaxol\",\n    \"Name\": \"HTTP-LB\",\n    \"OriginGroups\": [\n        {\n            \"Priority\": \"priority_1\",\n            \"OriginGroupId\": \"og-30l5kv5z2bse\"\n        },\n        {\n            \"Priority\": \"priority_2\",\n            \"OriginGroupId\": \"oog-30l3kv5z2bse\"\n        },\n        {\n            \"Priority\": \"priority_3\",\n            \"OriginGroupId\": \"og-30l5kv5z22e9\"\n        }\n    ],\n    \"HealthChecker\": {\n        \"Type\": \"HTTP\",\n        \"Path\": \"www.qq.com/test111\",\n        \"Port\": 80,\n        \"Interval\": 30,\n        \"Method\": \"HEAD\",\n        \"ExpectedCodes\": [\n            \"200\",\n            \"400\",\n            \"401\",\n            \"402\",\n            \"403\",\n            \"404\",\n            \"405\",\n            \"406\",\n            \"408\",\n            \"409\",\n            \"410\",\n            \"411\",\n            \"412\",\n            \"413\",\n            \"414\",\n            \"415\",\n            \"416\",\n            \"417\",\n            \"418\",\n            \"421\",\n            \"423\",\n            \"424\",\n            \"426\",\n            \"429\",\n            \"431\",\n            \"433\",\n            \"434\",\n            \"444\",\n            \"451\",\n            \"499\"\n        ],\n        \"FollowRedirect\": \"false\",\n        \"Headers\": [\n            {\n                \"Key\": \"header1\",\n                \"Value\": \"header1\"\n            },\n            {\n                \"Key\": \"header2\",\n                \"Value\": \"header2\"\n            }\n        ],\n        \"Timeout\": 5,\n        \"HealthThreshold\": 3,\n        \"CriticalThreshold\": 2\n    },\n    \"SteeringPolicy\": \"Pritory\",\n    \"FailoverPolicy\": \"OtherRecordInOriginGroup\",\n    \"InstanceId\": \"lb-2sswjr6gnfy2\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a66b1739-9f63-4c2b-bad2-8ef0ca714d56\"\n    }\n}",
         "title": "Modifying the Check Policy of a LoadBalancer"
+      }
+    ],
+    "ModifyOriginACL": [
+      {
+        "document": "This example shows you how to add the L7 acceleration domain 'www.qq.com' under site 'zone-276zs184g93m' enabling origin ACLs.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"OriginACLEntities\": [\n        {\n            \"OperationMode\": \"enable\",\n            \"Type\": \"l7\",\n            \"Instances\": [\n                \"www.qq.com\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fe0a2b4f-df6d-4d2a-ac39-1706cbf8a868\"\n    }\n}",
+        "title": "Add New L7 Acceleration Domains Enabling Origin ACLs"
+      },
+      {
+        "document": "This example shows you how to disable origin ACLs for the L4 proxy instance 'sid-19389e5dwwxfs' under site 'zone-276zs184g93m'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"OriginACLEntities\": [\n        {\n            \"OperationMode\": \"disable\",\n            \"Type\": \"l4\",\n            \"Instances\": [\n                \"sid-19389e5dwwxfs\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fe0a2b4f-df6d-4d2a-ac39-1706cbf8a868\"\n    }\n}",
+        "title": "Disable Origin ACLs for L4 Proxy Instances"
       }
     ],
     "ModifyOriginGroup": [

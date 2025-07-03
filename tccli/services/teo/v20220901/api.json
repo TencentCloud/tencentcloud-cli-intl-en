@@ -28,6 +28,13 @@
       "output": "CheckCnameStatusResponse",
       "status": "online"
     },
+    "ConfirmOriginACLUpdate": {
+      "document": "This API is used to confirm that the latest origin ACLs have been updated to the origin server firewall when the origin ACLs change. After confirming the update to the latest version, related change notifications will stop pushing.",
+      "input": "ConfirmOriginACLUpdateRequest",
+      "name": "Confirm Origin ACLs Update",
+      "output": "ConfirmOriginACLUpdateResponse",
+      "status": "online"
+    },
     "CreateAccelerationDomain": {
       "document": "This API is used to create an acceleration domain name. \n\nFor sites connected via the CNAME, if you have not verified the ownership of the domain name, the ownership verification information of the domain name is returned. To verify your ownership of the domain name, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).",
       "input": "CreateAccelerationDomainRequest",
@@ -539,6 +546,13 @@
       "output": "DescribeLoadBalancerListResponse",
       "status": "online"
     },
+    "DescribeOriginACL": {
+      "document": "This API is used to query the binding relationship between L7 acceleration domains/L4 proxy instances and origin ACLs under a site, as well as IP range details. If you want to periodically obtain the latest version of origin IP ranges through an automation script, you can poll this API at a low-frequency (recommended every three days). If the NextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall configuration.",
+      "input": "DescribeOriginACLRequest",
+      "name": "Query Origin Protection Detail",
+      "output": "DescribeOriginACLResponse",
+      "status": "online"
+    },
     "DescribeOriginGroup": {
       "document": "This API is used to obtain a list of origin groups.",
       "input": "DescribeOriginGroupRequest",
@@ -693,6 +707,13 @@
       "output": "DestroyPlanResponse",
       "status": "online"
     },
+    "DisableOriginACL": {
+      "document": "This API is used to disable 'Origin Protection' of a site. Once disabled, resources related to it will no longer use only the origin ACLs provided by \"origin protection\" to request your origin, and stops sending update notifications on the origin ACLs.",
+      "input": "DisableOriginACLRequest",
+      "name": "Disable Origin Protection",
+      "output": "DisableOriginACLResponse",
+      "status": "online"
+    },
     "DownloadL4Logs": {
       "document": "This API is used to download L4 logs.",
       "input": "DownloadL4LogsRequest",
@@ -705,6 +726,13 @@
       "input": "DownloadL7LogsRequest",
       "name": "Downloads L7 logs.",
       "output": "DownloadL7LogsResponse",
+      "status": "online"
+    },
+    "EnableOriginACL": {
+      "document": "This API is used to enable 'Origin Protection' for Layer 4 or Layer 7 instances. The number of enabled instances has an upper limit: 200 for Layer 7 domains and 100 for Layer 4 proxy instances. The total number of instances cannot exceed 200, otherwise an error reminder will be triggered. You can first enable the maximum allowed number and use the ModifyOriginACL API to set the excess quantity.\n\nThis API is used to enable 'Origin Protection' for the site for the first time. Once enabled, EdgeOne will use specific origin IP ranges for L7 acceleration domains and L4 proxy instances. The maximum number of L7 acceleration domain that can be submitted in a single request is 200, and the maximum number of L4 proxy instance is 100. Mixed submissions of L7 acceleration domains and L4 proxy instances are supported, with a total maximum of 200 instances. If you need to enable more than 200 instances, you can first enable the maximum number by specifying the instances, and then enable the remaining instances through the API ModifyOriginACL. Any subsequent addition of  L7 acceleration domains or L4 proxy instances should be configured through the API ModifyOriginACL.\n\nNote:\n- Calling this API is considered as agreeing to [Origin Protection Enablement Conditions of Use](https://www.tencentcloud.com/document/product/1145/70561?!longPreview).\n- The origin IP ranges may change periodically. EdgeOne will notify you of changes to the origin IP ranges 14 days, 7 days, 3 days, and 1 day in advance through one or more methods such as internal messages, SMS, and email. To ensure you receive notifications about changes to the origin IP ranges, please make sure that you have selected the relevant product service notifications for the Edge Security Acceleration Platform (EO) in [Tencent Cloud Message Center](https://console.tencentcloud.com/message/subscription) and have configured the correct message recipients. For configuration details, please refer to Message [Subscription Management](https://www.tencentcloud.com/document/product/1233/60778).",
+      "input": "EnableOriginACLRequest",
+      "name": "Enable Origin Protection",
+      "output": "EnableOriginACLResponse",
       "status": "online"
     },
     "ExportZoneConfig": {
@@ -908,6 +936,13 @@
       "input": "ModifyLoadBalancerRequest",
       "name": "Modifies a LoadBalancer",
       "output": "ModifyLoadBalancerResponse",
+      "status": "online"
+    },
+    "ModifyOriginACL": {
+      "document": "This API is used to enable or disable specific origin ACLs for L7 acceleration domain names or L4 proxy instances. A single submission supports up to 200 L7 acceleration domain names or 100 L4 proxy instances. Hybrid submissions of L7 acceleration domain names and L4 proxy instances are supported, with a maximum total number of instances of 200. If changes are needed for exceeding 200 instances, submit them in batches via this API.",
+      "input": "ModifyOriginACLRequest",
+      "name": "Modify Origin Protection Instances",
+      "output": "ModifyOriginACLResponse",
       "status": "online"
     },
     "ModifyOriginGroup": {
@@ -1608,6 +1643,34 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Addresses": {
+      "document": "IP range details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IPv4 subnet.",
+          "example": "[\"11.11.11.0/24\",\"22.22.22.0/24\"]",
+          "member": "string",
+          "name": "IPv4",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 subnet.",
+          "example": "[\"2001:980:7002:6::/64\"]",
+          "member": "string",
+          "name": "IPv6",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -4103,6 +4166,33 @@
       ],
       "usage": "both"
     },
+    "ConfirmOriginACLUpdateRequest": {
+      "document": "ConfirmOriginACLUpdate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the site ID.",
+          "example": "\"zone-276zs184g93m\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ConfirmOriginACLUpdateResponse": {
+      "document": "ConfirmOriginACLUpdate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ContentIdentifier": {
       "document": "Content identifier. This feature is only available to the allowlist.",
       "members": [
@@ -6134,6 +6224,56 @@
         }
       ],
       "type": "object"
+    },
+    "CurrentOriginACL": {
+      "document": "Currently effective origin ACLs.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP range details.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "Addresses",
+          "name": "EntireAddresses",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version number.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "mlc-1.0.1-20250421",
+          "member": "string",
+          "name": "Version",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version effective time in UTC+8, following the date and time format of the ISO 8601 standard.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "2014-12-30T10:00:00Z",
+          "member": "string",
+          "name": "ActiveTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is used to record whether \"I've upgraded to the lastest verison\" is completed before the origin ACLs version is effective. valid values:.\n- true: specifies that the version is effective and the update to the latest version is confirmed.\n- false: when the version takes effect, the confirmation of updating to the latest origin ACLs are not completed. The IP range is forcibly updated to the latest version in the backend. When this parameter returns false, please confirm in time whether your origin server firewall configuration has been updated to the latest version to avoid origin-pull failure.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "false",
+          "member": "string",
+          "name": "IsPlaned",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "CustomEndpoint": {
       "document": "The configuration information of real-time log delivery to a custom HTTP(S) interface",
@@ -9662,6 +9802,43 @@
       ],
       "type": "object"
     },
+    "DescribeOriginACLRequest": {
+      "document": "DescribeOriginACL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the site ID.",
+          "example": "\"zone-276zs184g93m\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOriginACLResponse": {
+      "document": "DescribeOriginACL response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Describes the binding relationship between the l7 acceleration domain/l4 proxy instance and the origin server IP range.",
+          "example": "无",
+          "member": "OriginACLInfo",
+          "name": "OriginACLInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeOriginGroupHealthStatusRequest": {
       "document": "DescribeOriginGroupHealthStatus request structure.",
       "members": [
@@ -11689,6 +11866,33 @@
       ],
       "usage": "out"
     },
+    "DisableOriginACLRequest": {
+      "document": "DisableOriginACL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the site ID.",
+          "example": "\"zone-276zs184g93m\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableOriginACLResponse": {
+      "document": "DisableOriginACL response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DnsRecord": {
       "document": "DNS record",
       "members": [
@@ -12143,6 +12347,69 @@
         }
       ],
       "usage": "both"
+    },
+    "EnableOriginACLRequest": {
+      "document": "EnableOriginACL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the site ID.",
+          "example": "\"zone-276zs184g93m\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The mode of configurating origin ACLs for L7 acceleration domains.\n- all: configurate origin ACLs for all L7 acceleration domains under the site.\n- specific: configurate origin ACLs for designated L7 acceleration domains under the site.\nWhen the parameter is empty, it defaults to specific.\n",
+          "example": "\"specific\"",
+          "member": "string",
+          "name": "L7EnableMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The list of L7 acceleration domains that require enabling the origin ACLs. This list must be empty when the request parameter L7EnableMode is set to 'all'. A maximum of 200 domains are supported at a time.",
+          "example": "[\"www.qq.com\"]",
+          "member": "string",
+          "name": "L7Hosts",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The mode of configurating origin ACLs for L4 proxy Instances.\n- all: configurate origin ACLs for all L4 proxy Instances under the site.\n- specific: configurate origin ACLs for designated  L4 proxy Instances under the site.\nWhen the parameter is empty, it defaults to specific.",
+          "example": "\"specific\"",
+          "member": "string",
+          "name": "L4EnableMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The list of L4 proxy Instances that require enabling origin ACLs. This list must be empty when the request parameter L4EnableMode is set to 'all'. A maximum of 100 instances are supported at a time.",
+          "example": "[\"proxy-19389e5dwwxfs\"]",
+          "member": "string",
+          "name": "L4ProxyIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableOriginACLResponse": {
+      "document": "EnableOriginACL response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "EntityStatus": {
       "document": "Status of domain names bound with this template.",
@@ -16569,6 +16836,42 @@
       ],
       "type": "object"
     },
+    "ModifyOriginACLRequest": {
+      "document": "ModifyOriginACL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the site ID.",
+          "example": "\"zone-276zs184g93m\"",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance that needs to configurate origin ACLs.",
+          "example": "无",
+          "member": "OriginACLEntity",
+          "name": "OriginACLEntities",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOriginACLResponse": {
+      "document": "ModifyOriginACL response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyOriginGroupRequest": {
       "document": "ModifyOriginGroup request structure.",
       "members": [
@@ -17471,6 +17774,78 @@
       ],
       "usage": "both"
     },
+    "NextOriginACL": {
+      "document": "When origin ACLs are updated, this field will be returned with the next version of the IP range to take effect, including a comparison with the currently effective IP range.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version number.",
+          "example": "mlc-1.0.1-20250421",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version effective time, which adopts UTC+8 and follows the date and time format of the ISO 8601 standard.",
+          "example": "2014-12-30T10:00:00Z",
+          "member": "string",
+          "name": "PlannedActiveTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP range details.",
+          "example": "无",
+          "member": "Addresses",
+          "name": "EntireAddresses",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The latest origin IP range newly-added compared with the origin IP range in CurrentOrginACL.",
+          "example": "无",
+          "member": "Addresses",
+          "name": "AddedAddresses",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The latest origin IP range deleted compared with the origin IP range in CurrentOrginACL.",
+          "example": "无",
+          "member": "Addresses",
+          "name": "RemovedAddresses",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The latest origin IP range is unchanged compared with the origin IP range in CurrentOrginACL.",
+          "example": "无",
+          "member": "Addresses",
+          "name": "NoChangeAddresses",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "NoCache": {
       "document": "No-cache configuration",
       "members": [
@@ -17627,6 +18002,100 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OriginACLEntity": {
+      "document": "Instances that require configuration origin ACLs.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance type. Valid values:\n-l7: L7 acceleration domain;\n-l4: L4 proxy instance.",
+          "example": "l7",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance detail. Valid values:\n-When Type = l7, please enter the L7 acceleration domain.\n-When Type = l4, please enter the L4 proxy instance ID.",
+          "example": "['www.example.com']",
+          "member": "string",
+          "name": "Instances",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Operation mode. Valid values:.\n- enable: enabled L7/L4 instances.\n- disable: disable L7/L4 instances.",
+          "example": "enable",
+          "member": "string",
+          "name": "OperationMode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "OriginACLInfo": {
+      "document": "The binding relationship between L7 acceleration domains/L4 proxy instances and origin IP ranges, as well as origin IP range details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of L7 accelerated domains that enable the origin ACLs. This field is empty when origin protection is not enabled.",
+          "example": "[\"www.qq.com\",\"aaa.qq.com\"]",
+          "member": "string",
+          "name": "L7Hosts",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of L4 proxy instances that enable the origin ACLs. This field is empty when origin protection is not enabled.",
+          "example": "[\"sid-19389e5dwwxfs\"]",
+          "member": "string",
+          "name": "L4ProxyIds",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currently effective origin ACLs. This field is empty when origin protection is not enabled.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CurrentOriginACL",
+          "name": "CurrentOriginACL",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "When the origin ACLs are updated, this field will be returned with the next version's origin IP range to take effect, including a comparison with the current origin IP range. This field is empty if not updated or origin protection is not enabled.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "NextOriginACL",
+          "name": "NextOriginACL",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Origin protection status. Vaild values:\n- online: in effect;\n- offline: disabled;\n- updating: configuration deployment in progress.",
+          "example": "offline",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
