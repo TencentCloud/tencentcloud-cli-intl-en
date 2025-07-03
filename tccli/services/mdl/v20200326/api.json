@@ -1604,6 +1604,15 @@
           "name": "FrameCaptureTemplates",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "General settings.",
+          "example": "无",
+          "member": "GeneralSetting",
+          "name": "GeneralSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3451,6 +3460,24 @@
           "name": "TimedMetadataSetting",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Static image activate setting.",
+          "example": "无",
+          "member": "StaticImageActivateSetting",
+          "name": "StaticImageActivateSetting",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Static image deactivate setting.",
+          "example": "无",
+          "member": "StaticImageDeactivateSetting",
+          "name": "StaticImageDeactivateSetting",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -3552,6 +3579,28 @@
           "example": "无",
           "member": "TimedMetadataInfo",
           "name": "TimedMetadataSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static image activate setting.",
+          "example": "无",
+          "member": "StaticImageActivateSetting",
+          "name": "StaticImageActivateSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static image deactivate setting.",
+          "example": "无",
+          "member": "StaticImageDeactivateSetting",
+          "name": "StaticImageDeactivateSetting",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -3677,6 +3726,23 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "GeneralSetting": {
+      "document": "General setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Static graphic overlay configuration.",
+          "example": "无",
+          "member": "StaticImageSettings",
+          "name": "StaticImageSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -4597,6 +4663,15 @@
           "name": "FrameCaptureTemplates",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "General settings.",
+          "example": "无",
+          "member": "GeneralSetting",
+          "name": "GeneralSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5570,6 +5645,167 @@
       ],
       "type": "object"
     },
+    "StaticImageActivateSetting": {
+      "document": "Static image activate setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The address of the image to be inserted, starting with http or https and ending with .png .PNG .bmp .BMP .tga .TGA.",
+          "example": "https://www.test.com/demo/test.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The layer of the superimposed image, 0-7; the default value is 0, and a higher layer means it is on the top.",
+          "example": "0",
+          "member": "int64",
+          "name": "Layer",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Opacity, range 0-100; the default value is 100, which means completely opaque.",
+          "example": "100",
+          "member": "int64",
+          "name": "Opacity",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The distance from the left edge in pixels; the default value is 0 and the maximum value is 4096.",
+          "example": "0",
+          "member": "int64",
+          "name": "ImageX",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The distance from the top edge in pixels; the default value is 0 and the maximum value is 2160.",
+          "example": "0",
+          "member": "int64",
+          "name": "ImageY",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The width of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means using the original image size. The minimum value is 1 and the maximum value is 4096.",
+          "example": "720",
+          "member": "int64",
+          "name": "Width",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The height of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means the original image size is used. The minimum value is 1 and the maximum value is 2160.",
+          "example": "360",
+          "member": "int64",
+          "name": "Height",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Overlay duration, in milliseconds, range 0-86400000; default value 0, 0 means continuous.",
+          "example": "1000",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fade-in duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-in effect.",
+          "example": "1000",
+          "member": "int64",
+          "name": "FadeIn",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.",
+          "example": "1000",
+          "member": "int64",
+          "name": "FadeOut",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StaticImageDeactivateSetting": {
+      "document": "Static image deactivate setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The overlay level to be canceled, range 0-7, default value 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Layer",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.",
+          "example": "1000",
+          "member": "int64",
+          "name": "FadeOut",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StaticImageSettings": {
+      "document": "Static graphic overlay configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "GlobalImageOverlayEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "StopStreamLiveChannelRequest": {
       "document": "StopStreamLiveChannel request structure.",
       "members": [
@@ -5760,7 +5996,7 @@
           "name": "AudioTemplates",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5770,7 +6006,7 @@
           "name": "VideoTemplates",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5780,11 +6016,11 @@
           "name": "AVTemplates",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Caption templates.",
           "example": "无",
           "member": "SubtitleConf",
           "name": "CaptionTemplates",
@@ -5800,7 +6036,7 @@
           "name": "PlanSettings",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5810,7 +6046,7 @@
           "name": "EventNotifySettings",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5820,7 +6056,7 @@
           "name": "InputLossBehavior",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5860,6 +6096,16 @@
           "name": "FrameCaptureTemplates",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "General settings.",
+          "example": "无",
+          "member": "GeneralSetting",
+          "name": "GeneralSettings",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],

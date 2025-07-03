@@ -92,7 +92,7 @@
       "status": "online"
     },
     "DescribeCustomerBillDetailByDay": {
-      "document": "This API is used to query the daily bill expenditure of cu by resellers.\nInvocation Role: first-level reseller, second-level reseller, reseller.",
+      "document": "This API is used to query the daily bill expenditure of customer by resellers.\nInvocation Role: first-level reseller, second-level reseller, reseller.",
       "input": "DescribeCustomerBillDetailByDayRequest",
       "name": "Query sub-customer daily bill consumption for reseller",
       "output": "DescribeCustomerBillDetailByDayResponse",

@@ -1,0 +1,1105 @@
+{
+  "actions": {
+    "CreateIncrementalMigrationStrategy": {
+      "document": "Create an incremental migration strategy for the storage of the professional application.",
+      "input": "CreateIncrementalMigrationStrategyRequest",
+      "name": "CreateIncrementalMigrationStrategy",
+      "output": "CreateIncrementalMigrationStrategyResponse",
+      "status": "online"
+    },
+    "CreateStorage": {
+      "document": "This API is used to create storage for professional applications.\n\nNote:\n- This API is exclusively for professional applications.\n- When a customer creates a VOD professional application, the system automatically enables storage in certain regions by default. If the customer needs to enable storage in other regions, they can do so using this API.\n- All storage regions and the regions where storage have already been enabled can be queried using the [DescribeStorageRegions](https://cloud.tencent.com/document/product/266/72480) API.",
+      "input": "CreateStorageRequest",
+      "name": "CreateProSubAppStorage",
+      "output": "CreateStorageResponse",
+      "status": "online"
+    },
+    "CreateStorageCredentials": {
+      "document": "The API is used to generate access credentials for VOD professional applications, such as generating credentials for client uploads.",
+      "input": "CreateStorageCredentialsRequest",
+      "name": "Create credentials for the storage of VOD application",
+      "output": "CreateStorageCredentialsResponse",
+      "status": "online"
+    },
+    "DeleteIncrementalMigrationStrategy": {
+      "document": "Delete the incremental migration strategy.",
+      "input": "DeleteIncrementalMigrationStrategyRequest",
+      "name": "DeleteIncrementalMigrationStrategy",
+      "output": "DeleteIncrementalMigrationStrategyResponse",
+      "status": "online"
+    },
+    "DescribeIncrementalMigrationStrategyInfos": {
+      "document": "Describe the information of the incremental migration strategy.",
+      "input": "DescribeIncrementalMigrationStrategyInfosRequest",
+      "name": "DescribeIncrementalMigrationStrategyInfos",
+      "output": "DescribeIncrementalMigrationStrategyInfosResponse",
+      "status": "online"
+    },
+    "DescribeStorage": {
+      "document": "This API is used to query bucket information in the professional application, and it also supports paginated queries.\nNote:\n- This API is exclusively for use in the professional application.",
+      "input": "DescribeStorageRequest",
+      "name": "DescribeStorage",
+      "output": "DescribeStorageResponse",
+      "status": "online"
+    },
+    "ModifyIncrementalMigrationStrategy": {
+      "document": "Modify the information of incremental migration strategy.",
+      "input": "ModifyIncrementalMigrationStrategyRequest",
+      "name": "ModifyIncrementalMigrationStrategy",
+      "output": "ModifyIncrementalMigrationStrategyResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2024-07-18",
+    "serviceNameCN": "云点播",
+    "serviceShortName": "vod"
+  },
+  "objects": {
+    "CreateIncrementalMigrationStrategyRequest": {
+      "document": "CreateIncrementalMigrationStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The bucket ID where the strategy takes effect.",
+          "example": "bucketid123",
+          "member": "string",
+          "name": "BucketId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Incremental migration strategy name. The name length should not exceed 100 characters. Allowed characters include: Chinese characters, English characters, `0-9`,` _` and ` -`.",
+          "example": "strategy_name",
+          "member": "string",
+          "name": "StrategyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source type. Valid values: \n<li>HTTP: the source type is HTTP.</li>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "OriginType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Incremental migration HTTP origin source configuration. This field is required when the OriginType value is `HTTP`.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginConfig",
+          "name": "HttpOriginConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIncrementalMigrationStrategyResponse": {
+      "document": "CreateIncrementalMigrationStrategy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the incremental migration strategy.",
+          "example": "im-demo123",
+          "member": "string",
+          "name": "StrategyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStorageCredentialsRequest": {
+      "document": "CreateStorageCredentials request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "123456789012",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The policy string serialized by URL Encode is used as the input parameter Policy. The server will URL Decode the Policy value and grant temporary access credentials according to the parsed policy. Please pass in parameters according to the specification.\nNote:\n1.The policy syntax refers to [Cloud Access Management](/document/product/598/10603).\n2.The policy cannot contain the principal element.\n3.The policy actions include: \n<li>name/vod:ListObjects;</li>\n<li>name/vod:ListObjectsV2;</li>\n<li>name/vod:HeadObject;</li>\n<li>name/vod:PutObject;</li>\n<li>name/vod:ListParts;</li>\n<li>name/vod:PostObject;</li>\n<li>name/vod:CreateMultipartUpload;</li>\n<li>name/vod:UploadPart;</li>\n<li>name/vod:CompleteMultipartUpload;</li>\n<li>name/vod:AbortMultipartUpload;</li>\n<li>name/vod:ListMultipartUploads;</li>\n<li>name/vod:CopyObject;</li>\n<li>name/vod:RestoreObject;</li>\n<li>name/vod:DeleteObjects;</li>\n<li>name/vod:DeleteObject;</li>\n<li>name/vod:UploadPartCopy.</li>4.The resource format of the policy is `qcs::vod:[region]:uid/[AppID]:prefix//[SubAppId]/[BucketId]/[Path]`, where AppID, SubAppId, BucketId and Path need to be filled in as required.\n",
+          "example": "%7B%22statement%22%3A%5B%7B%22action%22%3A%5B%22name%2Fvod%3APutObject%22%2C%22name%2Fvod%3AListParts%22%2C%22name%2Fvod%3APostObject%22%2C%22name%2Fvod%3AInitiateMultipartUpload%22%2C%22name%2Fvod%3AUploadPart%22%2C%22name%2Fvod%3ACompleteMultipartUpload%22%2C%22name%2Fvod%3AAbortMultipartUpload%22%2C%22name%2Fvod%3AListMultipartUploads%22%5D%2C%22effect%22%3A%22allow%22%2C%22resource%22%3A%5B%22qcs%3Aap-chongqing%3Avod%3A%3Auid%2F1231456789%3Aprefix%2F%2F1234567890%2F2ceds3ew323w3mu%2Ffile_path%22%5D%7D%5D%2C%22version%22%3A%222.0%22%7D",
+          "member": "string",
+          "name": "Policy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the validity period of credentials in seconds. The default value is 1800 seconds and the maximum value is 129600 seconds.",
+          "example": "1800",
+          "member": "uint64",
+          "name": "DurationSeconds",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStorageCredentialsResponse": {
+      "document": "CreateStorageCredentials response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Credentials.",
+          "example": "无",
+          "member": "Credentials",
+          "name": "Credentials",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStorageRequest": {
+      "document": "CreateStorage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Storage region, which must be a region supported by the system. All storage regions and the regions where storage buckets have already been enabled can be queried using the [DescribeStorageRegions](https://www.tencentcloud.com/document/product/266/46542) API.",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The name of the storage.\n<li>Only lowercase English letters, numbers, hyphens \"-\", and their combinations are supported.</li>\n<li>The storage name cannot start or end with a \"-\".</li>\n<li>The maximum length of the storage name is 64 characters.</li>",
+          "example": "my-storage",
+          "member": "string",
+          "name": "StorageName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStorageResponse": {
+      "document": "CreateStorage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The unique identifier ID of the storage bucket.",
+          "example": "bucketid123",
+          "member": "string",
+          "name": "BucketId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Credentials": {
+      "document": "Credentials.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access Key ID.",
+          "example": "***********************************",
+          "member": "string",
+          "name": "AccessKeyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Secret Access Key.",
+          "example": "***********************************",
+          "member": "string",
+          "name": "SecretAccessKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The session token length depends on the binding policy and is no longer than 4096 bytes.",
+          "example": "***********************************",
+          "member": "string",
+          "name": "SessionToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiration time of the credentials.",
+          "example": "1800",
+          "member": "datetime_iso",
+          "name": "Expiration",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteIncrementalMigrationStrategyRequest": {
+      "document": "DeleteIncrementalMigrationStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The bucket ID where the strategy takes effect.",
+          "example": "bucketid123",
+          "member": "string",
+          "name": "BucketId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the incremental migration strategy.",
+          "example": "im-demo123",
+          "member": "string",
+          "name": "StrategyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIncrementalMigrationStrategyResponse": {
+      "document": "DeleteIncrementalMigrationStrategy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIncrementalMigrationStrategyInfosRequest": {
+      "document": "DescribeIncrementalMigrationStrategyInfos request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The maximum number of Filters.Values is `20`. If this parameter is not input, all stategy information under the current SubAppId will be returned. The detailed filter criteria are as follows:\n<li>BucketId: Filter by the ID of bucket;</li>\n<li>StrategyId: Filter by the ID of strategy.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort the returned results according to this field. \nSortBy.Field Values include: \n<li>UpdateTime: (Default) Update time of the strategy.</li>SortBy.Order Values include: \n<li>Desc: (Default) The order is descend.</li> \n",
+          "example": "无",
+          "member": "SortBy",
+          "name": "SortBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Offset for paginated queries. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on paginated queries. Default value: `20`. Maximum value: `100`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIncrementalMigrationStrategyInfosResponse": {
+      "document": "DescribeIncrementalMigrationStrategyInfos response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count of matched strategies.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information of all matched strategies.",
+          "example": "无",
+          "member": "IncrementalMigrationStrategyInfo",
+          "name": "StrategyInfoSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageRequest": {
+      "document": "DescribeStorage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The maximum number of Filters.Values is `20`. If this parameter is not input, all storage under the current SubAppId will be returned. The detailed filter criteria are as follows:\n<li>BucketId: Filter by the ID of bucket;</li>\n<li>StorageName: Filter by the name of storage.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort the returned results according to this field. \nSortBy.Field Values include: \n<li>UpdateTime: (Default) Create time of the storage.</li>SortBy.Order Values include: \n<li>Asc: (Default) The order is ascend.</li> \n",
+          "example": "无",
+          "member": "SortBy",
+          "name": "SortBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Offset for paginated queries. Default value: `0`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStorageResponse": {
+      "document": "DescribeStorage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count of matched storage.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information of all matched storage.",
+          "example": "无",
+          "member": "StorageInfo",
+          "name": "StorageInfoSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fields to be filtered.",
+          "example": "Status",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Value of the filtered field.",
+          "example": "[\"NORMAL\", \"DISABLE\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "IncrementalMigrationHttpEndpointInfo": {
+      "document": "Incremental migration source address information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Address information, supporting domain names or IP addresses.",
+          "example": "example.com",
+          "member": "string",
+          "name": "Endpoint",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup address information.",
+          "example": "[\"standby.com\",\"standby2.com\"]",
+          "member": "string",
+          "name": "StandbyEndpointSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpHeader": {
+      "document": "Incremental migration back-to-origin HTTP Header.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Header Key.",
+          "example": "Host",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Header Value.",
+          "example": "example.com",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpHeaderInfo": {
+      "document": "Incremental migration back-to-origin HTTP Header information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP Header Passthrough Mode. Values valid:\n<li>FOLLOW_ALL: Pass through all header information;<\\li>\n<li>FOLLOW_PART: Pass through partial header information;<\\li>\n<li>IGNORE_PART: Ignore partial header information.<\\li>",
+          "example": "FOLLOW_ALL",
+          "member": "string",
+          "name": "HeaderFollowMode",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Header Key Set for Passthrough. This field is required only when the HeaderFollowMode is set to `FOLLOW_PART`.",
+          "example": "[\"Host\"]",
+          "member": "string",
+          "name": "FollowHttpHeaderKeySet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Add Header Key-Value Pair Collection.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpHeader",
+          "name": "NewHttpHeaderSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpOriginCondition": {
+      "document": "Incremental migration back-to-source conditions.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP code to trigger back-to-source conditions. If not filled, the default value is `404`.",
+          "example": "404",
+          "member": "uint64",
+          "name": "HttpStatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Object key prefix to trigger back-to-source conditions",
+          "example": "prefix_test",
+          "member": "string",
+          "name": "Prefix",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpOriginConfig": {
+      "document": "Configuration of the origin for incremental migration back-to-source.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin information for back-to-source.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginInfo",
+          "name": "OriginInfo",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Back-to-source parameters.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginParameter",
+          "name": "OriginParameter",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Back-to-source mode. Valid values:\n<li>SYNC: Synchronous back-to-source;</li>\n<li>ASYNC: Asynchronous back-to-source.</li>",
+          "example": "SYNC",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Back-to-source conditions.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginCondition",
+          "name": "OriginCondition",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpOriginInfo": {
+      "document": "Incremental migration source information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Incremental migration source address information.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpEndpointInfo",
+          "name": "EndpointInfo",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Incremental migration source file information.",
+          "example": "无",
+          "member": "IncrementalMigrationOriginFileInfo",
+          "name": "FileInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationHttpOriginParameter": {
+      "document": "Incremental migration back-to-source parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP header passthrough information.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpHeaderInfo",
+          "name": "HttpHeaderInfo",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Back-to-source protocol. Valid values:\n<li>HTTP: Force HTTP;</li>\n<li>HTTPS: Force HTTPS;</li>\n<li>FOLLOW: Follow the request protocol.</li>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Query string passthrough mode. Valid values\n<li>FOLLOW: Fully passthrough;</li>\n<li>IGNORE: No passthrough at all.</li>",
+          "example": "FOLLOW",
+          "member": "string",
+          "name": "QueryStringFollowMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP Code for redirection. Currently, only `301`, `302`, and `307` are supported. The default value is `302`.",
+          "example": "302",
+          "member": "uint64",
+          "name": "HttpRedirectCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server redirection follow mode. Valid values:\n<li>FOLLOW: Follow origin server redirection;</li>\n<li>IGNORE: Ignore origin server redirection.</li>",
+          "example": "FOLLOW",
+          "member": "string",
+          "name": "OriginRedirectionFollowMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationOriginFileInfo": {
+      "document": "Incremental migration of origin file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File prefix configuration.",
+          "example": "无",
+          "member": "IncrementalMigrationOriginPrefixConfig",
+          "name": "PrefixConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File \tsuffix configuration.",
+          "example": "无",
+          "member": "IncrementalMigrationOriginSuffixConfig",
+          "name": "SuffixConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fixed file configuration.",
+          "example": "无",
+          "member": "IncrementalMigrationOriginFixedFileConfig",
+          "name": "FixedFileConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationOriginFixedFileConfig": {
+      "document": "Incremental migration of origin fixed file path configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fixed file path: If you fill in `example/test.png`, the origin-pull address will be: `http(s)://<origin domain>/example/test.png`.",
+          "example": "example/test.png",
+          "member": "string",
+          "name": "FixedFilePath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationOriginPrefixConfig": {
+      "document": "Incremental migration of origin address prefix configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin address prefix: If you fill in `test/`, the origin-pull address will be `http(s)://<origin domain>/test/<file name>`.",
+          "example": "prefix",
+          "member": "string",
+          "name": "Prefix",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationOriginSuffixConfig": {
+      "document": "Incremental migration of origin file suffix configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File suffix.\nif filled with `.ts`, the origin-pull address will be: `http(s)://<origin domain>/<file name>.ts`.",
+          "example": "suffix",
+          "member": "string",
+          "name": "Suffix",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IncrementalMigrationStrategyInfo": {
+      "document": "Incremental migration strategy information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the incremental migration strategy.",
+          "example": "im-demo123",
+          "member": "string",
+          "name": "StrategyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the incremental migration strategy.",
+          "example": "strategy_name",
+          "member": "string",
+          "name": "StrategyName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The bucket ID where the strategy takes effect.",
+          "example": "bucketid-123",
+          "member": "string",
+          "name": "BucketId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source type.",
+          "example": "HTTP",
+          "member": "string",
+          "name": "OriginType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Incremental migration HTTP origin source configuration.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginConfig",
+          "name": "HttpOriginConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyIncrementalMigrationStrategyRequest": {
+      "document": "ModifyIncrementalMigrationStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The ID of [VOD Professional Application](http://tencentcloud.com/document/product/266/67977).</b>",
+          "example": "1020304056",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The bucket ID where the strategy takes effect.",
+          "example": "bucketid123",
+          "member": "string",
+          "name": "BucketId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the incremental migration strategy.",
+          "example": "im-demo123",
+          "member": "string",
+          "name": "StrategyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The name of the incremental migration strategy.",
+          "example": "StrategyName",
+          "member": "string",
+          "name": "StrategyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source type. Valid values: \n<li>HTTP: (Default) the source type is HTTP.</li>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "OriginType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Incremental migration HTTP origin source configuration. If left blank, it will default to no modification.",
+          "example": "无",
+          "member": "IncrementalMigrationHttpOriginConfig",
+          "name": "HttpOriginConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIncrementalMigrationStrategyResponse": {
+      "document": "ModifyIncrementalMigrationStrategy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SortBy": {
+      "document": "Sort by criterion",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sort by field",
+          "example": "CreateTime",
+          "member": "string",
+          "name": "Field",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting order. Valid values: Asc (ascending), Desc (descending)",
+          "example": "Asc",
+          "member": "string",
+          "name": "Order",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "StorageInfo": {
+      "document": "Storage information for the professional application.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of bucket.",
+          "example": "bucketId123demo",
+          "member": "string",
+          "name": "BucketId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of bucket.",
+          "example": "my-storage",
+          "member": "string",
+          "name": "StorageName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The region of storage.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "StorageRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The status of the internet access domain name is stored. Valid values: <li>ONLINE: Active;</li> <li>DEPLOYING: In deployment.</li>",
+          "example": "ONLINE",
+          "member": "string",
+          "name": "InternetAccessDomainStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The internet access domain name of storage.",
+          "example": "example123.vodpro.ap-guangzhou.eovod.com",
+          "member": "string",
+          "name": "InternetAccessDomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The creation time of the storage.",
+          "example": "2018-07-17T00:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

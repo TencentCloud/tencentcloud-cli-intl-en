@@ -29,16 +29,16 @@
       "status": "online"
     },
     "CreateAIAgentCall": {
-      "document": "This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://intl.cloud.tencent.com/document/product/679/112100?from_cn_redirect=1).",
+      "document": "This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/70681).",
       "input": "CreateAIAgentCallRequest",
-      "name": "Create ai intelligent agent session",
+      "name": "Create an intelligent agent call",
       "output": "CreateAIAgentCallResponse",
       "status": "online"
     },
     "CreateAICall": {
       "document": "Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/66889).",
       "input": "CreateAICallRequest",
-      "name": "Create AI Session",
+      "name": "Creates an AI call",
       "output": "CreateAICallResponse",
       "status": "online"
     },
@@ -71,7 +71,7 @@
       "status": "online"
     },
     "CreateCallOutSession": {
-      "document": "This API is used to create outbound sessions. Currently, only dual call is supported. That is, firstly, please use the platform number to call the agent's cell phone. After the agent answers, then please make outbound calls to the user. Due to ISP frequency restrictions, the agent's phone number must first be added to the allowlist to avoid frequency control which may lead to the failure of the outbound call.",
+      "document": "This API is used to create an outbound call session. Currently, only dual calls are supported. That is, first use the platform number to call the agent mobile phone. After the agent answers, then make an outbound call to the user. Moreover, due to ISP frequency restrictions, the agent phone number must be added to the allowlist first to avoid frequency control leading to the failure of the outbound call. Therefore, before calling this API, the following operations have been completed.\n1. The agent specified by UserId has already bound the mobile number. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.\n2. The agent's bound mobile number has applied for and passed the outbound call allowlist.\nThis API is used to make calls. Currently, the agent side can only call the user's mobile phone, so the IsForceMobile field must be true.\n4. Do not fill in the mobile number bound to the current UserId for the callee, otherwise it can lead to call failure due to a busy line.",
       "input": "CreateCallOutSessionRequest",
       "name": "Creates outbound call session (currently only dual call is supported)",
       "output": "CreateCallOutSessionResponse",
@@ -119,6 +119,13 @@
       "output": "CreateStaffResponse",
       "status": "online"
     },
+    "DeleteCCCSkillGroup": {
+      "document": "This API is used to delete a skill group.",
+      "input": "DeleteCCCSkillGroupRequest",
+      "name": "Delete a customer service skill group",
+      "output": "DeleteCCCSkillGroupResponse",
+      "status": "online"
+    },
     "DeleteExtension": {
       "document": "This API is used to delete telephone accounts.",
       "input": "DeleteExtensionRequest",
@@ -145,6 +152,13 @@
       "input": "DescribeAICallExtractResultRequest",
       "name": "Query ai call content extraction result",
       "output": "DescribeAICallExtractResultResponse",
+      "status": "online"
+    },
+    "DescribeAILatency": {
+      "document": "This API is used to obtain AI latency information.",
+      "input": "DescribeAILatencyRequest",
+      "name": "Retrieve the AI duration",
+      "output": "DescribeAILatencyResponse",
       "status": "online"
     },
     "DescribeAgentCruiseDialingCampaign": {
@@ -301,6 +315,13 @@
       "output": "DisableCCCPhoneNumberResponse",
       "status": "online"
     },
+    "ForceMemberOffline": {
+      "document": "This API is used to force customer service to go offline.",
+      "input": "ForceMemberOfflineRequest",
+      "name": "Force customer service to go offline",
+      "output": "ForceMemberOfflineResponse",
+      "status": "online"
+    },
     "HangUpCall": {
       "document": "This API is used to hang up the phone.",
       "input": "HangUpCallRequest",
@@ -350,6 +371,13 @@
       "output": "ResetExtensionPasswordResponse",
       "status": "online"
     },
+    "RestoreMemberOnline": {
+      "document": "This API is used to restore customer service to go live.",
+      "input": "RestoreMemberOnlineRequest",
+      "name": "Restore customer service to go online",
+      "output": "RestoreMemberOnlineResponse",
+      "status": "online"
+    },
     "ResumePredictiveDialingCampaign": {
       "document": "This API is used to resume the predictive outbound call task.",
       "input": "ResumePredictiveDialingCampaignRequest",
@@ -362,6 +390,13 @@
       "input": "StopAutoCalloutTaskRequest",
       "name": "Stops automatic outbound call task",
       "output": "StopAutoCalloutTaskResponse",
+      "status": "online"
+    },
+    "TransferToManual": {
+      "document": "This API is used to transfer a session to an agent in specific scenarios.",
+      "input": "TransferToManualRequest",
+      "name": "Transfer to human agent",
+      "output": "TransferToManualResponse",
       "status": "online"
     },
     "UnbindNumberCallOutSkillGroup": {
@@ -544,6 +579,144 @@
           "name": "Number",
           "output_required": false,
           "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AILatencyDetail": {
+      "document": "AI latency details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dialog ID.",
+          "example": "0c489e76-41a7-4390-aaaf-4eb26a7c9987",
+          "member": "string",
+          "name": "RoundId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the asr latency in milliseconds.",
+          "example": "100",
+          "member": "int64",
+          "name": "ASRLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the tts delay in milliseconds.",
+          "example": "100",
+          "member": "int64",
+          "name": "TTSLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "llm latency (ms).",
+          "example": "100",
+          "member": "int64",
+          "name": "LLMLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End-To-End delay (ms).",
+          "example": "100",
+          "member": "int64",
+          "name": "ETELatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AILatencyStatistics": {
+      "document": "AI latency statistics.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the asr latency statistics.",
+          "example": "无",
+          "member": "AILatencyStatisticsInfo",
+          "name": "ASRLatency",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the statistics of tts delay.",
+          "example": "无",
+          "member": "AILatencyStatisticsInfo",
+          "name": "TTSLatency",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "llm latency statistics.",
+          "example": "无",
+          "member": "AILatencyStatisticsInfo",
+          "name": "LLMLatency",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the end-to-end latency statistics.",
+          "example": "无",
+          "member": "AILatencyStatisticsInfo",
+          "name": "ETELatency",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AILatencyStatisticsInfo": {
+      "document": "AI latency statistics.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the minimum value.",
+          "example": "100",
+          "member": "int64",
+          "name": "MinLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the median.",
+          "example": "100",
+          "member": "int64",
+          "name": "MiddleLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "p90",
+          "example": "100",
+          "member": "int64",
+          "name": "P90Latency",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1245,6 +1418,15 @@
           "name": "PromptVariables",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  \n\ndify-inputs-xxx specifies the inputs variable for dify.\n2. the dify-inputs-user specifies the user value for dify.\n3. dify-inputs-conversation_id is the conversation_id value of dify.",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1294,7 +1476,7 @@
         },
         {
           "disabled": false,
-          "document": "Model interface protocol types, currently compatible with three protocol types:\n\n- OpenAI protocol (including GPT, DeepSeek, etc.):\"openai\"\n- Azure protocol:\"azure\"\n- Minimax protocol:\"minimax\"",
+          "document": "Model API protocol type. currently compatible with four protocol types:.\n\n-OpenAI protocol (including GPT, hunyuan, DeepSeek, etc.): \"OpenAI\".\n-Azure protocol: \"azure\".\n-Specifies the \"Minimax\" protocol.\n-Dify protocol: \"dify\".",
           "example": "openai",
           "member": "string",
           "name": "LLMType",
@@ -1514,6 +1696,24 @@
           "example": "[{\"InfoType\": \"Boolean\", \"InfoName\": \"兴趣\", \"InfoContent\": \"用户是否对产品感兴趣\"}]",
           "member": "AICallExtractConfigElement",
           "name": "ExtractConfig",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Model temperature control.",
+          "example": "0",
+          "member": "float",
+          "name": "Temperature",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  \n\ndify-inputs-xxx specifies the inputs variable for dify.\n2. the dify-inputs-user specifies the user value for dify.\n3. dify-inputs-conversation_id is the conversation_id value of dify.",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "Variables",
           "required": false,
           "type": "list"
         }
@@ -1747,7 +1947,7 @@
         },
         {
           "disabled": false,
-          "document": "IVR used for calling.",
+          "document": "IVR Id used for calling. if not filled, AIAgentId needs to be filled.",
           "example": "3",
           "member": "uint64",
           "name": "IvrId",
@@ -1816,6 +2016,33 @@
           "name": "CalleeAttributes",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.",
+          "example": "Asia/Shanghai",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Available time period.",
+          "example": "[{\"StartTime\":\"09:00:00\",\"EndTime\":\"11:30:00\"},{\"StartTime\":\"14:00:00\",\"EndTime\":\"18:00:00\"}]",
+          "member": "TimeRange",
+          "name": "AvailableTime",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent agent ID. if not filled, IvrId needs to be filled.",
+          "example": "5845",
+          "member": "int64",
+          "name": "AIAgentId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1920,7 +2147,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer service user id usually refers to the customer service email.",
+          "document": "Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "UserId",
@@ -1956,7 +2183,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to force the use of cell phone outbound call or not, currently only supports true, if true, please ensure that the allowlist has been configured.",
+          "document": "Whether to force the use of mobile outbound call. currently only supports true. if set to true, ensure the allowlist is configured. https://intl.cloud.tencent.com/document/product/679/76744?from_cn_redirect=1#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4.",
           "example": "true",
           "member": "bool",
           "name": "IsForceUseMobile",
@@ -2361,6 +2588,24 @@
           "name": "CalleeAttributes",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.",
+          "example": "Asia/Shanghai",
+          "member": "string",
+          "name": "TimeZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Value range of available time.",
+          "example": "[{\"StartTime\":\"09:00:00\",\"EndTime\":\"11:30:00\"},{\"StartTime\":\"14:00:00\",\"EndTime\":\"18:00:00\"}]",
+          "member": "TimeRange",
+          "name": "AvailableTime",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2508,6 +2753,42 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCCCSkillGroupRequest": {
+      "document": "DeleteCCCSkillGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Skill group ID.",
+          "example": "58832",
+          "member": "int64",
+          "name": "SkillGroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCCCSkillGroupResponse": {
+      "document": "DeleteCCCSkillGroup response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2688,6 +2969,80 @@
           "name": "ResultList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAILatencyRequest": {
+      "document": "DescribeAILatency request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Session ID.",
+          "example": "6bb56a09-2787-40bc-80c5-dc6dab783eff",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search start time.\t",
+          "example": "1737350008",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1737350008",
+          "example": "1737350008",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAILatencyResponse": {
+      "document": "DescribeAILatency response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detailed data of latency.\n-1 indicates no corresponding data.",
+          "example": "无",
+          "member": "AILatencyDetail",
+          "name": "AILatencyDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Latency statistical data.\n-1 indicates no corresponding data.",
+          "example": "无",
+          "member": "AILatencyStatistics",
+          "name": "AILatencyStatistics",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -4839,6 +5194,42 @@
       ],
       "usage": "out"
     },
+    "ForceMemberOfflineRequest": {
+      "document": "ForceMemberOffline request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Customer service ID.",
+          "example": "user@example.com",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ForceMemberOfflineResponse": {
+      "document": "ForceMemberOffline response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "HangUpCallRequest": {
       "document": "HangUpCall request structure.",
       "members": [
@@ -5804,6 +6195,42 @@
       ],
       "type": "object"
     },
+    "RestoreMemberOnlineRequest": {
+      "document": "RestoreMemberOnline request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Customer service ID.",
+          "example": "user@example.com",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestoreMemberOnlineResponse": {
+      "document": "RestoreMemberOnline response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResumePredictiveDialingCampaignRequest": {
       "document": "ResumePredictiveDialingCampaign request structure.",
       "members": [
@@ -6440,12 +6867,32 @@
         },
         {
           "disabled": true,
-          "document": "User role id.",
+          "document": "User role id.\nWhen a user is bound to multiple roles, RoleIdList shall prevail.",
           "example": "1",
           "member": "uint64",
           "name": "RoleId",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "User role id list.",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "RoleIdList",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "RoleList",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -6778,6 +7225,16 @@
         },
         {
           "disabled": false,
+          "document": "Call Type: 1. Voice outbound call 2. Voice Inbound call 3. Audio Inbound 5 Predictive Dialing Call 6. Internal Call between Staff",
+          "example": "1",
+          "member": "int64",
+          "name": "CallType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Call duration.",
           "example": "120",
           "member": "int64",
@@ -6818,7 +7275,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.\n\n**Scenario\tEndStatus\tEndStatusString\tStatus description**.\n\nInbound call & call\t1\tok\tend properly.\n\nInbound call & call | 0 | error | system error.\n\nInbound call | 102 | ivrgiveup | user gives up during ivr.\n\nInbound call | 103 | waitinggiveup | user gives up during session queue.\n\nInbound call | 104 | ringinggiveup | user gives up during session ringing.\n\nInbound call | 105 | noseatonline | no agent online.\n\nInbound call              106\t       non - working hour      non - working hour.   \n\nInbound call              107\t       ivrend                   end directly after ivr.\n\nInbound call              100\t       blocklist call - in      call - in blocklist. \n\nOutgoing call            2                 unconnected            unconnected.\n\nOutgoing call            108           restricted callee      callee restricted due to high - risk.\n\nOutgoing call         109        toomanyrequest        overfrequency.\n\nOutgoing call         110        restrictedarea        outbound blind area.\n\nOutgoing call         111        restrictedtime        outbound time restriction.\n                         \nOutgoing call         201        unknown               unknown status.\n\nOutgoing call         202        notanswer             unanswered.\n\nOutgoing call - 203 - userreject: reject call.\n\nOutgoing call - 204 - poweroff: power off.\n\nOutgoing call - 205 - numbernotexist: nonexistent number.\n\nOutgoing call - 206 - busy: call in progress.\n\nOutgoing call - 207 - outofcredit: arrears.\n\nOutgoing call - 208 - operatorerror - ISP line exception.\n\nOutgoing call - 209 - callercancel - caller cancellation.\n\nOutgoing call - 210 - notinservice - not in service area.\n\nInbound and outgoing call - 211 - clienterror - client error.\nOutgoing call - 212 - carrierblocked - ISP blocking.",
+          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario         EndStatus         EndStatusString         status description**.\n\nIncoming and outgoing calls.\n\nIncoming and outgoing calls\t0\terror\texception termination.\n\nInbound call 102 ivrGiveUp user hang up during IVR.\n\nInbound call 103 waitingGiveUp user gives up while queuing.\n\nInbound call 104 ringingGiveUp user give up during ringing.\n\nInbound call 105 no agent online.\n\nInbound call 106 notWorkTime outside working hours.   \n\nInbound call 107 ivrEnd ends after IVR.\n\nInbound call 100 blackList. \n\nOutbound call 2 unconnected unanswered.\n\nOutgoing call        108        restrictedCallee    the callee is restricted due to high risk.\n\nOutbound call 109 too many requests outbound over-frequency limit.\n\nOutgoing call             110\t        restrictedArea\t    valid values for the area where outgoing calls are restricted.\n\nOutbound call 111 restrictedTime outgoing call time limit.\n                         \nOutbound call 201 unknown unknown status.\n\nOutgoing call 202 not answered the callee did not answer.\n\nOutgoing call            203\t    userReject\tcallee rejects and hangs up.\n\nOutbound call 204 powerOff callee is powered off.\n\nOutbound call 205 number does not exist the callee's number is non - existent.\n\nOutbound call 206 busy callee is busy.\n\nOutbound call 207 arrears callee in arrears.\n\nOutbound call 208 operator channel exception.\n\nOutbound call 209 callerCancel call cancellation by the caller.\n\nOutgoing call 210 notInService callee out of service area.\n\nIncoming and outgoing calls 211 clientError client errors.\nOutbound call 212 carrier blocked.",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -6928,7 +7385,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.\n\n**Scenario\tEndStatus\tEndStatusString\tStatus description**.\n\nInbound call & call\t1\tok\tend properly.\n\nInbound call & call | 0 | error | system error.\n\nInbound call | 102 | ivrgiveup | user gives up during ivr.\n\nInbound call | 103 | waitinggiveup | user gives up during session queue.\n\nInbound call | 104 | ringinggiveup | user gives up during session ringing.\n\nInbound call | 105 | noseatonline | no agent online.\n\nInbound call              106\t       non - working hour      non - working hour.   \n\nInbound call              107\t       ivrend                   end directly after ivr.\n\nInbound call              100\t       blocklist call - in      call - in blocklist. \n\nOutgoing call            2                 unconnected            unconnected.\n\nOutgoing call            108           restricted callee      callee restricted due to high - risk.\n\nOutgoing call         109        toomanyrequest        overfrequency.\n\nOutgoing call         110        restrictedarea        outbound blind area.\n\nOutgoing call         111        restrictedtime        outbound time restriction.\n                         \nOutgoing call         201        unknown               unknown status.\n\nOutgoing call         202        notanswer             unanswered.\n\nOutgoing call - 203 - userreject: reject call.\n\nOutgoing call - 204 - poweroff: power off.\n\nOutgoing call - 205 - numbernotexist: nonexistent number.\n\nOutgoing call - 206 - busy: call in progress.\n\nOutgoing call - 207 - outofcredit: arrears.\n\nOutgoing call - 208 - operatorerror - ISP line exception.\n\nOutgoing call - 209 - callercancel - caller cancellation.\n\nOutgoing call - 210 - notinservice - not in service area.\n\nInbound and outgoing call - 211 - clienterror - client error.\nOutgoing call - 212 - carrierblocked - ISP blocking.",
+          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario         EndStatus         EndStatusString         status description**.\n\nIncoming and outgoing calls.\n\nIncoming and outgoing calls\t0\terror\texception termination.\n\nInbound call 102 ivrGiveUp user hang up during IVR.\n\nInbound call 103 waitingGiveUp user gives up while queuing.\n\nInbound call 104 ringingGiveUp user give up during ringing.\n\nInbound call 105 no agent online.\n\nInbound call 106 notWorkTime outside working hours.   \n\nInbound call 107 ivrEnd ends after IVR.\n\nInbound call 100 blackList. \n\nOutbound call 2 unconnected unanswered.\n\nOutgoing call        108        restrictedCallee    the callee is restricted due to high risk.\n\nOutbound call 109 too many requests outbound over-frequency limit.\n\nOutgoing call             110\t        restrictedArea\t    valid values for the area where outgoing calls are restricted.\n\nOutbound call 111 restrictedTime outgoing call time limit.\n                         \nOutgoing call 201 unknown unknown status.\n\nOutgoing call 202 notAnswer callee not answered.\n\nOutgoing call            203\t    userReject\tcallee rejects and hangs up.\n\nOutbound call 204 powerOff callee is powered off.\n\nOutbound call 205 number does not exist the callee's number is non - existent.\n\nOutgoing call 206 busy callee is busy.\n\nOutbound call 207 out of credit callee in arrears.\n\nOutbound call 208 operator channel exception.\n\nOutgoing call 209 callerCancel call cancellation by the caller.\n\nOutgoing call 210 notInService callee out of service area.\n\nIncoming and outgoing calls 211 clientError client errors.\nOutbound call 212 carrier blocked.",
           "example": "ok",
           "member": "string",
           "name": "EndStatusString",
@@ -7108,6 +7565,79 @@
         }
       ],
       "usage": "out"
+    },
+    "TimeRange": {
+      "document": "Time range, 24-hour system, format: 09:00:00.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "09:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "14:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TransferToManualRequest": {
+      "document": "TransferToManual request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Session ID.",
+          "example": "d6253538-7c28-477b-998a-919059801899",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Skill group Id.",
+          "example": "5002",
+          "member": "uint64",
+          "name": "SkillGroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "TransferToManualResponse": {
+      "document": "TransferToManual response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UnbindNumberCallOutSkillGroupRequest": {
       "document": "UnbindNumberCallOutSkillGroup request structure.",
