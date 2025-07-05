@@ -2241,7 +2241,7 @@
           "example": "disk-ciezoimt",
           "member": "string",
           "name": "DiskId",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2263,7 +2263,7 @@
           "example": "snap-6yczrj8x",
           "member": "string",
           "name": "SnapshotId",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2288,7 +2288,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -2296,10 +2296,10 @@
           "example": "20",
           "member": "int64",
           "name": "ThroughputPerformance",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -2307,10 +2307,10 @@
           "example": "cdc-1648zauv",
           "member": "string",
           "name": "CdcId",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -3170,7 +3170,7 @@
         {
           "disabled": false,
           "document": "Filters\n<li> `zone` - String - Optional - Filter by the availability zone.</li>\n<li> `project-id` - Integer - Optional - Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. </li>\n<li> `host-id` - String - Optional - Filter by the CDH instance ID. Format: `host-xxxxxxxx`.</li>\n</li>`vpc-id` - String - Optional - Filter by the VPC ID. Format: `vpc-xxxxxxxx`.</li>\n<li> `subnet-id` - String - Optional - Filter by the subnet ID. Format: `subnet-xxxxxxxx`.</li>\n</li>`instance-id` - String - Optional - Filter by the instance ID. Format: `ins-xxxxxxxx`.</li>\n</li>`security-group-id` - String - Optional - Filter by the security group ID. Format: `sg-8jlk3f3r`.</li>\n</li>`instance-name` - String - Optional - Filter by the instance name.</li>\n</li>`instance-charge-type` - String - Optional - Filter by the instance billing method. `POSTPAID_BY_HOUR`: pay-as-you-go | `CDHPAID`: You are only billed for [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances, not the CVMs running on the [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.</li>\n</li>`private-ip-address` - String - Optional - Filter by the private IP address of the instance's primary ENI.</li>\n</li>`public-ip-address` - String - Optional - Filter by the public IP address of the instance's primary ENI, including the IP addresses automatically assigned during the instance creation and the EIPs manually associated after the instance creation.</li>\n<li> `tag-key` - String - Optional - Filter by the tag key.</li>\n</li>`tag-value` - String - Optional - Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. Replace `tag-key` with the actual tag keys. See example 2.</li>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`. You cannot specify `InstanceIds` and `Filters` at the same time.",
-          "example": "NA",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3213,7 +3213,7 @@
         {
           "disabled": false,
           "document": "Detailed instance information.",
-          "example": "NA",
+          "example": "无",
           "member": "Instance",
           "name": "InstanceSet",
           "output_required": true,
@@ -4343,9 +4343,9 @@
           "example": "1",
           "member": "float",
           "name": "GPUCount",
-          "required": true,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4353,9 +4353,9 @@
           "example": "['0000:18:00.0','0000:18:00.1']",
           "member": "string",
           "name": "GPUId",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4363,9 +4363,9 @@
           "example": "NVIDIA T4",
           "member": "string",
           "name": "GPUType",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5551,7 +5551,7 @@
           "example": "无",
           "member": "Placement",
           "name": "Placement",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5561,7 +5561,7 @@
           "example": "ins-9bxebleo",
           "member": "string",
           "name": "InstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5571,7 +5571,7 @@
           "example": "S1.SMALL1",
           "member": "string",
           "name": "InstanceType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5581,7 +5581,7 @@
           "example": "1",
           "member": "int64",
           "name": "CPU",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5591,7 +5591,7 @@
           "example": "1",
           "member": "int64",
           "name": "Memory",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5601,7 +5601,7 @@
           "example": "NORMAL",
           "member": "string",
           "name": "RestrictState",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5611,7 +5611,7 @@
           "example": "测试实例",
           "member": "string",
           "name": "InstanceName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5621,7 +5621,7 @@
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5631,7 +5631,7 @@
           "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5641,7 +5641,7 @@
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5651,7 +5651,7 @@
           "example": "[\"172.16.32.78\"]",
           "member": "string",
           "name": "PrivateIpAddresses",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5661,7 +5661,7 @@
           "example": "[\"123.207.11.190\"]",
           "member": "string",
           "name": "PublicIpAddresses",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5671,7 +5671,7 @@
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5681,7 +5681,7 @@
           "example": "无",
           "member": "VirtualPrivateCloud",
           "name": "VirtualPrivateCloud",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5691,7 +5691,7 @@
           "example": "img-9qabwvbn",
           "member": "string",
           "name": "ImageId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5701,7 +5701,7 @@
           "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5711,7 +5711,7 @@
           "example": "2020-03-10T02:43:51Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5721,7 +5721,7 @@
           "example": "2020-04-10T02:47:36Z",
           "member": "datetime_iso",
           "name": "ExpiredTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5731,7 +5731,7 @@
           "example": "CentOS 7.6 64bit",
           "member": "string",
           "name": "OsName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5741,7 +5741,7 @@
           "example": "[\"sg-p1ezv4wz\"]",
           "member": "string",
           "name": "SecurityGroupIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5751,7 +5751,7 @@
           "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5761,7 +5761,7 @@
           "example": "RUNNING",
           "member": "string",
           "name": "InstanceState",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5771,7 +5771,7 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5781,7 +5781,7 @@
           "example": "NOT_APPLICABLE",
           "member": "string",
           "name": "StopChargingMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5791,7 +5791,7 @@
           "example": "68b510db-b4c1-4630-a62b-73d0c7c970f9",
           "member": "string",
           "name": "Uuid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5801,7 +5801,7 @@
           "example": "RenewInstances",
           "member": "string",
           "name": "LatestOperation",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5811,7 +5811,7 @@
           "example": "SUCCESS",
           "member": "string",
           "name": "LatestOperationState",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5821,57 +5821,57 @@
           "example": "3554eb5b-1cfa-471a-ae76-dc436c9d43e8",
           "member": "string",
           "name": "LatestOperationRequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "ID of a spread placement group.\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "null",
+          "example": "ps-l7sdunxx",
           "member": "string",
           "name": "DisasterRecoverGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IPv6 address of the instance.\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "null",
+          "example": "[\"xx.xxxxx.xxx\"]",
           "member": "string",
           "name": "IPv6Addresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "CAM role name.\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "null",
+          "example": "admin",
           "member": "string",
           "name": "CamRoleName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "HPC cluster ID.\nNote: this field may return null, indicating that no valid value was found.",
-          "example": "null",
+          "example": "hpc-4dxxetpt",
           "member": "string",
           "name": "HpcClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IP list of HPC cluster.\nNote: this field may return null, indicating that no valid value was found.",
-          "example": "null",
+          "example": "[\"xx.xxxxx.xxx\"]",
           "member": "string",
           "name": "RdmaIpAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5881,9 +5881,9 @@
           "example": "cluster-du3jken",
           "member": "string",
           "name": "DedicatedClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5891,9 +5891,9 @@
           "example": "NOTISOLATED",
           "member": "string",
           "name": "IsolatedSource",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5901,9 +5901,9 @@
           "example": "无",
           "member": "GPUInfo",
           "name": "GPUInfo",
-          "required": false,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5911,7 +5911,7 @@
           "example": "TencentCloud",
           "member": "string",
           "name": "LicenseType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5921,7 +5921,7 @@
           "example": "false",
           "member": "bool",
           "name": "DisableApiTermination",
-          "required": false,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -5931,7 +5931,7 @@
           "example": "root",
           "member": "string",
           "name": "DefaultLoginUser",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5941,7 +5941,7 @@
           "example": "22",
           "member": "int64",
           "name": "DefaultLoginPort",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5951,9 +5951,19 @@
           "example": "None",
           "member": "string",
           "name": "LatestOperationErrorMsg",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Public IPv6 address of the instance.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "[\"240d:c000:f000:ac00:5460:6340:16aa:6\"]",
+          "member": "string",
+          "name": "PublicIPv6Addresses",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6370,6 +6380,50 @@
           "example": "bwp-h1ro",
           "member": "string",
           "name": "BandwidthPackageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The EIP line type. \n <li>BGP Default: BGP</li>\n\nFor a user who has activated the static single-line IP allowlist, possible values are:\n\n <li>CMCC: China Mobile</li>\n <li>CTCC: China Telecom</li>\n <li>CUCC: China Unicom</li>\n\nNote: Only certain regions support static single-line IP addresses.",
+          "example": "CMCC",
+          "member": "string",
+          "name": "InternetServiceProvider",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AddressType. Default value: `WanIP`.\n\nFor beta users of dedicated IP, the value can be:\n<li>HighQualityEIP: Dedicated IP</li>\nNote that dedicated IPs are only available in partial regions.\n\nFor beta users of Anti-DDoS IP, the value can be:\n<li>AntiDDoSEIP: Anti-DDoS EIP</li>\nNote that Anti-DDoS IPs are only available in partial regions.\n\nThis feature is currently in gradually released phase. To access it, please contact us.",
+          "example": "WanIP",
+          "member": "string",
+          "name": "IPv4AddressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the type of EIPv6. Valid values:\n\n<li>EIPv6: common IPv6</li>\n<li>HighQualityEIPv6: dedicated IPv6</li>\nNote: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions. \n\nDefault: `EIPv6`\n\nThis feature is currently in gradually released phase. To access it, please contact us.",
+          "example": "EIPv6",
+          "member": "string",
+          "name": "IPv6AddressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.",
+          "example": "bgp-12345678",
+          "member": "string",
+          "name": "AntiDDoSPackageId",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -9175,7 +9229,7 @@
         },
         {
           "disabled": false,
-          "document": "The instance model. \n<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.",
+          "document": "The instance model. \n<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.",
           "example": "S5.LARGE4",
           "member": "string",
           "name": "InstanceType",
@@ -9337,6 +9391,15 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadata",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Whether the request is a dry run only.\n`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.\nIf the dry run fails, the corresponding error code will be returned.\nIf the dry run succeeds, the RequestId will be returned.\n`false` (default value): Send a normal request and create instance(s) if all the requirements are met.",
           "example": "false",
           "member": "bool",
@@ -9404,6 +9467,15 @@
           "example": "false",
           "member": "bool",
           "name": "DisableApiTermination",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableJumboFrame",
           "required": false,
           "type": "bool"
         }
@@ -9798,7 +9870,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>.\n<Li>LOCAL_BASIC: specifies a local hard disk.</li>.\n<Li>LOCAL_SSD: specifies a local ssd.</li>.\n<Li>CLOUD_BASIC: ordinary cloud disk.</li>.\n<Li>CLOUD_SSD: ssd cloud disk</li>.\n<Li>CLOUD_PREMIUM: high-performance cloud block storage.</li>.\n<Li>CLOUD_BSSD: universal type ssd cloud disk</li>.\n<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.\n<li>CLOUD_TSSD: ultra-fast SSD cbs</li.\nDefault value: Current disk types with inventory available.",
+          "document": "Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>\n<li>LOCAL_BASIC: Local SATA disk</li>\n<li>LOCAL_SSD: Local NVMe SSD</li>\n<li>CLOUD_BASIC: Cloud SATA disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium SSD</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: Tremendous SSD</li>\nDefault value: Current disk types with inventory available.",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
@@ -9813,7 +9885,7 @@
           "example": "disk-xyzw1234",
           "member": "string",
           "name": "DiskId",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9838,7 +9910,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -9950,6 +10022,15 @@
         },
         {
           "disabled": false,
+          "document": "Release an Elastic IP. Under EIP 2.0, only the first EIP on the primary network interface can be released, and currently supported release types are limited to HighQualityEIP, AntiDDoSEIP, EIPv6, and HighQualityEIPv6.\nDefault value:  `false`.\n\nThis feature is currently in gradually released phase. To access it, please contact us.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReleaseAddress",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
           "document": "Whether to release a monthly subscription data disk mounted on an instance. true: Release the data disk along with termination of the instance. false: Only terminate the instance.\nDefault value: `false`.",
           "example": "true",
           "member": "bool",
@@ -10014,18 +10095,18 @@
           "example": "[\"10.0.0.1\"]",
           "member": "string",
           "name": "PrivateIpAddresses",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of IPv6 addresses randomly generated for the ENI.",
+          "document": "Number of IPv6 addresses randomly generated for the ENI.\nIf IPv6AddressType is specified under InternetAccessible, this parameter must not be set to 0.",
           "example": "1",
           "member": "uint64",
           "name": "Ipv6AddressCount",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": false
