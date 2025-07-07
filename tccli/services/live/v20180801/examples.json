@@ -928,6 +928,14 @@
         "title": "Request Example"
       }
     ],
+    "StopLivePadStream": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost:live.tencentcloudapi.com\nContent-Type:application/json\nX-TC-Action: StopLivePadStream\n<Common Request Parameters>\n\n{\n    \"PushDomainName\": \"5000.livepush.com\",\n    \"AppName\": \"live\",\n    \"StreamName\": \"stream1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1047d0dc-6dc8-4898-a7f3-03726a822b0e\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "StopLiveRecord": [
       {
         "document": " ",
