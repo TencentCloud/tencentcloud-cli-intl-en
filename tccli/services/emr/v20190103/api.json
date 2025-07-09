@@ -21,6 +21,13 @@
       "output": "CreateInstanceResponse",
       "status": "online"
     },
+    "CreateSLInstance": {
+      "document": "This API is used to create a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the InstanceId of the created instance and the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.",
+      "input": "CreateSLInstanceRequest",
+      "name": "Creates a Serverless HBase instance",
+      "output": "CreateSLInstanceResponse",
+      "status": "online"
+    },
     "DescribeAutoScaleRecords": {
       "document": "This API is used to inquiry detailed records of cluster autoscaling.",
       "input": "DescribeAutoScaleRecordsRequest",
@@ -68,6 +75,20 @@
       "input": "DescribeResourceScheduleRequest",
       "name": "Queries the data of YARN Resource Scheduling",
       "output": "DescribeResourceScheduleResponse",
+      "status": "online"
+    },
+    "DescribeSLInstance": {
+      "document": "This API is used to query the basic information of Serverless HBase instances.",
+      "input": "DescribeSLInstanceRequest",
+      "name": "Queries Serverless HBase instance information",
+      "output": "DescribeSLInstanceResponse",
+      "status": "online"
+    },
+    "DescribeSLInstanceList": {
+      "document": "This API is used to query the detailed information of the Serverless HBase instance list.",
+      "input": "DescribeSLInstanceListRequest",
+      "name": "Queries the Serverless HBase instance list",
+      "output": "DescribeSLInstanceListResponse",
       "status": "online"
     },
     "DescribeUsersForUserManager": {
@@ -126,6 +147,20 @@
       "output": "ModifyResourcesTagsResponse",
       "status": "online"
     },
+    "ModifySLInstance": {
+      "document": "This API is used to resize a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.",
+      "input": "ModifySLInstanceRequest",
+      "name": "Resizes a Serverless HBase instance",
+      "output": "ModifySLInstanceResponse",
+      "status": "online"
+    },
+    "ModifySLInstanceBasic": {
+      "document": "This API is used to modify the Serverless HBase instance name.",
+      "input": "ModifySLInstanceBasicRequest",
+      "name": "Modifies the Serverless HBase instance name",
+      "output": "ModifySLInstanceBasicResponse",
+      "status": "online"
+    },
     "ModifyUserManagerPwd": {
       "document": "This API is used to change user password (user management).",
       "input": "ModifyUserManagerPwdRequest",
@@ -166,6 +201,13 @@
       "input": "TerminateInstanceRequest",
       "name": "Terminates EMR instances",
       "output": "TerminateInstanceResponse",
+      "status": "online"
+    },
+    "TerminateSLInstance": {
+      "document": "This API is used to terminate a Serverless HBase instance.",
+      "input": "TerminateSLInstanceRequest",
+      "name": "Terminates a Serverless HBase instance",
+      "output": "TerminateSLInstanceResponse",
       "status": "online"
     },
     "TerminateTasks": {
@@ -1786,6 +1828,115 @@
       ],
       "type": "object"
     },
+    "CreateSLInstanceRequest": {
+      "document": "CreateSLInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "emr-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance storage type. Fill in CLOUD_HSSD to represent high-performance cloud storage.",
+          "example": "CLOUD_HSSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The disk capacity of a single node of the instance, in GB. The disk capacity of a single node should be greater than or equal to 100 and less than or equal to 250 x the number of CPU cores. The capacity adjustment step is 100.",
+          "example": "200",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance node specification. You can fill in 4C16G, 8C32G, 16C64G, or 32C128G, which is case-insensitive.",
+          "example": "4C16G",
+          "member": "string",
+          "name": "NodeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Detailed configuration of the instance AZ. Currently, multiple availability zones are supported. The number of AZs must be 1 or 3, including the region names, VPC information, and number of nodes. The total number of nodes across all zones must be greater than or equal to 3 and less than or equal to 50.",
+          "example": "无",
+          "member": "ZoneSetting",
+          "name": "ZoneSettings",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of tags to be bound to the instance.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid parameter.",
+          "example": "{     \"Period\": {       \"TimeSpan\": 1,       \"TimeUnit\": \"m\"     },     \"AutoRenewFlag\": 2   }",
+          "member": "PrePaySetting",
+          "name": "PrePaySetting",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.",
+          "example": "sdcdwxxxws",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSLInstanceResponse": {
+      "document": "CreateSLInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance unique identifier (string).",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CustomMetaDBInfo": {
       "document": "The user-created Hive-MetaDB instance information.",
       "members": [
@@ -2647,6 +2798,295 @@
       ],
       "type": "object"
     },
+    "DescribeSLInstanceListRequest": {
+      "document": "DescribeSLInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance filtering policy. Valid values: <li>clusterList: Query the list of instances except for those that have been terminated.</li> <li>monitorManage: Query the list of instances except for those that have been terminated, are being created, or fail to be created.</li>",
+          "example": "clusterList",
+          "member": "string",
+          "name": "DisplayStrategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number. The default value is 0, indicating the first page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of records to be returned per page. The default value is 10, and the maximum value is 100.\t",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Valid values: <li>clusterId: Sort by instance ID.</li> <li>addTime: Sort by instance creation time.</li> <li>status: Sort by instance status code.</li>",
+          "example": "clusterid",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorts by OrderField in ascending or descending order. Valid values: <li>0: ascending order;</li> <li>1: descending order.</li> The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Asc",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom search filters. Examples: <li>Filter instances by ClusterId: [{\"Name\":\"ClusterId\",\"Values\":[\"emr-xxxxxxxx\"]}]</li><li> Filter instances by clusterName: [{\"Name\": \"ClusterName\",\"Values\": [\"cluster_name\"]}]</li><li>Filter instances by ClusterStatus: [{\"Name\": \"ClusterStatus\",\"Values\": [\"2\"]}]</li>",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSLInstanceListResponse": {
+      "document": "DescribeSLInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of qualified instances\t.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCnt",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance information list. If pagination is applied, only the current page's instance information list is displayed.",
+          "example": "无",
+          "member": "SLInstanceInfo",
+          "name": "InstancesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSLInstanceRequest": {
+      "document": "DescribeSLInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance unique identifier (string).",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSLInstanceResponse": {
+      "document": "DescribeSLInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Character string identifier of the instance.",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "emr-test",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go; 1 indicates prepaid, i.e., monthly subscription.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance storage type.",
+          "example": "CLOUD_HSSD",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance single-node disk capacity, in GB.",
+          "example": "100",
+          "member": "int64",
+          "name": "DiskSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance node specifications.",
+          "example": "4核16G",
+          "member": "string",
+          "name": "NodeType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed configuration of the instance AZ, including the AZ name, VPC information, and number of nodes.",
+          "example": "无",
+          "member": "ZoneSetting",
+          "name": "ZoneSettings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of tags bound to the instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Numeric identifier of the instance.",
+          "example": "11111111",
+          "member": "int64",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance region ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary AZ of the instance.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "IsolateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance creation time.",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status code: -2: \"TERMINATED\", 2: \"RUNNING\", 14: \"TERMINATING\", 19: \"ISOLATING\", 22: \"ADJUSTING\", and 201: \"ISOLATED\".",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of instance nodes.",
+          "example": "3",
+          "member": "int64",
+          "name": "NodeNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeUsersForUserManagerRequest": {
       "document": "DescribeUsersForUserManager request structure.",
       "members": [
@@ -3422,22 +3862,20 @@
         {
           "disabled": false,
           "document": "Field name",
-          "example": "",
+          "example": "ComponentNames",
           "member": "string",
           "name": "Name",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Filters by the field value",
-          "example": "",
+          "example": "[\"Presto-Coordinator\"]}]",
           "member": "string",
           "name": "Values",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -4602,6 +5040,96 @@
       ],
       "type": "object"
     },
+    "ModifySLInstanceBasicRequest": {
+      "document": "ModifySLInstanceBasic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "emr-ke6f8bc5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "EMR-audi_CDP",
+          "member": "string",
+          "name": "ClusterName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySLInstanceBasicResponse": {
+      "document": "ModifySLInstanceBasic response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySLInstanceRequest": {
+      "document": "ModifySLInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance unique identifier (string).",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region name to be changed.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target node count after configuration change in this region. The total number of nodes across all regions should be greater than or equal to 3 and less than or equal to 50.",
+          "example": "4",
+          "member": "int64",
+          "name": "NodeNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.",
+          "example": "sdcdwxxxws",
+          "member": "string",
+          "name": "ClientToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySLInstanceResponse": {
+      "document": "ModifySLInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyUserManagerPwdRequest": {
       "document": "ModifyUserManagerPwd request structure.",
       "members": [
@@ -5716,6 +6244,34 @@
       ],
       "usage": "out"
     },
+    "Period": {
+      "document": "Serverless HBase monthly subscription duration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time span.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time unit, \"m\" stands for month.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PersistentVolumeContext": {
       "document": "Description of Pod `PVC` storage method",
       "members": [
@@ -6299,6 +6855,34 @@
       ],
       "usage": "in"
     },
+    "PrePaySetting": {
+      "document": "Serverless HBase prepaid settings",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Period",
+          "name": "Period",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PriceDetail": {
       "document": "Pricing details",
       "members": [
@@ -6662,6 +7246,202 @@
         }
       ],
       "usage": "both"
+    },
+    "SLInstanceInfo": {
+      "document": "Serverless HBase instance information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance string ID.",
+          "example": "emr-xxxxxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance numeric ID",
+          "example": "126358002",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status description.",
+          "example": "状态描述",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health status.",
+          "example": "Green",
+          "member": "string",
+          "name": "HealthStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "sl-hbase-f3bak7nv",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary AZ ID.",
+          "example": "100002",
+          "member": "int64",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary AZ.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User APP ID.",
+          "example": "663622",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary AZ VPC ID.",
+          "example": "45666",
+          "member": "uint64",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary AZ subnet ID.",
+          "example": "3422",
+          "member": "uint64",
+          "name": "SubnetId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status code",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "创建时间",
+          "member": "string",
+          "name": "AddTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster billing type. 0 indicates pay-as-you-go. 1 indicates monthly subscription.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Multi-AZ information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ZoneSetting",
+          "name": "ZoneSettings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is set to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "IsolateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.",
+          "example": "0000-00-00 00:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ScaleOutClusterRequest": {
       "document": "ScaleOutCluster request structure.",
@@ -7683,6 +8463,33 @@
       ],
       "type": "object"
     },
+    "TerminateSLInstanceRequest": {
+      "document": "TerminateSLInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance unique identifier (string).",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateSLInstanceResponse": {
+      "document": "TerminateSLInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TerminateTasksRequest": {
       "document": "TerminateTasks request structure.",
       "members": [
@@ -7945,7 +8752,7 @@
         {
           "disabled": false,
           "document": "VPC ID",
-          "example": "",
+          "example": "vpc-xxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -7955,7 +8762,7 @@
         {
           "disabled": false,
           "document": "Subnet ID",
-          "example": "",
+          "example": "subnet-xxxxx",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -8059,6 +8866,45 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ZoneSetting": {
+      "document": "AZ configuration description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone name",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AZ VPC and subnet.",
+          "example": "无",
+          "member": "VPCSettings",
+          "name": "VPCSettings",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of AZ nodes.",
+          "example": "3",
+          "member": "int64",
+          "name": "NodeNum",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

@@ -303,7 +303,7 @@
           "example": "prepay_purchase",
           "member": "string",
           "name": "ActionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -313,7 +313,7 @@
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -323,7 +323,7 @@
           "example": "100.00",
           "member": "string",
           "name": "RealTotalCostRatio",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -333,7 +333,7 @@
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -343,7 +343,7 @@
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -353,7 +353,7 @@
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -363,7 +363,7 @@
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -373,9 +373,9 @@
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -383,7 +383,7 @@
           "example": "2021-01",
           "member": "string",
           "name": "BillMonth",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -393,7 +393,7 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2757,7 +2757,7 @@
           "name": "TransferPayAmount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2797,7 +2797,7 @@
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2907,7 +2907,7 @@
           "name": "BillMonth",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2947,7 +2947,7 @@
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2957,7 +2957,7 @@
           "example": "云服务器",
           "member": "string",
           "name": "BusinessCodeName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2967,9 +2967,9 @@
           "example": "4.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2977,7 +2977,7 @@
           "example": "4.00000000",
           "member": "string",
           "name": "RealTotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2987,7 +2987,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "CashPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2997,7 +2997,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3007,7 +3007,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3017,9 +3017,9 @@
           "example": "1.00000000",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3033,9 +3033,9 @@
           "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3043,7 +3043,7 @@
           "example": "内容分发网络 CDN",
           "member": "string",
           "name": "BusinessCodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3053,7 +3053,7 @@
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCostRatio",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3063,7 +3063,7 @@
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3073,7 +3073,7 @@
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3083,7 +3083,7 @@
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3093,7 +3093,7 @@
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3103,7 +3103,7 @@
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3113,7 +3113,7 @@
           "example": "2021-01",
           "member": "string",
           "name": "BillMonth",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3123,7 +3123,7 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6031,7 +6031,7 @@
         {
           "disabled": false,
           "document": "The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.\n\nExample: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version \"2018-07-09\"\n\nAlternatively, you can use Month to query the billing details of a month.\nExample:\nccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version \"2018-07-09\" --ResourceId \"disk-oj9okstm\"",
-          "example": "2018-11-0100:00:00",
+          "example": "2018-11-01 00:00:00",
           "member": "string",
           "name": "BeginTime",
           "required": false,
@@ -6040,7 +6040,7 @@
         {
           "disabled": false,
           "document": "The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.\n\nExample: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version \"2018-07-09\"\n\nAlternatively, you can use `Month` to query the billing details of a month. \nExample:\nccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version \"2018-07-09\" --ResourceId \"disk-oj9okstm\"",
-          "example": "2018-11-0123:59:59",
+          "example": "2018-11-01 23:59:59",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -6056,7 +6056,7 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Queries information on a specified product",
           "example": "0",
           "member": "string",
@@ -6526,7 +6526,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -6535,7 +6535,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6544,7 +6544,7 @@
         {
           "disabled": false,
           "document": "Query bill data user's UIN",
-          "example": "",
+          "example": "909619400",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -6562,15 +6562,17 @@
           "example": "1",
           "member": "uint64",
           "name": "Ready",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Detailed cost distribution for all billing modes\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
+          "example": "[{\"businessCode\":\"p_ntp\",\"realTotalCost\":\"6.38000000\",\"totalCost\":\"7.50000000\",\"cashPayAmount\":\"6.38000000\",\"incentivePayAmount\":\"0.00000000\",\"voucherPayAmount\":\"0.00000000\",\"transferPayAmount\":\"0.00000000\",\"billMonth\":\"2023-09\",\"realTotalCostRatio\":\"67.43\",\"businessCodeName\":\"共享流量包\"}]",
           "member": "PayModeSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6607,7 +6609,7 @@
         {
           "disabled": false,
           "document": "Queries bill data user's UIN",
-          "example": "xxx",
+          "example": "909619400",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -6634,24 +6636,27 @@
           "example": "1",
           "member": "uint64",
           "name": "Ready",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total cost details\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
+          "example": "{\"realTotalCost\":\"6.72000000\",\"totalCost\":\"6.72000000\",\"voucherPayAmount\":\"0.00000000\",\"incentivePayAmount\":\"0.00000000\",\"cashPayAmount\":\"6.72000000\",\"transferPayAmount\":\"0.00000000\"}",
           "member": "BusinessSummaryTotal",
           "name": "SummaryTotal",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Cost distribution of all products\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
+          "example": "[{\"businessCode\":\"p_eip\",\"realTotalCost\":\"7.73432921\",\"totalCost\":\"7.73432921\",\"cashPayAmount\":\"7.73432921\",\"incentivePayAmount\":\"0.00000000\",\"voucherPayAmount\":\"0.00000000\",\"transferPayAmount\":\"0.00000000\",\"billMonth\":\"2024-01\",\"realTotalCostRatio\":\"100.00\",\"businessCodeName\":\"公网 IP\"}]",
           "member": "BusinessSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6670,7 +6675,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -6679,7 +6684,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6688,7 +6693,7 @@
         {
           "disabled": false,
           "document": "Queries bill data user's UIN",
-          "example": "",
+          "example": "10002011014",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -6706,15 +6711,17 @@
           "example": "1",
           "member": "uint64",
           "name": "Ready",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Detailed cost distribution for all projects\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
+          "example": "[{\"ProjectId\":\"0\",\"RealTotalCost\":\"2924616.19000000\",\"TotalCost\":\"6622736.21547221\",\"CashPayAmount\":\"2924616.19000000\",\"IncentivePayAmount\":\"0.00000000\",\"VoucherPayAmount\":\"0.00000000\",\"TransferPayAmount\":\"0.00000000\",\"BillMonth\":\"2024-01\",\"RealTotalCostRatio\":\"100.00\",\"ProjectName\":\"默认项目\"}]",
           "member": "ProjectSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6733,7 +6740,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -6742,7 +6749,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
-          "example": "",
+          "example": "2018-11",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6751,7 +6758,7 @@
         {
           "disabled": false,
           "document": "Queries bill data user's UIN",
-          "example": "",
+          "example": "10002011014",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -6769,6 +6776,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Ready",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6778,6 +6786,7 @@
           "example": "无",
           "member": "RegionSummaryOverviewItem",
           "name": "SummaryOverview",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -9148,9 +9157,9 @@
           "example": "1",
           "member": "string",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9158,7 +9167,7 @@
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9168,7 +9177,7 @@
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCostRatio",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9178,7 +9187,7 @@
           "example": "0.00",
           "member": "string",
           "name": "RealTotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9188,7 +9197,7 @@
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9198,7 +9207,7 @@
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9208,7 +9217,7 @@
           "example": "0.00",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9218,7 +9227,7 @@
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9228,7 +9237,7 @@
           "example": "2021-01",
           "member": "string",
           "name": "BillMonth",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9238,7 +9247,7 @@
           "example": "0.00",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9254,9 +9263,9 @@
           "example": "p_cvm",
           "member": "string",
           "name": "GroupKey",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9264,9 +9273,9 @@
           "example": "云服务器",
           "member": "string",
           "name": "GroupValue",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9274,7 +9283,7 @@
           "example": "4.00000000",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9284,7 +9293,7 @@
           "example": "4.00000000",
           "member": "string",
           "name": "RealTotalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9294,7 +9303,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "CashPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9304,7 +9313,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9314,7 +9323,7 @@
           "example": "1.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9324,19 +9333,19 @@
           "example": "1.00000000",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Detailed summary of products. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "空",
           "member": "BusinessSummaryInfo",
           "name": "Business",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
