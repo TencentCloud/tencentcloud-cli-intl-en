@@ -76,6 +76,22 @@
         "title": "Sample request"
       }
     ],
+    "CreateLivePadRule": [
+      {
+        "document": " ",
+        "input": "{\n    \"TemplateId\": \"1000\",\n    \"AppName\": \"live\",\n    \"StreamName\": \"stream1\",\n    \"DomainName\": \"5000.livepush.myqcloud.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "create a live pad rule"
+      }
+    ],
+    "CreateLivePadTemplate": [
+      {
+        "document": " ",
+        "input": "{\n    \"Url\": \"http://domain.com/app/name\", \n    \"WaitDuration\": 1, \n    \"Description\": \"pad\", \n    \"MaxDuration\": 1, \n    \"TemplateName\": \"name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TemplateId\": 1000,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "create a live pad template"
+      }
+    ],
     "CreateLivePullStreamTask": [
       {
         "document": " ",
