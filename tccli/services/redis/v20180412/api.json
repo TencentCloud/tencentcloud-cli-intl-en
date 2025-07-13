@@ -8757,6 +8757,15 @@
           "name": "AutoBackupType",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the retention days of full backup files. unit: day.",
+          "example": "7",
+          "member": "int64",
+          "name": "BackupStorageDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
