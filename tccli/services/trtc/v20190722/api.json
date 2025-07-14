@@ -467,7 +467,7 @@
         {
           "disabled": false,
           "document": "The signature (similar to a login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |",
-          "example": "xxxx",
+          "example": "eJw1zc0Ogj***kCs8k5Eg__",
           "member": "string",
           "name": "UserSig",
           "required": false,
@@ -606,22 +606,20 @@
         {
           "disabled": false,
           "document": "The cloud storage provider.\n`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.",
-          "example": "1",
+          "example": "0",
           "member": "uint64",
           "name": "Vendor",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "The region of cloud storage.",
-          "example": "cn-shanghai-1",
+          "example": "ap-shanghai(cos, 具体参考云存储厂商支持的地域)",
           "member": "string",
           "name": "Region",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -630,8 +628,7 @@
           "member": "string",
           "name": "Bucket",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -640,8 +637,7 @@
           "member": "string",
           "name": "AccessKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -650,8 +646,7 @@
           "member": "string",
           "name": "SecretKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -660,8 +655,7 @@
           "member": "string",
           "name": "FileNamePrefix",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -2453,12 +2447,11 @@
         {
           "disabled": false,
           "document": "The stream information.",
-          "example": "UserMediaStream",
+          "example": "{\"UserInfo\":{\"UserId\":\"user_a\",\"RoomId\":\"123456\",\"RoomIdType\":0},\"StreamType\":0}",
           "member": "UserMediaStream",
           "name": "UserMediaStream",
           "required": true,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -2469,32 +2462,44 @@
         {
           "disabled": false,
           "document": "The audio encoding parameters.",
-          "example": "AudioEncode",
+          "example": "{\"SampleRate\":48000,\"Channel\":2,\"BitRate\":64,\"Codec\":0}}",
           "member": "AudioEncode",
           "name": "AudioEncode",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
           "document": "The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.\nIn cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.",
-          "example": "SubscribeAudioList",
+          "example": "[{\"UserInfo\":{\"RoomIdType\":0,\"RoomId\":\"123456\",\"UserId\":\"user_a\"}}]",
           "member": "McuUserInfoParams",
           "name": "SubscribeAudioList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "The audio mix blocklist. If you do not pass this parameter or leave it empty, there won’t be a blocklist. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current blocklist; if you pass in an empty string, the blocklist will be reset.\nIn cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.",
-          "example": "UnSubscribeAudioList",
+          "example": "[{\"UserInfo\":{\"UserId\":\"user_c\",\"RoomId\":\"123456\",\"RoomIdType\":1}}]",
           "member": "McuUserInfoParams",
           "name": "UnSubscribeAudioList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "McuCloudVod": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent VOD Parameters\nExample :{\"ExpireTime\":86400}",
+          "example": "{\"ExpireTime\":86400}",
+          "member": "McuTencentVod",
+          "name": "McuTencentVod",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -2555,8 +2560,7 @@
           "member": "string",
           "name": "RoomId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2565,8 +2569,7 @@
           "member": "uint64",
           "name": "RoomIdType",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2575,18 +2578,16 @@
           "member": "string",
           "name": "UserId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://www.tencentcloud.com/document/product/647/38104).",
-          "example": "xxxx",
+          "example": "eJw1zc0Ogj***kCs8k5Eg__",
           "member": "string",
           "name": "UserSig",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -2597,7 +2598,7 @@
         {
           "disabled": false,
           "document": "The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.",
-          "example": "UserMediaStream",
+          "example": "{\"UserInfo\":{\"UserId\":\"user_a\"}}",
           "member": "UserMediaStream",
           "name": "UserMediaStream",
           "required": false,
@@ -2669,7 +2670,7 @@
         {
           "disabled": false,
           "document": "The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.",
-          "example": "xxxx",
+          "example": "https://***.png",
           "member": "string",
           "name": "BackgroundImageUrl",
           "required": false,
@@ -2678,7 +2679,7 @@
         {
           "disabled": false,
           "document": "Custom cropping.",
-          "example": "xxx",
+          "example": "{\"Height\":720,\"LocationX\":400,\"LocationY\":0,\"Width\":480}",
           "member": "McuCustomCrop",
           "name": "CustomCrop",
           "required": false,
@@ -2706,8 +2707,7 @@
           "member": "uint64",
           "name": "MixLayoutMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2716,28 +2716,25 @@
           "member": "uint64",
           "name": "PureAudioHoldPlaceMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "The details of a custom layout.",
-          "example": "MixLayoutList",
+          "example": "[{\"UserMediaStream\":{\"UserInfo\":{\"UserId\":\"user_a\"}},\"ImageWidth\":1920,\"ImageHeight\":1080,\"LocationX\":0,\"LocationY\":0}]",
           "member": "McuLayout",
           "name": "MixLayoutList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "The information of the large video in screen sharing or floating layout mode.",
-          "example": "MaxVideoUser",
+          "example": "{\"UserMediaStream\":{\"UserInfo\":{\"UserId\":\"user_a\"}}}",
           "member": "MaxVideoUser",
           "name": "MaxVideoUser",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
@@ -2746,8 +2743,7 @@
           "member": "uint64",
           "name": "RenderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2758,12 +2754,11 @@
         {
           "disabled": false,
           "document": "The application data, which will be embedded in the `app_data` field of the custom SEI. It must be shorter than 4,096 characters.",
-          "example": "xxxx",
+          "example": "user_custom_data",
           "member": "string",
           "name": "AppData",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2772,8 +2767,7 @@
           "member": "uint64",
           "name": "PayloadType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2782,8 +2776,7 @@
           "member": "uint64",
           "name": "Interval",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2792,8 +2785,7 @@
           "member": "uint64",
           "name": "FollowIdr",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2804,7 +2796,7 @@
         {
           "disabled": false,
           "document": "The payload of the pass-through SEI.",
-          "example": "xxxx",
+          "example": "user_custom_data",
           "member": "string",
           "name": "PayloadContent",
           "required": true,
@@ -2822,7 +2814,7 @@
         {
           "disabled": false,
           "document": "This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.",
-          "example": "xxxx",
+          "example": "aaaaaaaabbbbbbbbccccccccdddddddd",
           "member": "string",
           "name": "PayloadUuid",
           "required": false,
@@ -2855,7 +2847,7 @@
         {
           "disabled": false,
           "document": "The URLs of the CDNs to relay to.",
-          "example": "xxxx",
+          "example": "rtmp://***&txTime=686F7239",
           "member": "string",
           "name": "PublishCdnUrl",
           "required": true,
@@ -2873,28 +2865,197 @@
       ],
       "usage": "in"
     },
+    "McuRecordParams": {
+      "document": "Relay Recording Parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Relay Recording Mode\n0/blank: Not currently supported, behavior undefined.\n1: Disable recording.\n2: Start recording (uses console's auto-recording template parameters. Reference: [Link to Documentation]).\n3: Start recording (uses API-specified parameters).\nExample: 2",
+          "example": "2",
+          "member": "uint64",
+          "name": "UniRecord",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Recording Task Key\nIdentifies a recording task. This parameter allows merging multiple relay tasks into one recording file. If unspecified, only records the current relay task.\n[Format: Up to 128 bytes; only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).]\nExample: test_record_key_a",
+          "example": "test_recore_key_a",
+          "member": "string",
+          "name": "RecordKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "[Valid only when UniRecord=3]\nRecording Resume Wait Time\nCorresponds to template parameter \"Resume Wait Duration.\" Unit: seconds.\nRange: 5-86400 (24 hours). Default: 30. Recording stops if idle longer than this value.\nExample: 30",
+          "example": "30",
+          "member": "uint64",
+          "name": "RecordWaitTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Valid only when UniRecord=3]\nRecording Output Formats\nCorresponds to template parameter \"File Format.\" Supported values: hls, mp4, aac. Default: mp4.\nNote: mp4 and aac formats are mutually exclusive.\nExample (MP4 only): [\"mp4\"]\nExample (MP4 + HLS): [\"mp4\",\"hls\"]",
+          "example": "[\"mp4\",\"hls\"]",
+          "member": "string",
+          "name": "RecordFormat",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "[Valid only when UniRecord=3]\nSingle File Duration\nCorresponds to template parameter \"Max File Duration.\" Unit: minutes.\nRange: 1-1440 (24 hours). Default: 1440. Applies only to mp4/aac. Actual duration is capped at 2GB file size.\nExample: 1440",
+          "example": "1440",
+          "member": "uint64",
+          "name": "MaxMediaFileDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Valid only when UniRecord=3]\nRecording Media Type\nCorresponds to template parameter \"Recording Format.\"\n0: Audio+Video, 1: Audio only, 2: Video only. Output is the intersection of this setting and relay content.\nExample: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "StreamType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Recording Filename Prefix\nFilename prefix (<=64 bytes). Applies only to VOD storage.\n*Format: Letters (a-z, A-Z), numbers (0-9), underscores (_), hyphens (-).*\nExample: mcu_record_prefix",
+          "example": "mcu_record_prefix",
+          "member": "string",
+          "name": "UserDefineRecordPrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "[Valid only when UniRecord=3]\nRecording Storage Parameters\nCorresponds to console parameter \"Storage Location.\" Supports Tencent VOD or COS (exclusively).\nExample: {\"McuCloudVod\":{\"McuTencentVod\":{\"ExpireTime\":86400}}}",
+          "example": "{\"McuCloudVod\":{\"McuTencentVod\":{\"ExpireTime\":86400}}}",
+          "member": "McuStorageParams",
+          "name": "McuStorageParams",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
     "McuSeiParams": {
       "document": "The stream mixing SEI parameters.",
       "members": [
         {
           "disabled": false,
           "document": "The audio volume layout SEI.",
-          "example": "LayoutVolume",
+          "example": "{\"PayloadType\":243,\"FollowIdr\":1}",
           "member": "McuLayoutVolume",
           "name": "LayoutVolume",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
           "document": "The pass-through SEI.",
-          "example": "PassThrough",
+          "example": "{\"PayloadContent\":\"user_custom_data\",\"PayloadType\":108,\"Interval\":2000,\"FollowIdr\":1}",
           "member": "McuPassThrough",
           "name": "PassThrough",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "McuStorageParams": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Third-Party Cloud Storage Account Information\n(Note: Storing files in Object Storage COS will incur recording file delivery fees. For details, see [Cloud Recording Billing]. Storing in VOD does not incur this fee.)\nExample:{\"Vendor\":0,\"Region\":\"ap-shanghai\",\"Bucket\":\"*\",\"AccessKey\":\"*\",\"SecretKey\":\"***\",\"FileNamePrefix\":[\"mcu_record\"]}",
+          "example": "{\"Vendor\":0,\"Region\":\"ap-shanghai\",\"Bucket\":\"***\",\"AccessKey\":\"***\",\"SecretKey\":\"***\",\"FileNamePrefix\":[\"mcu_record\"]}",
+          "member": "CloudStorage",
+          "name": "CloudStorage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Tencent Cloud VOD Account Information\nExample:{\"McuTencentVod\":{\"ExpireTime\":86400}}",
+          "example": "{\"McuTencentVod\":{\"ExpireTime\":86400}}",
+          "member": "McuCloudVod",
+          "name": "McuCloudVod",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "McuTencentVod": {
+      "document": "Mcu Relay Recording and Tencent VOD Parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Post-Upload Task Processing\nAutomatically initiates task flows after media uploads complete. Value = Task flow template name.\nVOD supports creating and naming task flow templates.\nExample: template_name",
+          "example": "template_name",
+          "member": "string",
+          "name": "Procedure",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Media File Expiration Time\nAbsolute expiration time from current timestamp.\n86400 = 1 day retention\n0 = permanent storage (default)\nExample: 86400",
+          "example": "86400",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Upload Region Specification\nFor users requiring specific upload regions.\nExample: ap-shanghai",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "StorageRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category ID\nManages media classification. Obtain via category creation API.\nDefault: 0 (Other category)\nExample: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VOD SubAppId\nRequired when accessing sub-application resources. Leave empty otherwise.\nExample: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task Flow Context\nPassed through in task completion callbacks.\nExample: user_custom",
+          "example": "user_custom",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Upload Context\nPassed through in upload completion callbacks.\nExample: user_custom",
+          "example": "user_custom",
+          "member": "string",
+          "name": "SourceContext",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -2905,7 +3066,7 @@
         {
           "disabled": false,
           "document": "The user information.",
-          "example": "UserInfo",
+          "example": "{\"UserId\": \"user_a\",\"RoomId\": \"123456\",\"RoomIdType\": 0}",
           "member": "MixUserInfo",
           "name": "UserInfo",
           "required": true,
@@ -2920,7 +3081,7 @@
         {
           "disabled": false,
           "document": "The video encoding parameters.",
-          "example": "VideoEncode",
+          "example": "{\"Width\":1280,\"Height\":720,\"Fps\":15,\"BitRate\":1130,\"Gop\":2}",
           "member": "VideoEncode",
           "name": "VideoEncode",
           "required": false,
@@ -2929,7 +3090,7 @@
         {
           "disabled": false,
           "document": "The layout parameters.",
-          "example": "LayoutParams",
+          "example": "{\"MixLayoutMode\":3}",
           "member": "McuLayoutParams",
           "name": "LayoutParams",
           "required": false,
@@ -2947,7 +3108,7 @@
         {
           "disabled": false,
           "document": "The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.",
-          "example": "xxxx",
+          "example": "https://******.png",
           "member": "string",
           "name": "BackgroundImageUrl",
           "required": false,
@@ -2956,7 +3117,7 @@
         {
           "disabled": false,
           "document": "The watermark information for the mixed stream.",
-          "example": "WaterMarkList",
+          "example": "[{\"WaterMarkImage\":{\"WaterMarkUrl\":\"***.png\",\"WaterMarkWidth\":192,\"WaterMarkHeight\":79,\"LocationX\":0,\"LocationY\":0}}]",
           "member": "McuWaterMarkParams",
           "name": "WaterMarkList",
           "required": false,
@@ -3049,7 +3210,7 @@
         {
           "disabled": false,
           "document": "The watermark image information. This parameter is required if `WaterMarkType` is 0.",
-          "example": "WaterMarkImage",
+          "example": "{\"WaterMarkUrl\": \"http://your_picture.png\",\"WaterMarkWidth\": 150,\"WaterMarkHeight\": 90,\"LocationX\": 0,\"LocationY\": 0,\"ZOrder\": 20}",
           "member": "McuWaterMarkImage",
           "name": "WaterMarkImage",
           "required": false,
@@ -3058,7 +3219,7 @@
         {
           "disabled": false,
           "document": "The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.",
-          "example": "WaterMarkText",
+          "example": "{\"Text\": \"主持人\",\"WaterMarkWidth\": 54,\"WaterMarkHeight\": 18,\"LocationX\": 80,\"LocationY\": 80,\"FontSize\": 18,\"DynamicPosType\": 0}",
           "member": "McuWaterMarkText",
           "name": "WaterMarkText",
           "required": false,
@@ -3073,7 +3234,7 @@
         {
           "disabled": false,
           "document": "The text.",
-          "example": "\"XXX\"",
+          "example": "\"主持人\"",
           "member": "string",
           "name": "Text",
           "required": true,
@@ -3409,7 +3570,7 @@
         {
           "disabled": false,
           "document": "User ID.",
-          "example": "owen-test",
+          "example": "user_a",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -3418,7 +3579,7 @@
         {
           "disabled": false,
           "document": "If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.",
-          "example": "room_1234",
+          "example": "room_123456",
           "member": "string",
           "name": "RoomId",
           "required": false,
@@ -4079,12 +4240,11 @@
         {
           "disabled": false,
           "document": "The stream information.",
-          "example": "UserMediaStream",
+          "example": "{\"UserInfo\":{\"UserId\":\"user_a\",\"RoomId\":\"123456\",\"RoomIdType\":0},\"StreamType\":0}",
           "member": "UserMediaStream",
           "name": "UserMediaStream",
           "required": true,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -4277,7 +4437,7 @@
         {
           "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
-          "example": "1400188366",
+          "example": "1400***000",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -4304,7 +4464,7 @@
         {
           "disabled": false,
           "document": "The information of the relaying robot in the room.",
-          "example": "AgentParams",
+          "example": "{\"UserId\":\"trtc_user_agent\",\"UserSig\":\"eJw1zV8****pljzBb*IOTE_\",\"MaxIdleTime\":30}",
           "member": "AgentParams",
           "name": "AgentParams",
           "required": true,
@@ -4322,7 +4482,7 @@
         {
           "disabled": false,
           "document": "The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.",
-          "example": "AudioParams",
+          "example": "{\"AudioEncode\":{\"SampleRate\":48000,\"Channel\":2,\"BitRate\":64,\"Codec\":0}}",
           "member": "McuAudioParams",
           "name": "AudioParams",
           "required": false,
@@ -4331,7 +4491,7 @@
         {
           "disabled": false,
           "document": "The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.",
-          "example": "VideoParams",
+          "example": "{\"VideoEncode\":{\"Width\":64,\"Height\":64,\"Fps\":15,\"BitRate\":128,\"Gop\":2},\"LayoutParams\":{\"MixLayoutMode\":3}}",
           "member": "McuVideoParams",
           "name": "VideoParams",
           "required": false,
@@ -4340,7 +4500,7 @@
         {
           "disabled": false,
           "document": "The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.",
-          "example": "SingleSubscribeParams",
+          "example": "{\"UserMediaStream\":{\"UserInfo\":{\"RoomId\":\"123456\",\"RoomIdType\":0,\"UserId\":\"trtc_user_id\"},\"StreamType\":0}}",
           "member": "SingleSubscribeParams",
           "name": "SingleSubscribeParams",
           "required": false,
@@ -4349,7 +4509,7 @@
         {
           "disabled": false,
           "document": "The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.",
-          "example": "PublishCdnParams",
+          "example": "[{\"IsTencentCdn\":1,\"PublishCdnUrl\":\"rtmp://***&txTime=68639060\"}]",
           "member": "McuPublishCdnParam",
           "name": "PublishCdnParams",
           "required": false,
@@ -4358,7 +4518,7 @@
         {
           "disabled": false,
           "document": "The stream mixing SEI parameters.",
-          "example": "SeiParams",
+          "example": "{\"LayoutVolume\":{\"AppData\":\"***\",\"PayloadType\":120, \"Interval\":3000,\"FollowIdr\":1}}",
           "member": "McuSeiParams",
           "name": "SeiParams",
           "required": false,
@@ -4367,11 +4527,20 @@
         {
           "disabled": false,
           "document": "The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.",
-          "example": "FeedBackRoomParams",
+          "example": "[{\"RoomId\":\"123456\",\"RoomIdType\":0,\"UserId\":\"trtc_user_fb\",\"UserSig\":\"eJw1jdEKgj***AEOjOFw_\"}]",
           "member": "McuFeedBackRoomParams",
           "name": "FeedBackRoomParams",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Relay Recording Parameters.\nExample value:{\"UniRecord\":1,\"RecordKey\": \"test_recore_key_a\"}",
+          "example": "{\"UniRecord\":1,\"RecordKey\": \"test_recore_key_a\"}",
+          "member": "McuRecordParams",
+          "name": "RecordParams",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4382,7 +4551,7 @@
         {
           "disabled": false,
           "document": "The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.",
-          "example": "5df46eb2-8e4b-490e-9c3c-dbd3b84faefc",
+          "example": "-nHPekVU7h******sceOqAZ1YVQE.",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -5396,12 +5565,11 @@
         {
           "disabled": false,
           "document": "The user information.",
-          "example": "MixUserInfo",
+          "example": "{\"UserId\":\"user_a\",\"RoomId\":\"123456\",\"RoomIdType\":0}",
           "member": "MixUserInfo",
           "name": "UserInfo",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
@@ -5410,8 +5578,7 @@
           "member": "uint64",
           "name": "StreamType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
