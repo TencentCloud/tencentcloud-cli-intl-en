@@ -28,6 +28,13 @@
       "output": "BindCloudResourceResponse",
       "status": "online"
     },
+    "CancelDataKeyDeletion": {
+      "document": "This API is used to cancel scheduled deletion for a data key.",
+      "input": "CancelDataKeyDeletionRequest",
+      "name": "Cancel scheduled deletion of a data key",
+      "output": "CancelDataKeyDeletionResponse",
+      "status": "online"
+    },
     "CancelKeyArchive": {
       "document": "This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.",
       "input": "CancelKeyArchiveRequest",
@@ -75,6 +82,20 @@
       "input": "DeleteWhiteBoxKeyRequest",
       "name": "Deletes a white-box key",
       "output": "DeleteWhiteBoxKeyResponse",
+      "status": "online"
+    },
+    "DescribeDataKey": {
+      "document": "This API is used to retrieve data key details.",
+      "input": "DescribeDataKeyRequest",
+      "name": "Retrieve data key details",
+      "output": "DescribeDataKeyResponse",
+      "status": "online"
+    },
+    "DescribeDataKeys": {
+      "document": "This API is used to return the key attribute information list.",
+      "input": "DescribeDataKeysRequest",
+      "name": "Retrieve key details",
+      "output": "DescribeDataKeysResponse",
       "status": "online"
     },
     "DescribeKey": {
@@ -126,6 +147,20 @@
       "output": "DescribeWhiteBoxServiceStatusResponse",
       "status": "online"
     },
+    "DisableDataKey": {
+      "document": "This API is used to disable the data key.",
+      "input": "DisableDataKeyRequest",
+      "name": "Disabling a data key",
+      "output": "DisableDataKeyResponse",
+      "status": "online"
+    },
+    "DisableDataKeys": {
+      "document": "This API is used to batch disable data keys.",
+      "input": "DisableDataKeysRequest",
+      "name": "Bulk disable data keys",
+      "output": "DisableDataKeysResponse",
+      "status": "online"
+    },
     "DisableKey": {
       "document": "This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.",
       "input": "DisableKeyRequest",
@@ -159,6 +194,20 @@
       "input": "DisableWhiteBoxKeysRequest",
       "name": "Disables white-box keys in batches",
       "output": "DisableWhiteBoxKeysResponse",
+      "status": "online"
+    },
+    "EnableDataKey": {
+      "document": "This API is used to enable the data key.",
+      "input": "EnableDataKeyRequest",
+      "name": "Enables the data key",
+      "output": "EnableDataKeyResponse",
+      "status": "online"
+    },
+    "EnableDataKeys": {
+      "document": "This API is used to batch enable data keys.",
+      "input": "EnableDataKeysRequest",
+      "name": "Batch enable data keys",
+      "output": "EnableDataKeysResponse",
       "status": "online"
     },
     "EnableKey": {
@@ -224,6 +273,20 @@
       "output": "GenerateRandomResponse",
       "status": "online"
     },
+    "GetDataKeyCiphertextBlob": {
+      "document": "This API is used to download the encrypted data key.",
+      "input": "GetDataKeyCiphertextBlobRequest",
+      "name": "Download the ciphertext of the data key",
+      "output": "GetDataKeyCiphertextBlobResponse",
+      "status": "online"
+    },
+    "GetDataKeyPlaintext": {
+      "document": "This API is used to retrieve the key plaintext.",
+      "input": "GetDataKeyPlaintextRequest",
+      "name": "Retrieve the plaintext of the data key",
+      "output": "GetDataKeyPlaintextResponse",
+      "status": "online"
+    },
     "GetKeyRotationStatus": {
       "document": "Query whether the specified CMK has the key rotation function.",
       "input": "GetKeyRotationStatusRequest",
@@ -259,6 +322,13 @@
       "output": "GetServiceStatusResponse",
       "status": "online"
     },
+    "ImportDataKey": {
+      "document": "Data key import API, managed by KMS.",
+      "input": "ImportDataKeyRequest",
+      "name": "Import a data key",
+      "output": "ImportDataKeyResponse",
+      "status": "online"
+    },
     "ImportKeyMaterial": {
       "document": "This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.\nKey material can only be imported into CMKs in `Enabled` and `PendingImport` status.",
       "input": "ImportKeyMaterialRequest",
@@ -271,6 +341,20 @@
       "input": "ListAlgorithmsRequest",
       "name": "Lists encryption methods supported in the current region",
       "output": "ListAlgorithmsResponse",
+      "status": "online"
+    },
+    "ListDataKeyDetail": {
+      "document": "This API is used to retrieve data key list details based on specified Offset and Limit.",
+      "input": "ListDataKeyDetailRequest",
+      "name": "Retrieve data key list details",
+      "output": "ListDataKeyDetailResponse",
+      "status": "online"
+    },
+    "ListDataKeys": {
+      "document": "This API is used to query the list of data keys.",
+      "input": "ListDataKeysRequest",
+      "name": "Retrieve data key list",
+      "output": "ListDataKeysResponse",
       "status": "online"
     },
     "ListKeyDetail": {
@@ -329,6 +413,13 @@
       "output": "ReEncryptResponse",
       "status": "online"
     },
+    "ScheduleDataKeyDeletion": {
+      "document": "Schedule deletion for a data key.",
+      "input": "ScheduleDataKeyDeletionRequest",
+      "name": "Schedule deletion of a data key",
+      "output": "ScheduleDataKeyDeletionResponse",
+      "status": "online"
+    },
     "ScheduleKeyDeletion": {
       "document": "CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days",
       "input": "ScheduleKeyDeletionRequest",
@@ -355,6 +446,20 @@
       "input": "UpdateAliasRequest",
       "name": "Modify alias",
       "output": "UpdateAliasResponse",
+      "status": "online"
+    },
+    "UpdateDataKeyDescription": {
+      "document": "This API is used to modify the description of a data key.",
+      "input": "UpdateDataKeyDescriptionRequest",
+      "name": "Modify data key description",
+      "output": "UpdateDataKeyDescriptionResponse",
+      "status": "online"
+    },
+    "UpdateDataKeyName": {
+      "document": "This API is used to modify the data key name.",
+      "input": "UpdateDataKeyNameRequest",
+      "name": "Modify the data key name",
+      "output": "UpdateDataKeyNameResponse",
       "status": "online"
     },
     "UpdateKeyDescription": {
@@ -588,6 +693,43 @@
     "BindCloudResourceResponse": {
       "document": "BindCloudResource response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelDataKeyDeletionRequest": {
+      "document": "CancelDataKeyDeletion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of a data key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelDataKeyDeletionResponse": {
+      "document": "CancelDataKeyDeletion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The unique identifier of the data key scheduled for deletion.",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -927,6 +1069,229 @@
       ],
       "type": "object"
     },
+    "DataKey": {
+      "document": "Specifies the data key attribute.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Globally unique id of DataKey.",
+          "example": "\t 5551ef2e-6742-11ef-8133-525400b2f623",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DataKeyMetadata": {
+      "document": "Specifies the data key attribute information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DataKey globally unique id.",
+          "example": "93866e69-9755-11ef-8e65-52540089547t",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Globally unique id of the CMK.",
+          "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
+          "member": "string",
+          "name": "KeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Key name as a more recognizable and understandable data key.",
+          "example": "lzctest",
+          "member": "string",
+          "name": "DataKeyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the length of the data key in bytes.",
+          "example": "32",
+          "member": "uint64",
+          "name": "NumberOfBytes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Key key creation time.",
+          "example": "1730357927",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DataKey description.",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DataKey status. valid values: Enabled, Disabled, PendingDelete.",
+          "example": "PendingDelete",
+          "member": "string",
+          "name": "KeyState",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator.",
+          "example": "700001224410",
+          "member": "uint64",
+          "name": "CreatorUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the creator of the data key. valid values: user (user-created) or product name (auto-created by authorized cloud services).",
+          "example": "user",
+          "member": "string",
+          "name": "Owner",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time when schedule deletion.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DeletionDate",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the key material type of DataKey. valid values: TENCENT_KMS (created by KMS), EXTERNAL (user import).",
+          "example": "EXTERNAL",
+          "member": "string",
+          "name": "Origin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HSM cluster ID (only applicable to KMS exclusive/managed service instance).",
+          "example": "cls-hsm-1a2b3c4d",
+          "member": "string",
+          "name": "HsmClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID in the format of `creatorUin/$creatorUin/$dataKeyId`.",
+          "example": "creatorUin/12345/6cdf26d1-44ff-11eb-841c-5254006d0810",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the key is a primary replica. valid values: `0` (primary), `1` (synced replica).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsSyncReplica",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronous original region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "SourceRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The state of key synchronization. valid values: 0 (unsynced), 1 (synchronization successful), 2 (synchronization failed), 3 (synchronizing).",
+          "example": "1",
+          "member": "int64",
+          "name": "SyncStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sresult description}.",
+          "example": "success",
+          "member": "string",
+          "name": "SyncMessages",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of synchronization.",
+          "example": "1730357927",
+          "member": "uint64",
+          "name": "SyncStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the synchronous end time.",
+          "example": "1730357927",
+          "member": "uint64",
+          "name": "SyncEndTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronous original cluster. if empty, it is a public cloud public cluster.",
+          "example": "hsm-a1b2c3",
+          "member": "string",
+          "name": "SourceHsmClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DecryptRequest": {
       "document": "Decrypt request structure.",
       "members": [
@@ -1046,6 +1411,80 @@
     "DeleteWhiteBoxKeyResponse": {
       "document": "DeleteWhiteBoxKey response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataKeyRequest": {
+      "document": "DescribeDataKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data key globally unique id.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataKeyResponse": {
+      "document": "DescribeDataKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the data key attribute information.",
+          "example": "无",
+          "member": "DataKeyMetadata",
+          "name": "DataKeyMetadata",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataKeysRequest": {
+      "document": "DescribeDataKeys request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the ID list of datakeys to query. supports up to 100 DataKey ids in a batch query.",
+          "example": "[\"87ff856e-973c-11ef-947b-525400d834e5\"]",
+          "member": "string",
+          "name": "DataKeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataKeysResponse": {
+      "document": "DescribeDataKeys response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response data key attribute information list.",
+          "example": " { \"DataKeyName\": \"x\", \"CreateTime\": xxx, \"CreatorUin\": xxx, \"DeletionDate\": 0, \"Description\": \"x\", \"HsmClusterId\": \"cls-x-x\",\"NumberOfBytes\":32, \"DataKeyId\": \"xxx\", \"KeyId\": \"xxx\",  \"KeyState\": \"xxx\", \"Origin\": \"xxx\",\"ResourceId\": \"creatorUin/xxx/xxx\" } ",
+          "member": "DataKeyMetadata",
+          "name": "DataKeyMetadatas",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -1341,6 +1780,34 @@
       ],
       "type": "object"
     },
+    "DestinationSyncConfig": {
+      "document": "Target region list of the sync task, including region and cluster information. if the cluster is empty, it means public cloud shared cluster. if the cluster is not empty, it means dedicated cluster.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the target region of the synchronization task.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "DestinationRegion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HsmClusterId being empty indicates public cloud shared version. if not empty, it indicates exclusive edition cluster in the region.",
+          "example": "cls-hsm-a1b2c3d5",
+          "member": "string",
+          "name": "HsmClusterId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DeviceFingerprint": {
       "document": "Device fingerprint",
       "members": [
@@ -1368,6 +1835,60 @@
         }
       ],
       "usage": "both"
+    },
+    "DisableDataKeyRequest": {
+      "document": "DisableDataKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the unique identifier of the data key.",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableDataKeyResponse": {
+      "document": "DisableDataKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableDataKeysRequest": {
+      "document": "DisableDataKeys request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the Id list of datakeys to be bulk disabled. supports a maximum of 100 data keys.",
+          "example": "[\"23e80852-1e38-11e9-b129-5cb9019b4b02\"]",
+          "member": "string",
+          "name": "DataKeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableDataKeysResponse": {
+      "document": "DisableDataKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DisableKeyRequest": {
       "document": "DisableKey request structure.",
@@ -1494,6 +2015,60 @@
     },
     "DisableWhiteBoxKeysResponse": {
       "document": "DisableWhiteBoxKeys response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableDataKeyRequest": {
+      "document": "EnableDataKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of a data key.",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableDataKeyResponse": {
+      "document": "EnableDataKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableDataKeysRequest": {
+      "document": "EnableDataKeys request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Id list of datakeys that need to be batch enabled supports a maximum of 100 data keys.",
+          "example": "\t [\"23e80852-1e38-11e9-b129-5cb9019b4b02\"]",
+          "member": "string",
+          "name": "DataKeyIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableDataKeysResponse": {
+      "document": "EnableDataKeys response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1860,6 +2435,42 @@
           "name": "EncryptionAlgorithm",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the data generated key is managed by KMS. 1 means the key is managed and saved by KMS. 0 means the key is not managed by KMS.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsHostedByKms",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the data key. required when IsHostedByKms is 1. optional when IsHostedByKms is 0 as KMS does not manage it.",
+          "example": "testdataKey",
+          "member": "string",
+          "name": "DataKeyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the data key. maximum 100 bytes.",
+          "example": "Description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "HSM cluster ID corresponding to the KMS exclusive edition. if HsmClusterId is specified, it indicates the root key is in this cluster and verifies whether KeyId corresponds to HsmClusterId.",
+          "example": "cluster-123",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1898,6 +2509,16 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "Globally unique id of the data key, returned when KMS hosting is enabled.",
+          "example": "93866e69-9755-11ef-8e65-52540089547t",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1931,6 +2552,98 @@
           "member": "string",
           "name": "Plaintext",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataKeyCiphertextBlobRequest": {
+      "document": "GetDataKeyCiphertextBlob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of a data key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataKeyCiphertextBlobResponse": {
+      "document": "GetDataKeyCiphertextBlob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the ciphertext of the data key.",
+          "example": "GPJUsGlmPcSjHKIktXGyzn33yestz+7NteW36M6FuL8hPfJ1xVfdO6Akr8sF69x3yBXMwto4njumJMIsi9WKow==-k-XqqalxTyNKIC1rITRePFGQ==-k-xAL9z9eXIHV/p+WT1RsHP3dm6f43bkomXjwmvWdMXH+JQoFORTThfXgcRh1f9lPNLENK4+fCOiQVG1VvLdA0RvcuRvU=",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataKeyPlaintextRequest": {
+      "document": "GetDataKeyPlaintext request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of a data key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "PEM formatted public key string, supporting RSA2048 and SM2 public keys, and used to encrypt the plaintext value in the returned data. If it is empty, plaintext value will not be encrypted.",
+          "example": "-----BEGIN PUBLIC KEY----- MFkwEwY*****fJiHQuh2Jr9lMspgK58UVMJTvQCAU+Hztyhd6Aw== -----END PUBLIC KEY-----",
+          "member": "string",
+          "name": "EncryptionPublicKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Asymmetric encryption algorithm, used in conjunction with EncryptionPublicKey to encrypt the returned data. It currently supports SM2 (returns ciphertext in C1C3C2 format), SM2_C1C3C2_ASN1 (returns ciphertext in C1C3C2 ASN1 format), RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, and RSAES_OAEP_SHA_256. If it is empty, the default value SM2 is used.",
+          "example": "SM2",
+          "member": "string",
+          "name": "EncryptionAlgorithm",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDataKeyPlaintextResponse": {
+      "document": "GetDataKeyPlaintext response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "If EncryptionPublicKey is not provided during the call, the field value is the plaintext encoded in Base64, and the Base64 decoding is required to obtain the plaintext. If EncryptionPublicKey is provided during the call, the field value is the ciphertext asymmetrically encrypted with the EncryptionPublicKey and encoded in Base64. After Base64 decoding, the private key corresponding to the user-uploaded public key is used for further decryption to obtain the plaintext.",
+          "example": "dGVzdAo=",
+          "member": "string",
+          "name": "Plaintext",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2209,7 +2922,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique identifier for the purchase record of the flagship edition. if the flagship edition is enabled, the return value is null.",
+          "document": "Flagship edition purchase record unique identifier. if not activated, the return value is empty.",
           "example": "kms_pro_12345",
           "member": "string",
           "name": "ProResourceId",
@@ -2275,6 +2988,158 @@
           "name": "ExclusiveHSMList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether data key management is supported. valid values: 1 (supported), 0 (unsupported).",
+          "example": "0",
+          "member": "bool",
+          "name": "IsAllowedDataKeyHosted",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when IsAllowedDataKeyHosted is 1. specifies the purchase quota for data keys.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataKeyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when IsAllowedDataKeyHosted is 1. data key free quota.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FreeDataKeyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid at that time when IsAllowedDataKeyHosted is 1. specifies the number of keys used.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataKeyUsedCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the target region of the sync task.",
+          "example": "无",
+          "member": "DestinationSyncConfig",
+          "name": "SyncTaskList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether synchronization task is supported. true: supported; false: unsupported.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsAllowedSync",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportDataKeyRequest": {
+      "document": "ImportDataKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the data key.",
+          "example": "testDataKey",
+          "member": "string",
+          "name": "DataKeyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "If the imported key is plaintext data key, it is the base64 plaintext data key after conversion. if the imported key is ciphertext data key, it is the ciphertext data key generated by the KMS GenerateDataKey interface.",
+          "example": "YLbjnjPPIYjPb1XhyBYNmcx",
+          "member": "string",
+          "name": "ImportKeyMaterial",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "1: ciphertext import (data key generated by KMS api) 2: plaintext import.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ImportType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the data key. maximum 100 bytes.",
+          "example": "描述信息",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "When importing an encrypted data key, no need to input the root key. if the input is provided, validate whether the KeyId matches the one in the ciphertext.\nWhen importing plaintext data key, KeyId cannot be empty. the data key is encrypted with the specified root key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "HSM cluster ID corresponding to the KMS exclusive edition. if HsmClusterId is specified, it indicates the root key is in this cluster and verifies whether KeyId corresponds to HsmClusterId.",
+          "example": "hsm-cluster-123",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportDataKeyResponse": {
+      "document": "ImportDataKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Globally unique CMK id.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "KeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Globally unique id of DataKey. no. show on portal/domestic and international sites.",
+          "example": "93866e69-9755-11ef-8e65-52540089547t",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2538,6 +3403,76 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the key is a primary replica. valid values: 0 (primary replica), 1 (synced replica).",
+          "example": "0",
+          "member": "int64",
+          "name": "IsSyncReplica",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronous original region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "SourceRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The state of key synchronization. valid values: 0 (unsynced), 1 (synchronization successful), 2 (synchronization failed), 3 (synchronizing).",
+          "example": "1",
+          "member": "int64",
+          "name": "SyncStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the synchronous result.",
+          "example": "success",
+          "member": "string",
+          "name": "SyncMessages",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of synchronization.",
+          "example": "1730357927",
+          "member": "uint64",
+          "name": "SyncStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the synchronous end time.",
+          "example": "1730357927",
+          "member": "uint64",
+          "name": "SyncEndTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronous original cluster. if empty, it is a public cloud public cluster.",
+          "example": "hsm-a1b2c3",
+          "member": "string",
+          "name": "SourceHsmClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2578,6 +3513,208 @@
           "name": "AsymmetricSignVerifyAlgorithms",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDataKeyDetailRequest": {
+      "document": "ListDataKeyDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Meaning matches the Offset in SQL queries, indicates the retrieval starts from the Offset-th element in a sequentially arranged array, defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of elements to retrieve, same as the Limit in SQL queries. default value is 10. maximum value is 200.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by creator role. default 0 means data keys created by the user, 1 means data keys automatically created by authorized cloud services.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Role",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorts according to the creation time of DataKey. 0 indicates descending sort. 1 indicates ascending sort.",
+          "example": "0",
+          "member": "uint64",
+          "name": "OrderType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter based on DataKey state. 0 means all datakeys, 1 means querying only Enabled datakeys, 2 means querying only Disabled datakeys, 3 means querying datakeys in PendingDelete state (keys in scheduled deletion status).",
+          "example": "0",
+          "member": "uint64",
+          "name": "KeyState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Performs a fuzzy match query based on DataKeyId or DataKeyName.",
+          "example": "lzctest",
+          "member": "string",
+          "name": "SearchKeyAlias",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filters data keys by DateKey type. \"TENCENT_KMS\" filters data keys with key material created by KMS. \"EXTERNAL\" filters EXTERNAL type data keys requiring user-imported key material. \"ALL\" or leave unset queries both types. case-sensitive.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Origin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "HSM cluster ID corresponding to KMS advanced edition.",
+          "example": "cls-hsm-3dflmo9g",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the globally unique identifier of the root key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Length of the data key.",
+          "example": "16",
+          "member": "uint64",
+          "name": "DataKeyLen",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDataKeyDetailResponse": {
+      "document": "ListDataKeyDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Returns the attribute information list.",
+          "example": "无",
+          "member": "DataKeyMetadata",
+          "name": "DataKeyMetadatas",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of datakeys.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDataKeysRequest": {
+      "document": "ListDataKeys request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Meaning matches the Offset in SQL queries, indicates the retrieval starts from the Offset-th element in a sequentially arranged array, defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum number of elements to retrieve, same as the Limit in SQL queries. default value is 10. maximum value is 200.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria based on the creator role. default 0 means data key created by oneself, 1 means data key automatically created by other cloud services.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Role",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "HSM cluster ID corresponding to KMS advanced edition (only applicable to KMS exclusive/managed service instance).",
+          "example": "cls-hsm-3dflmo9g",
+          "member": "string",
+          "name": "HsmClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListDataKeysResponse": {
+      "document": "ListDataKeys response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the list array of data key ids.",
+          "example": "无",
+          "member": "DataKey",
+          "name": "DataKeys",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of data keys.",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2701,7 +3838,7 @@
         {
           "disabled": false,
           "document": "Specifies the returned attribute information list.",
-          "example": "[       {         \"Alias\": \"Weijiali_test_000000005\",         \"CreateTime\": 1725354067,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"weijiali_test_00000000000005\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"0ed49d3e-69d3-11ef-9841-52540089bc41\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ASYMMETRIC_SIGN_VERIFY_SM2\",         \"LastRotateTime\": 1725354067,         \"NextRotateTime\": 1756890067,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/0ed49d3e-69d3-11ef-9841-52540089bc41\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       },       {         \"Alias\": \"Weijiali_test_00000000000004\",         \"CreateTime\": 1725354055,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"Weijiali_test_00000000000004\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"07ad2031-69d3-11ef-9841-52540089bc41\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ASYMMETRIC_DECRYPT_SM2\",         \"LastRotateTime\": 1725354055,         \"NextRotateTime\": 1756890055,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/07ad2031-69d3-11ef-9841-52540089bc41\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       },       {         \"Alias\": \"weijiali_test_00000000000003\",         \"CreateTime\": 1725354040,         \"CreatorUin\": 700001028674,         \"DeletionDate\": 0,         \"Description\": \"weijiali_test_00000000000003\",         \"HsmClusterId\": \"cls-hsm-3dflmo9g\",         \"KeyId\": \"fea98175-69d2-11ef-910d-525400d834e5\",         \"KeyRotationEnabled\": false,         \"KeyState\": \"Enabled\",         \"KeyUsage\": \"ENCRYPT_DECRYPT\",         \"LastRotateTime\": 1725354040,         \"NextRotateTime\": 1756890040,         \"Origin\": \"TENCENT_KMS\",         \"Owner\": \"user\",         \"ResourceId\": \"creatorUin/700001028674/fea98175-69d2-11ef-910d-525400d834e5\",         \"RotateDays\": 365,         \"Type\": 4,         \"ValidTo\": 0       }     ]",
+          "example": "无",
           "member": "KeyMetadata",
           "name": "KeyMetadatas",
           "output_required": false,
@@ -3143,6 +4280,62 @@
       ],
       "type": "object"
     },
+    "ScheduleDataKeyDeletionRequest": {
+      "document": "ScheduleDataKeyDeletion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of a data key.",
+          "example": "\t 93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Schedule deletion time range: [7,30].",
+          "example": "7",
+          "member": "uint64",
+          "name": "PendingWindowInDays",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScheduleDataKeyDeletionResponse": {
+      "document": "ScheduleDataKeyDeletion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Schedule deletion execution time.",
+          "example": "1559318399",
+          "member": "uint64",
+          "name": "DeletionDate",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique identifier of the data key scheduled for deletion.",
+          "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
+          "member": "string",
+          "name": "DataKeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ScheduleKeyDeletionRequest": {
       "document": "ScheduleKeyDeletion request structure.",
       "members": [
@@ -3382,6 +4575,78 @@
     },
     "UpdateAliasResponse": {
       "document": "UpdateAlias response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataKeyDescriptionRequest": {
+      "document": "UpdateDataKeyDescription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the unique identifier of the data key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data key description of up to 100 bytes.",
+          "example": "描述信息",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataKeyDescriptionResponse": {
+      "document": "UpdateDataKeyDescription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataKeyNameRequest": {
+      "document": "UpdateDataKeyName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of a data key.",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
+          "member": "string",
+          "name": "DataKeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the data key.",
+          "example": "test",
+          "member": "string",
+          "name": "DataKeyName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataKeyNameResponse": {
+      "document": "UpdateDataKeyName response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
