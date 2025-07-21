@@ -1,7 +1,7 @@
 {
   "actions": {
     "AttachInstances": {
-      "document": "This API is used to add CVM instances to an auto scaling group.\n* Only CVM instances in `RUNNING` or `STOPPED` status can be added.\n* The added CVM instances must in the same VPC as the scaling group.\n",
+      "document": "This interface (AttachInstances) is used to add CVM instances to a scaling group.\n* Only CVM instances in `RUNNING` or `STOPPED` status can be added.\nThis API is used to ensure added CVM instances match the VPC network of the scaling group.",
       "input": "AttachInstancesRequest",
       "name": "Adds CVM instances to an auto scaling group",
       "output": "AttachInstancesResponse",
@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CancelInstanceRefresh": {
-      "document": "This API is used to cancel the instance refresh activity of the scaling group.\n* The batches that have already been refreshed or are currently being refreshed remain unaffected, but the batches pending refresh will be canceled.\n* If a refresh fails, the affected instances will remain in the secondary status, and require manual intervention to exit the secondary status or terminate the instances.\n* Rollback operations are not allowed after cancellation, and recovery is also unsupported.\n* The instances temporarily scaled out due to the MaxSurge parameter are automatically terminated after cancellation.\n* During scale-in, all instances have already been updated and cannot be canceled.",
+      "document": "This API is used to cancel the instance refresh activity of the scaling group.\n* The batches that have already been refreshed remain unaffected, but the batches pending refresh will be canceled.\n* If a batch is currently refreshing, cancellation is not allowed. You can suspend the event and wait until the current batch finishes before canceling.\nThis API is used to refresh the failed instances. If a refresh fails, the affected instances will remain in standby status, and require manual intervention to exit the standby status or terminate the instances.\n* Rollback operations are not allowed after cancellation, and recovery is unsupported.\nTemporarily expanded instances due to the maxSurge parameter are automatically destroyed after cancellation.\n* During scale-in, all instances have already been updated and cannot be canceled.",
       "input": "CancelInstanceRefreshRequest",
       "name": "Cancels instance refresh",
       "output": "CancelInstanceRefreshResponse",
@@ -50,14 +50,14 @@
       "status": "online"
     },
     "CreateLaunchConfiguration": {
-      "document": "This API is used to create a launch configuration.\n\n* To modify a launch configuration, please use `ModifyLaunchConfigurationAttributes`.\n\n* Up to 20 launch configurations can be created for each project. For more information, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).",
+      "document": "This interface (CreateLaunchConfiguration) is used to create new launch configuration.\n\n* To modify a launch configuration, use [ModifyLaunchConfigurationAttributes](https://intl.cloud.tencent.com/document/api/377/31298?from_cn_redirect=1) to partially modify fields. If needed, create a new launch configuration.\n\nBy default, 50 launch configurations can be created per region. For details, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).",
       "input": "CreateLaunchConfigurationRequest",
       "name": "Creates a launch configuration",
       "output": "CreateLaunchConfigurationResponse",
       "status": "online"
     },
     "CreateLifecycleHook": {
-      "document": "This API is used to create a lifecycle hook.\n\n* You can configure notifications or automation commands (TAT) for the lifecycle hook.\n\nIf you configured a notification, Auto Scaling will notify the TDMQ queue of the following information:\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-rrrrtttt\",\n\t\"LifecycleHookId\": \"ash-xxxxyyyy\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-aaaabbbb\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```",
+      "document": "This interface (CreateLifecycleHook) is used for creating a lifecycle hook.\n\n* You can configure notifications or automation commands for the lifecycle hook.\n\nIf you configured a notification, Auto Scaling will notify the TDMQ Message Queue of the following information:.\n\n```\n{\n\t\"Service\": \"Tencent Cloud Auto Scaling\",\n\t\"Time\": \"2019-03-14T10:15:11Z\",\n\t\"AppId\": \"1251783334\",\n\t\"ActivityId\": \"asa-fznnvrja\",\n\t\"AutoScalingGroupId\": \"asg-ft6y7u8n\",\n\t\"LifecycleHookId\": \"ash-p9i7y6t5\",\n\t\"LifecycleHookName\": \"my-hook\",\n\t\"LifecycleActionToken\": \"3080e1c9-0efe-4dd7-ad3b-90cd6618298f\",\n\t\"InstanceId\": \"ins-y6dr5e43\",\n\t\"LifecycleTransition\": \"INSTANCE_LAUNCHING\",\n\t\"NotificationMetadata\": \"\"\n}\n```",
       "input": "CreateLifecycleHookRequest",
       "name": "Creating a Lifecycle Hook",
       "output": "CreateLifecycleHookResponse",
@@ -92,7 +92,7 @@
       "status": "online"
     },
     "DeleteLaunchConfiguration": {
-      "document": "This API (DeleteLaunchConfiguration) is used to delete a launch configuration.\n\n* If the launch configuration is active in an auto scaling group, it cannot be deleted.\n",
+      "document": "This API (DeleteLaunchConfiguration) is used to delete a launch configuration.\n\n* If the launch configuration is active in a scaling group, it cannot be deleted.",
       "input": "DeleteLaunchConfigurationRequest",
       "name": "Deletes a launch configuration",
       "output": "DeleteLaunchConfigurationResponse",
@@ -238,6 +238,13 @@
       "output": "EnableAutoScalingGroupResponse",
       "status": "online"
     },
+    "EnterStandby": {
+      "document": "This API is used to set instances within the scaling group to standby status.\nInstances in standby status have a CLB weight value of 0 and will not be selected for scaling in, unhealthy replacement, or refresh operation.\nThis API is used to call the Auto Scaling power-on/power-off API which may change the standby status, while the Cloud Virtual Machine server power on/off API will not affect it.\nThe instance enters standby status, and the scaling group attempts to lower the expected number of instances, which will not be less than the minimum value.",
+      "input": "EnterStandbyRequest",
+      "name": "Enter an instance into standby status",
+      "output": "EnterStandbyResponse",
+      "status": "online"
+    },
     "ExecuteScalingPolicy": {
       "document": "This API is used to execute a scaling policy.\n\n* The scaling policy can be executed based on the scaling policy ID.\n* The policy cannot be executed if there are ongoing scaling actions on the scaling group.\n* Executing a target tracking policy is not supported.",
       "input": "ExecuteScalingPolicyRequest",
@@ -246,7 +253,7 @@
       "status": "online"
     },
     "ExitStandby": {
-      "document": "This API is used to exit instances from the standby status in the scaling group.\n* When an instance is in standby status, its load balancer weight is set to 0. Upon exiting the standby status, the weight value automatically gets restored.\n* Initiating power-on/power-off actions on instances that are in standby status also results in them exiting from the standby status.",
+      "document": "This API is used to exit instances from standby status in the scaling group.\n* After exiting standby status, the instance enters running state and the CLB weight value is restored to the default value.\nThis API is used to call the Auto Scaling power-on/power-off API which may change the standby status, while the Cloud Virtual Machine server power on/off API will not affect it.\nAfter instances exit standby status, the scaling group will raise the expected number of instances. The new expected number cannot exceed the maximum value.",
       "input": "ExitStandbyRequest",
       "name": "Exits instances from standby status",
       "output": "ExitStandbyResponse",
@@ -267,7 +274,7 @@
       "status": "online"
     },
     "ModifyLaunchConfigurationAttributes": {
-      "document": "This API (ModifyLaunchConfigurationAttributes) is used to modify some attributes of a launch configuration.\n\n* The changes of launch configuration do not affect the existing instances. New instances will be created based on the modified configuration.\n* This API supports modifying certain simple types of attributes.",
+      "document": "This API (ModifyLaunchConfigurationAttributes) is used to modify part of a launch configuration's attributes.\n\nThis API is used to modify the startup configuration. Existing instances scaled out using this configuration will not change, while newly added instances using this launch configuration will scale out according to the new configuration.",
       "input": "ModifyLaunchConfigurationAttributesRequest",
       "name": "Modifies launch configuration attributes",
       "output": "ModifyLaunchConfigurationAttributesResponse",
@@ -407,7 +414,7 @@
   },
   "objects": {
     "Activity": {
-      "document": "Information on eligible scaling activities.",
+      "document": "Information of auto scaling activity.",
       "members": [
         {
           "disabled": false,
@@ -431,7 +438,7 @@
         },
         {
           "disabled": false,
-          "document": "Scaling activity type. Valid values:\n<li>SCALE_OUT: Scale out an instance.</li>\n<li>SCALE_IN: Scale in an instance.</li>\n<li>ATTACH_INSTANCES: Add an instance.</li>\n<li>REMOVE_INSTANCES: Terminate an instance.</li>\n<li>DETACH_INSTANCES: Remove an instance.</li>\n<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Terminate an instance in the CVM console.</li>\n<li>REPLACE_UNHEALTHY_INSTANCE: Replace an unhealthy instance.</li>\n<li>START_INSTANCES: Start an instance.</li>\n<li>STOP_INSTANCES: Stop an instance.</li>\n<li>INVOKE_COMMAND: Execute a command.</li>",
+          "document": "Scaling activity type. Valid values:\n<li>SCALE_OUT: Scale out instance(s).</li>\n<li>SCALE_IN: Scale in instance(s).</li>\n<li>ATTACH_INSTANCES: Add instance(s).</li>\n<li>REMOVE_INSTANCES: Terminate instance(s).</li>\n<li>DETACH_INSTANCES: Remove instance(s).</li>\n<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Instance(s) unexpectedly terminated in the CVM console.</li>\n<li>REPLACE_UNHEALTHY_INSTANCE: Replace unhealthy instance(s).</li>\n<li>START_INSTANCES: Start instance(s).</li>\n<li>STOP_INSTANCES: Stop instance(s).</li>\n<li>INVOKE_COMMAND: Execute a command in instance(s).</li>",
           "example": "SCALE_OUT",
           "member": "string",
           "name": "ActivityType",
@@ -481,7 +488,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the scaling activity.",
+          "document": "Start time of the auto scaling activity in UTC standard time.",
           "example": "2024-11-12T05:30:21Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -491,7 +498,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the scaling activity.",
+          "document": "End time of the scaling activity in UTC standard time.",
           "example": "2024-11-12T05:30:21Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -501,7 +508,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the scaling activity.",
+          "document": "Create time of the scaling activity in UTC standard time.",
           "example": "2024-11-12T05:30:21Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -541,8 +548,8 @@
         },
         {
           "disabled": false,
-          "document": "Detailed description of scaling activity status",
-          "example": "[{\"Code\": \"CvmCreationFailed\", \"Zone\": \"ap-beijing-5\", \"InstanceId\": \"ins-qfcgbumb\", \"InstanceChargeType\": \"PREPAID\", \"SubnetId\": \"subnet-opywjlrx\", \"Message\": \"Failed to launch instance `ins-qfcgbumb`. Instance type: `GNV4.12XLARGE176`, Subnet: `subnet-opywjlrx`, Zone: `ap-beijing-5`, LatestOperationCode: `ResourceInsufficient`.\", \"InstanceType\": \"GNV4.12XLARGE176\"}]",
+          "document": "Detailed description of the scaling activity status",
+          "example": "无",
           "member": "DetailedStatusMessage",
           "name": "DetailedStatusMessageSet",
           "output_required": true,
@@ -561,7 +568,7 @@
         },
         {
           "disabled": false,
-          "document": "Information set of the instances related to the scaling activity.",
+          "document": "Related instance information set of the scaling activity.",
           "example": " [{\"InstanceId\": \"ins-qdve9yyr\", \"InstanceStatus\": \"SUCCESSFUL\"}]",
           "member": "RelatedInstance",
           "name": "RelatedInstanceSet",
@@ -649,7 +656,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -658,7 +665,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instance IDs",
+          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -695,7 +702,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -704,7 +711,7 @@
         },
         {
           "disabled": false,
-          "document": "List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "document": "Specifies a list of classic clb ids. each scaling group can bind a maximum of 20 classic clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[\"lb-crhgatrf\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -713,7 +720,7 @@
         },
         {
           "disabled": false,
-          "document": "List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "document": "Specifies the list of load balancers. each scaling group can bind a maximum of 100 application clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -956,7 +963,7 @@
         },
         {
           "disabled": false,
-          "document": "Termination policy",
+          "document": "Destruction policy. valid values are as follows:.\n<Li>OLDEST_INSTANCE: terminate the oldest instance in the scaling group first, default value.</li>.\n<Li>NEWEST_INSTANCE: terminate the newest instance in the scaling group first.</li>.",
           "example": "OLDEST_INSTANCE",
           "member": "string",
           "name": "TerminationPolicySet",
@@ -966,7 +973,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "VPC ID.",
           "example": "vpc-h3cd5td5",
           "member": "string",
           "name": "VpcId",
@@ -986,7 +993,7 @@
         },
         {
           "disabled": false,
-          "document": "Retry policy",
+          "document": "Retry policy. a partially successful scaling operation is considered a failed activity. valid values are as follows:.\n<Li>IMMEDIATE_RETRY: default value, means retry immediately, attempting retries in rapid succession over a short period. cease further retries after a certain number of consecutive failures (5).</li>.\n<Li>INCREMENTAL_INTERVALS: specifies incremental interval retry. with the number of consecutive failures, the retry interval gradually increases. the first 10 retries are quick retry, and the follow-up retry interval gradually expands to 10 minutes, 30 minutes, 60 minutes, and one day.</li>.\n<Li>NO_RETRY: there will be no retry until another user call or Alarm information is received.</li>.",
           "example": "NO_RETRY",
           "member": "string",
           "name": "RetryPolicy",
@@ -1026,7 +1033,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of IPv6 addresses that an instance has.",
+          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
           "name": "Ipv6AddressCount",
@@ -1056,7 +1063,7 @@
         },
         {
           "disabled": false,
-          "document": "Grace period of the CLB health check",
+          "document": "Grace period of the CLB health check. the scaled-out instances IN `IN_SERVICE` will not be marked as `CLB_UNHEALTHY` within the specified time range.\nDefault value: 0. value range: [0, 7200]. measurement unit: seconds.",
           "example": "300",
           "member": "uint64",
           "name": "LoadBalancerHealthCheckGracePeriod",
@@ -1096,7 +1103,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name sequencing settings.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance name sequencing settings.",
           "example": "{\"BeginIndex\": 0, \"Enabled\": true}",
           "member": "InstanceNameIndexSettings",
           "name": "InstanceNameIndexSettings",
@@ -1142,7 +1149,7 @@
           "example": "asg-19kw47wk",
           "member": "string",
           "name": "AutoScalingGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1152,17 +1159,17 @@
           "example": "[\"12529\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of notification events.",
+          "document": "Notification event list. valid values are as follows:.\n<Li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>.\n<Li>SCALE_OUT_FAILED: scale-out failed</li>.\n<Li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>.\n<Li>SCALE_IN_FAILED: scale-in failed</li>.\n<Li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>.\n<Li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>.",
           "example": "[\"SCALE_OUT_SUCCESSFUL\"]",
           "member": "string",
           "name": "NotificationTypes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1172,37 +1179,37 @@
           "example": "asn-6r4waxc4",
           "member": "string",
           "name": "AutoScalingNotificationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Notification receiver type.",
+          "document": "Notification receiver type. valid values:.\nUSER_GROUP: specifies the user group.\nTDMQ_CMQ_TOPIC: tdmq for cmq topic.\nTDMQ_CMQ_QUEUE: specifies the tdmq cmq queue.\n`CMQ_QUEUE`: cmq queue. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). unable to select.\nCMQ_TOPIC: cmq topic. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1), unable to select.",
           "example": "USER_GROUP",
           "member": "string",
           "name": "TargetType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CMQ queue name.",
+          "document": "TDMQ CMQ queue name.",
           "example": "test-queue",
           "member": "string",
           "name": "QueueName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CMQ topic name.",
+          "document": "TDMQ CMQ topic name.",
           "example": "test-topic",
           "member": "string",
           "name": "TopicName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1214,7 +1221,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-u7dy6t5r",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -1223,7 +1230,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity ID.",
+          "document": "Refresh activity ID. you can obtain the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.",
           "example": "asr-dhwt6r54",
           "member": "string",
           "name": "RefreshActivityId",
@@ -1250,7 +1257,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Launch configuration ID",
+          "document": "Launch configuration ID. obtain in the following ways:.\n<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.\n<li>Get the launch configuration ID by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.",
           "example": "asc-w37yt5r4",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -1331,7 +1338,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Lifecycle hook ID",
+          "document": "Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the `LifecycleHookId` from the returned information.",
           "example": "ash-fbjiexz7",
           "member": "string",
           "name": "LifecycleHookId",
@@ -1340,7 +1347,7 @@
         },
         {
           "disabled": false,
-          "document": "Result of the lifecycle action. Value range: \"CONTINUE\", \"ABANDON\"",
+          "document": "Describes the result of the lifecycle action. valid values are as follows:.\n<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.\n<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or moved; for scale-in hooks, scale-in activities will continue.</li>.",
           "example": "CONTINUE",
           "member": "string",
           "name": "LifecycleActionResult",
@@ -1349,7 +1356,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID. Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
+          "document": "One of the parameters `InstanceId` or `LifecycleActionToken` is required. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.",
           "example": "ins-ni8bpmve",
           "member": "string",
           "name": "InstanceId",
@@ -1358,7 +1365,7 @@
         },
         {
           "disabled": false,
-          "document": "Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
+          "document": "Lifecycle action token. specifies that one of `InstanceId` or `LifecycleActionToken` must be filled.\nThe method for accessing the parameter is as follows: when the hook of the `NotificationTarget` parameter is triggered, deliver a message containing the token to the message queue specified in the `NotificationTarget` parameter. the message queue consumer can obtain the token from the message.",
           "example": "34b59a82-6435-4516-90db-c98aeb46769b",
           "member": "string",
           "name": "LifecycleActionToken",
@@ -1394,7 +1401,7 @@
         },
         {
           "disabled": false,
-          "document": "The instance ID.",
+          "document": "Instance ID. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.",
           "example": "ins-aaaabbbb",
           "member": "string",
           "name": "InstanceId",
@@ -1403,7 +1410,7 @@
         },
         {
           "disabled": false,
-          "document": "The minimum number of instances. Value range: 0-2000.",
+          "document": "Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.",
           "example": "1",
           "member": "int64",
           "name": "MinSize",
@@ -1412,7 +1419,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of instances. Value range: 0-2000.",
+          "document": "Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "1",
           "member": "int64",
           "name": "MaxSize",
@@ -1421,7 +1428,7 @@
         },
         {
           "disabled": false,
-          "document": "The desired capacity. Its value must be greater than the minimum and smaller than the maximum.",
+          "document": "Expected number of instances, value ranges from 0 to 2000, default value equals current MinSize, to meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "1",
           "member": "int64",
           "name": "DesiredCapacity",
@@ -1449,7 +1456,7 @@
           "example": "asg-aaaabbbb",
           "member": "string",
           "name": "AutoScalingGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1476,7 +1483,7 @@
         },
         {
           "disabled": false,
-          "document": "Launch configuration ID",
+          "document": "Launch configuration ID. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or making an api call to [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.",
           "example": "asc-aaaabbbb",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -1485,7 +1492,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of instances. Value range: 0-2,000.",
+          "document": "Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "1",
           "member": "uint64",
           "name": "MaxSize",
@@ -1494,7 +1501,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum number of instances. Value range: 0-2,000.",
+          "document": "Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.",
           "example": "1",
           "member": "uint64",
           "name": "MinSize",
@@ -1503,7 +1510,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID; if on a basic network, enter an empty string",
+          "document": "vpc ID. a valid vpc ID can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc). you can also call the api DescribeVpc (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) and obtain it from the VpcId field in the api response.",
           "example": "vpc-uhygtf56",
           "member": "string",
           "name": "VpcId",
@@ -1512,7 +1519,7 @@
         },
         {
           "disabled": false,
-          "document": "Default cooldown period in seconds. Default value: 300",
+          "document": "Default cooldown period in seconds. default value: 300. value range: [0,3600].",
           "example": "300",
           "member": "uint64",
           "name": "DefaultCooldown",
@@ -1521,7 +1528,7 @@
         },
         {
           "disabled": false,
-          "document": "Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances",
+          "document": "The expected number of instances, in the range of [0,2000], default value equals current MinSize, and must meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "1",
           "member": "uint64",
           "name": "DesiredCapacity",
@@ -1530,7 +1537,7 @@
         },
         {
           "disabled": false,
-          "document": "List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
+          "document": "A list of classic load balancer ids with a current maximum length of 20. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[\"lb-uhygtf56\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -1539,7 +1546,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID of an instance in a scaling group. The default project is used if it’s left blank.",
+          "document": "Project ID of the instance within the scaling group. default value is 0, indicates usage of the default project. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `projectId` field in the return value.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -1548,7 +1555,7 @@
         },
         {
           "disabled": false,
-          "document": "List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "document": "Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time.",
           "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -1557,7 +1564,7 @@
         },
         {
           "disabled": false,
-          "document": "List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.",
+          "document": "The subnet ID list must specify a subnet in VPC scenarios. multiple subnets are attempted sequentially based on the fill-in order as priority until successful instance creation. effective VPC subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/VPC/subnet) or obtained from the SubnetId field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1).",
           "example": "[\"subnet-uhygtf56\"]",
           "member": "string",
           "name": "SubnetIds",
@@ -1602,7 +1609,7 @@
         },
         {
           "disabled": false,
-          "document": "List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.",
+          "document": "List of Tag descriptions. by specifying this parameter, you can bind tags to a scaling group and corresponding resource instances. each scaling group supports up to 30 tags. you can call the [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) API to retrieve existing Tag key-value pairs based on the response.",
           "example": "[{\"Key\": \"Service_B\", \"Value\": \"pss3\", \"ResourceType\": \"auto-scaling-group\"}]",
           "member": "Tag",
           "name": "Tags",
@@ -1620,7 +1627,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0.",
+          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "Ipv6AddressCount",
@@ -1738,7 +1745,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID of the launch configuration. The default project is used if it is left blank.\nNote that this project ID is not the same as the project ID of the scaling group. ",
+          "document": "Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).\nNote: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.",
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
@@ -1837,7 +1844,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.",
+          "document": "Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.\nThe `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
           "example": "[\"S5.MEDIUM2\", \"S6.MEDIUM2\"]",
           "member": "string",
           "name": "InstanceTypes",
@@ -1846,7 +1853,7 @@
         },
         {
           "disabled": false,
-          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "document": "CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
           "example": "CVM_QcsRole",
           "member": "string",
           "name": "CamRoleName",
@@ -1855,7 +1862,7 @@
         },
         {
           "disabled": false,
-          "document": "InstanceType verification policy, whose valid values include ALL and ANY, with the default value being ANY.\n<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>\n<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>\n\nCommon reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.\nIf a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.",
+          "document": "Instance type validation policy. valid values include ALL and ANY. default value: ANY. this parameter is valid only when the InstanceTypes parameter contains multiple instance types.\n<li>ALL: verification passes if ALL instancetypes are available; otherwise, a verification error will be reported.</li>.\n<li>ANY: verification passes if ANY InstanceType is available; otherwise, a verification error will be reported.</li>.\n\nCommon reasons for unavailable instancetypes include the instancetype being sold out and the corresponding cloud disk being sold out.\nIf a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.",
           "example": "ANY",
           "member": "string",
           "name": "InstanceTypesCheckPolicy",
@@ -1918,7 +1925,7 @@
         },
         {
           "disabled": false,
-          "document": "HPC ID<br>\nNote: This field is default to empty",
+          "document": "High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.\nNote: this field is empty by default.",
           "example": "hpc-gt4es2q1",
           "member": "string",
           "name": "HpcClusterId",
@@ -1945,7 +1952,7 @@
         },
         {
           "disabled": false,
-          "document": "Image family name. Either image ID or image family name should be filled in, and only one of which can be filled.",
+          "document": "Image family name. one and only one must be filled in between image Id and image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.",
           "example": "test-family",
           "member": "string",
           "name": "ImageFamily",
@@ -1954,7 +1961,7 @@
         },
         {
           "disabled": false,
-          "document": "CDC ID.",
+          "document": "Local exclusive cluster ID. this parameter can be obtained through the [DescribeDedicatedClusters](https://intl.cloud.tencent.com/document/product/1346/73758?from_cn_redirect=1) api.",
           "example": "cluster-gbo27yc4",
           "member": "string",
           "name": "DedicatedClusterId",
@@ -2000,7 +2007,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-8fbozqja",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2018,7 +2025,7 @@
         },
         {
           "disabled": false,
-          "document": "Scenario for the lifecycle hook. Valid values: \"INSTANCE_LAUNCHING\" and \"INSTANCE_TERMINATING\"",
+          "document": "Scenario for performing the lifecycle hook. valid values:.\n<Li>`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.</li>.\n<Li>`INSTANCE_TERMINATING`: scaling in lifecycle hook</li>.",
           "example": "INSTANCE_LAUNCHING",
           "member": "string",
           "name": "LifecycleTransition",
@@ -2027,7 +2034,7 @@
         },
         {
           "disabled": false,
-          "document": "Defined actions when lifecycle hook times out. Valid values: \"CONTINUE\" and \"ABANDON\". Default value: \"CONTINUE\"",
+          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.\n<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.\n<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or removed. for scale-in hooks, scale-in activities will continue.</li>.",
           "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
@@ -2045,7 +2052,7 @@
         },
         {
           "disabled": false,
-          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\"). Up to 1024 characters are allowed.",
+          "document": "Additional information of a notification that auto scaling sends to targets. this parameter is set when you configure a notification (default value: \"\"), with a maximum length of 1024 characters. NotificationMetadata and LifecycleCommand are mutually exclusive, and either can be specified.",
           "example": "addtional-info",
           "member": "string",
           "name": "NotificationMetadata",
@@ -2063,7 +2070,7 @@
         },
         {
           "disabled": false,
-          "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. ",
+          "document": "Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.\n`EXTENSION`: the lifecycle hook will be triggered when calling [AttachInstances](https://intl.cloud.tencent.com/document/api/377/20441?from_cn_redirect=1), [DetachInstances](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1), [removeinstances](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1), [StopAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40286?from_cn_redirect=1), [StartAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40287?from_cn_redirect=1), or [StartInstanceRefresh](https://intl.cloud.tencent.com/document/api/377/99172?from_cn_redirect=1). `NORMAL`: the lifecycle hook is not triggered by these apis.",
           "example": "NORMAL",
           "member": "string",
           "name": "LifecycleTransitionType",
@@ -2072,7 +2079,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
+          "document": "Specifies the remote command execution object. NotificationTarget and NotificationMetadata are mutually exclusive with this parameter. either cannot be specified simultaneously.",
           "example": "{\"CommandId\": \"cmd-am4e3hd8\", \"Parameters\": \"{123: 222}\"}",
           "member": "LifecycleCommand",
           "name": "LifecycleCommand",
@@ -2109,7 +2116,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2127,7 +2134,7 @@
         },
         {
           "disabled": false,
-          "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
+          "document": "Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when TargetType is USER_GROUP.",
           "example": "[\"1678\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
@@ -2136,7 +2143,7 @@
         },
         {
           "disabled": false,
-          "document": "Notification receiver type. Valid values:\n<br><li>USER_GROUP:User group\n<br><li>CMQ_QUEUE:CMQ queue\n<br><li>CMQ_TOPIC:CMQ topic\n<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic\n<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue\n\nDefault value: `USER_GROUP`.",
+          "document": "Notification receiver type. values as follows:.\n<Li>USER_GROUP: user group</li>.\n<Li>TDMQ_CMQ_TOPIC: tdmq cmq topic</li>.\n<Li>TDMQ_CMQ_QUEUE: tdmq cmq queue</li>.\n<li>CMQ_QUEUE: CMQ QUEUE. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended.</li>.\n<li>CMQ_TOPIC: specifies the CMQ TOPIC. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, TDMQ CMQ is recommended for use.</li>.\n\nDefault value: `USER_GROUP`.",
           "example": "USER_GROUP",
           "member": "string",
           "name": "TargetType",
@@ -2145,7 +2152,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.",
+          "document": "TDMQ CMQ QUEUE name. this field is required if TargetType value is `TDMQ_CMQ_QUEUE`.",
           "example": "queue",
           "member": "string",
           "name": "QueueName",
@@ -2154,7 +2161,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.",
+          "document": "TDMQ CMQ TOPIC name. this field is required when `TargetType` is `TDMQ_CMQ_TOPIC`.",
           "example": "topic",
           "member": "string",
           "name": "TopicName",
@@ -2173,7 +2180,7 @@
           "example": "asn-2sestqbr",
           "member": "string",
           "name": "AutoScalingNotificationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2191,7 +2198,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2200,7 +2207,7 @@
         },
         {
           "disabled": false,
-          "document": "Alarm trigger policy name.",
+          "document": "The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal points.",
           "example": "cpu_policy_test",
           "member": "string",
           "name": "ScalingPolicyName",
@@ -2209,7 +2216,7 @@
         },
         {
           "disabled": false,
-          "document": "Scaling policy type. Valid values: <br><li>`SIMPLE` (default): A simple policy</li><li>`TARGET_TRACKING`: A target tracking policy</li>.",
+          "document": "Alarm trigger policy type. default: SIMPLE. valid values:.\n<Li>`SIMPLE`: a simple policy.</li>.\n<Li>`TARGET_TRACKING`: a target tracking policy.</li>.",
           "example": "SIMPLE",
           "member": "string",
           "name": "ScalingPolicyType",
@@ -2218,7 +2225,7 @@
         },
         {
           "disabled": false,
-          "document": "The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>",
+          "document": "After an Alarm is triggered, specifies the method for modifying the expected number of instances. required in the scenario of simple policies. valid values:.\n<Li>CHANGE_IN_CAPACITY: increase or decrease the expected number of instances</li>.\n<Li>EXACT_CAPACITY: adjust to the expected number of instances</li>.\n<Li>PERCENT_CHANGE_IN_CAPACITY: adjust expected instance number by percent</li>.",
           "example": "CHANGE_IN_CAPACITY",
           "member": "string",
           "name": "AdjustmentType",
@@ -2227,7 +2234,7 @@
         },
         {
           "disabled": false,
-          "document": "Adjustment value for the expected number of instances after an alarm is triggered, which is applicable only to simple policies.\n<li>When AdjustmentType is set to CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, while a negative value indicates a decrease in the number of instances after the alarm is triggered.</li>\n<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the alarm is triggered. It should be greater than or equal to 0.</li>\n<li>When AdjustmentType is set to PERCENT_CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances by a percentage after the alarm is triggered, while a negative value indicates a decrease in the number of instances by a percentage after the alarm is triggered. Unit: %.</li>",
+          "document": "Adjustment value for the expected number of instances after an Alarm is triggered, which is applicable only to simple policies and required in simple policy scenarios.\n<li>When AdjustmentType is CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase IN instances after Alarm trigger, while a negative value indicates a decrease IN instances after Alarm trigger.</li>. \n<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the Alarm is triggered. it must be at least 0.</li>. \n<li>When AdjustmentType is set to PERCENT_CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances by a percentage after the alarm is triggered, while a negative value indicates a decrease in the number of instances by a percentage after the alarm is triggered. Unit: %.</li>",
           "example": "1",
           "member": "int64",
           "name": "AdjustmentValue",
@@ -2245,7 +2252,7 @@
         },
         {
           "disabled": false,
-          "document": "Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.",
+          "document": "Alarm monitoring metric, apply only to simple policies, required in the scenario of simple policy.",
           "example": "{\"ComparisonOperator\": \"GREATER_THAN\", \"ContinuousTime\": 1, \"MetricName\": \"CPU_UTILIZATION\", \"Period\": 60, \"Statistic\": \"AVERAGE\", \"Threshold\": 15}",
           "member": "MetricAlarm",
           "name": "MetricAlarm",
@@ -2254,7 +2261,7 @@
         },
         {
           "disabled": false,
-          "document": "Predefined monitoring item, applicable only to target tracking policies. Valid values:\n<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>\n<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>\n<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>\n<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>\n<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>",
+          "document": "Predefined monitoring item, applicable only to target tracking policies. required in the scenario. value range:.\n<Li>ASG_AVG_CPU_UTILIZATION: average cpu utilization</li>.\n<Li>ASG_AVG_LAN_TRAFFIC_OUT: specifies the average outbound private network bandwidth.</li>.\n<Li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>.\n<Li>ASG_AVG_WAN_TRAFFIC_OUT: specifies the average outbound public network bandwidth.</li>.\n<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>",
           "example": "ASG_AVG_CPU_UTILIZATION",
           "member": "string",
           "name": "PredefinedMetricType",
@@ -2263,7 +2270,7 @@
         },
         {
           "disabled": false,
-          "document": "Target value, which is applicable only to target tracking policies.\n<li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>\n<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>\n<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>\n<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>\n<li>ASG_AVG_WAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>",
+          "document": "Target value, applicable only to the target tracking policy, required in the scenario.\n<Li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>.\n<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.\n<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>.\n<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.\n<li>ASG_AVG_WAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>",
           "example": "10",
           "member": "uint64",
           "name": "TargetValue",
@@ -2327,7 +2334,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-2nr9xh8h",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2390,7 +2397,7 @@
         },
         {
           "disabled": false,
-          "document": "Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.",
+          "document": "The repeating mode of a scheduled task follows the standard Cron format. the [Recurrence parameter limits](https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) in a scheduled task consist of 5 fields separated by spaces, with the structure: minute, hour, date, month, week. this parameter must be simultaneously specified with `EndTime`.",
           "example": "0 14 */1 * *",
           "member": "string",
           "name": "Recurrence",
@@ -2427,7 +2434,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data disk type. For restrictions on the data disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:\n<li>LOCAL_BASIC: Local Disk.</li>\n<li>LOCAL_SSD: Local SSD.</li>\n<li>CLOUD_BASIC: Basic Cloud Disk.</li>\n<li>CLOUD_PREMIUM: Premium Disk.</li>\n<li>CLOUD_SSD: Cloud SSD.</li>\n<li>CLOUD_HSSD: Enhanced SSD.</li>\n<li>CLOUD_TSSD: Tremendous SSD.</li>\nThe default value is consistent with the system disk type (SystemDisk.DiskType).",
+          "document": "Data disk type. for restrictions on data disk types, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.\n<Li>LOCAL_BASIC: local hard disk.</li>.\n<Li>LOCAL_SSD: local ssd.</li>.\n<Li>CLOUD_BASIC: general cloud disk.</li>.\n<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.\n<Li>CLOUD_SSD: cloud ssd</li>.\n<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.\n<Li>CLOUD_TSSD: ultra ssd.</li>.\n<Li>CLOUD_BSSD: universal ssd cloud disk</li>.\nThe default value is consistent with the system disk type (SystemDisk.DiskType).",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
@@ -2438,7 +2445,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk size, in GB. The minimum adjustment step size is 10 GB. The value range varies according to the data disk type. For specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Default value: 0, which means that no data disk is purchased. For more restrictions, see the product documentation.",
+          "document": "Data disk size, in GB. the value range varies according to the data disk type. for specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). default value: 0, which means no data disk is purchased. for more restrictions, see the [product documentation](https://intl.cloud.tencent.com/document/product/362/5145?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
           "name": "DiskSize",
@@ -2449,7 +2456,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk snapshot ID, such as `snap-l8psqwnt`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The data disk snapshot ID can be obtained through the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) api.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "snap-l8psqwnt",
           "member": "string",
           "name": "SnapshotId",
@@ -2493,7 +2500,7 @@
         },
         {
           "disabled": false,
-          "document": "Burst performance: Whether to enable burst performance. The default value is false.\n\nNote: This feature is in beta test and requires a ticket to be submitted for usage.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Burst performance. specifies whether to enable burst performance. default value is false. this parameter only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity > 460GB.\nNote: this feature is in beta test and requires a ticket to be submitted for usage.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "BurstPerformance",
@@ -2510,7 +2517,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2537,8 +2544,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the launch configuration to be deleted.",
-          "example": "asc-aaaabbbb",
+          "document": "Specifies the launch configuration ID that needs to be deleted. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.",
+          "example": "asc-deuy6tre",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -2564,7 +2571,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Lifecycle hook ID",
+          "document": "Lifecycle hook ID. calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information obtains the lifecycle hook ID.",
           "example": "ash-5rynk2n5",
           "member": "string",
           "name": "LifecycleHookId",
@@ -2591,7 +2598,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the notification to be deleted.",
+          "document": "The notification ID to be deleted. this is currently a required parameter. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and retrieving the AutoScalingNotificationId from the returned information.",
           "example": "asn-2sestqbr",
           "member": "string",
           "name": "AutoScalingNotificationId",
@@ -2618,7 +2625,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the alarm policy to be deleted.",
+          "document": "The Alarm policy ID to be deleted. you can obtain the Alarm policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1) and retrieving the AutoScalingPolicyId from the returned information.",
           "example": "asp-lnfqbsoq",
           "member": "string",
           "name": "AutoScalingPolicyId",
@@ -2645,7 +2652,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the scheduled task to be deleted.",
+          "document": "Scheduled task ID to be deleted. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.",
           "example": "asst-chwbkq4c",
           "member": "string",
           "name": "ScheduledActionId",
@@ -2738,7 +2745,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>\n<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>\n<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.",
+          "document": "Filter criteria. the filter field value ranges from...to.\n<ul>\n<li><strong>auto-scaling-group-id</strong><ul><li>Filter by [<strong>scaling group id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) or call the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) to obtain the scaling group id from the returned information.</li><li>type: String</li><li>required: no</li><li>example value: asg-kiju7yt5</li></ul></li>  <li><strong>activity-status-code</strong><ul><li>filter by [<strong>scaling activity status</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>INIT: initializing</li><li>RUNNING: RUNNING</li><li>SUCCESSFUL: SUCCESSFUL activity</li><li>PARTIALLY_SUCCESSFUL: PARTIALLY SUCCESSFUL activity</li><li>FAILED: activity FAILED</li><li>CANCELLED: activity CANCELLED</li></ul></ul></li>  <li><strong>activity-type</strong><ul><li>filter by [<strong>scaling activity type</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>SCALE_OUT: SCALE-OUT activity</li><li>SCALE_IN: SCALE-IN activity</li><li>ATTACH_INSTANCES: adding INSTANCES</li><li>REMOVE_INSTANCES: terminating INSTANCES</li><li>DETACH_INSTANCES: REMOVE INSTANCE</li><li>TERMINATE_INSTANCES_UNEXPECTEDLY: TERMINATE INSTANCE IN CVM console</li><li>REPLACE_UNHEALTHY_INSTANCE: REPLACE UNHEALTHY INSTANCES</li><li>START_INSTANCES: START INSTANCES</li><li>STOP_INSTANCES: shut down INSTANCE</li><li>INVOKE_COMMAND: execute COMMAND</li></ul></ul></li>  <li><strong>activity-id</strong><ul><li>filter by [<strong>scaling activity id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) to obtain the scaling activity id.</li><li>type: String</li><li>required: no</li><li>example value: asa-hy6tr4ed</li></ul></li></ul>.\nThe maximum number of `Filters` per request is 10. the upper limit for `Filter.Values` is 5. parameters must not specify both `ActivityIds` and `Filters` simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-mgmeawez\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -2821,7 +2828,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of scaling groups to be queried. Upper limit: 100.",
+          "document": "The scaling group list to be queried, with an upper limit of 100. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
           "example": "[\"asg-2pvrsyog\", \"asg-4wtj6aeq\"]",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -2858,7 +2865,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID list of auto scaling groups.",
+          "document": "Auto scaling group ID list. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving AutoScalingGroupId from the returned information.",
           "example": "[\"asg-2umy3jbd\"]",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -2913,7 +2920,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>\n<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.",
+          "document": "Filter criteria\n\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.\nSpecifies the scaling group ID obtained by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.\n<li> auto-scaling-group-name - String - required: no - (filter) filter by auto scaling group name.</li>.\n<li> vague-auto-scaling-group-name - String - required: no - (filter) filter by scaling group name fuzzy search.</li>.\n<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration id. you can obtain the launch configuration id by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.\n<li> `tag-key` - String - optional - filter by the tag key. you can call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the tag key from the returned information.</li>.\n<li>tag-value - String - required: no - (filter condition) filter by tag value. you can obtain the tag value by calling the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) and retrieving the TagValue from the returned information.</li>.\n<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key. see example 2 for reference. call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the TagKey from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingGroupIds` and `Filters` parameters cannot be specified simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-name\", \"Values\": [\"production-as\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -2947,7 +2954,7 @@
         {
           "disabled": false,
           "document": "List of auto scaling group details.",
-          "example": "[{\"InActivityStatus\": \"NOT_IN_ACTIVITY\", \"LoadBalancerIdSet\": [], \"RetryPolicy\": \"IMMEDIATE_RETRY\", \"InServiceInstanceCount\": 0, \"CreatedTime\": \"2022-03-19T04:39:52Z\", \"VpcId\": \"vpc-nqayns0m\", \"InstanceAllocationPolicy\": \"LAUNCH_CONFIGURATION\", \"Tags\": [], \"LaunchConfigurationId\": \"asc-rgrdh183\",\"MaxSize\": 500, \"MultiZoneSubnetPolicy\": \"EQUALITY\", \"SubnetIdSet\": [\"subnet-d9gneeoz\",], \"HealthCheckType\": \"CLB\", \"LoadBalancerHealthCheckGracePeriod\": 0, \"ForwardLoadBalancerSet\": [], \"ProjectId\": 0, \"AutoScalingGroupName\": \"tke-np-w\", \"MinSize\": 0, \"ServiceSettings\": {\"ReplaceMonitorUnhealthy\": false, \"ReplaceLoadBalancerUnhealthy\": false, \"ReplaceMode\": \"RECREATE\", \"ScalingMode\": \"CLASSIC_SCALING\"}, \"LaunchConfigurationName\": \"tke-np-ww\", \"CapacityRebalance\": false, \"TerminationPolicySet\": [\"OLDEST_INSTANCE\"], \"AutoScalingGroupStatus\": \"NORMAL\", \"InstanceCount\": 0, \"DesiredCapacity\": 0, \"AutoScalingGroupId\": \"asg-07tasrpr\", \"Ipv6AddressCount\": 0, \"DefaultCooldown\": 300, \"EnabledStatus\": \"ENABLED\", \"ZoneSet\": []}]",
+          "example": "无",
           "member": "AutoScalingGroup",
           "name": "AutoScalingGroupSet",
           "output_required": true,
@@ -2978,7 +2985,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.",
+          "document": "IDs of the CVM instances to query. the instance ID list has a length limit of 100. `InstanceIds` and `Filters` cannot be specified simultaneously.\nYou can get available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
           "example": "[\"ins-1fswxz1m\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -2987,7 +2994,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter.\n<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.",
+          "document": "Filter criteria\n\n<li> instance-id - String - required: no - (filter condition) filter by instance id. get the instance id by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1), and retrieve the `InstanceId` from the returned information.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. parameters do not support specifying both `InstanceIds` and `Filters`.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-ewdpp04x\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3021,7 +3028,7 @@
         {
           "disabled": false,
           "document": "List of instance details.",
-          "example": "[{\"ProtectedFromScaleIn\": true, \"Zone\": \"sa-saopaulo-1\", \"CreationType\": \"AUTO_CREATION\", \"AutoScalingGroupId\": \"asg-f7rsts7d\", \"AddTime\": \"2024-07-25T13:16:42Z\", \"WarmupStatus\": \"NO_NEED_WARMUP\", \"LaunchConfigurationId\": \"asc-m4usv5o3\", \"AutoScalingGroupName\": \"tke-np-ss\", \"InstanceId\": \"ins-kajsxfzp\", \"VersionNumber\": 1, \"HealthStatus\": \"HEALTHY\", \"LifeCycleState\": \"IN_SERVICE\", \"LaunchConfigurationName\": \"tke-np-sd\", \"InstanceType\": \"S5.2XLARGE32\"}]",
+          "example": "无",
           "member": "Instance",
           "name": "AutoScalingInstanceSet",
           "output_required": true,
@@ -3200,7 +3207,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
+          "document": "Query by one or more notification ids. the list length limit is 100. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). parameters AutoScalingNotificationIds and Filters must not be specified simultaneously.",
           "example": "[\"asn-9bhwvxqh\"]",
           "member": "string",
           "name": "AutoScalingNotificationIds",
@@ -3209,7 +3216,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter.\n<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
+          "document": "Filter criteria\n\n<li> auto-scaling-notification-id - String - required: no - (filter) filter by notification id.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingNotificationIds` and `Filters` parameters cannot be specified simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-hyfg539t\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3253,7 +3260,7 @@
         {
           "disabled": false,
           "document": "List of AS event notification details.",
-          "example": "[{\"TargetType\": \"USER_GROUP\", \"EnvironmentId\": \"\", \"AutoScalingGroupId\": \"asg-nimsv934\", \"ClusterId\": \"\", \"AutoScalingNotificationId\": \"asn-5wswisk2\", \"NotificationTypes\": [\"SCALE_OUT_FAILED\", \"SCALE_IN_SUCCESSFUL\", \"REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL\", \"REPLACE_UNHEALTHY_INSTANCE_FAILED\", \"SCALE_IN_FAILED\", \"SCALE_OUT_SUCCESSFUL\"], \"QueueName\": \"\", \"NotificationUserGroupIds\": [\"10000079\"], \"TopicName\": \"\"}]",
+          "example": "无",
           "member": "AutoScalingNotification",
           "name": "AutoScalingNotificationSet",
           "output_required": true,
@@ -3283,7 +3290,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria\n\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> refresh-activity-status-code - String - Required: No - (Filter)Filter based on refresh activity status. (INIT: Initialization | RUNNING:Running | SUCCESSFUL: Successful Activity | FAILED_PAUSE: Failed & Paused | AUTO_PAUSE: Auto Paused | MANUAL_PAUSE: Manually Paused | CANCELLED: Activity Cancelled | FAILED: Activity Failed)</li>\n<li> refresh-activity-type - String - Required: No - (Filter) Filter by refresh activity types. (NORMAL: Regular Refresh Activity | ROLLBACK: Rollback Refresh Activity)</li>\n<li> refresh-activity-id - String - Required: No - (Filter) Filter by refresh activity ID.</li>\n<li>The upper limit of Filters per request is 10, and that of Filter.Values is 5. The RefreshActivityIds and Filters parameters cannot be specified at the same time.</li>",
+          "document": "Filter criteria\n\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\n<li> refresh-activity-status-code - String - required: no - (filter criteria) filters by refresh activity status. (INIT: initializing | RUNNING: RUNNING | SUCCESSFUL: activity SUCCESSFUL | FAILED_PAUSE: PAUSE on failure | AUTO_PAUSE: AUTO PAUSE | MANUAL_PAUSE: manually PAUSE | CANCELLED: activity CANCELLED | FAILED: activity FAILED)</li>.\n<li> refresh-activity-type - String - required: no - (filter) filter by refresh activity types. (NORMAL: regular refresh activity | ROLLBACK: ROLLBACK refresh activity)</li>.\n<li> refresh-activity-id - String - required: no - (filter) filter by refresh activity id.</li>.\n<li>The upper limit of Filters per request is 10, and that of Filter.Values is 5. The RefreshActivityIds and Filters parameters cannot be specified at the same time.</li>",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-ewdpp04x\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3327,7 +3334,7 @@
         {
           "disabled": false,
           "document": "A collection of information about refresh activities that meet the conditions.",
-          "example": "[{\"Status\": \"SUCCESSFUL\", \"RefreshBatchSet\": [{\"RefreshBatchNum\": 1, \"EndTime\": \"2024-11-06T19:01:08Z\", \"RefreshBatchRelatedInstanceSet\": [{\"InstanceId\": \"ins-me0846cu\", \"InstanceStatusMessage\": \"success\", \"LastActivityId\": \"asa-8ayecku8\", \"InstanceStatus\": \"SUCCESSFUL\"}], \"StartTime\": \"2024-11-06T19:00:14Z\", \"RefreshBatchStatus\": \"SUCCESSFUL\"}], \"RefreshMode\": \"ROLLING_UPDATE_RESET\", \"AutoScalingGroupId\": \"asg-7nfe25uy\", \"ActivityType\": \"NORMAL\", \"RefreshSettings\": {\"CheckInstanceTargetHealth\": true, \"RollingUpdateSettings\": {\"BatchNumber\": 1, \"MaxSurge\": 1, \"BatchPause\": \"AUTOMATIC\"}}, \"OriginRefreshActivityId\": \"\", \"CurrentRefreshBatchNum\": 1, \"RefreshActivityId\": \"asr-1pex1gkq\", \"StartTime\": \"2024-11-06T18:59:20Z\", \"CreatedTime\": \"2024-11-06T18:59:20Z\", \"EndTime\": \"2024-11-06T19:01:15Z\"}]",
+          "example": "无",
           "member": "RefreshActivity",
           "name": "RefreshActivitySet",
           "output_required": true,
@@ -3357,7 +3364,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters.\n<li> `auto-scaling-policy-id` - String - Optional - Filter by the alarm policy ID.</li>\n<li> `auto-scaling-group-id` - String - Optional - Filter by the scaling group ID.</li>\n<li> `scaling-policy-name` - String - Optional - Filter by the alarm policy name.</li>\n<li> `scaling-policy-type` - String - Optional - Filter by the alarm policy type. Valid values: `SIMPLE`, `TARGET_TRACKING`.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. You cannot specify `AutoScalingPolicyIds` and `Filters` at the same time.",
+          "document": "Filter criteria\n\n<li> auto-scaling-policy-id - String - required: no - (filter) filter by alert policy id.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\n<li>scaling-policy-name - String - required: no - (filter condition) filters by Alarm policy name.</li>.\n<li>scaling-policy-type - String - required: no - (filter criteria) filters by Alarm policy type. valid values: SIMPLE, TARGET_TRACKING, representing SIMPLE policy and TARGET TRACKING policy respectively.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingPolicyIds` and `Filters` parameters cannot be specified simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-ewdpp04x\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3422,7 +3429,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.",
+          "document": "Query by one or more scheduled task ids. you can obtain the scheduled task ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). the maximum number of instances per request is 100. parameters ScheduledActionIds and Filters must not be specified simultaneously.",
           "example": "[\"asst-caa5ha40\"]",
           "member": "string",
           "name": "ScheduledActionIds",
@@ -3431,7 +3438,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter.\n<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>\n<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>",
+          "document": "Filter criteria. obtain the scheduled task ID, scheduled task name, and scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group).\n<li> scheduled-action-id - String - required: no - (filter) filter by scheduled task id.</li>.\n<li> scheduled-action-name - String - required: no - (filter criteria) filters by scheduled task name.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.",
           "example": "[{\"Name\": \"auto-scaling-group-name\", \"Values\": [\"production-as\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3496,7 +3503,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Auto scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3505,7 +3512,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instance IDs",
+          "document": "List of CVM instance ids. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3542,7 +3549,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3551,7 +3558,7 @@
         },
         {
           "disabled": false,
-          "document": "List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
+          "document": "Specifies a list of classic load balancer ids with a maximum length of 20. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[\"lb-crhgatrf\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -3560,7 +3567,7 @@
         },
         {
           "disabled": false,
-          "document": "List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
+          "document": "Specifies the list of cloud load balancer identification information with a maximum length of 100. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[{\"ListenerId\": \"lbl-mqnrswr0\", \"LoadBalancerId\": \"lb-k7cs98bu\", \"LocationId\": \"loc-ivbajssu\"}]",
           "member": "ForwardLoadBalancerIdentification",
           "name": "ForwardLoadBalancerIdentifications",
@@ -3673,7 +3680,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3700,7 +3707,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3768,12 +3775,58 @@
       ],
       "usage": "both"
     },
+    "EnterStandbyRequest": {
+      "document": "EnterStandby request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
+          "example": "asg-boz1qhnk",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of running instances. non-running instances are not supported. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnterStandbyResponse": {
+      "document": "EnterStandby response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling activity ID.",
+          "example": "asa-q59zikez",
+          "member": "string",
+          "name": "ActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ExecuteScalingPolicyRequest": {
       "document": "ExecuteScalingPolicy request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Auto-scaling policy ID. This parameter is not available to a target tracking policy.",
+          "document": "Alarm scaling policy ID. target tracking policy is unsupported. the alert policy type can be obtained via the `ScalingPolicyType` parameter in the api response of [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1).",
           "example": "asp-f59pppuh",
           "member": "string",
           "name": "AutoScalingPolicyId",
@@ -3828,7 +3881,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Auto scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3837,7 +3890,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instances in standby status.",
+          "document": "List of CVM instances in standby status. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3852,7 +3905,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling activity ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Scaling activity ID.",
           "example": "asa-q59zikez",
           "member": "string",
           "name": "ActivityId",
@@ -3898,7 +3951,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Load balancer ID",
+          "document": "ID of the load balancer. this parameter is required as an input parameter. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "lb-fy6te4r5",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3909,7 +3962,7 @@
         },
         {
           "disabled": false,
-          "document": "Application load balancer listener ID",
+          "document": "CLB listener ID. as an input parameter, this parameter is required. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "lbl-dhyt56rf",
           "member": "string",
           "name": "ListenerId",
@@ -3920,7 +3973,7 @@
         },
         {
           "disabled": false,
-          "document": "List of target rule attributes",
+          "document": "Target rule attribute list. as an input parameter, this parameter is required.",
           "example": "[{\"Port\": 80, \"Weight\": 10}]",
           "member": "TargetAttribute",
           "name": "TargetAttributes",
@@ -3931,7 +3984,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of a forwarding rule. This parameter is required for layer-7 listeners.",
+          "document": "The forwarding rule ID. note: this parameter is required for layer-7 (http/https) listeners. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "loc-sj8y6tr4",
           "member": "string",
           "name": "LocationId",
@@ -4110,7 +4163,7 @@
         },
         {
           "disabled": false,
-          "document": "Lifecycle status. Valid values:<br>\n<li>`IN_SERVICE`: The instance is running.\n<li>`CREATING`: The instance is being created.\n<li>`CREATION_FAILED`: The instance fails to be created.\n<li>`TERMINATING`: The instance is being terminated.\n<li>`TERMINATION_FAILED`: The instance fails to be terminated.\n<li>`ATTACHING`: The instance is being bound.\n<li>`ATTACH_FAILED`: The instance fails to be bound.\n<li>`DETACHING`: The instance is being unbound.\n<li>`DETACH_FAILED`: The instance fails to be unbound.\n<li>`ATTACHING_LB`: The LB is being bound.\n<li>DETACHING_LB: The LB is being unbound.\n<li>`MODIFYING_LB`: The LB is being modified.\n<li>`STARTING`: The instance is being started up.\n<li>`START_FAILED`: The instance fails to be started up.\n<li>`STOPPING`: The instance is being shut down.\n<li>`STOP_FAILED`: The instance fails to be shut down.\n<li>`STOPPED`: The instance is shut down.\n<li>`IN_LAUNCHING_HOOK`: The lifecycle hook is being scaled out.\n<li>`IN_TERMINATING_HOOK`: The lifecycle hook is being scaled in.",
+          "document": "Lifecycle status. valid values are as follows:.\n<Li>IN_SERVICE: running</li>.\n<Li>CREATING: specifies the instance is being created.</li>.\n<Li>CREATION_FAILED: creation failed.</li>.\n<Li>`TERMINATING`: the instance is being terminated.</li>.\n<Li>`TERMINATION_FAILED`: the instance fails to be terminated.</li>.\n<Li>ATTACHING: binding</li>.\n<Li>`ATTACH_FAILED`: the instance fails to be bound.</li>.\n<Li>DETACHING: specifies the unbinding is in progress.</li>.\n<Li>`DETACH_FAILED`: the instance fails to be unbound.</li>.\n<Li>`ATTACHING_LB`: binding to lb</li>.\n<Li>DETACHING_LB: the lb is being unbound.</li>.\n<Li>`MODIFYING_LB`: the lb is being modified.</li>.\n<Li>`STARTING`: the instance is being started up.</li>.\n<Li>`START_FAILED`: the instance fails to be started up.</li>.\n<Li>`STOPPING`: the instance is being shut down.</li>.\n<Li>`STOP_FAILED`: the instance fails to be shut down.</li>.\n<Li>`STOPPED`: the instance is shut down.</li>.\n<Li>`IN_LAUNCHING_HOOK`: the lifecycle hook is being scaled out.</li>.\n<Li>`IN_TERMINATING_HOOK`: the lifecycle hook is being scaled in.</li>.",
           "example": "IN_SERVICE",
           "member": "string",
           "name": "LifeCycleState",
@@ -4120,7 +4173,7 @@
         },
         {
           "disabled": false,
-          "document": "Health status. Value range: HEALTHY, UNHEALTHY",
+          "document": "Health status. valid values are as follows:.\n<Li>HEALTHY: the instance is in Healthy status.</li>.\n<Li>UNHEALTHY: instance ping unreachable</li>.\n<Li>CLB_UNHEALTHY: the instance port listened by clb is unhealthy</li>.",
           "example": "HEALTHY",
           "member": "string",
           "name": "HealthStatus",
@@ -4160,7 +4213,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance addition time",
+          "document": "Instance join time is displayed in a format that conforms to the ISO8601 standard and uses UTC time.",
           "example": "2023-01-13T03:06:25Z",
           "member": "datetime_iso",
           "name": "AddTime",
@@ -4200,7 +4253,7 @@
         },
         {
           "disabled": false,
-          "document": "Warming up status. Valid values:\n<li>`WAITING_ENTER_WARMUP`: The instance is waiting to be warmed up.\n<li>`NO_NEED_WARMUP`: Warming up is not required.\n<li>`IN_WARMUP`: The instance is being warmed up.\n<li>`AFTER_WARMUP`: Warming up is completed.",
+          "document": "Preheat status. valid values are as follows:.\n<Li>WAITING_ENTER_WARMUP: specifies the instance is waiting to enter preheating.</li>.\n<Li>`NO_NEED_WARMUP`: warming up is not required.</li>.\n<Li>IN_WARMUP: preheating.</li>.\n<Li>AFTER_WARMUP: indicates the preheating is completed.</li>.",
           "example": "IN_WARMUP",
           "member": "string",
           "name": "WarmupStatus",
@@ -4210,7 +4263,7 @@
         },
         {
           "disabled": false,
-          "document": "Placement group ID. Only one is allowed.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Placement group ID. Only one can be specified.",
           "example": "[\"ps-uf8j6y3t\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
@@ -4418,6 +4471,50 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Describes the line type. For details, refer to [EIP Product Overview](https://intl.cloud.tencent.com/document/product/1199/41646?from_cn_redirect=1). default value: `BGP`.\n\n<Li>BGP: general bgp line.</li>\nFor a user who has enabled the static single-line IP allowlist, valid values include:\n <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>\nNote: Only certain regions support static single-line IP addresses.\n\n",
+          "example": "BGP",
+          "member": "string",
+          "name": "InternetServiceProvider",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type of public IP address.\n\n<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://cloud.tencent.com/document/product/1199/41646). </li> Specify the type of public IPv4 address to assign a public IPv4 address to the resource. Premium IP and Anti-DDoS IP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).",
+          "example": "WanIP",
+          "member": "string",
+          "name": "IPv4AddressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.",
+          "example": "bgp-00000000",
+          "member": "string",
+          "name": "AntiDDoSPackageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to delete the bound EIP when the instance is destroyed.\n\nRange of values:\n\n<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>\n\nNote that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. \nWanIP is unaffected by this field and will always be deleted with the instance. \nChanging this field configuration will take effect immediately for resources already bound to a scaling group.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsKeepEIP",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -4603,7 +4700,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the launch configuration.",
+          "document": "Specifies the startup configuration creation time. uses UTC standard time.",
           "example": "2021-05-31T12:38:35Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -4643,7 +4740,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>",
+          "document": "Instance billing type. valid values:.\n<Li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>.\n<Li>SPOTPAID: spot payment</li>.\n<Li>PREPAID: prepaid, i.e., monthly subscription</li>.\n<Li>CDCPAID: dedicated cluster payment</li>.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -4683,7 +4780,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.",
           "example": "[{\"Key\": \"CCode\", \"Value\": \"ASTENCENT\", \"ResourceType\": \"launch-configuration\"}]",
           "member": "Tag",
           "name": "Tags",
@@ -4703,7 +4800,7 @@
         },
         {
           "disabled": false,
-          "document": "Update time",
+          "document": "Last update time is in standard UTC time.",
           "example": "2023-09-04T11:42:46Z",
           "member": "datetime_iso",
           "name": "UpdatedTime",
@@ -4713,7 +4810,7 @@
         },
         {
           "disabled": false,
-          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
           "example": "TestRole",
           "member": "string",
           "name": "CamRoleName",
@@ -4803,7 +4900,7 @@
         },
         {
           "disabled": false,
-          "document": "Image family name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Image family name.",
           "example": "testfamily",
           "member": "string",
           "name": "ImageFamily",
@@ -4905,7 +5002,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Remote command ID. It’s required to execute a command.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Remote command ID. this item is required if you select to execute command.",
           "example": "cmd-gt5dre32",
           "member": "string",
           "name": "CommandId",
@@ -4916,7 +5013,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameter. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf this parameter is not specified, the `DefaultParameters` of `Command` is used.\nUp to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom parameter. field type is json encoded string, for example: {\"varA\": \"222\"}.\nkey specifies the custom parameter name, and value specifies the default. both are string type.\nIf the parameter value is not provided, the DefaultParameters of Command will be used to replace it.\nCustom parameters support a maximum of 20 entries. the custom parameter name must meet the following standard: number of characters has a cap of 64, value range [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
@@ -4963,7 +5060,7 @@
         },
         {
           "disabled": false,
-          "document": "Default result of the lifecycle hook",
+          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.\n-CONTINUE execution by default means capacity expansion or reduction.\n-For scale-out hooks, cvms with hook timeout or failed LifecycleCommand execution will be released directly or removed; for scale-in hooks, scale-in activities will continue.",
           "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
@@ -4973,7 +5070,7 @@
         },
         {
           "disabled": false,
-          "document": "Wait timeout period of the lifecycle hook",
+          "document": "Specifies the timeout waiting time of the lifecycle hook in seconds. value range: 30 to 7200.",
           "example": "300",
           "member": "int64",
           "name": "HeartbeatTimeout",
@@ -4983,7 +5080,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable scenario of the lifecycle hook",
+          "document": "Scenario for entering the lifecycle hook. valid values:.\n-`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.\n-INSTANCE_TERMINATING: scale-in lifecycle hook.",
           "example": "INSTANCE_TERMINATING",
           "member": "string",
           "name": "LifecycleTransition",
@@ -5003,7 +5100,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "Creation time. uses UTC for timing.",
           "example": "2024-11-11T15:29:59Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -5023,7 +5120,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable scenario of the lifecycle hook",
+          "document": "Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.\nDescription: when set to `EXTENSION`, the lifecycle hook will be triggered during `AttachInstances`, `DetachInstances`, or `RemoveInstances` API calls. if set to `NORMAL`, the lifecycle hook will not be triggered by these apis.",
           "example": "NORMAL",
           "member": "string",
           "name": "LifecycleTransitionType",
@@ -5033,7 +5130,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command execution object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Remote command execution object.",
           "example": "{\"CommandId\": \"cmd-am4e3hd8\", \"Parameters\": \"{123: 222}\"}",
           "member": "LifecycleCommand",
           "name": "LifecycleCommand",
@@ -5074,7 +5171,7 @@
         },
         {
           "disabled": false,
-          "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.",
+          "document": "List of key ids. after associating a key, you can access the instance through the corresponding private key. KeyId can be obtained by calling the api [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1). key and password cannot be specified simultaneously. the Windows operating system does not support specifying a key. currently, only one key can be specified during purchase.",
           "example": "[\"skey-ju7fy6t5\"]",
           "member": "string",
           "name": "KeyIds",
@@ -5226,8 +5323,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
-          "example": "asg-aaaabbbb",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
+          "example": "asg-gf5r6t7u",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -5244,7 +5341,7 @@
         },
         {
           "disabled": false,
-          "document": "Default cooldown period in seconds. Default value: 300",
+          "document": "Default cooldown period in seconds. value ranges from 0 to 3600. default value: 300.",
           "example": "300",
           "member": "uint64",
           "name": "DefaultCooldown",
@@ -5253,7 +5350,7 @@
         },
         {
           "disabled": false,
-          "document": "Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances",
+          "document": "Expected number of instances, value ranges from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.",
           "example": "1",
           "member": "uint64",
           "name": "DesiredCapacity",
@@ -5262,8 +5359,8 @@
         },
         {
           "disabled": false,
-          "document": "Launch configuration ID",
-          "example": "asc-aaaabbbb",
+          "document": "Launch configuration ID. obtain available launch configuration ids in the following ways:.\n<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.\n<li>Specifies the launch configuration ID obtained by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.</li>.",
+          "example": "asc-gf5r6t7u",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": false,
@@ -5271,7 +5368,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of instances. Value range: 0-2,000.",
+          "document": "Maximum number of instances, value range from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.",
           "example": "1",
           "member": "uint64",
           "name": "MaxSize",
@@ -5280,7 +5377,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum number of instances. Value range: 0-2,000.",
+          "document": "Minimum number of instances. value range [0,2000]. to meet maximum value equal to or greater than expected value, expected value equal to or greater than minimum value.",
           "example": "1",
           "member": "uint64",
           "name": "MinSize",
@@ -5289,7 +5386,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `ProjectId` field in the return value. default value is 0, indicates usage of the default project.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -5298,8 +5395,8 @@
         },
         {
           "disabled": false,
-          "document": "List of subnet IDs",
-          "example": "[\"subnet-aaaabbbb\"]",
+          "document": "subnet ID list. you can obtain a valid vpc subnet ID by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet). you can also call the API [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) and retrieve the valid vpc subnet ID from the SubnetId field in the API response.",
+          "example": "[\"subnet-gf5r6t7u\"]",
           "member": "string",
           "name": "SubnetIds",
           "required": false,
@@ -5316,8 +5413,8 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. This field is left empty for basic networks. You need to specify SubnetIds when modifying the network of the auto scaling group to a VPC with a specified VPC ID. Specify Zones when modifying the network to a basic network.",
-          "example": "vpc-aaaabbbb",
+          "document": "vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc) or obtained from the VpcId field in the api response by calling the DescribeVpc api (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1).",
+          "example": "vpc-gf5r6t7u",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -5361,7 +5458,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of IPv6 addresses that an instance has. Valid values: 0 and 1.",
+          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "Ipv6AddressCount",
@@ -5451,7 +5548,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5460,7 +5557,7 @@
         },
         {
           "disabled": false,
-          "document": "Desired capacity",
+          "document": "Expected number of instances, value ranges from 0 to 2000, to meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "2",
           "member": "uint64",
           "name": "DesiredCapacity",
@@ -5469,7 +5566,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum number of instances. Value range: 0-2000.",
+          "document": "Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.",
           "example": "0",
           "member": "uint64",
           "name": "MinSize",
@@ -5478,7 +5575,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of instances. Value range: 0-2000.",
+          "document": "Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.",
           "example": "20",
           "member": "uint64",
           "name": "MaxSize",
@@ -5505,7 +5602,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Launch configuration ID",
+          "document": "Launch configuration ID. obtain the launch configuration ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.",
           "example": "asc-aaaabbbb",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -5523,7 +5620,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.",
+          "document": "Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
           "example": "S5.SMALL2",
           "member": "string",
           "name": "InstanceTypes",
@@ -5658,7 +5755,7 @@
         },
         {
           "disabled": false,
-          "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
+          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
           "example": "TestRole",
           "member": "string",
           "name": "CamRoleName",
@@ -5667,7 +5764,7 @@
         },
         {
           "disabled": false,
-          "document": "HPC ID<br>\nNote: This field is default to empty",
+          "document": "High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.\nNote: this field is empty by default.",
           "example": "hpc-abcd1234",
           "member": "string",
           "name": "HpcClusterId",
@@ -5685,7 +5782,7 @@
         },
         {
           "disabled": false,
-          "document": "Placement group ID. Only one is allowed.",
+          "document": "Placement group id. only one can be specified. obtain through the API [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1).",
           "example": "[\"ps-fy7e0ml0\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
@@ -5712,7 +5809,7 @@
         },
         {
           "disabled": false,
-          "document": "Image family name.",
+          "document": "Image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.",
           "example": "test-family",
           "member": "string",
           "name": "ImageFamily",
@@ -5757,7 +5854,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Lifecycle hook ID.",
+          "document": "Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information.",
           "example": "ash-je1esoo9",
           "member": "string",
           "name": "LifecycleHookId",
@@ -5766,7 +5863,7 @@
         },
         {
           "disabled": false,
-          "document": "Lifecycle hook name.",
+          "document": "Lifecycle hook name. Name only supports chinese, english, digits, underscore (_), hyphen (-), decimal point (.), maximum length cannot exceed 128.",
           "example": "hook-test",
           "member": "string",
           "name": "LifecycleHookName",
@@ -5775,7 +5872,7 @@
         },
         {
           "disabled": false,
-          "document": "Scenario for entering the lifecycle hook. Valid values:\n<li>INSTANCE_LAUNCHING: after the instance is launched.</li>\n<li>INSTANCE_TERMINATING: before the instance is terminated.</li>",
+          "document": "Scenario for entering the lifecycle hook. valid values:.\n`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.\n`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.",
           "example": "INSTANCE_LAUNCHING",
           "member": "string",
           "name": "LifecycleTransition",
@@ -5784,7 +5881,7 @@
         },
         {
           "disabled": false,
-          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout. Valid values:\n<li>CONTINUE: Continue the scaling activity after timeout.</li>\n<li>ABANDON: Terminate the scaling activity after timeout.</li>",
+          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.\nDefault value means CONTINUE to execute capacity expansion or reduction.\n* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand are released directly or removed. for scale-in hooks, scale-in activities continue.",
           "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
@@ -5802,7 +5899,7 @@
         },
         {
           "disabled": false,
-          "document": "Additional information sent by AS to the notification target.",
+          "document": "Specifies the additional information sent by auto scaling to the notification target. NotificationMetadata and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.",
           "example": "addtional-info",
           "member": "string",
           "name": "NotificationMetadata",
@@ -5820,7 +5917,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of the notification target.",
+          "document": "Notify the target information. NotificationTarget and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.",
           "example": "{\"QueueName\": \"as-pool\", \"TargetType\": \"TDMQ_CMQ_QUEUE\"}",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
@@ -5829,7 +5926,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command execution object.",
+          "document": "Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` cannot be specified at the same time.",
           "example": "{\"CommandId\": \"cmd-am4e3hd8\", \"Parameters\": \"{123: 222}\"}",
           "member": "LifecycleCommand",
           "name": "LifecycleCommand",
@@ -5856,7 +5953,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5865,7 +5962,7 @@
         },
         {
           "disabled": false,
-          "document": "List of application CLBs to modify. Up to 100 CLBs allowed.",
+          "document": "Specifies the list of load balancers whose target rule attributes need modification, with a list length limit of 100. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -5884,7 +5981,7 @@
           "example": "asa-67izy66g",
           "member": "string",
           "name": "ActivityId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5902,7 +5999,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5911,7 +6008,7 @@
         },
         {
           "disabled": false,
-          "document": "List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
+          "document": "List of classic clb ids. currently, the maximum length is 20. you cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[\"lb-crhgatrf\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -5920,7 +6017,7 @@
         },
         {
           "disabled": false,
-          "document": "List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
+          "document": "Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
           "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
@@ -5966,7 +6063,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the notification to be modified.",
+          "document": "Specifies the notification ID that needs modification. get the notification ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and getting `AutoScalingNotificationId` from the returned information.",
           "example": "asn-2sestqbr",
           "member": "string",
           "name": "AutoScalingNotificationId",
@@ -5984,7 +6081,7 @@
         },
         {
           "disabled": false,
-          "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
+          "document": "Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when `TargetType` is `USER_GROUP`.",
           "example": "[\"1678\"]",
           "member": "string",
           "name": "NotificationUserGroupIds",
@@ -5993,7 +6090,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ or TDMQ CMQ queue name.",
+          "document": "The TDMQ CMQ QUEUE name. [the original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_QUEUE`.",
           "example": "queue",
           "member": "string",
           "name": "QueueName",
@@ -6002,7 +6099,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ or TDMQ CMQ toipc name.",
+          "document": "The TDMQ CMQ TOPIC name. [original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_TOPIC`.",
           "example": "topic",
           "member": "string",
           "name": "TopicName",
@@ -6029,7 +6126,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Alarm policy ID.",
+          "document": "Specifies the alert policy ID. obtain the alert policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeScalingPolicies (https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1), and retrieve the AutoScalingPolicyId from the returned information.",
           "example": "asp-iir70sxv",
           "member": "string",
           "name": "AutoScalingPolicyId",
@@ -6038,7 +6135,7 @@
         },
         {
           "disabled": false,
-          "document": "Alarm policy name.",
+          "document": "The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal separators.",
           "example": "cpu_policy_test",
           "member": "string",
           "name": "ScalingPolicyName",
@@ -6146,7 +6243,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the scheduled task to be edited",
+          "document": "Scheduled task ID that needs modification. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.",
           "example": "asst-chwbkq4c",
           "member": "string",
           "name": "ScheduledActionId",
@@ -6209,7 +6306,7 @@
         },
         {
           "disabled": false,
-          "document": "Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.",
+          "document": "The repeating mode of the scheduled task. follows the standard Cron format. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hr, date, month, week. this parameter must be simultaneously specified with `EndTime`.",
           "example": "0 18 * * 1,2,3,4,5",
           "member": "string",
           "name": "Recurrence",
@@ -6236,10 +6333,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.\n<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>\n<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>\n<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>\n<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>",
+          "document": "Target type. valid values include `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE`, `TDMQ_CMQ_TOPIC`.\n<li>CMQ_QUEUE, specifies tencent cloud message QUEUE - queueing model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_QUEUE (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li>CMQ_TOPIC, specifies tencent cloud message queue - TOPIC model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_TOPIC (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li> TDMQ_CMQ_QUEUE. specifies the tencent cloud TDMQ message QUEUE - queueing model.</li>.\n<Li>TDMQ_CMQ_TOPIC. specifies tencent cloud tdmq message queue - topic model.</li>.",
           "example": "TDMQ_CMQ_QUEUE",
           "member": "string",
           "name": "TargetType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6250,6 +6348,7 @@
           "example": "test-queue",
           "member": "string",
           "name": "QueueName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6260,6 +6359,7 @@
           "example": "test-topic",
           "member": "string",
           "name": "TopicName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6292,7 +6392,7 @@
         },
         {
           "disabled": false,
-          "document": "Original refresh activity ID, which exists only in the rollback refresh activity.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Original refresh activity ID. exists only in rollback refresh activity.",
           "example": "asr-v8dd7er6",
           "member": "string",
           "name": "OriginRefreshActivityId",
@@ -6312,8 +6412,8 @@
         },
         {
           "disabled": false,
-          "document": "Refresh mode.",
-          "example": "ROLLING_UPDATE",
+          "document": "Refresh mode. valid values as follows:.\n<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.\n<li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>",
+          "example": "ROLLING_UPDATE_RESET",
           "member": "string",
           "name": "RefreshMode",
           "output_required": true,
@@ -6352,7 +6452,7 @@
         },
         {
           "disabled": false,
-          "document": "Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Current refresh batch number. for example, 2 indicates the second batch of instances is being refreshed by the current activity.",
           "example": "2",
           "member": "uint64",
           "name": "CurrentRefreshBatchNum",
@@ -6362,7 +6462,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity start time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The activity start time is refreshed in standard `UTC` time, in the format `YYYY-MM-DDTHH:MM:ssZ`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2023-09-04T11:42:46Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -6372,7 +6472,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity end time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Refresh activity end time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2023-09-04T11:42:46Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -6382,7 +6482,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity creation time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Refresh activity creation time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.",
           "example": "2023-09-04T11:42:46Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -6464,7 +6564,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.",
+          "document": "Refresh instance status. if the instance is removed or terminated during refresh, the status will be updated to NOT_FOUND. valid values: <li>WAITING: pending refresh;</li> <li>INIT: initializing;</li> <li>RUNNING: refreshing;</li> <li>FAILED: refresh FAILED;</li> <li>CANCELLED: CANCELLED;</li> <li>SUCCESSFUL: refresh SUCCESSFUL;</li> <li>NOT_FOUND: instance does NOT exist.</li>.",
           "example": "WAITING",
           "member": "string",
           "name": "InstanceStatus",
@@ -6474,7 +6574,7 @@
         },
         {
           "disabled": false,
-          "document": "The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.\nPlease note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities api.\nPlease note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.",
           "example": "asa-7y5rey56",
           "member": "string",
           "name": "LastActivityId",
@@ -6484,7 +6584,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance refresh status information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Describes the instance refresh status.",
           "example": "success",
           "member": "string",
           "name": "InstanceStatusMessage",
@@ -6500,7 +6600,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Rolling update settings parameters. RefreshMode is rolling update. this parameter must be filled in.",
           "example": "{\"BatchNumber\": 1, \"MaxSurge\": 1, \"BatchPause\": \"AUTOMATIC\"}",
           "member": "RollingUpdateSettings",
           "name": "RollingUpdateSettings",
@@ -6554,7 +6654,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -6563,7 +6663,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instance IDs",
+          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -6600,7 +6700,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Scaling group ID. obtain in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-u7dy6t5r",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -6609,7 +6709,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity ID.",
+          "document": "Refresh activity ID. you can get the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.",
           "example": "asr-dhwt6r54",
           "member": "string",
           "name": "RefreshActivityId",
@@ -6645,7 +6745,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Scaling group ID. you can obtain available scaling group ids in the following ways. \n<li>Query the scaling group ID by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/group\">console</a>.</li>.\n<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.",
           "example": "asg-12yqet78",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -6663,7 +6763,7 @@
         },
         {
           "disabled": false,
-          "document": "Original refresh activity ID.",
+          "document": "The original refresh activity ID. you can obtain the original refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the OriginRefreshActivityId from the returned information.",
           "example": "asr-fdsf8u6b",
           "member": "string",
           "name": "OriginRefreshActivityId",
@@ -6721,7 +6821,7 @@
         {
           "disabled": false,
           "document": "Pause policy between batches. Default value: Automatic. Valid values:\n<li>FIRST_BATCH_PAUSE: Pause after the first batch of updates is completed.</li>\n<li>BATCH_INTERVAL_PAUSE: Pause between batches.</li>\n<li>AUTOMATIC: Do not pause.</li>",
-          "example": "Automatic",
+          "example": "AUTOMATIC",
           "member": "string",
           "name": "BatchPause",
           "output_required": true,
@@ -6738,6 +6838,17 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Failure handling strategy. default value: AUTO_PAUSE. valid values:.\n<Li>AUTO_PAUSE: suspended after refresh fails</li>.\n<li>AUTO_ROLLBACK: roll back after a refresh fails. each batch rolls back one instance during ROLLBACK, and the CheckInstanceTargetHealth parameter value matches the original refresh activity. no need to roll back if the shrinkage process introduced by the MaxSurge parameter fails. a cancel action will replace the ROLLBACK.</li>.\n<Li>AUTO_CANCEL: cancel after refresh fails</li>.",
+          "example": "AUTO_PAUSE",
+          "member": "string",
+          "name": "FailProcess",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -6798,7 +6909,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-12yqet78",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -6807,7 +6918,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances to be reduced",
+          "document": "Number of resource instances to scale in. this parameter has a static value range of [1,2000] and must not be larger than the difference between the desired number and the minimum value. for example, if the scaling group desired number is 100 and the minimum value is 20, the permissible range is [1,80].",
           "example": "1",
           "member": "uint64",
           "name": "ScaleInNumber",
@@ -6949,7 +7060,7 @@
         },
         {
           "disabled": false,
-          "document": "Cooldown period. This parameter is only applicable to a simple policy.",
+          "document": "Cooldown duration in seconds, applies only to simple policies. value range [0,3600]. default cooldown: 300 seconds.",
           "example": "60",
           "member": "uint64",
           "name": "Cooldown",
@@ -7075,7 +7186,7 @@
         },
         {
           "disabled": false,
-          "document": "Repeating mode of the scheduled task.",
+          "document": "Specifies the repeating mode of the scheduled task. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hour, date, month, week.",
           "example": "0 23 */1 * *",
           "member": "string",
           "name": "Recurrence",
@@ -7125,7 +7236,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
+          "document": "The creation time of the scheduled task. value is in standard `UTC` time, formatted as `YYYY-MM-DDThh:MM:ssZ` according to the `ISO8601` standard.",
           "example": "2022-02-21T02:19:52Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -7184,7 +7295,7 @@
         },
         {
           "disabled": false,
-          "document": "Replace mode of unhealthy replacement service. Valid values:\nRECREATE: Rebuild an instance to replace the original unhealthy instance.\nRESET: Performing a system reinstallation on unhealthy instances to keep information such as data disks, private IP addresses, and instance IDs unchanged. The instance login settings, HostName, enhanced services, and UserData will remain consistent with the current launch configuration.\nDefault value: RECREATE.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Replacement mode of the unhealthy replacement service. valid values:.\nRECREATE: rebuild an instance to replace the unhealthy instance.\nRESET: performs a system reinstallation on unhealthy instances while keeping the data disk, private IP address, instance id, and other information unchanged. the instance login settings, hostname, enhanced services, and UserData remain consistent with the current launch configuration.\nDefault value: RECREATE.",
           "example": "RECREATE",
           "member": "string",
           "name": "ReplaceMode",
@@ -7195,11 +7306,22 @@
         },
         {
           "disabled": false,
-          "document": "Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.",
+          "document": "Automatic instance Tag update. the default value is False. if this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (this feature takes effect for Tag creation and editing but not Tag deletion.) the update does not take effect immediately due to certain latency.",
           "example": "False",
           "member": "bool",
           "name": "AutoUpdateInstanceTags",
           "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expected number of instances sync minimum and maximum value. default value is False. this parameter only takes effect in scenarios where the expected number is not passed in to modify scaling group api.\n<Li>True: when modifying the maximum or minimum value, if a conflict exists with the current expected value, synchronously adjust the expected value. for example, if the input minimum value is 2 while the current expected value is 1, the expected value will be synchronously adjusted to 2.</li>.\n<Li>False: if a conflict exists between the current expected value when modifying the maximum or minimum value, an error message indicates it is not allowed to be modified.</li>.",
+          "example": "False",
+          "member": "bool",
+          "name": "DesiredCapacitySyncWithMaxMinSize",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
@@ -7212,7 +7334,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID.",
+          "document": "Auto scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-2umy3jbd",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7221,7 +7343,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance ID. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
           "example": "[\"ins-b2d33ywt\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7331,7 +7453,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The scaling group ID.",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7340,7 +7462,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of the CVM instances you want to start up.",
+          "document": "Specifies the instance ID list of CVM to enable. you can obtain available instance ID in the following ways.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7395,7 +7517,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh mode. Valid values:\n<li>ROLLING_UPDATE_RESET: Reinstall the system for rolling updates.</li>\n<li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>",
+          "document": "Refresh mode. default value: ROLLING_UPDATE_RESET. valid values:.\n<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.\n<li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>",
           "example": "ROLLING_UPDATE_RESET",
           "member": "string",
           "name": "RefreshMode",
@@ -7432,7 +7554,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The scaling group ID.",
+          "document": "Auto scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.",
           "example": "asg-boz1qhnk",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7441,7 +7563,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of the CVM instances you want to shut down.",
+          "document": "List of CVM instance ids to be closed. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7487,7 +7609,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Scaling group ID. you can obtain available scaling group ids in the following ways.\n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Get the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.",
           "example": "asg-u7dy6t5r",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7496,7 +7618,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh activity ID.",
+          "document": "Refresh activity ID. you can call the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and obtain the instance refresh activity ID from the returned information.",
           "example": "asr-dhwt6r54",
           "member": "string",
           "name": "RefreshActivityId",
@@ -7523,7 +7645,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "System disk type. For restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:\n<li>LOCAL_BASIC: Local Disk.</li>\n<li>LOCAL_SSD: Local SSD.</li>\n<li>CLOUD_BASIC: Basic Cloud Disk.</li>\n<li>CLOUD_PREMIUM: Premium Disk.</li>\n<li>CLOUD_SSD: Cloud SSD.</li>\n<li>Default value: CLOUD_PREMIUM.</li>",
+          "document": "System disk type. for restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.\n<Li>LOCAL_BASIC: local hard disk.</li>.\n<Li>LOCAL_SSD: local ssd.</li>.\n<Li>CLOUD_BASIC: general cloud disk.</li>.\n<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.\n<Li>CLOUD_SSD: cloud ssd</li>.\n<Li>CLOUD_BSSD: universal ssd cloud disk</li>.\n<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.\n<Li>CLOUD_TSSD: ultra ssd.</li>.\n<li>Default value: CLOUD_PREMIUM.</li>",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
@@ -7573,7 +7695,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource type bound with tags. Valid values: auto-scaling-group and launch-configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the resource type bound to the tag. type currently supported: \"auto-scaling-group\", \"launch-configuration\". valid values: scaling group resources and launch configuration resources respectively.",
           "example": "auto-scaling-group",
           "member": "string",
           "name": "ResourceType",
@@ -7590,7 +7712,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Port",
+          "document": "Port. value range: [1,65535]. as an input parameter, this parameter is required.",
           "example": "80",
           "member": "uint64",
           "name": "Port",
@@ -7601,7 +7723,7 @@
         },
         {
           "disabled": false,
-          "document": "Weight",
+          "document": "Weight. value range: [0,100]. this parameter is required as an input parameter.",
           "example": "10",
           "member": "uint64",
           "name": "Weight",
@@ -7834,7 +7956,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Lifecycle hook ID",
+          "document": "Lifecycle hook ID. you can call the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieve the LifecycleHookId from the returned information to obtain the lifecycle hook ID.",
           "example": "ash-8azjzxj9",
           "member": "string",
           "name": "LifecycleHookId",
@@ -7843,7 +7965,7 @@
         },
         {
           "disabled": false,
-          "document": "Lifecycle hook name",
+          "document": "Lifecycle hook name, which can contain chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 characters.",
           "example": "hook-updated",
           "member": "string",
           "name": "LifecycleHookName",
@@ -7852,7 +7974,7 @@
         },
         {
           "disabled": false,
-          "document": "Scenario for the lifecycle hook. Value range: \"INSTANCE_LAUNCHING\", \"INSTANCE_TERMINATING\"",
+          "document": "Scenario for performing the lifecycle hook. valid values:.\n`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.\n`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.",
           "example": "INSTANCE_LAUNCHING",
           "member": "string",
           "name": "LifecycleTransition",
@@ -7861,7 +7983,7 @@
         },
         {
           "disabled": false,
-          "document": "Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: \"CONTINUE\", \"ABANDON\". Default value: \"CONTINUE\"",
+          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values are as follows:.\nDefault value, means CONTINUE to execute capacity expansion or reduction.\n* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand will be released directly or removed. for scale-in hooks, scale-in activities will continue.",
           "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
@@ -7879,7 +8001,7 @@
         },
         {
           "disabled": false,
-          "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\").",
+          "document": "Additional information sent by auto scaling to notification targets, used when configuring a notification (default value: \"\"). NotificationMetadata and LifecycleCommand are mutually exclusive parameters and cannot be specified simultaneously.",
           "example": "as-meta-0",
           "member": "string",
           "name": "NotificationMetadata",
@@ -7906,7 +8028,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
+          "document": "Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` are mutually exclusive and cannot be specified simultaneously.",
           "example": "{\"CommandId\": \"cmd-am4e3hd8\", \"Parameters\": \"{123: 222}\"}",
           "member": "LifecycleCommand",
           "name": "LifecycleCommand",

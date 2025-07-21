@@ -3267,7 +3267,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Search condition type. You can only search by customer ID, name, remarks, or email.",
+          "document": "Search condition type. You can only search by ClientUin, Name, Remark, or Email.",
           "example": "ClientUin|Name|Remark|Email",
           "member": "string",
           "name": "FilterType",

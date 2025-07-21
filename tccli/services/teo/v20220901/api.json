@@ -203,6 +203,13 @@
       "output": "CreateSharedCNAMEResponse",
       "status": "online"
     },
+    "CreateWebSecurityTemplate": {
+      "document": "This API is used to create a security policy configuration template.",
+      "input": "CreateWebSecurityTemplateRequest",
+      "name": "Creates a security policy configuration template",
+      "output": "CreateWebSecurityTemplateResponse",
+      "status": "online"
+    },
     "CreateZone": {
       "document": "This API is used to create a site. After you create the site, you can connect it to EdgeOne via the CNAME or NS (see [Quick Start](https://intl.cloud.tencent.com/document/product/1552/87601?from_cn_redirect=1)), or connect it without a domain name (see [Quick Access to L4 Proxy Service](https://intl.cloud.tencent.com/document/product/1552/96051?from_cn_redirect=1)).\n\nIf there are already EdgeOne plans under the current account, it is recommended to pass in the `PlanId` to bind the site with the plan directly. If `PlanId` is not passed in, the created site is not activated. You need to call [BindZoneToPlan](https://intl.cloud.tencent.com/document/product/1552/83042?from_cn_redirect=1) to bind the site with a plan. To purchase a plan, please go to the EdgeOne console.",
       "input": "CreateZoneRequest",
@@ -334,6 +341,13 @@
       "input": "DeleteSharedCNAMERequest",
       "name": "Deletes a shared CNAME",
       "output": "DeleteSharedCNAMEResponse",
+      "status": "online"
+    },
+    "DeleteWebSecurityTemplate": {
+      "document": "This API is used to delete a security policy configuration template.",
+      "input": "DeleteWebSecurityTemplateRequest",
+      "name": "Delete a security policy configuration template",
+      "output": "DeleteWebSecurityTemplateResponse",
       "status": "online"
     },
     "DeleteZone": {
@@ -679,6 +693,20 @@
       "output": "DescribeTopL7CacheDataResponse",
       "status": "online"
     },
+    "DescribeWebSecurityTemplate": {
+      "document": "This API is used to query security policy configuration template details.",
+      "input": "DescribeWebSecurityTemplateRequest",
+      "name": "Query security policy configuration template detail",
+      "output": "DescribeWebSecurityTemplateResponse",
+      "status": "online"
+    },
+    "DescribeWebSecurityTemplates": {
+      "document": "This API is used to query the security policy configuration template list.",
+      "input": "DescribeWebSecurityTemplatesRequest",
+      "name": "Query security policy configuration template list",
+      "output": "DescribeWebSecurityTemplatesResponse",
+      "status": "online"
+    },
     "DescribeZoneConfigImportResult": {
       "document": "This API is used to query the results of site configuration import via API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.",
       "input": "DescribeZoneConfigImportResultRequest",
@@ -985,6 +1013,13 @@
       "input": "ModifySecurityPolicyRequest",
       "name": "Modifies the web and bot security configurations",
       "output": "ModifySecurityPolicyResponse",
+      "status": "online"
+    },
+    "ModifyWebSecurityTemplate": {
+      "document": "This API is used to modify the security policy configuration template.",
+      "input": "ModifyWebSecurityTemplateRequest",
+      "name": "Modify a security policy configuration template",
+      "output": "ModifyWebSecurityTemplateResponse",
       "status": "online"
     },
     "ModifyZone": {
@@ -1647,6 +1682,45 @@
       ],
       "usage": "both"
     },
+    "AdaptiveFrequencyControl": {
+      "document": "Adaptive frequency control.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether adaptive frequency control is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The restriction level of adaptive frequency control. required when Enabled is on. valid values: <li>Loose: Loose</li><li>Moderate: Moderate</li><li>Strict: Strict</li>.",
+          "example": "Loose",
+          "member": "string",
+          "name": "Sensitivity",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The handling method of adaptive frequency control. this field is required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Addresses": {
       "document": "IP range details.",
       "members": [
@@ -2046,6 +2120,34 @@
         }
       ],
       "usage": "out"
+    },
+    "AllowActionParameters": {
+      "document": "Additional parameter for Web security Allow.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Minimum latency response time. when configured as 0s, it means no delay for direct response. supported units: <li>s: seconds, value ranges from 0 to 5.</li>.",
+          "example": "0s",
+          "member": "string",
+          "name": "MinDelayTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum delayed response time. supported units: <li>s: seconds, value ranges from 5 to 10.</li>.",
+          "example": "0s",
+          "member": "string",
+          "name": "MaxDelayTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ApplicationProxy": {
       "document": "Application proxy instance",
@@ -2479,12 +2581,40 @@
       ],
       "usage": "both"
     },
+    "BandwidthAbuseDefense": {
+      "document": "Bandwidth abuse protection configuration (chinese mainland only).",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether bandwidth abuse protection (applicable to chinese mainland only) is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bandwidth abuse protection (applicable to chinese mainland) handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observe;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "example": "参考 SecurityAction 结构",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "BillingData": {
       "document": "Billing data item",
       "members": [
         {
           "disabled": false,
-          "document": "Time.",
+          "document": "Data timestamp.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "Time",
@@ -2500,6 +2630,46 @@
           "name": "Value",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Zone ID (or content identifier if enabled).",
+          "example": "zone-3e212xp3rj2q",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain name.",
+          "example": "test.example.com",
+          "member": "string",
+          "name": "Host",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Layer-4 proxy instance ID.",
+          "example": "sid-3e213190kcia",
+          "member": "string",
+          "name": "ProxyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing region (based on EdgeOne node location). Values: \n<li>CH: Mainland China</li> <li>AF: Africa</li> <li>AS1: Asia Pacific Region 1</li> <li>AS2: Asia Pacific Region 2</li> <li>AS3: Asia Pacific Region 3</li> <li>EU: Europe</li> <li>MidEast: Middle East</li> <li>NA: North America</li> <li>SA: South America</li>",
+          "example": "AS1",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2528,6 +2698,42 @@
         }
       ],
       "usage": "in"
+    },
+    "BindDomainInfo": {
+      "document": "Describes the domain names bound to the policy template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name.",
+          "example": "tm23cds.eo-mainload.top",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Zone ID to which the domain belongs.",
+          "example": "zone-wkpkd52kejs",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Binding status. valid values:. \n<li>`process`: binding in progress</li>\n<li>`online`: binding succeeded.</li>\n<Li>`fail`: binding failed.</li>",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BindSecurityTemplateToEntityRequest": {
       "document": "BindSecurityTemplateToEntity request structure.",
@@ -2892,6 +3098,23 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BotManagement": {
+      "document": "Web security BOT managed rules architecture.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Definition list of client authentication rules. feature in beta test. submit a ticket or contact smart customer service if needed.",
+          "example": "无",
+          "member": "ClientAttestationRules",
+          "name": "ClientAttestationRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3773,6 +3996,45 @@
       ],
       "usage": "both"
     },
+    "ChallengeActionParameters": {
+      "document": "Web security Challenge additional parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Safe execution challenge actions. valid values: <li> InterstitialChallenge: interstitial challenge;</li> <li> InlineChallenge: embedded challenge;</li> <li> JSChallenge: JavaScript challenge;</li> <li> ManagedChallenge: managed challenge.</li>.",
+          "example": "JSChallenge",
+          "member": "string",
+          "name": "ChallengeOption",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time interval for challenge repetition. this field is required when Name is InterstitialChallenge/InlineChallenge. default value is 300s. supported units: <li>s: second, value ranges from 1 to 60;</li><li>m: minute, value ranges from 1 to 60;</li><li>h: hour, value ranges from 1 to 24.</li>.\n",
+          "example": "300",
+          "member": "string",
+          "name": "Interval",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client authentication method ID. this field is required when Name is InterstitialChallenge/InlineChallenge.",
+          "example": "attest-1j39ja9j",
+          "member": "string",
+          "name": "AttesterId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "CheckCnameStatusRequest": {
       "document": "CheckCnameStatus request structure.",
       "members": [
@@ -3854,6 +4116,145 @@
         }
       ],
       "usage": "out"
+    },
+    "ClientAttestationRule": {
+      "document": "Client authentication rule.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client authentication rule ID. supported rule configuration operations by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing rules not included in the ClientAttestationRule list under BotManagement parameters will be deleted.</li>.",
+          "example": "1492837239",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the client authentication rule.",
+          "example": "loginValidation",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Priority of rules. a smaller value indicates higher priority execution. value range: 0-100. default value: 0.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Priority",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The rule content must comply with expression grammar. for details, see the product document.",
+          "example": "${http.request.api_resource} in ['apires-d92k5q11kgg@zone-9tk319gs192g']",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the client authentication option ID.",
+          "example": "attest-x9192k11kgg@zone-9tk319gs192g",
+          "member": "string",
+          "name": "AttesterId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client device configuration. if the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter, keep the existing client device configuration and do not modify it.",
+          "example": "参考 DeviceProfile 结构\t",
+          "member": "DeviceProfile",
+          "name": "DeviceProfiles",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Handling method for failed client authentication. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.",
+          "example": "参考 SecurityAction 结构",
+          "member": "SecurityAction",
+          "name": "InvalidAttestationAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ClientAttestationRules": {
+      "document": "Describes the client authentication configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of client authentication. when using ModifySecurityPolicy to modify Web protection configuration: <li> if Rules in SecurityPolicy.BotManagement.ClientAttestationRules is not specified or the parameter length of Rules is zero: clear all client authentication rule configuration. </li> <li> if ClientAttestationRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing client authentication rule configuration and do not modify. </li>.",
+          "example": "无",
+          "member": "ClientAttestationRule",
+          "name": "Rules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ClientFiltering": {
+      "document": "Intelligent client filtering.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether intelligent client filtering is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The handling method of intelligent client filtering. when Enabled is on, this field is required. the Name parameter of SecurityAction supports: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ClientIPCountryParameters": {
       "document": "Location information of the Client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
@@ -6115,6 +6516,61 @@
       ],
       "type": "object"
     },
+    "CreateWebSecurityTemplateRequest": {
+      "document": "CreateWebSecurityTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID. Explicitly identifies the zone to which the policy template belongs for access control purposes.",
+          "example": "zone-2wkpkd5gzvms",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy template name. Composed of Chinese characters, letters, digits, and underscores. Cannot begin with an underscore and must be less than or equal to 32 characters.",
+          "example": "大促活动护航",
+          "member": "string",
+          "name": "TemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Web security policy template configuration. Generates default config if empty. Supported: Exception rules, custom rules, rate limiting rules, managed rules. Not supported: Bot management rules (under development).",
+          "example": "无",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicy",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWebSecurityTemplateResponse": {
+      "document": "CreateWebSecurityTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy template ID.",
+          "example": "temp-ygt2paxl",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateZoneRequest": {
       "document": "CreateZone request structure.",
       "members": [
@@ -7608,6 +8064,42 @@
       ],
       "type": "object"
     },
+    "DeleteWebSecurityTemplateRequest": {
+      "document": "DeleteWebSecurityTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID. The zone to which the target policy template belongs for access control. Use the DescribeWebSecurityTemplates interface to query the zone of the policy template.",
+          "example": "zone-2wkpkd52pku8",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy template ID.",
+          "example": "temp-o3xctdd2",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteWebSecurityTemplateResponse": {
+      "document": "DeleteWebSecurityTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteZoneRequest": {
       "document": "DeleteZone request structure.",
       "members": [
@@ -7647,6 +8139,78 @@
           "output_required": true,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DenyActionParameters": {
+      "document": "Safe execution action specifies additional parameters for the ban.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies whether to extend the ban on the source IP. valid values.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nAfter enabled, continuously blocks client ips that trigger the rule. when this option is enabled, the BlockIpDuration parameter must be simultaneously designated.\nNote: this option cannot intersect with ReturnCustomPage or Stall.",
+          "example": "off",
+          "member": "string",
+          "name": "BlockIp",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ban duration when BlockIP is on.",
+          "example": "60s",
+          "member": "string",
+          "name": "BlockIpDuration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to use a custom page. valid values:.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nEnabled, use custom page content to intercept requests. when this option is enabled, ResponseCode and ErrorPageId parameters must be specified simultaneously.\nNote: this option cannot intersect with the BlockIp or Stall option.\n",
+          "example": "on",
+          "member": "string",
+          "name": "ReturnCustomPage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status code of the custom page.",
+          "example": "404",
+          "member": "string",
+          "name": "ResponseCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the page id of the custom page.",
+          "example": "p-2yr7ncnju1yk@zone-2xsnpvkhdjes",
+          "member": "string",
+          "name": "ErrorPageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to suspend the request source without processing. valid values:.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nEnabled, no longer responds to requests in the current connection session and does not actively disconnect. used for crawler combat to consume client connection resources.\nNote: this option cannot intersect with BlockIp or ReturnCustomPage options.",
+          "example": "on",
+          "member": "string",
+          "name": "Stall",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -8063,7 +8627,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time.",
+          "document": "The start time.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -8072,7 +8636,7 @@
         },
         {
           "disabled": false,
-          "document": "End time.",
+          "document": "The end time. The query time range (EndTime - StartTime) must be less than or equal to 31 days.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -8081,7 +8645,7 @@
         },
         {
           "disabled": false,
-          "document": "Site ID set. This parameter is required.",
+          "document": "Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use \"*\" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.",
           "example": "zone-2siulp074dz3",
           "member": "string",
           "name": "ZoneIds",
@@ -8090,7 +8654,7 @@
         },
         {
           "disabled": false,
-          "document": "Metric list. Valid values:\n<li>acc_flux: content acceleration traffic, in bytes;</li>\n<li>smt_flux: smart acceleration traffic, in bytes;</li>\n<li>l4_flux: L4 acceleration traffic, in bytes;</li>\n<li>sec_flux: exclusive protection traffic, in bytes;</li>\n<li>zxctg_flux: network optimization traffic in the Chinese mainland, in bytes;</li>\n<li>acc_bandwidth: content acceleration bandwidth, in bps;</li>\n<li>smt_bandwidth: smart acceleration bandwidth, in bps;</li>\n<li>l4_bandwidth: L4 acceleration bandwidth, in bps;</li>\n<li>sec_bandwidth: exclusive protection bandwidth, in bps;</li>\n<li>zxctg_bandwidth: network optimization bandwidth in the Chinese mainland, in bps;</li>\n<li>sec_request_clean: number of HTTP/HTTPS requests;</li>\n<li>smt_request_clean: number of smart acceleration requests;</li>\n<li>quic_request: number of QUIC requests;</li>\n<li>bot_request_clean: number of Bot requests;</li>\n<li>cls_count: number of real-time log entries pushed;</li>\n<li>ddos_bandwidth: elastic DDoS protection bandwidth, in bps.</li>",
+          "document": "Metric name. Valid values:\n**Layer 4/7 Acceleration Traffic (Unit: Byte):**\n<li>acc_flux: content acceleration traffic, in bytes;</li>\n<li>smt_flux: smart acceleration traffic, in bytes;</li>\n<li>l4_flux: layer 4 acceleration traffic, in bytes;</li>\n<li>sec_flux: exclusive protection traffic, in bytes;</li>\n<li>zxctg_flux: network optimization traffic in the chinese mainland, in bytes;</li>\n\n**Layer 4/7 Acceleration Bandwidth (Unit: bps):**\n<Li>acc_bandwidth: content acceleration bandwidth, in bps.</li>\n<li>smt_bandwidth: smart acceleration bandwidth, in bps;</li>\n<Li>l4_bandwidth: layer 4 acceleration bandwidth, in bps.</li>\n<li>sec_bandwidth: exclusive protection bandwidth, in bps.</li>\n<li>zxctg_bandwidth: network optimization bandwidth in the chinese mainland, in bps;</li>\n\n**HTTP/HTTPS Security Requests (Unit: counts):**\n<li>sec_request_clean: number of HTTP/HTTPS requests;</li>\n\n**Value-added Service Usage:**\n<li>smt_request_clean: number of smart acceleration requests, in counts;</li>\n<li>quic_request: number of quic requests;</li>\n<Li>bot_request_clean: number of bot requests;</li>\n<li>cls_count: number of real-time log entries pushed;</li>\n<li>ddos_bandwidth: elastic ddos protection bandwidth, in bps.</li>\n\n**Edge Computing Usage:**\n<li>edgefunction_request: number of edge function executions, in counts</li>\n<li>edgefunction_cpu_time: edge function CPU processing time, in milliseconds</li>\n\n**Media Processing Usage (Unit: seconds):**\n<li>total_transcode: duration of jit transcoding and transmuxing for all specifications of audio and video, in seconds;</li>\n<li>remux: transmuxing duration, in seconds;</li>\n<li>transcode_audio: audio transcoding duration, in seconds;</li>\n<li>transcode_H264_SD: specifies the duration of standard-definition videos encoded in H.264 (short side <= 480 px), in seconds;</li>\n<li>transcode_H264_HD: specifies the duration of high-definition video (short side <= 720 px) encoded in H.264, in seconds;</li>\n<li>transcode_H264_FHD: specifies the duration of a full hd video (short side <= 1080 px) encoded in H.264, in seconds;</li>\n<li>transcode_H264_2K: specifies the duration of a 2K video (short side <= 1440 px) encoded in H.264, expressed in seconds.</li>\n\n",
           "example": "acc_flux",
           "member": "string",
           "name": "MetricName",
@@ -8108,10 +8672,19 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. The detailed values of filter criteria are as follows:\n<li>host: Filter by domain name, such as test.example.com.<br></li>\n<li>proxy-id: Filter by L4 proxy instance ID, such as sid-2rugn89bkla9.<br></li>\n<li>region-id: Filter by billing region. Options:<br>  CH: Chinese mainland<br>  AF: Africa<br>  AS1: Asia-Pacific Region 1<br>  AS2: Asia-Pacific Region 2<br>  AS3: Asia-Pacific Region 3<br>  EU: Europe<br>  MidEast: Middle East<br>  NA: North America<br>  SA: South America</li>",
+          "document": "Filter criteria. The detailed values of filter criteria are as follows:\n<ul>\n  <li>host: Filter by domain name, such as test.example.com.</li>\n  <li>proxy-id: Filter by L4 proxy instance ID, such as sid-2rugn89bkla9.</li>\n  <li>region-id: Filter by billing region. Options:\n    <ul>\n      <li>CH: Chinese mainland</li>\n      <li>AF: Africa</li>\n      <li>AS1: Asia-Pacific Region 1</li>\n      <li>AS2: Asia-Pacific Region 2</li>\n      <li>AS3: Asia-Pacific Region 3</li>\n      <li>EU: Europe</li>\n      <li>MidEast: Middle East</li>\n      <li>NA: North America</li>\n      <li>SA: South America</li>\n    </ul>\n  </li>\n</ul>\n<p>Note: Filters of the same `Type` use OR logic, while filters of different `Type` use AND logic.</p>\n",
           "example": "无",
           "member": "BillingDataFilter",
           "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Grouping aggregation dimensions. A maximum of two dimensions can be used for grouping simultaneously. The values are as follows:</p>\n  <ul>\n    <li>zone-id: Group by zone ID. If content identifiers are used, grouping by content identifier takes priority.</li>\n    <li>host: Group by domain name.</li>\n    <li>proxy-id: Group by layer-4 proxy instance ID.</li>\n    <li>region-id: Group by billing region.</li>\n  </ul>",
+          "example": "zone-id",
+          "member": "string",
+          "name": "GroupBy",
           "required": false,
           "type": "list"
         }
@@ -11245,6 +11818,99 @@
       ],
       "type": "object"
     },
+    "DescribeWebSecurityTemplateRequest": {
+      "document": "DescribeWebSecurityTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID. The zone to which the target policy template belongs for access control. Use the DescribeWebSecurityTemplates interface to query the zone of the policy template.",
+          "example": "zone-2wkpkd52pku8",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy template ID.",
+          "example": "temp-o3xctdd2",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebSecurityTemplateResponse": {
+      "document": "DescribeWebSecurityTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Web Security policy template configuration. Bot management configuration is not currently supported (under development).",
+          "example": "无",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicy",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebSecurityTemplatesRequest": {
+      "document": "DescribeWebSecurityTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of zone IDs. A maximum of 100 zones can be queried in a single request.",
+          "example": "[\"zone-2bu6nf2gwsax\", \"zone-6wkpkd5gzvms\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWebSecurityTemplatesResponse": {
+      "document": "DescribeWebSecurityTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of policy templates.",
+          "example": "6",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of policy templates.",
+          "example": "无",
+          "member": "SecurityPolicyTemplateInfo",
+          "name": "SecurityPolicyTemplates",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZoneConfigImportResultRequest": {
       "document": "DescribeZoneConfigImportResult request structure.",
       "members": [
@@ -11815,6 +12481,67 @@
           "output_required": false,
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DeviceProfile": {
+      "document": "Describes the client device configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client device type. valid values: <li>iOS;</li> <li>Android;</li> <li>WebView.</li>.",
+          "example": "Android",
+          "member": "string",
+          "name": "ClientType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The minimum value to determine a request as high-risk ranges from 1–99. the larger the value, the higher the request risk, and the closer it resembles a request initiated by a Bot client. the default value is 50, corresponding to high-risk for values 51–100.",
+          "example": "50",
+          "member": "uint64",
+          "name": "HighRiskMinScore",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Handling method for high-risk requests. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.",
+          "example": "参考 SecurityAction 结构",
+          "member": "SecurityAction",
+          "name": "HighRiskRequestAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the minimum value to determine a request as medium-risk. value range: 1–99. the larger the value, the higher the request risk, resembling requests initiated by a Bot client. default value: 15, corresponding to medium-risk for values 16–50.",
+          "example": "15",
+          "member": "uint64",
+          "name": "MediumRiskMinScore",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Handling method for medium-risk requests. SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Redirect: Redirect;</li> <li>Challenge: Challenge.</li> default value is Monitor.",
+          "example": "参考 SecurityAction 结构",
+          "member": "SecurityAction",
+          "name": "MediumRiskRequestAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -12792,6 +13519,139 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ExceptionRule": {
+      "document": "Web security exception rule.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the exception rule. different rule configuration operations are supported by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list under the ExceptionRules parameter will be deleted.</li>.",
+          "example": "2181399686",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the exception rule.",
+          "example": "SampleBasicExceptionRule",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the specific content of the exception rule, which must comply with the expression grammar. for details, please refer to the product document.",
+          "example": "${http.request.uri.path} in ['/api/v3/test','/api/v3/submit'] and ${http.request.method} in ['POST']",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exception rule execution options, valid values: <li>WebSecurityModules: designate the security protection module for the exception rule.</li> <li>ManagedRules: designate the managed rule.</li>.",
+          "example": "WebSecurityModules",
+          "member": "string",
+          "name": "SkipScope",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Skip the specific type of request. valid values: <li>SkipOnAllRequestFields: skip all requests;</li> <li>SkipOnSpecifiedRequestFields: skip specified request fields.</li> valid only when SkipScope is ManagedRules.",
+          "example": "SkipOnSpecifiedRequestFields",
+          "member": "string",
+          "name": "SkipOption",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the security protection module for exception rules. valid only when SkipScope is WebSecurityModules. valid values: <li>websec-mod-managed-rules: managed rule.</li><li>websec-mod-rate-limiting: rate limit.</li><li>websec-mod-custom-rules: custom rule.</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection.</li><li>websec-mod-bot: bot management.</li>.",
+          "example": "[\"websec-mod-custom-rules\",\"websec-mod-rate-limiting\"]",
+          "member": "string",
+          "name": "WebSecurityModulesForException",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the managed rule for the exception rule. valid only when SkipScope is ManagedRules. cannot specify ManagedRuleGroupsForException at this time.",
+          "example": "[\"4401215074\",\"4368124487\"]",
+          "member": "string",
+          "name": "ManagedRulesForException",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A managed rule group with designated exception rules is valid only when SkipScope is ManagedRules, and at this point you cannot specify ManagedRulesForException.",
+          "example": "[\"wafgroup-sql-injection-attacks\"]",
+          "member": "string",
+          "name": "ManagedRuleGroupsForException",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify exception rules to skip request fields. valid only when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields.",
+          "example": "参考 RequestFieldsForException 结构",
+          "member": "RequestFieldsForException",
+          "name": "RequestFieldsForException",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the exception rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ExceptionRules": {
+      "document": "Web security exception rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Definition list of exception Rules. when using ModifySecurityPolicy to modify Web protection configuration: <li>if the Rules parameter is not specified or the parameter length is zero: clear all exception rule configurations.</li><li>if the ExceptionRules parameter value is not specified in SecurityPolicy: keep existing exception rule configurations without modification.</li>.",
+          "example": "参考 ExceptionRule 结构",
+          "member": "ExceptionRule",
+          "name": "Rules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -13817,6 +14677,56 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "HttpDDoSProtection": {
+      "document": "HTTP DDOS protection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the specific configuration of adaptive frequency control.",
+          "example": "无",
+          "member": "AdaptiveFrequencyControl",
+          "name": "AdaptiveFrequencyControl",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the intelligent client filter configuration.",
+          "example": "无",
+          "member": "ClientFiltering",
+          "name": "ClientFiltering",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the specific configuration for bandwidth abuse protection.",
+          "example": "无",
+          "member": "BandwidthAbuseDefense",
+          "name": "BandwidthAbuseDefense",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the configuration of slow attack protection.",
+          "example": "无",
+          "member": "SlowAttackDefense",
+          "name": "SlowAttackDefense",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -15481,6 +16391,45 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MinimalRequestBodyTransferRate": {
+      "document": "Minimum minimum body transfer rate threshold configuration. ```.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Minimum body transfer rate threshold, the measurement unit is only supported in bps.",
+          "example": "50bps",
+          "member": "string",
+          "name": "MinimalAvgTransferRateThreshold",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum body transfer rate statistical time range, valid values: <li>10s: 10 seconds;</li> <li>30s: 30 seconds;</li> <li>60s: 60 seconds;</li> <li>120s: 120 seconds.</li>.",
+          "example": "10s",
+          "member": "string",
+          "name": "CountingPeriod",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the minimum body transfer rate threshold is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -17412,6 +18361,60 @@
     },
     "ModifySecurityPolicyResponse": {
       "document": "ModifySecurityPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyWebSecurityTemplateRequest": {
+      "document": "ModifyWebSecurityTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID. The zone to which the target policy template belongs for access control. Use the DescribeWebSecurityTemplates interface to query the zone of the policy template.",
+          "example": "zone-2wkpkd52kac5",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy template ID.",
+          "example": "temp-8pw98uer",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified policy template name. Consists of Chinese characters, letters, numbers, and underscores, cannot start with an underscore, and must not exceed 32 characters. If the field is empty, no modification will be made.",
+          "example": "CC防护标准模板V2",
+          "member": "string",
+          "name": "TemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security policy template configuration content. If the value is empty, no modification will be made; submodule structures not passed in will not be modified. Currently supports exception rules, custom rules, rate limiting rules, and managed rule configurations in the Web Security module, using expression syntax for security policy configuration. Bot management rule configuration is not yet supported (under development).\nSpecial note: When passing a submodule structure as input, ensure all rule content to be retained is included. Rule content not passed in will be treated as deleted.",
+          "example": "无",
+          "member": "SecurityPolicy",
+          "name": "SecurityPolicy",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyWebSecurityTemplateResponse": {
+      "document": "ModifyWebSecurityTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -19636,6 +20639,139 @@
       ],
       "usage": "both"
     },
+    "RateLimitingRule": {
+      "document": "Specifies the rate limit configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of precise rate limiting. rule ID supports different rule configuration operations: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the RateLimitingRules parameter will be deleted.</li>.",
+          "example": "2181399690",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the precise rate limit.",
+          "example": "SampleHttpDdosRule",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The specific content of precise speed limit shall comply with the expression syntax. for detailed specifications, see the product documentation.",
+          "example": "${http.request.uri.path} in ['/api/v3/test','/api/v3/submit']",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rate threshold request feature match mode. this field is required when Enabled is on.  when there are multiple conditions, composite multiple conditions will perform statistics count. the maximum number of conditions must not exceed 5. valid values: <li><b>http.request.ip</b>: client ip;</li> <li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li> <li><b>http.request.uri.path</b>: request access path;</li> <li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own specified parameter;</li> <li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own specified parameter;</li> <li><b>http.request.ja3</b>: request ja3 fingerprint;</li> <li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own specified parameter.</li>.",
+          "example": "http.request.ip",
+          "member": "string",
+          "name": "CountBy",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Precision rate limiting specifies the cumulative number of interceptions within the time range. value ranges from 1 to 100000.",
+          "example": "100",
+          "member": "int64",
+          "name": "MaxRequestThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time window for statistics. valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li>.",
+          "example": "10s",
+          "member": "string",
+          "name": "CountingPeriod",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The duration of an Action is only supported in the following units: <li>s: seconds, value range 1–120;</li> <li>m: minutes, value range 1–120;</li> <li>h: hours, value range 1–48;</li> <li>d: days, value range 1–30.</li>.",
+          "example": "60s",
+          "member": "string",
+          "name": "ActionDuration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Precision rate limiting handling methods. valid values: <li>Monitor: Monitor;</li> <li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL;</li>.",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Precision rate limiting specifies the priority. value range is 0 to 100. default is 0.",
+          "example": "50",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the precise rate limiting rule is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RateLimitingRules": {
+      "document": "Precision rate limiting configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Definition list of precise rate limiting. when using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> if the Rules parameter is not specified or its length is zero: clear all precision rate limiting configurations.</li> <li> if the RateLimitingRules parameter value is unspecified in the SecurityPolicy parameter: retain the existing custom rule configuration without modification.</li>.",
+          "example": "无",
+          "member": "RateLimitingRule",
+          "name": "Rules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RealtimeLogDeliveryTask": {
       "document": "Real-time log delivery task",
       "members": [
@@ -19898,6 +21034,73 @@
         }
       ],
       "type": "object"
+    },
+    "RequestBodyTransferTimeout": {
+      "document": "Body transfer timeout duration configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Body transfer timeout duration. valid values: 5-120. measurement unit: seconds (s) only.",
+          "example": "5s",
+          "member": "string",
+          "name": "IdleTimeout",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether body transfer timeout is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RequestFieldsForException": {
+      "document": "Skipped fields configuration in exception rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Skip specific field. supported values:.\n<li>body.json: parameter content in json requests. at this point, Condition supports key and value, TargetField supports key and value, for example { \"Scope\": \"body.json\", \"Condition\": \"\", \"TargetField\": \"key\" }, which means all parameters in json requests skip WAF scan.</li>.\n<li style=\"margin-top:5px\">cookie: cookie; at this point Condition supports key, value, TargetField supports key, value, for example { \"Scope\": \"cookie\", \"Condition\": \"${key} in ['account-id'] and ${value} like ['prefix-*']\", \"TargetField\": \"value\" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>.\n<li style=\"margin-top:5px\">header: HTTP header parameters. at this point, Condition supports key and value, TargetField supports key and value, for example { \"Scope\": \"header\", \"Condition\": \"${key} like ['x-auth-*']\", \"TargetField\": \"value\" }, which means header parameter name wildcard match x-auth-* skips WAF scan.</li>.\n<li style=\"margin-top:5px\">uri.query: URL encoding content/query parameter. at this point, Condition supports key and value, TargetField supports key and value. example: { \"Scope\": \"uri.query\", \"Condition\": \"${key} in ['action'] and ${value} in ['upload', 'delete']\", \"TargetField\": \"value\" }. indicates URL encoding content/query parameter name equal to action and parameter value equal to upload or delete skips WAF scan.</li>.\n<li style=\"margin-top:5px\">uri: specifies the request path uri. at this point, Condition must be empty. TargetField supports query, path, fullpath, such as {\"Scope\": \"uri\", \"Condition\": \"\", \"TargetField\": \"query\"}, indicates the request path uri skips WAF scan for query parameters.</li>.\n<li style=\"margin-top:5px\">body: request body content. at this point Condition must be empty, TargetField supports fullbody, multipart, such as { \"Scope\": \"body\", \"Condition\": \"\", \"TargetField\": \"fullbody\" }, which means the request body content skips WAF scan as a full request.</li>.",
+          "example": "header",
+          "member": "string",
+          "name": "Scope",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Skip specific field expression must comply with expression grammar.\nCondition supports expression configuration syntax: <li> write according to the matching conditional expression syntax of rules, with support for referencing key and value.</li> <li> supports in, like operators, and logical combination with and.</li>.\nFor example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.</li> <li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: the parameter name equals x-trace-id and the parameter value wildcard matches Bearer *.</li>.",
+          "example": "${key} in ['x-trace-id'] and ${value} like ['Bearer *']",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Scope parameter takes different values. the TargetField expression supports the following values:.\n<Li> body.json: supports key, value.</li>.\n<li>cookie: supports key and value.</li>.\n<li>header: supports key, value</li>.\n<Li> uri.query: supports key and value</li>.\n<li>uri. specifies path, query, or fullpath.</li>.\n<Li>Body: supports fullbody and multipart.</li>.",
+          "example": "value",
+          "member": "string",
+          "name": "TargetField",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Resource": {
       "document": "Billable resource",
@@ -21362,7 +22565,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specific action name for security operation. Values:\n<li>`Deny`: block</li> <li>`Monitor`: monitor</li> <li>`ReturnCustomPage`: block with customized page</li> <li>`Redirect`: Redirect to URL</li> <li>`BlockIP`: IP block</li> <li>`JSChallenge`: javaScript challenge</li> <li>`ManagedChallenge`: managed challenge</li> <li>`Disabled`: disabled</li> <li>`Allow`: allow</li>.",
+          "document": "Safe execution actions. valid values:.\n<Li>Deny: block request to access site resource;</li>.\n<Li>`Monitor`: observe; only record logs</li>.\n<li>`Redirect`: Redirect to URL</li>.\n<Li>Disabled: disabled; specify rule is not enabled.</li>.\n<Li>Allow: allow access but delay processing the request.</li>.\n<Li>Challenge: challenge, respond to challenge content;</li>.\n<Li>BlockIP: to be deprecated, ip block;</li>.\n<Li>`ReturnCustomPage`: to be deprecated, use specified page block;</li>.\n<li>JSChallenge: to be deprecated, JavaScript challenge;</li>.\n<Li>ManagedChallenge: to be deprecated. managed challenge.</li>.",
           "example": "Deny",
           "member": "string",
           "name": "Name",
@@ -21373,21 +22576,10 @@
         },
         {
           "disabled": false,
-          "document": "Additional parameter when Name is BlockIP.",
-          "example": "参考 BlockIPActionParameters 结构",
-          "member": "BlockIPActionParameters",
-          "name": "BlockIPActionParameters",
-          "output_required": false,
-          "required": false,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Additional parameter when Name is ReturnCustomPage.",
-          "example": "参考 ReturnCustomPageActionParameters 结构",
-          "member": "ReturnCustomPageActionParameters",
-          "name": "ReturnCustomPageActionParameters",
+          "document": "Additional parameters when Name is Deny.",
+          "example": "参考 DenyActionParameters 结构",
+          "member": "DenyActionParameters",
+          "name": "DenyActionParameters",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -21399,6 +22591,50 @@
           "example": "参考 RedirectActionParameters 结构",
           "member": "RedirectActionParameters",
           "name": "RedirectActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters when Name is Allow.",
+          "example": "参考 AllowActionParameters 结构",
+          "member": "AllowActionParameters",
+          "name": "AllowActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameter when Name is Challenge.",
+          "example": "参考 ChallengeActionParameters 结构",
+          "member": "ChallengeActionParameters",
+          "name": "ChallengeActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "To be deprecated, additional parameter when Name is BlockIP.",
+          "example": "参考 BlockIPActionParameters 结构",
+          "member": "BlockIPActionParameters",
+          "name": "BlockIPActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "To be deprecated, additional parameter when Name is ReturnCustomPage.",
+          "example": "参考 ReturnCustomPageActionParameters 结构",
+          "member": "ReturnCustomPageActionParameters",
+          "name": "ReturnCustomPageActionParameters",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -21558,9 +22794,99 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP DDOS protection configuration.",
+          "example": "参考 HttpDDoSProtection 示例",
+          "member": "HttpDDoSProtection",
+          "name": "HttpDDoSProtection",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configures the rate limiting rule.",
+          "example": "参考 RateLimitingRules 示例",
+          "member": "RateLimitingRules",
+          "name": "RateLimitingRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exception rule configuration.",
+          "example": "参考 ExceptionRules 示例",
+          "member": "ExceptionRules",
+          "name": "ExceptionRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bot management configuration.",
+          "example": "参考 BotManagement 示例",
+          "member": "BotManagement",
+          "name": "BotManagement",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
+    },
+    "SecurityPolicyTemplateInfo": {
+      "document": "Policy template information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The zone ID to which the policy template belongs.",
+          "example": "zone-3ahwq3xdwase",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy template ID.",
+          "example": "temp-1m9i219w",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the policy template.",
+          "example": "CC防护标准策略模板",
+          "member": "string",
+          "name": "TemplateName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information about domains bound to the policy template.",
+          "example": "参考 BindDomainInfo 结构",
+          "member": "BindDomainInfo",
+          "name": "BindDomains",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SecurityTemplateBinding": {
       "document": "Bindings of a security policy template",
@@ -21766,6 +23092,56 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SlowAttackDefense": {
+      "document": "Slow attack protection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether slow attack protection is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Slow attack protection handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li>.",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The specific configuration of the minimum body transfer rate threshold is required when Enabled is on.",
+          "example": "无",
+          "member": "MinimalRequestBodyTransferRate",
+          "name": "MinimalRequestBodyTransferRate",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the specific configuration of body transfer timeout duration. required when Enabled is on.",
+          "example": "无",
+          "member": "RequestBodyTransferTimeout",
+          "name": "RequestBodyTransferTimeout",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
