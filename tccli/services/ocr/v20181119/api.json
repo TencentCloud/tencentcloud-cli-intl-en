@@ -7,6 +7,13 @@
       "output": "BankCardOCRResponse",
       "status": "online"
     },
+    "ExtractDocMulti": {
+      "document": "This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).\n\nThis API is used to set the alias SmartStructuralPro.\n\nThe default API request rate limit is 5 requests per second.",
+      "input": "ExtractDocMultiRequest",
+      "name": "Extract a document (multimodal)",
+      "output": "ExtractDocMultiResponse",
+      "status": "online"
+    },
     "GeneralAccurateOCR": {
       "document": "This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.\n\nIt is suitable for scenarios with a lot of characters in complex layouts and requiring high recognition accuracy, such as examination papers, online images, signboards, and legal documents.\n\nStrengths: compared with general print recognition, it provides higher-precision character recognition services. Its accuracy and recall rate are higher in difficult scenarios such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "GeneralAccurateOCRRequest",
@@ -901,6 +908,21 @@
       ],
       "usage": "out"
     },
+    "ConfigAdvanced": {
+      "document": "Supports single attribute configuration for templates.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Single attribute configuration of a template.",
+          "example": "only_hw",
+          "member": "string",
+          "name": "Scene",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "Coord": {
       "document": "Coordinates",
       "members": [
@@ -968,6 +990,163 @@
         }
       ],
       "usage": "out"
+    },
+    "ExtractDocMultiRequest": {
+      "document": "ExtractDocMulti request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Url address of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after Base64 encoding. image download time should not exceed 3 seconds. supported image pixels: between 20-10000px. images stored in tencent cloud's Url ensure higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/document/SmartStructuralOCR/SmartStructuralPro1.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after encoding the downloaded image with Base64. image download time: no more than 3 seconds. supported image pixels: between 20-10000px. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the page number of the PDF to be recognized. only single page recognition is supported. valid when uploading a PDF file with the IsPdf parameter set to true. default value is the first 3 pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the field names to be returned by the customized structuring feature. for example, if the customer wants to add the recognition result of two fields, name and gender, manually input ItemNames=[\"name\",\"gender\"].",
+          "example": "[\"姓名\",\"性别\"]",
+          "member": "string",
+          "name": "ItemNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "true: only custom field.\nFalse: default value field + custom field.\nDefault true.",
+          "example": "true",
+          "member": "bool",
+          "name": "ItemNamesShowMode",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the full-text field recognition is enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReturnFullText",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration ID support: \n-- General\n-- InvoiceEng\n-- WayBillEng\n-- CustomsDeclaration\n-- WeightNote\n-- MedicalMeter\n-- BillOfLading\n-- EntrustmentBook\n-- Statement\n-- BookingConfirmation\n-- AirWayBill\n-- Table\n-- SteelLabel\n-- CarInsurance\n-- MultiRealEstateCertificate\n-- MultiRealEstateMaterial\n-- HongKongUtilityBill",
+          "example": "General",
+          "member": "string",
+          "name": "ConfigId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the full-text field coordinate value recognition is enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableCoord",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether parent-child key recognition is enabled. the option is selected by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "OutputParentKey",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Single attribute configuration of a template.",
+          "example": "{\"Scene\": \"only_hw\"}",
+          "member": "ConfigAdvanced",
+          "name": "ConfigAdvanced",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "When cn, the added key is chinese.  \nWhen set to en, the added key is english.",
+          "example": "cn",
+          "member": "string",
+          "name": "OutputLanguage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtractDocMultiResponse": {
+      "document": "ExtractDocMulti response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.",
+          "example": "0",
+          "member": "float",
+          "name": "Angle",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configures the structured text info.",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "StructuralList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Restore text information.",
+          "example": "无",
+          "member": "WordItem",
+          "name": "WordList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of sample identification fields.",
+          "example": "12",
+          "member": "int64",
+          "name": "TokenNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "FlightItem": {
       "document": "Flight items",
@@ -11162,6 +11341,52 @@
           "disabled": false,
           "document": "The coordinates of the four vertices.",
           "example": "[x1,y1,x2,y3,x3,y3,x4,y4]",
+          "member": "Polygon",
+          "name": "Coord",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description.",
+          "example": "{\"Parag\":{\"ParagNo\":2,\"ParagType\":0,\"DetectNo\":0}}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the four-point coordinate of the word.",
+          "example": "[x1,y1,x2,y3,x3,y3,x4,y4]",
+          "member": "WordPolygon",
+          "name": "WordCoord",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WordPolygon": {
+      "document": "Word coordinates info.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The text content.",
+          "example": "1234567",
+          "member": "string",
+          "name": "DetectedText",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The coordinates of the four vertices.",
+          "example": "[x1,y1,x2,y3,x3,y3,x4,y4]\t",
           "member": "Polygon",
           "name": "Coord",
           "output_required": true,

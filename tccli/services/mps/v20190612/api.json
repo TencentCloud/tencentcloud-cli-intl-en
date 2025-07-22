@@ -888,25 +888,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "Atomic task type.\n<li>input: start node</li>\n<li>output: end node</li>\n<li>action-trans: transcoding</li>\n<li>action-samplesnapshot: sampled screenshot</li>\n<li>action-AIAnalysis: analysis</li>\n<li>action-AIRecognition: recognition</li>\n<li>action-aiReview: review</li>\n<li>action-animated-graphics: conversion to GIF</li>\n<li>action-image-sprite: image sprite</li>\n<li>action-snapshotByTimeOffset: time point screenshot</li>\n<li>action-adaptive-substream: adaptive bitrate stream</li>\n<li>action-AIQualityControl: media quality inspection</li>\n<li>action-SmartSubtitles: smart subtitle</li>\n\n\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Atomic task type.\n<li>input: starting node.</li>.\n<li>`output`: termination node</li>.\n<li>action-trans: transcoding.</li>.\n<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.\n<li>action-AIAnalysis: analysis.</li>.\n<li>action-AIRecognition: specifies recognition.</li>.\n<li>action-aiReview: specifies the review action.</li>.\n<li>action-animated-graphics: specifies the animated image.</li>.\n<li>action-image-sprite: specifies the sprite sheet.</li>.\n<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.\n<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.\n<li>action-AIQualityControl: media quality inspection.</li>.\n<li>action-SmartSubtitles: specifies smart subtitling.</li>.\n\n\n",
           "example": "input",
           "member": "string",
           "name": "ActivityType",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The indexes of the subsequent actions.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Rear node index array.",
+          "example": "[3]",
           "member": "int64",
           "name": "ReardriveIndex",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1319,21 +1319,32 @@
         },
         {
           "disabled": false,
-          "document": "Drm information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Drm information.",
           "example": "无",
           "member": "DrmInfo",
           "name": "DrmInfo",
           "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Adaptive transcoding template type.\nCommon: audio-video.\nPureAudio: audio-only.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Adaptive transcoding template type.\nCommon: audio/video type.\nPureAudio: audio-only.",
           "example": "Common",
           "member": "string",
           "name": "DefinitionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle setting.",
+          "example": "无",
+          "member": "string",
+          "name": "SubtitleTemplate",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -1348,7 +1359,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an adaptive bitrate streaming template.",
-          "example": "无",
+          "example": "105965",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
@@ -1358,7 +1369,7 @@
         {
           "disabled": false,
           "document": "Template type. Valid values:\n<li>Preset: preset template;</li>\n<li>Custom: custom template.</li>",
-          "example": "无",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -1368,7 +1379,7 @@
         {
           "disabled": false,
           "document": "Name of an adaptive bitrate streaming template.",
-          "example": "无",
+          "example": "转自适应码流模板",
           "member": "string",
           "name": "Name",
           "output_required": true,
@@ -1378,7 +1389,7 @@
         {
           "disabled": false,
           "document": "Description of an adaptive bitrate streaming template.",
-          "example": "无",
+          "example": "转自适应码流模板",
           "member": "string",
           "name": "Comment",
           "output_required": true,
@@ -1388,7 +1399,7 @@
         {
           "disabled": false,
           "document": "Adaptive bitrate streaming format. Valid values:\n<li>HLS;</li>\n<li>MPEG-DASH.</li>",
-          "example": "无",
+          "example": "HLS",
           "member": "string",
           "name": "Format",
           "output_required": true,
@@ -1408,7 +1419,7 @@
         {
           "disabled": false,
           "document": "Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "DisableHigherVideoBitrate",
           "output_required": true,
@@ -1418,7 +1429,7 @@
         {
           "disabled": false,
           "document": "Whether to prohibit transcoding from low resolution to high resolution. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "DisableHigherVideoResolution",
           "output_required": true,
@@ -1428,7 +1439,7 @@
         {
           "disabled": false,
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "example": "无",
+          "example": "2024-12-27T09:06:08Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -1438,7 +1449,7 @@
         {
           "disabled": false,
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "example": "无",
+          "example": "2024-12-27T09:06:08Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -1448,7 +1459,7 @@
         {
           "disabled": false,
           "document": "Whether it is an audio-only template. 0: video template. 1: audio-only template.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "PureAudio",
           "output_required": false,
@@ -1458,7 +1469,7 @@
         {
           "disabled": false,
           "document": "HLS segment type. Valid values:\n<li>ts-segment: HLS+TS segment.</li>\n<li>ts-byterange: HLS+TS byte range.</li>\n<li>mp4-segment: HLS+MP4 segment.</li>\n<li>mp4-byterange: HLS+MP4 byte range.</li>\n<li>ts-packed-audio: TS+Packed audio.</li>\n<li>mp4-packed-audio: MP4+Packed audio.</li>\nDefault value: ts-segment.\n\nNote: The HLS segment format for adaptive bitrate streaming is based on this field.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
           "output_required": false,
@@ -1912,7 +1923,7 @@
         {
           "disabled": false,
           "document": "Path of a file after removal.",
-          "example": "\t/output/test-result.mp4",
+          "example": "/output/test-result.mp4",
           "member": "string",
           "name": "Path",
           "output_required": true,
@@ -1931,23 +1942,23 @@
         },
         {
           "disabled": false,
-          "document": "Path of a subtitle file extracted from a video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Path of a subtitle file extracted from a video.",
           "example": "/output/1869644145.vtt",
           "member": "string",
           "name": "OriginSubtitlePath",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Path of a subtitle translation file extracted from a video.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Path of a subtitle translation file extracted from a video.",
           "example": "/output/1869644146.vtt",
           "member": "string",
           "name": "TranslateSubtitlePath",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2947,7 +2958,7 @@
         {
           "disabled": false,
           "document": "The channel extension parameter, which is a serialized JSON string.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "example": "{\\\"OutputDir\\\":\\\"/test/output/1abc***12345/\\\"}",
           "member": "string",
           "name": "ChannelExtPara",
           "output_required": true,
@@ -3515,93 +3526,93 @@
         },
         {
           "disabled": false,
-          "document": "The person’s gender.\n<li>Male</li>\n<li>Female</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Gender of the person.\n<Li>Male: man.</li>.\n<Li>Female: specifies the woman.</li>.",
           "example": "Male",
           "member": "string",
           "name": "Gender",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The person’s birth date.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Date of birth.",
           "example": "1953年6月",
           "member": "string",
           "name": "Birthday",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The person’s job or job title.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Occupation or position of a person.",
           "example": "歌手",
           "member": "string",
           "name": "Profession",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The college the person graduated from.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the graduation institution of the person.",
           "example": "清华大学",
           "member": "string",
           "name": "SchoolOfGraduation",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The person’s profile.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Description of the person.",
           "example": "知名歌手，代表作xxx",
           "member": "string",
           "name": "Abstract",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The person’s place of birth.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the birthplace or place of origin.",
           "example": "湖北武汉",
           "member": "string",
           "name": "PlaceOfBirth",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether the person is a politician or artist.\n<li>Politician</li>\n<li>Artist</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Person type.\n<Li>Politician: specifies the official.</li>.\n<Li>Artist: specifies the artist.</li>.",
           "example": "Politician",
           "member": "string",
           "name": "PersonType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Sensitivity\n<li>Normal</li>\n<li>Sensitive</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Sensitivity labeling.\n<Li>Normal: specifies the scaling group is normal.</li>.\n<Li>Sensitive: specifies sensitivity.</li>.",
           "example": "Normal",
           "member": "string",
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The screenshot URL.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the screenshot link.",
           "example": "https://test-result.com/face-recognition-person1.jpg",
           "member": "string",
           "name": "Url",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7468,7 +7479,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle text.",
+          "document": "Subtitle text. note: long text may exceed the frame. recommend using \\n for line breaks.",
           "example": "测试字幕中文",
           "member": "string",
           "name": "Text",
@@ -8054,9 +8065,10 @@
         {
           "disabled": false,
           "document": "The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.",
-          "example": "NULL",
+          "example": "TopRankVideo-125xxx88",
           "member": "string",
           "name": "Bucket",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8064,9 +8076,10 @@
         {
           "disabled": false,
           "document": "The region of the COS bucket, such as `ap-chongqing`.",
-          "example": "NULL",
+          "example": "ap-chongqing",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8074,9 +8087,10 @@
         {
           "disabled": false,
           "document": "The path of the object to process, such as `/movie/201907/WildAnimal.mov`.",
-          "example": "NULL",
+          "example": "/movie/201907/WildAnimal.mov",
           "member": "string",
           "name": "Object",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8090,9 +8104,10 @@
         {
           "disabled": false,
           "document": "The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.",
-          "example": "NULL",
+          "example": "TopRankVideo-125xxx88",
           "member": "string",
           "name": "Bucket",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8100,9 +8115,10 @@
         {
           "disabled": false,
           "document": "The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.",
-          "example": "NULL",
+          "example": "ap-chongqing",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8977,9 +8993,18 @@
         {
           "disabled": false,
           "document": "Media quality inspection template description, with a length limit of 256 characters.",
-          "example": "模板 1",
+          "example": "模板1",
           "member": "string",
           "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Recording file format. Valid values:\n<li>PNG: PNG image.</li>",
+          "example": "PNG",
+          "member": "string",
+          "name": "RecordFormat",
           "required": false,
           "type": "string"
         }
@@ -10813,43 +10838,43 @@
         },
         {
           "disabled": false,
-          "document": "Current status of the hotword lexicon corresponding to the ID. The value 0 indicates that no template is bound to this hotword lexicon when the query is performed and that the hotword lexicon can be deleted.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Current hotword lexicon id status. a value of 0 indicates that no template is bound to this hotword lexicon at the query moment and it can be deleted.",
           "example": "1",
           "member": "uint64",
           "name": "Status",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Hotword lexicon name.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Name of the hot lexicon.",
           "example": "HotwordsNameExample",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.\nThe value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.\n\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the value is 0 for a temporary hotword lexicon and returns the string provided during creation.\nSpecifies the value is 1 for a file-based hotword lexicon, and returns the content of the file uploaded during creation.\n\n",
           "example": "0",
           "member": "uint64",
           "name": "Type",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name of the uploaded hotword file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Name of the uploaded hotword file.",
           "example": "example.txt",
           "member": "string",
           "name": "FileName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10863,63 +10888,63 @@
         },
         {
           "disabled": false,
-          "document": "Hotword text, which depends on the value of Type.\nIf the value of Type is 0, the hotword string is returned.\nIf the value of Type is 1, the base64-encoded content of the hotword file is returned.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Hotword text, which depends on the value of Type.\nIf the value of Type is 0, the hotword string is returned.\nIf the value of Type is 1, the base64-encoded content of the hotword file is returned.",
           "example": "腾讯云|10,语音识别|5,ASR|10",
           "member": "string",
           "name": "Content",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of words contained in the hotword lexicon.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Number of words contained in the hotword lexicon.",
           "example": "3",
           "member": "uint64",
           "name": "WordCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Paging offset. Default value: 0.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Paging offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of returned entries. Default value: 10. Maximum value: 100.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, \"2006-01-02T15:04:05Z\".Note: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Hot word lexicon createtime in ISOUTC format \"2006-01-02T15:04:05Z\".",
           "example": "2025-01-14T06:51:57Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Modification time of the hotword lexicon in ISO datetime format (UTC time). For example, \"2006-01-02T15:04:05Z\".\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Hot lexicon last modified in ISOUTC format \"2006-01-02T15:04:05Z\".",
           "example": "2025-01-21T08:46:11Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -11010,13 +11035,13 @@
         },
         {
           "disabled": false,
-          "document": "Video processing task information. This field has a value only when TaskType is BatchTask.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Video processing task information. this field has a value only when TaskType is BatchTask.",
           "example": "无",
           "member": "BatchSubTaskResult",
           "name": "BatchTaskResult",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12453,7 +12478,7 @@
         {
           "disabled": false,
           "document": "Keyword filter. Array length limit: 100 words.",
-          "example": "",
+          "example": "[\"samples\"]",
           "member": "string",
           "name": "Keywords",
           "required": false,
@@ -12462,7 +12487,7 @@
         {
           "disabled": false,
           "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\nYou can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.",
-          "example": "",
+          "example": "[\"Recognition\"]",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -12471,7 +12496,7 @@
         {
           "disabled": false,
           "document": "Tag filter. Array length limit: 20 words.",
-          "example": "",
+          "example": "[\"tag1\"]",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -12480,7 +12505,7 @@
         {
           "disabled": false,
           "document": "Paging offset. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -12489,7 +12514,7 @@
         {
           "disabled": false,
           "document": "Number of returned entries. Default value: 100. Maximum value: 100.",
-          "example": "",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -12503,18 +12528,18 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of eligible entries.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "Total number of qualified records.",
+          "example": "3",
           "member": "uint64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Keyword information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiSampleWord",
           "name": "WordSet",
           "output_required": true,
@@ -12729,14 +12754,14 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encryption type.\n<li>simpleaes: AES-128 encryption</li>\n<li> widevine</li>\n<li>fairplay: not supported for DASH streams</li>\n<li> playready</li>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Encryption type.\n\n- simpleaes\nCan only be used for HLS. format support ts and mp4.\nOnly can be used in slice mode. cannot be used in singlefile mode.\n\n- fairplay:\nCan only be used for HLS. valid values: mp4.\nAvailable for use in slice mode or singlefile mode.\n\n- widevine:\nCan be used for HLS and DASH. format can only be mp4.\nOutput HLS: available for use in slice mode or singlefile mode.\nOutput DASH: can only be in singlefile mode.\n\n- playready:\nCan be used for HLS and DASH. format can only be mp4.\nOutput HLS: available for use in slice mode or singlefile mode.\nOutput DASH: can only be singlefile mode.\n",
           "example": "widevine",
           "member": "string",
           "name": "Type",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -15137,10 +15162,10 @@
         {
           "disabled": false,
           "document": "The type of moderation result. Valid values:\n<li>ImagePorn</li>\n<li>ImageTerrorism</li>\n<li>ImagePolitical</li>\n<li>VoicePorn</li>",
-          "example": "\"\"",
+          "example": "ImagePorn",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15150,7 +15175,7 @@
           "example": "无",
           "member": "LiveStreamAiReviewImagePornResult",
           "name": "ImagePornResultSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15160,7 +15185,7 @@
           "example": "无",
           "member": "LiveStreamAiReviewImageTerrorismResult",
           "name": "ImageTerrorismResultSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15170,7 +15195,7 @@
           "example": "无",
           "member": "LiveStreamAiReviewImagePoliticalResult",
           "name": "ImagePoliticalResultSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15180,7 +15205,7 @@
           "example": "无",
           "member": "LiveStreamAiReviewVoicePornResult",
           "name": "VoicePornResultSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -15285,6 +15310,46 @@
           "output_required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2025-03-21T10:11:13Z",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2025-03-21T10:13:13Z",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "SteadyState",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User ID in the result of recognition via WebSocket and TRTC.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "bot",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -15878,6 +15943,46 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2025-03-21T10:11:52Z",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2025-03-21T10:12:52Z",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "SteadyState",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User ID in the result of real-time translation via WebSocket and TRTC.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "bot",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -16067,6 +16172,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Address of the mind map of a summary task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "https://xxxx.cos.myqcloud.com",
+          "member": "string",
+          "name": "MindMapUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -16250,7 +16365,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).",
+          "document": "Specifies the rotating image template ID. see [rotating image template](https://intl.cloud.tencent.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(ID.3Amove)).",
           "example": "20000",
           "member": "int64",
           "name": "Definition",
@@ -16786,6 +16901,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -16796,6 +16912,7 @@
           "example": "NULL",
           "member": "CosInputInfo",
           "name": "CosInputInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -16806,6 +16923,7 @@
           "example": "NULL",
           "member": "UrlInputInfo",
           "name": "UrlInputInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -16816,6 +16934,7 @@
           "example": "NULL",
           "member": "S3InputInfo",
           "name": "S3InputInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -17077,7 +17196,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -17087,7 +17206,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -17097,7 +17216,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -17107,7 +17226,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -17117,7 +17236,7 @@
         {
           "disabled": false,
           "document": "Input for an image sprite generating task.",
-          "example": "NULL",
+          "example": "无",
           "member": "ImageSpriteTaskInput",
           "name": "Input",
           "output_required": true,
@@ -17126,13 +17245,33 @@
         },
         {
           "disabled": false,
-          "document": "Output of an image sprite generating task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "Specifies the output of an image sprite task for a video.",
+          "example": "无",
           "member": "MediaImageSpriteItem",
           "name": "Output",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17285,7 +17424,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -17295,7 +17434,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -17305,7 +17444,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -17315,7 +17454,7 @@
         {
           "disabled": false,
           "document": "Error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -17325,7 +17464,7 @@
         {
           "disabled": false,
           "document": "Input for a sampled screenshot task.",
-          "example": "NULL",
+          "example": "无",
           "member": "SampleSnapshotTaskInput",
           "name": "Input",
           "output_required": true,
@@ -17334,33 +17473,33 @@
         },
         {
           "disabled": false,
-          "document": "Output of a sampled screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "Specifies the output of a sampling screenshot task for a video.",
+          "example": "无",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17371,7 +17510,7 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -17381,7 +17520,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "NULL",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -17391,7 +17530,7 @@
         {
           "disabled": false,
           "document": "Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.",
-          "example": "NULL",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "output_required": true,
@@ -17401,7 +17540,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "NULL",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -17420,33 +17559,33 @@
         },
         {
           "disabled": false,
-          "document": "Output of a time point screenshot task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the output of a screenshot task at specified time points for a video.",
           "example": "NULL",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The time when the task started executing, in ISO date format.",
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The time when the task finished, in ISO date format.",
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17457,20 +17596,20 @@
         {
           "disabled": false,
           "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "PROCESSING",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "\"\"",
+          "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -17480,49 +17619,49 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "\"xx\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Input for a transcoding task.",
-          "example": "NULL",
+          "example": "无",
           "member": "TranscodeTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Output of a transcoding task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "MediaTranscodeItem",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Transcoding progress. Value range: 0-100\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "0",
+          "document": "Transcoding progress, with a value range of [0-100].",
+          "example": "100",
           "member": "int64",
           "name": "Progress",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17942,7 +18081,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template name. Length limit: 64 characters.",
-          "example": "\"\"",
+          "example": "内容分析模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -17951,7 +18090,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template description. Length limit: 256 characters.",
-          "example": "\"\"",
+          "example": "内容分析模板",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -18644,7 +18783,7 @@
         {
           "disabled": false,
           "document": "Image ID",
-          "example": "123",
+          "example": "acdxx-xxx",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -18713,13 +18852,13 @@
         },
         {
           "disabled": false,
-          "document": "Information of images that failed the verification by facial feature positioning.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Indicates the information of facial features with processing failure.",
           "example": "无",
           "member": "AiSampleFailFaceInfo",
           "name": "FailFaceInfoSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -18745,7 +18884,7 @@
         {
           "disabled": false,
           "document": "Media quality inspection template name, with a length limit of 64 characters.",
-          "example": "无",
+          "example": "媒体质检模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -18754,7 +18893,7 @@
         {
           "disabled": false,
           "document": "Template description, with a length limit of 256 characters.",
-          "example": "无",
+          "example": "媒体质检模板",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -18768,6 +18907,15 @@
           "name": "QualityControlItemSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Recording file format. Valid values:\n<li>PNG: PNG image.</li>",
+          "example": "PNG",
+          "member": "string",
+          "name": "RecordFormat",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -18907,7 +19055,7 @@
         {
           "disabled": false,
           "document": "The scheme name.",
-          "example": "“”",
+          "example": "编排1",
           "member": "string",
           "name": "ScheduleName",
           "required": false,
@@ -18943,7 +19091,7 @@
         {
           "disabled": false,
           "document": "The directory to save the media processing output file, which must start and end with `/`.\nNote: If this parameter is left empty, the current `OutputDir` value will be invalidated.",
-          "example": "无",
+          "example": "/tmp/",
           "member": "string",
           "name": "OutputDir",
           "required": false,
@@ -18961,7 +19109,7 @@
         {
           "disabled": false,
           "document": "Resource ID. Ensure the corresponding resource is in the enabled state.",
-          "example": "无",
+          "example": "974e52bf-****-fdeca9b2d290",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -19195,7 +19343,7 @@
         {
           "disabled": false,
           "document": "Name of a transcoding template. Length limit: 64 characters.",
-          "example": "无",
+          "example": "转码模板12",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -19204,7 +19352,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "无",
+          "example": "转码模板12",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -19213,7 +19361,7 @@
         {
           "disabled": false,
           "document": "Whether to remove video data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
           "required": false,
@@ -19222,7 +19370,7 @@
         {
           "disabled": false,
           "document": "Whether to remove audio data. Valid values:\n<li>0: Retain</li>\n<li>1: Remove</li>",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
           "required": false,
@@ -19682,7 +19830,7 @@
         {
           "disabled": false,
           "document": "Video stream configuration parameter.",
-          "example": "NULL",
+          "example": "无",
           "member": "VideoTemplateInfoForUpdate",
           "name": "VideoTemplate",
           "output_required": true,
@@ -19693,7 +19841,7 @@
         {
           "disabled": false,
           "document": "Audio stream configuration parameter.",
-          "example": "NULL",
+          "example": "无",
           "member": "AudioTemplateInfoForUpdate",
           "name": "AudioTemplate",
           "output_required": true,
@@ -19704,7 +19852,7 @@
         {
           "disabled": false,
           "document": "The TSC transcoding parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "TEHDConfigForUpdate",
           "name": "TEHDConfig",
           "output_required": true,
@@ -19714,47 +19862,47 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle settings.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "Subtitle stream configuration parameter.",
+          "example": "无",
           "member": "SubtitleTemplate",
           "name": "SubtitleTemplate",
           "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The information of the external audio track to add.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "Specifies the external audio track parameter.",
+          "example": "无",
           "member": "MediaInputInfo",
           "name": "AddonAudioStream",
           "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "An extended field for transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Extension field for transcoding.",
+          "example": "{\"audio_info\": {\"codec\": \"vivid\"}}",
           "member": "string",
           "name": "StdExtInfo",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The subtitle file to add.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Subtitle file to be inserted.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
           "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -19765,7 +19913,7 @@
         {
           "disabled": false,
           "document": "Live stream event notification obtained from CMQ.",
-          "example": "xx",
+          "example": "NotificationContent",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -19790,7 +19938,7 @@
         {
           "disabled": false,
           "document": "Video processing task ID.",
-          "example": "xxx",
+          "example": "2459149217-procedure-live-xxx51da009t0",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -19860,7 +20008,7 @@
         {
           "disabled": false,
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
-          "example": "xx",
+          "example": "85c94a33-6227-43d5-8179-69b0602f6346",
           "member": "string",
           "name": "SessionId",
           "output_required": true,
@@ -19870,7 +20018,7 @@
         {
           "disabled": false,
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "xx",
+          "example": "UserDefinedInfo",
           "member": "string",
           "name": "SessionContext",
           "output_required": true,
@@ -19879,23 +20027,23 @@
         },
         {
           "disabled": false,
-          "document": "- Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "document": "- expiration time, event notification signature expiration in UNIX Timestamp format. - notifications from media processing default to an expiration time of 10 minutes. if the time specified by the Timestamp value in a message notification has expired, the notification can be deemed invalid, furthermore preventing network replay attacks. - the Timestamp format is decimal UNIX Timestamp, seconds elapsed since midnight (UTC/GMT) on january 1, 1970.",
+          "example": "1633046400",
           "member": "int64",
           "name": "Timestamp",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "document": "Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.",
+          "example": "d6a27ccba11dade3d0f627b1dfbdaf10",
           "member": "string",
           "name": "Sign",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -20695,7 +20843,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.",
+          "document": "Live stream URL. (It should be a live streaming file address. RTMP, HLS, FLV, and TRTC addresses are supported.)\nA TRTC address is as follows:\n trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`\n`<roomid>` is the TRTC room ID, which is a number.\n`<sdkappid>` is the SDK app ID of TRTC.\n`<userid>` is the user ID for accessing a room, which can be used to distinguish robots.\n<`usersig>` is the TRTC user signature.",
           "example": "http://www.abc.com/abc.m3u8",
           "member": "string",
           "name": "Url",
@@ -21312,7 +21460,7 @@
         {
           "disabled": false,
           "document": "Quality control item name. The quality control item values are as follows:\n<li>LowEvaluation: No reference score.</li>\n<li>Mosaic: Mosaic detection.</li>\n<li>CrashScreen: Screen crash detection.</li>\n<li>Blur: Blur detection.</li>\n<li>BlackWhiteEdge: Black and white edge detection.</li>\n<li>SolidColorScreen: Solid color screen detection.</li>\n<li>LowLighting: Low lighting.</li>\n<li>HighLighting: Overexposure.</li>\n<li>NoVoice: Silence detection.</li>\n<li>LowVoice: Low voice detection.</li>\n<li>HighVoice: High voice detection.</li>\n<li>Jitter: Jitter detection.</li>\n<li>Noise: Noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: Barcode detection.</li>\n<li>AppletCode: Applet code detection.</li>\n<li>VideoResolutionChanged: The video resolution changed.</li>\n<li>AudioSampleRateChanged: The audio sampling rate changed.</li>\n<li>AudioChannelsChanged: The audio channel count changed.</li>\n<li>ParameterSetsChanged: The stream parameter set information changed.</li>\n<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>\n<li>TimestampFallback: DTS timestamp fallback.</li>\n<li>DtsJitter: Excessive DTS jitter.</li>\n<li>PtsJitter: Excessive PTS jitter.</li>\n<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: Audio frame loss.</li>\n<li>VideoDroppingFrames: Video frame loss.</li>\n<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>\n<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>\n<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>\n<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>\n<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>\n<li>StreamOpenFailed: Stream opening failed.</li>\n<li>StreamEnd: The stream ended.</li>\n<li>StreamParseFailed: Stream parsing failed.</li>\n<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>\n<li>AudioStreamLack: No audio stream.</li>\n<li>VideoStreamLack: No video stream.</li>\n<li>LackAudioRecover: Lack of audio stream recovery.</li>\n<li>LackVideoRecover: Lack of video stream recovery.</li>\n<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>\n<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>\n<li>VideoDecodeFailed: Video decoding error.</li>\n<li>AudioDecodeFailed: Audio decoding error.</li>\n<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>\n<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>\n<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>\n<li>VideoRotation: Video image rotation.</li>\n<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>\n<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: Invalid m3u8 file.</li>\n<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>\n<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>\n<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>\n<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
-          "example": "无",
+          "example": "Mosaic",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -21323,7 +21471,7 @@
         {
           "disabled": false,
           "document": "Capability configuration switch. Valid values:\n<li>ON: enabled;</li>\n<li>OFF: disabled.</li>\n\nDefault value: ON.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ON",
           "member": "string",
           "name": "Switch",
           "output_required": false,
@@ -21356,7 +21504,7 @@
         {
           "disabled": false,
           "document": "Duration of abnormality, in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "100",
+          "example": "1000",
           "member": "uint64",
           "name": "Duration",
           "output_required": false,
@@ -21367,7 +21515,7 @@
         {
           "disabled": false,
           "document": "Threshold of a detection item. Different detection items have different thresholds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "80",
           "member": "string",
           "name": "Threshold",
           "output_required": false,
@@ -21410,7 +21558,7 @@
         {
           "disabled": false,
           "document": "Unique identifier of a media quality inspection template.",
-          "example": "0",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
           "output_required": true,
@@ -21420,7 +21568,7 @@
         {
           "disabled": false,
           "document": "Media quality inspection template name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "test",
           "member": "string",
           "name": "Name",
           "output_required": false,
@@ -21430,7 +21578,7 @@
         {
           "disabled": false,
           "document": "Template description.\n\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "my test media quality control template",
           "member": "string",
           "name": "Comment",
           "output_required": false,
@@ -21440,7 +21588,7 @@
         {
           "disabled": false,
           "document": "Template type. Valid values:\n<li>Preset: system preset template;</li>\n<li>Custom: custom template.</li>\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "output_required": false,
@@ -21460,7 +21608,7 @@
         {
           "disabled": false,
           "document": "Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "2021-02-03T04:05:06Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
@@ -21470,7 +21618,7 @@
         {
           "disabled": false,
           "document": "Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "2022-02-03T04:05:06Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": false,
@@ -21680,14 +21828,14 @@
         },
         {
           "disabled": false,
-          "document": "Additional parameter, which is a serialized JSON string.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Additional parameter, which is a serialized JSON string.",
           "example": "{\"video_info\":{\"color_prim\":\"bt709\"}}",
           "member": "string",
           "name": "StdExtInfo",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -21719,7 +21867,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin position, which currently can only be:\n<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>\nDefault value: TopLeft.",
+          "document": "Origin position. valid values:.\n<Li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>.\n<Li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>.\n<Li>BottomLeft: indicates that the coordinate origin is at the bottom-left corner of the video image and the watermark origin is at the bottom-left corner of the image or text.</li>.\n<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>\n\nDefault value: TopLeft.",
           "example": "TopLeft",
           "member": "string",
           "name": "CoordinateOrigin",
@@ -22327,7 +22475,7 @@
         {
           "disabled": false,
           "document": "The task status. Valid values: PROCESSING, SUCCESS, FAIL.",
-          "example": "PROCESSING",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -22337,7 +22485,7 @@
         {
           "disabled": false,
           "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
-          "example": "\"\"",
+          "example": " InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
           "output_required": true,
@@ -22357,7 +22505,7 @@
         {
           "disabled": false,
           "document": "The error message.",
-          "example": "\"xx\"",
+          "example": "SUCCESS",
           "member": "string",
           "name": "Message",
           "output_required": true,
@@ -22367,7 +22515,7 @@
         {
           "disabled": false,
           "document": "The input of the content recognition task.",
-          "example": "NULL",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "Input",
           "output_required": true,
@@ -22376,13 +22524,33 @@
         },
         {
           "disabled": false,
-          "document": "The output of the content recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "Output of the identification task.",
+          "example": "无",
           "member": "AiRecognitionResult",
           "name": "Output",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -22498,43 +22666,43 @@
         },
         {
           "disabled": false,
-          "document": "Recognition task input.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Input of the recognition task.",
           "example": "无",
           "member": "SmartSubtitlesTaskInput",
           "name": "Input",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Recognition task output.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "wu",
+          "document": "Output of the identification task.",
+          "example": "无",
           "member": "SmartSubtitlesResult",
           "name": "Output",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -22621,7 +22789,7 @@
         {
           "disabled": false,
           "document": "The scheme ID.",
-          "example": "0",
+          "example": "123",
           "member": "int64",
           "name": "ScheduleId",
           "output_required": true,
@@ -22631,7 +22799,7 @@
         {
           "disabled": false,
           "document": "The scheme name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "普通转码编排test",
           "member": "string",
           "name": "ScheduleName",
           "output_required": true,
@@ -22641,7 +22809,7 @@
         {
           "disabled": false,
           "document": "The scheme type. Valid values:\n <li>`Preset`</li>\n<li>`Custom` </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "Custom",
           "member": "string",
           "name": "Type",
           "output_required": false,
@@ -22651,7 +22819,7 @@
         {
           "disabled": false,
           "document": "The scheme status. Valid values:\n`Enabled`\n`Disabled`\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "Enabled",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -22691,7 +22859,7 @@
         {
           "disabled": false,
           "document": "The directory to save the output file.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "/output/",
           "member": "string",
           "name": "OutputDir",
           "output_required": true,
@@ -22711,7 +22879,7 @@
         {
           "disabled": false,
           "document": "The creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "2024-03-21T18:12:49+08:00",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -22721,7 +22889,7 @@
         {
           "disabled": false,
           "document": "The last updated time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "“”",
+          "example": "2024-03-21T18:12:49+08:00",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -22731,7 +22899,7 @@
         {
           "disabled": false,
           "document": "Resource ID. For those without an associated resource ID, fill in with an account's primary resource ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "vts-2xxxxx5-0",
           "member": "string",
           "name": "ResourceId",
           "output_required": false,
@@ -22870,43 +23038,43 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specifies the split segment URL.",
           "example": "http://www.example.com/mps/test.mp4",
           "member": "string",
           "name": "SegmentUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Segment cover.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the segment cover.",
           "example": "http://www.example.com/mps/test.jpg",
           "member": "string",
           "name": "CovImgUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Segment title.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Segment title.",
           "example": "上海风云",
           "member": "string",
           "name": "Title",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Segment summary.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the segment summary.",
           "example": "本段描述从鸦片战争到民国时期，上海经历了巨大的变迁",
           "member": "string",
           "name": "Summary",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -22920,23 +23088,23 @@
         },
         {
           "disabled": false,
-          "document": "The start time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the start time of a live streaming segment in the ISO date format.",
           "example": "2024-10-21T17:18:34+08:00",
           "member": "string",
           "name": "BeginTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The end time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Specifies the end time of a live streaming segment in the ISO date format.",
           "example": "2024-10-21T17:26:19+08:00",
           "member": "string",
           "name": "EndTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -23962,7 +24130,7 @@
         {
           "disabled": false,
           "document": "The URL of the subtitles to add to the video.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "address",
+          "example": "https://test-123xxxx456.cos.ap-nanjing.myqcloud.com/xxxxx/subtitle/1.srt",
           "member": "string",
           "name": "Path",
           "output_required": false,
@@ -23972,8 +24140,8 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "3",
+          "document": "Specifies the subtitle track for embedding subtitles into the video. the Streamindex parameter takes value starting from 0, where 0 indicates usage of the first subtitle track in the source video. if Path is specified, use Path preferentially. either Path or Streamindex should be specified.\n\n-Note: StreamIndex must match the subtitle track index in the source file. for example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. otherwise, task processing failed.\n\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
           "member": "int64",
           "name": "StreamIndex",
           "output_required": false,
@@ -23983,8 +24151,8 @@
         },
         {
           "disabled": false,
-          "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "simkai.ttf",
+          "document": "Font type. valid values:.\n<li>hei.ttf: simhei.</li>.\n<li>song.ttf: simsun.</li>.\n<Li>Kai.Ttf (recommend) or simkai.ttf: kaiti.</li>.\n<li>msyh.ttf: microsoft yahei</li>.\n<li>msyhbd.ttf: microsoft yahei in bold.</li>.\n<li>hkjgt.ttf: dynafont king gothic</li>.\n<li>dhttx.ttf: dianheitexiti.</li>.\n<li>xqgdzt.ttf: xiqueguzidianti</li>.\n<li>qpcyt.ttf: smart splice super round body.</li>.\n<li>arial.ttf: english only.</li>.\n<li>dinalternate.ttf:DIN Alternate Bold</li>\n<li>helveticalt.ttf:Helvetica</li>\n<li>helveticains.ttf:Helvetica Inserat</li>\n<li>trajanpro.ttf:TrajanPro-Bold</li>\n<li>korean.ttf: specifies the korean language.</li>.\n<li>japanese.ttf: specifies the japanese language.</li>.\n<li>thai.ttf: specifies the thai language.</li>.\nDefault: hei.ttf (heiti). note: kaiti is recommended for use with kai.ttf.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "kai.ttf",
           "member": "string",
           "name": "FontType",
           "output_required": false,
@@ -23994,8 +24162,8 @@
         },
         {
           "disabled": false,
-          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "5px",
+          "document": "Font size. Format: Npx, where N is a numerical value. If it is not specified, the font size of the subtitle file applies.\nIt is 5% of the source video height by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "50px",
           "member": "string",
           "name": "FontSize",
           "output_required": false,
@@ -24005,8 +24173,8 @@
         },
         {
           "disabled": false,
-          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "0xRRGGBB",
+          "document": "Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0xFFFFFF",
           "member": "string",
           "name": "FontColor",
           "output_required": false,
@@ -24020,6 +24188,72 @@
           "example": "1",
           "member": "float",
           "name": "FontAlpha",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle position on the Y-axis. If this parameter is specified, the built-in coordinates in the subtitle file will be ignored. The pixel and percentage formats are supported.\n\n - Pixel: Npx. Value range of N: [0,4096].\n - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle position on the Y-axis is 10% of the video height.\n\nBy default, the position is 4% of the source video height.\nNote: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.\n![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "4%",
+          "member": "string",
+          "name": "YPos",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle background position on the Y-axis. Pixel and percentage formats are supported.\n\n - Pixel: Npx. Value range of N: [0,4096].\n - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle background position on the Y-axis is 10% of the video height.\n\nIf this parameter is not specified, the subtitle background is disabled.\nNote: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background is at the bottom of the central axis of the source video, as shown in the figure below.\n![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1%",
+          "member": "string",
+          "name": "BoardY",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Board width. Unit: pixels. Value range: [0,4096].\nIt is 90% of the source video width by default.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1920",
+          "member": "int64",
+          "name": "BoardWidth",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Board height. Unit: pixels. Value range: [0,4096].\nIt is 15% of the source video height by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "BoardHeight",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Board color. Format: 0xRRGGBB.\nDefault value: 0x000000 (black).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0x000000",
+          "member": "string",
+          "name": "BoardColor",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle background transparency. Value range: [0, 1].\n<li>0: completely transparent.</li>\n<li>1: completely opaque.</li>\nDefault value: 0.8.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0.8",
+          "member": "float",
+          "name": "BoardAlpha",
           "output_required": false,
           "required": false,
           "type": "float",
@@ -24210,7 +24444,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The notification type. Valid values:\n<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>`TDMQ-CMQ`: Message queue</li>\n<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>\n<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
+          "document": "Notification type. available values:.\n<li>CMQ: offline. switch to TDMQ-CMQ.</li>.\n<Li>TDMQ-CMQ: message queue</li>.\n<li>URL: when a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. the callback protocol is HTTP+json. the content of the packet body is the same as the output parameters of the parseeventnotification api.</li>.\n<Li>SCF: not recommended. additional configuration is required in the console.</li>.\n<Li>AWS-SQS: aws queue, suitable for aws tasks only and requires the same region.</li>.\n<font color=\"red\">note: if left blank, it is TDMQ-CMQ by default. to use another type, you need to fill in the corresponding type value. if using TDMQ-CMQ message queue, an excessively large task response may cause queue failure.</font>.",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -24298,14 +24532,14 @@
         },
         {
           "disabled": false,
-          "document": "The key used to generate the callback signature.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "key used to generate a callback signature.",
           "example": "0se***9idaY",
           "member": "string",
           "name": "NotifyKey",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -24319,6 +24553,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -24329,6 +24564,7 @@
           "example": "NULL",
           "member": "CosOutputStorage",
           "name": "CosOutputStorage",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -24339,6 +24575,7 @@
           "example": "NULL",
           "member": "S3OutputStorage",
           "name": "S3OutputStorage",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -24786,19 +25023,19 @@
         },
         {
           "disabled": false,
-          "document": "Custom video transcoding parameter, which is valid if `Definition` is 0.\nThis parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.",
-          "example": "null",
+          "document": "Custom video transcoding parameter. valid when Definition is set to 0.\nThis parameter is used in high customization scenarios. it is recommended that you preferentially use Definition to specify transcoding parameters.",
+          "example": "无",
           "member": "RawTranscodeParameter",
           "name": "RawParameter",
           "output_required": true,
           "required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video transcoding custom parameter, which is valid when `Definition` is not 0.\nWhen any parameters in this structure are entered, they will be used to override corresponding parameters in templates.\nThis parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.\nNote: this field may return `null`, indicating that no valid value was found.",
-          "example": "null",
+          "example": "无",
           "member": "OverrideTranscodeParameter",
           "name": "OverrideParameter",
           "output_required": true,
@@ -24808,19 +25045,19 @@
         },
         {
           "disabled": false,
-          "document": "List of up to 10 image or text watermarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "document": "Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.",
+          "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of blurs. Up to 10 ones can be supported.",
-          "example": "null",
+          "example": "无",
           "member": "MosaicInput",
           "name": "MosaicSet",
           "output_required": true,
@@ -24831,7 +25068,7 @@
         {
           "disabled": false,
           "document": "Start time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>",
-          "example": "null",
+          "example": "1.0",
           "member": "float",
           "name": "StartTimeOffset",
           "output_required": true,
@@ -24842,7 +25079,7 @@
         {
           "disabled": false,
           "document": "End time offset of a transcoded video, in seconds.\n<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>\n<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>\n<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>",
-          "example": "null",
+          "example": "15.0",
           "member": "float",
           "name": "EndTimeOffset",
           "output_required": true,
@@ -24853,7 +25090,7 @@
         {
           "disabled": false,
           "document": "Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "output_required": true,
@@ -24864,7 +25101,7 @@
         {
           "disabled": false,
           "document": "Output path of the main file after transcoding, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_transcode_{definition}.{format}`.",
-          "example": "null",
+          "example": "{inputName}_transcode_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
           "output_required": true,
@@ -24875,7 +25112,7 @@
         {
           "disabled": false,
           "document": "Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.",
-          "example": "null",
+          "example": "{inputName}_transcode_{definition}_{number}.{format}",
           "member": "string",
           "name": "SegmentObjectName",
           "output_required": true,
@@ -24886,7 +25123,7 @@
         {
           "disabled": false,
           "document": "Rule of the `{number}` variable in the output path after transcoding.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "NumberFormat",
           "name": "ObjectNumberFormat",
           "output_required": true,
@@ -24897,7 +25134,7 @@
         {
           "disabled": false,
           "document": "Opening and closing credits parameters\nNote: this field may return `null`, indicating that no valid value was found.",
-          "example": "{   \"HeadSet\": [     {       \"Type\": \"URL\",       \"UrlInputInfo\"",
+          "example": "无",
           "member": "HeadTailParameter",
           "name": "HeadTailParameter",
           "output_required": false,
@@ -26454,7 +26691,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin position. Valid values:\n<li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>topRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>bottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>",
+          "document": "Origin position. Valid values:\n<li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>\n<li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>\n<li>BottomLeft: indicates that the coordinate origin is at the bottom left corner of the video image and the watermark origin is at the bottom left corner of the image or text.</li>\n<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>",
           "example": "TopLeft",
           "member": "string",
           "name": "CoordinateOrigin",

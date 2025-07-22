@@ -176,6 +176,14 @@
         "title": "Querying users and call metrics"
       }
     ],
+    "DescribeWebRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebRecord\n<Common request parameters>\n\n{\n    \"TaskId\": \"HMLm5HWNuUAXSb0gTEOx0z1x+nLMZNjXrY3keyUSvu7uu8mF9O656uNtbUtvaWLkpMY134jTN2Ix4vuqgOJ68nQ8tho3ri\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"RequestId\": \"record_class_1\"\n    }\n}",
+        "title": "Queries the status of a web-page recording task"
+      }
+    ],
     "DismissRoom": [
       {
         "document": "This example shows you how to close room `1234`.",
@@ -300,6 +308,14 @@
         "title": "Push an online media stream to the TRTC room."
       }
     ],
+    "StartWebRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartWebRecord\n<Common request parameters>\n\n{\n    \"RecordUrl\": \"https://web-record-xxxxx.cos.ap-xxx.myqcloud.com/xxxx/xxx.mp4\",\n    \"StorageParams\": {\n        \"CloudStorage\": {\n            \"Vendor\": 0,\n            \"Bucket\": \"webrecord-1234589\",\n            \"Region\": \"ap-singapore\",\n            \"AccessKey\": \"AKxxxxxx\",\n            \"SecretKey\": \"Idxxxxxx\",\n            \"FileNamePrefix\": [\n                \"record\",\n                \"video\"\n            ]\n        }\n    },\n    \"MaxDurationLimit\": 3600,\n    \"WebRecordVideoParams\": {\n        \"Width\": 1280,\n        \"Height\": 720,\n        \"Format\": \"mp4\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"HMLm5HWNuUAXSb0gTEOx0z1x+nLMZNjXrY3keyUSvu7uu8mF9O656uNtbUtvaWLkpMY134jTN2Ix4vuqgOJ68nQ8tho3ri\",\n        \"RequestId\": \"2a76ee73-6579-42f0-8d57-1f6c9b9d7208\"\n    }\n}",
+        "title": "Starts an web-page recording task"
+      }
+    ],
     "StopAIConversation": [
       {
         "document": "",
@@ -330,6 +346,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopStreamIngest\n<common request parameters>\n\n{\n    \"SdkAppId\": 1234567890,\n    \"TaskId\": \"1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
         "title": "Stopping Inputting an Online Media Stream"
+      }
+    ],
+    "StopWebRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopWebRecord\n<Common request parameters>\n\n{\n    \"TaskId\": \"HMLm5HWNuUAXSb0gTEOx0z1x+nLMZNjXrY3keyUSvu7uu8mF9O656uNtbUtvaWLkpMY134jTN2Ix4vuqgOJ68nQ8tho3ri\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a76ee73-6579-42f0-8d57-1f6c9b9d7208\"\n    }\n}",
+        "title": "Stop an web-page recording task"
       }
     ],
     "UpdateAIConversation": [
