@@ -399,6 +399,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"901c2178-fa8d-4878-8680-952ea3788a59\"\n    }\n}",
         "title": "Edit Aggregation Rule 1"
       }
+    ],
+    "PayDeals": [
+      {
+        "document": " ",
+        "input": "https://billing.tencentcloudapi.com/?Action=PayDeals\n&OrderIds.0=2020111161300016142141\n&AutoVoucher=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"OrderIds\": [\n            \"2020111161300016142141\"\n        ],\n        \"BigDealIds\": [\n            \"2020111161300016142108\"\n        ],\n        \"ResourceIds\": [\n            \"ins-abc\",\n            \"ins-xxx\"\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Payment Order Example"
+      }
     ]
   },
   "version": "1.0"

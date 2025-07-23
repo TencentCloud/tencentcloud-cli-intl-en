@@ -1341,13 +1341,13 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle setting.",
+          "document": "Specifies the subtitle parameter.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
-          "member": "string",
+          "member": "SubtitleTemplate",
           "name": "SubtitleTemplate",
           "output_required": false,
           "required": false,
-          "type": "string",
+          "type": "object",
           "value_allowed_null": true
         }
       ],

@@ -9421,7 +9421,7 @@
         {
           "disabled": false,
           "document": "Instance ID list.",
-          "example": "无",
+          "example": "[“mssql-bm5e51kb”]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -9430,7 +9430,7 @@
         {
           "disabled": false,
           "document": "List of modified parameters. Each list element has two fields: `Name` and `CurrentValue`. Set `Name` to the parameter name and `CurrentValue` to the new value after modification. <b>Note</b>: if the instance needs to be <b>restarted</b> for the modified parameter to take effect, it will be <b>restarted</b> immediately or during the maintenance time. Before you modify a parameter, you can use the `DescribeInstanceParams` API to query whether the instance needs to be restarted.",
-          "example": "无",
+          "example": "[{\"Name\": \"fill factor (%)\",\"CurrentValue\": \"50\"}]",
           "member": "Parameter",
           "name": "ParamList",
           "required": true,

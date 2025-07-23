@@ -1002,6 +1002,14 @@
         "title": ""
       }
     ],
+    "ReplayInstanceAuditLog": [
+      {
+        "document": "This example shows you how to replay an instance audit log.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"StartTime\": \"2025-06-26 14:00:00\",\n    \"EndTime\": \"2025-06-26 16:00:00\",\n    \"SourceClusterId\": \"cynosdbmysql-8j1jtwkv\",\n    \"SourceInstanceId\": \"cynosdbmysql-ins-2fbftt98\",\n    \"TargetClusterId\": \"cynosdbmysql-kwoft68f\",\n    \"TargetInstanceId\": \"cynosdbmysql-ins-431w3zh0\",\n    \"TargetUserName\": \"root\",\n    \"TargetPassword\": \"Calebzhao123.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"y7rtl807j00d80oid44s34c100ros3iy\",\n        \"TaskId\": 678\n    }\n}",
+        "title": "Replaying Instance Audit Logs"
+      }
+    ],
     "ResetAccountPassword": [
       {
         "document": "",
