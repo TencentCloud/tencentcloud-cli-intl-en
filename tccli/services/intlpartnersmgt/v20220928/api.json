@@ -1882,7 +1882,7 @@
         },
         {
           "disabled": false,
-          "document": "Date.\nSuch as\" 2025-06-25\"",
+          "document": "Date.\nSuch as\" 2025-06-25\".\nPlease note: Historical daily bill dated before \"2025-06-01\",cannot be queried.",
           "example": "yyyy-mm-dd",
           "member": "string",
           "name": "Date",
