@@ -40,7 +40,7 @@
     ],
     "DeleteDeviceShadow": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://iotcloud.tencentcloudapi.com/?Action=DeleteDeviceShadow\n&ProductId=ABCDE12345\n&DeviceName=abc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxxxxxxxxxxxxxxxxx\"\n    }\n}",
         "title": "Deleting a device shadow"
@@ -152,7 +152,7 @@
     ],
     "UpdatePrivateCA": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://iotcloud.tencentcloudapi.com/?Action=UpdatePrivateCA\n&CertName=cert_dev\n&CertText=-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----\n&VerifyCertText=-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxxxxxxxxxxxxxxxxxxxxx\"\n    }\n}",
         "title": "Updating a private CA certificate"
