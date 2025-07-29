@@ -2666,8 +2666,8 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
-          "document": "Alarm codes\n-9102 Alarm for photocopy on a paper document (including black & white and color ones)\n-9103 Alarm for photocopy on an electronic device\n-9106 Alarm for covered card",
+          "disabled": true,
+          "document": "This field is deprecated and will always return an empty array. Usage is not recommended.",
           "example": "[-9103]",
           "member": "int64",
           "name": "Warn",
@@ -2686,8 +2686,8 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
-          "document": "Extended field:\n{\n    ID:{\n        Confidence:0.9999\n    },\n    Name:{\n        Confidence:0.9996\n    }\n}",
+          "disabled": true,
+          "document": "This field is deprecated and will always return \"1\". Usage is not recommended.",
           "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
@@ -2763,6 +2763,16 @@
           "name": "WarnCardInfos",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of cards detected in the input image.(Currently supported only in ap-bangkok region)",
+          "example": "1",
+          "member": "int64",
+          "name": "CardCount",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -7798,7 +7808,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -7807,13 +7817,23 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
-          "document": "Field confidence:\n { \"ID\": { \"Confidence\": 0.9999 }, \"ThaiName\": { \"Confidence\": 0.9996 } }",
+          "disabled": true,
+          "document": "This field is deprecated and will always return \"1\". Usage is not recommended.",
           "example": "{\"ID\":{\"Confidence\":\"0.9500\"},\"ThaiName\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of cards detected in the input image provided via ImageBase64 parameter.(Currently supported only in ap-bangkok region)",
+          "example": "1",
+          "member": "int64",
+          "name": "CardCount",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
