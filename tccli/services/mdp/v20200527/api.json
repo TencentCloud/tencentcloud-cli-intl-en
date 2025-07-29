@@ -852,6 +852,24 @@
           "name": "TimeShiftDuration",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Enable DRM. This is only effective for CMAF protocol.",
+          "example": "true",
+          "member": "bool",
+          "name": "DRMEnabled",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "DRM configuration information.",
+          "example": "无",
+          "member": "DRMInfo",
+          "name": "DRMInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3977,6 +3995,24 @@
           "name": "CustomUrlParam",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enable DRM. This is only effective for CMAF protocol.",
+          "example": "true",
+          "member": "bool",
+          "name": "DRMEnabled",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "DRM configuration information",
+          "example": "无",
+          "member": "DRMInfo",
+          "name": "DRMInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
