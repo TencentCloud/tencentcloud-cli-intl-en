@@ -6343,7 +6343,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.",
+          "document": "Network connection billing plan. Valid value:\n\n<li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour. </li>\n<li>BANDWIDTH_PACKAGE: Bandwidth package user. </li>",
           "example": "BANDWIDTH_PREPAID",
           "member": "string",
           "name": "InternetChargeType",
@@ -6387,7 +6387,7 @@
         },
         {
           "disabled": false,
-          "document": "The EIP line type. \n <li>BGP Default: BGP</li>\n\nFor a user who has activated the static single-line IP allowlist, possible values are:\n\n <li>CMCC: China Mobile</li>\n <li>CTCC: China Telecom</li>\n <li>CUCC: China Unicom</li>\n\nNote: Only certain regions support static single-line IP addresses.",
+          "document": "Describes the line type. for details, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: `BGP`.\n <li>BGP Default: BGP</li>\nFor a user who has activated the static single-line IP allowlist, possible values are:\n <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>\nNote: Only certain regions support static single-line IP addresses.",
           "example": "CMCC",
           "member": "string",
           "name": "InternetServiceProvider",
@@ -6398,7 +6398,7 @@
         },
         {
           "disabled": false,
-          "document": "AddressType. Default value: `WanIP`.\n\nFor beta users of dedicated IP, the value can be:\n<li>HighQualityEIP: Dedicated IP</li>\nNote that dedicated IPs are only available in partial regions.\n\nFor beta users of Anti-DDoS IP, the value can be:\n<li>AntiDDoSEIP: Anti-DDoS EIP</li>\nNote that Anti-DDoS IPs are only available in partial regions.\n\nThis feature is currently in gradually released phase. To access it, please contact us.",
+          "document": "Type of public IP address.\n\n<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/zh/document/product/213/5733). </li> \nSpecify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions.\nThis feature is currently in gradually released phase. To access it, please [contact us](https://console.tencentcloud.com/workorder).",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",
@@ -6409,7 +6409,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the type of EIPv6. Valid values:\n\n<li>EIPv6: common IPv6</li>\n<li>HighQualityEIPv6: dedicated IPv6</li>\nNote: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions. \n\nDefault: `EIPv6`\n\nThis feature is currently in gradually released phase. To access it, please contact us.",
+          "document": "Indicates the type of EIPv6. Valid values:\n\n<li>EIPv6: common IPv6</li>\n<li>HighQualityEIPv6: High Quality EIPv6</li>\nNote: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions. \n\nDefault: `EIPv6`\n\nThis feature is currently in gradually released phase. To access it, please [contact us](https://console.tencentcloud.com/workorder).",
           "example": "EIPv6",
           "member": "string",
           "name": "IPv6AddressType",
@@ -9202,7 +9202,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>`POSTPAID_BY_HOUR`: Hourly-based pay-as-you-go <br><li>`CDHPAID`: Dedicated CVM (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>`SPOTPAID`: [Spot instance](https://intl.cloud.tencent.com/document/product/213/17817)<br>Default value: `POSTPAID_BY_HOUR`.",
+          "document": "Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>`PREPAID`: Monthly Subscription, used for at least one month <br><li>`POSTPAID_BY_HOUR`: Hourly-based pay-as-you-go <br><li>`CDHPAID`: [Dedicated CVM](https://www.tencentcloud.com/document/product/416/5068?lang=en&pg=) (associated with a dedicated host. Resource usage of the dedicated host is free of charge.) <br><li>`SPOTPAID`: [Spot instance](https://intl.cloud.tencent.com/document/product/213/17817)<br>Default value: `POSTPAID_BY_HOUR`.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",

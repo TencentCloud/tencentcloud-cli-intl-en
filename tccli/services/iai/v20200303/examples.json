@@ -19,15 +19,15 @@
     "CopyPerson": [
       {
         "document": "",
-        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\r\n&PersonId=2001\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&GroupIds.1=ShenZhenCitizen\r\n&<Common request parameters>",
+        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\n&PersonId=2001\n&GroupIds.0=TencentShenZhenEmployee\n&GroupIds.1=ShenZhenCitizen\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SucGroupNum\": 2,\n        \"SucGroupIds\": [\n            \"ShenZhenCitizen\",\n            \"TencentShenZhenEmployee\"\n        ],\n        \"RequestId\": \"9841c008-e597-4356-a8d5-c47a246abd8d\"\n    }\n}",
-        "title": "Copying person"
+        "title": "Successful example of Copying person"
       },
       {
         "document": "",
-        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\r\n&PersonId=1001\r\n&GroupIds.0=TencentShenZhenEmployee\r\n&GroupIds.1=ZhuYuanDormitoryNo1\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8ecfa566-68a9-4eb5-a6da-95ba9be26947\"\n    }\n}",
-        "title": "Sample error"
+        "input": "https://iai.tencentcloudapi.com/?Action=CopyPerson\n&PersonId=1001\n&GroupIds.0=TencentShenZhenEmployee\n&GroupIds.1=ZhuYuanDormitoryNo1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.GroupPersonMapExist\",\n            \"Message\": \"xxxxx\"\n        },\n        \"RequestId\": \"8ecfa566-68a9-4eb5-a6da-95ba9be26947\"\n    }\n}",
+        "title": "Unsuccessful example of Copying person"
       }
     ],
     "CreateFace": [

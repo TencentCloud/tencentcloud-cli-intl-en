@@ -1031,7 +1031,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio language code, whose length is always 3 characters.",
+          "document": "Audio language code, which length is between 2 and 20.",
           "example": "eng",
           "member": "string",
           "name": "LanguageCode",
@@ -1071,6 +1071,17 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio language description, which maximum length is 100.",
+          "example": "eng",
+          "member": "string",
+          "name": "LanguageDescription",
+          "output_required": true,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
