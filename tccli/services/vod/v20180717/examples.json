@@ -1598,6 +1598,14 @@
         "title": "Initiate transcoding and sampling screenshot tasks"
       }
     ],
+    "ProcessMediaByMPS": [
+      {
+        "document": "This example shows you how to trigger an intelligent erasure task for the video with fileId 5285485487985271487.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessMediaByMPS\n<Common request parameters>\n\n{\n    \"FileId\": \"5285485487985271487\",\n    \"SubAppId\": 1500000001,\n    \"MPSProcessMediaParams\": \"{\\\"AiAnalysisTask\\\": {\\\"Definition\\\":25,\\\"ExtendedParameter\\\":\\\"{\\\\\\\"delogo\\\\\\\":{\\\\\\\"cluster_id\\\\\\\":\\\\\\\"gpu_zhiyan\\\\\\\",\\\\\\\"CustomerAppId\\\\\\\":\\\\\\\"subtitle_erase_fast\\\\\\\"}}\\\"}}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-ProcessMediaByMPS-bffb15f07530b57bc1aab01fac74bca\"\n    }\n}",
+        "title": "Initiating an Intelligent Erasure Task"
+      }
+    ],
     "ProcessMediaByProcedure": [
       {
         "document": "This example shows you how to initiate a task flow named `TranscodeAndSnapshot` for the video whose `fileId` is 5285485487985271487.",
