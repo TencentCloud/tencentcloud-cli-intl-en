@@ -172,12 +172,28 @@
         "title": "Querying Sub-Customer Information"
       }
     ],
+    "DescribeCustomerOwnVoucherList": [
+      {
+        "document": "This example shows you how to query successfully.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerOwnVoucherList\n<Common request parameters>\n\n{\n    \"Page\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CustomerUin\": 800000234475,\n                \"EffectiveTime\": \"2025-07-29 10:59:39\",\n                \"ExpireTime\": \"2025-08-28 23:59:59\",\n                \"PaymentMode\": \"Prepaid\",\n                \"ProductScope\": \"SpecifyProductsBlacklist\",\n                \"RemainingAmount\": 2,\n                \"TotalAmount\": 2,\n                \"VoucherId\": 12348270,\n                \"VoucherStatus\": \"Invalidated\"\n            }\n        ],\n        \"RequestId\": \"e106fce6-7c1c-4d06-936b-e581ed07926b\",\n        \"TotalCount\": 11221\n    }\n}",
+        "title": "Query Succeeded"
+      }
+    ],
     "DescribeCustomerUin": [
       {
         "document": "This example shows you how to query the list of customer UINs.",
         "input": "POST / HTTP/1.1Host: intlpartnersmgt.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeCustomerUin<Common request parameters>{    \"Page\": 1,    \"PageSize\": 10}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CustomerUin\": \"123\"\n            }\n        ],\n        \"Total\": \"123\",\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Querying the list of customer UINs"
+      }
+    ],
+    "DescribeCustomerVoucherList": [
+      {
+        "document": "This example shows you how to query successfully.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerVoucherList\n<Common request parameters>\n\n{\n    \"Page\": 1,\n    \"PageSize\": 10,\n    \"VoucherId\": 12342356\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n\"ApplyReason\": \"For API testing usage, do not review, sub-coupon\"\n                \"CustomerUin\": 800000183985,\n                \"EffectiveTime\": \"2025-07-21 06:10:24\",\n                \"ExpireTime\": \"2025-10-19 23:59:59\",\n                \"PaymentMode\": \"AllPayment\",\n                \"ProductScope\": \"AllProducts\",\n                \"RemainingAmount\": 0.797104,\n                \"TotalAmount\": 1,\n                \"Usage\": \"CustomerOffer\",\n                \"VoucherId\": 12342356,\n                \"VoucherStatus\": \"Canceled\"\n            }\n        ],\n        \"RequestId\": \"0849df12-3c82-4edb-a4be-18df464ce468\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query Succeeded"
       }
     ],
     "DescribeRebateDownloadUrl": [

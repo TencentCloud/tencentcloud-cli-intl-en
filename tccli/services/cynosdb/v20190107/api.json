@@ -9851,7 +9851,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether the virtual zone is included.–",
+          "document": "Whether the virtual zone is included.",
           "example": "false",
           "member": "bool",
           "name": "IncludeVirtualZones",
@@ -9860,7 +9860,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to display all AZs in a region and the user’s permissions in each AZ.",
+          "document": "Whether to display all AZs in a region and the user's permissions in each AZ.",
           "example": "false",
           "member": "bool",
           "name": "ShowPermission",
@@ -12237,6 +12237,15 @@
           "name": "BinlogSyncWay",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10000",
+          "member": "int64",
+          "name": "SemiSyncTimeout",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

@@ -1,7 +1,7 @@
 {
   "actions": {
     "AnalyzeFace": {
-      "document": "This API is used to perform facial feature localization (aka facial keypoint localization) on a given image and calculate 90 facial keypoints that make up the contour of the face, including eyebrows (8 points on the left and 8 on the right), eyes (8 points on the left and 8 on the right), nose (13 points), mouth (22 points), face contour (21 points), and eyeballs or pupils (2 points).\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
+      "document": "This API is used to perform facial feature localization (aka facial keypoint localization) on a given image and calculate 90 facial keypoints that make up the contour of the face, including eyebrows (8 points on the left and 8 on the right), eyes (8 points on the left and 8 on the right), nose (13 points), mouth (22 points), face contour (21 points), and eyeballs or pupils (2 points).\n\n>- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
       "input": "AnalyzeFaceRequest",
       "name": "Performs facial feature localization",
       "output": "AnalyzeFaceResponse",
@@ -214,6 +214,7 @@
       "document": "AnalyzeFace request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.",
           "example": "0",
           "member": "uint64",
@@ -222,14 +223,16 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -238,6 +241,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "3.0",
           "member": "string",
@@ -246,6 +250,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -260,35 +265,47 @@
       "document": "AnalyzeFace response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Width of requested image.",
+          "example": "550",
           "member": "uint64",
           "name": "ImageWidth",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Height of requested image.",
+          "example": "366",
           "member": "uint64",
           "name": "ImageHeight",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Specific information of facial feature localization (facial keypoints).",
+          "example": "无",
           "member": "FaceShape",
           "name": "FaceShapeSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Algorithm model version used for face recognition.",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1964,7 +1981,9 @@
       "document": "Specific information of facial feature localization (facial keypoints).",
       "members": [
         {
+          "disabled": false,
           "document": "21 points that describe the face contour.",
+          "example": "",
           "member": "Point",
           "name": "FaceProfile",
           "required": true,
@@ -1972,7 +1991,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "8 points that describe the left eye.",
+          "example": "",
           "member": "Point",
           "name": "LeftEye",
           "required": true,
@@ -1980,7 +2001,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "8 points that describe the right eye.",
+          "example": "",
           "member": "Point",
           "name": "RightEye",
           "required": true,
@@ -1988,7 +2011,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "8 points that describe the left eyebrow.",
+          "example": "",
           "member": "Point",
           "name": "LeftEyeBrow",
           "required": true,
@@ -1996,7 +2021,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "8 points that describe the right eyebrow.",
+          "example": "",
           "member": "Point",
           "name": "RightEyeBrow",
           "required": true,
@@ -2004,7 +2031,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "22 points that describe the mouth.",
+          "example": "",
           "member": "Point",
           "name": "Mouth",
           "required": true,
@@ -2012,7 +2041,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "13 points that describe the nose.",
+          "example": "",
           "member": "Point",
           "name": "Nose",
           "required": true,
@@ -2020,7 +2051,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "1 point that describes the left pupil.",
+          "example": "",
           "member": "Point",
           "name": "LeftPupil",
           "required": true,
@@ -2028,7 +2061,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "1 point that describes the right pupil.",
+          "example": "",
           "member": "Point",
           "name": "RightPupil",
           "required": true,
@@ -2744,18 +2779,22 @@
       "document": "Coordinates",
       "members": [
         {
+          "disabled": false,
           "document": "X coordinate",
+          "example": "294",
           "member": "int64",
           "name": "X",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Y coordinate",
+          "example": "137",
           "member": "int64",
           "name": "Y",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }

@@ -119,11 +119,25 @@
       "output": "DescribeCustomerInfoResponse",
       "status": "online"
     },
+    "DescribeCustomerOwnVoucherList": {
+      "document": "This API is used to query the voucher list by Customer. \nCallable roles: Customer.",
+      "input": "DescribeCustomerOwnVoucherListRequest",
+      "name": "Query Customer own voucher list",
+      "output": "DescribeCustomerOwnVoucherListResponse",
+      "status": "online"
+    },
     "DescribeCustomerUin": {
       "document": "This API is used to query the list of customer UINs.",
       "input": "DescribeCustomerUinRequest",
       "name": "Queries the list of customer UINs",
       "output": "DescribeCustomerUinResponse",
+      "status": "online"
+    },
+    "DescribeCustomerVoucherList": {
+      "document": "This API is used to query the customer voucher list by Reseller, Second-level Reseller or Distributor.\nCallable roles: Reseller, Second-level Reseller or Distributor.",
+      "input": "DescribeCustomerVoucherListRequest",
+      "name": "Query reseller's customer voucher list",
+      "output": "DescribeCustomerVoucherListResponse",
       "status": "online"
     },
     "DescribeRebateDownloadUrl": {
@@ -2343,6 +2357,194 @@
       ],
       "type": "object"
     },
+    "DescribeCustomerOwnVoucherItem": {
+      "document": "Voucher data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voucher ID.",
+          "example": "12342356",
+          "member": "int64",
+          "name": "VoucherId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account UIN",
+          "example": "800000183985",
+          "member": "int64",
+          "name": "CustomerUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher status: Issued/Used/Expired/Invalidated.",
+          "example": "Issued",
+          "member": "string",
+          "name": "VoucherStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining amount.",
+          "example": "0.797104",
+          "member": "float",
+          "name": "RemainingAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Denomination.",
+          "example": "1",
+          "member": "float",
+          "name": "TotalAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. valid values: AllPayment, Prepaid, and Postpaid.",
+          "example": "AllPayment",
+          "member": "string",
+          "name": "PaymentMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.",
+          "example": "AllProducts",
+          "member": "string",
+          "name": "ProductScope",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2025-10-13 23:59:59",
+          "member": "string",
+          "name": "EffectiveTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2025-10-13 23:59:59",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCustomerOwnVoucherListRequest": {
+      "document": "DescribeCustomerOwnVoucherList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, starts from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. value range: 1-100.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Voucher status. valid values: Issued, Used, Expired, Invalidated.",
+          "example": "Issused",
+          "member": "string",
+          "name": "VoucherStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. valid values: AllPayment, Prepaid, Postpaid.",
+          "example": "AllPayment",
+          "member": "string",
+          "name": "PaymentMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.",
+          "example": "AllProducts",
+          "member": "string",
+          "name": "ProductScope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Voucher ID.",
+          "example": "12",
+          "member": "int64",
+          "name": "VoucherId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerOwnVoucherListResponse": {
+      "document": "DescribeCustomerOwnVoucherList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of the list.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher information description.",
+          "example": "[{}]",
+          "member": "DescribeCustomerOwnVoucherItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCustomerUinData": {
       "document": "List of customer UINs",
       "members": [
@@ -2404,6 +2606,232 @@
           "name": "Total",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerVoucherItem": {
+      "document": "Voucher data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voucher ID.",
+          "example": "12342356",
+          "member": "int64",
+          "name": "VoucherId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account UIN",
+          "example": "800000183985",
+          "member": "int64",
+          "name": "CustomerUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher status: Issued/Used/Expired/Invalidated.",
+          "example": "Issued",
+          "member": "string",
+          "name": "VoucherStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining amount.",
+          "example": "0.797104",
+          "member": "float",
+          "name": "RemainingAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Denomination.",
+          "example": "1",
+          "member": "float",
+          "name": "TotalAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Purpose: ProductTrial/CustomerOffer.",
+          "example": "CustomerOffer",
+          "member": "string",
+          "name": "Usage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. valid values: AllPayment, Prepaid, and Postpaid.",
+          "example": "AllPayment",
+          "member": "string",
+          "name": "PaymentMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.",
+          "example": "AllProducts",
+          "member": "string",
+          "name": "ProductScope",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2025-10-13 23:59:59",
+          "member": "string",
+          "name": "EffectiveTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2025-10-13 23:59:59",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application notes",
+          "example": "1",
+          "member": "string",
+          "name": "ApplyReason",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCustomerVoucherListRequest": {
+      "document": "DescribeCustomerVoucherList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, starts from 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. value range: 1-100.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Customer UIN.",
+          "example": "800000163887",
+          "member": "int64",
+          "name": "CustomerUin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Voucher status. valid values: Issued, Used, Expired, Invalidated.",
+          "example": "Issused",
+          "member": "string",
+          "name": "VoucherStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. valid values: AllPayment, Prepaid, Postpaid.",
+          "example": "AllPayment",
+          "member": "string",
+          "name": "PaymentMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "valid values: ProductTrial, CustomerOffer.",
+          "example": "ProductTrial",
+          "member": "string",
+          "name": "Usage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.",
+          "example": "AllProducts",
+          "member": "string",
+          "name": "ProductScope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Voucher ID.",
+          "example": "12",
+          "member": "int64",
+          "name": "VoucherId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerVoucherListResponse": {
+      "document": "DescribeCustomerVoucherList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of the list.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher information description.",
+          "example": "[{}]",
+          "member": "DescribeCustomerVoucherItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
