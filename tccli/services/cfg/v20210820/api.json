@@ -1103,6 +1103,24 @@
           "name": "TaskStatusList",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "arch-xxxx",
+          "member": "string",
+          "name": "ArchId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "游戏战斗服架构图",
+          "member": "string",
+          "name": "ArchName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1867,9 +1885,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "test",
+          "example": "资源归属",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1877,9 +1896,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "mytest",
+          "example": "研发组",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2936,7 +2956,7 @@
           "name": "TaskTag",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2976,7 +2996,7 @@
           "name": "TaskPreCheckStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2986,7 +3006,7 @@
           "name": "TaskPreCheckSuccess",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2996,7 +3016,7 @@
           "name": "TaskExpect",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3006,7 +3026,7 @@
           "name": "ApplicationId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3016,7 +3036,7 @@
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3026,7 +3046,7 @@
           "name": "VerifyId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3036,7 +3056,7 @@
           "name": "TaskStatusType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

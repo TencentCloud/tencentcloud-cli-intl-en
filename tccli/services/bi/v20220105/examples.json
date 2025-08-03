@@ -1,0 +1,20 @@
+{
+  "actions": {
+    "ApplyEmbedInterval": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyEmbedInterval\n<Common request parameters>\n\n{\n    \"Intention\": \"embed\",\n    \"Scope\": \"page\",\n    \"BIToken\": \"246cbf0d-aa6c-445d-895d-b368f59159e8\",\n    \"ExtraParam\": \"\",\n    \"PageId\": \"1\",\n    \"ProjectId\": \"2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"e60a2172-715b-4305-beb2-40792ae53856\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Result\": true\n        }\n    }\n}",
+        "title": "Requesting Token Extension"
+      }
+    ],
+    "CreateDatasource": [
+      {
+        "document": "This example shows you how to create a data source.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatasource\n<Common request parameters>\n\n{\n    \"DbHost\": \"0.0.0.0\",\n    \"DbPort\": \"3307\",\n    \"ServiceType\": \"{\\\"Type\\\":\\\"Own\\\"}\",\n    \"DbType\": \"MONGODB\",\n    \"DataOrigin\": \"\",\n    \"Charset\": \"utf8\",\n    \"Catalog\": \"\",\n    \"DbUser\": \"username\",\n    \"DbName\": \"name\",\n    \"DbPwd\": \"password\",\n    \"SourceName\": \"Test VPC\",\n    \"VpcId\": \"vpcid\",\n    \"UniqVpcId\": \"vpc-\",\n    \"Vip\": \"\",\n    \"Vport\": \"\",\n    \"ExtraParam\": \"\",\n    \"DataOriginProjectId\": \"\",\n    \"DataOriginDatasourceId\": \"\",\n    \"UseVPC\": true,\n    \"RegionId\": \"gz\",\n    \"ProjectId\": 517\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"Internal server error\",\n        \"RequestId\": \"xxx-xx-x\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"Internal server error\",\n            \"ErrorMessage\": \"Internal server error\",\n            \"ErrorLevel\": \"ERROR\"\n        }\n    }\n}",
+        "title": "Creating a Data Source"
+      }
+    ]
+  }
+}
