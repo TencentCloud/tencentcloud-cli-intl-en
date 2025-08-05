@@ -631,7 +631,7 @@
       "status": "online"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a processing task for video URLs or media files in COS. Features include:\n1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).\n2. Video-to-GIF conversion.\n3. Time point screenshot of videos.\n4. Sampled screenshot of videos.\n5. Image sprite of videos.\n6. Adaptive bitrate stream conversion for videos.\n7. Intelligent content moderation (pornography detection and sensitive information detection).\n8. Intelligent content analysis (tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking).\n9. Intelligent content recognition (human face, full text, text keyword, full speech, speech keyword, speech translation, and object).\n10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).\n\n11. Smart subtitle (full speech, speech hotword, and speech translation).",
+      "document": "This API is used to initiate a processing task for video URLs or media files in COS. Features include:\n1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).\n2. Video-to-GIF conversion.\n3. Time point screenshot of videos.\n4. Sampled screenshot of videos.\n5. Image sprite of videos.\n6. Adaptive bitrate stream conversion for videos.\n7. Intelligent content moderation (such as pornography detection and sensitive information detection).\n8. Intelligent content analysis (such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking).\n9. Intelligent content recognition (such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object).\n10. Media quality inspection, such as media format diagnosis, audio/visual content moderation (such as jitter, blur, low lighting, overexposure, black edge, white edge, black screen, white screen, screen glitch, noise, mosaic, and QR code), and no-reference quality scoring.\n11. Smart subtitle (such as full speech, speech hotword, and speech translation).",
       "input": "ProcessMediaRequest",
       "name": "Starts a media processing task",
       "output": "ProcessMediaResponse",
@@ -888,7 +888,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Atomic task type.\n<li>input: starting node.</li>.\n<li>`output`: termination node</li>.\n<li>action-trans: transcoding.</li>.\n<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.\n<li>action-AIAnalysis: analysis.</li>.\n<li>action-AIRecognition: specifies recognition.</li>.\n<li>action-aiReview: specifies the review action.</li>.\n<li>action-animated-graphics: specifies the animated image.</li>.\n<li>action-image-sprite: specifies the sprite sheet.</li>.\n<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.\n<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.\n<li>action-AIQualityControl: media quality inspection.</li>.\n<li>action-SmartSubtitles: specifies smart subtitling.</li>.\n\n\n",
+          "document": "Atomic task type:\n<li>input: start node</li>\n<li>output: end node</li>\n<li>action-trans: transcoding</li>\n<li>action-samplesnapshot: sampled screenshot</li>\n<li>action-AIAnalysis: analysis</li>\n<li>action-AIRecognition: recognition</li>\n<li>action-aiReview: review</li>\n<li>action-animated-graphics: conversion to GIF</li>\n<li>action-image-sprite: image sprite</li>\n<li>action-snapshotByTimeOffset: time point screenshot</li>\n<li>action-adaptive-substream: adaptive bitrate stream</li>\n<li>action-AIQualityControl: media quality inspection</li>\n<li>action-SmartSubtitles: smart subtitle</li>\n<li>action-exec-rules: judgment rule</li>\n\n\n",
           "example": "input",
           "member": "string",
           "name": "ActivityType",
@@ -1037,6 +1037,17 @@
         },
         {
           "disabled": false,
+          "document": "Conditional judgment of the task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ExecRulesTask",
+          "name": "ExecRulesTask",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Smart subtitle task.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SmartSubtitlesTaskInput",
@@ -1148,6 +1159,16 @@
           "example": "无",
           "member": "ScheduleQualityControlTaskResult",
           "name": "QualityControlTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Conditional judgment task output.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ScheduleExecRuleTaskResult",
+          "name": "ExecRuleTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -1352,7 +1373,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension field for transcoding.",
+          "document": "Transcoding parameter extension field.",
           "example": "{\"audio_info\": {\"codec\": \"vivid\"}}",
           "member": "string",
           "name": "StdExtInfo",
@@ -1970,6 +1991,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "{\"CenterY\": 1200}",
+          "member": "SubtitlePosition",
+          "name": "SubtitlePos",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -9018,6 +9049,15 @@
           "name": "RecordFormat",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Spot check policy for media quality inspection.",
+          "example": "{         \"StrategyType\": \"TimeSpotCheck\",         \"TimeSpotCheck\": {             \"CheckDuration\": 50,             \"CheckInterval\": 10,             \"SkipDuration\": 10,             \"CirclesNumber\": 10         }     }",
+          "member": "QualityControlStrategy",
+          "name": "Strategy",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -11634,7 +11674,7 @@
         },
         {
           "disabled": false,
-          "document": "Media quality inspection template details list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of media quality inspection templates.",
           "example": "无",
           "member": "QualityControlTemplate",
           "name": "QualityControlTemplateSet",
@@ -12224,6 +12264,24 @@
           "example": "531d5385xxxx",
           "member": "string",
           "name": "ScrollToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query task start time.",
+          "example": "2021-02-03T04:05:06Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query task end time.",
+          "example": "2021-02-03T04:05:06Z",
+          "member": "string",
+          "name": "EndTime",
           "required": false,
           "type": "string"
         }
@@ -13176,6 +13234,39 @@
       ],
       "usage": "both"
     },
+    "ExecRuleTaskData": {
+      "document": "Conditional judgment output.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indexes of nodes that needs to be executed based on the conditional judgment for quality inspection.",
+          "example": "[2,3]",
+          "member": "int64",
+          "name": "RearDriveIndex",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExecRulesTask": {
+      "document": "Task judgment conditions.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Conditional judgment information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "Rules",
+          "name": "Rules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ExecuteFunctionRequest": {
       "document": "ExecuteFunction request structure.",
       "members": [
@@ -13562,7 +13653,7 @@
         },
         {
           "disabled": false,
-          "document": "The live streaming segment corresponds to the live start time point, in the ISO date format.\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Start time of the live streaming segment in ISO date and time format.\t",
           "example": "2024-10-21T17:18:34+08:00\t",
           "member": "string",
           "name": "BeginTime",
@@ -13572,7 +13663,7 @@
         },
         {
           "disabled": false,
-          "document": "The live streaming segment corresponds to the live streaming end time, in the ISO date format.\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "End time of the live streaming segment in ISO date and time format.\t",
           "example": "2024-10-21T17:26:19+08:00\t",
           "member": "string",
           "name": "EndTime",
@@ -14323,7 +14414,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Atomic task type.\n<li>LiveRecord: live recording.</li>\n<li>AiQualityControl: media quality inspection.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Atomic task type.\n<li>LiveRecord: live recording</li>\n<li>AiQualityControl: media quality inspection</li>",
           "example": "LiveRecord",
           "member": "string",
           "name": "ActivityType",
@@ -14642,7 +14733,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of a live scheme subtask.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Live orchestration task ID.",
           "example": "24xxxx-LiveScheduleTask-bd221bcc6xxxxxx",
           "member": "string",
           "name": "TaskId",
@@ -14652,7 +14743,7 @@
         },
         {
           "disabled": false,
-          "document": "The task status. Valid values:\n<li>`PROCESSING`</li>\n<li>`FINISH` </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task stream status. Valid values:\n<li>PROCESSING: processing</li>\n<li>FINISH: completed</li>",
           "example": "FINISH",
           "member": "string",
           "name": "Status",
@@ -14662,7 +14753,7 @@
         },
         {
           "disabled": false,
-          "document": "If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "An error code other than 0 is returned in case of a source exception. Use the error code of the specific task when a value of 0 is returned.",
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
@@ -14672,7 +14763,7 @@
         },
         {
           "disabled": false,
-          "document": "If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.",
           "example": "record failed",
           "member": "string",
           "name": "Message",
@@ -14682,7 +14773,7 @@
         },
         {
           "disabled": false,
-          "document": "The URL of the live stream.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Live stream URL.",
           "example": "http://xxx.flv",
           "member": "string",
           "name": "Url",
@@ -16347,6 +16438,16 @@
           "output_required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Varies based on different types.",
+          "example": "额外输出信息",
+          "member": "string",
+          "name": "SpecialInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17256,7 +17357,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the output of an image sprite task for a video.",
+          "document": "Output of the image sprite task for videos.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "MediaImageSpriteItem",
           "name": "Output",
@@ -17484,7 +17585,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the output of a sampling screenshot task for a video.",
+          "document": "Output of the sampled screenshot task for videos.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
@@ -17570,7 +17671,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the output of a screenshot task at specified time points for a video.",
+          "document": "Output of the time point screenshot task for videos.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "NULL",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
@@ -18927,6 +19028,15 @@
           "name": "RecordFormat",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Spot check policy for media quality inspection.",
+          "example": "{     \"StrategyType\": \"TimeSpotCheck\",     \"TimeSpotCheck\": {       \"CheckDuration\": 50,       \"CheckInterval\": 10,       \"SkipDuration\": 10,       \"CirclesNumber\": 10     }   }",
+          "member": "QualityControlStrategy",
+          "name": "Strategy",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -21358,7 +21468,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether there is an audio track. `true` indicates that there isn't.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "When this field is set to true, it indicates that the video has no audio track.",
           "example": "true",
           "member": "bool",
           "name": "NoAudio",
@@ -21368,7 +21478,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether there is a video track. `true` indicates that there isn't.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "When this field is set to true, it indicates that the video has no video track.",
           "example": "true",
           "member": "bool",
           "name": "NoVideo",
@@ -21378,7 +21488,7 @@
         },
         {
           "disabled": false,
-          "document": "No-reference quality score of the video (100 points in total).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "No-reference quality score of the video (100 points in total).",
           "example": "95",
           "member": "int64",
           "name": "QualityEvaluationScore",
@@ -21388,7 +21498,7 @@
         },
         {
           "disabled": false,
-          "document": "No-reference quality score of the video (MOS).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "No-reference quality score of the video (MOS).",
           "example": "4.75",
           "member": "float",
           "name": "QualityEvaluationMeanOpinionScore",
@@ -21398,7 +21508,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception items detected in content quality inspection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Exception items identified in content quality inspection.",
           "example": "无",
           "member": "QualityControlResult",
           "name": "QualityControlResultSet",
@@ -21408,7 +21518,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception items detected in format diagnosis.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Exception items identified in format diagnosis.",
           "example": "无",
           "member": "ContainerDiagnoseResultItem",
           "name": "ContainerDiagnoseResultSet",
@@ -21563,6 +21673,34 @@
       ],
       "usage": "out"
     },
+    "QualityControlStrategy": {
+      "document": "Detection policy for media quality inspection.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy type. Valid values:\n- TimeSpotCheck",
+          "example": "TimeSpotCheck",
+          "member": "string",
+          "name": "StrategyType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Spot check policy based on time.",
+          "example": "无",
+          "member": "TimeSpotCheck",
+          "name": "TimeSpotCheck",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "QualityControlTemplate": {
       "document": "Media quality inspection template details.",
       "members": [
@@ -21635,6 +21773,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Spot check policy for media quality inspection.",
+          "example": " {         \"StrategyType\": \"TimeSpotCheck\",         \"TimeSpotCheck\": {             \"CheckDuration\": 50,             \"CheckInterval\": 10,             \"SkipDuration\": 10,             \"CirclesNumber\": 10         }     }",
+          "member": "QualityControlStrategy",
+          "name": "Strategy",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -22040,6 +22188,84 @@
       ],
       "type": "object"
     },
+    "RuleConditionItem": {
+      "document": "Rule condition configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key of the quality inspection item condition.",
+          "example": "Resolution-1",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value corresponding to the condition.",
+          "example": "720",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Rules": {
+      "document": "Task judgment conditions.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Judgment condition ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "rule1-or-result-true",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Judgment condition configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RuleConditionItem",
+          "name": "Conditions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Logical operator for the list of conditions. Valid values:\n\n - &&: logical AND\n - ||: logical OR",
+          "example": "\"&&\"",
+          "member": "string",
+          "name": "Linker",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indexes of the nodes to execute if the judgment conditions are met.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "[3,4]",
+          "member": "int64",
+          "name": "RearDriveIndexs",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "S3InputInfo": {
       "document": "The AWS S3 storage information of a source file.",
       "members": [
@@ -22403,13 +22629,89 @@
         },
         {
           "disabled": false,
-          "document": "The output of the content analysis task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Analysis task output.",
           "example": "无",
           "member": "AiAnalysisResult",
           "name": "Output",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:28Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2019-07-16T06:21:46Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ScheduleExecRuleTaskResult": {
+      "document": "Result type of the media quality inspection task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, which can be PROCESSING, SUCCESS, or FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
+          "example": " input",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of the conditional judgment task.",
+          "example": "无",
+          "member": "ExecRulesTask",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of the conditional judgment task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ExecRuleTaskData",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -23805,7 +24107,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<Li>AsrFullTextRecognition: full speech recognition</li>\n<Li>TransTextRecognition: speech translation</li>",
+          "document": "Task type. Valid values:\n<li>AsrFullTextRecognition: full speech recognition</li>\n<li>TransTextRecognition: speech translation</li>",
           "example": "AsrFullTextRecognition",
           "member": "string",
           "name": "Type",
@@ -23871,6 +24173,28 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bucket that stores the output file. If it is left unspecified, the storage location in InputInfo will be inherited.\n**Note**: This parameter is required when InputInfo.Type is set to URL.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "{     \"Type\": \"COS\",     \"CosOutputStorage\": {         \"Bucket\": \"xxxx-yyy\",         \"Region\": \"region\"     } }",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
+          "example": "/storage/{inputName}_smartsubtitle_{definition}.{format}",
+          "member": "string",
+          "name": "OutputObjectPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -24134,6 +24458,22 @@
         }
       ],
       "usage": "both"
+    },
+    "SubtitlePosition": {
+      "document": "Subtitle position information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Y-coordinate value when the subtitle is centered.",
+          "example": "970",
+          "member": "int64",
+          "name": "CenterY",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SubtitleTemplate": {
       "document": "The subtitle settings.",
@@ -24989,6 +25329,56 @@
         }
       ],
       "usage": "in"
+    },
+    "TimeSpotCheck": {
+      "document": "Detection policy for media quality inspection.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Duration of each loop detection in the spot check policy, in seconds. Valid values:\n\n - Minimum value: 10.\n - Maximum value: 86400.\n",
+          "example": "30",
+          "member": "uint64",
+          "name": "CheckDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.",
+          "example": "30",
+          "member": "uint64",
+          "name": "CheckInterval",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Duration for which the opening clip is skipped.",
+          "example": "60",
+          "member": "uint64",
+          "name": "SkipDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.",
+          "example": "10",
+          "member": "uint64",
+          "name": "CirclesNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "TrackInfo": {
       "document": "Audio track info.",

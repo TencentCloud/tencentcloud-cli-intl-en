@@ -3514,7 +3514,7 @@
         {
           "disabled": false,
           "document": "Instance VPC ID, which will be 0 if the basic network is used",
-          "example": "12345",
+          "example": "3834195",
           "member": "int64",
           "name": "VpcId",
           "output_required": true,
@@ -3663,7 +3663,7 @@
         },
         {
           "disabled": false,
-          "document": "High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)",
+          "document": "Instance disaster recovery type. 1: dual-server high availability; 2: single-node; 3: cross-AZ; 4: cross-AZ cluster; 5: cluster; 6: multi-node cluster; 7: multi-node cross-AZ cluster.",
           "example": "1",
           "member": "int64",
           "name": "Model",
@@ -3684,7 +3684,7 @@
         {
           "disabled": false,
           "document": "Instance AZ name, such as ap-guangzhou-1",
-          "example": "ap-guangzhou-2",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "output_required": true,
@@ -3783,48 +3783,48 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance isolation operation.",
           "example": "User",
           "member": "string",
           "name": "IsolateOperator",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Publishing/Subscription flag. SUB: subscription instance; PUB: publishing instance. If this parameter is left blank, the instance is an ordinary instance that does not involve publishing or subscription.",
           "example": "SUB",
           "member": "string",
           "name": "SubFlag",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Read-only flag. RO: read-only instance; MASTER: primary instance bound to a read-only instance. If this parameter is left blank, the instance is not a read-only instance and is not in any read-only group.",
           "example": "MASTER",
           "member": "string",
           "name": "ROFlag",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Disaster recovery type. MIRROR: image; ALWAYSON: Always On; SINGLE: single instance.",
           "example": "MIRROR",
           "member": "string",
           "name": "HAFlag",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "output_required": true,
@@ -3833,28 +3833,28 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Backup mode. master_pkg: backup on the primary node (default value); master_no_pkg: no backup on the primary node; slave_pkg: backup on secondary nodes (valid for Always On clusters); slave_no_pkg: no backup on secondary nodes (valid for Always On clusters). This parameter is invalid for read-only instances.",
           "example": "master_pkg",
           "member": "string",
           "name": "BackupModel",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "document": "Instance backup information.",
+          "example": "instance note",
           "member": "string",
           "name": "InstanceNote",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Backup cycle",
-          "example": "1",
+          "example": "[1]",
           "member": "int64",
           "name": "BackupCycle",
           "output_required": true,
@@ -3883,7 +3883,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).",
+          "document": "Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.\n",
           "example": "HA",
           "member": "string",
           "name": "InstanceType",
@@ -3894,7 +3894,7 @@
         {
           "disabled": false,
           "document": "The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.",
-          "example": "[ap-guangzhou]",
+          "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "CrossRegions",
           "output_required": true,
@@ -3973,33 +3973,43 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{}",
+          "document": "Secondary AZ information on the two-node instance.",
+          "example": "无",
           "member": "SlaveZones",
           "name": "SlaveZones",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Architecture flag. SINGLE: single-node; DOUBLE: two-node.",
           "example": "DOUBLE",
           "member": "string",
           "name": "Architecture",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Type flag. EXCLUSIVE: exclusive; SHARED: shared.",
           "example": "EXCLUSIVE",
           "member": "string",
           "name": "Style",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SlaveZones",
+          "name": "MultiSlaveZones",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5785,8 +5795,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance availability zone, such as ap-guangzhou-2",
-          "example": "ap-guangzhou-2",
+          "document": "Instance availability zone, such as ap-guangzhou-3",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -5813,7 +5823,7 @@
         {
           "disabled": false,
           "document": "Unique Uid of an instance",
-          "example": "gamedb.gz1.cdb.db",
+          "example": "[\"gamedb.gz1.cdb.db\"]",
           "member": "string",
           "name": "UidSet",
           "required": false,
@@ -5821,7 +5831,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).",
+          "document": "Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: dual-server high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.",
           "example": "HA",
           "member": "string",
           "name": "InstanceType",
@@ -5830,7 +5840,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pagination query method. offset - pagination query by offset; pageNumber - pagination query by number of pages. The default value is pageNumber.",
           "example": "pageNumber",
           "member": "string",
           "name": "PaginationType",
@@ -7195,21 +7205,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of AZs returned",
+          "document": "Number of AZs returned.",
           "example": "34",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Array of AZs",
+          "document": "Array of AZs.",
           "example": "无",
           "member": "ZoneInfo",
           "name": "ZoneSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -10295,7 +10305,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "SlaveZone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10305,7 +10315,7 @@
           "example": "广州一区",
           "member": "string",
           "name": "SlaveZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10974,50 +10984,50 @@
         {
           "disabled": false,
           "document": "AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)",
-          "example": "",
+          "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZ name",
-          "example": "",
+          "example": "广州一区",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Numeric ID of AZ",
-          "example": "",
+          "example": "100004",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ",
-          "example": "",
+          "example": "22",
           "member": "int64",
           "name": "SpecId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
-          "example": "",
+          "example": "2008R2",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }

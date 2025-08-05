@@ -1158,7 +1158,7 @@
           "example": "0",
           "member": "string",
           "name": "ErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1168,27 +1168,37 @@
           "example": "success",
           "member": "string",
           "name": "ErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The liveness algorithm package generated during this SDK-based liveness detection.",
-          "example": "无",
+          "example": "{ \"MD5\": \"b2852d5..\", \"Size\": 972506, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
           "member": "FileInfo",
           "name": "LiveData",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The download URL of the video used for verification, which is valid for 10 minutes.",
-          "example": "无",
+          "document": "The download URL of the video used for verification, which contains specific color reflection effects, is valid for 10 minutes.",
+          "example": "{ \"MD5\": \"24d2fde9b...\", \"Size\": 407308, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
           "member": "FileInfo",
           "name": "LiveVideo",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Records the specific action performed by the user, used for AI Face Shield analysis.",
+          "example": "{ \"MD5\": \"ef179aa94f06b989...\", \"Size\": 191015, \"Url\": \"https://faceid-intl-test-1258344699.com....\" }",
+          "member": "FileInfo",
+          "name": "ActionVideo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1198,7 +1208,7 @@
           "example": "0",
           "member": "string",
           "name": "LiveErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1208,27 +1218,27 @@
           "example": "success",
           "member": "string",
           "name": "LiveErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The download URL of the face screenshot during verification, which is valid for 10 minutes.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "{ \"MD5\": \"1c4a918dc..\", \"Size\": 243050, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
           "member": "FileInfo",
           "name": "BestFrame",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.",
-          "example": "无",
+          "example": "{ \"MD5\": \"\", \"Size\": 0, \"Url\": \"\" }",
           "member": "FileInfo",
           "name": "ProfileImage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1238,7 +1248,7 @@
           "example": "0",
           "member": "string",
           "name": "CompareErrorCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1248,7 +1258,7 @@
           "example": "success",
           "member": "string",
           "name": "CompareErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1258,7 +1268,7 @@
           "example": "52.77",
           "member": "float",
           "name": "Sim",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
@@ -1268,27 +1278,27 @@
           "example": "true",
           "member": "bool",
           "name": "IsNeedCharge",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The identity document photo info edited by the user. Currently, this parameter is not applied.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "{ \"MD5\": \"\", \"Size\": 0, \"Url\": \"\" }",
           "member": "FileInfo",
           "name": "CardInfoInputJson",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "The request ID of this verification process.",
-          "example": "无",
+          "example": "94127d09-1490-4f23-baa4-1c8f4c0f4194",
           "member": "string",
           "name": "RequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1785,7 +1795,7 @@
         {
           "disabled": false,
           "document": "Full Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "-",
+          "example": "无",
           "member": "string",
           "name": "FullName",
           "output_required": true,
@@ -1825,7 +1835,7 @@
         {
           "disabled": false,
           "document": "Age. 0 indicates that no valid information is obtained.\nExample: 0",
-          "example": "-",
+          "example": "无",
           "member": "string",
           "name": "Age",
           "output_required": true,
@@ -2071,6 +2081,7 @@
           "example": "0",
           "member": "string",
           "name": "Result",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2080,24 +2091,37 @@
           "example": "Success",
           "member": "string",
           "name": "Description",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The best frame screenshot (in Base64) obtained during the verification.",
-          "example": "无",
+          "example": "AAAAHGZ0eXBtcDQyAAAAAWlzb2...",
           "member": "string",
           "name": "BestFrame",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The video file (Base64) for verification.",
-          "example": "无",
+          "document": "The video file (Base64) for verification.Used for verification, contains specific color reflection effects.",
+          "example": "/9j/4AAQSkZJRgABAQAASABIAAD/4QBMR...",
           "member": "string",
           "name": "Video",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Records the specific action performed by the user, used for AI Face Shield analysis.",
+          "example": "...U7xu6UOzmKPxwaXscnaLGLGPG0zl....",
+          "member": "string",
+          "name": "ActionVideo",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2107,15 +2131,17 @@
           "example": "89.99",
           "member": "float",
           "name": "Similarity",
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "The pass-through parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "“extra“",
           "member": "string",
           "name": "Extra",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
