@@ -16795,7 +16795,7 @@
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
-          "required": false,
+          "required": true,
           "type": "string"
         },
         {
@@ -17146,7 +17146,7 @@
           "name": "DiscountPrice",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -17156,11 +17156,11 @@
           "name": "ChargeUnit",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original price. Unit: CNY. Returned only for prepaid price inquiry.",
+          "document": "Original price. Unit: USD. Returned only for prepaid price inquiry.",
           "example": "80",
           "member": "float",
           "name": "OriginalPrice",

@@ -14,11 +14,25 @@
       "output": "CreateCloudRecordingResponse",
       "status": "online"
     },
+    "CreateCloudSliceTask": {
+      "document": "API description:\nThis API is used to enable the cloud slicing feature, completing audio and video slicing tasks in the room, and uploading them to the specified cloud storage.\nThis API is used to achieve the following goals:\n* This API is used to specify the slicing parameter (SliceParams) to define the blocklist or allowlist of the anchors that require slicing.\n* This API is used to specify the storage parameter (SliceStorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Object Storage (COS) and third-party AWS are supported.",
+      "input": "CreateCloudSliceTaskRequest",
+      "name": "Creates a cloud slicing task",
+      "output": "CreateCloudSliceTaskResponse",
+      "status": "online"
+    },
     "DeleteCloudRecording": {
       "document": "This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.",
       "input": "DeleteCloudRecordingRequest",
       "name": "Stops an on-cloud recording task",
       "output": "DeleteCloudRecordingResponse",
+      "status": "online"
+    },
+    "DeleteCloudSliceTask": {
+      "document": "This API is used to stop the slicing task after it is started. Successfully stopping the slicing does not mean that all files are fully transmitted; if the transmission is not completed, the backend will continue to upload files. After the upload is successful, a notification is sent to the customer, prompting that all files have been transmitted, through the event callback.",
+      "input": "DeleteCloudSliceTaskRequest",
+      "name": "Stops a cloud slicing task",
+      "output": "DeleteCloudSliceTaskResponse",
       "status": "online"
     },
     "DescribeAIConversation": {
@@ -47,6 +61,13 @@
       "input": "DescribeCloudRecordingRequest",
       "name": "Queries the status of a recording task",
       "output": "DescribeCloudRecordingResponse",
+      "status": "online"
+    },
+    "DescribeCloudSliceTask": {
+      "document": "This API is used to query the status of the slicing task after it is started, which is valid only when the task is in progress. An error will be returned if the task is exited.",
+      "input": "DescribeCloudSliceTaskRequest",
+      "name": "Queries information about cloud slicing tasks",
+      "output": "DescribeCloudSliceTaskResponse",
       "status": "online"
     },
     "DescribeMixTranscodingUsage": {
@@ -180,6 +201,13 @@
       "input": "ModifyCloudRecordingRequest",
       "name": "Modifies a recording task",
       "output": "ModifyCloudRecordingResponse",
+      "status": "online"
+    },
+    "ModifyCloudSliceTask": {
+      "document": "This API is used to update the slicing task after it is started. It can be used to update the allowlist or blocklist for the specified subscription stream.",
+      "input": "ModifyCloudSliceTaskRequest",
+      "name": "Modifies a cloud slicing task",
+      "output": "ModifyCloudSliceTaskResponse",
       "status": "online"
     },
     "RemoveUser": {
@@ -621,6 +649,66 @@
       ],
       "usage": "in"
     },
+    "CloudSliceStorage": {
+      "document": "Information about Tencent COS and third-party cloud storage accounts.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information about Tencent COS and third-party cloud storage accounts.\n0: Tencent COS.\n1: AWS S3.\n2: Alibaba Cloud OSS.\nExample value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Vendor",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
+          "example": "cn-shanghai-1",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud bucket name.",
+          "example": "test-bucket",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "access_key account information of the cloud storage.\nTo store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.\nExample value: test-accesskey.",
+          "example": "test-accesskey",
+          "member": "string",
+          "name": "AccessKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "secret_key account information of the cloud storage.\nTo store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.\nExample value: test-secretkey.",
+          "example": "test-secretkey",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
+          "example": "[\"prefix1\", \"prefix2\"]",
+          "member": "string",
+          "name": "FileNamePrefix",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "CloudStorage": {
       "document": "The cloud storage information.",
       "members": [
@@ -869,6 +957,115 @@
       ],
       "type": "object"
     },
+    "CreateCloudSliceTaskRequest": {
+      "document": "CreateCloudSliceTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
+          "example": "1400704311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
+          "example": "295212",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Chatbot's UserId, which is used to enter the room and initiate a slicing task. [*note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple slicing tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous slicing task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.",
+          "example": "slice_robot_1",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.",
+          "example": "eJyrVgrxCdYrSy1SslIy0jNQ0gHzM1NS80oy0zLBwpl5xQWpySVQqeKU7MSCgswUJSsjAwNDAwsDM4h4axxx",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control parameters for cloud slicing.",
+          "example": "无",
+          "member": "SliceParams",
+          "name": "SliceParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters for uploading cloud slicing files to the cloud storage.",
+          "example": "无",
+          "member": "SliceStorageParams",
+          "name": "SliceStorageParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Validity period for calling the API, which starts upon successful initiation of recording and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the recording task is not stopped. The unit of the parameter is hours, with a default value of 72 hours (3 days). The maximum value is 720 hours (30 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping recording APIs is 72 hours upon the successful start of recording. Example value: 24.",
+          "example": "24",
+          "member": "uint64",
+          "name": "ResourceExpiredHour",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC room permission encryption string, which is required only when advanced permission control is enabled in the TRTC console. After enabling, the TRTC backend service system verifies a \"permission ticket\" called [PrivateMapKey], which contains an encrypted RoomId and an encrypted \"permission bit list\". Since the PrivateMapKey includes the RoomId, the specified room cannot be entered if only UserSig is provided and PrivateMapKey is not provided. Example value: eJw1jcEKgkAURX9FZlvY****fL9rfNX4_.",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateMapKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloudSliceTaskResponse": {
+      "document": "CreateCloudSliceTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID assigned by the cloud slicing service. It is a unique identifier for the lifecycle of a slicing task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.",
+          "example": "-npVqpdU7pr3JUbUasDy5PLPQaHPhkPbIkDILoK-2OqyoZWQndibCtH88ztBhkWAhZCH9DwE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCloudRecordingRequest": {
       "document": "DeleteCloudRecording request structure.",
       "members": [
@@ -903,6 +1100,52 @@
           "member": "string",
           "name": "TaskId",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudSliceTaskRequest": {
+      "document": "DeleteCloudSliceTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudSliceTaskResponse": {
+      "document": "DeleteCloudSliceTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1261,6 +1504,62 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudSliceTaskRequest": {
+      "document": "DescribeCloudSliceTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudSliceTaskResponse": {
+      "document": "DescribeCloudSliceTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information about the status of the cloud slicing task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.",
+          "example": "InProgress",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3785,6 +4084,61 @@
       ],
       "type": "object"
     },
+    "ModifyCloudSliceTaskRequest": {
+      "document": "ModifyCloudSliceTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the allowlist or blocklist for the subscription stream.",
+          "example": "无",
+          "member": "SubscribeStreamUserIds",
+          "name": "SubscribeStreamUserIds",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCloudSliceTaskResponse": {
+      "document": "ModifyCloudSliceTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the slicing task, which is returned after the task is started.",
+          "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "QualityData": {
       "document": "The quality data returned by ES.",
       "members": [
@@ -4368,6 +4722,81 @@
           "member": "UserMediaStream",
           "name": "UserMediaStream",
           "required": true,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "SliceParams": {
+      "document": "Control parameters for cloud slicing.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Slicing task type.\n1: audio slicing;\n2: video frame extraction;\n3: audio/video slicing + video frame extraction.\nExample value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SliceType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Recording is stopped automatically when there is no anchor in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 86,400 seconds (24 hours).\nExample value: 30.",
+          "example": "30",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audio slicing duration. Default value: 15s. Example value: 15.",
+          "example": "15",
+          "member": "uint64",
+          "name": "SliceAudio",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Interval for video frame extraction. Default value: 5s. Example value: 5.",
+          "example": "5",
+          "member": "uint64",
+          "name": "SliceVideo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the allowlist or blocklist for the subscription stream.",
+          "example": "无",
+          "member": "SubscribeStreamUserIds",
+          "name": "SubscribeStreamUserIds",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Depreciated. The callback URL is configured in the console.",
+          "example": "无",
+          "member": "string",
+          "name": "SliceCallbackUrl",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "SliceStorageParams": {
+      "document": "Storage parameters for the slicing files.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information about Tencent COS and third-party cloud storage accounts.",
+          "example": "无",
+          "member": "CloudSliceStorage",
+          "name": "CloudSliceStorage",
+          "required": false,
           "type": "object"
         }
       ],
@@ -5206,8 +5635,7 @@
           "member": "string",
           "name": "SubscribeAudioUserIds",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
@@ -5216,8 +5644,7 @@
           "member": "string",
           "name": "UnSubscribeAudioUserIds",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
@@ -5226,8 +5653,7 @@
           "member": "string",
           "name": "SubscribeVideoUserIds",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
@@ -5236,8 +5662,7 @@
           "member": "string",
           "name": "UnSubscribeVideoUserIds",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"

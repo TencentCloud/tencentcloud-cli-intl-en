@@ -16,12 +16,28 @@
         "title": "Starting an on-cloud recording task"
       }
     ],
+    "CreateCloudSliceTask": [
+      {
+        "document": "This example shows you how to start a cloud slicing task for the specified room (room number: 150) with SdkAppId 200806.\nThis example shows you how to set the idle time for the room to 30 seconds.\nThis example shows you how to set the slicing mode to audio slicing + video frame extraction.\nThis example shows you how to slice the audio every 15 seconds.\nThis example shows you how to extract a video frame every 5 seconds.",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCloudSliceTask\n<Common request parameters>\n\n{\n    \"SdkAppId\": 200806,\n    \"RoomId\": \"150\",\n    \"UserId\": \"inspect\",\n    \"UserSig\": \"eJxxxv3xY6jx2KgRU1NPHMy3CnQIZEJBDxf1SulLZcs*pAAuveqIuFaeqrW2kMVyAFYogrTGbnBiScDmm2zf0*HdqoLAhxQ85dn4vMn4*N8zFT7f-aXIf3Zj0fWn78*ktBUUyJoEmHMS0ChM83AAD---1NMfA_\",\n    \"SliceParams\": {\n        \"SliceType\": 3,\n        \"MaxIdleTime\": 30,\n        \"SliceAudio\": 15,\n        \"SliceVideo\": 5\n    },\n    \"SliceStorageParams\": {\n        \"CloudSliceStorage\": {\n            \"Vendor\": 0,\n            \"Region\": \"ap-guangzhou\",\n            \"Bucket\": \"av-recover-prod-1258344699\",\n            \"AccessKey\": \"AKIDiGYZYrugBPM3TbS2MO9dqxxx\",\n            \"SecretKey\": \"91w4wXswiDSQ7XfX8So31xxx\",\n            \"FileNamePrefix\": [\n                \"prefix1\"\n            ]\n        }\n    },\n    \"RoomIdType\": 1,\n    \"ResourceExpiredHour\": 72\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c8eac0c-a46e-4002-893a-935160b43b34\",\n        \"TaskId\": \"-npVqpdU7qidKD61us+k9KlbamMCLrDbczWnLoK-2OqyoZWQndib8Ma8fbGq2JxnW26LgE.\"\n    }\n}",
+        "title": "Creating a Slicing Task"
+      }
+    ],
     "DeleteCloudRecording": [
       {
         "document": "This example shows you how to stop the on-cloud recording task whose ID is xx under the application whose `SDKAppID` is `1234`.",
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCloudRecording\n<Common request parameters>\n\n{\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
         "title": "Stopping an on-cloud recording task"
+      }
+    ],
+    "DeleteCloudSliceTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCloudSliceTask\n<Common request parameters>\n\n{\n    \"SdkAppId\": 20010806,\n    \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"93186328-a0f6-4127-a0cb-72c85b6af982\",\n        \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n    }\n}",
+        "title": "Stopping a Cloud Slicing Task"
       }
     ],
     "DescribeAIConversation": [
@@ -54,6 +70,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloudRecording\n<Common request parameters>\n\n{\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": \"InProgress\",\n        \"StorageFileList\": [],\n        \"RequestId\": \"xx\",\n        \"TaskId\": \"xx\"\n    }\n}",
         "title": "Querying the status of the task whose task ID is xx under the application whose `SDKAppID` is `1234`"
+      }
+    ],
+    "DescribeCloudSliceTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: xxx.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"SdkAppId\": 20010806,\n    \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc45d9cd-f615-43a5-943e-89f559cb3f7b\",\n        \"Status\": \"InProgress\",\n        \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n    }\n}",
+        "title": "Querying Information About the Slicing Task"
       }
     ],
     "DescribeMixTranscodingUsage": [
@@ -206,6 +230,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCloudRecording\n<Common request parameters>\n\n{\n    \"SubscribeStreamUserIds\": {\n        \"SubscribeVideoUserIds\": [\n            \"123\",\n            \"456\"\n        ],\n        \"SubscribeAudioUserIds\": [\n            \"123\",\n            \"456\"\n        ]\n    },\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234,\n    \"MixLayoutParams\": {\n        \"MixLayoutMode\": 4,\n        \"MixLayoutList\": [\n            {\n                \"Top\": 100,\n                \"UserId\": \"123\",\n                \"Height\": 100,\n                \"Width\": 100,\n                \"Left\": 100\n            },\n            {\n                \"Top\": 200,\n                \"UserId\": \"456\",\n                \"Height\": 100,\n                \"Width\": 100,\n                \"Left\": 200\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
         "title": "Modifying an on-cloud recording task"
+      }
+    ],
+    "ModifyCloudSliceTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCloudSliceTask\n<Common request parameters>\n\n{\n    \"SdkAppId\": 20010806,\n    \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\",\n    \"SubscribeStreamUserIds\": {\n        \"SubscribeAudioUserIds\": [\n            \"555\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4d09681-4413-4f21-972d-bba98422aa30\",\n        \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n    }\n}",
+        "title": "Modifying a Cloud Slicing Task"
       }
     ],
     "RemoveUser": [
