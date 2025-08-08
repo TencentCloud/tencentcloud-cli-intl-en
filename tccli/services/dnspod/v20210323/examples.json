@@ -38,6 +38,14 @@
         "title": "Creating a domain group"
       }
     ],
+    "CreatePackageOrder": [
+      {
+        "document": "This example shows you how to enable the international site package.",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePackageOrder\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\",\n    \"Grade\": \"DPG_ENTERPRISE\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b944e8d-6ecd-4fa7-a413-1afeb70cff87\"\n    }\n}",
+        "title": "Enabling the International Site Package"
+      }
+    ],
     "CreateRecord": [
       {
         "document": " ",

@@ -2371,7 +2371,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory size in GB",
+          "document": "Instance memory size in GB.",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -2380,7 +2380,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size in GB",
+          "document": "Instance disk size in GB.",
           "example": "10",
           "member": "int64",
           "name": "Storage",
@@ -2389,7 +2389,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instance cores",
+          "document": "Number of instance cores.",
           "example": "2",
           "member": "uint64",
           "name": "Cpu",
@@ -2524,8 +2524,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of voucher IDs (currently, only one voucher can be used per order)",
-          "example": "xxx",
+          "document": "Array of voucher IDs (currently, only one voucher can be used per order).",
+          "example": "VoucherIds",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -2533,8 +2533,8 @@
         },
         {
           "disabled": false,
-          "document": "Tags associated with the instances to be created",
-          "example": "无",
+          "document": "Tags associated with the instances to be created.",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
@@ -2542,7 +2542,7 @@
         },
         {
           "disabled": false,
-          "document": "Collation of system character sets. Default value:  Chinese_PRC_CI_AS",
+          "document": "Collation of system character sets. Default value:  Chinese_PRC_CI_AS.",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Collation",
@@ -2551,12 +2551,21 @@
         },
         {
           "disabled": false,
-          "document": "System time zone. Default value:  `China Standard Time`",
+          "document": "System time zone. Default value:  `China Standard Time`.",
           "example": "China Standard Time",
           "member": "string",
           "name": "TimeZone",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disk encryption identification, 0 - no encryption, 1 - encryption.",
+          "example": "0",
+          "member": "int64",
+          "name": "DiskEncryptFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2566,7 +2575,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order name in array",
+          "document": "Order name in array.",
           "example": "[\"20200722117963\"]",
           "member": "string",
           "name": "DealNames",
@@ -3043,7 +3052,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID in the format of  `mssql-3l3fgqn7`.",
           "example": "mssql-6upluvd5",
           "member": "string",
           "name": "InstanceId",
@@ -3052,7 +3061,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -3061,7 +3070,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).",
           "example": "2",
           "member": "int64",
           "name": "ReadOnlyGroupType",
@@ -3070,7 +3079,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance memory size in GB.",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -3079,7 +3088,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance disk size in GB.",
           "example": "10",
           "member": "int64",
           "name": "Storage",
@@ -3088,7 +3097,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.",
           "example": "1",
           "member": "int64",
           "name": "ReadOnlyGroupForcedUpgrade",
@@ -3097,7 +3106,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.",
           "example": "mssqlrg-dj5i29c5n",
           "member": "string",
           "name": "ReadOnlyGroupId",
@@ -3106,7 +3115,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.",
           "example": "default_name",
           "member": "string",
           "name": "ReadOnlyGroupName",
@@ -3115,7 +3124,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.",
           "example": "1",
           "member": "int64",
           "name": "ReadOnlyGroupIsOfflineDelay",
@@ -3124,7 +3133,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.",
           "example": "10",
           "member": "int64",
           "name": "ReadOnlyGroupMaxDelayTime",
@@ -3133,7 +3142,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.",
           "example": "1",
           "member": "int64",
           "name": "ReadOnlyGroupMinInGroup",
@@ -3142,7 +3151,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).",
           "example": "POSTPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -3151,7 +3160,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of read-only instances to be purchased this time. Default value: `2`.",
           "example": "2",
           "member": "int64",
           "name": "GoodsNum",
@@ -3160,7 +3169,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.",
           "example": "subnet-gdy95gfs",
           "member": "string",
           "name": "SubnetId",
@@ -3169,7 +3178,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.",
           "example": "vpc-3xq2t5al",
           "member": "string",
           "name": "VpcId",
@@ -3178,7 +3187,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -3187,7 +3196,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Security group list, which contains security group IDs in the format of `sg-xxx`.",
           "example": "sg-xxx",
           "member": "string",
           "name": "SecurityGroupList",
@@ -3196,7 +3205,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).",
           "example": "1",
           "member": "int64",
           "name": "AutoVoucher",
@@ -3205,8 +3214,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "xxx",
+          "document": "Array of voucher IDs (currently, only one voucher can be used per order).",
+          "example": "VoucherIds",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -3214,8 +3223,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "无",
+          "document": "Tags associated with the instances to be created.",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
@@ -3223,7 +3232,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Collation of system character sets. Default value:  Chinese_PRC_CI_AS.",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Collation",
@@ -3232,7 +3241,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "System time zone. Default value:  `China Standard Time`.",
           "example": "China Standard Time",
           "member": "string",
           "name": "TimeZone",
@@ -3247,7 +3256,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Order name in array.",
           "example": "[\"20200722117963\"]",
           "member": "string",
           "name": "DealNames",
@@ -5468,7 +5477,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter by instance ID",
+          "document": "Filter by instance ID.",
           "example": "mssql-dj5i29c5n",
           "member": "string",
           "name": "InstanceId",
@@ -5486,8 +5495,8 @@
         },
         {
           "disabled": false,
-          "document": "The list of instance version numbers",
-          "example": "无",
+          "document": "The list of instance version numbers.",
+          "example": "[\"2008R2\"]",
           "member": "string",
           "name": "VersionSet",
           "required": false,
@@ -5495,7 +5504,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance AZ ID in the format of ap-guangzhou-2",
+          "document": "Instance AZ ID in the format of ap-guangzhou-3.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -5519,19 +5528,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of records returned",
+          "document": "Number of records returned.",
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Details of instance in the interworking group",
-          "example": "无",
+          "document": "Details of instance in the interworking group.",
+          "example": "[{\"InstanceId\": \"mssql-30vft2ix\",\"InterPort\": 1028,\"InterVip\": \"192.168.0.1\",\"Name\": \"andy\",\"Region\": \"ap-guangzhou\",\"Status\": 1,\"Version\": \"2012SP3\",\"VersionName\": \"SQL Server 2012 Enterprise\",\"Vip\": \"192.168.0.2\",\"Vport\": 1433,\"Zone\": \"ap-guangzhou-3\"}]",
           "member": "InterInstance",
           "name": "InterInstanceSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6694,8 +6705,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ ID in the format of ap-guangzhou-1",
-          "example": "ap-guangzhou-2",
+          "document": "AZ ID in the format of ap-guangzhou-1.",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -6703,7 +6714,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica",
+          "document": "Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica.",
           "example": "HA",
           "member": "string",
           "name": "InstanceType",
@@ -6718,7 +6729,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specification information array",
+          "document": "Specification information array.",
           "example": "无",
           "member": "SpecInfo",
           "name": "SpecInfoList",
@@ -6728,7 +6739,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of date entries returned",
+          "document": "Number of date entries returned.",
           "example": "4",
           "member": "int64",
           "name": "TotalCount",
@@ -10500,160 +10511,160 @@
         {
           "disabled": false,
           "document": "Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ",
-          "example": "",
+          "example": "22",
           "member": "int64",
           "name": "SpecId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Model ID",
-          "example": "",
+          "example": "TS85",
           "member": "string",
           "name": "MachineType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Model name",
-          "example": "",
+          "example": "高IO",
           "member": "string",
           "name": "MachineTypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
-          "example": "",
+          "example": "2008R2",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Version name corresponding to the `Version` field",
-          "example": "",
+          "example": "SQL Server 2008 Enterprise",
           "member": "string",
           "name": "VersionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Memory size in GB",
-          "example": "",
+          "example": "128",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of CPU cores",
-          "example": "",
+          "example": "16",
           "member": "int64",
           "name": "CPU",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Minimum disk size under this specification in GB",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "MinStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum disk size under this specification in GB",
-          "example": "",
+          "example": "3000",
           "member": "int64",
           "name": "MaxStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "QPS of this specification",
-          "example": "",
+          "example": "61000",
           "member": "int64",
           "name": "QPS",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description of this specification",
-          "example": "",
+          "example": "独立用户数上千万人的大型应用",
           "member": "string",
           "name": "SuitInfo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Pid of this specification",
-          "example": "",
+          "example": "10908",
           "member": "int64",
           "name": "Pid",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Pay-as-you-go Pid list corresponding to this specification\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "[10908]",
           "member": "int64",
           "name": "PostPid",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Billing mode under this specification. POST: pay-as-you-go",
-          "example": "",
+          "example": "ALL",
           "member": "string",
           "name": "PayModeStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)",
-          "example": "",
+          "example": "HA",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)",
-          "example": "",
+          "example": "ALL",
           "member": "string",
           "name": "MultiZonesStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
