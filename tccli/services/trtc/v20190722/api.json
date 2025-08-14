@@ -7,6 +7,13 @@
       "output": "ControlAIConversationResponse",
       "status": "online"
     },
+    "CreateCloudModeration": {
+      "document": "API description:\nThis API is used to enable the cloud moderation feature to complete audio and video slicing, video frame extraction, and audio stream recording in the room, and submit them to the specified moderation supplier for completing the moderation.\n\nThis API is used to achieve the following goals:\n* This API is used to specify the moderation parameters (ModerationParams) to specify the detailed parameters required for moderation.\n* This API is used to specify the storage parameter (SliceStorageParams) to specify the cloud storage you want to upload the file complying with the moderation policy to. Currently, Tencent Cloud Object Storage (COS) and third-party AWS are supported.",
+      "input": "CreateCloudModerationRequest",
+      "name": "Creates cloud moderation tasks",
+      "output": "CreateCloudModerationResponse",
+      "status": "online"
+    },
     "CreateCloudRecording": {
       "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.\nMixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.",
       "input": "CreateCloudRecordingRequest",
@@ -19,6 +26,13 @@
       "input": "CreateCloudSliceTaskRequest",
       "name": "Creates a cloud slicing task",
       "output": "CreateCloudSliceTaskResponse",
+      "status": "online"
+    },
+    "DeleteCloudModeration": {
+      "document": "This API is used to stop submission for moderation after the cloud moderation task is successfully started.",
+      "input": "DeleteCloudModerationRequest",
+      "name": "Stops cloud moderation",
+      "output": "DeleteCloudModerationResponse",
       "status": "online"
     },
     "DeleteCloudRecording": {
@@ -54,6 +68,13 @@
       "input": "DescribeCallDetailInfoRequest",
       "name": "Queries the user list and call metrics",
       "output": "DescribeCallDetailInfoResponse",
+      "status": "online"
+    },
+    "DescribeCloudModeration": {
+      "document": "This API is used to query the status of the moderation task and information about the subscription blocklist and allowlist after the task is started, which is valid only when the task is in progress. An error will be returned if the task is exited.",
+      "input": "DescribeCloudModerationRequest",
+      "name": "Queries cloud moderation information",
+      "output": "DescribeCloudModerationResponse",
       "status": "online"
     },
     "DescribeCloudRecording": {
@@ -194,6 +215,13 @@
       "input": "DismissRoomByStrRoomIdRequest",
       "name": "Closes a room (by room ID in string type)",
       "output": "DismissRoomByStrRoomIdResponse",
+      "status": "online"
+    },
+    "ModifyCloudModeration": {
+      "document": "This API is used to update the subscription blocklist and allowlist after the cloud moderation task is successfully started.",
+      "input": "ModifyCloudModerationRequest",
+      "name": "Modifies cloud moderation tasks",
+      "output": "ModifyCloudModerationResponse",
       "status": "online"
     },
     "ModifyCloudRecording": {
@@ -649,6 +677,66 @@
       ],
       "usage": "in"
     },
+    "CloudModerationStorage": {
+      "document": "Information about Tencent COS and third-party cloud storage accounts.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information about Tencent COS and third-party cloud storage accounts.\n0: Tencent COS.\n1: AWS S3.\n2: Alibaba Cloud OSS.\nExample value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Vendor",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
+          "example": "cn-shanghai-1",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud bucket name.",
+          "example": "test-bucket",
+          "member": "string",
+          "name": "Bucket",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "access_key account information of the cloud storage.\nTo store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.\nExample value: test-accesskey.",
+          "example": "test-accesskey",
+          "member": "string",
+          "name": "AccessKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "secret_key account information of cloud storage.\nTo store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.\nExample value: test-secretkey.",
+          "example": "test-secretkey",
+          "member": "string",
+          "name": "SecretKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
+          "example": "[\"prefix1\", \"prefix2\"]",
+          "member": "string",
+          "name": "FileNamePrefix",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "CloudSliceStorage": {
       "document": "Information about Tencent COS and third-party cloud storage accounts.",
       "members": [
@@ -821,6 +909,106 @@
     "ControlAIConversationResponse": {
       "document": "ControlAIConversation response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloudModerationRequest": {
+      "document": "CreateCloudModeration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
+          "example": "295212",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Chatbot's UserId, which is used to enter the room and initiate a moderation task. [*Note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple moderation tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous moderation task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.",
+          "example": "robot_1234",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.",
+          "example": "JwsjsHKgkAURt-lbv8fuXdyzAZauImIZBKDwJ3oKFdJhhkNI3r3yNx*B853XnA954GZLTsDiqSUAhH-l5VrM4zcsHGggAdvTTXCD-m6L63lGhSFiBTHmyhaCbegwIZ-WXfsu2kotauoccklT-Up0fOueN78pH15KFyrZZrtV*XI92-BNhSChKRV91jORYDw",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control parameters for cloud moderation.",
+          "example": "无",
+          "member": "ModerationParams",
+          "name": "ModerationParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters for uploading cloud moderation files to the cloud storage.",
+          "example": "无",
+          "member": "ModerationStorageParams",
+          "name": "ModerationStorageParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Validity period for calling the task ID, which starts upon successful initiation of the task and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the moderation task is not stopped. The unit of the parameter is hours, with a default value of 24 hours (1 day). The maximum value is 72 hours (3 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping slicing APIs is 24 hours upon the successful start of slicing.",
+          "example": "24",
+          "member": "uint64",
+          "name": "ResourceExpiredHour",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloudModerationResponse": {
+      "document": "CreateCloudModeration response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID assigned by the cloud moderation service. It is a unique identifier for the lifecycle of a moderation task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.",
+          "example": "-npVqpdU7pr3JUbUasDy5PLPQaHPhkPbIkDILoK-2OqyoZWQndibCtH88ztBhkWAhZCH9DwE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -1051,6 +1239,52 @@
           "disabled": false,
           "document": "Task ID assigned by the cloud slicing service. It is a unique identifier for the lifecycle of a slicing task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.",
           "example": "-npVqpdU7pr3JUbUasDy5PLPQaHPhkPbIkDILoK-2OqyoZWQndibCtH88ztBhkWAhZCH9DwE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudModerationRequest": {
+      "document": "DeleteCloudModeration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the moderation task, which is returned after the task is started.",
+          "example": "-npVoIhU7nQhuIyPncW+12qkkV--KL3bBznoI4K-4pycoZWQndibFvKbEU+fxxvJzuc+2xqATAE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudModerationResponse": {
+      "document": "DeleteCloudModeration response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the moderation task, which is returned after the task is started.",
+          "example": "-npVoIhU7nQhuIyPncW+12qkkV--KL3bBznoI4K-4pycoZWQndibFvKbEU+fxxvJzuc+2xqATAE.",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -1438,6 +1672,72 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudModerationRequest": {
+      "document": "DescribeCloudModeration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the cloud moderation task, which is returned after the task is started.",
+          "example": "-npVoIhU7uxalbjwbc-qxKyKqluNl93bUmLFI4K-4pycoZWQndibYzKsC3HkljEK3HikwogUxwE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudModerationResponse": {
+      "document": "DescribeCloudModeration response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the moderation task, which is returned after the task is started.",
+          "example": "123",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information about the status of the cloud moderation task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.",
+          "example": "InProgress",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subscription blocklist and allowlist.",
+          "example": "{\"SubscribeAudioUserIds\":[],\"UnSubscribeAudioUserIds\":[],\"SubscribeVideoUserIds\":[],\"UnSubscribeVideoUserIds\":[]}",
+          "member": "SubscribeModerationUserIds",
+          "name": "SubscribeStreamUserIds",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4020,6 +4320,214 @@
       ],
       "usage": "in"
     },
+    "ModerationParams": {
+      "document": "Control parameters for cloud moderation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Moderation task type. 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio slicing moderation + video frame extraction moderation; 4: audio stream moderation; 5: audio stream moderation + video frame extraction moderation. The default value is 1. (Support from suppliers is required for stream moderation to take effect.)",
+          "example": "1",
+          "member": "uint64",
+          "name": "ModerationType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Slicing is stopped automatically when there is no user (anchor) performing upstream push in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 1800 seconds (0.5 hours). Example value: 30.",
+          "example": "30",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audio slicing duration. Default value: 15s. Example value: 15.",
+          "example": "15",
+          "member": "uint64",
+          "name": "SliceAudio",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Interval for video frame extraction. Default value: 5s.",
+          "example": "5",
+          "member": "uint64",
+          "name": "SliceVideo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Enumeration values for suppliers.\ntianyu: Tencent Tianyu content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)\nace: ACE content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)\nshumei: shumei moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)\nYidun: NetEase Yidun moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)",
+          "example": "ace",
+          "member": "string",
+          "name": "ModerationSupplier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration information required for submitting content to the third-party moderation supplier.",
+          "example": "无",
+          "member": "ModerationSupplierParam",
+          "name": "ModerationSupplierParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to save the hit file. 0: not save by default; 1: save.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SaveModerationFile",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to call back all moderation results: \u000b0: call back all results by default; \u000b1: only call back hit results.",
+          "example": "0",
+          "member": "uint64",
+          "name": "CallbackAllResults",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the allowlist or blocklist for the subscription stream.",
+          "example": "无",
+          "member": "SubscribeModerationUserIds",
+          "name": "SubscribeStreamUserIds",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModerationStorageParams": {
+      "document": "Moderation file storage parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information about Tencent COS and third-party cloud storage accounts.",
+          "example": "无",
+          "member": "CloudModerationStorage",
+          "name": "CloudModerationStorage",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModerationSupplierParam": {
+      "document": "Parameters required for submitting content to the third-party moderation supplier.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Moderation supplier account ID. For Tencent Tianyu, the value is not null; for NETEASE Yidun, the value is null.",
+          "example": "\"24189\"",
+          "member": "string",
+          "name": "AppID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Moderation supplier key ID.",
+          "example": "\"ace_ugc_20521\"",
+          "member": "string",
+          "name": "SecretId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Moderation supplier key.",
+          "example": "\"637ae34f4069afb92e9c6a799b36xxxx\"",
+          "member": "string",
+          "name": "SecretKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio scenario. Policy ID or businessId.",
+          "example": "\"2001\"",
+          "member": "string",
+          "name": "AudioBizType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image scenario. Policy ID or businessId.",
+          "example": "\"2001\"",
+          "member": "string",
+          "name": "ImageBizType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyCloudModerationRequest": {
+      "document": "ModifyCloudModeration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.",
+          "example": "1400188366",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the moderation task, which is returned after the task is started.",
+          "example": "-npVoIhU7uxalbjwbc-qxKyKqluNl93bUmLFI4K-4pycoZWQndibYzKsC3HkljEK3HikwogUxwE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the allowlist or blocklist for the subscription stream.",
+          "example": "{\"SubscribeAudioUserIds\":[\"user1\"],\"SubscribeVideoUserIds\":[\"user2\"]}",
+          "member": "SubscribeStreamUserIds",
+          "name": "SubscribeStreamUserIds",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCloudModerationResponse": {
+      "document": "ModifyCloudModeration response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the moderation task, which is returned after the task is started.",
+          "example": "-npVoIhU7uxalbjwbc-qxKyKqluNl93bUmLFI4K-4pycoZWQndibYzKsC3HkljEK3HikwogUxwE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCloudRecordingRequest": {
       "document": "ModifyCloudRecording request structure.",
       "members": [
@@ -5624,6 +6132,56 @@
         }
       ],
       "usage": "in"
+    },
+    "SubscribeModerationUserIds": {
+      "document": "Specifies the subscription stream allowlist or blocklist. The audio allowlist and blocklist cannot be set simultaneously, and this also applies to video. Additionally, up to 25 concurrently subscribed media streams are supported, and up to 24 video screens are supported in mixed stream scenarios. It is also supported to use the \".*$\" wildcard for prefix matching of UserId in the blocklist and allowlist. Note that if there are user IDs in the room that match the wildcard rule, specific users are subscribed, causing the prefix rule to become ineffective.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subscription audio stream allowlist. It specifies which UserIds' audio streams to subscribe to, for example, [\"1\", \"2\", \"3\"] indicates subscriptions to the audio streams of UserId 1, 2, and 3; [\"1.*$\"] indicates subscription to audio streams with UserId prefixes starting with 1. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"123\",\"456\"]",
+          "member": "string",
+          "name": "SubscribeAudioUserIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subscription audio stream blocklist. It specifies which UserIds' audio streams not to subscribe to, for example, [\"1\", \"2\", \"3\"] indicates that the audio streams of UserId 1, 2, and 3 are not subscribed to; [\"1.*$\"] indicates that audio streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"123\",\"456\"]",
+          "member": "string",
+          "name": "UnSubscribeAudioUserIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subscription video stream allowlist. It specifies which UserIds' video streams to subscribe to, for example, [\"1\", \"2\", \"3\"] indicates subscriptions to the video streams of UserId 1, 2, and 3; [\"1.*$\"] indicates subscription to video streams with UserId prefixes starting with 1. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"123\",\"456\"]",
+          "member": "string",
+          "name": "SubscribeVideoUserIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subscription video stream blocklist. It specifies which UserIds' video streams not to subscribe to, for example, [\"1\", \"2\", \"3\"] indicates that the video streams of UserId 1, 2, and 3 are not subscribed to; [\"1.*$\"] indicates that video streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"123\",\"456\"]",
+          "member": "string",
+          "name": "UnSubscribeVideoUserIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "SubscribeStreamUserIds": {
       "document": "The subscription allowlist/blocklist. You cannot specify an allowlist and a blocklist for audio/video subscription at the same time. The maximum number of streams one can receive at the same time is 25. When streams are mixed, up to 24 videos are supported. You can use `.*$` to specify user IDs with the same prefix, but make sure there aren’t users whose IDs contain \".*$\" and are exactly the same as the prefix you pass in. If there are, TRTC will only allow or block those users.",

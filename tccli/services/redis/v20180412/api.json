@@ -176,7 +176,7 @@
       "status": "online"
     },
     "DescribeGlobalReplicationArea": {
-      "document": "This API is used to query the supported regions for global replication.",
+      "document": "This API is used to query the information on regions supported for global replication.",
       "input": "DescribeGlobalReplicationAreaRequest",
       "name": "Queries the supported regions for global replication",
       "output": "DescribeGlobalReplicationAreaResponse",
@@ -253,7 +253,7 @@
       "status": "online"
     },
     "DescribeInstanceMonitorSIP": {
-      "document": "This API is used to query the access source information of an instance.",
+      "document": "This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.",
       "input": "DescribeInstanceMonitorSIPRequest",
       "name": "Queries the access source information of an instance",
       "output": "DescribeInstanceMonitorSIPResponse",
@@ -267,7 +267,7 @@
       "status": "online"
     },
     "DescribeInstanceMonitorTopNCmd": {
-      "document": "This API is used to query an instance access command.",
+      "document": "This API is used to query instance access commands.",
       "input": "DescribeInstanceMonitorTopNCmdRequest",
       "name": "Queries an instance access command",
       "output": "DescribeInstanceMonitorTopNCmdResponse",
@@ -288,7 +288,7 @@
       "status": "online"
     },
     "DescribeInstanceParamRecords": {
-      "document": "This API is used to query the list of parameter modifications.",
+      "document": "This API is used to query the parameter modification record list.",
       "input": "DescribeInstanceParamRecordsRequest",
       "name": "Queries the list of parameter modifications",
       "output": "DescribeInstanceParamRecordsResponse",
@@ -358,7 +358,7 @@
       "status": "online"
     },
     "DescribeParamTemplates": {
-      "document": "This API is used to query the list of parameter templates.",
+      "document": "This API is used to query the parameter template list.",
       "input": "DescribeParamTemplatesRequest",
       "name": "Queries the list of parameter templates",
       "output": "DescribeParamTemplatesResponse",
@@ -425,6 +425,13 @@
       "input": "DescribeSSLStatusRequest",
       "name": "Queries SSL status",
       "output": "DescribeSSLStatusResponse",
+      "status": "online"
+    },
+    "DescribeSecondLevelBackupInfo": {
+      "document": "This API is used to query the second-level backup information on an instance.",
+      "input": "DescribeSecondLevelBackupInfoRequest",
+      "name": "Queries the second-level backup information on an instance",
+      "output": "DescribeSecondLevelBackupInfoResponse",
       "status": "online"
     },
     "DescribeSlowLog": {
@@ -574,6 +581,13 @@
       "output": "ModifyInstanceAvailabilityZonesResponse",
       "status": "online"
     },
+    "ModifyInstanceBackupMode": {
+      "document": "This API is used to modify the instance backup mode.",
+      "input": "ModifyInstanceBackupModeRequest",
+      "name": "Modifies the instance backup mode",
+      "output": "ModifyInstanceBackupModeResponse",
+      "status": "online"
+    },
     "ModifyInstanceEvent": {
       "document": "This API is used to modify the operations event execution schedule of an instance.",
       "input": "ModifyInstanceEventRequest",
@@ -651,6 +665,13 @@
       "output": "ReleaseWanAddressResponse",
       "status": "online"
     },
+    "RemoveReplicationGroup": {
+      "document": "This API is used to delete a replication group.",
+      "input": "RemoveReplicationGroupRequest",
+      "name": "Deletes a replication group",
+      "output": "RemoveReplicationGroupResponse",
+      "status": "online"
+    },
     "RemoveReplicationInstance": {
       "document": "This API is used to remove instances from a replication group.",
       "input": "RemoveReplicationInstanceRequest",
@@ -673,7 +694,7 @@
       "status": "online"
     },
     "RestoreInstance": {
-      "document": "This API is used to restore a Redis instance.",
+      "document": "This API is used to restore an instance.",
       "input": "RestoreInstanceRequest",
       "name": "Restores Redis instance",
       "output": "RestoreInstanceResponse",
@@ -754,7 +775,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance ID.",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "InstanceId",
@@ -764,7 +785,7 @@
         },
         {
           "disabled": false,
-          "document": "Account name.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Account name.",
           "example": "example_account_name",
           "member": "string",
           "name": "AccountName",
@@ -774,7 +795,7 @@
         },
         {
           "disabled": false,
-          "document": "Account description.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Account description.",
           "example": "Create an account with read-only access",
           "member": "string",
           "name": "Remark",
@@ -784,7 +805,7 @@
         },
         {
           "disabled": false,
-          "document": "Read/write permission policy.\n- r: read-only.\n- w: write-only.\n- rw: read/write.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Read/Write permission policy.\n- r: read-only.\n\n - w: write-only.\n- rw: read/write.",
           "example": "r",
           "member": "string",
           "name": "Privilege",
@@ -794,7 +815,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-only routing policy.\n- master: primary node.\n- replication: secondary node.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Read-only routing policy.\n - master: primary node.\n - replication: replica node.",
           "example": "replication",
           "member": "string",
           "name": "ReadonlyPolicy",
@@ -804,7 +825,7 @@
         },
         {
           "disabled": false,
-          "document": "Sub-account status.\n- 1: changing.\n- 2: valid.\n- 4: deleted.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Sub-account status.\n - 1: account under modification.\n - 2: valid account.\n - 4: account deleted.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -814,7 +835,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation time",
           "example": "\"2024-01-03 17:44:25\"，如果没有则显示为空",
           "member": "string",
           "name": "CreateTime",
@@ -1023,7 +1044,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Region\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -1033,7 +1054,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "AZ information",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "AvailableZones",
@@ -1970,7 +1991,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance type.\n<ul><li>2: Redis 2.8 Memory Edition (standard architecture);</li> <li>3: CKV 3.2 Memory Edition (standard architecture);</li> <li>4: CKV 3.2 Memory Edition (cluster architecture);</li> <li>6: Redis 4.0 Memory Edition (standard architecture);</li> <li>7: Redis 4.0 Memory Edition (cluster architecture);</li> <li>8: Redis 5.0 Memory Edition (standard architecture);</li> <li>9: Redis 5.0 Memory Edition (cluster architecture);</li> <li>15: Redis 6.2 Memory Edition (standard architecture);</li> <li>16: Redis 6.2 Memory Edition (cluster architecture);</li> <li>17: Redis 7.0 Memory Edition (standard architecture);</li> <li>18: Redis 7.0 Memory Edition (cluster architecture). </li>Note: The CKV version is currently used by existing users and is temporarily retained.</ul>",
+          "document": "Instance type.\n\n<ul><li>2: Redis 2.8 memory edition (standard architecture).</li><li>3: CKV 3.2 memory edition (standard architecture).</li><li>4: CKV 3.2 memory edition (cluster architecture).</li><li>6: Redis 4.0 memory edition (standard architecture).</li><li>7: Redis 4.0 memory edition (cluster architecture).</li><li>8: Redis 5.0 memory edition (standard architecture).</li><li>9: Redis 5.0 memory edition (cluster architecture).</li><li>15: Redis 6.2 memory edition (standard architecture).</li><li>16: Redis 6.2 memory edition (cluster architecture).</li><li>17: Redis 7.0 memory edition (standard architecture).</li><li>18: Redis 7.0 memory edition (cluster architecture).</li><li>200: Memcached 1.6 memory edition (cluster architecture).</li>Note: CKV editions are currently used by some users and are temporarily retained.</ul>",
           "example": "6",
           "member": "uint64",
           "name": "TypeId",
@@ -2024,7 +2045,7 @@
         },
         {
           "disabled": false,
-          "document": "Password for accessing instances.\n- When the input parameter **NoAuth** is set to **true**, password-free access is set for instances and Password does not need to be configured. Otherwise, Password is required.\n- When the instance type parameter **TypeId** is set to Redis 2.8 Memory Edition (standard architecture) or Redis 4.0, 5.0, or 6.0 Memory Edition (standard architecture or cluster architecture), the password cannot start with a forward slash (/) and should contain 8 to 64 characters, including at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).\n- When the instance type parameter **TypeId** is set to CKV 3.2 Memory Edition (standard architecture or cluster architecture), the password should contain 8 to 30 characters, including only letters and digits.",
+          "document": "Instance access password.\n - If the input parameter **NoAuth** is set to **true**, indicating that instance access requires no password, Password does not need to be specified. Otherwise, Password is required.\n - If the instance type (**TypeId**) is Redis 2.8 memory edition standard architecture or Redis 4.0/5.0/6.2/7.0 memory edition standard architecture or cluster architecture, the password complexity requirements are as follows: It should contain 8 to 64 characters but cannot start with a forward slash (/). It should contain at least two types of the following characters: lowercase letters, uppercase letters, digits, and special characters: ()`~!@#$%^&*-+=_|{}[]:;<>,.?/\n - When the instance type parameter **TypeId** is set to CKV 3.2 memory edition (standard architecture or cluster architecture), the password should contain 8 to 30 characters, including only letters and digits.",
           "example": "123456MyP@ssword",
           "member": "string",
           "name": "Password",
@@ -2177,7 +2198,7 @@
         },
         {
           "disabled": false,
-          "document": "The product edition of the instance\n- `local`: Local Disk Edition.\n- `cloud`: Cloud Disk Edition.\n- `cdc`: Dedicated Cluster Edition. Default value: `local`.",
+          "document": "Specifies the instance deployment mode.\n - local: traditional architecture. It is the default value.\n - cdc: dedicated cluster.\n - cloud: cloud native. Currently, this mode is unavailable.",
           "example": "cdc",
           "member": "string",
           "name": "ProductVersion",
@@ -2933,7 +2954,7 @@
         },
         {
           "disabled": false,
-          "document": "List of backup file information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Backup file information list.",
           "example": "无",
           "member": "BackupDownloadInfo",
           "name": "BackupInfos",
@@ -3303,7 +3324,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Account details \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Account details.",
           "example": "无",
           "member": "Account",
           "name": "Accounts",
@@ -3313,7 +3334,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of accounts \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of accounts.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -3451,7 +3472,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "DTS task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS task ID.",
           "example": "dts-l2g434lt",
           "member": "string",
           "name": "JobId",
@@ -3461,7 +3482,7 @@
         },
         {
           "disabled": false,
-          "document": "DTS task name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "DTS task name.",
           "example": "redis_dts_test28",
           "member": "string",
           "name": "JobName",
@@ -3471,7 +3492,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status. Valid values: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task status. 1: creating (Creating); 3: checking (Checking); 4: check successful (CheckPass); 5: check failed (CheckNotPass); 7: task running (Running); 8: preparation completed (ReadyComplete); 9: task successful (Success); 10: task failed (Failed); 11: stopping (Stopping); 12: completing (Completing).",
           "example": "10",
           "member": "int64",
           "name": "Status",
@@ -3481,7 +3502,7 @@
         },
         {
           "disabled": false,
-          "document": "Status description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Status description.",
           "example": "已失败",
           "member": "string",
           "name": "StatusDesc",
@@ -3491,7 +3512,7 @@
         },
         {
           "disabled": false,
-          "document": "Sync latency in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Synchronization delay. Unit: bytes.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -3501,7 +3522,7 @@
         },
         {
           "disabled": false,
-          "document": "Disconnection time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Disconnection time.",
           "example": "2019-08-16 17:10:13",
           "member": "string",
           "name": "CutDownTime",
@@ -3511,7 +3532,7 @@
         },
         {
           "disabled": false,
-          "document": "Source instance information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Source instance information.",
           "example": "无",
           "member": "DescribeInstanceDTSInstanceInfo",
           "name": "SrcInfo",
@@ -3521,7 +3542,7 @@
         },
         {
           "disabled": false,
-          "document": "Target instance information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Destination instance information.",
           "example": "无",
           "member": "DescribeInstanceDTSInstanceInfo",
           "name": "DstInfo",
@@ -3543,7 +3564,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Region ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Region ID.",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -3553,7 +3574,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance ID.",
           "example": "crs-o7vdf2no",
           "member": "string",
           "name": "InstanceId",
@@ -3563,7 +3584,7 @@
         },
         {
           "disabled": false,
-          "document": "Warehouse ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Repository ID.",
           "example": "14300",
           "member": "int64",
           "name": "SetId",
@@ -3573,7 +3594,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "AZ ID.",
           "example": "30001",
           "member": "int64",
           "name": "ZoneId",
@@ -3583,7 +3604,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance type.",
           "example": "8",
           "member": "int64",
           "name": "Type",
@@ -3593,7 +3614,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance name.",
           "example": "测试专用",
           "member": "string",
           "name": "InstanceName",
@@ -3603,7 +3624,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance access address.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance access address.",
           "example": "10.0.0.16:6379",
           "member": "string",
           "name": "Vip",
@@ -3613,7 +3634,7 @@
         },
         {
           "disabled": false,
-          "document": "Status.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Status.",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -4098,7 +4119,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.",
           "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
@@ -4233,7 +4254,7 @@
         },
         {
           "disabled": false,
-          "document": "Proxy node information \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Proxy node information.",
           "example": "无",
           "member": "ProxyNodes",
           "name": "Proxy",
@@ -4253,7 +4274,7 @@
         },
         {
           "disabled": false,
-          "document": "Redis node information \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "TencentDB for Redis® node information.",
           "example": "无",
           "member": "RedisNodes",
           "name": "Redis",
@@ -4273,7 +4294,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter has been disused. \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter is no longer used. Please ignore it.",
           "example": "无",
           "member": "TendisNodes",
           "name": "Tendis",
@@ -4800,7 +4821,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type.\n- 2: Redis 2.8 Memory Edition (standard architecture).\n- 3: CKV 3.2 Memory Edition (standard architecture).\n- 4: CKV 3.2 Memory Edition (cluster architecture).\n- 5: Redis 2.8 Memory Edition (stand-alone).\n- 6: Redis 4.0 Memory Edition (standard architecture).\n- 7: Redis 4.0 Memory Edition (cluster architecture).\n- 8: Redis 5.0 Memory Edition (standard architecture).\n- 9: Redis 5.0 Memory Edition (cluster architecture).\n- 15: Redis 6.2 Memory Edition (standard architecture).\n- 16: Redis 6.2 Memory Edition (cluster architecture).\n- 17: Redis 7.0 Memory Edition (standard architecture).\n- 18: Redis 7.0 Memory Edition (cluster architecture).",
+          "document": "Instance type.\n\n- 2: Redis 2.8 memory edition (standard architecture).\n- 3: CKV 3.2 memory edition (standard architecture).\n- 4: CKV 3.2 memory edition (cluster architecture).\n- 5: Redis 2.8 memory edition (standalone).\n- 6: Redis 4.0 memory edition (standard architecture).\n- 7: Redis 4.0 memory edition (cluster architecture).\n- 8: Redis 5.0 memory edition (standard architecture).\n- 9: Redis 5.0 memory edition (cluster architecture).\n- 15: Redis 6.2 memory edition (standard architecture).\n- 16: Redis 6.2 memory edition (cluster architecture).\n- 17: Redis 7.0 memory edition (standard architecture).\n- 18: Redis 7.0 memory edition (cluster architecture).\n- 200: Memcached 1.6 memory edition (cluster architecture).",
           "example": "8",
           "member": "int64",
           "name": "Type",
@@ -5123,7 +5144,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sale information of a region.",
+          "document": "Selling information on the region. The selling information on all regions is returned even if a region is specified.",
           "example": "无",
           "member": "RegionConf",
           "name": "RegionSet",
@@ -5344,7 +5365,7 @@
         },
         {
           "disabled": false,
-          "document": "Slow query details",
+          "document": "Slow query details. Note: If the value of TotalCount is greater than 10,000, indicating that the number of slow logs exceeds 10,000, log details cannot be returned. Instead, the returned data is empty. It is recommended to reduce the interval between BeginTime and EndTime and perform multiple queries.",
           "example": "无",
           "member": "InstanceProxySlowlogDetail",
           "name": "InstanceProxySlowLogDetail",
@@ -5755,6 +5776,82 @@
       ],
       "type": "object"
     },
+    "DescribeSecondLevelBackupInfoRequest": {
+      "document": "DescribeSecondLevelBackupInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. For example, crs-xjhsdj****. Log in to the TencentDB for Redis® console and copy the instance ID from the instance list.",
+          "example": "crs-asdasdas",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Second-level backup timestamp. The corresponding time should be within the last 7 days.",
+          "example": "1716449238",
+          "member": "int64",
+          "name": "BackupTimestamp",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecondLevelBackupInfoResponse": {
+      "document": "DescribeSecondLevelBackupInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Backup record ID.",
+          "example": "12",
+          "member": "string",
+          "name": "BackupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup timestamp.",
+          "example": "1716449238",
+          "member": "int64",
+          "name": "BackupTimestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp range within which backup is missing.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SecondLevelBackupMissingTimestamps",
+          "name": "MissingTimestamps",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp when second-level backup is enabled for the instance.",
+          "example": "1716449238",
+          "member": "int64",
+          "name": "StartTimestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSlowLogRequest": {
       "document": "DescribeSlowLog request structure.",
       "members": [
@@ -5849,7 +5946,7 @@
         },
         {
           "disabled": false,
-          "document": "Details of slow queries.",
+          "document": "Slow query details. Note: If the value of TotalCount is greater than 10,000, indicating that the number of slow logs exceeds 10,000, log details cannot be returned. Instead, the returned data is empty. It is recommended to reduce the interval between BeginTime and EndTime and perform multiple queries.",
           "example": "无",
           "member": "InstanceSlowlogDetail",
           "name": "InstanceSlowLogDetail",
@@ -5983,8 +6080,8 @@
           "type": "int"
         },
         {
-          "disabled": false,
-          "document": "Project ID Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), go to the account information menu in the top-right corner, and select **Project Management** to query the project ID.",
+          "disabled": true,
+          "document": "Project ID. This field has been deprecated. Please ignore it.",
           "example": "11322",
           "member": "int64",
           "name": "ProjectIds",
@@ -5993,7 +6090,7 @@
         },
         {
           "disabled": false,
-          "document": "Task type.\n\n\n\n- FLOW_CREATE: \"001\" - Create an instance.\n- FLOW_RESIZE: \"002\" - Change the configuration.\n- FLOW_CLOSE: \"003\" - Close an instance.\n- FLOW_CLEAN: \"004\" - Clear an instance.\n- FLOW_STARTUP: \"005\" - Enable an instance.\n- FLOW_DELETE: \"006\" - Delete an instance.\n- FLOW_SETPWD: \"007\" - Reset the password.\n- FLOW_EXPORTBACKUP: \"009\" - Export the backup file.\n- FLOW_RESTOREBACKUP: \"010\" - Restore the backup.\n- FLOW_BACKUPINSTANCE: \"012\" - Back up an instance.\n- FLOW_MIGRATEINSTANCE: \"013\" - Migrate an instance.\n- FLOW_DELBACKUP: \"014\" - Delete the backup.\n- FLOW_EXCHANGEINSTANCE: \"016\" - Switch an instance.\n- FLOW_AUTOBACKUP: \"017\" - Automatically backup an instance.\n- FLOW_MIGRATECHECK: \"022\" - Verify migration parameters.\n- FLOW_MIGRATETASK: \"023\" - Migrate data in progress.\n- FLOW_CLEANDB: \"025\" - Clear a database.\n- FLOW_CLONEBACKUP: \"026\" - Clone the backup.\n- FLOW_CHANGEVIP: \"027\" - Change the VIP.\n- FLOW_EXPORSHR: \"028\" - Perform scaling.\n- FLOW_ADDNODES: \"029\" - Add or remove a node.\n- FLOW_CHANGENET: \"031\" - Change the network type.\n- FLOW_MODIFYINSTACEREADONLY: \"033\" - Modify the read-only policy.\n- FLOW_MODIFYINSTANCEPARAMS: \"034\" - Modify instance parameters.\n- FLOW_MODIFYINSTANCEPASSWORDFREE: \"035\" - Set password-free access.\n- FLOW_SWITCHINSTANCEVIP: \"036\" - Switch the instance VIP.\n- FLOW_MODIFYINSTANCEACCOUNT: \"037\" - Modify the instance account.\n- FLOW_MODIFYINSTANCEBANDWIDTH: \"038\" - Modify the instance bandwidth.\n- FLOW_ENABLEINSTANCE_REPLICATE: \"039\" - Enable read-only replica.\n- FLOW_DISABLEINSTANCE_REPLICATE: \"040\" - Disable read-only replica.\n- FLOW_UpgradeArch: \"041\" - Upgrade the instance architecture from primary-secondary to cluster.\n- FLOW_DowngradeArch: \"042\" - Downgrade the instance architecture from cluster to primary-secondary.\n- FLOW_UpgradeVersion: \"043\" - Upgrade the version.\n- FLOW_MODIFYCONNECTIONCONFIG: \"044\" - Modify the number of bandwidth connections.\n- FLOW_CLEARNETWORK: \"045\" - Change the network.\n- FLOW_REMOVE_BACKUP_FILE: \"046\" - Delete the backup.\n- FLOW_UPGRADE_SUPPORT_MULTI_AZ: \"047\" - Upgrade an instance to support multiple AZs.\n- FLOW_SHUTDOWN_MASTER: \"048\" - Simulate a fault.\n- FLOW_CHANGE_REPLICA_TO_MASTER: \"049\" - Manually promote the replica node to the primary node.\n- FLOW_CODE_ADD_REPLICATION_INSTANCE: \"050\" - Add a replication group.\n- FLOW_OPEN_WAN: \"052\" - Enable the public network.\n- FLOW_CLOSE_WAN: \"053\" - Disable the public network. - FLOW_UPDATE_WAN: \"054\" - Update the public network.\n- FLOW_CODE_DELETE_REPLICATION_INSTANCE: \"055\" - Unbind the replication group.\n- FLOW_CODE_CHANGE_MASTER_INSTANCE: \"056\" - Switch to the primary instance in the replication group.\n- FLOW_CODE_CHANGE_INSTANCE_ROLE: \"057\" - Change the roles of instances in the replication group.\n- FLOW_MIGRATE_NODE: \"058\" - Migrate a node.\n- FLOW_SWITCH_NODE: \"059\" - Switch a node.\n- FLOW_UPGRADE_SMALL_VERSION: \"060\" - Upgrade the Redis version.\n- FLOW_UPGRADE_PROXY_VERSION: \"061\" - Upgrade the Proxy version.\n- FLOW_MODIFY_INSTANCE_NETWORK: \"062\" - Modify the instance network.\n- FLOW_MIGRATE_PROXY_NODE: \"063\" - Migrate the Proxy node.\n- FLOW_MIGRATION_INSTANCE_ZONE: \"066\" - Migrate the instance AZ in progress.\n- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: \"067\" - Upgrade the instance version in progress.\n- FLOW_MODIFY_PROXY_NUM: \"069\" - Add or remove a Proxy node.\n- FLOW_MODIFYBACKUPMOD: \"070\" - Change the instance backup mode.",
+          "document": "Task type.\n\n\n\n- FLOW_CREATE: \"001\", indicating instance creation.\n- FLOW_RESIZE: \"002\", indicating configuration modification.\n- FLOW_CLOSE: \"003\", indicating instance disabling.\n- FLOW_CLEAN: \"004\", indicating instance cleanup.\n- FLOW_STARTUP: \"005\", indicating instance enabling.\n- FLOW_DELETE: \"006\", indicating instance deletion.\n- FLOW_SETPWD: \"007\", indicating password reset.\n- FLOW_EXPORTBACKUP: \"009\", indicating backup file export.\n- FLOW_RESTOREBACKUP: \"010\", indicating backup restoration.\n- FLOW_BACKUPINSTANCE: \"012\", indicating instance backup.\n- FLOW_MIGRATEINSTANCE: \"013\", indicating instance migration.\n- FLOW_DELBACKUP: \"014\", indicating backup deletion.\n- FLOW_EXCHANGEINSTANCE: \"016\", indicating instance switch.\n- FLOW_AUTOBACKUP: \"017\", indicating automatic instance backup.\n- FLOW_MIGRATECHECK: \"022\", indicating migration parameter verification.\n- FLOW_MIGRATETASK: \"023\", indicating that data migration is in progress.\n- FLOW_CLEANDB: \"025\", indicating database cleanup.\n- FLOW_CLONEBACKUP: \"026\": indicating backup cloning.\n- FLOW_CHANGEVIP: \"027\", indicating VIP address modification.\n- FLOW_EXPORSHR: \"028\", indicating scaling.\n- FLOW_ADDNODES: \"029\", indicating node addition (removal).\n- FLOW_CHANGENET: \"031\", indicating network type modification.\n- FLOW_MODIFYINSTACEREADONLY: \"033\": indicating read-only policy modification.\n- FLOW_MODIFYINSTANCEPARAMS: \"034\", indicating instance parameter modification.\n- FLOW_MODIFYINSTANCEPASSWORDFREE: \"035\", indicating password-free access settings.\n- FLOW_SWITCHINSTANCEVIP: \"036\", indicating instance VIP address switch.\n- FLOW_MODIFYINSTANCEACCOUNT: \"037\", indicating instance account modification.\n- FLOW_MODIFYINSTANCEBANDWIDTH: \"038\", indicating instance bandwidth modification.\n- FLOW_ENABLEINSTANCE_REPLICATE: \"039\", indicating enabling of read-only replica.\n- FLOW_DISABLEINSTANCE_REPLICATE: \"040\", indicating disabling of read-only replica.\n- FLOW_UpgradeArch: \"041\", indicating instance architecture upgrade from the standard architecture to the cluster architecture.\n- FLOW_DowngradeArch: \"042\", indicating instance architecture downgrade from the cluster architecture to the standard architecture.\n- FLOW_UpgradeVersion: \"043\", indicating version upgrade.\n- FLOW_MODIFYCONNECTIONCONFIG: \"044\", indicating adjustment of the bandwidth and the number of connections.\n- FLOW_CLEARNETWORK: \"045\", indicating network change.\n- FLOW_REMOVE_BACKUP_FILE: \"046\", indicating backup deletion.\n- FLOW_UPGRADE_SUPPORT_MULTI_AZ: \"047\", indicating instance upgrade to multi-AZ deployment.\n- FLOW_SHUTDOWN_MASTER: \"048\", indicating fault simulation.\n- FLOW_CHANGE_REPLICA_TO_MASTER: \"049\", indicating manual promotion to the primary node.\n- FLOW_CODE_ADD_REPLICATION_INSTANCE: \"050\", indicating replication group addition.\n- FLOW_OPEN_WAN: \"052\", indicating enabling of public network access.\n- FLOW_CLOSE_WAN: \"053\", indicating disabling of public network access.\n - FLOW_UPDATE_WAN: \"054\", indicating update of the public network access configuration.\n- FLOW_CODE_DELETE_REPLICATION_INSTANCE: \"055\", indicating replication group unbinding.\n- FLOW_CODE_CHANGE_MASTER_INSTANCE: \"056\", indicating switching a replication group instance to the primary instance.\n- FLOW_CODE_CHANGE_INSTANCE_ROLE: \"057\", indicating modification of the replication group instance role.\n- FLOW_MIGRATE_NODE: \"058\", indicating node migration.\n- FLOW_SWITCH_NODE: \"059\", indicating node switch.\n- FLOW_UPGRADE_SMALL_VERSION: \"060\", indicating Redis version upgrade.\n- FLOW_UPGRADE_PROXY_VERSION: \"061\", indicating proxy version upgrade.\n- FLOW_MODIFY_INSTANCE_NETWORK: \"062\", indicating instance network modification.\n- FLOW_MIGRATE_PROXY_NODE: \"063\", indicating proxy node migration.\n- FLOW_MIGRATION_INSTANCE_ZONE: \"066\", indicating that instance migration to another AZ is in progress.\n- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: \"067\", indicating that instance version upgrade is in progress.\n- FLOW_MODIFY_PROXY_NUM: \"069\", indicating proxy node addition (removal).\n- FLOW_MODIFYBACKUPMOD: \"070\", indicating instance backup mode modification.",
           "example": "037",
           "member": "string",
           "name": "TaskTypes",
@@ -6164,7 +6261,7 @@
         },
         {
           "disabled": false,
-          "document": "Slow query details",
+          "document": "Slow query details. Note: If the value of TotalCount is greater than 10,000, indicating that the number of slow logs exceeds 10,000, log details cannot be returned. Instead, the returned data is empty. It is recommended to reduce the interval between BeginTime and EndTime and perform multiple queries.",
           "example": "无",
           "member": "TendisSlowLogDetail",
           "name": "TendisSlowLogDetail",
@@ -6275,7 +6372,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task ID.",
           "example": "15236",
           "member": "int64",
           "name": "TaskId",
@@ -6366,7 +6463,7 @@
       "members": [
         {
           "disabled": true,
-          "document": "Valid values: `ERROR`, `OK`. This field has been disused.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ERROR: incorrect; OK: correct (discarded).",
           "example": "OK",
           "member": "string",
           "name": "Status",
@@ -6376,7 +6473,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task ID.",
           "example": "16321",
           "member": "int64",
           "name": "TaskId",
@@ -6408,7 +6505,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID.\n- 1: Guangzhou.\n- 4: Shanghai.\n- 5: Hong Kong (China).\n- 7: Shanghai Finance.\n- 8: Beijing.\n- 9: Singapore.\n- 11: Shenzhen Finance.\n- 15: Western United States (Silicon Valley).\n- 16: Chengdu.\n- 17: Germany.\n- 18: South Korea.\n- 19: Chongqing.\n- 21: India.\n- 22: Eastern United States (Virginia).\n- 23: Thailand.\n- 25: Japan.",
+          "document": "Region ID.\n - 1: Guangzhou.\n - 4: Shanghai.\n - 5: Hong Kong (China).\n - 7: Shanghai Finance.\n - 8: Beijing.\n - 9: Singapore.\n - 11: Shenzhen Finance.\n - 15: Western US (Silicon Valley).\n - 16: Chengdu.\n - 17: Germany.\n - 18: South Korea.\n - 19: Chongqing.\n - 22: Eastern US (Virginia).\n - 23: Thailand.\n- 25: Japan.",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -6428,7 +6525,7 @@
         },
         {
           "disabled": false,
-          "document": "Replication group name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Replication group name.",
           "example": "crs-rpl-deindi7de",
           "member": "string",
           "name": "GroupName",
@@ -6458,7 +6555,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance information in replication groups\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance information on the replication group.",
           "example": "复制组实例",
           "member": "Instances",
           "name": "Instances",
@@ -6468,7 +6565,7 @@
         },
         {
           "disabled": false,
-          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Remark information.",
           "example": "备注信息",
           "member": "string",
           "name": "Remark",
@@ -6606,7 +6703,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance type.\n- 2: Redis 2.8 Memory Edition (standard architecture).\n- 6: Redis 4.0 Memory Edition (standard architecture).\n- 7: Redis 4.0 Memory Edition (cluster architecture).\n- 8: Redis 5.0 Memory Edition (standard architecture).\n- 9: Redis 5.0 Memory Edition (cluster architecture).\n- 15: Redis 6.2 Memory Edition (standard architecture).\n- 16: Redis 6.2 Memory Edition (cluster architecture).\n- 17: Redis 7.0 Memory Edition (standard architecture).\n- 18: Redis 7.0 Memory Edition (cluster architecture).",
+          "document": "Instance type.\n\n- 2: Redis 2.8 memory edition (standard architecture).\n- 6: Redis 4.0 memory edition (standard architecture).\n- 7: Redis 4.0 memory edition (cluster architecture).\n- 8: Redis 5.0 memory edition (standard architecture).\n- 9: Redis 5.0 memory edition (cluster architecture).\n- 15: Redis 6.2 memory edition (standard architecture).\n- 16: Redis 6.2 memory edition (cluster architecture).\n- 17: Redis 7.0 memory edition (standard architecture).\n- 18: Redis 7.0 memory edition (cluster architecture).\n- 200: Memcached 1.6 memory edition (cluster architecture).",
           "example": "6",
           "member": "uint64",
           "name": "TypeId",
@@ -6711,12 +6808,42 @@
       "members": [
         {
           "disabled": false,
-          "document": "Price. Unit: USD (accurate down to the cent)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Price.",
           "example": "30400",
           "member": "float",
           "name": "Price",
           "output_required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High precision price. ",
+          "example": "30400.123",
+          "member": "float",
+          "name": "HighPrecisionPrice",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currency.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Price unit.\n\n - pent: cent.\n - microPent: microcent.",
+          "example": "pent",
+          "member": "string",
+          "name": "AmountUnit",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -6775,12 +6902,42 @@
       "members": [
         {
           "disabled": false,
-          "document": "Price. Unit: USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Price.",
           "example": "30400",
           "member": "float",
           "name": "Price",
           "output_required": true,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High precision price.",
+          "example": "30400.123",
+          "member": "float",
+          "name": "HighPrecisionPrice",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currency.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Price unit.\n\n - pent: cent.\n - microPent: microcent.",
+          "example": "pent",
+          "member": "string",
+          "name": "AmountUnit",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -7215,7 +7372,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter unit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter unit.",
           "example": "ms",
           "member": "string",
           "name": "Unit",
@@ -7547,7 +7704,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID. <ul><li>1: Guangzhou;</li> <li>4: Shanghai;</li> <li>5: Hong Kong (China);</li> <li>7: Shanghai Finance;</li> <li>8: Beijing;</li> <li>9: Singapore;</li> <li>11: Shenzhen Finance;</li> <li>15: Western United States (Silicon Valley);</li> <li>16: Chengdu;</li> <li>17: Frankfurt;</li> <li>18: Seoul;</li> <li>19: Chongqing;</li> <li>21: Mumbai;</li> <li>22: Eastern United States (Virginia);</li> <li>23: Bangkok;</li> <li>25: Tokyo.</li></ul>",
+          "document": "Region ID.<ul><li>1: Guangzhou.</li><li>4: Shanghai.</li><li>5: Hong Kong (China).</li><li>7: Shanghai Finance.</li><li>8: Beijing.</li><li>9: Singapore.</li><li>11: Shenzhen Finance.</li><li>15: Western US (Silicon Valley).</li><li>16: Chengdu.</li><li>17: Frankfurt.</li><li>18: Seoul.</li><li>19: Chongqing.</li><li>22: Eastern US (Virginia).</li><li>23: Bangkok.</li><li>25: Tokyo.</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "RegionId",
@@ -7647,7 +7804,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type.\n- 2: Redis 2.8 Memory Edition (standard architecture).\n- 3: CKV 3.2 Memory Edition (standard architecture).\n- 4: CKV 3.2 Memory Edition (cluster architecture).\n- 5: Redis 2.8 Memory Edition (stand-alone).\n- 6: Redis 4.0 Memory Edition (standard architecture).\n- 7: Redis 4.0 Memory Edition (cluster architecture).\n- 8: Redis 5.0 Memory Edition (standard architecture).\n- 9: Redis 5.0 Memory Edition (cluster architecture).\n- 15: Redis 6.2 Memory Edition (standard architecture).\n- 16: Redis 6.2 Memory Edition (cluster architecture).\n- 17: Redis 7.0 Memory Edition (standard architecture).\n- 18: Redis 7.0 Memory Edition (cluster architecture).",
+          "document": "Instance type.\n\n- 2: Redis 2.8 memory edition (standard architecture).\n- 3: CKV 3.2 memory edition (standard architecture).\n- 4: CKV 3.2 memory edition (cluster architecture).\n- 5: Redis 2.8 memory edition (standalone).\n- 6: Redis 4.0 memory edition (standard architecture).\n- 7: Redis 4.0 memory edition (cluster architecture).\n- 8: Redis 5.0 memory edition (standard architecture).\n- 9: Redis 5.0 memory edition (cluster architecture).\n- 15: Redis 6.2 memory edition (standard architecture).\n- 16: Redis 6.2 memory edition (cluster architecture).\n- 17: Redis 7.0 memory edition (standard architecture).\n- 18: Redis 7.0 memory edition (cluster architecture).\n- 200: Memcached 1.6 memory edition (cluster architecture).",
           "example": "7",
           "member": "int64",
           "name": "Type",
@@ -7747,7 +7904,7 @@
         },
         {
           "disabled": false,
-          "document": "Sub-status returned for an instance in process.",
+          "document": "Sub-status returned for the instance in the process.\n - 0: disk read-write status.\n - 1: disk read-only status because the upper limit is exceeded.",
           "example": "0",
           "member": "int64",
           "name": "SubStatus",
@@ -7837,7 +7994,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag information associated with an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Information on tags associated with the instance.",
           "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
@@ -7847,7 +8004,7 @@
         },
         {
           "disabled": false,
-          "document": "Project name\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Project name",
           "example": "Default",
           "member": "string",
           "name": "ProjectName",
@@ -7857,7 +8014,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether an instance is a password-free instance. <ul><li>true: yes;</li> <li>false: no.</li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Whether the instance is password-free.<ul><li>true: password-free instance.</li><li>false: password required by the instance.</li></ul>",
           "example": "true",
           "member": "bool",
           "name": "NoAuth",
@@ -7867,7 +8024,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of client connections.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Number of client connections.",
           "example": "30000",
           "member": "int64",
           "name": "ClientLimit",
@@ -7877,7 +8034,7 @@
         },
         {
           "disabled": false,
-          "document": "DTS status (internal parameter, which can be ignored).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "DTS status. (Internal parameter, which can be ignored.)",
           "example": "0",
           "member": "int64",
           "name": "DtsStatus",
@@ -7887,7 +8044,7 @@
         },
         {
           "disabled": false,
-          "document": "Upper limit of the shard bandwidth. Unit: MB.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Shard bandwidth limit. Unit: MB.",
           "example": "1800",
           "member": "int64",
           "name": "NetLimit",
@@ -7897,7 +8054,7 @@
         },
         {
           "disabled": false,
-          "document": "Password-free instance flag (internal parameter, which can be ignored).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Password-free instance flag. (Internal parameter, which can be ignored.)",
           "example": "0",
           "member": "int64",
           "name": "PasswordFree",
@@ -7907,7 +8064,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored. This parameter is not properly named. It is recommended to use the IPv6 parameter to replace it.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "This parameter encounters a naming issue. It is recommended to use the parameter IPv6 instead. It is an internal parameter and can be ignored.",
           "example": "1",
           "member": "string",
           "name": "Vip6",
@@ -7917,7 +8074,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Internal parameter, which can be ignored.",
           "example": "1",
           "member": "string",
           "name": "IPv6",
@@ -7927,7 +8084,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance read-only flag (internal parameter, which can be ignored).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Instance read-only flag. (Internal parameter, which can be ignored.)",
           "example": "0",
           "member": "int64",
           "name": "ReadOnly",
@@ -7937,7 +8094,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Internal parameter, which can be ignored.",
           "example": "1",
           "member": "string",
           "name": "RemainBandwidthDuration",
@@ -7947,7 +8104,7 @@
         },
         {
           "disabled": false,
-          "document": "For Redis instances, ignore this parameter.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "For TencentDB for Redis® instances, ignore this parameter.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",
@@ -7957,7 +8114,7 @@
         },
         {
           "disabled": false,
-          "document": "Monitoring version. <ul><li>1m: 1-minute granularity monitoring. This monitoring granularity has been deprecated. For details, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li> <li>5s: 5-second granularity monitoring.</li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Monitoring version.<ul><li>1m: monitoring with the 1-minute granularity. Currently, this monitoring granularity is unavailable. For details, see [1-Minute Granularity Will Be Disused](https://intl.cloud.tencent.com/document/product/239/80653?from_cn_redirect=1).</li><li>5s: monitoring with the 5-second granularity.</li></ul>",
           "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
@@ -7967,7 +8124,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum value that can be set for the maximum number of client connections.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Minimum value that can be set for the maximum number of client connections.",
           "example": "1000",
           "member": "int64",
           "name": "ClientLimitMin",
@@ -7977,7 +8134,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value that can be set for the maximum number of client connections.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Maximum value that can be set for the maximum number of client connections.",
           "example": "10000",
           "member": "int64",
           "name": "ClientLimitMax",
@@ -7987,7 +8144,7 @@
         },
         {
           "disabled": false,
-          "document": "Detailed node information of an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Node details of the instance.\n\nIt is returned only for multi-AZ instances.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -7997,7 +8154,7 @@
         },
         {
           "disabled": false,
-          "document": "Region information of an instance, for example, ap-guangzhou.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Region information on the instance. For example, ap-guangzhou.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -8007,7 +8164,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network address.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Public network address.",
           "example": "gz-crs-xxx.sql.tencentcdb.com",
           "member": "string",
           "name": "WanAddress",
@@ -8017,7 +8174,7 @@
         },
         {
           "disabled": false,
-          "document": "Polaris service address, which is for internal use.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Polaris service address for internal use.",
           "example": "txcloud-paas-crs-xxx",
           "member": "string",
           "name": "PolarisServer",
@@ -8027,7 +8184,7 @@
         },
         {
           "disabled": false,
-          "document": "CDC Redis cluster ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "CDC cluster ID of TencentDB for Redis®.",
           "example": "crs-cluster-m1sy****",
           "member": "string",
           "name": "RedisClusterId",
@@ -8037,7 +8194,7 @@
         },
         {
           "disabled": false,
-          "document": "CDC cluster ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "CDC cluster ID.",
           "example": "cluster-3x6j****",
           "member": "string",
           "name": "DedicatedClusterId",
@@ -8047,7 +8204,7 @@
         },
         {
           "disabled": false,
-          "document": "Product edition. <ul><li>local: local disk;</li> <li>cloud: cloud disk;</li> <li>cdc: CDC cluster.</li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Product edition.<ul><li>local: local disk.</li><li>cloud: cloud disk edition.</li><li>cdc: CDC cluster edition.</li></ul>",
           "example": "cloud",
           "member": "string",
           "name": "ProductVersion",
@@ -8057,7 +8214,7 @@
         },
         {
           "disabled": false,
-          "document": "Current Proxy version of an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Current proxy version of the instance.",
           "example": "5.5.0",
           "member": "string",
           "name": "CurrentProxyVersion",
@@ -8067,7 +8224,7 @@
         },
         {
           "disabled": false,
-          "document": "Current Cache minor version of an instance. If the instance joins a global replication group, the kernel version of the global replication group will be displayed.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Current cache minor version of the instance. If the instance is added to a global replication group, the global replication kernel version is displayed.",
           "example": "4.3.0",
           "member": "string",
           "name": "CurrentRedisVersion",
@@ -8077,7 +8234,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgradable Proxy version of an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Upgradable proxy version for the instance.",
           "example": "5.6.0",
           "member": "string",
           "name": "UpgradeProxyVersion",
@@ -8087,7 +8244,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgradable Cache minor version of an instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Upgradable cache minor version for the instance.",
           "example": "6.0.0",
           "member": "string",
           "name": "UpgradeRedisVersion",
@@ -8097,7 +8254,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup mode. SecondLevelBackup: second-level backup; NormalLevelBackup: normal backup.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Backup mode. - SecondLevelBackup: second-level backup. - NormalLevelBackup: ordinary backup.",
           "example": "SecondLevelBackup",
           "member": "string",
           "name": "BackupMode",
@@ -8373,7 +8530,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance disk size.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",
@@ -8413,7 +8570,7 @@
         },
         {
           "disabled": false,
-          "document": "Due to the naming irregularity of this parameter, it is recommended to use the parameter IPv6 instead. Internal parameters, which can be ignored by users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter encounters a naming issue. It is recommended to use the parameter IPv6 instead. It is an internal parameter and can be ignored.",
           "example": "IPv6",
           "member": "string",
           "name": "Vip6",
@@ -8423,7 +8580,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameters, which can be ignored by users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal parameter, which can be ignored.",
           "example": "IPv6",
           "member": "string",
           "name": "IPv6",
@@ -8564,7 +8721,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether log shipping is enabled. true: enabled; false: disabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Enabling status of log shipping. true: enabled; false: disabled.",
           "example": "true",
           "member": "bool",
           "name": "Enabled",
@@ -8575,7 +8732,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Log set ID.",
           "example": "4ae3d686-0dcf-4db3-9867-482def442c9a",
           "member": "string",
           "name": "LogsetId",
@@ -8586,7 +8743,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Log topic ID.",
           "example": "27197b72-e1cb-4fc1-ab21-3865f589136f",
           "member": "string",
           "name": "TopicId",
@@ -8597,7 +8754,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset region\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Logset region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "LogRegion",
@@ -8687,7 +8844,7 @@
         },
         {
           "disabled": false,
-          "document": "New instance password, which has the following requirements:\n- It must contain 8-30 characters, preferably 12 or more.\n- It cannot start with a slash (/)\n- It must contain two of the following three types: lowercase letters, uppercase letters, and symbols (()~!@#$%^&*-+=_|{}[]:;<>,.?/)",
+          "document": "New instance password. The password complexity requirements are as follows:\n - It should contain 8 to 64 characters. 12 or more characters are recommended.\n - It cannot start with a forward slash (/).\n - It should contain at least two of the following types: lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (such as ()~!@#$%^&*-+=_|{}[]:;<>,.?/).",
           "example": "456987zy",
           "member": "string",
           "name": "Password",
@@ -8954,7 +9111,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID list. Replace it with a new one, which is an array of one or more security group IDs.\n- To configure a security group for an instance for the first time, bind the security group through the API [AssociateSecurityGroups](https://intl.cloud.tencent.com/document/product/239/41260?from_cn_redirect=1) first.\n- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.",
+          "document": "Replaces with the new security group ID list, which is an array of one or more security group IDs.\n- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.comom/document/product/239/41260?from_cn_redirect=1) to bind a security group first.\n- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.\n\n**Note:** This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.",
           "example": "[\"sg-ajr1jzgj\\n\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -9131,6 +9288,52 @@
       ],
       "type": "object"
     },
+    "ModifyInstanceBackupModeRequest": {
+      "document": "ModifyInstanceBackupMode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can contain 12 to 36 characters.",
+          "example": "crs-asdasda2",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup mode:\n - SecondLevelBackup: second-level backup.\n - NormalLevelBackup: ordinary backup.",
+          "example": "SecondLevelBackup",
+          "member": "string",
+          "name": "BackupMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceBackupModeResponse": {
+      "document": "ModifyInstanceBackupMode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "95027",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyInstanceEventRequest": {
       "document": "ModifyInstanceEvent request structure.",
       "members": [
@@ -9245,7 +9448,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the shipped logset, which can be obtained through the sub-parameter **LogsetId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).",
+          "document": "ID of the shipped logset. It can be obtained through the API [DescribeLogsets](https://intl.cloud.tencent.com/document/api/614/58624?from_cn_redirect=1).",
           "example": "4ae3d686-0dcf-4db3-9867-482def442c9a",
           "member": "string",
           "name": "LogsetId",
@@ -9254,7 +9457,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the shipped log topic, which can be obtained through the sub-parameter **TopicId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).",
+          "document": "ID of the shipped log topic. It can be obtained through the API [DescribeTopics](https://intl.cloud.tencent.com/document/api/614/56454?from_cn_redirect=1).",
           "example": "27197b72-e1cb-4fc1-ab21-3865f589136f",
           "member": "string",
           "name": "TopicId",
@@ -9263,7 +9466,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset name. If **LogsetId** is not specified, this parameter needs to be configured and the system will automatically create a logset with the specified name.",
+          "document": "Logset name. It is required when **LogsetId** is left blank. The system will create a logset with the value of LogsetName and ship logs.",
           "example": "test-set-name",
           "member": "string",
           "name": "LogsetName",
@@ -9272,7 +9475,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic name. This parameter is required when TopicId is empty, and the system will automatically create a log topic.",
+          "document": "Log topic name. It is required when **TopicId** is left blank. The system will create a log topic with the value of TopicName and ship logs.",
           "example": "test-topic-name",
           "member": "string",
           "name": "TopicName",
@@ -10087,7 +10290,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Maximum parameter value allowed.",
           "example": "1",
           "member": "string",
           "name": "Max",
@@ -10097,7 +10300,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum value of the parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Minimum parameter value allowed.",
           "example": "1000",
           "member": "string",
           "name": "Min",
@@ -10107,7 +10310,7 @@
         },
         {
           "disabled": false,
-          "document": "Enumerated values of the parameter. It is null if the parameter is non-enumerated\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Optional enumeration values of a parameter. For non-enumeration parameters, it is empty.",
           "example": "[\"yes\",\"no\"]",
           "member": "string",
           "name": "EnumValue",
@@ -10253,7 +10456,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the Read-Only Replica is supported.\n- true: Supported.\n- false: Not supported.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Whether read-only replica is supported.\n - true: read-only replica supported.\n - false: not supported.",
           "example": "false",
           "member": "bool",
           "name": "EnableReplicaReadOnly",
@@ -10269,7 +10472,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Node ID.",
           "example": "de1d54148ed79f11c3b4a49c878b29c721******",
           "member": "string",
           "name": "NodeId",
@@ -10279,7 +10482,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "AZ ID.",
           "example": "100002",
           "member": "int64",
           "name": "ZoneId",
@@ -10355,7 +10558,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal field, which can be ignored.",
           "example": "0",
           "member": "int64",
           "name": "BackupSize",
@@ -10365,7 +10568,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal field, which can be ignored.",
           "example": "0",
           "member": "int64",
           "name": "FullBackup",
@@ -10375,7 +10578,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal field, which can be ignored.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Internal field, which can be ignored.",
           "example": "0",
           "member": "int64",
           "name": "InstanceType",
@@ -10597,7 +10800,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Event ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Event ID.",
           "example": "102",
           "member": "int64",
           "name": "ID",
@@ -10607,7 +10810,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance ID.",
           "example": "crs-ewflkgfe",
           "member": "string",
           "name": "InstanceId",
@@ -10617,7 +10820,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance name.",
           "example": "redis",
           "member": "string",
           "name": "InstanceName",
@@ -10627,7 +10830,7 @@
         },
         {
           "disabled": false,
-          "document": "Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be only set to **InstanceMigration**.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be set only to **InstanceMigration**.",
           "example": "InstanceMigration",
           "member": "string",
           "name": "Type",
@@ -10637,7 +10840,7 @@
         },
         {
           "disabled": false,
-          "document": "Event levels are divided into Critical, High, Medium, and Low events according to the severity and urgency.- Critical\n- High\n- Middle\n- Low\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Event level. The levels are divided into critical, important, medium, and general based on severity and urgency.\n - Critical: critical.\n - High: important.\n - Middle: medium.\n - Low.",
           "example": "Critical",
           "member": "string",
           "name": "Grade",
@@ -10647,7 +10850,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled event execution date.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Scheduled event execution date.",
           "example": "2018-09-10",
           "member": "string",
           "name": "ExecutionDate",
@@ -10657,7 +10860,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled start time of event execution.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Start date of scheduled event execution.",
           "example": "03:00",
           "member": "string",
           "name": "StartTime",
@@ -10667,7 +10870,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled end time of event execution.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "End date of scheduled event execution.",
           "example": "04:00",
           "member": "string",
           "name": "EndTime",
@@ -10677,7 +10880,7 @@
         },
         {
           "disabled": false,
-          "document": "The latest execution date of the operations event. Event execution must be completed before this date. Otherwise, the business may be affected.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Latest execution date of the Ops event. The event should be completed before this date. Otherwise, the business may be affected.",
           "example": "2018-09-10",
           "member": "string",
           "name": "LatestExecutionDate",
@@ -10687,7 +10890,7 @@
         },
         {
           "disabled": false,
-          "document": "Current event status.- Waiting: The event is waiting for execution on the execution date or during the operations period.- Running: The event is being executed during the operations period.- Finished: Execution of the event operations is completed.- Canceled: Execution of the event is canceled.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Current event status.\n - Waiting: event not reached the execution date or not within the maintenance window.\n - Running: event within the maintenance window and under maintenance execution.\n - Finished: event with maintenance completed.\n- Canceled: Execution of the event is canceled.",
           "example": "Waiting",
           "member": "string",
           "name": "Status",
@@ -10697,7 +10900,7 @@
         },
         {
           "disabled": false,
-          "document": "Completion time of the event execution task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Completion time of the event execution task.",
           "example": "2018-09-10 09:10:23",
           "member": "string",
           "name": "TaskEndTime",
@@ -10707,7 +10910,7 @@
         },
         {
           "disabled": false,
-          "document": "Impact of the event.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Event impact information.",
           "example": "迁移完成时会有一次秒级别的闪断",
           "member": "string",
           "name": "EffectInfo",
@@ -10717,7 +10920,7 @@
         },
         {
           "disabled": false,
-          "document": "Initial scheduled execution date of the event.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Initial scheduled event execution date.",
           "example": "2018-09-10",
           "member": "string",
           "name": "InitialExecutionDate",
@@ -10970,6 +11173,33 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveReplicationGroupRequest": {
+      "document": "RemoveReplicationGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Replication group ID.",
+          "example": "crs-rpl-xxx",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveReplicationGroupResponse": {
+      "document": "RemoveReplicationGroup response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -11314,6 +11544,32 @@
         }
       ],
       "type": "object"
+    },
+    "SecondLevelBackupMissingTimestamps": {
+      "document": "Timestamp range within which second-level backup is missing",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start timestamp.",
+          "example": "1716449238",
+          "member": "int64",
+          "name": "StartTimeStamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End timestamp.",
+          "example": "1716449238",
+          "member": "int64",
+          "name": "EndTimeStamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SecurityGroup": {
       "document": "Security group rules",
@@ -11727,11 +11983,20 @@
         {
           "disabled": false,
           "document": "Proxy ID of an instance, which can be obtained through NodeId of the response parameter **Proxy** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).",
-          "example": "vbjxbsucvnkcndkbk",
+          "example": "6ff0eb7815606bb7e3f14cdde9410b64b488e8f9",
           "member": "string",
           "name": "ProxyID",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.comom/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.",
+          "example": "[\"896873be5805ebacae5042311237e6d2d78be00b\"]",
+          "member": "string",
+          "name": "ProxyIDList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -11739,6 +12004,16 @@
     "SwitchProxyResponse": {
       "document": "SwitchProxy response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "1378445",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -11753,7 +12028,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task ID.",
           "example": "42371",
           "member": "int64",
           "name": "TaskId",
@@ -11763,7 +12038,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task start time.",
           "example": "2019-11-15 14:25:37",
           "member": "string",
           "name": "StartTime",
@@ -11773,7 +12048,7 @@
         },
         {
           "disabled": false,
-          "document": "Task type.\n\n- FLOW_CREATE: \"001\" - Create an instance.\n- FLOW_RESIZE: \"002\" - Change the configuration.\n- FLOW_CLOSE: \"003\" - Close an instance.\n- FLOW_CLEAN: \"004\" - Clear an instance.\n- FLOW_STARTUP: \"005\" - Enable an instance.\n- FLOW_DELETE: \"006\" - Delete an instance.\n- FLOW_SETPWD: \"007\" - Reset the password.\n- FLOW_EXPORTBACKUP: \"009\" - Export the backup file.\n- FLOW_RESTOREBACKUP: \"010\" - Restore the backup.\n- FLOW_BACKUPINSTANCE: \"012\" - Back up an instance.\n- FLOW_MIGRATEINSTANCE: \"013\" - Migrate an instance.\n- FLOW_DELBACKUP: \"014\" - Delete the backup.\n- FLOW_EXCHANGEINSTANCE: \"016\" - Switch an instance.\n- FLOW_AUTOBACKUP: \"017\" - Automatically backup an instance.\n- FLOW_MIGRATECHECK: \"022\" - Verify migration parameters.\n- FLOW_MIGRATETASK: \"023\" - Migrating data is in progress.\n- FLOW_CLEANDB: \"025\" - Clear a database.\n- FLOW_CLONEBACKUP: \"026\" - Clone the backup.\n- FLOW_CHANGEVIP: \"027\" - Change the VIP.\n- FLOW_EXPORSHR: \"028\" - Perform scaling.\n- FLOW_ADDNODES: \"029\" - Add or remove a node.\n- FLOW_CHANGENET: \"031\" - Change the network type.\n- FLOW_MODIFYINSTACEREADONLY: \"033\" - Modify the read-only policy.\n- FLOW_MODIFYINSTANCEPARAMS: \"034\" - Modify instance parameters.\n- FLOW_MODIFYINSTANCEPASSWORDFREE: \"035\" - Set password-free access.\n- FLOW_SWITCHINSTANCEVIP: \"036\" - Switch the instance VIP.\n- FLOW_MODIFYINSTANCEACCOUNT: \"037\" - Modify the instance account.\n- FLOW_MODIFYINSTANCEBANDWIDTH: \"038\" - Modify the instance bandwidth.\n- FLOW_ENABLEINSTANCE_REPLICATE: \"039\" - Enable read-only replica.\n- FLOW_DISABLEINSTANCE_REPLICATE: \"040\" - Disable read-only replica.\n- FLOW_UpgradeArch: \"041\" - Upgrade the instance architecture from primary-secondary to cluster.\n- FLOW_DowngradeArch: \"042\" - Downgrade the instance architecture from cluster to primary-secondary.\n- FLOW_UpgradeVersion: \"043\" - Upgrade the version.\n- FLOW_MODIFYCONNECTIONCONFIG: \"044\" - Modify the number of bandwidth connections.\n- FLOW_CLEARNETWORK: \"045\" - Change the network.\n- FLOW_REMOVE_BACKUP_FILE: \"046\" - Delete the backup.\n- FLOW_UPGRADE_SUPPORT_MULTI_AZ: \"047\" - Upgrade an instance to support multiple AZs.\n- FLOW_SHUTDOWN_MASTER: \"048\" - Simulate a fault.\n- FLOW_CHANGE_REPLICA_TO_MASTER: \"049\" - Manually promote the replica node to the primary node.\n- FLOW_CODE_ADD_REPLICATION_INSTANCE: \"050\" - Add a replication group.\n- FLOW_OPEN_WAN: \"052\" - Enable the public network.\n- FLOW_CLOSE_WAN: \"053\" - Disable the public network. - FLOW_UPDATE_WAN: \"054\" - Update the public network.\n- FLOW_CODE_DELETE_REPLICATION_INSTANCE: \"055\" - Unbind the replication group.\n- FLOW_CODE_CHANGE_MASTER_INSTANCE: \"056\" - Switch to the primary instance in the replication group.\n- FLOW_CODE_CHANGE_INSTANCE_ROLE: \"057\" - Change the roles of instances in the replication group.\n- FLOW_MIGRATE_NODE: \"058\" - Migrate a node.\n- FLOW_SWITCH_NODE: \"059\" - Switch a node.\n- FLOW_UPGRADE_SMALL_VERSION: \"060\" - Upgrade the Redis version.\n- FLOW_UPGRADE_PROXY_VERSION: \"061\" - Upgrade the Proxy version.\n- FLOW_MODIFY_INSTANCE_NETWORK: \"062\" - Modify the instance network.\n- FLOW_MIGRATE_PROXY_NODE: \"063\" - Migrate the Proxy node.\n- FLOW_MIGRATION_INSTANCE_ZONE: \"066\" - Migrate the instance AZ in progress.\n- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: \"067\" - Upgrading the instance version is in progress.\n- FLOW_MODIFY_PROXY_NUM: \"069\" - Add or remove a Proxy node.\n- FLOW_MODIFYBACKUPMOD: \"070\" - Change the instance backup mode.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Task type.\n\n- FLOW_CREATE: \"001\", indicating instance creation.\n- FLOW_RESIZE: \"002\", indicating configuration modification.\n- FLOW_CLOSE: \"003\", indicating instance disabling.\n- FLOW_CLEAN: \"004\", indicating instance cleanup.\n- FLOW_STARTUP: \"005\", indicating instance enabling.\n- FLOW_DELETE: \"006\", indicating instance deletion.\n- FLOW_SETPWD: \"007\", indicating password reset.\n- FLOW_EXPORTBACKUP: \"009\", indicating backup file export.\n- FLOW_RESTOREBACKUP: \"010\", indicating backup restoration.\n- FLOW_BACKUPINSTANCE: \"012\", indicating instance backup.\n- FLOW_MIGRATEINSTANCE: \"013\", indicating instance migration.\n- FLOW_DELBACKUP: \"014\", indicating backup deletion.\n- FLOW_EXCHANGEINSTANCE: \"016\", indicating instance switch.\n- FLOW_AUTOBACKUP: \"017\", indicating automatic instance backup.\n- FLOW_MIGRATECHECK: \"022\", indicating migration parameter verification.\n- FLOW_MIGRATETASK: \"023\", indicating that data migration is in progress.\n- FLOW_CLEANDB: \"025\", indicating database cleanup.\n- FLOW_CLONEBACKUP: \"026\": indicating backup cloning.\n- FLOW_CHANGEVIP: \"027\", indicating VIP address modification.\n- FLOW_EXPORSHR: \"028\", indicating scaling.\n- FLOW_ADDNODES: \"029\", indicating node addition (removal).\n- FLOW_CHANGENET: \"031\", indicating network type modification.\n- FLOW_MODIFYINSTACEREADONLY: \"033\": indicating read-only policy modification.\n- FLOW_MODIFYINSTANCEPARAMS: \"034\", indicating instance parameter modification.\n- FLOW_MODIFYINSTANCEPASSWORDFREE: \"035\", indicating password-free access settings.\n- FLOW_SWITCHINSTANCEVIP: \"036\", indicating instance VIP address switch.\n- FLOW_MODIFYINSTANCEACCOUNT: \"037\", indicating instance account modification.\n- FLOW_MODIFYINSTANCEBANDWIDTH: \"038\", indicating instance bandwidth modification.\n- FLOW_ENABLEINSTANCE_REPLICATE: \"039\", indicating enabling of read-only replica.\n- FLOW_DISABLEINSTANCE_REPLICATE: \"040\", indicating disabling of read-only replica.\n- FLOW_UpgradeArch: \"041\", indicating instance architecture upgrade from the standard architecture to the cluster architecture.\n- FLOW_DowngradeArch: \"042\", indicating instance architecture downgrade from the cluster architecture to the standard architecture.\n- FLOW_UpgradeVersion: \"043\", indicating version upgrade.\n- FLOW_MODIFYCONNECTIONCONFIG: \"044\", indicating adjustment of the bandwidth and the number of connections.\n- FLOW_CLEARNETWORK: \"045\", indicating network change.\n- FLOW_REMOVE_BACKUP_FILE: \"046\", indicating backup deletion.\n- FLOW_UPGRADE_SUPPORT_MULTI_AZ: \"047\", indicating instance upgrade to multi-AZ deployment.\n- FLOW_SHUTDOWN_MASTER: \"048\", indicating fault simulation.\n- FLOW_CHANGE_REPLICA_TO_MASTER: \"049\", indicating manual promotion to the primary node.\n- FLOW_CODE_ADD_REPLICATION_INSTANCE: \"050\", indicating replication group addition.\n- FLOW_OPEN_WAN: \"052\", indicating enabling of public network access.\n- FLOW_CLOSE_WAN: \"053\", indicating disabling of public network access.\n- FLOW_CODE_DELETE_REPLICATION_INSTANCE: \"055\", indicating replication group unbinding.\n- FLOW_CODE_CHANGE_MASTER_INSTANCE: \"056\", indicating switching a replication group instance to the primary instance.\n- FLOW_CODE_CHANGE_INSTANCE_ROLE: \"057\", indicating modification of the replication group instance role.\n- FLOW_MIGRATE_NODE: \"058\", indicating node migration.\n- FLOW_SWITCH_NODE: \"059\", indicating node switch.\n- FLOW_UPGRADE_SMALL_VERSION: \"060\", indicating Redis version upgrade.\n- FLOW_UPGRADE_PROXY_VERSION: \"061\", indicating proxy version upgrade.\n- FLOW_MODIFY_INSTANCE_NETWORK: \"062\", indicating instance network modification.\n- FLOW_MIGRATE_PROXY_NODE: \"063\", indicating proxy node migration.\n- FLOW_MIGRATION_INSTANCE_ZONE: \"066\", indicating that instance migration to another AZ is in progress.\n- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: \"067\", indicating that instance version upgrade is in progress.\n- FLOW_MODIFY_PROXY_NUM: \"069\", indicating proxy node addition (removal).\n- FLOW_MODIFYBACKUPMOD: \"070\", indicating instance backup mode modification.",
           "example": "037",
           "member": "string",
           "name": "TaskType",
@@ -11783,7 +12058,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance name.",
           "example": "生产-***Redis",
           "member": "string",
           "name": "InstanceName",
@@ -11793,7 +12068,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance ID.",
           "example": "crs-opcazbrb",
           "member": "string",
           "name": "InstanceId",
@@ -11803,7 +12078,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Project ID.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -11813,7 +12088,7 @@
         },
         {
           "disabled": false,
-          "document": "Task progress \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task progress.",
           "example": "1",
           "member": "float",
           "name": "Progress",
@@ -11823,7 +12098,7 @@
         },
         {
           "disabled": false,
-          "document": "Task end time \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task execution end time.",
           "example": "2019-11-15 14:25:25",
           "member": "string",
           "name": "EndTime",
@@ -11833,7 +12108,7 @@
         },
         {
           "disabled": false,
-          "document": "Task execution status. Valid values: - `0` (initilized) - `1` (executing) - `2` (completed) - `4` (failed) \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Task execution status.\n\n\n\n0: initializing the task.\n1: executing.\n2. completed.\n4: failed.",
           "example": "2",
           "member": "int64",
           "name": "Result",
@@ -12067,7 +12342,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of instance to be modified.",
+          "document": "ID of the instance whose configuration is to be modified. Log in to the [TencentDB for Redis® console](https://console.cloud.tencent.com/Redis/instance/list) and copy the instance ID from the instance list.",
           "example": "crs-5qlr****",
           "member": "string",
           "name": "InstanceId",
@@ -12109,6 +12384,15 @@
           "name": "NodeSet",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Switch time.\n - 1: Perform the operation within the maintenance window: Specification upgrade is executed within the set maintenance window. Use the API [DescribeMaintenanceWindow](https://intl.cloud.tencent.com/document/product/239/46336?from_cn_redirect=1) to query the time period of the set maintenance window. Replica addition/removal, shard addition/removal, and memory capacity expansion/shrinkage are supported within the maintenance window. Specification upgrade within the maintenance window is being gradually tested and published by region. It is already supported in some regions. For urgent integration in regions that do not support it, [submit a ticket](https://console.cloud.tencent.com/workorder/category) to apply for an allowlist.\n -2: Perform the operation immediately: The operation will be performed immediately, without the need to wait for the maintenance window. Operations will be performed immediately by default for the system.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SwitchOption",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"

@@ -1919,7 +1919,7 @@
         {
           "disabled": false,
           "document": "Instance storage capacity in GB",
-          "example": "64",
+          "example": "60",
           "member": "uint64",
           "name": "Storage",
           "required": true,
@@ -2027,7 +2027,7 @@
         {
           "disabled": false,
           "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
-          "example": "[             {                 \"Zone\": \"ap-guangzhou-6\",                 \"ZoneName\": \"广州六区\",                 \"ZoneId\": 100006,                 \"ZoneState\": \"AVAILABLE\",                 \"ZoneSupportIpv6\": 0,                 \"StandbyZoneSet\": [                     \"ap-guangzhou-6\",                     \"ap-guangzhou-7\"                 ]             } ]",
+          "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
           "required": false,
@@ -2072,7 +2072,7 @@
         {
           "disabled": false,
           "document": "Campaign ID",
-          "example": "123",
+          "example": "14542",
           "member": "int64",
           "name": "ActivityId",
           "required": false,
@@ -2099,7 +2099,7 @@
         {
           "disabled": false,
           "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
-          "example": "[             {                 \"SecurityGroupId\": \"sg-05bb4upy\",                 \"SecurityGroupName\": \"TestGroup\",                 \"SecurityGroupDesc\": \"test-group-desc\",                 \"ProjectId\": \"0\",                 \"IsDefault\": true,                 \"CreatedTime\": \"2017-04-18 21:02:30\",                 \"UpdateTime\": \"\",                 \"TagSet\": []             }         ]",
+          "example": "[         \"sg-g09vl0p7\"     ]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -2129,6 +2129,15 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "KMSRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cls-hsm-xxxxxxx",
+          "member": "string",
+          "name": "KMSClusterId",
           "required": false,
           "type": "string"
         },
@@ -2292,7 +2301,7 @@
         {
           "disabled": false,
           "document": "ID of the primary instance to which the read-only instance belongs",
-          "example": "MasterDBInstanceId",
+          "example": "pgrogrp-efacxt00",
           "member": "string",
           "name": "MasterDBInstanceId",
           "required": true,
@@ -2301,7 +2310,7 @@
         {
           "disabled": false,
           "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
-          "example": "SpecCode",
+          "example": "pg.it.large8",
           "member": "string",
           "name": "SpecCode",
           "required": true,
@@ -2310,7 +2319,7 @@
         {
           "disabled": false,
           "document": "Instance storage capacity in GB",
-          "example": "1",
+          "example": "100",
           "member": "uint64",
           "name": "Storage",
           "required": true,
@@ -2337,7 +2346,7 @@
         {
           "disabled": false,
           "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
-          "example": "VpcId",
+          "example": "vpc-e3t30r8t",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -2346,7 +2355,7 @@
         {
           "disabled": false,
           "document": "VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
-          "example": "SubnetId",
+          "example": "subnet-jd9cvu0o",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -2355,7 +2364,7 @@
         {
           "disabled": false,
           "document": "Instance billing mode. Valid values: \n<li>`PREPAID`: Monthly subscription\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go\nDefault value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.",
-          "example": "InstanceChargeType",
+          "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -2391,7 +2400,7 @@
         {
           "disabled": false,
           "document": "Project ID",
-          "example": "1",
+          "example": "1457",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -2400,7 +2409,7 @@
         {
           "disabled": false,
           "document": "Special offer ID",
-          "example": "1",
+          "example": "1364",
           "member": "int64",
           "name": "ActivityId",
           "required": false,
@@ -2409,7 +2418,7 @@
         {
           "disabled": false,
           "document": "RO group ID",
-          "example": "ReadOnlyGroupId",
+          "example": "pgrogrp-efacxt00",
           "member": "string",
           "name": "ReadOnlyGroupId",
           "required": false,
@@ -2427,7 +2436,7 @@
         {
           "disabled": false,
           "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
-          "example": "[\"sasasasd\"]",
+          "example": "[\"sg-95hf696p\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -2452,11 +2461,20 @@
           "type": "string"
         },
         {
-          "disabled": false,
-          "document": "(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.",
+          "disabled": true,
+          "document": "(Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.",
           "example": "DBVersion",
           "member": "string",
           "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "dedicatedCluster-gz",
+          "member": "string",
+          "name": "DedicatedClusterId",
           "required": false,
           "type": "string"
         }
@@ -2469,7 +2487,7 @@
         {
           "disabled": false,
           "document": "Order number list. Each instance corresponds to an order number.",
-          "example": "[1,2,3]",
+          "example": "[\"20241205591002398481181\"]",
           "member": "string",
           "name": "DealNames",
           "output_required": true,
@@ -2479,7 +2497,7 @@
         {
           "disabled": false,
           "document": "Bill ID of frozen fees",
-          "example": "BillId",
+          "example": "20241204591002395368561",
           "member": "string",
           "name": "BillId",
           "output_required": true,
@@ -2489,7 +2507,7 @@
         {
           "disabled": false,
           "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.",
-          "example": "[\"BillId\"]",
+          "example": "[\"pgro-kdkdkx68\"]",
           "member": "string",
           "name": "DBInstanceIdSet",
           "output_required": true,
@@ -3056,13 +3074,13 @@
         },
         {
           "disabled": false,
-          "document": "The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3076,13 +3094,13 @@
         },
         {
           "disabled": false,
-          "document": "PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "v12.4_r1.0",
           "member": "string",
           "name": "DBKernelVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3177,7 +3195,7 @@
         {
           "disabled": false,
           "document": "Instance network connection information",
-          "example": "[     {         \"Address\": \"\",         \"Ip\": \"10.10.10.220\",         \"Port\": 5432,         \"Status\": \"opened\",         \"NetType\": \"private\",         \"VpcId\": \"vpc-xxxxxxxx\",         \"SubnetId\": \"subnet-xxxxxxxx\"     },     {         \"Address\": \"\",         \"Ip\": \"\",         \"Port\": 0,         \"Status\": \"\",         \"NetType\": \"public\",         \"VpcId\": \"\",         \"SubnetId\": \"\"     } ]",
+          "example": "无",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
           "output_required": true,
@@ -3226,57 +3244,57 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags associated with instances\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of tags associated with instances\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[     {         \"TagKey\": \"tag1\",         \"TagValue\": \"v1\"     } ]",
           "member": "Tag",
           "name": "TagList",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Primary instance information, which is returned only when the instance is read-only.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Primary instance information, which is returned only when the instance is read-only.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "postgres-7lzldndx",
           "member": "string",
           "name": "MasterDBInstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of read-only instances\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of read-only instances\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "6",
           "member": "int64",
           "name": "ReadOnlyInstanceNum",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The status of a read-only instance in a read-only group\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The status of a read-only instance in a read-only group\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ok",
           "member": "string",
           "name": "StatusInReadonlyGroup",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Offline time\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Offline time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03 12:00",
           "member": "string",
           "name": "OfflineTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance node information\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance node information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[     {         \"Role\": \"Primary\",         \"Zone\": \"ap-guangzhou-2\"     } ]",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -3292,7 +3310,7 @@
           "name": "IsSupportTDE",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3302,7 +3320,7 @@
           "name": "DBEngine",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3312,12 +3330,12 @@
           "name": "DBEngineConfig",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network access list of the instance (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "无",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
           "output_required": true,
@@ -3346,7 +3364,7 @@
           "example": "cd-postgres-xxxxxxxx.sql.tencentcdb.com",
           "member": "string",
           "name": "Address",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3356,7 +3374,7 @@
           "example": "111.111.11.11",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3366,7 +3384,7 @@
           "example": "5432",
           "member": "uint64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3376,7 +3394,7 @@
           "example": "private",
           "member": "string",
           "name": "NetType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3386,7 +3404,7 @@
           "example": "opened",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3396,9 +3414,9 @@
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3406,9 +3424,9 @@
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3416,9 +3434,9 @@
           "example": "postgresql",
           "member": "string",
           "name": "ProtocolType",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3432,6 +3450,7 @@
           "example": "Primary, Standby",
           "member": "string",
           "name": "Role",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3442,6 +3461,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -4666,7 +4686,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4890,7 +4910,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
+          "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -4908,7 +4928,7 @@
         },
         {
           "disabled": false,
-          "document": "Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime",
+          "document": "Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime.",
           "example": "CreateTime",
           "member": "string",
           "name": "OrderBy",
@@ -4943,7 +4963,7 @@
         {
           "disabled": false,
           "document": "Instance details set.",
-          "example": "[     {         \"DBInstanceId\": \"postgres-xxxxxxxx\",         \"DBInstanceName\": \"xxx\",         \"DBInstanceStatus\": \"running\",         \"Region\": \"ap-guangzhou\",         \"Zone\": \"ap-guangzhou-3\",         \"ProjectId\": 0,         \"VpcId\": \"vpc-xxxxxxxx\",         \"SubnetId\": \"subnet-xxxxxxxx\",         \"DBCharset\": \"UTF8\",         \"DBVersion\": \"10\",         \"DBKernelVersion\": \"v10.4_r1.0\",         \"CreateTime\": \"2020-03-20 12:19:14\",         \"DBInstanceNetInfo\": [             {                 \"Address\": \"\",                 \"Ip\": \"10.10.10.111\",                 \"Port\": 5432,                 \"Status\": \"opened\",                 \"NetType\": \"private\"             },             {                 \"Address\": \"\",                 \"Ip\": \"\",                 \"Port\": 0,                 \"Status\": \"initing\",                 \"NetType\": \"public\"             }         ],         \"DBAccountSet\": [],         \"DBDatabaseList\": null     } ]",
+          "example": "[     {         \"AppId\": 251240000,         \"AutoRenew\": 0,         \"CreateTime\": \"2024-09-01 16:00:45\",         \"DBCharset\": \"UTF8\",         \"DBEngine\": \"postgresql\",         \"DBEngineConfig\": \"\",         \"DBInstanceClass\": \"pg.it.small2\",         \"DBInstanceClassName\": \"1 core 2 GiB\",         \"DBInstanceCpu\": 1,         \"DBInstanceId\": \"postgres-dnlizio3\",         \"DBInstanceMemory\": 2,         \"DBInstanceName\": \"Unnamed\",         \"DBInstanceNetInfo\": [             {                 \"Address\": \"\",                 \"Ip\": \"10.*.*.*\",                 \"NetType\": \"private\",                 \"Port\": 5432,                 \"ProtocolType\": \"postgresql\",                 \"Status\": \"opened\",                 \"SubnetId\": \"subnet-b23o6b22\",                 \"VpcId\": \"vpc-49ab5lb9\"             },             {                 \"Address\": \"\",                 \"Ip\": \"\",                 \"NetType\": \"public\",                 \"Port\": 0,                 \"ProtocolType\": \"\",                 \"Status\": \"initing\",                 \"SubnetId\": \"\",                 \"VpcId\": \"\"             }         ],         \"DBInstanceStatus\": \"running\",         \"DBInstanceStorage\": 100,         \"DBInstanceType\": \"primary\",         \"DBInstanceVersion\": \"standard\",         \"DBKernelVersion\": \"v16.2_r1.5\",         \"DBMajorVersion\": \"16\",         \"DBNodeSet\": [             {                 \"DedicatedClusterId\": \"\",                 \"ReplicationMode\": \"\",                 \"Role\": \"Primary\",                 \"Zone\": \"ap-guangzhou-2\"             },             {                 \"DedicatedClusterId\": \"\",                 \"ReplicationMode\": \"\",                 \"Role\": \"Standby\",                 \"Zone\": \"ap-guangzhou-2\"             }         ],         \"DBVersion\": \"16.2\",         \"ExpireTime\": \"0000-00-00 00:00:00\",         \"IsSupportTDE\": 0,         \"IsolatedTime\": \"0000-00-00 00:00:00\",         \"MasterDBInstanceId\": \"\",         \"NetworkAccessList\": null,         \"OfflineTime\": \"0001-01-04 00:00:00\",         \"PayType\": \"postpaid\",         \"ProjectId\": 0,         \"ReadOnlyInstanceNum\": 0,         \"Region\": \"ap-guangzhou\",         \"StatusInReadonlyGroup\": \"\",         \"SubnetId\": \"subnet-b23o6b22\",         \"SupportIpv6\": 0,         \"SwitchEndTime\": \"\",         \"SwitchStartTime\": \"\",         \"TagList\": [],         \"Type\": \"\",         \"Uid\": 421842,         \"UpdateTime\": \"2024-09-29 10:10:57\",         \"VpcId\": \"vpc-49ab5lb9\",         \"Zone\": \"ap-guangzhou-2\"     } ]",
           "member": "DBInstance",
           "name": "DBInstanceSet",
           "output_required": true,
@@ -5727,7 +5747,7 @@
         {
           "disabled": false,
           "document": "AZ name",
-          "example": "ap-guangzhou-2",
+          "example": "ap-guangzhou-7",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -5751,7 +5771,7 @@
         {
           "disabled": false,
           "document": "Purchasable specification list.",
-          "example": "[     {         \"Region\": \"ap-guangzhou\",         \"Zone\": \"ap-guangzhou-2\",         \"SupportKMSRegions\": [             \"ap-guangzhou\"         ],         \"SpecItemInfoList\": [             {                 \"SpecCode\": \"pg.it.2xlarge16\",                 \"Version\": \"10.4\",                 \"VersionName\": \"PostgreSQL 10\",                 \"Cpu\": 1,                 \"Memory\": 2048,                 \"MaxStorage\": 1000,                 \"MinStorage\": 10,                 \"Qps\": 2100,                 \"Pid\": 11004,                 \"Type\": \"TS85\",                 \"KernelVersion\": \"v10.4_r1.0\",                 \"MajorVersion\": \"10\",                 \"IsSupportTDE\": 1             }         ]     } ]",
+          "example": "无",
           "member": "SpecInfo",
           "name": "SpecInfoList",
           "output_required": true,
@@ -6210,7 +6230,7 @@
         {
           "disabled": false,
           "document": "AZ information set.",
-          "example": "[     {         \"Zone\": \"ap-guangzhou-2\",         \"ZoneName\": \"广州二区\",         \"ZoneId\": 100002,         \"ZoneState\": \"AVAILABLE\",         \"ZoneSupportIpv6\": 0,         \"StandbyZoneSet\": [             \"ap-guangzhou-2\",             \"ap-guangzhou-3\"         ]     },     {         \"Zone\": \"ap-guangzhou-3\",         \"ZoneName\": \"广州三区\",         \"ZoneId\": 100003,         \"ZoneState\": \"AVAILABLE\",         \"ZoneSupportIpv6\": 0,         \"StandbyZoneSet\": [             \"ap-guangzhou-2\",             \"ap-guangzhou-3\"         ]     } ]",
+          "example": "无",
           "member": "ZoneInfo",
           "name": "ZoneSet",
           "output_required": true,
@@ -6609,7 +6629,7 @@
         {
           "disabled": false,
           "document": "Filter name.",
-          "example": "",
+          "example": "TemplateName",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -6618,7 +6638,7 @@
         {
           "disabled": false,
           "document": "One or more filter values.",
-          "example": "",
+          "example": "[\"my_custom_template\"]",
           "member": "string",
           "name": "Values",
           "required": false,
@@ -6786,6 +6806,7 @@
           "example": "27600",
           "member": "uint64",
           "name": "OriginalPrice",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6795,6 +6816,7 @@
           "example": "27600",
           "member": "uint64",
           "name": "Price",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6804,6 +6826,7 @@
           "example": "CNY",
           "member": "string",
           "name": "Currency",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7421,7 +7444,7 @@
         {
           "disabled": false,
           "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the returned value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
-          "example": "[             {                 \"Zone\": \"ap-guangzhou-6\",                 \"ZoneName\": \"广州六区\",                 \"ZoneId\": 100006,                 \"ZoneState\": \"AVAILABLE\",                 \"ZoneSupportIpv6\": 0,                 \"StandbyZoneSet\": [                     \"ap-guangzhou-6\",                     \"ap-guangzhou-7\"                 ]             } ]",
+          "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
           "required": true,
@@ -8084,9 +8107,9 @@
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8094,9 +8117,9 @@
           "example": "1",
           "member": "uint64",
           "name": "ResourceType",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8104,9 +8127,9 @@
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8114,9 +8137,9 @@
           "example": "11.11.1.11",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8124,9 +8147,9 @@
           "example": "2000:0000:0000:0000:0001:2345:6789:abcd",
           "member": "string",
           "name": "Vip6",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8134,9 +8157,9 @@
           "example": "5432",
           "member": "int64",
           "name": "Vport",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8144,9 +8167,9 @@
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8154,9 +8177,9 @@
           "example": "1",
           "member": "int64",
           "name": "VpcStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9976,7 +9999,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9986,7 +10009,7 @@
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9996,7 +10019,7 @@
           "example": "空",
           "member": "SpecItemInfo",
           "name": "SpecItemInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -10006,9 +10029,9 @@
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "SupportKMSRegions",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10022,7 +10045,7 @@
           "example": "1",
           "member": "string",
           "name": "SpecCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10032,7 +10055,7 @@
           "example": "1",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10042,7 +10065,7 @@
           "example": "1",
           "member": "string",
           "name": "VersionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10052,7 +10075,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Cpu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10062,7 +10085,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10072,7 +10095,7 @@
           "example": "1",
           "member": "uint64",
           "name": "MaxStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10082,7 +10105,7 @@
           "example": "1",
           "member": "uint64",
           "name": "MinStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10092,7 +10115,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Qps",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10102,7 +10125,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Pid",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10112,7 +10135,7 @@
           "example": "1",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10122,9 +10145,9 @@
           "example": "1",
           "member": "string",
           "name": "MajorVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10132,9 +10155,9 @@
           "example": "1",
           "member": "string",
           "name": "KernelVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10142,9 +10165,9 @@
           "example": "1",
           "member": "int64",
           "name": "IsSupportTDE",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10218,9 +10241,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "env",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10228,9 +10252,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "prod",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10676,30 +10701,30 @@
         {
           "disabled": false,
           "document": "AZ abbreviation",
-          "example": "ap-guangzhou-1",
+          "example": "ap-guangzhou-7",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZ name",
-          "example": "广州一区",
+          "example": "广州七区",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZ number",
-          "example": "100001",
+          "example": "100007",
           "member": "uint64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10709,7 +10734,7 @@
           "example": "AVAILABLE",
           "member": "string",
           "name": "ZoneState",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10719,17 +10744,17 @@
           "example": "1",
           "member": "uint64",
           "name": "ZoneSupportIpv6",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "AZs that can be used as standby when this AZ is primary\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "ap-guangzhou-1,ap-guangzhou-2",
+          "example": "[\"ap-guangzhou-6\",\"ap-guangzhou-7\"]",
           "member": "string",
           "name": "StandbyZoneSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
