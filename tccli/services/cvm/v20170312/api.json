@@ -638,7 +638,7 @@
         {
           "disabled": false,
           "document": "Instance location. This parameter is used to specify the attributes of an instance, such as its availability zone and project.",
-          "example": "{     \"Zone\": \"ap-shanghai-2\" }",
+          "example": "无",
           "member": "Placement",
           "name": "Placement",
           "required": true,
@@ -647,7 +647,7 @@
         {
           "disabled": false,
           "document": "A string used to ensure the idempotency of the request.",
-          "example": "a521b4e4-c903-4d37-9de6-8906e3ad8eb7",
+          "example": "a521b4e4-c903-4d37-9de6-8606e3ad8eb7",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -656,7 +656,7 @@
         {
           "disabled": false,
           "document": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.",
-          "example": "{     \"Period\": 1,     \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",     \"TimeUnit\": \"MONTH\" }",
+          "example": "无",
           "member": "ChargePrepaid",
           "name": "HostChargePrepaid",
           "required": false,
@@ -692,7 +692,7 @@
         {
           "disabled": false,
           "document": "Tag description. You can specify the parameter to associate a tag with an instance.",
-          "example": "[     {         \"ResourceType\": \"host\",         \"Tags\": [             {                 \"Key\": \"myTag\",                 \"Value\": \"cloud\"             }         ]     } ]",
+          "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": false,
@@ -847,7 +847,52 @@
     },
     "ChcDeployExtraConfig": {
       "document": "Configuration options for MiniOS of the CHC deployment network",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "public",
+          "member": "string",
+          "name": "MiniOsType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "x86_legacy",
+          "member": "string",
+          "name": "BootType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "pxelinux.0",
+          "member": "string",
+          "name": "BootFile",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "169.254.68.10",
+          "member": "string",
+          "name": "NextServerAddress",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
       "usage": "both"
     },
     "ChcHost": {
@@ -859,7 +904,7 @@
           "example": "chc-1a2b3c4d",
           "member": "string",
           "name": "ChcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -869,7 +914,7 @@
           "example": "托管服务器1",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -879,7 +924,7 @@
           "example": "sn34asdfabd",
           "member": "string",
           "name": "SerialNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -889,7 +934,7 @@
           "example": "ONLINE",
           "member": "string",
           "name": "InstanceState",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -899,29 +944,29 @@
           "example": "CHC_HS1",
           "member": "string",
           "name": "DeviceType",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Availability zone",
-          "example": "NA",
+          "example": "无",
           "member": "Placement",
           "name": "Placement",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Out-of-band network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "VirtualPrivateCloud",
           "name": "BmcVirtualPrivateCloud",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -929,9 +974,9 @@
           "example": "10.12.10.34",
           "member": "string",
           "name": "BmcIp",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -939,19 +984,19 @@
           "example": "[\"sg-1a2b34af\"]",
           "member": "string",
           "name": "BmcSecurityGroupIds",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Deployment network\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "VirtualPrivateCloud",
           "name": "DeployVirtualPrivateCloud",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -959,9 +1004,9 @@
           "example": "10.12.10.34",
           "member": "string",
           "name": "DeployIp",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -969,9 +1014,9 @@
           "example": "[\"sg-1a2b34af\"]",
           "member": "string",
           "name": "DeploySecurityGroupIds",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -979,9 +1024,9 @@
           "example": "ins-34as43at",
           "member": "string",
           "name": "CvmInstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -989,7 +1034,7 @@
           "example": "2020-03-10T02:43:51Z",
           "member": "string",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -999,9 +1044,9 @@
           "example": "128C 22GB 2424GB",
           "member": "string",
           "name": "HardwareDescription",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1009,9 +1054,9 @@
           "example": "128",
           "member": "int64",
           "name": "CPU",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1019,19 +1064,19 @@
           "example": "22",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Disk capacity of the CHC host\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10T",
           "member": "string",
           "name": "Disk",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1039,9 +1084,9 @@
           "example": "51:94:20:9C:B1:CB",
           "member": "string",
           "name": "BmcMAC",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1049,9 +1094,9 @@
           "example": "51:94:20:9C:B1:CB",
           "member": "string",
           "name": "DeployMAC",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1059,9 +1104,9 @@
           "example": "HOSTING",
           "member": "string",
           "name": "TenantType",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1069,9 +1114,9 @@
           "example": "无",
           "member": "ChcDeployExtraConfig",
           "name": "DeployExtraConfig",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1746,7 +1791,7 @@
         {
           "disabled": false,
           "document": "A string used to ensure the idempotence of the request. This string is generated by the customer and should be unique across different requests, with a maximum length of 64 ASCII characters. If this parameter is not specified, the idempotence of the request cannot be guaranteed.",
-          "example": "a521b4e4-c903-4d37-9de6-8906e3ad8eb7",
+          "example": "a521b4e4-c903-4d37-9de6-8096e3ad8eb7",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -1862,6 +1907,15 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableJumboFrame",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
           "document": "Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.",
           "example": "无",
           "member": "TagSpecification",
@@ -1896,7 +1950,7 @@
         {
           "disabled": false,
           "document": "Specifies the ID of the successfully created instance launch template when this parameter is returned by creating an instance launch template through this interface.",
-          "example": "lt-a5n123lo",
+          "example": "lt-a5n1305lo",
           "member": "string",
           "name": "LaunchTemplateId",
           "output_required": true,
@@ -2542,7 +2596,7 @@
         {
           "disabled": false,
           "document": "CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.",
-          "example": "['chc-1a2b3c4d']",
+          "example": "[\"chc-1a2b3c4d\"]",
           "member": "string",
           "name": "ChcIds",
           "required": false,
@@ -2550,8 +2604,8 @@
         },
         {
           "disabled": false,
-          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-1`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>instance-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>instance-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance status</strong>. For status details, see [InstanceStatus](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>device-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>device type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>vpc-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>subnet-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC subnet ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
-          "example": "NA",
+          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-6`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>instance-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>instance-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>instance status</strong>. For status details, see [InstanceStatus](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#InstanceStatus).</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>device-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>device type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>vpc-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>subnet-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>unique VPC subnet ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2587,15 +2641,17 @@
           "example": "5",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of returned instances",
-          "example": "NA",
+          "example": "无",
           "member": "ChcHost",
           "name": "ChcHostSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2758,7 +2814,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the availability zone, such as `ap-guangzhou-1`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>project-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance ID. Format: host-xxxxxxxx. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the host name.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance status. (`PENDING`: Creating | `LAUNCH_FAILURE`: Failed to create | `RUNNING`: Running | `EXPIRED`: Expired)</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
+          "document": "<li><strong>zone</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the availability zone, such as `ap-guangzhou-6`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Valid values: See <a href=\"https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1\">Regions and Availability Zones</a></p>\n<li><strong>project-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style=\"padding-left: 30px;\">Type: Integer</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance ID. Format: host-xxxxxxxx. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the host name.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>host-state</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the CDH instance status. (`PENDING`: Creating | `LAUNCH_FAILURE`: Failed to create | `RUNNING`: Running | `EXPIRED`: Expired)</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
           "example": "[ { \"Name\": \"tag-key\", \"Values\": [ \"myTag\" ] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -3161,7 +3217,7 @@
         {
           "disabled": false,
           "document": "Query by instance ID(s). For example, instance ID: `ins-xxxxxxxx`. For the specific format, refer to section `Ids.N` of the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You can query up to 100 instances in each request. However, `InstanceIds` and `Filters` cannot be specified at the same time.",
-          "example": "['ins-rf6ogz49']",
+          "example": "[\"ins-rf6ogz49\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -3472,17 +3528,17 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Set of instance launch template versions.",
-          "example": "NA",
+          "example": "无",
           "member": "LaunchTemplateVersionInfo",
           "name": "LaunchTemplateVersionSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4325,7 +4381,7 @@
         {
           "disabled": false,
           "document": "Filter values.",
-          "example": "[\"ap-guangzhou-2\"]",
+          "example": "[\"ap-guangzhou-6\"]",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -4501,7 +4557,7 @@
           "name": "CageId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5658,7 +5714,7 @@
         {
           "disabled": false,
           "document": "List of public IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "[\"123.207.11.190\"]",
+          "example": "[\"110.207.11.190\"]",
           "member": "string",
           "name": "PublicIpAddresses",
           "output_required": true,
@@ -6108,7 +6164,7 @@
         {
           "disabled": false,
           "document": "Availability zone.",
-          "example": "无",
+          "example": "ap-guangzhou-6",
           "member": "string",
           "name": "Zone",
           "output_required": true,
@@ -6118,7 +6174,7 @@
         {
           "disabled": false,
           "document": "Instance model.",
-          "example": "无",
+          "example": "S5.LARGE4",
           "member": "string",
           "name": "InstanceType",
           "output_required": true,
@@ -6128,7 +6184,7 @@
         {
           "disabled": false,
           "document": "Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.",
-          "example": "无",
+          "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
           "output_required": true,
@@ -6138,7 +6194,7 @@
         {
           "disabled": false,
           "document": "ENI type. For example, 25 represents an ENI of 25 GB.",
-          "example": "无",
+          "example": "25",
           "member": "int64",
           "name": "NetworkCard",
           "output_required": true,
@@ -6153,12 +6209,12 @@
           "name": "Externals",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of CPU cores of an instance model.",
-          "example": "无",
+          "example": "4",
           "member": "int64",
           "name": "Cpu",
           "output_required": true,
@@ -6168,7 +6224,7 @@
         {
           "disabled": false,
           "document": "Instance memory capacity; unit: `GB`.",
-          "example": "无",
+          "example": "4",
           "member": "int64",
           "name": "Memory",
           "output_required": true,
@@ -6178,7 +6234,7 @@
         {
           "disabled": false,
           "document": "Instance model family.",
-          "example": "无",
+          "example": "S5",
           "member": "string",
           "name": "InstanceFamily",
           "output_required": true,
@@ -6188,7 +6244,7 @@
         {
           "disabled": false,
           "document": "Model name.",
-          "example": "无",
+          "example": "标准型S5",
           "member": "string",
           "name": "TypeName",
           "output_required": true,
@@ -6208,7 +6264,7 @@
         {
           "disabled": false,
           "document": "Whether an instance is for sale. Valid values:<br><li>SELL: The instance is available for purchase.<br></li>SOLD_OUT: The instance has been sold out.",
-          "example": "无",
+          "example": "SELL",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -6228,17 +6284,17 @@
         {
           "disabled": false,
           "document": "Details of out-of-stock items\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "无",
+          "example": "ResourcesSoldOut.SpecifiedInstanceType",
           "member": "string",
           "name": "SoldOutReason",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Private network bandwidth, in Gbps.",
-          "example": "无",
+          "example": "10.0",
           "member": "float",
           "name": "InstanceBandwidth",
           "output_required": true,
@@ -6248,7 +6304,7 @@
         {
           "disabled": false,
           "document": "The max packet sending and receiving capability (in 10k PPS).",
-          "example": "无",
+          "example": "80",
           "member": "int64",
           "name": "InstancePps",
           "output_required": true,
@@ -6258,7 +6314,7 @@
         {
           "disabled": false,
           "document": "Number of local storage blocks.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "StorageBlockAmount",
           "output_required": true,
@@ -6268,7 +6324,7 @@
         {
           "disabled": false,
           "document": "CPU type.",
-          "example": "无",
+          "example": "Intel Xeon Cascade Lake 8255C",
           "member": "string",
           "name": "CpuType",
           "output_required": true,
@@ -6278,7 +6334,7 @@
         {
           "disabled": false,
           "document": "Number of GPUs of the instance.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Gpu",
           "output_required": true,
@@ -6288,7 +6344,7 @@
         {
           "disabled": false,
           "document": "Number of FPGAs of the instance.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Fpga",
           "output_required": true,
@@ -6298,7 +6354,7 @@
         {
           "disabled": false,
           "document": "Descriptive information of the instance.",
-          "example": "无",
+          "example": "搭载1 块 11176 GB  SATA HDD 本地硬盘",
           "member": "string",
           "name": "Remark",
           "output_required": true,
@@ -6308,7 +6364,7 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "1.0",
           "member": "float",
           "name": "GpuCount",
           "output_required": true,
@@ -6318,7 +6374,7 @@
         {
           "disabled": false,
           "document": "CPU clock rate of the instance",
-          "example": "无",
+          "example": "-/3.1GHz",
           "member": "string",
           "name": "Frequency",
           "output_required": true,
@@ -6328,12 +6384,12 @@
         {
           "disabled": false,
           "document": "Inventory status. Valid values:\n<li>EnoughStock: Inventory is sufficient.</li> \n<li>NormalStock: Supply is guaranteed.</li>\n<li>UnderStock: Inventory is about to sell out.</li> \n<li>WithoutStock: Inventory is already sold out.</li>\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "EnoughStock",
           "member": "string",
           "name": "StatusCategory",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6388,7 +6444,7 @@
         {
           "disabled": false,
           "document": "Describes the line type. for details, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: `BGP`.\n <li>BGP Default: BGP</li>\nFor a user who has activated the static single-line IP allowlist, possible values are:\n <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>\nNote: Only certain regions support static single-line IP addresses.",
-          "example": "CMCC",
+          "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
           "output_required": false,
@@ -6421,7 +6477,7 @@
         {
           "disabled": false,
           "document": "Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.",
-          "example": "bgp-12345678",
+          "example": "bgp-00000000",
           "member": "string",
           "name": "AntiDDoSPackageId",
           "output_required": false,
@@ -6461,193 +6517,193 @@
       "members": [
         {
           "disabled": false,
-          "document": "The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Original price of subsequent total costs, postpaid billing mode usage, unit: usd. <li>if other time interval items are returned, such as UnitPriceSecondStep, this item represents the time interval (0, 96) hr. if no other time interval items are returned, this item represents the full period (0, ∞) hr.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPrice",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Billing unit for pay-as-you-go mode. valid values: <br><li>HOUR: billed on an hourly basis. it's used for hourly POSTPAID instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill BY TRAFFIC in GB. it's used for POSTPAID products that are billed BY the hourly TRAFFIC (`TRAFFIC_POSTPAID_BY_HOUR`).",
           "example": "HOUR",
           "member": "string",
           "name": "ChargeUnit",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The original price of a pay-in-advance instance, in USD.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Original price of total prepaid costs. measurement unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "OriginalPrice",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount price of a prepaid instance, in USD.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Discount price of total prepaid costs. unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountPrice",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Percentage of the original price. For example, if you enter \"20.0\", the discounted price will be 20% of the original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Discount, such as 20.0 representing 80% off.",
           "example": "20.0",
           "member": "float",
           "name": "Discount",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Discounted price of subsequent total cost, postpaid billing mode usage, unit: usd <li>if other time interval items are returned, such as UnitPriceDiscountSecondStep, this item represents the time interval (0, 96) hr; if no other time interval items are returned, this item represents the full period (0, ∞) hr.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPriceDiscount",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Original price of subsequent total costs for usage time range (96, 360) hr in postpaid billing mode. unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPriceSecondStep",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Discounted price of subsequent total cost for usage time interval (96, 360) hr in postpaid billing mode. unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPriceDiscountSecondStep",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPriceThirdStep",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.\nNote: this field may return null, indicating that no valid value is obtained.",
+          "document": "Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.",
           "example": "35.5",
           "member": "float",
           "name": "UnitPriceDiscountThirdStep",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original 3-year payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the original price of total 3-year prepaid costs in prepaid billing mode. measurement unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "OriginalPriceThreeYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the discount price for an advance payment of the total fee for three years, prepaid mode usage, measurement unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountPriceThreeYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the discount for a 3-year advance payment, for example 20.0 represents 80% off.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountThreeYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original 5-year payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the original price of the 5-year total cost with advance payment, using prepaid billing mode. measurement unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "OriginalPriceFiveYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Prepaid 5-year total cost discount price, prepaid billing mode usage. unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountPriceFiveYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the discount for 5-year advance payment, such as 20.0 for 80% off.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountFiveYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original 1-year payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Original price of one-year advance payment total cost. prepaid mode usage. unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "OriginalPriceOneYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Discount price for total advance payment for one year. specifies prepaid mode usage. measurement unit: usd.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "35.5",
           "member": "float",
           "name": "DiscountPriceOneYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.\nNote: this field may return `null`, indicating that no valid value was found.\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "Specifies the discount for a one-year advance payment, such as 20.0 for 80% off.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "20.0",
           "member": "float",
           "name": "DiscountOneYear",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6856,12 +6912,12 @@
         {
           "disabled": false,
           "document": "Location of the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "Placement",
           "name": "Placement",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6869,9 +6925,9 @@
           "example": "S1.SMALL2",
           "member": "string",
           "name": "InstanceType",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6879,9 +6935,9 @@
           "example": "MyInstance",
           "member": "string",
           "name": "InstanceName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6889,49 +6945,49 @@
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance system disk information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance data disk information. This parameter only covers the data disks purchased together with the instance.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
-          "required": false,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance bandwidth information.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Information of the VPC where the instance resides.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "VirtualPrivateCloud",
           "name": "VirtualPrivateCloud",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6939,29 +6995,29 @@
           "example": "img-pi0aa46r",
           "member": "string",
           "name": "ImageId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Security groups to which the instance belongs. To obtain the security group IDs, you can call [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) and look for the `sgld` fields in the response.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "['sg-rf6ogz49']",
+          "example": "[\"sg-rf6ogz49\"]",
           "member": "string",
           "name": "SecurityGroupIds",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Login settings of the instance. Currently, only the key associated with the instance is returned.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
-          "required": false,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6969,9 +7025,9 @@
           "example": "testroleName001",
           "member": "string",
           "name": "CamRoleName",
-          "required": false,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6979,9 +7035,9 @@
           "example": "hpc-a5n666lo",
           "member": "string",
           "name": "HpcClusterId",
-          "required": false,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6989,19 +7045,19 @@
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Enhanced service.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7009,39 +7065,39 @@
           "example": "TXlVc2VyRGF0YQo=",
           "member": "string",
           "name": "UserData",
-          "required": false,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Placement group ID. You can only specify one.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "['ps-3p88qhfo']",
+          "example": "[\"ps-3p88qhfo\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
-          "required": false,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Scheduled tasks. You can use this parameter to specify scheduled tasks for the instance. Only scheduled termination is supported.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "ActionTimer",
           "name": "ActionTimer",
-          "required": false,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
-          "required": false,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7049,9 +7105,9 @@
           "example": "MyHostName",
           "member": "string",
           "name": "HostName",
-          "required": false,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7059,29 +7115,29 @@
           "example": "system-f3827db9-c58a-49cc-bf10-33fc1923a34a",
           "member": "string",
           "name": "ClientToken",
-          "required": false,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Prepaid mode. This parameter indicates relevant parameter settings for monthly-subscribed instances.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
-          "required": false,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "NA",
+          "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
-          "required": false,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7089,9 +7145,9 @@
           "example": "false",
           "member": "bool",
           "name": "DisableApiTermination",
-          "required": false,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7105,17 +7161,17 @@
           "example": "1",
           "member": "uint64",
           "name": "LaunchTemplateVersion",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Details of instance launch template versions.",
-          "example": "NA",
+          "example": "无",
           "member": "LaunchTemplateVersionData",
           "name": "LaunchTemplateVersionData",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -7125,7 +7181,7 @@
           "example": "2020-12-17T01:54:31Z",
           "member": "datetime_iso",
           "name": "CreationTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7135,7 +7191,7 @@
           "example": "lt-b8v1kcyq",
           "member": "string",
           "name": "LaunchTemplateId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7145,7 +7201,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsDefaultVersion",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -7155,9 +7211,9 @@
           "example": "MyVersion",
           "member": "string",
           "name": "LaunchTemplateVersionDescription",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7165,7 +7221,7 @@
           "example": "251001234",
           "member": "string",
           "name": "CreatedBy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -7178,50 +7234,50 @@
         {
           "disabled": false,
           "document": "Type of a local disk.",
-          "example": "",
+          "example": "LOCAL_BASIC",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Attributes of a local disk.",
-          "example": "",
+          "example": "ROOT",
           "member": "string",
           "name": "PartitionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Minimum size of a local disk.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "MinSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum size of a local disk.",
-          "example": "",
+          "example": "20",
           "member": "int64",
           "name": "MaxSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional",
-          "example": "",
+          "example": "REQUIRED",
           "member": "string",
           "name": "Required",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
