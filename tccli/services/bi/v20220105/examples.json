@@ -15,6 +15,201 @@
         "output": "{\n    \"Response\": {\n        \"Msg\": \"Internal server error\",\n        \"RequestId\": \"xxx-xx-x\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"Internal server error\",\n            \"ErrorMessage\": \"Internal server error\",\n            \"ErrorLevel\": \"ERROR\"\n        }\n    }\n}",
         "title": "Creating a Data Source"
       }
+    ],
+    "CreateDatasourceCloud": [
+      {
+        "document": "Create a cloud database instance",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatasourceCloud\n<Common request parameters>\n\n{\n    \"ServiceType\": \"ServiceType\",\n    \"DbType\": \"DbType\",\n    \"Charset\": \"Charset\",\n    \"DbUser\": \"DbUser\",\n    \"DbPwd\": \"DbPwd\",\n    \"DbName\": \"DbName\",\n    \"SourceName\": \"SourceName\",\n    \"ProjectId\": \"ProjectId\",\n    \"Vip\": \"Vip\",\n    \"Vport\": \"Vport\",\n    \"VpcId\": \"VpcId\",\n    \"UniqVpcId\": \"UniqVpcId\",\n    \"RegionId\": \"RegionId\",\n    \"ExtraParam\": \"ExtraParam\",\n    \"InstanceId\": \"InstanceId\",\n    \"ProdDbName\": \"ProdDbName\",\n    \"DataOrigin\": \"DataOrigin\",\n    \"DataOriginProjectId\": \"DataOriginProjectId\",\n    \"DataOriginDatasourceId\": \"DataOriginDatasourceId\",\n    \"ClusterId\": \"ClusterId\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Id\": 0,\n            \"AccessKey\": \"AccessKey***AccessKey\",\n            \"ProjectId\": 1,\n            \"TranId\": \"jgvk213439\",\n            \"TranStatus\": 0\n        },\n        \"Extra\": \"\",\n        \"Msg\": \"Success\",\n        \"RequestId\": \"RequestId-123\"\n    }\n}",
+        "title": "Create a cloud database example"
+      }
+    ],
+    "CreateEmbedToken": [
+      {
+        "document": "This example shows you how to create a token for report embedding.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmbedToken\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"PageId\": 1982493789748932,\n    \"Intention\": \"Intention\",\n    \"Scope\": \"Scope\",\n    \"ExpireTime\": \"ExpireTime\",\n    \"ExtraParam\": \"ExtraParam\",\n    \"UserCorpId\": \"UserCorpId\",\n    \"UserId\": \"UserId\",\n    \"TicketNum\": 1982493789748932,\n    \"GlobalParam\": \"GlobalParam\",\n    \"TokenType\": 1982493789748932,\n    \"TokenNum\": 1982493789748932\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"adfacf71-c59c-4569-897d-955a1e41ee89\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Id\": 11,\n            \"ProjectId\": \"1\",\n            \"PageId\": null,\n            \"ExtraParam\": \"\",\n            \"Scope\": \"panel\",\n            \"ExpireTime\": 10,\n            \"CreatedUser\": null,\n            \"CreatedAt\": \"2022-04-28 14:26:01\",\n            \"UpdatedUser\": null,\n            \"UpdatedAt\": \"2022-04-28 14:26:01\",\n            \"BIToken\": \"300cf2a4-cfb8-47b8-9bc0-4a1f1f74bc1d\",\n            \"UserCorpId\": \"\",\n            \"UserId\": \"\",\n            \"TicketNum\": 0,\n            \"GlobalParam\": \"[{\\\"ParamKey\\\": \\\"province\\\",         \\\"JoinType\\\": \\\"and\\\",         \\\"WhereList\\\": [             {                 \\\"Operator\\\": \\\"-is\\\",                 \\\"Value\\\": [                     \\\"Chongqing City\\\",                     \\\"Hubei Province\\\",                     \\\"Hunan Province\\\",                     \\\"Sichuan Province\\\"             ]             }         ]     } ]\"\n        }\n    }\n}",
+        "title": "Creating a Token for Report Embedding - Strong Authentication"
+      }
+    ],
+    "CreateProject": [
+      {
+        "document": "This example shows you how to create a project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProject\n<Common request parameters>\n\n{\n    \"Name\": \"Test project\",\n    \"Logo\": \"https://tencent.cloud.com/logo.png\",\n    \"ColorCode\": \"#ffffff\",\n    \"Mark\": \"Create project\",\n    \"IsApply\": true,\n    \"DefaultPanelType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Extra\": \"1\",\n        \"Data\": {\n            \"Id\": 11010\n        },\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"dsjasdk121kdsfjksadk\"\n    }\n}",
+        "title": "Creating a Project"
+      }
+    ],
+    "CreateUserRole": [
+      {
+        "document": "This example shows you how to create a user.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserRole\n<Common request parameters>\n\n{\n    \"RoleIdList\": [\n        1982493789748932\n    ],\n    \"UserInfoList\": [\n        {\n            \"UserId\": \"User ID\",\n            \"UserName\": \"Username\",\n            \"Email\": \"Mailbox\",\n            \"PhoneNumber\": \"Mobile number\",\n            \"AreaCode\": \"Telephone country code\",\n            \"AppUserId\": \"WeCom account ID\",\n            \"AppUserName\": \"WeCom account name\"\n        }\n    ],\n    \"UserList\": [\n        {\n            \"UserId\": \"User ID\",\n            \"UserName\": \"Username\",\n            \"CorpId\": \"Enterprise ID\",\n            \"Email\": \"Mailbox\",\n            \"Status\": 1982493789748932,\n            \"FirstModify\": 1982493789748932,\n            \"PhoneNumber\": \"Mobile number\",\n            \"AreaCode\": \"Telephone country code\",\n            \"CreatedUser\": \"Creator\",\n            \"UpdatedUser\": \"Modifier\",\n            \"GlobalUserName\": \"Global role\",\n            \"Mobile\": \"Mobile number\",\n            \"AppId\": \"1\",\n            \"AppUserId\": \"1\",\n            \"AppUserAliasName\": \"1\",\n            \"AppUserName\": \"1\",\n            \"InValidateAppRange\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"30672eed-81e6-4d8f-a630-3d472531490b\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Id\": 1\n        }\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "CreateUserRoleProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserRoleProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"RoleIdList\": [\n        1982493789748932\n    ],\n    \"UserInfoList\": [\n        {\n            \"UserId\": \"zhangsan\",\n            \"UserName\": \"Username\",\n            \"Email\": \"Mailbox\",\n            \"PhoneNumber\": \"Mobile number\",\n            \"AreaCode\": \"Telephone country code\",\n            \"AppUserId\": \"WeCom account ID\",\n            \"AppUserName\": \"WeCom account name\"\n        }\n    ],\n    \"UserList\": [\n        {\n            \"UserId\": \"zhangsan\",\n            \"UserName\": \"Username\",\n            \"CorpId\": \"Enterprise ID\",\n            \"Email\": \"Mailbox\",\n            \"Status\": 1982493789748932,\n            \"FirstModify\": 1982493789748932,\n            \"PhoneNumber\": \"Mobile number\",\n            \"AreaCode\": \"Telephone country code\",\n            \"CreatedUser\": \"Creator\",\n            \"UpdatedUser\": \"Modifier\",\n            \"GlobalUserName\": \"Global role\",\n            \"Mobile\": \"Mobile number\",\n            \"AppId\": \"1\",\n            \"AppUserId\": \"1\",\n            \"AppUserAliasName\": \"1\",\n            \"AppUserName\": \"1\",\n            \"InValidateAppRange\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"6cd11622-b240-40ae-8ec0-86b933aab8da\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Id\": 0\n        }\n    }\n}",
+        "title": "demo"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserRoleProject\n<Common request parameters>\n\n{\n    \"UserList\": [\n        {\n            \"UserName\": \"Zhang San\",\n            \"UserId\": \"zhangsan\"\n        }\n    ],\n    \"ProjectId\": \"1\",\n    \"RoleIdList\": [\n        \"100090\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed4d2bd1-ee13-4b67-80cf-a8a2794a82ed\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Id\": 1\n        },\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "Creating a User Role in the Project - API Example"
+      }
+    ],
+    "DeleteDatasource": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDatasource\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1\",\n    \"Id\": \"56\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9c22f4d3-e28c-450d-8c9f-2e72c40b7001\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "success"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDatasource\n<Common request parameters>\n\n{\n    \"ProjectId\": 1,\n    \"Id\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b37bc0d-2a4d-40f0-a620-3a962872aecf\",\n        \"Extra\": \"\",\n        \"Data\": \"\",\n        \"Msg\": \"Invalid data source ID\"\n    }\n}",
+        "title": "Invalid ID"
+      }
+    ],
+    "DeleteProject": [
+      {
+        "document": "This example shows you how to delete a project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteProject\n<Common request parameters>\n\n{\n    \"Id\": 1982493789748932,\n    \"Seed\": \"Seed\",\n    \"DefaultPanelType\": 1982493789748932\n}",
+        "output": "{\n    \"Response\": {\n        \"Extra\": \"Extra parameter\",\n        \"Data\": \"1\",\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"dsdlsdlcdfkdskask212\"\n    }\n}",
+        "title": "Deleting a Project"
+      }
+    ],
+    "DeleteUserRole": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUserRole\n<Common request parameters>\n\n{\n    \"UserId\": \"zhansan\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"221c07fe-6f67-4995-91fe-9d18c451e933\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "Deleting a User Role - API Example"
+      }
+    ],
+    "DeleteUserRoleProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUserRoleProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"UserId\": \"zhangsan\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"13609343-ad23-43cb-92d4-27233296004e\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "Deleting a User in the Project"
+      }
+    ],
+    "DescribeDatasourceList": [
+      {
+        "document": "This example shows you the example.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatasourceList\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"AllPage\": false,\n    \"DbName\": \"DbName\",\n    \"PageNo\": 1982493789748932,\n    \"PageSize\": 1982493789748932,\n    \"Keyword\": \"Keyword\",\n    \"PermissionType\": 1982493789748932\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"List\": null,\n            \"Total\": 0,\n            \"TotalPages\": 0\n        },\n        \"Extra\": \"\",\n        \"Msg\": \"success\",\n        \"RequestId\": \"3a66482b-7460-4d22-95bc-eae8c28568e4\"\n    }\n}",
+        "title": "Example"
+      },
+      {
+        "document": "This example shows you how to query the data source list.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatasourceList\n<Common request parameters>\n\n{\n    \"ProjectId\": 11\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8116ab8-92e8-4370-b3d5-6cb464b83609\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"List\": null,\n            \"Total\": 0,\n            \"TotalPages\": 0\n        },\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "success"
+      }
+    ],
+    "DescribePageWidgetList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePageWidgetList\n<Common request parameters>\n\n{\n    \"ProjectId\": \"662\",\n    \"PageId\": \"6465\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorMessage\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Data\": {\n            \"CorpId\": \"110112\",\n            \"ProjectId\": \"1101\",\n            \"PageId\": \"1\",\n            \"WidgetList\": [\n                {\n                    \"WidgetId\": \"WidgetId\",\n                    \"WidgetName\": \"Table\"\n                }\n            ]\n        },\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"sadadadfdkfdl212313dsds\"\n    }\n}",
+        "title": "Success"
+      }
+    ],
+    "DescribeProjectInfo": [
+      {
+        "document": "This example shows you how to show project details with API samples.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectInfo\n<Common request parameters>\n\n{\n    \"Id\": 1982493789748932,\n    \"DefaultPanelType\": 1982493789748932\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"ext\",\n        \"Msg\": \"Successful\",\n        \"Data\": {\n            \"Id\": 1,\n            \"Logo\": \"https://cloud.tencetn****/logo.png\",\n            \"Name\": \"Test project\",\n            \"ColorCode\": \"#fff\",\n            \"CreatedUser\": \"zhangsan\",\n            \"CreatedAt\": \"zhangsan\",\n            \"MemberCount\": 0,\n            \"PageCount\": 0,\n            \"LastModifyName\": \"zhangsan\",\n            \"Source\": \"sas\",\n            \"Apply\": true,\n            \"UpdatedUser\": \"zhangsan\",\n            \"UpdatedAt\": \"zhangsan\",\n            \"CorpId\": \"1010\",\n            \"Mark\": \"Mark\",\n            \"Seed\": \"Seed\",\n            \"AuthList\": [\n                \"110101\"\n            ],\n            \"PanelScope\": \"page\",\n            \"IsExternalManage\": true,\n            \"ManagePlatform\": \"saas\",\n            \"ConfigList\": [\n                {\n                    \"ModuleGroup\": \"page\",\n                    \"Components\": [\n                        {\n                            \"ModuleId\": \"1101\",\n                            \"IncludeType\": \"usable\",\n                            \"Params\": \"\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"RequestId\": \"RequestId-123\"\n    }\n}",
+        "title": "Showing Project Details with API Samples"
+      }
+    ],
+    "DescribeProjectList": [
+      {
+        "document": "This example shows you how to check project list data.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProjectList\n<Common request parameters>\n\n{\n    \"PageSize\": 1,\n    \"PageNo\": 1,\n    \"Keyword\": \"demo\",\n    \"AllPage\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"Data does not exist\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Msg\": \"Successful\",\n        \"Data\": {\n            \"List\": [\n                {\n                    \"Id\": 1,\n                    \"Logo\": \"http://www.cloud.com***/logo.png\",\n                    \"Name\": \"BI project\",\n                    \"ColorCode\": \"#666\",\n                    \"CreatedUser\": \"Zhang San\",\n                    \"CreatedAt\": \"Zhang San\",\n                    \"MemberCount\": 0,\n                    \"PageCount\": 0,\n                    \"LastModifyName\": \"Zhang San\",\n                    \"Source\": \"\",\n                    \"Apply\": true,\n                    \"UpdatedUser\": \"Zhang San\",\n                    \"UpdatedAt\": \"Zhang San\",\n                    \"CorpId\": \"10010101\",\n                    \"Mark\": \"Remarks\",\n                    \"Seed\": \"\",\n                    \"AuthList\": [\n                        \"10101\"\n                    ],\n                    \"PanelScope\": \"scope\",\n                    \"IsExternalManage\": true,\n                    \"ManagePlatform\": \"saas\",\n                    \"ConfigList\": [\n                        {\n                            \"ModuleGroup\": \"project\",\n                            \"Components\": [\n                                {\n                                    \"ModuleId\": \"10101\",\n                                    \"IncludeType\": \"useable\",\n                                    \"Params\": \"\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ],\n            \"Total\": 1,\n            \"TotalPages\": 1\n        },\n        \"RequestId\": \"dfjksak10w1qdsk2312\"\n    }\n}",
+        "title": "Checking Project List Data"
+      }
+    ],
+    "DescribeUserProjectList": [
+      {
+        "document": "This example shows you how to check a user in the project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserProjectList\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"AllPage\": false,\n    \"PageNo\": 1982493789748932,\n    \"PageSize\": 1982493789748932,\n    \"Keyword\": \"zhangsan\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Data\": {\n            \"List\": [\n                {\n                    \"UserId\": \"1101\",\n                    \"UserName\": \"zhangsan\",\n                    \"CorpId\": \"1012\",\n                    \"Email\": \"123***@qq.com\",\n                    \"LastLogin\": \"2020-09-22T00:00:00+00:00\",\n                    \"Status\": 0,\n                    \"FirstModify\": 0,\n                    \"PhoneNumber\": \"86212***21\",\n                    \"AreaCode\": \"086\",\n                    \"CreatedUser\": \"zhangsan\",\n                    \"CreatedAt\": \"2020-09-22T00:00:00+00:00\",\n                    \"UpdatedUser\": \"zhangsan\",\n                    \"UpdatedAt\": \"2020-09-22T00:00:00+00:00\",\n                    \"GlobalUserName\": \"zhangsan\",\n                    \"Mobile\": \"153****798\",\n                    \"AppId\": \"101\",\n                    \"AppUserId\": \"zhangsan\",\n                    \"AppUserAliasName\": \"zhangsan\",\n                    \"AppUserName\": \"zhangsan\",\n                    \"InValidateAppRange\": true\n                }\n            ],\n            \"Total\": 0,\n            \"TotalPages\": 0\n        },\n        \"Extra\": \"\",\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"RequestId-123\"\n    }\n}",
+        "title": "Checking a User in the Project"
+      }
+    ],
+    "DescribeUserRoleList": [
+      {
+        "document": "This example shows you how to view the user information list.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserRoleList\n<Common request parameters>\n\n{\n    \"PageNo\": 1982493789748932,\n    \"PageSize\": 1982493789748932,\n    \"AllPage\": false,\n    \"UserType\": \"UserType\",\n    \"Keyword\": \"Keyword\",\n    \"ProjectId\": \"ProjectId\",\n    \"IsOnlyBindAppUser\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Total\": 0,\n            \"TotalPages\": 0,\n            \"List\": [\n                {\n                    \"Id\": 1,\n                    \"RoleList\": [\n                        {\n                            \"RoleName\": \"Enterprise administrator\",\n                            \"RoleId\": 0,\n                            \"ProjectId\": 0,\n                            \"ProjectName\": \"Test project\",\n                            \"ScopeType\": 0,\n                            \"ModuleCollection\": \"datasource\"\n                        }\n                    ],\n                    \"RoleIdList\": [\n                        1\n                    ],\n                    \"UserId\": \"10210\",\n                    \"UserName\": \"zhangsan\",\n                    \"CorpId\": \"30310\",\n                    \"Email\": \"123***@qq.com\",\n                    \"CreatedUser\": \"zhangsan\",\n                    \"CreatedAt\": \"2020-09-22 00:00:00\",\n                    \"UpdatedUser\": \"zhangsan\",\n                    \"UpdatedAt\": \"2020-09-22 00:00:00\",\n                    \"LastLogin\": \"2020-09-22T00:00:00+00:00\",\n                    \"Status\": 0,\n                    \"PhoneNumber\": \"86312***212\",\n                    \"AreaCode\": \"086\",\n                    \"RootAccount\": true,\n                    \"CorpAdmin\": true,\n                    \"AppUserId\": \"2102\",\n                    \"AppUserAliasName\": \"zhangsan\",\n                    \"AppUserName\": \"zhangsan\",\n                    \"InValidateAppRange\": true\n                }\n            ]\n        },\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"\"\n    }\n}",
+        "title": "Viewing User Information List"
+      }
+    ],
+    "DescribeUserRoleProjectList": [
+      {
+        "document": "This example shows you how to view the user role list in the project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserRoleProjectList\n<Common request parameters>\n\n{\n    \"PageNo\": 1982493789748932,\n    \"PageSize\": 1982493789748932,\n    \"ProjectId\": 1982493789748932,\n    \"IsOnlyBindAppUser\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Total\": 0,\n            \"TotalPages\": 0,\n            \"List\": [\n                {\n                    \"Id\": 1,\n                    \"RoleList\": [\n                        {\n                            \"RoleName\": \"Enterprise administrator\",\n                            \"RoleId\": 0,\n                            \"ProjectId\": 210210,\n                            \"ProjectName\": \"Test project\",\n                            \"ScopeType\": 0,\n                            \"ModuleCollection\": \"project\"\n                        }\n                    ],\n                    \"RoleIdList\": [\n                        1\n                    ],\n                    \"UserId\": \"21021\",\n                    \"UserName\": \"zhangsan\",\n                    \"CorpId\": \"1202101\",\n                    \"Email\": \"123***@qq.com\",\n                    \"CreatedUser\": \"zhangsan\",\n                    \"CreatedAt\": \"zhangsan\",\n                    \"UpdatedUser\": \"zhangsan\",\n                    \"UpdatedAt\": \"2020-09-22 00:00:00\",\n                    \"LastLogin\": \"2020-09-22T00:00:00+00:00\",\n                    \"Status\": 0,\n                    \"PhoneNumber\": \"152****423\",\n                    \"AreaCode\": \"086\",\n                    \"RootAccount\": true,\n                    \"CorpAdmin\": true,\n                    \"AppUserId\": \"2103\",\n                    \"AppUserAliasName\": \"zhangsan\",\n                    \"AppUserName\": \"zhangsan\",\n                    \"InValidateAppRange\": true\n                }\n            ]\n        },\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"3211dfZ12-2331\"\n    }\n}",
+        "title": "Viewing the User Role List in the Project"
+      }
+    ],
+    "ExportScreenPage": [
+      {
+        "document": "This example shows you how to export a free canvas.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportScreenPage\n<Common request parameters>\n\n{\n    \"ProjectId\": \"1907\",\n    \"PageId\": \"39618\",\n    \"CanvasType\": \"FREE\",\n    \"PicType\": \"url\",\n    \"WidgetIds\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorMessage\": \"API error\",\n            \"ErrorLevel\": \"ERROR\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Data\": {\n            \"PicType\": \"PNG\",\n            \"List\": [\n                {\n                    \"Content\": \"\",\n                    \"WidgetId\": \"saia192\"\n                }\n            ],\n            \"TranId\": \"qwq211221\",\n            \"TranStatus\": 0\n        },\n        \"Msg\": \"Failed\",\n        \"RequestId\": \"ddsds122321-fdsd12\"\n    }\n}",
+        "title": "Exporting a Free Canvas"
+      }
+    ],
+    "ModifyDatasource": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatasource\n<Common request parameters>\n\n{\n    \"DbHost\": \"0.0.0.0\",\n    \"DbPort\": \"3307\",\n    \"ServiceType\": \"{\\\"Type\\\":\\\"Own\\\"}\",\n    \"DbType\": \"MONGODB\",\n    \"DataOrigin\": \"\",\n    \"Charset\": \"utf8\",\n    \"Catalog\": \"\",\n    \"DbUser\": \"username\",\n    \"DbName\": \"name\",\n    \"DbPwd\": \"password\",\n    \"SourceName\": \"Test VPC\",\n    \"VpcId\": \"vpcid\",\n    \"UniqVpcId\": \"vpc-\",\n    \"Vip\": \"\",\n    \"Vport\": \"\",\n    \"ExtraParam\": \"\",\n    \"DataOriginProjectId\": \"\",\n    \"DataOriginDatasourceId\": \"\",\n    \"UseVPC\": true,\n    \"RegionId\": \"gz\",\n    \"ProjectId\": 517,\n    \"Id\": 134\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"Internal server error\",\n        \"RequestId\": \"xxx-xx-x\",\n        \"Extra\": \"\",\n        \"Data\": null,\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"Internal server error\",\n            \"ErrorMessage\": \"Internal server error\",\n            \"ErrorLevel\": \"ERROR\"\n        }\n    }\n}",
+        "title": "Updating a Data Source"
+      }
+    ],
+    "ModifyDatasourceCloud": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatasourceCloud\n<Common request parameters>\n\n{\n    \"Id\": 1,\n    \"ProjectId\": \"21313\",\n    \"SourceName\": \"Database alias\",\n    \"Vport\": \"3306\",\n    \"VpcId\": \"2131314\",\n    \"Charset\": \"utf8\",\n    \"ExtraParam\": \"\",\n    \"DbUser\": \"root\",\n    \"ServiceType\": \"{\\\"Type\\\":\\\"Cloud\\\",\\\"Region\\\":\\\"ap-guangzhou\\\",\\\"InstanceId\\\":\\\"cdb-bdb0juh5\\\"}\",\n    \"DbType\": \"MySQL\",\n    \"UniqVpcId\": \"vpc-54343\",\n    \"RegionId\": \"gz\",\n    \"DbName\": \"power-test\",\n    \"DbPwd\": \"2424***231312\",\n    \"Vip\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"63f50c98-1e5b-41bc-9a6a-d630312f8de9\",\n        \"Extra\": \"\",\n        \"Data\": \"\",\n        \"Msg\": \"success\"\n    }\n}",
+        "title": "Updating a Cloud Database Example"
+      }
+    ],
+    "ModifyProject": [
+      {
+        "document": "This example shows you how to modify a project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProject\n<Common request parameters>\n\n{\n    \"Id\": 1982493789748932,\n    \"Name\": \"Name\",\n    \"ColorCode\": \"ColorCode\",\n    \"Logo\": \"Logo\",\n    \"Mark\": \"Mark\",\n    \"IsApply\": false,\n    \"Seed\": \"Seed\",\n    \"DefaultPanelType\": 1982493789748932,\n    \"PanelScope\": \"PanelScope\",\n    \"ManagePlatform\": \"ManagePlatform\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Extra\": \"\",\n        \"Data\": \"\",\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"RequestId-22131ds\"\n    }\n}",
+        "title": "Modifying a Project"
+      }
+    ],
+    "ModifyUserRole": [
+      {
+        "document": "This example shows you how to modify user role information.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserRole\n<Common request parameters>\n\n{\n    \"UserId\": \"UserId\",\n    \"RoleIdList\": [\n        1982493789748932\n    ],\n    \"Email\": \"123***@qq.com\",\n    \"UserName\": \"zhangsan\",\n    \"PhoneNumber\": \"PhoneNumber\",\n    \"AreaCode\": \"AreaCode\",\n    \"AppUserId\": \"AppUserId\",\n    \"LoginSecurityStatus\": 1982493789748932,\n    \"ResetPassWordTip\": 1982493789748932,\n    \"ForceResetPassWord\": 1982493789748932,\n    \"PasswordExpired\": 1982493789748932\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"9478b0d0-1e95-4d12-88a6-db36fb27a12b\",\n        \"Extra\": \"Extra\",\n        \"Data\": \"Data\"\n    }\n}",
+        "title": "Modifying User Role Information"
+      }
+    ],
+    "ModifyUserRoleProject": [
+      {
+        "document": "This example shows you how to modify user information in the project.",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserRoleProject\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"UserId\": \"UserId\",\n    \"RoleIdList\": [\n        1982493789748932\n    ],\n    \"Email\": \"123***@qq.com\",\n    \"UserName\": \"zhangsan\",\n    \"AppUserId\": \"AppUserId\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorInfo\": {\n            \"ErrorTip\": \"\",\n            \"ErrorLevel\": \"INFO\",\n            \"DocLink\": \"\",\n            \"FAQ\": \"\",\n            \"ReservedField\": \"\"\n        },\n        \"Extra\": \"\",\n        \"Msg\": \"Successful\",\n        \"Data\": \"\",\n        \"RequestId\": \"sadd23jdsh-123cdjds\"\n    }\n}",
+        "title": "Modifying User Information in the Project"
+      }
     ]
-  }
+  },
+  "version": "1.0"
 }

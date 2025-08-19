@@ -13,6 +13,160 @@
       "name": "Creates a data source",
       "output": "CreateDatasourceResponse",
       "status": "online"
+    },
+    "CreateDatasourceCloud": {
+      "document": "This API is used to create a cloud database.",
+      "input": "CreateDatasourceCloudRequest",
+      "name": "Creates a cloud database",
+      "output": "CreateDatasourceCloudResponse",
+      "status": "online"
+    },
+    "CreateEmbedToken": {
+      "document": "This API is used to create an embedded report with strong authentication.",
+      "input": "CreateEmbedTokenRequest",
+      "name": "Creates an embedded report token",
+      "output": "CreateEmbedTokenResponse",
+      "status": "online"
+    },
+    "CreateProject": {
+      "document": "This API is used to create a project.",
+      "input": "CreateProjectRequest",
+      "name": "Creates a project",
+      "output": "CreateProjectResponse",
+      "status": "online"
+    },
+    "CreateUserRole": {
+      "document": "This API is used to create a user role.",
+      "input": "CreateUserRoleRequest",
+      "name": "Creates a user role",
+      "output": "CreateUserRoleResponse",
+      "status": "online"
+    },
+    "CreateUserRoleProject": {
+      "document": "This API is used to create a user role in the project.",
+      "input": "CreateUserRoleProjectRequest",
+      "name": "Creates a user role in the project",
+      "output": "CreateUserRoleProjectResponse",
+      "status": "online"
+    },
+    "DeleteDatasource": {
+      "document": "This API is used to delete a data source.",
+      "input": "DeleteDatasourceRequest",
+      "name": "Deletes a data source",
+      "output": "DeleteDatasourceResponse",
+      "status": "online"
+    },
+    "DeleteProject": {
+      "document": "This API is used to delete a project.",
+      "input": "DeleteProjectRequest",
+      "name": "Deletes a project",
+      "output": "DeleteProjectResponse",
+      "status": "online"
+    },
+    "DeleteUserRole": {
+      "document": "This API is used to remove a user role, which will result in user deletion.",
+      "input": "DeleteUserRoleRequest",
+      "name": "Deletes a user role",
+      "output": "DeleteUserRoleResponse",
+      "status": "online"
+    },
+    "DeleteUserRoleProject": {
+      "document": "This API is used to delete a user role in the project.",
+      "input": "DeleteUserRoleProjectRequest",
+      "name": "Deletes a user role in the project",
+      "output": "DeleteUserRoleProjectResponse",
+      "status": "online"
+    },
+    "DescribeDatasourceList": {
+      "document": "This API is used to query a data source list.",
+      "input": "DescribeDatasourceListRequest",
+      "name": "Queries a data source list",
+      "output": "DescribeDatasourceListResponse",
+      "status": "online"
+    },
+    "DescribePageWidgetList": {
+      "document": "This API is used to query component information on the page.",
+      "input": "DescribePageWidgetListRequest",
+      "name": "Queries component information on the page",
+      "output": "DescribePageWidgetListResponse",
+      "status": "online"
+    },
+    "DescribeProjectInfo": {
+      "document": "This API is used to obtain project details.",
+      "input": "DescribeProjectInfoRequest",
+      "name": "Obtains project details",
+      "output": "DescribeProjectInfoResponse",
+      "status": "online"
+    },
+    "DescribeProjectList": {
+      "document": "This API is used to obtain project information.",
+      "input": "DescribeProjectListRequest",
+      "name": "Obtains project list data",
+      "output": "DescribeProjectListResponse",
+      "status": "online"
+    },
+    "DescribeUserProjectList": {
+      "document": "This API is used to obtain the user interface in the project.",
+      "input": "DescribeUserProjectListRequest",
+      "name": "Obtains the user interface in the project",
+      "output": "DescribeUserProjectListResponse",
+      "status": "online"
+    },
+    "DescribeUserRoleList": {
+      "document": "This API is used to obtain the user role list.",
+      "input": "DescribeUserRoleListRequest",
+      "name": "Obtains the user role list",
+      "output": "DescribeUserRoleListResponse",
+      "status": "online"
+    },
+    "DescribeUserRoleProjectList": {
+      "document": "This API is used to obtain the user role list in the project.",
+      "input": "DescribeUserRoleProjectListRequest",
+      "name": "Obtains the user role list in the project",
+      "output": "DescribeUserRoleProjectListResponse",
+      "status": "online"
+    },
+    "ExportScreenPage": {
+      "document": "This API is used to export a screenshot.",
+      "input": "ExportScreenPageRequest",
+      "name": "Exports a screenshot of the share page",
+      "output": "ExportScreenPageResponse",
+      "status": "online"
+    },
+    "ModifyDatasource": {
+      "document": "This API is used to update a data source.",
+      "input": "ModifyDatasourceRequest",
+      "name": "Updates a data source",
+      "output": "ModifyDatasourceResponse",
+      "status": "online"
+    },
+    "ModifyDatasourceCloud": {
+      "document": "This API is used to update a cloud database.",
+      "input": "ModifyDatasourceCloudRequest",
+      "name": "Updates a cloud database",
+      "output": "ModifyDatasourceCloudResponse",
+      "status": "online"
+    },
+    "ModifyProject": {
+      "document": "This API is used to modify project information.",
+      "input": "ModifyProjectRequest",
+      "name": "Modifies a project",
+      "output": "ModifyProjectResponse",
+      "status": "online"
+    },
+    "ModifyUserRole": {
+      "document": "This API is used to modify user role info.",
+      "input": "ModifyUserRoleRequest",
+      "name": "Modifies user role information",
+      "output": "ModifyUserRoleResponse",
+      "status": "online"
+    },
+    "ModifyUserRoleProject": {
+      "document": "This API is used to modify the user role info in the project.",
+      "input": "ModifyUserRoleProjectRequest",
+      "name": "Modifies user role information in the project",
+      "output": "ModifyUserRoleProjectResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -148,6 +302,425 @@
         }
       ],
       "usage": "out"
+    },
+    "BaseStateAction": {
+      "document": "Operation attributes of every record returned by a list query",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether the edit button is visible.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "ShowEdit",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the edit button is clickable.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEdit",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Edit button text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "编辑",
+          "member": "string",
+          "name": "EditText",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Edit-disabled hint.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "编辑提示",
+          "member": "string",
+          "name": "EditTips",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the deletion button is visible.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "ShowDel",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the deletion button is clickable.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsDel",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Delete button text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "删除",
+          "member": "string",
+          "name": "DelText",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Delete-disabled hint.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "删除提示",
+          "member": "string",
+          "name": "DelTips",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the copy button is visible.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "ShowCopy",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is visible.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "ShowView",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether renaming is allowed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "ShowRename",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CorpUserListData": {
+      "document": "Enterprise user list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "UserIdAndUserName",
+          "name": "List",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalPages",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDatasourceCloudRequest": {
+      "document": "CreateDatasourceCloud request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The backend provides dictionaries: domain type. 1. Tencent Cloud, 2. local.",
+          "example": "{\\\"Type\\\":\\\"Own\\\",\\\"IsDefault\\\":true}",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Drive.",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database encoding.",
+          "example": "utf8",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "root",
+          "member": "string",
+          "name": "DbUser",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password.",
+          "example": "******",
+          "member": "string",
+          "name": "DbPwd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "bi_demo",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database alias.",
+          "example": "腾讯云BI官方示例数据源",
+          "member": "string",
+          "name": "SourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1180",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private network IP address of the public cloud.",
+          "example": "1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private network port of the public cloud.",
+          "example": "1",
+          "member": "string",
+          "name": "Vport",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unified VPC identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region identifier (gz, bj).",
+          "example": "33",
+          "member": "string",
+          "name": "RegionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtraParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "112",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product name of the data source.",
+          "example": "bi_demo",
+          "member": "string",
+          "name": "ProdDbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "DataOrigin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party project ID.",
+          "example": "112",
+          "member": "string",
+          "name": "DataOriginProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source ID.",
+          "example": "11011",
+          "member": "string",
+          "name": "DataOriginDatasourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DB2INST1",
+          "member": "string",
+          "name": "Schema",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "11.5",
+          "member": "string",
+          "name": "DbVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatasourceCloudResponse": {
+      "document": "CreateDatasourceCloud response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ErrorMessage\":\"错误提示消息\"}",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Success No.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "IdDTO",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Prompt.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateDatasourceRequest": {
       "document": "CreateDatasource request structure.",
@@ -405,6 +978,2231 @@
       ],
       "type": "object"
     },
+    "CreateEmbedTokenRequest": {
+      "document": "CreateEmbedToken request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shares the project ID.",
+          "example": "117",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Shares the page ID. This field is empty (0) for embedding a dashboard and is not passed for embedding ChatBI.",
+          "example": "11520",
+          "member": "uint64",
+          "name": "PageId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "\"embed\" indicates page dashboard embedding, and \"chatBIEmbed\" indicates ChatBI embedding.",
+          "example": "embed",
+          "member": "string",
+          "name": "Intention",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "\"page\" indicates embedding a page, \"panel\" indicates embedding the entire dashboard, and \"project\" is used for ChatBI embedding.",
+          "example": "page",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time. Unit: minutes. Maximum value: 240 (namely, 4 hours). Default value: 240.",
+          "example": "240",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alternate field.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtraParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User enterprise ID (only used for multi-user).",
+          "example": "1120",
+          "member": "string",
+          "name": "UserCorpId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User ID (only used for multi-user).",
+          "example": "219301",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access count limit (range: 1-99999). Leave empty to disable access restrictions.",
+          "example": "10",
+          "member": "int64",
+          "name": "TicketNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Global filter parameters: Applies to all report filter criteria. Should be formatted as a JSON string.\n** Currently, only character-type page parameters can be bound to global parameters.\n**\n[\n    {\n\"ParamKey\": \"name\", page parameter name.\n\"JoinType\": \"AND\", // connection method. Currently, only AND is supported.\n        \"WhereList\": [\n            {\n\"Operator\": \"-neq\", // operator. Refer to the following instructions.\n\"Value\": [ action value. For a single-value array, only one value is passed.\n                    \"zZWJMD\",\n                    \"ZzVGHX\",\n\"Hunan province\".\n\"Hebei province\".\n                ]\n            }\n        ]\n    },\n    {\n        \"ParamKey\": \"genderParam\",\n        \"JoinType\": \"AND\",\n        \"WhereList\": [\n            {\n                \"Operator\": \"-neq\",\n                \"Value\": [\n\"Male\".\n                ]\n            }\n        ]\n    }\n]\n\n\n\nCurrently supported operators.\n -neq not equal to != operator.\n -eq equal to = operator.\n -is in operator.\n",
+          "example": "{\"globalParams\":[{\"field\":\"name\",\"type\":\"string\",}]}",
+          "member": "string",
+          "name": "GlobalParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "100: no user bound. Create 1 token at a time. UserCorpId and UserId are optional. ChatBI embedding is not supported.\n200: single token per user. Create 1 token at a time. UserCorpId and UserId required.\n300: multiple tokens per user. Create multiple tokens at a time. UserCorpId and UserId required.",
+          "example": "100",
+          "member": "int64",
+          "name": "TokenType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of tokens created at one time.",
+          "example": "11",
+          "member": "int64",
+          "name": "TokenNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.",
+          "example": "{\"ChatBIConfigList\":[{\"ConfigType\":\"TableFilter\",\"ConfigDetails\":{\"Values\":[\"123\",\"456\"]}},{\"ConfigType\":\"SqlView\",\"ConfigDetails\":{\"Enabled\":false}}]}",
+          "member": "string",
+          "name": "ConfigParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEmbedTokenResponse": {
+      "document": "CreateEmbedToken response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "EmbedTokenInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Result description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectRequest": {
+      "document": "CreateProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project name.",
+          "example": "1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Background color of the logo.",
+          "example": "1",
+          "member": "string",
+          "name": "ColorCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project logo.",
+          "example": "1",
+          "member": "string",
+          "name": "Logo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "1",
+          "member": "string",
+          "name": "Mark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow user requests.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsApply",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Default dashboard.",
+          "example": "1(1:项目看板  2：我的看板)",
+          "member": "int64",
+          "name": "DefaultPanelType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Management platform.",
+          "example": "saas",
+          "member": "string",
+          "name": "ManagePlatform",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectResponse": {
+      "document": "CreateProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extra data.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data.\n",
+          "example": "11011",
+          "member": "Data",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returned information.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRoleProjectRequest": {
+      "document": "CreateUserRoleProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Role ID list.",
+          "example": "[1101,1102]",
+          "member": "int64",
+          "name": "RoleIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": true,
+          "document": "User list (deprecated).",
+          "example": "无",
+          "member": "UserIdAndUserName",
+          "name": "UserList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "User list (new).",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "UserInfoList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRoleProjectResponse": {
+      "document": "CreateUserRoleProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为空",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"Id\":1}",
+          "member": "DataId",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRoleRequest": {
+      "document": "CreateUserRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role ID list.",
+          "example": "[1101,1102,1103]",
+          "member": "int64",
+          "name": "RoleIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": true,
+          "document": "User list (deprecated).",
+          "example": "无",
+          "member": "UserIdAndUserName",
+          "name": "UserList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "User list (new).",
+          "example": "无",
+          "member": "UserInfo",
+          "name": "UserInfoList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "User group ID list.",
+          "example": "[123,456]",
+          "member": "uint64",
+          "name": "UserGroups",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRoleResponse": {
+      "document": "CreateUserRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为空",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "DataId",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Data": {
+      "document": "Data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.\n",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "url\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://",
+          "member": "string",
+          "name": "EditUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DataId": {
+      "document": "Data ID",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DatasourceInfo": {
+      "document": "Data source details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "1",
+          "member": "string",
+          "name": "DbName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain type. Valid values: 1: Tencent Cloud; 2: local.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database alias.",
+          "example": "1",
+          "member": "string",
+          "name": "SourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database driver.",
+          "example": "1",
+          "member": "string",
+          "name": "DbType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HOST",
+          "example": "1",
+          "member": "string",
+          "name": "DbHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DbPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "1",
+          "member": "string",
+          "name": "DbUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database encoding.",
+          "example": "1",
+          "member": "string",
+          "name": "Charset",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n",
+          "example": "1",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time.",
+          "example": "1",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "CreatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Catalog value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "presto catalog",
+          "member": "string",
+          "name": "Catalog",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Connection type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "JDBC",
+          "member": "string",
+          "name": "ConnectType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "数据源建表信息",
+          "member": "string",
+          "name": "Desc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SUCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source platform.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "SourcePlat",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xx\":\"sasd\"}",
+          "member": "string",
+          "name": "ExtraParam",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AddInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bi项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Engine type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "EngineType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source owner.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Manager",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operation personnel allowlist.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "OperatorWhitelist",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC information of the data source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "uniqVpc information of the data source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source region information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "gz",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operation attributes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "add",
+          "member": "BaseStateAction",
+          "name": "StateAction",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Updater.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UpdatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Permission list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PermissionGroup",
+          "name": "PermissionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Permission value list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"bi_datasource_read\",\"bi_datasource_write\"]",
+          "member": "string",
+          "name": "AuthList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source identifier.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "DataOrigin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Third-party project ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "string",
+          "name": "DataOriginProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "110101",
+          "member": "string",
+          "name": "DataOriginDatasourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Mysql",
+          "member": "string",
+          "name": "DbTypeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Enable VPC.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "UseVPC",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated person ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test_user",
+          "member": "string",
+          "name": "Owner",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated person name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "测试用户",
+          "member": "string",
+          "name": "OwnerName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DatasourceInfoData": {
+      "document": "Data source details list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data source details list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"Id\": 1}",
+          "member": "DatasourceInfo",
+          "name": "List",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalPages",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteDatasourceRequest": {
+      "document": "DeleteDatasource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data source ID.",
+          "example": "1101010",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "11001",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDatasourceResponse": {
+      "document": "DeleteDatasource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.",
+          "example": "额外参数",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectRequest": {
+      "document": "DeleteProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Random number.",
+          "example": "1",
+          "member": "string",
+          "name": "Seed",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Default dashboard.",
+          "example": "page",
+          "member": "int64",
+          "name": "DefaultPanelType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectResponse": {
+      "document": "DeleteProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\".\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "额外参数",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRoleProjectRequest": {
+      "document": "DeleteUserRoleProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "110101",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRoleProjectResponse": {
+      "document": "DeleteUserRoleProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "额外参数",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRoleRequest": {
+      "document": "DeleteUserRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "1101",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRoleResponse": {
+      "document": "DeleteUserRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "额外参数",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatasourceListRequest": {
+      "document": "DescribeDatasourceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Returns all pages and defaults to false.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Database name search.",
+          "example": "示例数据库",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords.",
+          "example": "示例数据库",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Permission filter (0: all permissions, 1: access permission, 2: edit permission).",
+          "example": "1",
+          "member": "int64",
+          "name": "PermissionType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatasourceListResponse": {
+      "document": "DescribeDatasourceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"List\":[{\"xx\"}]",
+          "member": "DatasourceInfoData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information.",
+          "example": "\"xx\"",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information.",
+          "example": "\"success\"",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePageWidgetListRequest": {
+      "document": "DescribePageWidgetList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1101",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page ID.",
+          "example": "1",
+          "member": "string",
+          "name": "PageId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePageWidgetListResponse": {
+      "document": "DescribePageWidgetList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"ext\"",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Returned data results.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "List:[{\"xxxx\"}]",
+          "member": "WidgetListVO",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Response message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"success\"",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectInfoRequest": {
+      "document": "DescribeProjectInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Default dashboard.",
+          "example": "1",
+          "member": "int64",
+          "name": "DefaultPanelType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectInfoResponse": {
+      "document": "DescribeProjectInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"ext\"",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"project\": \"\"}",
+          "member": "Project",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectListRequest": {
+      "document": "DescribeProjectList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page capacity. The initial version defaults to 20 and may change dynamically based on screen width in the future.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page marker.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Fuzzy search field.",
+          "example": "1",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to display all. If true, ignore pagination.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Role information.",
+          "example": "bi_read",
+          "member": "string",
+          "name": "ModuleCollection",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "moduleId set.",
+          "example": "[“111”]",
+          "member": "string",
+          "name": "ModuleIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectListResponse": {
+      "document": "DescribeProjectList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为空",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"List\":\"\"}",
+          "member": "ProjectListData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserProjectListRequest": {
+      "document": "DescribeUserProjectList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1101",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter out enterprise administrators.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsFilterPerAuthUser",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter out the current user.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsFilterCurrentUser",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Keyword.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserProjectListResponse": {
+      "document": "DescribeUserProjectList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CorpUserListData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xx\":\"sd\"}",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRoleListRequest": {
+      "document": "DescribeUserRoleList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "All page numbers.",
+          "example": "true",
+          "member": "bool",
+          "name": "AllPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "0: enterprise user. 1: visitor. If left blank, it indicates all users.",
+          "example": "0",
+          "member": "string",
+          "name": "UserType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Keyword for fuzzy search.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.\n",
+          "example": "1101",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to only obtain users bound to the WeCom app.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsOnlyBindAppUser",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRoleListResponse": {
+      "document": "DescribeUserRoleList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extension description information (providing more exception messages for auxiliary judgment).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "用户参数错误,xx字段不存在",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "json",
+          "member": "UserRoleListData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "默认业务成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRoleProjectListRequest": {
+      "document": "DescribeUserRoleProjectList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "11202",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to only obtain users bound to the WeCom app.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsOnlyBindAppUser",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to obtain all the data.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Role code.",
+          "example": "sys_project_admin",
+          "member": "string",
+          "name": "RoleCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User ID list.",
+          "example": "[\"1111\",\"2222\"]",
+          "member": "string",
+          "name": "UserIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Search keywords.",
+          "example": "搜索关键词",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRoleProjectListResponse": {
+      "document": "DescribeUserRoleProjectList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xa\":\"sa\"}",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserRoleListData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmbedTokenInfo": {
+      "document": "Report embedding data structure with strong authentication",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information identifier.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Token.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "BIToken",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "CreatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Updater.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "UpdatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "PageId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Backup.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xxx\":\"sas\"}",
+          "member": "string",
+          "name": "ExtraParam",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Embedding type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "page",
+          "member": "string",
+          "name": "Scope",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time (in minutes), with a maximum value of 240.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User enterprise ID (only used for multi-user).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "string",
+          "name": "UserCorpId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User ID (only used for multi-user).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12012",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access count limit (range: 1–99999). Leave empty to disable access restrictions.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TicketNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Global parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "GlobalParam",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"embed\" indicates page dashboard embedding, and \"chatBIEmbed\" indicates ChatBI embedding.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "share",
+          "member": "string",
+          "name": "Intention",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "100: no bound user.\n200: single token per user.\n300: multiple tokens per user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "TokenType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of tokens.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "11",
+          "member": "int64",
+          "name": "TokenNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is multiple tokens per user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "SingleUserMultiToken",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ChatBIConfigList\":[{\"ConfigType\":\"TableFilter\",\"ConfigDetails\":{\"Values\":[\"26513\"]}},{\"ConfigType\":\"SqlView\",\"ConfigDetails\":{\"Enabled\":false}}]}",
+          "member": "string",
+          "name": "ConfigParam",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ErrorInfo": {
       "document": "Custom error information object",
       "members": [
@@ -471,6 +3269,127 @@
       ],
       "usage": "out"
     },
+    "ExportScreenPageRequest": {
+      "document": "ExportScreenPage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "110101",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page ID.",
+          "example": "1",
+          "member": "string",
+          "name": "PageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Canvas type. Grid canvas: GRID; Free canvas: FREE.",
+          "example": "\"GRID\"",
+          "member": "string",
+          "name": "CanvasType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image export type. Valid values: Base64, and URL (valid period: 1 day).",
+          "example": "\"base64\"",
+          "member": "string",
+          "name": "PicType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Component IDs. When empty, export the entire page.",
+          "example": "[\"123\",\"456\"]",
+          "member": "string",
+          "name": "WidgetIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an async request.",
+          "example": "true",
+          "member": "bool",
+          "name": "AsyncRequest",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Transaction ID.",
+          "example": "dsa21192912",
+          "member": "string",
+          "name": "TranId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportScreenPageResponse": {
+      "document": "ExportScreenPage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"ext\"",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Returned data results.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PageScreenListVO",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Response message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"success\"",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "IdDTO": {
       "document": "Object containing only ID",
       "members": [
@@ -531,6 +3450,2320 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyDatasourceCloudRequest": {
+      "document": "ModifyDatasourceCloud request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Drive.",
+          "example": "1",
+          "member": "string",
+          "name": "DbType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database encoding.",
+          "example": "1",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "1",
+          "member": "string",
+          "name": "DbUser",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password.",
+          "example": "1",
+          "member": "string",
+          "name": "DbPwd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "1",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database alias.",
+          "example": "1",
+          "member": "string",
+          "name": "SourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Primary key.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Private network IP address of the public cloud.",
+          "example": "1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private network port of the public cloud.",
+          "example": "1",
+          "member": "string",
+          "name": "Vport",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unified VPC identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region identifier (gz, bj).",
+          "example": "1",
+          "member": "string",
+          "name": "RegionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "ExtraParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product name of the data source.",
+          "example": "1",
+          "member": "string",
+          "name": "ProdDbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source identifier.",
+          "example": "21021",
+          "member": "string",
+          "name": "DataOrigin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party project ID.",
+          "example": "1311",
+          "member": "string",
+          "name": "DataOriginProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source ID.",
+          "example": "213313",
+          "member": "string",
+          "name": "DataOriginDatasourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "46",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatasourceCloudResponse": {
+      "document": "ModifyDatasourceCloud response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ErrorMessage\":\"错误提示消息\"}",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Success No.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Prompt.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatasourceRequest": {
+      "document": "ModifyDatasource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HOST",
+          "example": "1",
+          "member": "string",
+          "name": "DbHost",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DbPort",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.",
+          "example": "1",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Drive.",
+          "example": "1",
+          "member": "string",
+          "name": "DbType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database encoding.",
+          "example": "1",
+          "member": "string",
+          "name": "Charset",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "1",
+          "member": "string",
+          "name": "DbUser",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password.",
+          "example": "1",
+          "member": "string",
+          "name": "DbPwd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "1",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database alias.",
+          "example": "1",
+          "member": "string",
+          "name": "SourceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data source ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog value.",
+          "example": "presto catalog",
+          "member": "string",
+          "name": "Catalog",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source identifier.",
+          "example": "ssa",
+          "member": "string",
+          "name": "DataOrigin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party project ID.",
+          "example": "1021",
+          "member": "string",
+          "name": "DataOriginProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Third-party data source ID.",
+          "example": "2129",
+          "member": "string",
+          "name": "DataOriginDatasourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Extension parameter.",
+          "example": "{\"xx\":\"wq\"}",
+          "member": "string",
+          "name": "ExtraParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unified identifier of the Tencent Cloud VPC.",
+          "example": "1",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC IP address.",
+          "example": "1",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC port.",
+          "example": "920",
+          "member": "string",
+          "name": "Vport",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tencent Cloud VPC identifier.",
+          "example": "1",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enable VPC.  ",
+          "example": "true",
+          "member": "bool",
+          "name": "UseVPC",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "gz\t",
+          "member": "string",
+          "name": "RegionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatasourceResponse": {
+      "document": "ModifyDatasource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ErrorMessage\":\"错误提示消息\"}",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "None.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Prompt.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectRequest": {
+      "document": "ModifyProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.\n",
+          "example": "50",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Name.",
+          "example": "云数据源",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Color value.",
+          "example": "#ffffff",
+          "member": "string",
+          "name": "ColorCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Icon.",
+          "example": "log.png",
+          "member": "string",
+          "name": "Logo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "备注",
+          "member": "string",
+          "name": "Mark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Available upon request.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsApply",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Seed.",
+          "example": "\"12355\"",
+          "member": "string",
+          "name": "Seed",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Default dashboard.",
+          "example": "1",
+          "member": "int64",
+          "name": "DefaultPanelType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "2",
+          "example": "ALL",
+          "member": "string",
+          "name": "PanelScope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project management platform.",
+          "example": "saas",
+          "member": "string",
+          "name": "ManagePlatform",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectResponse": {
+      "document": "ModifyProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xa\":\"31\"}",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Returned data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为null",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserRoleProjectRequest": {
+      "document": "ModifyUserRoleProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "12021",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Role ID list.",
+          "example": "[122,3213,34]",
+          "member": "int64",
+          "name": "RoleIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Mailbox.",
+          "example": "123***@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WeCom app user ID.",
+          "example": "32013",
+          "member": "string",
+          "name": "AppUserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserRoleProjectResponse": {
+      "document": "ModifyUserRoleProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xx\":\"se\"}",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为null",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserRoleRequest": {
+      "document": "ModifyUserRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "120120",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Role ID list.",
+          "example": "[2121,231,342]",
+          "member": "int64",
+          "name": "RoleIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Mailbox.",
+          "example": "123***@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.",
+          "example": "861212***211",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Telephone country code.",
+          "example": "086",
+          "member": "string",
+          "name": "AreaCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WeCom user ID.",
+          "example": "12012",
+          "member": "string",
+          "name": "AppUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable mobile phone verification code login (0: disabled, 1: enabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "LoginSecurityStatus",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable password expiration reminder (0: disabled, 1: enabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "ResetPassWordTip",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Force password reset (0: disabled, 1: enabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "ForceResetPassWord",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Password expiration reminder period: 30, 60, 90 (default), or 180 days.",
+          "example": "90",
+          "member": "int64",
+          "name": "PasswordExpired",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserRoleResponse": {
+      "document": "ModifyUserRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error information object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrorInfo",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expansion.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xsa\":\"sa\"}",
+          "member": "string",
+          "name": "Extra",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "成功",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "返回为null",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PageScreenListVO": {
+      "document": "Screenshot list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image export type. Valid values: Base64, and URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"base64\"",
+          "member": "string",
+          "name": "PicType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PageScreenVO",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Async transaction ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TranId***TranId",
+          "member": "string",
+          "name": "TranId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction status.\n1: processing; 2: processing successful; 3: processing failed (error content in outer Msg).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TranStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PageScreenVO": {
+      "document": "Page screenshot information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Screenshot Base64 or URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"widgetId\": \"mixLineBar_1\",\"pageId\":\"1101\"}",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "mixLineBar_1",
+          "member": "string",
+          "name": "WidgetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PermissionComponent": {
+      "document": "Business edition permission unit",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bi_datasource_read",
+          "member": "string",
+          "name": "ModuleId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Visible/Available.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "usable",
+          "member": "string",
+          "name": "IncludeType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target upgrade version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "v1",
+          "member": "string",
+          "name": "UpgradeVersionType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Supplemental information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "请升级到基础版或者专业版",
+          "member": "string",
+          "name": "Tips",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Key for supplementary information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "basic",
+          "member": "string",
+          "name": "TipsKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PermissionGroup": {
+      "document": "Commercial version permission grouping",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bi_datasource",
+          "member": "string",
+          "name": "ModuleGroup",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Permission list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PermissionComponent",
+          "name": "Components",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Project": {
+      "document": "Project description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project logo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://www.cloud.tencent***/logo.png",
+          "member": "string",
+          "name": "Logo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "项目名称",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Background color of the logo.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "#ffffff",
+          "member": "string",
+          "name": "ColorCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "CreatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of members.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MemberCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last modified report and dashboard names.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "LastModifyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "saas",
+          "member": "string",
+          "name": "Source",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Apply",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UpdatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"corp123\"",
+          "member": "string",
+          "name": "CorpId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "备注",
+          "member": "string",
+          "name": "Mark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "\"\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"x12738\"",
+          "member": "string",
+          "name": "Seed",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Permission list in the project.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"bi_project_read\",\"bi_project_write\"]",
+          "member": "string",
+          "name": "AuthList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default dashboard.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "page",
+          "member": "string",
+          "name": "PanelScope",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is managed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsExternalManage",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Management platform name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "saas",
+          "member": "string",
+          "name": "ManagePlatform",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Customization parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ProjectConfigList",
+          "name": "ConfigList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "张三",
+          "member": "string",
+          "name": "CreatedUserName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated person ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "Owner",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated person.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "张三",
+          "member": "string",
+          "name": "OwnerName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of dashboard pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "NormalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of free canvas pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "FreeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of ad-hoc analysis pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "AdhocCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages in the briefing\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BriefingCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProjectConfigList": {
+      "document": "Customized query",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Module group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ModuleGroup",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Content.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ProjectConfigResult",
+          "name": "Components",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ProjectConfigResult": {
+      "document": "Customized query",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configuration name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bi_datasource_read",
+          "member": "string",
+          "name": "ModuleId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration mode.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "usable",
+          "member": "string",
+          "name": "IncludeType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"xx\":\"\"}",
+          "member": "string",
+          "name": "Params",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ProjectListData": {
+      "document": "Project list data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Array.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Project",
+          "name": "List",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPages",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserGroupDTO": {
+      "document": "User group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "云产品",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Parent node ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ParentId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is default.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsDefault",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Administrator user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test_user",
+          "member": "string",
+          "name": "AdminUserId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "描述",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Location.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Location",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UserIdAndUserName": {
+      "document": "User ID and username",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "1101",
+          "member": "string",
+          "name": "UserId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enterprise ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10201",
+          "member": "string",
+          "name": "CorpId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Email.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123***@qq.com",
+          "member": "string",
+          "name": "Email",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last login time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "datetime_iso",
+          "name": "LastLogin",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Enabled/Disabled status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to change the password during the first-time login.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "int64",
+          "name": "FirstModify",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "+861****797",
+          "member": "string",
+          "name": "PhoneNumber",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Telephone country code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bj",
+          "member": "string",
+          "name": "AreaCode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "CreatedUser",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-12 15:12:56",
+          "member": "datetime_iso",
+          "name": "CreatedAt",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Modifier.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UpdatedUser",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Change time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-12 15:12:56",
+          "member": "datetime_iso",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Global role.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "GlobalUserName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Global role code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sys_common_user",
+          "member": "string",
+          "name": "GlobalUserCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1329****797",
+          "member": "string",
+          "name": "Mobile",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AppId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AppUserId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "AppUserAliasName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "AppUserName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "InValidateAppRange",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " -1: No activation required. 0: Inactivated. 1: Activated. Null value represents pending binding.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "邮箱激活状态",
+          "member": "int64",
+          "name": "EmailActivationStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "主键id",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UserInfo": {
+      "document": "User ID and username",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "11010",
+          "member": "string",
+          "name": "UserId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Email.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123123***@qq.com",
+          "member": "string",
+          "name": "Email",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "+86213***323",
+          "member": "string",
+          "name": "PhoneNumber",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Telephone country code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "086",
+          "member": "string",
+          "name": "AreaCode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "WeCom account ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "string",
+          "name": "AppUserId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "WeCom account name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "AppUserName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UserRoleListData": {
+      "document": "User role information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalPages",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserRoleListDataUserRoleInfo",
+          "name": "List",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserRoleListDataRoleInfo": {
+      "document": "Role information of the user role list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role Name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "项目管理员",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Role ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "int64",
+          "name": "RoleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "项目名称",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a global role (0: no; 1: yes).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "ScopeType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Role key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bi_datasource_read",
+          "member": "string",
+          "name": "ModuleCollection",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UserRoleListDataUserRoleInfo": {
+      "document": "User role information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This API is used to obtain the role list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UserRoleListDataRoleInfo",
+          "name": "RoleList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Role ID list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1101,112210]",
+          "member": "uint64",
+          "name": "RoleIdList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "1101",
+          "member": "string",
+          "name": "UserId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "UserName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enterprise ID.",
+          "example": "12102",
+          "member": "string",
+          "name": "CorpId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Email.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123***@qq.com",
+          "member": "string",
+          "name": "Email",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "CreatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-10-23 21:32:45",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Updater.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan1",
+          "member": "string",
+          "name": "UpdatedUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-10-23 21:32:45",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last login time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan1",
+          "member": "datetime_iso",
+          "name": "LastLogin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Account status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "+8631***321",
+          "member": "string",
+          "name": "PhoneNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Telephone country code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "086",
+          "member": "string",
+          "name": "AreaCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the root account.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "RootAccount",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is an enterprise administrator.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "CorpAdmin",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "WeCom user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1101",
+          "member": "string",
+          "name": "AppUserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nickname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "AppUserAliasName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application username.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "zhangsan",
+          "member": "string",
+          "name": "AppUserName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is within the visible range.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "InValidateAppRange",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User openID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10012",
+          "member": "string",
+          "name": "AppOpenUserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Activation status of email.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EmailActivationStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User group information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Id\":1}]",
+          "member": "UserGroupDTO",
+          "name": "UserGroupList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "WidgetListVO": {
+      "document": "Page component information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "uin\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "110101",
+          "member": "string",
+          "name": "CorpId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "21012",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1321",
+          "member": "string",
+          "name": "PageId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component array.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WidgetVO",
+          "name": "WidgetList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "WidgetVO": {
+      "document": "Component information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Component ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bar_dsjusda",
+          "member": "string",
+          "name": "WidgetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "柱状图",
+          "member": "string",
+          "name": "WidgetName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
-  }
+  },
+  "version": "1.0"
 }
