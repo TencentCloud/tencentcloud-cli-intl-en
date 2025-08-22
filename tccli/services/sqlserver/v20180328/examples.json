@@ -42,10 +42,10 @@
     ],
     "CreateBasicDBInstances": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBasicDBInstances\n<common request parameters>\n\n{\n    \"VpcId\": \"vpc-huew581t\",\n    \"AutoRenewFlag\": \"0\",\n    \"Zone\": \"ap-guangzhou-3\",\n    \"GoodsNum\": \"1\",\n    \"TimeZone\": \"China Standard Time\",\n    \"DBVersion\": \"2008R2\",\n    \"Storage\": \"20\",\n    \"Period\": \"1\",\n    \"MachineType\": \"CLOUD_PREMIUM\",\n    \"Collation\": \"Chinese_PRC_CI_AS\",\n    \"InstanceChargeType\": \"PREPAID\",\n    \"StartTime\": \"00:00\",\n    \"Memory\": \"2\",\n    \"SubnetId\": \"subnet-pudyecyk\",\n    \"Span\": \"6\",\n    \"Cpu\": \"1\",\n    \"Weekly\": [\n        \"1\"\n    ]\n}",
+        "document": "Create a Basic Edition instance ",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBasicDBInstances\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-huew581t\",\n    \"AutoRenewFlag\": \"0\",\n    \"Zone\": \"ap-guangzhou-3\",\n    \"GoodsNum\": \"1\",\n    \"TimeZone\": \"China Standard Time\",\n    \"DBVersion\": \"2008R2\",\n    \"Storage\": \"20\",\n    \"Period\": \"1\",\n    \"MachineType\": \"CLOUD_PREMIUM\",\n    \"Collation\": \"Chinese_PRC_CI_AS\",\n    \"InstanceChargeType\": \"PREPAID\",\n    \"StartTime\": \"00:00\",\n    \"Memory\": \"2\",\n    \"SubnetId\": \"subnet-pudyecyk\",\n    \"Span\": \"6\",\n    \"Cpu\": \"1\",\n    \"Weekly\": [\n        \"1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DealName\": \"20200713383000001111250\",\n        \"RequestId\": \"d84adfca-3ff0-46d2-b400-b5527446df72\"\n    }\n}",
-        "title": "Creating a Basic Edition Instance"
+        "title": "Create a Basic Edition instance"
       }
     ],
     "CreateBusinessDBInstances": [
@@ -172,7 +172,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-j8kv137v\"\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"mssql-632eyp63\",\n        \"TotalCount\": 1,\n        \"Accounts\": [\n            {\n                \"Status\": 2,\n                \"Remark\": \"--\",\n                \"AccountType\": \"L0\",\n                \"Host\": \"127.0.0.1\",\n                \"Name\": \"xiaowei\",\n                \"IsAdmin\": true,\n                \"UpdateTime\": \"2020-09-22 00:00:00\",\n                \"InternalStatus\": \"enable\",\n                \"Authentication\": \"win-windows\",\n                \"PassTime\": \"2020-09-22 00:00:00\",\n                \"Dbs\": [\n                    {\n                        \"Privilege\": \"ReadOnly\",\n                        \"DBName\": \"test\"\n                    }\n                ],\n                \"CreateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"5729760c-db94-4c71-a1ee-ebd43adae189\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"mssql-632eyp63\",\n        \"TotalCount\": 1,\n        \"Accounts\": [\n            {\n                \"Status\": 2,\n                \"Remark\": \"--\",\n                \"AccountType\": \"L0\",\n                \"Host\": \"127.0.0.1\",\n                \"Name\": \"xiaowei\",\n                \"IsAdmin\": true,\n                \"UpdateTime\": \"2020-09-22 00:00:00\",\n                \"InternalStatus\": \"enable\",\n                \"Authentication\": \"win-windows\",\n                \"PassTime\": \"2020-09-22 00:00:00\",\n                \"Dbs\": [\n                    {\n                        \"Privilege\": \"ReadOnly\",\n                        \"DBName\": \"db1\"\n                    }\n                ],\n                \"CreateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"5729760c-db94-4c71-a1ee-ebd43adae189\"\n    }\n}",
         "title": "Pulling the list of instance accounts"
       }
     ],
@@ -242,6 +242,14 @@
         "title": "Querying the files required by business intelligence service"
       }
     ],
+    "DescribeCollationTimeZone": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCollationTimeZone\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"863b2797-858b-49f3-88e9-50159e564cbc\",\n        \"Collation\": [\n            \"Chinese_PRC_CI_AS\"\n        ],\n        \"TimeZone\": [\n            \"China Standard Time\"\n        ]\n    }\n}",
+        "title": "Querying the Character Set and Time Zone Supported by the Instance"
+      }
+    ],
     "DescribeDBCharsets": [
       {
         "document": " ",
@@ -308,7 +316,7 @@
     ],
     "DescribeInstanceByOrders": [
       {
-        "document": "u200cu200cThis example shows you how to query the instance ID by the order number.",
+        "document": "This example shows you how to query the instance ID by the order number.",
         "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceByOrders\n<Common request parameters>\n\n{\n    \"DealNames\": [\n        \"202301018918716527262\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DealInstance\": [\n            {\n                \"InstanceId\": [\n                    \"mssql-8a9iajua\"\n                ],\n                \"DealName\": \"202301018918716527262\"\n            }\n        ],\n        \"RequestId\": \"5481552e-2127-11ee-92b8-525400853186\"\n    }\n}",
         "title": "Querying the instance ID by the order number"
@@ -400,6 +408,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeSlowlogs\n&InstanceId=mssql-9aajrcn7\n&StartTime=2018-03-28 00:00:00\n&EndTime=2020-11-20 00:00:00\n&Limit=20\n&Offset=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e166da0-1f64-11eb-98ec-533fb32c3b2c\",\n        \"Slowlogs\": [\n            {\n                \"Count\": 5,\n                \"EndTime\": \"2020-11-05 20:17:14\",\n                \"ExternalAddr\": \"https://sqlserver-bucket-gz-1258415541.cos.ap-guangzhou.myqcloud.com/1251966477%2fsqlserver%2fmssql-9aajrcn7%2fslow%2fTRACE_20201105201000.trc?sign=q-sign-algorithm%3dsha1%26q-ak%3d******************%26q-sign-time%3d1604580096%3b1604580996%26q-key-time%3d1604580096%3b1604580996%26q-header-list%3d%26q-url-param-list%3d%26q-signature%3d583b4db2ec94fa10e55da9b95e1e3d8943eaa386\",\n                \"Id\": 30304577,\n                \"InternalAddr\": \"https://sqlserver-bucket-gz-1258415541.cos.ap-guangzhou.myqcloud.com/1251966477%2fsqlserver%2fmssql-9aajrcn7%2fslow%2fTRACE_20201105201000.trc?sign=q-sign-algorithm%3dsha1%26q-ak%3d******************%26q-sign-time%3d1604580096%3b1604580996%26q-key-time%3d1604580096%3b1604580996%26q-header-list%3d%26q-url-param-list%3d%26q-signature%3d583b4db2ec94fa10e55da9b95e1e3d8943eaa386\",\n                \"Size\": 1024,\n                \"StartTime\": \"2020-11-05 20:10:05\",\n                \"Status\": 1\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Getting slow logs"
+      }
+    ],
+    "DescribeSpecSellStatus": [
+      {
+        "document": "This example shows you how to query the reference price of a specification.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpecSellStatus\n<Common request parameters>\n\n{\n    \"Currency\": \"CNY\",\n    \"DBVersion\": \"2016SP1\",\n    \"PayMode\": \"POST\",\n    \"Pid\": 1003456,\n    \"SpecIdSet\": [\n        62\n    ],\n    \"Zone\": \"ap-guangzhou-3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DescribeSpecSellStatusSet\": [\n            {\n                \"Architecture\": \"SINGLE\",\n                \"Id\": \"11000036233\",\n                \"InstanceType\": \"SI\",\n                \"MultiZonesStatus\": \"Invalid\",\n                \"PayModeStatus\": \"ALL\",\n                \"Price\": {\n                    \"PostpaidPrice\": 47,\n                    \"PostpaidPriceUnit\": \"H\",\n                    \"PrepaidPrice\": 26000,\n                    \"PrepaidPriceUnit\": \"M\"\n                },\n                \"SpecId\": 62,\n                \"Status\": 1,\n                \"Style\": \"EXCLUSIVE\",\n                \"Version\": \"2016SP1\",\n                \"ZoneStatusSet\": [\n                    {\n                        \"Region\": \"ap-guangzhou\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-guangzhou-3\"\n                    },\n                    {\n                        \"Region\": \"ap-guangzhou\",\n                        \"Status\": 3,\n                        \"Zone\": \"ap-guangzhou-4\"\n                    },\n                    {\n                        \"Region\": \"ap-guangzhou\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-guangzhou-6\"\n                    },\n                    {\n                        \"Region\": \"ap-singapore\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-singapore-2\"\n                    },\n                    {\n                        \"Region\": \"ap-singapore\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-singapore-1\"\n                    },\n                    {\n                        \"Region\": \"ap-hongkong\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-hongkong-2\"\n                    },\n                    {\n                        \"Region\": \"ap-shanghai\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-shanghai-2\"\n                    },\n                    {\n                        \"Region\": \"ap-shanghai\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-shanghai-3\"\n                    },\n                    {\n                        \"Region\": \"ap-shanghai\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-shanghai-4\"\n                    },\n                    {\n                        \"Region\": \"ap-shanghai\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-shanghai-5\"\n                    },\n                    {\n                        \"Region\": \"ap-beijing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-beijing-2\"\n                    },\n                    {\n                        \"Region\": \"ap-beijing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-beijing-3\"\n                    },\n                    {\n                        \"Region\": \"ap-beijing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-beijing-5\"\n                    },\n                    {\n                        \"Region\": \"ap-beijing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-beijing-6\"\n                    },\n                    {\n                        \"Region\": \"ap-beijing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-beijing-7\"\n                    },\n                    {\n                        \"Region\": \"ap-nanjing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-nanjing-1\"\n                    },\n                    {\n                        \"Region\": \"ap-nanjing\",\n                        \"Status\": 1,\n                        \"Zone\": \"ap-nanjing-2\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"df9508b2-db7c-43ac-91dc-3ba19433ae09\"\n    }\n}",
+        "title": "Querying the Reference Price of a Specification"
       }
     ],
     "DescribeUploadBackupInfo": [
@@ -494,13 +510,13 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceNetwork\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-e720ieef\",\n    \"NewVpcId\": \"vpc-kw88teud\",\n    \"NewSubnetId\": \"subnet-8z5n8tcg\",\n    \"OldIpRetainTime\": \"0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"20db6661-2a85-49d9-8a37-976b931649fb\",\n        \"FlowId\": 100125\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1011581,\n        \"RequestId\": \"bdac237c-b9b7-4050-9284-97898cca5883\"\n    }\n}",
         "title": "Network Change"
       },
       {
         "document": " ",
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&Vip=127.0.0.1\n&OldIpRetainTime=12\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FlowId\": 1011581,\n        \"RequestId\": \"bdac237c-b9b7-4050-9284-97898cca5883\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"20db6661-2a85-49d9-8a37-976b931649fb\",\n        \"FlowId\": 100125\n    }\n}",
         "title": "Instance Network Modification"
       }
     ],

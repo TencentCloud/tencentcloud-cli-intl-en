@@ -70,6 +70,13 @@
       "output": "CreateStreamPackageSourceLocationResponse",
       "status": "online"
     },
+    "CreateStreamPackageVodRemuxTask": {
+      "document": "Create VodRemuxTask",
+      "input": "CreateStreamPackageVodRemuxTaskRequest",
+      "name": "CreateStreamPackageVodRemuxTask",
+      "output": "CreateStreamPackageVodRemuxTaskResponse",
+      "status": "online"
+    },
     "DeleteStreamPackageChannelEndpoints": {
       "document": "This API is used to delete endpoints from a StreamPackage channel in batches.",
       "input": "DeleteStreamPackageChannelEndpointsRequest",
@@ -145,6 +152,20 @@
       "input": "DeleteStreamPackageSourceLocationRequest",
       "name": "Batch delete linear assembly SourceLocation",
       "output": "DeleteStreamPackageSourceLocationResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageVodRemuxTask": {
+      "document": "Delete Vod remux task.",
+      "input": "DeleteStreamPackageVodRemuxTaskRequest",
+      "name": "DeleteStreamPackageVodRemuxTask",
+      "output": "DeleteStreamPackageVodRemuxTaskResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageVodRemuxTasks": {
+      "document": "Delete VOD remux tasks in batches.",
+      "input": "DeleteStreamPackageVodRemuxTasksRequest",
+      "name": "DeleteStreamPackageVodRemuxTasks",
+      "output": "DeleteStreamPackageVodRemuxTasksResponse",
       "status": "online"
     },
     "DescribeLinearAssemblyCDNDomainWithChannel": {
@@ -294,6 +315,20 @@
       "output": "DescribeStreamPackageSourcesResponse",
       "status": "online"
     },
+    "DescribeStreamPackageVodRemuxTask": {
+      "document": "Query VOD remux task information.",
+      "input": "DescribeStreamPackageVodRemuxTaskRequest",
+      "name": "DescribeStreamPackageVodRemuxTask",
+      "output": "DescribeStreamPackageVodRemuxTaskResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageVodRemuxTasks": {
+      "document": "Query VOD remux tasks informations.",
+      "input": "DescribeStreamPackageVodRemuxTasksRequest",
+      "name": "DescribeStreamPackageVodRemuxTasks",
+      "output": "DescribeStreamPackageVodRemuxTasksResponse",
+      "status": "online"
+    },
     "ModifyStreamPackageChannel": {
       "document": "This API is used to modify a StreamPackage channel.",
       "input": "ModifyStreamPackageChannelRequest",
@@ -355,6 +390,13 @@
       "input": "StartStreamPackageLinearAssemblyChannelRequest",
       "name": "Start Linear Assembly Channel",
       "output": "StartStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "StartStreamPackageVodRemuxTask": {
+      "document": "Start VOD remux task.",
+      "input": "StartStreamPackageVodRemuxTaskRequest",
+      "name": "StartStreamPackageVodRemuxTask",
+      "output": "StartStreamPackageVodRemuxTaskResponse",
       "status": "online"
     },
     "StopStreamPackageLinearAssemblyChannel": {
@@ -789,6 +831,84 @@
           "name": "AliasValueList",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosInputInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "file-1306038592",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "test/1163954307_1749787053508/index.m3u8",
+          "member": "string",
+          "name": "Object",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosOutputStorage": {
+      "document": "VOD remux task cos output storage.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos bucket name.",
+          "example": "aa-1306038592",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "region name of your cos bucket.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cos directory of vod remux task result.",
+          "example": "/vod/",
+          "member": "string",
+          "name": "OutputDir",
+          "output_required": true,
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1432,6 +1552,70 @@
       ],
       "type": "object"
     },
+    "CreateStreamPackageVodRemuxTaskRequest": {
+      "document": "CreateStreamPackageVodRemuxTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task name.",
+          "example": "vod remux name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The supported remuxing formats for VOD remux tasks.\nOptional values: WEBVTT.",
+          "example": "webvtt",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input configuration.",
+          "example": "无",
+          "member": "InputFileInfo",
+          "name": "InputFileInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Output configuration.",
+          "example": "无",
+          "member": "OutputStorage",
+          "name": "OutputStorage",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageVodRemuxTaskResponse": {
+      "document": "CreateStreamPackageVodRemuxTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vod remux task information.",
+          "example": "无",
+          "member": "VodRemuxTaskInfo",
+          "name": "Info",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DRMInfo": {
       "document": "DRM configure info.",
       "members": [
@@ -1892,6 +2076,60 @@
     },
     "DeleteStreamPackageSourceResponse": {
       "document": "DeleteStreamPackageSource response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageVodRemuxTaskRequest": {
+      "document": "DeleteStreamPackageVodRemuxTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD task Id.",
+          "example": "65BB15F300004E12A564",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageVodRemuxTaskResponse": {
+      "document": "DeleteStreamPackageVodRemuxTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageVodRemuxTasksRequest": {
+      "document": "DeleteStreamPackageVodRemuxTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of VOD remux task ids.",
+          "example": "[\"65BB15F300004E12A564\"]",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageVodRemuxTasksResponse": {
+      "document": "DeleteStreamPackageVodRemuxTasks response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3158,6 +3396,129 @@
       ],
       "type": "object"
     },
+    "DescribeStreamPackageVodRemuxTaskRequest": {
+      "document": "DescribeStreamPackageVodRemuxTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task Id.",
+          "example": "65BB15F300004E12A564",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageVodRemuxTaskResponse": {
+      "document": "DescribeStreamPackageVodRemuxTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task information.",
+          "example": "无",
+          "member": "VodRemuxTaskInfo",
+          "name": "Info",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageVodRemuxTasksRequest": {
+      "document": "DescribeStreamPackageVodRemuxTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageVodRemuxTasksResponse": {
+      "document": "DescribeStreamPackageVodRemuxTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task lists.",
+          "example": "无",
+          "member": "VodRemuxTaskInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.\n",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.\n",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total pages.",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DomainRecordInfo": {
       "document": "",
       "members": [
@@ -3540,6 +3901,45 @@
         }
       ],
       "usage": "out"
+    },
+    "InputFileInfo": {
+      "document": "VOD remux task input file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input file Type. The input types include COS and URL.",
+          "example": "COS",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cos input informations. ",
+          "example": "无",
+          "member": "CosInputInfo",
+          "name": "CosInputInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "input file url.",
+          "example": "http://aa/bb/cc.m3u8",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "InputInfo": {
       "document": "Channel input.",
@@ -4715,6 +5115,34 @@
           "name": "DashManifestConf",
           "output_required": false,
           "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputStorage": {
+      "document": "VOD remux task Output Storage.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task output storage type. Only support COS type.",
+          "example": "COS",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cos output storage information.",
+          "example": "无",
+          "member": "CosOutputStorage",
+          "name": "CosOutputStorage",
+          "output_required": true,
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -5902,6 +6330,33 @@
       ],
       "type": "object"
     },
+    "StartStreamPackageVodRemuxTaskRequest": {
+      "document": "StartStreamPackageVodRemuxTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task ID.",
+          "example": "11639543071749787053508aa",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartStreamPackageVodRemuxTaskResponse": {
+      "document": "StartStreamPackageVodRemuxTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StopStreamPackageLinearAssemblyChannelRequest": {
       "document": "StopStreamPackageLinearAssemblyChannel request structure.",
       "members": [
@@ -6297,6 +6752,144 @@
         }
       ],
       "usage": "out"
+    },
+    "VodRemuxTaskInfo": {
+      "document": "VOD remux task informations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD remux task ID.",
+          "example": "11639543071749787053508aa",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task name.",
+          "example": "vod remux name",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task type.",
+          "example": "webvtt",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task input file information.",
+          "example": "无",
+          "member": "InputFileInfo",
+          "name": "InputFileInfo",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task output storage information.",
+          "example": "无",
+          "member": "OutputStorage",
+          "name": "OutputStorage",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task created time.",
+          "example": "1590508800",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task updated time.",
+          "example": "1590508800",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task's state.",
+          "example": "Processing",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task's error message.",
+          "example": "video key frame is not fount",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task process started time.",
+          "example": "1590508800",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD remux task process end time.",
+          "example": "1590509800",
+          "member": "uint64",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Common Params. For more information, please see the list of regions supported by the product.",
+          "example": "ap-mumai",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"

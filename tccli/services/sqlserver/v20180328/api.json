@@ -196,6 +196,13 @@
       "output": "DescribeBusinessIntelligenceFileResponse",
       "status": "online"
     },
+    "DescribeCollationTimeZone": {
+      "document": "This API is used to query the character set and time zone supported by the instance.",
+      "input": "DescribeCollationTimeZoneRequest",
+      "name": "Querying the Character Set and Time Zone Supported by the Instance",
+      "output": "DescribeCollationTimeZoneResponse",
+      "status": "online"
+    },
     "DescribeDBCharsets": {
       "document": "This API is used to query the database character sets supported by an instance.",
       "input": "DescribeDBCharsetsRequest",
@@ -336,6 +343,13 @@
       "output": "DescribeSlowlogsResponse",
       "status": "online"
     },
+    "DescribeSpecSellStatus": {
+      "document": "This API is used to query the status information on specifications, including the sales status and reference price. (The actual price is subject to the result returned by price querying APIs.)",
+      "input": "DescribeSpecSellStatusRequest",
+      "name": "Query the status information on specifications",
+      "output": "DescribeSpecSellStatusResponse",
+      "status": "online"
+    },
     "DescribeUploadBackupInfo": {
       "document": "This API is used to query a backup upload permission.",
       "input": "DescribeUploadBackupInfoRequest",
@@ -365,7 +379,7 @@
       "status": "online"
     },
     "InquiryPriceUpgradeDBInstance": {
-      "document": "This API is used to query the upgrade prices of a monthly subscribed instance\n.",
+      "document": "This API is used to query the upgrade prices of a monthly subscribed instance.\n.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries upgrade price of instance",
       "output": "InquiryPriceUpgradeDBInstanceResponse",
@@ -682,7 +696,7 @@
         {
           "disabled": false,
           "document": "Account remarks",
-          "example": "无",
+          "example": "andy",
           "member": "string",
           "name": "Remark",
           "output_required": true,
@@ -742,7 +756,7 @@
         {
           "disabled": false,
           "document": "Information of read and write permissions of this account on relevant databases",
-          "example": "无",
+          "example": "[{\"DBName\": \"db1\",\"Privilege\": \"ReadOnly\"}]",
           "member": "DBPrivilege",
           "name": "Dbs",
           "output_required": true,
@@ -1636,7 +1650,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -1645,7 +1659,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of CPU cores.",
           "example": "2",
           "member": "uint64",
           "name": "Cpu",
@@ -1654,7 +1668,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance memory size in GB.",
           "example": "2",
           "member": "uint64",
           "name": "Memory",
@@ -1663,7 +1677,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance storage capacity in GB.",
           "example": "20",
           "member": "uint64",
           "name": "Storage",
@@ -1672,7 +1686,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "VPC subnet ID in the format of subnet-bdoe83fa.",
           "example": "subnet-pudyecyk",
           "member": "string",
           "name": "SubnetId",
@@ -1681,7 +1695,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "VPC ID in the format of vpc-dsp338hz.",
           "example": "vpc-huew581t",
           "member": "string",
           "name": "VpcId",
@@ -1690,7 +1704,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host type of purchased instances. CLOUD_PREMIUM: Premium Disk for virtual machines; CLOUD_SSD: Cloud SSD for virtual machines; CLOUD_HSSD: Enhanced SSD for virtual machines; CLOUD_BSSD: Balanced SSD for virtual machines.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "MachineType",
@@ -1699,7 +1713,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Billing mode. Valid value: POSTPAID (pay-as-you-go).",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -1708,7 +1722,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Project ID.",
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
@@ -1717,7 +1731,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of instances purchased this time. Default value: 1. Maximum value: 10.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -1726,7 +1740,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.",
           "example": "2008R2",
           "member": "string",
           "name": "DBVersion",
@@ -1735,7 +1749,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -1744,7 +1758,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Security group list, which contains security group IDs in the format of sg-xxx.",
           "example": "sg-xxx",
           "member": "string",
           "name": "SecurityGroupList",
@@ -1753,7 +1767,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -1762,7 +1776,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to automatically use voucher. 0: no, 1: yes. Default value: no.",
           "example": "2",
           "member": "int64",
           "name": "AutoVoucher",
@@ -1771,8 +1785,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "xxx",
+          "document": "Array of voucher IDs (currently, only one voucher can be used per order).",
+          "example": "VoucherIds",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -1780,7 +1794,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).",
           "example": "[\"1\\n\"]",
           "member": "int64",
           "name": "Weekly",
@@ -1789,7 +1803,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Configuration of the maintenance window, which specifies the start time of daily maintenance.",
           "example": "00:00",
           "member": "string",
           "name": "StartTime",
@@ -1798,7 +1812,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours.",
           "example": "6",
           "member": "int64",
           "name": "Span",
@@ -1807,8 +1821,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "无",
+          "document": "Tags associated with the instances to be created.",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
@@ -1816,7 +1830,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.",
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Collation",
@@ -1825,12 +1839,21 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "System time zone. Default value: `China Standard Time`.",
           "example": "China Standard Time",
           "member": "string",
           "name": "TimeZone",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disk encryption identifier, 0-unencrypted, 1-encrypted.",
+          "example": "0",
+          "member": "int64",
+          "name": "DiskEncryptFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1840,7 +1863,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Order name.",
           "example": "20200713383000001111250",
           "member": "string",
           "name": "DealName",
@@ -4744,7 +4767,7 @@
         {
           "disabled": false,
           "document": "Account ID",
-          "example": "test_sa",
+          "example": "andy_sa",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -4780,7 +4803,7 @@
           "example": "mssql-632eyp63",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4790,7 +4813,7 @@
           "example": "无",
           "member": "AccountDetail",
           "name": "Accounts",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4800,7 +4823,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5414,6 +5437,62 @@
           "member": "BusinessIntelligenceFile",
           "name": "BackupMigrationSet",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCollationTimeZoneRequest": {
+      "document": "DescribeCollationTimeZone request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Host type of the purchased instance. PM: physical server; CLOUD_PREMIUM: CVM with Premium Cloud Disk;\nCLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CVM with Tremendous SSD; CLOUD_BSSD: CVM with Balanced SSD; CLOUD_BASIC: CVM with cloud disk. PM is set as the default value.",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "MachineType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version number of the purchased instance.",
+          "example": "2008R2",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCollationTimeZoneResponse": {
+      "document": "DescribeCollationTimeZone response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "System character set collation list.",
+          "example": "[\"Chinese_PRC_CI_AS\"]",
+          "member": "string",
+          "name": "Collation",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "System time zone list.",
+          "example": "[\"China Standard Time\"]",
+          "member": "string",
+          "name": "TimeZone",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6208,7 +6287,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Resource ID set.",
           "example": "[]",
           "member": "DealInstance",
           "name": "DealInstance",
@@ -6988,6 +7067,88 @@
       ],
       "type": "object"
     },
+    "DescribeSpecSellStatusRequest": {
+      "document": "DescribeSpecSellStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AZ ID. For example, ap-guangzhou-3.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance specification ID, which can be obtained by calling the DescribeProductConfig API.",
+          "example": " [62]",
+          "member": "uint64",
+          "name": "SpecIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Database version, which can be obtained by calling the DescribeProductConfig API.",
+          "example": "2008R2",
+          "member": "string",
+          "name": "DBVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product ID, which can be obtained by calling the DescribeProductConfig API.",
+          "example": "100456",
+          "member": "uint64",
+          "name": "Pid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. POST: pay-as-you-go; PRE: monthly subscription.",
+          "example": "POST",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Currency. CNY; USD.",
+          "example": "CNY",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSpecSellStatusResponse": {
+      "document": "DescribeSpecSellStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status set of specifications in different regions.",
+          "example": "[{\"Architecture\": \"SINGLE\",\"Id\": \"11000036233\",\"InstanceType\": \"SI\",\"MultiZonesStatus\": \"Invalid\",\"PayModeStatus\": \"ALL\",\"Price\": {\"PostpaidPrice\": 47,\"PostpaidPriceUnit\": \"H\",\"PrepaidPrice\": 26000,\"PrepaidPriceUnit\": \"M\"},\"SpecId\": 62,\"Status\": 1,\"Style\": \"EXCLUSIVE\",\"Version\": \"2016SP1\",\"ZoneStatusSet\": [{\"Region\": \"ap-guangzhou\",\"Status\": 1,\"Zone\": \"ap-guangzhou-3\"}, {\"Region\": \"ap-guangzhou\",\"Status\": 3,\"Zone\": \"ap-guangzhou-4\"}, {\"Region\": \"ap-guangzhou\",\"Status\": 1,\"Zone\": \"ap-guangzhou-6\"}, {\"Region\": \"ap-singapore\",\"Status\": 1,\"Zone\": \"ap-singapore-2\"}, {\"Region\": \"ap-singapore\",\"Status\": 1,\"Zone\": \"ap-singapore-1\"}, {\"Region\": \"ap-hongkong\",\"Status\": 1,\"Zone\": \"ap-hongkong-2\"}, {\"Region\": \"ap-shanghai\",\"Status\": 1,\"Zone\": \"ap-shanghai-2\"}, {\"Region\": \"ap-shanghai\",\"Status\": 1,\"Zone\": \"ap-shanghai-3\"}, {\"Region\": \"ap-shanghai\",\"Status\": 1,\"Zone\": \"ap-shanghai-4\"}, {\"Region\": \"ap-shanghai\",\"Status\": 1,\"Zone\": \"ap-shanghai-5\"}, {\"Region\": \"ap-beijing\",\"Status\": 1,\"Zone\": \"ap-beijing-2\"}, {\"Region\": \"ap-beijing\",\"Status\": 1,\"Zone\": \"ap-beijing-3\"}, {\"Region\": \"ap-beijing\",\"Status\": 1,\"Zone\": \"ap-beijing-5\"}}]}]",
+          "member": "SpecSellStatus",
+          "name": "DescribeSpecSellStatusSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeUploadBackupInfoRequest": {
       "document": "DescribeUploadBackupInfo request structure.",
       "members": [
@@ -7309,6 +7470,30 @@
       ],
       "usage": "out"
     },
+    "DrZoneInfo": {
+      "document": "AZ information on the secondary node.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID of the secondary node.",
+          "example": "mssqldr-io91h2",
+          "member": "string",
+          "name": "DrInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "AZ of the secondary node.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "EventConfig": {
       "document": "Threshold setting for an extended event",
       "members": [
@@ -7590,7 +7775,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of mssql-njj2mtpl",
+          "document": "Instance ID in the format of mssql-njj2mtpl.",
           "example": "mssql-njj2mtpl",
           "member": "string",
           "name": "InstanceId",
@@ -7599,7 +7784,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
+          "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size.",
           "example": "8",
           "member": "int64",
           "name": "Memory",
@@ -7608,7 +7793,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
+          "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity.",
           "example": "300",
           "member": "int64",
           "name": "Storage",
@@ -7632,7 +7817,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "document": "Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.",
           "example": "149696",
           "member": "int64",
           "name": "OriginalPrice",
@@ -7642,7 +7827,7 @@
         },
         {
           "disabled": false,
-          "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.",
           "example": "149696",
           "member": "int64",
           "name": "Price",
@@ -8856,7 +9041,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "mssql-p2yli7gv",
           "member": "string",
           "name": "InstanceId",
@@ -8865,7 +9050,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the new VPC",
+          "document": "ID of the new VPC.",
           "example": "vpc-ilki4qdp",
           "member": "string",
           "name": "NewVpcId",
@@ -8874,7 +9059,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the new subnet",
+          "document": "ID of the new subnet.",
           "example": "subnet-lru6dhh8",
           "member": "string",
           "name": "NewSubnetId",
@@ -8892,7 +9077,7 @@
         },
         {
           "disabled": false,
-          "document": "New VIP",
+          "document": "New VIP.",
           "example": "127.0.0.1",
           "member": "string",
           "name": "Vip",
@@ -8901,12 +9086,21 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Target node. 0 - modify the primary node network; 1 - modify the secondary node network. The default value is 0.\n",
           "example": "0",
           "member": "uint64",
           "name": "DRNetwork",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary server resource ID. It is required when DRNetwork = 1.",
+          "example": "mssqldr-juiay7a",
+          "member": "string",
+          "name": "DrInstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -9843,6 +10037,52 @@
       ],
       "usage": "out"
     },
+    "Price": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "PrepaidPrice",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "M",
+          "member": "string",
+          "name": "PrepaidPriceUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "PostpaidPrice",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "H",
+          "member": "string",
+          "name": "PostpaidPriceUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RecycleDBInstanceRequest": {
       "document": "RecycleDBInstance request structure.",
       "members": [
@@ -10671,6 +10911,122 @@
       ],
       "usage": "out"
     },
+    "SpecSellStatus": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "23",
+          "member": "uint64",
+          "name": "SpecId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ALL",
+          "member": "string",
+          "name": "PayModeStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "HA",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "SameZones",
+          "member": "string",
+          "name": "MultiZonesStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "SINGLE",
+          "member": "string",
+          "name": "Architecture",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "EXCLUSIVE",
+          "member": "string",
+          "name": "Style",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2008R2",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ZoneStatus",
+          "name": "ZoneStatusSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "StartBackupMigrationRequest": {
       "document": "StartBackupMigration request structure.",
       "members": [
@@ -10913,7 +11269,7 @@
         {
           "disabled": false,
           "document": "Voucher ID (currently, only one voucher can be used per order)",
-          "example": "0",
+          "example": "[\"134\"]",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -10963,6 +11319,15 @@
           "name": "WaitSwitch",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.",
+          "example": "无",
+          "member": "DrZoneInfo",
+          "name": "DrZones",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -10972,7 +11337,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order name",
+          "document": "Order name.",
           "example": "201806261980",
           "member": "string",
           "name": "DealName",
@@ -11040,6 +11405,42 @@
           "name": "Version",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneStatus": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

@@ -80,6 +80,14 @@
         "title": "Request example"
       }
     ],
+    "CreateStreamPackageVodRemuxTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageVodRemuxTask\n<Common request parameters>\n\n{\n    \"Name\": \"vod remux name\",\n    \"Type\": \"WEBVTT\",\n    \"InputFileInfo\": {\n        \"Type\": \"COS\",\n        \"CosInputInfo\": {\n            \"Bucket\": \"aa-1306038592\",\n            \"Region\": \"ap-guangzhou\",\n            \"Object\": \"test/1163954307_1749787053508/index.m3u8\"\n        },\n        \"Url\": \"http://aa/bb/cc.m3u8\"\n    },\n    \"OutputStorage\": {\n        \"Type\": \"COS\",\n        \"CosOutputStorage\": {\n            \"Bucket\": \"aa-1306038592\"\",\n            \"Region\": \"ap-guangzhou\",\n            \"OutputDir\": \"/vod/\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"11639543071749787053508aa\",\n            \"Name\": \"vod remux name\",\n            \"Type\": \"WEBVTT\",\n            \"Region\": \"ap-mumbai\",\n            \"State\": \"Processing\",\n            \"ErrorMsg\": \"video key frame is not found\",\n            \"InputFileInfo\": {\n                \"Type\": \"COS\",\n                \"CosInputInfo\": {\n                    \"Bucket\": \"aa-1306038592\",\n                    \"Region\": \"ap-guangzhou\",\n                    \"Object\": \"test/1163954307_1749787053508/index.m3u8\"\n                },\n                \"Url\": \"http://aa/bb/cc.m3u8\"\n            },\n            \"OutputStorage\": {\n                \"Type\": \"COS\",\n                \"CosOutputStorage\": {\n                    \"Bucket\": \"aa-1306038592\",\n                    \"Region\": \"ap-guangzhou\",\n                    \"OutputDir\": \"/vod/\"\n                }\n            },\n            \"CreateTime\": 1590508800,\n            \"UpdateTime\": 1590508800,\n            \"StartTime\": 1590508800,\n            \"EndTime\": 1590508800\n        },\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "DeleteStreamPackageChannelEndpoints": [
       {
         "document": " ",
@@ -165,6 +173,22 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageVodRemuxTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageVodRemuxTask\n<Common request parameters>\n\n{\n    \"Id\": \"65BB15F300004E12A564\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageVodRemuxTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageVodRemuxTasks\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"65BB15F300004E12A564\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -336,6 +360,22 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamPackageVodRemuxTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageVodRemuxTask\n<Common request parameters>\n\n{\n    \"Id\": \"66503E8E0000930000F3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"11639543071749787053508aa\",\n            \"Name\": \"vod remux name\",\n            \"Type\": \"WEBVTT\",\n            \"Region\": \"ap-mumbai\",\n            \"State\": \"Processing\",\n            \"ErrorMsg\": \"video key frame is not found\",\n            \"InputFileInfo\": {\n                \"Type\": \"COS\",\n                \"CosInputInfo\": {\n                    \"Bucket\": \"aa-1306038592\",\n                    \"Region\": \"ap-guangzhou\",\n                    \"Object\": \"test/1163954307_1749787053508/index.m3u8\"\n                },\n                \"Url\": \"http://aa/bb/cc.m3u8\"\n            },\n            \"OutputStorage\": {\n                \"Type\": \"COS\",\n                \"CosOutputStorage\": {\n                    \"Bucket\": \"aa-1306038592\",\n                    \"Region\": \"ap-guangzhou\",\n                    \"OutputDir\": \"/vod/\"\n                }\n            },\n            \"CreateTime\": 1590508800,\n            \"UpdateTime\": 1590508800,\n            \"StartTime\": 1590508800,\n            \"EndTime\": 1590508800\n        },\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageVodRemuxTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageVodRemuxTasks\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Id\": \"11639543071749787053508aa\",\n                \"Name\": \"vod remux name\",\n                \"Type\": \"WEBVTT\",\n                \"Region\": \"ap-mumbai\",\n                \"State\": \"Processing\",\n                \"ErrorMsg\": \"video key frame is not found\",\n                \"InputFileInfo\": {\n                    \"Type\": \"COS\",\n                    \"CosInputInfo\": {\n                        \"Bucket\": \"aa-1306038592\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"Object\": \"test/1163954307_1749787053508/index.m3u8\"\n                    },\n                    \"Url\": \"http://aa/bb/cc.m3u8\"\n                },\n                \"OutputStorage\": {\n                    \"Type\": \"COS\",\n                    \"CosOutputStorage\": {\n                        \"Bucket\": \"aa-1306038592\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"OutputDir\": \"/vod/\"\n                    }\n                },\n                \"CreateTime\": 1590508800,\n                \"UpdateTime\": 1590508800,\n                \"StartTime\": 1590508800,\n                \"EndTime\": 1590508800\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "ModifyStreamPackageChannel": [
       {
         "document": " ",
@@ -405,6 +445,14 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StartStreamPackageVodRemuxTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartStreamPackageVodRemuxTask\n<Common request parameters>\n\n{\n    \"Id\": \"65BB15F300004E12A564\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bb7b6d69-69dc-4191-b826-56aaa0422a4c\"\n    }\n}",
         "title": "Sample request"
       }
     ],
