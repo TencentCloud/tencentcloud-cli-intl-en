@@ -603,7 +603,7 @@
       "status": "online"
     },
     "SaveDoc": {
-      "document": "This API is used to save a knowledge base document Q&As.\nThree steps to store a file in the knowledge library of the application: \n1. Obtain a temporary key. For more information, see [API Documentation](https://cloud.tencent.com/document/product/1759/105050). Different parameter combinations of the temporary key have different permissions. For more information, see [Tencent Cloud Agent Development Platform/TCADP COS Guide](https://cloud.tencent.com/document/product/1759/116238). \n2. Call the COS storage API provided by Tencent Cloud to store the file in the COS of TCADP. For details, see [COS SDK Overview](https://cloud.tencent.com/document/product/436/6474). Note that the temporary key method is used to operate COS. \n3. Call this API to store the basic information of the file in TCADP. \nFor the above steps, see [Documentation](https://cloud.tencent.com/document/product/1759/108903). At the end of the documentation, there is a [code demo](https://cloud.tencent.com/document/product/1759/108903#demo), which can be used as a reference.",
+      "document": "This API is used to save a knowledge base document Q&As.\nThree steps to store a file in the knowledge library of the application: \n1. Obtain a temporary key. For more information, see [API Documentation](https://cloud.tencent.com/document/product/1759/105050). Different parameter combinations of the temporary key have different permissions. For more information, see [Tencent Cloud Agent Development Platform/ADP COS Guide](https://cloud.tencent.com/document/product/1759/116238). \n2. Call the COS storage API provided by Tencent Cloud to store the file in the COS of ADP. For details, see [COS SDK Overview](https://cloud.tencent.com/document/product/436/6474). Note that the temporary key method is used to operate COS. \n3. Call this API to store the basic information of the file in ADP. \nFor the above steps, see [Documentation](https://cloud.tencent.com/document/product/1759/108903). At the end of the documentation, there is a [code demo](https://cloud.tencent.com/document/product/1759/108903#demo), which can be used as a reference.",
       "input": "SaveDocRequest",
       "name": "Save Knowledge Base Document Q&A",
       "output": "SaveDocResponse",
@@ -5322,7 +5322,7 @@
         {
           "disabled": false,
           "document": "Root account of Tencent Cloud.",
-          "example": "无",
+          "example": "[\"uin:11111111111\"]",
           "member": "string",
           "name": "UinAccount",
           "required": false,
@@ -5330,8 +5330,8 @@
         },
         {
           "disabled": false,
-          "document": "Sub-business types of Tencent Cloud Agent Development Platform/TCADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).",
-          "example": "无",
+          "document": "Sub-business types of Tencent Cloud Agent Development Platform/ADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).",
+          "example": "\"biz_type\"",
           "member": "string",
           "name": "SubBizType",
           "required": false,
@@ -5340,7 +5340,7 @@
         {
           "disabled": false,
           "document": "Model identifier.",
-          "example": "无",
+          "example": "\"hunyuan\"",
           "member": "string",
           "name": "ModelName",
           "required": false,
@@ -5349,7 +5349,7 @@
         {
           "disabled": false,
           "document": "Start timestamp, in seconds.",
-          "example": "无",
+          "example": "\"1754816440\"",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -5358,7 +5358,7 @@
         {
           "disabled": false,
           "document": "End timestamp, in seconds.",
-          "example": "无",
+          "example": "\"1754816440\"",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -5367,9 +5367,27 @@
         {
           "disabled": false,
           "document": "Application ID list.",
-          "example": "无",
+          "example": "[\"appid\"]",
           "member": "string",
           "name": "AppBizIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "knowledge_qa",
+          "member": "string",
+          "name": "AppType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"KnowledgeQA\"]",
+          "member": "string",
+          "name": "SubScenes",
           "required": false,
           "type": "list"
         }
@@ -5424,7 +5442,7 @@
         {
           "disabled": false,
           "document": "Root account of Tencent Cloud.",
-          "example": "无",
+          "example": "[\"uin:6000005624511\"]",
           "member": "string",
           "name": "UinAccount",
           "required": false,
@@ -5450,8 +5468,8 @@
         },
         {
           "disabled": false,
-          "document": "Sub-business types of Tencent Cloud Agent Development Platform/TCADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).",
-          "example": "无",
+          "document": "Sub-business types of Tencent Cloud Agent Development Platform/ADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).",
+          "example": "KonwledgeQA",
           "member": "string",
           "name": "SubBizType",
           "required": false,
@@ -5460,7 +5478,7 @@
         {
           "disabled": false,
           "document": "Model identifier.",
-          "example": "无",
+          "example": "cs-normal",
           "member": "string",
           "name": "ModelName",
           "required": false,
@@ -5469,7 +5487,7 @@
         {
           "disabled": false,
           "document": "Start timestamp, in seconds (default value: 0).",
-          "example": "无",
+          "example": "\"7463235\"",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -5478,7 +5496,7 @@
         {
           "disabled": false,
           "document": "End timestamp, in seconds (default value: 0, must be greater than the start timestamp).",
-          "example": "无",
+          "example": "\"7463235\"",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -5487,7 +5505,7 @@
         {
           "disabled": false,
           "document": "Application ID list.",
-          "example": "无",
+          "example": "[\"appid\"]",
           "member": "string",
           "name": "AppBizIds",
           "required": false,
@@ -5496,11 +5514,29 @@
         {
           "disabled": false,
           "document": "Filter sub-scenario (used in document parsing scenario).",
-          "example": "无",
+          "example": "[\"KnowledgeQA\"]",
           "member": "string",
           "name": "SubScenes",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "knowledge_qa",
+          "member": "string",
+          "name": "AppType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "space1",
+          "member": "string",
+          "name": "SpaceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5511,7 +5547,7 @@
         {
           "disabled": false,
           "document": "Total token consumption.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "TotalTokenUsage",
           "output_required": false,
@@ -5521,7 +5557,7 @@
         {
           "disabled": false,
           "document": "Input token consumption.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "InputTokenUsage",
           "output_required": false,
@@ -5531,7 +5567,7 @@
         {
           "disabled": false,
           "document": "Output token consumption.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "OutputTokenUsage",
           "output_required": false,
@@ -5541,7 +5577,7 @@
         {
           "disabled": false,
           "document": "Number of API calls.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "ApiCallStats",
           "output_required": false,
@@ -5551,7 +5587,7 @@
         {
           "disabled": false,
           "document": "Number of search service calls.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "SearchUsage",
           "output_required": false,
@@ -5561,7 +5597,7 @@
         {
           "disabled": false,
           "document": "Number of pages consumed by document parsing.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "PageUsage",
           "output_required": false,
@@ -5571,7 +5607,7 @@
         {
           "disabled": false,
           "document": "Token consumption by splitting.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "SplitTokenUsage",
           "output_required": false,
@@ -5581,7 +5617,7 @@
         {
           "disabled": false,
           "document": "Number of Rag retrievals.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "RagSearchUsage",
           "output_required": false,
@@ -5591,9 +5627,29 @@
         {
           "disabled": false,
           "document": "Number of online searches.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "InternetSearchUsage",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0.0",
+          "member": "float",
+          "name": "DosageTypeLimit",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0.0",
+          "member": "float",
+          "name": "DosageTypeCurr",
           "output_required": false,
           "type": "float",
           "value_allowed_null": false
@@ -5839,6 +5895,30 @@
         }
       ],
       "usage": "out"
+    },
+    "DuplicateFileHandle": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "CheckType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "HandleType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "ExportAttributeLabelRequest": {
       "document": "ExportAttributeLabel request structure.",
@@ -13216,7 +13296,7 @@
         {
           "disabled": false,
           "document": "File type (md|txt|docx|pdf|xlsx).",
-          "example": "md",
+          "example": "docx",
           "member": "string",
           "name": "FileType",
           "required": true,
@@ -13225,7 +13305,7 @@
         {
           "disabled": false,
           "document": "The cos path of the platform, consistent with the UploadPath parameter queried by the DescribeStorageCredential api.",
-          "example": "/corp/23432432/233432/doc/zeSOHIBjwcWoEmlMMXOp-1796022574489010176.docx",
+          "example": "/corp/1258039/doc/wcWoEmlMXOp.docx",
           "member": "string",
           "name": "CosUrl",
           "required": true,
@@ -13270,7 +13350,7 @@
         {
           "disabled": false,
           "document": "Source (0: source file import; 1: web page import).",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Source",
           "required": false,
@@ -13279,7 +13359,7 @@
         {
           "disabled": false,
           "document": "Web page (or custom link) address.",
-          "example": "无",
+          "example": "https://cloud.tencent.com/",
           "member": "string",
           "name": "WebUrl",
           "required": false,
@@ -13306,7 +13386,7 @@
         {
           "disabled": false,
           "document": "Effective start time, unix timestamp.",
-          "example": "无",
+          "example": "1753278682",
           "member": "string",
           "name": "ExpireStart",
           "required": false,
@@ -13315,7 +13395,7 @@
         {
           "disabled": false,
           "document": "Effective end time, unix timestamp. 0 indicates permanent validity.",
-          "example": "无",
+          "example": "1753325001",
           "member": "string",
           "name": "ExpireEnd",
           "required": false,
@@ -13324,7 +13404,7 @@
         {
           "disabled": false,
           "document": "Whether to reference a link.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "IsRefer",
           "required": false,
@@ -13332,8 +13412,8 @@
         },
         {
           "disabled": false,
-          "document": "Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/TCADP page.",
-          "example": "无",
+          "document": "Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/ADP page.",
+          "example": "2",
           "member": "uint64",
           "name": "Opt",
           "required": false,
@@ -13342,11 +13422,47 @@
         {
           "disabled": false,
           "document": "Category ID.",
-          "example": "无",
+          "example": "1948014278153560",
           "member": "string",
           "name": "CateBizId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "IsDownload",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "DuplicateFileHandle",
+          "name": "DuplicateFileHandles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "{\"split_config_new\":{\"table_style\":\"md\",\"rm_spec_symbol\":1,\"xlsx_splitter\":{\"header_interval\":[1,1],\"content_start\":2,\"split_row\":1},\"common_splitter\":{\"splitter\":\"tag\",\"tag_splitter\":{\"tag\":[\"\\n\"],\"chunk_length\":1000,\"chunk_overlap_length\":100}}}}",
+          "member": "string",
+          "name": "SplitRule",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "UpdatePeriodInfo",
+          "name": "UpdatePeriodInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -13357,7 +13473,7 @@
         {
           "disabled": false,
           "document": "Document ID.",
-          "example": "无",
+          "example": "1948014278153560",
           "member": "string",
           "name": "DocBizId",
           "output_required": false,
@@ -13367,7 +13483,7 @@
         {
           "disabled": false,
           "document": "Import error message.",
-          "example": "无",
+          "example": "文件数据存在错误，请下载并查看错误标注文件",
           "member": "string",
           "name": "ErrorMsg",
           "output_required": false,
@@ -13377,7 +13493,7 @@
         {
           "disabled": false,
           "document": "Error link.",
-          "example": "无",
+          "example": "https://qidian-qbot-test-1251316161.cos.ap-guangzhou.myqcloud.com/%2Fcorp/xxxx",
           "member": "string",
           "name": "ErrorLink",
           "output_required": false,
@@ -13387,11 +13503,21 @@
         {
           "disabled": false,
           "document": "Error link text.",
-          "example": "无",
+          "example": "下载",
           "member": "string",
           "name": "ErrorLinkText",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "DuplicateFileCheckType",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -14086,6 +14212,23 @@
         }
       ],
       "usage": "out"
+    },
+    "UpdatePeriodInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "UpdatePeriodH",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "UploadAttributeLabelRequest": {
       "document": "UploadAttributeLabel request structure.",

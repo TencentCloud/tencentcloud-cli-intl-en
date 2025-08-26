@@ -84,6 +84,13 @@
       "output": "PermitOCRResponse",
       "status": "online"
     },
+    "RecognizeBrazilCommonOCR": {
+      "document": "This API is used to identify Brazil RNE documents.\n\nThis API is used to set the default request rate limit to 5 requests/second.",
+      "input": "RecognizeBrazilCommonOCRRequest",
+      "name": "Recognizes a brazil common document",
+      "output": "RecognizeBrazilCommonOCRResponse",
+      "status": "online"
+    },
     "RecognizeBrazilDriverLicenseOCR": {
       "document": "This interface supports identification of the front and back of Brazilian driver's license. The identification fields include name, driver's license category, number, validity period, etc.",
       "input": "RecognizeBrazilDriverLicenseOCRRequest",
@@ -691,6 +698,676 @@
         }
       ],
       "type": "object"
+    },
+    "BrazilCardInfo": {
+      "document": "Type of document in brazil.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RNE document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BrazilRNEInfo",
+          "name": "RNE",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BrazilRNMInfo",
+          "name": "RNM",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Driver license document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BrazilDriverLicenseInfo",
+          "name": "DriverLicense",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID card document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BrazilIDCardInfo",
+          "name": "IDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BrazilDriverLicenseInfo": {
+      "document": "Driver'S license type in brazil.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name.",
+          "example": "ZHANG SAN",
+          "member": "string",
+          "name": "NOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the driver's license type.",
+          "example": "B",
+          "member": "string",
+          "name": "CatHab",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Driver’s license id.",
+          "example": "23*****110",
+          "member": "string",
+          "name": "CNHNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date.",
+          "example": " 07/08/2024",
+          "member": "string",
+          "name": "VALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the qualification.",
+          "example": " 23/05/2013",
+          "member": "string",
+          "name": "QUALIFICATION",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Identity card number.",
+          "example": " F048**** DIREX EX",
+          "member": "string",
+          "name": "IDENTIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tax number of the person.",
+          "example": " 238.***.758-75",
+          "member": "string",
+          "name": "CPF",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth.",
+          "example": " 28/03/1992",
+          "member": "string",
+          "name": "NASCIMENTO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Membership status.",
+          "example": " JINJI PAN/WEIHONG CHEN",
+          "member": "string",
+          "name": "MEMBERSHIP",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Registration number.",
+          "example": "073****3357",
+          "member": "string",
+          "name": "REGISTRO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "A",
+          "member": "string",
+          "name": "OBSERVATIONS",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue date.",
+          "example": "15/02/2022",
+          "member": "string",
+          "name": "IssueDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issuing location.",
+          "example": " SAO PAULO, SP",
+          "member": "string",
+          "name": "LOCAL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record number.",
+          "example": " 51******489/SP8******10",
+          "member": "string",
+          "name": "BackNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the avatar in base64 format.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BrazilIDCardInfo": {
+      "document": "Specifies the identity card type in brazil.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name.",
+          "example": "JESSINY LIN YAO",
+          "member": "string",
+          "name": "Nome",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parent information.",
+          "example": "WENZHEN YAO / LIHUA LIN",
+          "member": "string",
+          "name": "MemberShip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth.",
+          "example": "27/09/2002",
+          "member": "string",
+          "name": "DataNascimento",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issuing organization.",
+          "example": "SSP-SP",
+          "member": "string",
+          "name": "IssuingAgency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the blood type.",
+          "example": "A",
+          "member": "string",
+          "name": "Fatorrh",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthplace.",
+          "example": "CORUMBÁ - MS",
+          "member": "string",
+          "name": "NaturalIDade",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "Observations",
+          "member": "string",
+          "name": "Observations",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPF Type",
+          "example": "CPF",
+          "member": "string",
+          "name": "CPF",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNI Type",
+          "example": "DNI",
+          "member": "string",
+          "name": "DNI",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Common registration.",
+          "example": "38.488.402-7 2 VIA",
+          "member": "string",
+          "name": "RegistroGeral",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue date. valid values: dd/mm/yyyy.",
+          "example": "22/09/2017",
+          "member": "string",
+          "name": "DispatchDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Address.",
+          "example": "CORUMBA-MS XXX CN:LV. A163/FLS.184V/N",
+          "member": "string",
+          "name": "Registro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the avatar in Base64 format of the id card.",
+          "example": "/9j/4AAQSkZJ....AQAAAAB",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original identity information.",
+          "example": "XXX-XX xxx DE XXXXXX XX:XX.A91/XX.300/N°11111",
+          "member": "string",
+          "name": "DocOrigem",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BrazilRNEInfo": {
+      "document": "BrazilRNEInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RNE",
+          "example": "G111111-A",
+          "member": "string",
+          "name": "RNE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLASSIFICAÇÃO(CLASSIFICATION)",
+          "example": "PERMANENTE",
+          "member": "string",
+          "name": "CLASSIFICATION",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VALIDADE",
+          "example": "INDETERMINADA",
+          "member": "string",
+          "name": "VALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NOME",
+          "example": "HUA LI",
+          "member": "string",
+          "name": "NOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "FILIAÇÃO(MEMBERSHIP)",
+          "example": "DA LI",
+          "member": "string",
+          "name": "Membership",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NACIONALIDADE",
+          "example": "CHINESA",
+          "member": "string",
+          "name": "NACIONALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NATURALIDADE(PAÍS)",
+          "example": "REP.POPULAR DA CHINA",
+          "member": "string",
+          "name": "NATURALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ORGÃO EXPEDIDOR(IssuingAgency)",
+          "example": "CGPI",
+          "member": "string",
+          "name": "IssuingAgency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DATA DE NASCIMENTO(DateOfBirth)",
+          "example": "01/08/1900",
+          "member": "string",
+          "name": "DateOfBirth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SEXO",
+          "example": "F",
+          "member": "string",
+          "name": "Sex",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DATA DE ENTRADA(EntryDate)",
+          "example": "01/08/2000",
+          "member": "string",
+          "name": "EntryDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VIA",
+          "example": "1",
+          "member": "string",
+          "name": "VIA",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DATA DE EXPEDIÇÃO(DispatchDate)",
+          "example": "01/08/2001",
+          "member": "string",
+          "name": "DispatchDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MRZ",
+          "example": "V1246N 2CHN12 34",
+          "member": "string",
+          "name": "MRZ",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PortraitImage",
+          "example": "/9j/4AAQSkZJ....AQAAAAB",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BrazilRNMInfo": {
+      "document": "Document type for brazil RNM.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SOBRENOME Type",
+          "example": "LI",
+          "member": "string",
+          "name": "SOBRENOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NOME Type",
+          "example": "HUA",
+          "member": "string",
+          "name": "NOME",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DATA DE NASCIMENTO",
+          "example": "01/08/1900",
+          "member": "string",
+          "name": "DATADENASCIMENTO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SEXO F",
+          "example": "F",
+          "member": "string",
+          "name": "SEXO",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "FILIAÇÃO(MEMBERSHIP)",
+          "example": "DA LI",
+          "member": "string",
+          "name": "MEMBERSHIP",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NACIONALIDADE Type",
+          "example": "CHINESA",
+          "member": "string",
+          "name": "NACIONALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VALIDADE Type",
+          "example": "01/08/2000",
+          "member": "string",
+          "name": "VALIDADE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RNM Type",
+          "example": "XAAA56-Y",
+          "member": "string",
+          "name": "RNM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPF Type",
+          "example": "000.000.000-00",
+          "member": "string",
+          "name": "CPF",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLASSIFICAÇÃO(CLASSIFICATION)",
+          "example": "RESIDENTE",
+          "member": "string",
+          "name": "CLASSIFICATION",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PRAZO DE RESIDENCIA",
+          "example": "01/08/1950",
+          "member": "string",
+          "name": "PRAZODERESIDENCIA",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "EMISSÃO(ISSUANCE)",
+          "example": "01/08/1999 CGPI/DIREX/PF",
+          "member": "string",
+          "name": "ISSUANCE",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AMPARO LEGAL(LegalHelp)",
+          "example": "AMPARO LEGAL",
+          "member": "string",
+          "name": "AMPAROLEGAL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MRZCode",
+          "example": "NOMENOME NOME NOME",
+          "member": "string",
+          "name": "MRZ",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Portrait Image",
+          "example": "PortraitImage",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PortraitImage(Back)",
+          "example": "PortraitImageBack",
+          "member": "string",
+          "name": "PortraitImageBack",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BusInvoice": {
       "document": "Bus ticket",
@@ -4668,6 +5345,89 @@
         }
       ],
       "usage": "out"
+    },
+    "RecognizeBrazilCommonOCRRequest": {
+      "document": "RecognizeBrazilCommonOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: no more than 3 seconds.",
+          "example": "11",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is advisable to store images in tencent cloud. urls not stored in tencent cloud may possibly be impacted in speed and stability.",
+          "example": "http://zzxxxx.x.xxx",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.",
+          "example": "11",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Url address of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is recommended to store images in tencent cloud. speed and stability of non-tencent cloud storage urls may be impacted.",
+          "example": "11",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to return the portrait photo.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeBrazilCommonOCRResponse": {
+      "document": "RecognizeBrazilCommonOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the type of document in brazil. valid values: 1. RNE 2. RNM 3. IDCard 4. DrivingLicense.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Type",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Identifies the content of a brazil document.",
+          "example": "无",
+          "member": "BrazilCardInfo",
+          "name": "Result",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RecognizeBrazilDriverLicenseOCRRequest": {
       "document": "RecognizeBrazilDriverLicenseOCR request structure.",

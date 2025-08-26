@@ -120,6 +120,14 @@
         "title": "Recognizing an exit/entry permit for traveling to and from Hong Kong, Macao, or Taiwan"
       }
     ],
+    "RecognizeBrazilCommonOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilCommonOCR\n<Common request parameters>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"ImageUrl\": \"\",\n    \"BackImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"BackImageUrl\": \"\",\n    \"ReturnHeadImage\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1205024c-6938-4a91-b413-c91f218f9633\",\n        \"Result\": {\n            \"DriverLicense\": null,\n            \"IDCard\": {\n                \"CPF\": \"\",\n                \"DNI\": \"\",\n                \"DataNascimento\": \"11/09/1977\",\n                \"DispatchDate\": \"\",\n                \"DocOrigem\": \"\",\n                \"Fatorrh\": \"\",\n                \"IssuingAgency\": \"SSP-SP\",\n                \"MemberShip\": \"EEEE AAA/CCCC AAAA BBB DDD\",\n                \"NaturalIDade\": \"S.AAAA- AA\",\n                \"Nome\": \"CCC DDD EEEE AAA\",\n                \"Observations\": \"\",\n                \"PortraitImage\": \"\",\n                \"Registro\": \"\",\n                \"RegistroGeral\": \"\"\n            },\n            \"RNE\": null,\n            \"RNM\": null\n        },\n        \"Type\": 3\n    }\n}",
+        "title": "RecognizeBrazilCommonOCR"
+      }
+    ],
     "RecognizeBrazilDriverLicenseOCR": [
       {
         "document": "",

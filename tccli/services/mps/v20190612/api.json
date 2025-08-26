@@ -8902,6 +8902,15 @@
           "name": "Comment",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.",
+          "example": "video",
+          "member": "string",
+          "name": "RecordType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -12336,7 +12345,7 @@
         {
           "disabled": false,
           "document": "Unique ID filter of transcoding templates. Array length limit: 100.",
-          "example": "10",
+          "example": "[10]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -13670,6 +13679,26 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Highlight title.",
+          "example": "title",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Highlight overview.",
+          "example": "summary",
+          "member": "string",
+          "name": "Summary",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -14638,6 +14667,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.",
+          "example": "video",
+          "member": "string",
+          "name": "RecordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -14815,21 +14854,31 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Result type. Valid values:\n<li>SegmentRecognition: video splitting.</li>\n<li>Highlight: highlight.</li>",
           "example": "SegmentRecognition",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "",
-          "example": "NULL",
+          "example": "无",
           "member": "SegmentRecognitionItem",
           "name": "SegmentResultSet",
-          "required": true,
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Highlight result. This field is valid when Type is set to Highlight.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaAiAnalysisHighlightItem",
+          "name": "HighlightResultSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -15915,7 +15964,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification type:\n\n\"CMQ\": Callback messages are written to the CMQ queue; \n\"URL\": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).\n\n<font color=\"red\">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>",
+          "document": "Notification Type:\nTDMQ-CMQ: TDMQ for CMQ.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n\n<font color=\"red\">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -15937,7 +15986,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.",
+          "document": "Queue and Topic models are provided.",
           "example": "Queue",
           "member": "string",
           "name": "CmqModel",
@@ -15948,7 +15997,7 @@
         },
         {
           "disabled": false,
-          "document": "CMQ region, such as `sh` and `bj`.",
+          "document": "Region when NotifyType is set to TDMQ-CMQ. For example, sh or bj.",
           "example": "sh",
           "member": "string",
           "name": "CmqRegion",
@@ -15959,7 +16008,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.",
+          "document": "This field is valid when the model is Queue. It indicates the name of the TDMQ for CMQ queue for receiving event notifications.",
           "example": "mpstest-queue",
           "member": "string",
           "name": "QueueName",
@@ -15970,7 +16019,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.",
+          "document": "This field is valid when the model is Topic. It indicates the name of the TDMQ for CMQ topic for receiving event notifications.",
           "example": "mpstest-topic",
           "member": "string",
           "name": "TopicName",
@@ -15982,7 +16031,7 @@
         {
           "disabled": false,
           "document": "Key used to generate a callback signature.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "d6xAABBCCxxx+123456XABCXXXSS",
+          "example": "0se***9idaY",
           "member": "string",
           "name": "NotifyKey",
           "output_required": false,
@@ -16366,7 +16415,7 @@
         {
           "disabled": false,
           "document": "The URL of the highlight segments.",
-          "example": "/AItest/hht-20250321xxx-021234545678E_172343423310test-0.mp4",
+          "example": "/AItst/hht-2025031xxx-021354578E_17243423310test-0.mp4",
           "member": "string",
           "name": "HighlightPath",
           "output_required": true,
@@ -16376,7 +16425,7 @@
         {
           "disabled": false,
           "document": "The URL of the thumbnail.",
-          "example": "/AItest/hht-20250321xxx-021234545678E_172343423310test-0.jpg",
+          "example": "/AItest/hht-2025031xxx-021245578E_17243423310test-0.jpg",
           "member": "string",
           "name": "CovImgPath",
           "output_required": true,
@@ -16412,6 +16461,26 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent highlight address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://test-12246.cos.ap-nanjing.myqcloud.com/AItest/hht-2025031xxx-02135468E_17243423310test-0.mp4",
+          "member": "string",
+          "name": "HighlightUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent highlight cover address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://test-12246.cos.ap-nanjing.myqcloud.com/AItest/hht-2025031xxx-02134468E_17243423310test-0.jpg",
+          "member": "string",
+          "name": "CovImgUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -18871,6 +18940,15 @@
           "example": "直播录制模板",
           "member": "string",
           "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.",
+          "example": "video",
+          "member": "string",
+          "name": "RecordType",
           "required": false,
           "type": "string"
         }
@@ -22006,6 +22084,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SubtitleTemplate",
+          "name": "SubtitleTemplate",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -24481,7 +24570,7 @@
         {
           "disabled": false,
           "document": "The URL of the subtitles to add to the video.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "https://test-123xxxx456.cos.ap-nanjing.myqcloud.com/xxxxx/subtitle/1.srt",
+          "example": "https://test-13xxxx46.cos.ap-nanjing.myqcloud.com/xxxxx/subtitle/1.srt",
           "member": "string",
           "name": "Path",
           "output_required": false,
@@ -24498,6 +24587,17 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "SubtitleFileInput",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -24536,7 +24636,7 @@
         {
           "disabled": false,
           "document": "The text transparency. Value range: 0-1.\n<li>`0`: Fully transparent.</li>\n<li>`1`: Fully opaque.</li>\nDefault value: 1.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
+          "example": "1.0",
           "member": "float",
           "name": "FontAlpha",
           "output_required": false,
@@ -24608,6 +24708,94 @@
           "output_required": false,
           "required": false,
           "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Stroke width.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "OutlineWidth",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Stroke color. The value should be a 6-digit hexadecimal RGB value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0x000000",
+          "member": "string",
+          "name": "OutlineColor",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Stroke transparency. The value should be a positive floating-point number in the range of (0, 1].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.8",
+          "member": "float",
+          "name": "OutlineAlpha",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shadow width. The value should be a floating-point number in the range of [0, 1000].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "ShadowWidth",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shadow color. The value should be a 6-digit hexadecimal RGB value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0x000000",
+          "member": "string",
+          "name": "ShadowColor",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.9",
+          "member": "float",
+          "name": "ShadowAlpha",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Line spacing. The value should be a positive integer in the range of [0, 1000].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "LineSpacing",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alignment mode. Valid values: top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. bottom: bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bottom",
+          "member": "string",
+          "name": "Alignment",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -25335,7 +25523,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Duration of each loop detection in the spot check policy, in seconds. Valid values:\n\n - Minimum value: 10.\n - Maximum value: 86400.\n",
+          "document": "Duration of each loop detection, in seconds. Value range:\n\n - Minimum value: 10.\n - Maximum value: 86400.\n",
           "example": "30",
           "member": "uint64",
           "name": "CheckDuration",
@@ -25346,7 +25534,7 @@
         },
         {
           "disabled": false,
-          "document": "Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.",
+          "document": "Detection interval, in seconds. It indicates the duration after a detection is completed and before the next detection is conducted. Value range:\n - Minimum value: 10.\n - Maximum value: 3600.",
           "example": "30",
           "member": "uint64",
           "name": "CheckInterval",
@@ -25357,7 +25545,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for which the opening clip is skipped.",
+          "document": "Skipped opening duration, in seconds. Value range:\n - Minimum value: 1.\n - Maximum value: 1800.",
           "example": "60",
           "member": "uint64",
           "name": "SkipDuration",
@@ -25368,7 +25556,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.",
+          "document": "Number of loops. Value range:\n - Minimum value: 0.\n - Maximum value: 1000.\n\nIf the value is 0 or not specified, it indicates that loops are executed until the video ends.",
           "example": "10",
           "member": "uint64",
           "name": "CirclesNumber",
