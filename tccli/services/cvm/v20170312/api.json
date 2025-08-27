@@ -343,6 +343,13 @@
       "output": "InquirePricePurchaseReservedInstancesOfferingResponse",
       "status": "online"
     },
+    "InquiryPriceRenewInstances": {
+      "document": "This API is used to inquire about the price for renewing a monthly subscription instance.\n\nThis API is used to query the renewal price of monthly subscription instances.",
+      "input": "InquiryPriceRenewInstancesRequest",
+      "name": "Renewal instance inquiry",
+      "output": "InquiryPriceRenewInstancesResponse",
+      "status": "online"
+    },
     "InquiryPriceResetInstance": {
       "document": "This API is used to inquire about the price for reinstalling an instance.\n\n* If you have specified the parameter `ImageId`, inquire about the price for reinstallation by using the specified image. Otherwise, inquire about the price for reinstallation based on the image currently used by the instance.\n* Currently, only instances with a [system disk type](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#SystemDisk) of `CLOUD_BSSD`, `CLOUD_PREMIUM`, or `CLOUD_SSD` are supported for inquiring about the price for reinstallation caused by switching between `Linux` and `Windows` operating systems through this API.\n* Currently, instances in regions outside the Chinese mainland are not supported for inquiring about the price for reinstallation caused by switching between `Linux` and `Windows` operating systems through this API.",
       "input": "InquiryPriceResetInstanceRequest",
@@ -481,6 +488,13 @@
       "input": "RemoveChcDeployVpcRequest",
       "name": "Removes the deployment network of a CHC",
       "output": "RemoveChcDeployVpcResponse",
+      "status": "online"
+    },
+    "RenewInstances": {
+      "document": "This API is used to renew annual and monthly subscription instances.\n\nThis API is used to operate on monthly subscription instances only.\nThis API is used to ensure your account balance is sufficient for renewal. You can check the balance via the DescribeAccountBalance API (https://www.tencentcloud.comom/document/product/555/20253?from_cn_redirect=1).\n* You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.",
+      "input": "RenewInstancesRequest",
+      "name": "Renew an instance",
+      "output": "RenewInstancesResponse",
       "status": "online"
     },
     "ResetInstance": {
@@ -5143,6 +5157,70 @@
       ],
       "type": "object"
     },
+    "InquiryPriceRenewInstancesRequest": {
+      "document": "InquiryPriceRenewInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.",
+          "example": "[\"ins-2zvpghhc\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Trial run, for testing purposes, does not execute specific logic. valid values: <li>`true`: skip execution logic</li> <li>`false`: execute logic</li>  default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "DryRun",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.",
+          "example": "false",
+          "member": "bool",
+          "name": "RenewPortableDataDisk",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRenewInstancesResponse": {
+      "document": "InquiryPriceRenewInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "This parameter indicates the price for the corresponding configuration instance.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InquiryPriceResetInstanceRequest": {
       "document": "InquiryPriceResetInstance request structure.",
       "members": [
@@ -8297,6 +8375,51 @@
     },
     "RemoveChcDeployVpcResponse": {
       "document": "RemoveChcDeployVpc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstancesRequest": {
+      "document": "RenewInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.",
+          "example": "[\"ins-r8hr2upy\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype=\"explain\" title=\"\">.\nAnnual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.",
+          "example": "false",
+          "member": "bool",
+          "name": "RenewPortableDataDisk",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstancesResponse": {
+      "document": "RenewInstances response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

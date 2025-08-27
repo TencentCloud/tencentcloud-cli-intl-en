@@ -122,7 +122,7 @@
     ],
     "GetFaceIdTokenIntl": [
       {
-        "document": "\t\nThis example shows you how to apply for an SDK-based verification token.",
+        "document": "This example shows you how to apply for an SDK-based verification token.",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFaceIdTokenIntl\n<Common request parameters>\n\n{\n    \"CheckMode\": \"liveness\",\n    \"SecureLevel\": \"4\",\n    \"Extra\": \"idxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c27f8a53-1766-4d62-84fc-c400843e9e21\",\n        \"SdkToken\": \"91BF5AD0-C5C9-41CC-9562-DB35BBA2712D\"\n    }\n}",
         "title": "Applying for a token"

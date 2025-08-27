@@ -85,7 +85,7 @@
       "status": "online"
     },
     "RecognizeBrazilCommonOCR": {
-      "document": "This API is used to identify Brazil RNE documents.\n\nThis API is used to set the default request rate limit to 5 requests/second.",
+      "document": "This API is used to identify Brazil common documents.\n\nThis API is used to set the default request rate limit to 5 requests/second.",
       "input": "RecognizeBrazilCommonOCRRequest",
       "name": "Recognizes a brazil common document",
       "output": "RecognizeBrazilCommonOCRResponse",
