@@ -1,5 +1,19 @@
 {
   "actions": {
+    "AssociateSecurityGroups": {
+      "document": "This API is used to bind security groups to instances in batches.",
+      "input": "AssociateSecurityGroupsRequest",
+      "name": "Binding Security Groups to Cloud Resources in Batches",
+      "output": "AssociateSecurityGroupsResponse",
+      "status": "online"
+    },
+    "BalanceReadOnlyGroup": {
+      "document": "This API is used to balance the routing weight of each read-only instance according to the predefined weights. The DescribeReadOnlyGroupAutoWeight API is used to query the predefined weights.",
+      "input": "BalanceReadOnlyGroupRequest",
+      "name": "Balancing the Routing Weights of Read-Only Instances",
+      "output": "BalanceReadOnlyGroupResponse",
+      "status": "online"
+    },
     "CloneDB": {
       "document": "This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.",
       "input": "CloneDBRequest",
@@ -105,6 +119,13 @@
       "output": "CreateMigrationResponse",
       "status": "online"
     },
+    "CreatePublishSubscribe": {
+      "document": "This API is used to create a publish/subscribe relationship between two databases. A subscriber cannot act as a publisher, and a publisher can have multiple subscriber instances.",
+      "input": "CreatePublishSubscribeRequest",
+      "name": "Creating Publish/Subscribe Relationships",
+      "output": "CreatePublishSubscribeResponse",
+      "status": "online"
+    },
     "CreateReadOnlyDBInstances": {
       "document": "This API is used to create read-only instances (local disk).",
       "input": "CreateReadOnlyDBInstancesRequest",
@@ -147,6 +168,13 @@
       "output": "DeleteDBResponse",
       "status": "online"
     },
+    "DeleteDBInstance": {
+      "document": "This API is used to release SQL server instances (eliminated immediately) in the recycle bin. The released instances will be physically terminated after being retained for a period of time. Their publish-subscribe relationships will be automatically disassociated, and their RO replicas will be automatically released.",
+      "input": "DeleteDBInstanceRequest",
+      "name": "Release SQL server instances",
+      "output": "DeleteDBInstanceResponse",
+      "status": "online"
+    },
     "DeleteIncrementalMigration": {
       "document": "This API is used to delete an incremental backup import task.",
       "input": "DeleteIncrementalMigrationRequest",
@@ -161,11 +189,32 @@
       "output": "DeleteMigrationResponse",
       "status": "online"
     },
+    "DeletePublishSubscribe": {
+      "document": "This API is used to delete the publish/subscribe relationship between two databases.",
+      "input": "DeletePublishSubscribeRequest",
+      "name": "Deleting Publish/Subscribe Relationships",
+      "output": "DeletePublishSubscribeResponse",
+      "status": "online"
+    },
+    "DescribeAccountPrivilegeByDB": {
+      "document": "This API is used to query information on the account and permissions associated with the database.",
+      "input": "DescribeAccountPrivilegeByDBRequest",
+      "name": "Querying Information on the Account and Permissions Associated with the Database",
+      "output": "DescribeAccountPrivilegeByDBResponse",
+      "status": "online"
+    },
     "DescribeAccounts": {
       "document": "This API is used to pull the list of instance accounts.",
       "input": "DescribeAccountsRequest",
       "name": "Pulls list of instance accounts",
       "output": "DescribeAccountsResponse",
+      "status": "online"
+    },
+    "DescribeBackupByFlowId": {
+      "document": "This API is used to query the created backup details through the backup creation process ID. The process ID can be obtained through the CreateBackup API.",
+      "input": "DescribeBackupByFlowIdRequest",
+      "name": "Querying Backup Information by Process ID",
+      "output": "DescribeBackupByFlowIdResponse",
       "status": "online"
     },
     "DescribeBackupCommand": {
@@ -187,6 +236,27 @@
       "input": "DescribeBackupMigrationRequest",
       "name": "Queries backup import tasks",
       "output": "DescribeBackupMigrationResponse",
+      "status": "online"
+    },
+    "DescribeBackupMonitor": {
+      "document": "This API is used to query backup space usage details.",
+      "input": "DescribeBackupMonitorRequest",
+      "name": "Querying Backup Space Usage Details",
+      "output": "DescribeBackupMonitorResponse",
+      "status": "online"
+    },
+    "DescribeBackupStatistical": {
+      "document": "This API is used to query the real-time statistics list of backups.",
+      "input": "DescribeBackupStatisticalRequest",
+      "name": "Querying the Real-Time Statistics List of Backups",
+      "output": "DescribeBackupStatisticalResponse",
+      "status": "online"
+    },
+    "DescribeBackupSummary": {
+      "document": "This API is used to query the backup overview information of databases.",
+      "input": "DescribeBackupSummaryRequest",
+      "name": "Querying the Backup Overview Information of Databases",
+      "output": "DescribeBackupSummaryResponse",
       "status": "online"
     },
     "DescribeBackupUploadSize": {
@@ -217,11 +287,25 @@
       "output": "DescribeCollationTimeZoneResponse",
       "status": "online"
     },
+    "DescribeCrossBackupStatistical": {
+      "document": "This API is used to query the real-time statistics list of cross-region backups.",
+      "input": "DescribeCrossBackupStatisticalRequest",
+      "name": "Querying the Real-Time Statistics List of Cross-Region Backups",
+      "output": "DescribeCrossBackupStatisticalResponse",
+      "status": "online"
+    },
     "DescribeCrossRegionZone": {
       "document": "This API is used to query the disaster recovery region and AZ of the secondary node based on the primary instance.",
       "input": "DescribeCrossRegionZoneRequest",
       "name": "Querying the Disaster Recovery Region and AZ of the Secondary Node",
       "output": "DescribeCrossRegionZoneResponse",
+      "status": "online"
+    },
+    "DescribeCrossRegions": {
+      "document": "This API is used to query the target region for cross-region backups.",
+      "input": "DescribeCrossRegionsRequest",
+      "name": "Querying the Target Region for Cross-Region Backups",
+      "output": "DescribeCrossRegionsResponse",
       "status": "online"
     },
     "DescribeDBCharsets": {
@@ -252,6 +336,27 @@
       "output": "DescribeDBInstancesAttributeResponse",
       "status": "online"
     },
+    "DescribeDBPrivilegeByAccount": {
+      "document": "This API is used to query information on the databases and permissions associated with the account.",
+      "input": "DescribeDBPrivilegeByAccountRequest",
+      "name": "Querying Information on the Databases and Permissions Associated with the Account",
+      "output": "DescribeDBPrivilegeByAccountResponse",
+      "status": "online"
+    },
+    "DescribeDBRestoreTime": {
+      "document": "This API is used to query databases that can be rolled back.",
+      "input": "DescribeDBRestoreTimeRequest",
+      "name": "Query Databases That Can Be Rolled Back",
+      "output": "DescribeDBRestoreTimeResponse",
+      "status": "online"
+    },
+    "DescribeDBSecurityGroups": {
+      "document": "This API is used to query the security group details of instances.",
+      "input": "DescribeDBSecurityGroupsRequest",
+      "name": "Querying the Security Group Information of Instances",
+      "output": "DescribeDBSecurityGroupsResponse",
+      "status": "online"
+    },
     "DescribeDBs": {
       "document": "This API is used to query the list of databases",
       "input": "DescribeDBsRequest",
@@ -266,6 +371,13 @@
       "output": "DescribeDBsNormalResponse",
       "status": "online"
     },
+    "DescribeDatabaseNames": {
+      "document": "This API is used to query the database name associated with the account.",
+      "input": "DescribeDatabaseNamesRequest",
+      "name": "Querying the Database Name Associated with the Account",
+      "output": "DescribeDatabaseNamesResponse",
+      "status": "online"
+    },
     "DescribeDatabases": {
       "document": "This API is used to query the database list.",
       "input": "DescribeDatabasesRequest",
@@ -273,11 +385,25 @@
       "output": "DescribeDatabasesResponse",
       "status": "online"
     },
+    "DescribeDatabasesNormal": {
+      "document": "This API is used to query database configuration information. This API does not contain accounts associated with databases.",
+      "input": "DescribeDatabasesNormalRequest",
+      "name": "Querying Detailed Configuration Information of the Databases",
+      "output": "DescribeDatabasesNormalResponse",
+      "status": "online"
+    },
     "DescribeFlowStatus": {
       "document": "This API is used to query flow status.",
       "input": "DescribeFlowStatusRequest",
       "name": "Queries flow status",
       "output": "DescribeFlowStatusResponse",
+      "status": "online"
+    },
+    "DescribeHASwitchLog": {
+      "document": "This API is used to perform the manual primary-secondary switch.",
+      "input": "DescribeHASwitchLogRequest",
+      "name": "Querying Primary-Secondary Switch Logs",
+      "output": "DescribeHASwitchLogResponse",
       "status": "online"
     },
     "DescribeIncrementalMigration": {
@@ -357,11 +483,67 @@
       "output": "DescribeProductConfigResponse",
       "status": "online"
     },
+    "DescribeProjectSecurityGroups": {
+      "document": "This API is used to query security group details of a project.",
+      "input": "DescribeProjectSecurityGroupsRequest",
+      "name": "Querying the Security Group Information of Projects",
+      "output": "DescribeProjectSecurityGroupsResponse",
+      "status": "online"
+    },
+    "DescribePublishSubscribe": {
+      "document": "This API is used to query the publish/subscribe relationship list.",
+      "input": "DescribePublishSubscribeRequest",
+      "name": "Querying the Publish/Subscribe Relationship List",
+      "output": "DescribePublishSubscribeResponse",
+      "status": "online"
+    },
+    "DescribeReadOnlyGroupAutoWeight": {
+      "document": "This API is used to query the automatic weight assignment result of the read-only group. The BalanceReadOnlyGroup API is used to perform routing weight assignment according to the automatic weight assignment result.",
+      "input": "DescribeReadOnlyGroupAutoWeightRequest",
+      "name": "Querying the Automatic Weights of Read-Only Groups",
+      "output": "DescribeReadOnlyGroupAutoWeightResponse",
+      "status": "online"
+    },
+    "DescribeReadOnlyGroupByReadOnlyInstance": {
+      "document": "This API is used to query the read-only group where the read-only instance is located by its ID.",
+      "input": "DescribeReadOnlyGroupByReadOnlyInstanceRequest",
+      "name": "Querying Read-Only Groups Through Read-Only Instances",
+      "output": "DescribeReadOnlyGroupByReadOnlyInstanceResponse",
+      "status": "online"
+    },
+    "DescribeReadOnlyGroupDetails": {
+      "document": "This API is used to query read-only group details.",
+      "input": "DescribeReadOnlyGroupDetailsRequest",
+      "name": "Querying Read-Only Group Details",
+      "output": "DescribeReadOnlyGroupDetailsResponse",
+      "status": "online"
+    },
+    "DescribeReadOnlyGroupList": {
+      "document": "This API is used to query the read-only group list.",
+      "input": "DescribeReadOnlyGroupListRequest",
+      "name": "Querying the Read-Only Group List",
+      "output": "DescribeReadOnlyGroupListResponse",
+      "status": "online"
+    },
     "DescribeRegions": {
       "document": "This API is used to query purchasable regions.",
       "input": "DescribeRegionsRequest",
       "name": "Queries purchasable regions",
       "output": "DescribeRegionsResponse",
+      "status": "online"
+    },
+    "DescribeRegularBackupPlan": {
+      "document": "This API is used to query the scheduled backup retention plans of instances.",
+      "input": "DescribeRegularBackupPlanRequest",
+      "name": "Querying the Scheduled Backup Retention Plans of Instances",
+      "output": "DescribeRegularBackupPlanResponse",
+      "status": "online"
+    },
+    "DescribeRestoreTask": {
+      "document": "This API is used to query the list of rollback tasks.",
+      "input": "DescribeRestoreTaskRequest",
+      "name": "Querying the List of Rollback Tasks",
+      "output": "DescribeRestoreTaskResponse",
       "status": "online"
     },
     "DescribeRestoreTimeRange": {
@@ -420,6 +602,13 @@
       "output": "DescribeZonesResponse",
       "status": "online"
     },
+    "DisassociateSecurityGroups": {
+      "document": "This API is used to unbind security groups from instances in batches.",
+      "input": "DisassociateSecurityGroupsRequest",
+      "name": "Unbinding Security Groups from Cloud Resources in Batches",
+      "output": "DisassociateSecurityGroupsResponse",
+      "status": "online"
+    },
     "InquiryPriceCreateDBInstances": {
       "document": "This API is used to query the price of requested instances.",
       "input": "InquiryPriceCreateDBInstancesRequest",
@@ -455,11 +644,32 @@
       "output": "ModifyBackupMigrationResponse",
       "status": "online"
     },
+    "ModifyBackupName": {
+      "document": "This API is used to modify the name of a backup task.",
+      "input": "ModifyBackupNameRequest",
+      "name": "Modifying the Backup Name",
+      "output": "ModifyBackupNameResponse",
+      "status": "online"
+    },
     "ModifyBackupStrategy": {
       "document": "This API is used to modify the backup policy.",
       "input": "ModifyBackupStrategyRequest",
       "name": "Modifies backup policy",
       "output": "ModifyBackupStrategyResponse",
+      "status": "online"
+    },
+    "ModifyCloseWanIp": {
+      "document": "This API is used to disable the public network for the instance.",
+      "input": "ModifyCloseWanIpRequest",
+      "name": "Disabling the Public Network for the Instance",
+      "output": "ModifyCloseWanIpResponse",
+      "status": "online"
+    },
+    "ModifyCrossBackupStrategy": {
+      "document": "This API is used to enable or disable cross-region backup policies.",
+      "input": "ModifyCrossBackupStrategyRequest",
+      "name": "Enabling or Disabling Cross-Region Backup Policies",
+      "output": "ModifyCrossBackupStrategyResponse",
       "status": "online"
     },
     "ModifyDBEncryptAttributes": {
@@ -495,6 +705,20 @@
       "input": "ModifyDBInstanceProjectRequest",
       "name": "Modifies project to which database instance belongs",
       "output": "ModifyDBInstanceProjectResponse",
+      "status": "online"
+    },
+    "ModifyDBInstanceSSL": {
+      "document": "This API is used to enable/disable/update SSL encryption.",
+      "input": "ModifyDBInstanceSSLRequest",
+      "name": "Enabling/Disabling/Updating SSL Encryption",
+      "output": "ModifyDBInstanceSSLResponse",
+      "status": "online"
+    },
+    "ModifyDBInstanceSecurityGroups": {
+      "document": "This API is used to modify security groups bound to an instance.",
+      "input": "ModifyDBInstanceSecurityGroupsRequest",
+      "name": "Modifying the Security Groups of Cloud Databases",
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
       "status": "online"
     },
     "ModifyDBName": {
@@ -539,6 +763,20 @@
       "output": "ModifyDatabaseMdfResponse",
       "status": "online"
     },
+    "ModifyDatabasePrivilege": {
+      "document": "This API is used to modify instance database permissions.",
+      "input": "ModifyDatabasePrivilegeRequest",
+      "name": "Modifying the Database Permissions",
+      "output": "ModifyDatabasePrivilegeResponse",
+      "status": "online"
+    },
+    "ModifyDatabaseShrinkMDF": {
+      "document": "This API is used to shrink the database mdf (Shrink mdf).",
+      "input": "ModifyDatabaseShrinkMDFRequest",
+      "name": "Shrinking the Database mdf",
+      "output": "ModifyDatabaseShrinkMDFResponse",
+      "status": "online"
+    },
     "ModifyIncrementalMigration": {
       "document": "This API is used to modify an incremental backup import task.",
       "input": "ModifyIncrementalMigrationRequest",
@@ -560,11 +798,46 @@
       "output": "ModifyInstanceParamResponse",
       "status": "online"
     },
+    "ModifyMaintenanceSpan": {
+      "document": "This API is used to modify the maintenance window of the instance.",
+      "input": "ModifyMaintenanceSpanRequest",
+      "name": "Modifying the Instance Maintenance Window",
+      "output": "ModifyMaintenanceSpanResponse",
+      "status": "online"
+    },
     "ModifyMigration": {
       "document": "This API is used to modify an existing migration task.",
       "input": "ModifyMigrationRequest",
       "name": "Modifies migration task",
       "output": "ModifyMigrationResponse",
+      "status": "online"
+    },
+    "ModifyOpenWanIp": {
+      "document": "This API is used to enable the public network for the instance.",
+      "input": "ModifyOpenWanIpRequest",
+      "name": "Enabling the Public Network for the Instance",
+      "output": "ModifyOpenWanIpResponse",
+      "status": "online"
+    },
+    "ModifyPublishSubscribe": {
+      "document": "This API is used to modify the publish/subscribe relationship of the instance.",
+      "input": "ModifyPublishSubscribeRequest",
+      "name": "Modifying Publish/Subscribe Relationships",
+      "output": "ModifyPublishSubscribeResponse",
+      "status": "online"
+    },
+    "ModifyPublishSubscribeName": {
+      "document": "This API is used to modify the publish/subscribe names.",
+      "input": "ModifyPublishSubscribeNameRequest",
+      "name": "Modifying the Publish/Subscribe Names",
+      "output": "ModifyPublishSubscribeNameResponse",
+      "status": "online"
+    },
+    "ModifyReadOnlyGroupDetails": {
+      "document": "This API is used to modify read-only group details.",
+      "input": "ModifyReadOnlyGroupDetailsRequest",
+      "name": "Modifying Read-Only Group Details",
+      "output": "ModifyReadOnlyGroupDetailsResponse",
       "status": "online"
     },
     "OpenInterCommunication": {
@@ -579,6 +852,27 @@
       "input": "RecycleDBInstanceRequest",
       "name": "Returns a deactivated SQL Server instance",
       "output": "RecycleDBInstanceResponse",
+      "status": "online"
+    },
+    "RecycleReadOnlyGroup": {
+      "document": "This API is used to reclaim resources of read-only groups immediately. The resources, such as VIP, occupied by the read-only group will be released immediately and cannot be recovered.",
+      "input": "RecycleReadOnlyGroupRequest",
+      "name": "Reclaiming Resources of Read-Only Groups Immediately",
+      "output": "RecycleReadOnlyGroupResponse",
+      "status": "online"
+    },
+    "RemoveBackups": {
+      "document": "This API is used to delete backup files created by users manually. The backup policy to be deleted can be instance backup or multi-database backup.",
+      "input": "RemoveBackupsRequest",
+      "name": "Deleting Manual Backups",
+      "output": "RemoveBackupsResponse",
+      "status": "online"
+    },
+    "RenewPostpaidDBInstance": {
+      "document": "This API is used to recover the pay-as-you-go instance that is manually isolated through the API TerminateDBInstance from the recycle bin.",
+      "input": "RenewPostpaidDBInstanceRequest",
+      "name": "Recovering Postpaid Instances",
+      "output": "RenewPostpaidDBInstanceResponse",
       "status": "online"
     },
     "ResetAccountPassword": {
@@ -637,6 +931,13 @@
       "output": "StartInstanceXEventResponse",
       "status": "online"
     },
+    "SwitchCloudInstanceHA": {
+      "document": "This API is used to manually switch between primary and secondary.",
+      "input": "SwitchCloudInstanceHARequest",
+      "name": "Manual Primary-Secondary Switch",
+      "output": "SwitchCloudInstanceHAResponse",
+      "status": "online"
+    },
     "TerminateDBInstance": {
       "document": "This API is used to isolate an instance to move it into a recycle bin.",
       "input": "TerminateDBInstanceRequest",
@@ -673,7 +974,7 @@
         {
           "disabled": false,
           "document": "Instance password",
-          "example": "无",
+          "example": "Zh22448899",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -682,7 +983,7 @@
         {
           "disabled": false,
           "document": "List of database permissions",
-          "example": "无",
+          "example": "[{\"DBName\": \"db1\",\"Privilege\": \"ReadOnly\"}]",
           "member": "DBPrivilege",
           "name": "DBPrivileges",
           "required": false,
@@ -691,7 +992,7 @@
         {
           "disabled": false,
           "document": "Account remarks",
-          "example": "无",
+          "example": "andy",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -726,12 +1027,21 @@
         },
         {
           "disabled": false,
-          "document": "Whether CAM authentication is enabled",
+          "document": "Whether CAM authentication is enabled.",
           "example": "false",
           "member": "bool",
           "name": "IsCam",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption key version number. 0: disable encryption.",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptedVersion",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -982,25 +1292,63 @@
         {
           "disabled": false,
           "document": "Account name",
-          "example": "",
+          "example": "tom",
           "member": "string",
           "name": "UserName",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "New remarks of account",
-          "example": "",
+          "example": "部门一",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
+    },
+    "AssociateSecurityGroupsRequest": {
+      "document": "AssociateSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group ID.",
+          "example": "sg-igw86yth",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.",
+          "example": "[\"mssql-6f4ddx2f\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateSecurityGroupsResponse": {
+      "document": "AssociateSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Backup": {
       "document": "Backup file details",
@@ -1253,6 +1601,42 @@
         }
       ],
       "usage": "out"
+    },
+    "BalanceReadOnlyGroupRequest": {
+      "document": "BalanceReadOnlyGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group ID, in the format of mssqlrg-dj5i29c5n.",
+          "example": "mssqlrg-dj5i29c5n",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BalanceReadOnlyGroupResponse": {
+      "document": "BalanceReadOnlyGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BusinessIntelligenceFile": {
       "document": "Business intelligence service file type",
@@ -1617,7 +2001,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "document": "Database instance ID in the format of mssql-njj2mtpl.",
           "example": "mssql-njj2mtpl",
           "member": "string",
           "name": "InstanceId",
@@ -1626,7 +2010,7 @@
         },
         {
           "disabled": false,
-          "document": "Database instance account information",
+          "document": "Database instance account information.",
           "example": "无",
           "member": "AccountCreateInfo",
           "name": "Accounts",
@@ -1641,7 +2025,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task flow ID",
+          "document": "Task flow ID.",
           "example": "30321",
           "member": "int64",
           "name": "FlowId",
@@ -3229,6 +3613,70 @@
       ],
       "type": "object"
     },
+    "CreatePublishSubscribeRequest": {
+      "document": "CreatePublishSubscribe request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Publishing instance ID. For example, mssql-j8kv137v.",
+          "example": "mssql-2cwisu23",
+          "member": "string",
+          "name": "PublishInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subscription instance ID. For example, mssql-j8kv137v.",
+          "example": "mssql-hlh6yka1",
+          "member": "string",
+          "name": "SubscribeInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe relationship collection of the database.",
+          "example": "无",
+          "member": "DatabaseTuple",
+          "name": "DatabaseTupleSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe name. The default value is default_name.",
+          "example": "Create_name",
+          "member": "string",
+          "name": "PublishSubscribeName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePublishSubscribeResponse": {
+      "document": "CreatePublishSubscribe response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID. The DescribeFlowStatus API can be used to query the status of the immediate switch upgrade task.",
+          "example": "1002591",
+          "member": "uint64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateReadOnlyDBInstancesRequest": {
       "document": "CreateReadOnlyDBInstances request structure.",
       "members": [
@@ -3511,6 +3959,152 @@
           "member": "int64",
           "name": "CrossStatus",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CrossSummaryDetailRes": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "enable",
+          "member": "string",
+          "name": "CrossBackupEnabled",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"ap-beijing\",\"ap-shanghai\"]",
+          "member": "string",
+          "name": "CrossRegions",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2022-06-21 11:47:17",
+          "member": "string",
+          "name": "LastBackupStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "7",
+          "member": "int64",
+          "name": "CrossBackupSaveDays",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ActualUsedSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ActualUsedCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4360,6 +4954,100 @@
       ],
       "usage": "in"
     },
+    "DataBasePrivilegeModifyInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "DataBaseName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"UserName\": \"andy\",\"Privilege\": \"ReadOnly\",\"AccountType\": \"\tL0\"}]",
+          "member": "AccountPrivilege",
+          "name": "AccountPrivileges",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "DatabaseTuple": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "PublishDatabase",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db2",
+          "member": "string",
+          "name": "SubscribeDatabase",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "DatabaseTupleStatus": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "PublishDatabase",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db2",
+          "member": "string",
+          "name": "SubscribeDatabase",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2024-12-23 00:24:26",
+          "member": "string",
+          "name": "LastSyncTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "running",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DbNormalDetail": {
       "document": "Database configurations",
       "members": [
@@ -4386,7 +5074,7 @@
         {
           "disabled": false,
           "document": "Whether the cleanup task is enabled to automatically remove old change tracking information when CT is enabled. Valid values: `0` (no), `1` (yes)",
-          "example": "\"\"",
+          "example": "0",
           "member": "string",
           "name": "IsAutoCleanupOn",
           "output_required": true,
@@ -4516,7 +5204,7 @@
         {
           "disabled": false,
           "document": "Retention period (in days) of change tracking information",
-          "example": "\"\"",
+          "example": "7",
           "member": "string",
           "name": "RetentionPeriod",
           "output_required": true,
@@ -4802,6 +5490,33 @@
       ],
       "type": "object"
     },
+    "DeleteDBInstanceRequest": {
+      "document": "DeleteDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.",
+          "example": "mssql-ms2m7vut",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBInstanceResponse": {
+      "document": "DeleteDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDBRequest": {
       "document": "DeleteDB request structure.",
       "members": [
@@ -4920,6 +5635,125 @@
       ],
       "type": "object"
     },
+    "DeletePublishSubscribeRequest": {
+      "document": "DeletePublishSubscribe request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Publish/subscribe ID, which can be obtained through the DescribePublishSubscribe API.",
+          "example": "5",
+          "member": "uint64",
+          "name": "PublishSubscribeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe relationship collection of the database to be deleted.",
+          "example": "无",
+          "member": "DatabaseTuple",
+          "name": "DatabaseTupleSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePublishSubscribeResponse": {
+      "document": "DeletePublishSubscribe response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountPrivilegeByDBRequest": {
+      "document": "DescribeAccountPrivilegeByDB request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-njj2mtpl7.",
+          "example": "mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "db_name",
+          "member": "string",
+          "name": "DBName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database account name.",
+          "example": "acc_test",
+          "member": "string",
+          "name": "AccountName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number in pagination mode. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountPrivilegeByDBResponse": {
+      "document": "DescribeAccountPrivilegeByDB response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of accounts.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account permission list.",
+          "example": "无",
+          "member": "AccountPrivilege",
+          "name": "Accounts",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAccountsRequest": {
       "document": "DescribeAccounts request structure.",
       "members": [
@@ -5022,6 +5856,172 @@
       ],
       "type": "object"
     },
+    "DescribeBackupByFlowIdRequest": {
+      "document": "DescribeBackupByFlowId request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-6upluvd5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup creation process ID, which can be obtained through the [CreateBackup](https://cloud.tencent.com/document/product/238/19946) API.",
+          "example": "1000797",
+          "member": "string",
+          "name": "FlowId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupByFlowIdResponse": {
+      "document": "DescribeBackupByFlowId response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the backup file. This field is used by the RestoreInstance API. For a single-database backup file, only the unique identifier of the backup file for the first record is returned. Through the DescribeBackupFiles API, IDs of all backup files that are available for rollback can be obtained for single-database backup files.",
+          "example": "1234568",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File name. For a single-database backup file, only the file name of the first record is returned. Through the DescribeBackupFiles API, file names of all records can be obtained for single-database backup files.",
+          "example": "autoed_instance_58037_20200728011545.bak.tar",
+          "member": "string",
+          "name": "FileName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup task name, which can be customized.",
+          "example": "mssql-6upluvd5_202007311206",
+          "member": "string",
+          "name": "BackupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup start time.",
+          "example": "2020-07-31 14:28:51",
+          "member": "datetime",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup end time.",
+          "example": "2020-07-31 15:10:27",
+          "member": "datetime",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File size, in KB. For a single-database backup file, only the file size of the first record is returned. Through the DescribeBackupFiles API, file sizes of all records can be obtained for single-database backup files.",
+          "example": "1356532",
+          "member": "uint64",
+          "name": "Size",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup policy: 0 - instance backup; 1 - multi-database backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.",
+          "example": "0",
+          "member": "int64",
+          "name": "Strategy",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup file status. 0 - creating; 1 - successful; 2-failed.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup method. 0 - scheduled backup; 1 - manual temporary backup. When the instance status is 0 - creating, the default value of this field is 0, which has no practical significance.",
+          "example": "0",
+          "member": "int64",
+          "name": "BackupWay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database list. For a single-database backup file, only the database name included in the first record is returned. Through the DescribeBackupFiles API, the database names of all records can be obtained for single-database backup files.",
+          "example": "[\"db1\",\"db2\"]",
+          "member": "string",
+          "name": "DBs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private network download address. For a single-database backup file, only the private network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.",
+          "example": "https://cosback-appid.cos.ap-guangzhou.myqcloud.com/autoed_ins1545.bak.tar?sign=%3d3ea813",
+          "member": "string",
+          "name": "InternalAddr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network download address. For a single-database backup file, only the public network download address of the first record is returned. Through the DescribeBackupFiles API, download addresses of all records can be obtained for single-database backup files.",
+          "example": "https://cosback-appid.cos.ap-guangzhou.myqcloud.com/autoed_ins1545.bak.tar?sign=%3d3ea813",
+          "member": "string",
+          "name": "ExternalAddr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation ID. This value is not returned for packaging backup files. Call the DescribeBackupFiles API with this value to obtain detailed information about single-database backup files.",
+          "example": "558800",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupCommandRequest": {
       "document": "DescribeBackupCommand request structure.",
       "members": [
@@ -5101,7 +6101,7 @@
         {
           "disabled": false,
           "document": "Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API (Querying archived backup record is not supported).",
-          "example": "123456789",
+          "example": "241259",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -5140,6 +6140,15 @@
           "example": "desc",
           "member": "string",
           "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Size - sort by backup size; DBs - sort by database name. The default value is size.",
+          "example": "Size",
+          "member": "string",
+          "name": "OrderByType",
           "required": false,
           "type": "string"
         }
@@ -5304,6 +6313,440 @@
           "name": "BackupMigrationSet",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupMonitorRequest": {
+      "document": "DescribeBackupMonitor request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sets the start time for querying backup space usage details.",
+          "example": "2022-05-05 22:12:27",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time of backup space usage.",
+          "example": "2022-05-05 22:12:27",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup trend query type. local - local backup; cross - cross-region backup.",
+          "example": "local",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupMonitorResponse": {
+      "document": "DescribeBackupMonitor response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Backup trend chart timeline.",
+          "example": "[10000]",
+          "member": "string",
+          "name": "TimeStamp",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Free backup space.",
+          "example": "[99.99]",
+          "member": "float",
+          "name": "FreeSpace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Actual total backup space.",
+          "example": "[99.99]",
+          "member": "float",
+          "name": "ActualUsedSpace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup space for logs.",
+          "example": "[99.99]",
+          "member": "float",
+          "name": "LogBackupSpace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup space for data.",
+          "example": "[99.99]",
+          "member": "float",
+          "name": "DataBackupSpace",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupStatisticalRequest": {
+      "document": "DescribeBackupStatistical request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number in pagination mode. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "One or more instance IDs. The instance ID is in the format of mssql-si2823jyl.",
+          "example": "[\"mssql-7vfv3rk3\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name list. Fuzzy query is supported.",
+          "example": "[\"name\"]",
+          "member": "string",
+          "name": "InstanceNameSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. The default value is default, which indicates sorting by backup space in descending order. default - sort by backup space; data - sort by data backup; log - sort by log backup; auto - sort by automatic backup; manual - sort by manual backup.",
+          "example": "order",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The default value is desc. [desc - descending order; asc - ascending order].",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupStatisticalResponse": {
+      "document": "DescribeBackupStatistical response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of instances meeting conditions. When results are returned in pagination mode, this value refers to the total number of instances that meet conditions, rather than the number of instances returned based on the specified Limit and Offset values.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance list.",
+          "example": "无",
+          "member": "SummaryDetailRes",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupSummaryRequest": {
+      "document": "DescribeBackupSummary request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBackupSummaryResponse": {
+      "document": "DescribeBackupSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Actual free total space, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "FreeSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Actual used space of backups, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "ActualUsedSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of backup files.",
+          "example": "680",
+          "member": "uint64",
+          "name": "BackupFilesTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Charged space of the space occupied by backups, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "BillingSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data backup usage space, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "DataBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of data backup files.",
+          "example": "94",
+          "member": "uint64",
+          "name": "DataBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage space used by manual backups in data backup, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "ManualBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of files for manual backups in data backup.",
+          "example": "40",
+          "member": "uint64",
+          "name": "ManualBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage space used by automatic backups in data backup, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "AutoBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of files for automatic backups in data backup.",
+          "example": "54",
+          "member": "uint64",
+          "name": "AutoBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup usage space for logs, in KB.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "LogBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of log backup files.",
+          "example": "586",
+          "member": "uint64",
+          "name": "LogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated fees, in USD/hour.",
+          "example": "0.1",
+          "member": "float",
+          "name": "EstimatedAmount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of local backup files.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LocalBackupFilesTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of cross-region backup files.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossBackupFilesTotal",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Charged space of the space occupied by cross-region backups, in KB.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossBillingSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Space used by cross-region automatic data backups, in KB.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossAutoBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of files for cross-region automatic data backups.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossAutoBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Space used by local log backups, in KB.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LocalLogBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of files for local log backups.",
+          "example": "1",
+          "member": "uint64",
+          "name": "LocalLogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Space used by cross-region log backups, in KB.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossLogBackupSpace",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of files for cross-region log backups.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CrossLogBackupCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated fees for cross-region backups, in USD/hour.",
+          "example": "1",
+          "member": "float",
+          "name": "CrossEstimatedAmount",
+          "required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
@@ -5489,6 +6932,15 @@
           "name": "BackupFormat",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup storage policy. 0 - follow the custom backup retention policy; 1 - follow the instance lifecycle until the instance is eliminated. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "StorageStrategy",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5691,6 +7143,116 @@
       ],
       "type": "object"
     },
+    "DescribeCrossBackupStatisticalRequest": {
+      "document": "DescribeCrossBackupStatistical request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination number.\n",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.\n",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID list.\n",
+          "example": "[\"mssql-6upluvd5\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name list.",
+          "example": "[\"name\"]",
+          "member": "string",
+          "name": "InstanceNameSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Cross-region backup status. enable: enabled; disable: disabled.",
+          "example": "enable",
+          "member": "string",
+          "name": "CrossBackupStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target region for cross-region backups.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CrossRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. The default value is default, which indicates sorting by backup space in descending order. data - sort by data backup; log - sort by log backup.",
+          "example": "instanceId",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Collation rule (desc - descending order; asc - ascending order). The default value is desc.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossBackupStatisticalResponse": {
+      "document": "DescribeCrossBackupStatistical response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Real-time statistics on the total number of cross-region backup overview data entries.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Real-time statistics list of cross-region backups.",
+          "example": "无",
+          "member": "CrossSummaryDetailRes",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCrossRegionZoneRequest": {
       "document": "DescribeCrossRegionZone request structure.",
       "members": [
@@ -5727,6 +7289,33 @@
           "name": "Zone",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossRegionsRequest": {
+      "document": "DescribeCrossRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCrossRegionsResponse": {
+      "document": "DescribeCrossRegions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Collection of target regions that support cross-region backups.",
+          "example": "[ap-guangzhou]",
+          "member": "string",
+          "name": "Regions",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -6205,6 +7794,207 @@
       ],
       "type": "object"
     },
+    "DescribeDBPrivilegeByAccountRequest": {
+      "document": "DescribeDBPrivilegeByAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-njj2mtpl.",
+          "example": "mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "acc_test",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name associated with the account.",
+          "example": "db_test",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number in pagination mode. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBPrivilegeByAccountResponse": {
+      "document": "DescribeDBPrivilegeByAccount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of databases.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database permission list.",
+          "example": "无",
+          "member": "DBPrivilege",
+          "name": "DBList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBRestoreTimeRequest": {
+      "document": "DescribeDBRestoreTime request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Original instance ID.",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the target instance for rollback. If this parameter is left unspecified, roll back to the original instance by default.",
+          "example": "mssql-j8kv13ui1",
+          "member": "string",
+          "name": "TargetInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queries databases that can be rolled back by time point, with the time format of YYYY-MM-DD HH:MM:SS. Either BackupId or Time should be specified, as they cannot be empty simultaneously.",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "Time",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queries databases that can be rolled back by backup set ID, which can be obtained through the DescribeBackups API. Either BackupId or Time should be specified, as they cannot be empty simultaneously.",
+          "example": "890110",
+          "member": "int64",
+          "name": "BackupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "test_db",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBRestoreTimeResponse": {
+      "document": "DescribeDBRestoreTime response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of databases that can be rolled back.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of databases that can be rolled back.",
+          "example": "[]",
+          "member": "DBRenameRes",
+          "name": "Details",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsRequest": {
+      "document": "DescribeDBSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.",
+          "example": "mssql-6f4ddx2f ",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsResponse": {
+      "document": "DescribeDBSecurityGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group details.",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "SecurityGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBsNormalRequest": {
       "document": "DescribeDBsNormal request structure.",
       "members": [
@@ -6331,6 +8121,109 @@
           "example": "无",
           "member": "InstanceDBDetail",
           "name": "DBInstances",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseNamesRequest": {
+      "document": "DescribeDatabaseNames request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-rljoi3bf.",
+          "example": "mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "account11",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseNamesResponse": {
+      "document": "DescribeDatabaseNames response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of databases associated with the account.",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name set.",
+          "example": "[\"dbtest2\",\"dbtest1\",\"db2234\"]",
+          "member": "string",
+          "name": "DatabaseNameSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabasesNormalRequest": {
+      "document": "DescribeDatabasesNormal request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-7vfv3rk3.",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabasesNormalResponse": {
+      "document": "DescribeDatabasesNormal response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates the total number of databases under the current instance.",
+          "example": "77",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returns detailed configuration information of the databases, such as whether CDC and CT are enabled for the databases.",
+          "example": "无",
+          "member": "DbNormalDetail",
+          "name": "DBList",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -6471,6 +8364,98 @@
           "name": "Status",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHASwitchLogRequest": {
+      "document": "DescribeHASwitchLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-8ua7ah",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time (yyyy-MM-dd HH:mm:ss).",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time (yyyy-MM-dd HH:mm:ss).",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Switch mode. 0 - system automatic switch; 1 - manual switch. Check all switch modes by default if the parameter is left unspecified.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SwitchType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination number.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHASwitchLogResponse": {
+      "document": "DescribeHASwitchLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of logs.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary-secondary switch logs.",
+          "example": "[]",
+          "member": "SwitchLog",
+          "name": "SwitchLog",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -7307,7 +9292,7 @@
         {
           "disabled": false,
           "document": "Migration task name (fuzzy match)",
-          "example": "测试",
+          "example": "andy_Migrate",
           "member": "string",
           "name": "MigrateName",
           "required": false,
@@ -7361,17 +9346,17 @@
           "example": "2",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of query results",
-          "example": "无",
+          "example": "[{\"MigrateId\": 2734,\"MigrateName\": \"andy_Migrate\",\"AppId\": 1251006373,\"Region\": \"ap-guangzhou\",\"SourceType\": 5,\"CreateTime\": \"2018-08-09 11:46:15\",\"StartTime\": \"2024-10-01 00:00:00\",\"EndTime\": \"2024-10-02 00:00:00\",\"Status\": 1,\"Message\": \"\",\"CheckFlag\": 0,\"Progress\": 0,\"MigrateDetail\": {\"StepName\": \"\",\"Progress\": 0}}]",
           "member": "MigrateTask",
           "name": "MigrateTaskSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7487,6 +9472,708 @@
       ],
       "type": "object"
     },
+    "DescribeProjectSecurityGroupsRequest": {
+      "document": "DescribeProjectSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID, which can be viewed under project management in the console.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectSecurityGroupsResponse": {
+      "document": "DescribeProjectSecurityGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group details.",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "SecurityGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublishSubscribeRequest": {
+      "document": "DescribePublishSubscribe request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. For example, mssql-j8kv137v.",
+          "example": "mssql-12klhrx2c",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe instance ID, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by subscription instance ID is performed for this field. When the value of InstanceId is a subscription instance, filtering by publishing instance ID is performed for this field.",
+          "example": "mssql-hh598yjo",
+          "member": "string",
+          "name": "PubOrSubInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private address of the publish/subscribe instance, which is related to whether InstanceId is a publishing instance or a subscription instance. When the value of InstanceId is a publishing instance, filtering by private IP address of the subscription instance is performed for this field. When the value of InstanceId is a subscription instance, filtering by private IP address of the publishing instance is performed for this field.",
+          "example": "10.0.1.27",
+          "member": "string",
+          "name": "PubOrSubInstanceIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe ID, which is used for filtering.",
+          "example": "5",
+          "member": "uint64",
+          "name": "PublishSubscribeId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe name, which is used for filtering.",
+          "example": "Change_name",
+          "member": "string",
+          "name": "PublishSubscribeName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Publishing database name, which is used for filtering.",
+          "example": "PublishDBName",
+          "member": "string",
+          "name": "PublishDBName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subscription database name, which is used for filtering.",
+          "example": "SubscribeDBName",
+          "member": "string",
+          "name": "SubscribeDBName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination number.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublishSubscribeResponse": {
+      "document": "DescribePublishSubscribe response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe list.",
+          "example": "无",
+          "member": "PublishSubscribe",
+          "name": "PublishSubscribeSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupAutoWeightRequest": {
+      "document": "DescribeReadOnlyGroupAutoWeight request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group ID, in the format of mssqlro-3l3fgqn7.",
+          "example": "mssqlro-dj5i29c5n",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupAutoWeightResponse": {
+      "document": "DescribeReadOnlyGroupAutoWeight response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Read-only group ID, in the format of mssqlro-3l3fgqn7.\n",
+          "example": "mssqlro-dj5i29c5n",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group name.",
+          "example": "ReadOnlyGroupName",
+          "member": "string",
+          "name": "ReadOnlyGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID of the read-only group, which is the same as that of the primary instance.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AZ of the read-only group, which is the same as that of the primary instance.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the delayed read-only instance removal feature. 1 - enabled; 0 - disabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsOfflineDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.",
+          "example": "10",
+          "member": "int64",
+          "name": "ReadOnlyMaxDelayTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.",
+          "example": "2",
+          "member": "int64",
+          "name": "MinReadOnlyInGroup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VIP.",
+          "example": "192.168.0.1",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VPort.",
+          "example": "1433",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID of the read-only group.",
+          "example": "vpc-sdge23",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC subnet ID of the read-only group.",
+          "example": "subnet-23dg32",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only instance replica collection.",
+          "example": "无",
+          "member": "ReadOnlyInstance",
+          "name": "ReadOnlyInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group status: 1 - running after successful application; 5 - applying.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance ID. For example, mssql-sgeshe3th.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "MasterInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupByReadOnlyInstanceRequest": {
+      "document": "DescribeReadOnlyGroupByReadOnlyInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssqlro-3l3fgqn7.",
+          "example": "mssqlro-91masbl1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupByReadOnlyInstanceResponse": {
+      "document": "DescribeReadOnlyGroupByReadOnlyInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Read only group ID.",
+          "example": "mssqlrg-552tyamb",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group name.",
+          "example": "再次尝试一次创建2个副本",
+          "member": "string",
+          "name": "ReadOnlyGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID of the read-only group.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AZ ID of the read-only group.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsOfflineDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timeout threshold used after the delayed read-only instance removal feature is enabled, in seconds.",
+          "example": "11",
+          "member": "int64",
+          "name": "ReadOnlyMaxDelayTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReadOnlyInGroup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VIP.",
+          "example": "10.100.0.44",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VPort.",
+          "example": "1433",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID of the read-only group.",
+          "example": "vpc-3xq2t5al",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC subnet ID of the read-only group.",
+          "example": "subnet-gdy95gfs",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance ID. For example, mssql-sgeshe3th.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "MasterInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID of the primary instance.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "MasterRegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupDetailsRequest": {
+      "document": "DescribeReadOnlyGroupDetails request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group ID, in the format of mssqlrg-3l3fgqn7.",
+          "example": "mssqlrg-552tyamb",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupDetailsResponse": {
+      "document": "DescribeReadOnlyGroupDetails response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Read-only group ID.",
+          "example": "mssqlrg-552tyamb",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group name.",
+          "example": "default_name",
+          "member": "string",
+          "name": "ReadOnlyGroupName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID of the read-only group, which is the same as that of the primary instance.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AZ ID of the read-only group, which is the same as that of the primary instance.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable startup timeout elimination, 0 - disable removal, 1 - enable removal.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsOfflineDelay",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timeout threshold used after the delayed read-only instance removal feature is enabled.",
+          "example": "11",
+          "member": "int64",
+          "name": "ReadOnlyMaxDelayTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReadOnlyInGroup",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VIP.",
+          "example": "10.100.0.44",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group VPort.",
+          "example": "1433",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID of the read-only group.",
+          "example": "vpc-3xq2t5al",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC subnet ID of the read-only group.",
+          "example": "subnet-gdy95gfs",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only instance replica collection.",
+          "example": "无",
+          "member": "ReadOnlyInstance",
+          "name": "ReadOnlyInstanceSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group status: 1 - running after successful application; 5 - applying.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance ID. For example, mssql-sgeshe3th.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "MasterInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupListRequest": {
+      "document": "DescribeReadOnlyGroupList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeReadOnlyGroupListResponse": {
+      "document": "DescribeReadOnlyGroupList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Read-only group list.",
+          "example": "无",
+          "member": "ReadOnlyGroup",
+          "name": "ReadOnlyGroupSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRegionsRequest": {
       "document": "DescribeRegions request structure.",
       "members": [],
@@ -7511,6 +10198,244 @@
           "example": "无",
           "member": "RegionInfo",
           "name": "RegionSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegularBackupPlanRequest": {
+      "document": "DescribeRegularBackupPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled backup retention days, in the range of [90 - 3650]. The default value is 365.",
+          "example": "90",
+          "member": "uint64",
+          "name": "RegularBackupSaveDays",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled backup policy. years - annually; quarters - quarterly; months - monthly. The default value is months.",
+          "example": "months",
+          "member": "string",
+          "name": "RegularBackupStrategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of retained scheduled backups. The default value is 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RegularBackupCounts",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled backup start date, in the format of YYYY-MM-DD. The current date is used by default.",
+          "example": "2022-10-10",
+          "member": "string",
+          "name": "RegularBackupStartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Regular backup cycle.",
+          "example": "[1,2,3,4,5,6,7]",
+          "member": "uint64",
+          "name": "BackupCycle",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegularBackupPlanResponse": {
+      "document": "DescribeRegularBackupPlan response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Regular backup plan.",
+          "example": "[\"2022-10-24 00:00:00\"]",
+          "member": "string",
+          "name": "SaveModePeriod",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled backup plan.",
+          "example": "[\"2022-10-25 00:00:00\"]",
+          "member": "string",
+          "name": "SaveModeRegular",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRestoreTaskRequest": {
+      "document": "DescribeRestoreTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source Instance ID.",
+          "example": "mssql-8943uijh21",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2023-01-01 13:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback method. 0 - roll back by time point; 1 - roll back by backup set.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RestoreType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Region where the target instance is located for rollback.",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "TargetRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type of the target instance for rollback. 0 - current instance; 1 - existing instance; 2 - new instance.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TargetType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback status, 0: initialized; 1: running; 2: successful; 3: failed.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of returned entries per page in pagination mode. Value range: 1-100. The default value is 20.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number in pagination mode. The default value is 0.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. restoreTime - rollback time; startTime-task start time; endTime-task end time. By default, the results are sorted in descending order by task start time.",
+          "example": "startTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting rule. desc - descending order; asc - ascending order. The default value is desc.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Asynchronous rollback task ID.",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRestoreTaskResponse": {
+      "document": "DescribeRestoreTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of rollback tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rollback task record list.",
+          "example": "无",
+          "member": "RestoreTask",
+          "name": "Tasks",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -8177,6 +11102,42 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsRequest": {
+      "document": "DisassociateSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group ID.",
+          "example": "sg-igw86yth",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID list, which is an array of one or more instance IDs. Multiple instances should be in the same region, AZ, and project.",
+          "example": "[\"mssql-6f4ddx2f\\r\\n\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateSecurityGroupsResponse": {
+      "document": "DisassociateSecurityGroups response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -8886,9 +11847,10 @@
         {
           "disabled": false,
           "document": "Name of migrated database",
-          "example": "",
+          "example": "db1",
           "member": "string",
           "name": "DBName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8902,20 +11864,20 @@
         {
           "disabled": false,
           "document": "Name of current step",
-          "example": "",
+          "example": "Back Up Database",
           "member": "string",
           "name": "StepName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Progress of current step in %",
-          "example": "",
+          "example": "50",
           "member": "int64",
           "name": "Progress",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -8928,9 +11890,10 @@
         {
           "disabled": false,
           "document": "Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)",
-          "example": "",
+          "example": "mssql-si2823jyl",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8938,9 +11901,10 @@
         {
           "disabled": false,
           "document": "ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
-          "example": "",
+          "example": "ins-62dhd3d1",
           "member": "string",
           "name": "CvmId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8948,9 +11912,10 @@
         {
           "disabled": false,
           "document": "VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
-          "example": "",
+          "example": "vpc-6ys9ont9",
           "member": "string",
           "name": "VpcId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8958,9 +11923,10 @@
         {
           "disabled": false,
           "document": "VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
-          "example": "",
+          "example": "subnet-h9extioi",
           "member": "string",
           "name": "SubnetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8968,9 +11934,10 @@
         {
           "disabled": false,
           "document": "Username, which is used when `MigrateType` is 1 or 2",
-          "example": "",
+          "example": "andy",
           "member": "string",
           "name": "UserName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8978,9 +11945,10 @@
         {
           "disabled": false,
           "document": "Password, which is used when `MigrateType` is 1 or 2",
-          "example": "",
+          "example": "Zh22448899",
           "member": "string",
           "name": "Password",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8988,9 +11956,10 @@
         {
           "disabled": false,
           "document": "Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
-          "example": "",
+          "example": "172.1.1.5",
           "member": "string",
           "name": "Ip",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -8998,9 +11967,10 @@
         {
           "disabled": false,
           "document": "Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
-          "example": "",
+          "example": "22",
           "member": "uint64",
           "name": "Port",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -9008,9 +11978,10 @@
         {
           "disabled": false,
           "document": "Source backup address for offline migration, which is used when `MigrateType` is 4 or 5",
-          "example": "",
+          "example": "http://gz-oncvm-1254065710.cosgz.myqcloud.com/test4_20180724021516.bak",
           "member": "string",
           "name": "Url",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -9018,9 +11989,10 @@
         {
           "disabled": false,
           "document": "Source backup password for offline migration, which is used when `MigrateType` is 4 or 5",
-          "example": "",
+          "example": "Ps55336622",
           "member": "string",
           "name": "UrlPassword",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9034,9 +12006,10 @@
         {
           "disabled": false,
           "document": "ID of target instance in the format of mssql-si2823jyl",
-          "example": "",
+          "example": "mssql-si2823jyl",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9044,9 +12017,10 @@
         {
           "disabled": false,
           "document": "Username of migration target instance",
-          "example": "",
+          "example": "andy",
           "member": "string",
           "name": "UserName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9054,9 +12028,10 @@
         {
           "disabled": false,
           "document": "Password of migration target instance",
-          "example": "",
+          "example": "Zh22446688",
           "member": "string",
           "name": "Password",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9070,130 +12045,130 @@
         {
           "disabled": false,
           "document": "Migration task ID",
-          "example": "",
+          "example": "2728",
           "member": "uint64",
           "name": "MigrateId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task name",
-          "example": "",
+          "example": "andy-Migrate",
           "member": "string",
           "name": "MigrateName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "User ID of migration task",
-          "example": "",
+          "example": "1254**5710",
           "member": "uint64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task region",
-          "example": "",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
-          "example": "",
+          "example": "5",
           "member": "int64",
           "name": "SourceType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task creation time",
-          "example": "",
+          "example": "2024-08-06 17:44:58",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task start time",
-          "example": "",
+          "example": "2024-08-06 17:45:58",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task end time",
-          "example": "",
+          "example": "2024-08-06 17:50:58",
           "member": "datetime",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Information",
-          "example": "",
+          "example": "Message",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "CheckFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task progress in %",
-          "example": "",
+          "example": "50",
           "member": "int64",
           "name": "Progress",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Migration task progress details",
-          "example": "",
+          "example": "[{\"StepName\": \"Back Up Database\",\"Progress\": \"50\"}]",
           "member": "MigrateDetail",
           "name": "MigrateDetail",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -9667,6 +12642,60 @@
       ],
       "type": "object"
     },
+    "ModifyBackupNameRequest": {
+      "document": "ModifyBackupName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-6upluvd5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified backup name.",
+          "example": "backup_name",
+          "member": "string",
+          "name": "BackupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The backup ID can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API. When the value of GroupId is null, BackupId is required.",
+          "example": "1234568",
+          "member": "uint64",
+          "name": "BackupId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Backup task group ID, which can be obtained through the [DescribeBackups](https://cloud.tencent.com/document/product/238/19943) API in single-database backup file mode. BackupId and GroupId exist simultaneously, and are modified according to BackupId.",
+          "example": "558800",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupNameResponse": {
+      "document": "ModifyBackupName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyBackupStrategyRequest": {
       "document": "ModifyBackupStrategy request structure.",
       "members": [
@@ -9717,7 +12746,7 @@
         },
         {
           "disabled": false,
-          "document": "The days of the week on which backup will be performed when “BackupType” is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.",
+          "document": "The days of the week on which backup will be performed when \"BackupType\" is `weekly`. If data backup retention period is less than 7 days, the values will be 1-7, indicating that backup will be performed everyday by default; if data backup retention period is greater than or equal to 7 days, the values will be at least any two days, indicating that backup will be performed at least twice in a week by default.",
           "example": "[1,2,3,4,5,6,7]",
           "member": "uint64",
           "name": "BackupCycle",
@@ -9744,7 +12773,7 @@
         },
         {
           "disabled": false,
-          "document": "Archive backup retention days. Value range: 90–3650 days. Default value: 365 days.",
+          "document": "Archive backup retention days. Value range: 90-3650 days. Default value: 365 days.",
           "example": "90",
           "member": "uint64",
           "name": "RegularBackupSaveDays",
@@ -9806,7 +12835,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Returned error code.",
           "example": "0",
           "member": "int64",
           "name": "Code",
@@ -9814,6 +12843,124 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCloseWanIpRequest": {
+      "document": "ModifyCloseWanIp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance resource ID. ",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "RO group ID.",
+          "example": "mssqlrg-hua8ajq",
+          "member": "string",
+          "name": "RoGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCloseWanIpResponse": {
+      "document": "ModifyCloseWanIp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the process of disabling the public network.",
+          "example": "99999",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCrossBackupStrategyRequest": {
+      "document": "ModifyCrossBackupStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cross-region backup switch (data backup & log backup). enable - enabled; disable - disabled.",
+          "example": "enable",
+          "member": "string",
+          "name": "CrossBackupEnabled",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID list.",
+          "example": "[mssql-7vfv3rk3]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Retention days for cross-region backups. Value range: 7-1830. The default value is 7.",
+          "example": "7",
+          "member": "uint64",
+          "name": "CrossBackupSaveDays",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Target region ID for cross-region backups, with a maximum of two and a minimum of one.",
+          "example": "[ap-guangzhou]",
+          "member": "string",
+          "name": "CrossBackupRegion",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to clean up cross-region backups (data backups & log backups) immediately. This parameter is only valid when the value of BackupEnabled is disabled. 1 - yes; 0 - no. The default value is 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "CleanUpCrossBackup",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCrossBackupStrategyResponse": {
+      "document": "ModifyCrossBackupStrategy response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -10077,6 +13224,124 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceSSLRequest": {
+      "document": "ModifyDBInstanceSSL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type. enable - enable SSL; disable - disable SSL; renew - update the validity period of the certificate.",
+          "example": "enable",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation settings. 0 - execute immediately; 1 - execute within the maintenance time. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "WaitSwitch",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is protected through KMS encryption. 0 - no; 1 - yes. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsKMS",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is required when the value of IsKMS is 1.",
+          "example": "df*******************************52",
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is required when the value of IsKMS is 1.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KeyRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSSLResponse": {
+      "document": "ModifyDBInstanceSSL response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task flow ID.",
+          "example": "100001",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsRequest": {
+      "document": "ModifyDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-c1nl9rpv or mssqlro-c1nl9rpv, which is the same as that displayed on the cloud database console page.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of security group IDs to be modified, which is an array of one or more security group IDs.",
+          "example": "[\"sg-igw86yth\\r\\n\"]",
+          "member": "string",
+          "name": "SecurityGroupIdSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsResponse": {
+      "document": "ModifyDBInstanceSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBNameRequest": {
       "document": "ModifyDBName request structure.",
       "members": [
@@ -10241,6 +13506,42 @@
       ],
       "type": "object"
     },
+    "ModifyDataBaseTuple": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "DatabaseTuple",
+          "name": "DatabaseTuple",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "DatabaseTuple",
+          "name": "NewDatabaseTuple",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "DeleteDataBasesTuple",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
     "ModifyDatabaseCDCRequest": {
       "document": "ModifyDatabaseCDC request structure.",
       "members": [
@@ -10390,6 +13691,98 @@
         {
           "disabled": false,
           "document": "Task ID",
+          "example": "99999",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabasePrivilegeRequest": {
+      "document": "ModifyDatabasePrivilege request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-njj2mtpl.",
+          "example": "mssql-njj2mtpl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database permission change information.",
+          "example": "无",
+          "member": "DataBasePrivilegeModifyInfo",
+          "name": "DataBaseSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabasePrivilegeResponse": {
+      "document": "ModifyDatabasePrivilege response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task flow ID.",
+          "example": "30321",
+          "member": "uint64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseShrinkMDFRequest": {
+      "document": "ModifyDatabaseShrinkMDF request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name array.",
+          "example": "[db_test]",
+          "member": "string",
+          "name": "DBNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-j8kv137v",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseShrinkMDFResponse": {
+      "document": "ModifyDatabaseShrinkMDF response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID.",
           "example": "99999",
           "member": "int64",
           "name": "FlowId",
@@ -10579,6 +13972,60 @@
       ],
       "type": "object"
     },
+    "ModifyMaintenanceSpanRequest": {
+      "document": "ModifyMaintenanceSpan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-k8voqdlz.",
+          "example": "mssql-6upluvd5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the days in each week allowed for maintenance. For example, [1,2,3,4,5,6,7] indicates that all days from Monday to Sunday are allowed for maintenance. If this parameter is left unspecified, this value is not modified.",
+          "example": "[\"1\\r\\n\",\"2\\r\\n\",\"3\\r\\n\"]",
+          "member": "int64",
+          "name": "Weekly",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance start time each day. For example, 10:24 indicates that the maintenance window starts at 10:24. If this parameter is left unspecified, this value is not modified.",
+          "example": "00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance duration each day, in hours. For example, 1 indicates that the duration is 1 hour after maintenance starts. If this parameter is left unspecified, this value is not modified.",
+          "example": "6",
+          "member": "uint64",
+          "name": "Span",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintenanceSpanResponse": {
+      "document": "ModifyMaintenanceSpan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyMigrationRequest": {
       "document": "ModifyMigration request structure.",
       "members": [
@@ -10661,6 +14108,242 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOpenWanIpRequest": {
+      "document": "ModifyOpenWanIp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance resource ID. ",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "RO group ID.",
+          "example": "mssqlrg-uq7jq8q",
+          "member": "string",
+          "name": "RoGroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOpenWanIpResponse": {
+      "document": "ModifyOpenWanIp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the process of enabling the public network.",
+          "example": "99999",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublishSubscribeNameRequest": {
+      "document": "ModifyPublishSubscribeName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Publish/subscribe ID.",
+          "example": "5",
+          "member": "uint64",
+          "name": "PublishSubscribeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe name to be modified.",
+          "example": "Change_name",
+          "member": "string",
+          "name": "PublishSubscribeName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublishSubscribeNameResponse": {
+      "document": "ModifyPublishSubscribeName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublishSubscribeRequest": {
+      "document": "ModifyPublishSubscribe request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. For example: mssql-dg32dcv.",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe ID.",
+          "example": "2",
+          "member": "int64",
+          "name": "PublishSubscribeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Publish/subscribe relationship collection of the database to be modified.",
+          "example": "无",
+          "member": "ModifyDataBaseTuple",
+          "name": "DatabaseTupleSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublishSubscribeResponse": {
+      "document": "ModifyPublishSubscribe response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task flow ID.",
+          "example": "10",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyReadOnlyGroupDetailsRequest": {
+      "document": "ModifyReadOnlyGroupDetails request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID, in the format of mssql-3l3fgqn7.",
+          "example": "mssql-6f4ddx2f",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group ID.",
+          "example": "mssqlrg-552tyamb",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group name. The modification is not performed if this parameter is left unspecified.",
+          "example": "change_name",
+          "member": "string",
+          "name": "ReadOnlyGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the delayed read-only instance removal feature. 0 - disabled; 1 - enabled. The modification is not performed if this parameter is left unspecified.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsOfflineDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Timeout threshold used after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.",
+          "example": "18",
+          "member": "int64",
+          "name": "ReadOnlyMaxDelayTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Minimum number of retained read-only replicas in the read-only group, after the delayed read-only instance removal feature is enabled. The modification is not performed if this parameter is left unspecified.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReadOnlyInGroup",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Collection of read-only group instance weight modification. The modification is not performed if this parameter is left unspecified.",
+          "example": "无",
+          "member": "ReadOnlyInstanceWeightPair",
+          "name": "WeightPairs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "0 - user-defined weight (adjust according to WeightPairs); 1 - automatically assigned weight by the system (invalid WeightPairs). The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoWeight",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "0 - not rebalance the load; 1 - rebalance the load. The default value is 0.",
+          "example": "1",
+          "member": "int64",
+          "name": "BalanceWeight",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyReadOnlyGroupDetailsResponse": {
+      "document": "ModifyReadOnlyGroupDetails response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -10987,6 +14670,538 @@
       ],
       "usage": "out"
     },
+    "PublishSubscribe": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172631",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "sqlPublishSubscribe",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-2cwisu23",
+          "member": "string",
+          "name": "PublishInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-andy",
+          "member": "string",
+          "name": "PublishInstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172.1.1.1",
+          "member": "string",
+          "name": "PublishInstanceIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-hlh6yka1",
+          "member": "string",
+          "name": "SubscribeInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-toto",
+          "member": "string",
+          "name": "SubscribeInstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172.2.2.2",
+          "member": "string",
+          "name": "SubscribeInstanceIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"PublishDatabase\": \"db1\",\"SubscribeDatabase\": \"db2\",\"LastSyncTime\": \"2024-12-23 00:24:26\",\"Status\": \"\trunning\"}]",
+          "member": "DatabaseTupleStatus",
+          "name": "DatabaseTupleSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReadOnlyGroup": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssqlrg-dj5i29c5n",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "andy_ReadOnlyGroup",
+          "member": "string",
+          "name": "ReadOnlyGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "IsOfflineDelay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100",
+          "member": "int64",
+          "name": "ReadOnlyMaxDelayTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReadOnlyInGroup",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Vip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1433",
+          "member": "int64",
+          "name": "Vport",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "vpc-kw88teud",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "subnet-8z5n8tcg",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-sgeshe3th",
+          "member": "string",
+          "name": "MasterInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ReadOnlyInstance",
+          "name": "ReadOnlyInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RO group's public network address domain name",
+          "example": "gz.xxx.sqlserver.tencent.com",
+          "member": "string",
+          "name": "DnsPodDomain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RO group's public network address port",
+          "example": "2032",
+          "member": "uint64",
+          "name": "TgwWanVPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReadOnlyInstance": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-dj5i29c5n",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "andy",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "gamedb.gz000.cdb.db",
+          "member": "string",
+          "name": "Uid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100",
+          "member": "int64",
+          "name": "Storage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2008R2",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TS85",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Model",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Weight",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "DelayTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Init",
+          "member": "string",
+          "name": "SynStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "DatabaseDifference",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ac1",
+          "member": "string",
+          "name": "AccountDifference",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2020-04-09 00:00:00",
+          "member": "string",
+          "name": "IsolateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReadOnlyInstanceWeightPair": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssqlro-3l3fgqn7",
+          "member": "string",
+          "name": "ReadOnlyInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "int64",
+          "name": "ReadOnlyWeight",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "RecycleDBInstanceRequest": {
       "document": "RecycleDBInstance request structure.",
       "members": [
@@ -11009,6 +15224,52 @@
           "disabled": false,
           "document": "Task ID",
           "example": "100010",
+          "member": "int64",
+          "name": "FlowId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecycleReadOnlyGroupRequest": {
+      "document": "RecycleReadOnlyGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID.",
+          "example": "mssql-2cwisu23",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only group ID.",
+          "example": "mssqlrg-787oxy95",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecycleReadOnlyGroupResponse": {
+      "document": "RecycleReadOnlyGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task flow ID.",
+          "example": "1001539",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -11070,6 +15331,60 @@
       ],
       "usage": "out"
     },
+    "RemoveBackupsRequest": {
+      "document": "RemoveBackups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. For example, mssql-j8kv137v.",
+          "example": "mssql-6upluvd5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup names to be deleted. Backup names can be obtained through the FileName field of the DescribeBackups API. The number of backups for batch deletion in a single request should not exceed 10. This field is required when the values of StartTime and EndTime are null.",
+          "example": "[\"manual_instance_58001_20180702010430.bak.tar\\r\\n\"]",
+          "member": "string",
+          "name": "BackupNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Start time for batch deletion of manual backups. This field is required when the value of BackupNames is null.",
+          "example": "2022-04-20 22:23:12",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Deadline for batch deletion of manual backups. This field is required when the value of BackupNames is null.",
+          "example": "2022-04-21 22:23:12",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveBackupsResponse": {
+      "document": "RemoveBackups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RenameRestoreDatabase": {
       "document": "It is used to specify and rename the database to be restored through the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, `CloneDB` or `ModifyBackupMigration` APIs.",
       "members": [
@@ -11095,6 +15410,33 @@
         }
       ],
       "usage": "in"
+    },
+    "RenewPostpaidDBInstanceRequest": {
+      "document": "RenewPostpaidDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of mssql-3l3fgqn7 or mssqlro-3l3fgqn7.",
+          "example": "mssql-ms2m7vut",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewPostpaidDBInstanceResponse": {
+      "document": "RenewPostpaidDBInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResetAccountPasswordRequest": {
       "document": "ResetAccountPassword request structure.",
@@ -11297,6 +15639,132 @@
       ],
       "type": "object"
     },
+    "RestoreTask": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-8932uijww",
+          "member": "string",
+          "name": "TargetInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-890oiioew",
+          "member": "string",
+          "name": "TargetInstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "TargetInstanceStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "TargetRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2090292",
+          "member": "int64",
+          "name": "RestoreId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "TargetType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "RestoreType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "RestoreTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-01-01 12:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-01-02 12:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "RollbackInstanceRequest": {
       "document": "RollbackInstance request structure.",
       "members": [
@@ -11447,6 +15915,138 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroup": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172632",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2024-12-23 00:23:13",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"Action\": \"ACCEPT\",\"CidrIp\": \"0.0.0.0/0\",\"Dir\": \"INPUT\",\"IpProtocol\": \"ALL\",\"PortRange\": \"ALL\"}]",
+          "member": "SecurityGroupPolicy",
+          "name": "InboundSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"Action\": \"ACCEPT\",\"CidrIp\": \"0.0.0.0/0\",\"Dir\": \"OUTPUT\",\"IpProtocol\": \"ALL\",\"PortRange\": \"ALL\"}]",
+          "member": "SecurityGroupPolicy",
+          "name": "OutboundSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "sg-igw86yth",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "default",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "System created security group",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupPolicy": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172.16.0.0/12",
+          "member": "string",
+          "name": "CidrIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1433",
+          "member": "string",
+          "name": "PortRange",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TCP",
+          "member": "string",
+          "name": "IpProtocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": " INPUT",
+          "member": "string",
+          "name": "Dir",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -12067,6 +16667,254 @@
         }
       ],
       "type": "object"
+    },
+    "SummaryDetailRes": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mssql-7vfv3rk3",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "andy",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ActualUsedSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "DataBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "LogBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBackupSpace",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "ManualBackupCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SwitchCloudInstanceHARequest": {
+      "document": "SwitchCloudInstanceHA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mssql-8ua7ah",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Switch execution method. 0 - execute immediately; 1 - execute within the time window. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "WaitSwitch",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchCloudInstanceHAResponse": {
+      "document": "SwitchCloudInstanceHA response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task flow ID.",
+          "example": "102022",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchLog": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "f39bc24b76d1c5d3ce60f0dcb9e0bd79",
+          "member": "string",
+          "name": "EventId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "SwitchType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "AUTO",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TDEConfigAttribute": {
       "document": "TDE configuration",
