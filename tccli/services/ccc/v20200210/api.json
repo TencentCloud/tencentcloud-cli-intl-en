@@ -1344,7 +1344,7 @@
         {
           "disabled": false,
           "document": "Called number.",
-          "example": "008613012345678",
+          "example": "0086130xxxxxxxx",
           "member": "string",
           "name": "Callee",
           "required": true,
@@ -1362,7 +1362,7 @@
         {
           "disabled": false,
           "document": "Parameter.",
-          "example": "{\"foo\":\"bar\"}",
+          "example": "无",
           "member": "Variable",
           "name": "Variables",
           "required": false,
@@ -1468,7 +1468,7 @@
         {
           "disabled": false,
           "document": "Called number.",
-          "example": "008613012345678",
+          "example": "0086xxx",
           "member": "string",
           "name": "Callee",
           "required": true,
@@ -1531,7 +1531,7 @@
         {
           "disabled": false,
           "document": "Caller number list",
-          "example": "[008613912341234, 008613912341235]",
+          "example": "[\"string\"]",
           "member": "string",
           "name": "Callers",
           "required": false,
@@ -1675,7 +1675,7 @@
         {
           "disabled": true,
           "document": "Prompt word variable.",
-          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "example": "无",
           "member": "Variable",
           "name": "PromptVariables",
           "required": false,
@@ -1693,7 +1693,7 @@
         {
           "disabled": false,
           "document": "Call content extraction configuration.",
-          "example": "[{\"InfoType\": \"Boolean\", \"InfoName\": \"兴趣\", \"InfoContent\": \"用户是否对产品感兴趣\"}]",
+          "example": "无",
           "member": "AICallExtractConfigElement",
           "name": "ExtractConfig",
           "required": false,
@@ -1702,7 +1702,7 @@
         {
           "disabled": false,
           "document": "Model temperature control.",
-          "example": "0",
+          "example": "0.1",
           "member": "float",
           "name": "Temperature",
           "required": false,
@@ -1711,7 +1711,7 @@
         {
           "disabled": false,
           "document": "Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  \n\ndify-inputs-xxx specifies the inputs variable for dify.\n2. the dify-inputs-user specifies the user value for dify.\n3. dify-inputs-conversation_id is the conversation_id value of dify.",
-          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "example": "无",
           "member": "Variable",
           "name": "Variables",
           "required": false,

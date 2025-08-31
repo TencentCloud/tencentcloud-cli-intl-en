@@ -40,6 +40,14 @@
         "title": "Completing the Instance Upgrade Immediately"
       }
     ],
+    "CompleteMigration": [
+      {
+        "document": " ",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=CompleteMigration\n&MigrateId=2729\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba35\",\n        \"FlowId\": 30530\n    }\n}",
+        "title": "Completing Migration Tasks"
+      }
+    ],
     "CreateAccount": [
       {
         "document": " ",
@@ -542,6 +550,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMaintenanceSpan\n&InstanceId=mssql-6upluvd5\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"160c730d-b563-4a43-b377-428191d77f39\",\n        \"Span\": 6,\n        \"StartTime\": \"00:00\",\n        \"Weekly\": [\n            1\n        ]\n    }\n}",
         "title": "Query the maintenance time window of the instance"
+      }
+    ],
+    "DescribeMigrationDatabases": [
+      {
+        "document": " ",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeMigrationDatabases\n&InstanceId=mssql-si2823jyl\n&UserName=sqlserver_admin\n&Password=Qy2255778899\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"Amount\": 3,\n        \"MigrateDBSet\": [\n            \"Biz-test1\",\n            \"Biz-test2\",\n            \"Biz-test3\"\n        ]\n    }\n}",
+        "title": "Querying the List of Databases to Be Migrated"
       }
     ],
     "DescribeMigrationDetail": [
