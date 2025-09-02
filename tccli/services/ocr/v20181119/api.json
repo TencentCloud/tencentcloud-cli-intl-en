@@ -1727,7 +1727,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration ID support: \n-- General\n-- InvoiceEng\n-- WayBillEng\n-- CustomsDeclaration\n-- WeightNote\n-- MedicalMeter\n-- BillOfLading\n-- EntrustmentBook\n-- Statement\n-- BookingConfirmation\n-- AirWayBill\n-- Table\n-- SteelLabel\n-- CarInsurance\n-- MultiRealEstateCertificate\n-- MultiRealEstateMaterial\n-- HongKongUtilityBill",
+          "document": "Configuration ID support: \n-- General\n-- InvoiceEng\n-- WayBillEng\n-- CustomsDeclaration\n-- WeightNote\n-- MedicalMeter\n-- BillOfLading\n-- EntrustmentBook\n-- Statement\n-- BookingConfirmation\n-- AirWayBill\n-- Table\n-- SteelLabel\n-- CarInsurance\n-- MultiRealEstateCertificate\n-- MultiRealEstateMaterial\n-- HongKongUtilityBill\n-- OverseasCheques\n-- RegistrationCertificate\n-- GridPhoto\n-- SignaturePage",
           "example": "General",
           "member": "string",
           "name": "ConfigId",
@@ -1755,7 +1755,7 @@
         {
           "disabled": false,
           "document": "Single attribute configuration of a template.",
-          "example": "{\"Scene\": \"only_hw\"}",
+          "example": "无",
           "member": "ConfigAdvanced",
           "name": "ConfigAdvanced",
           "required": false,
@@ -1779,7 +1779,7 @@
         {
           "disabled": false,
           "document": "Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.",
-          "example": "0",
+          "example": "0.0",
           "member": "float",
           "name": "Angle",
           "output_required": true,
@@ -10875,7 +10875,7 @@
           "example": "* 2 1 0 0 0 5 8 9 8 1 2 4 *",
           "member": "string",
           "name": "AutoContent",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10885,7 +10885,7 @@
           "example": "无",
           "member": "Polygon",
           "name": "Coord",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
