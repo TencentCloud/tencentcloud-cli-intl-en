@@ -1,0 +1,690 @@
+{
+  "actions": {
+    "CreateReconstructDocumentFlow": {
+      "document": "This API is used to initiate requests for this asynchronous API, for initiating document parsing tasks.\nDocument parsing supports converting images or PDF files into Markdown format files, and can parse content elements including tables, formulas, images, headings, paragraphs, headers, and footers, and intelligently convert the content into reading order. Please refer to the input parameter list below for specific supported file types.\nDuring the trial period, the QPS limit for a single account is only 1. If you need to access officially, please contact our R&D team.",
+      "input": "CreateReconstructDocumentFlowRequest",
+      "name": "Document Parsing Task Creation",
+      "output": "CreateReconstructDocumentFlowResponse",
+      "status": "online"
+    },
+    "CreateSplitDocumentFlow": {
+      "document": "This API is used to create document segmentation tasks, support various file types, possess mllm capacity, and can analyze and deeply understand the information in charts.",
+      "input": "CreateSplitDocumentFlowRequest",
+      "name": "Document Splitting Task Creation",
+      "output": "CreateSplitDocumentFlowResponse",
+      "status": "online"
+    },
+    "GetReconstructDocumentResult": {
+      "document": "This is an asynchronous API for querying results, which is used to obtain the result of document parsing.",
+      "input": "GetReconstructDocumentResultRequest",
+      "name": "Query Document Parsing Task Result",
+      "output": "GetReconstructDocumentResultResponse",
+      "status": "online"
+    },
+    "GetSplitDocumentResult": {
+      "document": "This API is used to query the results of document splitting tasks.",
+      "input": "GetSplitDocumentResultRequest",
+      "name": "Query Document Splitting Task Result",
+      "output": "GetSplitDocumentResultResponse",
+      "status": "online"
+    },
+    "QueryRewrite": {
+      "document": "QueryRewrite is mainly used in multi-round conversations for reference resolution and ellipsis completion. Using this API, you don't need to input prompt descriptions. A more accurate user query can be generated based on the conversation history. In terms of application scenarios, this API can be applied to various scenarios such as intelligent Q&A and conversational search.\nThere is a call limit for single-account for this API. If you need to increase the concurrency limit, please contact us (https://cloud.tencent.com/act/event/Online_service).",
+      "input": "QueryRewriteRequest",
+      "name": "Multiple rounds of rewriting",
+      "output": "QueryRewriteResponse",
+      "status": "online"
+    },
+    "RunRerank": {
+      "document": "This API is used to reorder the results of multi-channel recall based on the rerank model of knowledge engine fine-tuning model technology, sort the segments according to the relevance between the query and the segment content from high to low score, and output the corresponding scoring results.",
+      "input": "RunRerankRequest",
+      "name": "Reorder",
+      "output": "RunRerankResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2024-05-22",
+    "serviceNameCN": "知识引擎原子能力",
+    "serviceShortName": "lkeap"
+  },
+  "objects": {
+    "CreateReconstructDocumentFlowConfig": {
+      "document": "Configuration information for creating intelligent document parsing tasks.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The form in which tables in a Markdown file are returned.\n- 0: returned as MD.\n- 1: returned as HTML.\nThe default is 0.",
+          "example": "1",
+          "member": "string",
+          "name": "TableResultType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The format of the returned results of intelligent document parsing.\n- 0: only returns full-text MD.\n- 1: only returns the OCR original Json for each page.\n- 2: only returns the MD of each page.\n- 3: returns the full-text MD and the original OCR Json of each page.\n- 4: returns full-text MD and MD of each page.\nThe default value is 3 (returns the full-text MD and the original OCR Json of each page).",
+          "example": "3",
+          "member": "string",
+          "name": "ResultType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateReconstructDocumentFlowRequest": {
+      "document": "CreateReconstructDocumentFlow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File type.\n**Supported file types**: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, MD, TXT, PNG, JPG, JPEG, CSV, HTML, EPUB, BMP, GIF, WEBP, HEIC, EPS, ICNS, IM, PCX, PPM, TIFF, XBM, HEIF, JP2.\n**Supported file sizes**: \n- Max 100 MB for PDF.\n- Max 200 MB for DOC, DOCX, PPT, and PPTX .\n- Max 10 MB for MD, and TXT.\n- Max 20 MB for others.",
+          "example": "PDF",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. Refer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/product/436/7749)",
+          "example": "http://examplebucket-1250000000.cos.ap-beijing.myqcloud.com/example.jpg",
+          "member": "string",
+          "name": "FileUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The base64 value of the file. Supported file types: PNG, JPG, JPEG, PDF, BMP, TIFF. File size limit: the downloaded file does not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.",
+          "example": "文件base64值",
+          "member": "string",
+          "name": "FileBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.",
+          "example": "1",
+          "member": "int64",
+          "name": "FileStartPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.",
+          "example": "100",
+          "member": "int64",
+          "name": "FileEndPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Creates task configuration information for document parsing.",
+          "example": "无",
+          "member": "CreateReconstructDocumentFlowConfig",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReconstructDocumentFlowResponse": {
+      "document": "CreateReconstructDocumentFlow response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique task ID. The processing result corresponding to TaskId can be queried through the API [GetReconstructDocumentResult] within 30 days.",
+          "example": "25adcef61750343903609",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSplitDocumentFlowConfig": {
+      "document": "Configuration information for creating intelligent document splitting task.",
+      "members": [
+        {
+          "disabled": true,
+          "document": "The form in which tables in a Markdown file are returned.\n- 0: returned as MD.\n- 1: returned as HTML.",
+          "example": "1",
+          "member": "string",
+          "name": "TableResultType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "The format of the returned results of intelligent document parsing.\n- 0: only returns full-text MD.\n- 1: only returns the OCR original Json for each page.\n- 2: only returns the MD of each page.\n- 3: returns the full-text MD and the original OCR Json of each page.\n- 4: returns full-text MD and MD of each page.\nThe default value is 3 (returns the full-text MD and the original OCR Json of each page).",
+          "example": "3",
+          "member": "string",
+          "name": "ResultType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable mllm.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableMllm",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Max segment length.",
+          "example": "4800",
+          "member": "int64",
+          "name": "MaxChunkSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateSplitDocumentFlowRequest": {
+      "document": "CreateSplitDocumentFlow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File type.\n**Supported file types**: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, MD, TXT, PNG, JPG, JPEG, CSV, HTML, EPUB.\n**Supported file sizes**: \n- Max 500 MB for PDF.\n- Max 200 MB for DOC, DOCX, PPT, and PPTX .\n- Max 10 MB for MD, and TXT.\n- Max 20 MB for others.",
+          "example": "PDF",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File URL. It is recommended to store the file in Tencent Cloud as the URL where the file is stored in Tencent Cloud can ensure higher download speed and stability. External URL may affect the speed and stability. \nRefer to: [Tencent Cloud COS Documentation](https://cloud.tencent.com/document/product/436/7749).",
+          "example": "https://example.com/example.pdf",
+          "member": "string",
+          "name": "FileUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filename. optional.\n**The file type suffix shall be included**. This field is required to be specified when the file name cannot be obtained from the passed-in \"FileUrl\".",
+          "example": "example.pdf",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "The base64 value of the file. File size limit: the downloaded file shall not exceed 8MB after base64 encoding. File download time does not exceed 3 seconds. Supported image pixels: the length of a single side is between 20-10000px. Either FileUrl or FileBase64 of the file must be provided. If both are provided, only the FileUrl is used.",
+          "example": "文件base64值",
+          "member": "string",
+          "name": "FileBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The starting page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the starting page number for recognition, including the current value.",
+          "example": "1",
+          "member": "int64",
+          "name": "FileStartPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The end page number of the file. When type of the uploaded file is pdf, doc, ppt, or pptx, it specifies the end page number for recognition, including the current value.",
+          "example": "100",
+          "member": "int64",
+          "name": "FileEndPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration message for document splitting task.",
+          "example": "无",
+          "member": "CreateSplitDocumentFlowConfig",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSplitDocumentFlowResponse": {
+      "document": "CreateSplitDocumentFlow response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The unique ID of the splitting task.\nThe splitting results corresponding to the TaskId can be queried through the [GetSplitDocumentResult] API within 30 days.",
+          "example": "236e51fd-827b-41cb-b303-56003a817ce5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DocumentUsage": {
+      "document": "The usage of document splitting task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number of the document splitting task.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Total number of tokens consumed by the document splitting task.",
+          "example": "2048",
+          "member": "int64",
+          "name": "TotalToken",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of tokens consumed by the document splitting task.",
+          "example": "2048",
+          "member": "int64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GetReconstructDocumentResultRequest": {
+      "document": "GetReconstructDocumentResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parsing task ID.",
+          "example": "25adcef61750343903609",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetReconstructDocumentResultResponse": {
+      "document": "GetReconstructDocumentResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status.\n-Success: execution completed.\n-Processing: executing.\n-Pause: paused.\n-Failed: execution failed.\n-WaitExecute: pending execution.",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Temporary download URL for the parsing result. The file is a zip compressed package, and the URL is valid for 30 minutes.",
+          "example": "https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/example/example.zip",
+          "member": "string",
+          "name": "DocumentRecognizeResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number where document parsing fails.",
+          "example": "无",
+          "member": "ReconstructDocumentFailedPage",
+          "name": "FailedPages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSplitDocumentResultRequest": {
+      "document": "GetSplitDocumentResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Splitting task ID.",
+          "example": "236e51fd-827b-41cb-b303-56003a817ce5",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSplitDocumentResultResponse": {
+      "document": "GetSplitDocumentResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status:\n-Success: execution completed.\n-Processing: executing.\n-Pause: paused.\n-Failed: execution failed.\n-WaitExecute: pending execution.",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Temporary download URL for the splitting result. The file is a zip compressed package, and the URL is valid for 30 minutes. The compressed package contains the following folders: \\*.md, \\*.jsonl, \\*mllm.json, images.\n>**jsonl** structure description:.\n- page_content: Used to generate an embedding library for retrieval purposes. The images in this field will be replaced with placeholders.\n- org_data: The minimum semantic integrity block corresponding to page_content, used for Q&A model processing.\n- big_data: The maximum semantic integrity block corresponding to page_content, also used for Q&A model processing.",
+          "example": "https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/example/example.zip",
+          "member": "string",
+          "name": "DocumentRecognizeResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Page number where document splitting fails.",
+          "example": "无",
+          "member": "SplitDocumentFailedPage",
+          "name": "FailedPages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Amount of the document split task.",
+          "example": "无",
+          "member": "DocumentUsage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Message": {
+      "document": "Session content.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role.",
+          "example": "user",
+          "member": "string",
+          "name": "Role",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content.",
+          "example": "content",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Chain of thought content. The ReasoningConent parameter only supports output parameters, and is only returned by the deepseek-r1 model.",
+          "example": "无",
+          "member": "string",
+          "name": "ReasoningContent",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "QueryRewriteRequest": {
+      "document": "QueryRewrite request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The multi-round historical conversation that needs to be rewritten. Each round of historical conversation should include paired inputs of user (question) and assistant (answer). Due to the character limit of the model, a maximum of 4 rounds of conversations can be provided. The last round of conversation will be rewritten.",
+          "example": "无",
+          "member": "Message",
+          "name": "Messages",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Model name.",
+          "example": "lke-query-rewrite-base",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryRewriteResponse": {
+      "document": "QueryRewrite response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rewritten result.",
+          "example": "你好",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption. The numbers of input tokens, output tokens, and total tokens will be returned.",
+          "example": "无",
+          "member": "Usage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReconstructDocumentFailedPage": {
+      "document": "Document parsing failure record.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number that failed to parse.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RunRerankRequest": {
+      "document": "RunRerank request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query content.",
+          "example": "腾讯知识引擎大模型",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document list, up to 20 documents.",
+          "example": "[\"腾讯知识引擎\",\"知识引擎大模型\"]",
+          "member": "string",
+          "name": "Docs",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Model name. Default: lke-reranker-base.",
+          "example": "lke-reranker-base",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RunRerankResponse": {
+      "document": "RunRerank response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Relevance. A higher numeric value indicates greater relevance.",
+          "example": "[-19.681953, -19.414124]",
+          "member": "float",
+          "name": "ScoreList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption. Only returns TotalToken.",
+          "example": "无",
+          "member": "Usage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SplitDocumentFailedPage": {
+      "document": "Document parsing failure record.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number that failed to parse.",
+          "example": "无",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Usage": {
+      "document": "Consumption.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of document pages.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalPages",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of input tokens.",
+          "example": "10",
+          "member": "int64",
+          "name": "InputTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of output tokens.",
+          "example": "10",
+          "member": "int64",
+          "name": "OutputTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of tokens.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  }
+}

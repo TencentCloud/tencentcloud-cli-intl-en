@@ -155,7 +155,7 @@
       "status": "online"
     },
     "RecognizeMainlandIDCardOCR": {
-      "document": "This interface supports the identification of all fields on the front and back of the second-generation ID card for mainland Chinese residents.Including name, gender, ethnicity, date of birth, address, citizen ID number, issuing authority, and validity period, the identification accuracy reaches more than 99%.In addition, this interface also supports a variety of value-added capabilities to meet the needs of different scenarios. Such as the cropping function of ID card photos and portrait photos, and also has 5 alarm functions.\nAs shown in the table below. <table style=\"width:650px\"> <thead> <tr> <th width=\"150\">Value-added ability</th> <th width=\"500\">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan=\"9\">Alarm function</td> </tr> <tr> <td>ID card copy warning</td> </tr> <tr> <td>ID card copy warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default interface request frequency limit: 20 times/second",
+      "document": "This interface supports the identification of all fields on the front and back of the second-generation ID card for mainland Chinese residents.Including name, gender, ethnicity, date of birth, address, citizen ID number, issuing authority, and validity period, the identification accuracy reaches more than 99%.In addition, this interface also supports a variety of value-added capabilities to meet the needs of different scenarios. Such as the cropping function of ID card photos and portrait photos, and also has 5 alarm functions.\nAs shown in the table below. <table style=\"width:650px\"> <thead> <tr> <th width=\"150\">Value-added ability</th> <th width=\"500\">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan=\"9\">Alarm function</td> </tr> <tr> <td>ID card photocopy warning</td> </tr> <tr> <td>ID card on-screen display warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default interface request frequency limit: 20 times/second",
       "input": "RecognizeMainlandIDCardOCRRequest",
       "name": "Mainland ID Card OCR",
       "output": "RecognizeMainlandIDCardOCRResponse",
@@ -7146,7 +7146,7 @@
         {
           "disabled": false,
           "document": "The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -7155,7 +7155,7 @@
         {
           "disabled": false,
           "document": "The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -7247,7 +7247,7 @@
         {
           "disabled": false,
           "document": "ID number (portrait side)",
-          "example": "440524198701010014",
+          "example": "440********010014",
           "member": "string",
           "name": "IdNum",
           "output_required": true,
@@ -7257,7 +7257,7 @@
         {
           "disabled": false,
           "document": "Card authority(national emblem side)",
-          "example": "无",
+          "example": "深圳市公安局宝安分局",
           "member": "string",
           "name": "Authority",
           "output_required": true,
@@ -7267,7 +7267,7 @@
         {
           "disabled": false,
           "document": "Card valid date (national emblem side)",
-          "example": "无",
+          "example": "2016.02.20-2036.02.20",
           "member": "string",
           "name": "ValidDate",
           "output_required": true,
@@ -7277,7 +7277,7 @@
         {
           "disabled": false,
           "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
-          "example": "无",
+          "example": "[-9109]",
           "member": "int64",
           "name": "WarnCardInfos",
           "output_required": true,
@@ -7287,7 +7287,7 @@
         {
           "disabled": false,
           "document": "Portrait image base64",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "PortraitImage",
           "output_required": true,
@@ -7297,7 +7297,7 @@
         {
           "disabled": false,
           "document": "ID card photo cropping results base64",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "IdCardImage",
           "output_required": true,
