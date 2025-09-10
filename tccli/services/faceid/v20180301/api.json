@@ -5721,6 +5721,24 @@
           "name": "LivenessRetryLimit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the liveness detection timeout period in seconds. value range: (0,600].",
+          "example": "45",
+          "member": "uint64",
+          "name": "LivenessTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.",
+          "example": "-9104,-9105",
+          "member": "string",
+          "name": "SelectedWarningCodes",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"

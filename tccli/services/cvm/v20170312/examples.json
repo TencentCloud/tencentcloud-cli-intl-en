@@ -530,6 +530,14 @@
         "title": "Renaming instances"
       }
     ],
+    "ModifyInstancesDisasterRecoverGroup": [
+      {
+        "document": "This example shows you how to adjust the instance location in an instance placement group.",
+        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyInstancesDisasterRecoverGroup\n&InstanceIds.0=ins-r8hr2upy\n&DisasterRecoverGroupId=ps-a66w6rlb\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
+        "title": "Adjusting Instance Placement Groups"
+      }
+    ],
     "ModifyInstancesProject": [
       {
         "document": "This example shows you how to change the projects of two instances.",

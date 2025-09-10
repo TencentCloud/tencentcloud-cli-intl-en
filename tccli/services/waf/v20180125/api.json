@@ -56,6 +56,13 @@
       "output": "CreateIpAccessControlResponse",
       "status": "online"
     },
+    "CreateOwaspWhiteRule": {
+      "document": "This API is used to add a rule engine allowlist.",
+      "input": "CreateOwaspWhiteRuleRequest",
+      "name": "Add a rule engine allowlist",
+      "output": "CreateOwaspWhiteRuleResponse",
+      "status": "online"
+    },
     "DeleteAntiFakeUrl": {
       "document": "Delete tamper-proof URL",
       "input": "DeleteAntiFakeUrlRequest",
@@ -103,6 +110,20 @@
       "input": "DeleteIpAccessControlV2Request",
       "name": "Deletes an IP blocklist/allowlist",
       "output": "DeleteIpAccessControlV2Response",
+      "status": "online"
+    },
+    "DeleteOwaspRuleStatus": {
+      "document": "This API is used to unlock the Door God rule status.",
+      "input": "DeleteOwaspRuleStatusRequest",
+      "name": "Delete a user-defined rule status",
+      "output": "DeleteOwaspRuleStatusResponse",
+      "status": "online"
+    },
+    "DeleteOwaspWhiteRule": {
+      "document": "This API is used to delete a user rule engine allowlist.",
+      "input": "DeleteOwaspWhiteRuleRequest",
+      "name": "Delete a user rule engine allowlist",
+      "output": "DeleteOwaspWhiteRuleResponse",
       "status": "online"
     },
     "DeleteSession": {
@@ -292,6 +313,27 @@
       "input": "DescribeObjectsRequest",
       "name": "View protected object list",
       "output": "DescribeObjectsResponse",
+      "status": "online"
+    },
+    "DescribeOwaspRuleTypes": {
+      "document": "This API is used to query the rule types of the rule engine.",
+      "input": "DescribeOwaspRuleTypesRequest",
+      "name": "Query the rule type list of the rule engine",
+      "output": "DescribeOwaspRuleTypesResponse",
+      "status": "online"
+    },
+    "DescribeOwaspRules": {
+      "document": "This API is used to query the rule list of the rule engine.",
+      "input": "DescribeOwaspRulesRequest",
+      "name": "Query the rule list of the rule engine",
+      "output": "DescribeOwaspRulesResponse",
+      "status": "online"
+    },
+    "DescribeOwaspWhiteRules": {
+      "document": "This API is used to retrieve the allowlist for the rule engine.",
+      "input": "DescribeOwaspWhiteRulesRequest",
+      "name": "Obtain user rule engine allowlist",
+      "output": "DescribeOwaspWhiteRulesResponse",
       "status": "online"
     },
     "DescribePeakPoints": {
@@ -593,6 +635,41 @@
       "input": "ModifyObjectRequest",
       "name": "Modify protection object",
       "output": "ModifyObjectResponse",
+      "status": "online"
+    },
+    "ModifyOwaspRuleStatus": {
+      "document": "This API is used to refresh the rule switch.",
+      "input": "ModifyOwaspRuleStatusRequest",
+      "name": "Refresh the rule switch",
+      "output": "ModifyOwaspRuleStatusResponse",
+      "status": "online"
+    },
+    "ModifyOwaspRuleTypeAction": {
+      "document": "This API is used to update the protection mode of the rule type.",
+      "input": "ModifyOwaspRuleTypeActionRequest",
+      "name": "Update the protection mode of the rule type",
+      "output": "ModifyOwaspRuleTypeActionResponse",
+      "status": "online"
+    },
+    "ModifyOwaspRuleTypeLevel": {
+      "document": "This API is used to update the protection level of a rule type.",
+      "input": "ModifyOwaspRuleTypeLevelRequest",
+      "name": "Update the protection level of the rule type",
+      "output": "ModifyOwaspRuleTypeLevelResponse",
+      "status": "online"
+    },
+    "ModifyOwaspRuleTypeStatus": {
+      "document": "This API is used to update the rule type switch.",
+      "input": "ModifyOwaspRuleTypeStatusRequest",
+      "name": "Update the rule type switch",
+      "output": "ModifyOwaspRuleTypeStatusResponse",
+      "status": "online"
+    },
+    "ModifyOwaspWhiteRule": {
+      "document": "This API is used to edit the allowlist for the rule engine.",
+      "input": "ModifyOwaspWhiteRuleRequest",
+      "name": "Edit a rule engine allowlist",
+      "output": "ModifyOwaspWhiteRuleResponse",
       "status": "online"
     },
     "ModifyProtectionStatus": {
@@ -3413,12 +3490,121 @@
       ],
       "type": "object"
     },
+    "CreateOwaspWhiteRuleRequest": {
+      "document": "CreateOwaspWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule name",
+          "example": "rulename",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule-Based matching policy list.",
+          "example": "[{\"Field\": \"URL\",\"Arg\": \"\",\"CompareFunc\": \"eq\",\"Content\": \"/acl\"}]",
+          "member": "Strategy",
+          "name": "Strategies",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "ID list of allowlisted rules.",
+          "example": "[90501998,  90501999]",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).",
+          "example": "0",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.",
+          "example": "TimedJob",
+          "member": "string",
+          "name": "JobType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task configuration",
+          "example": "{\"Timed\":[{\"StartDateTime\":1711618518,\"EndDateTime\":1711918518}],\"Cron\":[{\"Day\":12,\"WDay\":2,\"StartTime\":\"12:11\",\"EndTime\":\"21:00\"}],\"TimeTZone\":\"UTC+8\"}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOwaspWhiteRuleResponse": {
+      "document": "CreateOwaspWhiteRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "10011",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CronJob": {
       "document": "Data structure of periodic rule execution",
       "members": [
         {
           "disabled": false,
-          "document": "Days in each month for execution\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Execution day of each month.",
           "example": "[2, 13]",
           "member": "uint64",
           "name": "Days",
@@ -3429,7 +3615,7 @@
         },
         {
           "disabled": false,
-          "document": "Days of each week for execution\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Execution day of each week.",
           "example": "[4, 0]",
           "member": "uint64",
           "name": "WDays",
@@ -3440,7 +3626,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Start time.",
           "example": "19:21",
           "member": "string",
           "name": "StartTime",
@@ -3451,7 +3637,7 @@
         },
         {
           "disabled": false,
-          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "End time",
           "example": "21:00",
           "member": "string",
           "name": "EndTime",
@@ -3846,6 +4032,78 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOwaspRuleStatusRequest": {
+      "document": "DeleteOwaspRuleStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID list",
+          "example": "[10000000,20000000]",
+          "member": "string",
+          "name": "RuleIDs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOwaspRuleStatusResponse": {
+      "document": "DeleteOwaspRuleStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOwaspWhiteRuleRequest": {
+      "document": "DeleteOwaspWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID list of allowlisted rules.",
+          "example": "[100011,100023]",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "www.waf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOwaspWhiteRuleResponse": {
+      "document": "DeleteOwaspWhiteRule response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -6396,6 +6654,264 @@
           "example": "[                     {                         \"ApiStatus\": 0,                         \"BotStatus\": 0,                         \"ClsStatus\": 0,                         \"InstanceId\": \"waf_2kuil2ft02vqm7z3\",                         \"InstanceLevel\": 3,                         \"InstanceName\": \"gz-Default1\",                         \"IpHeaders\": [                             \"spheader\",                             \"myheader\"                         ],                         \"NumericalVpcId\": -1,                         \"ObjectFlowMode\": 1,                         \"ObjectId\": \"lb-70mdt3it\",                         \"ObjectName\": \"zunhua-multi-test_pjk1\",                         \"PostCKafkaStatus\": 0,                         \"PostCLSStatus\": 0,                         \"PreciseDomains\": [],                         \"PrivateIp\": [                             \"\"                         ],                         \"Proxy\": 3,                         \"PublicIp\": [                             \"139.186.100.71\"                         ],                         \"Region\": \"ap-chongqing\",                         \"Status\": 1,                         \"Type\": \"CLB\",                         \"VirtualDomain\": \"lb-70mdt3it.clb-default.qcloudwaf.com\",                         \"Vpc\": \"vpc-jl1cw1e9\",                         \"VpcName\": \"Default-VPC\"                     }                 ]",
           "member": "ClbObject",
           "name": "ClbObjects",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspRuleTypesRequest": {
+      "document": "DescribeOwaspRuleTypes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain names to be queried",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Capacity per page. defaults to 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. supports rule ID, CVE ID, and description.",
+          "example": "{\"ExactMatch\": true,\"Name\": \"RuleId\", \"Values\": [\"10000001\"]}",
+          "member": "FiltersItemNew",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspRuleTypesResponse": {
+      "document": "DescribeOwaspRuleTypes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of rule types.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule type list and information.",
+          "example": "[{\"Name\": \"rulename\",\"Desc\": \"description\",\"RuleTypeStatus\": 0,\"ActiveRuleCount\": 10,\"TotalRuleCount\": 12}]",
+          "member": "OwaspRuleType",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspRulesRequest": {
+      "document": "DescribeOwaspRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain to be queried",
+          "example": "www.waf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Capacity per page. defaults to 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the field used to sort. valid values: RuleId, UpdateTime.",
+          "example": "RuleId",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method. supports asc, desc.",
+          "example": "asc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the criteria, support rule ID, rule type, rule description, CVE ID, rule Status, and threat level.",
+          "example": "{\"ExactMatch\": true,\"Name\": \"RuleId\", \"Values\": [\"10000001\"]}",
+          "member": "FiltersItemNew",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspRulesResponse": {
+      "document": "DescribeOwaspRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of rules.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of rules",
+          "example": "[{\"CveID\": \"\",\"Description\": \"这\", \"ID\": \"10000041\",\"MainClassID\": \"010000000\",\"MainClassName\": \"XSS攻击\",\"Reason\": 0}]",
+          "member": "OwaspRule",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspWhiteRulesRequest": {
+      "document": "DescribeOwaspWhiteRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain to be queried",
+          "example": "www.waf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paginate, defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Capacity per page. defaults to 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the field used to sort. valid values: CreateTime (creation time), UpdateTime (update time).",
+          "example": "CreateTime",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method. supports asc, desc.",
+          "example": "asc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions, support RuleId: whitelist rule ID, Name: rule Name, RuleType: whitelist rule type, Status: rule enabling Status, ValidStatus: rule effective Status, TimerType: effective method, ID: specific whitelist ID, determine whether it is a rule ID or type ID based on RuleType.",
+          "example": " [{\"Name\": \"Name\", Values: [\"testname\"], \"ExactMatch\": true}]",
+          "member": "FiltersItemNew",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOwaspWhiteRulesResponse": {
+      "document": "DescribeOwaspWhiteRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of rules.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule allowlist list",
+          "example": "[{}]",
+          "member": "OwaspWhiteRule",
+          "name": "List",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -10195,7 +10711,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Time parameters for scheduled execution\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Time parameter for scheduled execution.",
           "example": "[{\"StartDateTime\":1711618518\t,\"EndDateTime\":1711918518}]",
           "member": "TimedJob",
           "name": "Timed",
@@ -10206,7 +10722,7 @@
         },
         {
           "disabled": false,
-          "document": "Time parameters for periodic execution\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Time parameter for periodic execution.",
           "example": "[{\"Day\":12,\"WDay\":2,\"StartTime\":\"12:11\",\"EndTime\":\"21:00\"}]",
           "member": "CronJob",
           "name": "Cron",
@@ -10217,7 +10733,7 @@
         },
         {
           "disabled": false,
-          "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the time zone.",
           "example": "UTC+8\t",
           "member": "string",
           "name": "TimeTZone",
@@ -12499,6 +13015,321 @@
       ],
       "type": "object"
     },
+    "ModifyOwaspRuleStatusRequest": {
+      "document": "ModifyOwaspRuleStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).",
+          "example": "0",
+          "member": "int64",
+          "name": "RuleStatus",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to select all.",
+          "example": "true",
+          "member": "bool",
+          "name": "SelectAll",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID list",
+          "example": "[10000000,20000000]",
+          "member": "string",
+          "name": "RuleIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "If reverse requires the input of data type.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "TypeId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Reason for modification. valid values: 0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others.",
+          "example": "0",
+          "member": "int64",
+          "name": "Reason",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleStatusResponse": {
+      "document": "ModifyOwaspRuleStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeActionRequest": {
+      "document": "ModifyOwaspRuleTypeAction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule type ID list.",
+          "example": "[10000000,20000000]",
+          "member": "string",
+          "name": "TypeIDs",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).",
+          "example": "0",
+          "member": "int64",
+          "name": "RuleTypeAction",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeActionResponse": {
+      "document": "ModifyOwaspRuleTypeAction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeLevelRequest": {
+      "document": "ModifyOwaspRuleTypeLevel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule type ID list.",
+          "example": "[10000000,20000000]",
+          "member": "string",
+          "name": "TypeIDs",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+          "example": "100",
+          "member": "int64",
+          "name": "RuleTypeLevel",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeLevelResponse": {
+      "document": "ModifyOwaspRuleTypeLevel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeStatusRequest": {
+      "document": "ModifyOwaspRuleTypeStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule type ID list.",
+          "example": "[10000000,20000000]",
+          "member": "string",
+          "name": "TypeIDs",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "RuleTypeStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspRuleTypeStatusResponse": {
+      "document": "ModifyOwaspRuleTypeStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspWhiteRuleRequest": {
+      "document": "ModifyOwaspWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "10011",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule name",
+          "example": "rulename",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule-Based matching policy list.",
+          "example": "[{\"Field\": \"URL\",\"Arg\": \"\",\"CompareFunc\": \"eq\",\"Content\": \"/acl\"}]",
+          "member": "Strategy",
+          "name": "Strategies",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "ID list of allowlisted rules.",
+          "example": "[90501998,  90501999]",
+          "member": "uint64",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).",
+          "example": "0",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.",
+          "example": "TimedJob",
+          "member": "string",
+          "name": "JobType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task configuration",
+          "example": "{\"Timed\":[{\"StartDateTime\":1711618518,\"EndDateTime\":1711918518}],\"Cron\":[{\"Day\":12,\"WDay\":2,\"StartTime\":\"12:11\",\"EndTime\":\"21:00\"}],\"TimeTZone\":\"UTC+8\"}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwaspWhiteRuleResponse": {
+      "document": "ModifyOwaspWhiteRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyProtectionStatusRequest": {
       "document": "ModifyProtectionStatus request structure.",
       "members": [
@@ -13138,6 +13969,353 @@
         }
       ],
       "type": "object"
+    },
+    "OwaspRule": {
+      "document": "Owasp rule.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "10000001",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule description",
+          "example": "rule description",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+          "example": "100",
+          "member": "int64",
+          "name": "Level",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Threat level. valid values: 0 (unknown), 100 (low risk), 200 (medium risk), 300 (high risk), 400 (critical).",
+          "example": "1",
+          "member": "int64",
+          "name": "VulLevel",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CVE ID",
+          "example": "CVE-2022-39195",
+          "member": "string",
+          "name": "CveID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the rule type ID.",
+          "example": "10000001",
+          "member": "uint64",
+          "name": "TypeId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2021-11-24 19:55:55",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "2021-11-24 19:55:55",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the user is locked.",
+          "example": "0 1",
+          "member": "int64",
+          "name": "Locked",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for modification\n\n0: none (compatibility records are empty).\n1: avoid false positives due to business characteristics.\n2: reporting of rule-based false positives.\n3: gray release of core business rules.\n4: others",
+          "example": "0",
+          "member": "int64",
+          "name": "Reason",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OwaspRuleType": {
+      "document": "Owasp rule type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type ID",
+          "example": "10000001",
+          "member": "uint64",
+          "name": "TypeId",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type name",
+          "example": "ruleName",
+          "member": "string",
+          "name": "TypeName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type description.\n\n",
+          "example": "ruleDescription",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data type category.",
+          "example": "XSS",
+          "member": "string",
+          "name": "Classification",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).",
+          "example": "0",
+          "member": "int64",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protection level of the rule type. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).",
+          "example": "100",
+          "member": "int64",
+          "name": "Level",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies all rules under the rule type. always.",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalRule",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the total number of rules enabled under the rule type.",
+          "example": "50",
+          "member": "uint64",
+          "name": "ActiveRule",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OwaspWhiteRule": {
+      "document": "Rule engine allowlist.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID of the allowlist.",
+          "example": "10011",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule Name",
+          "example": "testRule",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID list of allowlisted rules.",
+          "example": "[10000030,10000032]",
+          "member": "uint64",
+          "name": "Ids",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist rule state. valid values: 0 (disabled), 1 (enabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule-Based matching policy list.",
+          "example": "[{\"Field\": \"URL\",\"Arg\": \"\",\"CompareFunc\": \"eq\",\"Content\": \"/acl\"}]",
+          "member": "Strategy",
+          "name": "Strategies",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2021-11-19T19:53:53+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2021-11-19T19:53:53+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task type",
+          "example": "TimedJob",
+          "member": "string",
+          "name": "JobType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task configuration",
+          "example": "{\"Timed\":[{\"StartDateTime\":1711618518,\"EndDateTime\":1711918518}],\"Cron\":[{\"Day\":12,\"WDay\":2,\"StartTime\":\"12:11\",\"EndTime\":\"21:00\"}],\"TimeTZone\":\"UTC+8\"}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Periodic task granularity.",
+          "example": "week",
+          "member": "string",
+          "name": "CronType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether there is currently valid.",
+          "example": "true",
+          "member": "bool",
+          "name": "ValidStatus",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "PeakPointsItem": {
       "document": "PeakPoints array item",
@@ -14087,11 +15265,11 @@
       "usage": "in"
     },
     "Strategy": {
-      "document": "Matching criteria structure for custom rules",
+      "document": "Rule matching criteria structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Matching field\n\n    Different matching fields result in different matching parameters, logical operators, and matching contents. The details are as follows:\n<table><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses are separated by commas. A maximum of 20 IP addresses are allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A single IPv6 address is supported.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content, with a maximum of 512 characters.</td></tr> <tr><td>URL (request path)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is \n less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color=\"Red\">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color=\"Red\">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the contentwith a maximum of 512 characters.</td></tr> <tr><td>GET_HEADERS_NAMES (header parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters. The lowercase is recommended.</td> </tr><tr><td>ARGS_HEADER (header parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr></tbody></table>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the matching field.\n\nDifferent matching fields result in different matching parameters, logical operators, and matching contents. the details are as follows:.\n<table><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses are separated by commas. A maximum of 20 IP addresses are allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A single IPv6 address is supported.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content, with a maximum of 512 characters.</td></tr> <tr><td>URL (request path)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is \n less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color=\"Red\">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color=\"Red\">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color=\"Red\">GET Parameter Value</font></td> <td>Enter the content512 characters limit</td></tr><tr><td>GET_HEADERS_NAMES (Header parameter name)</td><td>parameter not supported</td><td>exsit (parameter exists)<br/>nexsit (parameter does not exist)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, lowercase is recommended, up to 512 characters</td></tr><tr><td>ARGS_Header (Header parameter value)</td><td>support parameter entry</td><td>contains (include)<br/>ncontains (does not include)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, up to 512 characters</td></tr><tr><td>CONTENT_LENGTH (CONTENT-LENGTH)</td><td>support parameter entry</td><td>numgt (value greater than)<br/>numlt (value smaller than)<br/>numeq (value equal to)<br/></td><td>enter an integer between 0-9999999999999</td></tr><tr><td>IP_GEO (source IP geolocation)</td><td>support parameter entry</td><td>GEO_in (belong)<br/>GEO_not_in (not_in)<br/></td><td>enter CONTENT, up to 10240 characters, format: serialized JSON, format: [{\"Country\":\"china\",\"Region\":\"guangdong\",\"City\":\"shenzhen\"}]</td></tr><tr><td>CAPTCHA_RISK (CAPTCHA RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter RISK level value, value range 0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK (CAPTCHA DEVICE RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter DEVICE RISK code, valid values: 101, 201, 301, 401, 501, 601, 701</td></tr><tr><td>CAPTCHAR_SCORE (CAPTCHA RISK assessment SCORE)</td><td>parameter not supported</td><td>numeq (value equal to)<br/>numgt (value greater than)<br/>numlt (value smaller than)<br/>numle (less than or equal to)<br/>numge (value is greater than or equal to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter assessment SCORE, value range 0-100</td></tr>.\n</tbody></table>",
           "example": "IP-来源IP",
           "member": "string",
           "name": "Field",
@@ -14102,7 +15280,7 @@
         },
         {
           "disabled": false,
-          "document": "Logic symbol\n\n    Logical symbols are divided into the following types:\n        empty (content is empty)\n        null (do not exist)\n        eq (equal to)\n        neq (not equal to)\n        contains (contain)\n        ncontains (do not contain)\n        strprefix (prefix matching)\n        strsuffix (suffix matching)\n        len_eq (length equals to)\n        len_gt (length is greater than)\n        len_lt (length is less than)\n        ipmatch (belong to)\n        ipnmatch (do not belong to)\n    Different matching fields correspond to different logical operators. For details, see the matching field table above.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the logic symbol. \n\nLogical symbols are divided into the following types:.\nEmpty (content is empty).\nnull (not found).\nEq (equal to).\nneq (not equal to).\ncontains (contain).\nncontains (do not contain).\nstrprefix (prefix matching).\nstrsuffix (suffix matching).\nLen_eq (length equals to).\nLen_gt (length greater than).\nLen_lt (length less than).\nipmatch (belong).\nipnmatch (not_in).\nnumgt (value greater than).\nNumValue smaller than].\nValue equal to.\nnumneq (value not equal to).\nnumle (less than or equal to).\nnumge (value is greater than or equal to).\ngeo_in (IP geographic belong).\ngeo_not_in (IP geographic not_in).\nSpecifies different logical operators for matching fields. for details, see the matching field table above.",
           "example": "contains - 包含",
           "member": "string",
           "name": "CompareFunc",
@@ -14113,7 +15291,7 @@
         },
         {
           "disabled": false,
-          "document": "Matching content\n\n    Currently, when the matching field is COOKIE (cookie), the matching content \u000b is not required. In other scenes, the matching content is required.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the match content.\n\nCurrently, when the match field is COOKIE (COOKIE), match content is not required. all others are needed.\n",
           "example": "/url",
           "member": "string",
           "name": "Content",
@@ -14124,7 +15302,7 @@
         },
         {
           "disabled": false,
-          "document": "Matching parameter\n\n    There are two types of configuration parameters: unsupported parameters and supported parameters.\n    The matching parameter can be entered only when the matching field is one of the following four. Otherwise, the parameter is not supported.\n        GET (GET parameter value)\u000b\t\t\n        POST (POST parameter value)\u000b\t\t\n        ARGS_COOKIE (Cookie parameter value)\u000b\t\t\n        ARGS_HEADER (Header parameter value)\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the matching parameter.\n\nConfiguration parameters are divided into two data types: parameter not supported and support parameters.\nWhen the match field is one of the following four, the matching parameter can be entered, otherwise not supported.\nGET (get parameter value).\u000b\t\t\nPOST (post parameter value).\u000b\t\t\nARGS_COOKIE (COOKIE parameter value).\u000b\t\t\nARGS_HEADER (HEADER parameter value).\n",
           "example": "argvalue",
           "member": "string",
           "name": "Arg",
@@ -14135,7 +15313,7 @@
         },
         {
           "disabled": false,
-          "document": "0: case-sensitive.\n1: case-insensitive.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Case-Sensitive.\nCase-Insensitive.",
           "example": "0",
           "member": "uint64",
           "name": "CaseNotSensitive",
@@ -14316,7 +15494,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp, in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Start timestamp, in seconds.",
           "example": "1711618518",
           "member": "uint64",
           "name": "StartDateTime",
@@ -14327,7 +15505,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "End timestamp, in seconds.",
           "example": "1711618518",
           "member": "uint64",
           "name": "EndDateTime",
