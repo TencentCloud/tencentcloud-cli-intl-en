@@ -1107,7 +1107,7 @@
       "status": "online"
     },
     "ModifyHostsCertificate": {
-      "document": "This API is used to configure the certificate of a site. You can use your own certificate or [apply for a free certificate](https://intl.cloud.tencent.com/document/product/1552/90437?from_cn_redirect=1).\nTo use an external certificate, upload the certificate to [SSL Certificates Console](https://console.cloud.tencent.com/certoview) first, and then input the certificate ID in this API. For details, see [Deploying Own Certificates to EdgeOne Domains](https://intl.cloud.tencent.com/document/product/1552/88874?from_cn_redirect=1).\n ",
+      "document": "This API is used to configure the certificate of a site. You can use your own certificate or [apply for a free certificate](https://intl.cloud.tencent.com/document/product/1552/90437?from_cn_redirect=1).\nTo use an external certificate, upload the certificate to [SSL Certificates Console](https://console.cloud.tencent.com/certoview) first, and then input the certificate ID in this API. For details, see [Deploying Own Certificates to EdgeOne Domains](https://intl.cloud.tencent.com/document/product/1552/88874?from_cn_redirect=1).",
       "input": "ModifyHostsCertificateRequest",
       "name": "Configures the certificate",
       "output": "ModifyHostsCertificateResponse",
@@ -4346,7 +4346,7 @@
       "usage": "in"
     },
     "CertificateInfo": {
-      "document": "HTTPS server certificate configuration",
+      "document": "HTTPS server certificate configuration.",
       "members": [
         {
           "disabled": false,
@@ -19783,7 +19783,7 @@
         {
           "disabled": false,
           "document": "Domain names that you need to modify the certificate configuration",
-          "example": "www.test.com",
+          "example": "[\"www.test.com\"]",
           "member": "string",
           "name": "Hosts",
           "required": true,
@@ -19792,7 +19792,7 @@
         {
           "disabled": false,
           "document": "Certificate configuration mode. Values:\n<li>`disable`: (Default) Do not configure the certificate</li>\n<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>\n<li>`sslcert`: Configure an SSL certificate.</li>",
-          "example": "eoFreeCert",
+          "example": "eofreecert",
           "member": "string",
           "name": "Mode",
           "required": false,
@@ -19801,7 +19801,7 @@
         {
           "disabled": false,
           "document": "SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).",
-          "example": "J2Jsa2uM",
+          "example": "无",
           "member": "ServerCertInfo",
           "name": "ServerCertInfo",
           "required": false,
@@ -19822,6 +19822,15 @@
           "example": "无",
           "member": "MutualTLS",
           "name": "ClientCertInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the certificate presented by the EO node during origin-pull for mutual TLS authentication. Disabled by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access.",
+          "example": "无",
+          "member": "UpstreamCertInfo",
+          "name": "UpstreamCertInfo",
           "required": false,
           "type": "object"
         }
@@ -21658,11 +21667,11 @@
       "usage": "out"
     },
     "MutualTLS": {
-      "document": "",
+      "document": "HTTPS Mutual authentication.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Mutual authentication configuration switch, the values are:<li>on: enable; </li> <li>off: disable. </li>",
           "example": "on/off",
           "member": "string",
           "name": "Switch",

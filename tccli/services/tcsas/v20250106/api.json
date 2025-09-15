@@ -931,7 +931,7 @@
         {
           "disabled": false,
           "document": "Mini program version ID",
-          "example": "无",
+          "example": "1000",
           "member": "int64",
           "name": "MNPVersionId",
           "required": true,
@@ -940,7 +940,7 @@
         {
           "disabled": false,
           "document": "submit: Submit an approval request; cancel: Cancel the approval request",
-          "example": "无",
+          "example": "submit",
           "member": "string",
           "name": "ApplyAction",
           "required": true,
@@ -949,7 +949,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T02245JR9111721GKOI",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -958,6 +958,32 @@
       ],
       "type": "object"
     },
+    "CreateMNPApprovalResp": {
+      "document": "Response for platform review of mini program version submission.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bool type response object",
+          "example": "true、false",
+          "member": "bool",
+          "name": "Result",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Approval No.",
+          "example": "au-2025",
+          "member": "string",
+          "name": "ApprovalNo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateMNPApprovalResponse": {
       "document": "CreateMNPApproval response structure.",
       "members": [
@@ -965,7 +991,7 @@
           "disabled": false,
           "document": "Response data",
           "example": "无",
-          "member": "BooleanInfo",
+          "member": "CreateMNPApprovalResp",
           "name": "Data",
           "output_required": true,
           "type": "object",
@@ -4571,7 +4597,7 @@
         {
           "disabled": false,
           "document": "ID of the task to create a mini program version",
-          "example": "无",
+          "example": "2025022715274599210",
           "member": "string",
           "name": "BusinessId",
           "required": true,
@@ -4580,7 +4606,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -4594,43 +4620,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Task ID",
+          "example": "2025030711191997754",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "1: Pending; 20: Running; 30: Failed; 60: Succeeded \nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "1: Pending; 20: Running; 30: Failed; 60: Succeeded",
+          "example": "60",
           "member": "int64",
           "name": "TaskStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task status message\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Task status message",
+          "example": "success",
           "member": "string",
           "name": "TaskMsg",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program version ID (returned when compilation succeeds)",
+          "example": "123",
+          "member": "int64",
+          "name": "MNPVersionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

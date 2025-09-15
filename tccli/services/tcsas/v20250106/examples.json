@@ -300,7 +300,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPVersion\n<Common request parameters>\n\n{\n    \"BusinessId\": \"2024082016302581955\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"MNPId\": \"mpg9yjc0qbpkelik\",\n            \"TaskId\": \"2024082016302581955\",\n            \"TaskStatus\": 60,\n            \"TaskMsg\": \"Success'\n        },\n        \"RequestId\": \"2a2e7e38-f18e-411b-9e09-24ab881c3b60\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"MNPId\": \"mpjnms6wibvjj8dd\",\n            \"TaskId\": \"2025022715274599210\",\n\"TaskMsg\": \"Success\"\n            \"TaskStatus\": 60\n        },\n        \"RequestId\": \"b00cb037-e132-4a70-9a08-267fa26b11a1\"\n    }\n}",
         "title": "DescribeMNPVersion"
       }
     ],

@@ -163,9 +163,9 @@
     "DescribeDiskConfigs": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"ap-guangzhou-2\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 10,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"DiskType\": \"CLOUD_SSD\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 20,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            }\n        ],\n        \"RequestId\": \"8f8e7988-39e6-4ed6-8e36-135b639e9a3a\"\n    }\n}",
-        "title": "Querying disk configuration"
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskConfigs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"ap-guangzhou-3\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 10,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"DiskType\": \"CLOUD_SSD\",\n                \"MaxDiskSize\": 1000,\n                \"MinDiskSize\": 20,\n                \"DiskStepSize\": 10,\n                \"DiskSalesState\": \"SOLD_OUT\"\n            }\n        ],\n        \"RequestId\": \"8f8e7988-39e6-4ed6-8e36-135b639e9a3a\"\n    }\n}",
+        "title": "Querying Disk Configuration"
       }
     ],
     "DescribeDiskDiscount": [
@@ -346,8 +346,8 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"ZoneInfoSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"5e1bf334-e530-4c26-ab92-d911ab148d3a\"\n    }\n}",
-        "title": "Querying AZs"
+        "output": "{\n    \"Response\": {\n        \"ZoneInfoSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"5e1bf334-e530-4c26-ab92-d911ab148d3a\"\n    }\n}",
+        "title": "Querying Availability Zones"
       }
     ],
     "DetachCcn": [

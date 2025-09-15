@@ -1020,6 +1020,14 @@
         "title": "Adding an instance to the interworking group"
       }
     ],
+    "QueryMigrationCheckProcess": [
+      {
+        "document": " ",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=QueryMigrationCheckProcess\n&MigrateId=1066\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4be5990d-a4b5-49dc-b2b4-e713b6aa7ba3\",\n        \"TotalStep\": 8,\n        \"CurrentStep\": 8,\n        \"StepDetails\": [\n            {\n                \"Name\": \"Source database connectivity check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the data transfer server can be connected to the source database.\"\n            },\n            {\n                \"Name\": \"Target database connectivity check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the data transfer server can be connected to the target database.\"\n            },\n            {\n                \"Name\": \"Hard disk space check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the hard disk space of the target server is sufficient.\"\n            },\n            {\n                \"Name\": \"Character set check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the character sets are consistent.\"\n            },\n            {\n                \"Name\": \"Database version check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the database version numbers are consistent.\"\n            },\n            {\n                \"Name\": \"User permissions check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the permissions for the target instance exist.\"\n            },\n            {\n                \"Name\": \"Source database existence check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the source database exists.\"\n            },\n            {\n                \"Name\": \"Target database existence check\",\n                \"Status\": 0,\n                \"Msg\": \"Check whether the target database exists.\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the Migration Verification Task Progress"
+      }
+    ],
     "RecycleDBInstance": [
       {
         "document": " ",
