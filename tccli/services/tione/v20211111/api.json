@@ -1,0 +1,3074 @@
+{
+  "actions": {
+    "DescribeModelServiceGroups": {
+      "document": "This API is used to list online inference service groups.",
+      "input": "DescribeModelServiceGroupsRequest",
+      "name": "Lists online inference service groups",
+      "output": "DescribeModelServiceGroupsResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-11-11",
+    "serviceNameCN": "TI-ONE 训练平台",
+    "serviceShortName": "tione"
+  },
+  "objects": {
+    "AuthToken": {
+      "document": "AuthToken data of an online service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AuthToken basic information.",
+          "example": "无",
+          "member": "AuthTokenBase",
+          "name": "Base",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AuthToken throttling array.",
+          "example": "无",
+          "member": "AuthTokenLimit",
+          "name": "Limits",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AuthTokenBase": {
+      "document": "AuthToken basic information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Token value.",
+          "example": "8PyrHoGd6uZ52hQ",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token alias.",
+          "example": "这是 token 别名",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token description.",
+          "example": "这是 token 描述",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token creation time.",
+          "example": "2021-01-02",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token status.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AuthTokenLimit": {
+      "document": "AuthToken throttling information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Frequency limit policy. Valid values: PerMinute (frequency limit per minute) and PerDay (daily frequency limit).",
+          "example": "PerMinute",
+          "member": "string",
+          "name": "Strategy",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Upper limit.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "Max",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CFSConfig": {
+      "document": "CFS storage configurations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CFS instance ID.",
+          "example": "cfs-myCfsId",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage path.",
+          "example": "/my/path",
+          "member": "string",
+          "name": "Path",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mounting type of CFS. Valid values: STORAGE and SOURCE, which respectively indicate the storage expansion mode and the data source mode. The default value is STORAGE.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "STORAGE",
+          "member": "string",
+          "name": "MountType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Protocol. Valid values: NFS and TURBO.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NFS",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Container": {
+      "document": "Container information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "main",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "989e5db6-af8c-4ea0-816a-a97369b36152",
+          "member": "string",
+          "name": "ContainerId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image address.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ccr.ccs.tencentyun.com/test-ccr/hellotest:grpc-test",
+          "member": "string",
+          "name": "Image",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Container status.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ContainerStatus",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ContainerStatus": {
+      "document": "Container status.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of restarts.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RestartCount",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waiting",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is ready.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Ready",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status reason.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ContainerCreating",
+          "member": "string",
+          "name": "Reason",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Container error message.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Error",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CosPathInfo": {
+      "document": "COS path information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bucket.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "encent-cloud-product-release-66666",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Path list. Only one path is supported.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"path/\"]",
+          "member": "string",
+          "name": "Paths",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CronScaleJob": {
+      "document": "Scheduled scaling task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cron expression, which identifies the task execution time, and is accurate to minutes.",
+          "example": "\"0 30 12 * * *\"",
+          "member": "string",
+          "name": "Schedule",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "job-1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of target instances.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TargetReplicas",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Minimum target.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReplicas",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum target.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "int64",
+          "name": "MaxReplicas",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Exception periods, defined by Cron expressions, during which tasks are not executed. Up to 3 Cron expressions are supported.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"0 30 12 * * *\"]",
+          "member": "string",
+          "name": "ExcludeDates",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CrossTenantENIInfo": {
+      "document": "Information about Pod calls involving ENIs across tenants.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pod IP address.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "9.0.0.1",
+          "member": "string",
+          "name": "PrimaryIP",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod port.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8501",
+          "member": "string",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DescribeModelServiceGroupsRequest": {
+      "document": "DescribeModelServiceGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "10",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results. The default value is 20, and the maximum value is 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The sorting order of the output list. Valid values: ASC (ascending order) and DESC (descending order).",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Field to sort by. Valid values: CreateTime and UpdateTime.",
+          "example": "CreateTime",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. Supported filterable field names include:[\"ClusterId\", \"ServiceId\", \"ServiceGroupName\", \"ServiceGroupId\",\"Status\",\"CreatedBy\",\"ModelVersionId\"]",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tag filtering parameters.",
+          "example": "无",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Service classification.",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceCategory",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeModelServiceGroupsResponse": {
+      "document": "DescribeModelServiceGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of inference service groups.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service group information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceGroup",
+          "name": "ServiceGroups",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnvVar": {
+      "document": "Environment variables.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment variable key.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TEST",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Environment variable value.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TEST",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ExecAction": {
+      "document": "Probe check action for execution commands.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Execution command list.",
+          "example": "[\"ls\", \"la\", \"./\"]",
+          "member": "string",
+          "name": "Command",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Filter": {
+      "document": "Filter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter field name.",
+          "example": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Filter field values.",
+          "example": "{\"ss\",\"sss\"}",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable reverse query.",
+          "example": "false",
+          "member": "bool",
+          "name": "Negative",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable fuzzy matching.",
+          "example": "false",
+          "member": "bool",
+          "name": "Fuzzy",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "GooseFSx": {
+      "document": "GooseFSx configurations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GooseFSx instance ID.",
+          "example": "gs-fsxfs",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Path to mount the GooseFSx instance.",
+          "example": "/model",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "GpuDetail": {
+      "document": "GPU details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GPU card type. Enumeration values: V100, A100, T4.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "V100",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "GPU card quantity, in 1/100 cards. For example, 100 represents 1 card.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Value",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "HTTPGetAction": {
+      "document": "HTTP GET action.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP path.",
+          "example": "/health/live",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Called port.",
+          "example": "8051",
+          "member": "int64",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HealthProbe": {
+      "document": "Health probe.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Liveness probe.",
+          "example": "无",
+          "member": "Probe",
+          "name": "LivenessProbe",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Readiness probe.",
+          "example": "无",
+          "member": "Probe",
+          "name": "ReadinessProbe",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Startup probe.",
+          "example": "无",
+          "member": "Probe",
+          "name": "StartupProbe",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HorizontalPodAutoscaler": {
+      "document": "HPA description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Minimum number of instances.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of instances.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "MaxReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Supported.\"gpu-util\": GPU utilization; value range: 10-100. \"cpu-util\": CPU utilization; value range: 10-100. \"memory-util\": memory utilization; value range: 10-100. \"service-qps\": the QPS value of single instances; value range: 1-5000.\"concurrency-util\": the number of concurrent requests of single instances. Value range: 1-100000.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"gpu-util\": {0, 100}",
+          "member": "Option",
+          "name": "HpaMetrics",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scale-out cooldown period, in seconds.",
+          "example": "100",
+          "member": "int64",
+          "name": "ScaleUpStabilizationWindowSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scale-in cooldown period, in seconds.",
+          "example": "100",
+          "member": "int64",
+          "name": "ScaleDownStabilizationWindowSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageInfo": {
+      "document": "Image description information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image type. Valid values: TCR ( which indicates a Tencent Container Registry (TCR) image), CCR (which indicates a TCR Personal Edition image), PreSet (which indicates a platform preset image), and CUSTOM (which indicates a third-party custom image).",
+          "example": "TCR",
+          "member": "string",
+          "name": "ImageType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image address.",
+          "example": "ccr.ccs.tencentyun.com/ti-platform/hellotest:http-test",
+          "member": "string",
+          "name": "ImageUrl",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region corresponding to the TCR image.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijiang",
+          "member": "string",
+          "name": "RegistryRegion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID corresponding to the TCR image.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "t-asfffasf",
+          "member": "string",
+          "name": "RegistryId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow exporting all content.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllowSaveAllContent",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "LLM",
+          "member": "string",
+          "name": "ImageName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to support data generation.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "SupportDataPipeline",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "InferCodeInfo": {
+      "document": "Inference code information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details of Cloud Object Storage (COS) where the inference code is located.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CosPathInfo",
+          "name": "CosPathInfo",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "LogConfig": {
+      "document": "Log configurations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Logs should be shipped to a Cloud Log Service (CLS) log set.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-eeee",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Logs should be shipped to a CLS topic.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-topic-ccccc",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModelInfo": {
+      "document": "Model description information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The model version ID is returned by the DescribeTrainingModelVersion API when querying the model.Enter the task ID of the Automated Machine Learning (AutoML) model.",
+          "example": "m-dddd-1",
+          "member": "string",
+          "name": "ModelVersionId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model ID.",
+          "example": "m-dddd",
+          "member": "string",
+          "name": "ModelId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model name.",
+          "example": "mn-xx",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model version.",
+          "example": "1",
+          "member": "string",
+          "name": "ModelVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model source.",
+          "example": "COS",
+          "member": "string",
+          "name": "ModelSource",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COS path information.",
+          "example": "无",
+          "member": "CosPathInfo",
+          "name": "CosPathInfo",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GooseFSx configurations, and is valid when ModelSource is GooseFSx.",
+          "example": "无",
+          "member": "GooseFSx",
+          "name": "GooseFSx",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Algorithm framework corresponding to the model (reserved field).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pmml",
+          "member": "string",
+          "name": "AlgorithmFramework",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default: NORMAL; accelerated model: ACCELERATE; automatic learning model: AUTO_ML.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ACCELERATE",
+          "member": "string",
+          "name": "ModelType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model format.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pmml",
+          "member": "string",
+          "name": "ModelFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a private LLM.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPrivateModel",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model category. Valid values: MultiModal (multi-modal) and LLM (text LLM).",
+          "example": "MultiModal",
+          "member": "string",
+          "name": "ModelCategory",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data source configurations.",
+          "example": "无",
+          "member": "PublicDataSourceFS",
+          "name": "PublicDataSource",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "NumOrPercent": {
+      "document": "Percentage or quantity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Valid values: Num and Percent, which indicate quantity and percentage respectively. The default value is Num.",
+          "example": "Num",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Numeric value.",
+          "example": "10",
+          "member": "int64",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Option": {
+      "document": "Key-value pair.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metric name.",
+          "example": "gpu-util",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metric value.",
+          "example": "{0,100}",
+          "member": "int64",
+          "name": "Value",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Pod": {
+      "document": "Pod information display.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pod name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ms-24xzphkz-1-55cc4779cc-9j6tb",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the Pod.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "989e5db6-af8c-4ea0-816a-a97369b36152",
+          "member": "string",
+          "name": "Uid",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service payment mode.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "ChargeType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod status.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Pending",
+          "member": "string",
+          "name": "Phase",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod IP address.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "9.0.0.1",
+          "member": "string",
+          "name": "IP",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod creation time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-08-19T09:32:15Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Container list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Container",
+          "name": "Containers",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Container list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Container",
+          "name": "ContainerInfos",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Container calling information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CrossTenantENIInfo",
+          "name": "CrossTenantENIInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status information.",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance scheduling start time.",
+          "example": "2025-05-14 15:47:01",
+          "member": "string",
+          "name": "StartScheduleTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Supplemental instance status information.",
+          "example": "当前实例已排队x小时x分钟，优先级P0",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node IP address of the current instance.",
+          "example": "9.0.0.8",
+          "member": "string",
+          "name": "NodeIP",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node ID of the current instance.",
+          "example": "sm-esffesx",
+          "member": "string",
+          "name": "NodeId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource group ID to which the instance belonged.",
+          "example": "rsg-tt2sxcf",
+          "member": "string",
+          "name": "ResourceGroupId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name.",
+          "example": "资源组1",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource usage information of the instance.",
+          "example": "无",
+          "member": "ResourceInfo",
+          "name": "ResourceInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Probe": {
+      "document": "Probe structure information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Probe action.",
+          "example": "无",
+          "member": "ProbeAction",
+          "name": "ProbeAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Delay in waiting for a service startup.",
+          "example": "0",
+          "member": "int64",
+          "name": "InitialDelaySeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Polling check interval.",
+          "example": "10",
+          "member": "int64",
+          "name": "PeriodSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Check timeout duration.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeoutSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of acknowledged failed detections.",
+          "example": "1",
+          "member": "int64",
+          "name": "FailureThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of acknowledged successful detections. The default values for readiness, liveness, and startup statuses are 3, 1, and 1.",
+          "example": "3",
+          "member": "int64",
+          "name": "SuccessThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ProbeAction": {
+      "document": "Probe action.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP GET action.",
+          "example": "无",
+          "member": "HTTPGetAction",
+          "name": "HTTPGet",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Executes check command action.",
+          "example": "无",
+          "member": "ExecAction",
+          "name": "Exec",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TCP Socket check action.",
+          "example": "无",
+          "member": "TCPSocketAction",
+          "name": "TCPSocket",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Probe type. The default value is HTTPGet. Valid values: HTTPGet, Exec, and TCPSocket.",
+          "example": "HTTPGet",
+          "member": "string",
+          "name": "ActionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PublicDataSourceFS": {
+      "document": "Public cloud data source structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data source ID.",
+          "example": "dse-Cfs-a8zxlg2kjpxc",
+          "member": "string",
+          "name": "DataSourceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Relative subpath to the data source.",
+          "example": "/data",
+          "member": "string",
+          "name": "SubPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceGroupInfo": {
+      "document": "Summarized information structure for the serviced resource group while an online service is provided.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource group ID.",
+          "example": "rsg-tsfsfxg",
+          "member": "string",
+          "name": "ResourceGroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name.",
+          "example": "资源组名称",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceInfo": {
+      "document": "Resource information description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Processor resource, in 1/1000 cores.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Cpu",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Memory resource, in MB.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "256",
+          "member": "uint64",
+          "name": "Memory",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of GPU card resources, in 0.01 units of GpuType.Gpu=100 indicates the use of \"1\" GPU card. However, this \"1\" card could refer to a virtualized 1/4 card or a full physical card, depending on the instance type.Example 1: If the instance type includes 1 virtual GPU card, and each virtual GPU card corresponds to 1/4 of a physical T4 card, then GpuType=T4, Gpu=100, and RealGpu=25.Example 2: If the instance type includes 4 full GPU cards, and each card corresponds to 1 physical T4 card, then GpuType=T4, Gpu=400, and RealGpu=400.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Gpu",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "GPU card model. Valid values: T4 and V100. It only displays the current GPU card model. If multiple types of cards are used simultaneously, see the value of RealGpuDetailSet.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "none",
+          "member": "string",
+          "name": "GpuType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "It is not required for creation or update operations. This field is used for display only.The actual GPU card resources for postpaid instances using fractional GPU cards. This value represents the total number of actual physical GPU cards consumed.RealGpu=100 indicates the consumption of 1 GPU card. Depending on the actual instance type, this may represent: 4 instances each using a 1/4 card, 2 instances each using a 1/2 card, or 1 instance using a full card.",
+          "example": "50",
+          "member": "uint64",
+          "name": "RealGpu",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "It is not required for creation or update operations. This field is used for display only. It involves detailed GPU usage information.",
+          "example": "无",
+          "member": "GpuDetail",
+          "name": "RealGpuDetailSet",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RollingUpdate": {
+      "document": "Rolling update policy.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum unavailability for rolling updates.",
+          "example": "无",
+          "member": "NumOrPercent",
+          "name": "MaxUnavailable",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of new instances during rolling updates. ",
+          "example": "无",
+          "member": "NumOrPercent",
+          "name": "MaxSurge",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ScheduledAction": {
+      "document": "Scheduled transactions and actions.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to stop the service on schedule. Valid values: true and false. If the value is true, ScheduleStopTime is required. If the value is false, ScheduleStopTime does not take effect.",
+          "example": "True",
+          "member": "bool",
+          "name": "ScheduleStop",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time to execute the scheduled stop. Format: \"2022-01-26T19:46:22+08:00\".",
+          "example": "2022-01-26T19:46:22+08:00",
+          "member": "string",
+          "name": "ScheduleStopTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SchedulingPolicy": {
+      "document": "Service scheduling policy configurations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable cross-resource-group scheduling.",
+          "example": "false",
+          "member": "bool",
+          "name": "CrossResourceGroupScheduling",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Service": {
+      "document": "Online service description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service group ID.",
+          "example": "ms-testtest",
+          "member": "string",
+          "name": "ServiceGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service ID.",
+          "example": "ms-testtest-0",
+          "member": "string",
+          "name": "ServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service group name.",
+          "example": "ms-testtest-0",
+          "member": "string",
+          "name": "ServiceGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service description.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ms-testtest-0",
+          "member": "string",
+          "name": "ServiceDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service details.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceInfo",
+          "name": "ServiceInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-sssss",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Namespace.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "infer-eeeee",
+          "member": "string",
+          "name": "Namespace",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing type.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PRE_PAID",
+          "member": "string",
+          "name": "ChargeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource group ID for yearly/monthly subscription services. The value is null for pay-as-you-go services.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "rr-sssss",
+          "member": "string",
+          "name": "ResourceGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name corresponding to the yearly/monthly subscription service.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pregroup",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag of the service.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name of the ingress where the service is located.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "my-ingress",
+          "member": "string",
+          "name": "IngressName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1541252152",
+          "member": "string",
+          "name": "CreatedBy",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ms-testtest",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ms-testtest",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Root account.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1541252152",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1541252152",
+          "member": "string",
+          "name": "SubUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "app_id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1541252152",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operational status of the service.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CREATING",
+          "member": "string",
+          "name": "BusinessStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Deprecated. See the corresponding field in ServiceInfo.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceLimit",
+          "name": "ServiceLimit",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Deprecated. See the corresponding field in ServiceInfo.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScheduledAction",
+          "name": "ScheduledAction",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cause for service creation failure. The default value of this field is CREATE_SUCCEED upon successful creation.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "api网关注册失败",
+          "member": "string",
+          "name": "CreateFailedReason",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service status.CREATING: creating.CREATE_FAILED: creation failed.Normal: running.Stopped: stopped.Stopping: stopping.Abnormal: error.Pending: starting.Waiting: getting ready.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "模型服务计费中：1.2元/小时",
+          "member": "string",
+          "name": "BillingInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model weight.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "Weight",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation source of the service.AUTO_ML: comes from one-click release of automatic learning.DEFAULT: other sources.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "AUTO_ML",
+          "member": "string",
+          "name": "CreateSource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version number.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The latest version number of services under a service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "LatestVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource group category. Valid values: NORMAL (hosting) and SW (half-hosting).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "ResourceGroupSWType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Archiving status of the service. Valid values: Waiting (pending archiving) and Archived (archived).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Archived",
+          "member": "string",
+          "name": "ArchiveStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment type of the service. Valid values: STANDARD (standard deployment) and DIST (multi-machine distributed deployment). The default value is STANDARD.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "STANDARD",
+          "member": "string",
+          "name": "DeployType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances per replica. This parameter is valid only when the deployment type is DIST. Default value: 1.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "InstancePerReplicas",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source for monitoring queries.Enumeration value. May differ from CreateSource in certain scenarios. This field is designed to be compatible.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "MonitorSource",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account name of the service creator.",
+          "example": "子账号1",
+          "member": "string",
+          "name": "SubUinName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduling policy of the service.",
+          "example": "无",
+          "member": "SchedulingPolicy",
+          "name": "SchedulingPolicy",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "External resource group information, indicating which resources are borrowed from resource groups.",
+          "example": "无",
+          "member": "ResourceGroupInfo",
+          "name": "ExternalResourceGroups",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ServiceEIP": {
+      "document": "Service shared Elastic Network Interface (ENI) settings.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable access from the TI-ONE private network to external resources.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableEIP",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User VPC ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-314xh0ko",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User subnet ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-8ra6pdq7",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ServiceGroup": {
+      "document": "Information of a service group for an online service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service group ID.",
+          "example": "ms-testtest",
+          "member": "string",
+          "name": "ServiceGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service group name.",
+          "example": "ms-testtest",
+          "member": "string",
+          "name": "ServiceGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator.",
+          "example": "222222",
+          "member": "string",
+          "name": "CreatedBy",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2021-09-02T21:32:06+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "2021-09-02T21:32:06+08:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Root account.",
+          "example": "999555555",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of services in the service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "ServiceCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of running services in the service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RunningServiceCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service description.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Service",
+          "name": "Services",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service group status, which aligns with service status.CREATING: creating.CREATE_FAILED: creation failed.Normal: running.Stopped: stopped.Stopping: stopping.Abnormal: error.Pending: starting.Waiting: getting ready.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service group tags.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The latest version in the service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "string",
+          "name": "LatestVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operational status of the service.CREATING: creating.CREATE_FAILED: creation failed.ARREARS_STOP: service suspended due to overdue payments.BILLING: billing.WHITELIST_USING: allowlist feature is in trial.WHITELIST_STOP: insufficient allowlist quota.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ARREARS_STOP",
+          "member": "string",
+          "name": "BusinessStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing information of the service.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.2 元/小时",
+          "member": "string",
+          "name": "BillingInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation source of the service.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "CreateSource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Weight update status of the service group.UPDATING: updating.UPDATED: updated successfully.UPDATE FAILED: failed to update.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UPDATING",
+          "member": "string",
+          "name": "WeightUpdateStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of running Pods in the service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ReplicasCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expected number of Pods under the service group.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "AvailableReplicasCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service group's subuin.",
+          "example": "999555555",
+          "member": "string",
+          "name": "SubUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service group's app_id.",
+          "example": "73598888",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable authentication.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuthorizationEnable",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of throttling authentication tokens.",
+          "example": "无",
+          "member": "AuthToken",
+          "name": "AuthTokens",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Field for monitoring creation source.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "MonitorSource",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname of the sub-user.",
+          "example": "user2",
+          "member": "string",
+          "name": "SubUinName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ServiceInfo": {
+      "document": "Information of the inference service in the cluster.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Expected number of running Pods. The instance is 0 when the stop status is reached.Corresponding relationships under different billing and scaling modes are as follows.PREPAID and POSTPAID_BY_HOUR:Corresponding number of instances in the manual scaling mode.Corresponding number of instances based on the default time-based policy in the auto-scaling mode.HYBRID_PAID:\nCorresponding number of instances for postpaid instances in the manual scaling mode.Corresponding number of instances under the default time-based policy for postpaid instances in the auto-scaling mode.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Replicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ImageInfo",
+          "name": "ImageInfo",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Environment variables.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "Env",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResourceInfo",
+          "name": "Resources",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type specifications corresponding to the postpaid instance.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TI.S.MEDIUM.POS",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Model information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ModelInfo",
+          "name": "ModelInfo",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable logs.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "LogEnable",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log configurations.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogConfig",
+          "name": "LogConfig",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable authentication.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuthorizationEnable",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HPA configurations.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HorizontalPodAutoscaler",
+          "name": "HorizontalPodAutoscaler",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description of the service status.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WorkloadStatus",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Weight.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Weight",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total resources.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResourceInfo",
+          "name": "ResourceTotal",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of historical instances.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OldReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is valid when the billing mode is HYBRID_PAID, and is used to identify the number of prepaid instances in the hybrid billing mode. The default value is 1 if this parameter is left unspecified.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "HybridBillingPrepaidReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances during the historical HYBRID_PAID period. The user restores services.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OldHybridBillingPrepaidReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable hot update for the model. By default, hot update is disabled.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ModelHotUpdateEnable",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service specification alias.",
+          "example": "8核40GB V100*1",
+          "member": "string",
+          "name": "InstanceAlias",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance quantity adjusting mode. Defaults to manual.Supported valid values: AUTO (automatic), MANUAL (manual).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "AUTO",
+          "member": "string",
+          "name": "ScaleMode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled scaling task.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CronScaleJob",
+          "name": "CronScaleJobs",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled scaling policy.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HPC",
+          "member": "string",
+          "name": "ScaleStrategy",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configurations of the scheduled stop.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScheduledAction",
+          "name": "ScheduledAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Instance list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"w\"]",
+          "member": "string",
+          "name": "PodList",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Pod list information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Pod",
+          "name": "Pods",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod list information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Pod",
+          "name": "PodInfos",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configurations related to speed limit and throttling of services.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceLimit",
+          "name": "ServiceLimit",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable model acceleration, which is only valid for models in the StableDiffusion (dynamic acceleration) format.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "ModelTurboEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mounting.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VolumeMount",
+          "name": "VolumeMount",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Inference code information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InferCodeInfo",
+          "name": "InferCodeInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service startup command.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sleep 36000",
+          "member": "string",
+          "name": "Command",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Settings of enabling the TI-ONE private network to access external resources.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceEIP",
+          "name": "ServiceEIP",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Service port, with the default value of 8501.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8501",
+          "member": "int64",
+          "name": "ServicePort",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Graceful exit time limit of the service, in seconds. Default value: 30. Minimum value: 1.",
+          "example": "30",
+          "member": "int64",
+          "name": "TerminationGracePeriodSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Command executed before the service instance stops. The instance ends after the command execution is completed or after the execution time exceeds the graceful exit time limit.",
+          "example": "[\"sleep\",\"60\"]",
+          "member": "string",
+          "name": "PreStopCommand",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the gRPC port.",
+          "example": "false",
+          "member": "bool",
+          "name": "GrpcEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health probe.",
+          "example": "无",
+          "member": "HealthProbe",
+          "name": "HealthProbe",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rolling update configurations.",
+          "example": "无",
+          "member": "RollingUpdate",
+          "name": "RollingUpdate",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances per replica. This parameter is valid only when the deployment type is DIST or ROLE. Default value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "InstancePerReplicas",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Batch data disk mounting configurations.",
+          "example": "无",
+          "member": "VolumeMount",
+          "name": "VolumeMounts",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ServiceLimit": {
+      "document": "Configurations related to throttling and speed limit of services.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable throttling and speed limit at the instance level. Valid values: true and false. If the value is true, InstanceRpsLimit is required. If the value is false, InstanceRpsLimit does not take effect.",
+          "example": "True",
+          "member": "bool",
+          "name": "EnableInstanceRpsLimit",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Speed limit for the requests per second (RPS) of each service instance. 0 indicates no throttling.",
+          "example": "300",
+          "member": "int64",
+          "name": "InstanceRpsLimit",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the maximum concurrency quantity limit for a single instance. Valid values: true and false. If the value is true, InstanceReqLimit is required. If the value is false, InstanceReqLimit does not take effect.",
+          "example": "True",
+          "member": "bool",
+          "name": "EnableInstanceReqLimit",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum concurrency for each service instance.",
+          "example": "4",
+          "member": "int64",
+          "name": "InstanceReqLimit",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StatefulSetCondition": {
+      "document": "Instance status.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reason.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Reason",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status of the condition, True, False or Unknown.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "True",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Ready",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last update time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-09-02T13:32:06Z",
+          "member": "string",
+          "name": "LastTransitionTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last update time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-09-02T13:32:06Z",
+          "member": "string",
+          "name": "LastUpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TCPSocketAction": {
+      "document": "Check action of a TCP Socket health probe.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Called port.",
+          "example": "8501",
+          "member": "int64",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Tencent Cloud tag description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "type",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag value.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TagFilter": {
+      "document": "Tag filtering parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.",
+          "example": "test",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Multiple tag values.",
+          "example": "{\"test\",\"test\"}",
+          "member": "string",
+          "name": "TagValues",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VolumeMount": {
+      "document": "External mounting information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cloud File Storage (CFS) configuration information.",
+          "example": "无",
+          "member": "CFSConfig",
+          "name": "CFSConfig",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mounting source type. Valid values: CFS and COS. The default value is CFS.",
+          "example": "CFS",
+          "member": "string",
+          "name": "VolumeSourceType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mounting path in the custom container.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/MountPath",
+          "member": "string",
+          "name": "MountPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "WorkloadStatus": {
+      "document": "Workload status.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of current instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "Replicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of updated instances.",
+          "example": "0",
+          "member": "int64",
+          "name": "UpdatedReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of ready instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "ReadyReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of available instances.",
+          "example": "1",
+          "member": "int64",
+          "name": "AvailableReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of unavailable instances.",
+          "example": "0",
+          "member": "int64",
+          "name": "UnavailableReplicas",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Normal: running.Abnormal: service abnormalities, such as container startup failure.Waiting: service waiting, such as container image pulling.Stopped: stopped.Pending: starting.Stopping: stopping.",
+          "example": "Normal",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Workload status information.",
+          "example": "{}",
+          "member": "StatefulSetCondition",
+          "name": "StatefulSetCondition",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status information of workload history.",
+          "example": "[]",
+          "member": "StatefulSetCondition",
+          "name": "Conditions",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Display the reason when the status is abnormal.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Reason",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    }
+  }
+}
