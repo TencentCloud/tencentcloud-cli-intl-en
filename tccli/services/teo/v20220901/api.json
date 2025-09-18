@@ -365,7 +365,7 @@
       "status": "online"
     },
     "DeleteLoadBalancer": {
-      "document": "This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).",
+      "document": "This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).",
       "input": "DeleteLoadBalancerRequest",
       "name": "Deletes a LoadBalancer",
       "output": "DeleteLoadBalancerResponse",
@@ -17751,7 +17751,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "Template creation time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2020-09-07T00:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -17761,7 +17761,7 @@
         },
         {
           "disabled": false,
-          "document": "Template last modified time. uses [ISO date format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "Template last modified time. uses [ISO date format](https://www.tencentcloud.com/zh/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2020-09-07T00:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -25497,7 +25497,7 @@
         },
         {
           "disabled": false,
-          "document": "The parameter value type.\n<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.\n<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.\n<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.\n<Li>`CUSTOM_NUM`: (integer) custom value.</li>.\n<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).",
+          "document": "The parameter value type.\n<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>\n<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>\n<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>\n<Li>`CUSTOM_NUM`: (integer) custom value.</li>\n<Li> custom_string: parameter value is user-customized, string type.</li> ",
           "example": "CHOICE",
           "member": "string",
           "name": "Type",

@@ -422,6 +422,14 @@
         "title": "Querying the Price of a Reserved Instance"
       }
     ],
+    "InquiryPriceModifyInstancesChargeType": [
+      {
+        "document": "This example shows you how to perform a switchover for the billing mode of an instance to check the price.",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceModifyInstancesChargeType\n<Common request parameters>\n\n{\n    \"InstanceChargeType\": \"PREPAID\",\n    \"InstanceIds\": [\n        \"ins-r8hr2upy\"\n    ],\n    \"InstanceChargePrepaid\": {\n        \"Period\": 1\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"OriginalPrice\": 720,\n                \"DiscountPrice\": 720\n            }\n        },\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
+        "title": "Switching the Billing Mode of an Instance for Price Inquiry"
+      }
+    ],
     "InquiryPriceRenewInstances": [
       {
         "document": "This example shows you how to perform a renewal instance inquiry with a duration of one month.",
@@ -528,6 +536,20 @@
         "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstancesAttribute\n<Common request parameters>\n\n{\n    \"InstanceName\": \"Mysql_Server\",\n    \"InstanceIds\": [\n        \"ins-5d8a23rs\",\n        \"ins-r8hr2upy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Renaming instances"
+      }
+    ],
+    "ModifyInstancesChargeType": [
+      {
+        "document": "This example shows you how to switch the billing mode of an instance.",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstancesChargeType\n<Common request parameters>\n\n{\n    \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n    \"InstanceIds\": [\n        \"ins-r8hr2upy\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
+        "title": "Switching Instance Billing Mode to Hourly Postpaid in This Example"
+      },
+      {
+        "document": "This example shows you how to switch the billing mode of an instance.",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstancesChargeType\n<Common request parameters>\n\n{\n    \"InstanceChargeType\": \"PREPAID\",\n    \"InstanceIds\": [\n        \"ins-r8hr2upy\"\n    ],\n    \"InstanceChargePrepaid\": {\n        \"Period\": \"1\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
+        "title": "This Example Switches Instance Billing Mode to Prepaid Mode with a Duration of 1 Month"
       }
     ],
     "ModifyInstancesDisasterRecoverGroup": [

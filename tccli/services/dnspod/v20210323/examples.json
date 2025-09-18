@@ -100,6 +100,14 @@
         "title": "Bulk deleting domains"
       }
     ],
+    "DeletePackageOrder": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePackageOrder\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"37062da4-cdce-43a8-a1a9-6ea6176404d4\"\n    }\n}",
+        "title": "Close International Site Package Order"
+      }
+    ],
     "DeleteRecord": [
       {
         "document": " ",
@@ -194,6 +202,14 @@
         "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordGroupList\n<Common request parameters>\n\n{\n    \"Domain\": \"recordgroup.com\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0076ce66-aff3-4d2b-bd6e-92bf053ae150\",\n        \"GroupList\": [\n            {\n                \"GroupId\": 0,\n                \"GroupName\": \"Default group\",\n                \"GroupType\": \"system\"\n            },\n            {\n                \"GroupId\": 144,\n                \"GroupName\": \"Group name\",\n                \"GroupType\": \"user\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of DNS record groups"
+      }
+    ],
+    "DescribeRecordLineCategoryList": [
+      {
+        "document": "This example shows you how to return a line list by category",
+        "input": "POST / HTTP/1.1\nHost: dnspod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordLineCategoryList\n<Common request parameters>\n\n{\n    \"Domain\": \"dnspod.cn\",\n    \"DomainId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e5246d79-2779-45df-aa6f-fe67001be5d8\",\n        \"LineList\": [\n            {\n                \"Grade\": \"DPG_FREE\",\n                \"SubGroup\": null,\n                \"LineName\": \"Default\",\n                \"LineId\": \"0\",\n                \"Useful\": true,\n                \"Lines\": null\n            },\n            {\n                \"Grade\": \"DPG_FREE\",\n                \"SubGroup\": [\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Baidu\",\n                        \"LineId\": \"90=0\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Google\",\n                        \"LineId\": \"90=1\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Youdao\",\n                        \"LineId\": \"90=2\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Bing\",\n                        \"LineId\": \"90=3\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Sogou\",\n                        \"LineId\": \"90=5\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Qihoo\",\n                        \"LineId\": \"90=6\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    },\n                    {\n                        \"Grade\": \"DPG_FREE\",\n                        \"SubGroup\": null,\n                        \"LineName\": \"Search engine\",\n                        \"LineId\": \"80=0\",\n                        \"Useful\": true,\n                        \"Lines\": null\n                    }\n                ],\n                \"LineName\": \"Search engine\",\n                \"LineId\": \"80=0\",\n                \"Useful\": true,\n                \"Lines\": null\n            }\n        ]\n    }\n}",
+        "title": "Line List Parameter Example by Category"
       }
     ],
     "DescribeRecordLineList": [
