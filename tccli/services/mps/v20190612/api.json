@@ -85,7 +85,7 @@
       "status": "online"
     },
     "CreateSchedule": {
-      "document": "This API is used to create a scheme for media files uploaded to a specified COS bucket. A scheme may include the following tasks:\n1. Video transcoding (with watermark)\n2. Animated screenshot generating\n3. Time point screencapturing\n4. Sampled screencapturing\n5. Image sprite generating\n6. Adaptive bitrate streaming\n7. Intelligent content moderation (detection of pornographic and sensitive content)\n8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame)\n9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)\n\nNote: A scheme is disabled upon creation. You need to manually enable it.",
+      "document": "This API is used to set processing rules for uploaded media files under the specified Bucket directory in COS, including:.\nThis API is used to transcode videos with watermarks.\nThis API is used to generate animated images.\nThis API is used to take screenshots at specified time points.\nThis API is used to take sampled screenshots from videos.\nThis API is used to take sprite screenshots of videos.\nThis API is used to transcode to adaptive bitrate streaming.\nThis API is used to perform intelligent content moderation, including porn detection and sensitive information detection.\nThis API is used to perform intelligent content analysis (tag, category, cover, frame tagging).\nThis API is used to perform intelligent content identification (human face, full text, text keyword, full speech, speech keyword).\n10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).\n\n11. Smart subtitle (full speech, speech hotword, and speech translation).\n\nThis API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).\n\nThis API is used to create an orchestration, which is in disable status by default and requires manual enablement.",
       "input": "CreateScheduleRequest",
       "name": "Creates a scheme",
       "output": "CreateScheduleResponse",
@@ -631,7 +631,7 @@
       "status": "online"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a processing task for video URLs or media files in COS. Features include:\n1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).\n2. Video-to-GIF conversion.\n3. Time point screenshot of videos.\n4. Sampled screenshot of videos.\n5. Image sprite of videos.\n6. Adaptive bitrate stream conversion for videos.\n7. Intelligent content moderation (such as pornography detection and sensitive information detection).\n8. Intelligent content analysis (such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking).\n9. Intelligent content recognition (such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object).\n10. Media quality inspection, such as media format diagnosis, audio/visual content moderation (such as jitter, blur, low lighting, overexposure, black edge, white edge, black screen, white screen, screen glitch, noise, mosaic, and QR code), and no-reference quality scoring.\n11. Smart subtitle (such as full speech, speech hotword, and speech translation).",
+      "document": "This API is used to initiate a processing task for URL video links or media files in COS. Features include:.\nThis API is used to perform video transcoding, including standard transcoding, TSC transcoding, and audio/video enhancement.\nThis API is used to generate animated images.\nThis API is used to take screenshots at specified time points.\nThis API is used to take sampled screenshots from videos.\nThis API is used to take sprite screenshots of videos.\nThis API is used to transcode to adaptive bitrate streaming.\nThis API is used to perform intelligent content moderation, such as pornography detection and sensitive information detection.\nThis API is used to perform intelligent content analysis such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking.\nThis API is used to perform intelligent content recognition such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition.\nThis API is used to perform media quality inspection, such as media format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, screen glitch, noise, mosaic, QR code, and other issues), and no-reference scoring.\n11. Smart subtitle (such as ASR, hotword, and speech translation).\n\nThis API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).",
       "input": "ProcessMediaRequest",
       "name": "Starts a media processing task",
       "output": "ProcessMediaResponse",
@@ -888,7 +888,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Atomic task type:\n<li>input: start node</li>\n<li>output: end node</li>\n<li>action-trans: transcoding</li>\n<li>action-samplesnapshot: sampled screenshot</li>\n<li>action-AIAnalysis: analysis</li>\n<li>action-AIRecognition: recognition</li>\n<li>action-aiReview: review</li>\n<li>action-animated-graphics: conversion to GIF</li>\n<li>action-image-sprite: image sprite</li>\n<li>action-snapshotByTimeOffset: time point screenshot</li>\n<li>action-adaptive-substream: adaptive bitrate stream</li>\n<li>action-AIQualityControl: media quality inspection</li>\n<li>action-SmartSubtitles: smart subtitle</li>\n<li>action-exec-rules: judgment rule</li>\n\n\n",
+          "document": "Atomic task type.\n<li>input: starting node.</li>.\n<li>output: termination node.</li>.\n<li>action-trans: specifies transcoding.</li>.\n<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.\n<li>action-AIAnalysis: analysis.</li>.\n<li>action-AIRecognition: recognition.</li>.\n<li>action-aiReview: specifies the review action.</li>.\n<li>action-animated-graphics: specifies the animated image.</li>.\n<li>action-image-sprite: specifies the sprite sheet.</li>.\n<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.\n<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.\n<li>action-AIQualityControl: media quality inspection.</li>.\n<li>action-SmartSubtitles: smart subtitling.</li>.\n<li>action-exec-rules: judgment rule.</li>.\n<li>action-SmartErase: smart erasure.</li>.\n\n\n",
           "example": "input",
           "member": "string",
           "name": "ActivityType",
@@ -1056,6 +1056,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Smart erasure task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseTaskInput",
+          "name": "SmartEraseTask",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1182,6 +1193,16 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Smart erase task output.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseTaskResult",
+          "name": "SmartEraseTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1191,7 +1212,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Atomic task type.\n<Li>Transcode: transcoding</li>\n<Li>SampleSnapshot: sampled screenshot</li>\n<Li>AnimatedGraphics: conversion to GIF</li>\n<Li>SnapshotByTimeOffset: time point screenshot</li>\n<Li>ImageSprites: image sprite</li>\n<Li>AdaptiveDynamicStreaming: adaptive bitrate stream</li>\n<Li>AiContentReview: content review</li>\n<Li>AIRecognition: intelligent recognition</li>\n<Li>AIAnalysis: intelligent analysis</li>\n<li>AiQualityControl: media quality inspection.</li>\n\n<Li>SmartSubtitles: smart subtitle</li>",
+          "document": "Atomic task type.\n<Li>Transcode: transcoding.</li>.\n<Li>SampleSnapshot: specifies sampled screenshot taking.</li>.\n<Li>AnimatedGraphics: specifies the animated image.</li>.\n<Li>SnapshotByTimeOffset: specifies time point screenshot taking.</li>.\n<Li>ImageSprites: specifies the sprite sheet.</li>.\n<Li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>.\n<Li>AiContentReview: specifies content moderation.</li>.\n<Li>AIRecognition: intelligent identification.</li>.\n<Li>AIAnalysis: specifies ai analysis.</li>.\n<li>AiQualityControl: media quality inspection</li>\n\n<Li>SmartSubtitles: smart subtitle</li>\n\n<Li>SmartErase: smart erasure.</li>.",
           "example": "Transcode",
           "member": "string",
           "name": "ActivityType",
@@ -1275,7 +1296,7 @@
         {
           "disabled": false,
           "document": "Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.",
-          "example": "WatermarkSet",
+          "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
           "output_required": true,
@@ -1286,7 +1307,7 @@
         {
           "disabled": false,
           "document": "Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "OutputStorage",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "output_required": true,
@@ -1329,8 +1350,8 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle file to be inserted.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "AddOnSubtitles",
+          "document": "External subtitle feature specifies the subtitle file to be inserted.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
           "output_required": false,
@@ -1340,14 +1361,14 @@
         },
         {
           "disabled": false,
-          "document": "Drm information.",
-          "example": "DrmInfo",
+          "document": "Specifies the Drm information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "DrmInfo",
           "name": "DrmInfo",
           "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -1362,8 +1383,8 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the subtitle parameter.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "SubtitleTemplate",
+          "document": "Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "SubtitleTemplate",
           "name": "SubtitleTemplate",
           "output_required": false,
@@ -1616,7 +1637,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<li>Classification: intelligent classification.</li>\n<li>Cover: intelligent thumbnail generating.</li>\n<li>Tag: intelligent tagging.</li>\n<li>FrameTag: intelligent frame-by-frame tagging.</li>\n<li>Highlight: intelligent highlights generating.</li>\n\n<li>DeLogo: intelligent removal.</li>\n<li>Description: large model summarization.</li>",
+          "document": "Task type. valid values:.\n<Li>Classification: intelligent classification.</li>.\n<Li>Cover: specifies the intelligent cover.</li>.\n<Li>Tag: intelligent tag.</li>.\n<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.\n<Li>Highlight: intelligent highlights</li>.\n<Li>DeLogo: intelligent removal.</li>.\n<li>Description: large model summarization.</li>\n\n<Li>Dubbing: intelligent dubbing.</li>.",
           "example": "Classification",
           "member": "string",
           "name": "Type",
@@ -1720,6 +1741,16 @@
           "example": "无",
           "member": "AiAnalysisTaskHorizontalToVerticalResult",
           "name": "HorizontalToVerticalTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The query result of a Dubbing task for video content analysis, which is valid when the task type is Dubbing.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskDubbingResult",
+          "name": "DubbingTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -1995,11 +2026,31 @@
         {
           "disabled": false,
           "document": "Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "{\"CenterY\": 1200}",
+          "example": "无",
           "member": "SubtitlePosition",
           "name": "SubtitlePos",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the file url of the video after voice cloning.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "/output/delogo-result-0.mp4",
+          "member": "string",
+          "name": "VoiceClonedVideo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the file address of the voice type clone annotation.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "/output/delogo-result-0.json",
+          "member": "string",
+          "name": "VoiceClonedMarkFile",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -2141,6 +2192,114 @@
           "document": "Intelligent description task output.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AiAnalysisTaskDescriptionOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskDubbingInput": {
+      "document": "Intelligent translation task input type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Video translation template ID.",
+          "example": "32",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskDubbingOutput": {
+      "document": "Intelligent translation result information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the video path for translation.",
+          "example": "/output/dub-result-0.mp4",
+          "member": "string",
+          "name": "VideoPath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the file path of the tag.\n",
+          "example": "/output/dub-result-0.json",
+          "member": "string",
+          "name": "SpeakerPath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the storage location of the transcoded video.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskDubbingResult": {
+      "document": "Intelligent translation result type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. `0`: Task successful. Other values: Task failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the task input for intelligent translation.",
+          "example": "无",
+          "member": "AiAnalysisTaskDubbingInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the task output of intelligent translation.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskDubbingOutput",
           "name": "Output",
           "output_required": true,
           "type": "object",
@@ -9244,7 +9403,7 @@
         {
           "disabled": false,
           "document": "The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.\nIf you do not specify this, the file will be saved to the trigger directory.",
-          "example": "\"\"",
+          "example": "/tmp/",
           "member": "string",
           "name": "OutputDir",
           "required": false,
@@ -9262,7 +9421,7 @@
         {
           "disabled": false,
           "document": "Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.",
-          "example": "无",
+          "example": "vts-213xxxx02-0",
           "member": "string",
           "name": "ResourceId",
           "required": false,
@@ -9307,7 +9466,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -9316,7 +9475,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle language type.\n0: source language1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.",
+          "document": "Smart subtitle language type.\n0: source language\n1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.",
           "example": "0",
           "member": "int64",
           "name": "SubtitleType",
@@ -9334,7 +9493,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format.\nvtt: WebVTT format\nIf this field is left blank, no subtitle file will be generated.",
+          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -12169,6 +12328,16 @@
         },
         {
           "disabled": false,
+          "document": "Extracts digital watermark task information. this field has a value only when TaskType is ExtractBlindWatermark.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkTask",
+          "name": "ExtractBlindWatermarkTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Event notification information of a task.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskNotifyConfig",
@@ -12190,7 +12359,7 @@
         {
           "disabled": false,
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
-          "example": "\"\"",
+          "example": "ctx-sessionid",
           "member": "string",
           "name": "SessionId",
           "output_required": true,
@@ -12200,7 +12369,7 @@
         {
           "disabled": false,
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "\"\"",
+          "example": "ctx-sessionctx",
           "member": "string",
           "name": "SessionContext",
           "output_required": true,
@@ -12210,7 +12379,7 @@
         {
           "disabled": false,
           "document": "Extended information field, used in specific scenarios.",
-          "example": "\"\"",
+          "example": "{\"ExtInfo\": \"\"}",
           "member": "string",
           "name": "ExtInfo",
           "output_required": true,
@@ -12229,7 +12398,7 @@
         },
         {
           "disabled": false,
-          "document": "The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveScheduleTask",
           "name": "LiveScheduleTask",
@@ -13243,6 +13412,106 @@
       ],
       "usage": "both"
     },
+    "EraseArea": {
+      "document": "Smart erasure. coordinate configuration of the removal area.\nThe region is defined by the coordinates of the upper left corner and the bottom-right corner.\nThe coordinate origin is the top-left corner of the frame and the coordinate points can be specified using pixel values or percentage units.\n**For the Automatic Erasing Area:**\nWhen the unit is %, the coordinate range is [0,1].\nWhen unit is px, X value range is [0, video image width]. Y value range is [0, video image height].\n**For the Specified area erasing:**\nSpecifies the coordinate range as [0,1) when the unit is %.\nWhen unit: px, X value range [0, video image width], Y value range [0, video image height].",
+      "members": [
+        {
+          "disabled": false,
+          "document": "X-Axis coordinate of the upper left corner.\nWhen Unit is set to 1 (percentage Unit), 0.05 indicates the horizontal distance from the upper left corner of the region to the top-left corner of the entire frame is 5% of the frame width.",
+          "example": "0.0500",
+          "member": "float",
+          "name": "LeftTopX",
+          "output_required": false,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Y-Axis coordinate of the upper left corner.\nWhen Unit is set to 1 (using percentage Unit), 0.1 indicates the vertical distance from the top-left corner of the area to the top-left corner of the entire frame is 10% of the screen height.",
+          "example": "0.1000",
+          "member": "float",
+          "name": "LeftTopY",
+          "output_required": false,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "X-Axis coordinate of the bottom-right corner.\nWhen Unit is set to 1 (percentage Unit), 0.75 indicates the horizontal distance from the bottom-right corner of the region to the top-left corner of the entire frame is 75% of the frame width.",
+          "example": "0.7500",
+          "member": "float",
+          "name": "RightBottomX",
+          "output_required": false,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Y-Axis coordinate of the bottom-right corner.\nWhen Unit is set to 1 (using percentage Unit), 0.9 indicates the vertical distance from the bottom-right corner of the area to the top-left corner of the entire frame is 90% of the screen height.",
+          "example": "0.9000",
+          "member": "float",
+          "name": "RightBottomY",
+          "output_required": false,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the coordinate unit.\n-Percentage.\n-2 pixel values.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Unit",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EraseTimeArea": {
+      "document": "Smart Erase, specifies the region configuration.\nErase the designated region directly within a specified period.\nWhen both BeginMs and EndMs are set to 0, directly perform removal of the designated region in the entire video.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time, in ms.",
+          "example": "200",
+          "member": "uint64",
+          "name": "BeginMs",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time, unit: ms.",
+          "example": "3000",
+          "member": "uint64",
+          "name": "EndMs",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Erases the domain list within the period.",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "Areas",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ExecRuleTaskData": {
       "document": "Conditional judgment output.",
       "members": [
@@ -13321,6 +13590,119 @@
         }
       ],
       "type": "object"
+    },
+    "ExtractBlindWatermarkTask": {
+      "document": "Extract video digital watermark task information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media processing task ID.",
+          "example": "125xxx65-ExtractBlindWatermark-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task flow status. valid values:.\n<Li>WAITING: waiting.</li>.\n<Li>PROCESSING: processing.</li>.\n<li>FINISH: completed</li>",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. `0` indicates success. other values indicate failure.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "NULL",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target file information for media processing.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the digital watermark type. valid values: <li>blind-basic: basic version copyright digital watermark;</li> <li>blind-ab: ab copyright digital watermark.</li>.",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether a watermark is detected. if this parameter is true, the Result field will return the watermark extraction Result. if this parameter is false, the Result field will not return.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsDetected",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fetched watermark content. this field will not be returned when no detection.",
+          "example": "数字水印文本",
+          "member": "string",
+          "name": "Result",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extracts the digital watermark configuration.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkTaskConfig",
+          "name": "ExtractBlindWatermarkConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExtractBlindWatermarkTaskConfig": {
+      "document": "Extracts the digital watermark task configuration for video transcoding.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Valid when the watermark type is blind-abseq. specifies the segment duration of the input video. unit: ms.\nSegment duration is 5 seconds by default if left empty.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "5000",
+          "member": "int64",
+          "name": "SegmentDuration",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "FaceConfigureInfo": {
       "document": "Control parameter of a face recognition task",
@@ -17078,7 +17460,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The input type. Valid values:\n<li>`COS`: A COS bucket address.</li>\n<li> `URL`: A URL.</li>\n<li> `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.</li>",
+          "document": "Type of input source object. valid values:.\n<Li>COS: specifies the cos origin.</li>\n<Li>URL: the url source.</li>\n<Li>AWS-S3: aws source. currently only supports transcoding tasks.</li>\n<Li>VOD: video-on-demand pro edition (VOD Pro). </li>",
           "example": "NULL",
           "member": "string",
           "name": "Type",
@@ -17090,7 +17472,7 @@
         {
           "disabled": false,
           "document": "The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.",
-          "example": "NULL",
+          "example": "无",
           "member": "CosInputInfo",
           "name": "CosInputInfo",
           "output_required": true,
@@ -17101,7 +17483,7 @@
         {
           "disabled": false,
           "document": "The URL of the object to process. This parameter is valid and required when `Type` is `URL`.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "UrlInputInfo",
           "name": "UrlInputInfo",
           "output_required": true,
@@ -17112,10 +17494,21 @@
         {
           "disabled": false,
           "document": "The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "S3InputInfo",
           "name": "S3InputInfo",
           "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The information of the VOD Pro object processed. This parameter is required if `Type` is `VOD`.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "VODInputInfo",
+          "name": "VODInputInfo",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -19370,7 +19763,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.\n",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -19379,7 +19772,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format.\nvtt: WebVTT format\nIf this field is left blank, no subtitle file will be generated.",
+          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -19388,7 +19781,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle language type.\n0: source language1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.",
+          "document": "Smart subtitle language type.\n0: source language\n1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.",
           "example": "0",
           "member": "int64",
           "name": "SubtitleType",
@@ -21250,6 +21643,24 @@
         },
         {
           "disabled": false,
+          "document": "Smart subtitle task.",
+          "example": "无",
+          "member": "SmartSubtitlesTaskInput",
+          "name": "SmartSubtitlesTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Smart erase task parameter.",
+          "example": "无",
+          "member": "SmartEraseTaskInput",
+          "name": "SmartEraseTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.",
           "example": "无",
           "member": "TaskNotifyConfig",
@@ -21278,7 +21689,7 @@
         {
           "disabled": false,
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "UserDefinedInfo",
+          "example": "userxxxx",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -21296,20 +21707,11 @@
         {
           "disabled": false,
           "document": "Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.",
-          "example": "vts-24000123-0",
+          "example": "vts-24000-0",
           "member": "string",
           "name": "ResourceId",
           "required": false,
           "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Smart subtitle task.",
-          "example": "无",
-          "member": "SmartSubtitlesTaskInput",
-          "name": "SmartSubtitlesTask",
-          "required": false,
-          "type": "object"
         },
         {
           "disabled": false,
@@ -21658,7 +22060,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Quality control item name. The quality control item values are as follows:\n<li>LowEvaluation: No reference score.</li>\n<li>Mosaic: Mosaic detection.</li>\n<li>CrashScreen: Screen crash detection.</li>\n<li>Blur: Blur detection.</li>\n<li>BlackWhiteEdge: Black and white edge detection.</li>\n<li>SolidColorScreen: Solid color screen detection.</li>\n<li>LowLighting: Low lighting.</li>\n<li>HighLighting: Overexposure.</li>\n<li>NoVoice: Silence detection.</li>\n<li>LowVoice: Low voice detection.</li>\n<li>HighVoice: High voice detection.</li>\n<li>Jitter: Jitter detection.</li>\n<li>Noise: Noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: Barcode detection.</li>\n<li>AppletCode: Applet code detection.</li>\n<li>VideoResolutionChanged: The video resolution changed.</li>\n<li>AudioSampleRateChanged: The audio sampling rate changed.</li>\n<li>AudioChannelsChanged: The audio channel count changed.</li>\n<li>ParameterSetsChanged: The stream parameter set information changed.</li>\n<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>\n<li>TimestampFallback: DTS timestamp fallback.</li>\n<li>DtsJitter: Excessive DTS jitter.</li>\n<li>PtsJitter: Excessive PTS jitter.</li>\n<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: Audio frame loss.</li>\n<li>VideoDroppingFrames: Video frame loss.</li>\n<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>\n<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>\n<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>\n<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>\n<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>\n<li>StreamOpenFailed: Stream opening failed.</li>\n<li>StreamEnd: The stream ended.</li>\n<li>StreamParseFailed: Stream parsing failed.</li>\n<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>\n<li>AudioStreamLack: No audio stream.</li>\n<li>VideoStreamLack: No video stream.</li>\n<li>LackAudioRecover: Lack of audio stream recovery.</li>\n<li>LackVideoRecover: Lack of video stream recovery.</li>\n<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>\n<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>\n<li>VideoDecodeFailed: Video decoding error.</li>\n<li>AudioDecodeFailed: Audio decoding error.</li>\n<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>\n<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>\n<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>\n<li>VideoRotation: Video image rotation.</li>\n<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>\n<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: Invalid m3u8 file.</li>\n<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>\n<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>\n<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>\n<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
+          "document": "Quality inspection item name. valid values:.\n<li>LowEvaluation: specifies the no-reference MOS score of the video.</li>.\n<li>AudioEvaluation: specifies the no-reference MOS score of the audio.</li>.\n<Li>Mosaic: mosaic detection.</li>.\n<Li>CrashScreen: specifies screen glitch detection.</li>.\n<Li>Blur: specifies blur detection.</li>.\n<Li>Jitter: jitter detection.</li>.\n<Li>Noise: noise detection.</li>.\n<Li>QRCode: qr code detection.</li>.\n<Li>BarCode: specifies barcode detection.</li>.\n<Li>AppletCode: specifies mini program code detection.</li>.\n<Li>BlackWhiteEdge: specifies black and white edge detection.</li>.\n<Li>SolidColorScreen: specifies solid color screen detection.</li>.\n<Li>LowLighting: specifies low light.</li>.\n<Li>HighLighting: overexposure.</li>.\n<Li>NoVoice: specifies silence detection.</li>.\n<Li>LowVoice: specifies bass detection.</li>.\n<Li>HighVoice: explosion noise detection.</li>.\n<Li>AudioNoise: specifies audio noise detection.</li>.\n<Li>VideoResolutionChanged: specifies the video resolution change.</li>.\n<Li>AudioSampleRateChanged: specifies the audio sample rate change.</li>.\n<Li>AudioChannelsChanged: indicates the audio channel quantity change.</li>.\n<Li>ParameterSetsChanged: indicates the stream parameter set information has changed.</li>.\n<Li>DarOrSarInvalid: indicates an abnormal video aspect ratio.</li>.\n<li>TimestampFallback: specifies DTS timestamp rollback.</li>.\n<li>DtsJitter: specifies excessive DTS jitter.</li>.\n<li>PtsJitter: indicates excessive PTS jitter.</li>.\n<Li>AACDurationDeviation: specifies an improper aac frame timestamp interval.</li>.\n<Li>AudioDroppingFrames: indicates audio frame dropping.</li>.\n<Li>VideoDroppingFrames: specifies video frame dropping.</li>.\n<Li>AVTimestampInterleave: improper audio-video interleaving.</li>.\n<Li>PtsLessThanDts: specifies that the pts of the media stream is less than the dts.</li>.\n<Li>ReceiveFpsJitter: specifies excessive jitter in the network received frame rate.</li>.\n<Li>ReceiveFpsTooSmall: indicates the network received video frame rate is too low.</li>.\n<li>FpsJitter: specifies excessive jitter in the stream frame rate calculated via PTS.</li>.\n<Li>StreamOpenFailed: indicates the stream open failure.</li>.\n<Li>StreamEnd: specifies the stream end.</li>.\n<Li>StreamParseFailed: specifies the stream parsing failure.</li>.\n<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>.\n<Li>StreamNALUError: indicates an nalu start code error.</li>.\n<li>TsStreamNoAud: specifies whether the mpegts H26x stream misses AUD NALU.</li>.\n<Li>AudioStreamLack: no audio stream.</li>.\n<Li>VideoStreamLack: no video stream.</li>.\n<Li>LackAudioRecover: specifies missing audio stream recovery.</li>.\n<Li>LackVideoRecover: missing video stream recovery.</li>.\n<Li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>.\n<Li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>.\n<Li>VideoDecodeFailed: indicates a video decoding error.</li>.\n<Li>AudioDecodeFailed: audio decoding error.</li>.\n<Li>AudioOutOfPhase: specifies opposite phase in dual-channel audio.</li>.\n<Li>VideoDuplicatedFrame: indicates duplicate frames in video streams.</li>.\n<Li>AudioDuplicatedFrame: indicates duplicate frames in audio streams.</li>.\n<Li>VideoRotation: specifies video rotation.</li>.\n<li>TsMultiPrograms: specifies multiple programs in MPEG2-TS streams.</li>.\n<li>Mp4InvalidCodecFourcc: specifies the codec fourcc in Mp4 does not meet Apple HLS requirements.</li>.\n<Li>HLSBadM3u8Format: invalid m3u8 file.</li>.\n<Li>HLSInvalidMasterM3u8: invalid main m3u8 file.</li>.\n<Li>HLSInvalidMediaM3u8: invalid media m3u8 file.</li>.\n<Li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main m3u8.</li>.\n<Li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media m3u8.</li>.\n<li>HLSMediaM3u8DiscontinuityExist: indicates the existence of EXT-X-DISCONTINUITY in media m3u8.</li>.\n<Li>HLSMediaSegmentsStreamNumChange: indicates the number of streams in segments changes.</li>.\n<li>HLSMediaSegmentsPTSJitterDeviation: indicates PTS jumps between segments without EXT-X-DISCONTINUITY.</li>.\n<li>HLSMediaSegmentsDTSJitterDeviation: indicates DTS jumps between segments without EXT-X-DISCONTINUITY.</li>.\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
           "example": "Mosaic",
           "member": "string",
           "name": "Type",
@@ -21911,6 +22313,56 @@
       ],
       "usage": "both"
     },
+    "RawSmartEraseParameter": {
+      "document": "Smart erasure custom parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the removal type.\n-subtitle removal.\n-Remove watermark.\n-privacy protection.",
+          "example": "subtitle",
+          "member": "string",
+          "name": "EraseType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasure configuration.\nWhen EraseType is subtitle, this field is required.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseSubtitleConfig",
+          "name": "EraseSubtitleConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the watermark removal configuration.\nWhen EraseType is watermark, this field is required.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseWatermarkConfig",
+          "name": "EraseWatermarkConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection configuration.\nWhen EraseType is privacy, this field is required.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartErasePrivacyConfig",
+          "name": "ErasePrivacyConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RawSmartSubtitleParameter": {
       "document": "Custom smart subtitle parameter.",
       "members": [
@@ -21927,7 +22379,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfil: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -21938,7 +22390,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format.\nvtt: WebVTT format\nIf this field is left blank, no subtitle file will be generated.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -21972,7 +22424,7 @@
         {
           "disabled": false,
           "document": "ASR hotword lexicon parameter.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "{\"Switch\": \"OFF\"}",
+          "example": "无",
           "member": "AsrHotWordsConfigure",
           "name": "AsrHotWordsConfigure",
           "output_required": false,
@@ -23627,6 +24079,325 @@
       ],
       "usage": "both"
     },
+    "SmartErasePrivacyConfig": {
+      "document": "Intelligent erasure template privacy protection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the privacy protection removal method.\n-Blur: specifies the blur detection.\n-Specifies the mosaic.",
+          "example": "blur",
+          "member": "string",
+          "name": "PrivacyModel",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection objective. no need to import an array when in use on API Explorer. just add the corresponding item and fill in the value.\n-Human face.\n-License plate.",
+          "example": "[\"face\",\"plate\"]",
+          "member": "string",
+          "name": "PrivacyTargets",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SmartEraseSubtitleConfig": {
+      "document": "Intelligent erasure template subtitle configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the subtitle erasure method.\n**Automatic erasing:** automatically identifies subtitle text content in videos through AI models and performs seamless erasure to generate new videos. frame interference and unique subtitle styles may cause certain missed or incorrect erasures, which can be handled through specified area erasure.\nWhen using automatic erasure, if AutoAreas is not specified, the default region (lower middle of the frame) will be erased automatically. if AutoAreas is specified, it will change to erase the designated area.\n**Specified area erasing:** if your subtitle position is fixed, directly specify the erasure area to decrease the chance of removal omission to the maximum extent.\nWhen your choice is specified area erasure, please import at least one designated region in CustomAreas.\n-Automated removal.\n- specifies the custom specified area erasure.\n",
+          "example": "auto",
+          "member": "string",
+          "name": "SubtitleEraseMethod",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasure model.\n**Standard version (recommend):** if your subtitle style is standard, normally recommend choose this version for better effectiveness with seamless detail.\n**Regional version:** if your subtitles have special styles such as italics, shadows, or motion effects, we recommend choosing the regional version for larger removal area, though the detail effect is not as good as the standard version.\n-Specifies the standard model.\n-area. specifies the regional model.",
+          "example": "standard",
+          "member": "string",
+          "name": "SubtitleModel",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether OCR subtitle extraction is enabled. default value: OFF.\nSupports enabling OCR subtitle extraction only when SubtitleEraseMethod is set to auto. when enabled, it identifies the longest and most stable text area within the region as the subtitle area, then performs text extraction and removal.\n-ON: enable.\n-OFF. specifies the disabled state.",
+          "example": "ON",
+          "member": "string",
+          "name": "OcrSwitch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle language, for OCR guidance, default value zh_en. this parameter is valid only when OcrSwitch is ON.\n-Chinese and english.\n-multi other.\nOther supported languages:.\nChinese, english, japanese, korean, spanish, french, german, portuguese, vietnamese, malay, russian, italian, dutch, swedish, finnish, danish, norwegian, hungarian, thai, hindi, arabic, indian-bengali, indian-gujarati, indian-kannada, indian-malayalam, indian-tamil, indian-telugu, slovenian, polish, catalan, bosnian, czech, estonian, croatian, punjabi, marathi, azerbaijani, indonesian, luxembourgish, lithuanian, latvian, maltese, slovak, turkish, kazakh, greek, irish, belarusian, khmer, tagalog, pashto, persian, tajik.\n\n",
+          "example": "zh_en",
+          "member": "string",
+          "name": "SubtitleLang",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the subtitle file format. default value: vtt. this parameter is valid only when OcrSwitch is set to ON.\n-srt format.\n-vtt: WebVTT format.",
+          "example": "vtt",
+          "member": "string",
+          "name": "SubtitleFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable subtitle translation. default value: OFF. this parameter is valid only when OcrSwitch is set to ON.\n-ON: enable.\n-OFF. specifies the disabled state.",
+          "example": "ON",
+          "member": "string",
+          "name": "TransSwitch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle target language. default value: en. this parameter is valid only when TransSwitch is set to ON.\nSupported languages:.\nSimplified chinese.\nSpecifies the language. valid values: en (english).\nJa: japanese.\nKo: korean.\nFr: french.\nes: spanish.\nIt: italian.\nde: german.\ntr: turkish.\nRu: russian.\npt: portuguese.\nVi: vietnamese.\nid: indonesian.\nms: malay.\nTh: thai.\nAr: arabic.\nhi: Hindi",
+          "example": "en",
+          "member": "string",
+          "name": "TransDstLang",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies automatic removal of a custom region.\nSpecifies the use of an AI model to automatically detect and erase existing targets in the specified region.\nNote that this parameter will not take effect when the removal method is custom. for template modification, input [] to clean up the region. the template region information remains unchanged if not imported.",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "AutoAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies erasure of a custom region.\nDetects and directly performs removal within a specified time range for the selected region.\nNote: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.",
+          "example": "无",
+          "member": "EraseTimeArea",
+          "name": "CustomAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SmartEraseTaskInput": {
+      "document": "Smart erasure task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Smart erasure template id.",
+          "example": "101",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent erasure custom parameter. valid when Definition is 0. this parameter is used for highly custom scenarios. we recommend you prioritize using Definition to specify intelligent erasure parameters.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RawSmartEraseParameter",
+          "name": "RawParameter",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the target storage for files. if left blank, it inherits the upper-level OutputStorage value.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output path of the file, which can be a relative or absolute path.\nSpecifies the output path must end with `.{format}`. variable names, please refer to [filename variable explanation](https://www.tencentcloud.com/document/product/1041/33495?has_map=1).\n**Relative path example**:\n<Li>Filename_{Variable name}.{format}</li>\n<li>Filename.{format}</li>\n\n**Absolute path example**:\n<Li>/Custom path/filename_{variable name}.{format}</li>\n\n**Note**: currently does not support the `BatchProcessMedia` api.",
+          "example": "{inputName}_smarterase.{format}",
+          "member": "string",
+          "name": "OutputObjectPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SmartEraseTaskResult": {
+      "document": "Smart erasure task result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of the smart erasure task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseTaskInput",
+          "name": "Input",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output of the smart erasure task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskDelLogoOutput",
+          "name": "Output",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress.\t\t",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution start time in ISO datetime format.",
+          "example": "2024-03-21T10:13:06Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution completion time in ISO datetime format.",
+          "example": "2024-03-21T10:14:06Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SmartEraseWatermarkConfig": {
+      "document": "smart erasure template watermark configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the watermark removal method.\n**Auto-Removal:** automatically identifies watermarks in the video using model a and generates a new video after removal. suitable for dynamic watermarks.\nWhen using automated removal, if you do not specify AutoAreas, the full-screen video will be erased automatically. if AutoAreas is specified, it will change to erase the designated areas.\n**Specified area erasure:** for static watermarks with fixed locations, we recommend you directly specify the erasure area.\nWhen you choose specified area erasure, import at least one specified region.\n\n-Automated removal.\n-Specifies the custom specified area erasure.",
+          "example": "auto",
+          "member": "string",
+          "name": "WatermarkEraseMethod",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the watermark removal model.\nBasic version: average effect, cost-effective, suitable for videos with clean backgrounds or animations.\nAdvanced edition: better effectiveness, suitable for mini-drama and reality style video.\n**Supported values**:\n- basic\n- advanced",
+          "example": "advanced",
+          "member": "string",
+          "name": "WatermarkModel",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies automatic removal of a custom region.\nSpecifies the use of an AI model to automatically detect and erase existing targets in the specified region.\nNote that this parameter will not take effect when the removal method is custom.",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "AutoAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies erasure of a custom region.\nDetects and directly performs removal within a specified time range for the selected region.",
+          "example": "无",
+          "member": "EraseTimeArea",
+          "name": "CustomAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SmartSubtitleTaskAsrFullTextResult": {
       "document": "Full speech recognition result.",
       "members": [
@@ -23724,6 +24495,16 @@
           "name": "SubtitlePath",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file storage location.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -23959,7 +24740,7 @@
         {
           "disabled": false,
           "document": "List of segments for translation.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "SmartSubtitleTaskTransTextSegmentItem",
           "name": "SegmentSet",
           "output_required": false,
@@ -23974,6 +24755,16 @@
           "name": "SubtitlePath",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file storage location.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -25088,7 +25879,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The storage type for a media processing output file. Valid values:\n<li>`COS`: Tencent Cloud COS</li>\n<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>",
+          "document": "Specifies the type of storage location for the media processing service output object. valid values:.\n<Li>COS: cos storage.</li>.\n<Li>AWS-S3: aws storage, suitable for aws tasks only and requires the same region.</li>.\n<Li>VOD: video-on-demand (vod) pro edition</li>.",
           "example": "NULL",
           "member": "string",
           "name": "Type",
@@ -25100,10 +25891,10 @@
         {
           "disabled": false,
           "document": "The location to save the output object in COS. This parameter is valid and required when `Type` is COS.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "CosOutputStorage",
           "name": "CosOutputStorage",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -25111,10 +25902,21 @@
         {
           "disabled": false,
           "document": "The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "S3OutputStorage",
           "name": "S3OutputStorage",
-          "output_required": true,
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The VOD Pro application and bucket to save the output file. This parameter is required if `Type` is `VOD`.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "VODOutputStorage",
+          "name": "VODOutputStorage",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -26304,6 +27106,95 @@
       ],
       "usage": "in"
     },
+    "VODInputInfo": {
+      "document": "VOD Pro object information for MPS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the Bucket ID where the input file resides.",
+          "example": "a00ehq6ocdmo0exn",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the region where the input file's Bucket resides.",
+          "example": "ap-chongqing",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Path of the input file.",
+          "example": "/movie/201907/WildAnimal.mov",
+          "member": "string",
+          "name": "Object",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD Pro application Id.",
+          "example": "220762",
+          "member": "uint64",
+          "name": "SubAppId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VODOutputStorage": {
+      "document": "VOD Pro output object information for MPS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the destination Bucket ID for the generated output file of MPS.",
+          "example": "a00ehq6ocdmo0exn",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the region of the target Bucket for the output.",
+          "example": "ap-chongqing",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD Pro application Id.",
+          "example": "220762",
+          "member": "uint64",
+          "name": "SubAppId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "VideoDenoiseConfig": {
       "document": "Image noise removal configuration.",
       "members": [
@@ -27489,7 +28380,7 @@
         {
           "disabled": false,
           "document": "The media processing task ID.",
-          "example": "2xxxx-123456789",
+          "example": "2xxxx-asdews",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -27529,7 +28420,7 @@
         {
           "disabled": false,
           "document": "The information of the file processed.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "MediaInputInfo",
           "name": "InputInfo",
           "output_required": true,
@@ -27539,7 +28430,7 @@
         {
           "disabled": false,
           "document": "Metadata of a source video.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "MediaMetaData",
           "name": "MetaData",
           "output_required": true,
@@ -27549,7 +28440,7 @@
         {
           "disabled": false,
           "document": "The execution status and result of the media processing task.",
-          "example": "NULL",
+          "example": "无",
           "member": "MediaProcessTaskResult",
           "name": "MediaProcessResultSet",
           "output_required": true,
@@ -27559,7 +28450,7 @@
         {
           "disabled": false,
           "document": "Execution status and result of a video content audit task.",
-          "example": "NULL",
+          "example": "无",
           "member": "AiContentReviewResult",
           "name": "AiContentReviewResultSet",
           "output_required": true,
@@ -27569,7 +28460,7 @@
         {
           "disabled": false,
           "document": "Execution status and result of video content analysis task.",
-          "example": "NULL",
+          "example": "无",
           "member": "AiAnalysisResult",
           "name": "AiAnalysisResultSet",
           "output_required": true,
@@ -27579,7 +28470,7 @@
         {
           "disabled": false,
           "document": "Execution status and result of a video content recognition task.",
-          "example": "NULL",
+          "example": "无",
           "member": "AiRecognitionResult",
           "name": "AiRecognitionResultSet",
           "output_required": true,
@@ -27589,7 +28480,7 @@
         {
           "disabled": false,
           "document": "Execution status and results of a media quality inspection task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "ScheduleQualityControlTaskResult",
           "name": "AiQualityControlTaskResult",
           "output_required": true,
@@ -27599,11 +28490,21 @@
         {
           "disabled": false,
           "document": "Execution result of the smart subtitle task.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "SmartSubtitlesResult",
           "name": "SmartSubtitlesTaskResult",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution result of the smart erasure task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SmartEraseTaskResult",
+          "name": "SmartEraseTaskResult",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

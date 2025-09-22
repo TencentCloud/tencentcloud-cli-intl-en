@@ -1,0 +1,233 @@
+{
+  "actions": {
+    "DescribeCloudDedicatedZoneResourceSummary": {
+      "document": "This API is used to query resource usage of each vertical product in Cloud Dedicated Zone.",
+      "input": "DescribeCloudDedicatedZoneResourceSummaryRequest",
+      "name": "Query CDZ resource utilization overview",
+      "output": "DescribeCloudDedicatedZoneResourceSummaryResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-11-23",
+    "serviceNameCN": "专属可用区",
+    "serviceShortName": "cdz"
+  },
+  "objects": {
+    "CloudDedicatedZoneResourceStatisticsInfo": {
+      "document": "Details of the queried data for the statistical item of the CDZ resource, corresponding to a specific vertical product resource statistics.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the item name of resource statistics.",
+          "example": "CPU",
+          "member": "string",
+          "name": "Item",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource statistics item measurement unit.",
+          "example": "核",
+          "member": "string",
+          "name": "Unit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total resource amount.",
+          "example": "300",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Used resources.",
+          "example": "16",
+          "member": "string",
+          "name": "Usage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the percentage of used resources.",
+          "example": "5.33%",
+          "member": "string",
+          "name": "UsageRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining resource.",
+          "example": "284",
+          "member": "string",
+          "name": "Remain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining resource percentage.",
+          "example": "94.67%",
+          "member": "string",
+          "name": "RemainRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource utilization rate at midnight this monday.",
+          "example": "17.29%",
+          "member": "string",
+          "name": "ThisMondayUsageRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource growth rate this week.",
+          "example": "0.50%",
+          "member": "string",
+          "name": "ThisMondayUsageGrowthRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource growth rate last week.",
+          "example": "-0.12%",
+          "member": "string",
+          "name": "LastMondayUsageGrowthRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CloudDedicatedZoneResourceSummaryInfo": {
+      "document": "Details of the CDZ resource water level, corresponding to a specific vertical product.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "云服务器",
+          "member": "string",
+          "name": "ProductName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name",
+          "example": "标准型S5",
+          "member": "string",
+          "name": "SubProductName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistical detail of the resource.",
+          "example": "[     {         \"Item\": \"CPU\",         \"ItemEn\": \"CPU\",         \"Unit\": \"核\",         \"UnitEn\": \"核\",         \"Total\": \"28160\",         \"Usage\": \"27920\",         \"UsageRate\": \"99.15%\",         \"Remain\": \"240\",         \"RemainRate\": \"0.85%\",         \"ThisMondayUsageRate\": \"99.15%\",         \"ThisMondayUsageGrowthRate\": \"0.00%\",         \"LastMondayUsageGrowthRate\": \"0.00%\"     } ]",
+          "member": "CloudDedicatedZoneResourceStatisticsInfo",
+          "name": "Statistics",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCloudDedicatedZoneResourceSummaryRequest": {
+      "document": "DescribeCloudDedicatedZoneResourceSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique id of the cloud dedicated zone.",
+          "example": "cdz-8wbc41r9",
+          "member": "string",
+          "name": "CdzId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudDedicatedZoneResourceSummaryResponse": {
+      "document": "DescribeCloudDedicatedZoneResourceSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource utilization.",
+          "example": "无",
+          "member": "CloudDedicatedZoneResourceSummaryInfo",
+          "name": "ResourceSummarySet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended information of resource utilization.",
+          "example": "无",
+          "member": "ExtraInfo",
+          "name": "ExtraInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtraInfo": {
+      "document": "Extended information of CDZ resource water level data, including availability zone local time and wait for data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cloud dedicated zone local time this monday date.",
+          "example": "2024-01-22",
+          "member": "string",
+          "name": "ThisMondayLocalDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud dedicated zone local time last monday date.",
+          "example": "2024-01-15",
+          "member": "string",
+          "name": "LastMondayLocalDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  }
+}

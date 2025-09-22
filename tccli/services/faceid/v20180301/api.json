@@ -22,7 +22,7 @@
       "status": "online"
     },
     "ApplyWebVerificationBizTokenIntl": {
-      "document": "This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.",
+      "document": "This API is used to obtain a BizToken before each call to the Web verification service. Save the BizToken to initiate the verification process and retrieve the result upon completion. The BizToken is valid for 10 minutes.",
       "input": "ApplyWebVerificationBizTokenIntlRequest",
       "name": "Applies for a BizToken for the web-based verification service",
       "output": "ApplyWebVerificationBizTokenIntlResponse",
@@ -78,7 +78,7 @@
       "status": "online"
     },
     "GetFaceIdResultIntl": {
-      "document": "This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.",
+      "document": "This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for 72 hours (72*3600s) after generation and can be called multiple times.",
       "input": "GetFaceIdResultIntlRequest",
       "name": "Gets the verification result of liveness detection and face comparison",
       "output": "GetFaceIdResultIntlResponse",
@@ -544,7 +544,7 @@
         {
           "disabled": false,
           "document": "The parameter control the page configuration.\nExample: {\"AutoSkip\": true,\"CheckMode\": 1,\"IdCardType\": \"HKIDCard\"}",
-          "example": "{\"AutoSkip\": true,\"CheckMode\": 1,\"IdCardType\": \"HKIDCard\"}",
+          "example": "无",
           "member": "WebVerificationConfigIntl",
           "name": "Config",
           "required": false,
@@ -568,7 +568,7 @@
         },
         {
           "disabled": false,
-          "document": "The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.\nExample: 81EEF678-28EE-4759-A82E-6CBBBE6BC442",
+          "document": "A token that identifies a Web verification process, with a validity time of 10 minutes. after the process is complete, the token can be used to obtain the verification result.",
           "example": "81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "BizToken",
