@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "CreateAlarm": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAlarm\n<Common request parameters>\n\n{\n    \"Name\": \"Quota 2\",\n    \"ProductId\": 2,\n    \"QuotaId\": 3,\n    \"Metrics\": 1,\n    \"Threshold\": 1,\n    \"Frequency\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c5d13bd-070e-4eb8-90c2-4a01dc1b2c54\"\n    }\n}",
+        "title": "Creat Quota"
+      }
+    ]
+  }
+}
