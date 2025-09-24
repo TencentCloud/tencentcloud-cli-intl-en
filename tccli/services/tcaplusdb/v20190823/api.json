@@ -327,7 +327,7 @@
       "input": "RollbackTablesRequest",
       "name": "Rolls back table data",
       "output": "RollbackTablesResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "SetBackupExpireRule": {
       "document": "This API is used to add/delete/modify backup expiration policy. `ClusterId` must be a specific cluster ID (appid).",
@@ -380,7 +380,7 @@
           "example": "10001",
           "member": "string",
           "name": "ApplicationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -390,7 +390,7 @@
           "example": "0",
           "member": "int64",
           "name": "ApplicationType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -400,9 +400,9 @@
           "example": "0",
           "member": "int64",
           "name": "ApplicationStatus",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -410,9 +410,9 @@
           "example": "0",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -420,9 +420,9 @@
           "example": "0",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -641,7 +641,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster instance where a table resides",
-          "example": "123",
+          "example": "898898",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -650,7 +650,7 @@
         {
           "disabled": false,
           "document": "List of information of tables to be cleared",
-          "example": "null",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -668,15 +668,17 @@
           "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of table clearing results",
-          "example": "null",
+          "example": "{}",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -698,7 +700,7 @@
           "example": "0",
           "member": "string",
           "name": "ClusterName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -708,7 +710,7 @@
           "example": "0",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -718,7 +720,7 @@
           "example": "0",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -728,7 +730,7 @@
           "example": "0",
           "member": "string",
           "name": "IdlType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -738,7 +740,7 @@
           "example": "0",
           "member": "string",
           "name": "NetworkType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -748,7 +750,7 @@
           "example": "0",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -758,7 +760,7 @@
           "example": "0",
           "member": "string",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -768,7 +770,7 @@
           "example": "0",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -778,7 +780,7 @@
           "example": "0",
           "member": "string",
           "name": "Password",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -788,7 +790,7 @@
           "example": "0",
           "member": "string",
           "name": "PasswordStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -798,7 +800,7 @@
           "example": "0",
           "member": "string",
           "name": "ApiAccessId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -808,7 +810,7 @@
           "example": "0",
           "member": "string",
           "name": "ApiAccessIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -818,99 +820,99 @@
           "example": "0",
           "member": "int64",
           "name": "ApiAccessPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "If `PasswordStatus` is `unmodifiable`, the old password has not expired, and this field will display its expiration time; otherwise, this field will be empty\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "If the value of PasswordStatus is unmodifiable, it indicates that the old password has not expired. This field will display the expiration time of the old password; otherwise, the value is null.",
           "example": "0",
           "member": "string",
           "name": "OldPasswordExpireTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "TcaplusDB SDK connection parameter for accessing IPv6 addresses\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "TencentDB for TcaplusDB (TcaplusDB) SDK connection parameters, which are used to access the IPv6 address.",
           "example": "0",
           "member": "string",
           "name": "ApiAccessIpv6",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Cluster type. 0,1: shared cluster; 2: independent cluster.",
           "example": "0",
           "member": "int64",
           "name": "ClusterType",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Cluster status. 0: indicates normal operation; 1: indicates frozen isolation (usually due to arrears); 2: indicates to be recycled (usually when the user proactively triggers deletion); 3: pending release (indicating that resources occupied by this table can be released); 4: changing.",
           "example": "0",
           "member": "int64",
           "name": "ClusterStatus",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Read CU\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Read CU.",
           "example": "0",
           "member": "int64",
           "name": "ReadCapacityUnit",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Write CU\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Write CU.",
           "example": "0",
           "member": "int64",
           "name": "WriteCapacityUnit",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Disk capacity\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Disk capacity.",
           "example": "0",
           "member": "int64",
           "name": "DiskVolume",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Information of the machine at the storage layer (tcapsvr) in a dedicated cluster\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "0",
+          "document": "Information about the dedicated server.",
+          "example": "无",
           "member": "ServerDetailInfo",
           "name": "ServerList",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Information of the machine at the access layer (tcaproxy) in a dedicated cluster\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "0",
+          "document": "Information about the dedicated proxy server.",
+          "example": "无",
           "member": "ProxyDetailInfo",
           "name": "ProxyList",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -918,79 +920,99 @@
           "example": "0",
           "member": "int64",
           "name": "Censorship",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approver UIN list\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "document": "Approver UIN list.",
+          "example": "[\"name\"]",
           "member": "string",
           "name": "DbaUins",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether data subscription is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether data subscription is enabled.",
           "example": "0",
           "member": "int64",
           "name": "DataFlowStatus",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CKafka information when data subscription is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Kafka information for data subscription.",
           "example": "无",
           "member": "KafkaInfo",
           "name": "KafkaInfo",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The number of days after which the cluster Txh backup file will expire and be deleted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Retention period for the Txh backup file of the cluster before expiration and deletion.",
           "example": "0",
           "member": "uint64",
           "name": "TxhBackupExpireDay",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The number of days after which the cluster Ulog backup file will expire and be deleted.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Retention period for the Ulog backup file of the cluster before expiration and deletion.",
           "example": "0",
           "member": "uint64",
           "name": "UlogBackupExpireDay",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether the expiration policy for the Ulog backup file of the cluster is read-only. 0: UlogBackupExpire is read-only and cannot be modified; 1: UlogBackupExpire can be modified.",
           "example": "0",
           "member": "uint64",
           "name": "IsReadOnlyUlogBackupExpireDay",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "restproxy Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "restproxy status.",
           "example": "0",
           "member": "int64",
           "name": "RestProxyStatus",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of shards in the cluster.",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardTotalNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of used shards.",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardUsedNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1001,7 +1023,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be modified resides",
-          "example": "",
+          "example": "187676",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1010,7 +1032,7 @@
         {
           "disabled": false,
           "document": "List of tables to be modified",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1019,7 +1041,7 @@
         {
           "disabled": false,
           "document": "Selected list of uploaded IDL files. Either this parameter or `NewIdlFiles` must be selected",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "ExistingIdlFiles",
           "required": false,
@@ -1028,7 +1050,7 @@
         {
           "disabled": false,
           "document": "List of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be selected",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "NewIdlFiles",
           "required": false,
@@ -1043,27 +1065,30 @@
         {
           "disabled": false,
           "document": "Information list of all IDL files uploaded and verified in this request",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of tables verified to be valid in this request",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Verification result parsed from the selected table after the IDL description file is read",
-          "example": "",
+          "example": "{}",
           "member": "ParsedTableInfoNew",
           "name": "TableInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1082,80 +1107,88 @@
         {
           "disabled": false,
           "document": "Cluster ID of the source table",
-          "example": "",
+          "example": "75685",
           "member": "string",
           "name": "SrcTableClusterId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group ID of the source table",
-          "example": "",
+          "example": "18755",
           "member": "string",
           "name": "SrcTableGroupId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Source table name",
-          "example": "",
+          "example": "srcname",
           "member": "string",
           "name": "SrcTableName",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Cluster ID of the target table",
-          "example": "",
+          "example": "75685",
           "member": "string",
           "name": "DstTableClusterId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group ID of the target table",
-          "example": "",
+          "example": "18755",
           "member": "string",
           "name": "DstTableGroupId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Target table name",
-          "example": "",
+          "example": "dstname",
           "member": "string",
           "name": "DstTableName",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Source table ID",
-          "example": "",
+          "example": "tcap-1232",
           "member": "string",
           "name": "SrcTableInstanceId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Target table ID",
-          "example": "",
+          "example": "tcap-2586",
           "member": "string",
           "name": "DstTableInstanceId",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1168,7 +1201,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be backed up resides",
-          "example": "",
+          "example": "0",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1177,7 +1210,7 @@
         {
           "disabled": false,
           "document": "Information list of tables to be backed up",
-          "example": "",
+          "example": "0",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1186,7 +1219,7 @@
         {
           "disabled": false,
           "document": "Remarks",
-          "example": "",
+          "example": "0",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1204,9 +1237,9 @@
           "example": "0",
           "member": "string",
           "name": "TaskIds",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1214,9 +1247,9 @@
           "example": "0",
           "member": "string",
           "name": "ApplicationIds",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1338,9 +1371,10 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "6179109757",
           "member": "string",
           "name": "ClusterId",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1368,7 +1402,7 @@
         {
           "disabled": false,
           "document": "Snapshot list",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotInfo",
           "name": "SelectedTables",
           "required": true,
@@ -1386,17 +1420,17 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The result list of snapshots created in batches",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotResult",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1415,7 +1449,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a table group resides",
-          "example": "",
+          "example": "18744",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1424,7 +1458,7 @@
         {
           "disabled": false,
           "document": "Table group name, which can contain up to 32 letters and digits",
-          "example": "",
+          "example": "groupname",
           "member": "string",
           "name": "TableGroupName",
           "required": true,
@@ -1433,7 +1467,7 @@
         {
           "disabled": false,
           "document": "Table group ID, which can be customized but must be unique in one cluster. If it is not specified, the auto-increment mode will be used.",
-          "example": "",
+          "example": "17565",
           "member": "string",
           "name": "TableGroupId",
           "required": false,
@@ -1442,7 +1476,7 @@
         {
           "disabled": false,
           "document": "Table group tag list",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "ResourceTags",
           "required": false,
@@ -1457,9 +1491,10 @@
         {
           "disabled": false,
           "document": "ID of table group successfully created",
-          "example": "",
+          "example": "167556",
           "member": "string",
           "name": "TableGroupId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1478,7 +1513,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where to create a table",
-          "example": "",
+          "example": " 123",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1487,7 +1522,7 @@
         {
           "disabled": false,
           "document": "Table creation IDL file list selected by user",
-          "example": "",
+          "example": " {}",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
           "required": true,
@@ -1496,7 +1531,7 @@
         {
           "disabled": false,
           "document": "Information list of tables to be created",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1505,7 +1540,7 @@
         {
           "disabled": false,
           "document": "Table tag list",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "ResourceTags",
           "required": false,
@@ -1520,18 +1555,20 @@
         {
           "disabled": false,
           "document": "Number of tables created in batches",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of tables created in batches",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1577,9 +1614,9 @@
           "example": "1",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1596,7 +1633,7 @@
         {
           "disabled": false,
           "document": "ID of cluster to be deleted",
-          "example": "",
+          "example": "18767",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1611,9 +1648,10 @@
         {
           "disabled": false,
           "document": "Task ID generated by cluster deletion",
-          "example": "",
+          "example": "17454",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1632,7 +1670,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where IDL resides",
-          "example": "",
+          "example": "187656",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1641,7 +1679,7 @@
         {
           "disabled": false,
           "document": "List of information of IDL files to be deleted",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
           "required": true,
@@ -1656,18 +1694,20 @@
         {
           "disabled": false,
           "document": "Number of returned results",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Deletion result",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfoWithoutContent",
           "name": "IdlFileInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1695,7 +1735,7 @@
         {
           "disabled": false,
           "document": "The list of snapshots to delete",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1713,17 +1753,17 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The result list of snapshots deleted in batches",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotResult",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1769,7 +1809,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1779,7 +1819,7 @@
           "example": "无",
           "member": "TableResultNew",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1798,7 +1838,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a table group resides",
-          "example": "",
+          "example": "17568",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1807,7 +1847,7 @@
         {
           "disabled": false,
           "document": "Table group ID",
-          "example": "",
+          "example": "14234",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -1822,9 +1862,10 @@
         {
           "disabled": false,
           "document": "Task ID generated by table group deletion",
-          "example": "",
+          "example": "18767865",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1843,7 +1884,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table resides",
-          "example": "",
+          "example": "897858",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1852,7 +1893,7 @@
         {
           "disabled": false,
           "document": "The list of tables whose global indexes need to be deleted",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1867,18 +1908,20 @@
         {
           "disabled": false,
           "document": "The number of tables whose global indexes are deleted",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The list of global index deletion results",
-          "example": "",
+          "example": "{}",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1897,7 +1940,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be dropped resides",
-          "example": "",
+          "example": "8978978",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1906,7 +1949,7 @@
         {
           "disabled": false,
           "document": "List of information of tables to be dropped",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -1921,18 +1964,20 @@
         {
           "disabled": false,
           "document": "Number of dropped tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of details of dropped tables",
-          "example": "",
+          "example": "{}",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1978,7 +2023,7 @@
         {
           "disabled": false,
           "document": "Table group ID used as a filter condition",
-          "example": "xx",
+          "example": "7867",
           "member": "string",
           "name": "TableGroupId",
           "required": false,
@@ -1987,7 +2032,7 @@
         {
           "disabled": false,
           "document": "Table name used as a filter condition",
-          "example": "xx",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
           "required": false,
@@ -2005,7 +2050,7 @@
           "example": "无",
           "member": "BackupRecords",
           "name": "BackupRecords",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2015,7 +2060,7 @@
           "example": "92",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2034,7 +2079,7 @@
         {
           "disabled": false,
           "document": "The list of cluster IDs",
-          "example": "",
+          "example": "879789",
           "member": "string",
           "name": "ClusterIds",
           "required": true,
@@ -2049,20 +2094,22 @@
         {
           "disabled": false,
           "document": "The information list of cluster tags",
-          "example": "",
+          "example": "0",
           "member": "TagsInfoOfCluster",
           "name": "Rows",
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The number of returned results",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2079,7 +2126,7 @@
         {
           "disabled": false,
           "document": "List of IDs of clusters to be queried",
-          "example": "",
+          "example": "10001",
           "member": "string",
           "name": "ClusterIds",
           "required": false,
@@ -2088,7 +2135,7 @@
         {
           "disabled": false,
           "document": "Query filter",
-          "example": "",
+          "example": "{}",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2097,7 +2144,7 @@
         {
           "disabled": false,
           "document": "Query list offset",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2106,7 +2153,7 @@
         {
           "disabled": false,
           "document": "Number of returned results in query list. Default value: 20",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2115,7 +2162,7 @@
         {
           "disabled": false,
           "document": "Whether to enable IPv6 address access",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Ipv6Enable",
           "required": false,
@@ -2130,18 +2177,20 @@
         {
           "disabled": false,
           "document": "Number of cluster instances",
-          "example": "",
+          "example": "2",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Cluster instance list",
-          "example": "",
+          "example": "{}",
           "member": "ClusterInfo",
           "name": "Clusters",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2160,7 +2209,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a file resides",
-          "example": "",
+          "example": "1876767",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2169,7 +2218,7 @@
         {
           "disabled": false,
           "document": "ID of the table group where a file resides",
-          "example": "",
+          "example": "1214765",
           "member": "string",
           "name": "TableGroupIds",
           "required": false,
@@ -2178,7 +2227,7 @@
         {
           "disabled": false,
           "document": "File ID list",
-          "example": "",
+          "example": "testfield",
           "member": "string",
           "name": "IdlFileIds",
           "required": false,
@@ -2187,7 +2236,7 @@
         {
           "disabled": false,
           "document": "Query list offset",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2196,7 +2245,7 @@
         {
           "disabled": false,
           "document": "Number of returned results in query list",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2211,18 +2260,20 @@
         {
           "disabled": false,
           "document": "Number of files",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of file details",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "IdlFileInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2241,7 +2292,7 @@
         {
           "disabled": false,
           "document": "If this parameter is not `0`, machines supporting IPv6 will be queried.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Ipv6Enable",
           "required": false,
@@ -2256,9 +2307,10 @@
         {
           "disabled": false,
           "document": "The list of dedicated machine resources",
-          "example": "",
+          "example": "{}",
           "member": "PoolInfo",
           "name": "PoolList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2282,18 +2334,20 @@
         {
           "disabled": false,
           "document": "Number of queried AZs",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of AZ query results",
-          "example": "",
+          "example": "{}",
           "member": "RegionInfo",
           "name": "RegionInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2348,7 +2402,7 @@
         {
           "disabled": false,
           "document": "The list of snapshots pulled in batches",
-          "example": "无",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": false,
@@ -2366,17 +2420,17 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The result list of snapshots",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotResult",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2395,7 +2449,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster where table group tags need to be queried",
-          "example": "",
+          "example": "345332",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2404,7 +2458,7 @@
         {
           "disabled": false,
           "document": "The list of IDs of the table groups whose tags need to be queried",
-          "example": "",
+          "example": "435342",
           "member": "string",
           "name": "TableGroupIds",
           "required": true,
@@ -2419,20 +2473,22 @@
         {
           "disabled": false,
           "document": "The information list of table group tags",
-          "example": "",
+          "example": "0",
           "member": "TagsInfoOfTableGroup",
           "name": "Rows",
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The number of returned results",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2449,7 +2505,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a table group resides",
-          "example": "",
+          "example": "7867686",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2458,7 +2514,7 @@
         {
           "disabled": false,
           "document": "Table group ID list",
-          "example": "",
+          "example": "\"1\"",
           "member": "string",
           "name": "TableGroupIds",
           "required": false,
@@ -2467,7 +2523,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: TableGroupName, TableGroupId",
-          "example": "",
+          "example": "{}",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2476,7 +2532,7 @@
         {
           "disabled": false,
           "document": "Query list offset",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2485,7 +2541,7 @@
         {
           "disabled": false,
           "document": "Number of returned results in query list",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2500,18 +2556,20 @@
         {
           "disabled": false,
           "document": "Number of table groups",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group information list",
-          "example": "",
+          "example": "{}",
           "member": "TableGroupInfo",
           "name": "TableGroups",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2530,7 +2588,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster where a table resides",
-          "example": "",
+          "example": "456546",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2539,7 +2597,7 @@
         {
           "disabled": false,
           "document": "Table list",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -2554,18 +2612,20 @@
         {
           "disabled": false,
           "document": "The total number of returned results",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The information list of table tags",
-          "example": "",
+          "example": "0",
           "member": "TagsInfoOfTable",
           "name": "Rows",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2584,7 +2644,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be queried resides",
-          "example": "",
+          "example": "5456454",
           "member": "string",
           "name": "ClusterId",
           "required": false,
@@ -2593,7 +2653,7 @@
         {
           "disabled": false,
           "document": "List of IDs of the table groups where the table to be queried resides",
-          "example": "",
+          "example": "13755",
           "member": "string",
           "name": "TableGroupIds",
           "required": false,
@@ -2602,7 +2662,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: TableName, TableInstanceId",
-          "example": "",
+          "example": "{}",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2611,7 +2671,7 @@
         {
           "disabled": false,
           "document": "Query result offset",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2620,7 +2680,7 @@
         {
           "disabled": false,
           "document": "Number of returned query results",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2635,18 +2695,20 @@
         {
           "disabled": false,
           "document": "Number of tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table details result list",
-          "example": "",
+          "example": "{}",
           "member": "TableInfoNew",
           "name": "TableInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2757,7 +2819,7 @@
         {
           "disabled": false,
           "document": "List of IDs of clusters where the tasks to be queried reside",
-          "example": "",
+          "example": "176784",
           "member": "string",
           "name": "ClusterIds",
           "required": false,
@@ -2766,7 +2828,7 @@
         {
           "disabled": false,
           "document": "List of IDs of tasks to be queried",
-          "example": "",
+          "example": "1345345",
           "member": "string",
           "name": "TaskIds",
           "required": false,
@@ -2775,7 +2837,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: Content, TaskType, Operator, Time",
-          "example": "",
+          "example": "{}",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2784,7 +2846,7 @@
         {
           "disabled": false,
           "document": "Query list offset",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2793,7 +2855,7 @@
         {
           "disabled": false,
           "document": "Number of returned results in query list",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2808,18 +2870,20 @@
         {
           "disabled": false,
           "document": "Number of tasks",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of details of queried tasks",
-          "example": "",
+          "example": "{}",
           "member": "TaskInfoNew",
           "name": "TaskInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2843,9 +2907,10 @@
         {
           "disabled": false,
           "document": "Query result. FALSE: yes, TRUE: no",
-          "example": "",
+          "example": "FALSE",
           "member": "string",
           "name": "Result",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2864,7 +2929,7 @@
         {
           "disabled": false,
           "document": "The value is the same as `appid`.",
-          "example": "",
+          "example": "4534634",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2879,18 +2944,20 @@
         {
           "disabled": false,
           "document": "RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "RestProxyStatus",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.",
-          "example": "",
+          "example": "34532",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2909,7 +2976,7 @@
         {
           "disabled": false,
           "document": "The value is the same as `appid`.",
-          "example": "",
+          "example": "5674209986",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -2924,18 +2991,20 @@
         {
           "disabled": false,
           "document": "RestProxy status. Valid values: 0 (disabled), 1 (enabling), 2 (enabled), 3 (disabling).",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "RestProxyStatus",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.",
-          "example": "",
+          "example": "838418134-44",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2954,20 +3023,20 @@
         {
           "disabled": false,
           "document": "Error code",
-          "example": "",
+          "example": "14212",
           "member": "string",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message",
-          "example": "",
+          "example": "InnerError",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2980,42 +3049,38 @@
         {
           "disabled": false,
           "document": "Table field name",
-          "example": "",
+          "example": "fieldName",
           "member": "string",
           "name": "FieldName",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Whether it is a primary key field",
-          "example": "",
+          "example": "0",
           "member": "string",
           "name": "IsPrimaryKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Field type",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "FieldType",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Field length",
-          "example": "",
+          "example": "32012",
           "member": "int64",
           "name": "FieldSize",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -3062,9 +3127,10 @@
         {
           "disabled": false,
           "document": "Filename excluding extension",
-          "example": "",
+          "example": "fieldName",
           "member": "string",
           "name": "FileName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3072,9 +3138,10 @@
         {
           "disabled": false,
           "document": "Data interface description language (IDL) type",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "FileType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3082,9 +3149,10 @@
         {
           "disabled": false,
           "document": "File extension",
-          "example": "",
+          "example": "proto",
           "member": "string",
           "name": "FileExtType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3092,9 +3160,10 @@
         {
           "disabled": false,
           "document": "File size in bytes",
-          "example": "",
+          "example": "137545",
           "member": "int64",
           "name": "FileSize",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -3102,22 +3171,24 @@
         {
           "disabled": false,
           "document": "File ID, which is meaningful for files already uploaded\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "243445",
           "member": "int64",
           "name": "FileId",
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File content, which is meaningful for files to be uploaded in this request\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "filecontent",
           "member": "string",
           "name": "FileContent",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3128,62 +3199,62 @@
         {
           "disabled": false,
           "document": "Filename excluding extension\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "filename",
           "member": "string",
           "name": "FileName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data interface description language (IDL) type\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "FileType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File extension\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "proto",
           "member": "string",
           "name": "FileExtType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File size in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "143534",
           "member": "int64",
           "name": "FileSize",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "15",
           "member": "int64",
           "name": "FileId",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3194,7 +3265,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster where the original table (from which the snapshot was created) resides",
-          "example": "无",
+          "example": "346673",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3203,7 +3274,7 @@
         {
           "disabled": false,
           "document": "The information of the snapshot to import",
-          "example": "无",
+          "example": "{}",
           "member": "SnapshotInfo",
           "name": "Snapshots",
           "required": true,
@@ -3212,7 +3283,7 @@
         {
           "disabled": false,
           "document": "Whether to import partial data of the snapshot. Valid values: `TRUE` (import partial data), `FALSE` (import all data).",
-          "example": "无",
+          "example": "testkey",
           "member": "string",
           "name": "ImportSpecialKey",
           "required": true,
@@ -3221,7 +3292,7 @@
         {
           "disabled": false,
           "document": "Whether to import to the original table. Valid values: `TRUE` (import to the original table), `FALSE` (import to a new table).",
-          "example": "无",
+          "example": "testname",
           "member": "string",
           "name": "ImportOriginTable",
           "required": true,
@@ -3230,7 +3301,7 @@
         {
           "disabled": false,
           "document": "The file of the keys of the partial data",
-          "example": "无",
+          "example": "{}",
           "member": "KeyFile",
           "name": "KeyFile",
           "required": false,
@@ -3239,7 +3310,7 @@
         {
           "disabled": false,
           "document": "The ID of the table group where the new table resides, which is valid only when `ImportOriginTable` is set to `FALSE`",
-          "example": "无",
+          "example": "56336",
           "member": "string",
           "name": "NewTableGroupId",
           "required": false,
@@ -3248,7 +3319,7 @@
         {
           "disabled": false,
           "document": "The name of the new table, which is valid only when `ImportOriginTable` is set to `FALSE`. TcaplusDB will automatically create a table named `NewTableName` of the same structure as that of the original table.",
-          "example": "无",
+          "example": "testnewname",
           "member": "string",
           "name": "NewTableName",
           "required": false,
@@ -3263,12 +3334,12 @@
         {
           "disabled": false,
           "document": "`TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "11843324",
           "member": "string",
           "name": "TaskId",
-          "output_required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3276,9 +3347,9 @@
           "example": "0",
           "member": "string",
           "name": "ApplicationId",
-          "output_required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3294,21 +3365,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "CKafka address",
+          "document": "Kafka address",
           "example": "ckafka-3azrwxvw.ap-shanghai.ckafka.tencentcloudmq.com:6006",
           "member": "string",
           "name": "Address",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "CKafka topic",
+          "document": "Kafka topic",
           "example": "tcapstream",
           "member": "string",
           "name": "Topic",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3318,7 +3391,8 @@
           "example": "ckafka-3azrwxvw#tcaplusDev",
           "member": "string",
           "name": "User",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3328,7 +3402,8 @@
           "example": "tcaplusDev123321",
           "member": "string",
           "name": "Password",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3338,7 +3413,8 @@
           "example": "ckafka-l4xpzgpz",
           "member": "string",
           "name": "Instance",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3348,7 +3424,8 @@
           "example": "0",
           "member": "int64",
           "name": "IsVpc",
-          "required": true,
+          "output_required": false,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3361,42 +3438,38 @@
         {
           "disabled": false,
           "document": "Key file name",
-          "example": "",
+          "example": "filename",
           "member": "string",
           "name": "FileName",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key file extension",
-          "example": "",
+          "example": "txt",
           "member": "string",
           "name": "FileExtType",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key file content",
-          "example": "",
+          "example": "filecontent",
           "member": "string",
           "name": "FileContent",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key file size",
-          "example": "",
+          "example": "154564",
           "member": "int64",
           "name": "FileSize",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -3407,22 +3480,20 @@
         {
           "disabled": false,
           "document": "Machine type",
-          "example": "",
+          "example": "proxy",
           "member": "string",
           "name": "MachineType",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Machine quantity",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "MachineNum",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -3436,9 +3507,9 @@
           "example": "0",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3446,9 +3517,9 @@
           "example": "0",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3456,7 +3527,7 @@
           "example": "0",
           "member": "CompareTablesInfo",
           "name": "Table",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3466,9 +3537,9 @@
           "example": "0",
           "member": "string",
           "name": "ApplicationId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3479,7 +3550,7 @@
         {
           "disabled": false,
           "document": "Tables to be merged",
-          "example": "无",
+          "example": "{}",
           "member": "MergeTablesInfo",
           "name": "SelectedTables",
           "required": true,
@@ -3488,7 +3559,7 @@
         {
           "disabled": false,
           "document": "Valid values: `true` (only compare), `false` (compare and merge)",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "IsOnlyCompare",
           "required": true,
@@ -3506,7 +3577,7 @@
           "example": "无",
           "member": "MergeTableResult",
           "name": "Results",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3525,22 +3596,20 @@
         {
           "disabled": false,
           "document": "Information of tables to be merged",
-          "example": "",
+          "example": "{}",
           "member": "CompareTablesInfo",
           "name": "MergeTables",
           "required": true,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
           "document": "Whether to check indexes",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "CheckIndex",
           "required": true,
-          "type": "bool",
-          "value_allowed_null": false
+          "type": "bool"
         }
       ],
       "usage": "in"
@@ -3587,7 +3656,7 @@
           "example": "10001",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3597,9 +3666,9 @@
           "example": "0",
           "member": "string",
           "name": "Uins",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3607,7 +3676,7 @@
           "example": "0",
           "member": "int64",
           "name": "Censorship",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3626,7 +3695,7 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "16585",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3635,7 +3704,7 @@
         {
           "disabled": false,
           "document": "Information of the machines at the storage layer (tcapsvr)",
-          "example": "",
+          "example": "{}",
           "member": "MachineInfo",
           "name": "ServerList",
           "required": true,
@@ -3644,7 +3713,7 @@
         {
           "disabled": false,
           "document": "Information of the machines at the access layer (tcaproxy)",
-          "example": "",
+          "example": "{}",
           "member": "MachineInfo",
           "name": "ProxyList",
           "required": true,
@@ -3653,7 +3722,7 @@
         {
           "disabled": false,
           "document": "Cluster type. Valid values: `1` (standard), `2` (dedicated)",
-          "example": "",
+          "example": "2",
           "member": "int64",
           "name": "ClusterType",
           "required": true,
@@ -3668,9 +3737,10 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "165865",
           "member": "string",
           "name": "ClusterId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3689,7 +3759,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster to be renamed",
-          "example": "",
+          "example": "1865675",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3698,7 +3768,7 @@
         {
           "disabled": false,
           "document": "Cluster name to be changed to, which can contain up to 32 letters and digits",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "ClusterName",
           "required": true,
@@ -3725,7 +3795,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster for which to modify the password",
-          "example": "",
+          "example": "23311894780",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3734,7 +3804,7 @@
         {
           "disabled": false,
           "document": "Old cluster password",
-          "example": "",
+          "example": "canmkdmk1215LM",
           "member": "string",
           "name": "OldPassword",
           "required": true,
@@ -3743,7 +3813,7 @@
         {
           "disabled": false,
           "document": "Expected expiration time of old cluster password",
-          "example": "",
+          "example": "2019-08-26%2017%3A25%3A00",
           "member": "datetime",
           "name": "OldPasswordExpireTime",
           "required": true,
@@ -3752,7 +3822,7 @@
         {
           "disabled": false,
           "document": "New cluster password, which must contain lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).",
-          "example": "",
+          "example": "99c59cb345c61063db",
           "member": "string",
           "name": "NewPassword",
           "required": true,
@@ -3761,7 +3831,7 @@
         {
           "disabled": false,
           "document": "Update mode. 1: updates password, 2: updates old password expiration time. Default value: 1",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "Mode",
           "required": false,
@@ -3788,7 +3858,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster whose tags need to be modified",
-          "example": "",
+          "example": "932312",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3797,7 +3867,7 @@
         {
           "disabled": false,
           "document": "The list of tags to add or modify",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "ReplaceTags",
           "required": false,
@@ -3806,7 +3876,7 @@
         {
           "disabled": false,
           "document": "Tags to delete",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "DeleteTags",
           "required": false,
@@ -3821,11 +3891,12 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "",
+          "example": "898989",
           "member": "string",
           "name": "TaskId",
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3869,7 +3940,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3879,7 +3950,7 @@
           "example": "无",
           "member": "SnapshotResult",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3898,7 +3969,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a table group resides",
-          "example": "",
+          "example": "1656785",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3907,7 +3978,7 @@
         {
           "disabled": false,
           "document": "ID of the table group to be renamed",
-          "example": "",
+          "example": "14564",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -3916,7 +3987,7 @@
         {
           "disabled": false,
           "document": "New table group name, which can contain letters and symbols",
-          "example": "",
+          "example": "groupname",
           "member": "string",
           "name": "TableGroupName",
           "required": true,
@@ -3943,7 +4014,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster where table group tags need to be modified",
-          "example": "",
+          "example": "15474",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -3952,7 +4023,7 @@
         {
           "disabled": false,
           "document": "The ID of the table group whose tags need to be modified",
-          "example": "",
+          "example": "4545",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
@@ -3961,7 +4032,7 @@
         {
           "disabled": false,
           "document": "The list of tags to add or modify",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "ReplaceTags",
           "required": false,
@@ -3970,7 +4041,7 @@
         {
           "disabled": false,
           "document": "Tags to delete",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "DeleteTags",
           "required": false,
@@ -3985,11 +4056,12 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "",
+          "example": "1654564",
           "member": "string",
           "name": "TaskId",
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4006,7 +4078,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster instance where a table resides",
-          "example": "",
+          "example": "574845",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4015,7 +4087,7 @@
         {
           "disabled": false,
           "document": "List of details of selected tables",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "TableMemos",
           "required": true,
@@ -4030,18 +4102,20 @@
         {
           "disabled": false,
           "document": "Number of tables modified for remarks",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of table remarks modification results",
-          "example": "",
+          "example": "{}",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4060,7 +4134,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be scaled resides",
-          "example": "",
+          "example": "675656",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4069,7 +4143,7 @@
         {
           "disabled": false,
           "document": "List of quotas of tables selected for modification",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "TableQuotas",
           "required": true,
@@ -4084,18 +4158,20 @@
         {
           "disabled": false,
           "document": "Number of scaled tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of table scaling results",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4114,7 +4190,7 @@
         {
           "disabled": false,
           "document": "The ID of the cluster where table tags need to be modified",
-          "example": "",
+          "example": "76784564",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4123,7 +4199,7 @@
         {
           "disabled": false,
           "document": "The list of tables whose tags need to be modified",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -4132,7 +4208,7 @@
         {
           "disabled": false,
           "document": "The list of tags to add or modify",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "ReplaceTags",
           "required": false,
@@ -4141,7 +4217,7 @@
         {
           "disabled": false,
           "document": "The list of tags to delete",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "DeleteTags",
           "required": false,
@@ -4156,18 +4232,20 @@
         {
           "disabled": false,
           "document": "The total number of returned results",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Returned results",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4186,7 +4264,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table to be modified resides",
-          "example": "",
+          "example": "565335",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4195,7 +4273,7 @@
         {
           "disabled": false,
           "document": "Selected table modification IDL files",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
           "required": true,
@@ -4204,7 +4282,7 @@
         {
           "disabled": false,
           "document": "List of tables to be modified",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -4219,18 +4297,20 @@
         {
           "disabled": false,
           "document": "Number of modified tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of table modification results",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4249,182 +4329,182 @@
         {
           "disabled": false,
           "document": "Table description language type. Valid values: PROTO, TDR\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableIdlType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table instance ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "tcaplus-323",
           "member": "string",
           "name": "TableInstanceId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table data structure type. Valid values: GENERIC, LIST\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Primary key field information\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "testkey",
           "member": "string",
           "name": "KeyFields",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Old primary key field information, which is valid during verification of table modification\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "oldtestkey",
           "member": "string",
           "name": "OldKeyFields",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Non-primary key field information\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "valuefield",
           "member": "string",
           "name": "ValueFields",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Old non-primary key field information, which is valid during verification of table modification\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "oldvaluefield",
           "member": "string",
           "name": "OldValueFields",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "12414",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total size of primary key field\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "135235",
           "member": "int64",
           "name": "SumKeyFieldSize",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total size of non-primary key fields\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1325323",
           "member": "int64",
           "name": "SumValueFieldSize",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Index key set\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "indexkeyset",
           "member": "string",
           "name": "IndexKeySet",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Shardkey set\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "shardingkeyset",
           "member": "string",
           "name": "ShardingKeySet",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "TDR version number\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "TdrVersion",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of LIST-type table elements\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1024",
           "member": "int64",
           "name": "ListElementNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of SORTLIST-type table sort fields\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "SortFieldNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sort order of SORTLIST-type tables\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "SortRule",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4435,50 +4515,50 @@
         {
           "disabled": false,
           "document": "Unique ID",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "PoolUid",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether IPv6 is supported",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Ipv6Enable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Remaining available cluster resources",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "AvailableAppCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The list of machines at the storage layer (tcapsvr)",
-          "example": "",
+          "example": "{}",
           "member": "ServerMachineInfo",
           "name": "ServerList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The list of machines at the access layer (tcaproxy)",
-          "example": "",
+          "example": "{}",
           "member": "ProxyMachineInfo",
           "name": "ProxyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4494,7 +4574,7 @@
           "example": "1.2.2.2",
           "member": "string",
           "name": "ProxyUid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4504,7 +4584,7 @@
           "example": "0",
           "member": "string",
           "name": "MachineType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4514,7 +4594,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProcessSpeed",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4524,7 +4604,7 @@
           "example": "0",
           "member": "int64",
           "name": "AverageProcessDelay",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4534,19 +4614,19 @@
           "example": "0",
           "member": "int64",
           "name": "SlowProcessSpeed",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Version.",
           "example": "3.46.0",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4593,7 +4673,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where a table resides",
-          "example": "",
+          "example": "635363",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -4602,7 +4682,7 @@
         {
           "disabled": false,
           "document": "Information of tables to be recovered",
-          "example": "",
+          "example": "{}",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -4617,18 +4697,20 @@
         {
           "disabled": false,
           "document": "Number of recovered tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of information of recovered tables",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4647,40 +4729,40 @@
         {
           "disabled": false,
           "document": "Region `Ap-code`",
-          "example": "",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Region abbreviation",
-          "example": "",
+          "example": "sh",
           "member": "string",
           "name": "RegionAbbr",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Region ID",
-          "example": "",
+          "example": "102123",
           "member": "uint64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to support IPv6 address access. Valid values: 0 (support), 1 (not support)",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Ipv6Enable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4765,142 +4847,128 @@
         {
           "disabled": false,
           "document": "ID of the table group where a table resides",
-          "example": "",
+          "example": "1213",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Table name",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Table instance ID",
-          "example": "",
+          "example": "tcaplus-21312",
           "member": "string",
           "name": "TableInstanceId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Table description language type. Valid values: PROTO, TDR",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableIdlType",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Table data structure type. Valid values: GENERIC, LIST",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableType",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Number of LIST-type table elements",
-          "example": "",
+          "example": "1024",
           "member": "int64",
           "name": "ListElementNum",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Reserved table capacity in GB",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "ReservedVolume",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Reserved table read QPS",
-          "example": "",
+          "example": "1000",
           "member": "int64",
           "name": "ReservedReadQps",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Reserved table write QPS",
-          "example": "",
+          "example": "1000",
           "member": "int64",
           "name": "ReservedWriteQps",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Table remarks",
-          "example": "",
+          "example": "memo",
           "member": "string",
           "name": "Memo",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key rollback filename, which is only used for rollback",
-          "example": "",
+          "example": "filename",
           "member": "string",
           "name": "FileName",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key rollback file extension, which is only used for rollback",
-          "example": "",
+          "example": "txt",
           "member": "string",
           "name": "FileExtType",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Key rollback file size, which is only used for rollback",
-          "example": "",
+          "example": "10234",
           "member": "int64",
           "name": "FileSize",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Key rollback file content, which is only used for rollback",
-          "example": "",
+          "example": "filecontent",
           "member": "string",
           "name": "FileContent",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -5000,7 +5068,7 @@
           "example": "1.2.2.2",
           "member": "string",
           "name": "ServerUid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5010,7 +5078,7 @@
           "example": "master",
           "member": "string",
           "name": "MachineType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5020,7 +5088,7 @@
           "example": "0",
           "member": "int64",
           "name": "MemoryRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5030,7 +5098,7 @@
           "example": "0",
           "member": "int64",
           "name": "DiskRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5040,7 +5108,7 @@
           "example": "0",
           "member": "int64",
           "name": "ReadNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5050,19 +5118,19 @@
           "example": "0",
           "member": "int64",
           "name": "WriteNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Version.",
           "example": "3.46.0",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5073,20 +5141,20 @@
         {
           "disabled": false,
           "document": "The unique ID of the machine",
-          "example": "",
+          "example": "svr-10221",
           "member": "string",
           "name": "ServerUid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Machine type",
-          "example": "",
+          "example": "svr",
           "member": "string",
           "name": "MachineType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -5126,9 +5194,9 @@
           "example": "1",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5172,7 +5240,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5182,7 +5250,7 @@
           "example": "无",
           "member": "TableResultNew",
           "name": "TableResults",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5201,7 +5269,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where the table resides",
-          "example": "",
+          "example": "5674209986",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -5210,7 +5278,7 @@
         {
           "disabled": false,
           "document": "The list of tables that need to create global indexes",
-          "example": "",
+          "example": "无",
           "member": "SelectedTableWithField",
           "name": "SelectedTables",
           "required": true,
@@ -5225,18 +5293,20 @@
         {
           "disabled": false,
           "document": "The number of tables whose global indexes are created",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The list of global index creation results",
-          "example": "",
+          "example": "无",
           "member": "TableResultNew",
           "name": "TableResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5255,9 +5325,10 @@
         {
           "disabled": false,
           "document": "The ID of the table group where the table resides",
-          "example": "",
+          "example": "19822",
           "member": "string",
           "name": "TableGroupId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5265,9 +5336,10 @@
         {
           "disabled": false,
           "document": "Table name",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5275,9 +5347,10 @@
         {
           "disabled": false,
           "document": "Snapshot name",
-          "example": "",
+          "example": "snapshotname",
           "member": "string",
           "name": "SnapshotName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5285,9 +5358,10 @@
         {
           "disabled": false,
           "document": "The time of the data from which the snapshot was created",
-          "example": "",
+          "example": "2023-10-10 10:10:10",
           "member": "datetime",
           "name": "SnapshotTime",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5295,9 +5369,10 @@
         {
           "disabled": false,
           "document": "Snapshot expiration time",
-          "example": "",
+          "example": "2023-10-11 10:10:10",
           "member": "datetime",
           "name": "SnapshotDeadTime",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5311,42 +5386,38 @@
         {
           "disabled": false,
           "document": "The ID of the table group where the table resides",
-          "example": "",
+          "example": "184232",
           "member": "string",
           "name": "TableGroupId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Table name",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Snapshot name",
-          "example": "",
+          "example": "snapshotname",
           "member": "string",
           "name": "SnapshotName",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Snapshot expiration time",
-          "example": "",
+          "example": "2020-10-10 10:10:10",
           "member": "datetime",
           "name": "SnapshotDeadTime",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -5357,52 +5428,52 @@
         {
           "disabled": false,
           "document": "The ID of the table group where the table resides\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "13277",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "name",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task ID, which is valid for the API that creates one task at a time\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "16756",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error information\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Snapshot name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "snapname",
           "member": "string",
           "name": "SnapshotName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5410,9 +5481,9 @@
           "example": "0",
           "member": "datetime",
           "name": "SnapshotTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5420,9 +5491,9 @@
           "example": "0",
           "member": "datetime",
           "name": "SnapshotDeadTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5430,19 +5501,19 @@
           "example": "0",
           "member": "datetime",
           "name": "SnapshotCreateTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Snapshot size\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "35623",
           "member": "uint64",
           "name": "SnapshotSize",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5450,9 +5521,9 @@
           "example": "0",
           "member": "uint64",
           "name": "SnapshotStatus",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5492,17 +5563,17 @@
           "example": "1",
           "member": "uint64",
           "name": "TargetTableSplitNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Prefix of the target cache table name",
-          "example": "无",
+          "example": "nameprefix",
           "member": "string",
           "name": "TargetTableNamePrefix",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5512,7 +5583,7 @@
           "example": "cdb-70zdmgg1",
           "member": "string",
           "name": "TargetSyncDBInstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5522,7 +5593,7 @@
           "example": "db",
           "member": "string",
           "name": "TargetDatabaseName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5532,7 +5603,7 @@
           "example": "0",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5542,7 +5613,7 @@
           "example": "18641706761",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5552,7 +5623,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5562,7 +5633,7 @@
           "example": "tablename",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5572,27 +5643,27 @@
           "example": "tcaplus-d753f0db",
           "member": "string",
           "name": "TableId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mapping from the primary key field of the TcaplusDB table to the field of the target cache table",
-          "example": "无",
+          "example": "{}",
           "member": "SyncTableField",
           "name": "KeyFieldMapping",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mapping of TcaplusDB table field to target cache table field",
-          "example": "无",
+          "example": "{}",
           "member": "SyncTableField",
           "name": "ValueFieldMapping",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -5605,20 +5676,20 @@
         {
           "disabled": false,
           "document": "Table group ID",
-          "example": "\"123\"",
+          "example": "28127",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group name",
-          "example": "\"ZoneName\"",
+          "example": "ZoneName",
           "member": "string",
           "name": "TableGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5628,7 +5699,7 @@
           "example": "20211011",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5638,7 +5709,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TableCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5648,7 +5719,7 @@
           "example": "100",
           "member": "uint64",
           "name": "TotalSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5658,9 +5729,9 @@
           "example": "0",
           "member": "uint64",
           "name": "TxhBackupExpireDay",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5668,7 +5739,7 @@
           "example": "1",
           "member": "uint64",
           "name": "EnableMysql",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5678,9 +5749,9 @@
           "example": "0.0.0.0",
           "member": "string",
           "name": "MysqlConnIp",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5688,9 +5759,9 @@
           "example": "3306",
           "member": "uint64",
           "name": "MysqlConnPort",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5704,9 +5775,9 @@
           "example": "1",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5714,9 +5785,9 @@
           "example": "1",
           "member": "string",
           "name": "TableInstanceId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5724,9 +5795,9 @@
           "example": "1",
           "member": "string",
           "name": "TableType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5734,9 +5805,9 @@
           "example": "1",
           "member": "string",
           "name": "TableIdlType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5744,9 +5815,9 @@
           "example": "1",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5754,9 +5825,9 @@
           "example": "1",
           "member": "string",
           "name": "ClusterName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5764,9 +5835,9 @@
           "example": "1",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5774,9 +5845,9 @@
           "example": "1",
           "member": "string",
           "name": "TableGroupName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5784,9 +5855,9 @@
           "example": "1",
           "member": "string",
           "name": "KeyStruct",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5794,9 +5865,9 @@
           "example": "1",
           "member": "string",
           "name": "ValueStruct",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5804,9 +5875,9 @@
           "example": "1",
           "member": "string",
           "name": "ShardingKeySet",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5814,9 +5885,9 @@
           "example": "1",
           "member": "string",
           "name": "IndexStruct",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5824,9 +5895,9 @@
           "example": "1",
           "member": "uint64",
           "name": "ListElementNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5834,9 +5905,9 @@
           "example": "无",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5844,9 +5915,9 @@
           "example": "1",
           "member": "int64",
           "name": "ReservedVolume",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5854,9 +5925,9 @@
           "example": "1",
           "member": "int64",
           "name": "ReservedReadQps",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5864,9 +5935,9 @@
           "example": "1",
           "member": "int64",
           "name": "ReservedWriteQps",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5874,9 +5945,9 @@
           "example": "1",
           "member": "int64",
           "name": "TableSize",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5884,9 +5955,9 @@
           "example": "1",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5894,9 +5965,9 @@
           "example": "1",
           "member": "string",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5904,9 +5975,9 @@
           "example": "1",
           "member": "string",
           "name": "UpdatedTime",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5914,9 +5985,9 @@
           "example": "1",
           "member": "string",
           "name": "Memo",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5924,9 +5995,9 @@
           "example": "1",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5934,9 +6005,9 @@
           "example": "1",
           "member": "string",
           "name": "ApiAccessId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5944,9 +6015,9 @@
           "example": "1",
           "member": "int64",
           "name": "SortFieldNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5954,9 +6025,9 @@
           "example": "1",
           "member": "int64",
           "name": "SortRule",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5964,9 +6035,9 @@
           "example": "1",
           "member": "string",
           "name": "DbClusterInfoStruct",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5974,9 +6045,9 @@
           "example": "0",
           "member": "uint64",
           "name": "TxhBackupExpireDay",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5984,9 +6055,9 @@
           "example": "无",
           "member": "SyncTableInfo",
           "name": "SyncTableInfo",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6000,9 +6071,9 @@
           "example": "0",
           "member": "string",
           "name": "TableInstanceId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6010,9 +6081,9 @@
           "example": "0",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6020,9 +6091,9 @@
           "example": "0",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6030,9 +6101,9 @@
           "example": "0",
           "member": "string",
           "name": "TableType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6040,9 +6111,9 @@
           "example": "0",
           "member": "string",
           "name": "TableIdlType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6050,9 +6121,9 @@
           "example": "0",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6060,9 +6131,9 @@
           "example": "0",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6070,9 +6141,9 @@
           "example": "0",
           "member": "string",
           "name": "TaskIds",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6080,9 +6151,9 @@
           "example": "0",
           "member": "string",
           "name": "ApplicationId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6093,112 +6164,112 @@
         {
           "disabled": false,
           "document": "Table instance ID in the format of `tcaplus-3be64cbb`\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "120123",
           "member": "string",
           "name": "TableInstanceId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task ID, which is valid for the API that creates one task\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "176768",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table data structure type, such as `GENERIC` or `LIST`\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table data interface description language (IDL) type, such as `PROTO` or `TDR`\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TableIdlType",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of the table group where a table resides\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "15323",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task ID list, which is valid for the API that creates multiple tasks\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1587678",
           "member": "string",
           "name": "TaskIds",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of uploaded key file\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "FileId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of keys successfully verified\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "SuccKeyNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of keys contained in key file\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalKeyNum",
-          "required": true,
+          "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6209,9 +6280,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "tagkey",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6219,12 +6291,13 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "tagvalue",
           "member": "string",
           "name": "TagValue",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6235,32 +6308,32 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "1875657",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag information",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "Tags",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6271,52 +6344,52 @@
         {
           "disabled": false,
           "document": "Table instance ID",
-          "example": "",
+          "example": "tcaplus-2221",
           "member": "string",
           "name": "TableInstanceId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table name",
-          "example": "",
+          "example": "testname",
           "member": "string",
           "name": "TableName",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group ID",
-          "example": "",
+          "example": "31231",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag information",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "Tags",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6327,42 +6400,42 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "189787",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table group ID",
-          "example": "",
+          "example": "176565",
           "member": "string",
           "name": "TableGroupId",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag information",
-          "example": "",
+          "example": "{}",
           "member": "TagInfoUnit",
           "name": "Tags",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message",
-          "example": "",
+          "example": "{}",
           "member": "ErrorInfo",
           "name": "Error",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6373,100 +6446,100 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "",
+          "example": "1765447",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task type",
-          "example": "",
+          "example": "1",
           "member": "string",
           "name": "TaskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of TcaplusDB internal transaction associated with task",
-          "example": "",
+          "example": "46563",
           "member": "string",
           "name": "TransId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of the cluster where a task resides",
-          "example": "",
+          "example": "1865765",
           "member": "string",
           "name": "ClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name of the cluster where a task resides",
-          "example": "",
+          "example": "clustername",
           "member": "string",
           "name": "ClusterName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task progress",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "Progress",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task creation time",
-          "example": "",
+          "example": "20231010",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task last modified time",
-          "example": "",
+          "example": "20231010",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Operator",
-          "example": "",
+          "example": "operator",
           "member": "string",
           "name": "Operator",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Task details",
-          "example": "",
+          "example": "createtable",
           "member": "string",
           "name": "Content",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6497,9 +6570,9 @@
           "example": "无",
           "member": "ApplyResult",
           "name": "ApplyResults",
-          "required": true,
+          "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6507,7 +6580,7 @@
           "example": "0",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6526,7 +6599,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster where to create a table",
-          "example": "",
+          "example": "176567",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -6535,7 +6608,7 @@
         {
           "disabled": false,
           "document": "ID of the table group where to create a table",
-          "example": "",
+          "example": "15452",
           "member": "string",
           "name": "TableGroupId",
           "required": false,
@@ -6544,7 +6617,7 @@
         {
           "disabled": false,
           "document": "List of information of uploaded IDL files. Either this parameter or `NewIdlFiles` must be present",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "ExistingIdlFiles",
           "required": false,
@@ -6553,7 +6626,7 @@
         {
           "disabled": false,
           "document": "List of information of IDL files to be uploaded. Either this parameter or `ExistingIdlFiles` must be present",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "NewIdlFiles",
           "required": false,
@@ -6568,27 +6641,30 @@
         {
           "disabled": false,
           "document": "Information list of all IDL files uploaded and verified in this request",
-          "example": "",
+          "example": "{}",
           "member": "IdlFileInfo",
           "name": "IdlFiles",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of valid tables parsed by reading IDL description file, excluding tables already created",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of valid tables parsed by reading IDL description file, excluding tables already created",
-          "example": "",
+          "example": "{}",
           "member": "ParsedTableInfoNew",
           "name": "TableInfos",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },

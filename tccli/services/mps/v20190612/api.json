@@ -21398,6 +21398,15 @@
         },
         {
           "disabled": false,
+          "document": "Output path, which can be a relative or an absolute path.\nThe path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).\n**Relative path example:**\n<Li>`Filename_{Variablename}.{format}`.</li>\n<Li>`Filename.{format}`.</li>\n\n**Absolute path example:**\n<Li>`/Path/Filename_{Variablename}.{format}`.</li>\n\nIf not filled in, default relative path: `{inputName}.{format}`.",
+          "example": "{inputName}.{format}",
+          "member": "string",
+          "name": "OutputPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Image processing parameter.",
           "example": "无",
           "member": "ImageTaskInput",

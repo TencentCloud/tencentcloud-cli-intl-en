@@ -407,7 +407,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Types Supported for Authentication: Currently supported types are as follows:\n1.HK (Default): Hong Kong (China) Identity Card\n2.ML: Malaysia Identity Card\n3.IndonesiaIDCard: Indonesia Identity Card\n4.PhilippinesVoteID: Philippines Voter ID\n5.PhilippinesDrivingLicense: Philippines Driving License\n6.PhilippinesTinID: Philippines Tin ID\n7.PhilippinesSSSID: Philippines SSS ID\n8.PhilippinesUMID: Philippines UMID\n9.MLIDPassport: Passports of Hong Kong, Macao, Taiwan Regions (China) and Foreign Countries\n10.ThailandIDCard: Thailand Identity Card\n11.MainlandIDCard: Mainland China Identity Card\n12.SingaporeIDCard: Singapore Identity Card\n13.HMTPermit: Exit-Entry Permit for Travel to and from Hong Kong, Macao and Taiwan (China)",
+          "document": "Specifies the identity document type used for authentication. valid values:.  \n\nHK (default): hong kong (china) identity card.\n2. ML: malaysian identity card.\nIndonesian identity card.\n4. PhilippinesVoteID: specifies the voter card in the philippines.\n5. PhilippinesDrivingLicense: specifies the driving license in philippines.\n6. PhilippinesTinID: specifies the philippines tin id.\n7. PhilippinesSSSID: specifies the SSSID in the philippines.\n8. philippines UMID: specifies the philippines UMID.\n9. MLIDPassport: specifies the passport for hong kong (china), macao (china), and taiwan (china) as well as overseas passports.\nThailandIDCard: specifies the thai identity card.\nMainland id card.\n12. SingaporeIDCard: specifies the Singapore id card.\n13. HMTPermit: specifies the hong kong, macau and taiwan travel permit.",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
@@ -452,6 +452,15 @@
         },
         {
           "disabled": false,
+          "document": "Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.\nOptional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).",
+          "example": "[-9101]",
+          "member": "int64",
+          "name": "SelectedWarningCodes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.",
           "example": "1",
           "member": "string",
@@ -461,7 +470,7 @@
         },
         {
           "disabled": false,
-          "document": "ENHANCED: Enhanced Version, BASIC: Basic Version (Default)",
+          "document": "ENHANCED: enhanced.\nBASIC: basic version (default).",
           "example": "ENHANCED",
           "member": "string",
           "name": "SdkVersion",
@@ -485,7 +494,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.",
+          "document": "A token that identifies an SDK verification process. the validity time is 10 minutes. after the process is complete, the token can be used to retrieve the verification result.",
           "example": "A561B769-C347-4724-A69A-6C3B3483E107",
           "member": "string",
           "name": "SdkToken",
