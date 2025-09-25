@@ -422,6 +422,14 @@
         "title": "Example 1"
       }
     ],
+    "DescribeSessionImageVersion": [
+      {
+        "document": "Current engine: DataEngine-b0jt6fvk\nThis example shows you how to choose machine-learning as the framework type.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSessionImageVersion\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-b0jt6fvk\",\n    \"FrameworkType\": \"machine-learning\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EngineSessionImages\": [\n            {\n                \"SparkImageId\": \"123e4567-e89b-12d3-a456-426614174001\",\n                \"SparkImageTag\": \"ccr.ccs.tencentyun.com/dlc_cloud/tensorflow:dev-v20241218\",\n                \"SparkImageType\": 1,\n                \"SparkImageVersion\": \"tensorflow-v2.18.0\"\n            },\n            {\n                \"SparkImageId\": \"1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6\",\n                \"SparkImageTag\": \"ccr.ccs.tencentyun.com/dlc_cloud/scikit-learn:dev-v20241218\",\n                \"SparkImageType\": 1,\n                \"SparkImageVersion\": \"scikit-learn-v1.6.0\"\n            },\n            {\n                \"SparkImageId\": \"98765432-10fe-bcd1-9a8b-0123456789ab\",\n                \"SparkImageTag\": \"ccr.ccs.tencentyun.com/dlc_cloud/pytorch:dev-v20241218\",\n                \"SparkImageType\": 1,\n                \"SparkImageVersion\": \"pytorch-v2.5.1\"\n            }\n        ],\n        \"RequestId\": \"c06478c4-bbc6-4cec-934b-6f9e2ff121ae\"\n    }\n}",
+        "title": "Built-In Image"
+      }
+    ],
     "DescribeSparkAppJob": [
       {
         "document": "This example shows you how to query the information of a Spark job.",
