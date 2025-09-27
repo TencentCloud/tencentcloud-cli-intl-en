@@ -7,6 +7,44 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c5d13bd-070e-4eb8-90c2-4a01dc1b2c54\"\n    }\n}",
         "title": "Creat Quota"
       }
+    ],
+    "DeleteAlarm": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarm\n<Common request parameters>\n\n{\n    \"Id\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ea231b1c-86fa-4190-aa0e-048c7622c448\"\n    }\n}",
+        "title": "Deletes alarm rules"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarm\n<Common request parameters>\n\n{\n    \"Id\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a44b27e3-e9f7-4a45-9bda-56177ad3f15e\"\n    }\n}",
+        "title": "Deleting a Rule"
+      }
+    ],
+    "DescribeAlarms": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarms\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"ProductId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Count\": 5,\n        \"Data\": [\n            {\n                \"Id\": 102,\n                \"OwnerUin\": 100026600000,\n                \"MemberUin\": 100026600000,\n                \"Name\": \"234\",\n                \"ProductId\": 13,\n                \"Status\": 2,\n                \"QuotaId\": 2828,\n\"ProductName\": \"Tencent Cloud Assistant\"\n\"QuotaName\": \"quota name 001\"\n                \"Metrics\": 1,\n                \"Threshold\": 2,\n                \"Frequency\": 1\n            }\n        ],\n        \"RequestId\": \"e3836e25-700a-4759-bba2-7bcd57b9ab86\"\n    }\n}",
+        "title": "List of rules"
+      }
+    ],
+    "EnableAlarm": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableAlarm\n<Common request parameters>\n\n{\n    \"Id\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"737ee7c5-d5e6-42f8-8cb9-dd9c1eade12a\"\n    }\n}",
+        "title": "Enabling Alerts"
+      }
+    ],
+    "UpdateAlarm": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAlarm\n<Common request parameters>\n\n{\n    \"Id\": 1,\n    \"Name\": \"Quota 2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"97f26bb6-dcb6-4903-b5ef-17650fe140a3\"\n    }\n}",
+        "title": "Editing Quota"
+      }
     ]
   }
 }
