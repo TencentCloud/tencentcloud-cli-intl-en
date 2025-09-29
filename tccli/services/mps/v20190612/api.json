@@ -91,6 +91,13 @@
       "output": "CreateScheduleResponse",
       "status": "online"
     },
+    "CreateSmartEraseTemplate": {
+      "document": "This API is used to create a custom smart erasing template.",
+      "input": "CreateSmartEraseTemplateRequest",
+      "name": "Creates a smart erasing template",
+      "output": "CreateSmartEraseTemplateResponse",
+      "status": "online"
+    },
     "CreateSmartSubtitleTemplate": {
       "document": "This API is used to create a custom smart subtitle template.",
       "input": "CreateSmartSubtitleTemplateRequest",
@@ -215,6 +222,13 @@
       "input": "DeleteScheduleRequest",
       "name": "Deletes a scheme",
       "output": "DeleteScheduleResponse",
+      "status": "online"
+    },
+    "DeleteSmartEraseTemplate": {
+      "document": "This API is used to delete a user-defined smart erasing template.",
+      "input": "DeleteSmartEraseTemplateRequest",
+      "name": "Deletes a smart erasing template",
+      "output": "DeleteSmartEraseTemplateResponse",
       "status": "online"
     },
     "DeleteSmartSubtitleTemplate": {
@@ -369,6 +383,13 @@
       "input": "DescribeSchedulesRequest",
       "name": "Queries a scheme",
       "output": "DescribeSchedulesResponse",
+      "status": "online"
+    },
+    "DescribeSmartEraseTemplates": {
+      "document": "This API is used to obtain the list of smart erasing template details based on the unique identifier of the template. The returned result includes all matching user-defined smart erasing templates and system preset smart erasing templates.",
+      "input": "DescribeSmartEraseTemplatesRequest",
+      "name": "Obtains the smart erasing template list",
+      "output": "DescribeSmartEraseTemplatesResponse",
       "status": "online"
     },
     "DescribeSmartSubtitleTemplates": {
@@ -565,6 +586,13 @@
       "input": "ModifyScheduleRequest",
       "name": "Modifies a scheme",
       "output": "ModifyScheduleResponse",
+      "status": "online"
+    },
+    "ModifySmartEraseTemplate": {
+      "document": "This API is used to modify a user-defined smart erasing template.",
+      "input": "ModifySmartEraseTemplateRequest",
+      "name": "Modifies a smart erasing template",
+      "output": "ModifySmartEraseTemplateResponse",
       "status": "online"
     },
     "ModifySmartSubtitleTemplate": {
@@ -9452,6 +9480,88 @@
       ],
       "type": "object"
     },
+    "CreateSmartEraseTemplateRequest": {
+      "document": "CreateSmartEraseTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Length limit for the smart erasing template name: 64 characters.",
+          "example": "智能擦除模板",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Erasing type.\n-subtitle: subtitle removal.\n-watermark: watermark removal.\n-privacy: privacy protection.",
+          "example": "subtitle",
+          "member": "string",
+          "name": "EraseType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Length limit for the description information of the smart erasing template: 256 characters.",
+          "example": "模板2",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasing configuration. This parameter is required and valid only when the value of EraseType is set to subtitle.",
+          "example": "无",
+          "member": "SmartEraseSubtitleConfig",
+          "name": "EraseSubtitleConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Watermark erasing configuration. This parameter is required and valid only when the value of EraseType is set to watermark.",
+          "example": "无",
+          "member": "SmartEraseWatermarkConfig",
+          "name": "EraseWatermarkConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection configuration. This parameter is required and valid only when the value of EraseType is set to privacy.",
+          "example": "无",
+          "member": "SmartErasePrivacyConfig",
+          "name": "ErasePrivacyConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSmartEraseTemplateResponse": {
+      "document": "CreateSmartEraseTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the smart erasing template.",
+          "example": "200",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSmartSubtitleTemplateRequest": {
       "document": "CreateSmartSubtitleTemplate request structure.",
       "members": [
@@ -10348,6 +10458,33 @@
     },
     "DeleteScheduleResponse": {
       "document": "DeleteSchedule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSmartEraseTemplateRequest": {
+      "document": "DeleteSmartEraseTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the smart erasing template.",
+          "example": "30",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSmartEraseTemplateResponse": {
+      "document": "DeleteSmartEraseTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12012,6 +12149,89 @@
           "example": "无",
           "member": "SchedulesInfo",
           "name": "ScheduleInfoSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSmartEraseTemplatesRequest": {
+      "document": "DescribeSmartEraseTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filtering condition for the unique identifier of the smart erasing template. Length limit of the array: 100.",
+          "example": "[30]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering conditions for template type. If this parameter is not specified, all templates are returned. Valid values:\n* Preset: system preset template.\n* Custom: user-defined template.",
+          "example": "Preset",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition for the smart erasing template name. Length limit: 64 characters.",
+          "example": "擦除模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSmartEraseTemplatesResponse": {
+      "document": "DescribeSmartEraseTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet the filtering conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of smart erasing template details.",
+          "example": "无",
+          "member": "SmartEraseTemplateItem",
+          "name": "SmartEraseTemplateSet",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -19722,6 +19942,87 @@
       ],
       "type": "object"
     },
+    "ModifySmartEraseTemplateRequest": {
+      "document": "ModifySmartEraseTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the smart erasing template.",
+          "example": "30",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Length limit for the smart erasing template name: 64 characters.",
+          "example": "模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Length limit for the description information of the smart erasing template: 256 characters.",
+          "example": "模板2",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Erasing type.\n-subtitle: subtitle removal.\n-watermark: watermark removal.\n-privacy: privacy protection.",
+          "example": "subtitle",
+          "member": "string",
+          "name": "EraseType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasing configuration. It takes effect when the value of EraseType is set to subtitle, or when the value of EraseType is left unspecified but the original EraseType value of the modified template is subtitle.",
+          "example": "无",
+          "member": "SmartEraseSubtitleConfig",
+          "name": "EraseSubtitleConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Watermark erasing configuration. The value of EraseType can be set to watermark or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to watermark.",
+          "example": "无",
+          "member": "SmartEraseWatermarkConfig",
+          "name": "EraseWatermarkConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection configuration. The value of EraseType can be set to privacy or left unspecified. This parameter is valid only when the value of EraseType of the corresponding template is set to privacy.",
+          "example": "无",
+          "member": "SmartErasePrivacyConfig",
+          "name": "ErasePrivacyConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySmartEraseTemplateResponse": {
+      "document": "ModifySmartEraseTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifySmartSubtitleTemplateRequest": {
       "document": "ModifySmartSubtitleTemplate request structure.",
       "members": [
@@ -24350,6 +24651,122 @@
           "example": "2024-03-21T10:14:06Z",
           "member": "string",
           "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SmartEraseTemplateItem": {
+      "document": "Smart erasing template details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the smart erasing template.",
+          "example": "30",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Smart erasing template name.",
+          "example": "模板1",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Smart erasing template description information.",
+          "example": "用于A的模板",
+          "member": "string",
+          "name": "Comment",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template type. Valid values:\n* Preset: system preset template.\n* Custom: user-defined template.",
+          "example": "Preset",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Erasing type.\n-subtitle: subtitle removal.\n-watermark: watermark removal.\n-privacy: privacy protection.",
+          "example": "subtitle",
+          "member": "string",
+          "name": "EraseType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasing configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartEraseSubtitleConfig",
+          "name": "EraseSubtitleConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Watermark erasing configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartEraseWatermarkConfig",
+          "name": "EraseWatermarkConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartErasePrivacyConfig",
+          "name": "ErasePrivacyConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2023-10-05T14:30:00Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2024-10-05T14:32:00Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alias of the preset smart erasing template.",
+          "example": "PresetTemplate1",
+          "member": "string",
+          "name": "AliasName",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
