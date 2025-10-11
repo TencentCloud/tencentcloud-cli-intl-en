@@ -16,6 +16,14 @@
         "title": "Updating Databases in the DMS Metadata Module"
       }
     ],
+    "AttachDataMaskPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachDataMaskPolicy\n<Common request parameters>\n\n{\n    \"DataMaskStrategyPolicySet\": [\n        {\n            \"PolicyInfo\": {\n                \"Database\": \"default_database\",\n                \"Catalog\": \"DataLakeCatalog\",\n                \"Table\": \"default_table\",\n                \"Operation\": \"SELECT\",\n                \"PolicyType\": \"DATAMASK\",\n                \"Column\": \"string_msg\"\n            },\n            \"ColumnType\": \"string\",\n            \"DataMaskStrategyId\": \"72de85e2-887a-4a87-bf86-90fc90ff25fa\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12345678-1234-1234-1234-12345678\"\n    }\n}",
+        "title": "Binding a DMask Policy"
+      }
+    ],
     "AttachUserPolicy": [
       {
         "document": " ",
@@ -126,6 +134,14 @@
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataEngine\n<Common request parameters>\n\n{\n    \"EngineType\": \"spark\",\n    \"DataEngineName\": \"test\",\n    \"ClusterType\": \"spark\",\n    \"MinClusters\": 0,\n    \"MaxClusters\": 0,\n    \"DefaultDataEngine\": true,\n    \"CidrBlock\": \"10.255.255.0/16\",\n    \"Mode\": 0,\n    \"Message\": \"test\",\n    \"AutoResume\": true,\n    \"Size\": 0,\n    \"PayMode\": 0,\n    \"TimeSpan\": 1,\n    \"TimeUnit\": \"h\",\n    \"AutoRenew\": 0,\n    \"Tags\": [\n        {\n            \"TagKey\": \"key\",\n            \"TagValue\": \"value\"\n        }\n    ],\n    \"AutoSuspend\": true,\n    \"CrontabResumeSuspend\": 0,\n    \"CrontabResumeSuspendStrategy\": {\n        \"ResumeTime\": \"10\",\n        \"SuspendTime\": \"10\",\n        \"SuspendStrategy\": 0\n    },\n    \"EngineExecType\": \"BATCH\",\n    \"MaxConcurrency\": 0,\n    \"TolerableQueueTime\": 0,\n    \"AutoSuspendTime\": 0,\n    \"ResourceType\": \"standard_cu\",\n    \"ImageVersionName\": \"SuperSQL-P 1.1\"\n}",
         "output": "{\n    \"Response\": {\n        \"DataEngineId\": \"DataEngine-abc123\",\n        \"RequestId\": \"sd01m2-fasfki-231safas\"\n    }\n}",
         "title": "Creating a data engine"
+      }
+    ],
+    "CreateDataMaskStrategy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataMaskStrategy\n<Common request parameters>\n\n{\n    \"Strategy\": {\n        \"StrategyName\": \"create_data_mask_tag\",\n        \"Groups\": [\n            {\n                \"WorkGroupId\": 46920,\n                \"StrategyType\": \"MASK_HASH\"\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"812228c6-45c7-43a2-af77-c7e67dc0b524\",\n        \"StrategyId\": \"71a88499-266f-4b24-9944-2d80078ec0a6\"\n    }\n}",
+        "title": "Creating a Data Masking Policy"
       }
     ],
     "CreateInternalTable": [

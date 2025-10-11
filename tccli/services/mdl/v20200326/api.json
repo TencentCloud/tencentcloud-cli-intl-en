@@ -629,6 +629,21 @@
       ],
       "usage": "both"
     },
+    "AbWatermarkSettingsReq": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "AdditionalRateSetting": {
       "document": "additional bit rate configuration.",
       "members": [
@@ -1844,6 +1859,15 @@
           "name": "TextSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "AB watermark configuration",
+          "example": "无",
+          "member": "AbWatermarkSettingsReq",
+          "name": "AbWatermarkSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2252,7 +2276,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Alarm information of the channel’s two pipelines",
+          "document": "Alarm information of the channel's two pipelines",
           "example": "无",
           "member": "ChannelAlertInfos",
           "name": "Infos",
@@ -3348,6 +3372,7 @@
           "example": "无",
           "member": "PushEventSetting",
           "name": "PushEventSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -3403,7 +3428,7 @@
         {
           "disabled": false,
           "document": "ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`",
-          "example": "AAAAAAAA",
+          "example": "68B3B564XXXXXXABF628",
           "member": "string",
           "name": "InputAttachment",
           "required": false,
@@ -3510,7 +3535,7 @@
         {
           "disabled": false,
           "document": "ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`",
-          "example": "AAAAAAAA",
+          "example": "DCF638XXX",
           "member": "string",
           "name": "InputAttachment",
           "output_required": true,
@@ -4844,6 +4869,15 @@
           "example": "无",
           "member": "CreateTextSettings",
           "name": "TextSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AbWatermarkSettingsReq",
+          "name": "AbWatermarkSettings",
           "required": false,
           "type": "object"
         }
@@ -6734,8 +6768,7 @@
           "member": "string",
           "name": "StartType",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -6744,8 +6777,7 @@
           "member": "string",
           "name": "Time",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -6754,8 +6786,7 @@
           "member": "string",
           "name": "StartTime",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -6764,8 +6795,7 @@
           "member": "string",
           "name": "EndTime",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"

@@ -477,7 +477,7 @@
       "status": "online"
     },
     "DescribeAliasDomains": {
-      "document": "This API is used to query the alias domain name information list.\nThe feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).",
+      "document": "This API is used to query the alias domain name information list.\nThe feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://www.tencentcloud.com/contact-us).",
       "input": "DescribeAliasDomainsRequest",
       "name": "Queries the information of alias domain names.",
       "output": "DescribeAliasDomainsResponse",
@@ -925,7 +925,7 @@
       "status": "online"
     },
     "DestroyPlan": {
-      "document": "To stop billing for your EdgeOne plan, you can use this interface to terminate the billing plan.\n> Terminating a billing plan requires the following conditions:\n    1. The plan has expired (except for the Enterprise Edition Plan);\n    2. All sites under the plan have been either shut down or deleted.\n\n> The site status can be queried through the [Query Site List](https://intl.cloud.tencent.com/document/product/1552/80713?from_cn_redirect=1) interface.\nA site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://intl.cloud.tencent.com/document/product/1552/80707?from_cn_redirect=1) interface.\nA site can be deleted by using the [Delete Site](https://intl.cloud.tencent.com/document/product/1552/80717?from_cn_redirect=1) interface.",
+      "document": "To stop billing for your EdgeOne plan, you can use this interface to terminate the billing plan.\n> Terminating a billing plan requires the following conditions:\n    1. The plan has expired (except for the Enterprise Edition Plan);\n    2. All sites under the plan have been either shut down or deleted.\n\n> The site status can be queried through the [Query Site List](https://www.tencentcloud.com/zh/document/product/1145/50481) interface.\nA site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://intl.cloud.tencent.com/document/product/1552/80707?from_cn_redirect=1) interface.\nA site can be deleted by using the [Delete Site](https://intl.cloud.tencent.com/document/product/1552/80717?from_cn_redirect=1) interface.",
       "input": "DestroyPlanRequest",
       "name": "Terminates plan",
       "output": "DestroyPlanResponse",
@@ -1163,7 +1163,7 @@
       "status": "online"
     },
     "ModifyLoadBalancer": {
-      "document": "This API is used to modify LoadBalancer configuration. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).",
+      "document": "This API is used to modify LoadBalancer configuration. The load balancing feature is in beta test. If you need to use it, [contact us](https://www.tencentcloud.com/contact-us).",
       "input": "ModifyLoadBalancerRequest",
       "name": "Modifies a LoadBalancer",
       "output": "ModifyLoadBalancerResponse",

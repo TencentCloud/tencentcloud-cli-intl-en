@@ -788,7 +788,7 @@
         {
           "disabled": false,
           "document": "The vod type is valid, the content is valid starting time, Entire and SpecifyTimeRange are optional.",
-          "example": "无",
+          "example": "Entire",
           "member": "string",
           "name": "Type",
           "output_required": false,
@@ -797,9 +797,9 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Offset, valid when Type is SpecifyTimeRange.",
-          "example": "无",
+          "example": "300",
           "member": "uint64",
           "name": "Offset",
           "output_required": false,
@@ -920,7 +920,7 @@
         {
           "disabled": false,
           "document": "Channel ID",
-          "example": "XXX",
+          "example": "13579",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -929,7 +929,7 @@
         {
           "disabled": false,
           "document": "Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores",
-          "example": "XXX",
+          "example": "john",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1037,7 +1037,7 @@
         },
         {
           "disabled": false,
-          "document": "Channel protocol. Valid values: HLS, DASH, CMAF.",
+          "document": "Channel protocol. Valid values: HLS/DASH.",
           "example": "HLS",
           "member": "string",
           "name": "Protocol",
@@ -1526,6 +1526,15 @@
           "name": "PackageConfs",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The sourcetag allows ADS to deliver more precise ads based on the Source Tag information",
+          "example": "无",
+          "member": "SourceTag",
+          "name": "SourceTags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1633,7 +1642,7 @@
         {
           "disabled": false,
           "document": "DRM system providers, when the encryption method is CBCS, the optional values are `PlayReady`, `Widevine`, `FairPlay`; when the encryption method is CENC, the oprional values are `PlayReady`, `Widevine`.",
-          "example": "无",
+          "example": "[\"FairPlay\"]",
           "member": "string",
           "name": "DRMSystems",
           "output_required": false,
@@ -1655,7 +1664,7 @@
         {
           "disabled": false,
           "document": "Key server address; must start with https://.",
-          "example": "无",
+          "example": "\"https://www.tencent.com\"",
           "member": "string",
           "name": "KeyServerUrl",
           "output_required": false,
@@ -1699,7 +1708,7 @@
         {
           "disabled": false,
           "document": "Optional, specifies the rotation interval in seconds; empty, or an integer between 300-2592000.",
-          "example": "无",
+          "example": "001",
           "member": "int64",
           "name": "KeyRotationInterval",
           "output_required": false,
@@ -4371,7 +4380,7 @@
         {
           "disabled": false,
           "document": "Channel ID",
-          "example": "XXX",
+          "example": "001",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -4380,7 +4389,7 @@
         {
           "disabled": false,
           "document": "Channel endpoint URL",
-          "example": "XXX",
+          "example": "https://www.tencent.com",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -4389,7 +4398,7 @@
         {
           "disabled": false,
           "document": "New endpoint name",
-          "example": "XXX",
+          "example": "john",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4452,7 +4461,7 @@
         {
           "disabled": false,
           "document": "The customer-defined url parameter is inserted into the subscript at the specified position of the Endpoint url. \nCalculation starts from the first '/' in the url path, and the subscript starts from 0, the optional range of the subscript is: [0,3].",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "CustomUrlParamIndex",
           "required": false,
@@ -4461,7 +4470,7 @@
         {
           "disabled": false,
           "document": "Customer-defined url parameters are inserted into the specified position of the Endpoint url based on the CustomUrlParamIndex.\nThe parameters can only contain digits, letters, underscores (_), and hyphens (-), with a length of 1 to 64 chars.",
-          "example": "无",
+          "example": "\"xx\"",
           "member": "string",
           "name": "CustomUrlParam",
           "required": false,
@@ -4942,6 +4951,15 @@
           "example": "无",
           "member": "SourcePackageConf",
           "name": "PackageConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "ADS can return more precise advertisements based on Source Tag information.",
+          "example": "无",
+          "member": "SourceTag",
+          "name": "SourceTags",
           "required": false,
           "type": "list"
         }
@@ -6245,6 +6263,34 @@
           "example": "/vod/demo.m3u8",
           "member": "string",
           "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SourceTag": {
+      "document": "type SourceTag struct {\n\tKey   string `json:\"Key\"`\n\tValue string `json:\"Value\"`\n}",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TESTKEY",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "testvalue",
+          "member": "string",
+          "name": "Value",
           "output_required": false,
           "required": false,
           "type": "string",

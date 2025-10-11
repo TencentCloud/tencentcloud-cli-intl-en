@@ -12,7 +12,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyLivenessToken\n<Common request parameters>\n\n{\n    \"SecureLevel\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SdkToken\": \"A561B769-C347-4724-A69A-6C3B3483E107\",\n        \"RequestId\": \"d73c0c05-f7ff-419c-84cb-0756303b1925\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"SdkToken\": \"A561B769-C347-4724-A69A-6C3B3483E107\",\n        \"RequestId\": \"d73c0c05-f7ff-419c-84cb-0756303b1934\"\n    }\n}",
         "title": "Applying for a token"
       }
     ],

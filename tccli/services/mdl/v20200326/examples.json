@@ -4,7 +4,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamLiveChannel\n<Common request parameters>\n\n{\n    \"AudioTemplates\": [\n        {\n            \"AudioBitrate\": \"112000\",\n            \"AudioSelectorName\": \"eng\",\n            \"LanguageCode\": \"eng\",\n            \"Name\": \"test1\",\n            \"Acodec\": \"AAC\"\n        }\n    ],\n    \"OutputGroups\": [\n        {\n            \"Name\": \"outputGroup\",\n            \"Outputs\": [\n                {\n                    \"Scte35Settings\": {\n                        \"Behavior\": \"PASSTHROUGH\"\n                    },\n                    \"Name\": \"output\"\n                }\n            ],\n            \"DrmSettings\": {\n                \"ContentId\": \"12312dsde2\",\n                \"State\": \"OPEN\"\n            },\n            \"DashRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PeriodTriggers\": \"OPEN\",\n                \"SegmentDuration\": \"2000\"\n            },\n            \"Type\": \"HLS\",\n            \"HlsRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PdtInsertion\": \"OPEN\",\n                \"SegmentDuration\": \"2000\",\n                \"PdtDuration\": \"600\"\n            },\n            \"Destinations\": [\n                {\n                    \"AuthKey\": \"aaaa\",\n                    \"Username\": \"bbbb\",\n                    \"OutputUrl\": \"http://domain/live/1233\",\n                    \"Password\": \"cccc\"\n                }\n            ]\n        }\n    ],\n    \"VideoTemplates\": [\n        {\n            \"Name\": \"test2\",\n            \"VideoBitrate\": \"1000000\",\n            \"Vcodec\": \"H264\",\n            \"Height\": \"1080\",\n            \"Width\": \"1920\",\n            \"Fps\": \"60\"\n        }\n    ],\n    \"Name\": \"channel\",\n    \"AttachedInputs\": [\n        {\n            \"AudioSelectors\": [\n                {\n                    \"AudioPidSelection\": {\n                        \"Pid\": \"256\"\n                    },\n                    \"Name\": \"eng\"\n                }\n            ],\n            \"Id\": \"EEEEE\"\n        }\n    ],\n    \"Tags\": [\n        {\n            \"TagKey\": \"tagkey\",\n            \"TagValue\": \"tagvalue\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Id\": \"sda\",\n        \"RequestId\": \"11-222-222\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"5E7818810943216A2345\",\n        \"RequestId\": \"11-222-222\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -12,7 +12,7 @@
       {
         "document": " ",
         "input": "https://mdl.tencentcloudapi.com/?Action=CreateStreamLiveInput\n&Name=sdad\n&Type=RTMP_PUSH\n&SecurityGroupIds.0=123\n&InputSettings.0.AppName=live\n&InputSettings.0.StreamName=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Id\": 111,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"5E7818810943216A1234\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -20,7 +20,7 @@
       {
         "document": " ",
         "input": "https://mdl.tencentcloudapi.com/?Action=CreateStreamLiveInputSecurityGroup\n&Name=xxx\n&Whitelist.0=1.1.1.1/1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Id\": \"1111\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"5E7818810943216A0123\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -36,7 +36,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"TextSettings\": {\n        \"XPos\": 10,\n        \"Text\": \"watermark\",\n        \"YPos\": 10,\n        \"FontSize\": 10,\n        \"Location\": \"TOP_LEFT\",\n        \"FontColor\": \"0x000000\"\n    },\n    \"Type\": \"STATIC_IMAGE\",\n    \"Name\": \"test\",\n    \"ImageSettings\": {\n        \"XPos\": 10,\n        \"YPos\": 10,\n        \"Height\": 10,\n        \"Width\": 10,\n        \"ImageContent\": \"d2F0ZXJtYXJr\",\n        \"Location\": \"TOP_LEFT\",\n        \"ImageType\": \"png\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"Id\": \"123\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Id\": \"AB342ED131CE\",\n        \"RequestId\": \"request-xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -75,7 +75,7 @@
     "DeleteStreamLiveWatermark": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"xxxx\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"AB342ED131CE\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
       }
@@ -163,8 +163,8 @@
     "DescribeStreamLivePlans": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLivePlans\n<Common request parameters>\n\n{\n    \"ChannelId\": \"AAAA\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Infos\": {\n            \"EventName\": \"AAAA\",\n            \"TimingSettings\": {\n                \"StartType\": \"FIXED_TIME\",\n                \"Time\": \"2021-06-25T00:00:00Z\"\n            },\n            \"EventSettings\": {\n                \"EventType\": \"INPUT_SWITCH\",\n                \"InputAttachment\": \"AAAAA\"\n            }\n        },\n        \"RequestId\": \"AAAAA\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLivePlans\n<Common request parameters>\n\n{\n    \"ChannelId\": \"5E7818810943216A2345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"EventName\": \"1\",\n                \"TimingSettings\": {\n                    \"StartType\": \"IMMEDIATE\",\n                    \"Time\": \"2025-03-19T07:16:03Z\",\n                    \"StartTime\": \"\",\n                    \"EndTime\": \"\"\n                },\n                \"EventSettings\": {\n                    \"EventType\": \"SCTE35_SPLICE_INSERT\",\n                    \"InputAttachment\": \"5E7818810943216A1234\",\n                    \"OutputGroupName\": \"group0\",\n                    \"ManifestName\": \"main.m3u8\",\n                    \"Destinations\": [],\n                    \"SCTE35SegmentationDescriptor\": [],\n                    \"SpliceEventID\": 1,\n                    \"SpliceDuration\": \"1800000\",\n                    \"TimedMetadataSetting\": {\n                        \"ID3\": \"\"\n                    }\n                }\n            }\n        ],\n        \"RequestId\": \"REQ-xxx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -172,7 +172,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveRegions\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Regions\": [\n                {\n                    \"Name\": \"ap-mumbai\"\n                }\n            ]\n        },\n        \"RequestId\": \"aaaa\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Regions\": [\n                {\n                    \"Name\": \"ap-singapore\"\n                }\n            ]\n        },\n        \"RequestId\": \"aaaa\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -187,8 +187,8 @@
     "DescribeStreamLiveWatermark": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"TextSettings\": {\n                \"XPos\": 0,\n                \"Text\": \"xx\",\n                \"YPos\": 0,\n                \"FontSize\": 0,\n                \"Location\": \"xx\",\n                \"FontColor\": \"xx\"\n            },\n            \"Id\": \"xx\",\n            \"Type\": \"xx\",\n            \"ImageSettings\": {\n                \"XPos\": 0,\n                \"YPos\": 0,\n                \"Height\": 0,\n                \"Width\": 0,\n                \"Location\": \"xx\"\n            },\n            \"Name\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"Id\": \"watermark_id\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"TextSettings\": {\n                \"XPos\": 10,\n                \"Text\": \"Watermark test string.\",\n                \"YPos\": 10,\n                \"FontSize\": 10,\n                \"Location\": \"TOP_LEFT\",\n                \"FontColor\": \"0x000000\"\n            },\n            \"Id\": \"watermark_id\",\n            \"Type\": \"STATIC_IMAGE\",\n            \"ImageSettings\": {\n                \"XPos\": 10,\n                \"YPos\": 10,\n                \"Height\": 10,\n                \"Width\": 10,\n                \"Location\": \"TOP_LEFT\"\n            },\n            \"Name\": \"watermark1\",\n            \"UpdateTime\": \"2022-01-21T00:00:00Z\",\n            \"AttachedChannels\": [\n                \"5E7818810943216A2345\"\n            ]\n        },\n        \"RequestId\": \"request-xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
@@ -211,7 +211,7 @@
     "ModifyStreamLiveChannel": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveChannel\n<Common request parameters>\n\n{\n    \"Name\": \"channel\",\n    \"OutputGroups\": [\n        {\n            \"Name\": \"outputGroup\",\n            \"Outputs\": [\n                {\n                    \"Scte35Settings\": {\n                        \"Behavior\": \"PASSTHROUGH\"\n                    },\n                    \"Name\": \"output\"\n                }\n            ],\n            \"DrmSettings\": {\n                \"ContentId\": \"12312dsde2\",\n                \"State\": \"OPEN\"\n            },\n            \"DashRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PeriodTriggers\": \"OPEN\",\n                \"SegmentDuration\": \"2000\"\n            },\n            \"Type\": \"DASH\",\n            \"HlsRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PdtInsertion\": \"OPEN\",\n                \"SegmentDuration\": \"2000\",\n                \"PdtDuration\": \"600\"\n            },\n            \"Destinations\": [\n                {\n                    \"AuthKey\": \"aaaa\",\n                    \"Username\": \"bbbb\",\n                    \"OutputUrl\": \"http://domain/live/1233\",\n                    \"Password\": \"cccc\"\n                }\n            ]\n        }\n    ],\n    \"VideoTemplates\": [\n        {\n            \"Name\": \"test2\",\n            \"VideoBitrate\": \"1000000\",\n            \"Vcodec\": \"H264\",\n            \"Height\": \"1080\",\n            \"Width\": \"1920\",\n            \"Fps\": \"60\"\n        }\n    ],\n    \"AttachedInputs\": [\n        {\n            \"AudioSelectors\": [\n                {\n                    \"AudioPidSelection\": {\n                        \"Pid\": \"256\"\n                    },\n                    \"Name\": \"eng\"\n                }\n            ],\n            \"Id\": \"EEEEE\"\n        }\n    ],\n    \"AudioTemplates\": [\n        {\n            \"AudioBitrate\": \"112000\",\n            \"AudioSelectorName\": \"eng\",\n            \"LanguageCode\": \"eng\",\n            \"Name\": \"test1\",\n            \"Acodec\": \"AAC\"\n        }\n    ],\n    \"Id\": \"ESASD13437\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"tagkey\",\n            \"TagValue\": \"tagvalue\"\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveChannel\n<Common request parameters>\n{\n    \"Name\": \"channel\",\n    \"OutputGroups\": [\n        {\n            \"Name\": \"outputGroup\",\n            \"Outputs\": [\n                {\n                    \"Scte35Settings\": {\n                        \"Behavior\": \"PASSTHROUGH\"\n                    },\n                    \"Name\": \"output\"\n                }\n            ],\n            \"DrmSettings\": {\n                \"ContentId\": \"12312dsde2\",\n                \"State\": \"OPEN\"\n            },\n            \"DashRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PeriodTriggers\": \"OPEN\",\n                \"SegmentDuration\": \"2000\"\n            },\n            \"Type\": \"DASH\",\n            \"HlsRemuxSettings\": {\n                \"SegmentNumber\": \"3\",\n                \"PdtInsertion\": \"OPEN\",\n                \"SegmentDuration\": \"2000\",\n                \"PdtDuration\": \"600\"\n            },\n            \"Destinations\": [\n                {\n                    \"AuthKey\": \"aaaa\",\n                    \"Username\": \"bbbb\",\n                    \"OutputUrl\": \"http:\\/\\/domain\\/live\\/1233\",\n                    \"Password\": \"cccc\"\n                }\n            ]\n        }\n    ],\n    \"VideoTemplates\": [\n        {\n            \"Name\": \"test2\",\n            \"VideoBitrate\": \"1000000\",\n            \"Vcodec\": \"H264\",\n            \"Height\": \"1080\",\n            \"Width\": \"1920\",\n            \"Fps\": \"60\"\n        }\n    ],\n    \"AttachedInputs\": [\n        {\n            \"AudioSelectors\": [\n                {\n                    \"AudioPidSelection\": {\n                        \"Pid\": \"256\"\n                    },\n                    \"Name\": \"eng\"\n                }\n            ],\n            \"Id\": \"EEEEE\"\n        }\n    ],\n    \"AudioTemplates\": [\n        {\n            \"AudioBitrate\": \"112000\",\n            \"AudioSelectorName\": \"eng\",\n            \"LanguageCode\": \"eng\",\n            \"Name\": \"test1\",\n            \"Acodec\": \"AAC\"\n        }\n    ],\n    \"Id\": \"5E7818810943216A2345\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"tagkey\",\n            \"TagValue\": \"tagvalue\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-222\"\n    }\n}",
         "title": "Sample request"
       }
@@ -219,7 +219,7 @@
     "ModifyStreamLiveInput": [
       {
         "document": " ",
-        "input": "https://mdl.tencentcloudapi.com/?Action=ModifyStreamLiveInput\n&Id=111\n&Name=sddd\n&SecurityGroupIds.0=1111\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveInput\n<Common request parameters>\n\n{\n    \"Name\": \"input0\",\n    \"Id\": \"5E7818810943216A1234\",\n    \"SecurityGroupIds\": [\n        \"5E7818810943216A0123\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Sample request"
       }
@@ -235,16 +235,16 @@
     "ModifyStreamLiveWatermark": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"TextSettings\": {\n        \"XPos\": 0,\n        \"Text\": \"xx\",\n        \"YPos\": 0,\n        \"FontSize\": 0,\n        \"Location\": \"xx\",\n        \"FontColor\": \"xx\"\n    },\n    \"ImageSettings\": {\n        \"XPos\": 0,\n        \"YPos\": 0,\n        \"Height\": 0,\n        \"Width\": 0,\n        \"ImageContent\": \"xx\",\n        \"Location\": \"xx\",\n        \"ImageType\": \"xx\"\n    },\n    \"Name\": \"xx\",\n    \"Id\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamLiveWatermark\n<Common request parameters>\n\n{\n    \"TextSettings\": {\n        \"XPos\": 10,\n        \"Text\": \"Watermark test string.\",\n        \"YPos\": 10,\n        \"FontSize\": 10,\n        \"Location\": \"TOP_LEFT\",\n        \"FontColor\": \"0x000000\"\n    },\n    \"ImageSettings\": {\n        \"XPos\": 10,\n        \"YPos\": 10,\n        \"Height\": 10,\n        \"Width\": 10,\n        \"ImageContent\": \"iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFElEQVR42mJkYGBgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=\",\n        \"Location\": \"TOP_LEFT\",\n        \"ImageType\": \"png\"\n    },\n    \"Name\": \"watermark1\",\n    \"Id\": \"watermark_id\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"request-xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
     "QueryInputStreamState": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryInputStreamState\n<Common request parameters>\n\n{\n    \"Id\": \"123test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Protocol\": \"xx\",\n            \"InputStreamInfoList\": [\n                {\n                    \"InputAddress\": \"xx\",\n                    \"Status\": 0,\n                    \"StreamName\": \"xx\",\n                    \"AppName\": \"xx\"\n                }\n            ],\n            \"InputName\": \"xx\",\n            \"InputID\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryInputStreamState\n<Common request parameters>\n\n{\n    \"Id\": \"5E7818810943216A1234\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Protocol\": \"RTMP\",\n            \"InputStreamInfoList\": [\n                {\n                    \"InputAddress\": \"rtmp://xxx.com\",\n                    \"Status\": 0,\n                    \"StreamName\": \"stream1\",\n                    \"AppName\": \"live\"\n                }\n            ],\n            \"InputName\": \"input1\",\n            \"InputID\": \"5E7818810943216A1234\"\n        },\n        \"RequestId\": \"request-xx\"\n    }\n}",
         "title": "Sample request"
       }
     ],
