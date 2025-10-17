@@ -210,6 +210,13 @@
       "output": "DeleteDataEngineResponse",
       "status": "online"
     },
+    "DeleteDataMaskStrategy": {
+      "document": "This API is used to delete a data masking policy.",
+      "input": "DeleteDataMaskStrategyRequest",
+      "name": "Delete a DMask policy",
+      "output": "DeleteDataMaskStrategyResponse",
+      "status": "online"
+    },
     "DeleteSparkApp": {
       "document": "This API is used to delete a Spark job.",
       "input": "DeleteSparkAppRequest",
@@ -313,6 +320,13 @@
       "input": "DescribeDataEnginesScaleDetailRequest",
       "name": "Views engine specification details",
       "output": "DescribeDataEnginesScaleDetailResponse",
+      "status": "online"
+    },
+    "DescribeDataMaskStrategies": {
+      "document": "This API is used to query the DMask list.",
+      "input": "DescribeDataMaskStrategiesRequest",
+      "name": "Query DMask policy list",
+      "output": "DescribeDataMaskStrategiesResponse",
       "status": "online"
     },
     "DescribeEngineUsageInfo": {
@@ -719,6 +733,13 @@
       "input": "UpdateDataEngineConfigRequest",
       "name": "Modifies engine configuration",
       "output": "UpdateDataEngineConfigResponse",
+      "status": "online"
+    },
+    "UpdateDataMaskStrategy": {
+      "document": "This API is used to update the DMask policy.",
+      "input": "UpdateDataMaskStrategyRequest",
+      "name": "Update the DMask policy",
+      "output": "UpdateDataMaskStrategyResponse",
       "status": "online"
     },
     "UpdateRowFilter": {
@@ -4990,6 +5011,144 @@
       ],
       "usage": "both"
     },
+    "DataMaskStrategy": {
+      "document": "DMask policy information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "StrategyId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User AppId\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1232121211",
+          "member": "string",
+          "name": "UserAppId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User UIN\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1212313121",
+          "member": "string",
+          "name": "Uin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the uin of the user sub-account to operate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1213124121",
+          "member": "string",
+          "name": "SubAccountUin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "策略1",
+          "member": "string",
+          "name": "StrategyName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MASK_SHOW_FIRST_4, MASK_SHOW_LAST_4, MASK_HASH, MASK_DATE_SHOW_YEAR, MASK_NULL, MASK_DEFAULT.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "MASK_SHOW_FIRST_4",
+          "member": "string",
+          "name": "StrategyType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy description\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "描述",
+          "member": "string",
+          "name": "StrategyDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User group policy list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "Groups",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User sub-account uin list, concatenated by ;.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12312314112;1231231231",
+          "member": "string",
+          "name": "Users",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1: in effect; 0: deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "State",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy creation time. timestamp in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1723106621346",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy update time. timestamp in milliseconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1723106621346",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DataMaskStrategyInfo": {
       "document": "DMask policy information.",
       "members": [
@@ -5181,6 +5340,33 @@
     },
     "DeleteDataEngineResponse": {
       "document": "DeleteDataEngine response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDataMaskStrategyRequest": {
+      "document": "DeleteDataMaskStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DMask policy Id. specifies the Id of the data masking policy.",
+          "example": "1",
+          "member": "string",
+          "name": "StrategyId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDataMaskStrategyResponse": {
+      "document": "DeleteDataMaskStrategy response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6027,6 +6213,71 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataMaskStrategiesRequest": {
+      "document": "DescribeDataMaskStrategies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The pagination parameter, specifies the amount of data returned per page. it is 10 by default.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. data offset. default: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter field. strategy-name: search by policy name.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataMaskStrategiesResponse": {
+      "document": "DescribeDataMaskStrategies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total DMask policies.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DMask policy list. specifies the list of data masking policies.",
+          "example": "无",
+          "member": "DataMaskStrategy",
+          "name": "Strategies",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8402,22 +8653,20 @@
         {
           "disabled": false,
           "document": "Attribute name. If more than one filter exists, the logical relationship between these filters is `OR`.",
-          "example": "task-id",
+          "example": "house_name",
           "member": "string",
           "name": "Name",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`.",
-          "example": "无",
+          "example": "dlc-engine",
           "member": "string",
           "name": "Values",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -13105,6 +13354,33 @@
     },
     "UpdateDataEngineResponse": {
       "document": "UpdateDataEngine response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataMaskStrategyRequest": {
+      "document": "UpdateDataMaskStrategy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Masking policy description.",
+          "example": "无",
+          "member": "DataMaskStrategyInfo",
+          "name": "Strategy",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDataMaskStrategyResponse": {
+      "document": "UpdateDataMaskStrategy response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

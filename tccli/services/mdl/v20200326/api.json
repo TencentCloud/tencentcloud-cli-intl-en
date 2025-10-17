@@ -3514,6 +3514,15 @@
           "name": "StaticImageDeactivateSetting",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Dynamic graphic overlay activate configuration",
+          "example": "无",
+          "member": "MotionGraphicsActivateSetting",
+          "name": "MotionGraphicsActivateSetting",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -3637,6 +3646,17 @@
           "example": "无",
           "member": "StaticImageDeactivateSetting",
           "name": "StaticImageDeactivateSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dynamic graphic overlay activate configuration.",
+          "example": "无",
+          "member": "MotionGraphicsActivateSetting",
+          "name": "MotionGraphicsActivateSetting",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -3776,6 +3796,28 @@
           "example": "无",
           "member": "StaticImageSettings",
           "name": "StaticImageSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dynamic graphic overlay configuration.",
+          "example": "无",
+          "member": "MotionGraphicsSetting",
+          "name": "MotionGraphicsSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Thumbnail Configuration.",
+          "example": "无",
+          "member": "ThumbnailSettings",
+          "name": "ThumbnailSettings",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -4895,6 +4937,51 @@
         }
       ],
       "type": "object"
+    },
+    "MotionGraphicsActivateSetting": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Duration in ms, valid when MOTION_Graphics_ACTIVATE, required; An integer in the range of 0-86400000, where 0 represents the duration until the end of the live stream.",
+          "example": "无",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The address of HTML5 needs to comply with the format specification of http/https.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MotionGraphicsSetting": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable dynamic graphic overlay, '0' not enabled, '1' enabled; Default 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "MotionGraphicsOverlayEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "OutputInfo": {
       "document": "Output information.",
@@ -6663,6 +6750,23 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ThumbnailSettings": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generate thumbnail ,0: Disabled ,1: Enabled , Default: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "ThumbnailEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

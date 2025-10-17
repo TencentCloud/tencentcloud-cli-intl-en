@@ -91,6 +91,13 @@
       "output": "CreatePrometheusAgentResponse",
       "status": "online"
     },
+    "CreatePrometheusAlertGroup": {
+      "document": "This API is used to create a Prometheus alert rule groups.\n\nThis API is used to group alert rules, which can include multiple alert rules. Alert messages within the group are sent via the alert group's notification template.\nThis API is used to enable individually creating enabled/disabled alert rules under an alert group.",
+      "input": "CreatePrometheusAlertGroupRequest",
+      "name": "Create Prometheus alert rule groups",
+      "output": "CreatePrometheusAlertGroupResponse",
+      "status": "online"
+    },
     "CreatePrometheusAlertPolicy": {
       "document": "This API is used to create an alerting rule.",
       "input": "CreatePrometheusAlertPolicyRequest",
@@ -222,6 +229,13 @@
       "input": "DeletePolicyGroupRequest",
       "name": "Deletes an alarm policy group.",
       "output": "DeletePolicyGroupResponse",
+      "status": "online"
+    },
+    "DeletePrometheusAlertGroups": {
+      "document": "This API is used to delete Prometheus alert rule groups.",
+      "input": "DeletePrometheusAlertGroupsRequest",
+      "name": "Delete Prometheus alert rule groups",
+      "output": "DeletePrometheusAlertGroupsResponse",
       "status": "online"
     },
     "DeletePrometheusAlertPolicy": {
@@ -516,6 +530,13 @@
       "input": "DescribePrometheusAgentsRequest",
       "name": "Lists Prometheus CVM agents",
       "output": "DescribePrometheusAgentsResponse",
+      "status": "online"
+    },
+    "DescribePrometheusAlertGroups": {
+      "document": "This API is used to query alarm groups under a given prometheus.",
+      "input": "DescribePrometheusAlertGroupsRequest",
+      "name": "Lists Prometheus Alarm groups",
+      "output": "DescribePrometheusAlertGroupsResponse",
       "status": "online"
     },
     "DescribePrometheusAlertPolicy": {
@@ -971,6 +992,20 @@
       "input": "UpdatePrometheusAgentStatusRequest",
       "name": "Updates the status of a Prometheus CVM agent",
       "output": "UpdatePrometheusAgentStatusResponse",
+      "status": "online"
+    },
+    "UpdatePrometheusAlertGroup": {
+      "document": "This API is used to update Prometheus alert rule groups.",
+      "input": "UpdatePrometheusAlertGroupRequest",
+      "name": "Update Prometheus alert rule grouping",
+      "output": "UpdatePrometheusAlertGroupResponse",
+      "status": "online"
+    },
+    "UpdatePrometheusAlertGroupState": {
+      "document": "This API is used to batch update the status of alarm groups and set all rules grouped in them to the target status.",
+      "input": "UpdatePrometheusAlertGroupStateRequest",
+      "name": "Update Prometheus Alarm group status",
+      "output": "UpdatePrometheusAlertGroupStateResponse",
       "status": "online"
     },
     "UpdatePrometheusScrapeJob": {
@@ -3754,6 +3789,97 @@
       ],
       "type": "object"
     },
+    "CreatePrometheusAlertGroupRequest": {
+      "document": "CreatePrometheusAlertGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "prometheus instance ID.",
+          "example": "prom-23sadu23",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group name. Not allowed to have the same name as other Alert groups.",
+          "example": "告警规则创建测试",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group status.\n2 - enable.\n3 - disabled.\nSpecifies to overwrite all alert rule statuses under the `Rules` field when not empty.\n",
+          "example": "2",
+          "member": "int64",
+          "name": "GroupState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.",
+          "example": "[\"Consumer-5sfs3242\", \"notice-as6512as\"]",
+          "member": "string",
+          "name": "AMPReceivers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the custom Alert notification template.",
+          "example": "无",
+          "member": "PrometheusAlertCustomReceiver",
+          "name": "CustomReceiver",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Alert notification cycle (convergence time). defaults to 1h if left empty.",
+          "example": "5m",
+          "member": "string",
+          "name": "RepeatInterval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the Alert rule list to be created.",
+          "example": "无",
+          "member": "PrometheusAlertGroupRuleSet",
+          "name": "Rules",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrometheusAlertGroupResponse": {
+      "document": "CreatePrometheusAlertGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Created Alert group ID, which matches the regular expression `alert-[a-z0-9]{8}`.",
+          "example": "alert-sx123a23",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePrometheusAlertPolicyRequest": {
       "document": "CreatePrometheusAlertPolicy request structure.",
       "members": [
@@ -4710,6 +4836,42 @@
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrometheusAlertGroupsRequest": {
+      "document": "DeletePrometheusAlertGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "prometheus instance id.",
+          "example": "prom-asd654xz",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group IDs that needs to be deleted, such as alert-xxxxx.",
+          "example": "[\"alert-123khjg2\", \"alert-1234asxf\"]",
+          "member": "string",
+          "name": "GroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrometheusAlertGroupsResponse": {
+      "document": "DeletePrometheusAlertGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9962,6 +10124,89 @@
       ],
       "type": "object"
     },
+    "DescribePrometheusAlertGroupsRequest": {
+      "document": "DescribePrometheusAlertGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "prometheus instance ID",
+          "example": "prom-zs761zs2",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results. defaults to 20. maximum value is 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group ID, such as alert-xxxx.\nList the alert group with the given ID.",
+          "example": "alert-f2vx278",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the alert group name.\nList alert groups which name contains the given string.",
+          "example": "告警分组-11",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrometheusAlertGroupsResponse": {
+      "document": "DescribePrometheusAlertGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alert group information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusAlertGroupSet",
+          "name": "AlertGroupSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total count of Alert groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribePrometheusAlertPolicyRequest": {
       "document": "DescribePrometheusAlertPolicy request structure.",
       "members": [
@@ -14994,6 +15239,263 @@
       ],
       "usage": "out"
     },
+    "PrometheusAlertAllowTimeRange": {
+      "document": "Prometheus custom Alert notification period.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Seconds from 00:00:00.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "Start",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Seconds from 00:00:00.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3600",
+          "member": "string",
+          "name": "End",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusAlertCustomReceiver": {
+      "document": "Prometheus Alert custom notification template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Notification customization type.\nAlertmanager - self-built alertmanager in vpc.\nwebhook - webhook address in the vpc.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "alertmanager",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "alertmanager/webhook url (ip in the same vpc as the prometheus instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http://192.168.10.2:9090",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time range for allowing Alert sending.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{{\"Start\": \"28800\", \"End\": \"72000\"}}",
+          "member": "PrometheusAlertAllowTimeRange",
+          "name": "AllowedTimeRanges",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "alertmanager intranet cluster ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cls-asd212as",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "alertmanager resides in the private network cluster type (tke/eks/tdcc).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tke",
+          "member": "string",
+          "name": "ClusterType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusAlertGroupRuleSet": {
+      "document": "Prometheus alert rule information within the group.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alert rule name. same name is not allowed in the same Alert group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "规则-1",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Prometheus alert label list.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{Key: \"ip\" Value: \"1.1.1.1\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Labels",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Prometheus alert annotation list.\n\nAlarm object and Alarm message are special fields of Prometheus Rule Annotations. they need to pass through Annotations for transmission. the corresponding keys are summary and description respectively.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{Key: \"summary\" Value: \"规则名称\"}]",
+          "member": "PrometheusRuleKV",
+          "name": "Annotations",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert will be triggered after 'Expr' satisfied for 'Duration'.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5m",
+          "member": "string",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert expression. see <a href=\"https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1\">alert rule description</a>.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "job:request_latency_seconds:mean5m{job=\"myjob\"} > 0.5",
+          "member": "string",
+          "name": "Expr",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert rule status.\n2 - enable.\n3 - disabled.\nEnabled by default if left empty.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "State",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PrometheusAlertGroupSet": {
+      "document": "Prometheus alert rule groups information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "alert-f2vx278",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "告警分组-11",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert template ID of tencent cloud observability platform (tcop). returns the converted notice ID of the Alert template.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"notice-as454a12\"]",
+          "member": "string",
+          "name": "AMPReceivers",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom Alert template.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusAlertCustomReceiver",
+          "name": "CustomReceiver",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert notification interval.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5m",
+          "member": "string",
+          "name": "RepeatInterval",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "If the Alert group is created via template, returns the template ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "temp-sa123dsx",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alert rule details within the group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PrometheusAlertGroupRuleSet",
+          "name": "Rules",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Group creation time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-07-24T17:08:16+08:00",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Group update time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-07-24T17:08:16+08:00",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "PrometheusAlertManagerConfig": {
       "document": "Self-built AlertManager configuration used by the alert channel",
       "members": [
@@ -16217,6 +16719,7 @@
         {
           "disabled": false,
           "document": "Key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -16226,6 +16729,7 @@
         {
           "disabled": false,
           "document": "Value",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -18477,6 +18981,151 @@
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAlertGroupRequest": {
+      "document": "UpdatePrometheusAlertGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "prometheus instance ID.",
+          "example": "prom-23sadu23",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group ID, such as alert-xxxx.",
+          "example": "alert-a654zxc1",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group name. not allowed to have the same name as other alert groups.",
+          "example": "告警规则创建测试",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alert group status.\n2 - enable.\n3 - disabled.\nSpecifies the Alert rule status under the `Rules` field to be overwritten when not empty.",
+          "example": "2",
+          "member": "int64",
+          "name": "GroupState",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alert notification template ID list of tencent cloud observability platform, such as Consumer-xxxx or notice-xxxx.",
+          "example": "[\"Consumer-5sfs3242\"]",
+          "member": "string",
+          "name": "AMPReceivers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the custom Alert notification template.",
+          "example": "无",
+          "member": "PrometheusAlertCustomReceiver",
+          "name": "CustomReceiver",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Alert notification cycle (convergence time). defaults to 1h if left empty.",
+          "example": "5m",
+          "member": "string",
+          "name": "RepeatInterval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the Alert rule list to be created.",
+          "example": "无",
+          "member": "PrometheusAlertGroupRuleSet",
+          "name": "Rules",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAlertGroupResponse": {
+      "document": "UpdatePrometheusAlertGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Updated Alert group ID. must match the regular expression `alert-[a-z0-9]{8}`.",
+          "example": "alert-sx123a23",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAlertGroupStateRequest": {
+      "document": "UpdatePrometheusAlertGroupState request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TMP instance ID",
+          "example": "prom-x23as2sa",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm group ID list, such as alert-xxxx.",
+          "example": "[\"alert-x12sa4da\", \"alert-bu2gzx62\"]",
+          "member": "string",
+          "name": "GroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the group status of the alarm.\n2 - enable.\n3 - disabled.",
+          "example": "2",
+          "member": "int64",
+          "name": "GroupState",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdatePrometheusAlertGroupStateResponse": {
+      "document": "UpdatePrometheusAlertGroupState response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

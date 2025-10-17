@@ -192,6 +192,14 @@
         "title": "Example Of Deleting Agent Information"
       }
     ],
+    "DescribeAIAnalysisResult": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAILatency\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"SessionId\": \"adcf61b8-dbb9-4c20-87bf-c0744c04bade\",\n    \"StartTime\": 1737350008,\n    \"EndTime\": 1737356008\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx\",\n        \"ResultList\": [\n            {\n                \"Type\": \"summary\",\nSession summary\n            },\n            {\n                \"Type\": \"mood\",\nNeutral\n            },\n            {\n                \"Type\": \"intention\",\n\"Result\": \"pending follow-up\"\n            }\n        ]\n    }\n}",
+        "title": "Query AI Conversation Analysis Result"
+      }
+    ],
     "DescribeAICallExtractResult": [
       {
         "document": "This example shows you how to query the extraction results of AI call content.",

@@ -1656,6 +1656,28 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output format of the subtitle. valid values: \"WebVTT\", \"TTML\".\nDefault value: \"WebVTT\".",
+          "example": "WebVTT",
+          "member": "string",
+          "name": "OutputFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.\nDefault value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "DefaultTrack",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1665,7 +1687,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. valid values:.\n<Li>Classification: intelligent classification.</li>.\n<Li>Cover: specifies the intelligent cover.</li>.\n<Li>Tag: intelligent tag.</li>.\n<Li>FrameTag: specifies intelligent frame-by-frame tagging.</li>.\n<Li>Highlight: intelligent highlights</li>.\n<Li>DeLogo: intelligent removal.</li>.\n<li>Description: large model summarization.</li>\n\n<Li>Dubbing: intelligent dubbing.</li>.",
+          "document": "Task type. valid values:.\n<Li>Classification: intelligent classification.</li>.\n<Li>Cover: specifies the intelligent cover.</li>.\n<Li>Tag: intelligent tagging.</li>.\n<Li>FrameTag: intelligent frame-by-frame tagging.</li>.\n<Li>Highlight: intelligent highlights</li>.\n<Li>DeLogo: intelligent removal.</li>.\n<li>Description: large model summarization.</li>\n\n<Li>Dubbing: intelligent dubbing.</li>.\n<Li>VideoRemake: specifies video deduplication.</li>.",
           "example": "Classification",
           "member": "string",
           "name": "Type",
@@ -1779,6 +1801,16 @@
           "example": "无",
           "member": "AiAnalysisTaskDubbingResult",
           "name": "DubbingTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The query result of a video content deduplication task, which is valid when the task type is VideoRemake.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoRemakeResult",
+          "name": "VideoRemakeTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -2954,6 +2986,104 @@
           "document": "Output of intelligent tagging task.",
           "example": "NULL",
           "member": "AiAnalysisTaskTagOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoRemakeInput": {
+      "document": "Video deduplication task input type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Intelligent deduplication template ID.",
+          "example": "28",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoRemakeOutput": {
+      "document": "Video deduplication result information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the file path for intelligent video deduplication.",
+          "example": "/output/htv-process-result.mp4",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the storage location for intelligent video deduplication.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoRemakeResult": {
+      "document": "Video deduplication result data structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the task status. valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0: success. other values: failure.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deduplication task input.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoRemakeInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task output.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoRemakeOutput",
           "name": "Output",
           "output_required": true,
           "type": "object",
@@ -9092,7 +9222,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.",
+          "document": "Recording type. Valid values: \n\n- video: audio and video recording; \n- audio: audio recording; \n- auto: automatic detection;\n\nIf it is left blank, \"video\" will be used as the default value.",
           "example": "video",
           "member": "string",
           "name": "RecordType",
@@ -9877,7 +10007,7 @@
         {
           "disabled": false,
           "document": "Watermarking type. Valid values:\n<li>image: Image watermark;</li>\n<li>text: Text watermark;</li>\n<li>svg: SVG watermark.</li>",
-          "example": "image",
+          "example": "text",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -9886,7 +10016,7 @@
         {
           "disabled": false,
           "document": "Watermarking template name. Length limit: 64 characters.",
-          "example": "模板1",
+          "example": "水印模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -9895,7 +10025,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "无",
+          "example": "文字水印",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -9904,7 +10034,7 @@
         {
           "disabled": false,
           "document": "Origin position. Valid values:\n<li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>\nDefault value: TopLeft.",
-          "example": "无",
+          "example": "TopLeft",
           "member": "string",
           "name": "CoordinateOrigin",
           "required": false,
@@ -9913,7 +10043,7 @@
         {
           "disabled": false,
           "document": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "无",
+          "example": "5%",
           "member": "string",
           "name": "XPos",
           "required": false,
@@ -9922,7 +10052,7 @@
         {
           "disabled": false,
           "document": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "无",
+          "example": "5%",
           "member": "string",
           "name": "YPos",
           "required": false,
@@ -9964,7 +10094,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a watermarking template.",
-          "example": "1001",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
           "output_required": true,
@@ -9974,7 +10104,7 @@
         {
           "disabled": false,
           "document": "Watermark image address. This field is valid only when `Type` is `image`.",
-          "example": "http://1256768367.vts2.myqcloud.com/8b0dd2b5vtscq1256768367/4d27b39f5285890783754292994/aa.jpeg",
+          "example": "http://12561267.vts2.myqcloud.com/8b0dd2b5vtscq125768367/4d27b39f5/t.jpeg",
           "member": "string",
           "name": "ImageUrl",
           "output_required": true,
@@ -11734,7 +11864,7 @@
         {
           "disabled": false,
           "document": "Indicates the template type filter condition. If left empty, all templates are returned. Valid values:\n* Preset: System preset template;\n* Custom",
-          "example": "\"\"",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -11743,7 +11873,7 @@
         {
           "disabled": false,
           "document": "Specifies the recording template identifier filter condition, with a length limit of 64 characters.",
-          "example": "\"\"",
+          "example": "直播录制通用模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11758,7 +11888,7 @@
         {
           "disabled": false,
           "document": "Total number of records that meet filter conditions.",
-          "example": "1",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
@@ -12640,12 +12770,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).",
+          "document": "Filters task status. available values:.\n-WAITING.\n-PROCESSING (processing).\n-FINISH (completed).",
           "example": "FINISH",
           "member": "string",
           "name": "Status",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether there is a subtask failure when the task is complete.",
+          "example": "false",
+          "member": "bool",
+          "name": "SubTaskHasFailed",
+          "required": false,
+          "type": "bool"
         },
         {
           "disabled": false,
@@ -12862,7 +13001,7 @@
         {
           "disabled": false,
           "document": "Unique ID filter of watermarking templates. Array length limit: 100.",
-          "example": "[\"1001\\n\"]",
+          "example": "[1001]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -19723,7 +19862,7 @@
         {
           "disabled": false,
           "document": "Spot check policy for media quality inspection.",
-          "example": "{     \"StrategyType\": \"TimeSpotCheck\",     \"TimeSpotCheck\": {       \"CheckDuration\": 50,       \"CheckInterval\": 10,       \"SkipDuration\": 10,       \"CirclesNumber\": 10     }   }",
+          "example": "无",
           "member": "QualityControlStrategy",
           "name": "Strategy",
           "required": false,
@@ -20953,7 +21092,7 @@
         {
           "disabled": false,
           "document": "Event notification obtained from CMQ.",
-          "example": "\"\"",
+          "example": "NotificationContent",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -20998,7 +21137,7 @@
         {
           "disabled": false,
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
-          "example": "\"xxxx\"",
+          "example": "85c94a33-6227-43d5-8179-69b0602f6346",
           "member": "string",
           "name": "SessionId",
           "output_required": true,
@@ -21008,7 +21147,7 @@
         {
           "disabled": false,
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "\"\"",
+          "example": "UserDefinedInfo",
           "member": "string",
           "name": "SessionContext",
           "output_required": true,
@@ -21028,7 +21167,7 @@
         {
           "disabled": false,
           "document": "- The expiration time (Unix timestamp) of the notification's signature.\n- By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks.\n- The format of this parameter is a decimal Unix timestamp, i.e., the number of seconds that have elapsed since 00:00 (UTC/GMT time) on January 1, 1970.\n",
-          "example": "无",
+          "example": "1633046400",
           "member": "int64",
           "name": "Timestamp",
           "output_required": false,
@@ -21038,12 +21177,22 @@
         {
           "disabled": false,
           "document": "Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.",
-          "example": "无",
+          "example": "d6a27ccba11dade3d0f627b1dfbdaf10",
           "member": "string",
           "name": "Sign",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Batch processing task information. this field has a value only when EventType is BatchTask.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "BatchSubTaskResult",
+          "name": "BatchTaskEvent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -22442,7 +22591,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The issue type. Valid values:\n`Jitter`\n`Blur`\n`LowLighting`\n`HighLighting` (overexposure)\n`CrashScreen` (video corruption)\n`BlackWhiteEdge`\n`SolidColorScreen` (blank screen)\n`Noise`\n`Mosaic` (pixelation)\n`QRCode`\n`AppletCode` (Weixin Mini Program code)\n`BarCode`\n`LowVoice`\n`HighVoice`\n`NoVoice`\n`LowEvaluation` (low no-reference video quality score)",
+          "document": "Exception type. valid values:.\nJitter: jitter.\nBlur: specifies the blur effect.\nLowLighting: specifies low light.\nHighLighting: overexposure.\nCrashScreen: specifies screen glitch.\nBlackWhiteEdge: specifies the black and white edges.\nSolidColorScreen: specifies the solid color screen.\nNoise: specifies the noise.\nMosaic: mosaic.\nQRCode: specifies the qr code.\nAppletCode: specifies the mini program code.\nBarCode: specifies the barcode.\nLowVoice: specifies the bass.\nHighVoice: specifies high voice detection.\nNoVoice: specifies mute.\nLowEvaluation: specifies the video no-reference score (MOS) is below the threshold.\nAudioEvaluation: specifies the audio no-reference scoring (MOS) is below the threshold.\nAudioNoise: specifies the audio noise.",
           "example": "Jitter",
           "member": "string",
           "name": "Type",
@@ -24366,7 +24515,7 @@
         },
         {
           "disabled": false,
-          "document": "The encryption key (a 32-byte string).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Encryption key (32-byte hexadecimal string).\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "14367588ab31370e32ae000544bd007d",
           "member": "string",
           "name": "Key",
@@ -24377,7 +24526,7 @@
         },
         {
           "disabled": false,
-          "document": "The initialization vector for encryption (a 32-byte string).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Initialization vector for encryption (32-byte hexadecimal string).\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
           "member": "string",
           "name": "Vector",
@@ -24801,7 +24950,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies automatic removal of a custom region.\nSpecifies the use of an AI model to automatically detect and erase existing targets in the specified region.\nNote that this parameter will not take effect when the removal method is custom.",
+          "document": "Automatically erase the custom region.\nAutomatically detects and erases the targeted removal in the specified region using the AI model.\nNote that this parameter will not take effect when the removal method is custom. to modify the template, input [] for the clean-up region. if not provided, the template region information remains unchanged.",
           "example": "无",
           "member": "EraseArea",
           "name": "AutoAreas",
@@ -24812,7 +24961,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies erasure of a custom region.\nDetects and directly performs removal within a specified time range for the selected region.",
+          "document": "Specifies the removal of a custom region.\nSpecifies to directly perform removal without detection and recognition within a selected time range for the specified region.\nNote: when modifying the template, pass [] to clear the region. the template region information remains unchanged if not passed.",
           "example": "无",
           "member": "EraseTimeArea",
           "name": "CustomAreas",
@@ -24942,7 +25091,7 @@
         {
           "disabled": false,
           "document": "Confidence of a recognized segment. Value range: 0-100.",
-          "example": "100",
+          "example": "100.0",
           "member": "float",
           "name": "Confidence",
           "output_required": false,
@@ -25424,7 +25573,7 @@
         {
           "disabled": false,
           "document": "Full speech recognition result. When Type is\n set to AsrFullTextRecognition, this parameter takes effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "SmartSubtitleTaskAsrFullTextResult",
           "name": "AsrFullTextTask",
           "output_required": false,
@@ -25434,7 +25583,7 @@
         {
           "disabled": false,
           "document": "Translation result. When Type is\n\n set to TransTextRecognition, this parameter takes effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "example": "无",
           "member": "SmartSubtitleTaskTransTextResult",
           "name": "TransTextTask",
           "output_required": false,
@@ -25731,7 +25880,7 @@
         },
         {
           "disabled": false,
-          "document": "Encryption initialization vector (32-byte string). the field content is user-customized.",
+          "document": "Initialization vector for encryption (32-byte hexadecimal string). the field content is user-customized.",
           "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
           "member": "string",
           "name": "Vector",

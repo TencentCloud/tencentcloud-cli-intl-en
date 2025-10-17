@@ -106,7 +106,7 @@
       "status": "online"
     },
     "DeleteLoadBalancer": {
-      "document": "This API (DeleteLoadBalancer) is used to delete one or more specified CLB instances.\nThis is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
+      "document": "This API is used to delete one or more specified CLB instances. After successful deletion, the listeners and forwarding rules under the CLB instance will be deleted together, and the backend service will be unbound.\nThis API is asynchronous. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
       "input": "DeleteLoadBalancerRequest",
       "name": "Deletes one or more CLB instances",
       "output": "DeleteLoadBalancerResponse",
@@ -148,7 +148,7 @@
       "status": "online"
     },
     "DeregisterFunctionTargets": {
-      "document": "This API is used to unbind a SCF function with a CLB forwarding rule. For L7 listeners, you need to specify the forwarding rule by using `LocationId` or `Domain+Url`. \nThis is an async API. After it is returned successfully, you can call the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID to check whether this task is successful.\n<br/>Limits: \n\n- Binding with SCF is only available in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Mumbai, Tokyo, and Silicon Valley.\n- SCF functions can only be bound with CLB instances of bill-by-IP accounts but not with bill-by-CVM accounts. If you are using a bill-by-CVM account, we recommend upgrading it to a bill-by-IP account. For more information, please see [Checking Account Type](https://intl.cloud.tencent.com/document/product/1199/49090?from_cn_redirect=1).\n- SCF functions cannot be bound with classic CLB instances.\n- SCF functions cannot be bound with classic network-based CLB instances.\n- SCF functions in the same region can be bound with CLB instances. SCF functions can only be bound across VPCs but not regions.\n- SCF functions can only be bound with IPv4 and IPv6 NAT64 CLB instances, but currently not with IPv6 CLB instances.\n- SCF functions can only be bound with layer-7 HTTP and HTTPS listeners, but not with layer-7 QUIC listeners or layer-4 (TCP, UDP, and TCP SSL) listeners.\n- Only SCF event-triggered functions can be bound with CLB instances.",
+      "document": "This API is used to unbind a SCF function with a CLB forwarding rule. For L7 listeners, you need to specify the forwarding rule by using `LocationId` or `Domain+Url`. \nThis is an async API. After it is returned successfully, you can call the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID to check whether this task is successful.\n<br/>Limits: \n\n- Binding with SCF is only available in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Mumbai, Tokyo, and Silicon Valley.\n- SCF functions can only be bound with CLB instances of bill-by-IP accounts but not with bill-by-CVM accounts. If you are using a bill-by-CVM account, we recommend upgrading it to a bill-by-IP account. \n- SCF functions cannot be bound with classic CLB instances.\n- SCF functions cannot be bound with classic network-based CLB instances.\n- SCF functions in the same region can be bound with CLB instances. SCF functions can only be bound across VPCs but not regions.\n- SCF functions can only be bound with IPv4 and IPv6 NAT64 CLB instances, but currently not with IPv6 CLB instances.\n- SCF functions can only be bound with layer-7 HTTP and HTTPS listeners, but not with layer-7 QUIC listeners or layer-4 (TCP, UDP, and TCP SSL) listeners.\n- Only SCF event-triggered functions can be bound with CLB instances.",
       "input": "DeregisterFunctionTargetsRequest",
       "name": "Unbinding an SCF function from a forwarding rule",
       "output": "DeregisterFunctionTargetsResponse",
@@ -512,7 +512,7 @@
       "status": "online"
     },
     "RegisterFunctionTargets": {
-      "document": "This API is used to bind an SCF function with the L7 forwarding rule of a CLB instance. Note that you need to create an L7 listener (HTTP, HTTPS) and forwarding rule first.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.<br/>\n**Limits:**\n- Binding with SCF is only available in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Mumbai, Tokyo, and Silicon Valley.\n- SCF functions can only be bound with CLB instances of bill-by-IP accounts but not with bill-by-CVM accounts. If you are using a bill-by-CVM account, we recommend upgrading it to a bill-by-IP account. For more information, please see [Checking Account Type](https://intl.cloud.tencent.com/document/product/1199/49090?from_cn_redirect=1). \n- SCF functions cannot be bound with classic CLB instances.\n- SCF functions cannot be bound with classic network-based CLB instances.\n- SCF functions in the same region can be bound with CLB instances. SCF functions can only be bound across VPCs but not regions.\n- SCF functions can only be bound with IPv4 and IPv6 NAT64 CLB instances, but currently not with IPv6 CLB instances.\n- SCF functions can only be bound with layer-7 HTTP and HTTPS listeners, but not with layer-7 QUIC listeners or layer-4 (TCP, UDP, and TCP SSL) listeners.\n- Only SCF event-triggered functions can be bound with CLB instances.",
+      "document": "This API is used to bind an SCF function with the L7 forwarding rule of a CLB instance. Note that you need to create an L7 listener (HTTP, HTTPS) and forwarding rule first.\nThis is an async API. After it is returned successfully, you can call the `DescribeTaskStatus` API with the returned `RequestID` as an input parameter to check whether this task is successful.<br/>\n**Limits:**\n- Binding with SCF is only available in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Mumbai, Tokyo, and Silicon Valley.\n- SCF functions can only be bound with CLB instances of bill-by-IP accounts but not with bill-by-CVM accounts. If you are using a bill-by-CVM account, we recommend upgrading it to a bill-by-IP account. \n- SCF functions cannot be bound with classic CLB instances.\n- SCF functions cannot be bound with classic network-based CLB instances.\n- SCF functions in the same region can be bound with CLB instances. SCF functions can only be bound across VPCs but not regions.\n- SCF functions can only be bound with IPv4 and IPv6 NAT64 CLB instances, but currently not with IPv6 CLB instances.\n- SCF functions can only be bound with layer-7 HTTP and HTTPS listeners, but not with layer-7 QUIC listeners or layer-4 (TCP, UDP, and TCP SSL) listeners.\n- Only SCF event-triggered functions can be bound with CLB instances.",
       "input": "RegisterFunctionTargetsRequest",
       "name": "Binds an SCF function with a forwarding rule",
       "output": "RegisterFunctionTargetsResponse",
@@ -3120,12 +3120,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Array of IDs of the CLB instances to be deleted. Array length limit: 20.",
-          "example": "[\"lb-hsb93u5o\\r\\n\"]",
+          "document": "CLB instance ID array to be deleted, which can be obtained by calling the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API. The array can include up to 20 elements.",
+          "example": "[\"lb-hsb93u5o\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to forcibly delete the CLB instance. True indicates forced deletion; False indicates non-forced deletion, and blocking verification is required.\nThe default value is False.\nThe deletion operation is blocked by default in the following cases. If you confirm forced deletion, the value of the forced verification parameter ForceDelete should be set to True.\n1. The instance with 20 or more RS bound to the backend is deleted.\n2. The instance with RS bound to the backend and the maximum peak inbound/outbound bandwidth exceeding 10 Mbps within 5 minutes is deleted.\n3. Thirty or more instances are deleted within 5 minutes in a single region.",
+          "example": "true",
+          "member": "bool",
+          "name": "ForceDelete",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3346,7 +3355,7 @@
         {
           "disabled": false,
           "document": "CLB listener ID.",
-          "example": "lis-1234tgbh",
+          "example": "lbl-1234tgbh",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5362,9 +5371,10 @@
         {
           "disabled": false,
           "document": "Function namespace",
-          "example": "",
+          "example": "default",
           "member": "string",
           "name": "FunctionNamespace",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5372,9 +5382,10 @@
         {
           "disabled": false,
           "document": "Function name",
-          "example": "",
+          "example": "bxs-open-api",
           "member": "string",
           "name": "FunctionName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5382,9 +5393,10 @@
         {
           "disabled": false,
           "document": "Function version name or alias",
-          "example": "",
+          "example": "$LATEST",
           "member": "string",
           "name": "FunctionQualifier",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5392,9 +5404,10 @@
         {
           "disabled": false,
           "document": "Function qualifier type. Values: `VERSION`, `ALIAS`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "VERSION",
           "member": "string",
           "name": "FunctionQualifierType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5408,19 +5421,21 @@
         {
           "disabled": false,
           "document": "SCF related information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "FunctionInfo",
           "name": "Function",
+          "output_required": true,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Weight",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Weight",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -9081,7 +9096,7 @@
         {
           "disabled": false,
           "document": "CLB listener ID.",
-          "example": "lis-1234tgbh",
+          "example": "lbl-1234tgbh",
           "member": "string",
           "name": "ListenerId",
           "required": true,

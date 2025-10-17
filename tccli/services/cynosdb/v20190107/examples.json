@@ -128,6 +128,14 @@
         "title": "Purchasing a New Cluster"
       }
     ],
+    "CreateIntegrateCluster": [
+      {
+        "document": "Create Integrate Cluster",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIntegrateCluster\n<Common request parameters>\n\n{\n    \"DbVersion\": \"8.0\",\n    \"InstanceInitInfos\": [\n        {\n            \"Cpu\": 1,\n            \"DeviceType\": \"common\",\n            \"InstanceCount\": 1,\n            \"InstanceType\": \"rw\",\n            \"Memory\": 2\n        }\n    ],\n    \"IntegrateCreateClusterConfig\": {\n        \"BackupSaveDays\": 7,\n        \"BinlogSaveDays\": 8,\n        \"SemiSyncTimeout\": 1000\n    },\n    \"SubnetId\": \"subnet-3du8lpau\",\n    \"VpcId\": \"vpc-r2dqqiyv\",\n    \"Zone\": \"ap-guangzhou-4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BigDealIds\": [],\n        \"ClusterIds\": [],\n        \"DealNames\": [\n            \"20250909448021542853581\"\n        ],\n        \"RequestId\": \"081ec9cb-d476-4202-8943-966e1e552e3f\",\n        \"ResourceIds\": [],\n        \"TranId\": \"20250909448021542853591\"\n    }\n}",
+        "title": "Creating an Integrated Cluster"
+      }
+    ],
     "CreateParamTemplate": [
       {
         "document": "This example shows you how to create a parameter template.",
@@ -240,10 +248,10 @@
     ],
     "DescribeBackupConfig": [
       {
-        "document": " ",
-        "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeBackupConfig\n&ClusterId=cynosdbmysql-45knmnra\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"BackupFreq\": [\n            \"full\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\",\n            \"increment\"\n        ],\n        \"BackupType\": \"\",\n        \"BackupTimeEnd\": 21600,\n        \"BackupTimeBeg\": 7200,\n        \"RequestId\": \"180877\",\n        \"ReserveDuration\": 604800\n    }\n}",
-        "title": "Querying the backup configuration information"
+        "document": "Describe Backup Config",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupConfig\n<common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-aws1kpv6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupFreq\": [\n            \"full\",\n            \"full\",\n            \"full\",\n            \"full\",\n            \"full\",\n            \"full\",\n            \"full\"\n        ],\n        \"BackupTimeBeg\": 7200,\n        \"BackupTimeEnd\": 21600,\n        \"BackupType\": \"snapshot\",\n        \"LogicBackupConfig\": {\n            \"LogicBackupEnable\": \"OFF\",\n            \"LogicBackupTimeBeg\": 0,\n            \"LogicBackupTimeEnd\": 0,\n            \"LogicCrossRegions\": null,\n            \"LogicCrossRegionsEnable\": \"\",\n            \"LogicReserveDuration\": 0\n        },\n        \"LogicCrossRegionsConfigUpdateTime\": \"\",\n        \"RequestId\": \"e0127059-bb40-4308-a67d-c3bcddba372e\",\n        \"ReserveDuration\": 604800\n    }\n}",
+        "title": ""
       }
     ],
     "DescribeBackupDownloadRestriction": [
@@ -452,6 +460,14 @@
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstancesWithinSameCluster\n<Common request parameters>\n\n{\n    \"UniqVpcId\": \"vpc-gy34u12n\",\n    \"Vip\": \"172.1.1.1\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceIds\": [\n            \"cynosdbmysql-ins-pgbpxt11\"\n        ],\n        \"RequestId\": \"51169b54-61d4-4604-a07e-e519a5527923\"\n    }\n}",
         "title": "Query the Instance ID List Within the Unified Cluster"
+      }
+    ],
+    "DescribeIntegrateTask": [
+      {
+        "document": "Describe Integrate Task",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIntegrateTask\n<Common request parameters>\n\n{\n    \"DealNames\": [\n        \"20250922456021575003931\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CurrentProgress\": \"5/5\",\n        \"CurrentStep\": \"FinishTask\",\n        \"RequestId\": \"de351c1d-72fa-477b-997a-8ae045f90da2\",\n        \"TaskStatus\": \"success\"\n    }\n}",
+        "title": "Querying an Integration Task"
       }
     ],
     "DescribeIsolatedInstances": [
