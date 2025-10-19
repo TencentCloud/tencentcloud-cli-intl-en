@@ -22,7 +22,7 @@
       "status": "online"
     },
     "CreateDBInstance": {
-      "document": "This API is used to create a monthly subscription TencentDB for MongoDB instance. The purchasable specifications supported by this API can be obtained through the `DescribeSpecInfo` API.",
+      "document": "This API is used to create a yearly/monthly subscription TencentDB for MongoDB instance. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/35767?from_cn_redirect=1) API can be called to query and obtain the supported sales specifications.",
       "input": "CreateDBInstanceRequest",
       "name": "Creates a monthly subscription TencentDB instance",
       "output": "CreateDBInstanceResponse",
@@ -43,7 +43,7 @@
       "status": "online"
     },
     "DescribeBackupDownloadTask": {
-      "document": "This API is used to query backup download task information.",
+      "document": "This API is used to query information about the backup download task.",
       "input": "DescribeBackupDownloadTaskRequest",
       "name": "Queries backup download task information",
       "output": "DescribeBackupDownloadTaskResponse",
@@ -84,6 +84,13 @@
       "output": "DescribeDBInstancesResponse",
       "status": "online"
     },
+    "DescribeDetailedSlowLogs": {
+      "document": "This API is used to query slow log details of the instance.",
+      "input": "DescribeDetailedSlowLogsRequest",
+      "name": "Query instance slow log details",
+      "output": "DescribeDetailedSlowLogsResponse",
+      "status": "online"
+    },
     "DescribeInstanceParams": {
       "document": "This API is used to query the list of parameters that can be modified for the current instance.",
       "input": "DescribeInstanceParamsRequest",
@@ -113,7 +120,7 @@
       "status": "online"
     },
     "DescribeSpecInfo": {
-      "document": "This API is used to query the purchasable instance specifications.",
+      "document": "This API is used to query the sales specification of an instance.",
       "input": "DescribeSpecInfoRequest",
       "name": "Queries the specifications of purchasable TencentDB instances",
       "output": "DescribeSpecInfoResponse",
@@ -148,7 +155,7 @@
       "status": "online"
     },
     "IsolateDBInstance": {
-      "document": "This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. An isolated instance is retained in the recycle bin and data can no longer be written to it. After it is isolated for a certain period of time, it will be completely deleted. For the retention period in the recycle bin, please see the terms of service for pay-as-you-go billing. Isolated pay-as-you-go instances cannot be recovered, so please proceed with caution.",
+      "document": "This API is used to isolate a pay-as-you-go TencentDB for MongoDB instance. After isolation, the instance is retained in the recycle bin, and data cannot be written into it. After a certain period of isolation, the instance is deleted permanently. For the retention time in the recycle bin, see the pay-as-you-go service terms. The deleted pay-as-you-go instance cannot be recovered. Proceed with caution.",
       "input": "IsolateDBInstanceRequest",
       "name": "Isolates a TencentDB Instance",
       "output": "IsolateDBInstanceResponse",
@@ -169,7 +176,7 @@
       "status": "online"
     },
     "ModifyDBInstanceSpec": {
-      "document": "This API is used to adjust the configuration of a TencentDB for MongoDB instance. Saleable specifications supported for this API can be obtained from the DescribeSpecInfo API for querying saleable TencentDB for MongoDB specifications.",
+      "document": "This API is used to adjust the TencentDB for MongoDB instance configuration. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to query and obtain the supported sales specifications.",
       "input": "ModifyDBInstanceSpecRequest",
       "name": "Adjusts the configurations of a TencentDB instance",
       "output": "ModifyDBInstanceSpecResponse",
@@ -197,10 +204,24 @@
       "status": "online"
     },
     "ResetDBInstancePassword": {
-      "document": "This API is used to modify instance password.",
+      "document": "This API is used to reset the instance access password.",
       "input": "ResetDBInstancePasswordRequest",
       "name": "Modifies instance password",
       "output": "ResetDBInstancePasswordResponse",
+      "status": "online"
+    },
+    "SetDBInstanceDeletionProtection": {
+      "document": "This API is used to set instance termination protection.",
+      "input": "SetDBInstanceDeletionProtectionRequest",
+      "name": "Sets instance termination protection",
+      "output": "SetDBInstanceDeletionProtectionResponse",
+      "status": "online"
+    },
+    "TerminateDBInstances": {
+      "document": "This API is used to terminate monthly subscription billing instances.",
+      "input": "TerminateDBInstancesRequest",
+      "name": "Monthly subscription return and refund",
+      "output": "TerminateDBInstancesResponse",
       "status": "online"
     }
   },
@@ -211,7 +232,7 @@
   },
   "objects": {
     "AddNodeList": {
-      "document": "Node details of an instance to be modified.",
+      "document": "Node details of the instance to be modified.",
       "members": [
         {
           "disabled": false,
@@ -224,7 +245,7 @@
         },
         {
           "disabled": false,
-          "document": "AZs corresponding to the nodes.\n - Single AZ: All nodes are in the same AZ.\n - Multiple AZs: The current standard specification involves three AZs. The primary and secondary nodes are not in the same AZ. Note: AZs corresponding to the nodes to be added should be specified. After addition, the number of nodes in any two AZs should be larger than that in the third AZ.",
+          "document": "AZ corresponding to the node. For the currently supported AZs, see [Regions and AZs](https://www.tencentcloud.comom/document/product/240/3637?from_cn_redirect=1).\n- Single AZ: All nodes are in the same AZ.\n- Multiple AZs: The current standard specification involves three AZs. The primary and secondary nodes are not in the same AZ. Note: AZs corresponding to the nodes to be added should be specified. After addition, the number of nodes in any 2 AZs should be greater than that in the third AZ.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -248,8 +269,8 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of an existing project (instead of a new project).",
-          "example": "1118****",
+          "document": "Project ID, the unique ID of the project created by the user. Go to the [project management](https://console.cloud.tencent.com/project) area of the account center in the console to copy the project ID.",
+          "example": "12",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -263,8 +284,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of the returned async task IDs",
-          "example": "[1081****]",
+          "document": "Lists async task ids returned.",
+          "example": "[1081,1082]",
           "member": "uint64",
           "name": "FlowIds",
           "output_required": true,
@@ -285,7 +306,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task creation time",
+          "document": "Task creation time.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
           "name": "CreateTime",
@@ -295,7 +316,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup name",
+          "document": "Backup file name.",
           "example": "cmgo-74sj****_2021-03-24 15:40",
           "member": "string",
           "name": "BackupName",
@@ -305,7 +326,7 @@
         },
         {
           "disabled": false,
-          "document": "Shard name",
+          "document": "Shard name.",
           "example": "cmgo-74sj****_0",
           "member": "string",
           "name": "ReplicaSetId",
@@ -315,7 +336,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup size in bytes",
+          "document": "Backup data size, in bytes.",
           "example": "102400",
           "member": "int64",
           "name": "BackupSize",
@@ -325,7 +346,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
+          "document": "Task status.\n- 0: wait for execution.\n- 1: downloading.\n- 2: download completed.\n- 3: download failed.\n- 4: wait for retry.",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -335,7 +356,7 @@
         },
         {
           "disabled": false,
-          "document": "Task progress in percentage",
+          "document": "Task progress percentage.",
           "example": "20",
           "member": "int64",
           "name": "Percent",
@@ -345,7 +366,7 @@
         },
         {
           "disabled": false,
-          "document": "Task duration in seconds",
+          "document": "Duration, in seconds.",
           "example": "60",
           "member": "int64",
           "name": "TimeSpend",
@@ -355,7 +376,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup download address",
+          "document": "Download link for backup data.",
           "example": "http://cmgo-****.b.c/d.tar?e",
           "member": "string",
           "name": "Url",
@@ -365,7 +386,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup type of the backup file. Valid values: `0` (logical backup), `1` (physical backup)",
+          "document": "Backup method.\n- 0: logical backup.\n- 1: physical backup.\n- 3: snapshot backup.\n**Note**:\n1. The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.\n2. Physical backup is not supported when storage encryption is enabled for the instance.",
           "example": "1",
           "member": "int64",
           "name": "BackupMethod",
@@ -375,7 +396,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the remarks for backup.",
+          "document": "Specified remarks for initiating backup tasks.",
           "example": "我的备份",
           "member": "string",
           "name": "BackupDesc",
@@ -407,25 +428,25 @@
       "usage": "out"
     },
     "BackupDownloadTaskStatus": {
-      "document": "The result of the created backup download task",
+      "document": "Result of creating a backup download task.",
       "members": [
         {
           "disabled": false,
-          "document": "Shard name",
+          "document": "Shard name.",
           "example": "cmgo-74sjf5mt_0",
           "member": "string",
           "name": "ReplicaSetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
+          "document": "Current status of the task.\n- 0: wait for execution.\n- 1: downloading.\n- 2: download completed.\n- 3: download failed.\n- 4: wait for retry.",
           "example": "0",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -433,7 +454,7 @@
       "usage": "out"
     },
     "BackupInfo": {
-      "document": "Backup information",
+      "document": "Backup information.",
       "members": [
         {
           "disabled": false,
@@ -447,7 +468,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup mode. 0: automatic backup; 1: manual backup",
+          "document": "Backup method.\n- 0: automatic backup.\n- 1: manual backup.",
           "example": "0",
           "member": "uint64",
           "name": "BackupType",
@@ -457,7 +478,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup name",
+          "document": "Backup file name.",
           "example": "cmgo-ca2n****_2021-12-13 02:02",
           "member": "string",
           "name": "BackupName",
@@ -467,7 +488,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup remarks.",
+          "document": "Backup task remarks.",
           "example": "系统后台每日定时自动备份",
           "member": "string",
           "name": "BackupDesc",
@@ -477,7 +498,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup file size. Unit: KB.",
+          "document": "Backup file size, in KB.",
           "example": "326594030",
           "member": "uint64",
           "name": "BackupSize",
@@ -507,7 +528,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup status. 1: backing up; 2: backed up successful",
+          "document": "Backup status.\n- 1: backing up.\n- 2: backup successful.",
           "example": "2",
           "member": "uint64",
           "name": "Status",
@@ -517,7 +538,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup method. 0: logical backup; 1: physical backup",
+          "document": "Backup method.\n- 0: logical backup.\n- 1: physical backup.\n- 3: snapshot backup.\n**Note:**\n- The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.\n- Physical backup is not supported when storage encryption is enabled for the instance.",
           "example": "0",
           "member": "uint64",
           "name": "BackupMethod",
@@ -547,10 +568,20 @@
         },
         {
           "disabled": false,
-          "document": "Region for cross-region backup.",
+          "document": "Cross-region backup region.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "BackupRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rollback time supported by the backup.",
+          "example": "2021-12-13 03:02:51",
+          "member": "string",
+          "name": "RestoreTime",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -563,31 +594,31 @@
       "members": [
         {
           "disabled": false,
-          "document": "Client IP of a connection",
+          "document": "IP address of the connected client.",
           "example": "192.168.1.1",
           "member": "string",
           "name": "IP",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of connections corresponding to a client IP",
+          "document": "Number of connections corresponding to the client IP address.",
           "example": "9",
           "member": "uint64",
           "name": "Count",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it is the Tencent Cloud IP for automated testing",
+          "document": "Whether it is an internal IP address.",
           "example": "true",
           "member": "bool",
           "name": "InternalService",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         }
@@ -608,7 +639,7 @@
         },
         {
           "disabled": false,
-          "document": "Sets the backup method.\n - 0: logical backup.\n - 1: physical backup.",
+          "document": "Sets the backup method.\n- 0: logical backup.\n- 1: physical backup.\n- 3: snapshot backup.\n**Note**:\n1. The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.\n2. Physical backup is not supported when storage encryption is enabled for the instance.",
           "example": "0",
           "member": "int64",
           "name": "BackupMethod",
@@ -636,6 +667,7 @@
           "example": "4773",
           "member": "string",
           "name": "AsyncRequestId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -653,7 +685,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console.",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-f555zzzz",
           "member": "string",
           "name": "InstanceId",
@@ -662,7 +694,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API.",
+          "document": "Name of the backup file to be downloaded. The [DescribeDBBackups](https://www.tencentcloud.comom/document/product/240/38574?from_cn_redirect=1) API can be called to obtain it.",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
           "name": "BackupName",
@@ -671,7 +703,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the node name of a replica set instance or the shard name list of a sharded cluster instance. Only backups of the specified node or shards will be downloaded.\nSuppose you have a replica set instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0` to download the full backup. For a replica set instance, the parameter value must be in the format of \"instance ID_0\".\nSuppose you have a sharded cluster instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1` to download the backup data of shard 0 and shard 1. To download the full backup, please specify all shard names.",
+          "document": "Specifies the node ID of the replica set to be downloaded or the shard node ID list of the sharded cluster.\n- If the replica set instance ID is cmgo-p8vnipr5, for example, BackupSets.0=cmgo-p8vnipr5_0, full data can be downloaded.\n- If the sharded cluster instance ID is cmgo-p8vnipr5, for example, BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1, download the data of Shard 0 and Shard 1. If a full download is needed for the sharded cluster, import all shard names as shown in the example.",
           "example": "无",
           "member": "ReplicaSetInfo",
           "name": "BackupSets",
@@ -686,11 +718,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Download task status",
+          "document": "Status of the download task.",
           "example": "无",
           "member": "BackupDownloadTaskStatus",
           "name": "Tasks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -744,7 +776,7 @@
         },
         {
           "disabled": false,
-          "document": "Information on the specific supported versions. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain such versions.\n - MONGO_36_WT: version of the MongoDB 3.6 WiredTiger storage engine.\n - MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n - MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n - MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.",
+          "document": "Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.",
           "example": "MONGO_44_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -762,7 +794,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances. Value range: 1-10.",
+          "document": "Number of instances. The minimum value is 1, and the maximum value is 30.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -789,7 +821,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to query the correct ID. Example value: vpc-pxyzim13.",
+          "document": "VPC ID.\n- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.\n- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.comom/document/product/239/30910?from_cn_redirect=1).",
           "example": "vpc-k515****",
           "member": "string",
           "name": "VpcId",
@@ -798,7 +830,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet. Log in to the [VPC console](https://console.cloud.tencent.com/VPC) to query the subnet list and confirm the correct ID. Example value: subnet-7jbabche.",
+          "document": "Subnet ID of the VPC.\n- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.\n- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.comom/document/product/239/30910?from_cn_redirect=1).",
           "example": "subnet-60dr****",
           "member": "string",
           "name": "SubnetId",
@@ -834,7 +866,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. 1: formal instance; 3: read-only instance; 4: disaster recovery instance; 5: cloned instance. Note: For a cloned instance, RestoreTime is required.",
+          "document": "Instance type.\n- 1: formal instance.\n- 3: read-only instance.\n- 4: disaster recovery instance.\n- 5. cloned instance. Note: For a cloned instance, RestoreTime is required.",
           "example": "1",
           "member": "int64",
           "name": "Clone",
@@ -843,7 +875,7 @@
         },
         {
           "disabled": false,
-          "document": "Parent instance ID. It is required if the `Clone` is `3` or `4`, that is, read-only instance or disaster recovery instance",
+          "document": "Parent instance ID.\n- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.\n- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.",
           "example": "cmgo-nh1o****",
           "member": "string",
           "name": "Father",
@@ -852,8 +884,8 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID.",
-          "example": "sg-abc****",
+          "document": "Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.",
+          "example": "[\"sg-1s3c****\"]",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -870,8 +902,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance name, which can contain up to 60 letters, digits, and symbols (_-).",
-          "example": "testInstance",
+          "document": "Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.\n- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.\n- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.\n- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\\_node{R:12}\\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\\_node12\\_db, cmgo11\\_node13\\_db, cmgo12\\_node14\\_db, cmgo13\\_node15\\_db, and cmgo14\\_node16\\_db.",
+          "example": "testInstance_{R:3}",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -879,7 +911,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.\n - For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].\n - The [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.\n - Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.\n",
+          "document": "Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.\n- For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].\n- The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.\n- Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.",
           "example": "[\"ap-guangzhou-2\",\"ap-guangzhou-3\",\"ap-guangzhou-4\"]",
           "member": "string",
           "name": "AvailabilityZoneList",
@@ -888,7 +920,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.\n",
+          "document": "Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.",
           "example": "1",
           "member": "uint64",
           "name": "MongosCpu",
@@ -897,7 +929,7 @@
         },
         {
           "disabled": false,
-          "document": "Mongos node memory size.\n - This parameter is required during sharded cluster instance purchase.\n - Unit: GB. 1-core 2GB, 2-core 4GB, 4-core 8GB, 8-core 16GB, and 16-core 32GB are supported.\n\n",
+          "document": "Mongos node memory size.\n- This parameter is required during sharded cluster instance purchase.\n- Unit: GB. 1-core 2 GB, 2-core 4 GB, 4-core 8 GB, 8-core 16 GB, and 16-core 32 GB are supported.",
           "example": "2",
           "member": "uint64",
           "name": "MongosMemory",
@@ -942,7 +974,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter template ID. A parameter template is a collection of MongoDB parameters with preset values. You can save a group of parameters and values with the same requirements as a template. When you create an instance, you can directly reference these parameter values in the instance. Proper use of parameter templates can improve the efficiency of operations on TencentDB for MongoDB databases. The template list can be obtained by calling the DescribeDBInstanceParamTpl API. Pay attention to the database versions supported by templates.",
+          "document": "Parameter template ID.\n- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.\n- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.comom/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.",
           "example": "tpl-0vswu****",
           "member": "string",
           "name": "ParamTemplateId",
@@ -1016,7 +1048,7 @@
         },
         {
           "disabled": false,
-          "document": "Information on the specific supported versions. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain such versions.\n - MONGO_36_WT: version of the MongoDB 3.6 WiredTiger storage engine.\n - MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n - MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n - MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.",
+          "document": "Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.",
           "example": "MONGO_44_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -1025,7 +1057,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
+          "document": "Number of instances. The minimum value is 1, and the maximum value is 30.",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -1043,7 +1075,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the purchase duration during instance purchase. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.\n",
+          "document": "Specifies the purchase duration during the instance purchase, in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -1088,7 +1120,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to query the correct ID. Example value: vpc-pxyzim13.",
+          "document": "VPC ID.\n- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.\n- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.comom/document/product/239/30910?from_cn_redirect=1).",
           "example": "vpc-0akb****",
           "member": "string",
           "name": "VpcId",
@@ -1097,7 +1129,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet. Log in to the [VPC console](https://console.cloud.tencent.com/VPC) to query the subnet list and confirm the correct ID. Example value: subnet-7jbabche.",
+          "document": "Subnet ID of the VPC.\n- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.\n- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.comom/document/product/239/30910?from_cn_redirect=1).",
           "example": "subnet-fyrt****",
           "member": "string",
           "name": "SubnetId",
@@ -1142,7 +1174,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. 1: formal instance; 3: read-only instance; 4: disaster recovery instance; 5: instance cloned from a complete instance. Note: For a cloned instance, RestoreTime is required.",
+          "document": "Instance type.\n- 1: formal instance.\n- 3: read-only instance.\n- 4: disaster recovery instance.\n- 5: cloned instance. Note: For a cloned instance, RestoreTime is required.",
           "example": "1",
           "member": "int64",
           "name": "Clone",
@@ -1151,7 +1183,7 @@
         },
         {
           "disabled": false,
-          "document": "Parent instance ID. This parameter is required when the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.",
+          "document": "Parent instance ID.\n- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.\n- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.",
           "example": "cmgo-nh1o****",
           "member": "string",
           "name": "Father",
@@ -1160,8 +1192,8 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID.  ",
-          "example": "sg-di48****",
+          "document": "Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.",
+          "example": "[\"sg-di48****\"]",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -1178,8 +1210,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. The length can be up to 60 characters.",
-          "example": "myInstance",
+          "document": "Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.\n- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.\n- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.\n- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\\_node{R:12}\\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\\_node12\\_db, cmgo11\\_node13\\_db, cmgo12\\_node14\\_db, cmgo13\\_node15\\_db, and cmgo14\\_node16\\_db.",
+          "example": "myInstance_{R:3}",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -1250,7 +1282,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter template ID. A parameter template is a collection of MongoDB parameters with preset values. You can save a group of parameters and values with the same requirements as a template. When you create an instance, you can directly reference these parameter values in the instance. Proper use of parameter templates can improve the efficiency of operations on TencentDB for MongoDB databases. The template list can be obtained by calling the DescribeDBInstanceParamTpl API. Pay attention to the database versions and instance types supported by templates.",
+          "document": "Parameter template ID.\n- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.\n- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.comom/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.",
           "example": "tpl-0vswu****",
           "member": "string",
           "name": "ParamTemplateId",
@@ -1323,7 +1355,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Unit price.",
+          "document": "Unit price of the instance, in USD.",
           "example": "0.17",
           "member": "float",
           "name": "UnitPrice",
@@ -1334,7 +1366,7 @@
         },
         {
           "disabled": false,
-          "document": "Original price.",
+          "document": "Original price of the instance, in USD.",
           "example": "210",
           "member": "float",
           "name": "OriginalPrice",
@@ -1345,7 +1377,7 @@
         },
         {
           "disabled": false,
-          "document": "Discount price.",
+          "document": "Discount price of the instance, in USD.",
           "example": "198",
           "member": "float",
           "name": "DiscountPrice",
@@ -1362,7 +1394,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.",
+          "document": "Specifies the ID of the asynchronous request to be queried. When an asynchronous process is involved in the API operation (such as [CreateBackupDBInstance](https://www.tencentcloud.comom/document/product/240/46599?from_cn_redirect=1)), the response value of AsyncRequestId is the ID to be filled in for this parameter.",
           "example": "4762",
           "member": "string",
           "name": "AsyncRequestId",
@@ -1386,6 +1418,26 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "Task execution start time.",
+          "example": "2022-05-30 15:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task execution end time.",
+          "example": "2022-05-30 15:01:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -1399,7 +1451,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-74sjf5mt",
           "member": "string",
           "name": "InstanceId",
@@ -1408,7 +1460,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of a backup file with download tasks to be queried",
+          "document": "Specifies the backup file name for filtering download tasks of the specified file. The [DescribeDBBackups](https://www.tencentcloud.comom/document/product/240/38574?from_cn_redirect=1) API can be called to obtain the backup file name.",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
           "name": "BackupName",
@@ -1417,7 +1469,7 @@
         },
         {
           "disabled": false,
-          "document": "The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.",
+          "document": "Specifies the task within the query time range, and StartTime specifies the start time. If not specified, there are no limitations on the start time by default.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
           "name": "StartTime",
@@ -1426,7 +1478,7 @@
         },
         {
           "disabled": false,
-          "document": "The end time of the query period. Tasks will be queried if their start and end times fall within the query period. If it is left empty, the end time can be any time later than the start time.",
+          "document": "Specifies the task within the query time range, and EndTime specifies the end time. If not specified, there are no limitations on the end time by default.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
           "name": "EndTime",
@@ -1435,7 +1487,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of results returned per page. Value range: 1-100. Default value: `20`.",
+          "document": "Number of entries returned for this query. Value range: 1–100. The default value is 20.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -1444,7 +1496,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset for pagination. Default value: `0`.",
+          "document": "Specifies the number of pages returned for this query. The default value is 0.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -1453,7 +1505,7 @@
         },
         {
           "disabled": false,
-          "document": "The field used to sort the results. Valid values: `createTime` (default), `finishTime`.",
+          "document": "Sorting field.\n- createTime: sort by the creation time of the backup download task. The default value is createTime.\n- finishTime: sort by the completion time of the backup download task.",
           "example": "finishTime",
           "member": "string",
           "name": "OrderBy",
@@ -1462,7 +1514,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort order. Valid values: `asc`, `desc` (default).",
+          "document": "Sorting method.\n- asc: ascending order.\n- desc: descending order. The default value is desc.",
           "example": "desc",
           "member": "string",
           "name": "OrderByType",
@@ -1471,7 +1523,7 @@
         },
         {
           "disabled": false,
-          "document": "The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.",
+          "document": "Specifies the task status for filtering download tasks. If this parameter is not configured, tasks of all status types will be returned.\n- 0: wait for execution.\n- 1: downloading.\n- 2: download completed.\n- 3: download failed.\n- 4: wait for retry.",
           "example": "[2]",
           "member": "int64",
           "name": "Status",
@@ -1486,21 +1538,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of results",
+          "document": "All entries that meet the query conditions.",
           "example": "12",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The list of download tasks",
+          "document": "Download task list.",
           "example": "无",
           "member": "BackupDownloadTask",
           "name": "Tasks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1581,7 +1633,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-f555zzzz",
           "member": "string",
           "name": "InstanceId",
@@ -1590,7 +1642,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.",
+          "document": "Backup method.\n- 0: logical backup.\n- 1: physical backup.\n- 3: snapshot backup.\n**Note**:\n1. The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.\n2. Physical backup is not supported when storage encryption is enabled for the instance.",
           "example": "1",
           "member": "int64",
           "name": "BackupMethod",
@@ -1623,7 +1675,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Backup list",
+          "document": "Backup list.",
           "example": "无",
           "member": "BackupInfo",
           "name": "BackupList",
@@ -1633,7 +1685,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of backups",
+          "document": "Number of backups.",
           "example": "0",
           "member": "uint64",
           "name": "TotalCount",
@@ -1655,7 +1707,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order ID. It is returned by the `CreateDBInstance` and other APIs.",
+          "document": "Order ID.\n- Pay-as-you-go instance. It can be obtained through the output parameter **DealId** of the [CreateDBInstanceHour](https://www.tencentcloud.comom/document/product/240/38570?from_cn_redirect=1) API.\n- Yearly/monthly subscription instance. It can be obtained through the output parameter **DealId** of the [CreateDBInstance](https://www.tencentcloud.comom/document/product/240/38571?from_cn_redirect=1) API.",
           "example": "20200420111635",
           "member": "string",
           "name": "DealId",
@@ -1670,7 +1722,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order status. Valid values: 1 (unpaid), 2 (paid), 3 (delivering), 4 (delivered), 5 (delivery failed), 6 (refunded), 7 (order closed), 8 (order closed because it failed to be paid within timeout period).",
+          "document": "Order status.\n- 1: unpaid.\n- 2: paid.\n- 3: delivering.\n- 4: delivered successfully.\n- 5: delivery failed.\n- 6: refund.\n- 7: order closed.\n- 8: closed due to unpaid timeout.",
           "example": "4",
           "member": "int64",
           "name": "Status",
@@ -1680,7 +1732,7 @@
         },
         {
           "disabled": false,
-          "document": "Original price of the order.",
+          "document": "Original price of the order, in USD.",
           "example": "1116.67",
           "member": "float",
           "name": "OriginalPrice",
@@ -1690,7 +1742,7 @@
         },
         {
           "disabled": false,
-          "document": "Discounted price of the order.",
+          "document": "Discount price of the order, in USD.",
           "example": "759.33",
           "member": "float",
           "name": "DiscountPrice",
@@ -1700,7 +1752,7 @@
         },
         {
           "disabled": false,
-          "document": "Operation performed by the order. Valid values: purchase, renew, upgrade, downgrade, refund.",
+          "document": "Order operation behavior.\n- purchase: newly purchased.\n- renew: renewed.\n- upgrade: configuration upgraded.\n- downgrade: configuration downgraded.\n- refund: return and refund.",
           "example": "purchase",
           "member": "string",
           "name": "Action",
@@ -1710,7 +1762,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource ID of the current order.",
+          "document": "Instance ID of the current order.",
           "example": "cmgo-******",
           "member": "string",
           "name": "InstanceId",
@@ -1757,7 +1809,7 @@
         {
           "disabled": false,
           "document": "List of databases of the queried instance. If no database is specified for querying with DbName, a list of databases of only the queried instance is returned instead of the information indicated by Collections.",
-          "example": "['db-a','db-b']",
+          "example": "[\"db-a\",\"b-b\"]",
           "member": "string",
           "name": "Databases",
           "output_required": false,
@@ -1767,7 +1819,7 @@
         {
           "disabled": false,
           "document": "Queried collection information. If DbName is specified, a list of collections of only this database is returned.",
-          "example": "['col-1','col-2',]",
+          "example": "[\"col-1\",\"col-2\"]",
           "member": "string",
           "name": "Collections",
           "output_required": false,
@@ -1788,8 +1840,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB) and copy the instance ID from the instance list.",
-          "example": "cmgo-hcscymcl",
+          "document": "Instance ID list. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "[\"cmgo-hcscymcl\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -1797,7 +1849,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the instance type for querying.<ul><li>0: all instances.</li><li>1: formal instance.</li><li>3: read-only instance.</li><li>4: disaster recovery instance.</li></ul>",
+          "document": "Specifies the instance type for querying. Valid values:\n- 0: all instances.\n- 1: formal instance.\n- 2: temporary instance.\n- 3: read-only instance.\n- -1: the query range includes the formal, read-only, and disaster recovery instances simultaneously.",
           "example": "0",
           "member": "int64",
           "name": "InstanceType",
@@ -1806,7 +1858,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster type of the queried instance.<ul><li>0: replica set instance.</li><li>1: sharded cluster instance.</li><li>-1: replica set and sharded cluster instance.</li></ul>",
+          "document": "Specifies the cluster type of the instance to be queried. Valid values:\n- 0: replica set instance.\n- 1: sharded cluster instance.\n- -1: replica set and sharded cluster instance.",
           "example": "0",
           "member": "int64",
           "name": "ClusterType",
@@ -1815,8 +1867,8 @@
         },
         {
           "disabled": false,
-          "document": "Specify the current status of the queried instance.<ul><li>0: pending initialization.</li><li>1: processing, such as modifying specifications or modifying parameters.</li><li>2: instance running normally.</li><li>-2: instance expired.</li></ul>",
-          "example": "2",
+          "document": "Specifies the current status of the instance to be queried. Valid values:\n- 0: to be initialized.\n- 1: processing, such as specification changes and parameter modifications.\n- 2: running normally.\n- -2: isolated (yearly/monthly subscription).\n- -3: isolated (pay-as-you-go).",
+          "example": "[2]",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -1851,7 +1903,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of results returned per request. Default value: `20`. Value range: [1,100].",
+          "document": "Number of entries returned per request. The default value is 20, and the value range is (1, 100].",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -1947,6 +1999,152 @@
       ],
       "type": "object"
     },
+    "DescribeDetailedSlowLogsRequest": {
+      "document": "DescribeDetailedSlowLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-r3p8****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the start time for querying slow logs. - Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-01 10:00:00. - The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
+          "example": "2025-01-02 13:14:15",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the end time for querying slow logs.\n- Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-02 12:00:00.\n- The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
+          "example": "2025-01-02 13:14:15",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the threshold for querying slow logs, in milliseconds. It indicates that the execution time of the slow log query exceeds this value. The default value is 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "ExecTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the command type for querying slow logs.",
+          "example": "[\"find\"]",
+          "member": "string",
+          "name": "Commands",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Full-text search keyword. The logical operator among multiple keywords is OR.",
+          "example": "[\"command\",\"primary\"]",
+          "member": "string",
+          "name": "Texts",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the node name for querying slow logs. The [DescribeDBInstanceNodeProperty](https://www.tencentcloud.comom/document/product/240/82022?from_cn_redirect=1) API can be called to query the node name.",
+          "example": "[\"cmgo-r3p8****_0-node-primary\"]",
+          "member": "string",
+          "name": "NodeNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the queryHash value to be queried.",
+          "example": "[\"admin..****Continue\"]",
+          "member": "string",
+          "name": "QueryHash",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. The default value is 0, and the value range is [0, 100].\n",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. The default value is 20, and the value range is [0, 10000].",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sorting condition for slow logs.\n- StartTime: sort by the generation time of slow logs.\n- ExecTime: sort by the execution time of slow logs.",
+          "example": "ExecTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sorting method.\n- desc: descending order.\n- asc: ascending order.",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDetailedSlowLogsResponse": {
+      "document": "DescribeDetailedSlowLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of slow logs that meet the conditions.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Slow log details.",
+          "example": "无",
+          "member": "SlowLogItem",
+          "name": "DetailedSlowLogs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceParamsRequest": {
       "document": "DescribeInstanceParams request structure.",
       "members": [
@@ -2029,8 +2227,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. For example, cmgo-p8vn****.",
-          "example": "cmgo-p8vnipr5",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-p8vn****",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2066,7 +2264,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-a3bm93hf",
           "member": "string",
           "name": "InstanceId",
@@ -2075,7 +2273,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "document": "Slow log start time.\n- Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-01 10:00:00.\n- The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
           "example": "2020-04-20 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -2084,7 +2282,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "document": "Slow log end time.\n- Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-02 12:00:00.\n- The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
           "example": "2020-04-20 22:00:00",
           "member": "datetime",
           "name": "EndTime",
@@ -2139,7 +2337,7 @@
           "example": "2",
           "member": "uint64",
           "name": "Count",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2149,7 +2347,7 @@
           "example": "无",
           "member": "SlowLogPattern",
           "name": "SlowLogPatterns",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2167,7 +2365,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-a3bm93hf",
           "member": "string",
           "name": "InstanceId",
@@ -2176,7 +2374,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "document": "Slow log start time.\n- Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-01 10:00:00.\n- The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
           "example": "2020-04-20 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -2185,7 +2383,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
+          "document": "Slow log end time.\n- Format: yyyy-mm-dd hh:mm:ss. For example, 2019-06-02 12:00:00.- The query start and end time interval cannot exceed 24 hours. Only slow logs within the last 7 days can be queried.",
           "example": "2020-04-20 22:00:00",
           "member": "datetime",
           "name": "EndTime",
@@ -2236,7 +2434,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of slow logs",
+          "document": "Total number of slow logs.",
           "example": "20",
           "member": "uint64",
           "name": "Count",
@@ -2247,7 +2445,7 @@
         {
           "disabled": false,
           "document": "Slow log details.",
-          "example": "[\"Mon Apr 20 13:55:21.623 I COMMAND  [conn16903] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587362114, 1), signature: { hash: BinData(0, 259955995BDC7E0CA35C4276EB23341C03910A48), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587362108, 1), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 5335ms\",\"Mon Apr 20 14:01:00.309 I COMMAND  [conn1313] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587362457, 1), signature: { hash: BinData(0, DC2B16681C70845D7B6C8C6C97400D4DFB394CA0), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587362455, 1), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 1264ms\",\"Mon Apr 20 14:20:15.283 I COMMAND  [conn586] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587363613, 1), signature: { hash: BinData(0, 72D24884320C8A9A26AF8C4DD1127874085DFAE5), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587363603, 1), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 426ms\",\"Mon Apr 20 10:25:45.487 I COMMAND  [conn48] command local.system.replset command: replSetReconfig { replSetReconfig: { _id: \\\"cmgo-a3bm93hf_1\\\", version: 3, protocolVersion: 1, members: [ { _id: 1, host: \\\"100.93.44.85:7005\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 2, host: \\\"10.112.91.43:7009\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 3, host: \\\"10.53.61.24:7004\\\" } ], settings: { chainingAllowed: true, heartbeatIntervalMillis: 2000, heartbeatTimeoutSecs: 10, electionTimeoutMillis: 10000, catchUpTimeoutMillis: -1, catchUpTakeoverDelayMillis: 30000, getLastErrorDefaults: { wtimeout: 0, w: 1 }, replicaSetId: ObjectId('5e9d08160c269352426f9575') } }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 3, w: 2, W: 1 } }, Database: { acquireCount: { w: 1, W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_query 423ms\",\"Mon Apr 20 10:25:34.934 I COMMAND  [conn28] command local.system.replset command: replSetReconfig { replSetReconfig: { _id: \\\"cmgo-a3bm93hf_1\\\", version: 2, protocolVersion: 1, members: [ { _id: 1, host: \\\"100.93.44.85:7005\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 2, host: \\\"10.112.91.43:7009\\\" } ], settings: { chainingAllowed: true, heartbeatIntervalMillis: 2000, heartbeatTimeoutSecs: 10, electionTimeoutMillis: 10000, catchUpTimeoutMillis: -1, catchUpTakeoverDelayMillis: 30000, getLastErrorDefaults: { w: 1, wtimeout: 0 }, replicaSetId: ObjectId('5e9d08160c269352426f9575') } }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 3, w: 2, W: 1 } }, Database: { acquireCount: { w: 1, W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_query 414ms\",\"Mon Apr 20 10:24:52.278 I COMMAND  [conn30] command local.system.replset command: replSetReconfig { replSetReconfig: { _id: \\\"cmgo-a3bm93hf_0\\\", version: 2, protocolVersion: 1, members: [ { _id: 1, host: \\\"10.53.80.6:7011\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 2, host: \\\"100.93.44.26:7012\\\" } ], settings: { chainingAllowed: true, heartbeatIntervalMillis: 2000, heartbeatTimeoutSecs: 10, electionTimeoutMillis: 10000, catchUpTimeoutMillis: -1, catchUpTakeoverDelayMillis: 30000, getLastErrorDefaults: { w: 1, wtimeout: 0 }, replicaSetId: ObjectId('5e9d07ebf3f99b58c95a33fb') } }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 3, w: 2, W: 1 } }, Database: { acquireCount: { w: 1, W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_query 406ms\",\"Mon Apr 20 10:25:02.675 I COMMAND  [conn50] command local.system.replset command: replSetReconfig { replSetReconfig: { _id: \\\"cmgo-a3bm93hf_0\\\", version: 3, protocolVersion: 1, members: [ { _id: 1, host: \\\"10.53.80.6:7011\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 2, host: \\\"100.93.44.26:7012\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 3, host: \\\"9.34.46.139:7003\\\" } ], settings: { chainingAllowed: true, heartbeatIntervalMillis: 2000, heartbeatTimeoutSecs: 10, electionTimeoutMillis: 10000, catchUpTimeoutMillis: -1, catchUpTakeoverDelayMillis: 30000, getLastErrorDefaults: { w: 1, wtimeout: 0 }, replicaSetId: ObjectId('5e9d07ebf3f99b58c95a33fb') } }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 3, w: 2, W: 1 } }, Database: { acquireCount: { w: 1, W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_query 373ms\",\"Mon Apr 20 18:35:15.103 I COMMAND  [conn586] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587378913, 1), signature: { hash: BinData(0, A3C176F81B64A7473F88F3F40B84C59EC9E1E1AE), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587378912, 1), t: 2 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 248ms\",\"Mon Apr 20 10:27:38.171 I COMMAND  [conn281] command admin.$cmd command: setFeatureCompatibilityVersion { setFeatureCompatibilityVersion: \\\"4.0\\\", $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 5, w: 4, R: 1 } }, Database: { acquireCount: { w: 2, W: 2 } }, Collection: { acquireCount: { w: 2 } }, Mutex: { acquireCount: { W: 1 } }, oplog: { acquireCount: { w: 2 } } } protocol:op_msg 212ms\",\"Mon Apr 20 10:26:27.924 I COMMAND  [conn111] command local.system.replset command: replSetReconfig { replSetReconfig: { _id: \\\"cmgo-a3bm93hf_2\\\", version: 3, protocolVersion: 1, members: [ { _id: 1, host: \\\"10.112.90.165:7002\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 2, host: \\\"10.53.80.6:7012\\\", arbiterOnly: false, buildIndexes: true, hidden: false, priority: 1.0, slaveDelay: 0, votes: 1 }, { _id: 3, host: \\\"100.93.44.26:7013\\\" } ], settings: { chainingAllowed: true, heartbeatIntervalMillis: 2000, heartbeatTimeoutSecs: 10, electionTimeoutMillis: 10000, catchUpTimeoutMillis: -1, catchUpTakeoverDelayMillis: 30000, getLastErrorDefaults: { w: 1, wtimeout: 0 }, replicaSetId: ObjectId('5e9d0841f0f688fc992fd087') } }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 3, w: 2, W: 1 } }, Database: { acquireCount: { w: 1, W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_query 212ms\",\"Mon Apr 20 13:55:15.051 I COMMAND  [conn586] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587362114, 1), signature: { hash: BinData(0, 259955995BDC7E0CA35C4276EB23341C03910A48), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587362085, 6), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 192ms\",\"Mon Apr 20 10:27:39.400 I COMMAND  [conn213] command admin.$cmd command: setFeatureCompatibilityVersion { setFeatureCompatibilityVersion: \\\"4.0\\\", $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 5, w: 4, R: 1 } }, Database: { acquireCount: { w: 2, W: 2 } }, Collection: { acquireCount: { w: 2 } }, Mutex: { acquireCount: { W: 1 } }, oplog: { acquireCount: { w: 2 } } } protocol:op_msg 183ms\",\"Mon Apr 20 10:26:09.357 I COMMAND  [conn36] command local.system.replset command: replSetInitiate { replSetInitiate: { _id: \\\"cmgo-a3bm93hf_2\\\", version: 1, members: [ { _id: 1, host: \\\"10.112.90.165:7002\\\" } ] }, $readPreference: { mode: \\\"secondaryPreferred\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 23, w: 7, W: 2 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 59 } }, Database: { acquireCount: { r: 7, w: 4, W: 3 } }, Collection: { acquireCount: { r: 3, w: 2 } }, oplog: { acquireCount: { r: 2, w: 3 } } } protocol:op_query 134ms\",\"Mon Apr 20 13:00:16.363 I COMMAND  [conn16903] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587358814, 1), signature: { hash: BinData(0, 90BD7BB9B481B9825527D89A3579B52E6C0C3915), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587358809, 2), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 123ms\",\"Mon Apr 20 13:35:14.983 I COMMAND  [conn586] command admin.$cmd command: _flushRoutingTableCacheUpdates { forceRoutingTableRefresh: \\\"config.system.sessions\\\", maxTimeMS: 30000, $clusterTime: { clusterTime: Timestamp(1587360912, 1), signature: { hash: BinData(0, 06A84575A66B9316D1ECBFB9FB1C7B2F605AB3A8), keyId: 6817613949303783443 } }, $configServerState: { opTime: { ts: Timestamp(1587360909, 5), t: 1 } }, $db: \\\"admin\\\" } numYields:0 reslen:288 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, Collection: { acquireCount: { r: 2 } } } protocol:op_msg 122ms\",\"Mon Apr 20 10:24:43.760 I COMMAND  [conn16] command local.system.replset command: replSetInitiate { replSetInitiate: { _id: \\\"cmgo-a3bm93hf_0\\\", version: 1, members: [ { _id: 1, host: \\\"10.53.80.6:7011\\\" } ] }, $readPreference: { mode: \\\"secondaryPreferred\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 23, w: 7, W: 2 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 39 } }, Database: { acquireCount: { r: 7, w: 4, W: 3 } }, Collection: { acquireCount: { r: 3, w: 2 } }, oplog: { acquireCount: { r: 2, w: 3 } } } protocol:op_query 112ms\",\"Mon Apr 20 10:25:26.300 I COMMAND  [conn15] command local.system.replset command: replSetInitiate { replSetInitiate: { _id: \\\"cmgo-a3bm93hf_1\\\", version: 1, members: [ { _id: 1, host: \\\"100.93.44.85:7005\\\" } ] }, $readPreference: { mode: \\\"secondaryPreferred\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:60 locks:{ Global: { acquireCount: { r: 23, w: 7, W: 2 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 24 } }, Database: { acquireCount: { r: 7, w: 4, W: 3 }, acquireWaitCount: { W: 1 }, timeAcquiringMicros: { W: 7 } }, Collection: { acquireCount: { r: 3, w: 2 } }, oplog: { acquireCount: { r: 2, w: 3 } } } protocol:op_query 110ms\",\"Mon Apr 20 10:27:39.400 I COMMAND  [conn213] command admin.$cmd command: update { update: \\\"system.version\\\", writeConcern: { w: \\\"majority\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:370 locks:{ Global: { acquireCount: { r: 5, w: 4, R: 1 } }, Database: { acquireCount: { w: 2, W: 2 } }, Collection: { acquireCount: { w: 2 } }, Mutex: { acquireCount: { W: 1 } }, oplog: { acquireCount: { w: 2 } } } protocol:op_msg 107ms\",\"Mon Apr 20 10:27:38.065 I COMMAND  [conn281] command admin.$cmd command: update { update: \\\"system.version\\\", writeConcern: { w: \\\"majority\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:370 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1 } }, Mutex: { acquireCount: { W: 1 } }, oplog: { acquireCount: { w: 1 } } } protocol:op_msg 107ms\",\"Mon Apr 20 10:27:38.170 I COMMAND  [conn281] command admin.$cmd command: update { update: \\\"system.version\\\", writeConcern: { w: \\\"majority\\\" }, $db: \\\"admin\\\" } numYields:0 reslen:370 locks:{ Global: { acquireCount: { r: 5, w: 4, R: 1 } }, Database: { acquireCount: { w: 2, W: 2 } }, Collection: { acquireCount: { w: 2 } }, Mutex: { acquireCount: { W: 1 } }, oplog: { acquireCount: { w: 2 } } } protocol:op_msg 105ms\"]",
+          "example": "[\"Mon Apr 20 13:55:21.623 I COMMAND ********************\"]",
           "member": "string",
           "name": "SlowLogs",
           "output_required": true,
@@ -2268,7 +2466,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ to be queried",
+          "document": "AZ to be queried. For currently supported AZs, see [Regions and AZs](https://www.tencentcloud.comom/document/product/240/3637?from_cn_redirect=1).",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -2283,7 +2481,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of purchasable instance specifications",
+          "document": "List of sales specification information on the instance.",
           "example": "无",
           "member": "SpecificationInfo",
           "name": "SpecInfoList",
@@ -2332,7 +2530,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance region name in the format of ap-guangzhou-2.",
+          "document": "Region and AZ information of the instance. For details, see [Regions and AZs](https://www.tencentcloud.comom/document/product/240/3637?from_cn_redirect=1).",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "Zone",
@@ -2341,7 +2539,7 @@
         },
         {
           "disabled": false,
-          "document": " - Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.\n - Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.",
+          "document": "-Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. call the [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.\n- Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.",
           "example": "3",
           "member": "int64",
           "name": "NodeNum",
@@ -2368,8 +2566,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance version information. For specific supported versions, call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported for instances. The correspondence between version information and version number is as follows:\n - MONGO_36_WT: version of the MongoDB 3.6 WiredTiger storage engine.\n - MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n - MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n - MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.",
-          "example": "MONGO_36_WT",
+          "document": "Instance version information. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain specific supported versions. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported by instances. The corresponding relationship between version information and version number is as follows:\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.",
+          "example": "MONGO_50_WT",
           "member": "string",
           "name": "MongoVersion",
           "required": true,
@@ -2513,7 +2711,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of cmgo-p8vn****. It is the same as the instance ID displayed in the TencentDB console.",
+          "document": "Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-8oij5631",
           "member": "string",
           "name": "InstanceId",
@@ -2522,7 +2720,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory size in GB after specification adjustment.",
+          "document": "Instance memory size after configuration changes, in GB. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain the specific sales specifications for memory.",
           "example": "8",
           "member": "int64",
           "name": "Memory",
@@ -2531,7 +2729,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size in GB after specification adjustment.",
+          "document": "Instance disk size after configuration changes, in GB. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain the maximum and minimum disk sizes corresponding to each CPU specification.",
           "example": "200",
           "member": "int64",
           "name": "Volume",
@@ -2540,7 +2738,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instance nodes. The number of nodes is left unchanged by default and cannot be changed currently.",
+          "document": "Number of instance nodes. The [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API can be called to obtain the number of instance nodes.\n- Replica set instance, which refers to the number of primary and secondary nodes for the instance after configuration changes.\n- Sharded cluster instance, which refers to the number of primary and secondary nodes per shard for the instance after configuration changes.\n**Note**: Do not initiate tasks of adjusting the number of nodes and shards and the node specifications simultaneously.",
           "example": "3",
           "member": "int64",
           "name": "NodeNum",
@@ -2549,7 +2747,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instance shards. The number of shards is left unchanged by default and cannot be changed currently.",
+          "document": "Sharded cluster instance, which refers to the number of shards for the instance after configuration changes. Value range: [2, 36].\n**Note**: The number of shards after changes cannot be less than the current number. Do not initiate tasks of adjusting the number of nodes and shards and the node specifications simultaneously.",
           "example": "2",
           "member": "int64",
           "name": "ReplicateSetNum",
@@ -2568,6 +2766,7 @@
           "example": "无",
           "member": "DBInstancePrice",
           "name": "Price",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2651,11 +2850,11 @@
       "usage": "in"
     },
     "InstanceDetail": {
-      "document": "Instance details",
+      "document": "Instance details.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cmgo-7pje****",
           "member": "string",
           "name": "InstanceId",
@@ -2685,7 +2884,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -2695,7 +2894,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster type. Valid values: `0` (replica set instance), `1` (sharded instance).",
+          "document": "Cluster type.\n- 0: replica set instance.\n- 1: sharded cluster instance.",
           "example": "1",
           "member": "uint64",
           "name": "ClusterType",
@@ -2725,7 +2924,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type. Valid values: 0 (basic network), 1 (VPC)",
+          "document": "Network type.\n- 0: basic network.\n- 1: VPC.",
           "example": "1",
           "member": "uint64",
           "name": "NetType",
@@ -2755,7 +2954,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. Valid values: 0: creating; 1: processing; 2: running; -2: expired.",
+          "document": "Instance status.\n- 0: to be initialized.\n- 1: processing, such as specification changes and parameter modifications.\n- 2: running normally.\n- -2: isolated (yearly/monthly subscription).\n- -3: isolated (pay-as-you-go).",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -2805,7 +3004,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance version information",
+          "document": "Storage engine version information on instances.\n- MONGO_36_WT: version of the MongoDB 3.6 WiredTiger storage engine.\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.",
           "example": "MONGO_42_WT",
           "member": "string",
           "name": "MongoVersion",
@@ -2815,7 +3014,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory size in MB",
+          "document": "Instance memory specification, in MB.",
           "example": "4",
           "member": "uint64",
           "name": "Memory",
@@ -2825,7 +3024,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size in MB",
+          "document": "Instance disk specification, in MB.",
           "example": "120",
           "member": "uint64",
           "name": "Volume",
@@ -2835,7 +3034,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of CPU cores of an instance",
+          "document": "Number of the instance CPU cores.",
           "example": "2",
           "member": "uint64",
           "name": "CpuNum",
@@ -2845,7 +3044,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance machine type",
+          "document": "Instance machine type.\n- HIO10G: general HIO 10GE type.\n- HCD: Cloud Disk Edition type.",
           "example": "HIO10G",
           "member": "string",
           "name": "MachineType",
@@ -2875,7 +3074,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance auto-renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal), `2` (no renewal upon expiration)",
+          "document": "Automatic renewal flag for the instance.\n- 0: manual renewal.\n- 1: automatic renewal.\n- 2: no renewal after confirmation.",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2885,7 +3084,7 @@
         },
         {
           "disabled": false,
-          "document": "Used capacity in MB",
+          "document": "Used capacity, in MB.",
           "example": "100",
           "member": "uint64",
           "name": "UsedVolume",
@@ -2995,7 +3194,7 @@
         },
         {
           "disabled": false,
-          "document": "Protocol information. Valid values: `1` (mongodb), `2` (dynamodb).",
+          "document": "Protocol information: mongodb.",
           "example": "0",
           "member": "uint64",
           "name": "Protocol",
@@ -3005,7 +3204,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)",
+          "document": "Instance type.\n- 0: all instances.\n- 1: formal instance.\n- 2: temporary instance.\n- 3: read-only instance.\n- -1: include the formal, read-only, and disaster recovery instance simultaneously.",
           "example": "1",
           "member": "uint64",
           "name": "InstanceType",
@@ -3015,7 +3214,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status description",
+          "document": "Instance status description.",
           "example": "运行中",
           "member": "string",
           "name": "InstanceStatusDesc",
@@ -3025,7 +3224,7 @@
         },
         {
           "disabled": false,
-          "document": "Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad",
+          "document": "Physical instance ID corresponding to the instance. The instances that have been rolled back and replaced have different InstanceIds and RealInstanceIds, which need to be obtained through the physical ID in scenarios such as obtaining monitoring data from Barad.",
           "example": "cmgo-8go1o9xl",
           "member": "string",
           "name": "RealInstanceId",
@@ -3045,7 +3244,7 @@
         },
         {
           "disabled": false,
-          "document": "Mongos node memory.",
+          "document": "Mongos node memory, in MB.",
           "example": "2",
           "member": "uint64",
           "name": "MongosMemory",
@@ -3075,7 +3274,7 @@
         },
         {
           "disabled": false,
-          "document": "ConfigServer node memory.",
+          "document": "Config Server node memory, in MB.",
           "example": "2",
           "member": "uint64",
           "name": "ConfigServerMemory",
@@ -3085,7 +3284,7 @@
         },
         {
           "disabled": false,
-          "document": "ConfigServer node disk size.",
+          "document": "Config Server node disk size, in MB.",
           "example": "20",
           "member": "uint64",
           "name": "ConfigServerVolume",
@@ -3485,7 +3684,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the ID of the instance to be isolated from the instance list.",
           "example": "cmgo-f555zzzz",
           "member": "string",
           "name": "InstanceId",
@@ -3504,7 +3703,7 @@
           "example": "28920",
           "member": "string",
           "name": "AsyncRequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3540,7 +3739,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID after the switch. If the instance is using a basic network, this field is not required.",
+          "document": "VPC ID after the switch. If the instance is using a basic network, this field is not required. The [DescribeDBInstances](https://www.tencentcloud.comom/document/product/240/38568?from_cn_redirect=1) API can be called to obtain the VPC ID.",
           "example": "vpc-****",
           "member": "string",
           "name": "NewUniqVpcId",
@@ -3549,7 +3748,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID after the switch. If the instance is using a basic network, this field is not required.",
+          "document": "VPC subnet ID after the switch. If the instance is using a basic network, this field is not required. The [DescribeDBInstances](https://www.tencentcloud.comom/document/product/240/38568?from_cn_redirect=1) API can be called to obtain the subnet ID of the VPC.",
           "example": "subnet-****",
           "member": "string",
           "name": "NewUniqSubnetId",
@@ -3595,7 +3794,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. For example, cmgo-7pje****.",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-7pjedvz7",
           "member": "string",
           "name": "InstanceId",
@@ -3604,7 +3803,7 @@
         },
         {
           "disabled": false,
-          "document": "IDs of target security groups. Call the [DescribeSecurityGroup](https://intl.cloud.tencent.com/document/product/240/55675?from_cn_redirect=1) API to view IDs of specific security groups.",
+          "document": "Target security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) page to copy the target security group ID.\n**Note**: This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.",
           "example": "[\"sg-a\", \"sg-b\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -3631,8 +3830,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB) and copy the instance ID from the instance list.\n",
-          "example": "cmgo-p8vnipr5",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-p8vn****",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3640,7 +3839,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory size after instance configuration modification. - Unit: GB. The current instance memory size is used by default if this parameter is left blank.<br>Note: Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.",
+          "document": "Memory size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current memory size of the instance. For the currently supported memory specifications, see [Product Specifications](https://www.tencentcloud.comom/document/product/240/64125?from_cn_redirect=1).\n**Note**: Memory and disk configurations should be upgraded or downgraded simultaneously, meaning that Memory and Volume should be modified at the same time.",
           "example": "4",
           "member": "uint64",
           "name": "Memory",
@@ -3649,7 +3848,7 @@
         },
         {
           "disabled": false,
-          "document": "Disk capacity after instance configuration modification. Unit: GB. The current instance disk capacity is used by default if this parameter is left blank.\n - Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.\n - During configuration downgrading, the disk capacity after modification should be greater than 1.2 times the used disk capacity.",
+          "document": "Hard disk size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current disk size of the instance. For the currently supported disk capacity, see [Product Specifications](https://www.tencentcloud.comom/document/product/240/64125?from_cn_redirect=1).\n- Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.\n- During configuration downgrade, the disk capacity after changes should be greater than 1.2 times the used disk capacity.",
           "example": "250",
           "member": "uint64",
           "name": "Volume",
@@ -3667,7 +3866,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of Mongod nodes after instance modification (excluding read-only nodes).\n - When the CPU and memory specifications of Mongod nodes are modified, this parameter can be left blank or set to the current number of Mongod nodes (excluding read-only nodes).\n - When the CPU and memory specifications of Mongos nodes are modified, this parameter can be left blank or set to the current number of Mongod nodes (excluding read-only nodes).\n - During node modification (all types), this parameter can be left blank or set to the number of Mongod nodes (excluding read-only nodes) after modification.\n - Number of replica set nodes: Confirm the range of the number of nodes based on the MinNodeNum and MaxNodeNum parameters returned by the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38565?from_cn_redirect=1) API for querying saleable TencenDB for MongoDB specifications.\n - Number of nodes for each shard in a sharded cluster: Confirm the range of the number of nodes based on the MinReplicateSetNodeNum and MaxReplicateSetNodeNum parameters returned by the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38565?from_cn_redirect=1) API for querying saleable TencenDB for MongoDB specifications.",
+          "document": "Number of Mongod nodes after instance changes (excluding read-only nodes).\n- Number of replica set nodes. The value range of the number of nodes can be obtained through the response parameters MinNodeNum and MaxNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API.\n- Number of nodes per shard in a sharded cluster. The value range of the number of nodes can be obtained through the response parameters MinReplicateSetNodeNum and MaxReplicateSetNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API.\n**Note**: When the CPU and memory specifications of Mongod or Mongos nodes are changed, this parameter is not required, or enter the current number of Mongod or Mongos nodes (excluding read-only nodes).",
           "example": "3",
           "member": "uint64",
           "name": "NodeNum",
@@ -3676,7 +3875,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of shards after instance modification.\n - The value range can be obtained from the **MinReplicateSetNum** and **MaxReplicateSetNum** parameters returned by the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API for querying saleable TencentDB for MongoDB specifications. - The value of this parameter can only be increased but not decreased.",
+          "document": "Number of shards after instance changes.\n- The value range for the number of instance shards can be obtained through the response parameters **MinReplicateSetNum** and **MaxReplicateSetNum** of the [DescribeSpecInfo](https://www.tencentcloud.comom/document/product/240/38567?from_cn_redirect=1) API.\n- The number of instance shards can only be increased and cannot be decreased.",
           "example": "3",
           "member": "uint64",
           "name": "ReplicateSetNum",
@@ -3694,7 +3893,7 @@
         },
         {
           "disabled": false,
-          "document": "Mongos node memory size after the sharded cluster instance configuration is modified. Unit: GB.",
+          "document": "Memory size of the Mongos node after sharded cluster instance configuration changes, in GB. For the specifications supported by the instance, see [Product Specifications](https://www.tencentcloud.comom/document/product/240/64125?from_cn_redirect=1).",
           "example": "2",
           "member": "string",
           "name": "MongosMemory",
@@ -3712,7 +3911,7 @@
         },
         {
           "disabled": false,
-          "document": "List of nodes to be deleted. Note: According to the consistency principle for nodes of each shard on a sharded cluster instance, specify the nodes on shard 0 for node deletion from the sharded cluster instance. For example, cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.",
+          "document": "Deletes the node list.\n**Note**: According to the consistency principle for nodes of each shard on a sharded cluster instance, specify the nodes on shard 0 for node deletion from the sharded cluster instance. For example, cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.",
           "example": "无",
           "member": "RemoveNodeList",
           "name": "RemoveNodeList",
@@ -3773,7 +3972,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console recycle bin](https://console.cloud.tencent.com/mongodb/recycle), and copy the ID of the instance to be eliminated from the instance list.",
           "example": "cmgo-f555zzzz",
           "member": "string",
           "name": "InstanceId",
@@ -3789,10 +3988,10 @@
         {
           "disabled": false,
           "document": "Async task request ID, which can be used to query the execution result of an async task.",
-          "example": "28920",
+          "example": "\"28920\"",
           "member": "string",
           "name": "AsyncRequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3806,7 +4005,7 @@
       "type": "object"
     },
     "RemoveNodeList": {
-      "document": "Node details of an instance to be modified.",
+      "document": "Node details of the instance to be modified.",
       "members": [
         {
           "disabled": false,
@@ -3819,7 +4018,7 @@
         },
         {
           "disabled": false,
-          "document": "IDs of nodes to be deleted. For a sharded cluster instance, specify the IDs of nodes to be deleted on one shard. Nodes with the same IDs on other shards will also be deleted.\n\n - Obtaining method: Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/), go to the **Node Management** tab, and obtain the **node IDs**.\n - Note: For a sharded cluster instance, specify the IDs of nodes on shard 0. For example, cmgo-6hfk****_0-node-primary.",
+          "document": "IDs of nodes to be deleted. For a sharded cluster instance, specify the names of nodes to be deleted on one shard. Nodes with the same names on other shards will also be deleted.\n- Obtaining method: Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), go to the **Node Management** tab, and obtain the **node ID**.\n- Note: For a sharded cluster instance, specify the IDs of nodes on shard 0. For example, cmgo-6hfk\\*\\*\\*\\*\\_0-node-primary.",
           "example": "cmgo-3iecwbfx_0-node-readonly0",
           "member": "string",
           "name": "NodeName",
@@ -3828,7 +4027,7 @@
         },
         {
           "disabled": false,
-          "document": "AZs corresponding to the nodes.\n - Single AZ: All nodes are in the same AZ.\n - Multiple AZs: The current standard specification involves three AZs. The primary and secondary nodes are not in the same AZ. Note: AZs corresponding to the nodes to be deleted should be specified. After deletion, the number of nodes in any two AZs should be larger than that in the third AZ.",
+          "document": "AZ corresponding to the node. For the currently supported AZs, see [Regions and AZs](https://www.tencentcloud.comom/document/product/240/3637?from_cn_redirect=1).\n- Single AZ: all nodes are in the same AZ.\n- Multiple AZs: The current standard specification involves three AZs. The primary and secondary nodes are not in the same AZ. Note: AZs corresponding to the nodes to be deleted should be specified. After deletion, the number of nodes in any 2 AZs should be larger than that in the third AZ.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -3879,7 +4078,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the ID or IDs of one or multiple instances to be renewed.\n - You can obtain the IDs from **InstanceIds** in the return values of the [DescribeDBInstances](https://intl.cloud.tencent.com/document/product/240/38568?from_cn_redirect=1) API.\n - The maximum number of instances for each renewal request is 100.",
+          "document": "Specifies the ID or IDs of one or multiple instances to be renewed.\n- It can be obtained through the response parameter **InstanceId** of the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/240/38568?from_cn_redirect=1) API.\n- The maximum number of instances for each renewal request is 100.",
           "example": "[\"cmgo-gzo0****\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3911,17 +4110,16 @@
       "type": "object"
     },
     "ReplicaSetInfo": {
-      "document": "Shard information",
+      "document": "Shard information.",
       "members": [
         {
           "disabled": false,
-          "document": "Replica set ID",
+          "document": "Replica set ID.",
           "example": "cmgo_ih8uido9_0",
           "member": "string",
           "name": "ReplicaSetId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -3931,7 +4129,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Specifies the instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
           "example": "cmgo-7pjedvz7",
           "member": "string",
           "name": "InstanceId",
@@ -3940,7 +4138,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance account name",
+          "document": "Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.comom/document/product/240/80800?from_cn_redirect=1) API can be called to obtain the account list and copy the account name for which the password needs to be changed.",
           "example": "rwuser",
           "member": "string",
           "name": "UserName",
@@ -3949,8 +4147,8 @@
         },
         {
           "disabled": false,
-          "document": "New password, which must contain at least eight characters",
-          "example": "111111",
+          "document": "Specifies a new password for the account. Password complexity requirements:\n- It should contain 8–32 characters.\n- It should contain at least two types of the following: letters, digits, and special characters (!@#%^\\*()\\_).",
+          "example": "test_123***",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -3964,11 +4162,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async request ID, which is used to query the running status of the process.",
+          "document": "Task request ID.",
           "example": "4769",
           "member": "string",
           "name": "AsyncRequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3986,71 +4184,71 @@
       "members": [
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Associated project ID.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "Security group creation time.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Inbound rule",
+          "document": "Security group inbound rule.",
           "example": "无",
           "member": "SecurityGroupBound",
           "name": "Inbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Outbound rule",
+          "document": "Security group outbound rule.",
           "example": "无",
           "member": "SecurityGroupBound",
           "name": "Outbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Security group ID",
-          "example": "sg-lxdvbitn",
+          "document": "Security group ID.",
+          "example": "sg-lxdv****",
           "member": "string",
           "name": "SecurityGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Security group name",
-          "example": "全放通",
+          "document": "Security group name.",
+          "example": "Security Test",
           "member": "string",
           "name": "SecurityGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Security group remarks",
+          "document": "Security group remarks.",
           "example": "暴露全部端口到公网和内网，有一定安全风险",
           "member": "string",
           "name": "SecurityGroupRemark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4062,7 +4260,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Execution rule. Valid values: `ACCEPT`, `DROP`",
+          "document": "Execution policy.\n- ACCEPT: allow. Access requests for the port can be released.\n- DROP: reject. Data packets are discarded without any response.",
           "example": "ACCEPT",
           "member": "string",
           "name": "Action",
@@ -4072,7 +4270,7 @@
         },
         {
           "disabled": false,
-          "document": "IP range",
+          "document": "Inbound IP address or IP range for database access.",
           "example": "0.0.0.0/0",
           "member": "string",
           "name": "CidrIp",
@@ -4082,7 +4280,7 @@
         },
         {
           "disabled": false,
-          "document": "Port range",
+          "document": "Port for database access.",
           "example": "80,443",
           "member": "string",
           "name": "PortRange",
@@ -4092,7 +4290,7 @@
         },
         {
           "disabled": false,
-          "document": "Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`",
+          "document": "Transport layer protocol: TCP.",
           "example": "tcp",
           "member": "string",
           "name": "IpProtocol",
@@ -4102,8 +4300,8 @@
         },
         {
           "disabled": false,
-          "document": "All the addresses that the security group ID represents",
-          "example": "sg-",
+          "document": "Security group ID.",
+          "example": "sg-kayh****",
           "member": "string",
           "name": "Id",
           "output_required": true,
@@ -4112,8 +4310,8 @@
         },
         {
           "disabled": false,
-          "document": "All the addresses that the address group ID represents",
-          "example": "地址集合",
+          "document": "Parameter template ID for the IP address or IP address group. Log in to the [parameter template console](https://console.cloud.tencent.com/vpc/template/ip) to obtain the parameter template IP address details.",
+          "example": "ipm-0h4k****",
           "member": "string",
           "name": "AddressModule",
           "output_required": true,
@@ -4122,8 +4320,8 @@
         },
         {
           "disabled": false,
-          "document": "All the protocols and ports that the service group ID represents",
-          "example": "协议和端口集合",
+          "document": "Parameter template ID for the protocol port or protocol port group. Log in to the [parameter template console](https://console.cloud.tencent.com/vpc/template/protoport) to obtain the parameter template protocol port details.",
+          "example": "ppm-ay7b****",
           "member": "string",
           "name": "ServiceModule",
           "output_required": true,
@@ -4132,7 +4330,7 @@
         },
         {
           "disabled": false,
-          "document": "Description",
+          "document": "Security group description information.",
           "example": "my-SecurityGroupBound",
           "member": "string",
           "name": "Desc",
@@ -4142,6 +4340,42 @@
         }
       ],
       "usage": "out"
+    },
+    "SetDBInstanceDeletionProtectionRequest": {
+      "document": "SetDBInstanceDeletionProtection request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID list, in the format of cmgo-p8vnipr5. It is the same as the format of the instance ID displayed on the TencentDB for MongoDB console page.",
+          "example": "[\"cmgo-8oij****\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance termination protection switch. Valid values: 0 - disabled; 1 - enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "EnableDeletionProtection",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetDBInstanceDeletionProtectionResponse": {
+      "document": "SetDBInstanceDeletionProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ShardInfo": {
       "document": "Details of an instance shard",
@@ -4229,13 +4463,49 @@
       ],
       "usage": "out"
     },
+    "SlowLogItem": {
+      "document": "Slow log details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Slow log details.",
+          "example": "\"Mon Sep 22 20:30:19.980 I COMMAND  [****] command admin.$cmd command: saslContinue { : 1, conversationId: 1, payload: BinData(0, ), $clusterTime: { clusterTime: Timestamp(1758544211, 1), **********\"",
+          "member": "string",
+          "name": "Log",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node name.",
+          "example": "\"cmgo-r3p8hslf_0-node-primary\"",
+          "member": "string",
+          "name": "NodeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Queries the hash value.",
+          "example": "\"admin..*****Continue\"",
+          "member": "string",
+          "name": "QueryHash",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SlowLogPattern": {
       "document": "Slow log statistics of MongoDB database",
       "members": [
         {
           "disabled": false,
-          "document": "Slow log pattern",
-          "example": "2024-12-08T18:09:23.364+0800",
+          "document": "Slow log output format: database name.table name.command.",
+          "example": "admin.$cmd.command",
           "member": "string",
           "name": "Pattern",
           "output_required": true,
@@ -4244,7 +4514,17 @@
         },
         {
           "disabled": false,
-          "document": "Maximum execution time",
+          "document": "queryHash value carried during slow log recording. It can be used to identify a query type.",
+          "example": "83BAE67C",
+          "member": "string",
+          "name": "QueryHash",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum execution time, in milliseconds.",
           "example": "578",
           "member": "uint64",
           "name": "MaxTime",
@@ -4254,7 +4534,7 @@
         },
         {
           "disabled": false,
-          "document": "Average execution time",
+          "document": "Average execution time, in milliseconds.",
           "example": "546",
           "member": "uint64",
           "name": "AverageTime",
@@ -4264,8 +4544,8 @@
         },
         {
           "disabled": false,
-          "document": "Number of slow logs in this pattern",
-          "example": "1",
+          "document": "Number of slow logs.",
+          "example": "8",
           "member": "uint64",
           "name": "Total",
           "output_required": true,
@@ -4276,11 +4556,11 @@
       "usage": "out"
     },
     "SpecItem": {
-      "document": "Specifications of purchasable MongoDB instances",
+      "document": "TencentDB for MongoDB instance sales specification.",
       "members": [
         {
           "disabled": false,
-          "document": "Specification information identifier. Format: mongo.HIO10G.128G. It consists of three parts: node type, specification type, and memory specification.\n - Node types are as follows:\n - mongo: Mongod node.\n - mongos: Mongos node.\n - cfgstr: ConfigServer node.\n - Specification types are as follows:\n - HIO10G: general high-I/O 10GE type.\n - HCD: cloud disk type.\n - Memory specifications are as follows:\n - Valid values: 4, 8, 16, 32, 64, 128, 240, and 512.\n - Unit: g, indicating GB. 128g means 128 GB.",
+          "document": "Specification information identifier. Format: mongo.HIO10G.128G. It consists of three parts: node type, specification type, and memory specification.\n- Node type: **mongo** indicates a Mongod node; **mongos** indicates a Mongos node; **cfgstr** indicates a ConfigServer node.\n- Specification type: **HIO10G** indicates the general HIO 10GE type; **HCD** indicates the Cloud Disk Edition type.\n- Memory specification, in GB. Valid values: 4, 8, 16, 32, 64, 128, 240, and 512. 128g indicates 128 GB.",
           "example": "mongo.HIO10G.128g",
           "member": "string",
           "name": "SpecCode",
@@ -4370,8 +4650,8 @@
         },
         {
           "disabled": false,
-          "document": "Storage engine version information on instances.\n - MONGO_36_WT: version of the MongoDB 3.6 WiredTiger storage engine.\n - MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n - MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n - MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.",
-          "example": "MONGO_36_WT",
+          "document": "Storage engine version information on instances.\n- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.\n- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.\n- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.\n- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.\n- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.\n- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.",
+          "example": "MONGO_50_WT",
           "member": "string",
           "name": "MongoVersionCode",
           "output_required": true,
@@ -4390,7 +4670,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance version information. Valid values: 3.6, 4.2, 4.4, 5.0, and 6.0.\n",
+          "document": "Instance version information. Valid values: 4.2, 4.4, 5.0, 6.0, and 7.0.",
           "example": "3.6",
           "member": "string",
           "name": "Version",
@@ -4492,11 +4772,11 @@
       "usage": "out"
     },
     "SpecificationInfo": {
-      "document": "Instance specification information",
+      "document": "Instance specification information.",
       "members": [
         {
           "disabled": false,
-          "document": "Region information",
+          "document": "Region information.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -4506,7 +4786,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ information",
+          "document": "AZ information.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -4516,7 +4796,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchasable specification information",
+          "document": "Sales specification information.",
           "example": "无",
           "member": "SpecItem",
           "name": "SpecItems",
@@ -4526,7 +4806,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether cross-AZ deployment is supported. Valid values: `1` (yes), `0` (no).",
+          "document": "Whether cross-AZ deployment is supported.\n- 1: supported.\n- 0: not supported.",
           "example": "1",
           "member": "int64",
           "name": "SupportMultiAZ",
@@ -4564,6 +4844,33 @@
         }
       ],
       "usage": "both"
+    },
+    "TerminateDBInstancesRequest": {
+      "document": "TerminateDBInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the ID of the pre-isolated instance. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-7pje****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateDBInstancesResponse": {
+      "document": "TerminateDBInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   },
   "version": "1.0"
