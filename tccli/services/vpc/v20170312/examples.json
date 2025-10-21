@@ -458,6 +458,30 @@
         "title": "Applying for Automatic Assignment of a Specified Number of Reserved Private IP Addresses"
       }
     ],
+    "CreateRoutePolicy": [
+      {
+        "document": "This example shows you how to create a VPC route reception policy.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateRoutePolicy\n&RoutePolicyName=TEST\n&RoutePolicyDescription=TEST\n&RoutePolicyEntrySet.0.Description=TEST\n&RoutePolicyEntrySet.0.CidrBlock=192.168.0.0/16\n&RoutePolicyEntrySet.0.GatewayType=CVM\n&RoutePolicyEntrySet.0.GatewayId=172.16.16.37\n&RoutePolicyEntrySet.0.Priority=100\n&RoutePolicyEntrySet.0.Action=ACCEPT\n&RoutePolicyEntrySet.0.RouteType=USER\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"RoutePolicy\": {\n            \"RoutePolicyId\": \"rrp-azd4dt1c\",\n            \"RoutePolicyName\": \"TEST\",\n            \"RoutePolicyEntrySet\": [\n                {\n                    \"Description\": \"\",\n                    \"CidrBlock\": \"192.168.0.0/16\",\n                    \"GatewayType\": \"CVM\",\n                    \"GatewayId\": \"172.16.16.37\",\n                    \"Priority\": 100,\n                    \"Action\": \"ACCEPT\",\n                    \"RouteType\": \"USER\"\n                }\n            ]\n        }\n    }\n}",
+        "title": "Creating a VPC Route Reception Policy"
+      }
+    ],
+    "CreateRoutePolicyAssociations": [
+      {
+        "document": "This example shows you how to create and bind a route reception policy.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoutePolicyAssociations\n<Common request parameters>\n\n{\n    \"RoutePolicyAssociationSet\": [\n        {\n            \"RouteTableId\": \"rtb-qk8eyn9g\",\n            \"RoutePolicyId\": \"rrp-q7ywkx3w\",\n            \"Priority\": 100\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a Route Reception Policy Binding"
+      }
+    ],
+    "CreateRoutePolicyEntries": [
+      {
+        "document": "This example shows you how to create a route reception policy entry.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CreateRoutePolicyEntries\n&RoutePolicyId=rrp-azd4dt1c\n&RoutePolicyEntrySet.0.CidrBlock=192.168.0.0/16\n&RoutePolicyEntrySet.0.GatewayType=CVM\n&RoutePolicyEntrySet.0.GatewayId=172.16.16.37\n&RoutePolicyEntrySet.0.Priority=100\n&RoutePolicyEntrySet.0.Action=ACCEPT\n&RoutePolicyEntrySet.0.RouteType=USER\n&<Common request parameters>\n",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Creating a Route Reception Policy Entry"
+      }
+    ],
     "CreateRouteTable": [
       {
         "document": "This example shows you how to create a route table.",
@@ -756,6 +780,30 @@
         "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteReserveIpAddresses\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-mcqaoy0f\",\n    \"ReserveIpIds\": [\n        \"rsvip-calhlymy\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"116b4d96-f745-4173-bee5-c464a4363757\"\n    }\n}",
         "title": "Deleting a Reserved Private IP Address"
+      }
+    ],
+    "DeleteRoutePolicy": [
+      {
+        "document": "This example shows you how to delete a route reception policy instance",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteRoutePolicy\n&RoutePolicyId=rrp-azd4dt1c\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Deleting a Route Reception Policy Instance"
+      }
+    ],
+    "DeleteRoutePolicyAssociations": [
+      {
+        "document": "This example shows you how to delete a route reception policy binding.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoutePolicyAssociations\n<Common request parameters>\n\n{\n    \"RoutePolicyAssociationSet\": [\n        {\n            \"RouteTableId\": \"rtb-qk8eyn9g\",\n            \"RoutePolicyId\": \"rrp-q7ywkx3w\",\n            \"Priority\": 100\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Deleting a Route Reception Policy Binding"
+      }
+    ],
+    "DeleteRoutePolicyEntries": [
+      {
+        "document": "This example shows you how to delete a route reception policy entry.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteRoutePolicyEntries\n&RoutePolicyId=rrp-azd4dt1c\n&RoutePolicyEntrySet.0.RoutePolicyEntryId=rrpi-la0vk0g3\n&<Common request parameters>\n",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Deleting a Route Reception Policy Entry"
       }
     ],
     "DeleteRouteTable": [
@@ -1360,6 +1408,14 @@
         "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeReserveIpAddresses\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"tag-key\",\n            \"Values\": [\n                \"ivan_reserve_ip\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e168d943-d647-4c0a-ada4-50a90015ded8\",\n        \"ReserveIpAddressSet\": [\n            {\n                \"CreatedTime\": \"2024-11-06 17:30:06\",\n                \"Description\": \"desc_ivan\",\n                \"IpType\": 0,\n                \"Name\": \"name_ivan\",\n                \"ReserveIpAddress\": \"10.0.5.89\",\n                \"ReserveIpId\": \"rsvip-du6lo6fu\",\n                \"ResourceId\": \"\",\n                \"State\": \"UnBind\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"ivan_reserve_ip\",\n                        \"Value\": \"hello\"\n                    }\n                ],\n                \"VpcId\": \"vpc-mcqaoy0f\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Filtering and Querying Reserved Private IP Addresses by Tag"
+      }
+    ],
+    "DescribeRoutePolicyEntries": [
+      {
+        "document": "This example shows you how to query the rule list of a routing strategy.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoutePolicyEntries\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"route-policy-id\",\n            \"Values\": [\n                \"rrp-fcrulzf8\"\n            ]\n        }\n    ],\n    \"Offset\": 1,\n    \"Limit\": 1,\n    \"OrderField\": \"abc\",\n    \"OrderDirection\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RoutePolicyEntrySet\": [\n            {\n                \"RoutePolicyEntryId\": \"rrpi-5j5wut37\",\n                \"Description\": \"\",\n                \"GatewayType\": \"PVGW\",\n                \"GatewayId\": \"172.16.16.37\",\n                \"Priority\": 1113,\n                \"Action\": \"DROP\",\n                \"RouteType\": \"ANY\",\n                \"CidrBlock\": \"10.0.0.0/16\",\n                \"CreatedTime\": \"2021-09-08 15:20:14\",\n                \"Region\": \"ap-guangtzhou\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"2cd67e99-9376-421d-a5bb-044a10c9d744\"\n    }\n}",
+        "title": "Querying Routing Strategy Rule List"
       }
     ],
     "DescribeRouteTables": [
@@ -2226,6 +2282,14 @@
         "title": "Modifying a Reserved Private IP Address"
       }
     ],
+    "ModifyRoutePolicyAttribute": [
+      {
+        "document": "This example shows you how to modify the route reception policy attribute.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRoutePolicyAttribute\n<Common request parameters>\n\n{\n    \"RoutePolicyId\": \"rrp-n0qp4w5a\",\n    \"RoutePolicyName\": \"TEST\",\n    \"RoutePolicyDescription\": \"TEST\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"49a4e5e2-28d6-492c-ac6b-55192e7dd29b\"\n    }\n}",
+        "title": "Modifying the Route Reception Policy Attribute"
+      }
+    ],
     "ModifyRouteTableAttribute": [
       {
         "document": "This example shows you how to modify attributes of a route table.",
@@ -2456,6 +2520,22 @@
         "title": "Replacing the CCN routes of a direct connect gateway"
       }
     ],
+    "ReplaceRoutePolicyAssociations": [
+      {
+        "document": "This example shows you how to replace a route reception policy binding.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReplaceRoutePolicyAssociations\n<Common request parameters>\n\n{\n    \"RoutePolicyAssociationSet\": [\n        {\n            \"RouteTableId\": \"rtb-qk8eyn9g\",\n            \"RoutePolicyId\": \"rrp-q7ywkx3w\",\n            \"Priority\": 100\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Replacing a Route Reception Policy Binding"
+      }
+    ],
+    "ReplaceRoutePolicyEntries": [
+      {
+        "document": "This example shows you how to replace a rule in the VPC routing strategy.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ReplaceRoutePolicyEntries\n&RoutePolicyId=rrp-azd4dt1c\n&RoutePolicyEntrySet.0.RoutePolicyEntryId=rrpi-la0vk0g3\n&RoutePolicyEntrySet.0.Priority=1222\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Replacing Rules in the VPC Routing Strategy"
+      }
+    ],
     "ReplaceRouteTableAssociation": [
       {
         "document": " ",
@@ -2502,6 +2582,22 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=ResetNatGatewayConnection\n&NatGatewayId=nat-ig8xpno8\n&MaxConcurrentConnection=3000000\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
         "title": "Increasing the maximum concurrent connections of a NAT gateway"
+      }
+    ],
+    "ResetRoutePolicyAssociations": [
+      {
+        "document": "This example shows you how to reset a route policy binding.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetRoutePolicyAssociations\n<Common request parameters>\n\n{\n    \"RoutePolicyAssociationSet\": [\n        {\n            \"RouteTableId\": \"rtb-cinupu2w\",\n            \"RoutePolicyId\": \"rrp-q7ywkx3w\",\n            \"Priority\": 100\n        }\n    ],\n    \"RouteTableId\": \"rtb-cinupu2w\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Resetting Route Policy Binding"
+      }
+    ],
+    "ResetRoutePolicyEntries": [
+      {
+        "document": "This example shows you how to reset the route reception policy rule.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ResetRoutePolicyEntries\n&RoutePolicyId=rrp-azd4dt1c\n&RoutePolicyDescription=TEST\n&RoutePolicyName=TEST\n&RoutePolicyEntrySet.0.CidrBlock=192.168.0.0/16\n&RoutePolicyEntrySet.0.GatewayType=CVM\n&RoutePolicyEntrySet.0.GatewayId=172.16.16.37\n&RoutePolicyEntrySet.0.Priority=100\n&RoutePolicyEntrySet.0.Action=ACCEPT\n&RoutePolicyEntrySet.0.RouteType=USER\n&<Common request parameters>\n",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Resetting the Route Reception Policy Rule"
       }
     ],
     "ResetRoutes": [

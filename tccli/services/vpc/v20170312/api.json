@@ -322,6 +322,27 @@
       "output": "CreateReserveIpAddressesResponse",
       "status": "online"
     },
+    "CreateRoutePolicy": {
+      "document": "This API is used to create a VPC route reception policy, including name, description and policy entries.",
+      "input": "CreateRoutePolicyRequest",
+      "name": "Create a routing policy and policy entry",
+      "output": "CreateRoutePolicyResponse",
+      "status": "online"
+    },
+    "CreateRoutePolicyAssociations": {
+      "document": "This API is used to create route reception policy bindings (the binding relationship between policy instances and route table instances as well as set priorities).",
+      "input": "CreateRoutePolicyAssociationsRequest",
+      "name": "Creates a route reception policy binding",
+      "output": "CreateRoutePolicyAssociationsResponse",
+      "status": "online"
+    },
+    "CreateRoutePolicyEntries": {
+      "document": "This API is used to create route reception policy entries.",
+      "input": "CreateRoutePolicyEntriesRequest",
+      "name": "Create a route reception policy entry",
+      "output": "CreateRoutePolicyEntriesResponse",
+      "status": "online"
+    },
     "CreateRouteTable": {
       "document": "This API is used to create a route table.\n* After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.\n* You can bind a tag when creating a route table. The tag list in the response indicates the tags that have been successfully added.",
       "input": "CreateRouteTableRequest",
@@ -572,6 +593,27 @@
       "input": "DeleteReserveIpAddressesRequest",
       "name": "Deletes a reserved private IP address",
       "output": "DeleteReserveIpAddressesResponse",
+      "status": "online"
+    },
+    "DeleteRoutePolicy": {
+      "document": "This API is used to delete a route reception policy and entries.",
+      "input": "DeleteRoutePolicyRequest",
+      "name": "Delete a route reception policy and entries",
+      "output": "DeleteRoutePolicyResponse",
+      "status": "online"
+    },
+    "DeleteRoutePolicyAssociations": {
+      "document": "This API is used to delete route reception policy bindings (the binding relationship between route reception policy objects and route tables).",
+      "input": "DeleteRoutePolicyAssociationsRequest",
+      "name": "Delete a route reception policy binding",
+      "output": "DeleteRoutePolicyAssociationsResponse",
+      "status": "online"
+    },
+    "DeleteRoutePolicyEntries": {
+      "document": "This API is used to delete route reception policy entries.",
+      "input": "DeleteRoutePolicyEntriesRequest",
+      "name": "Delete a route reception policy entry",
+      "output": "DeleteRoutePolicyEntriesResponse",
       "status": "online"
     },
     "DeleteRouteTable": {
@@ -985,6 +1027,13 @@
       "input": "DescribeReserveIpAddressesRequest",
       "name": "Queries reserved private IP addresses",
       "output": "DescribeReserveIpAddressesResponse",
+      "status": "online"
+    },
+    "DescribeRoutePolicyEntries": {
+      "document": "This API is used to query the route reception policy entry list.",
+      "input": "DescribeRoutePolicyEntriesRequest",
+      "name": "View a route reception policy entry",
+      "output": "DescribeRoutePolicyEntriesResponse",
       "status": "online"
     },
     "DescribeRouteTables": {
@@ -1659,6 +1708,13 @@
       "output": "ModifyReserveIpAddressResponse",
       "status": "online"
     },
+    "ModifyRoutePolicyAttribute": {
+      "document": "This API is used to modify the route reception policy attribute.",
+      "input": "ModifyRoutePolicyAttributeRequest",
+      "name": "Modify the routing strategy attribute",
+      "output": "ModifyRoutePolicyAttributeResponse",
+      "status": "online"
+    },
     "ModifyRouteTableAttribute": {
       "document": "This API (ModifyRouteTableAttribute) is used to modify the attributes of a route table.",
       "input": "ModifyRouteTableAttributeRequest",
@@ -1834,6 +1890,20 @@
       "output": "ReplaceDirectConnectGatewayCcnRoutesResponse",
       "status": "online"
     },
+    "ReplaceRoutePolicyAssociations": {
+      "document": "This API is used to modify the binding Priority (Priority) based on the route reception policy instance ID (RoutePolicyId) and route table instance ID (RouteTableId), supporting batch modification.",
+      "input": "ReplaceRoutePolicyAssociationsRequest",
+      "name": "Replace a route reception policy binding",
+      "output": "ReplaceRoutePolicyAssociationsResponse",
+      "status": "online"
+    },
+    "ReplaceRoutePolicyEntries": {
+      "document": "This API is used to modify specified routing policy entries based on route reception policy rule ID and supports batch modification.",
+      "input": "ReplaceRoutePolicyEntriesRequest",
+      "name": "Replace a route reception policy entry",
+      "output": "ReplaceRoutePolicyEntriesResponse",
+      "status": "online"
+    },
     "ReplaceRouteTableAssociation": {
       "document": "This API (ReplaceRouteTableAssociation) is used to modify the route table associated with a subnet.\n* A subnet can only be associated with one route table.",
       "input": "ReplaceRouteTableAssociationRequest",
@@ -1874,6 +1944,20 @@
       "input": "ResetNatGatewayConnectionRequest",
       "name": "Adjusts the concurrent connection cap for the NAT gateway",
       "output": "ResetNatGatewayConnectionResponse",
+      "status": "online"
+    },
+    "ResetRoutePolicyAssociations": {
+      "document": "This API is used to unbind the routing policy instance already bound to a specific route table instance, set up alarms for the new binding routing policy and priority.",
+      "input": "ResetRoutePolicyAssociationsRequest",
+      "name": "Reset a route policy binding",
+      "output": "ResetRoutePolicyAssociationsResponse",
+      "status": "online"
+    },
+    "ResetRoutePolicyEntries": {
+      "document": "This API is used to reset the designated route reception policy entry based on the rule ID and supports batch modification.",
+      "input": "ResetRoutePolicyEntriesRequest",
+      "name": "Reset a route reception policy entry",
+      "output": "ResetRoutePolicyEntriesResponse",
       "status": "online"
     },
     "ResetRoutes": {
@@ -6654,6 +6738,123 @@
       ],
       "type": "object"
     },
+    "CreateRoutePolicyAssociationsRequest": {
+      "document": "CreateRoutePolicyAssociations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Route reception policy binding object list.",
+          "example": "无",
+          "member": "RoutePolicyAssociation",
+          "name": "RoutePolicyAssociationSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoutePolicyAssociationsResponse": {
+      "document": "CreateRoutePolicyAssociations response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoutePolicyEntriesRequest": {
+      "document": "CreateRoutePolicyEntries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID of the route reception policy.",
+          "example": "rrp-q7ywkx3w",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Route reception policy entry list.",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoutePolicyEntriesResponse": {
+      "document": "CreateRoutePolicyEntries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoutePolicyRequest": {
+      "document": "CreateRoutePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Routing policy description.",
+          "example": "TEST",
+          "member": "string",
+          "name": "RoutePolicyDescription",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the routing strategy name.",
+          "example": "TEST",
+          "member": "string",
+          "name": "RoutePolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Routing policy entry list.",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRoutePolicyResponse": {
+      "document": "CreateRoutePolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the routing policy ID and rules.",
+          "example": "无",
+          "member": "RoutePolicy",
+          "name": "RoutePolicy",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateRouteTableRequest": {
       "document": "CreateRouteTable request structure.",
       "members": [
@@ -8916,6 +9117,96 @@
     },
     "DeleteReserveIpAddressesResponse": {
       "document": "DeleteReserveIpAddresses response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyAssociationsRequest": {
+      "document": "DeleteRoutePolicyAssociations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Routing policy binding object list. during routing policy unbinding, use the RouteTableId and RoutePolicyId fields of RoutePolicyAssociation (you do not need to fill in the Priority field).",
+          "example": "无",
+          "member": "RoutePolicyAssociation",
+          "name": "RoutePolicyAssociationSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyAssociationsResponse": {
+      "document": "DeleteRoutePolicyAssociations response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyEntriesRequest": {
+      "document": "DeleteRoutePolicyEntries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID of the route reception policy.",
+          "example": "rrp-q7ywkx3w",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Route reception policy entry list. when deleting a routing policy rule, use the routepolicyentryid field of RoutePolicyEntry.",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyEntriesResponse": {
+      "document": "DeleteRoutePolicyEntries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyRequest": {
+      "document": "DeleteRoutePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the unique ID of the route reception policy.",
+          "example": "rrp-pguby7ma",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRoutePolicyResponse": {
+      "document": "DeleteRoutePolicy response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12455,6 +12746,98 @@
           "member": "uint64",
           "name": "TotalCount",
           "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoutePolicyEntriesRequest": {
+      "document": "DescribeRoutePolicyEntries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criteria. RoutePolicyEntryIds and Filters cannot be specified at the same time.\n<li>route-policy-id - String - (filter condition) specifies the instance id of the route reception policy, such as rrp-f49l6u0z.</li>.\n<li>cidr-block - String - (filter condition) cidr (subnet part before the mask), such as 10.0.0.0/8.</li>.\n<li>priority - Integer - filter condition. specifies the priority, such as 20.</li>.\n<li>gateway-type - String - (filter criteria) next hop type, such as CVM.</li>.\n<li>GatewayId - String - specifies the unique id of the next hop instance, such as ccn-f49l6u0z.</li>.\n<li>route-type - String - (filter condition) routing type. valid values: USER (USER route), NETD (route issued by network probe), CCN (CCN route).</li>.\n<li>action - String - (filter condition) specifies the action. valid values: DROP (DROP), DISABLE (receive and DISABLE), ACCEPT (receive and enable).</li>.\n<li>description - String - specifies the filter condition description, such as TEST.</li>.\n<li>route-policy-item-id - String - (filter condition) specifies the entry unique id of the route reception policy, such as rrpi-dq782kw7.</li>.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of request objects.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. currently only supports the priority field.",
+          "example": "Priority",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sorting order.\nASC: ascending order.\nDESC: descending order.",
+          "example": "ASC",
+          "member": "string",
+          "name": "OrderDirection",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the routing strategy entry ID.",
+          "example": "无",
+          "member": "string",
+          "name": "RoutePolicyEntryIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRoutePolicyEntriesResponse": {
+      "document": "DescribeRoutePolicyEntries response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Route reception policy entry list.",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of eligible instances.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -19215,6 +19598,51 @@
       ],
       "type": "object"
     },
+    "ModifyRoutePolicyAttributeRequest": {
+      "document": "ModifyRoutePolicyAttribute request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID of the route reception policy, such as rrp-dz0219jq.",
+          "example": "rrp-dz0219jq",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the route reception policy name.",
+          "example": "name",
+          "member": "string",
+          "name": "RoutePolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the route reception policy.",
+          "example": "TEST",
+          "member": "string",
+          "name": "RoutePolicyDescription",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRoutePolicyAttributeResponse": {
+      "document": "ModifyRoutePolicyAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyRouteTableAttributeRequest": {
       "document": "ModifyRouteTableAttribute request structure.",
       "members": [
@@ -21846,6 +22274,69 @@
       ],
       "type": "object"
     },
+    "ReplaceRoutePolicyAssociationsRequest": {
+      "document": "ReplaceRoutePolicyAssociations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Route reception policy binding object list. requires specifying the route reception policy instance ID (RoutePolicyId) and route table instance ID (RouteTableId).",
+          "example": "无",
+          "member": "RoutePolicyAssociation",
+          "name": "RoutePolicyAssociationSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceRoutePolicyAssociationsResponse": {
+      "document": "ReplaceRoutePolicyAssociations response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceRoutePolicyEntriesRequest": {
+      "document": "ReplaceRoutePolicyEntries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID of the routing strategy, such as rrp-azd4dt1c.",
+          "example": "rrp-azd4dt1c",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule list of the routing strategy. requires specifying the policy rule ID (RoutePolicyEntryId).",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceRoutePolicyEntriesResponse": {
+      "document": "ReplaceRoutePolicyEntries response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ReplaceRouteTableAssociationRequest": {
       "document": "ReplaceRouteTableAssociation request structure.",
       "members": [
@@ -22213,6 +22704,96 @@
     },
     "ResetNatGatewayConnectionResponse": {
       "document": "ResetNatGatewayConnection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRoutePolicyAssociationsRequest": {
+      "document": "ResetRoutePolicyAssociations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Routing table instance ID, e.g., rtb-azd4dt1c.",
+          "example": "rtb-n0yejvje",
+          "member": "string",
+          "name": "RouteTableId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The list of routing policy binding objects (RoutePolicyAssociation). note: the route table instance ID (RouteTableId) in the binding must match the RouteTableId parameter of this API (that is, this API only supports modifying the strategy binding relationship and priority within the same route table instance).",
+          "example": "无",
+          "member": "RoutePolicyAssociation",
+          "name": "RoutePolicyAssociationSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRoutePolicyAssociationsResponse": {
+      "document": "ResetRoutePolicyAssociations response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRoutePolicyEntriesRequest": {
+      "document": "ResetRoutePolicyEntries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID of the route reception policy, such as rrp-azd4dt1c.",
+          "example": "rrp-azd4dt1c",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Route reception policy entry list. requires specifying the routing strategy entry ID (RoutePolicyEntryId).",
+          "example": "无",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the route reception policy.",
+          "example": "TEST",
+          "member": "string",
+          "name": "RoutePolicyDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the route reception policy name.",
+          "example": "TEST",
+          "member": "string",
+          "name": "RoutePolicyName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetRoutePolicyEntriesResponse": {
+      "document": "ResetRoutePolicyEntries response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -23090,6 +23671,244 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RoutePolicy": {
+      "document": "Route reception policy. when CCN or other services add routes to a VPC custom route table, you can drop or enable appropriate route entries.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the routing policy.\n\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "rrp-pguby7ma",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the routing strategy name.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "demo",
+          "member": "string",
+          "name": "RoutePolicyName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Routing policy description.\n\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "demo",
+          "member": "string",
+          "name": "RoutePolicyDescription",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Routing policy rule list.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "[]",
+          "member": "RoutePolicyEntry",
+          "name": "RoutePolicyEntrySet",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the routing strategy binding.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "[{\"RouteTableId\": \"\trtb-qk8eyn9g\", \"RoutePolicyId\": \"rrp-r70ctaia\", \"Priority\": 100}]",
+          "member": "RoutePolicyAssociation",
+          "name": "RoutePolicyAssociationSet",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "2023-05-20 15:21:54",
+          "member": "string",
+          "name": "CreatedTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag key-value pair.",
+          "example": "[{\"Key\": \"env\", \"Value\": \"prod\"}]",
+          "member": "Tag",
+          "name": "TagSet",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RoutePolicyAssociation": {
+      "document": "Route reception policy binding. used to bind the route table and route reception policy and specify the binding priority.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique route table ID.",
+          "example": "rtb-qk8eyn9g",
+          "member": "string",
+          "name": "RouteTableId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the unique ID of the route reception policy.",
+          "example": "rrp-r70ctaia",
+          "member": "string",
+          "name": "RoutePolicyId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Priority.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Priority",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RoutePolicyEntry": {
+      "document": "Route reception policy entry.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the unique ID of the IPv4 routing strategy entry.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "rrpi-hd7hsfhh",
+          "member": "string",
+          "name": "RoutePolicyEntryId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Destination ip range.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "13.0.0.0/16",
+          "member": "string",
+          "name": "CidrBlock",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Describes the routing strategy rule.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "demo",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Routing Type\n\nSpecifies the USER-customized data type.\nNETD: specifies the route for network detection.\nCCN: CCN route.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "CCN",
+          "member": "string",
+          "name": "RouteType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Next hop type. types currently supported:.\nCVM: cloud virtual machine with public network gateway type.\nVPN: vpn gateway.\nDIRECTCONNECT: direct connect gateway.\nPEERCONNECTION: peering connection.\nHAVIP: high availability virtual ip.\nNAT: specifies the nat gateway. \nEIP: specifies the public ip address of the cloud virtual machine.\nLOCAL_GATEWAY: specifies the local gateway.\nPVGW: pvgw gateway.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "CVM",
+          "member": "string",
+          "name": "GatewayType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gateway unique ID.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "172.16.16.37",
+          "member": "string",
+          "name": "GatewayId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Priority. a smaller value indicates a higher priority.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Priority",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Action.\nDROP: drop.\nDISABLE: receive and disable.\nACCEPT: receive and enable.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Action",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "2023-05-20 15:06:34",
+          "member": "string",
+          "name": "CreatedTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the region.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -24392,23 +25211,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "Tag key\nNote: This field may return null, indicating no valid value.",
+          "document": "Tag key",
           "example": "tag-key",
           "member": "string",
           "name": "Key",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tag value\nNote: This field may return null, indicating no valid value.",
+          "document": "Tag value",
           "example": "tag-value",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
