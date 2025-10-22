@@ -16,6 +16,14 @@
         "title": "Sample request"
       }
     ],
+    "BindSSAICDNDomainWithChannel": [
+      {
+        "document": "SSAI Channel binding CDN playback domain name.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindSSAICDNDomainWithChannel\n<Public request parameters>\n\n{\n    \"ChannelId\": \"68F6FB29000040E1DC40\",\n    \"CdnDomain\": \"xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"85bc94cc-9e55-4400-bf1b-f45dd12089\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "CreateStreamPackageChannel": [
       {
         "document": " ",
@@ -478,6 +486,14 @@
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindLinearAssemblyCDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"XXX123\",\n    \"CdnDomain\": \"testcdn.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"XXXREQ\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "UnbindSSAICDNDomainWithChannel": [
+      {
+        "document": "Cancel the association between the channel and CDN playback domain.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindSSAICDNDomainWithChannel\n<Public request parameters>\n\n{\n    \"ChannelId\": \"68F6FB29000040E1DC40\",\n    \"CdnDomain\": \"xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"85bc94cc-9e55-4400-bf1b-f45dd1208990\"\n    }\n}",
+        "title": "Request Example"
       }
     ]
   },
