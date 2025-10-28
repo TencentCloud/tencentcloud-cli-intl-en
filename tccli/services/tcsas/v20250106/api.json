@@ -5065,78 +5065,78 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team role type 1-Mini program team 2-Application team\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team role type 1-mini program team 2-application team",
+          "example": "1",
           "member": "int64",
           "name": "TeamRoleType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Admin account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Administrator account",
+          "example": "autotest_op",
           "member": "string",
           "name": "AdminUserAccount",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "autotest_admin_admin_admin_admin",
           "member": "string",
           "name": "CreateUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1735544017",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of team members\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of team members",
+          "example": "1",
           "member": "int64",
           "name": "MemberCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of bound mini program teams\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of bound mini program teams",
+          "example": "0",
           "member": "int64",
           "name": "BindMiniTeamCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name of the bound team",
-          "example": "无",
+          "example": "autotest_app_team",
           "member": "string",
           "name": "BindTeamName",
           "output_required": false,
@@ -5146,7 +5146,7 @@
         {
           "disabled": false,
           "document": "Team registration link",
-          "example": "无",
+          "example": "http://sample.com/register",
           "member": "string",
           "name": "RegisterLink",
           "output_required": false,
@@ -5155,12 +5155,32 @@
         },
         {
           "disabled": false,
-          "document": "Application name. It’s required when querying details of a mini program team.",
-          "example": "无",
+          "document": "Application name. It Is required when querying details of a mini program team.",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team expiration time. 0 means never expire.",
+          "example": "1761032238",
+          "member": "int64",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team status. valid values: 1: normal; 2: disabled; 3: expired.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -5171,68 +5191,68 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "5527683491",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "app_team",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Admin ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Administrator user ID",
+          "example": "U20250305141811KMSUKK",
           "member": "string",
           "name": "AdminUserId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Admin account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Administrator account",
+          "example": "xinyu",
           "member": "string",
           "name": "AdminUserAccount",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Admin username\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Administrator username",
+          "example": "xinyu",
           "member": "string",
           "name": "AdminUserName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of team members\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of team members",
+          "example": "1",
           "member": "int64",
           "name": "MemberCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Team registration link",
-          "example": "无",
+          "example": "https://t05304jw9141741rlrn.console.tcmppcloud.com/team-register/ae2b5accadfd788eefaf3e5409ccbc57",
           "member": "string",
           "name": "RegisterLink",
           "output_required": false,
@@ -5241,20 +5261,40 @@
         },
         {
           "disabled": false,
-          "document": "Team permission type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team permission type",
+          "example": "[2]",
           "member": "int64",
           "name": "TeamRoleTypeList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Associated team ID",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "RelatedTeamId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team expiration time. 0 means never expire.",
+          "example": "1761032238",
+          "member": "int64",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team status. valid values: 1: normal; 2: disabled; 3: expired.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5268,7 +5308,7 @@
         {
           "disabled": false,
           "document": "Pagination offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -5276,8 +5316,8 @@
         },
         {
           "disabled": false,
-          "document": "Number of results per page",
-          "example": "无",
+          "document": "Page size",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -5286,7 +5326,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -5294,8 +5334,8 @@
         },
         {
           "disabled": false,
-          "document": "Name of the team to be queried",
-          "example": "无",
+          "document": "Team name to be queried",
+          "example": "name",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -5525,23 +5565,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total count",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeTeamListInfoResp",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5552,7 +5592,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -5561,7 +5601,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,

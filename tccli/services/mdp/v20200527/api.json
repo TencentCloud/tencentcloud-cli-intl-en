@@ -15,9 +15,9 @@
       "status": "online"
     },
     "BindSSAICDNDomainWithChannel": {
-      "document": "BindSSAICDNDomainWithChannel",
+      "document": "This API is used to bind a CDN playback domain to a channel.",
       "input": "BindSSAICDNDomainWithChannelRequest",
-      "name": "BindSSAICDNDomainWithChannel",
+      "name": "Bind an SSAI channel to a CDN playback domain",
       "output": "BindSSAICDNDomainWithChannelResponse",
       "status": "online"
     },
@@ -428,9 +428,9 @@
       "status": "online"
     },
     "UnbindSSAICDNDomainWithChannel": {
-      "document": "UnbindSSAICDNDomainWithChannel",
+      "document": "This API is used to cancel the correlation between a channel and a CDN playback domain.",
       "input": "UnbindSSAICDNDomainWithChannelRequest",
-      "name": "UnbindSSAICDNDomainWithChannel",
+      "name": "Unbind an SSAI channel and CDN domain",
       "output": "UnbindSSAICDNDomainWithChannelResponse",
       "status": "online"
     }
@@ -648,7 +648,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Channel Id",
+          "document": "Channel Id.",
           "example": "ChannelId",
           "member": "string",
           "name": "ChannelId",
@@ -657,7 +657,7 @@
         },
         {
           "disabled": false,
-          "document": "The domain name for CDN playback.",
+          "document": "Specifies the playback domain of CDN.",
           "example": "CdnDomain",
           "member": "string",
           "name": "CdnDomain",
@@ -6668,7 +6668,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Channel Id",
+          "document": "Channel Id.",
           "example": "ChannelId",
           "member": "string",
           "name": "ChannelId",
@@ -6677,7 +6677,7 @@
         },
         {
           "disabled": false,
-          "document": "The domain name for CDN playback.",
+          "document": "Specifies the playback domain of CDN.",
           "example": "CdnDomain",
           "member": "string",
           "name": "CdnDomain",

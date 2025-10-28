@@ -18,9 +18,9 @@
     ],
     "BindSSAICDNDomainWithChannel": [
       {
-        "document": "SSAI Channel binding CDN playback domain name.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindSSAICDNDomainWithChannel\n<Public request parameters>\n\n{\n    \"ChannelId\": \"68F6FB29000040E1DC40\",\n    \"CdnDomain\": \"xxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"85bc94cc-9e55-4400-bf1b-f45dd12089\"\n    }\n}",
+        "document": "This example shows you how to bind a CDN playback domain to a channel.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindSSAICDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"68F6FCCD00003FEF93DB\",\n    \"CdnDomain\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"790d6787-6aa7-4f0e-b327-65e53c01949c\"\n    }\n}",
         "title": "Request Example"
       }
     ],
@@ -490,9 +490,9 @@
     ],
     "UnbindSSAICDNDomainWithChannel": [
       {
-        "document": "Cancel the association between the channel and CDN playback domain.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindSSAICDNDomainWithChannel\n<Public request parameters>\n\n{\n    \"ChannelId\": \"68F6FB29000040E1DC40\",\n    \"CdnDomain\": \"xxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"85bc94cc-9e55-4400-bf1b-f45dd1208990\"\n    }\n}",
+        "document": "This example shows you how to cancel the correlation between a channel and a CDN playback domain.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindSSAICDNDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"68F6FCCD00003FEF93DB\",\n    \"CdnDomain\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"790d6787-68e7-4ace-b327-65e53c01949c\"\n    }\n}",
         "title": "Request Example"
       }
     ]

@@ -567,6 +567,13 @@
       "output": "InquirePriceModifyResponse",
       "status": "online"
     },
+    "InquirePriceMultiSpec": {
+      "document": "This API is used to inquire prices in batch.",
+      "input": "InquirePriceMultiSpecRequest",
+      "name": "Query multi-specification pricing",
+      "output": "InquirePriceMultiSpecResponse",
+      "status": "online"
+    },
     "InquirePriceRenew": {
       "document": "This API is used to query the renewal price of a cluster.",
       "input": "InquirePriceRenewRequest",
@@ -10722,6 +10729,136 @@
       ],
       "type": "object"
     },
+    "GoodsPrice": {
+      "document": "Item price.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TradePrice",
+          "name": "InstancePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the storage price.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TradePrice",
+          "name": "StoragePrice",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the product specification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "GoodsSpec",
+          "name": "GoodsSpec",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GoodsSpec": {
+      "document": "Product specification.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of products\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores. required for PREPAID and POSTPAID instance types.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Memory size in gb. required for PREPAID and POSTPAID instance types.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Ccu size. required for serverless type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.5",
+          "member": "float",
+          "name": "Ccu",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Storage size. required for PREPAID storage type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "StorageLimit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purchase duration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Duration unit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Machine type.",
+          "example": "common",
+          "member": "string",
+          "name": "DeviceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "InputAccount": {
       "document": "Account. Valid values: `accountName`, `host`.",
       "members": [
@@ -10973,6 +11110,70 @@
           "name": "StoragePrice",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceMultiSpecRequest": {
+      "document": "InquirePriceMultiSpec request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone. specifies the best practice for region provision.",
+          "example": "ap-guangzhou-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance purchase type. available values are: PREPAID, POSTPAID, SERVERLESS.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstancePayMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Storage purchase type. available values are: PREPAID, POSTPAID.",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "StoragePayMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the product specification.",
+          "example": "无",
+          "member": "GoodsSpec",
+          "name": "GoodsSpecs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceMultiSpecResponse": {
+      "document": "InquirePriceMultiSpec response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the product price.",
+          "example": "无",
+          "member": "GoodsPrice",
+          "name": "GoodsPrice",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
