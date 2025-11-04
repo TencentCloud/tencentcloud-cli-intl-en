@@ -22663,6 +22663,23 @@
       ],
       "usage": "out"
     },
+    "OriginPullProtocolParameters": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "OriginRecord": {
       "document": "Origin group record",
       "members": [
@@ -23107,7 +23124,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum limit. value range between 1MB and 500MB. byte.",
+          "document": "Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).",
           "example": "10000000",
           "member": "int64",
           "name": "MaxSize",
@@ -23135,7 +23152,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.",
+          "document": "Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).",
           "example": "10000000",
           "member": "int64",
           "name": "MaxSize",
@@ -24978,6 +24995,17 @@
           "example": "无",
           "member": "ForceRedirectHTTPSParameters",
           "name": "ForceRedirectHTTPSParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "OriginPullProtocolParameters",
+          "name": "OriginPullProtocolParameters",
           "output_required": false,
           "required": false,
           "type": "object",

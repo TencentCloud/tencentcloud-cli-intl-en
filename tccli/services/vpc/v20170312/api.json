@@ -3444,13 +3444,13 @@
         },
         {
           "disabled": false,
-          "document": "Subnets divided by the secondary CIDR.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Subnet Split by Auxiliary CIDR",
+          "example": "[{\"VpcId\": \"vpc-7zqx75u3\", \"SubnetId\": \"subnet-9b1gk064\", \"CidrBlock\": \"11.0.0.0/16\", \"Zone\": \"ap-guangzhou-2\", \"SubnetName\": \"demo\"}]",
           "member": "Subnet",
           "name": "SubnetSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7671,11 +7671,20 @@
         {
           "disabled": false,
           "document": "Bound tags, such as [{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
-          "example": "[]",
+          "example": "[{\"Key\": \"env\", \"Value\": \"prod\"}]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableRouteVpcPublish",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -7686,7 +7695,7 @@
         {
           "disabled": false,
           "document": "The VPC object.",
-          "example": "{\"VpcFlag\": 1, \"VpcId\": \"vpc-2ln96dly\", \"IsShare\": true, \"DomainName\": \"TEST\", \"Ipv6CidrBlock\": \"2001::85b:3c51:f5ff:ffdb\", \"Region\": \"ap-guangzhou\", \"EnableRouteVpcPublish\": false, \"Ipv6CidrBlockSet\": [], \"EnableDhcp\": true, \"VpcNumId\": 1, \"DnsServerSet\": [\"183.60.82.98\"], \"EnableMulticast\": false, \"VpcName\": \"TEST\", \"TagSet\": [], \"DhcpOptionsId\": \"dopt-058pu85z\", \"CreatedTime\": \"2020-10-12 10:00:00\", \"CidrBlock\": \"10.0.0.0/16\", \"IsDefault\": false}",
+          "example": "无",
           "member": "Vpc",
           "name": "Vpc",
           "output_required": true,
@@ -17134,6 +17143,42 @@
       ],
       "usage": "both"
     },
+    "ISPIPv6CidrBlock": {
+      "document": "Returns multi-operator IPv6 Cidr Block.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IPv6 CIdr Block",
+          "example": "2402:4e00:1717:8200::/56",
+          "member": "string",
+          "name": "IPv6CidrBlock",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network operator type. valid values: 'BGP' (default), 'CMCC' (china mobile), 'CTCC' (china telecom), 'CUCC' (china unicom).",
+          "example": "BGP",
+          "member": "string",
+          "name": "ISPType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the type of IPv6 Cidr: `GUA` (global unicast address), `ULA` (unique local address).",
+          "example": "GUA",
+          "member": "string",
+          "name": "AddressType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InquirePriceCreateDirectConnectGatewayRequest": {
       "document": "InquirePriceCreateDirectConnectGateway request structure.",
       "members": [],
@@ -19990,7 +20035,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Security group can be named freely, but cannot exceed 60 characters.",
+          "document": "VPC instance ID, in the format of vpc-f49l6u0z.",
           "example": "vpc-m7sr81gh",
           "member": "string",
           "name": "VpcId",
@@ -20032,6 +20077,15 @@
           "name": "DomainName",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Vpc association with CCN route publish policy. true enables cidr route publishing. false enables subnet route publishing. the default is subnet route publishing when creating a vpc. to use cidr route publishing, submit a ticket to add to allowlist.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableRouteVpcPublish",
+          "required": false,
+          "type": "bool"
         },
         {
           "disabled": false,
@@ -25094,7 +25148,7 @@
         {
           "disabled": false,
           "document": "The `IPv6` `CIDR` of the subnet.",
-          "example": " ",
+          "example": "fd76:3600:1300:c00::/64",
           "member": "string",
           "name": "Ipv6CidrBlock",
           "output_required": false,
@@ -25134,7 +25188,7 @@
         {
           "disabled": false,
           "document": "Tag key-value pairs",
-          "example": "[]",
+          "example": "[{\"Key\": \"env\", \"Value\": \"prod\"}]",
           "member": "Tag",
           "name": "TagSet",
           "output_required": false,
@@ -25143,23 +25197,23 @@
         },
         {
           "disabled": false,
-          "document": "CDC instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "CDC instance ID.",
           "example": "cluster-gbo27yc4",
           "member": "string",
           "name": "CdcId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it is a CDC subnet. Valid values: 0: no; 1: yes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether the subnet is associated with CDC. valid values: 0 (no), 1 (yes).",
           "example": "0",
           "member": "int64",
           "name": "IsCdcSubnet",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -25544,7 +25598,7 @@
         {
           "disabled": false,
           "document": "`VPC` name.",
-          "example": "demo",
+          "example": "VPC-1",
           "member": "string",
           "name": "VpcName",
           "output_required": true,
@@ -25574,7 +25628,7 @@
         {
           "disabled": false,
           "document": "Whether it is the default `VPC`.",
-          "example": " true",
+          "example": "true",
           "member": "bool",
           "name": "IsDefault",
           "output_required": true,
@@ -25584,7 +25638,7 @@
         {
           "disabled": false,
           "document": "Whether multicast is enabled.",
-          "example": "true ",
+          "example": "true",
           "member": "bool",
           "name": "EnableMulticast",
           "output_required": true,
@@ -25614,7 +25668,7 @@
         {
           "disabled": false,
           "document": "DHCP domain name option value.",
-          "example": " demo",
+          "example": "DomainName1",
           "member": "string",
           "name": "DomainName",
           "output_required": true,
@@ -25634,7 +25688,7 @@
         {
           "disabled": false,
           "document": "Whether `DHCP` is enabled.",
-          "example": " false",
+          "example": "false",
           "member": "bool",
           "name": "EnableDhcp",
           "output_required": true,
@@ -25654,7 +25708,7 @@
         {
           "disabled": false,
           "document": "Tag key-value pair",
-          "example": "[]",
+          "example": "无",
           "member": "Tag",
           "name": "TagSet",
           "output_required": true,
@@ -25663,13 +25717,33 @@
         },
         {
           "disabled": false,
-          "document": "The secondary CIDR block.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Auxiliary CIDR",
+          "example": "无",
           "member": "AssistantCidr",
           "name": "AssistantCidrSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vpc association with CCN route publish policy. true: enables cidr route publishing. false: enables subnet route publishing. default is subnet route publishing when creating a vpc. to select cidr route publishing, submit a ticket for adding to allowlist.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableRouteVpcPublish",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returns the multi-operator IPv6 Cidr Block.",
+          "example": "无",
+          "member": "ISPIPv6CidrBlock",
+          "name": "Ipv6CidrBlockSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
