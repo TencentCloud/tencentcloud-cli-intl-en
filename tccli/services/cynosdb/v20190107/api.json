@@ -98,6 +98,13 @@
       "output": "CreateBackupResponse",
       "status": "online"
     },
+    "CreateCLSDelivery": {
+      "document": "This API is used to create log delivery.",
+      "input": "CreateCLSDeliveryRequest",
+      "name": "Creating a Log Shipping Task",
+      "output": "CreateCLSDeliveryResponse",
+      "status": "online"
+    },
     "CreateClusterDatabase": {
       "document": "This API is used to create a database.",
       "input": "CreateClusterDatabaseRequest",
@@ -168,6 +175,13 @@
       "output": "DeleteBackupResponse",
       "status": "online"
     },
+    "DeleteCLSDelivery": {
+      "document": "This API is used to delete log delivery.",
+      "input": "DeleteCLSDeliveryRequest",
+      "name": "Deleting a Log Shipping Task",
+      "output": "DeleteCLSDeliveryResponse",
+      "status": "online"
+    },
     "DeleteClusterDatabase": {
       "document": "This interface is used to delete a database.",
       "input": "DeleteClusterDatabaseRequest",
@@ -194,6 +208,13 @@
       "input": "DescribeAccountsRequest",
       "name": "Queries database management accounts",
       "output": "DescribeAccountsResponse",
+      "status": "online"
+    },
+    "DescribeAuditInstanceList": {
+      "document": "This API is used to obtain the instance list of database audit.",
+      "input": "DescribeAuditInstanceListRequest",
+      "name": "Obtaining the Audit Instance List",
+      "output": "DescribeAuditInstanceListResponse",
       "status": "online"
     },
     "DescribeAuditRuleTemplates": {
@@ -273,11 +294,25 @@
       "output": "DescribeBinlogsResponse",
       "status": "online"
     },
+    "DescribeChangedParamsAfterUpgrade": {
+      "document": "this interface is used for querying parameter comparison after specification adjustment.",
+      "input": "DescribeChangedParamsAfterUpgradeRequest",
+      "name": "Comparison of Running Parameters During Specification Adjustment",
+      "output": "DescribeChangedParamsAfterUpgradeResponse",
+      "status": "online"
+    },
     "DescribeClusterDatabaseTables": {
       "document": "This API is used to access the table list.",
       "input": "DescribeClusterDatabaseTablesRequest",
       "name": "Access the table list",
       "output": "DescribeClusterDatabaseTablesResponse",
+      "status": "online"
+    },
+    "DescribeClusterDatabases": {
+      "document": "This API is used to obtain cluster database list.",
+      "input": "DescribeClusterDatabasesRequest",
+      "name": "Obtaining the Cluster Database List",
+      "output": "DescribeClusterDatabasesResponse",
       "status": "online"
     },
     "DescribeClusterDetail": {
@@ -348,6 +383,13 @@
       "input": "DescribeFlowRequest",
       "name": "Queries task flow information",
       "output": "DescribeFlowResponse",
+      "status": "online"
+    },
+    "DescribeInstanceCLSLogDelivery": {
+      "document": "This API is used to query instance log delivery information.",
+      "input": "DescribeInstanceCLSLogDeliveryRequest",
+      "name": "Querying Instance Log Shipping Information",
+      "output": "DescribeInstanceCLSLogDeliveryResponse",
       "status": "online"
     },
     "DescribeInstanceDetail": {
@@ -523,6 +565,13 @@
       "input": "DescribeSupportProxyVersionRequest",
       "name": "Queries the supported database proxy versions.",
       "output": "DescribeSupportProxyVersionResponse",
+      "status": "online"
+    },
+    "DescribeTasks": {
+      "document": "This API is used to query task lists.",
+      "input": "DescribeTasksRequest",
+      "name": "Querying the Task List",
+      "output": "DescribeTasksResponse",
       "status": "online"
     },
     "DescribeZones": {
@@ -735,6 +784,13 @@
       "output": "ModifyInstanceParamResponse",
       "status": "online"
     },
+    "ModifyInstanceUpgradeLimitDays": {
+      "document": "This API is used to modify the time limit for upgrading the kernel minor version of an instance.",
+      "input": "ModifyInstanceUpgradeLimitDaysRequest",
+      "name": "Modifying the Time Limit for the Instance Minor Version Upgrade",
+      "output": "ModifyInstanceUpgradeLimitDaysResponse",
+      "status": "online"
+    },
     "ModifyMaintainPeriodConfig": {
       "document": "This API is used to modify maintenance time configuration.",
       "input": "ModifyMaintainPeriodConfigRequest",
@@ -882,6 +938,13 @@
       "output": "RemoveClusterSlaveZoneResponse",
       "status": "online"
     },
+    "RenewClusters": {
+      "document": "This API is used to renew the cluster.",
+      "input": "RenewClustersRequest",
+      "name": "Renewing the Cluster",
+      "output": "RenewClustersResponse",
+      "status": "online"
+    },
     "ReplayInstanceAuditLog": {
       "document": "This API is used to replay instance audit logs.",
       "input": "ReplayInstanceAuditLogRequest",
@@ -910,6 +973,20 @@
       "output": "ResumeServerlessResponse",
       "status": "online"
     },
+    "RollBackCluster": {
+      "document": "This API is used to perform cluster rollback.",
+      "input": "RollBackClusterRequest",
+      "name": "Cluster Rollback",
+      "output": "RollBackClusterResponse",
+      "status": "online"
+    },
+    "RollbackToNewCluster": {
+      "document": "This API is used to roll back to a new cluster.",
+      "input": "RollbackToNewClusterRequest",
+      "name": "Rolling Back to the New Cluster",
+      "output": "RollbackToNewClusterResponse",
+      "status": "online"
+    },
     "SearchClusterDatabases": {
       "document": "This API is used to search cluster database lists.",
       "input": "SearchClusterDatabasesRequest",
@@ -929,6 +1006,20 @@
       "input": "SetRenewFlagRequest",
       "name": "Sets auto-renewal",
       "output": "SetRenewFlagResponse",
+      "status": "online"
+    },
+    "StartCLSDelivery": {
+      "document": "This interface (StartCLSDelivery) is used to enable log delivery functionality.",
+      "input": "StartCLSDeliveryRequest",
+      "name": "Enabling Log Shipping",
+      "output": "StartCLSDeliveryResponse",
+      "status": "online"
+    },
+    "StopCLSDelivery": {
+      "document": "This API is used to stop the log delivery feature.",
+      "input": "StopCLSDeliveryRequest",
+      "name": "Disabling Log Shipping",
+      "output": "StopCLSDeliveryResponse",
       "status": "online"
     },
     "SwitchClusterVpc": {
@@ -1469,6 +1560,68 @@
           "name": "Port",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditInstanceFilters": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "InstanceId",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "ExactMatch",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-ins-3nskq234",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AuditInstanceInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1923",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
+          "member": "Tag",
+          "name": "TagList",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2053,6 +2206,513 @@
       ],
       "usage": "out"
     },
+    "BizTaskInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "ID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1334748",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-j9i41hfv",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2004-05-03T17:30:08+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the delayed execution time.",
+          "example": "2004-05-03T17:30:08+08:00",
+          "member": "string",
+          "name": "DelayTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task failure information.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "{\"uin\":\"7043509\"}",
+          "member": "string",
+          "name": "Input",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "",
+          "example": "cynosdbmysql-grp-xx",
+          "member": "string",
+          "name": "InstanceGrpId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-grp-xx",
+          "member": "string",
+          "name": "InstanceGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosmysql-ins-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosmysql-ins-xx",
+          "member": "string",
+          "name": "ObjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cluster",
+          "member": "string",
+          "name": "ObjectType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "Operator",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "string",
+          "name": "Output",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "taskCreateCluster",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "TriggerTaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2004-05-03T17:30:08+08:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2004-05-03T17:30:08+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2004-05-03T17:30:08+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-j9i41hfv",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-ins-4vdtei33",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100",
+          "member": "int64",
+          "name": "Process",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "",
+          "example": "无",
+          "member": "ModifyParamsData",
+          "name": "ModifyParamsData",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Create cluster task information.",
+          "example": "无",
+          "member": "CreateClustersData",
+          "name": "CreateClustersData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster rollback task information.",
+          "example": "无",
+          "member": "RollbackData",
+          "name": "RollbackData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance configuration change task information.",
+          "example": "无",
+          "member": "ModifyInstanceData",
+          "name": "ModifyInstanceData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ManualBackupData",
+          "name": "ManualBackupData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Modify kernel version task information.",
+          "example": "无",
+          "member": "ModifyDbVersionData",
+          "name": "ModifyDbVersionData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster availability zone information.",
+          "example": "无",
+          "member": "ClusterSlaveData",
+          "name": "ClusterSlaveData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SwitchClusterLogBin",
+          "name": "SwitchClusterLogBin",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "BizTaskModifyParamsData",
+          "name": "ModifyInstanceParamsData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance time.",
+          "example": "无",
+          "member": "TaskMaintainInfo",
+          "name": "TaskMaintainInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance log delivery information.\n",
+          "example": "无",
+          "member": "InstanceCLSDeliveryInfo",
+          "name": "InstanceCLSDeliveryInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task progress information.",
+          "example": "无",
+          "member": "TaskProgressInfo",
+          "name": "TaskProgressInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BizTaskModifyInstanceParam": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-ins-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of instance parameter modification task.",
+          "example": "无",
+          "member": "ModifyParamItem",
+          "name": "ModifyInstanceParamList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BizTaskModifyParamsData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster parameter modification data.",
+          "example": "无",
+          "member": "ModifyParamItem",
+          "name": "ClusterParamList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance parameter modification data.",
+          "example": "无",
+          "member": "BizTaskModifyInstanceParam",
+          "name": "ModifyInstanceParams",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CLSInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "create",
+          "member": "string",
+          "name": "TopicOperation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "create",
+          "member": "string",
+          "name": "GroupOperation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "8c392615-b4c0-4f70-b07d-1fb5cd688f60",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cloud_lala_topic",
+          "member": "string",
+          "name": "TopicName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "95a03fb4-395b-4ce7-802b-4ce10c7431dd",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cloud_haha_logset",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "CloseAuditServiceRequest": {
       "document": "CloseAuditService request structure.",
       "members": [
@@ -2543,6 +3203,72 @@
       ],
       "usage": "out"
     },
+    "ClusterSlaveData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Old primary availability zone.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "OldMasterZone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[ap-guangzhou-5]",
+          "member": "string",
+          "name": "OldSlaveZone",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "New primary availability zone.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "NewMasterZone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[ap-guangzhou-5]",
+          "member": "string",
+          "name": "NewSlaveZone",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "New from availability zone attribute.",
+          "example": "[{\"Zone\":\"ap-guangzhou-5\",\"BinlogSyncWay\":\"async\"}]",
+          "member": "SlaveZoneAttrItem",
+          "name": "NewSlaveZoneAttr",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Old availability zone attributes.",
+          "example": "[{\"Zone\":\"ap-guangzhou-5\",\"BinlogSyncWay\":\"async\"}]",
+          "member": "SlaveZoneAttrItem",
+          "name": "OldSlaveZoneAttr",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ClusterTaskId": {
       "document": "Cluster task ID.",
       "members": [
@@ -2779,6 +3505,70 @@
       ],
       "type": "object"
     },
+    "CreateCLSDeliveryRequest": {
+      "document": "CreateCLSDelivery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Intance ID.",
+          "example": "cynosdbmysql-ins-ifq10f11",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log shipping configuration.",
+          "example": "[{\"TopicId\":\"38b86342-7cb0-4776-9ebd-ff1830035da1\",\"TopicOperation\":\"reuse\",\"GroupId\":\"17de6e2a-efd0-4fc2-ba2e-8845bd4f9895\",\"Region\":\"ap-guangzhou\",\"GroupOperation\":\"reuse\"}]",
+          "member": "CLSInfo",
+          "name": "CLSInfoList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the maintenance time is in operation.",
+          "example": "no",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCLSDeliveryResponse": {
+      "document": "CreateCLSDelivery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "148728",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateClusterDatabaseRequest": {
       "document": "CreateClusterDatabase request structure.",
       "members": [
@@ -2850,6 +3640,42 @@
         }
       ],
       "type": "object"
+    },
+    "CreateClustersData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3000",
+          "member": "int64",
+          "name": "StorageLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CreateClustersRequest": {
       "document": "CreateClusters request structure.",
@@ -4125,7 +4951,7 @@
         {
           "disabled": false,
           "document": "Resource pack size. Unit of the compute resource pack: Ten thousand.  Unit of the storage resource pack:  GB",
-          "example": "2000",
+          "example": "2000.00",
           "member": "float",
           "name": "PackageSpec",
           "required": true,
@@ -4192,6 +5018,42 @@
         }
       ],
       "type": "object"
+    },
+    "CrossRegionBackupItem": {
+      "document": "Cross-Region backup describes the backup information in each region.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target region for backup.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CrossRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target region's backup task ID.",
+          "example": "182736",
+          "member": "int64",
+          "name": "BackupId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup status in the target region.",
+          "example": "processing",
+          "member": "string",
+          "name": "BackupStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CynosdbCluster": {
       "document": "Cluster information",
@@ -6672,6 +7534,70 @@
       ],
       "type": "object"
     },
+    "DeleteCLSDeliveryRequest": {
+      "document": "DeleteCLSDelivery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID.",
+          "example": "[\"83dc6703-f43a-4b95-92ec-267bdf9e48c3\"]",
+          "member": "string",
+          "name": "CLSTopicIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the maintenance time is in operation.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCLSDeliveryResponse": {
+      "document": "DeleteCLSDelivery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "165782",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteClusterDatabaseRequest": {
       "document": "DeleteClusterDatabase request structure.",
       "members": [
@@ -6734,6 +7660,52 @@
         }
       ],
       "type": "object"
+    },
+    "DeliverSummary": {
+      "document": "Log shipping information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Select the delivery type, storage class, message channel.",
+          "example": "store",
+          "member": "string",
+          "name": "DeliverType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the delivery subtype: cls, ckafka.",
+          "example": "cls",
+          "member": "string",
+          "name": "DeliverSubType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sender.",
+          "example": "CLS",
+          "member": "string",
+          "name": "DeliverConsumer",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the sender.",
+          "example": "client",
+          "member": "string",
+          "name": "DeliverConsumerName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DescribeAccountPrivilegesRequest": {
       "document": "DescribeAccountPrivileges request structure.",
@@ -6908,6 +7880,89 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListRequest": {
+      "document": "DescribeAuditInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enabling status of instance audit. 1 - enabled; 0 - not enabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering conditions for querying the instance list.",
+          "example": "[{\"Name\": \"InstanceId\",\"ExactMatch\": true,\"Values\": [\"cynosdbmysql-ins-ifq10fec\"]}]",
+          "member": "AuditInstanceFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance audit rule mode. 1 - rule-based audit; 0 - full audit.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries returned per request. The default value is 30, and the maximum value is 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. The default value is 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListResponse": {
+      "document": "DescribeAuditInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of instances meeting the query conditions.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of detailed information about the audit instance.",
+          "example": "[{\"AuditAll\": true,\"AuditStatus\": \"ON\",\"BillingAmount\": 0,\"CreateAt\": \"2024-08-07 20:36:59\",\"Deliver\": \"OFF\",\"DeliverSummary\": [],\"HighLogExpireDay\": 7,\"HighRealStorage\": 0,\"InstanceId\": \"cynosdbmysql-ins-3v52nx11\",\"InstanceInfo\": {\"ProjectId\": 0,\"TagList\": []},\"LogExpireDay\": 30,\"LowLogExpireDay\": 23,\"LowRealStorage\": 0,\"RealStorage\": 0,\"RuleTemplateIds\": cynosdb-art-c1jo4q11}]",
+          "member": "InstanceAuditStatus",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7670,6 +8725,71 @@
       ],
       "type": "object"
     },
+    "DescribeChangedParamsAfterUpgradeRequest": {
+      "document": "DescribeChangedParamsAfterUpgrade request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbmysql-1xcycbu8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CPU after specification adjustment.",
+          "example": "1",
+          "member": "int64",
+          "name": "DstCpu",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Memory after specification adjustment, in GB.",
+          "example": "1",
+          "member": "int64",
+          "name": "DstMem",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChangedParamsAfterUpgradeResponse": {
+      "document": "DescribeChangedParamsAfterUpgrade response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of parameters.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance parameter list.",
+          "example": "[{\"ParamName\": \"demoString\",\"NewValue\": \"demoString\",\"OldValue\": \"demoString\",\"ValueFunction\": \"demoString\"}]",
+          "member": "ParamItemInfo",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClusterDatabaseTablesRequest": {
       "document": "DescribeClusterDatabaseTables request structure.",
       "members": [
@@ -7762,6 +8882,91 @@
           "name": "Tables",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterDatabasesRequest": {
+      "document": "DescribeClusterDatabases request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbmysql-ck8fmk11",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination number limit.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterDatabasesResponse": {
+      "document": "DescribeClusterDatabases response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of entries.",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset.",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database list.",
+          "example": "[\"database_1\",\"database_2\"]",
+          "member": "string",
+          "name": "Databases",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pagination number limit.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -8280,7 +9485,7 @@
         {
           "disabled": false,
           "document": "Security group information",
-          "example": " [{\"CreateTime\": \"2017-04-13 15:00:06\",\"Inbound\": [],\"Outbound\": [],\"ProjectId\": 0,\"SecurityGroupId\": \"sg-ajr1jzdd\",\"SecurityGroupName\": \"CynosDB\",\"SecurityGroupRemark\": \"\"}]",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
           "output_required": true,
@@ -8322,6 +9527,62 @@
           "name": "Status",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceCLSLogDeliveryRequest": {
+      "document": "DescribeInstanceCLSLogDelivery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceCLSLogDeliveryResponse": {
+      "document": "DescribeInstanceCLSLogDelivery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance shipping information.",
+          "example": "{\"Response\":{\"InstanceCLSDeliveryInfos\":[{\"GroupId\":\"a5532aba-506f-4ec4-a293-e0ac34b69a4e\",\"GroupName\":\"cloud_cynos_-test-003_logset\",\"InstanceId\":\"cynosdbmysql-ins-o971o62r\",\"InstanceName\":\"cynosdbmysql-ins-o971o62r\",\"Region\":\"ap-qingyuan\",\"Status\":\"running\",\"TopicId\":\"2a289122-0b01-490b-be75-763da79621fe\",\"TopicName\":\"cloud_cynos_-test-003_topic\"},{\"GroupId\":\"2f484392-d3f1-491c-82a0-00ceaad9281a\",\"GroupName\":\"cloud_cynos_-test-002_logset\",\"InstanceId\":\"cynosdbmysql-ins-o971o62r\",\"InstanceName\":\"cynosdbmysql-ins-o971o62r\",\"Region\":\"ap-qingyuan\",\"Status\":\"running\",\"TopicId\":\"83dc6703-f43a-4b95-92ec-267bdf9e48c3\",\"TopicName\":\"cloud_cynos_-test-002_topic\"}],\"RequestId\":\"347698da-03e4-4078-8d96-9a8b219c01a5\",\"TotalCount\":2}}",
+          "member": "InstanceCLSDeliveryInfo",
+          "name": "InstanceCLSDeliveryInfos",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -10280,6 +11541,89 @@
       ],
       "type": "object"
     },
+    "DescribeTasksRequest": {
+      "document": "DescribeTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Starting value of the task start time.",
+          "example": "2021-06-23 20:31:57",
+          "member": "string",
+          "name": "StartTimeBegin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End value of the task start time.",
+          "example": "2021-06-23 21:31:57",
+          "member": "string",
+          "name": "StartTimeEnd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering conditions. Supported fields for searching: \"ClusterId\", \"ClusterName\", \"InstanceId\", \"InstanceName\", \"Status\", \"TaskId\", and \"TaskType\".",
+          "example": "无",
+          "member": "QueryFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Length of the list to be queried.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset of the list to be queried.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksResponse": {
+      "document": "DescribeTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of entries in the task list.",
+          "example": "153",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task list.",
+          "example": "无",
+          "member": "BizTaskInfo",
+          "name": "TaskList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZonesRequest": {
       "document": "DescribeZones request structure.",
       "members": [
@@ -10364,6 +11708,58 @@
         }
       ],
       "usage": "both"
+    },
+    "ExchangeInstanceInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source instance information.",
+          "example": "无",
+          "member": "RollbackInstanceInfo",
+          "name": "SrcInstanceInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target instance information.",
+          "example": "无",
+          "member": "RollbackInstanceInfo",
+          "name": "DstInstanceInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ExchangeRoGroupInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source RO group information.",
+          "example": "无",
+          "member": "RollbackRoGroupInfo",
+          "name": "SrcRoGroupInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target RO group information.",
+          "example": "无",
+          "member": "RollbackRoGroupInfo",
+          "name": "DstRoGroupInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ExportInstanceErrorLogsRequest": {
       "document": "ExportInstanceErrorLogs request structure.",
@@ -11362,6 +12758,258 @@
       ],
       "usage": "out"
     },
+    "InstanceAuditStatus": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-ins-3nskq234",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ON",
+          "member": "string",
+          "name": "AuditStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the log retention period.",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-Frequency storage duration.",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the duration of low-frequency storage.",
+          "example": "23",
+          "member": "uint64",
+          "name": "LowLogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the log storage volume.",
+          "example": "173749.248",
+          "member": "float",
+          "name": "BillingAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the high-frequency storage volume.",
+          "example": "45639.68",
+          "member": "float",
+          "name": "HighRealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the infrequent access storage size.",
+          "example": "128109.568",
+          "member": "float",
+          "name": "LowRealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether it is a full audit. true - indicates a full audit.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditAll",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the audit activation time.",
+          "example": "2022-10-12 11:41:42",
+          "member": "string",
+          "name": "CreateAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance-Related information.",
+          "example": "无",
+          "member": "AuditInstanceInfo",
+          "name": "InstanceInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the total storage capacity.",
+          "example": "173749.248",
+          "member": "float",
+          "name": "RealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The rule template applied to the instance.",
+          "example": "[\"cynosdb-art-l1mlbo59\"]",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable log delivery: ON, OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Deliver",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log shipping type.",
+          "example": "无",
+          "member": "DeliverSummary",
+          "name": "DeliverSummary",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceCLSDeliveryInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name\n\n",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic id.\n",
+          "example": "8c392615-b4c0-4f70-b07d-1fb5cd688f60",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic name",
+          "example": "cloud_lala_topic",
+          "member": "string",
+          "name": "TopicName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log set id.\n",
+          "example": "95a03fb4-395b-4ce7-802b-4ce10c7431dd",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log set name.\n\n",
+          "example": "cloud_haha_logset",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log delivery region.\n",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Delivery status: creating, running, offlining, offlined.\n",
+          "example": "creating",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceInitInfo": {
       "document": "Instance initialization configuration information",
       "members": [
@@ -11997,6 +13645,52 @@
         }
       ],
       "usage": "both"
+    },
+    "ManualBackupData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "snapshot",
+          "member": "string",
+          "name": "BackupType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "manual",
+          "member": "string",
+          "name": "BackupMethod",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2023-11-03 15:27:22",
+          "member": "string",
+          "name": "SnapshotTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed information of cross-region backup items.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CrossRegionBackupItem",
+          "name": "CrossRegionBackupInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ModifiableInfo": {
       "document": "Details of whether the parameter can be modified",
@@ -13062,6 +14756,158 @@
       ],
       "type": "object"
     },
+    "ModifyDbVersionData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3.1.11",
+          "member": "string",
+          "name": "OldVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3.1.13",
+          "member": "string",
+          "name": "NewVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "upgradeInMaintain",
+          "member": "string",
+          "name": "UpgradeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyInstanceData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "4",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "156000",
+          "member": "int64",
+          "name": "StorageLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "OldCpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "OldMemory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100000",
+          "member": "int64",
+          "name": "OldStorageLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance machine type before scaling.",
+          "example": "exclusive",
+          "member": "string",
+          "name": "OldDeviceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance machine type after scaling.",
+          "example": "exclusive",
+          "member": "string",
+          "name": "DeviceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "upgradeInMaintain",
+          "member": "string",
+          "name": "UpgradeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the quantity of libra nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "LibraNodeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the original quantity of libra nodes.",
+          "example": "1",
+          "member": "int64",
+          "name": "OldLibraNodeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyInstanceNameRequest": {
       "document": "ModifyInstanceName request structure.",
       "members": [
@@ -13162,6 +15008,51 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceUpgradeLimitDaysRequest": {
+      "document": "ModifyInstanceUpgradeLimitDays request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbmysql-mwg7212w",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-m6f0hjkx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Upgrade time limit.",
+          "example": "30",
+          "member": "int64",
+          "name": "UpgradeLimitDays",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceUpgradeLimitDaysResponse": {
+      "document": "ModifyInstanceUpgradeLimitDays response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -13328,6 +15219,42 @@
         }
       ],
       "type": "object"
+    },
+    "ModifyParamsData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "",
+          "member": "string",
+          "name": "OldValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "",
+          "member": "string",
+          "name": "CurValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ModifyProxyDescRequest": {
       "document": "ModifyProxyDesc request structure.",
@@ -15415,6 +17342,52 @@
       ],
       "usage": "out"
     },
+    "ParamItemInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "binlog_cache_size",
+          "member": "string",
+          "name": "ParamName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New parameter value.\n",
+          "example": "32780",
+          "member": "string",
+          "name": "NewValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Old parameter value.\n",
+          "example": "32768",
+          "member": "string",
+          "name": "OldValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter formula.\n",
+          "example": "{MIN(DBInitMemory/%d*%d,%d)},4000,32768,2097152",
+          "member": "string",
+          "name": "ValueFunction",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ParamTemplateListInfo": {
       "document": "Parameter template information",
       "members": [
@@ -16327,7 +18300,7 @@
         {
           "disabled": false,
           "document": "Search field. Valid values: \"InstanceId\", \"ProjectId\", \"InstanceName\", \"Vip\"",
-          "example": "[\"status\"]",
+          "example": "[\"ProxyGroupId\"]",
           "member": "string",
           "name": "Names",
           "required": true,
@@ -16336,7 +18309,7 @@
         {
           "disabled": false,
           "document": "Search string",
-          "example": "[\"running\"]",
+          "example": "[\"cynosdbmysql-proxy-jaq***q7\"]",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -16482,6 +18455,110 @@
           "name": "FlowId",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewClustersRequest": {
+      "document": "RenewClusters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbpg-bzxxrmtq",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal period.",
+          "example": "1",
+          "member": "float",
+          "name": "TimeSpan",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Time unit, such as y, m, d, h, i, and s.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "\"Transaction mode. \t0 - place an order and pay; 1 - place an order.\"",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewClustersResponse": {
+      "document": "RenewClusters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Prepaid total order number.",
+          "example": "[\"202411210540***90590481\",\"202411210540***90590481\"]",
+          "member": "string",
+          "name": "BigDealIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refund order number.",
+          "example": "[\"202411210540***90634651\",\"202411210540***90634661\"]",
+          "member": "string",
+          "name": "DealNames",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frozen flow. One frozen flow is activated at a time.",
+          "example": "0",
+          "member": "string",
+          "name": "TranId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Delivery resource id list corresponding to each order number.",
+          "example": "[\"cynosdbmysql-ins-btx2ns9jk\",\"cynosdbmysql-ins-m9ts6h7y\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of Cluster IDs",
+          "example": "[\"cynosdbmysql-vx29id0o\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -16760,6 +18837,594 @@
       ],
       "type": "object"
     },
+    "RollBackClusterRequest": {
+      "document": "RollBackCluster request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbpg-bzxxrmtq",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback policy. timeRollback - roll back by time point; snapRollback - roll back by backup file.",
+          "example": "snapRollback",
+          "member": "string",
+          "name": "RollbackStrategy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup file ID. This parameter is required when the rollback policy is rolling back by backup file.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RollbackId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Expected rollback time. This parameter is required when the rollback policy is timeRollback (roll back by time point).",
+          "example": "2022-01-20 00:00:00",
+          "member": "string",
+          "name": "ExpectTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Expected threshold (deprecated).",
+          "example": "1",
+          "member": "uint64",
+          "name": "ExpectTimeThresh",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of rollback databases.",
+          "example": "[{\"OldDatabase\": \"db1\",\"NewDatabase\": \"dbnew\"}]",
+          "member": "RollbackDatabase",
+          "name": "RollbackDatabases",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of rollback databases and tables.",
+          "example": "[{\"Database\": \"db1\",\"Tables\": [{\"OldTable\": \"tb1\",\"NewTable\": \"tbnew\"}]}]",
+          "member": "RollbackTable",
+          "name": "RollbackTables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Mode of rolling back by time point. full: normal; db: fast; table: ultra-fast (the default value is normal).",
+          "example": "full",
+          "member": "string",
+          "name": "RollbackMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollBackClusterResponse": {
+      "document": "RollBackCluster response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task flow ID.",
+          "example": "147283",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackData": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "5",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "48",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "int64",
+          "name": "StorageLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-j9i41hfv",
+          "member": "string",
+          "name": "OriginalClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-j9i41hfv",
+          "member": "string",
+          "name": "OriginalClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ROLLBACK_STRATEGY_SNAP",
+          "member": "string",
+          "name": "RollbackStrategy",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2022.01.01",
+          "member": "string",
+          "name": "SnapshotTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Minimum CPU when rolling back to a serverlessls cluster.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinCpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum CPU when rolling back to a serverlessls cluster.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxCpu",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Snapshot ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SnapShotId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RollbackDatabase",
+          "name": "RollbackDatabases",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RollbackTable",
+          "name": "RollbackTables",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the backup file name.",
+          "example": "cynosdbmysql-oaj6te97_20240610111357",
+          "member": "string",
+          "name": "BackupFileName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rollback process.",
+          "example": "无",
+          "member": "RollbackProcessInfo",
+          "name": "RollbackProcess",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RollbackDatabase": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "OldDatabase",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db2",
+          "member": "string",
+          "name": "NewDatabase",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RollbackInstanceInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynoadbmysql-ydtwlxig",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster name.",
+          "example": "cynoadbmysql-ydtwlxig",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC information",
+          "example": "vpc-4pbgx2fv",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet information.",
+          "example": "subnet-a2emqbdd",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vip information.",
+          "example": "172.1.1.1",
+          "member": "string",
+          "name": "Vip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vport information.",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cynosdbmysql-ins-twpmnatl",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "cynosdbmysql-ins-twpmnatl",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPU Size",
+          "example": "2",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory Size",
+          "example": "4",
+          "member": "int64",
+          "name": "Mem",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage size",
+          "example": "100",
+          "member": "int64",
+          "name": "StorageLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RollbackProcessInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Is it possible to switch vip.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsVipSwitchable",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The exchangeable time of vip.",
+          "example": "upgradeInMaintain",
+          "member": "string",
+          "name": "VipSwitchableTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ExchangeInstanceInfo",
+          "name": "ExchangeInstanceInfoList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ExchangeRoGroupInfo",
+          "name": "ExchangeRoGroupInfoList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current step.",
+          "example": "importingData",
+          "member": "string",
+          "name": "CurrentStep",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current step progress.",
+          "example": "98",
+          "member": "int64",
+          "name": "CurrentStepProgress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining time of the current step.",
+          "example": "500",
+          "member": "string",
+          "name": "CurrentStepRemainingTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RollbackRoGroupInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance group ID",
+          "example": "cynosdbmysql-grp-ywnxpisy",
+          "member": "string",
+          "name": "InstanceGroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC information",
+          "example": "vpc-4pbgx2dd",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet information.",
+          "example": "subnet-a2emqbfv",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vip information.",
+          "example": "172.1.1.1",
+          "member": "string",
+          "name": "Vip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the vport information.",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RollbackTable": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "db1",
+          "member": "string",
+          "name": "Database",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"OldTable\": \"tb1\", \"NewTable\": \"tb2\"]",
+          "member": "RollbackTableInfo",
+          "name": "Tables",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RollbackTableInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Old table name.",
+          "example": "tb1",
+          "member": "string",
+          "name": "OldTable",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New table name.",
+          "example": "tb2",
+          "member": "string",
+          "name": "NewTable",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RollbackTimeRange": {
       "document": "Rollback time range",
       "members": [
@@ -16785,6 +19450,326 @@
         }
       ],
       "usage": "out"
+    },
+    "RollbackToNewClusterRequest": {
+      "document": "RollbackToNewCluster request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AZ.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "During rollback, pass in the source cluster ID to find the source pool ID.",
+          "example": "cynosdbmysql-gs629njx",
+          "member": "string",
+          "name": "OriginalClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID.",
+          "example": "vpc-1ptuei0b",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID.",
+          "example": "subnet-1tmw9t4o",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The cluster name should contain fewer than 64 characters. Valid values for each character: uppercase/lowercase letters, digits, and special characters ('-', '_', and '.').",
+          "example": "MyClusterName",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rolls back by snapshot, which indicates snapshotId; rolls back by time point, which indicates queryId. When the value of queryId is 0, it indicates that the validity of the time point needs to be verified.",
+          "example": "0",
+          "member": "uint64",
+          "name": "RollbackId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rolls back by time point, which indicates the specified time; rolls back by snapshot, which indicates the snapshot time.",
+          "example": "2021-04-26 18:13:10",
+          "member": "string",
+          "name": "ExpectTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to select promo vouchers automatically. 1: yes; 0: no. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Information about the tag array to be bound during cluster creation.",
+          "example": "无",
+          "member": "Tag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Database type. When the value of DbType is MYSQL, the valid values are NORMAL and SERVERLESS (the default value is NORMAL).",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "DbMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is required when the value of DbMode is SEVERLESS. For the settings of the minimum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.",
+          "example": "1.0",
+          "member": "float",
+          "name": "MinCpu",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is required when the value of DbMode is SEVERLESS. For the settings of the maximum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.",
+          "example": "2.0",
+          "member": "float",
+          "name": "MaxCpu",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the cluster is automatically paused when the value of DbMode is SEVERLESS. Valid values: yes; no. The default value is yes.",
+          "example": "yes",
+          "member": "string",
+          "name": "AutoPause",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the delay for automatic cluster pause (in seconds) when the value of DbMode is SEVERLESS. Value range: [600, 691200]. The default value is 600.",
+          "example": "600",
+          "member": "int64",
+          "name": "AutoPauseDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID array.",
+          "example": "[\"sg-ikto3761\",\"sg-ikto52u1\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy ID array.",
+          "example": "[\"policy-8hbxwvxe\",\"policy-3bs6vxe4\"]",
+          "member": "string",
+          "name": "AlarmPolicyIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter array. The character_set_server (utf8 | latin1 | gbk | utf8mb4) is currently supported. lower_case_table_names: 1 - case-insensitive; 0 - case-sensitive.",
+          "example": "无",
+          "member": "ParamItem",
+          "name": "ClusterParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter template ID, which can be obtained through the DescribeParamTemplates API.",
+          "example": "0",
+          "member": "int64",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance initialization configuration information, which is mainly used for selecting different instance specifications during cluster purchase.",
+          "example": "无",
+          "member": "InstanceInitInfo",
+          "name": "InstanceInitInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "0 - place an order and pay; 1 - place an order.",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Compute node billing mode: 0 - pay-as-you-go; 1 - prepaid.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time.",
+          "example": "12",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unit.",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback database information.",
+          "example": "无",
+          "member": "RollbackDatabase",
+          "name": "RollbackDatabases",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback table information.",
+          "example": "无",
+          "member": "RollbackTable",
+          "name": "RollbackTables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Source read-only instance information.",
+          "example": "[\"cynosdbmysql-ins-7xbwg29x\"]",
+          "member": "string",
+          "name": "OriginalROInstanceList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "10",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable archiving. Valid values: yes; no. The default value is yes.",
+          "example": "yes",
+          "member": "string",
+          "name": "AutoArchive",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackToNewClusterResponse": {
+      "document": "RollbackToNewCluster response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Frozen transaction ID.",
+          "example": "20190522160000003106844584180998",
+          "member": "string",
+          "name": "TranId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order ID",
+          "example": "[\"20190522112283\"]",
+          "member": "string",
+          "name": "DealNames",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).",
+          "example": "[\"cynosdbpg-ins-67rmucgk\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.",
+          "example": "[\"cynosdbmysql-sls-9nts65r2\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Large order number.",
+          "example": "[\"20241226519077105329731\"]",
+          "member": "string",
+          "name": "BigDealIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RuleFilters": {
       "document": "Filter of the audit rule",
@@ -17730,6 +20715,150 @@
       ],
       "usage": "out"
     },
+    "StartCLSDeliveryRequest": {
+      "document": "StartCLSDelivery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enabled log topic ID.",
+          "example": "[\"83dc6703-f43a-4b95-92ec-267bdf9e48c3\"]",
+          "member": "string",
+          "name": "CLSTopicIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the maintenance time is in operation.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartCLSDeliveryResponse": {
+      "document": "StartCLSDelivery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "1472831",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopCLSDeliveryRequest": {
+      "document": "StopCLSDelivery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-nwc5ao8g",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID.",
+          "example": "[\"83dc6703-f43a-4b95-92ec-267bdf9e48c3\"]",
+          "member": "string",
+          "name": "CLSTopicIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Log type.",
+          "example": "slow",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the maintenance time is in operation.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsInMaintainPeriod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopCLSDeliveryResponse": {
+      "document": "StopCLSDelivery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "14728472",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchClusterLogBin": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status",
+          "example": "OFF",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SwitchClusterVpcRequest": {
       "document": "SwitchClusterVpc request structure.",
       "members": [
@@ -17997,6 +21126,78 @@
         }
       ],
       "usage": "both"
+    },
+    "TaskMaintainInfo": {
+      "document": "TaskMaintainInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Execution start time (seconds from 0 o'clock).",
+          "example": "10920",
+          "member": "int64",
+          "name": "MaintainStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the continuous time. the unit is second.",
+          "example": "3600",
+          "member": "int64",
+          "name": "MaintainDuration",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time when it can be executed. valid values: [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"].",
+          "example": "\"Mon\"",
+          "member": "string",
+          "name": "MaintainWeekDays",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskProgressInfo": {
+      "document": "Task progress query.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current step.",
+          "example": "FinishTask",
+          "member": "string",
+          "name": "CurrentStep",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current progress.",
+          "example": "0",
+          "member": "int64",
+          "name": "CurrentStepProgress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated Time",
+          "example": "0",
+          "member": "string",
+          "name": "CurrentStepRemainingTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TemplateParamInfo": {
       "document": "Parameter template details",

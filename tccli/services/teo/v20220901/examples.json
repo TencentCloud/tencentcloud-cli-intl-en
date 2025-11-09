@@ -44,6 +44,14 @@
         "title": "Querying the CNAME status of a domain name"
       }
     ],
+    "ConfirmMultiPathGatewayOriginACL": [
+      {
+        "document": "This example shows you how to confirm the instance with ZoneId 'zone-27q0p0bal192' and GatewayId 'mpgw-lbxuhk1oh' has updated the latest origin server IP range to the origin server firewall.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConfirmOriginACLUpdate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bal192\",\n    \"GatewayId\": \"mpgw-lbxuhk1oh\",\n    \"OriginACLVersion\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"af0a2b4f-df6d-4d2a-ac39-1706cbf8a868\"\n    }\n}",
+        "title": "Confirm Updated to the Latest Origin IP Range"
+      }
+    ],
     "ConfirmOriginACLUpdate": [
       {
         "document": "The selected site with ZoneId 'zone-276zs184g93m' confirms the latest origin ACLs have been updated to the origin server firewall.",
@@ -1026,6 +1034,14 @@
         "title": "Querying Custom Access Routes for Multi-Channel SCDN Gateways"
       }
     ],
+    "DescribeMultiPathGatewayOriginACL": [
+      {
+        "document": "This example shows you how to query the binding relationship between instances with ZoneId 'zone-27q0p0bal192' and GatewayId 'mpgw-lbxuhk1oh' and the IP address range, as well as the IP range details.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginACL\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bal192\",\n    \"GatewayId\": \"mpgw-lbxuhk1oh\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"de0a2b4f-df6d-4d2a-ac39-1706cbf8a797\",\n        \"MultiPathGatewayOriginACLInfo\": {\n            \"MultiPathGatewayCurrentOriginACL\": {\n                \"EntireAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                },\n                \"Version\": 3,\n                \"IsPlaned\": \"false\"\n            },\n            \"MultiPathGatewayNextOriginACL\": {\n                \"Version\": 4,\n                \"EntireAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\",\n                        \"22.22.22.22/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                },\n                \"AddedAddresses\": {\n                    \"IPv4\": [\n                        \"22.22.22.22/24\"\n                    ],\n                    \"IPv6\": []\n                },\n                \"RemovedAddresses\": {\n                    \"IPv4\": [],\n                    \"IPv6\": []\n                },\n                \"NoChangeAddresses\": {\n                    \"IPv4\": [\n                        \"11.11.11.11/24\"\n                    ],\n                    \"IPv6\": [\n                        \"2001:980:7002:6::/64\"\n                    ]\n                }\n            }\n        }\n    }\n}",
+        "title": "Querying Multi-Channel SCDN Gateway Origin Server Protection Detail"
+      }
+    ],
     "DescribeMultiPathGatewayRegions": [
       {
         "document": "Get the list of available regions of cloud gateways under the site (ZoneId is zone-27q0p0bal192).",
@@ -1736,6 +1752,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMultiPathGatewaySecretKey\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bal192\",\n    \"SecretKey\": \"b8sfnemqzF5TNCwwtshVmG/gyCJVi/rP+7A+jsBwqGY=\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9153aae4-26b1-4580-adc3-fa7cd4d32bf5\"\n    }\n}",
         "title": "Modify the Configuration for Connecting Key"
+      }
+    ],
+    "ModifyMultiPathGatewayStatus": [
+      {
+        "document": "This example shows you how to update the status of a multi-channel security gateway with ZoneId 'zone-27q0p0bal192' and GatewayId 'eo-gw-lb-uhk1oh'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMultiPathGatewayStatus\n<Common request parameters>\n\n{\n    \"GatewayId\": \"eo-gw-lb-uhk1oh\",\n    \"GatewayStatus\": \"offline\",\n    \"ZoneId\": \"zone-27q0p0bal192\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a03c3e4d-3a8c-4ef1-924c-81b33df6453a\"\n    }\n}",
+        "title": "Update Multi-Channel Security Gateway Status"
       }
     ],
     "ModifyOriginACL": [
