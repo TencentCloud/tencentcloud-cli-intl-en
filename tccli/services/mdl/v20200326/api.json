@@ -3436,6 +3436,15 @@
         },
         {
           "disabled": false,
+          "document": "When the type is FIXED_PTS, it is mandatory and defaults to 0",
+          "example": "0",
+          "member": "int64",
+          "name": "PipelineId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "Name of the output group to attach. This parameter is required if `EventType` is `TIMED_RECORD`.",
           "example": "OutputGroupName",
           "member": "string",
@@ -3550,6 +3559,17 @@
           "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the type is FIXED_PTS, it is mandatory and defaults to 0",
+          "example": "0",
+          "member": "int64",
+          "name": "PipelineId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6867,7 +6887,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.",
+          "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`,`FIXED_PTS `. This parameter is required if `EventType` is `INPUT_SWITCH`.",
           "example": "FIXED_TIME",
           "member": "string",
           "name": "StartType",
@@ -6900,6 +6920,15 @@
           "name": "EndTime",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effective only when StartType is FIXED_PTS, with a range of 1-8589934592",
+          "example": "10000",
+          "member": "uint64",
+          "name": "PTS",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -6949,6 +6978,17 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective only when StartType is FIXED_PTS, with a range of 1-8589934592",
+          "example": "10000",
+          "member": "uint64",
+          "name": "PTS",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

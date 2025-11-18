@@ -1,7 +1,7 @@
 {
   "actions": {
     "AllocateHosts": {
-      "document": "This API is used to create CDH instances with specified configuration.\n* When HostChargeType is PREPAID, the HostChargePrepaid parameter must be specified.",
+      "document": "This API is used to create CDH instances with specified configuration.",
       "input": "AllocateHostsRequest",
       "name": "Creates CDH instances",
       "output": "AllocateHostsResponse",
@@ -690,7 +690,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.",
+          "document": "Not supported. Configuration of prepaid instances. You can use the parameter to specify the attributes of prepaid instances, such as the subscription period and the auto-renewal plan. This parameter is required for prepaid instances.",
           "example": "无",
           "member": "ChargePrepaid",
           "name": "HostChargePrepaid",
@@ -699,7 +699,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing model, only monthly or yearly subscription supported. Default value: `PREPAID'.",
+          "document": "Instance [billing type](https://intl.cloud.tencent.com/document/product/213/2180?from_cn_redirect=1). <br><li>`POSTPAID_BY_HOUR`: Hourly-based pay-as-you-go <br>",
           "example": "PREPAID",
           "member": "string",
           "name": "HostChargeType",
@@ -3139,9 +3139,10 @@
         {
           "disabled": false,
           "document": "List of instance model families",
-          "example": "",
+          "example": "无",
           "member": "InstanceFamilyConfig",
           "name": "InstanceFamilyConfigSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3230,7 +3231,7 @@
         {
           "disabled": false,
           "document": "The maximum number of times you can modify the instance configurations (degrading the configurations)",
-          "example": "[     {         \"Operation\": \"INSTANCE_DEGRADE\",         \"InstanceId\": \"ins-r8hr2upy\",         \"CurrentCount\": 0,         \"LimitCount\": 5     } ]",
+          "example": "无",
           "member": "OperationCountLimit",
           "name": "InstanceOperationLimitSet",
           "output_required": true,
@@ -4186,7 +4187,7 @@
         {
           "disabled": false,
           "document": "Instance ID Needs to Enter Rescue Mode",
-          "example": "'ins-abcdefg'",
+          "example": "ins-abcdefg",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4195,7 +4196,7 @@
         {
           "disabled": false,
           "document": "System Password in Rescue Mode",
-          "example": "'hello123456789'",
+          "example": "hello123456789",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -4204,20 +4205,29 @@
         {
           "disabled": false,
           "document": "System Username in Rescue Mode",
-          "example": "'root'",
+          "example": "root",
           "member": "string",
           "name": "Username",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether to perform forced shutdown.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "ForceStop",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "HARD",
+          "member": "string",
+          "name": "StopType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4240,7 +4250,7 @@
         {
           "disabled": false,
           "document": "Instance ID Exiting Rescue Mode",
-          "example": "instance_Id",
+          "example": "ins-axzc12s",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5353,6 +5363,15 @@
           "name": "EnhancedService",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TXlVc2VyRGF0YQo",
+          "member": "string",
+          "name": "UserData",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5985,7 +6004,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. for specific status types, see the instance status table (https://www.tencentcloud.comom/document/api/213/15753?from_cn_redirect=1#InstanceStatus).",
+          "document": "Instance status. for specific status types, see the  [instance status table](https://www.tencentcloud.com/document/product/213/15753#instancestatus)",
           "example": "RUNNING",
           "member": "string",
           "name": "InstanceState",
@@ -6266,20 +6285,20 @@
         {
           "disabled": false,
           "document": "Full name of the model family.",
-          "example": "",
+          "example": "高IO型I1",
           "member": "string",
           "name": "InstanceFamilyName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Acronym of the model family.",
-          "example": "",
+          "example": "I1",
           "member": "string",
           "name": "InstanceFamily",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6320,7 +6339,7 @@
         {
           "disabled": false,
           "document": "Instance `ID`.",
-          "example": "无",
+          "example": "ins-g4c6xxxx",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
@@ -6330,7 +6349,7 @@
         {
           "disabled": false,
           "document": "Instance status. Valid values:<br><li>PENDING: Creating.<br></li><li>LAUNCH_FAILED: Creation failed.<br></li><li>RUNNING: Running.<br></li><li>STOPPED: Shut down.<br></li><li>STARTING: Starting up.<br></li><li>STOPPING: Shutting down.<br></li><li>REBOOTING: Restarting.<br></li><li>SHUTDOWN: Shut down and to be terminated.<br></li><li>TERMINATING: Terminating.<br></li><li>ENTER_RESCUE_MODE: Entering the rescue mode.<br></li><li>RESCUE_MODE: In the rescue mode.<br></li><li>EXIT_RESCUE_MODE: Exiting the rescue mode.<br></li><li>ENTER_SERVICE_LIVE_MIGRATE: Entering online service migration.<br></li><li>SERVICE_LIVE_MIGRATE: In online service migration.<br></li><li>EXIT_SERVICE_LIVE_MIGRATE: Exiting online service migration.<br></li>",
-          "example": "无",
+          "example": "RUNNING",
           "member": "string",
           "name": "InstanceState",
           "output_required": true,
@@ -6625,7 +6644,7 @@
         },
         {
           "disabled": false,
-          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.\n<Li>BGP: specifies the general bgp line.</li>.\nFor a user with static single-line IP allowlist enabled, valid values include:.\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n\n",
+          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://cloud.tencent.com/document/product/1199/41646). default value: BGP.\n<Li>BGP: specifies the general bgp line.</li>.\nFor a user with static single-line IP allowlist enabled, valid values include:.\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n\n",
           "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
@@ -7664,7 +7683,7 @@
         {
           "disabled": false,
           "document": "CDH instance ID(s).",
-          "example": "[\"host-ey16rkyg\\n\"]",
+          "example": "[\"host-ey16rkyg\"]",
           "member": "string",
           "name": "HostIds",
           "required": true,
@@ -8231,40 +8250,40 @@
         {
           "disabled": false,
           "document": "Instance operation. Valid values: <br><li>`INSTANCE_DEGRADE`: downgrade an instance<br><li>`INTERNET_CHARGE_TYPE_CHANGE`: modify the billing plan of the network connection",
-          "example": "",
+          "example": "INSTANCE_DEGRADE",
           "member": "string",
           "name": "Operation",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Instance ID.",
-          "example": "",
+          "example": "ins-xxxxx",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of operations already performed. If it returns `-1`, it means there is no limit on the times of the operation.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "CurrentCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum number of times you can perform an operation. If it returns `-1`, it means there is no limit on the times of the operation. If it returns `0`, it means that configuration modification is not supported.",
-          "example": "",
+          "example": "5",
           "member": "int64",
           "name": "LimitCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -8323,7 +8342,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1). default value 0 means default project.",
+          "document": "Instance'S project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProject](https://www.tencentcloud.com/document/product/651/54679). default value 0 means default project.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -8334,7 +8353,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the dedicated host ID list for instance ownership, only used for input parameters. if you purchase a dedicated host and specify this parameter, instances you purchase will be randomly deployed on these dedicated hosts. obtain this parameter by calling the `HostId` field in the return value of [DescribeHosts](https://www.tencentcloud.comom/document/api/213/16474?from_cn_redirect=1).",
+          "document": "Specifies the dedicated host ID list for instance ownership, only used for input parameters. if you purchase a dedicated host and specify this parameter, instances you purchase will be randomly deployed on these dedicated hosts. obtain this parameter by calling the `HostId` field in the return value of [DescribeHosts](https://www.tencentcloud.com/document/product/213/33279?lang=en).",
           "example": "[\"host-o5i742go\"]",
           "member": "string",
           "name": "HostIds",
@@ -9504,7 +9523,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response.",
+          "document": "Instance ID to be operated. can be obtained from the `InstanceId` in the return value from the DescribeInstances api (https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1).",
           "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
@@ -9513,7 +9532,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information of a data disk to be expanded. Only inelastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. The unit of data disk capacity is GB. The minimum expansion step is 10 GB. For more information about data disk types, refer to [Disk Product Introduction](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). The available data disk type is restricted by the instance type `InstanceType`. Additionally, the maximum allowable capacity for expansion varies by data disk type.\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
+          "document": "Specifies the configuration information of the data disk to be expanded, only supporting specifying the target capacity of the disk to be expanded. only non-elastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://www.tencentcloud.comom/document/api/362/16315?from_cn_redirect=1)) can be expanded. the unit of data disk capacity is GiB. the minimum expansion step is 10 GiB. for data disk type selection, refer to [disk product introduction](https://www.tencentcloud.comom/document/product/362/2353?from_cn_redirect=1). the available data disk type is restricted by the instance type `InstanceType`. additionally, the maximum allowable capacity for expansion varies by data disk type.\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
@@ -9522,7 +9541,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.",
+          "document": "Specifies whether to forcibly shut down a running instance. it is recommended to manually shut down a running instance first and then expand the instance disk. valid values:<br><li>true: forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>default value: false.<br><br>forced shutdown is equivalent to turning off a physical computer's power switch. forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.",
           "example": "true",
           "member": "bool",
           "name": "ForceStop",
@@ -9531,7 +9550,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information of a system disk to be expanded. Only cloud disks can be expanded.\n\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
+          "document": "System disk configuration information to be expanded. only supports specifying the purpose capacity of the disk to be expanded. only supports cloud disk expansion.\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
           "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
@@ -9701,7 +9720,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.\n",
+          "document": "Security group to which an instance belongs. obtain this parameter by calling the `SecurityGroupId` field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_search=1). if not specified, bind the default security group under the designated project. if the default security group does not exist, automatically create it.",
           "example": "[\"sg-ajhn9qtq\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -9863,7 +9882,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the instance enables jumbo frames. valid values:<br><li/> true: means the instance enables jumbo frames. only models supporting jumbo frames can be set to true.<br><li/> false: means the instance disables jumbo frames. only models supporting jumbo frames can be set to false.<br> instance specifications supporting jumbo frames: [instance specifications](https://www.tencentcloud.comom/document/product/213/11518?from_cn_redirect=1).",
+          "document": "Whether the instance enables jumbo frames. valid values:<br><li/> true: means the instance enables jumbo frames. only models supporting jumbo frames can be set to true.<br><li/> false: means the instance disables jumbo frames. only models supporting jumbo frames can be set to false.<br> instance specifications supporting jumbo frames: [instance specifications](https://www.tencentcloud.com/document/product/213/11518?lang=en&pg=).",
           "example": "false",
           "member": "bool",
           "name": "EnableJumboFrame",
@@ -10059,7 +10078,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "(Disused. Please use `StopType` instead.) Whether to forcibly shut down an instance after a normal shutdown fails. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default value: `FALSE`. ",
           "example": "false",
           "member": "bool",
@@ -10261,7 +10280,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>\n<li>LOCAL_BASIC: Local SATA disk</li>\n<li>LOCAL_SSD: Local NVMe SSD</li>\n<li>CLOUD_BASIC: Cloud SATA disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium SSD</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: Tremendous SSD</li>\nDefault value: Current disk types with inventory available.",
+          "document": "Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://www.tencentcloud.com/document/product/362/31636). value range:<br>\n<li>LOCAL_BASIC: Local SATA disk</li>\n<li>LOCAL_SSD: Local NVMe SSD</li>\n<li>CLOUD_BASIC: Cloud SATA disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium SSD</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: Tremendous SSD</li>\nDefault value: Current disk types with inventory available.",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
@@ -10272,7 +10291,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk ID.\nCurrently, this parameter is only used for response parameters in query apis such as [DescribeInstances](https://www.tencentcloud.comom/document/product/213/15728?from_cn_redirect=1) and is not applicable to request parameters in write apis such as [RunInstances](https://www.tencentcloud.comom/document/product/213/15730?from_cn_redirect=1).",
+          "document": "System disk ID.\nCurrently, this parameter is only used for response parameters in query apis such as [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258) and is not applicable to request parameters in write apis such as [RunInstances](https://www.tencentcloud.com/document/api/213/33237).",
           "example": "disk-xyzw1a3x",
           "member": "string",
           "name": "DiskId",
@@ -10449,7 +10468,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "vpc ID, such as `vpc-xxx`. valid vpc ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc?rid=1) or by calling the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1) and obtaining the `VpcId` field from the API response. if both VpcId and SubnetId are input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.",
+          "document": "vpc ID, such as `vpc-xxx`. valid vpc ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc?rid=1) or by calling the API [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778?lang=en) and obtaining the `VpcId` field from the API response. if both VpcId and SubnetId are input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.",
           "example": "vpc-2ij",
           "member": "string",
           "name": "VpcId",
@@ -10460,7 +10479,7 @@
         },
         {
           "disabled": false,
-          "document": "vpc subnet ID, in the form of `subnet-xxx`. valid vpc subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/subnet?rid=1); or they can be obtained from the `SubnetId` field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1). if SubnetId and VpcId are both input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.",
+          "document": "vpc subnet ID, in the form of `subnet-xxx`. valid vpc subnet ids can be queried by logging in to the [console](https://console.tencentcloud.com/vpc/subnet); or they can be obtained from the `SubnetId` field in the API response by calling the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784) API . if SubnetId and VpcId are both input as `DEFAULT` when creating an instance, the DEFAULT vpc network will be forcibly used.",
           "example": "subnet-2ks",
           "member": "string",
           "name": "SubnetId",

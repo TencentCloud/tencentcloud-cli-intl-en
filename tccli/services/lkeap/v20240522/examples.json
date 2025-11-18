@@ -46,6 +46,20 @@
         "title": "Multi-round Rewriting"
       }
     ],
+    "ReconstructDocumentSSE": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lkeap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReconstructDocumentSSE\n<Common request parameters>\n\n{}",
+        "output": "{\n  \"RequestId\": \"0c7bbfbc-641a-4321-bee2-56b1e1e046e9\",\n  \"TaskId\": \"0c7bbfbc-641a-4321-bee2-56b1e1e046e9\",\n  \"ResponseType\": \"PROGRESS\",\n  \"Progress\": \"0\",\n  \"ProgressMessage\": \"Start document parsing\",\n  \"DocumentRecognizeResultUrl\": \"\",\n  \"FailedPages\": []\n}",
+        "title": "ReconstructDocumentSSE in Processing Response Sample"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lkeap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReconstructDocumentSSE\n<Common request parameters>\n\n{}",
+        "output": "{\n  \"RequestId\": \"0c7cabfbc-641a-4321-bee2-56b1e1adwq6e9\",\n  \"TaskId\": \"0c7bbfbc-641a-4321-bee2-5dds1e1e04fe9\",\n  \"ResponseType\": \"TASK_RSP\",\n  \"Progress\": \"100\",\n\"ProgressMessage\": \"Document parsing completed\"\n  \"DocumentRecognizeResultUrl\": \"https://lkeap-reconstruct-sse-prod-intl-1251316161.cos.ap-jakarta.myqcloud.com/output_files/atom_v3/2025-10-21/200042064731_200042064731/64873e5b-082b-482c-9d98-42c4994696c9_parse.zip?q-sign-algorithm=sha1&q-ak=XXXXXXX&q-sign-time=1761035122%3B1761036922&q-key-time=1761035122%3B1761036922&q-header-list=host&q-url-param-list=&q-signature=XXXXXXX\",\n  \"FailedPages\": []\n}",
+        "title": "ReconstructDocumentSSE Processing Completed Response Example"
+      }
+    ],
     "RunRerank": [
       {
         "document": "Reorder.",

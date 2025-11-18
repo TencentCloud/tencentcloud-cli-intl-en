@@ -192,6 +192,14 @@
         "title": "Example Of Deleting Agent Information"
       }
     ],
+    "DescribeAIAgentInfoList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAIAgentInfoList\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400692008,\n    \"PageSize\": 1,\n    \"PageNumber\": 5\n}",
+        "output": "{\n    \"Response\": {\n        \"AIAgentInfoList\": [\n            {\n                \"AIAgentId\": 69,\n                \"AIAgentName\": \"u65b0u667au80fdu4f53\"\n            }\n        ],\n        \"TotalCount\": 373,\n        \"RequestId\": \"1e6e8974-de10-4485-b53d-25d8c1bef18d\"\n    }\n}",
+        "title": "Retrieving the Intelligent Agent Information List"
+      }
+    ],
     "DescribeAIAnalysisResult": [
       {
         "document": "",
@@ -486,6 +494,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumePredictiveCalloutTask\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Example Of Resuming Predictive Outbound Call Task"
+      }
+    ],
+    "SetStaffStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetStaffStatus\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400692008,\n    \"StaffStatusList\": [\n        {\n            \"StaffUserId\": \"weijuny***nt.com\",\n            \"Status\": \"free\",\n            \"Reason\": \"huiyi\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"StaffStatusList\": [\n            {\n                \"ErrorCode\": \"\",\n                \"ErrorMessage\": \"\",\n                \"PreviousReason\": \"\",\n                \"PreviousStatus\": \"rest\",\n                \"Reason\": \"huiyi\",\n                \"StaffUserId\": \"weijuny***nt.com\",\n                \"Status\": \"free\"\n            }\n        ],\n        \"RequestId\": \"6980f29d-c779-4a49-bf65-736bfc3b76a0\"\n    }\n}",
+        "title": "Setting Agent Status"
       }
     ],
     "StopAutoCalloutTask": [

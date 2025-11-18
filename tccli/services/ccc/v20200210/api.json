@@ -52,7 +52,7 @@
     "CreateAICall": {
       "document": "Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/66889).",
       "input": "CreateAICallRequest",
-      "name": "Creates an AI call",
+      "name": "Create AI call",
       "output": "CreateAICallResponse",
       "status": "online"
     },
@@ -166,6 +166,13 @@
       "input": "DeleteStaffRequest",
       "name": "Deletes agent information",
       "output": "DeleteStaffResponse",
+      "status": "online"
+    },
+    "DescribeAIAgentInfoList": {
+      "document": "This API is used to get the list of Intelligent Agents.",
+      "input": "DescribeAIAgentInfoListRequest",
+      "name": "Retrieve the intelligent agent information list",
+      "output": "DescribeAIAgentInfoListResponse",
       "status": "online"
     },
     "DescribeAIAnalysisResult": {
@@ -427,6 +434,13 @@
       "output": "ResumePredictiveDialingCampaignResponse",
       "status": "online"
     },
+    "SetStaffStatus": {
+      "document": "This API is used to set staff status.",
+      "input": "SetStaffStatusRequest",
+      "name": "Set staff status",
+      "output": "SetStaffStatusResponse",
+      "status": "online"
+    },
     "StopAutoCalloutTask": {
       "document": "This API is used to stop the automatic outbound call task.",
       "input": "StopAutoCalloutTaskRequest",
@@ -483,6 +497,32 @@
     "serviceShortName": "ccc"
   },
   "objects": {
+    "AIAgentInfo": {
+      "document": "Intelligent agent info.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Intelligent agent ID.",
+          "example": "69",
+          "member": "uint64",
+          "name": "AIAgentId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent agent name.",
+          "example": "新智能体",
+          "member": "string",
+          "name": "AIAgentName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AIAnalysisResult": {
       "document": "AI conversation analytics result.",
       "members": [
@@ -1158,6 +1198,15 @@
           "name": "CallInInterface",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Bind number type. specifies the type of the bind number. inner: internal number | number: line number.",
+          "example": "number",
+          "member": "string",
+          "name": "NumberType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1543,7 +1592,7 @@
         },
         {
           "disabled": false,
-          "document": "Control command. currently supports the following commands:.\n\n-ServerPushText. specifies the text sent by the server to the AI robot. the AI robot will broadcast the text.",
+          "document": "Control command. currently supported commands are as follows:.\n\n-ServerPushText. specifies the text sent by the server to the AI robot for broadcast.\n-InvokeLLM. specifies the server sends text to the large model to trigger a dialogue.",
           "example": "ServerPushText",
           "member": "string",
           "name": "Command",
@@ -1556,6 +1605,15 @@
           "example": "无",
           "member": "ServerPushText",
           "name": "ServerPushText",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The server sends a Command to proactively request the large model. when Command is InvokeLLM, it sends the content to the large model and adds X-Invoke-LLM=\"1\" to the header.",
+          "example": "无",
+          "member": "InvokeLLM",
+          "name": "InvokeLLM",
           "required": false,
           "type": "object"
         }
@@ -2231,7 +2289,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom variables (supported only in advanced versions).",
+          "document": "Custom variable (advanced edition support). using the same variable in the CalleeAttributes field will overwrite here.",
           "example": "无",
           "member": "Variable",
           "name": "Variables",
@@ -2240,7 +2298,7 @@
         },
         {
           "disabled": false,
-          "document": "UUI",
+          "document": "User-Defined data. specifies that using UUI in the CalleeAttributes field will overwrite here.",
           "example": "foobar",
           "member": "string",
           "name": "UUI",
@@ -2655,6 +2713,24 @@
           "name": "Prefix",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domestic long-distance mobile phone prefix.",
+          "example": "0",
+          "member": "string",
+          "name": "MobileNddPrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Removes the area code for local calls.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalNumberTrimAC",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2705,7 +2781,7 @@
         {
           "disabled": false,
           "document": "Called list supporting e.164 or number formats without country code.",
-          "example": "+8613012345678",
+          "example": "[\"+8613012345678\"]",
           "member": "string",
           "name": "Callees",
           "required": true,
@@ -2714,7 +2790,7 @@
         {
           "disabled": false,
           "document": "Calling list using the number formats displayed on the management side.",
-          "example": "0086075586013388",
+          "example": "[\"0086075586013388\"]",
           "member": "string",
           "name": "Callers",
           "required": true,
@@ -2749,7 +2825,7 @@
         },
         {
           "disabled": false,
-          "document": "Expected call drop rate, percentage, 5 - 50.",
+          "document": "Expected call drop rate. value range: 0-50%.",
           "example": "10",
           "member": "int64",
           "name": "ExpectedAbandonRate",
@@ -2804,7 +2880,7 @@
         {
           "disabled": false,
           "document": "Custom variable.",
-          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "example": "无",
           "member": "Variable",
           "name": "Variables",
           "required": false,
@@ -2822,7 +2898,7 @@
         {
           "disabled": false,
           "document": "Property of the called.",
-          "example": "[{\"Callee\":\"13012345678\",\"UUI\":\"foobar\",\"Variables\":[{\"Key\":\"foo\":\"Value\":\"bar\"}]}]",
+          "example": "无",
           "member": "CalleeAttribute",
           "name": "CalleeAttributes",
           "required": false,
@@ -2840,7 +2916,7 @@
         {
           "disabled": false,
           "document": "Value range of available time.",
-          "example": "[{\"StartTime\":\"09:00:00\",\"EndTime\":\"11:30:00\"},{\"StartTime\":\"14:00:00\",\"EndTime\":\"18:00:00\"}]",
+          "example": "无",
           "member": "TimeRange",
           "name": "AvailableTime",
           "required": false,
@@ -3208,6 +3284,71 @@
           "name": "OnlineStaffList",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIAgentInfoListRequest": {
+      "document": "DescribeAIAgentInfoList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required). can be viewed at https://console.cloud.tencent.com/ccc.",
+          "example": "1400692008",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size, upper limit 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, starting from 0.",
+          "example": "5",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIAgentInfoListResponse": {
+      "document": "DescribeAIAgentInfoList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Intelligent agent information list.",
+          "example": "无",
+          "member": "AIAgentInfo",
+          "name": "AIAgentInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of intelligent agents.",
+          "example": "373",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -6216,6 +6357,30 @@
       ],
       "usage": "both"
     },
+    "InvokeLLM": {
+      "document": "Service invocation actively initiates requests to the LLM.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the content of the LLM request.",
+          "example": "今天天气怎么样",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the text is allowed to interrupt the robot speaking.",
+          "example": "false",
+          "member": "bool",
+          "name": "Interrupt",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
     "ModifyExtensionRequest": {
       "document": "ModifyExtension request structure.",
       "members": [
@@ -6317,6 +6482,24 @@
           "name": "Prefix",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domestic long-distance mobile phone prefix.",
+          "example": "0",
+          "member": "string",
+          "name": "MobileNddPrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Removes the area code for local calls.",
+          "example": "false",
+          "member": "bool",
+          "name": "LocalNumberTrimAC",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6576,6 +6759,15 @@
           "example": "{+E.164}",
           "member": "string",
           "name": "OutboundCalleeFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the carrier number.",
+          "example": "66660000",
+          "member": "string",
+          "name": "CarrierPhoneNumber",
           "required": false,
           "type": "string"
         }
@@ -7625,6 +7817,168 @@
       ],
       "usage": "both"
     },
+    "SetStaffStatusItem": {
+      "document": "Describes the information item for creating a staff.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Agent account.",
+          "example": "",
+          "member": "string",
+          "name": "StaffUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Status. specifies the instance status. valid values: free (idle), notReady (busy), rest (short break).\t",
+          "example": "",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the reason if the break state is set.",
+          "example": "",
+          "member": "string",
+          "name": "Reason",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "SetStaffStatusRequest": {
+      "document": "SetStaffStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required). can be checked at https://console.cloud.tencent.com/ccc.",
+          "example": "1400692008",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the agent status list. maximum number 10.",
+          "example": "无",
+          "member": "SetStaffStatusItem",
+          "name": "StaffStatusList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetStaffStatusResponse": {
+      "document": "SetStaffStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the agent status response list.",
+          "example": "无",
+          "member": "SetStaffStatusRspItem",
+          "name": "StaffStatusList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetStaffStatusRspItem": {
+      "document": "Specifies the staff status response item.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Agent account.",
+          "example": "",
+          "member": "string",
+          "name": "StaffUserId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. see the overall error code in the protocol.",
+          "example": "",
+          "member": "string",
+          "name": "ErrorCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current status.",
+          "example": "",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status if it is on break. specifies the reason.",
+          "example": "",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Previous status.",
+          "example": "",
+          "member": "string",
+          "name": "PreviousStatus",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If the earlier status is on break, this is the reason.",
+          "example": "",
+          "member": "string",
+          "name": "PreviousReason",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SkillGroupInfoItem": {
       "document": "Skill group information.",
       "members": [
@@ -8019,6 +8373,39 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for break.",
+          "example": "会议",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Agent email.",
+          "example": "101@qq.com",
+          "member": "string",
+          "name": "StaffEmail",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Agent id.",
+          "example": "10001",
+          "member": "string",
+          "name": "StaffNo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -8356,7 +8743,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario         EndStatus         EndStatusString         status description**.\n\nIncoming and outgoing calls.\n\nIncoming and outgoing calls\t0\terror\texception termination.\n\nInbound call 102 ivrGiveUp user hang up during IVR.\n\nInbound call 103 waitingGiveUp user gives up while queuing.\n\nInbound call 104 ringingGiveUp user give up during ringing.\n\nInbound call 105 no agent online.\n\nInbound call 106 notWorkTime outside working hours.   \n\nInbound call 107 ivrEnd ends after IVR.\n\nInbound call 100 blackList. \n\nOutbound call 2 unconnected unanswered.\n\nOutgoing call        108        restrictedCallee    the callee is restricted due to high risk.\n\nOutbound call 109 too many requests outbound over-frequency limit.\n\nOutgoing call             110\t        restrictedArea\t    valid values for the area where outgoing calls are restricted.\n\nOutbound call 111 restrictedTime outgoing call time limit.\n                         \nOutbound call 201 unknown unknown status.\n\nOutgoing call 202 not answered the callee did not answer.\n\nOutgoing call            203\t    userReject\tcallee rejects and hangs up.\n\nOutbound call 204 powerOff callee is powered off.\n\nOutbound call 205 number does not exist the callee's number is non - existent.\n\nOutbound call 206 busy callee is busy.\n\nOutbound call 207 arrears callee in arrears.\n\nOutbound call 208 operator channel exception.\n\nOutbound call 209 callerCancel call cancellation by the caller.\n\nOutgoing call 210 notInService callee out of service area.\n\nIncoming and outgoing calls 211 clientError client errors.\nOutbound call 212 carrier blocked.",
+          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario**\tEndStatus\tEndStatusString\tStatus description.\n\nIncoming & outgoing calls. 1. ok. normal call.\n\nIVR period user give up.\n\n**User give up while in queue**.\n\nInbound call 104 ringingGiveUp. specifies the user gives up during ringing.\n\nInbound call 105. specifies no agent online.\n\nInbound call notWorkTime **off hours**.   \n\nIVR ends automatically (no manual intervention).\n\nInbound call. 100. blocklist (system side).\n\nrestrictedCallee. specifies the global outbound call risk number interception (system side).\n\nOutbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.\n\nOutbound call 110 restrictedArea **block outgoing calls by region (system side)**.\n\nrestrictedTime. specifies the outbound call interception period on the system side.\n                         \n202 notAnswer **callee unanswered**.\n\nOutbound call 203 userReject **callee reject hangup**.\n\nPower off. **callee powered off**.\n\n205            numberNotExist\t**callee nonexistent number**.\n\nBusy. specifies the callee is busy.\n\nOutbound call 207 outOfCredit **callee in arrears**.\n\n208 operatorError indicates operator channel exception.\n\nOutgoing call caller cancellation.\n\nOutgoing call\t        210\t           notInService\t**callee out of service area**.\n\nPhone call in/out 211 clientError **client error**.\n\nOutgoing call 212 carrierBlocked **carrier blocklist**.\n\nNote: call reminder.\n\nOutbound call 215 numberInvalid **called number is invalid**.\n\nOutbound call 216 callRestricted. note: call restricted.\n\nCallee restricted by blocklist.\n\nOutbound call 218 areaRestricted. **callee area restricted**.\n\nPrompt call forwarding.\n\nCaller cancellation during ringing.\n\nCaller cancel without ring.\n\nAudio dial-in 501 call conflict **VoIP user call termination**.\n\nVoIP user client timeout.\n\nAudio dial-in 503 VoIP user client error.\n\nChinese description (https://www.tencentcloud.com/zh/document/product/1229/71847).\n\nEnglish description (https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -8466,7 +8853,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario         EndStatus         EndStatusString         status description**.\n\nIncoming and outgoing calls.\n\nIncoming and outgoing calls\t0\terror\texception termination.\n\nInbound call 102 ivrGiveUp user hang up during IVR.\n\nInbound call 103 waitingGiveUp user gives up while queuing.\n\nInbound call 104 ringingGiveUp user give up during ringing.\n\nInbound call 105 no agent online.\n\nInbound call 106 notWorkTime outside working hours.   \n\nInbound call 107 ivrEnd ends after IVR.\n\nInbound call 100 blackList. \n\nOutbound call 2 unconnected unanswered.\n\nOutgoing call        108        restrictedCallee    the callee is restricted due to high risk.\n\nOutbound call 109 too many requests outbound over-frequency limit.\n\nOutgoing call             110\t        restrictedArea\t    valid values for the area where outgoing calls are restricted.\n\nOutbound call 111 restrictedTime outgoing call time limit.\n                         \nOutgoing call 201 unknown unknown status.\n\nOutgoing call 202 notAnswer callee not answered.\n\nOutgoing call            203\t    userReject\tcallee rejects and hangs up.\n\nOutbound call 204 powerOff callee is powered off.\n\nOutbound call 205 number does not exist the callee's number is non - existent.\n\nOutgoing call 206 busy callee is busy.\n\nOutbound call 207 out of credit callee in arrears.\n\nOutbound call 208 operator channel exception.\n\nOutgoing call 209 callerCancel call cancellation by the caller.\n\nOutgoing call 210 notInService callee out of service area.\n\nIncoming and outgoing calls 211 clientError client errors.\nOutbound call 212 carrier blocked.",
+          "document": "Refers to the EndStatus field.",
           "example": "ok",
           "member": "string",
           "name": "EndStatusString",

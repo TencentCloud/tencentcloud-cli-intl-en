@@ -1430,6 +1430,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1000, 2000]",
+          "member": "int64",
+          "name": "KeyPTSList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1682,12 +1693,84 @@
       ],
       "usage": "both"
     },
+    "AdvancedSuperResolutionConfig": {
+      "document": "Super-resolution configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capability configuration switch. Valid values:\n<li>ON: enabled.</li>\n<li>OFF: disabled.</li>\nDefault value: ON.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type. Valid values:\n<li>standard: standard super-resolution.</li>\n<li>super: advanced super-resolution.</li>\nDefault value: standard.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "standard",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image output mode. The default value is percent.\n<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>\n<li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>\n<li>percent: magnification factor of super-resolution, which can be a decimal.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "percent",
+          "member": "string",
+          "name": "Mode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Magnification factor of super-resolution, which can be a decimal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2.0",
+          "member": "float",
+          "name": "Percent",
+          "output_required": true,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Width of the target image. The value cannot exceed 4096.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1280",
+          "member": "int64",
+          "name": "Width",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Height of the target image. The value cannot exceed 4096.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "720",
+          "member": "int64",
+          "name": "Height",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AiAnalysisResult": {
       "document": "Intelligent analysis results",
       "members": [
         {
           "disabled": false,
-          "document": "Task type. valid values:.\n<Li>Classification: intelligent classification.</li>.\n<Li>Cover: specifies the intelligent cover.</li>.\n<Li>Tag: intelligent tagging.</li>.\n<Li>FrameTag: intelligent frame-by-frame tagging.</li>.\n<Li>Highlight: intelligent highlights</li>.\n<Li>DeLogo: intelligent removal.</li>.\n<li>Description: large model summarization.</li>\n\n<Li>Dubbing: intelligent dubbing.</li>.\n<Li>VideoRemake: specifies video deduplication.</li>.",
+          "document": "Task type. Valid values:\n<li>Classification: smart classification.</li>\n<li>Cover: smart cover.</li>\n<li>Tag: smart tag.</li>\n<li>FrameTag: smart frame tag.</li>\n<li>Highlight: smart highlights.</li>\n<li>DeLogo: smart erasing.</li>\n<li>Description: LLM summary.</li>\n<li>Dubbing: smart dubbing.</li>\n<li>VideoRemake: video deduplication.</li>\n<li>VideoComprehension: video (audio) recognition.</li>",
           "example": "Classification",
           "member": "string",
           "name": "Type",
@@ -1811,6 +1894,16 @@
           "example": "无",
           "member": "AiAnalysisTaskVideoRemakeResult",
           "name": "VideoRemakeTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query result of the video (audio) recognition task. This parameter is valid when the task type is VideoComprehension.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoComprehensionResult",
+          "name": "VideoComprehensionTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -2990,6 +3083,134 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoComprehensionInput": {
+      "document": "Input file for the video (audio) recognition task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Video (audio) recognition template ID.",
+          "example": "33",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoComprehensionOutput": {
+      "document": "Information about the video (audio) recognition output content result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details of the video (audio) recognition output content.",
+          "example": "您好！作为一名专业的音乐分析师，非常荣幸能为您分析这段《梦中的婚礼》的钢琴弹奏。这是一首非常优美且广为人知的曲子，能选择它来练习，说明您对音乐有很好的品味和追求....",
+          "member": "string",
+          "name": "VideoComprehensionAnalysisResult",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskVideoComprehensionResult": {
+      "document": "Video (audio) recognition result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: `PROCESSING`, `SUCCESS`, and `FAIL`.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0: successful; other values: failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input file for video (audio) recognition.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoComprehensionInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output file for video (audio) recognition.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskVideoComprehensionOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task progress",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Starting time of task execution, in ISO date and time format.",
+          "example": "2024-05-25T02:55:55Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Completion time of task execution, in ISO date and time format.",
+          "example": "2024-05-25T02:55:58Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6876,7 +7097,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. For details, see [Audio/Video Transcoding Template](https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -6937,7 +7158,7 @@
         },
         {
           "disabled": false,
-          "document": "The sampling rate of the audio stream. the sampling rate options supported by different encoding standards are different. for details, see the audio sample rate support scope document (https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nPlease ensure that the sampling rate of the source audio stream is within the scope of the above options. otherwise, transcoding failure may occur.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -6960,7 +7181,7 @@
         {
           "disabled": false,
           "document": "The audio tracks to retain. All audio tracks are retained by default.",
-          "example": "NULL",
+          "example": "[0]",
           "member": "int64",
           "name": "StreamSelects",
           "output_required": false,
@@ -8406,7 +8627,7 @@
         },
         {
           "disabled": false,
-          "document": "Format list of files that can trigger a workflow, such as [\"mp4\", \"flv\", \"mov\"]. If this parameter is left empty, files in all formats can trigger the workflow.",
+          "document": "All supported formats are as follows:\n- Video file extension. The following 15 options are supported:\n`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.\n- Audio file extension. The following 7 options are supported:\n`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.\n- Subtitle file extension. The following 2 options are supported:\n`.vtt` and `.srt`.\n- `*`: any file format is supported.\n- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).\n**Note**:\n1. If the input format list includes `*`, it indicates that any file format is supported.\n2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.\n3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.",
           "example": "[\"mp4\",\"flv\",\"mov\"]",
           "member": "string",
           "name": "Formats",
@@ -8749,7 +8970,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.\nWhen the value is 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\nWhen the value is 0.\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.\n\nNote:\n\nThis value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.",
+          "document": "Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.\nWhen the value is 1.\n1. StreamInfos.N.RemoveVideo=1\n2. StreamInfos.N.RemoveAudio=0\n3. StreamInfos.N.Video.Codec=copy\n\nWhen the value is 0.\n1. StreamInfos.N.Video.Codec cannot be copy.\n2. StreamInfos.N.Video.Fps cannot be null.\n\nNote:\nThis value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.",
           "example": "0",
           "member": "uint64",
           "name": "PureAudio",
@@ -8758,7 +8979,7 @@
         },
         {
           "disabled": false,
-          "document": "HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.\nNote: The HLS segment format for adaptive bitrate streaming is based on this field.",
+          "document": "Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. \nNote: the shard format of the adaptive bitrate stream is based on this field.",
           "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
@@ -9706,7 +9927,7 @@
         },
         {
           "disabled": false,
-          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.",
+          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -9733,7 +9954,7 @@
         },
         {
           "disabled": false,
-          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - If this field is unspecified or left blank, no subtitle file will be generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -9751,7 +9972,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle translation switch.\nON: enable translation\nOFF: disable translation",
+          "document": "Subtitle translation switch.\n`ON`: translation enabled.\n`OFF`: translation disabled.\n**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "TranslateSwitch",
@@ -9760,12 +9981,21 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field takes effect when TranslateSwitch is set to ON.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Indonesian\nms: Malay\nth: Thai\nar: Arabic\nhi: Hindi",
+          "document": "Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProcessType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -11774,7 +12004,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Currently, the valid values include:\n<Li>WorkflowTask: workflow processing task.</li>\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Task type. Currently, the valid values include:\n<li>WorkflowTask: workflow processing task.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "WorkflowTask",
           "member": "string",
           "name": "TaskType",
@@ -11791,6 +12021,36 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code when the task fails.",
+          "example": "40000",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidParameterValue.FaceNotFound",
+          "member": "string",
+          "name": "ErrMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task exception message.",
+          "example": "Face Not Found",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12422,6 +12682,15 @@
           "name": "Name",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProcessType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -12779,7 +13048,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates whether there is a subtask failure when the task is complete.",
+          "document": "Whether there is a failed subtask when the task ends. If this parameter is left unspecified, ignore it.\n<li>false: filter the main tasks to identify those that have no failed subtasks.</li>\n<li>true: filter the main tasks to identify those that have failed subtasks.</li>",
           "example": "false",
           "member": "bool",
           "name": "SubTaskHasFailed",
@@ -12957,6 +13226,33 @@
           "example": "standard_compress",
           "member": "string",
           "name": "CompressType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enhancement scenario configuration. Valid values:\n<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>\n<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>\n<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>\n<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>\n<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>\n<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>\n<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>\n<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>",
+          "example": "common",
+          "member": "string",
+          "name": "EnhanceSceneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enhanced transcoding type. Valid values:\n<li>Common: standard transcoding.</li>\n<li>TEHD-100: top speed codec video transcoding.</li>\n<li>TEHD-200: top speed codec audio transcoding.</li>",
+          "example": "TEHD-100",
+          "member": "string",
+          "name": "EnhanceTranscodeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enhancement type. Valid values:\n<li>VideoEnhance: video enhancement only.</li>\n<li>AudioEnhance (audio enhancement only).</li>\n<li>VideoAudioEnhance: video and audio enhancement included.</li>",
+          "example": "VideoEnhance",
+          "member": "string",
+          "name": "EnhanceType",
           "required": false,
           "type": "string"
         }
@@ -13301,6 +13597,34 @@
       ],
       "usage": "out"
     },
+    "DiffusionEnhanceConfig": {
+      "document": "LLM enhancement.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capability configuration switch. Valid values:\nON: enabled.\nOFF: disabled.\nDefault value: OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Strength type. Valid values:\nweak\nnormal\nstrong\nDefault value: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "strong",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DisableScheduleRequest": {
       "document": "DisableSchedule request structure.",
       "members": [
@@ -13360,7 +13684,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encryption type.\n\n- simpleaes\nCan only be used for HLS. format support ts and mp4.\nOnly can be used in slice mode. cannot be used in singlefile mode.\n\n- fairplay:\nCan only be used for HLS. valid values: mp4.\nAvailable for use in slice mode or singlefile mode.\n\n- widevine:\nCan be used for HLS and DASH. format can only be mp4.\nOutput HLS: available for use in slice mode or singlefile mode.\nOutput DASH: can only be in singlefile mode.\n\n- playready:\nCan be used for HLS and DASH. format can only be mp4.\nOutput HLS: available for use in slice mode or singlefile mode.\nOutput DASH: can only be singlefile mode.\n",
+          "document": "Encryption type.\n\n- simpleaes\nCan only be used for HLS. format support: ts and mp4.\nOnly can be used in slice mode. cannot be used in singlefile mode.\n\n- fairplay:\nCan only be used for HLS. the segment format can only be mp4.\nSupports slice mode or singlefile mode.\n\n- widevine:\nCan be used for HLS and DASH. the slice format can only be mp4.\nOutput HLS: specifies the slicing or singlefile mode can be used.\nOutputOutput DASH]: can only be in singlefile mode.\n\n- playready:\nCan be used for HLS and DASH. the slice format can only be mp4.\nOutput HLS: specifies the slicing or singlefile mode can be used.\nOutput DASH: can only be in singlefile mode.\n\n- widevine+fairplay,playready+fairplay,widevine+playready+fairplay:\nCan only be used for HLS. valid values: mp4.\nSupports slice mode or single file mode.\n\n- widevine+playready:\nApplicable to HLS and MPEG-DASH. the format can only be mp4.\nHLS format can use slice mode or single file mode.\nSpecifies that only singlefile mode can be used for MPEG-DASH.",
           "example": "widevine",
           "member": "string",
           "name": "Type",
@@ -14231,6 +14555,45 @@
       ],
       "usage": "both"
     },
+    "FrameRateWithDenConfig": {
+      "document": "New frame interpolation configuration, which supports fractional frame rates.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capability configuration switch. Valid values:\n<li>ON: enabled.</li>\n<li>OFF: disabled.</li>\nDefault value: ON.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FpsNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "FpsDen",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "FrameTagConfigureInfo": {
       "document": "Control parameter of intelligent frame-specific tagging task",
       "members": [
@@ -14318,7 +14681,7 @@
         },
         {
           "disabled": false,
-          "document": "Type. Valid values:\n<li>HDR10</li>\n<li>HLG</li>\nDefault Value: HDR10.\nNote: The video encoding method should be H.265.\nNote: The video encoding bit depth is 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Type. Valid values:\n<li>HDR10</li>\n<li>HLG</li>\nDefault value: HDR10.\nNote: The video encoding method should be h264 or h265.\nNote: The video encoding bit depth is 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "HDR10",
           "member": "string",
           "name": "Type",
@@ -14555,6 +14918,17 @@
         },
         {
           "disabled": false,
+          "document": "Advanced super-resolution configuration.",
+          "example": "无",
+          "member": "AdvancedSuperResolutionConfig",
+          "name": "AdvancedSuperResolutionConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Denoising configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ImageDenoiseConfig",
@@ -14705,6 +15079,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidParameterValue.FaceNotFound",
+          "member": "string",
+          "name": "ErrMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -20176,7 +20560,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle translation switch.\nON: enable translation\nOFF: disable translation",
+          "document": "Subtitle translation switch.\n`ON`: translation enabled.\n`OFF`: translation disabled.\n**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "TranslateSwitch",
@@ -20203,7 +20587,7 @@
         },
         {
           "disabled": false,
-          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.\n",
+          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -20212,7 +20596,7 @@
         },
         {
           "disabled": false,
-          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - Unspecified or left blank: no subtitle file generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -20239,12 +20623,21 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field takes effect when TranslateSwitch is set to ON.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Indonesian\nms: Malay\nth: Thai\nar: Arabic\nhi: Hindi",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: If the field is unspecified, ASR is used by default.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProcessType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -20822,6 +21215,56 @@
         }
       ],
       "usage": "in"
+    },
+    "OverrideEraseParameter": {
+      "document": "Custom parameters for smart erasing.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Erasing type.\n-subtitle: subtitle removal.\n-watermark: watermark removal.\n-privacy: privacy protection.",
+          "example": "subtitle",
+          "member": "string",
+          "name": "EraseType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasing configuration.\nThis field is required when the value of EraseType is subtitle.",
+          "example": "无",
+          "member": "UpdateSmartEraseSubtitleConfig",
+          "name": "EraseSubtitleConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Watermark erasing configuration.\nThis field is required when the value of EraseType is watermark.",
+          "example": "无",
+          "member": "UpdateSmartEraseWatermarkConfig",
+          "name": "EraseWatermarkConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection configuration.\nThis field is required when the value of EraseType is privacy.",
+          "example": "无",
+          "member": "UpdateSmartErasePrivacyConfig",
+          "name": "ErasePrivacyConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "OverrideTranscodeParameter": {
       "document": "Custom specification parameters for video processing, which are used to override corresponding parameters in templates.",
@@ -22402,6 +22845,108 @@
       ],
       "usage": "in"
     },
+    "PureSubtitleTransResult": {
+      "document": "Translation result of pure subtitle files.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status (the three valid values are as follows):\n- PROCESSING\n- SUCCESS \n- FAIL",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of Media Processing Service (MPS) error codes.",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "错误信息",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Translation task input information.",
+          "example": "{\"Definition\": 20}",
+          "member": "SmartSubtitleTaskResultInput",
+          "name": "Input",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Translation output result of pure subtitle files.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"SubtitleSet\":[]}",
+          "member": "PureSubtitleTransResultOutput",
+          "name": "Output",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PureSubtitleTransResultOutput": {
+      "document": "Detailed output result of translation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage location of the subtitle file.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Result set of multilingual translation.",
+          "example": "无",
+          "member": "SubtitleTransResultItem",
+          "name": "SubtitleResults",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "QualityControlData": {
       "document": "Media quality inspection result output.",
       "members": [
@@ -22838,7 +23383,7 @@
         },
         {
           "disabled": false,
-          "document": "Video source language for intelligent caption.\nValid values: \nzh: Simplified Chinese.\nen: Eenglish.\nJa: Japanese.\nKo: Korean.\nzh-PY: Simplified Chinese, English and Cantonese.\nzh-medical: Medical Chinese.\nyue: Cantonese.\nVi: Vietnamese.\nms: Malay.\nid: Indonesian.\nfil: Filipino.\nth: Thai.\npt: Portuguese.\ntr: Turkish.\nar: Arabic.\nes: Spanish.\nhi: Hindi\nFr: French.\nde: German.\nzh-dialect: Chinese dialect\nzh_en: Simplified Chinese and English\nprime_zh: Simplified Chinese, Chinese Dialect and English.",
+          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -22849,7 +23394,7 @@
         },
         {
           "disabled": false,
-          "document": "Intelligent subtitle file format.\nvtt: WebVTT format.\nsrt: SRT format.\nIf this field is left blank, no subtitle file will be generated.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     -vtt: WebVTT format subtitle.\n     -srt: SRT format subtitle.\n     - If this field is unspecified or left blank, no subtitle file will be generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -22860,7 +23405,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle translation switch.\nON: enable translation\nOFF: disable translation\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Subtitle translation switch.\n`ON`: translation enabled.\n`OFF`: translation disabled.\n**Note**: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to `OFF`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OFF",
           "member": "string",
           "name": "TranslateSwitch",
@@ -22871,7 +23416,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field takes effect when TranslateSwitch is set to ON.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Indonesian\nms: Malay\nth: Thai\nar: Arabic\nhi: Hindi\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -22900,6 +23445,17 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProcessType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -24698,6 +25254,17 @@
         },
         {
           "disabled": false,
+          "document": "Custom parameters for smart erasing. When the value of Definition is not 0, this parameter is valid. When certain erasing parameters in this structure are specified, the specified parameters will be used to overwrite those in the smart erasing template. This parameter is used in highly customized scenarios. It is recommended to use only Definition to specify smart erasing parameters.",
+          "example": "无",
+          "member": "OverrideEraseParameter",
+          "name": "OverrideParameter",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Specifies the target storage for files. if left blank, it inherits the upper-level OutputStorage value.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
@@ -25065,6 +25632,16 @@
         {
           "disabled": false,
           "document": "Subtitle file path.",
+          "example": "/subtitles/1027/31*******8.vtt",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file path.",
           "example": "http://smart-subtitle-test-12******.cos.ap-shanghai.myqcloud.com/31*******8.vtt",
           "member": "string",
           "name": "SubtitlePath",
@@ -25341,6 +25918,26 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file URL.",
+          "example": "/subtitles/1027/310*****.vtt",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returned translation result during multilingual translation.\t",
+          "example": "无",
+          "member": "SubtitleTransResultItem",
+          "name": "SubtitleResults",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -25476,7 +26073,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nzh-PY: Chinese-English-Cantonese\nzh-medical: Medical Chinese\nyue: Cantonese\nvi: Vietnamese\nms: Malay\nid: Indonesian\nfli: Filipino\nth: Thai\npt: Portuguese\ntr: Turkish\nar: Arabic\nes: Spanish\nhi: Hindi\nfr: French\nde: German\nzh-dialect: Chinese dialect",
+          "document": "List of source languages of the video with smart subtitles.\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -25486,7 +26083,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format.\nvtt: WebVTT format\nIf this field is left blank, no subtitle file will be generated.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Smart subtitle file format:\n- vtt: WebVTT format.\n- srt: SRT format.\n- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).\n- If this field is unspecified or left blank, no subtitle file will be generated.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -25516,7 +26113,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field takes effect when TranslateSwitch is set to ON.\nSupported languages:\nzh: Simplified Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Indonesian\nms: Malay\nth: Thai\nar: Arabic\nhi: Hindi\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON.\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -25553,6 +26150,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.",
+          "example": "0",
+          "member": "uint64",
+          "name": "ProcessType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -25562,7 +26169,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<li>AsrFullTextRecognition: full speech recognition</li>\n<li>TransTextRecognition: speech translation</li>",
+          "document": "Task type. Valid values:\n- AsrFullTextRecognition: full speech recognition.\n- TransTextRecognition: speech translation.\n- PureSubtitleTrans: pure subtitle translation.",
           "example": "AsrFullTextRecognition",
           "member": "string",
           "name": "Type",
@@ -25586,6 +26193,16 @@
           "example": "无",
           "member": "SmartSubtitleTaskTransTextResult",
           "name": "TransTextTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The translation result of the pure subtitle file is returned when the translation type is PureSubtitleTrans.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PureSubtitleTransResult",
+          "name": "PureSubtitleTransTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -25858,7 +26475,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource tagging. the field content is user-customized.\nIt supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).",
+          "document": "Resource ID. The field content is user-defined.\nIt supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).\nThis field corresponds to the cid field in the Speke request.\nNote: Different DRM vendors have different restrictions on this field (for example, SDMC Technology Co., Ltd. does not support this field containing underscores). For specific rules, check with the vendors.",
           "example": "123xx",
           "member": "string",
           "name": "ResourceId",
@@ -25891,7 +26508,7 @@
         },
         {
           "disabled": false,
-          "document": "Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.\n\ncbcs: supported by PlayReady, Widevine, and FairPlay\ncenc: supported by PlayReady and Widevine",
+          "document": "Encryption method. Options:  \n- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  \n- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  \n\nIf not specified:  \n- FairPlay defaults to **cbcs**.  \n- PlayReady and Widevine default to **cenc**.  \n- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  \n- Widevine+PlayReady defaults to **cenc**.",
           "example": "cbcs",
           "member": "string",
           "name": "EncryptionMethod",
@@ -26166,6 +26783,52 @@
         }
       ],
       "usage": "both"
+    },
+    "SubtitleTransResultItem": {
+      "document": "Subtitle translation output result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Translation marker.\n- Success\n- Error",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source language (such as \"en\").",
+          "example": "en",
+          "member": "string",
+          "name": "TransSrc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target language (such as \"zh\").",
+          "example": "zh",
+          "member": "string",
+          "name": "TransDst",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file URL.",
+          "example": "/subtitles/1027/xxx.vtt",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SuperResolutionConfig": {
       "document": "Super resolution configuration.",
@@ -27317,6 +27980,189 @@
       ],
       "usage": "both"
     },
+    "UpdateSmartErasePrivacyConfig": {
+      "document": "Privacy protection configuration for the smart erasing template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Erasing method of privacy protection.\n- blur\n- mosaic",
+          "example": "blur",
+          "member": "string",
+          "name": "PrivacyModel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Privacy protection target. (When API Explorer is used, it is not required to specify an array. Add the corresponding items and enter the corresponding values.)\n- face: human face.\n- plate: license plate.",
+          "example": "[\"face\"]",
+          "member": "string",
+          "name": "PrivacyTargets",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateSmartEraseSubtitleConfig": {
+      "document": "Subtitle removal configuration for the smart erasing template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subtitle erasing method.\n**Automatic erasing:** Video subtitles are automatically recognized using an AI model and are erased without traces to generate a new video. However, missed or incorrect erasing may occur due to image interference and special subtitle styles. In this case, you can specify the erasing area.\nWhen automatic erasing is used, if AutoAreas is not specified, the default area (lower middle part of the image) will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.\n**Specified area erasing:** If the subtitle position is relatively fixed, you are recommended to specify the erasing area directly to minimize missed erasing.\nWhen you choose specified area erasing, specify at least one area for CustomAreas.\n- auto: automatic erasing.\n- custom: specified area erasing.\n",
+          "example": "auto",
+          "member": "string",
+          "name": "SubtitleEraseMethod",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle erasing model.\n**Standard edition (recommended):** For standard subtitle styles, you are recommended to select this edition to ensure better traceless effects in the details.\n**Area edition:** If the subtitles have special styles, such as calligraphy, shadow, or motion effects, you are recommended to select this edition to ensure a larger erasing area. However, the erasing effect in the details is not as good as the standard edition.\n- standard: standard edition.\n- area: area edition.",
+          "example": "standard",
+          "member": "string",
+          "name": "SubtitleModel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable OCR subtitle extraction. The default value is OFF.\nOCR subtitle extraction is supported if and only if SubtitleEraseMethod is set to auto. When OCR subtitle extraction is enabled, it identifies the text region that appears most persistently and stably within the automatic erasing area as the subtitle area. The text within the subtitle area is extracted and erased.\n- ON: enabled.\n-OFF: disabled.",
+          "example": "ON",
+          "member": "string",
+          "name": "OcrSwitch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle language, which is used to guide OCR recognition. The default value is zh_en. This parameter is valid only when OcrSwitch is set to ON.\n- zh_en: Chinese and English.\n- multi: others.\nThe following are other languages supported for recognition:\nChinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi, Arabic, India-Bengali, India-Gujarati, India-Kannada, India-Malayalam, India-Tamil, India-Telugu, Slovenian, Polish, Catalan, Bosnian, Czech, Estonian, Croatian, Punjabi, Marathi, Azerbaijani, Indonesian, Luxembourgish, Lithuanian, Latvian, Maltese, Slovak, Turkish, Kazakh, Greek, Irish, Belarusian, Khmer, Tagalog, Pashto, Persian, and Tajik.\n",
+          "example": "zh_en",
+          "member": "string",
+          "name": "SubtitleLang",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file format. The default value is vtt. This parameter is valid only when OcrSwitch is set to ON.\n- srt: SRT format.\n- vtt: WebVTT format.",
+          "example": "vtt",
+          "member": "string",
+          "name": "SubtitleFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable subtitle translation. The default value is OFF. This parameter is valid only when OcrSwitch is set to ON.\n- ON: enabled.\n- OFF: disabled.",
+          "example": "ON",
+          "member": "string",
+          "name": "TransSwitch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target language for Subtitle translation. The default value is en. This parameter is valid only when TransSwitch is set to ON.\nCurrently, the following languages are supported:\nzh: Simplified Chinese.\nen: English.\nja: Japanese.\nko: Korean.\nfr: French.\nes: Spanish.\nit: Italian.\nde: German.\ntr: Turkish.\nru: Russian.\npt: Portuguese.\nvi: Vietnamese.\nid: Indonesian.\nms: Malay.\nth: Thai.\nar: Arabic.\nhi: Hindi.",
+          "example": "en",
+          "member": "string",
+          "name": "TransDstLang",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom area for automatic erasing.\nFor the specified area, AI models are used to automatically detect and erase the target objects.\nNote: When the erasing method is set to custom, this parameter is invalid. When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "AutoAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom area for specified area erasing.\nFor the specified area, erase the target objects directly without detection and recognition within a selected time period.\nNote: When a template is modified, input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.",
+          "example": "无",
+          "member": "EraseTimeArea",
+          "name": "CustomAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateSmartEraseWatermarkConfig": {
+      "document": "Watermark removal configuration for the smart erasing template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Watermark erasing method.\n**Automatic erasing: ** Video watermarks are automatically recognized using an AI model and are erased to generate a new video. It applies to dynamic watermarks.\nWhen automatic erasing is used, if AutoAreas is not specified, the full-screen video image area will be erased automatically. If AutoAreas is specified, the specified area will be erased automatically.\n **Specified area erasing: ** For static watermarks in fixed positions, you are recommended to specify the erasing area directly.When you choose specified area erasing, specify at least one area.\n- auto: automatic erasing.\n- custom: specified area erasing.",
+          "example": "auto",
+          "member": "string",
+          "name": "WatermarkEraseMethod",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Watermark erasing model.\nBasic Edition: provide average effects and high cost performance. It applies to animations or videos with clean backgrounds.\nAdvanced Edition: provide better effects. It applies to reality-style videos, such as short dramas.\n- basic: Basic Edition.\n- advanced: Advanced Edition.",
+          "example": "basic",
+          "member": "string",
+          "name": "WatermarkModel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom area for automatic erasing.\nFor the specified area, AI models are used to automatically detect and erase the target objects.\nNote: When the erasing method is set to custom, this parameter is invalid. Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "AutoAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom area for specified area erasing.\nFor the specified area, erase the target objects directly without detection and recognition within a selected time period.\nNote: Input [] for the erasing area; if this parameter is unspecified, the template area information will remain unchanged.",
+          "example": "无",
+          "member": "EraseTimeArea",
+          "name": "CustomAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UrlInputInfo": {
       "document": "The URL of the object to process.",
       "members": [
@@ -27803,20 +28649,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Frame interpolation configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FrameRateConfig",
           "name": "FrameRate",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Super resolution configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SuperResolutionConfig",
           "name": "SuperResolution",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27827,26 +28675,29 @@
           "example": "无",
           "member": "HdrConfig",
           "name": "Hdr",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Image noise removal configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VideoDenoiseConfig",
           "name": "Denoise",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Overall enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ImageQualityEnhanceConfig",
           "name": "ImageQualityEnhance",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27857,26 +28708,7 @@
           "example": "无",
           "member": "ColorEnhanceConfig",
           "name": "ColorEnhance",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Detail enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "SharpEnhanceConfig",
-          "name": "SharpEnhance",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Face enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "FaceEnhanceConfig",
-          "name": "FaceEnhance",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27887,6 +28719,7 @@
           "example": "无",
           "member": "LowLightEnhanceConfig",
           "name": "LowLightEnhance",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27897,16 +28730,51 @@
           "example": "无",
           "member": "ScratchRepairConfig",
           "name": "ScratchRepair",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Artifact removal (smoothing) configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ArtifactRepairConfig",
           "name": "ArtifactRepair",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Enhancement scenario configuration. Valid values:\n<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>\n<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>\n<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>\n<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>\n<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>\n<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>\n<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>\n<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>\n<li>Input of a null string indicates that the enhancement scenario is not used.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "common",
+          "member": "string",
+          "name": "EnhanceSceneType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiffusionEnhanceConfig",
+          "name": "DiffusionEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FrameRateWithDenConfig",
+          "name": "FrameRateWithDen",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -28029,7 +28897,7 @@
         },
         {
           "disabled": false,
-          "document": "Average segment duration. Value range: (0-10], unit: second.\nThis parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.\nNote: It can be used only in the container format of hls.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Average shard duration. value range: (0-10], unit: second.\nLeaving it blank means auto, which automatically chooses the appropriate segment duration based on video features such as GOP.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "uint64",
           "name": "HlsTime",
@@ -28194,7 +29062,7 @@
         },
         {
           "disabled": false,
-          "document": "Video scenario. Valid values: \nnormal: General transcoding scenario: General transcoding and compression scenario.\npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Video scenario. Valid values: \n- normal: General transcoding scenario. General transcoding and compression scenario.\n- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \n- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \n- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \n- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \n- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \n\nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "normal",
           "member": "string",
           "name": "SceneType",
@@ -28205,7 +29073,7 @@
         },
         {
           "disabled": false,
-          "document": "Transcoding policy. Valid values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Transcoding policy. Valid values: \n- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \n- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \n- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \n- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \n\nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "standard_compress",
           "member": "string",
           "name": "CompressType",
@@ -28222,7 +29090,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: \nAV1 encoding containers currently only support mp4, webm, and mkv.\nH.266 encoding containers currently only support mp4, hls, ts, and mov. \nVP8 and VP9 encoding containers currently only support webm and mkv.\nMPEG2 and DNxHD encoding containers currently only support mxf.\nMV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Encoding format for video streams. valid values:.\n<Li>H264: h.264 encoding.</li>.\n<Li>H265: h.265 encoding.</li>.\n<Li>H266: h.266 encoding.</li>.\n<li>av1: AOMedia Video 1 encoding</li>.\n<li>vp8: vp8 encoding.</li>.\n<li>vp9: vp9 encoding.</li>.\n<li>mpeg2: mpeg2 encoding.</li>.\n<li>dnxhd: specifies dnxhd encoding.</li>.\n<li>mv-hevc: mv-hevc encoding.</li>.\n\nNote: the av1 encoding container currently only supports mp4, webm, and mkv.\nNote: H.266 encoding containers currently only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers currently only support webm and mkv.\nNote: MPEG2 and dnxhd encoding containers currently only support mxf.\nNote: MV-HEVC encoding containers currently only support mp4, hls, and mov. among them, the hls format supports only mp4 segmentation format and requires the input source to be a panoramic video (with multi-perspective).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "h264",
           "member": "string",
           "name": "Codec",
@@ -28508,7 +29376,7 @@
         },
         {
           "disabled": false,
-          "document": "Video scenario. Valid values: \nnormal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.\nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Video scenario. Valid values: \n- normal: General transcoding scenario. General transcoding and compression scenario.\n- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \n- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \n- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \n- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \n- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \n\nDefault value: normal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "normal",
           "member": "string",
           "name": "SceneType",
@@ -28519,7 +29387,7 @@
         },
         {
           "disabled": false,
-          "document": "Transcoding policy. Valid values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. \nhigh_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. \nlow_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. \nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Transcoding policy. Valid values: \n- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \n- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \n- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \n- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \n\nDefault value: standard_compress. \nNote: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "standard_compress",
           "member": "string",
           "name": "CompressType",
