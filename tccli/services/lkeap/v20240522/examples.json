@@ -16,6 +16,26 @@
         "title": "PDF Splitting Task Creation"
       }
     ],
+    "GetEmbedding": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lkeap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmbedding\n<Common request parameters>\n\n{\n    \"Model\": \"adp-text-embedding-0.5b\",\n    \"Inputs\": [\n        \"Hello.\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Embedding\": [\n                    0\n                ]\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Usage\": {\n            \"TotalTokens\": 3\n        }\n    }\n}",
+        "title": "Obtain The Embeddings"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lkeap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmbedding\n<Common request parameters>\n\n{\n    \"Model\": \"adp-text-embedding-0.5b\",\n    \"Inputs\": [\n        \"Hello\",\n        \"Word\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Embedding\": [\n                    0\n                ]\n            },\n            {\n                \"Embedding\": [\n                    0\n                ]\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Usage\": {\n            \"TotalTokens\": 3\n        }\n    }\n}",
+        "title": "Obtain The Embeddings1"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lkeap.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetEmbedding\n<Common request parameters>\n\n{\n    \"Model\": \"adp-text-embedding-0.5b\",\n    \"Inputs\": [\n        \"Hello\",\n        \"Word\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Embedding\": [\n                    0\n                ]\n            },\n            {\n                \"Embedding\": [\n                    0\n                ]\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"Usage\": {\n            \"TotalTokens\": 3\n        }\n    }\n}",
+        "title": "Obtain The Embeddings2"
+      }
+    ],
     "GetReconstructDocumentResult": [
       {
         "document": "",

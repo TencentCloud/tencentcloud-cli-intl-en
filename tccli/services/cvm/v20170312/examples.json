@@ -11,7 +11,7 @@
     "AssociateInstancesKeyPairs": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateInstancesKeyPairs\n&InstanceIds.0=ins-1e4r6y8i\n&InstanceIds.1=ins-3e56fg78\n&KeyIds.0=skey-4e5ty7i8\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateInstancesKeyPairs\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-1e4r6y8i\",\n        \"ins-3e56fg78\"\n    ],\n    \"KeyIds\": [\n        \"skey-4e5ty7i8\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Binding a key pair to CVM"
       }
@@ -19,7 +19,7 @@
     "AssociateSecurityGroups": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=AssociateSecurityGroups\n&InstanceIds.0=ins-2zvpghhc\n&InstanceIds.1=ins-915zrb0p\n&SecurityGroupIds.0=sg-9id3l839\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateSecurityGroups\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-915zrb0p\",\n        \"ins-2zvpghhc\"\n    ],\n    \"SecurityGroupIds\": [\n        \"sg-9id3l839\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3385dcf2-e1f0-4ed8-a924-c296721ab65f\"\n    }\n}",
         "title": "Associating multiple instances with one security group"
       }
@@ -27,32 +27,32 @@
     "ConfigureChcAssistVpc": [
       {
         "document": "This example shows you how to configure the out-of-band network and deployment network of a CHC host.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ConfigureChcAssistVpc\n&ChcIds.0=chc-1a2b3c4d\n&ChcIds.1=chc-adf34aft\n&BmcVirtualPrivateCloud.SubnetId=\"subnet-12345678\"\n&BmcVirtualPrivateCloud.VpcId=\"vpc-12345678\"\n&BmcVirtualPrivateCloud.PrivateIpAddresses.0=10.0.0.2\n&BmcVirtualPrivateCloud.PrivateIpAddresses.1=10.0.0.3\n&BmcSecurityGroupIds.0=sg-12345678\n&DeployVirtualPrivateCloud.SubnetId=\"subnet-1234abcd\"\n&DeployVirtualPrivateCloud.VpcId=\"vpc-1234abcd8\"\n&DeployVirtualPrivateCloud.PrivateIpAddresses.0=10.0.1.2\n&DeployVirtualPrivateCloud.PrivateIpAddresses.1=10.0.1.3\n&DeploySecurityGroupIds.0=sg-8a7f6d5s\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"62DDFFC6-FDB5-44F7-20A6-59152E3D129A\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConfigureChcAssistVpc\n<Common request parameters>\n\n{\n    \"ChcIds\": [\n        \"chc-1a2b3c4d\",\n        \"chc-adf34aft\"\n    ],\n    \"BmcVirtualPrivateCloud\": {\n        \"VpcId\": \"vpc-12345678\",\n        \"SubnetId\": \"subnet-12345678\",\n        \"PrivateIpAddresses\": [\n            \"10.0.0.2\",\n            \"10.0.0.3\"\n        ]\n    },\n    \"BmcSecurityGroupIds\": [\n        \"sg-12345678\"\n    ],\n    \"DeployVirtualPrivateCloud\": {\n        \"VpcId\": \"vpc-1234abcd8\",\n        \"SubnetId\": \"subnet-1234abcd\",\n        \"PrivateIpAddresses\": [\n            \"10.0.1.2\",\n            \"10.0.1.3\"\n        ]\n    },\n    \"DeploySecurityGroupIds\": [\n        \"sg-8a7f6d5s\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Configuring the out-of-band network and deployment network of a CHC"
       }
     ],
     "ConfigureChcDeployVpc": [
       {
         "document": "This example shows you how to configure the deployment network of a CHC.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ConfigureChcDeployVpc\n&ChcIds.0=chc-1a2b3c4d\n&ChcIds.1=chc-adf34aft\n&DeployVirtualPrivateCloud.SubnetId=\"subnet-1234abcd\"\n&DeployVirtualPrivateCloud.VpcId=\"vpc-1234abcd8\"\n&DeployVirtualPrivateCloud.PrivateIpAddresses.0=10.0.1.2\n&DeployVirtualPrivateCloud.PrivateIpAddresses.1=10.0.1.3\n&DeploySecurityGroupIds.0=sg-8a7f6d5s\n&ChcDeployExtraConfig.MiniOsType=public\n&ChcDeployExtraConfig.BootType=x86_legacy\n&ChcDeployExtraConfig.BootFile=pxelinux.0\n&ChcDeployExtraConfig.NextServerAddress=169.254.68.10\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"62DDFFC6-FDB5-44F7-20A6-59152E3D129A\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConfigureChcDeployVpc\n<Common request parameters>\n\n{\n    \"ChcIds\": [\n        \"chc-ej2pc1yr\"\n    ],\n    \"DeployVirtualPrivateCloud\": {\n        \"VpcId\": \"vpc-oa69jq11\",\n        \"SubnetId\": \"subnet-ov1xx3u3\",\n        \"PrivateIpAddresses\": [\n            \"11.97.4.66\"\n        ]\n    },\n    \"DeploySecurityGroupIds\": [\n        \"sg-j9ro1lex\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a35f2e81-435f-4bb0-898c-35e3bc9cb5f3\"\n    }\n}",
         "title": "Configuring the deployment network of a CHC host"
       }
     ],
     "ConvertOperatingSystems": [
       {
         "document": "This example shows you how to perform operating system switching on instance ins-6pb6lrmy.",
-        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConvertOperatingSystem\n<Common request parameters>\n\n\n\n{\n    \"InstanceIds\": [\n        \"ins-6pb6lrmy\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"SupportTargetOSList\": [\n            {\n                \"TargetOSType\": \"TencentOS\",\n                \"TargetOSVersion\": \"2.4\"\n            }\n        ],\n        \"TaskId\": \"12345678\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConvertOperatingSystems\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-6pb6lrmy\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SupportTargetOSList\": [\n            {\n                \"TargetOSType\": \"TencentOS\",\n                \"TargetOSVersion\": \"2.4\"\n            }\n        ],\n        \"TaskId\": \"12345678\",\n        \"RequestId\": \"120e85ba-f656-48a7-bdeb-dc17c4fa2xxx\"\n    }\n}",
         "title": "Performing Operating System Switching"
       }
     ],
     "CreateDisasterRecoverGroup": [
       {
         "document": "This example shows you how to create a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=CreateDisasterRecoverGroup\n&Name=Physical machine spread placement group\n&Type=HOST\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Type\": \"HOST\",\n        \"DisasterRecoverGroupId\": \"ps-qajfd25h\",\n        \"Name\": \"Physical machine spread placement group\",\n        \"CvmQuotaTotal\": 50,\n        \"CurrentNum\": 0,\n        \"CreateTime\": \"2020-09-22 00:00:00\",\n        \"RequestId\": \"21387009-9b9c-4b57-8fa2-8228f702ff6c\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisasterRecoverGroup\n<Common request parameters>\n\n{\n    \"Name\": \"MySWDisasterRecoverGroup\",\n    \"Type\": \"SW\",\n    \"Affinity\": 3,\n    \"TagSpecification\": [\n        {\n            \"ResourceType\": \"ps\",\n            \"Tags\": [\n                {\n                    \"Key\": \"MySWDisasterRecoverGroupKey\",\n                    \"Value\": \"MySWDisasterRecoverGroupValue\"\n                }\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2025-11-17T07:43:06Z\",\n        \"CurrentNum\": 0,\n        \"CvmQuotaTotal\": 20,\n        \"DisasterRecoverGroupId\": \"ps-39lmgkht\",\n        \"Name\": \"MySWDisasterRecoverGroup\",\n        \"RequestId\": \"59216e4c-c24d-46f8-bc88-ebc5081a595f\",\n        \"Type\": \"SW\"\n    }\n}",
         "title": "Creating a spread placement group"
       }
     ],
@@ -67,7 +67,7 @@
     "CreateKeyPair": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateKeyPair\n<Common request parameters>\n\n\n\n{\n    \"ProjectId\": 0,\n    \"KeyName\": \"Tencent\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateKeyPair\n<Common request parameters>\n\n{\n    \"ProjectId\": 0,\n    \"KeyName\": \"Tencent\"\n}",
         "output": "{\n    \"Response\": {\n        \"KeyPair\": {\n            \"KeyId\": \"skey-mv9yzyjj\",\n            \"KeyName\": \"Tencent\",\n            \"ProjectId\": 0,\n            \"PublicKey\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDP0Yw2T4itUKOJQIK69c1Asy1UO88cxEbujR5Jbr0e/Ey1v4ZKAUzDnsBnFlf4hKPA1YvMB8RBYj4GcLtM7PrKnBNNram8rgl73X/klOO8oqKv+J/XUA7KHH1Y6wcn1RTRTMdDHbGhW1q/UpfeylNTbf+wEIWhEfaL5FKQm4hqCw== skey_112168\",\n            \"PrivateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIICXgIBAAKBgQDP0Yw2T4itUKOJQIK69c1Asy1UO88cxEbujR5Jbr0e/Ey1v4ZK\\nAUzDnsBnFlf4hKPA1YvMB8RBYj4GcLtM7PrKnBNNram8rgl73X/klOO8oqKv+J/X\\nUA7KHH1Y6wcn1RTRTMdDHbGhW1q/UpfeylNTbf+wEIWhEfaL5FKQm4hqCwIDAQAB\\nAoGBAJEvSu5SaCD02hs0F2C4Aln2E2/qjMoDEa7spcEVfUhdaNX8ZLvk5pUvnikm\\nwfSb7a71QUIcFu66zKxBK4kVcirBRCR8nTAQbQ6AhXQYP+y6ihZ9Z/g6BBEeqCpV\\nuGPmKnhdxdJ8Al2huEZKJFUQhKM8XdP7dqn6yFDm0L2sTK6RAkEA9IbhP4/2CVSC\\n6d8j5nj3ejPx25R3wc4G+st1tZn1O/TRqUknbVEvsxZC63bRjHiw086QIWr61L8f\\nqQBLZ58DMwJBANmRv3aHVxv5sMlV0F3hD5ZgWEDIIjxD7oiBzU1rqvF6OpTQc1cF\\nrnwxAXDtYYJ75B8qQEL1ph/zIE5YW0hlfckCQQCyVTwpUyCopU3kqqxQBaDXKtMU\\nxS6h1VQZzBDIpMPJOj8+Ku/qNe+HuJCNkVY6EDtF/bv340GTrt+0LVbQ95MpAkEA\\nxcvwUdTXB9LnuxKuHTsoDaFHepW4MivcJvRC7njM7z4dFf+wbFP4/mUbF0xoUtVJ\\nXl/uDjH/tpo1K6S+UEIcqQJAfLQywCQdZ/qOJn0PwxiOhwniikSnZuZPNSw8T+kg\\n/oxijESOLAJBnt3S/g+D530Enjitvfc9mEB7mh0VmwWvPg==\\n-----END RSA PRIVATE KEY-----\\n\"\n        },\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Creating a Key Pair"
       }
@@ -82,8 +82,8 @@
     ],
     "CreateLaunchTemplateVersion": [
       {
-        "document": "This example shows you how to create a new launch template version in Guangzhou Zone 1.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=CreateLaunchTemplateVersion\n&Placement.Zone=ap-guangzhou-1\n&LaunchTemplateId=lt-lobxe2yo\n&<Common request parameters>",
+        "document": "This example shows you how to create a new launch template version in Guangzhou Zone 6.",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchTemplateVersion\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"Zone\": \"ap-guangzhou-6\"\n    },\n    \"LaunchTemplateId\": \"lt-f6q777hr\"\n}",
         "output": "{\n    \"Response\": {\n        \"LaunchTemplateVersionNumber\": 7,\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec309\"\n    }\n}",
         "title": "Creating an instance launch template version"
       }
@@ -91,21 +91,21 @@
     "DeleteDisasterRecoverGroups": [
       {
         "document": "This example shows you how to delete a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteDisasterRecoverGroups\n&DisasterRecoverGroupIds.0=ps-58l1hu01\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDisasterRecoverGroups\n<Common request parameters>\n\n{\n    \"DisasterRecoverGroupIds\": [\n        \"ps-39lmgkht\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4f57ce54-4639-4daa-b29f-37ab55f82809\"\n    }\n}",
         "title": "Deleting a spread placement group"
       }
     ],
     "DeleteImages": [
       {
         "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed, and an error code will be returned.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteImages\n&ImageIds.0=img-34vaef8fe\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImages\n<Common request parameters>\n\n{\n    \"ImageIds\": [\n        \"img-34vaef8fe\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Deleting an image"
       },
       {
         "document": "This example shows you how to delete the image `img-34vaef8fe`. If the image is in use or the image ID does not exist, no operation will be performed and an error code will be returned.",
-        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImages\n<Common request parameters>\n\n{\n    \"ImageIds\": [\n        \"img-mfih409y\"\n    ],\n    \"DryRun\": \"True\",\n    \"DeleteBindedSnap\": \"True\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImages\n<Common request parameters>\n\n{\n    \"ImageIds\": [\n        \"img-mfih409y\"\n    ],\n    \"DryRun\": true,\n    \"DeleteBindedSnap\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f24aca43-5135-4c9b-81fb-734969ce4c78\"\n    }\n}",
         "title": "Checking whether the specified image can be deleted"
       }
@@ -113,7 +113,7 @@
     "DeleteKeyPairs": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteKeyPairs\n&KeyIds.0=skey-mv9yzyjj\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteKeyPairs\n<Common request parameters>\n\n{\n    \"KeyIds\": [\n        \"skey-mv9yzyjj\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Deleting a key pair"
       }
@@ -121,7 +121,7 @@
     "DeleteLaunchTemplate": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteLaunchTemplate\n&LaunchTemplateId=lt-34vaef8fe\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLaunchTemplate\n<Common request parameters>\n\n{\n    \"LaunchTemplateId\": \"lt-34vaef8fe\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec311\"\n    }\n}",
         "title": "Deleting an instance launch template"
       }
@@ -129,7 +129,7 @@
     "DeleteLaunchTemplateVersions": [
       {
         "document": "This example deletes version 2 and 3 of the instance launch template `lt-34vaef8fe`.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DeleteLaunchTemplateVersions\n&LaunchTemplateId=lt-34vaef8fe\n&LaunchTemplateVersions.0=2\n&LaunchTemplateVersions.1=3\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLaunchTemplateVersions\n<Common request parameters>\n\n{\n    \"LaunchTemplateId\": \"lt-34vaef8fe\",\n    \"LaunchTemplateVersions\": [\n        2,\n        3\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec311\"\n    }\n}",
         "title": "Deletes one or more instance launch template versions"
       }
@@ -153,7 +153,7 @@
     "DescribeDisasterRecoverGroupQuota": [
       {
         "document": "This example shows you how to query the quota of your placement groups.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroupQuota\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisasterRecoverGroupQuota\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"GroupQuota\": 10,\n        \"CvmInHostGroupQuota\": 50,\n        \"CvmInSwGroupQuota\": 20,\n        \"CvmInRackGroupQuota\": 30,\n        \"CurrentNum\": 25,\n        \"RequestId\": \"a13da94a-1cbc-42ca-ac6c-e14ef0c76a7c\"\n    }\n}",
         "title": "Querying placement group quota"
       }
@@ -161,8 +161,8 @@
     "DescribeDisasterRecoverGroups": [
       {
         "document": "This example shows you how to query the information of a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeDisasterRecoverGroups\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DisasterRecoverGroupSet\": [\n            {\n                \"DisasterRecoverGroupId\": \"ps-21q9ibvr\",\n                \"Name\": \"Database service\",\n                \"Type\": \"RACK\",\n                \"CvmQuotaTotal\": 30,\n                \"CurrentNum\": 0,\n                \"InstanceIds\": [],\n                \"CreateTime\": \"2018-04-19T02:47:12Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"c68ce193-be41-4d13-9a9b-2dc031db6477\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisasterRecoverGroups\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 100,\n    \"Filters\": [\n        {\n            \"Name\": \"tag:FOO_886\",\n            \"Values\": [\n                \"BAR_886\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DisasterRecoverGroupSet\": [\n            {\n                \"Affinity\": 1,\n                \"CreateTime\": \"2024-08-28T10:04:56Z\",\n                \"CurrentNum\": 0,\n                \"CvmQuotaTotal\": 60,\n                \"DisasterRecoverGroupId\": \"ps-0f03mwkn\",\n                \"InstanceIds\": [],\n                \"Name\": \"HostDisasterRecoverGroup\",\n                \"Tags\": [\n                    {\n                        \"Key\": \"FOO_886\",\n                        \"Value\": \"BAR_886\"\n                    }\n                ],\n                \"Type\": \"HOST\"\n            },\n            {\n                \"Affinity\": 1,\n                \"CreateTime\": \"2024-08-13T04:16:19Z\",\n                \"CurrentNum\": 0,\n                \"CvmQuotaTotal\": 20,\n                \"DisasterRecoverGroupId\": \"ps-ali72vwj\",\n                \"InstanceIds\": [],\n                \"Name\": \"SWDisasterRecoverGroup\",\n                \"Tags\": [\n                    {\n                        \"Key\": \"FOO_886\",\n                        \"Value\": \"BAR_886\"\n                    }\n                ],\n                \"Type\": \"SW\"\n            }\n        ],\n        \"RequestId\": \"52eca90d-08c8-4887-abf0-78d8155cfcfd\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Querying the information of a spread placement group"
       }
     ],
@@ -185,7 +185,7 @@
     "DescribeImageQuota": [
       {
         "document": "This example shows you how to query your image quota.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImageQuota\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImageQuota\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\",\n        \"ImageNumQuota\": 20\n    }\n}",
         "title": "Querying image quota"
       }
@@ -193,7 +193,7 @@
     "DescribeImageSharePermission": [
       {
         "document": "This example shows you how to query the sharing information of an image whose image ID is img-6pb6lrmy.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImageSharePermission\r\n&ImageId=img-6pb6lrmy\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImageSharePermission\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-6pb6lrmy\"\n}",
         "output": "{\n    \"Response\": {\n        \"SharePermissionSet\": [\n            {\n                \"CreatedTime\": \"2018-06-10T11:02:50Z\",\n                \"AccountId\": \"101104350000\"\n            },\n            {\n                \"CreatedTime\": \"2018-06-13T15:03:25Z\",\n                \"AccountId\": \"101104350001\"\n            }\n        ],\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Querying sharing information of a specified image"
       }
@@ -215,7 +215,7 @@
     "DescribeImportImageOs": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeImportImageOs\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImportImageOs\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"ImportImageOsListSupported\": {\n            \"Linux\": [\n                \"CentOS\",\n                \"Ubuntu\",\n                \"Debian\",\n                \"OpenSUSE\",\n                \"SUSE\",\n                \"CoreOS\",\n                \"FreeBSD\",\n                \"Other Linux\"\n            ],\n            \"Windows\": [\n                \"Windows Server 2008\",\n                \"Windows Server 2012\",\n                \"Windows Server 2016\"\n            ]\n        },\n        \"ImportImageOsVersionSet\": [\n            {\n                \"OsName\": \"Windows Server 2008\",\n                \"OsVersions\": [\n                    \"-\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Windows Server 2012\",\n                \"OsVersions\": [\n                    \"-\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Windows Server 2016\",\n                \"OsVersions\": [\n                    \"-\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"CentOS\",\n                \"OsVersions\": [\n                    \"5\",\n                    \"6\",\n                    \"7\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"CoreOS\",\n                \"OsVersions\": [\n                    \"7\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Debian\",\n                \"OsVersions\": [\n                    \"6\",\n                    \"7\",\n                    \"8\",\n                    \"9\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"FreeBSD\",\n                \"OsVersions\": [\n                    \"10\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Redhat\",\n                \"OsVersions\": [\n                    \"5\",\n                    \"6\",\n                    \"7\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"OpenSUSE\",\n                \"OsVersions\": [\n                    \"11\",\n                    \"12\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"SUSE\",\n                \"OsVersions\": [\n                    \"10\",\n                    \"11\",\n                    \"12\",\n                    \"13\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Ubuntu\",\n                \"OsVersions\": [\n                    \"10\",\n                    \"12\",\n                    \"14\",\n                    \"16\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            },\n            {\n                \"OsName\": \"Other Linux\",\n                \"OsVersions\": [\n                    \"-\"\n                ],\n                \"Architecture\": [\n                    \"x86_64\",\n                    \"i386\"\n                ]\n            }\n        ],\n        \"RequestId\": \"32064a8f-8d3f-4670-8d4f-60123ca97042\"\n    }\n}",
         "title": "Querying the supported operating systems of imported images"
       }
@@ -275,7 +275,7 @@
     "DescribeInternetChargeTypeConfigs": [
       {
         "document": "This example shows you how to query the list of all network billing modes and select one for the CVM created using the API.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeInternetChargeTypeConfigs\r\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInternetChargeTypeConfigs\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"InternetChargeTypeConfigSet\": [\n            {\n                \"InternetChargeType\": \"BANDWIDTH_PREPAID\",\n                \"Description\": \"Bill by monthly bandwidth subscription\"\n            },\n            {\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"Description\": \"Bill by traffic\"\n            },\n            {\n                \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                \"Description\": \"Bill by bandwidth usage period\"\n            },\n            {\n                \"InternetChargeType\": \"BANDWIDTH_PACKAGE\",\n                \"Description\": \"Bill by bandwidth package\"\n            }\n        ],\n        \"RequestId\": \"c2abdac4-ea7b-4653-b07c-87cc303fabf0\"\n    }\n}",
         "title": "Querying network billing modes"
       }
@@ -283,16 +283,16 @@
     "DescribeKeyPairs": [
       {
         "document": "This example shows you how to query the list of key pairs.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeKeyPairs\n&Filters.0.Name=key-name\n&Filters.0.Values.0=Tencent\n&Offset=0\n&Limit=20\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"KeyPairSet\": [\n            {\n                \"KeyId\": \"skey-mv9yzyjj\",\n                \"KeyName\": \"Tencent\",\n                \"Description\": \"\",\n                \"PublicKey\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDP0Yw2T4itUKOJQIK69c1Asy1UO88cxEbujR5Jbr0e/Ey1v4ZKAUzDnsBnFlf4hKPA1YvMB8RBYj4GcLtM7PrKnBNNram8rgl73X/klOO8oqKv+J/XUA7KHH1Y6wcn1RTRTMdDHbGhW1q/UpfeylNTbf+wEIWhEfaL5FKQm4hqCw== skey_112168\",\n                \"AssociatedInstanceIds\": [],\n                \"CreatedTime\": \"2016-12-02T00:22:40Z\"\n            }\n        ],\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RunInstances\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"key-name\",\n            \"Values\": [\n                \"MyKeyPair\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"KeyPairSet\": [\n            {\n                \"AssociatedInstanceIds\": [],\n                \"CreatedTime\": \"2025-10-16T08:12:48Z\",\n                \"Description\": \"\",\n                \"KeyId\": \"skey-1q8j7b93\",\n                \"KeyName\": \"MyKeyPair\",\n                \"ProjectId\": 0,\n                \"PublicKey\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8gSdflU6iZDlLp3uRgfIQ7d9gl4SzF2yO9BJ1VyzhgWkbYsUS8u7qbwxC6UeAc8364FhT4MjVjXi/+6hYpDnnMiK6lqKBxotLupUtkVmYt+osdPP+y3OcCzTqHWCsY3s7AvyvD41+nuH6LrpXZ4LlHJynPc66eqd5gpnCyg2O1sxW+pd2Zigk0QGWiCuVtm4ICEp3DNHG/9wlVzd++xODf398JU3ebxBsXfe46mFSkyBVbsJLuNueZd4eGDS3q0WhimnvpgZoYOGsNPl4GBLCGOHWZrl/9hE+az6P8W7QwpVe5gvy5MG3usk6zpc0f/diZrdXX7 skey-1q8j7b93\",\n                \"Tags\": [\n                    {\n                        \"Key\": \"MyKeyPairTagKey\",\n                        \"Value\": \"MyKeyPairTagValue\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"eebd54d0-a305-4716-9a84-6017ac14e8c8\",\n        \"TotalCount\": 120\n    }\n}",
         "title": "Querying the List of Key Pairs"
       }
     ],
     "DescribeLaunchTemplateVersions": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DescribeLaunchTemplateVersions\n&LaunchTemplateId=lt-b8v1kcyq\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LaunchTemplateVersionSet\": [\n            {\n                \"LaunchTemplateVersion\": 1,\n                \"LaunchTemplateVersionData\": {\n                    \"VirtualPrivateCloud\": {\n                        \"SubnetId\": \"subnet-he88kvqu\",\n                        \"AsVpcGateway\": false,\n                        \"Ipv6AddressCount\": 0,\n                        \"VpcId\": \"vpc-dcteo7jd\"\n                    },\n                    \"InstanceCount\": 1,\n                    \"Placement\": {\n                        \"ProjectId\": 0,\n                        \"Zone\": \"ap-guangzhou-6\"\n                    },\n                    \"SystemDisk\": {\n                        \"DiskSize\": 50,\n                        \"DiskType\": \"CLOUD_PREMIUM\"\n                    },\n                    \"ImageId\": \"img-8toqc6s3\",\n                    \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n                    \"EnhancedService\": {\n                        \"SecurityService\": {\n                            \"Enabled\": true\n                        },\n                        \"MonitorService\": {\n                            \"Enabled\": true\n                        }\n                    },\n                    \"SecurityGroupIds\": [\n                        \"sg-rf6ogz49\"\n                    ],\n                    \"InternetAccessible\": {\n                        \"PublicIpAssigned\": true,\n                        \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                        \"InternetMaxBandwidthOut\": 100\n                    },\n                    \"InstanceName\": \"lt_test\",\n                    \"InstanceType\": \"S1.SMALL2\",\n                    \"DataDisks\": [\n                        {\n                            \"Encrypt\": false,\n                            \"DeleteWithInstance\": true,\n                            \"KmsKeyId\": \"\",\n                            \"DiskSize\": 50,\n                            \"DiskType\": \"CLOUD_PREMIUM\"\n                        },\n                        {\n                            \"Encrypt\": true,\n                            \"DeleteWithInstance\": true,\n                            \"KmsKeyId\": \"\",\n                            \"DiskSize\": 60,\n                            \"DiskType\": \"CLOUD_PREMIUM\"\n                        }\n                    ]\n                },\n                \"CreationTime\": \"2020-12-17T01:54:31Z\",\n                \"LaunchTemplateId\": \"lt-b8v1kcyq\",\n                \"IsDefaultVersion\": true,\n                \"LaunchTemplateVersionDescription\": \"\",\n                \"CreatedBy\": \"251009920\"\n            }\n        ],\n        \"RequestId\": \"b2da6ace-add1-48dc-ae73-6fc1eed95f1d\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLaunchTemplateVersions\n<Common request parameters>\n\n{\n    \"LaunchTemplateId\": \"lt-b8v1kcyq\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LaunchTemplateVersionSet\": [\n            {\n                \"LaunchTemplateVersion\": 1,\n                \"LaunchTemplateVersionData\": {\n                    \"VirtualPrivateCloud\": {\n                        \"SubnetId\": \"subnet-he88kvqu\",\n                        \"AsVpcGateway\": false,\n                        \"Ipv6AddressCount\": 0,\n                        \"VpcId\": \"vpc-dcteo7jd\"\n                    },\n                    \"InstanceCount\": 1,\n                    \"Placement\": {\n                        \"ProjectId\": 0,\n                        \"Zone\": \"ap-guangzhou-6\"\n                    },\n                    \"SystemDisk\": {\n                        \"DiskSize\": 50,\n                        \"DiskType\": \"CLOUD_PREMIUM\"\n                    },\n                    \"ImageId\": \"img-8toqc6s3\",\n                    \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n                    \"EnhancedService\": {\n                        \"SecurityService\": {\n                            \"Enabled\": true\n                        },\n                        \"MonitorService\": {\n                            \"Enabled\": true\n                        }\n                    },\n                    \"SecurityGroupIds\": [\n                        \"sg-rf6ogz49\"\n                    ],\n                    \"InternetAccessible\": {\n                        \"PublicIpAssigned\": true,\n                        \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                        \"InternetMaxBandwidthOut\": 100\n                    },\n                    \"InstanceName\": \"lt_test\",\n                    \"InstanceType\": \"S5.16XLARGE256\",\n                    \"DataDisks\": [\n                        {\n                            \"Encrypt\": false,\n                            \"DeleteWithInstance\": true,\n                            \"KmsKeyId\": \"\",\n                            \"DiskSize\": 50,\n                            \"DiskType\": \"CLOUD_PREMIUM\"\n                        },\n                        {\n                            \"Encrypt\": true,\n                            \"DeleteWithInstance\": true,\n                            \"KmsKeyId\": \"\",\n                            \"DiskSize\": 60,\n                            \"DiskType\": \"CLOUD_PREMIUM\"\n                        }\n                    ]\n                },\n                \"CreationTime\": \"2020-12-17T01:54:31Z\",\n                \"LaunchTemplateId\": \"lt-b8v1kcyq\",\n                \"IsDefaultVersion\": true,\n                \"LaunchTemplateVersionDescription\": \"\",\n                \"CreatedBy\": \"251009920\"\n            }\n        ],\n        \"RequestId\": \"b2da6ace-add1-48dc-ae73-6fc1eed95f1d\"\n    }\n}",
         "title": "Querying instance launch template versions"
       }
     ],
@@ -361,7 +361,7 @@
     "DisassociateInstancesKeyPairs": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateInstancesKeyPairs\n&InstanceIds.0=ins-w34e5rl9\n&KeyIds.0=skey-e3r6y7ji\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateInstancesKeyPairs\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-w34e5rl9\"\n    ],\n    \"KeyIds\": [\n        \"skey-e3r6y7ji\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Disassociating a key pair from an instance"
       }
@@ -369,7 +369,7 @@
     "DisassociateSecurityGroups": [
       {
         "document": " ",
-        "input": "https://cvm.tencentcloudapi.com/?Action=DisassociateSecurityGroups\n&InstanceIds.0=ins-2zvpghhc\n&InstanceIds.1=ins-915zrb0p\n&SecurityGroupIds.0=sg-9id3l839\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateSecurityGroups\n<Common request parameters>\n\n{\n    \"SecurityGroupIds\": [\n        \"sg-9id3l839\"\n    ],\n    \"InstanceIds\": [\n        \"ins-2zvpghhc\",\n        \"ins-915zrb0p\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3385dcf2-e1f0-4ed8-a924-c296721ab65f\"\n    }\n}",
         "title": "Disassociating instances from security groups"
       }
@@ -449,7 +449,7 @@
     "InquiryPriceResetInstancesInternetMaxBandwidth": [
       {
         "document": "This example shows you how to inquire about the price for changing the bandwidth of the instance ins-fd8spnmq to 20 Mbps.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=InquiryPriceResetInstancesInternetMaxBandwidth\n&InstanceIds.0=ins-fd8spnmq\n&InternetAccessible.InternetMaxBandwidthOut=20\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceResetInstancesInternetMaxBandwidth\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-fd8spnmq\"\n    ],\n    \"InternetAccessible\": {\n        \"InternetMaxBandwidthOut\": 20\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"BandwidthPrice\": {\n                \"UnitPrice\": 0.8,\n                \"ChargeUnit\": \"GB\"\n            }\n        },\n        \"RequestId\": \"700864b9-85da-4cb9-bc80-d99eaf9fa047\"\n    }\n}",
         "title": "Inquiring About the Price of a Pay-as-You-Go Instance with a New Bandwidth Cap"
       }
@@ -493,7 +493,7 @@
     "ModifyChcAttribute": [
       {
         "document": "This example shows you how to modify the CHC attributes.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyChcAttribute\n&ChcIds.0=chc-r8hr2upy\n&ChcIds.1=chc-5d8a23rs\n&InstanceName=server1\n&DeviceType=CHC_HS1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyChcAttribute\n<Common request parameters>\n\n{\n    \"ChcIds\": [\n        \"chc-r8hr2upy\",\n        \"chc-5d8a23rs\"\n    ],\n    \"InstanceName\": \"server1\",\n    \"DeviceType\": \"CHC_HS1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying the CHC host attributes"
       }
@@ -501,8 +501,8 @@
     "ModifyDisasterRecoverGroupAttribute": [
       {
         "document": "This example shows you how to modify the name of a spread placement group.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyDisasterRecoverGroupAttribute\n&DisasterRecoverGroupId=ps-58l1hu01\n&Name=Physical machine spread placement group 1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e185c04-116f-47b7-b21c-e13580c5d0f2\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDisasterRecoverGroupAttribute\n<Common request parameters>\n\n{\n    \"DisasterRecoverGroupId\": \"ps-39lmgkht\",\n    \"Name\": \"NewDisasterRecoverGroupName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b184884-c513-4cd3-92c9-d4a69b05f44b\"\n    }\n}",
         "title": "Modifying the name of a spread placement group"
       }
     ],
@@ -517,7 +517,7 @@
     "ModifyImageAttribute": [
       {
         "document": "This example shows you how to rename the image `img-6pb6lrmy` to `sample`.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyImageAttribute\n&ImageId=img-6pb6lrmy\n&ImageName=sample\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageAttribute\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-6pb6lrmy\",\n    \"ImageName\": \"NewImageName\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Modifying image name"
       }
@@ -587,13 +587,13 @@
     "ModifyKeyPairAttribute": [
       {
         "document": "This example shows you how to modify the key pair name.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\n&KeyId=skey-mv9yzyjj\n&KeyName=Tencent\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyKeyPairAttribute\n<Common request parameters>\n\n{\n    \"KeyId\": \"skey-mv9yzyjj\",\n    \"KeyName\": \"MyKeyName\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
         "title": "Modifying the key pair name"
       },
       {
         "document": "This example shows you how to modify the key pair description.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyKeyPairAttribute\n&KeyId=skey-mv9yzyjj\n&Description=Tencent\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyKeyPairAttribute\n<Common request parameters>\n\n{\n    \"KeyId\": \"skey-mv9yzyjj\",\n    \"Description\": \"MyKeyPairDescription\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"aea2227b-fbb7-4cc7-bf29-d49b2b6db97c\"\n    }\n}",
         "title": "Modifying the key pair description"
       }
@@ -601,7 +601,7 @@
     "ModifyLaunchTemplateDefaultVersion": [
       {
         "document": "This example sets the Version 2 of the instance launch template `lt-34vaef8fe` as the default version.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyLaunchTemplateDefaultVersion\n&LaunchTemplateId=lt-34vaef8fe\n&DefaultVersion=2\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLaunchTemplateDefaultVersion\n<Common request parameters>\n\n{\n    \"LaunchTemplateId\": \"lt-34vaef8fe\",\n    \"DefaultVersion\": 2\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b4ad85f-1657-4445-111d-3c0a9fbec311\"\n    }\n}",
         "title": "Modifying the default version of the instance launch template"
       }
@@ -625,16 +625,16 @@
     "RemoveChcAssistVpc": [
       {
         "document": "This example shows you how to remove the out-of-band network and deployment network of a CHC host.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RemoveChcAssistVpc\n&ChcIds.0=chc-1a2b3c4d\n&ChcIds.1=chc-adf34aft\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"62DDFFC6-FDB5-44F7-20A6-59152E3D129A\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveChcAssistVpc\n<Common request parameters>\n\n{\n    \"ChcIds\": [\n        \"chc-1a2b3c4d\",\n        \"chc-adf34aft\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"30cf6d80-8789-43db-aed3-317d0e99b5ba\"\n    }\n}",
         "title": "Removing the out-of-band network and deployment network of a CHC host"
       }
     ],
     "RemoveChcDeployVpc": [
       {
         "document": "This example shows you how to remove the deployment network of a CHC host.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=RemoveChcDeployVpc\n&ChcIds.0=chc-1a2b3c4d\n&ChcIds.1=chc-adf34aft\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"62DDFFC6-FDB5-44F7-20A6-59152E3D129A\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveChcDeployVpc\n<Common request parameters>\n\n{\n    \"ChcIds\": [\n        \"chc-ejzpceyo\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b0bf55c-0340-451d-8dde-1211c3ba6d38\"\n    }\n}",
         "title": "Removing the deployment network of a CHC host"
       }
     ],
@@ -657,7 +657,7 @@
     "ResetInstancesInternetMaxBandwidth": [
       {
         "document": "This example shows you how to modify the public network bandwidth cap of an instance.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ResetInstancesInternetMaxBandwidth\n&InstanceIds.0=ins-r8hr2upy\n&InternetAccessible.InternetMaxBandwidthOut=10\n&StartTime=2017-03-15\n&EndTime=2017-03-16\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetInstancesInternetMaxBandwidth\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-dyhinflx\"\n    ],\n    \"InternetAccessible\": {\n        \"InternetMaxBandwidthOut\": 10\n    },\n    \"StartTime\": \"2025-11-18\",\n    \"EndTime\": \"2025-11-19\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d39d6c09-44e9-4e80-8661-77b5ff3cbc15\"\n    }\n}",
         "title": "Modifying the public network bandwidth cap of an instance"
       }

@@ -119,6 +119,13 @@
       "output": "RecognizeBrazilRNMOCRResponse",
       "status": "online"
     },
+    "RecognizeDetectCardCoords": {
+      "document": "This API is used to recognize the coordinates of four corners of cards.",
+      "input": "RecognizeDetectCardCoordsRequest",
+      "name": "Four-Corner coordinate detection and recognition",
+      "output": "RecognizeDetectCardCoordsResponse",
+      "status": "online"
+    },
     "RecognizeGeneralInvoice": {
       "document": "This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).\n\nA maximum of 5 requests can be initiated per second for this API.\n\n\nThe invoice/ticket subtype (SubType), subtype description (TypeDescription), and parent type (Type) can be returned, as described below:\n<table style=\"width:715px\">\n      <thead>\n        <tr>\n          <th style=\"width:200px\">SubType</th>\n          <th style=\"width:200px\">TypeDescription</th>\n          <th >Type</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td> VatSpecialInvoice</td>\n          <td> Special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatCommonInvoice</td>\n          <td> General VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicCommonInvoice </td>\n          <td> Electronic general VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoice </td>\n          <td> Electronic special VAT invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceBlockchain</td>\n          <td> Blockchain electronic invoice </td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceToll</td>\n          <td> Electronic general VAT invoice (toll)</td>\n          <td> 3 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicSpecialInvoiceFull</td>\n          <td> Electronic invoice (special)</td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> VatElectronicInvoiceFull</td>\n          <td> Electronic invoice (general) </td>\n          <td> 16 </td>\n        </tr>\n        <tr>\n          <td> MotorVehicleSaleInvoice </td>\n          <td> Motor vehicle sales invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> UsedCarPurchaseInvoice </td>\n          <td> Used car invoice </td>\n          <td> 12 </td>\n        </tr>\n        <tr>\n          <td> VatInvoiceRoll </td>\n          <td> General VAT invoice (roll) </td>\n          <td> 11 </td>\n        </tr>\n        <tr>\n          <td> TaxiTicket </td>\n          <td> Taxi receipt </td>\n          <td> 0 </td>\n        </tr>\n        <tr>\n          <td> QuotaInvoice </td>\n          <td> Quota invoice </td>\n          <td> 1 </td>\n        </tr>\n        <tr>\n          <td> TrainTicket </td>\n          <td> Train ticket </td>\n          <td> 2 </td>\n        </tr>\n        <tr>\n          <td> AirTransport </td>\n          <td> Itinerary/Receipt of e-ticket for air transportation </td>\n          <td> 5 </td>\n        </tr>\n        <tr>\n          <td> MachinePrintedInvoice </td>\n          <td> General machine-printed invoice </td>\n          <td> 8 </td>\n        </tr>\n        <tr>\n          <td> BusInvoice </td>\n          <td> Bus ticket </td>\n          <td> 9 </td>\n        </tr>\n        <tr>\n          <td> ShippingInvoice </td>\n          <td> Ship ticket </td>\n          <td> 10 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeGeneralBill </td>\n          <td> General receipt for non-tax revenue </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> NonTaxIncomeElectronicBill </td>\n          <td> General payment voucher for non-tax revenue (electronic) </td>\n          <td> 15 </td>\n        </tr>\n        <tr>\n          <td> TollInvoice </td>\n          <td> Toll receipt </td>\n          <td> 13 </td>\n        </tr>\n        <tr>\n          <td> OtherInvoice </td>\n          <td> Other </td>\n          <td> -1 </td>\n        </tr>\n      </tbody>\n    </table>",
       "input": "RecognizeGeneralInvoiceRequest",
@@ -1626,6 +1633,32 @@
       ],
       "usage": "out"
     },
+    "CoordsItem": {
+      "document": "Detected coordinate recognition information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Coordinates of four points in the image.",
+          "example": "无",
+          "member": "Polygon",
+          "name": "Polygon",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Coordinates of two points in the image.",
+          "example": "无",
+          "member": "ItemCoord",
+          "name": "Coords",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DetectedWordCoordPoint": {
       "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
       "members": [
@@ -2828,7 +2861,7 @@
         {
           "disabled": false,
           "document": "X-coordinate of top-left point.",
-          "example": "",
+          "example": "537",
           "member": "int64",
           "name": "X",
           "required": true,
@@ -2838,7 +2871,7 @@
         {
           "disabled": false,
           "document": "Y-coordinate of top-left point.",
-          "example": "",
+          "example": "335",
           "member": "int64",
           "name": "Y",
           "required": true,
@@ -2848,7 +2881,7 @@
         {
           "disabled": false,
           "document": "Width",
-          "example": "",
+          "example": "169",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -2858,7 +2891,7 @@
         {
           "disabled": false,
           "document": "Height",
-          "example": "",
+          "example": "63",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -6280,6 +6313,52 @@
           "name": "PortraitImageBack",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeDetectCardCoordsRequest": {
+      "document": "RecognizeDetectCardCoords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: the downloaded image should be no more than 7M after Base64 encoding. image download time should be no more than 3 seconds. images stored in tencent cloud's urls guarantee higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/url.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after the downloaded image is encoded in Base64. image download time is not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeDetectCardCoordsResponse": {
+      "document": "RecognizeDetectCardCoords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detected coordinate information.",
+          "example": "无",
+          "member": "CoordsItem",
+          "name": "ItemList",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

@@ -160,6 +160,14 @@
         "title": "RecognizeBrazilRNMOCR"
       }
     ],
+    "RecognizeDetectCardCoords": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeDetectCardCoords\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/card/IDCardOCR/IDCardOCR1.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ItemList\": [\n            {\n                \"Coords\": {\n                    \"Height\": 388,\n                    \"Width\": 607,\n                    \"X\": 93,\n                    \"Y\": 204\n                },\n                \"Polygon\": {\n                    \"LeftBottom\": {\n                        \"X\": 93,\n                        \"Y\": 592\n                    },\n                    \"LeftTop\": {\n                        \"X\": 95,\n                        \"Y\": 204\n                    },\n                    \"RightBottom\": {\n                        \"X\": 700,\n                        \"Y\": 592\n                    },\n                    \"RightTop\": {\n                        \"X\": 700,\n                        \"Y\": 204\n                    }\n                }\n            }\n        ],\n        \"RequestId\": \"27ca3357-3cfe-4cb2-9996-0120241211b1\"\n    }\n}",
+        "title": "Four Corner Coordinate Detection and Recognition"
+      }
+    ],
     "RecognizeGeneralInvoice": [
       {
         "document": "This example shows you how to recognize a general invoice or ticket (advanced).",
