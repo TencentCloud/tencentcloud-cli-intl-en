@@ -2809,7 +2809,7 @@
         {
           "disabled": false,
           "document": "ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.",
-          "example": "ps-21q9ibvr",
+          "example": "[\"ps-21q9ibvr\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
           "required": false,
@@ -2845,7 +2845,7 @@
         {
           "disabled": false,
           "document": "<li> `tag-key` - String - Optional - Filter by the tag key.</li>\n<li>`tag-value` - String - Optional - Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. Replace `tag-key` with the actual tag keys.</li>\nEach request can have up to 10 `Filters` and 5 `Filters.Values`.",
-          "example": "[     {         \"Name\": \"tag-key \",         \"Values\": [             \"myTag\"         ]     } ]",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2860,7 +2860,7 @@
         {
           "disabled": false,
           "document": "Information on spread placement groups.",
-          "example": "[     {         \"DisasterRecoverGroupId\": \"ps-21q9ibvr\",         \"Name\": \"数据库业务\",         \"Type\": \"RACK\",         \"CvmQuotaTotal\": 30,         \"CurrentNum\": 0,         \"InstanceIds\": [],         \"CreateTime\": \"2018-04-19T02:47:12Z\"     } ]",
+          "example": "无",
           "member": "DisasterRecoverGroup",
           "name": "DisasterRecoverGroupSet",
           "output_required": true,
@@ -3066,7 +3066,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:\n\n<li><strong>image-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>image-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Options:</p><p style=\"padding-left: 30px;\">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style=\"padding-left: 30px;\">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style=\"padding-left: 30px;\">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>\n<li><strong>image-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>platform</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image operating system</strong>, such as `CentOS`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-value</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag value</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag:tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key-value pair</strong>. Replace “tag-key” with the actual value. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
+          "document": "Filters. Each request can have up to 10 `Filters`, and 5 `Filters.Values` for each filter. `ImageIds` and `Filters` cannot be specified at the same time. See details:\n\n<li><strong>image-id</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image ID</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>image-type</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image type</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p><p style=\"padding-left: 30px;\">Options:</p><p style=\"padding-left: 30px;\">`PRIVATE_IMAGE`: Private images (images created by this account)</p><p style=\"padding-left: 30px;\">`PUBLIC_IMAGE`: Public images (Tencent Cloud official images)</p><p style=\"padding-left: 30px;\">`SHARED_IMAGE`: Shared images (images shared by other accounts to this account)</p>\n<li><strong>image-name</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image name</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>platform</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>image operating system</strong>, such as `CentOS`.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag-value</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag value</strong>.</p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>\n<li><strong>tag:tag-key</strong></li>\n<p style=\"padding-left: 30px;\">Filter by the <strong>tag key-value pair</strong>. Replace \"tag-key\" with the actual value. </p><p style=\"padding-left: 30px;\">Type: String</p><p style=\"padding-left: 30px;\">Optional</p>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3093,8 +3093,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance type, e.g. `S1.SMALL1`",
-          "example": "\"S1.SMALL1\"",
+          "document": "Instance type, e.g. `SA5.MEDIUM2`",
+          "example": "SA5.MEDIUM2",
           "member": "string",
           "name": "InstanceType",
           "required": false,
@@ -3112,7 +3112,7 @@
           "example": "无",
           "member": "Image",
           "name": "ImageSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3122,7 +3122,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3463,7 +3463,7 @@
         {
           "disabled": false,
           "document": "Key pair ID(s) in the format of `skey-11112222`. This API supports using multiple IDs as filters at the same time. For more information on the format of this parameter, see the `id.N` section in [API Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1). You cannot specify `KeyIds` and `Filters` at the same time. You can log in to the [console](https://console.cloud.tencent.com/cvm/index) to query the key pair IDs.",
-          "example": "skey-11112222",
+          "example": "[\"skey-11112222\"]",
           "member": "string",
           "name": "KeyIds",
           "required": false,
@@ -3685,7 +3685,7 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3695,7 +3695,7 @@
           "name": "LaunchTemplateSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4804,7 +4804,7 @@
         {
           "disabled": false,
           "document": "Image name",
-          "example": "test",
+          "example": "myImg",
           "member": "string",
           "name": "ImageName",
           "output_required": true,
@@ -4814,7 +4814,7 @@
         {
           "disabled": false,
           "document": "Image description",
-          "example": "test",
+          "example": "tencentcloud",
           "member": "string",
           "name": "ImageDescription",
           "output_required": true,
@@ -4864,7 +4864,7 @@
         {
           "disabled": false,
           "document": "Image creator",
-          "example": "xxx",
+          "example": "tencentcloud",
           "member": "string",
           "name": "ImageCreator",
           "output_required": true,
@@ -4884,7 +4884,7 @@
         {
           "disabled": false,
           "document": "Synchronization percentage\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "null",
+          "example": "60",
           "member": "int64",
           "name": "SyncPercent",
           "output_required": true,
@@ -4899,27 +4899,27 @@
           "name": "IsSupportCloudinit",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Information on the snapshots associated with the image\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "[]",
+          "example": "无",
           "member": "Snapshot",
           "name": "SnapshotSet",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The list of tags bound to the image.\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "[]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4939,7 +4939,7 @@
           "name": "ImageFamily",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5211,7 +5211,7 @@
         },
         {
           "disabled": false,
-          "document": "Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>",
+          "document": "Reserved instance name.<br><li>The RI name defaults to \"unnamed\" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>",
           "example": "myReservedInstance",
           "member": "string",
           "name": "ReservedInstanceName",
@@ -7101,7 +7101,7 @@
           "name": "LatestVersionNumber",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7111,7 +7111,7 @@
           "name": "LaunchTemplateId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7121,7 +7121,7 @@
           "name": "LaunchTemplateName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7131,7 +7131,7 @@
           "name": "DefaultVersionNumber",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7141,17 +7141,17 @@
           "name": "LaunchTemplateVersionCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "UIN of the user who created the template.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "123456",
+          "example": "1230000",
           "member": "string",
           "name": "CreatedBy",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7161,7 +7161,7 @@
           "name": "CreationTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -8192,7 +8192,7 @@
         {
           "disabled": false,
           "document": "Whether to force shut down a running instances. Default value: TRUE.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "ForceStop",
           "required": false,
@@ -8201,7 +8201,7 @@
         {
           "disabled": false,
           "document": "Whether to keep the host name. Default value: FALSE.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "ReserveHostName",
           "required": false,
@@ -8502,7 +8502,7 @@
         },
         {
           "disabled": false,
-          "document": "Reserved instance name.<br><li>The RI name defaults to “unnamed” if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>",
+          "document": "Reserved instance name.<br><li>The RI name defaults to \"unnamed\" if this parameter is left empty.</li><li>You can enter any name within 60 characters (including the pattern string).</li>",
           "example": "myReservedInstance",
           "member": "string",
           "name": "ReservedInstanceName",
@@ -8844,7 +8844,7 @@
           "name": "FixedPriceDiscount",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8854,7 +8854,7 @@
           "name": "UsagePriceDiscount",
           "output_required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10039,30 +10039,30 @@
         {
           "disabled": false,
           "document": "Snapshot ID.",
-          "example": "",
+          "example": "snap-2y1v",
           "member": "string",
           "name": "SnapshotId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Type of the cloud disk used to create the snapshot. Valid values:\nSYSTEM_DISK: system disk\nDATA_DISK: data disk",
-          "example": "",
+          "example": "SYSTEM_DISK",
           "member": "string",
           "name": "DiskUsage",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Size of the cloud disk used to create the snapshot; unit: GB.",
-          "example": "",
+          "example": "50",
           "member": "int64",
           "name": "DiskSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }

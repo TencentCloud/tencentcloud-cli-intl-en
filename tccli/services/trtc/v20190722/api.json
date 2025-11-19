@@ -316,7 +316,7 @@
       "status": "online"
     },
     "StopPublishCdnStream": {
-      "document": "This API is used to stop a relaying task.",
+      "document": "This API is used to stop a relaying task.\nYou can create a relay task before the anchor enters the room. When the relay task is finished, you need to call the stop interface actively. If you do not call the Stop Relay Task Interface, Tencent Cloud will automatically stop the mix relay task when all users participating in the mix have no data uploaded for a period of time exceeding the timeout (AgentParams.MaxIdleTime) set when starting the relay task.",
       "input": "StopPublishCdnStreamRequest",
       "name": "Stops a relaying task",
       "output": "StopPublishCdnStreamResponse",
@@ -5969,7 +5969,7 @@
         {
           "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.",
-          "example": "1400188366",
+          "example": "1400***000",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -5978,7 +5978,7 @@
         {
           "disabled": false,
           "document": "The task ID.",
-          "example": "xxxx",
+          "example": "-nHPekVU7h******sceOqAZ1YVQE.",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -5993,10 +5993,10 @@
         {
           "disabled": false,
           "document": "The task ID.",
-          "example": "xxxxx",
+          "example": "-nHPekVU7h******sceOqAZ1YVQE.",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
