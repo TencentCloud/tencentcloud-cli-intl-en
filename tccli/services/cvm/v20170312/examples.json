@@ -275,7 +275,7 @@
     "DescribeInternetChargeTypeConfigs": [
       {
         "document": "This example shows you how to query the list of all network billing modes and select one for the CVM created using the API.",
-        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInternetChargeTypeConfigs\n<Common request parameters>\n\n{}",
+        "input": "POST / HTTP/1.1\nHost: cvm.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInternetChargeTypeConfigs\nX-TC-Language: en-US\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"InternetChargeTypeConfigSet\": [\n            {\n                \"InternetChargeType\": \"BANDWIDTH_PREPAID\",\n                \"Description\": \"Bill by monthly bandwidth subscription\"\n            },\n            {\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"Description\": \"Bill by traffic\"\n            },\n            {\n                \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                \"Description\": \"Bill by bandwidth usage period\"\n            },\n            {\n                \"InternetChargeType\": \"BANDWIDTH_PACKAGE\",\n                \"Description\": \"Bill by bandwidth package\"\n            }\n        ],\n        \"RequestId\": \"c2abdac4-ea7b-4653-b07c-87cc303fabf0\"\n    }\n}",
         "title": "Querying network billing modes"
       }
