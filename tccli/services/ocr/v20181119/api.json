@@ -1,5 +1,12 @@
 {
   "actions": {
+    "ApplyCardVerificationExternal": {
+      "document": "This API is used for general recognition of overseas cards.\n\nThe following list details the countries or regions, document types supported by the overseas document recognition API and whether the back side of the document is required:\n\n<table>\n<thead>\n<tr>\n<td style=\"width:200px\">Nationality</td>\n<td style=\"width:200px\">CardType</td>\n<td style=\"width:200px\">Whether the Back Side is Required</td>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Argentina</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Argentina</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Argentina</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Australia</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Australia</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Australia</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Australia</td>\n<td>Residence Permit</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Bangladesh</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Bangladesh</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Bangladesh</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Cambodia</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Cambodia</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Cambodia</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Canada</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Canada</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Canada</td>\n<td>Passport</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Canada</td>\n<td>Residence Permit</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Chile</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Chile</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Chile</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Germany</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Germany</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Germany</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Germany</td>\n<td>Residence Permit</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Mexico</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Mexico</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Mexico</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Myanmar</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Myanmar</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Myanmar</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>New Zealand</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>New Zealand</td>\n<td>National ID Card</td>\n<td>No</td>\n</tr>\n<tr>\n<td>New Zealand</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>New Zealand</td>\n<td>Residence Permit</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>Residence Permit</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Pakistan</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Pakistan</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Pakistan</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Russia</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Russia</td>\n<td>National ID Card</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Russia</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>Passport</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>Residence Permit</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Indonesia</td>\n<td>National ID Card</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Indonesia</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Hong Kong, China</td>\n<td>Identity Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Thailand</td>\n<td>National ID Card</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Thailand</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Malaysia</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Malaysia</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Singapore</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Philippines</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Philippines</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Japan</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Japan</td>\n<td>Driver's License</td>\n<td>No</td>\n</tr>\n<tr>\n<td>Macau, China</td>\n<td>Identity Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Taiwan, China</td>\n<td>Identity Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Bangladesh</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Nigeria</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Pakistan</td>\n<td>National ID Card</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Pakistan</td>\n<td>Driver's License</td>\n<td>Yes</td>\n</tr>\n</tbody>\n</table>",
+      "input": "ApplyCardVerificationExternalRequest",
+      "name": "Initiate overseas document recognition",
+      "output": "ApplyCardVerificationExternalResponse",
+      "status": "online"
+    },
     "BankCardOCR": {
       "document": "This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "BankCardOCRRequest",
@@ -26,6 +33,13 @@
       "input": "GeneralBasicOCRRequest",
       "name": "Recognizes general print.",
       "output": "GeneralBasicOCRResponse",
+      "status": "online"
+    },
+    "GetCardVerificationExternalResult": {
+      "document": "This API is used to obtain document recognition results.",
+      "input": "GetCardVerificationExternalResultRequest",
+      "name": "Retrieve the card recognition result",
+      "output": "GetCardVerificationExternalResultResponse",
       "status": "online"
     },
     "HKIDCardOCR": {
@@ -280,6 +294,112 @@
     "serviceShortName": "ocr"
   },
   "objects": {
+    "AddressInfo": {
+      "document": "Overseas document recognition address information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Postal code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PostalCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sub-region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Subdivision",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the city.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complete address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FormattedAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "First line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LineOne",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Second line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LineTwo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the third line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LineThree",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the fourth line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LineFour",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the fifth line in the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LineFive",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AirTransport": {
       "document": "Itinerary/Receipt of e-ticket for air transportation",
       "members": [
@@ -525,6 +645,88 @@
         }
       ],
       "usage": "out"
+    },
+    "ApplyCardVerificationExternalRequest": {
+      "document": "ApplyCardVerificationExternal request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the country of the document.\nARG:Argentina\nAUS:Australia\nKHM:Cambodia\nCAN:Canada\nSGP:Singapore\nCHL:Chile\nDEU:Germany\nMEX:Mexico\nMMR:Myanmar\nNZL:New Zealand\nBGD:Bangladesh\nNGA:Nigeria\nPAK:Pakistan\nRUS:Russia\nIDN:Indonesia\nHKG:Hong Kong, China\nTHA:Thailand\nMYS:Malaysia\nJPN:Japan\nPHL:Philippines\nMAC:Macao, China\nCHN:ChinaPermit\nTWN:Taiwan, China\nBGD:Bangladesh\nNGA:Nigeria \nPAK:Pakistan\n\nAUTO: supports cards and documents from 200+ countries",
+          "example": "ARG",
+          "member": "string",
+          "name": "Nationality",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document type.\nID_CARD\nPASSPORT\nDRIVING_LICENSE\nRESIDENCE_PERMIT (Supported in certain countries/regions, including Australia, Canada, Germany, New Zealand, Nigeria, Singapore).",
+          "example": "ID_CARD",
+          "member": "string",
+          "name": "CardType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the document Front. supported image formats: PNG, JPG/JPEG. \nSupported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. \nSupported image resolution: between 256 \\* 256 and 4096 \\* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.",
+          "example": "/9j/4AAQSkZJRgABAQAASABIAAD",
+          "member": "string",
+          "name": "ImageBase64Front",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64 value of the reverse side of the document. Supported image formats: PNG, JPG/JPEG. \nSupported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. \nSupported image resolution: between 256 \\* 256 and 4096 \\* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlBack is used.",
+          "example": "/9j/4AAQSkZJRgABAQAASABIAAD",
+          "member": "string",
+          "name": "ImageBase64Back",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Url of the document Front. supported image formats: PNG, JPG/JPEG. \nSupported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. \nSupported image resolution: between 256 \\* 256 and 4096 \\* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.",
+          "example": "https://test/demo.jpeg",
+          "member": "string",
+          "name": "ImageUrlFront",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the Url of the document Back. supported image formats: PNG, JPG/JPEG\nSupported image size: no more than 2M after Base64 encoding. image download time should not exceed 5 seconds. \nSupported image resolution: between 256 \\* 256 and 4096 \\* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only use ImageUrlBack.\n",
+          "example": "https://test/demo.jpeg",
+          "member": "string",
+          "name": "ImageUrlBack",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyCardVerificationExternalResponse": {
+      "document": "ApplyCardVerificationExternal response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process token, which is used to obtain the result.",
+          "example": "88ed374d-cfa7-4391-bcde-66b49f2f192b",
+          "member": "string",
+          "name": "CardVerificationToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BankCardOCRRequest": {
       "document": "BankCardOCR request structure.",
@@ -2183,6 +2385,232 @@
       ],
       "type": "object"
     },
+    "GeneralCard": {
+      "document": "General card certificate information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "LicenseNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Personal number. returned when the identity document type is passport.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "PersonalNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Passport mrz line 1.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "PassportCodeFirst",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Passport mrz line 2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "PassportCodeSecond",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date, in YYYY-MM-DD format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ExpirationDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration date in YYYY-MM-DD format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "DueDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issue date, in YYYY-MM-DD format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "IssuedDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issuing authority.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "IssuedAuthority",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issuing country, following the ISO 3166 country coding specification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "IssuedCountry",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "FullName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "FirstName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "LastName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gender on the document.\n-M: man.\n-F: woman.\n-X: other gender identity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Sex",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Age. 0 means no valid info.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Age",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Birth place.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "BirthPlace",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document nationality, following ISO 3166 country coding specification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Nationality",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Registration number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "RegistrationNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the address information of the document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AddressInfo",
+          "name": "Address",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Localized name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "FullNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Localization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "FirstNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Localized surname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "LastNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "GeneralMachineItem": {
       "document": "Items of a general machine-printed invoice",
       "members": [
@@ -2268,6 +2696,83 @@
         }
       ],
       "usage": "out"
+    },
+    "GetCardVerificationExternalResultRequest": {
+      "document": "GetCardVerificationExternalResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Initiates the recognition interface and returns a unique token.",
+          "example": "9943345f-a690-4220-a749-9c68518f2e17",
+          "member": "string",
+          "name": "CardVerificationToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCardVerificationExternalResultResponse": {
+      "document": "GetCardVerificationExternalResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates the status. valid values: \nPASSED\nWARNING",
+          "example": "PASSED",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the anti-counterfeiting information.\n-ScreenshotSuspected: The image is a screenshot.\n-RetakeSuspected: The image is taken from another screen.\n-PaperCopy: The image is a black and white, or color photocopy.\n-FakeSuspected: The image of the card, or the information on the card has been edited or altered.\n-OtherWarning: Document's authenticity is not verified for various reasons.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"OtherWarning\"]",
+          "member": "string",
+          "name": "WarnInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Country Code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PHL",
+          "member": "string",
+          "name": "Nationality",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Recognition result of the text in the id photo.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "GeneralCard",
+          "name": "CardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the token in the request parameters.",
+          "example": "9943345f-a690-4220-a749-9c68518f2e17",
+          "member": "string",
+          "name": "CardVerificationToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "GroupInfo": {
       "document": "The sequence number of an element group in the image",
