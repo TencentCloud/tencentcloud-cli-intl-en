@@ -40,6 +40,22 @@
         "title": "Creating a TencentDB for MongoDB Instance (Pay-as-You-Go)"
       }
     ],
+    "CreateLogDownloadTask": [
+      {
+        "document": "This example shows you how to create a log download task.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLogDownloadTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-k2p5su09\",\n    \"StartTime\": \"2024-03-07 9:22:15\",\n    \"EndTime\": \"2024-03-07 15:33:15\",\n    \"LogComponents\": [\n        \"NETWORK\"\n    ],\n    \"LogConnections\": [],\n    \"LogIds\": [],\n    \"LogDetailParams\": [\n        \"client metadata\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"1233vvae-23f9dfd\"\n    }\n}",
+        "title": "Creating a Log Download Task"
+      }
+    ],
+    "DeleteLogDownloadTask": [
+      {
+        "document": "This example shows you how to delete a log download task.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLogDownloadTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-k2p5su09\",\n    \"TaskId\": \"export-28439fb3-90a6-4ca2-bd2f-ad99e99a14e9\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"q87sfsfds-897asd\",\n        \"Status\": 0\n    }\n}",
+        "title": "Deleting a Log Download Task"
+      }
+    ],
     "DescribeAsyncRequestInfo": [
       {
         "document": " ",
@@ -126,6 +142,30 @@
         "title": "InstanceEnumParam"
       }
     ],
+    "DescribeInstanceSSL": [
+      {
+        "document": " ",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeInstanceSSL\n&InstanceId=cmgo-eqmoaxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"ExpiredTime\": \"2023-05-04 12:13:00\",\n        \"CertUrl\": \"http://sample/cert\",\n        \"RequestId\": \"12345-abcdef\"\n    }\n}",
+        "title": "Viewing the Enabling Status of SSL for an Instance"
+      }
+    ],
+    "DescribeLogDownloadTasks": [
+      {
+        "document": "This example shows you how to query a log download task.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogDownloadTasks\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-k2p5su09\",\n    \"StartTime\": \"2024-03-07 9:22:15\",\n    \"EndTime\": \"2024-03-07 15:33:15\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"832423fdfsfsd-312jdsf\",\n        \"Tasks\": [\n            {\n                \"CreateTime\": \"2024-03-07 21:01:00\",\n                \"FileSize\": 372432,\n                \"Percent\": 100,\n                \"Status\": 2,\n                \"TaskId\": \"export-28439fb3-90a6-4ca2-bd2f-ad99e99a14e9\",\n                \"TaskType\": 0,\n                \"UpdateTime\": \"2024-03-07 21:14:02\",\n                \"Url\": \"\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying a Log Download Task"
+      }
+    ],
+    "DescribeMongodbLogs": [
+      {
+        "document": "This example shows you how to query instance logs.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMongodbLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-k2p5su09\",\n    \"StartTime\": \"2024-03-07 9:22:15\",\n    \"EndTime\": \"2024-03-07 15:33:15\",\n    \"LogComponents\": [\n        \"NETWORK\"\n    ],\n    \"LogConnections\": [],\n    \"LogIds\": [],\n    \"LogDetailParams\": [\n        \"client metadata\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"LogList\": [\n            {\n                \"LogComponent\": \"NETWORK\",\n                \"LogConnection\": \"conn269939\",\n                \"LogDetail\": \"{\\\"t\\\":{\\\"$date\\\":\\\"2024-03-07T10:29:50.027+08:00\\\"},\\\"s\\\":\\\"I\\\",  \\\"c\\\":\\\"NETWORK\\\",  \\\"id\\\":51800,   \\\"ctx\\\":\\\"conn269939\\\",\\\"msg\\\":\\\"client metadata\\\",\\\"attr\\\":{\\\"remote\\\":\\\"127.0.0.1:39024\\\",\\\"client\\\":\\\"conn269939\\\",\\\"doc\\\":{\\\"driver\\\":{\\\"name\\\":\\\"mongo-go-driver\\\",\\\"version\\\":\\\"v1.10.6\\\"},\\\"os\\\":{\\\"type\\\":\\\"linux\\\",\\\"architecture\\\":\\\"amd64\\\"},\\\"platform\\\":\\\"go1.20.4\\\",\\\"application\\\":{\\\"name\\\":\\\"CMongo\\\"}}}}\",\n                \"LogId\": \"51800\",\n                \"LogLevel\": \"WARNING\",\n                \"LogTime\": \"2024-03-07T10:29:50.027+08:00\"\n            }\n        ],\n        \"RequestId\": \"ab2323tf-rqew1111\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying Logs"
+      }
+    ],
     "DescribeSecurityGroup": [
       {
         "document": "This example shows you how to query all security groups bound to the current instance.",
@@ -188,6 +228,14 @@
         "input": "https://mongodb.tencentcloudapi.com/?Action=InquirePriceRenewDBInstances\n&InstanceIds.0=cmgo-8oij5631\n&InstanceChargePrepaid.Period=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"DiscountPrice\": 455.6,\n            \"OriginalPrice\": 670,\n            \"UnitPrice\": 0\n        },\n        \"RequestId\": \"d08f2a0f-4a69-451e-8ddb-753340d5fb34\"\n    }\n}",
         "title": "Querying the renewal price of an instance"
+      }
+    ],
+    "InstanceEnableSSL": [
+      {
+        "document": "This example shows you how to disable SSL.",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=InstanceEnableSSL\n&InstanceId=cmgo-eqmoaxxx\n&Enable=true\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CertUrl\": \"https://cert-****\",\n        \"ExpiredTime\": \"2024-03-29 13:40:56\",\n        \"RequestId\": \"5297ebe2-63f8-465f-be7d-41058ce438\",\n        \"Status\": 1\n    }\n}",
+        "title": "Setting the SSL Status for an Instance"
       }
     ],
     "IsolateDBInstance": [
@@ -280,6 +328,22 @@
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-7pje****\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ccfe11c0-b1d3-11ea-8b51-552abe435100\"\n    }\n}",
         "title": "Return and Refund for Monthly Subscription Instance"
+      }
+    ],
+    "UpgradeDBInstanceKernelVersion": [
+      {
+        "document": "When a new kernel version is launched, you can upgrade the kernel to the latest version.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDBInstanceKernelVersion\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vnipr5\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2efcf780-9970-11ec-8975-6bc44e3bfad7\",\n        \"FlowId\": 19677\n    }\n}",
+        "title": "Upgrading the Current Kernel Version Number of the Instance"
+      }
+    ],
+    "UpgradeDbInstanceVersion": [
+      {
+        "document": "This example shows you how to upgrade a TencentDB for MongoDB instance from 3.6 to 4.0.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDbInstanceVersion\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vnipr5\",\n    \"MongoVersion\": \"MONGO_42_WT\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2efcf780-9970-11ec-8975-6bc44e3bfad7\",\n        \"FlowId\": 19677\n    }\n}",
+        "title": "Upgrading an Instance from 3.6 to 4.0"
       }
     ]
   },

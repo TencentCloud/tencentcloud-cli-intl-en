@@ -1556,7 +1556,7 @@
         {
           "disabled": false,
           "document": "Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time.",
-          "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
+          "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
           "required": false,
@@ -1574,7 +1574,7 @@
         {
           "disabled": false,
           "document": "Termination policy, whose maximum length is currently 1. Valid values: OLDEST_INSTANCE and NEWEST_INSTANCE. Default value: OLDEST_INSTANCE.\n<li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>\n<li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>",
-          "example": "OLDEST_INSTANCE",
+          "example": "[\"OLDEST_INSTANCE\"]",
           "member": "string",
           "name": "TerminationPolicies",
           "required": false,
@@ -1610,7 +1610,7 @@
         {
           "disabled": false,
           "document": "List of Tag descriptions. by specifying this parameter, you can bind tags to a scaling group and corresponding resource instances. each scaling group supports up to 30 tags. you can call the [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) API to retrieve existing Tag key-value pairs based on the response.",
-          "example": "[{\"Key\": \"Service_B\", \"Value\": \"pss3\", \"ResourceType\": \"auto-scaling-group\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -1619,7 +1619,7 @@
         {
           "disabled": false,
           "document": "Service settings such as unhealthy instance replacement.",
-          "example": "{\"ScalingMode\": \"CLASSIC_SCALING\"}",
+          "example": "无",
           "member": "ServiceSettings",
           "name": "ServiceSettings",
           "required": false,
@@ -1673,7 +1673,7 @@
         {
           "disabled": false,
           "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nThis parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MIXED`.",
-          "example": "{\"BaseCapacity\": 1, \"CompensateWithBaseInstance\": true, \"OnDemandPercentageAboveBaseCapacity\": 50, \"SpotAllocationStrategy\": \"COST_OPTIMIZED\"}",
+          "example": "无",
           "member": "SpotMixedAllocationPolicy",
           "name": "SpotMixedAllocationPolicy",
           "required": false,
@@ -1691,7 +1691,7 @@
         {
           "disabled": false,
           "document": "Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.",
-          "example": "{\"BeginIndex\": 0, \"Enabled\": true}",
+          "example": "无",
           "member": "InstanceNameIndexSettings",
           "name": "InstanceNameIndexSettings",
           "required": false,
@@ -4331,12 +4331,12 @@
       "usage": "both"
     },
     "InstanceNameIndexSettings": {
-      "document": "Instance name sequencing settings.",
+      "document": "Instance name index settings.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "FALSE",
+          "document": "Whether to enable instance name index. Default value: false. Value range:.\n\n**true**: indicates that instance name index is enabled.\n**false**: indicates that instance name index is disabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
           "member": "bool",
           "name": "Enabled",
           "output_required": false,
@@ -4346,7 +4346,7 @@
         },
         {
           "disabled": false,
-          "document": "Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Begin index number. Value range: [0, 99999999].\n\nIndicates that the scale out activity will be failed when the index out of range. \nIf not specified, carries forward historical index number or 0.\nLowering the index sequence number may lead to instance name duplication within the group.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "BeginIndex",
@@ -4354,6 +4354,17 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance name index number digits, defaults to 0, means no specified digit count. Value range: 0-8, maximum is integer 8. when using values 1-8, the system checks whether the index number exceeds the maximum digit for this digit count.\n\nIf set to 3, index number is in the format: 000, 001, 002 ... 010, 011 ... 100 ... 999. The maximum is 999. \nAssuming set to 0, the index number is 0, 1, 2 ... 10, 11 ... 100 ... 1000 ...10000 ... 99999999. Max number is 99999999.",
+          "example": "0",
+          "member": "uint64",
+          "name": "IndexLength",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7263,7 +7274,7 @@
         {
           "disabled": false,
           "document": "Enables unhealthy instance replacement. If this feature is enabled, AS will replace instances that are flagged as unhealthy by Cloud Monitor. If this parameter is not specified, the value will be False by default.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "ReplaceMonitorUnhealthy",
           "output_required": true,
@@ -7285,7 +7296,7 @@
         {
           "disabled": false,
           "document": "Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "ReplaceLoadBalancerUnhealthy",
           "output_required": true,
@@ -7307,7 +7318,7 @@
         {
           "disabled": false,
           "document": "Automatic instance Tag update. the default value is False. if this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (this feature takes effect for Tag creation and editing but not Tag deletion.) the update does not take effect immediately due to certain latency.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "AutoUpdateInstanceTags",
           "output_required": false,
@@ -7318,10 +7329,21 @@
         {
           "disabled": false,
           "document": "Expected number of instances sync minimum and maximum value. default value is False. this parameter only takes effect in scenarios where the expected number is not passed in to modify scaling group api.\n<Li>True: when modifying the maximum or minimum value, if a conflict exists with the current expected value, synchronously adjust the expected value. for example, if the input minimum value is 2 while the current expected value is 1, the expected value will be synchronously adjusted to 2.</li>.\n<Li>False: if a conflict exists between the current expected value when modifying the maximum or minimum value, an error message indicates it is not allowed to be modified.</li>.",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "DesiredCapacitySyncWithMaxMinSize",
           "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scaling in unhealthy instances first. If enabled, preferentially selects unhealthy instances during scale in. Default value: False.",
+          "example": "false",
+          "member": "bool",
+          "name": "PriorityScaleInUnhealthy",
+          "output_required": false,
           "required": false,
           "type": "bool",
           "value_allowed_null": false

@@ -2717,7 +2717,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Indicates the status. valid values: \nPASSED\nWARNING",
+          "document": "Indicates the status. valid values: \nPASSED\nPROCESSING\nWARNING",
           "example": "PASSED",
           "member": "string",
           "name": "Status",

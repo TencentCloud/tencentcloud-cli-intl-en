@@ -11,13 +11,13 @@ from tccli.exceptions import ConfigurationError, ClientError, ParamError
 from tencentcloud.common import credential
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.mongodb.v20190725 import mongodb_client as mongodb_client_v20190725
-from tencentcloud.mongodb.v20190725 import models as models_v20190725
+from tencentcloud.trocket.v20230308 import trocket_client as trocket_client_v20230308
+from tencentcloud.trocket.v20230308 import models as models_v20230308
 
 from jmespath import search
 import time
 
-def doTerminateDBInstances(args, parsed_globals):
+def doDescribeSourceClusterGroupList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -46,14 +46,14 @@ def doTerminateDBInstances(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TerminateDBInstancesRequest()
+    model = models.DescribeSourceClusterGroupListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.TerminateDBInstances(model)
+        rsp = client.DescribeSourceClusterGroupList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -72,7 +72,7 @@ def doTerminateDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateLogDownloadTask(args, parsed_globals):
+def doDescribeMigratingTopicList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -101,14 +101,14 @@ def doCreateLogDownloadTask(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateLogDownloadTaskRequest()
+    model = models.DescribeMigratingTopicListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateLogDownloadTask(model)
+        rsp = client.DescribeMigratingTopicList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -127,7 +127,7 @@ def doCreateLogDownloadTask(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceNodeProperty(args, parsed_globals):
+def doDescribeMessageTrace(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -156,14 +156,14 @@ def doDescribeDBInstanceNodeProperty(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceNodePropertyRequest()
+    model = models.DescribeMessageTraceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDBInstanceNodeProperty(model)
+        rsp = client.DescribeMessageTrace(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -182,7 +182,7 @@ def doDescribeDBInstanceNodeProperty(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceDeal(args, parsed_globals):
+def doModifyTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -211,14 +211,14 @@ def doDescribeDBInstanceDeal(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceDealRequest()
+    model = models.ModifyTopicRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDBInstanceDeal(model)
+        rsp = client.ModifyTopic(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -237,7 +237,7 @@ def doDescribeDBInstanceDeal(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstanceNamespace(args, parsed_globals):
+def doDescribeTopicListByGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -266,14 +266,14 @@ def doDescribeDBInstanceNamespace(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstanceNamespaceRequest()
+    model = models.DescribeTopicListByGroupRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDBInstanceNamespace(model)
+        rsp = client.DescribeTopicListByGroup(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -292,7 +292,7 @@ def doDescribeDBInstanceNamespace(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteLogDownloadTask(args, parsed_globals):
+def doResendDeadLetterMessage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -321,14 +321,14 @@ def doDeleteLogDownloadTask(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteLogDownloadTaskRequest()
+    model = models.ResendDeadLetterMessageRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteLogDownloadTask(model)
+        rsp = client.ResendDeadLetterMessage(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -347,7 +347,7 @@ def doDeleteLogDownloadTask(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeClientConnections(args, parsed_globals):
+def doCreateRole(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -376,14 +376,14 @@ def doDescribeClientConnections(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeClientConnectionsRequest()
+    model = models.CreateRoleRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeClientConnections(model)
+        rsp = client.CreateRole(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -402,7 +402,7 @@ def doDescribeClientConnections(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doResetDBInstancePassword(args, parsed_globals):
+def doDeleteInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -431,14 +431,14 @@ def doResetDBInstancePassword(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ResetDBInstancePasswordRequest()
+    model = models.DeleteInstanceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ResetDBInstancePassword(model)
+        rsp = client.DeleteInstance(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -457,7 +457,7 @@ def doResetDBInstancePassword(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeSecurityGroup(args, parsed_globals):
+def doCreateConsumerGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -486,14 +486,14 @@ def doDescribeSecurityGroup(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSecurityGroupRequest()
+    model = models.CreateConsumerGroupRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeSecurityGroup(model)
+        rsp = client.CreateConsumerGroup(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -512,7 +512,7 @@ def doDescribeSecurityGroup(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doFlushInstanceRouterConfig(args, parsed_globals):
+def doResetConsumerGroupOffset(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -541,14 +541,14 @@ def doFlushInstanceRouterConfig(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.FlushInstanceRouterConfigRequest()
+    model = models.ResetConsumerGroupOffsetRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.FlushInstanceRouterConfig(model)
+        rsp = client.ResetConsumerGroupOffset(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -567,7 +567,7 @@ def doFlushInstanceRouterConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBBackups(args, parsed_globals):
+def doDoHealthCheckOnMigratingTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -596,14 +596,14 @@ def doDescribeDBBackups(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBBackupsRequest()
+    model = models.DoHealthCheckOnMigratingTopicRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDBBackups(model)
+        rsp = client.DoHealthCheckOnMigratingTopic(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -622,7 +622,7 @@ def doDescribeDBBackups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doIsolateDBInstance(args, parsed_globals):
+def doDescribeMessage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -651,14 +651,14 @@ def doIsolateDBInstance(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.IsolateDBInstanceRequest()
+    model = models.DescribeMessageRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.IsolateDBInstance(model)
+        rsp = client.DescribeMessage(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -677,7 +677,7 @@ def doIsolateDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInstanceEnableSSL(args, parsed_globals):
+def doDescribeRoleList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -706,14 +706,14 @@ def doInstanceEnableSSL(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InstanceEnableSSLRequest()
+    model = models.DescribeRoleListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.InstanceEnableSSL(model)
+        rsp = client.DescribeRoleList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -732,7 +732,7 @@ def doInstanceEnableSSL(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquirePriceModifyDBInstanceSpec(args, parsed_globals):
+def doDeleteConsumerGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -761,14 +761,14 @@ def doInquirePriceModifyDBInstanceSpec(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquirePriceModifyDBInstanceSpecRequest()
+    model = models.DeleteConsumerGroupRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.InquirePriceModifyDBInstanceSpec(model)
+        rsp = client.DeleteConsumerGroup(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -787,7 +787,7 @@ def doInquirePriceModifyDBInstanceSpec(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeLogDownloadTasks(args, parsed_globals):
+def doModifyConsumerGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -816,14 +816,14 @@ def doDescribeLogDownloadTasks(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeLogDownloadTasksRequest()
+    model = models.ModifyConsumerGroupRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeLogDownloadTasks(model)
+        rsp = client.ModifyConsumerGroup(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -842,7 +842,7 @@ def doDescribeLogDownloadTasks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAsyncRequestInfo(args, parsed_globals):
+def doDescribeConsumerClient(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -871,14 +871,14 @@ def doDescribeAsyncRequestInfo(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAsyncRequestInfoRequest()
+    model = models.DescribeConsumerClientRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeAsyncRequestInfo(model)
+        rsp = client.DescribeConsumerClient(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -897,7 +897,7 @@ def doDescribeAsyncRequestInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDBInstanceNetworkAddress(args, parsed_globals):
+def doDescribeMigratingGroupStats(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -926,14 +926,14 @@ def doModifyDBInstanceNetworkAddress(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceNetworkAddressRequest()
+    model = models.DescribeMigratingGroupStatsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyDBInstanceNetworkAddress(model)
+        rsp = client.DescribeMigratingGroupStats(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -952,7 +952,7 @@ def doModifyDBInstanceNetworkAddress(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateDBInstanceHour(args, parsed_globals):
+def doDeleteRole(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -981,14 +981,14 @@ def doCreateDBInstanceHour(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateDBInstanceHourRequest()
+    model = models.DeleteRoleRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateDBInstanceHour(model)
+        rsp = client.DeleteRole(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1007,7 +1007,7 @@ def doCreateDBInstanceHour(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDetailedSlowLogs(args, parsed_globals):
+def doDescribeProductSKUs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1036,14 +1036,14 @@ def doDescribeDetailedSlowLogs(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDetailedSlowLogsRequest()
+    model = models.DescribeProductSKUsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDetailedSlowLogs(model)
+        rsp = client.DescribeProductSKUs(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1062,7 +1062,7 @@ def doDescribeDetailedSlowLogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateBackupDownloadTask(args, parsed_globals):
+def doDescribeConsumerClientList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1091,14 +1091,14 @@ def doCreateBackupDownloadTask(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateBackupDownloadTaskRequest()
+    model = models.DescribeConsumerClientListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateBackupDownloadTask(model)
+        rsp = client.DescribeConsumerClientList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1117,7 +1117,7 @@ def doCreateBackupDownloadTask(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDBInstances(args, parsed_globals):
+def doDescribeConsumerLag(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1146,14 +1146,14 @@ def doDescribeDBInstances(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBInstancesRequest()
+    model = models.DescribeConsumerLagRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDBInstances(model)
+        rsp = client.DescribeConsumerLag(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1172,7 +1172,7 @@ def doDescribeDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doOfflineIsolatedDBInstance(args, parsed_globals):
+def doDescribeConsumerGroup(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1201,14 +1201,14 @@ def doOfflineIsolatedDBInstance(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.OfflineIsolatedDBInstanceRequest()
+    model = models.DescribeConsumerGroupRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.OfflineIsolatedDBInstance(model)
+        rsp = client.DescribeConsumerGroup(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1227,7 +1227,7 @@ def doOfflineIsolatedDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeSlowLogPatterns(args, parsed_globals):
+def doDescribeSmoothMigrationTaskList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1256,14 +1256,14 @@ def doDescribeSlowLogPatterns(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSlowLogPatternsRequest()
+    model = models.DescribeSmoothMigrationTaskListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeSlowLogPatterns(model)
+        rsp = client.DescribeSmoothMigrationTaskList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1282,7 +1282,7 @@ def doDescribeSlowLogPatterns(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeSlowLogs(args, parsed_globals):
+def doDescribeMigratingTopicStats(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1311,14 +1311,14 @@ def doDescribeSlowLogs(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSlowLogsRequest()
+    model = models.DescribeMigratingTopicStatsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeSlowLogs(model)
+        rsp = client.DescribeMigratingTopicStats(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1337,7 +1337,7 @@ def doDescribeSlowLogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeMongodbLogs(args, parsed_globals):
+def doCreateInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1366,14 +1366,14 @@ def doDescribeMongodbLogs(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeMongodbLogsRequest()
+    model = models.CreateInstanceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeMongodbLogs(model)
+        rsp = client.CreateInstance(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1392,7 +1392,7 @@ def doDescribeMongodbLogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateDBInstance(args, parsed_globals):
+def doDescribeInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1421,14 +1421,14 @@ def doCreateDBInstance(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateDBInstanceRequest()
+    model = models.DescribeInstanceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateDBInstance(model)
+        rsp = client.DescribeInstance(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1447,7 +1447,7 @@ def doCreateDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDBInstanceSpec(args, parsed_globals):
+def doModifyInstanceEndpoint(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1476,14 +1476,14 @@ def doModifyDBInstanceSpec(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceSpecRequest()
+    model = models.ModifyInstanceEndpointRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyDBInstanceSpec(model)
+        rsp = client.ModifyInstanceEndpoint(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1502,7 +1502,7 @@ def doModifyDBInstanceSpec(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceParams(args, parsed_globals):
+def doRemoveMigratingTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1531,14 +1531,14 @@ def doDescribeInstanceParams(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceParamsRequest()
+    model = models.RemoveMigratingTopicRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeInstanceParams(model)
+        rsp = client.RemoveMigratingTopic(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1557,7 +1557,7 @@ def doDescribeInstanceParams(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpgradeDBInstanceKernelVersion(args, parsed_globals):
+def doDescribeInstanceList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1586,14 +1586,14 @@ def doUpgradeDBInstanceKernelVersion(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpgradeDBInstanceKernelVersionRequest()
+    model = models.DescribeInstanceListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.UpgradeDBInstanceKernelVersion(model)
+        rsp = client.DescribeInstanceList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1612,7 +1612,7 @@ def doUpgradeDBInstanceKernelVersion(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeSpecInfo(args, parsed_globals):
+def doDeleteTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1641,14 +1641,14 @@ def doDescribeSpecInfo(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSpecInfoRequest()
+    model = models.DeleteTopicRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeSpecInfo(model)
+        rsp = client.DeleteTopic(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1667,7 +1667,7 @@ def doDescribeSpecInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBackupDownloadTask(args, parsed_globals):
+def doDescribeFusionInstanceList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1696,14 +1696,14 @@ def doDescribeBackupDownloadTask(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBackupDownloadTaskRequest()
+    model = models.DescribeFusionInstanceListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeBackupDownloadTask(model)
+        rsp = client.DescribeFusionInstanceList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1722,7 +1722,7 @@ def doDescribeBackupDownloadTask(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquirePriceCreateDBInstances(args, parsed_globals):
+def doDescribeProducerList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1751,14 +1751,14 @@ def doInquirePriceCreateDBInstances(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquirePriceCreateDBInstancesRequest()
+    model = models.DescribeProducerListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.InquirePriceCreateDBInstances(model)
+        rsp = client.DescribeProducerList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1777,7 +1777,7 @@ def doInquirePriceCreateDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInstanceSSL(args, parsed_globals):
+def doModifyRole(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1806,14 +1806,14 @@ def doDescribeInstanceSSL(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInstanceSSLRequest()
+    model = models.ModifyRoleRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeInstanceSSL(model)
+        rsp = client.ModifyRole(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1832,7 +1832,7 @@ def doDescribeInstanceSSL(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doSetDBInstanceDeletionProtection(args, parsed_globals):
+def doDescribeTopic(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1861,14 +1861,14 @@ def doSetDBInstanceDeletionProtection(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.SetDBInstanceDeletionProtectionRequest()
+    model = models.DescribeTopicRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.SetDBInstanceDeletionProtection(model)
+        rsp = client.DescribeTopic(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1887,7 +1887,7 @@ def doSetDBInstanceDeletionProtection(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAssignProject(args, parsed_globals):
+def doDescribeMigrationTaskList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1916,14 +1916,14 @@ def doAssignProject(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AssignProjectRequest()
+    model = models.DescribeMigrationTaskListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.AssignProject(model)
+        rsp = client.DescribeMigrationTaskList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1942,7 +1942,7 @@ def doAssignProject(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doUpgradeDbInstanceVersion(args, parsed_globals):
+def doChangeMigratingTopicToNextStage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1971,14 +1971,14 @@ def doUpgradeDbInstanceVersion(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.UpgradeDbInstanceVersionRequest()
+    model = models.ChangeMigratingTopicToNextStageRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.UpgradeDbInstanceVersion(model)
+        rsp = client.ChangeMigratingTopicToNextStage(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1997,7 +1997,7 @@ def doUpgradeDbInstanceVersion(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRenameInstance(args, parsed_globals):
+def doDescribeMessageList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2026,14 +2026,14 @@ def doRenameInstance(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RenameInstanceRequest()
+    model = models.DescribeMessageListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.RenameInstance(model)
+        rsp = client.DescribeMessageList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2052,7 +2052,7 @@ def doRenameInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doRenewDBInstances(args, parsed_globals):
+def doDescribeTopicList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2081,14 +2081,14 @@ def doRenewDBInstances(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.RenewDBInstancesRequest()
+    model = models.DescribeTopicListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.RenewDBInstances(model)
+        rsp = client.DescribeTopicList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2107,7 +2107,7 @@ def doRenewDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateBackupDBInstance(args, parsed_globals):
+def doDeleteSmoothMigrationTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2136,14 +2136,14 @@ def doCreateBackupDBInstance(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateBackupDBInstanceRequest()
+    model = models.DeleteSmoothMigrationTaskRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateBackupDBInstance(model)
+        rsp = client.DeleteSmoothMigrationTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2162,7 +2162,7 @@ def doCreateBackupDBInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInquirePriceRenewDBInstances(args, parsed_globals):
+def doRollbackMigratingTopicStage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2191,14 +2191,14 @@ def doInquirePriceRenewDBInstances(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InquirePriceRenewDBInstancesRequest()
+    model = models.RollbackMigratingTopicStageRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.InquirePriceRenewDBInstances(model)
+        rsp = client.RollbackMigratingTopicStage(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2217,7 +2217,7 @@ def doInquirePriceRenewDBInstances(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDBInstanceSecurityGroup(args, parsed_globals):
+def doModifyInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2246,14 +2246,14 @@ def doModifyDBInstanceSecurityGroup(args, parsed_globals):
     if g_param[OptionsDefine.Language]:
         profile.language = g_param[OptionsDefine.Language]
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.MongodbClient(cred, g_param[OptionsDefine.Region], profile)
+    client = mod.TrocketClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDBInstanceSecurityGroupRequest()
+    model = models.ModifyInstanceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyDBInstanceSecurityGroup(model)
+        rsp = client.ModifyInstance(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2273,62 +2273,62 @@ def doModifyDBInstanceSecurityGroup(args, parsed_globals):
 
 
 CLIENT_MAP = {
-    "v20190725": mongodb_client_v20190725,
+    "v20230308": trocket_client_v20230308,
 
 }
 
 MODELS_MAP = {
-    "v20190725": models_v20190725,
+    "v20230308": models_v20230308,
 
 }
 
 ACTION_MAP = {
-    "TerminateDBInstances": doTerminateDBInstances,
-    "CreateLogDownloadTask": doCreateLogDownloadTask,
-    "DescribeDBInstanceNodeProperty": doDescribeDBInstanceNodeProperty,
-    "DescribeDBInstanceDeal": doDescribeDBInstanceDeal,
-    "DescribeDBInstanceNamespace": doDescribeDBInstanceNamespace,
-    "DeleteLogDownloadTask": doDeleteLogDownloadTask,
-    "DescribeClientConnections": doDescribeClientConnections,
-    "ResetDBInstancePassword": doResetDBInstancePassword,
-    "DescribeSecurityGroup": doDescribeSecurityGroup,
-    "FlushInstanceRouterConfig": doFlushInstanceRouterConfig,
-    "DescribeDBBackups": doDescribeDBBackups,
-    "IsolateDBInstance": doIsolateDBInstance,
-    "InstanceEnableSSL": doInstanceEnableSSL,
-    "InquirePriceModifyDBInstanceSpec": doInquirePriceModifyDBInstanceSpec,
-    "DescribeLogDownloadTasks": doDescribeLogDownloadTasks,
-    "DescribeAsyncRequestInfo": doDescribeAsyncRequestInfo,
-    "ModifyDBInstanceNetworkAddress": doModifyDBInstanceNetworkAddress,
-    "CreateDBInstanceHour": doCreateDBInstanceHour,
-    "DescribeDetailedSlowLogs": doDescribeDetailedSlowLogs,
-    "CreateBackupDownloadTask": doCreateBackupDownloadTask,
-    "DescribeDBInstances": doDescribeDBInstances,
-    "OfflineIsolatedDBInstance": doOfflineIsolatedDBInstance,
-    "DescribeSlowLogPatterns": doDescribeSlowLogPatterns,
-    "DescribeSlowLogs": doDescribeSlowLogs,
-    "DescribeMongodbLogs": doDescribeMongodbLogs,
-    "CreateDBInstance": doCreateDBInstance,
-    "ModifyDBInstanceSpec": doModifyDBInstanceSpec,
-    "DescribeInstanceParams": doDescribeInstanceParams,
-    "UpgradeDBInstanceKernelVersion": doUpgradeDBInstanceKernelVersion,
-    "DescribeSpecInfo": doDescribeSpecInfo,
-    "DescribeBackupDownloadTask": doDescribeBackupDownloadTask,
-    "InquirePriceCreateDBInstances": doInquirePriceCreateDBInstances,
-    "DescribeInstanceSSL": doDescribeInstanceSSL,
-    "SetDBInstanceDeletionProtection": doSetDBInstanceDeletionProtection,
-    "AssignProject": doAssignProject,
-    "UpgradeDbInstanceVersion": doUpgradeDbInstanceVersion,
-    "RenameInstance": doRenameInstance,
-    "RenewDBInstances": doRenewDBInstances,
-    "CreateBackupDBInstance": doCreateBackupDBInstance,
-    "InquirePriceRenewDBInstances": doInquirePriceRenewDBInstances,
-    "ModifyDBInstanceSecurityGroup": doModifyDBInstanceSecurityGroup,
+    "DescribeSourceClusterGroupList": doDescribeSourceClusterGroupList,
+    "DescribeMigratingTopicList": doDescribeMigratingTopicList,
+    "DescribeMessageTrace": doDescribeMessageTrace,
+    "ModifyTopic": doModifyTopic,
+    "DescribeTopicListByGroup": doDescribeTopicListByGroup,
+    "ResendDeadLetterMessage": doResendDeadLetterMessage,
+    "CreateRole": doCreateRole,
+    "DeleteInstance": doDeleteInstance,
+    "CreateConsumerGroup": doCreateConsumerGroup,
+    "ResetConsumerGroupOffset": doResetConsumerGroupOffset,
+    "DoHealthCheckOnMigratingTopic": doDoHealthCheckOnMigratingTopic,
+    "DescribeMessage": doDescribeMessage,
+    "DescribeRoleList": doDescribeRoleList,
+    "DeleteConsumerGroup": doDeleteConsumerGroup,
+    "ModifyConsumerGroup": doModifyConsumerGroup,
+    "DescribeConsumerClient": doDescribeConsumerClient,
+    "DescribeMigratingGroupStats": doDescribeMigratingGroupStats,
+    "DeleteRole": doDeleteRole,
+    "DescribeProductSKUs": doDescribeProductSKUs,
+    "DescribeConsumerClientList": doDescribeConsumerClientList,
+    "DescribeConsumerLag": doDescribeConsumerLag,
+    "DescribeConsumerGroup": doDescribeConsumerGroup,
+    "DescribeSmoothMigrationTaskList": doDescribeSmoothMigrationTaskList,
+    "DescribeMigratingTopicStats": doDescribeMigratingTopicStats,
+    "CreateInstance": doCreateInstance,
+    "DescribeInstance": doDescribeInstance,
+    "ModifyInstanceEndpoint": doModifyInstanceEndpoint,
+    "RemoveMigratingTopic": doRemoveMigratingTopic,
+    "DescribeInstanceList": doDescribeInstanceList,
+    "DeleteTopic": doDeleteTopic,
+    "DescribeFusionInstanceList": doDescribeFusionInstanceList,
+    "DescribeProducerList": doDescribeProducerList,
+    "ModifyRole": doModifyRole,
+    "DescribeTopic": doDescribeTopic,
+    "DescribeMigrationTaskList": doDescribeMigrationTaskList,
+    "ChangeMigratingTopicToNextStage": doChangeMigratingTopicToNextStage,
+    "DescribeMessageList": doDescribeMessageList,
+    "DescribeTopicList": doDescribeTopicList,
+    "DeleteSmoothMigrationTask": doDeleteSmoothMigrationTask,
+    "RollbackMigratingTopicStage": doRollbackMigratingTopicStage,
+    "ModifyInstance": doModifyInstance,
 
 }
 
 AVAILABLE_VERSION_LIST = [
-    "v20190725",
+    "v20230308",
 
 ]
 
@@ -2411,11 +2411,11 @@ def parse_global_arg(parsed_globals):
         if g_param[OptionsDefine.ServiceVersion]:
             g_param[OptionsDefine.Version] = "v" + g_param[OptionsDefine.ServiceVersion].replace('-', '')
         else:
-            version = conf["mongodb"][OptionsDefine.Version]
+            version = conf["trocket"][OptionsDefine.Version]
             g_param[OptionsDefine.Version] = "v" + version.replace('-', '')
 
         if g_param[OptionsDefine.Endpoint] is None:
-            g_param[OptionsDefine.Endpoint] = conf["mongodb"][OptionsDefine.Endpoint]
+            g_param[OptionsDefine.Endpoint] = conf["trocket"][OptionsDefine.Endpoint]
         g_param["sts_cred_endpoint"] = conf.get("sts", {}).get("endpoint")
     except Exception as err:
         raise ConfigurationError("config file:%s error, %s" % (conf_path, str(err)))

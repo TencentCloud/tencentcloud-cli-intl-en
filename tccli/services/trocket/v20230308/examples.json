@@ -1,0 +1,339 @@
+{
+  "actions": {
+    "ChangeMigratingTopicToNextStage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeMigratingTopicToNextStage\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"TopicNameList\": [\n        \"TopicTest\"\n    ],\n    \"NamespaceList\": []\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Results\": [\n            {\n                \"TopicName\": \"TopicTest\",\n                \"Success\": true,\n                \"Namespace\": \"\"\n            }\n        ],\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Modify Migration Topic Enter Next Migration Stage"
+      }
+    ],
+    "CreateConsumerGroup": [
+      {
+        "document": "This example shows you how to create a consumer group successfully.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumerGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"test_group\",\n    \"MaxRetryTimes\": 16,\n    \"ConsumeEnable\": true,\n    \"ConsumeMessageOrderly\": true,\n    \"Remark\": \"remark info\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"ConsumerGroup\": \"test_group\",\n        \"InstanceId\": \"rmq-72mo3a9o\",\n        \"RequestId\": \"58f60891-002f-4b8a-b71f-3767a645c28e\"\n    }\n}",
+        "title": "Create consumer groups."
+      }
+    ],
+    "CreateInstance": [
+      {
+        "document": "This example shows you how to successfully create a RocketMQ 5.x cluster with TPS 2000.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstance\n<Common request parameters>\n\n{\n    \"InstanceType\": \"BASIC\",\n    \"Name\": \"test_instance\",\n    \"SkuCode\": \"basic_2k\",\n    \"VpcList\": [\n        {\n            \"VpcId\": \"vpc-xxxx\",\n            \"SubnetId\": \"subnet-xxxx\"\n        }\n    ]\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"InstanceId\": \"rmq-72mo3a9or\",\n        \"RequestId\": \"32759095-0372-4ec0-ae3a-e5a2759fd0ff\"\n    }\n}",
+        "title": "Normal Response"
+      }
+    ],
+    "CreateRole": [
+      {
+        "document": "Add a role",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRole\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Role\": \"test_role_name\",\n\"Remark\": \"Test role\"\n    \"PermWrite\": true,\n    \"PermRead\": true\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"0bb79e96-2531-4088-8d90-e1372c15518a\",\n        \"Role\": \"test_role_name\"\n    }\n}",
+        "title": "Add Role"
+      }
+    ],
+    "DeleteConsumerGroup": [
+      {
+        "document": "Delete consumer groups.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConsumerGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"test_group\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"8221cd04-dafc-438d-bc1f-816fd87df24e\"\n    }\n}",
+        "title": "Delete consumer groups."
+      }
+    ],
+    "DeleteInstance": [
+      {
+        "document": "This example shows you how to delete a RocketMQ 5.x cluster.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"97f45511-b653-4e2a-ade6-58c8d3ae523b\"\n    }\n}",
+        "title": "Deleting a cluster"
+      }
+    ],
+    "DeleteRole": [
+      {
+        "document": "This example shows you how to delete a role.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRole\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Role\": \"test_role_name\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"c6e5472a-231d-4bd0-84cf-447f76a8216e\"\n    }\n}",
+        "title": "Delete a Role"
+      }
+    ],
+    "DeleteSmoothMigrationTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSmoothMigrationTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"taskid-123\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"requestId\"\n    }\n}",
+        "title": "Deleting a Smooth Migration Task"
+      }
+    ],
+    "DeleteTopic": [
+      {
+        "document": "This example shows you how to delete a topic.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTopic\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"test_topic\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"4687272f-f35c-4aef-9941-ced81c164d4b\"\n    }\n}",
+        "title": "Deleting a Topic"
+      }
+    ],
+    "DescribeConsumerClient": [
+      {
+        "document": "Query consumer client details.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerClient\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Offset\": 0,\n    \"Limit\": 1,\n    \"ConsumerGroup\": \"group\",\n    \"ClientId\": \"11.139.244.247@75043#6734858812769343\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Client\": {\n            \"ClientAddr\": \"11.139.244.247:58330\",\n            \"ClientId\": \"11.139.244.247@75043#6734858812769343\",\n            \"ConsumerLag\": 0,\n            \"Language\": \"JAVA\",\n            \"Version\": \"V4_9_3\",\n            \"ChannelProtocol\": \"remoting\"\n        },\n        \"RequestId\": \"7e3acbab-5b5f-457f-b276-68c2f7e16f5e\",\n        \"TopicList\": [\n            {\n                \"ConsumerLag\": 0,\n                \"LastUpdateTime\": 1683614607184,\n                \"QueueNum\": 16,\n                \"SubString\": \"test_tag\",\n                \"Topic\": \"topic\",\n                \"TopicType\": \"NORMAL\"\n            }\n        ]\n    }\n}",
+        "title": "Query consumer client details."
+      }
+    ],
+    "DescribeConsumerClientList": [
+      {
+        "document": "Query client connections under a consumer group.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerClientList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"group\",\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [],\n        \"RequestId\": \"c2d581fa-d7b2-453c-ba1a-65c0e507a533\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "Query client connections under a consumer group."
+      }
+    ],
+    "DescribeConsumerGroup": [
+      {
+        "document": "This example shows you how to query consumer details.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"group\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"ConsumeEnable\": true,\n        \"ConsumeMessageOrderly\": false,\n        \"ConsumeType\": \"PUSH\",\n        \"ConsumerLag\": 1580,\n        \"ConsumerNum\": 2,\n        \"CreatedTime\": 1683613488000,\n        \"MaxRetryTimes\": 16,\n\"Remark\": \"Test consumption group\"\n        \"RequestId\": \"bc4ffab1-65cc-4ef6-9114-0de06c333b84\",\n        \"Tps\": 60\n    }\n}",
+        "title": "Query consumer group details."
+      }
+    ],
+    "DescribeConsumerLag": [
+      {
+        "document": "Query the accumulation of successes for the designated client",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerLag\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-24kzek2b\",\n    \"ConsumerGroup\": \"test_group\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"ConsumerLag\": 260,\n        \"RequestId\": \"2b9eef15-a8bc-47a3-9445-9edcafccb459\"\n    }\n}",
+        "title": "Normal Response"
+      }
+    ],
+    "DescribeFusionInstanceList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFusionInstanceList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"Data\": [\n            {\n                \"InstanceId\": \"rmq-72mo3a9o\",\n                \"InstanceName\": \"test_instance5x\",\n                \"Version\": \"5.0\",\n                \"InstanceType\": \"EXPERIMENT\",\n                \"InstanceStatus\": \"RUNNING\",\n                \"TopicNumLimit\": 52,\n                \"GroupNumLimit\": 520,\n                \"PayMode\": \"PREPAID\",\n                \"ExpiryTime\": 1731830193435,\n\"Remark\": \"Test cluster of version 5.X\"\n                \"TopicNum\": 3,\n                \"GroupNum\": 10,\n                \"TagList\": [\n                    {\n                        \"TagKey\": \"test_tag\",\n                        \"TagValue\": \"test_tag_key\"\n                    }\n                ],\n                \"SkuCode\": \"experiment_500\",\n                \"TpsLimit\": 500,\n                \"ScaledTpsLimit\": 0,\n                \"MessageRetention\": 72,\n                \"MaxMessageDelay\": 168,\n                \"RenewFlag\": 1,\n                \"InstanceItemExtraInfo\": {\n                    \"IsVip\": false,\n                    \"VipInstanceStatus\": 0,\n                    \"MaxBandWidth\": 0,\n                    \"SpecName\": \"\",\n                    \"NodeCount\": 0,\n                    \"MaxStorage\": 0,\n                    \"MaxRetention\": 0,\n                    \"MinRetention\": 0,\n                    \"InstanceStatus\": 0\n                },\n                \"DestroyTime\": 0\n            },\n            {\n                \"InstanceId\": \"rocketmq-5kze4gr222mx\",\n                \"InstanceName\": \"test_instance4x\",\n                \"Version\": \"4\",\n                \"InstanceType\": \"BASIC\",\n                \"InstanceStatus\": \"RUNNING\",\n                \"TopicNumLimit\": 400,\n                \"GroupNumLimit\": 4000,\n                \"PayMode\": \"PREPAID\",\n                \"ExpiryTime\": 1730710586538,\n\"Remark\": \"4.X version testing cluster\"\n                \"TopicNum\": 1,\n                \"GroupNum\": 1,\n                \"TagList\": [\n                    {\n                        \"TagKey\": \"test_tag\",\n                        \"TagValue\": \"test_tag_key\"\n                    }\n                ],\n                \"SkuCode\": \"\",\n                \"TpsLimit\": 8000,\n                \"ScaledTpsLimit\": 0,\n                \"MessageRetention\": 72,\n                \"MaxMessageDelay\": 0,\n                \"RenewFlag\": 1,\n                \"DestroyTime\": 0,\n                \"InstanceItemExtraInfo\": {\n                    \"IsVip\": true,\n                    \"InstanceStatus\": 1,\n                    \"VipInstanceStatus\": 1,\n                    \"MaxBandWidth\": 80,\n                    \"NodeCount\": 2,\n                    \"MaxStorage\": 200,\n                    \"SpecName\": \"rocket-vip-basic-0\",\n                    \"MaxRetention\": 168,\n                    \"MinRetention\": 24\n                }\n            }\n        ],\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Retrieve the Full Cluster List"
+      }
+    ],
+    "DescribeInstance": [
+      {
+        "document": "This example shows you how to query cluster information successfully.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ScaledTpsEnabled\": false,\n        \"InstanceType\": \"EXPERIMENT\",\n        \"InstanceId\": \"rmq-72mo3a9o\",\n        \"InstanceName\": \"test_instance\",\n        \"TopicNum\": 2,\n        \"TopicNumLimit\": 50,\n        \"GroupNum\": 10,\n        \"GroupNumLimit\": 500,\n        \"MessageRetention\": 72,\n        \"RetentionUpperLimit\": 168,\n        \"RetentionLowerLimit\": 1,\n        \"TpsLimit\": 500,\n        \"ScaledTpsLimit\": 0,\n        \"MaxMessageDelay\": 168,\n        \"CreatedTime\": 1731920303801,\n        \"SendReceiveRatio\": 0.5,\n        \"TagList\": [\n            {\n                \"TagKey\": \"test_tag_key\",\n                \"TagValue\": \"test_tag_value\"\n            }\n        ],\n        \"EndpointList\": [\n            {\n                \"Type\": \"VPC\",\n                \"Status\": \"OPEN\",\n                \"PayMode\": \"PREPAID\",\n                \"EndpointUrl\": \"rmq-72mo3a9o.rocketmq.xx.qcloud.tencenttdmq.com:8080\",\n                \"VpcId\": \"vpc-be1tvrab\",\n                \"SubnetId\": \"subnet-i6fjswac\",\n                \"Bandwidth\": 0,\n                \"IpRules\": []\n            }\n        ],\n        \"TopicQueueNumUpperLimit\": 32,\n        \"TopicQueueNumLowerLimit\": 1,\n\"Remark\": \"Test cluster\"\n        \"InstanceStatus\": \"RUNNING\",\n        \"SkuCode\": \"experiment_500\",\n        \"PayMode\": \"PREPAID\",\n        \"RequestId\": \"32759095-0372-4ec0-ae3a-e5a2759fd0ff\"\n    }\n}",
+        "title": "Query Cluster Information Successfully"
+      }
+    ],
+    "DescribeInstanceList": [
+      {
+        "document": "This example shows you how to inquiry the cluster list of RocketMQ 5.X.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ExpiryTime\": 1683601674000,\n                \"GroupNum\": 10,\n                \"GroupNumLimit\": 500,\n                \"InstanceId\": \"rmq-72mo3a9o\",\n                \"InstanceName\": \"test_instance5x\",\n                \"InstanceStatus\": \"RUNNING\",\n                \"InstanceType\": \"EXPERIMENT\",\n                \"MaxMessageDelay\": 48,\n                \"MessageRetention\": 72,\n                \"PayMode\": \"POSTPAID\",\n\"Remark\": \"Version 5.X test cluster\"\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"experiment_500\",\n                \"TagList\": [\n                    {\n                        \"TagKey\": \"test_tag_key\",\n                        \"TagValue\": \"test_tag_value\"\n                    }\n                ],\n                \"TopicNum\": 10,\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 500,\n                \"Version\": \"5.0\"\n            }\n        ],\n        \"RequestId\": \"561a34ff-965b-4a2d-852e-973c0b2a6f01\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query a Cluster List"
+      }
+    ],
+    "DescribeMessage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessage\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"topic\",\n    \"MsgId\": \"1EAE3915000721B8D17C2C5BB31638D1\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Body\": \"testBody\",\n        \"MessageId\": \"1EAE3915000721B8D17C2C5BB31638D1\",\n        \"MessageTracksCount\": 1,\n        \"MessageTracks\": [\n            {\n                \"ConsumeStatus\": \"CONSUMED\",\n                \"ConsumerGroup\": \"group\",\n                \"ExceptionDesc\": null,\n                \"TrackType\": \"CONSUMED\"\n            }\n        ],\n        \"ProduceTime\": \"2023-05-09 14:43:27\",\n        \"ProducerAddr\": \"30.174.57.21\",\n        \"Properties\": \"{\\\"TRACE_ON\\\":\\\"true\\\",\\\"MSG_REGION\\\":\\\"cd\\\",\\\"KEYS\\\":\\\"testKey\\\",\\\"UNIQ_KEY\\\":\\\"1EAE3915000721B8D17C2C5BB31638D1\\\",\\\"CLUSTER\\\":\\\"rmqbroker-cd-1\\\",\\\"WAIT\\\":\\\"true\\\",\\\"TAGS\\\":\\\"testTag\\\"}\",\n        \"RequestId\": \"8e97b978-376b-4d94-96cc-db0ead5f2f99\",\n        \"ShowTopicName\": \"topic\"\n    }\n}",
+        "title": "Querying Regular Messages"
+      }
+    ],
+    "DescribeMessageList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"topic\",\n    \"Offset\": 0,\n    \"Limit\": 1,\n    \"MsgId\": \"1EAE3915000721B8D17C2C5BB31638D1\",\n    \"StartTime\": 1683613796174,\n    \"EndTime\": 1683613796174,\n    \"TaskRequestId\": \"901a6956-1ab9-7fb7-3bf5-9f02b7aa2a7d\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DeadLetterResendSuccessTimes\": null,\n                \"DeadLetterResendTimes\": null,\n                \"Keys\": \"test_key\",\n                \"MsgId\": \"1EAE3915000721B8D17C2C5BB31638D1\",\n                \"ProduceTime\": \"2023-05-09 14:43:27\",\n                \"ProducerAddr\": \"30.174.57.21\",\n                \"Tags\": \"test_tag\"\n            }\n        ],\n        \"RequestId\": \"7426c613-085b-48c4-9257-87a208a8adcc\",\n        \"TaskRequestId\": \"901a6956-1ab9-7fb7-3bf5-9f02b7aa2a7d\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query a Message List"
+      }
+    ],
+    "DescribeMessageTrace": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageTrace\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"topic\",\n    \"MsgId\": \"1EAE3915000721B8D17C2C5BB31638D1\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Data\": \"{\\\"MsgId\\\":\\\"1EAE3915000721B8D17C2C5BB31638D1\\\",\\\"Status\\\":0,\\\"ProduceTime\\\":\\\"2023-05-09 14:43:27,127\\\",\\\"ProducerAddr\\\":\\\"30.174.57.21\\\",\\\"MsgKey\\\":\\\"testKey\\\",\\\"MsgTags\\\":\\\"testTag\\\",\\\"Duration\\\":76}\",\n                \"Stage\": \"produce\"\n            },\n            {\n                \"Data\": \"{\\\"MsgId\\\":\\\"1EAE3915000721B8D17C2C5BB31638D1\\\",\\\"Status\\\":0,\\\"PersistTime\\\":\\\"2023-05-09 14:43:27,184\\\"}\",\n                \"Stage\": \"persist\"\n            },\n            {\n                \"Data\": \"{\\\"TotalCount\\\":1,\\\"RocketMqConsumeLogs\\\":[{\\\"MsgId\\\":\\\"1EAE3915000721B8D17C2C5BB31638D1\\\",\\\"Status\\\":2,\\\"PushTime\\\":\\\"2023-05-09 14:43:27,205\\\",\\\"ConsumerAddr\\\":\\\"11.139.244.247\\\",\\\"ConsumerGroup\\\":\\\"group\\\",\\\"RetryTimes\\\":1}]}\",\n                \"Stage\": \"consume\"\n            }\n        ],\n        \"RequestId\": \"0112153a-8cba-44f1-b7a5-5e412d493940\",\n        \"ShowTopicName\": \"test_topic\"\n    }\n}",
+        "title": "Query the Path of Regular Messages"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageTrace\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-cdqzmmgz8o\",\n    \"Topic\": \"\",\n    \"MsgId\": \"010242ECB90067325E06F41EFF00000000\",\n    \"QueryDelayMessage\": true\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Data\": \"{\\\"MsgId\\\":\\\"010242ECB90067325E06F41EFF00000000\\\",\\\"Status\\\":0,\\\"ProduceTime\\\":\\\"2024-09-12 14:06:55,591\\\",\\\"ProducerAddr\\\":\\\"9.218.232.160:32038\\\",\\\"MsgKey\\\":\\\"topic1\\\",\\\"MsgTags\\\":\\\"tag0\\\",\\\"Duration\\\":2}\",\n                \"Stage\": \"produce\"\n            },\n            {\n                \"Data\": \"{\\\"MsgId\\\":\\\"010242ECB90067325E06F41EFF00000000\\\",\\\"Status\\\":0,\\\"PersistTime\\\":\\\"2024-09-12 14:06:55,590\\\"}\",\n                \"Stage\": \"persist\"\n            },\n            {\n                \"Data\": \"{\\\"TotalCount\\\":0,\\\"RocketMqConsumeLogs\\\":[]}\",\n                \"Stage\": \"consume\"\n            }\n        ],\n        \"RequestId\": \"2e4374f9-0c98-4d77-af20-2bc414ccaefd\",\n        \"ShowTopicName\": \"test_topic\"\n    }\n}",
+        "title": "Query the Path of Delayed Messages"
+      }
+    ],
+    "DescribeMigratingGroupStats": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMigratingGroupStats\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"GroupName\": \"group-a\",\n    \"Namespace\": \"\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"SourceConsumeLag\": 0,\n        \"TargetConsumeLag\": 0,\n        \"SourceConsumerClients\": [\n            {\n                \"ClientId\": \"client-a\",\n                \"ClientAddr\": \"1.1.1.1\",\n                \"Language\": \"JAVA\",\n                \"Version\": \"5\",\n                \"ConsumerLag\": 0,\n                \"ChannelProtocol\": \"\"\n            }\n        ],\n        \"TargetConsumerClients\": [\n            {\n                \"ClientId\": \"client-b\",\n                \"ClientAddr\": \"2.2.2.2\",\n                \"Language\": \"JAVA\",\n                \"Version\": \"5.0\",\n                \"ConsumerLag\": 0\n            }\n        ],\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Viewing Real-Time Information of a Migration Consumption Group"
+      }
+    ],
+    "DescribeMigratingTopicList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMigratingTopicList\n<Common request parameters>\n\n{\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"MigrateTopics\": [\n            {\n                \"TopicName\": \"topic-a\",\n                \"MigrationStatus\": \"S_RW_D_NA\",\n                \"HealthCheckPassed\": true,\n                \"HealthCheckError\": \"\",\n                \"Namespace\": \"\",\n                \"FullNamespaceV4\": null,\n                \"NamespaceV4\": null,\n                \"TopicNameV4\": null,\n                \"HealthCheckErrorList\": []\n            }\n        ],\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Querying Migration Topic List"
+      }
+    ],
+    "DescribeMigratingTopicStats": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMigratingTopicStats\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"TopicName\": \"TopicTest\",\n    \"Namespace\": \"\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"SourceClusterConsumerCount\": 0,\n        \"TargetClusterConsumerCount\": 0,\n        \"SourceClusterConsumerGroups\": [],\n        \"TargetClusterConsumerGroups\": [],\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Querying Real-Time Data of Migration Topics"
+      }
+    ],
+    "DescribeMigrationTaskList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMigrationTaskList\n<Common request parameters>\n\n{\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bd8c6783-04a4-419f-bc51-9af603872490\",\n        \"TotalCount\": 1,\n        \"Tasks\": [\n            {\n                \"TaskId\": \"603872-7a11-c67\",\n                \"Type\": 1,\n                \"InstanceId\": \"rmq-47zbegoa\",\n                \"TopicNum\": 4,\n                \"GroupNum\": 0,\n                \"Status\": 1,\n                \"CreateTime\": 1693219938000\n            }\n        ]\n    }\n}",
+        "title": "Retrieving the Data Migration Task List"
+      }
+    ],
+    "DescribeProducerList": [
+      {
+        "document": "This example shows you how to query the producer list.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProducerList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-9j77qmrm\",\n    \"Topic\": \"topic-normal\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"ProducerList\": [\n            {\n                \"ClientId\": \"169.254.165.243@a3c02f03-5b27-425f-8632-83d1e9f7010b\",\n                \"ClientIp\": \"/11.176.16.134:58560\",\n                \"Language\": \"JAVA\",\n                \"LastUpdateTimestamp\": 1725440379597,\n                \"Version\": \"V4_9_3\"\n            }\n        ],\n        \"RequestId\": \"6918ecdb-ee41-4f8a-bf5f-7b313cd5fca0\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the Producer List"
+      }
+    ],
+    "DescribeProductSKUs": [
+      {
+        "document": "This example shows you how to obtain product specification information.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProductSKUs\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DefaultRetention\": 72,\n                \"GroupNumLimit\": 500,\n                \"InstanceType\": \"EXPERIMENT\",\n                \"MaxMessageDelay\": 48,\n                \"OnSale\": false,\n                \"PriceTags\": [\n                    {\n                        \"Name\": \"tps\"\n                    }\n                ],\n                \"RetentionLowerLimit\": 24,\n                \"RetentionUpperLimit\": 72,\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"experiment_500\",\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 500\n            },\n            {\n                \"DefaultRetention\": 72,\n                \"GroupNumLimit\": 500,\n                \"InstanceType\": \"BASIC\",\n                \"MaxMessageDelay\": 168,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Name\": \"tps\"\n                    }\n                ],\n                \"RetentionLowerLimit\": 24,\n                \"RetentionUpperLimit\": 72,\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"basic_1k\",\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 1000\n            },\n            {\n                \"DefaultRetention\": 72,\n                \"GroupNumLimit\": 500,\n                \"InstanceType\": \"BASIC\",\n                \"MaxMessageDelay\": 168,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Name\": \"tps\"\n                    }\n                ],\n                \"RetentionLowerLimit\": 24,\n                \"RetentionUpperLimit\": 72,\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"basic_2k\",\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 2000\n            },\n            {\n                \"DefaultRetention\": 72,\n                \"GroupNumLimit\": 500,\n                \"InstanceType\": \"BASIC\",\n                \"MaxMessageDelay\": 168,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Name\": \"tps\"\n                    }\n                ],\n                \"RetentionLowerLimit\": 24,\n                \"RetentionUpperLimit\": 72,\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"basic_4k\",\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 4000\n            },\n            {\n                \"DefaultRetention\": 72,\n                \"GroupNumLimit\": 500,\n                \"InstanceType\": \"BASIC\",\n                \"MaxMessageDelay\": 168,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Name\": \"tps\"\n                    }\n                ],\n                \"RetentionLowerLimit\": 24,\n                \"RetentionUpperLimit\": 72,\n                \"ScaledTpsLimit\": 0,\n                \"SkuCode\": \"basic_6k\",\n                \"TopicNumLimit\": 50,\n                \"TpsLimit\": 6000\n            }\n        ],\n        \"RequestId\": \"010e2991-4b01-40f9-a4a6-30bdfb175448\"\n    }\n}",
+        "title": "Obtaining Product Specification Information"
+      }
+    ],
+    "DescribeRoleList": [
+      {
+        "document": "This example shows you how to successfully query the list of roles.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoleList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"c5d126b6-aeeb-40ad-81c0-a94abd43f157\",\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"RoleName\": \"test_role_name\",\n                \"AccessKey\": \"ak0000aaaa\",\n                \"SecretKey\": \"sk0000aaaa\",\n                \"PermRead\": true,\n                \"PermWrite\": true,\n                \"Remark\": \"\",\n                \"CreatedTime\": 1729153015000,\n                \"ModifiedTime\": 1729153015000\n            }\n        ]\n    }\n}",
+        "title": "Queries the roles"
+      }
+    ],
+    "DescribeSmoothMigrationTaskList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSmoothMigrationTaskList\n<Common request parameters>\n\n{\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"Data\": [\n            {\n                \"TaskId\": \"28deebbb-d489-471e-bb21-69fab50aed36\",\n                \"TaskName\": \"test-task\",\n                \"SourceClusterName\": \"source-cluster\",\n                \"InstanceId\": \"rmq-1gabcde\",\n                \"ConnectionType\": \"VPC\",\n                \"SourceNameServer\": \"1.1.1.1:9876\",\n                \"TaskStatus\": \"ServiceMigration\",\n                \"InstanceVersion\": \"5\"\n            }\n        ],\n        \"RequestId\": \"9b299610-7402-47d3-91d1-f012faf13929\"\n    }\n}",
+        "title": "Retrieving the Migration Task List"
+      }
+    ],
+    "DescribeSourceClusterGroupList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSourceClusterGroupList\n<Common request parameters>\n\n{\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"TotalCount\": 10,\n        \"Groups\": [\n            {\n                \"GroupName\": \"Test\",\n                \"Remark\": \"remark\",\n                \"Imported\": true,\n                \"Namespace\": \"\",\n                \"ImportStatus\": \"Success\",\n                \"ConsumeMessageOrderly\": false,\n                \"FullNamespaceV4\": null,\n                \"GroupNameV4\": null,\n                \"NamespaceV4\": null\n            }\n        ],\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Querying Source Cluster Consumer Group List"
+      }
+    ],
+    "DescribeTopic": [
+      {
+        "document": "This example shows you how to query topic details.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopic\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"test_topic\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"CreatedTime\": 1683601674000,\n        \"InstanceId\": \"rmq-72mo3a9o\",\n        \"LastUpdateTime\": 1683601674000,\n\"Remark\": \"Test topic\"\n        \"RequestId\": \"f7f7ba8a-4335-4adb-9186-680b91502c42\",\n        \"SubscriptionCount\": 0,\n        \"SubscriptionData\": [],\n        \"Topic\": \"test_topic\",\n        \"TopicType\": \"NORMAL\"\n    }\n}",
+        "title": "Query Topic Details"
+      }
+    ],
+    "DescribeTopicList": [
+      {
+        "document": "This example shows you how to query topic list.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopicList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"InstanceId\": \"rmq-72mo3a9o\",\n                \"QueueNum\": 16,\n\"Remark\": \"Test topic\"\n                \"Topic\": \"test_topic\",\n                \"TopicType\": \"NORMAL\"\n            }\n        ],\n        \"RequestId\": \"927cbd2c-be83-410e-a83f-24dcea1d88d9\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query Topic List"
+      }
+    ],
+    "DescribeTopicListByGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTopicListByGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"ConsumerGroup\": \"test_group\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"06a6649b-76ec-4c5d-b4c8-8a48d24be07f\",\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"InstanceId\": \"rmq-72mo3a9o\",\n                \"Topic\": \"test_topic\",\n                \"TopicType\": \"NORMAL\",\n                \"TopicQueueNum\": 3,\n                \"ConsumerGroup\": \"test_group\",\n                \"IsOnline\": true,\n                \"ConsumeType\": \"PUSH\",\n                \"SubString\": \"test_tag\",\n                \"ExpressionType\": \"TAG\",\n                \"Consistency\": 0,\n                \"ClientSubscriptionInfos\": [],\n                \"ConsumerLag\": 0,\n                \"LastUpdateTime\": 1750853702996,\n                \"MaxRetryTimes\": 16,\n                \"ConsumeMessageOrderly\": false,\n                \"MessageModel\": \"CLUSTERING\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Subscribed Topic List of Consumption Group"
+      }
+    ],
+    "DoHealthCheckOnMigratingTopic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DoHealthCheckOnMigratingTopic\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"TopicName\": \"Test\",\n    \"IgnoreCheck\": true,\n    \"Namespace\": \"\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Passed\": true,\n        \"Reason\": null,\n        \"ReasonList\": null,\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Migration Topic Security Check"
+      }
+    ],
+    "ModifyConsumerGroup": [
+      {
+        "document": "This example shows you how to modify consumer group attributes successfully.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumerGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"test_group\",\n    \"ConsumeEnable\": true,\n    \"ConsumeMessageOrderly\": true,\n    \"MaxRetryTimes\": 16,\n    \"Remark\": \"Test modification\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"239a3769-8dc6-41e9-bc01-67be452db5a3\"\n    }\n}",
+        "title": "Modify consumer group attributes."
+      }
+    ],
+    "ModifyInstance": [
+      {
+        "document": "This example shows you how to modify instance configuration.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n\"Remark\": \"Test modify message retention duration\"\n    \"MessageRetention\": 25\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"becc23c2-b5e1-4df4-9df1-22ba8e5b20c3\"\n    }\n}",
+        "title": "Modify Instance Configuration"
+      }
+    ],
+    "ModifyInstanceEndpoint": [
+      {
+        "document": "This example shows you how to modify the public network configuration of an instance.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceEndpoint\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-cdrgxq94om\",\n    \"Type\": \"PUBLIC\",\n    \"Bandwidth\": 2,\n    \"IpRules\": [\n        {\n            \"Ip\": \"1.2.3.4\",\n            \"Allow\": true,\n            \"Remark\": \"test remark\"\n        }\n    ]\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"999bc587-90d9-4ec2-97e3-3ef170e1da96\"\n    }\n}",
+        "title": "Modifying Public Network Configuration of an Instance"
+      }
+    ],
+    "ModifyRole": [
+      {
+        "document": "This example shows you how to modify a role successfully.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRole\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Role\": \"test_role_name\",\n\"Remark\": \"Test modification\"\n    \"PermRead\": false,\n    \"PermWrite\": false\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"0608515b-cde2-41d6-933c-169d0d1849c5\"\n    }\n}",
+        "title": "Modify a Role"
+      }
+    ],
+    "ModifyTopic": [
+      {
+        "document": "Modify topic attributes.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyTopic\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Topic\": \"test_topic\",\n    \"QueueNum\": 6\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"945afc69-1c24-4891-a2ce-c5fa6032ba75\"\n    }\n}",
+        "title": "Modify topic attributes."
+      }
+    ],
+    "RemoveMigratingTopic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveMigratingTopic\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"Namespace\": \"\",\n    \"TopicName\": \"topic-a\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Removing a Topic From a Migration Task"
+      }
+    ],
+    "ResendDeadLetterMessage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResendDeadLetterMessage\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"test_group\",\n    \"MessageIds\": [\n        \"01963F0B14BAF09F27077D244F00000000\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f4f1d3ba-3ed2-4e03-b741-9f6f696b9689\"\n    }\n}",
+        "title": "Resending Dead Letter Messages"
+      }
+    ],
+    "ResetConsumerGroupOffset": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetConsumerGroupOffset\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"ConsumerGroup\": \"test_group\",\n    \"Topic\": \"test_topic\",\n    \"ResetTimestamp\": -1\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"707a78e5-019d-41f6-80fc-15743d99c81a\"\n    }\n}",
+        "title": "Reset the consumption position."
+      }
+    ],
+    "RollbackMigratingTopicStage": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollbackMigratingTopicStage\n<Common request parameters>\n\n{\n    \"TaskId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\",\n    \"TopicName\": \"TopicTest\",\n    \"Namespace\": \"\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"02f6c31a-9707-4244-8dd3-35ad868ef92a\"\n    }\n}",
+        "title": "Rolling Back the Streaming State of a Migration Topic"
+      }
+    ]
+  },
+  "version": "1.0"
+}

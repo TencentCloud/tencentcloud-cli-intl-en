@@ -17055,7 +17055,7 @@
         },
         {
           "disabled": false,
-          "document": "Tls version settings, valid values:.\n<Li>`TLSv1`: tlsv1 version;</li>.\n<li>`TLSv1.1`: TLSv1.1 version;</li>.\n<li>TLSv1.2: specifies the TLSv1.2 version.</li>.\n<Li>TLSv1.3: specifies the TLSv1.3 version. consecutive versions must be enabled when modifying.</li>.",
+          "document": "Tls version settings. valid values:.\n<Li>TLSv1: specifies the tlsv1 version.</li>.\n<Li>TLSv1.1: specifies the tlsv1.1 version.</li>.\n<Li>TLSv1.2: specifies the tlsv1.2 version.</li>.\n<Li>TLSv1.3: specifies the tlsv1.3 version. consecutive versions must be enabled when modifying.</li>.",
           "example": "[\"TLSv1\", \"TLSv1.1\"]",
           "member": "string",
           "name": "TlsVersion",
@@ -18876,7 +18876,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum amount of time (in seconds). Value range: 0 to 315360000.\nNote: The value `0` means not to cache.",
+          "document": "MaxAge specifies the time setting in seconds. value range: 0–315360000.\nSpecifies the time when the cache is disabled if set to 0.",
           "example": "600",
           "member": "int64",
           "name": "MaxAgeTime",
@@ -21607,6 +21607,15 @@
         },
         {
           "disabled": false,
+          "document": "Network Error Logging configuration. The original configuration will apply if it is not specified.",
+          "example": "无",
+          "member": "NetworkErrorLogging",
+          "name": "NetworkErrorLogging",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Image optimization. \nIt is disabled if this parameter is not specified.",
           "example": "无",
           "member": "ImageOptimize",
@@ -21976,6 +21985,40 @@
           "output_required": false,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "NetworkErrorLogging": {
+      "document": "Network Error Logging configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies whether the Network Error Logging configuration is enabled. Valid values:.\n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "NetworkErrorLoggingParameters": {
+      "document": "Network Error Logging configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies whether Network Error Logging configuration is enabled. Valid values:\n<li>`on`: Enable;</li>\n<li>`off`: Disable.</li>",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -23409,7 +23452,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum limit.Takes effect only when Switch is on. Range:1 MB - 800 MB (bytes).",
+          "document": "Specifies the maximum limit. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.",
           "example": "10000000",
           "member": "int64",
           "name": "MaxSize",
@@ -23437,7 +23480,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum size of the file uploaded for streaming via a post request. Takes effect only when Switch is on. Range: 1 MB - 800 MB (bytes).",
+          "document": "Specifies the maximum limit for file streaming transmission in POST request upload. this field is valid only when Switch is on. value range: 1MB to 800MB. unit: byte.",
           "example": "10000000",
           "member": "int64",
           "name": "MaxSize",
@@ -28635,6 +28678,17 @@
         },
         {
           "disabled": false,
+          "document": "Network Error Logging configuration.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "NetworkErrorLoggingParameters",
+          "name": "NetworkErrorLogging",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Accelerate optimization and configuration in mainland china.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "AccelerateMainlandParameters",
@@ -28922,6 +28976,16 @@
           "example": "无",
           "member": "Grpc",
           "name": "Grpc",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Network Error Logging configuration.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "NetworkErrorLogging",
+          "name": "NetworkErrorLogging",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
