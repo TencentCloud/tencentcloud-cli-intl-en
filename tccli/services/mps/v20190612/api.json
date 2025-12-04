@@ -42,6 +42,13 @@
       "output": "CreateAsrHotwordsResponse",
       "status": "online"
     },
+    "CreateBlindWatermarkTemplate": {
+      "document": "This API is used to create a user-defined digital watermark template with an upper limit of 1000.",
+      "input": "CreateBlindWatermarkTemplateRequest",
+      "name": "Creates a digital watermark template",
+      "output": "CreateBlindWatermarkTemplateResponse",
+      "status": "online"
+    },
     "CreateContentReviewTemplate": {
       "document": "This API is used to create a custom content moderation template. Up to 50 templates can be created in total.",
       "input": "CreateContentReviewTemplateRequest",
@@ -68,6 +75,13 @@
       "input": "CreatePersonSampleRequest",
       "name": "Creates image samples",
       "output": "CreatePersonSampleResponse",
+      "status": "online"
+    },
+    "CreateProcessImageTemplate": {
+      "document": "This API is used to create an image processing template.",
+      "input": "CreateProcessImageTemplateRequest",
+      "name": "Creates an image processing template",
+      "output": "CreateProcessImageTemplateResponse",
       "status": "online"
     },
     "CreateQualityControlTemplate": {
@@ -175,6 +189,13 @@
       "output": "DeleteAsrHotwordsResponse",
       "status": "online"
     },
+    "DeleteBlindWatermarkTemplate": {
+      "document": "This API is used to delete a user-defined digital watermark template.",
+      "input": "DeleteBlindWatermarkTemplateRequest",
+      "name": "Deletes a digital watermark template",
+      "output": "DeleteBlindWatermarkTemplateResponse",
+      "status": "online"
+    },
     "DeleteContentReviewTemplate": {
       "document": "This API is used to delete a custom content moderation template.",
       "input": "DeleteContentReviewTemplateRequest",
@@ -201,6 +222,13 @@
       "input": "DeletePersonSampleRequest",
       "name": "Deletes image samples",
       "output": "DeletePersonSampleResponse",
+      "status": "online"
+    },
+    "DeleteProcessImageTemplate": {
+      "document": "This API is used to delete an image processing template.",
+      "input": "DeleteProcessImageTemplateRequest",
+      "name": "Deletes an image processing template",
+      "output": "DeleteProcessImageTemplateResponse",
       "status": "online"
     },
     "DeleteQualityControlTemplate": {
@@ -322,6 +350,13 @@
       "output": "DescribeBatchTaskDetailResponse",
       "status": "online"
     },
+    "DescribeBlindWatermarkTemplates": {
+      "document": "This API is used to query a user-defined digital watermark template, and the pagination query is supported based on conditions.",
+      "input": "DescribeBlindWatermarkTemplatesRequest",
+      "name": "Obtains the list of digital watermark templates",
+      "output": "DescribeBlindWatermarkTemplatesResponse",
+      "status": "online"
+    },
     "DescribeContentReviewTemplates": {
       "document": "This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.",
       "input": "DescribeContentReviewTemplatesRequest",
@@ -362,6 +397,13 @@
       "input": "DescribePersonSamplesRequest",
       "name": "Gets the list of image samples",
       "output": "DescribePersonSamplesResponse",
+      "status": "online"
+    },
+    "DescribeProcessImageTemplates": {
+      "document": "This API is used to query the list of image processing templates.",
+      "input": "DescribeProcessImageTemplatesRequest",
+      "name": "Queries the list of image processing templates",
+      "output": "DescribeProcessImageTemplatesResponse",
       "status": "online"
     },
     "DescribeQualityControlTemplates": {
@@ -497,6 +539,13 @@
       "output": "ExecuteFunctionResponse",
       "status": "online"
     },
+    "ExtractBlindWatermark": {
+      "document": "This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.",
+      "input": "ExtractBlindWatermarkRequest",
+      "name": "Extracts the digital watermark for a video",
+      "output": "ExtractBlindWatermarkResponse",
+      "status": "online"
+    },
     "ManageTask": {
       "document": "This API is used to manage initiated tasks.",
       "input": "ManageTaskRequest",
@@ -539,6 +588,13 @@
       "output": "ModifyAsrHotwordsResponse",
       "status": "online"
     },
+    "ModifyBlindWatermarkTemplate": {
+      "document": "This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.",
+      "input": "ModifyBlindWatermarkTemplateRequest",
+      "name": "Modifies a digital watermark template",
+      "output": "ModifyBlindWatermarkTemplateResponse",
+      "status": "online"
+    },
     "ModifyContentReviewTemplate": {
       "document": "This API is used to modify a custom content moderation template.",
       "input": "ModifyContentReviewTemplateRequest",
@@ -565,6 +621,13 @@
       "input": "ModifyPersonSampleRequest",
       "name": "Modifies image samples",
       "output": "ModifyPersonSampleResponse",
+      "status": "online"
+    },
+    "ModifyProcessImageTemplate": {
+      "document": "This API is used to modify an image processing template.",
+      "input": "ModifyProcessImageTemplateRequest",
+      "name": "Modifies an image processing template",
+      "output": "ModifyProcessImageTemplateResponse",
       "status": "online"
     },
     "ModifyQualityControlTemplate": {
@@ -1331,6 +1394,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark parameter.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BlindWatermarkInput",
+          "name": "BlindWatermark",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -7535,6 +7609,99 @@
       ],
       "usage": "out"
     },
+    "BlindWatermarkInput": {
+      "document": "Digital watermark parameter type in the MPS task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Digital watermark template ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "BlindWatermarkTemplate": {
+      "document": "Digital watermark template details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark template. The length cannot exceed 64 characters.",
+          "example": "水印文本内容",
+          "member": "string",
+          "name": "TextContent",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2025-08-01T18:00:00+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2025-08-01T18:00:00+08:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ClassificationConfigureInfo": {
       "document": "Control parameter of intelligent categorization task",
       "members": [
@@ -9184,6 +9351,70 @@
       ],
       "type": "object"
     },
+    "CreateBlindWatermarkTemplateRequest": {
+      "document": "CreateBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.",
+          "example": "数字水印文本",
+          "member": "string",
+          "name": "TextContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template. The length cannot exceed 256 characters.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBlindWatermarkTemplateResponse": {
+      "document": "CreateBlindWatermarkTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "20000",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateContentReviewTemplateRequest": {
       "document": "CreateContentReviewTemplate request structure.",
       "members": [
@@ -9547,6 +9778,61 @@
           "name": "FailFaceInfoSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProcessImageTemplateRequest": {
+      "document": "CreateProcessImageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image processing template.",
+          "example": "无",
+          "member": "ImageTaskInput",
+          "name": "ProcessImageTemplate",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Image processing template name. The length cannot exceed 64 characters.",
+          "example": "图片处理模板",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the image processing template. The length cannot exceed 256 characters.",
+          "example": "图片处理模板1",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProcessImageTemplateResponse": {
+      "document": "CreateProcessImageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image processing template.",
+          "example": "200043",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -10639,6 +10925,33 @@
       ],
       "type": "object"
     },
+    "DeleteBlindWatermarkTemplateRequest": {
+      "document": "DeleteBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlindWatermarkTemplateResponse": {
+      "document": "DeleteBlindWatermarkTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteContentReviewTemplateRequest": {
       "document": "DeleteContentReviewTemplate request structure.",
       "members": [
@@ -10737,6 +11050,33 @@
     },
     "DeletePersonSampleResponse": {
       "document": "DeletePersonSample response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProcessImageTemplateRequest": {
+      "document": "DeleteProcessImageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image processing template.",
+          "example": "200043",
+          "member": "int64",
+          "name": "Definition",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProcessImageTemplateResponse": {
+      "document": "DeleteProcessImageTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -11023,7 +11363,7 @@
         {
           "disabled": false,
           "document": "Unique ID filter of video content analysis templates. Array length limit: 10.",
-          "example": "[\"30\\r\\n\"]",
+          "example": "[30]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -11050,7 +11390,7 @@
         {
           "disabled": false,
           "document": "The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:\n* Preset\n* Custom",
-          "example": "\"\"",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -11059,7 +11399,7 @@
         {
           "disabled": false,
           "document": "Filter condition for video analysis template identifiers, with a length limit of 64 characters.",
-          "example": "“”",
+          "example": "内容分析模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11106,7 +11446,7 @@
         {
           "disabled": false,
           "document": "Unique ID filter of video content recognition templates. Array length limit: 10.",
-          "example": "[\"30\\r\\n\"]",
+          "example": "[30]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -11133,7 +11473,7 @@
         {
           "disabled": false,
           "document": "The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:\n* Preset\n* Custom",
-          "example": "“”",
+          "example": "Preset",
           "member": "string",
           "name": "Type",
           "required": false,
@@ -11142,7 +11482,7 @@
         {
           "disabled": false,
           "document": "Filter condition for video recognition template identifiers, with a length limit of 64 characters.",
-          "example": "“”",
+          "example": "Presetting Template",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -11818,6 +12158,89 @@
       ],
       "type": "object"
     },
+    "DescribeBlindWatermarkTemplatesRequest": {
+      "document": "DescribeBlindWatermarkTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.",
+          "example": "[10,20,30]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition for the unique identifier of the digital watermark template. The length cannot exceed 64 characters.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned records.\n<li>Default value: 10.</li>\n<li>Maximum value: 100.</li>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlindWatermarkTemplatesResponse": {
+      "document": "DescribeBlindWatermarkTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet the filtering conditions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of digital watermark template details.",
+          "example": "无",
+          "member": "BlindWatermarkTemplate",
+          "name": "BlindWatermarkTemplateSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeContentReviewTemplatesRequest": {
       "document": "DescribeContentReviewTemplates request structure.",
       "members": [
@@ -12303,6 +12726,107 @@
       ],
       "type": "object"
     },
+    "DescribeProcessImageTemplatesRequest": {
+      "document": "DescribeProcessImageTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filtering condition for the unique identifier of the image processing template. The array length cannot exceed 100.",
+          "example": "[1001]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. The default value is 10, and the maximum value is 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition for the identifier of the image processing template.",
+          "example": "图片处理模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method. It is valid after OrderBy is set. Valid values: 0: ascending; 1: descending. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "OrderType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Valid values:\nDefinition: unique identifier of the template.\nDefault value: creation time.",
+          "example": "Definition",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition for the template type. Valid values: <li>Preset: system preset template;</li> <li>Custom: user-defined template.</li>",
+          "example": "Preset",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProcessImageTemplatesResponse": {
+      "document": "DescribeProcessImageTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet the filtering conditions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of image processing template details.",
+          "example": "无",
+          "member": "ProcessImageTemplate",
+          "name": "ProcessImageTemplateSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeQualityControlTemplatesRequest": {
       "document": "DescribeQualityControlTemplates request structure.",
       "members": [
@@ -12588,6 +13112,15 @@
           "example": "Preset",
           "member": "string",
           "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Erasing type filtering conditions for the smart erasing template.\n- subtitle: subtitle removal.\n- watermark: watermark removal.\n- privacy: privacy protection.",
+          "example": "擦除模板类型",
+          "member": "string",
+          "name": "EraseType",
           "required": false,
           "type": "string"
         },
@@ -14274,6 +14807,79 @@
       ],
       "type": "object"
     },
+    "ExtractBlindWatermarkRequest": {
+      "document": "ExtractBlindWatermark request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-abseq: ab sequence copyright digital watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File input information for the Media Processing Service (MPS) task.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Event notification information of the task. If it is left unspecified, it indicates that no event notification is obtained.",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of the digital watermark extraction task.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkTaskConfig",
+          "name": "ExtractBlindWatermarkConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.",
+          "example": "vts-240000xx-0",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtractBlindWatermarkResponse": {
+      "document": "ExtractBlindWatermark response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "125xxx65-ExtractBlindWatermark-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ExtractBlindWatermarkTask": {
       "document": "Extract video digital watermark task information.",
       "members": [
@@ -14823,7 +15429,7 @@
         },
         {
           "disabled": false,
-          "document": "Coordinates (pixel-level) of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner.\nFor example, [101, 85, 111, 95].\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.\nFor example, [101, 85, 111, 95].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[101, 85, 111, 95]",
           "member": "int64",
           "name": "AreaCoordSet",
@@ -14834,7 +15440,7 @@
         },
         {
           "disabled": false,
-          "document": "Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.\n - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).\n -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This field takes effect when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.\n- [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).\n- [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[0.1, 0.1, 0.2, 0.2]",
           "member": "float",
           "name": "BoundingBox",
@@ -14842,6 +15448,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "BoundingBox field unit. When the value is set to 0, select the unit automatically according to the field rule. When it is set to 1, the unit is ratio. When it is set to 2, the unit is pixel.",
+          "example": "0",
+          "member": "uint64",
+          "name": "BoundingBoxUnitType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -15589,6 +16206,98 @@
       ],
       "usage": "out"
     },
+    "LiveAiAnalysisDescriptionItem": {
+      "document": "Information about the live streaming summary result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Segmentation result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveAiParagraphInfo",
+          "name": "Paragraphs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveAiParagraphInfo": {
+      "document": "Segment information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Segment summary.",
+          "example": "summary",
+          "member": "string",
+          "name": "Summary",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment title.",
+          "example": "title",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment keyword.",
+          "example": "[\"words1\",\"words2\"]",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Starting time point of the segment, in seconds.",
+          "example": "10.05",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time point of the segment, in seconds.",
+          "example": "20.05",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Starting time point of the live streaming segment in ISO date and time format.\t",
+          "example": "2025-11-06T15:54:21+08:00",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time point of the live streaming segment in ISO date and time format.\t",
+          "example": "2025-11-06T16:54:21+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "LiveRecordFile": {
       "document": "The information of a live recording file.",
       "members": [
@@ -15963,11 +16672,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Live streaming analysis subtask result. Valid values:\n<li>Live streaming video splitting.</li>\n<li>Live streaming highlight.</li>\n<li>Live streaming summary.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamAiAnalysisResultItem",
           "name": "ResultSet",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -15979,7 +16688,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Result type. Valid values:\n<li>SegmentRecognition: video splitting.</li>\n<li>Highlight: highlight.</li>",
+          "document": "Result type. Valid values:\n<li>SegmentRecognition: video splitting.</li>\n<li>Highlight: highlight.</li>\n<li>Description: summary.</li>",
           "example": "SegmentRecognition",
           "member": "string",
           "name": "Type",
@@ -16006,6 +16715,16 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Summary result. It is valid when Type is Description.",
+          "example": "无",
+          "member": "LiveAiAnalysisDescriptionItem",
+          "name": "DescriptionResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17089,7 +17808,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification Type:\nTDMQ-CMQ: TDMQ for CMQ.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n\n<font color=\"red\">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>",
+          "document": "Notification Type:\nTDMQ-CMQ: TDMQ for CMQ.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).\n\n<font color=\"red\">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -18522,7 +19241,7 @@
         },
         {
           "disabled": false,
-          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).",
+          "document": "The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://www.tencentcloud.com/document/api/1041/33691).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -18572,7 +19291,7 @@
         },
         {
           "disabled": false,
-          "document": "Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Task execution start time in ISO date and time format.",
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
@@ -18582,7 +19301,7 @@
         },
         {
           "disabled": false,
-          "document": "Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Task execution completion time in ISO date and time format.",
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
@@ -19815,6 +20534,60 @@
       ],
       "type": "object"
     },
+    "ModifyBlindWatermarkTemplateRequest": {
+      "document": "ModifyBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template. The length cannot exceed 256 characters.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.",
+          "example": "数字水印文本",
+          "member": "string",
+          "name": "TextContent",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBlindWatermarkTemplateResponse": {
+      "document": "ModifyBlindWatermarkTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyContentReviewTemplateRequest": {
       "document": "ModifyContentReviewTemplate request structure.",
       "members": [
@@ -20186,6 +20959,60 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProcessImageTemplateRequest": {
+      "document": "ModifyProcessImageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image processing template.",
+          "example": "200043",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Image processing template name. The length cannot exceed 64 characters.",
+          "example": "图片处理模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template description information. The length cannot exceed 256 characters.",
+          "example": "图片处理模板超分",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image processing template parameter.",
+          "example": "无",
+          "member": "ImageTaskInput",
+          "name": "ProcessImageTemplate",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProcessImageTemplateResponse": {
+      "document": "ModifyProcessImageTemplate response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -21402,7 +22229,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Live stream processing result type, including:\n<li>AiReviewResult: content auditing result.</li>\n<li>AiRecognitionResult: content recognition result.</li>\n<li>LiveRecordResult: live recording result.</li>\n<li>AiQualityControlResult: media quality inspection result.</li>\n<li>ProcessEof: live stream processing result.</li>",
+          "document": "Live stream processing result type. Valid values:\n<li>AiReviewResult: content review result.</li>\n<li>AiRecognitionResult: content recognition result.</li>\n<li>LiveRecordResult: live streaming recording result.</li>\n<li>AiQualityControlResult: media live quality control result.</li>\n<li>AiAnalysisResult: content analysis result.</li>\n<li>ProcessEof: end of live stream processing.</li>",
           "example": "ProcessEof",
           "member": "string",
           "name": "NotificationType",
@@ -21633,6 +22460,16 @@
           "example": "无",
           "member": "BatchSubTaskResult",
           "name": "BatchTaskEvent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information about the digital watermark extraction task. This field has a value only when EventType is ExtractBlindWatermark.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkTask",
+          "name": "ExtractBlindWatermarkTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -22291,10 +23128,28 @@
         },
         {
           "disabled": false,
-          "document": "Output path, which can be a relative or an absolute path.\nThe path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.comom/document/product/862/37039?from_cn_redirect=1).\n**Relative path example:**\n<Li>`Filename_{Variablename}.{format}`.</li>\n<Li>`Filename.{format}`.</li>\n\n**Absolute path example:**\n<Li>`/Path/Filename_{Variablename}.{format}`.</li>\n\nIf not filled in, default relative path: `{inputName}.{format}`.",
+          "document": "Output path, which can be a relative or an absolute path.\nThe path must end with `.{format}`. For details, please refer to the [Filename Variable](https://www.tencentcloud.com/document/product/1041/33495).\n**Relative path example:**\n<Li>`Filename_{Variablename}.{format}`.</li>\n<Li>`Filename.{format}`.</li>\n\n**Absolute path example:**\n<Li>`/Path/Filename_{Variablename}.{format}`.</li>\n\nIf not filled in, default relative path: `{inputName}.{format}`.",
           "example": "{inputName}.{format}",
           "member": "string",
           "name": "OutputPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image processing template.",
+          "example": "20001",
+          "member": "uint64",
+          "name": "Definition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.",
+          "example": "vts-24000-0",
+          "member": "string",
+          "name": "ResourceId",
           "required": false,
           "type": "string"
         },
@@ -22331,6 +23186,82 @@
         }
       ],
       "type": "object"
+    },
+    "ProcessImageTemplate": {
+      "document": "Image processing template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image processing template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image processing template name.",
+          "example": "图片处理模板1",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the image processing template.",
+          "example": "图片处理使用超分",
+          "member": "string",
+          "name": "Comment",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template type.",
+          "example": "Custom",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image processing template configuration parameter.",
+          "example": "无",
+          "member": "ImageTaskInput",
+          "name": "ProcessImageConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template creation time.",
+          "example": "2021-02-03T04:05:06Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time of the template.",
+          "example": "\t2022-02-03T04:05:06Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ProcessLiveStreamRequest": {
       "document": "ProcessLiveStream request structure.",
@@ -24195,7 +25126,7 @@
         },
         {
           "disabled": false,
-          "document": "Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Task execution start time in ISO date and time format.",
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
@@ -24205,7 +25136,7 @@
         },
         {
           "disabled": false,
-          "document": "Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Task execution completion time in ISO date and time format.",
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
@@ -26508,7 +27439,7 @@
         },
         {
           "disabled": false,
-          "document": "Encryption method. Options:  \n- **cbcs**: Supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.  \n- **cenc**: Supports PlayReady, Widevine, and Widevine+PlayReady.  \n\nIf not specified:  \n- FairPlay defaults to **cbcs**.  \n- PlayReady and Widevine default to **cenc**.  \n- Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to **cbcs**.  \n- Widevine+PlayReady defaults to **cenc**.",
+          "document": "Encryption method. Valid values:\ncbcs: supported by PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay.\ncenc: supported by PlayReady, Widevine, and Widevine+PlayReady.\nIf it is left unspecified:\nUse cbcs for FairPlay by default.\nUse cenc for PlayReady and Widevine by default.\nUse cbcs for Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay by default.\nUse cenc for Widevine+PlayReady by default.",
           "example": "cbcs",
           "member": "string",
           "name": "EncryptionMethod",
@@ -27685,6 +28616,17 @@
         },
         {
           "disabled": false,
+          "document": "Digital watermark parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BlindWatermarkInput",
+          "name": "BlindWatermark",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "List of blurs. Up to 10 ones can be supported.",
           "example": "无",
           "member": "MosaicInput",
@@ -28787,7 +29729,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: AV1 encoding containers currently only support mp4, webm, and mkv.\nNote: H.266 encoding containers currently only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers currently only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers currently only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.",
+          "document": "Encoding format of video streams. Valid values:\n<li>h264: H.264 encoding.</li>\n<li>h265: H.265 encoding.</li>\n<li>h266: H.266 encoding.</li>\n<li>av1: AOMedia Video 1 encoding.</li>\n<li>vp8: VP8 encoding.</li>\n<li>vp9: VP9 encoding.</li>\n<li>mpeg2: MPEG2 encoding.</li>\n<li>dnxhd: DNxHD encoding.</li>\n<li>mv-hevc: MV-HEVC encoding.</li>\nNote: The av1 codec currently only supports mp4, webm, and mkv.\nNote: The H.266 codec currently only supports mp4, hls, ts, and mov.\nNote: The VP8 and VP9 codecs currently only support webm and mkv.\nNote: The MPEG2 and dnxhd codecs currently only support mxf.\nNote: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).",
           "example": "h264",
           "member": "string",
           "name": "Codec",

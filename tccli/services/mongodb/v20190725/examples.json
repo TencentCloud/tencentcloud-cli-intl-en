@@ -8,6 +8,14 @@
         "title": "Specifying the Associated Project of a TencentDB for MongoDB Instance"
       }
     ],
+    "CreateAccountUser": [
+      {
+        "document": "This example shows you how to customize an instance account.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccountUser\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p****\",\n    \"UserName\": \"test_user\",\n    \"Password\": \"Abc@123...\",\n    \"MongoUserPassword\": \"Abc@123...\",\n    \"UserDesc\": \"Test user\",\n    \"AuthRole\": [\n        {\n            \"Mask\": 0,\n            \"NameSpace\": \"collection\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1680767468,\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
+        "title": "Customizing an Account"
+      }
+    ],
     "CreateBackupDBInstance": [
       {
         "document": "This example shows how to back up an instance.",
@@ -48,6 +56,14 @@
         "title": "Creating a Log Download Task"
       }
     ],
+    "DeleteAccountUser": [
+      {
+        "document": "This example shows you how to delete an instance account.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAccountUser\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p****\",\n    \"UserName\": \"test_user\",\n    \"MongoUserPassword\": \"Abc@123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 0,\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
+        "title": "Deleting an Instance Account"
+      }
+    ],
     "DeleteLogDownloadTask": [
       {
         "document": "This example shows you how to delete a log download task.",
@@ -72,12 +88,28 @@
         "title": "Querying a Backup Download Task"
       }
     ],
+    "DescribeBackupRules": [
+      {
+        "document": "This example shows you how to query the automatic backup rule information of an instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupMethod\": 0,\n        \"BackupSaveTime\": 7,\n        \"BackupTime\": 1,\n        \"RequestId\": \"07ec4290-d682-11ed-aa06-f56fb86dae78\"\n    }\n}",
+        "title": "Querying the Automatic Backup Rule Information of an Instance"
+      }
+    ],
     "DescribeClientConnections": [
       {
         "document": "This example shows you how to query the client connection information on a TencentDB for MongoDB instance.",
         "input": "https://mongodb.tencentcloudapi.com/?Action=DescribeClientConnections\n&InstanceId=cmgo-eqmoaxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Clients\": [\n            {\n                \"Count\": 1,\n                \"IP\": \"192.168.1.1\",\n                \"InternalService\": true\n            }\n        ],\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
         "title": "Querying the Client Connection Information on a TencentDB for MongoDB Instance"
+      }
+    ],
+    "DescribeCurrentOp": [
+      {
+        "document": "This example shows you how to query the current operation on the TencentDB for MongoDB instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCurrentOp\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-r3p8****\",\n    \"State\": \"primary\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CurrentOps\": [\n            {\n                \"ExecNode\": \"Primary node\",\n                \"MicrosecsRunning\": 103,\n                \"NodeName\": \"**.**.**.**:****:*********\",\n                \"Ns\": \"admin.$cmd.aggregate\",\n                \"Op\": \"command\",\n                \"OpId\": 42431451,\n                \"Operation\": \"{\\\"Active\\\":true,\\\"AppName\\\":\\\"CMongo\\\",\\\"Client\\\":\\\"**.**.**.**:**\\\",\\\"ClientMetadata\\\":{\\\"application\\\":{\\\"name\\\":\\\"CMongo\\\"},\\\"driver\\\":{\\\"name\\\":\\\"mongo-go-driver\\\",\\\"version\\\":\\\"v1.*.*\\\"},\\\"os\\\":{\\\"architecture\\\":\\\"amd64\\\",\\\"type\\\":\\\"linux\\\"},\\\"platform\\\":\\\"***.**.*\\\"},\\\"Command\\\":{\\\"$db\\\":\\\"admin\\\",\\\"$readPreference\\\":{\\\"mode\\\":\\\"primaryPreferred\\\"},\\\"currentOp\\\":1,\\\"lsid\\\":{\\\"id\\\":{\\\"Data\\\":\\\"************************==\\\",\\\"Subtype\\\":4}},\\\"microsecs_running\\\":{\\\"$gt\\\":0}},\\\"ConnectionId\\\":********,\\\"CurrentOpTime\\\":\\\"2025-09-25T17:41:42.146+0800\\\",\\\"Desc\\\":\\\"conn*******\\\",\\\"Host\\\":\\\"*******64.site:7029\\\",\\\"Insert\\\":null,\\\"KillPending\\\":false,\\\"LockStats\\\":{},\\\"Locks\\\":{},\\\"Lsid\\\":{\\\"id\\\":{\\\"Data\\\":\\\"*******************==\\\",\\\"Subtype\\\":4},\\\"uid\\\":{\\\"Data\\\":\\\"********************************=\\\",\\\"Subtype\\\":0}},\\\"MicroSecsRunning\\\":103,\\\"Msg\\\":\\\"\\\",\\\"Ns\\\":\\\"admin.$cmd.aggregate\\\",\\\"NumYields\\\":0,\\\"Op\\\":\\\"command\\\",\\\"OpId\\\":********,\\\"OriginatingCommand\\\":null,\\\"PlanSummary\\\":\\\"\\\",\\\"Progress\\\":null,\\\"Query\\\":null,\\\"SecsRunning\\\":0,\\\"Transaction\\\":null,\\\"WaitingForLock\\\":false}\",\n                \"Query\": \"{\\\"$db\\\":\\\"admin\\\",\\\"$readPreference\\\":{\\\"mode\\\":\\\"primaryPreferred\\\"},\\\"currentOp\\\":1,\\\"lsid\\\":{\\\"id\\\":{\\\"Data\\\":\\\"***********************==\\\",\\\"Subtype\\\":4}},\\\"microsecs_running\\\":{\\\"$gt\\\":0}}\",\n                \"ReplicaSetName\": \"cmgo-r3p8****_0\",\n                \"State\": \"primary\"\n            }\n        ],\n        \"RequestId\": \"a1f20aaa-83c2-4062-b4f3-7c46ad2e1157\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the Current Operation on the TencentDB for MongoDB Instance"
       }
     ],
     "DescribeDBBackups": [
@@ -198,6 +230,14 @@
         "title": "Querying Saleable TencentDB for MongoDB Specifications"
       }
     ],
+    "EnableTransparentDataEncryption": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableTransparentDataEncryption\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-igjy****\",\n    \"KmsRegion\": \"ap-guangzhou\",\n    \"KeyId\": \"AKID********************************\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 17316505316,\n        \"RequestId\": \"a8dce7a4-d488-49c9-8d24-33cf623f5992\"\n    }\n}",
+        "title": "Enabling TDE for an Instance"
+      }
+    ],
     "FlushInstanceRouterConfig": [
       {
         "document": " ",
@@ -246,6 +286,14 @@
         "title": "Terminating a pay-as-you-go TencentDB instance"
       }
     ],
+    "KillOps": [
+      {
+        "document": " ",
+        "input": "https://mongodb.tencentcloudapi.com/?Action=KillOps\n&InstanceId=cmgo-p8vnipr5\n&Operations.0.ReplicaSetName=cmgo-p8vnipr5_0\n&Operations.0.NodeName=10.108.93.135:7017:39920912\n&Operations.0.OpId=61\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"302530d2-ee57-495e-89d0-51e03b11815e\"\n    }\n}",
+        "title": "Terminating a Specific Operation Performed on a TencentDB for MongoDB Instance"
+      }
+    ],
     "ModifyDBInstanceNetworkAddress": [
       {
         "document": "This example shows you how to modify the VIP information on a TencentDB for MongoDB instance.",
@@ -282,6 +330,14 @@
         "title": "Adding Secondary Nodes to a TencentDB for MongoDB Instance"
       }
     ],
+    "ModifyInstanceParams": [
+      {
+        "document": "This example shows you how to initiate a modification task of the parameter configuration for a TencentDB for MongoDB instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceParams\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p6umb\",\n    \"InstanceParams\": [\n        {\n            \"Value\": \"operation.profiling.slowOpThresholdMs\",\n            \"Key\": \"operation.profiling.slowOpThresholdMs\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Changed\": true,\n        \"RequestId\": \"e51b4590-db7b-4835-9899-1f5c33f92fbf\",\n        \"TaskId\": 0\n    }\n}",
+        "title": "Modifying the Parameter for a TencentDB for MongoDB Instance"
+      }
+    ],
     "OfflineIsolatedDBInstance": [
       {
         "document": " ",
@@ -314,12 +370,28 @@
         "title": "Changing the Password of the User Accessing the Instance"
       }
     ],
+    "SetAccountUserPrivilege": [
+      {
+        "document": "This example shows you how to set operation permissions for the specified account of the current instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAccountUserPrivilege\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p6umb\",\n    \"UserName\": \"test_user\",\n    \"AuthRole\": [\n        {\n            \"Mask\": 0,\n            \"NameSpace\": \"eg_collection\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1680767468,\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
+        "title": "Setting Account Permissions for the Current Instance"
+      }
+    ],
     "SetDBInstanceDeletionProtection": [
       {
         "document": "",
         "input": "https://mongodb.tencentcloudapi.com/?Action=SetDBInstanceDeletionProtection\n&InstanceIds.0=cmgo-8l3r6yyt\n&EnableDeletionProtection=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1d0d55f9-15ee-4f00-b460-7b645a62cc3a\"\n    }\n}",
         "title": "Setting Instance Termination Protection"
+      }
+    ],
+    "SetInstanceMaintenance": [
+      {
+        "document": "This example shows how to modify the instance maintenance window.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetInstanceMaintenance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p****\",\n    \"MaintenanceEnd\": \"21:00\",\n    \"MaintenanceStart\": \"20:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
+        "title": "Modifying the Instance Maintenance Window"
       }
     ],
     "TerminateDBInstances": [

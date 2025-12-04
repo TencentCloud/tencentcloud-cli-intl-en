@@ -7,6 +7,13 @@
       "output": "AssignProjectResponse",
       "status": "online"
     },
+    "CreateAccountUser": {
+      "document": "This API is used to customize an account to access the instance.",
+      "input": "CreateAccountUserRequest",
+      "name": "Creates an account",
+      "output": "CreateAccountUserResponse",
+      "status": "online"
+    },
     "CreateBackupDBInstance": {
       "document": "This API is used to back up an instance.",
       "input": "CreateBackupDBInstanceRequest",
@@ -42,6 +49,13 @@
       "output": "CreateLogDownloadTaskResponse",
       "status": "online"
     },
+    "DeleteAccountUser": {
+      "document": "This API is used to delete a custom account of an instance.",
+      "input": "DeleteAccountUserRequest",
+      "name": "Deletes an account",
+      "output": "DeleteAccountUserResponse",
+      "status": "online"
+    },
     "DeleteLogDownloadTask": {
       "document": "This API is used to delete a log download task.",
       "input": "DeleteLogDownloadTaskRequest",
@@ -63,11 +77,25 @@
       "output": "DescribeBackupDownloadTaskResponse",
       "status": "online"
     },
+    "DescribeBackupRules": {
+      "document": "This API is used to obtain the automatic backup configuration information of an instance.",
+      "input": "DescribeBackupRulesRequest",
+      "name": "Obtains the automatic backup configuration of a TencentDB for MongoDB instance",
+      "output": "DescribeBackupRulesResponse",
+      "status": "online"
+    },
     "DescribeClientConnections": {
       "document": "This API is used to query the client connection information on an instance, including the IP address for connection and the number of connections.",
       "input": "DescribeClientConnectionsRequest",
       "name": "Queries client connection information of an instance",
       "output": "DescribeClientConnectionsResponse",
+      "status": "online"
+    },
+    "DescribeCurrentOp": {
+      "document": "This API is used to query the operation currently being performed on a TencentDB for MongoDB instance.",
+      "input": "DescribeCurrentOpRequest",
+      "name": "Queries the operation currently being performed on a TencentDB for MongoDB instance",
+      "output": "DescribeCurrentOpResponse",
       "status": "online"
     },
     "DescribeDBBackups": {
@@ -168,6 +196,13 @@
       "output": "DescribeSpecInfoResponse",
       "status": "online"
     },
+    "EnableTransparentDataEncryption": {
+      "document": "This API is used to enable the transparent data encryption (TDE) capability for TencentDB for MongoDB.",
+      "input": "EnableTransparentDataEncryptionRequest",
+      "name": "Enables TDE for an instance",
+      "output": "EnableTransparentDataEncryptionResponse",
+      "status": "online"
+    },
     "FlushInstanceRouterConfig": {
       "document": "This API is used to run the `FlushRouterConfig` command on all mongos instances.",
       "input": "FlushInstanceRouterConfigRequest",
@@ -210,6 +245,13 @@
       "output": "IsolateDBInstanceResponse",
       "status": "online"
     },
+    "KillOps": {
+      "document": "This API is used to terminate a specific operation performed on a TencentDB for MongoDB instance.",
+      "input": "KillOpsRequest",
+      "name": "Terminates a specific operation performed on a TencentDB for MongoDB instance",
+      "output": "KillOpsResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceNetworkAddress": {
       "document": "This API is used to modify the network information on a TencentDB for MongoDB instance. It supports switching from a basic network to a VPC network or from one VPC network to another VPC network.",
       "input": "ModifyDBInstanceNetworkAddressRequest",
@@ -229,6 +271,13 @@
       "input": "ModifyDBInstanceSpecRequest",
       "name": "Adjusts the configurations of a TencentDB instance",
       "output": "ModifyDBInstanceSpecResponse",
+      "status": "online"
+    },
+    "ModifyInstanceParams": {
+      "document": "This API is used to modify the parameter configuration of a TencentDB for MongoDB instance.",
+      "input": "ModifyInstanceParamsRequest",
+      "name": "Modifies parameters of a TencentDB for MongoDB instance",
+      "output": "ModifyInstanceParamsResponse",
       "status": "online"
     },
     "OfflineIsolatedDBInstance": {
@@ -259,11 +308,25 @@
       "output": "ResetDBInstancePasswordResponse",
       "status": "online"
     },
+    "SetAccountUserPrivilege": {
+      "document": "This API is used to set the account permissions of an instance.",
+      "input": "SetAccountUserPrivilegeRequest",
+      "name": "Sets account permissions",
+      "output": "SetAccountUserPrivilegeResponse",
+      "status": "online"
+    },
     "SetDBInstanceDeletionProtection": {
       "document": "This API is used to set instance termination protection.",
       "input": "SetDBInstanceDeletionProtectionRequest",
       "name": "Sets instance termination protection",
       "output": "SetDBInstanceDeletionProtectionResponse",
+      "status": "online"
+    },
+    "SetInstanceMaintenance": {
+      "document": "This API is used to set the instance maintenance window.",
+      "input": "SetInstanceMaintenanceRequest",
+      "name": "Sets the instance maintenance time",
+      "output": "SetInstanceMaintenanceResponse",
       "status": "online"
     },
     "TerminateDBInstances": {
@@ -363,6 +426,34 @@
         }
       ],
       "type": "object"
+    },
+    "Auth": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission information of the current account.\n- 0: no permissions.\n- 1: read-only.\n- 3: read-write.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Mask",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the database that has the current account permissions.\n- \\*: indicates all databases.\n- db.name: indicates the database with a specific name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"db_test\"",
+          "member": "string",
+          "name": "NameSpace",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "BackupDownloadTask": {
       "document": "Backup download task information",
@@ -687,6 +778,88 @@
         }
       ],
       "usage": "out"
+    },
+    "CreateAccountUserRequest": {
+      "document": "CreateAccountUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New account name. The format requirements are as follows:\n- The value range for the character length is [1, 64].\n- Allowed characters include uppercase letters, lowercase letters, digits (1–9), underscores (\\_), and hyphens (-).",
+          "example": "mong_test",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New account password. The password complexity requirements are as follows:\n- The value range for the character length is [8, 32].\n- It should include at least two of the following: letters, digits, and special characters (the exclamation mark (!), at sign (@), number sign (#), percent sign (%), caret (^), asterisk (*), parentheses (), and underscore (_)).",
+          "example": "password",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password corresponding to the mongouser account. mongouser is the default account of the system; it indicates the password set during instance creation.",
+          "example": "password...",
+          "member": "string",
+          "name": "MongoUserPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account remarks.",
+          "example": "测试账号",
+          "member": "string",
+          "name": "UserDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read/Write permission information of the account.",
+          "example": "无",
+          "member": "Auth",
+          "name": "AuthRole",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountUserResponse": {
+      "document": "CreateAccountUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Creates a task ID.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateBackupDBInstanceRequest": {
       "document": "CreateBackupDBInstance request structure.",
@@ -1496,6 +1669,112 @@
       ],
       "type": "object"
     },
+    "CurrentOp": {
+      "document": "Current operation on the TencentDB for MongoDB instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation number.",
+          "example": "1804858933",
+          "member": "int64",
+          "name": "OpId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Namespace where the operation is located, in the format of db.collection.",
+          "example": "db.test",
+          "member": "string",
+          "name": "Ns",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution statement of the operation.",
+          "example": "执行语句",
+          "member": "string",
+          "name": "Query",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation type.\n- none: special status; idle connections or internal tasks.\n- update: update data.\n- insert: insertion operation.\n- query: query operation.\n- command: command operation.\n- getmore: obtain more data.\n- remove: deletion operation.\n- killcursors: operation of releasing the query cursor.",
+          "example": "update",
+          "member": "string",
+          "name": "Op",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the shard where the operation is performed.",
+          "example": "cmgo-12asa***_0",
+          "member": "string",
+          "name": "ReplicaSetName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the node where the operation is performed.",
+          "example": "9.18.157.***:70**:234****",
+          "member": "string",
+          "name": "NodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed information about the operation.",
+          "example": "操作详情",
+          "member": "string",
+          "name": "Operation",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node role.\n- primary: primary node.\n- secondary: secondary node.",
+          "example": "Secondary",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution time of the operation, in ms.",
+          "example": "30353723",
+          "member": "uint64",
+          "name": "MicrosecsRunning",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information about the node where the current operation is performed.",
+          "example": "从节点",
+          "member": "string",
+          "name": "ExecNode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DBInstanceInfo": {
       "document": "Instance information",
       "members": [
@@ -1560,6 +1839,61 @@
         }
       ],
       "usage": "both"
+    },
+    "DeleteAccountUserRequest": {
+      "document": "DeleteAccountUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID for the account to be deleted. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.\n",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the name of the account to be deleted.",
+          "example": "mong_test",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the password corresponding to the mongouser account. mongouser is the default account of the system. Enter the password corresponding to it.",
+          "example": "Abc123...",
+          "member": "string",
+          "name": "MongoUserPassword",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccountUserResponse": {
+      "document": "DeleteAccountUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Account deletion task ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DeleteLogDownloadTaskRequest": {
       "document": "DeleteLogDownloadTask request structure.",
@@ -1783,6 +2117,63 @@
       ],
       "type": "object"
     },
+    "DescribeBackupRulesRequest": {
+      "document": "DescribeBackupRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupRulesResponse": {
+      "document": "DescribeBackupRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Retention period for backup data, in days.",
+          "example": "7",
+          "member": "uint64",
+          "name": "BackupSaveTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Automatic backup start time.",
+          "example": "1",
+          "member": "uint64",
+          "name": "BackupTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup method.\n- 0: logical backup.\n- 1: physical backup.",
+          "example": "1",
+          "member": "uint64",
+          "name": "BackupMethod",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeClientConnectionsRequest": {
       "document": "DescribeClientConnections request structure.",
       "members": [
@@ -1835,6 +2226,134 @@
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCurrentOpRequest": {
+      "document": "DescribeCurrentOp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID to be queried. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-p8vn****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Namespace where the operation belongs, in the format of db.collection.",
+          "example": "data.user",
+          "member": "string",
+          "name": "Ns",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the query and filtering condition to the execution time of the operation task.\n- The default value is 0, and the value range is [0, 3600000], in milliseconds.\n- The result will return the operation whose execution time exceeds the set time.",
+          "example": "20",
+          "member": "uint64",
+          "name": "MillisecondRunning",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the query and filtering condition to the type of the operation task. Valid values:\n- none: special status; idle connections or internal tasks.\n- update: update data.\n- insert: insertion operation.\n- query: query operation.\n- command: command operation.\n- getmore: obtain more data.\n- remove: deletion operation.\n- killcursors: operation of releasing the query cursor.",
+          "example": "update",
+          "member": "string",
+          "name": "Op",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition, such as the shard name.",
+          "example": "cmgo-nh1o****_0",
+          "member": "string",
+          "name": "ReplicaSetName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the query and filtering condition to the node role.\n- primary: primary node.\n- secondary: secondary node.",
+          "example": "primary",
+          "member": "string",
+          "name": "State",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries returned per request. The default value is 100, and the value range is [0, 100].",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. The default value is 0, and the value range is [0, 10000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field of the returned result set. Currently, sorting by MicrosecsRunning (execution time of the operation task) is supported.",
+          "example": "MicrosecsRunning",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method of the returned result set.\n- ASC: ascending order. The default value is ASC, which indicates sorting in ascending order.\n- DESC: descending order.",
+          "example": "ASC",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCurrentOpResponse": {
+      "document": "DescribeCurrentOp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of operations meeting the query conditions.",
+          "example": "19",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of the current operations.",
+          "example": "无",
+          "member": "CurrentOp",
+          "name": "CurrentOps",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3083,6 +3602,61 @@
           "name": "SpecInfoList",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableTransparentDataEncryptionRequest": {
+      "document": "EnableTransparentDataEncryption request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. For example, cmgo-p8vn****. Log in to the[TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb) to copy the instance ID from the instance list. Currently, the supported general versions include 4.4 and 5.0, and Cloud Disk Edition is not supported.",
+          "example": "cmgo-p8vnipr5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": " Region where the [Key Management Service (KMS)](https://www.tencentcloud.comom/document/product/573/18809?from_cn_redirect=1) instance is located. For example, ap-shanghai.",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "KmsRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Key ID. If the parameter is left unspecified, there is no specific key ID, Tencent Cloud will generate the key automatically.",
+          "example": "AKID********************************",
+          "member": "string",
+          "name": "KeyId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableTransparentDataEncryptionResponse": {
+      "document": "EnableTransparentDataEncryption response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous process ID for enabling TDE, which is used for querying the process status.",
+          "example": "17316505316",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4388,6 +4962,42 @@
       ],
       "type": "object"
     },
+    "KillOpsRequest": {
+      "document": "KillOps request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.",
+          "example": "cmgo-p8vnipr5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation to be terminated.",
+          "example": "无",
+          "member": "Operation",
+          "name": "Operations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "KillOpsResponse": {
+      "document": "KillOps response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "LogInfo": {
       "document": "Log details.",
       "members": [
@@ -4681,6 +5291,95 @@
       ],
       "type": "object"
     },
+    "ModifyInstanceParamsRequest": {
+      "document": "ModifyInstanceParams request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.\n",
+          "example": "\"cmgo-jyjcw8yv\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the parameter name and value to be modified. For details about the currently supported parameter names and the corresponding valid values, see [DescribeInstanceParams](https://www.tencentcloud.comom/document/product/240/65903?from_cn_redirect=1).",
+          "example": "无",
+          "member": "ModifyMongoDBParamType",
+          "name": "InstanceParams",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type. Valid values:\n- IMMEDIATELY: immediate adjustment.\n- DELAY: delayed adjustment. It is an optional field. The default value is immediate adjustment if this parameter is left unspecified.",
+          "example": "IMMEDIATELY",
+          "member": "string",
+          "name": "ModifyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceParamsResponse": {
+      "document": "ModifyInstanceParams response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether the modification on the parameter configuration takes effect.\n- true: the modified parameter value has taken effect.\n- false: execution failed.\n",
+          "example": "true",
+          "member": "bool",
+          "name": "Changed",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is temporarily meaningless (to be compatible with the earlier versions, reserve this parameter at the frontend).",
+          "example": "1",
+          "member": "uint64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMongoDBParamType": {
+      "document": "Modifies the request parameters of a TencentDB for MongoDB instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name to be modified. Strictly refer to the parameter names supported by the current instance, which are obtained through DescribeInstanceParams.",
+          "example": "\"operationProfiling.****\"",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Corresponding value of the parameter name to be modified. Strictly refer to the value ranges corresponding to the parameters obtained through DescribeInstanceParams.",
+          "example": "off",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "ModifyNetworkAddress": {
       "document": "Database IP to be modified",
       "members": [
@@ -4895,6 +5594,39 @@
         }
       ],
       "type": "object"
+    },
+    "Operation": {
+      "document": "Operation to be terminated.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the shard where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the shard name.",
+          "example": "cmgo-bbzl****_0",
+          "member": "string",
+          "name": "ReplicaSetName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the node where the operation is performed. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the node name.",
+          "example": "30.99.***.*:7005:244****",
+          "member": "string",
+          "name": "NodeName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation number. The [DescribeCurrentOp](https://www.tencentcloud.comom/document/product/240/48120?from_cn_redirect=1) API can be called to query the operation number.",
+          "example": "918759117",
+          "member": "int64",
+          "name": "OpId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "RemoveNodeList": {
       "document": "Node details of the instance to be modified.",
@@ -5249,6 +5981,61 @@
       ],
       "usage": "out"
     },
+    "SetAccountUserPrivilegeRequest": {
+      "document": "SetAccountUserPrivilege request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID for the account to be configured. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/MongoDB), and copy the instance ID from the instance list.",
+          "example": "cmgo-kbcfl64r",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the account name to access the instance. The setting requirements are as follows: The name should be started with a letter and its length should be 1–64 characters. Only uppercase letters, lowercase letters, digits (1–9), underscores (_), and hyphens (-) can be entered.",
+          "example": "test_123",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sets the permission information.",
+          "example": "无",
+          "member": "Auth",
+          "name": "AuthRole",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetAccountUserPrivilegeResponse": {
+      "document": "SetAccountUserPrivilege response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "100000",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "SetDBInstanceDeletionProtectionRequest": {
       "document": "SetDBInstanceDeletionProtection request structure.",
       "members": [
@@ -5275,6 +6062,51 @@
     },
     "SetDBInstanceDeletionProtectionResponse": {
       "document": "SetDBInstanceDeletionProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetInstanceMaintenanceRequest": {
+      "document": "SetInstanceMaintenance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.\n",
+          "example": "cmgo-7pjedvz7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the maintenance window. The value range is any hour or half-hour between 00:00 and 23:00, such as 00:00 or 00:30.",
+          "example": "\"04:00\"",
+          "member": "string",
+          "name": "MaintenanceStart",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the maintenance window.\n- The value range is any hour or half-hour between 00:00 and 23:00. The minimum value of maintenance time is 30 minutes, and the maximum value is 3 hours.\n- The end time should be later than the start time.",
+          "example": "\"05:00\"",
+          "member": "string",
+          "name": "MaintenanceEnd",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetInstanceMaintenanceResponse": {
+      "document": "SetInstanceMaintenance response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
