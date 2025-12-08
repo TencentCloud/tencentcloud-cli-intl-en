@@ -7,6 +7,38 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e2f35fb3-3c8c-431e-b318-b4746cfe076c\"\n    }\n}",
         "title": "Applying baselines to existing accounts in batches"
       }
+    ],
+    "GetAccountFactoryBaseline": [
+      {
+        "document": "This example shows you how to obtain user baseline configuration.",
+        "input": "POST / HTTP/1.1\nHost: controlcenter.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetAccountFactoryBaseline\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"OwnerUin\": 100000000001,\n        \"Name\": \"default\",\n        \"BaselineConfigItems\": [\n            {\n                \"Identifier\": \"ACS-BP_ACCOUNT_FACTORY_ACCOUNT_CONTACT\",\n                \"Configuration\": \"{\\\"Contacts\\\":[{\\\"Name\\\":\\\"dest\\\",\\\"Email\\\":\\\"ia@22.com\\\",\\\"Mobile\\\":\\\"12345678910\\\",\\\"Position\\\":\\\"Technical Director\\\"}]}\",\n                \"ApplyCount\": 5\n            }\n        ],\n        \"CreateTime\": \"2022-08-18 12:00:00\",\n        \"UpdateTime\": \"2022-08-18 12:00:00\",\n        \"RequestId\": \"e2f35fb3-3c8c-431e-b318-b4746cfe076c\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ListAccountFactoryBaselineItems": [
+      {
+        "document": "This example shows you how to retrieve the account baseline list from console.",
+        "input": "POST / HTTP/1.1\nHost: controlcenter.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAccountFactoryBaselineItems\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"BaselineItems\": [\n            {\nMessage\n                \"ClassifyEn\": \"Message\",\n                \"DependsOn\": [\n                    {\n                        \"Identifier\": \"TCC-AF_ACCOUNT_CONTACT\",\n                        \"Type\": \"AccountFactorySetUp\"\n                    }\n                ],\n\"Description\": \"You can set recipients for each type of message. For important messages such as account, product, and failure notifications, you must set recipients to prevent missing messages and avoid losses.\"\n                \"DescriptionEn\": \"Specify recipients for the notifications of different products. To avoid unexpected losses, we recommend you subscribe to important messages related to accounts, products, and errors.\",\n                \"Identifier\": \"TCC-AF_ACCOUNT_NOTIFICATION\",\n\"Name\": \"Message subscription\"\n                \"NameEn\": \"Message subscriptions\",\n                \"Required\": 0,\n                \"Weight\": 8\n            }\n        ],\n        \"RequestId\": \"885a87d0-af7d-414a-b128-fd13653387b7\",\n        \"Total\": 1\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ListDeployStepTasks": [
+      {
+        "document": "This example shows you how to retrieve deployment task history by baseline ID.",
+        "input": "POST / HTTP/1.1\nHost: controlcenter.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListDeployStepTasks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Identifier\": \"TCC-AF_CAM_USER_PASSWORD_POLICY\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"BaselineDeployStepTaskList\": [\n            {\n                \"TaskId\": \"s8gsj834y8ef0cjs\",\n                \"Identifier\": \"TCC-AF_CAM_USER_PASSWORD_POLICY\",\n                \"MemberUin\": 100000000001,\n                \"Status\": \"Success\",\n                \"Output\": \"\",\n                \"ErrCode\": \"Ok\",\n                \"ErrMessage\": \"Ok\",\n                \"CreateTime\": \"2022-08-18 12:00:00\",\n                \"UpdateTime\": \"2022-08-18 12:00:00\"\n            }\n        ],\n        \"RequestId\": \"ef0e0140-4e51-4087-95a1-f7fd18ca6d63\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "UpdateAccountFactoryBaseline": [
+      {
+        "document": "This example shows you how to batch update or add user baseline configurations.",
+        "input": "POST / HTTP/1.1\nHost: controlcenter.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAccountFactoryBaseline\n<Common request parameters>\n\n{\n    \"Name\": \"default\",\n    \"BaselineConfigItems\": [\n        {\n            \"Identifier\": \"ACS-BP_ACCOUNT_FACTORY_ACCOUNT_CONTACT\",\n            \"Configuration\": \"{\\\"Contacts\\\":[{\\\"Name\\\":\\\"dest\\\",\\\"Email\\\":\\\"ia@22.com\\\",\\\"Mobile\\\":\\\"12345678910\\\",\\\"Position\\\":\\\"Technical Director\\\"}]}\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"748eabd0-5d58-40a6-85e3-26d74c3397d4\"\n    }\n}",
+        "title": "Example"
+      }
     ]
   },
   "version": "1.0"

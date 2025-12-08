@@ -1,0 +1,85 @@
+{
+  "actions": {
+    "CreateLibrary": [
+      {
+        "document": "This example shows you how to create a media library.",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLibrary\n<Common request parameters>\n\n{\n    \"Name\": \"Name\",\n    \"Remark\": \"Note\",\n    \"LibraryExtension\": {\n        \"IsFileLibrary\": \"true\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"LibraryId\": \"smh0q8nrvsg7t6y6\",\n        \"RequestId\": \"1586674e-e04c-4315-943a-c282b5f8ed6b\"\n    }\n}",
+        "title": "Creating a Media Library"
+      }
+    ],
+    "DeleteLibrary": [
+      {
+        "document": "This example shows you how to delete a media library.",
+        "input": "POST / HTTP/1.1 \nHost: smh.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: DeleteLibrary \n\n{\n    \"LibraryId\": \"smh0q8nrvsg7t6y6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ea829232-caa0-4dfe-9bbb-2f428cfae08c\"\n    }\n}",
+        "title": "Deleting a Media Library"
+      }
+    ],
+    "DescribeLibraries": [
+      {
+        "document": "This example shows you how to query a media library.",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLibraries\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"LibraryId\": \"smh0q8nrvsg7t6y6\",\n\"Name\": \"string\"\n\"Remark\": \"string\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh0q8nrvsg7t6y6.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T06:02:26Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            },\n            {\n                \"LibraryId\": \"smh1jjexrwwoa9ok\",\n\"Name\": \"string\"\n                \"Remark\": \"\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh1jjexrwwoa9ok.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T09:43:07Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            },\n            {\n                \"LibraryId\": \"smh12pzokd9c6r5n\",\n\"Name\": \"string\"\n                \"Remark\": \"\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh12pzokd9c6r5n.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T12:31:31Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            },\n            {\n                \"LibraryId\": \"smh3s9iq6lfsoud1\",\n\"Name\": \"string\"\n                \"Remark\": \"\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh3s9iq6lfsoud1.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T12:32:06Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            },\n            {\n                \"LibraryId\": \"smh1porquwr19l42\",\n\"Name\": \"string\"\n                \"Remark\": \"\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh1porquwr19l42.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T12:33:20Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            },\n            {\n                \"LibraryId\": \"smh32bey5u1lr6bx\",\n\"Name\": \"string\"\n                \"Remark\": \"\",\n                \"BucketName\": \"smh-it-251202137\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"AccessDomain\": \"smh32bey5u1lr6bx.api.tencentsmh.cn\",\n                \"CreationTime\": \"2021-09-28T12:33:27Z\",\n                \"LibraryExtension\": {\n                    \"IsFileLibrary\": true,\n                    \"IsMultiSpace\": false,\n                    \"CosStorageClass\": \"INTELLIGENT_TIERING\",\n                    \"UseRecycleBin\": false,\n                    \"AutoRemoveRecycledDays\": null,\n                    \"EnableSearch\": false,\n                    \"DenyOnQuotaLessThanUsage\": false,\n                    \"EnableFileHistory\": false,\n                    \"FileHistoryCount\": null,\n                    \"FileHistoryExpireDay\": null,\n                    \"MaxDirFileNameLength\": 255,\n                    \"IsPublicRead\": false,\n                    \"IsMultiAlbum\": null,\n                    \"AllowPhoto\": null,\n                    \"AllowPhotoExtName\": null,\n                    \"AllowVideo\": null,\n                    \"AllowVideoExtName\": null,\n                    \"AllowFileExtName\": [],\n                    \"RecognizeSensitiveContent\": false\n                },\n                \"Size\": \"0\",\n                \"DirNum\": \"0\",\n                \"FileNum\": \"0\"\n            }\n        ],\n        \"TotalCount\": 6,\n        \"RequestId\": \"3d486825-fc56-434f-82d0-1db782b66728\"\n    }\n}",
+        "title": "Querying a Media Library"
+      }
+    ],
+    "DescribeLibrarySecret": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLibrarySecret\n<Common request parameters>\n\n{\n    \"LibraryId\": \"smh1jjexrwwoa9ok\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LibraryId\": \"smh1jjexrwwoa9ok\",\n        \"LibrarySecret\": \"5563cadd2dc2ad56********************************cb6a5d8abec16490\",\n        \"RequestId\": \"61f8e8a2-964a-49d3-ad85-12f29d79ac23\"\n    }\n}",
+        "title": "Querying a Media Library Key"
+      }
+    ],
+    "DescribeOfficialInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOfficialInstances\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"InstanceId\": \"jexrwwoa\",\n                \"Domain\": \"jexrwwoa.cofile.net\",\n                \"EffectiveTime\": \"2021-11-17T03:03:45Z\",\n                \"ExpireTime\": \"2021-12-17T23:59:59Z\",\n                \"UserLimit\": 5,\n                \"StorageLimit\": \"53687091200\",\n                \"StorageLimitGB\": 50,\n                \"Isolated\": false,\n                \"AutoRenew\": 1,\n                \"SuperAdminAccount\": null\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"27ec9933-ad39-46b0-9ea1-f863a89dd00c\"\n    }\n}",
+        "title": "Querying an Official Instance"
+      }
+    ],
+    "DescribeOfficialOverview": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOfficialOverview\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Quantity\": 1,\n        \"Storage\": \"1342177280\",\n        \"UserCount\": 4,\n        \"InternetTraffic\": \"6442450944\",\n        \"RequestId\": \"0188bc60-7c75-4207-a457-898f114324a3\"\n    }\n}",
+        "title": "Querying Official Instance Overview Data"
+      }
+    ],
+    "DescribeTrafficPackages": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTrafficPackages\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"InstanceId\": \"jexrwwoa\",\n                \"Domain\": \"jexrwwoa.cofile.net\",\n                \"Type\": 0,\n                \"Size\": \"107374182400\",\n                \"SizeGB\": 100,\n                \"Remain\": \"89017835619\",\n                \"Used\": \"18356346781\",\n                \"UsedPercentage\": \"17.10\",\n                \"EffectiveTime\": \"2021-10-12T03:53:29Z\",\n                \"ExpireTime\": \"2021-11-12T15:59:59Z\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"27ec9933-ad39-46b0-9ea1-f863a89dd00c\"\n    }\n}",
+        "title": "Querying an Official Instance"
+      }
+    ],
+    "ModifyLibrary": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLibrary\n<Common request parameters>\n\n{\n    \"Remark\": \"New remark\",\n    \"LibraryId\": \"smh1jjexrwwoa9ok\",\n    \"LibraryExtension\": {\n        \"EnableFileHistory\": \"true\",\n        \"UseRecycleBin\": \"true\"\n    },\n    \"Name\": \"New name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8dfefe57-2188-4e66-b5ef-07e493b003ce\"\n    }\n}",
+        "title": "Modifying a Media Library Configuration Item"
+      }
+    ],
+    "SendSmsCode": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SendSmsCode\n<Common request parameters>\n\n{\n    \"Purpose\": \"BindSuperAdmin\",\n    \"InstanceId\": \"n0v9tdme\",\n    \"PhoneNumber\": \"18999999999\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"37c3c855-caee-4c44-9778-bdec5998e5f1\"\n    }\n}",
+        "title": "Sending SMS Verification Code"
+      }
+    ],
+    "VerifySmsCode": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: smh.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: VerifySmsCode\n<Common request parameters>\n\n{\n    \"Purpose\": \"BindSuperAdmin\",\n    \"InstanceId\": \"n0v9tdme\",\n    \"PhoneNumber\": \"18999999999\",\n    \"Code\": \"2261\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"98a878b5-8c16-4788-a7e7-4b1a19a461db\"\n    }\n}",
+        "title": "Verifies the SMS verification code"
+      }
+    ]
+  },
+  "version": "1.0"
+}

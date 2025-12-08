@@ -17376,7 +17376,7 @@
         {
           "disabled": false,
           "document": "The ID of the VPN gateway instance.",
-          "example": "",
+          "example": "vpngw-ac13cgez",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
@@ -17385,7 +17385,7 @@
         {
           "disabled": false,
           "document": "Specifies the purchased validity period, whether to enable auto-renewal. This parameter is required for monthly-subscription instances.",
-          "example": "",
+          "example": "{'Period': 36}",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": true,
@@ -17400,9 +17400,10 @@
         {
           "disabled": false,
           "document": "Product price.",
-          "example": "",
+          "example": "无",
           "member": "Price",
           "name": "Price",
+          "output_required": true,
           "type": "object"
         },
         {
@@ -17465,9 +17466,10 @@
         {
           "disabled": false,
           "document": "Purchased usage period (in month). Value range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36].",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "Period",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -17475,9 +17477,10 @@
         {
           "disabled": false,
           "document": "Auto-renewal ID. Value range: NOTIFY_AND_AUTO_RENEW: notify expiry and renew automatically, NOTIFY_AND_MANUAL_RENEW: notify expiry but do not renew automatically. The default is NOTIFY_AND_MANUAL_RENEW",
-          "example": "无",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -17934,13 +17937,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "The pay-as-you-go billing method. Unit: CNY.",
+          "document": "The pay-as-you-go billing method. Unit: USD.",
           "example": "1.0",
           "member": "float",
           "name": "UnitPrice",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -17950,27 +17953,27 @@
           "name": "ChargeUnit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original price of the prepaid product. Unit: CNY.",
+          "document": "Original price of the prepaid product. Unit: USD.",
           "example": "1.0",
           "member": "float",
           "name": "OriginalPrice",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount price of the prepaid product. Unit: CNY.",
+          "document": "Discount price of the prepaid product. Unit: USD.",
           "example": "0.5",
           "member": "float",
           "name": "DiscountPrice",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -21834,20 +21837,20 @@
         {
           "disabled": false,
           "document": "Instance price.",
-          "example": "null",
+          "example": "{'UnitPrice': 0.58, 'ChargeUnit': 'HOUR', 'OriginalPrice': 0.58, 'DiscountPrice': 0.28}",
           "member": "ItemPrice",
           "name": "InstancePrice",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Bandwidth price",
-          "example": "null",
+          "example": "{'UnitPrice': 1, 'ChargeUnit': 'GB', 'OriginalPrice': 1.0, 'DiscountPrice': 0.46}",
           "member": "ItemPrice",
           "name": "BandwidthPrice",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
