@@ -702,6 +702,15 @@
           "name": "ImageUrlBack",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to extract the ID portrait. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

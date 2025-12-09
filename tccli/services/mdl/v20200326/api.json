@@ -1561,7 +1561,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle template configuration, only AVTemplates are valid.",
+          "document": "Subtitle template configuration.",
           "example": "无",
           "member": "SubtitleConf",
           "name": "CaptionTemplates",
@@ -4692,7 +4692,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle template configuration, only AVTemplates are valid.",
+          "document": "Subtitle template configuration.",
           "example": "无",
           "member": "SubtitleConf",
           "name": "CaptionTemplates",
