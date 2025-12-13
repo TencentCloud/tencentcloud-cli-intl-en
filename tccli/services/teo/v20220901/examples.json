@@ -1,5 +1,19 @@
 {
   "actions": {
+    "ApplyFreeCertificate": [
+      {
+        "document": "This example shows you how to apply for a free certificate using file validation mode with HTTP access for the domain name (abc.test.com) under the site (ZoneId is zone-2fgd17m17xw).",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyFreeCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Domain\": \"abc.test.com\",\n    \"VerificationMethod\": \"http_challenge\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"064a8c04-2d3e-4c9d-9473-39a8f76276ea\",\n        \"FileVerification\": {\n            \"Content\": \"9i8vhsvt9y8y3sx1s2d\",\n            \"Path\": \"/.well-known/teo-verification/yvnu7sesms\"\n        }\n    }\n}",
+        "title": "Applying for Free Certificate Using HTTP Access File Validation Mode"
+      },
+      {
+        "document": "This example shows you how to apply for a free certificate using the DNS delegated verification method for the domain name (qwe.test.com) under the site (ZoneId is zone-2fgd17m17xw).",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyFreeCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Domain\": \"qwe.test.com\",\n    \"VerificationMethod\": \"dns_challenge\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"064a8c04-2d3e-4c9d-9473-39a8f76276ea\",\n        \"DnsVerification\": {\n            \"RecordType\": \"CNAME\",\n            \"RecordValue\": \"_acme-challenge\",\n            \"Subdomain\": \"www.example.com.edgeone.com\"\n        }\n    }\n}",
+        "title": "Applying for a Free Certificate Using DNS Delegation Verification Method"
+      }
+    ],
     "BindSecurityTemplateToEntity": [
       {
         "document": "In this example, we unbind the domain name `a.test.com` from the policy template `temp-cuwg1hki` of the site `zone-2aq0e8rhu6jx`. Only one domain name can be unbound at one time. There are two options: \n1. `unbind-keep-policy`: Unbind the domain name from the specified policy and create a new policy for the domain name with the same configuration as the original one. This takes additional rule quota.\n2. `unbind-use-default`: Unbind the domain name from the specified policy and then bind it with the default policy with default configurations. Custom rules no longer take effect.\n\n \n\nNote: To use `unbind-keep-policy`, make sure your rule quota is enough. If the remaining quota is insufficient, the unbinding fails and the domain name remains bound to the current policy template.",
@@ -42,6 +56,20 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCnameStatus\n<Common request parameters>\n\n{\n    \"RecordNames\": [\n        \"example.qq.com\"\n    ],\n    \"ZoneId\": \"zone-20hyebgyfsko\"\n}",
         "output": "{\n    \"Response\": {\n        \"CnameStatus\": [\n            {\n                \"RecordName\": \"test.qq.com\",\n                \"Cname\": \"test.qq.com.acc.tyxcdn.com\",\n                \"Status\": \"active\"\n            }\n        ],\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
         "title": "Querying the CNAME status of a domain name"
+      }
+    ],
+    "CheckFreeCertificateVerification": [
+      {
+        "document": "This example shows you how to check whether the free certificate application succeeds for the domain name (cc.xzone.cloud) under the site (ZoneId is zone-28v607hq8d3m) after triggering the application.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckFreeCertificateVerification\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28v607hq8d3m\",\n    \"Domain\": \"cc.xzone.cloud\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"ResourceUnavailable.RecordUnExpected\",\n            \"Message\": \"Unable to detect the verification value correctly. Please check whether the current domain name has configured regional resolution or policy interception.\"\n        },\n        \"RequestId\": \"ed93f3cb-f35e-473f-b9f3-0d451b8b79c6\"\n    }\n}",
+        "title": "Checking Free Certificate Application Result, Free Certificate Application Failed"
+      },
+      {
+        "document": "This example shows you how to check whether the free certificate application succeeds for the domain name (aa.xzone.cloud) under the site (ZoneId zone-28v607hq8d3m) after triggering the free certificate application.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckFreeCertificateVerification\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-28v607hq8d3m\",\n    \"Domain\": \"aa.xzone.cloud\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc1ba58b-4e4e-4a71-bed6-2b777c48d17e\",\n        \"CommonName\": \"aa.xzone.cloud\",\n        \"SignatureAlgorithm\": \"RSA 2048\",\n        \"ExpireTime\": \"2025-07-31T07:06:57Z\"\n    }\n}",
+        "title": "Checking Free Certificate Application Result, Free Certificate Application Succeeds"
       }
     ],
     "ConfirmMultiPathGatewayOriginACL": [

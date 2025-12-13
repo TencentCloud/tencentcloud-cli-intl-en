@@ -1,5 +1,12 @@
 {
   "actions": {
+    "ApplyFreeCertificate": {
+      "document": "This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.\nStep 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.\nStep 2: Configure the corresponding domain as verification content.\nStep 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.\nStep 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.\n\nThe application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). \ndescription:.\n- Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.\n- If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.\n- A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.",
+      "input": "ApplyFreeCertificateRequest",
+      "name": "Applies for a free certificate",
+      "output": "ApplyFreeCertificateResponse",
+      "status": "online"
+    },
     "BindSecurityTemplateToEntity": {
       "document": "This API is used to bind/unbind a domain name to/from a specific policy template. ",
       "input": "BindSecurityTemplateToEntityRequest",
@@ -26,6 +33,13 @@
       "input": "CheckCnameStatusRequest",
       "name": "Queries the CNAME status of a domain name",
       "output": "CheckCnameStatusResponse",
+      "status": "online"
+    },
+    "CheckFreeCertificateVerification": {
+      "document": "This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.\nThis API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.",
+      "input": "CheckFreeCertificateVerificationRequest",
+      "name": "Check free certificate application result",
+      "output": "CheckFreeCertificateVerificationResponse",
       "status": "online"
     },
     "ConfirmMultiPathGatewayOriginACL": {
@@ -2860,6 +2874,71 @@
       ],
       "usage": "both"
     },
+    "ApplyFreeCertificateRequest": {
+      "document": "ApplyFreeCertificate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID.",
+          "example": "zone-343vqcswn9zj",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the target domain name for free certificate application.",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.\n<li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>\n<li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>\n\nNote: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.",
+          "example": "http_challenge",
+          "member": "string",
+          "name": "VerificationMethod",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyFreeCertificateResponse": {
+      "document": "ApplyFreeCertificate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the verification information for free certificate application when VerificationMethod is dns_challenge.",
+          "example": "无",
+          "member": "DnsVerification",
+          "name": "DnsVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the verification information related to the free certificate application for the domain name when VerificationMethod is http_challenge.",
+          "example": "无",
+          "member": "FileVerification",
+          "name": "FileVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AscriptionInfo": {
       "document": "The site ownership information",
       "members": [
@@ -4523,6 +4602,72 @@
           "name": "CnameStatus",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckFreeCertificateVerificationRequest": {
+      "document": "CheckFreeCertificateVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-28v607hq8d3m",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckFreeCertificateVerificationResponse": {
+      "document": "CheckFreeCertificateVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the domain name to which the certificate is issued when the free certificate application succeeds.\nNote: only one free certificate can be applied for a domain name. if a wildcard certificate has been applied for the domain name, its subdomains will use the wildcard certificate.",
+          "example": "aa.test.com",
+          "member": "string",
+          "name": "CommonName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the signature algorithm used by the certificate when the free certificate application succeeds. currently only support RSA 2048.",
+          "example": "RSA 2048",
+          "member": "string",
+          "name": "SignatureAlgorithm",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time of the certificate when the free certificate application is successful. the time is in coordinated universal time (UTC), following the ISO 8601 standard date and time format.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -14977,7 +15122,7 @@
       "usage": "both"
     },
     "DnsVerification": {
-      "document": "",
+      "document": "Information required for DNS resolution verification when applying for a free certificate in CNAME mode integration to verify ownership of a site or domain name.",
       "members": [
         {
           "disabled": false,
@@ -16010,11 +16155,11 @@
       "usage": "out"
     },
     "FileVerification": {
-      "document": "Information required for verifying via a file. It's applicable to sites connected via CNAMEs.",
+      "document": "Information required for HTTP access verification file when applying for a free certificate in CNAME mode integration to verify ownership of a site or domain name.",
       "members": [
         {
           "disabled": false,
-          "document": "EdgeOne obtains the file verification information in the format of \"Scheme + Host + URL Path\", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.",
+          "document": "EdgeOne backend server will get file verification information via http://{Host}{URL Path} (for example http://www.example.com/.well-known/teo-verification/z12h416twn.txt). among them, this field specifies the URL Path part you need to create, and Host indicates the current accelerated domain.",
           "example": "/.well-known/teo-verification/z12h416twn.txt",
           "member": "string",
           "name": "Path",
@@ -19905,7 +20050,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate configuration mode. Values:\n<li>`disable`: (Default) Do not configure the certificate</li>\n<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>\n<li>`sslcert`: Configure an SSL certificate.</li>",
+          "document": "Configures the server certificate mode. valid values:.\n\n- disable: without configuring server certificate.\n- eofreecert: specifies to apply for a free certificate through automatic validation and deploy it. for verification methods, see [free certificate application supported verification methods](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).\n    - In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.\n    - When a free certificate application fails, it can cause deployment failure. you can obtain the failure reason through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> .\n- eofreecert_manual: specifies the deployment of free certificates applied through DNS delegation verification or file verification. before deploying a free certificate, you need to trigger the [apply for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1)) api to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.\nNote: when deploying a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1)'>check free certificate application result</a> api.\n- sslcert: specifies the configuration of the managed service side certificate.",
           "example": "eofreecert",
           "member": "string",
           "name": "Mode",
@@ -19941,7 +20086,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures the certificate presented by the EO node during origin-pull for mutual TLS authentication. Disabled by default; leaving the field blank will retain the current configuration. This feature is currently in beta testing. please [contact us](https://cloud.tencent.com/online-service) to request access.",
+          "document": "Specifies the certificate carried during EO node origin-pull for origin-pull mutual authentication handshake, off by default. leave blank to indicate retaining the original configuration. this configuration is currently in closed beta testing for the allowlist feature. if you need to use it, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).",
           "example": "无",
           "member": "UpstreamCertInfo",
           "name": "UpstreamCertInfo",
