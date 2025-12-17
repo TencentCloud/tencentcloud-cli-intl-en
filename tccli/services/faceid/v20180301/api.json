@@ -470,7 +470,7 @@
         },
         {
           "disabled": false,
-          "document": "PLUS: Plus Version.\nENHANCED: Enhanced Version.\nBASIC: Basic Version (default).",
+          "document": "BASIC: Basic Version (default).",
           "example": "ENHANCED",
           "member": "string",
           "name": "SdkVersion",
@@ -2251,7 +2251,7 @@
         },
         {
           "disabled": false,
-          "document": "PLUS: Plus Version.\nENHANCED: Enhanced Version.\nBASIC: Basic Version (Default).",
+          "document": "BASIC: Basic Version (Default).",
           "example": "BASIC",
           "member": "string",
           "name": "SdkVersion",

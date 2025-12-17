@@ -43,7 +43,7 @@
       "status": "online"
     },
     "CreateBlindWatermarkTemplate": {
-      "document": "This API is used to create a user-defined digital watermark template with an upper limit of 1000.",
+      "document": "This API is used to create a user-defined digital watermark template.",
       "input": "CreateBlindWatermarkTemplateRequest",
       "name": "Creates a digital watermark template",
       "output": "CreateBlindWatermarkTemplateResponse",
@@ -476,6 +476,13 @@
       "output": "DescribeTranscodeTemplatesResponse",
       "status": "online"
     },
+    "DescribeUsageData": {
+      "document": "This API is used to return the daily Media Processing Service (MPS) usage information within the specified query time range.\n   1. MPS statistical data from the last 365 days can be queried.\n   2. The query time span should not exceed 90 days.",
+      "input": "DescribeUsageDataRequest",
+      "name": "Queries usage information",
+      "output": "DescribeUsageDataResponse",
+      "status": "online"
+    },
     "DescribeWatermarkTemplates": {
       "document": "This API is used to query custom watermarking templates and supports paged queries by filters.",
       "input": "DescribeWatermarkTemplatesRequest",
@@ -722,7 +729,7 @@
       "status": "online"
     },
     "ProcessMedia": {
-      "document": "This API is used to initiate a processing task for URL video links or media files in COS. Features include:.\nThis API is used to perform video transcoding, including standard transcoding, TSC transcoding, and audio/video enhancement.\nThis API is used to generate animated images.\nThis API is used to take screenshots at specified time points.\nThis API is used to take sampled screenshots from videos.\nThis API is used to take sprite screenshots of videos.\nThis API is used to transcode to adaptive bitrate streaming.\nThis API is used to perform intelligent content moderation, such as pornography detection and sensitive information detection.\nThis API is used to perform intelligent content analysis such as tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking.\nThis API is used to perform intelligent content recognition such as human face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition.\nThis API is used to perform media quality inspection, such as media format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, screen glitch, noise, mosaic, QR code, and other issues), and no-reference scoring.\n11. Smart subtitle (such as ASR, hotword, and speech translation).\n\nThis API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).",
+      "document": "This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:\n- Audio/Video transcoding (such as standard transcoding, top speed codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).\n- Adaptive bitrate streaming conversion for audios/videos.\n- Video-to-GIF conversion.\n- Time point screenshot of videos.\n- Sampled screenshot of videos.\n- Image sprite of video screenshots.\n- Media quality inspection (such as media format diagnosis, audio/video content detection, and scoring without reference, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).\n- Smart subtitle (such as subtitle generation and translation).\n- Smart erasing (such as watermark removal, subtitle removal, and privacy protection).\n- Smart content moderation (such as pornography detection and sensitive information detection).\n- Smart content analysis (such as tags, classifications, covers, frame tags, video splitting, highlights, opening and ending clips, and marking points for games).\n- Smart content recognition (such as human faces, full texts, text keywords, full speech, speech keywords, speech translation, and object recognition).",
       "input": "ProcessMediaRequest",
       "name": "Starts a media processing task",
       "output": "ProcessMediaResponse",
@@ -9146,7 +9153,7 @@
         },
         {
           "disabled": false,
-          "document": "Sharding type. available values: <li>ts-segment: HLS+ts segment</li> <li>ts-byterange: HLS+ts byte range</li> <li>mp4-segment: HLS+mp4 segment</li> <li>mp4-byterange: HLS+mp4 byte range</li> <li>ts-packed-audio: ts+packed audio</li> <li>mp4-packed-audio: mp4+packed audio</li> default value: ts-segment. \nNote: the shard format of the adaptive bitrate stream is based on this field.",
+          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.\n \nNote: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.",
           "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
@@ -11362,7 +11369,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Unique ID filter of video content analysis templates. Array length limit: 10.",
+          "document": "Filter condition for the unique identifier of the video content analysis template. The array can contain up to 100 unique identifiers.",
           "example": "[30]",
           "member": "int64",
           "name": "Definitions",
@@ -11445,7 +11452,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Unique ID filter of video content recognition templates. Array length limit: 10.",
+          "document": "Filter condition for the unique identifier of the video content recognition template. The array can contain up to 100 unique identifiers.",
           "example": "[30]",
           "member": "int64",
           "name": "Definitions",
@@ -13811,6 +13818,70 @@
           "example": "无",
           "member": "TranscodeTemplate",
           "name": "TranscodeTemplateSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsageDataRequest": {
+      "document": "DescribeUsageData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2019-07-02T00:00:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "2019-07-03T00:00:00+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Queries the MPS task type. The transcoding task is queried by default.\n<li>Transcode: transcoding.</li>\n<li>Enhance: enhancement.</li>\n<li>AIAnalysis: intelligent analysis.</li>\n<li>AIRecognition: intelligent recognition.</li>\n<li>AIReview: content moderation.</li>\n<li>Snapshot: screenshot.</li>\n<li>AnimatedGraphics: conversion to GIF.</li>\n<li>AiQualityControl: media quality inspection.</li>\n<li>Evaluation: video assessment.</li>\n<li>ImageProcess: image processing.</li>\n<li>AddBlindWatermark: add a basic copyright digital watermark.</li>\n<li>AddNagraWatermark: add a NAGRA digital watermark.</li>\n<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>",
+          "example": "[\"Transcode\"]",
+          "member": "string",
+          "name": "Types",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "MPS park. ap-guangzhou park is returned by default.\n<li>ap-guangzhou: Guangzhou.</li>\n<li>ap-hongkong: Hong Kong (China).</li>\n<li>ap-taipei: Taipei (China).</li>\n<li>ap-singapore: Singapore.</li>\n<li>ap-mumbai: India.</li>\n<li>ap-jakarta: Jakarta.</li>\n<li>ap-seoul: Seoul.</li>\n<li>ap-bangkok: Thailand.</li>\n<li>ap-tokyo: Japan.</li>\n<li>na-siliconvalley: Silicon Valley.</li>\n<li>na-ashburn: Virginia.</li>\n<li>na-toronto: Toronto.</li>\n<li>sa-saopaulo: São Paulo.</li>\n<li>eu-frankfurt: Frankfurt.</li>\n<li>eu-moscow: Russia.</li>\n<li>aws: AWS.</li>",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "ProcessRegions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsageDataResponse": {
+      "document": "DescribeUsageData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "MPS statistical data overview, which displays an overview and detailed data of the queried task.",
+          "example": "无",
+          "member": "TaskStatData",
+          "name": "Data",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -18131,7 +18202,7 @@
         {
           "disabled": false,
           "document": "Confidence of the intelligent description, with a value range from 0 to 100.",
-          "example": "90",
+          "example": "90.0",
           "member": "float",
           "name": "Confidence",
           "output_required": true,
@@ -18171,12 +18242,42 @@
         {
           "disabled": false,
           "document": "Address of the mind map of a summary task.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "https://xxxx.cos.myqcloud.com",
+          "example": "https://xxxx.cos.myqcloud.com/mindoutput/mindmap_4114033726.png",
           "member": "string",
           "name": "MindMapUrl",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Path of the mind map of a summary task.",
+          "example": "/mindoutput/mindmap_4114033726.png",
+          "member": "string",
+          "name": "MindMapPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file path of the video.",
+          "example": "/subtitleoutput/subtitle_149957943.vtt",
+          "member": "string",
+          "name": "SubtitlePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage location of the summary file.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -20350,7 +20451,7 @@
         },
         {
           "disabled": false,
-          "document": "HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.\nNote: The HLS segment format for adaptive bitrate streaming is based on this field.",
+          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.\nNote: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.",
           "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
@@ -23137,7 +23238,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique identifier of the image processing template.",
+          "document": "Unique identifier of the image processing template.\nThe image template feature is in beta testing. If you want to use it, submit a ticket for application.",
           "example": "20001",
           "member": "uint64",
           "name": "Definition",
@@ -27401,6 +27502,32 @@
       ],
       "usage": "out"
     },
+    "SpecificationDataItem": {
+      "document": "Statistical data for the task of the specified specification.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task specification.",
+          "example": "",
+          "member": "string",
+          "name": "Specification",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistical data.",
+          "example": "",
+          "member": "TaskStatDataItem",
+          "name": "Data",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SpekeDrm": {
       "document": "FairPlay, WideVine, PlayReady, and other DRM encryption technologies.",
       "members": [
@@ -28154,6 +28281,78 @@
           "name": "SubTaskTypes",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskStatData": {
+      "document": "Statistical data of the task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task type.\n<li>Transcode: transcoding.</li>\n<li>Enhance: enhancement.</li>\n<li>AIAnalysis: intelligent analysis.</li>\n<li>AIRecognition: intelligent recognition.</li>\n<li>AIReview: content moderation.</li>\n<li>Snapshot: screenshot.</li>\n<li>AnimatedGraphics: conversion to GIF.</li>\n<li>ImageProcess: image processing.</li>",
+          "example": "Transcode",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistical data overview of the number of tasks.\n<li>Transcode: The unit of usage is seconds.</li>\n<li>Enhance: The unit of usage is seconds.</li>\n<li>AIAnalysis: The unit of usage is seconds.</li>\n<li>AIRecognition: The unit of usage is seconds.</li>\n<li>AIReview: The unit of usage is seconds.</li>\n<li>Snapshot: The unit of usage is images.</li>\n<li>AnimatedGraphics: The unit of usage is seconds.</li>\n<li>ImageProcess: The unit of usage is images.</li>.",
+          "example": "无",
+          "member": "TaskStatDataItem",
+          "name": "Summary",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistical data details for tasks of various specifications.\n1. Transcoding specification:\n<li>Audio: audio-only.</li>\n<li>Remuxing: conversion to muxing.</li>\n<li>Other transcoding specifications: {TYPE}.{CODEC}.{SPECIFICATION}.</li> Specifically, valid values for TYPE:\n    Standard: standard transcoding.\n    TESHD-10: TSC transcoding for videos.\n    TESHD-20: TSC transcoding for audios.\n    TESHD-30: TSC transcoding for audios/videos.\n    TESHD-30-SDK: duration-based billing of TSC transcoding SDK for audios/videos.\n    TESHD-30-SDKCores: core number-based billing of TSC transcoding SDK for audios/videos.\n    Edit: video editing.\n  Specifically, valid values for CODEC:\n    H264: H. 264 encoding.\n    H265: H.265 encoding.\n    AV1: AV1 encoding.\n    MV-HEVC: MV-HEVC encoding.\n  Specifically, valid values for SPECIFICATION:\n    SD: standard definition.\n    HD: high definition.\n    FHD: full HD.\n    2K: 2K.\n    4K: 4K.\nFor example, TESHD-10.H265.HD indicates TSC transcoding using the H.265 encoding method.\n2. Enhancement specification: video enhancement format: {TYPE}.{CODEC}.{SPECIFICATION}.{FPS}, where valid values for CODEC and SPECIFICATION follow the transcoding descriptions mentioned above, and FPS is valid only when the atomic enhancement type is used; audio enhancement format: {TYPE}.\nValid values for enhancement TYPE:\n<li>Enhance: common enhancement type, which might be any atomic enhancement type.</li>\n<li>Atomic enhancement type</li>. Valid values for video atomic enhancement type:\n    Sdr2hdr: SDR2HDR.\n    SuperResolution: super resolution.\n    InsertFrame: frame interpolation.\n    ComprehensiveEnhancement: comprehensive enhancement.\n    NoiseReduction: video noise reduction.\n    ColorEnhancement: color enhancement.\n    RemoveScratches: scratch removal.\n    Deburr:  artifacts removal.\n    DetailEnhancement: detail enhancement.\n    LightEnhancement: low-light enhancement.\n    FaceEnhancement: face enhancement.\n  Valid value for audio atomic enhancement type.\n    AudioNoiseReduction\n    VolumeBalance\n    AudioBeautify\n    AudioSeparation\n\n3. Screenshot specification:\n<li>ImageSprite: sprite.</li>\n<li>SampleSnapshot: sampled screenshot.</li>\n<li>SnapshotByTime: time point screenshot.</li>\n4. Image processing specification: {TYPE}.{CODEC}.{SPECIFICATION}.\n<li> ImageCompression: image encoding.</li>\n<li> ImageSuperResolution: image super resolution.</li>\n<li>EnhanceImageColor: image color enhancement.</li>\n5. Intelligent analysis specification:\n<li>AIAnalysis: major category for analysis.</li>\n<li>VideoTag: video tag.</li>\n<li>VideoClassification: video category.</li>\n<li>SmartCover: smart cover.</li>\n<li>FrameLabel: frame tag.</li>\n<li>VideoSplit: video splitting.</li>\n<li>Highlights: highlights.</li>\n<li>OpeningAndEnding: opening and ending clips.</li>\n6. Intelligent recognition specification:\n<li>AIRecognition: major category for recognition without splitting.</li>\n<li>FaceRecognition: face recognition.</li>\n<li>TextRecognition: optical character recognition.</li>\n<li>ObjectRecognition: object recognition.</li>\n<li>VoiceRecognition: automatic speech recognition.</li>\n<li>VoiceTranslation: speech translation.</li>\n7. There are no segmentation specifications for content moderation and conversion to GIF.",
+          "example": "无",
+          "member": "SpecificationDataItem",
+          "name": "Details",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TaskStatDataItem": {
+      "document": "Statistical data of the task, including the number of tasks and usage.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).",
+          "example": "",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of tasks.",
+          "example": "",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task usage.",
+          "example": "",
+          "member": "int64",
+          "name": "Usage",
+          "required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

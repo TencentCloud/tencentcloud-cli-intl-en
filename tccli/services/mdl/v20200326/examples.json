@@ -40,6 +40,14 @@
         "title": "Sample request"
       }
     ],
+    "CreateWatermarkDetection": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateWatermarkDetection\n<Public request parameters>\n\n{\n    \"Type\": \"ExtractVideoABWatermarkId\",\n    \"InputInfo\": {\n        \"Type\": \"URL\",\n        \"UrlInputInfo\": {\n            \"Url\": \"https://example.com/video/test.mp4\"\n        }\n    },\n    \"InputFileInfo\": {\n        \"SegmentDuration\": 2000\n    },\n    \"TaskNotifyConfig\": {\n        \"Type\": \"URL\",\n        \"NotifyUrl\": \"https://your-callback-domain.com/watermark/callback\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"69310B251D3EC914C024\",\n        \"RequestId\": \"cc3450ba-7cdd-44b2-b989-9cbf74115dda\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "DeleteStreamLiveChannel": [
       {
         "document": " ",
@@ -198,6 +206,22 @@
         "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLiveWatermarks\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"TextSettings\": {\n                    \"XPos\": 0,\n                    \"Text\": \"xx\",\n                    \"YPos\": 0,\n                    \"FontSize\": 0,\n                    \"Location\": \"xx\",\n                    \"FontColor\": \"xx\"\n                },\n                \"Id\": \"xx\",\n                \"Type\": \"xx\",\n                \"ImageSettings\": {\n                    \"XPos\": 0,\n                    \"YPos\": 0,\n                    \"Height\": 0,\n                    \"Width\": 0,\n                    \"Location\": \"xx\"\n                },\n                \"Name\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DescribeWatermarkDetection": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWatermarkDetection\n<Public request parameters>\n\n{\n    \"TaskId\": \"69310B251D3EC914C024\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskInfo\": {\n            \"CreateTime\": 1764821797,\n            \"InputInfo\": {\n                \"Type\": \"URL\",\n                \"UrlInputInfo\": {\n                    \"Url\": \"https://example.com/video/test.mp4\"\n                }\n            },\n            \"State\": \"Processing\",\n            \"TaskId\": \"69310B251D3EC914C024\",\n            \"TaskNotifyConfig\": {\n                \"NotifyUrl\": \"https://your-callback-domain.com/watermark/callback\",\n                \"Type\": \"URL\"\n            },\n            \"Type\": \"ExtractVideoABWatermarkId\",\n            \"UpdateTime\": 1764821797\n        },\n        \"RequestId\": \"2d1055c5-f04e-4d95-b7ed-d962e9be6e69\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
+    "DescribeWatermarkDetections": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mdl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWatermarkDetections\n<Public Request Parameters>>\n\n{\n    \"StartTime\": \"2025-12-04T16:50:00+08:00\",\n    \"EndTime\": \"2025-12-08T14:20:00+08:00\",\n    \"PageNum\": 0,\n    \"PageSize\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskInfos\": [],\n        \"TotalCount\": 0,\n        \"RequestId\": \"b4db2352-ac41-469c-9901-e2bc07056694\"\n    }\n}",
+        "title": "Request Example"
       }
     ],
     "GetAbWatermarkPlayUrl": [

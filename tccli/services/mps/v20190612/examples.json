@@ -10,35 +10,41 @@
     ],
     "CreateAIAnalysisTemplate": [
       {
-        "document": "This example shows you how to create a custom video analysis template to perform all intelligent analysis tasks.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 3\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&CoverConfigure.Switch=NO\n&FrameTagConfigure.Switch=ON\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video content analysis template with all intelligent analysis tasks enabled.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template.\n&Comment=Template 3.\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&CoverConfigure.Switch=NO\n&FrameTagConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 33,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template to perform all content analysis tasks"
+        "title": "Creating a Template with All Content Analysis Tasks Enabled"
       },
       {
-        "document": "This example shows you how to create a custom video analysis template to perform intelligent categorization.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 1\n&ClassificationConfigure.Switch=ON\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video content analysis template with the intelligent classification task enabled.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template.\n&Comment=Template 1.\n&ClassificationConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 30,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template for a video analysis task"
+        "title": "Creating a Template to Specify an Analysis Task"
       },
       {
-        "document": "This example shows you how to create a custom video analysis template to perform intelligent categorization and labeling.",
-        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template\n&Comment=Template 2\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&<Common request parameters>",
+        "document": "This example shows you how to create a custom video content analysis template with the intelligent classification and intelligent tag tasks enabled.",
+        "input": "https://mps.tencentcloudapi.com/?Action=CreateAIAnalysisTemplate\n&Name=Intelligent analysis template.\n&Comment=Template 2.\n&ClassificationConfigure.Switch=ON\n&TagConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a template for multiple analysis tasks"
+        "title": "Creating a Template to Specify Multiple Analysis Tasks"
       }
     ],
     "CreateAIRecognitionTemplate": [
       {
-        "document": "This example shows you how to create a custom video recognition template with face recognition enabled. The default face library is used, and the face recognition filter score is 90.",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n\n\n{\n    \"Comment\": \"Template 2\",\n    \"FaceConfigure\": {\n        \"Switch\": \"ON\",\n        \"Score\": \"90\",\n        \"FaceLibrary\": \"Default\"\n    },\n    \"Name\": \"Intelligent Identification Template\"\n}",
+        "document": "This example shows you how to create a custom video content recognition template with face recognition tasks enabled. The default face library is used, and the face recognition filtering score is 90.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n{\n    \"Comment\": \"Template 2.\",\n    \"FaceConfigure\": {\n        \"Switch\": \"ON\",\n        \"Score\": \"90\",\n        \"FaceLibrary\": \"Default\"\n    },\n    \"Name\": \"Intelligent recognition template.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Creating a Template for Multiple Video Content Recognition Tasks"
+      },
+      {
+        "document": "This example shows you how to create a custom video content recognition template with face recognition tasks enabled. The default face library and user-defined face libraries are used, and the face recognition filtering score is 90.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n{\n    \"Comment\": \"Template 3\",\n    \"FaceConfigure\": {\n        \"Switch\": \"ON\",\n        \"FaceLibrary\": \"All\"\n    },\n    \"Name\": \"Intelligent recognition template.\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Creating a Template for Multiple Video Recognition Tasks"
+        "title": "Creating a Template for Multiple Recognition Tasks, with the Frame Extraction Interval Specified"
       },
       {
         "document": "This example shows you how to create a speech translation template.",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n\n\n{\n    \"Name\": \"test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIRecognitionTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"recog\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 278654,\n        \"RequestId\": \"62cca75c-7dd3-4819-ad9d-13b48a4b4018\"\n    }\n}",
         "title": "Creating a Speech Translation Template"
       }
     ],
@@ -422,8 +428,8 @@
       {
         "document": " ",
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeAIRecognitionTemplates\n&Definitions.0=30\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AIRecognitionTemplateSet\":[\n            {\n                \"Definition\": 30,\n                \"Name\": \"Template 1\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"Intelligent content recognition template\",\n                \"FaceConfigure\":{\n                    \"Switch\": \"ON\",\n                    \"Score\": 0.0,\n                    \"FaceLibrary\": \"All\"\n                    \"DefaultLibraryLabelSet\": [\n                        \"xx\"\n                    ],\n                    \"UserDefineLibraryLabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"OcrFullTextConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"OcrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"AsrFullTextConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"SubtitleFormat\": \"xx\"\n                },\n                \"AsrWordsConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"LabelSet\": [\n                        \"xx\"\n                    ]\n                },\n                \"CreateTime\": \"2019-01-01T12:00:00Z\",\n                \"UpdateTime\": \"2019-01-01T16:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"19ae8d8e-dce3-4151-9d4b-5594384987a9\"\n    }\n}",
-        "title": "Obtaining a Video Recognition Template with ID 30"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AIRecognitionTemplateSet\": [\n            {\n                \"Definition\": 30,\n                \"Name\": \"Presetting Template30\",\n                \"Comment\": \"Default template with all recognition switches enabled. Use only user-defined libraries without filter tags.\",\n                \"Type\": \"Preset\",\n                \"FaceConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"Score\": 95,\n                    \"DefaultLibraryLabelSet\": [],\n                    \"UserDefineLibraryLabelSet\": [],\n                    \"FaceLibrary\": \"UserDefine\"\n                },\n                \"OcrFullTextConfigure\": {\n                    \"Switch\": \"ON\"\n                },\n                \"OcrWordsConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"LabelSet\": []\n                },\n                \"AsrFullTextConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"SubtitleFormat\": \"vtt\"\n                },\n                \"AsrWordsConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"LabelSet\": []\n                },\n                \"TranslateConfigure\": {\n                    \"Switch\": \"OFF\",\n                    \"SourceLanguage\": \"en\",\n                    \"DestinationLanguage\": \"zh\",\n                    \"SubtitleFormat\": \"vtt\"\n                },\n                \"CreateTime\": \"2019-06-13T11:07:07+08:00\",\n                \"UpdateTime\": \"2020-01-06T08:21:46+08:00\"\n            }\n        ],\n        \"RequestId\": \"9a12345af0-4a9c-ae02-704f3d5a8040\"\n    }\n}",
+        "title": "Obtaining a Video Content Recognition Template with the ID of 30"
       }
     ],
     "DescribeAdaptiveDynamicStreamingTemplates": [
@@ -634,6 +640,14 @@
         "title": "Obtaining Transcoding Templates"
       }
     ],
+    "DescribeUsageData": [
+      {
+        "document": "This example shows you how to query usage.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUsageData\n<Common request parameters>\n\n{\n    \"EndTime\": \"2019-07-03T00:00:00+08:00\",\n    \"StartTime\": \"2019-07-02T00:00:00+08:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"TaskType\": \"Transcode\",\n                \"Summary\": [\n                    {\n                        \"Time\": \"2019-07-02T00:00:00+08:00\",\n                        \"Count\": 22,\n                        \"Usage\": 2200\n                    },\n                    {\n                        \"Time\": \"2019-07-03T00:00:00+08:00\",\n                        \"Count\": 22,\n                        \"Usage\": 2200\n                    }\n                ],\n                \"Details\": [\n                    {\n                        \"Specification\": \"Audio\",\n                        \"Data\": [\n                            {\n                                \"Time\": \"2019-07-02T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            },\n                            {\n                                \"Time\": \"2019-07-03T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            }\n                        ]\n                    },\n                    {\n                        \"Specification\": \"Standard.H265.4K\",\n                        \"Data\": [\n                            {\n                                \"Time\": \"2019-07-02T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            },\n                            {\n                                \"Time\": \"2019-07-03T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            }\n                        ]\n                    },\n                    {\n                        \"Specification\": \"TESHD-10.H265.4K\",\n                        \"Data\": [\n                            {\n                                \"Time\": \"2019-07-02T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            },\n                            {\n                                \"Time\": \"2019-07-03T00:00:00+08:00\",\n                                \"Count\": 1,\n                                \"Usage\": 10\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
+        "title": "Querying MPS Usage"
+      }
+    ],
     "DescribeWatermarkTemplates": [
       {
         "document": " ",
@@ -754,22 +768,22 @@
     ],
     "ModifyAIAnalysisTemplate": [
       {
-        "document": "This example shows you how to disable intelligent thumbnail generation in a custom video analysis template.",
+        "document": "This example shows you how to modify a custom video content analysis template to disable the smart cover task.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&CoverConfigure.Switch=OFF\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Disabling Intelligent Thumbnail Generation"
+        "title": "Disabling a Smart Cover Task"
       },
       {
-        "document": "This example shows you how to enable intelligent tagging and disable intelligent thumbnail generation in a custom video analysis template.",
+        "document": "This example shows you how to modify a custom video content analysis template to enable the smart tag task and disable the smart cover task.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&TagConfigure.Switch=ON\n&CoverConfigure.Switch=OFF\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Enabling Intelligent Tagging and Disabling Intelligent Thumbnail Generation"
+        "title": "Enabling and Disabling a Content Analysis Task Simultaneously"
       },
       {
-        "document": "This example shows you how to enable intelligent thumbnail generation in a custom video analysis template.",
+        "document": "This example shows you how to modify a custom video content analysis template to enable the smart cover task.",
         "input": "https://mps.tencentcloudapi.com/?Action=ModifyAIAnalysisTemplate\n&Definition=30\n&CoverConfigure.Switch=ON\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Enabling Intelligent Thumbnail Generation"
+        "title": "Enabling a Smart Cover Task"
       }
     ],
     "ModifyAIRecognitionTemplate": [

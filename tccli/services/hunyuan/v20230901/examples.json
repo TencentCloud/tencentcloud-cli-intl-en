@@ -1,0 +1,20 @@
+{
+  "actions": {
+    "QueryHunyuanTo3DProJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryHunyuanTo3DProJob\n<Common request parameters>\n\n{\n    \"JobId\": \"1375367755519696896\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"\",\n        \"ErrorMessage\": \"\",\n        \"RequestId\": \"e7c1aa24-7bcc-405e-9dce-c6047b9f6688\",\n        \"ResultFile3Ds\": [],\n        \"Status\": \"RUN\"\n    }\n}",
+        "title": "Querying a 3D Task"
+      }
+    ],
+    "SubmitHunyuanTo3DProJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitHunyuanTo3DProJob\n<Common request parameters>\n\n{\n    \"Prompt\": \"A cat\"\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1375367755519696896\",\n        \"RequestId\": \"13f47dd0-1af9-4383-b401-dae18d6e99fc\"\n    }\n}",
+        "title": "Submitting a 3D Task"
+      }
+    ]
+  }
+}

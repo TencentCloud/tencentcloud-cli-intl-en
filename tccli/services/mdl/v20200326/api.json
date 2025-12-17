@@ -35,6 +35,13 @@
       "output": "CreateStreamLiveWatermarkResponse",
       "status": "online"
     },
+    "CreateWatermarkDetection": {
+      "document": "Create a watermark detection task",
+      "input": "CreateWatermarkDetectionRequest",
+      "name": "Create a watermark detection task",
+      "output": "CreateWatermarkDetectionResponse",
+      "status": "online"
+    },
     "DeleteStreamLiveChannel": {
       "document": "This API is used to delete a StreamLive channel.",
       "input": "DeleteStreamLiveChannelRequest",
@@ -173,6 +180,20 @@
       "input": "DescribeStreamLiveWatermarksRequest",
       "name": "Queries multiple watermarks at a time",
       "output": "DescribeStreamLiveWatermarksResponse",
+      "status": "online"
+    },
+    "DescribeWatermarkDetection": {
+      "document": "Describe watermark detection task",
+      "input": "DescribeWatermarkDetectionRequest",
+      "name": "Describe watermark detection task",
+      "output": "DescribeWatermarkDetectionResponse",
+      "status": "online"
+    },
+    "DescribeWatermarkDetections": {
+      "document": "Batch Describe watermark detection task",
+      "input": "DescribeWatermarkDetectionsRequest",
+      "name": "Batch Describe watermark detection task",
+      "output": "DescribeWatermarkDetectionsResponse",
       "status": "online"
     },
     "GetAbWatermarkPlayUrl": {
@@ -621,6 +642,161 @@
           "example": "无",
           "member": "ColorSpaceSetting",
           "name": "ColorSpaceSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AbWatermarkDetectionInfo": {
+      "document": "AbWatermarkDetectionInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "6936947D1D3EC9A2432F",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ExtractVideoABWatermarkId",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Completed",
+          "member": "string",
+          "name": "State",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "123789852",
+          "member": "string",
+          "name": "Result",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1001",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "input file size exceed limit",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AbWatermarkInputInfo",
+          "name": "InputInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1765184637",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1765184637",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "InputFileInfo",
+          "name": "InputFileInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AbWatermarkInputInfo": {
+      "document": "InputInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "URL",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "UrlInputInfo",
+          "name": "UrlInputInfo",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -1219,20 +1395,20 @@
         {
           "disabled": false,
           "document": "Alarm details of pipeline 0 under this channel.",
-          "example": "",
+          "example": "无",
           "member": "ChannelPipelineAlerts",
           "name": "Pipeline0",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Alarm details of pipeline 1 under this channel.",
-          "example": "",
+          "example": "无",
           "member": "ChannelPipelineAlerts",
           "name": "Pipeline1",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -1960,6 +2136,70 @@
       ],
       "usage": "in"
     },
+    "CreateWatermarkDetectionRequest": {
+      "document": "CreateWatermarkDetection request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task type, currently supports ExtractVideoABWatermarkId",
+          "example": "ExtractVideoABWatermarkId",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input information",
+          "example": "无",
+          "member": "AbWatermarkInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Input file information",
+          "example": "无",
+          "member": "InputFileInfo",
+          "name": "InputFileInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Input notification configuration",
+          "example": "无",
+          "member": "TaskNotifyConfig",
+          "name": "TaskNotifyConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateWatermarkDetectionResponse": {
+      "document": "CreateWatermarkDetection response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "69310B251D3EC914C024",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DashRemuxSettingsInfo": {
       "document": "DASH configuration information.",
       "members": [
@@ -2463,7 +2703,7 @@
           "example": "无",
           "member": "ChannelOutputsStatistics",
           "name": "Infos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3070,6 +3310,117 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribeWatermarkDetectionRequest": {
+      "document": "DescribeWatermarkDetection request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task Id",
+          "example": "69310B251D3EC914C024",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWatermarkDetectionResponse": {
+      "document": "DescribeWatermarkDetection response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detecting task related information",
+          "example": "无",
+          "member": "AbWatermarkDetectionInfo",
+          "name": "TaskInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWatermarkDetectionsRequest": {
+      "document": "DescribeWatermarkDetections request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time, 2022-12-04T16:50:00+08:00",
+          "example": "2025-12-04T16:50:00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time, 2022-12-04T17:50:00+08:00, maximum supported query range of 7 days",
+          "example": "2025-12-08T14:20:00+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages queried",
+          "example": "0",
+          "member": "int64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Single page quantity, 1-100",
+          "example": "100",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWatermarkDetectionsResponse": {
+      "document": "DescribeWatermarkDetections response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Watermark detection information",
+          "example": "无",
+          "member": "AbWatermarkDetectionInfo",
+          "name": "TaskInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "number of tasks",
+          "example": "32",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeWatermarkInfo": {
       "document": "Watermark information",
@@ -4167,6 +4518,23 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InputFileInfo": {
+      "document": "InputFileInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10000",
+          "member": "int64",
+          "name": "SegmentDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -6819,6 +7187,34 @@
       ],
       "usage": "both"
     },
+    "TaskNotifyConfig": {
+      "document": "TaskNotifyConfig",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "URL",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://www.tencent.com",
+          "member": "string",
+          "name": "NotifyUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ThumbnailSettings": {
       "document": "",
       "members": [
@@ -7033,6 +7429,23 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UrlInputInfo": {
+      "document": "UrlInputInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp&gws_rd=ssl",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
