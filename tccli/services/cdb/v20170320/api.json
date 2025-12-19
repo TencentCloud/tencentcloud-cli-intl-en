@@ -365,7 +365,7 @@
       "status": "online"
     },
     "DescribeDBInstances": {
-      "document": "This API (DescribeDBInstances) is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, access address, and instance status.",
+      "document": "This API is used to query the list of TencentDB for MySQL instances. It supports filtering instances by conditions such as project ID, instance ID, access address, and instance status. It also supports querying the list of information about primary instances, disaster recovery instances, and read-only instances.\nThis API is used to return the availability zone (AZ) status during purchase, which does not change along with the proactive HA switch. If you want to know the AZ status in real time, query through the [DescribeDBInstanceConfig](https://www.tencentcloud.comom/document/product/236/17491?from_cn_redirect=1) API.",
       "input": "DescribeDBInstancesRequest",
       "name": "Queries the list of instances",
       "output": "DescribeDBInstancesResponse",
@@ -1403,6 +1403,92 @@
         }
       ],
       "usage": "in"
+    },
+    "AnalysisNodeInfo": {
+      "document": "Analysis engine node information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node ID.",
+          "example": "libradbn-0",
+          "member": "string",
+          "name": "NodeId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node status.",
+          "example": "例如：\"applying\"、\"normal\"、\"deleting\"",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data loading status.",
+          "example": "例如：\"Created\"、\"Running\"、\"Paused\"、\"Stopped\"、\"Removed\"、\"Error\"",
+          "member": "string",
+          "name": "DataStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores, in cores.",
+          "example": "4",
+          "member": "uint64",
+          "name": "Cpu",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size, in MB.",
+          "example": "16",
+          "member": "uint64",
+          "name": "Memory",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk size, in GB.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Storage",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node AZ.",
+          "example": "ap-guangzhou-7",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data synchronization error message.",
+          "example": "Paused by Command",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AnalyzeAuditLogsRequest": {
       "document": "AnalyzeAuditLogs request structure.",
@@ -3517,6 +3603,45 @@
         }
       ],
       "type": "object"
+    },
+    "ClusterInfo": {
+      "document": "Cluster Edition node information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node ID.",
+          "example": "\"dbn-ipffzoum\"",
+          "member": "string",
+          "name": "NodeId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node type: primary node and secondary node.",
+          "example": "\"master\"",
+          "member": "string",
+          "name": "Role",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ColumnPrivilege": {
       "document": "Column permission information",
@@ -7744,7 +7869,7 @@
         {
           "disabled": false,
           "document": "Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).",
-          "example": "1",
+          "example": "[1]",
           "member": "uint64",
           "name": "InstanceTypes",
           "required": false,
@@ -7753,7 +7878,7 @@
         {
           "disabled": false,
           "document": "Private IP address of the instance.",
-          "example": "\"\"",
+          "example": "[\"172.1.1.1\"]",
           "member": "string",
           "name": "Vips",
           "required": false,
@@ -7762,7 +7887,7 @@
         {
           "disabled": false,
           "document": "Instance status. Valid values: <br>`0` (creating) <br>`1` (running) <br>`4` (isolating) <br>`5` (isolated; the instance can be restored and started in the recycle bin)",
-          "example": "1",
+          "example": "[1]",
           "member": "uint64",
           "name": "Status",
           "required": false,
@@ -7789,7 +7914,7 @@
         {
           "disabled": false,
           "document": "Security group ID. When it is used as a filter, the `WithSecurityGroup` parameter should be set to 1.",
-          "example": "\"\"",
+          "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -7797,8 +7922,8 @@
         },
         {
           "disabled": false,
-          "document": "Billing method. Value range: 0 (monthly subscribed), 1 (hourly).",
-          "example": "1",
+          "document": "Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.",
+          "example": "[1]",
           "member": "uint64",
           "name": "PayTypes",
           "required": false,
@@ -7807,7 +7932,7 @@
         {
           "disabled": false,
           "document": "Instance name.",
-          "example": "\"\"",
+          "example": "[\"cdb27418\"]",
           "member": "string",
           "name": "InstanceNames",
           "required": false,
@@ -7815,8 +7940,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance task status. Valid values: <br>0 - no task <br>1 - upgrading <br>2 - importing data <br>3 - enabling secondary instance access <br>4 - enabling public network access <br>5 - batch operation in progress <br>6 - rolling back <br>7 - disabling public network access <br>8 - modifying password <br>9 - renaming instance <br>10 - restarting <br>12 - migrating self-built database <br>13 - dropping tables <br>14 - Disaster recovery instance creating sync task <br>15 - waiting for switch <br>16 - switching <br>17 - upgrade and switch completed <br>19 - parameter settings to be executed",
-          "example": "0",
+          "document": "Instance task status. Valid values:<br>0 - no task;<br>1 - upgrading;<br>2 - importing data;<br>3 - enabling secondary nodes;<br>4 - enabling public network access;<br>5 - executing batch operations;<br>6 - rolling back;<br>7 - disabling public network access;<br>8 - changing the password;<br>9 - renaming the instance;<br>10 - restarting;<br>12 - migrating self-built databases;<br>13 - deleting databases and tables;<br>14 - synchronizing the creation of disaster recovery instances;<br>15 - pending upgrade switch;<br>16 - under upgrade switch;<br>17 - upgrade switch completed;<br>19 - parameter settings pending execution;<br>34 - in-place upgrade pending execution.",
+          "example": "[0]",
           "member": "uint64",
           "name": "TaskStatus",
           "required": false,
@@ -7825,7 +7950,7 @@
         {
           "disabled": false,
           "document": "Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.",
-          "example": "\"5.6\"",
+          "example": "[\"5.7\",\"8.0\"]",
           "member": "string",
           "name": "EngineVersions",
           "required": false,
@@ -7834,7 +7959,7 @@
         {
           "disabled": false,
           "document": "VPC ID.",
-          "example": "0",
+          "example": "[0]",
           "member": "uint64",
           "name": "VpcIds",
           "required": false,
@@ -7843,7 +7968,7 @@
         {
           "disabled": false,
           "document": "AZ ID.",
-          "example": "720001",
+          "example": "[720001]",
           "member": "uint64",
           "name": "ZoneIds",
           "required": false,
@@ -7852,7 +7977,7 @@
         {
           "disabled": false,
           "document": "Subnet ID.",
-          "example": "0",
+          "example": "[0]",
           "member": "uint64",
           "name": "SubnetIds",
           "required": false,
@@ -7861,7 +7986,7 @@
         {
           "disabled": false,
           "document": "Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.",
-          "example": "0",
+          "example": "[0]",
           "member": "int64",
           "name": "CdbErrors",
           "required": false,
@@ -7869,8 +7994,8 @@
         },
         {
           "disabled": false,
-          "document": "Sort by field of the returned result set. Currently, supported values include \"InstanceId\", \"InstanceName\", \"CreateTime\", and \"DeadlineTime\".",
-          "example": "\"\"",
+          "document": "Sorting field of the query results. Valid values: \"instanceId\", \"instanceName\", \"createTime\", and \"deadlineTime\".",
+          "example": "instanceId",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -7878,7 +8003,7 @@
         },
         {
           "disabled": false,
-          "document": "Sorting method of the returned result set. Currently, \"ASC\" or \"DESC\" is supported.",
+          "document": "Sorting method of the returned result set. Valid values: \"ASC\" - ascending order; \"DESC\" - descending order. The default value is \"DESC\".",
           "example": "\"DESC\"",
           "member": "string",
           "name": "OrderDirection",
@@ -7887,7 +8012,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether security group ID is used as a filter",
+          "document": "Whether to use the security group ID as the filter condition.\nNote: 0 indicates no; 1 indicates yes.",
           "example": "0",
           "member": "int64",
           "name": "WithSecurityGroup",
@@ -7906,7 +8031,7 @@
         {
           "disabled": false,
           "document": "Exclusive cluster ID.",
-          "example": "\"\"",
+          "example": "cdb-g2ql0j11",
           "member": "string",
           "name": "ExClusterId",
           "required": false,
@@ -7915,7 +8040,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
-          "example": "[\"cdb-70zdmgg1\\r\\n\"]",
+          "example": "[\"cdb-70zdmgg1\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -7960,7 +8085,7 @@
         {
           "disabled": false,
           "document": "Placement group ID list.",
-          "example": "\"\"",
+          "example": "[\"ps-7t11vrwf\"]",
           "member": "string",
           "name": "DeployGroupIds",
           "required": false,
@@ -7969,7 +8094,7 @@
         {
           "disabled": false,
           "document": "Whether to use the tag key as a filter condition",
-          "example": "[\"\"]",
+          "example": "[\"tagKey\"]",
           "member": "string",
           "name": "TagKeysForSearch",
           "required": false,
@@ -7978,7 +8103,7 @@
         {
           "disabled": false,
           "document": "Financial cage IDs.",
-          "example": "[\"cage-test\"]",
+          "example": "[\"cage-dhges\"]",
           "member": "string",
           "name": "CageIds",
           "required": false,
@@ -8013,7 +8138,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag key value",
+          "document": "Tag key value.\nNote that tags cannot be queried for instances being created.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -8040,12 +8165,21 @@
         },
         {
           "disabled": false,
-          "document": "Database engine type",
+          "document": "Database engine type. Valid values: InnoDB; RocksDB.",
           "example": "[\"InnoDB\"]",
           "member": "string",
           "name": "EngineTypes",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.",
+          "example": "false",
+          "member": "bool",
+          "name": "QueryClusterInfo",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10661,7 +10795,7 @@
           "example": "1",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10671,7 +10805,7 @@
           "example": "ap-beijing-3",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10681,7 +10815,7 @@
           "example": "cdb-***",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10691,7 +10825,7 @@
           "example": "ap-beijing",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10701,7 +10835,7 @@
           "example": "2",
           "member": "int64",
           "name": "SyncStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10711,7 +10845,7 @@
           "example": "******",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10721,7 +10855,7 @@
           "example": "2",
           "member": "int64",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -10992,7 +11126,7 @@
         {
           "disabled": false,
           "document": "Public network access status. Value range: 0 (not enabled), 1 (enabled), 2 (disabled)",
-          "example": "0",
+          "example": "2",
           "member": "int64",
           "name": "WanStatus",
           "output_required": true,
@@ -11021,13 +11155,13 @@
         },
         {
           "disabled": false,
-          "document": "VIP information of a read-only instance. This field is exclusive to read-only instances where read-only access is enabled separately\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{}",
+          "document": "Read-only VIP information. This field is available only for read-only instances with dedicated access enabled.",
+          "example": "无",
           "member": "RoVipInfo",
           "name": "RoVipInfo",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11061,13 +11195,13 @@
         },
         {
           "disabled": false,
-          "document": "Information of a secondary server\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{}",
+          "document": "Secondary server information.",
+          "example": "无",
           "member": "SlaveInfo",
           "name": "SlaveInfo",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11102,7 +11236,7 @@
         {
           "disabled": false,
           "document": "Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)",
-          "example": "0",
+          "example": "1",
           "member": "int64",
           "name": "ProtectMode",
           "output_required": true,
@@ -11111,13 +11245,13 @@
         },
         {
           "disabled": false,
-          "document": "Details of a read-only group\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Detailed information about the read-only group.",
+          "example": "无",
           "member": "RoGroup",
           "name": "RoGroups",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11142,7 +11276,7 @@
         {
           "disabled": false,
           "document": "Project ID",
-          "example": "0",
+          "example": "12451",
           "member": "int64",
           "name": "ProjectId",
           "output_required": true,
@@ -11172,7 +11306,7 @@
         {
           "disabled": false,
           "document": "AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)",
-          "example": "0",
+          "example": "1",
           "member": "int64",
           "name": "DeployMode",
           "output_required": true,
@@ -11182,7 +11316,7 @@
         {
           "disabled": false,
           "document": "Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed",
-          "example": "0",
+          "example": "1",
           "member": "int64",
           "name": "TaskStatus",
           "output_required": true,
@@ -11191,13 +11325,13 @@
         },
         {
           "disabled": false,
-          "document": "Details of a primary instance\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{}",
+          "document": "Detailed information about the primary instance.",
+          "example": "无",
           "member": "MasterInfo",
           "name": "MasterInfo",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11231,18 +11365,18 @@
         },
         {
           "disabled": false,
-          "document": "Details of a disaster recovery instance\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Detailed information about the disaster recovery instance.",
+          "example": "无",
           "member": "DrInfo",
           "name": "DrInfo",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public domain name",
-          "example": "''",
+          "example": "gz-cdb-******.sql.tencentcdb.com",
           "member": "string",
           "name": "WanDomain",
           "output_required": true,
@@ -11252,7 +11386,7 @@
         {
           "disabled": false,
           "document": "Public network port number",
-          "example": "0",
+          "example": "25640",
           "member": "int64",
           "name": "WanPort",
           "output_required": true,
@@ -11332,7 +11466,7 @@
         {
           "disabled": false,
           "document": "Physical ID",
-          "example": "''",
+          "example": "phyxxx",
           "member": "string",
           "name": "PhysicalId",
           "output_required": true,
@@ -11371,33 +11505,33 @@
         },
         {
           "disabled": false,
-          "document": "Physical machine model\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "‘’",
+          "document": "Physical server model.",
+          "example": "VSWEQ",
           "member": "string",
           "name": "DeviceClass",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Placement group ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "‘’",
+          "document": "Placement group ID.",
+          "example": "andy",
           "member": "string",
           "name": "DeployGroupId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "AZ ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "AZ ID.",
           "example": "800003",
           "member": "int64",
           "name": "ZoneId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11411,41 +11545,91 @@
         },
         {
           "disabled": false,
-          "document": "List of tags\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Tag list.",
+          "example": "无",
           "member": "TagInfoItem",
           "name": "TagList",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Engine type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Engine type.",
           "example": "InnoDB",
           "member": "string",
           "name": "EngineType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Maximum delay threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Maximum delay threshold.",
           "example": "1",
           "member": "int64",
           "name": "MaxDelayTime",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance disk type, which is returned only for the instances of cloud disk edition. Valid values: `CLOUD_SSD` (SSD), `CLOUD_HSSD` (Enhanced SSD).",
+          "document": "Instance disk type. Valid values are returned only for Cluster Edition and single-node (cloud disk) instances.\nNote:\n1. If \"DiskType\": \"CLOUD_HSSD\" is returned, it indicates that the instance disk type is Enhanced SSD.\n2. If \"DiskType\": \"CLOUD_SSD\" is returned, it indicates that the instance disk type is Cloud SSD.\n3. If \"DiskType\": \"\" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it indicates that the instance uses a local SSD.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current number of CPU cores for scale-out.",
+          "example": "2",
+          "member": "int64",
+          "name": "ExpandCpu",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster Edition instance node information.",
+          "example": "无",
+          "member": "ClusterInfo",
+          "name": "ClusterInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Analysis engine node list.",
+          "example": "无",
+          "member": "AnalysisNodeInfo",
+          "name": "AnalysisNodeInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device bandwidth, in GB. This parameter is valid when DeviceClass is specified. For example, 25 means the current device bandwidth is 25 GB; 10 means the current device bandwidth is 10 GB.",
+          "example": "25",
+          "member": "uint64",
+          "name": "DeviceBandwidth",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.",
+          "example": "on",
+          "member": "string",
+          "name": "DestroyProtect",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -11700,7 +11884,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11710,7 +11894,7 @@
           "example": "1",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11720,7 +11904,7 @@
           "example": "100003",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11730,7 +11914,7 @@
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11740,17 +11924,17 @@
           "example": "cdb-***",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Long instance ID",
-          "example": "''",
+          "example": "1241asdd-qwed1-213-dad",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11760,7 +11944,7 @@
           "example": "1",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11770,7 +11954,7 @@
           "example": "***",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11780,7 +11964,7 @@
           "example": "1",
           "member": "int64",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11790,7 +11974,7 @@
           "example": "0",
           "member": "int64",
           "name": "TaskStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11800,7 +11984,7 @@
           "example": "1000",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11810,7 +11994,7 @@
           "example": "50",
           "member": "int64",
           "name": "Volume",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11820,7 +12004,7 @@
           "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11830,7 +12014,7 @@
           "example": "1000",
           "member": "int64",
           "name": "Qps",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11840,7 +12024,7 @@
           "example": "1533",
           "member": "int64",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11850,27 +12034,27 @@
           "example": "12364",
           "member": "int64",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Dedicated cluster ID",
-          "example": "''",
+          "example": "andy",
           "member": "string",
           "name": "ExClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Dedicated cluster name",
-          "example": "''",
+          "example": "andy",
           "member": "string",
           "name": "ExClusterName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -14890,7 +15074,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-only group ID.",
+          "document": "Read-only group ID.\nNote: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.",
           "example": "cdbrg-92zkeaq2",
           "member": "string",
           "name": "RoGroupId",
@@ -14923,7 +15107,7 @@
         },
         {
           "disabled": false,
-          "document": "Latency threshold",
+          "document": "Delay threshold, in seconds. Value range: 1–10000. The value is an integer.",
           "example": "1",
           "member": "int64",
           "name": "RoMaxDelayTime",
@@ -14968,7 +15152,7 @@
         {
           "disabled": false,
           "document": "Details of read-only instances in read-only group",
-          "example": "[]",
+          "example": "无",
           "member": "RoInstanceInfo",
           "name": "RoInstances",
           "output_required": true,
@@ -15000,58 +15184,58 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Virtual Private Cloud (VPC) ID.",
           "example": "vpc-ja6ts123",
           "member": "string",
           "name": "UniqVpcId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Subnet ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Subnet ID.",
           "example": "subnet-njh2bc99",
           "member": "string",
           "name": "UniqSubnetId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Read-only group region.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Region of the read-only group.",
           "example": "ap-beijing",
           "member": "string",
           "name": "RoGroupRegion",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Read-only group AZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "AZ of the read-only group.",
           "example": "ap-beijing-3",
           "member": "string",
           "name": "RoGroupZone",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Replication delay.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Replication delay time, in seconds. Value range: 1–259200. The value is an integer.",
           "example": "1000",
           "member": "int64",
           "name": "DelayReplicationTime",
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -15237,7 +15421,7 @@
         },
         {
           "disabled": false,
-          "document": "Pay-as-you-go billing status. Value range: 1 (normal), 2 (in arrears)",
+          "document": "Pay-as-you-go status. Valid values: 1 - normal; 2 - in arrears.",
           "example": "1",
           "member": "int64",
           "name": "HourFeeStatus",
@@ -15359,7 +15543,7 @@
         {
           "disabled": false,
           "document": "RO instance expiration time in the format of yyyy-mm-dd hh:mm:ss. If it is a pay-as-you-go instance, the value of this field is 0000-00-00 00:00:00",
-          "example": "‘’",
+          "example": "2024-09-09 16:40:30",
           "member": "string",
           "name": "DeadlineTime",
           "output_required": true,
@@ -15369,13 +15553,24 @@
         },
         {
           "disabled": false,
-          "document": "RO instance billing method. Value range: 0 (monthly subscribed), 1 (pay-as-you-go), 2 (monthly postpaid)",
+          "document": "Billing type of the RO instance. Valid values: 0 - yearly/monthly subscription; 1 - pay-as-you-go; 2-postpaid by month.",
           "example": "0",
           "member": "int64",
           "name": "PayType",
           "output_required": true,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RO replication delay status.",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "ReplicationStatus",
+          "output_required": true,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -15387,47 +15582,52 @@
         {
           "disabled": false,
           "document": "VIP status of the read-only instance",
-          "example": "",
+          "example": "2",
           "member": "int64",
           "name": "RoVipStatus",
-          "required": true,
-          "type": "int"
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC subnet of the read-only instance",
-          "example": "",
+          "example": "2132421",
           "member": "int64",
           "name": "RoSubnetId",
-          "required": true,
-          "type": "int"
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC of the read-only instance",
-          "example": "",
+          "example": "13421234",
           "member": "int64",
           "name": "RoVpcId",
-          "required": true,
-          "type": "int"
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VIP port number of the read-only instance",
-          "example": "",
+          "example": "3306",
           "member": "int64",
           "name": "RoVport",
-          "required": true,
-          "type": "int"
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VIP of the read-only instance",
-          "example": "",
+          "example": "10.1.1.1",
           "member": "string",
           "name": "RoVip",
-          "required": true,
-          "type": "string"
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -15843,22 +16043,22 @@
         {
           "disabled": false,
           "document": "Information of secondary server 1",
-          "example": "",
+          "example": "{\"Vport\": 3306,\"Vip\": \"10.1.1.1\",\"Region\": \"ap-guangzhou\",\"Zone\": \"ap-guangzhou-1\"}",
           "member": "SlaveInstanceInfo",
           "name": "First",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Information of secondary server 2\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "Second secondary server information.",
+          "example": "{\"Vport\": 3306,\"Vip\": \"10.1.0.1\",\"Region\": \"ap-guangzhou\",\"Zone\": \"ap-guangzhou-1\"}",
           "member": "SlaveInstanceInfo",
           "name": "Second",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -16689,25 +16889,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "Tag key\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Tag key.",
           "example": "‘’",
           "member": "string",
           "name": "TagKey",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tag value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Tag value.",
           "example": "‘’",
           "member": "string",
           "name": "TagValue",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

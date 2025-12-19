@@ -5248,7 +5248,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.",
+          "document": "One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 20.",
           "example": "[\"ins-r8hr2upy\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -8002,7 +8002,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 30.",
+          "document": "One or more instance ids to be operated. you can obtain the instance ID through the `InstanceId` in the return value from the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1). the maximum number of instances per request is 20.",
           "example": "[\"ins-r8hr2upy\"]",
           "member": "string",
           "name": "InstanceIds",
