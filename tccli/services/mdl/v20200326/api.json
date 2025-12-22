@@ -655,7 +655,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Task ID",
           "example": "6936947D1D3EC9A2432F",
           "member": "string",
           "name": "TaskId",
@@ -666,7 +666,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Types of testing",
           "example": "ExtractVideoABWatermarkId",
           "member": "string",
           "name": "Type",
@@ -677,7 +677,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "State",
           "example": "Completed",
           "member": "string",
           "name": "State",
@@ -688,7 +688,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Result",
           "example": "123789852",
           "member": "string",
           "name": "Result",
@@ -699,7 +699,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error code",
           "example": "1001",
           "member": "int64",
           "name": "ErrorCode",
@@ -710,7 +710,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error message",
           "example": "input file size exceed limit",
           "member": "string",
           "name": "ErrorMsg",
@@ -721,7 +721,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Input information",
           "example": "无",
           "member": "AbWatermarkInputInfo",
           "name": "InputInfo",
@@ -732,7 +732,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task notification configuration",
           "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
@@ -743,7 +743,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Create time",
           "example": "1765184637",
           "member": "int64",
           "name": "CreateTime",
@@ -754,7 +754,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Update time",
           "example": "1765184637",
           "member": "int64",
           "name": "UpdateTime",
@@ -765,7 +765,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Input file information",
           "example": "无",
           "member": "InputFileInfo",
           "name": "InputFileInfo",
@@ -782,7 +782,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Input type, optional URL/COS, currently only supports URL\n",
           "example": "URL",
           "member": "string",
           "name": "Type",
@@ -793,7 +793,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "URL input information",
           "example": "无",
           "member": "UrlInputInfo",
           "name": "UrlInputInfo",
@@ -1411,6 +1411,26 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pipeline 0 total active alarm count",
+          "example": "0",
+          "member": "int64",
+          "name": "PipelineAActiveAlerts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pipeline 1 total active alarm count",
+          "example": "0",
+          "member": "int64",
+          "name": "PipelineBActiveAlerts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1857,7 +1877,7 @@
         {
           "disabled": false,
           "document": "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
-          "example": "sdad",
+          "example": "input_test",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1875,7 +1895,7 @@
         {
           "disabled": false,
           "document": "ID of the input security group to attach\nYou can attach only one security group to an input.",
-          "example": "[\"123\\r\\n\"]",
+          "example": "[\"636CA1B600007342FA8D\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -4528,7 +4548,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Segment duration, in milliseconds, ranging from 1000-10000, must be a multiple of 1000. The input video duration should be between SegmentDuration * 90 and SegmentDuration * 180",
           "example": "10000",
           "member": "int64",
           "name": "SegmentDuration",

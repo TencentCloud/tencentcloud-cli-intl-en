@@ -691,7 +691,7 @@
         },
         {
           "disabled": false,
-          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
+          "document": "[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
           "example": "cn-shanghai-1",
           "member": "string",
           "name": "Region",
@@ -727,7 +727,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
+          "document": "Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
           "example": "[\"prefix1\", \"prefix2\"]",
           "member": "string",
           "name": "FileNamePrefix",
@@ -751,7 +751,7 @@
         },
         {
           "disabled": false,
-          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
+          "document": "[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.\nExample value: cn-shanghai-1.\n[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.\nExample value: ap-southeast-3.\t",
           "example": "cn-shanghai-1",
           "member": "string",
           "name": "Region",
@@ -787,7 +787,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
+          "document": "Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a-z), uppercase letters (A-Z), digits (0-9), and special characters (_-). For example, under the feature of [\"prefix1\", \"prefix2\"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.",
           "example": "[\"prefix1\", \"prefix2\"]",
           "member": "string",
           "name": "FileNamePrefix",
@@ -923,7 +923,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
+          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
           "example": "1400188366",
           "member": "uint64",
           "name": "SdkAppId",
@@ -932,7 +932,7 @@
         },
         {
           "disabled": false,
-          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
           "example": "295212",
           "member": "string",
           "name": "RoomId",
@@ -1150,7 +1150,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
+          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.",
           "example": "1400704311",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1159,7 +1159,7 @@
         },
         {
           "disabled": false,
-          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.",
           "example": "295212",
           "member": "string",
           "name": "RoomId",
@@ -4379,7 +4379,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to save the hit file. 0: not save by default; 1: save.",
+          "document": "Whether to save file. 0: not save by default; 1: save; 2 save the hit file.",
           "example": "0",
           "member": "uint64",
           "name": "SaveModerationFile",
@@ -5286,7 +5286,7 @@
         {
           "disabled": false,
           "document": "Depreciated. The callback URL is configured in the console.",
-          "example": "无",
+          "example": "url",
           "member": "string",
           "name": "SliceCallbackUrl",
           "required": false,

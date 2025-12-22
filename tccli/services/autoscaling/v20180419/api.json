@@ -2352,21 +2352,21 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
-          "example": "10",
-          "member": "uint64",
-          "name": "MaxSize",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered.",
           "example": "4",
           "member": "uint64",
           "name": "MinSize",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
+          "example": "2018-08-28T23:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2379,12 +2379,12 @@
         },
         {
           "disabled": false,
-          "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
-          "example": "2018-08-28T23:00:00+08:00",
-          "member": "datetime_iso",
-          "name": "StartTime",
+          "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxSize",
           "required": true,
-          "type": "string"
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2403,6 +2403,15 @@
           "name": "Recurrence",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableUpdateDesiredCapacity",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6323,6 +6332,15 @@
           "name": "Recurrence",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableUpdateDesiredCapacity",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -7263,6 +7281,16 @@
           "name": "ScheduledType",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableUpdateDesiredCapacity",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],

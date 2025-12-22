@@ -5663,6 +5663,33 @@
           "type": "int"
         },
         {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size (required), up to 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<Page number (required), starting from 0.>.",
+          "example": "0",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
           "disabled": true,
           "document": "Instance id (deprecated).",
           "example": "11",
@@ -5686,33 +5713,6 @@
           "example": "0",
           "member": "int64",
           "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
-          "example": "1400000000",
-          "member": "int64",
-          "name": "SdkAppId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Page size (required), up to 100.",
-          "example": "100",
-          "member": "int64",
-          "name": "PageSize",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "<Page number (required), starting from 0.>.",
-          "example": "0",
-          "member": "int64",
-          "name": "PageNumber",
           "required": false,
           "type": "int"
         },
@@ -8743,7 +8743,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario**\tEndStatus\tEndStatusString\tStatus description.\n\nIncoming & outgoing calls. 1. ok. normal call.\n\nIVR period user give up.\n\n**User give up while in queue**.\n\nInbound call 104 ringingGiveUp. specifies the user gives up during ringing.\n\nInbound call 105. specifies no agent online.\n\nInbound call notWorkTime **off hours**.   \n\nIVR ends automatically (no manual intervention).\n\nInbound call. 100. blocklist (system side).\n\nrestrictedCallee. specifies the global outbound call risk number interception (system side).\n\nOutbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.\n\nOutbound call 110 restrictedArea **block outgoing calls by region (system side)**.\n\nrestrictedTime. specifies the outbound call interception period on the system side.\n                         \n202 notAnswer **callee unanswered**.\n\nOutbound call 203 userReject **callee reject hangup**.\n\nPower off. **callee powered off**.\n\n205            numberNotExist\t**callee nonexistent number**.\n\nBusy. specifies the callee is busy.\n\nOutbound call 207 outOfCredit **callee in arrears**.\n\n208 operatorError indicates operator channel exception.\n\nOutgoing call caller cancellation.\n\nOutgoing call\t        210\t           notInService\t**callee out of service area**.\n\nPhone call in/out 211 clientError **client error**.\n\nOutgoing call 212 carrierBlocked **carrier blocklist**.\n\nNote: call reminder.\n\nOutbound call 215 numberInvalid **called number is invalid**.\n\nOutbound call 216 callRestricted. note: call restricted.\n\nCallee restricted by blocklist.\n\nOutbound call 218 areaRestricted. **callee area restricted**.\n\nPrompt call forwarding.\n\nCaller cancellation during ringing.\n\nCaller cancel without ring.\n\nAudio dial-in 501 call conflict **VoIP user call termination**.\n\nVoIP user client timeout.\n\nAudio dial-in 503 VoIP user client error.\n\nChinese description (https://www.tencentcloud.com/zh/document/product/1229/71847).\n\nEnglish description (https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
+          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario**\tEndStatus\tEndStatusString\tStatus description.\n\nIncoming & outgoing calls. 1. ok. normal call.\n\nIVR period user give up.\n\n**User give up while in queue**.\n\nInbound call 104 ringingGiveUp. specifies the user gives up during ringing.\n\nInbound call 105. specifies no agent online.\n\nInbound call notWorkTime **off hours**.   \n\nIVR ends automatically (no manual intervention).\n\nInbound call. 100. blocklist (system side).\n\nrestrictedCallee. specifies the global outbound call risk number interception (system side).\n\nOutbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.\n\nOutbound call 110 restrictedArea **block outgoing calls by region (system side)**.\n\nrestrictedTime. specifies the outbound call interception period on the system side.\n                         \n202 notAnswer **callee unanswered**.\n\nOutbound call 203 userReject **callee reject hangup**.\n\nPower off. **callee powered off**.\n\n205            numberNotExist\t**callee nonexistent number**.\n\nBusy. specifies the callee is busy.\n\nOutbound call 207 outOfCredit **callee in arrears**.\n\n208 operatorError indicates operator channel exception.\n\nOutgoing call caller cancellation.\n\nOutgoing call\t        210\t           notInService\t**callee out of service area**.\n\nPhone call in/out 211 clientError **client error**.\n\nOutgoing call 212 carrierBlocked **carrier blocklist**.\n\nNote: call reminder.\n\nOutbound call 215 numberInvalid **called number is invalid**.\n\nOutbound call 216 callRestricted. note: call restricted.\n\nCallee restricted by blocklist.\n\nOutbound call 218 areaRestricted. **callee area restricted**.\n\nPrompt call forwarding.\n\nCaller cancellation during ringing.\n\nCaller cancel without ring.\n\nAudio dial-in 501 call conflict **VoIP user call termination**.\n\nVoIP user client timeout.\n\nAudio dial-in 503 VoIP user client error.\n\nChinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).\n\nEnglish version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
