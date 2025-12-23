@@ -32,6 +32,14 @@
         "title": "Attaching a cloud disk "
       }
     ],
+    "CancelShareBlueprintAcrossAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelShareBlueprintAcrossAccounts\n<Common request parameters>\n\n{\n    \"BlueprintId\": \"lhbp-6jc6l8yb\",\n    \"AccountIds\": [\n        \"700000164995\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d339efa9-f637-4ba9-a7c6-fb89ce67d76f\"\n    }\n}",
+        "title": "Canceling Image Sharing Across Accounts"
+      }
+    ],
     "CreateBlueprint": [
       {
         "document": "This example shows you how to create an image.",
@@ -478,6 +486,20 @@
         "title": "Modifying firewall rules"
       }
     ],
+    "ModifyImageSharePermission": [
+      {
+        "document": "This example shows you how to share a CVM image to Lighthouse.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageSharePermission\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-xkd784jw\",\n    \"Permission\": \"SHARE\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BlueprintId\": \"lhbp-su83x02a\",\n        \"RequestId\": \"4fe640d6-4912-4b43-9b3a-cc3bbab4cef2\"\n    }\n}",
+        "title": "Sharing a CVM Image to Lighthouse"
+      },
+      {
+        "document": "This example shows you how to cancel the sharing of a CVM image to Lighthouse.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageSharePermission\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-xkd784jw\",\n    \"Permission\": \"CANEL\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BlueprintId\": null,\n        \"RequestId\": \"4fe640d6-4912-4b43-9b3a-cc3bbab4cef2\"\n    }\n}",
+        "title": "Canceling the Sharing of a CVM Image to Lighthouse"
+      }
+    ],
     "ModifyInstancesAttribute": [
       {
         "document": "This example shows you how to rename two instances.",
@@ -580,6 +602,14 @@
         "input": "https://lighthouse.tencentcloudapi.com/?Action=StopInstances\n&InstanceIds.0=lhins-ruy9d2tw\n&InstanceIds.1=lhins-rusdke45\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5fd6992a-f8b1-4cd2-9574-cb4251bc524f\"\n    }\n}",
         "title": "Shutting down instances"
+      }
+    ],
+    "SyncBlueprint": [
+      {
+        "document": "This example shows you how to synchronize a custom image to two regions.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SyncBlueprint\n<Common request parameters>\n\n{\n    \"BlueprintId\": \"lhbp-ls883feh\",\n    \"DestinationRegions\": [\n        \"ap-singapore\",\n        \"ap-hongkong\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DestinationRegionBlueprintSet\": [\n            {\n                \"Region\": \"ap-singapore\",\n                \"BlueprintId\": \"lhbp-lf3gjs2f\"\n            },\n            {\n                \"Region\": \"ap-hongkong\",\n                \"BlueprintId\": \"lhbp-lfle246l\"\n            }\n        ],\n        \"RequestId\": \"e35a5b7b-4dfa-49f8-8729-ba5c504807e0\"\n    }\n}",
+        "title": "Cross-Region Synchronization of Custom Images"
       }
     ],
     "TerminateDisks": [
