@@ -43,7 +43,7 @@
       "status": "online"
     },
     "DescribeBillingData": {
-      "document": "This API is used to query billing data details.",
+      "document": "This API is used to query billing data details. \nNotes: \nDue to the impact of the billing and settlement methods, the data returned by the DescribeBillingData  has a certain delay. For hourly-billed customers, the expected delay is 3 to 5 hours. For monthly-billed customers, the expected delay is 4 to 28 hours. Before 4:00 AM  (UTC+8, excluding 4:00 AM), only data from two days prior can be queried; after 4:00 AM (including 4:00 AM), data from the previous day can be queried. \nIf you have a strong requirement for data timeliness, it is recommended to use the DescribeCdnData.",
       "input": "DescribeBillingDataRequest",
       "name": "Queries billing data",
       "output": "DescribeBillingDataResponse",
@@ -2917,30 +2917,30 @@
         {
           "disabled": false,
           "document": "Queries by the specified metric:\n`flux`: Traffic (in bytes)\n`bandwidth`: Bandwidth (in bps)\n`request`: Number of requests\n`fluxHitRate`: Traffic hit rate (in %)\n`statusCode`: Status code. The aggregate data for 2xx, 3xx, 4xx, and 5xx status codes will be returned (in entries)\n`2XX`: Returns the aggregate list of 2xx status codes and the data for status codes starting with 2 (in entries)\n`3XX`: Returns the aggregate list of 3xx status codes and the data for status codes starting with 3 (in entries)\n`4XX`: Returns the aggregate list of 4xx status codes and the data for status codes starting with 4 (in entries)\n`5XX`: Returns the aggregate list of 5xx status codes and the data for status codes starting with 5 (in entries)\nYou can also specify a status code for querying.",
-          "example": "",
+          "example": "flux",
           "member": "string",
           "name": "Metric",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Detailed data combination",
-          "example": "",
+          "example": "无",
           "member": "TimestampData",
           "name": "DetailData",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Aggregate data combination",
-          "example": "",
+          "example": "无",
           "member": "SummarizedData",
           "name": "SummarizedData",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -3522,7 +3522,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the query, e.g., 2018-09-04 10:40:00.\nThe specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
+          "document": "Start time of the query, e.g. 2018-09-04 10:40:00.\nThe specified start time will be rounded down based on the granularity parameter `Interval`. For example, if you set the start time to 2018-09-04 10:40:00 with 1-hour granularity, the time will be rounded down to 2018-09-04 10:00:00.\nThe period between the start time and end time can be up to 90 days.",
           "example": "2018-09-04 10:40:00",
           "member": "datetime",
           "name": "StartTime",
@@ -3622,7 +3622,7 @@
           "example": "5min",
           "member": "string",
           "name": "Interval",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3632,7 +3632,7 @@
           "example": "无",
           "member": "ResourceBillingData",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -9925,20 +9925,20 @@
         {
           "disabled": false,
           "document": "Resource name, which is classified as follows based on different query filters:\nWhen a domain name is specified: Details of the domain name\n`multiDomains`: Aggregated details of multiple domain names\nA specific project ID: ID of the specifically queried project\n`all`: Details at the account level",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Resource",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Billing data details",
-          "example": "",
+          "example": "无",
           "member": "CdnData",
           "name": "BillingData",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -11367,20 +11367,20 @@
         {
           "disabled": false,
           "document": "Aggregation method, which can be:\n`sum`: Aggregate summation\n`max`: Maximum value. In bandwidth mode, the peak bandwidth is calculated based on the data aggregated in 5 minutes.\n`avg`: Average value",
-          "example": "",
+          "example": "sum",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Aggregated value",
-          "example": "",
+          "example": "1000",
           "member": "float",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -11419,20 +11419,20 @@
         {
           "disabled": false,
           "document": "The start point of the sampling period. \nFor example, if the time is set to 13:35:00, and `interval` is `5min`, the data returned is collected between 13:35:00 and 13:39:59",
-          "example": "",
+          "example": "13:35:00",
           "member": "datetime",
           "name": "Time",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data value",
-          "example": "",
+          "example": "100.00",
           "member": "float",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }

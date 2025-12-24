@@ -238,6 +238,14 @@
         "title": "Querying the quota information of general resources"
       }
     ],
+    "DescribeImagesToShare": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImagesToShare\n<Common request parameters>\n\n{\n    \"ImageIds\": [\n        \"img-cs2rrmp0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSet\": [\n            {\n                \"ImageId\": \"img-cs2rrmp0\",\n                \"ImageName\": \"ubuntu\",\n                \"ImageDescription\": \"ubuntu\",\n                \"ImageSize\": 50,\n                \"ImageSource\": \"CREATE_IMAGE\",\n                \"ImageClass\": \"SystemImage\",\n                \"ImageState\": \"NORMAL\",\n                \"IsSupportCloudinit\": true,\n                \"Architecture\": \"x86_64\",\n                \"OsName\": \"Ubuntu Server 20.04 LTS 64bit\",\n                \"Platform\": \"Ubuntu\",\n                \"CreatedTime\": \"2021-07-23T08:49:36Z\",\n                \"IsShareable\": true,\n                \"UnshareableReason\": \"\"\n            }\n        ],\n        \"RequestId\": \"c5aafa9d-20e4-400e-852c-b800f607dd91\"\n    }\n}",
+        "title": "Querying the List of CVM Custom Images and Sharing the Images to Lighthouse"
+      }
+    ],
     "DescribeInstanceLoginKeyPairAttribute": [
       {
         "document": " ",
@@ -586,6 +594,22 @@
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ResetInstancesPassword\n&InstanceIds.0=lhins-ruy9d2tw\n&Password=xxxxxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0e194541-9937-471e-beaa-957a84dcf9d0\"\n    }\n}",
         "title": "Resetting instance password"
+      }
+    ],
+    "ResizeDisks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResizeDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-guzg7nsa\"\n    ],\n    \"DiskSize\": 40\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"822edbc4-5d4a-4e19-9d61-2a243f04d06e\"\n    }\n}",
+        "title": "Scaling Out a Cloud Disk"
+      }
+    ],
+    "ShareBlueprintAcrossAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ShareBlueprintAcrossAccounts\n<Common request parameters>\n\n{\n    \"BlueprintId\": \"lhbp-6jc6l8yb\",\n    \"AccountIds\": [\n        \"700000164995\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d339efa9-f637-4ba9-a7c6-fb89ce67d76f\"\n    }\n}",
+        "title": "Sharing an Image Across Accounts"
       }
     ],
     "StartInstances": [
