@@ -548,6 +548,14 @@
         "title": "Querying the list of clusters"
       }
     ],
+    "DescribeControlPlaneLogs": [
+      {
+        "document": "This example shows you how to call when querying plug-in log collection settings.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeControlPlaneLogs\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-kaftesta\",\n    \"ClusterType\": \"tke\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Details\": [\n            {\n                \"Name\": \"karpenter\",\n                \"LogLevel\": 2,\n                \"LogSetId\": \"2912eb16-a56c-4b9b-adb0-9828db1ad342\",\n                \"TopicRegion\": \"ap-guangzhou\",\n                \"TopicId\": \"2912eb16-a56c-4b9b-adb0-9828db1ad342\"\n            }\n        ],\n        \"RequestId\": \"583e6c4b-ff24-42f8-87f1-37e4c00d81b7\"\n    }\n}",
+        "title": "Querying Plug-In Log Collection Settings"
+      }
+    ],
     "DescribeECMInstances": [
       {
         "document": "This example shows you how to obtain the information of instances in a cluster.",
@@ -806,6 +814,14 @@
         "title": "Disabling cluster deletion protection"
       }
     ],
+    "DisableControlPlaneLogs": [
+      {
+        "document": "This example shows you how to call the log collection settings when deleting a plugin.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableControlPlaneLogs\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-kaftesta\",\n    \"ClusterType\": \"tke\",\n    \"ComponentNames\": [\n        \"karpenter\"\n    ],\n    \"DeleteLogSetAndTopic\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Delete Plugin Log Collection Settings"
+      }
+    ],
     "DisableEncryptionProtection": [
       {
         "document": "This example shows you how to disable encryption protection.",
@@ -828,6 +844,14 @@
         "input": "https://tke.tencentcloudapi.com/?Action=EnableClusterDeletionProtection\r\n&ClusterId=cls-xxxxxxxx\r\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Enabling cluster deletion protection"
+      }
+    ],
+    "EnableControlPlaneLogs": [
+      {
+        "document": "This example shows you how to call when creating plugin log collection settings.",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableControlPlaneLogs\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-kaftesta\",\n    \"ClusterType\": \"tke\",\n    \"Components\": [\n        {\n            \"LogLevel\": 2,\n            \"LogSetId\": \"2912eb16-a56c-4b9b-adb0-9828db1ad342\",\n            \"Name\": \"kapenter\",\n            \"TopicId\": \"2912eb16-a56c-4b9b-adb0-9828db1ad342\",\n            \"TopicRegion\": \"ap-guangzhou\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f12a6e20-f950-4af9-8f8b-b6329a4961c2\"\n    }\n}",
+        "title": "Creating Plugin Log Collection Configuration"
       }
     ],
     "EnableEncryptionProtection": [

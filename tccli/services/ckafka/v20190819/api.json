@@ -119,6 +119,13 @@
       "output": "DeleteGroupResponse",
       "status": "online"
     },
+    "DeleteGroupSubscribeTopic": {
+      "document": "This API is used to delete topics subscribed by a consumption group. The consumption group status must be Empty.",
+      "input": "DeleteGroupSubscribeTopicRequest",
+      "name": "Delete the topic subscribed by the consumption group",
+      "output": "DeleteGroupSubscribeTopicResponse",
+      "status": "online"
+    },
     "DeleteInstancePost": {
       "document": "This API is used to delete post-payment instances. It directly performs instance termination by calling API deletion without associating connectors and tasks in pre-check.",
       "input": "DeleteInstancePostRequest",
@@ -264,6 +271,13 @@
       "input": "DescribeInstancesDetailRequest",
       "name": "Retrieve instance cluster list details",
       "output": "DescribeInstancesDetailResponse",
+      "status": "online"
+    },
+    "DescribeModifyType": {
+      "document": "This API is used to query instance specification change types.",
+      "input": "DescribeModifyTypeRequest",
+      "name": "Query the instance specification change type",
+      "output": "DescribeModifyTypeResponse",
       "status": "online"
     },
     "DescribeRegion": {
@@ -2008,7 +2022,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the ckafka cluster instance Name, an arbitrary string with length no more than 128 characters.",
+          "document": "<p>Specifies the Name of the ckafka cluster instance, which is any string with a length not more than 128 characters.</p>.",
           "example": "ckafka集群实例Name",
           "member": "string",
           "name": "InstanceName",
@@ -2017,7 +2031,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. [view availability zones](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).",
+          "document": "<P>Availability zone. when purchasing a multi-availability zone instance, this parameter specifies the primary az. <a href=\"https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1\">view availability zones</a></p>.",
           "example": "100003",
           "member": "int64",
           "name": "ZoneId",
@@ -2026,7 +2040,7 @@
         },
         {
           "disabled": false,
-          "document": "Prepaid purchase duration, such as \"1m\", exactly one month. value ranges from 1m to 36m.",
+          "document": "<P>Specifies the prepaid purchase duration, such as \"1m\" (exactly one month). value ranges from 1m to 36m.</p>.",
           "example": "1m",
           "member": "string",
           "name": "Period",
@@ -2035,7 +2049,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.",
+          "document": "<P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.",
           "example": "1",
           "member": "int64",
           "name": "InstanceType",
@@ -2044,7 +2058,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC Id.",
+          "document": "<p>VPC Id.</p>.",
           "example": "vpc-test",
           "member": "string",
           "name": "VpcId",
@@ -2053,7 +2067,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "<P>Subnet id.</p>.",
           "example": "subnet-test",
           "member": "string",
           "name": "SubnetId",
@@ -2062,7 +2076,7 @@
         },
         {
           "disabled": false,
-          "document": "Optional. maximum retention time of instance logs, in minutes. default value: 1440 (1 day). value range: 1 minute to 90 days.",
+          "document": "<P>Optional. specifies the maximum retention time for instance logs, in minutes. default value: 1440 (1 day) when left blank. configurable range: 1 minute to 90 days.</p>.",
           "example": "1440",
           "member": "int64",
           "name": "MsgRetentionTime",
@@ -2071,7 +2085,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster Id when creating an instance.",
+          "document": "<p>Specifies the cluster Id when creating an instance. this parameter indicates the cluster Id.</p>.",
           "example": "1232",
           "member": "int64",
           "name": "ClusterId",
@@ -2080,7 +2094,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-Renewal tag for prepaid services. valid values: 0 (default state, not set by the user, initial status), 1 (auto-renew), 2 (explicitly no auto-renew, set by the user).",
+          "document": "<P>Auto-Renewal tag for prepaid services. 0 means default state (not set by the user, i.e. initial state), 1 means auto-renew, 2 means explicitly no auto-renew (set by the user).</p>.",
           "example": "0",
           "member": "int64",
           "name": "RenewFlag",
@@ -2089,7 +2103,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value 2.4.1. 2.4.1 and 2.4.2 belong to the same version. any can be passed.",
+          "document": "<p>Specifies the CKafka version number. valid values: 2.4.1, 2.4.2, 2.8.1, 3.2.3. default value is 2.4.1. 2.4.1 and 2.4.2 belong to the same version, any one can be passed.</p>.",
           "example": "2.4.2",
           "member": "string",
           "name": "KafkaVersion",
@@ -2098,7 +2112,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the instance type. valid values: standard (default), profession, premium.",
+          "document": "<P>Instance type. specifies \"standard\" for standard edition instance (default), \"profession\" for professional edition instance, \"premium\" for advanced edition instance.</p>.",
           "example": "profession",
           "member": "string",
           "name": "SpecificationsType",
@@ -2107,7 +2121,7 @@
         },
         {
           "disabled": false,
-          "document": "Disk size. if it does not match the console specification ratio, the creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1",
+          "document": "<P>Disk size. if it does not match the console specification ratio, creation cannot succeed. default value is 500. step length is set to 100. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.",
           "example": "800",
           "member": "int64",
           "name": "DiskSize",
@@ -2116,7 +2130,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance bandwidth. default value: 40 MB/s. minimum value: 20 MB/s. maximum value for advanced edition: 360 MB/s. maximum value for pro edition: 100000 MB/s. standard version fixed bandwidth specifications: 40 MB/s, 100 MB/s, 150 MB/s. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1",
+          "document": "<p>Instance bandwidth, default value is 40, unit MB/s. minimum value: 20MB/s. advanced edition maximum value: 360MB/s. professional edition maximum value: 100000MB/s. standard version fixed bandwidth specifications: 40MB/s, 100MB/s, 150MB/s. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.",
           "example": "20",
           "member": "int64",
           "name": "BandWidth",
@@ -2125,7 +2139,7 @@
         },
         {
           "disabled": false,
-          "document": "Partition size. if it does not match the console specification ratio, creation will fail. default value is 800, step length is 100. billing specifications can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1",
+          "document": "<P>Specifies the partition size. if it does not match the console specification ratio, the creation cannot succeed. default value is 800 with a step length of 100. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.",
           "example": "800",
           "member": "int64",
           "name": "Partition",
@@ -2134,7 +2148,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag.",
+          "document": "<p>Tag.</p>.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -2143,7 +2157,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the disk type for a pro/advanced edition instance. you do not need to fill it in for a standard edition instance. valid values: \"CLOUD_SSD\" for SSD CLOUD disk; \"CLOUD_BASIC\" for high-performance CLOUD block storage. default value: \"CLOUD_BASIC\".",
+          "document": "<p>Specifies the instance disk type for pro edition/advanced edition. standard edition instances do not require this field. valid values: \"CLOUD_SSD\" (SSD CLOUD disk), \"CLOUD_BASIC\" (high-performance CLOUD block storage). default value: \"CLOUD_BASIC\".</p>.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
@@ -2152,7 +2166,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to create a cross-az instance. when the current parameter is true, zoneIds is required.",
+          "document": "<p>Specifies whether to create a cross-availability zone instance. when the current parameter is true, zoneIds is required.</p>.",
           "example": "true",
           "member": "bool",
           "name": "MultiZoneFlag",
@@ -2161,7 +2175,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone list. required item when purchasing a multi-availability zone instance.",
+          "document": "<P>Availability zone list. required item when purchasing multi-availability zone instance.</p>.",
           "example": "[100006,100007]",
           "member": "int64",
           "name": "ZoneIds",
@@ -2170,7 +2184,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network bandwidth size, in Mbps. the default is no free 3 Mbps bandwidth. for example, for a total of 3 Mbps public network bandwidth, pass 0 here; for a total of 6 Mbps public network bandwidth, pass 3 here. default value is 0. ensure the input parameter is a multiple of 3.",
+          "document": "<p>Specifies the public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. default value: 0. ensure the input parameter is a multiple of 3.</p>.",
           "example": "12",
           "member": "int64",
           "name": "PublicNetworkMonthly",
@@ -2179,7 +2193,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances to purchase. optional. default value is 1. when you input this parameter, it enables the creation of multiple instances with case-sensitive suffixes added to instanceName.",
+          "document": "<p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.",
           "example": "1",
           "member": "int64",
           "name": "InstanceNum",
@@ -2188,7 +2202,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically select a voucher. valid values: 1 (yes), 0 (no). default is 0.",
+          "document": "<P>Specifies whether to automatically select voucher. valid values: 1-yes; 0-no. default is 0.</p>.",
           "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -2197,12 +2211,21 @@
         },
         {
           "disabled": false,
-          "document": "Elastic bandwidth switch. specifies whether to enable elastic bandwidth. valid values: 0 (not enabled, default), 1 (enabled).",
+          "document": "<P>Elastic bandwidth switch 0 disable 1 enable (0 default).</p>.",
           "example": "0",
           "member": "int64",
           "name": "ElasticBandwidthSwitch",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href=\"https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1\">DescribeCertificateDetail</a> api.</p>.",
+          "example": "TPNd2oBB",
+          "member": "string",
+          "name": "CustomSSLCertId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2258,7 +2281,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Returned result.",
+          "document": "<P>Returned result.</p>.",
           "example": "无",
           "member": "CreateInstancePreResp",
           "name": "Result",
@@ -2335,7 +2358,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPC Id, obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).",
+          "document": "<p>VPC Id, can be obtained through the <a href=\"https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1\">DescribeVpcs</a> api.</p>.",
           "example": "vpc-test",
           "member": "string",
           "name": "VpcId",
@@ -2344,7 +2367,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet Id. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.",
+          "document": "<p>Subnet Id, which can be obtained through the <a href=\"https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1\">DescribeSubnets</a> api.</p>.",
           "example": "subnet-test",
           "member": "string",
           "name": "SubnetId",
@@ -2353,7 +2376,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster instance name of ckafka, an arbitrary character with length not exceeding 128.",
+          "document": "<P>Specifies the cluster instance name of ckafka, with a length not exceeding 128 arbitrary characters.</p>.",
           "example": "ckafka测试",
           "member": "string",
           "name": "InstanceName",
@@ -2362,7 +2385,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the standard edition instance specification for the international site. currently only the international site standard edition uses the current field to distinguish specifications, while the domestic site standard edition distinguishes specifications by peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.",
+          "document": "<P>Specifies the standard edition instance specification for the international site. currently only the standard edition on the international site uses the current field to distinguish specifications, while the domestic site standard edition uses peak bandwidth. fill in 1 for all instances except the international site standard edition. for international site standard edition instances: [entry-level (general)] fill 1; [standard type (standard)] fill 2; [advanced] fill 3; [capacity type (capacity)] fill 4; [advanced type 1 (specialized-1)] fill 5; [advanced type 2 (specialized-2)] fill 6; [advanced type 3 (specialized-3)] fill 7; [advanced type 4 (specialized-4)] fill 8.</p>.",
           "example": "1",
           "member": "int64",
           "name": "InstanceType",
@@ -2371,7 +2394,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.",
+          "document": "<P>The default maximum retention time for instance logs, in minutes. default value: 1440 minutes (1 day) when this parameter is not input. maximum: 30 days. if the message retention time is explicitly set for a topic, the topic retention time takes precedence.</p>.",
           "example": "1440",
           "member": "int64",
           "name": "MsgRetentionTime",
@@ -2380,7 +2403,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.",
+          "document": "<p>Specifies the cluster Id when creating an instance. input this parameter to indicate the cluster Id. leave it empty if no cluster is specified.</p>.",
           "example": "5914",
           "member": "int64",
           "name": "ClusterId",
@@ -2389,7 +2412,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance version. currently supports \"2.4.1\", \"2.4.2\", \"2.8.1\", \"3.2.3\". default value \"2.4.1\". \"2.4.1\" and \"2.4.2\" belong to the same version. any one can be passed.",
+          "document": "<P>Instance version. currently supports \"2.4.1\", \"2.4.2\", \"2.8.1\", \"3.2.3\". default value is \"2.4.1\". \"2.4.1\" and \"2.4.2\" belong to the same version, any one can be passed.</p>.",
           "example": "2.4.2",
           "member": "string",
           "name": "KafkaVersion",
@@ -2398,7 +2421,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. \"standard\": standard version. \"profession\": pro edition. (standard version is only supported on the international site. currently, the chinese site supports pro edition.).",
+          "document": "<P>Instance type. \"standard\": standard version, \"profession\": professional version. (standard version is only supported on the international site. chinese site currently supports professional version)</p>.",
           "example": "profession",
           "member": "string",
           "name": "SpecificationsType",
@@ -2407,7 +2430,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the disk type for a pro edition instance. you do not need to fill it in for a standard edition instance. valid values: \"CLOUD_SSD\" for SSD CLOUD disk; \"CLOUD_BASIC\" for high-performance CLOUD block storage. default value: \"CLOUD_BASIC\".",
+          "document": "<p>Specifies the instance disk type for pro edition. standard edition instances do not require this field. valid values: \"CLOUD_SSD\" (SSD CLOUD disk), \"CLOUD_BASIC\" (high-performance CLOUD block storage). default value: \"CLOUD_BASIC\".</p>.",
           "example": "CLOUD_BASIC",
           "member": "string",
           "name": "DiskType",
@@ -2416,7 +2439,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the peak bandwidth of the instance private network, with a default value of 40 MB/s. for standard version, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configuration such as peak bandwidth and number of partitions should meet the billing specification of the professional edition. view billing specifications through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1",
+          "document": "<p>The peak bandwidth of the instance private network. the default value is 40 MB/s. for standard edition, input the peak bandwidth corresponding to the current instance specifications. note that if the instance created is a pro edition instance, parameter configurations such as peak bandwidth and number of partitions should meet the billing specification of the pro edition. you can view the billing specification through the following link: https://www.tencentcloud.comom/document/product/597/11745.?from_cn_redirect=1</p>.",
           "example": "20",
           "member": "int64",
           "name": "BandWidth",
@@ -2425,7 +2448,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1",
+          "document": "<P>Instance disk size. default value is 500. step length is set to 100. should meet the billing specification of the current instance. can be accessed through the following link to view billing specifications: https://www.tencentcloud.comom/document/product/597/122562.?from_cn_redirect=1</p>.",
           "example": "200",
           "member": "int64",
           "name": "DiskSize",
@@ -2434,7 +2457,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1",
+          "document": "<P>Specifies the maximum number of partitions for the instance, which should meet the billing specification of the current instance. default value is 800 with a step length of 100. the billing specification can be viewed through the following link: https://www.tencentcloud.comom/document/product/597/122563.?from_cn_redirect=1</p>.",
           "example": "400",
           "member": "int64",
           "name": "Partition",
@@ -2443,7 +2466,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of topics for the instance should meet the billing specification of the current instance. default value is 800, step length is set to 100.",
+          "document": "<P>Specifies the maximum number of topics for the instance, which should meet the billing specification of the current instance. default value is 800. step length is set to 100.</p>.",
           "example": "200",
           "member": "int64",
           "name": "TopicNum",
@@ -2452,7 +2475,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the availability zone of the instance. when creating a multi-az instance, this parameter is the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1).",
+          "document": "Specifies the availability zone where the instance is located. when creating a multi-az instance, this parameter indicates the availability zone id of the subnet where the default access point is created. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the API <a href=\"https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1\">DescribeCkafkaZone</a>.",
           "example": "100006",
           "member": "int64",
           "name": "ZoneId",
@@ -2461,7 +2484,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the current instance is a multi-AZ instance",
+          "document": "<P>Specifies whether the current instance is a multi-az instance.</p>.",
           "example": "true",
           "member": "bool",
           "name": "MultiZoneFlag",
@@ -2470,7 +2493,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the multi-az id list when the instance is a multi-az instance. note that the multi-az corresponding to parameter ZoneId must be included in this parameter array. ZoneId and ZoneIds cannot be empty at the same time. you can obtain this information through the [DescribeCkafkaZone](https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1) api.",
+          "document": "<p>Specifies the multi-availability zone id list when the instance is a multi-az instance. note the corresponding multi-availability zone for parameter ZoneId must be included in the parameter array. ZoneId and ZoneIds cannot be empty at the same time. obtain through the API <a href=\"https://www.tencentcloud.comom/document/product/597/55246?from_cn_redirect=1\">DescribeCkafkaZone</a>.</p>.",
           "example": "[100006,100007]",
           "member": "int64",
           "name": "ZoneIds",
@@ -2479,7 +2502,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.",
+          "document": "<p>Specifies the number of instances to purchase. optional. default value is 1. when input this parameter, it will create multiple instances with case-sensitive suffixes added to instanceName.</p>.",
           "example": "1",
           "member": "int64",
           "name": "InstanceNum",
@@ -2488,7 +2511,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.",
+          "document": "<p>Public bandwidth size in Mbps. the free 3 Mbps bandwidth is not included by default. for example, if the total required public network bandwidth is 3 Mbps, input 0 here; if the total required public network bandwidth is 6 Mbps, input 3 here. ensure the input parameter is a multiple of 3.</p>.",
           "example": "12",
           "member": "int64",
           "name": "PublicNetworkMonthly",
@@ -2497,7 +2520,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag.",
+          "document": "<p>Tag.</p>.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -2506,12 +2529,21 @@
         },
         {
           "disabled": false,
-          "document": "Elastic bandwidth switch. valid values: 0 (disable, default), 1 (enable).",
+          "document": "<P>Specifies the elastic bandwidth switch. 0: disable (default); 1: enable.</p>.",
           "example": "0",
           "member": "int64",
           "name": "ElasticBandwidthSwitch",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies the custom certificate Id. this parameter is valid only when SpecificationsType is profession. supports custom certificate capacity.</p><p>can be obtained through the <a href=\"https://www.tencentcloud.comom/document/product/400/41673?from_cn_redirect=1\">DescribeCertificateDetail</a> api.</p>.",
+          "example": "TTpTQ6QD",
+          "member": "string",
+          "name": "CustomSSLCertId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2521,7 +2553,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Returned result",
+          "document": "<P>Returned result.</p>.",
           "example": "无",
           "member": "CreateInstancePostResp",
           "name": "Result",
@@ -3328,6 +3360,61 @@
       ],
       "type": "object"
     },
+    "DeleteGroupSubscribeTopicRequest": {
+      "document": "DeleteGroupSubscribeTopic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CKafka cluster instance ID.",
+          "example": "ckafka-test",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Consumer group name.",
+          "example": "group-test",
+          "member": "string",
+          "name": "Group",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Topic name",
+          "example": "topic-test",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupSubscribeTopicResponse": {
+      "document": "DeleteGroupSubscribeTopic response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Returned result.",
+          "example": "{\"ReturnCode\":\"0\",\"ReturnMessage\":\"success\"}",
+          "member": "JgwOperateResponse",
+          "name": "Result",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteInstancePostRequest": {
       "document": "DeleteInstancePost request structure.",
       "members": [
@@ -3649,6 +3736,62 @@
       ],
       "type": "object"
     },
+    "DescModifyType": {
+      "document": "Type query response parameters structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the renewal type.",
+          "example": "1",
+          "member": "int64",
+          "name": "ModifyType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to migrate.",
+          "example": "true",
+          "member": "bool",
+          "name": "MigrateFlag",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated duration of migration in stable mode (seconds).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1800",
+          "member": "int64",
+          "name": "MigrateCostTime",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Upgrade mode (1: stable mode, 2: high-speed mode).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "UpgradeStrategy",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the estimated time for migration in high-speed mode, in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1800",
+          "member": "int64",
+          "name": "MigrateCostTimeHighSpeed",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeACLRequest": {
       "document": "DescribeACL request structure.",
       "members": [
@@ -3813,6 +3956,16 @@
     "DescribeCkafkaVersionResponse": {
       "document": "DescribeCkafkaVersion response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "Instance version information.",
+          "example": "无",
+          "member": "InstanceVersion",
+          "name": "Result",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -4715,6 +4868,106 @@
           "document": "Returned result",
           "example": "无",
           "member": "InstanceResponse",
+          "name": "Result",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeModifyTypeRequest": {
+      "document": "DescribeModifyType request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CKafka cluster instance ID.",
+          "example": "ckafka-test",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the bandwidth after upgrade. measurement unit: mb.",
+          "example": "320",
+          "member": "int64",
+          "name": "BandWidth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the disk after upgrade, in gb.",
+          "example": "1000",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Disk type, such as CLOUD_PREMIUM.",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of partitions.",
+          "example": "1200",
+          "member": "int64",
+          "name": "Partition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of Topics",
+          "example": "120",
+          "member": "int64",
+          "name": "Topic",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance type, such as sp_ckafka_profession.",
+          "example": "sp_ckafka_profession",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration change portal.",
+          "example": "OPEN_ELASTIC_BANDWIDTH_ENTRY",
+          "member": "string",
+          "name": "ModifyEntry",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeModifyTypeResponse": {
+      "document": "DescribeModifyType response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the structure of the returned renewal type.",
+          "example": "{\"ModifyType\":1,\"MigrateFlag\":true,\"MigrateCostTime\":17066}",
+          "member": "DescModifyType",
           "name": "Result",
           "output_required": true,
           "type": "object",
@@ -6716,7 +6969,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ckafka cluster instance Id.",
+          "document": "<p>ckafka cluster instance Id.</p>.",
           "example": "ckafka-test",
           "member": "string",
           "name": "InstanceId",
@@ -6726,7 +6979,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the Name of the ckafka cluster instance.",
+          "document": "<p>Specifies the Name of the ckafka cluster instance.</p>.",
           "example": "ckafka测试",
           "member": "string",
           "name": "InstanceName",
@@ -6736,7 +6989,7 @@
         },
         {
           "disabled": false,
-          "document": "VIP list information of access point",
+          "document": "<p>Access point VIP list information.</p>.",
           "example": "无",
           "member": "VipEntity",
           "name": "VipList",
@@ -6746,7 +6999,7 @@
         },
         {
           "disabled": false,
-          "document": "Virtual IP",
+          "document": "<p>Virtual IP.</p>.",
           "example": "10.0.0.5",
           "member": "string",
           "name": "Vip",
@@ -6756,7 +7009,7 @@
         },
         {
           "disabled": false,
-          "document": "Virtual port",
+          "document": "<P>Virtual port.</p>.",
           "example": "9092",
           "member": "string",
           "name": "Vport",
@@ -6766,7 +7019,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.",
+          "document": "<P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -6776,7 +7029,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance bandwidth in Mbps",
+          "document": "<p>Instance bandwidth (unit: Mbps).</p>.",
           "example": "100",
           "member": "int64",
           "name": "Bandwidth",
@@ -6786,7 +7039,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance storage capacity in GB",
+          "document": "<p>Specifies the instance storage size in GB.</p>.",
           "example": "200",
           "member": "int64",
           "name": "DiskSize",
@@ -6796,7 +7049,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "<P>Specifies the availability zone.</p>.",
           "example": "100003",
           "member": "int64",
           "name": "ZoneId",
@@ -6806,7 +7059,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. If this parameter is empty, it means the basic network",
+          "document": "<p>VPC ID. being empty indicates a basic network.</p>.",
           "example": "vpc-test",
           "member": "string",
           "name": "VpcId",
@@ -6816,7 +7069,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID. If this parameter is empty, it means the basic network",
+          "document": "<p>Specifies the subnet ID. being empty indicates the basic network.</p>.",
           "example": "subnet-test",
           "member": "string",
           "name": "SubnetId",
@@ -6826,7 +7079,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance health status. 1: healthy, 2: alarmed, 3: exceptional",
+          "document": "<P>Specifies the instance health status. valid values: 1 (healthy), 2 (alarm), 3 (abnormal).</p>.",
           "example": "1",
           "member": "int64",
           "name": "Healthy",
@@ -6836,7 +7089,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance health information. Currently, the disk utilization is displayed with a maximum length of 256",
+          "document": "<P>Instance health information. currently shows disk utilization rate. maximum length is 256.</p>.",
           "example": "healthy",
           "member": "string",
           "name": "HealthyMessage",
@@ -6846,7 +7099,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "<P>Creation time.</p>.",
           "example": "1564144000",
           "member": "uint64",
           "name": "CreateTime",
@@ -6856,7 +7109,7 @@
         },
         {
           "disabled": false,
-          "document": "Message retention period in minutes",
+          "document": "<P>Message retention period, in minutes.</p>.",
           "example": "4320",
           "member": "int64",
           "name": "MsgRetentionTime",
@@ -6866,7 +7119,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled",
+          "document": "<p>Automatic creation Topic configuration. if this field is empty, it indicates that automatic creation is not enabled.</p>.",
           "example": "无",
           "member": "InstanceConfigDO",
           "name": "Config",
@@ -6876,7 +7129,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of remaining creatable partitions",
+          "document": "<P>Number of remaining creatable partitions.</p>.",
           "example": "310",
           "member": "int64",
           "name": "RemainderPartitions",
@@ -6886,7 +7139,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of remaining creatable topics",
+          "document": "<P>Number of remaining creatable topics.</p>.",
           "example": "190",
           "member": "int64",
           "name": "RemainderTopics",
@@ -6896,7 +7149,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of partitions already created",
+          "document": "<P>Specifies the current number of partitions created.</p>.",
           "example": "90",
           "member": "int64",
           "name": "CreatedPartitions",
@@ -6906,7 +7159,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of topics already created",
+          "document": "<P>Specifies the current number of topics created.</p>.",
           "example": "10",
           "member": "int64",
           "name": "CreatedTopics",
@@ -6916,7 +7169,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag array",
+          "document": "<P>Tag array.</p>.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -6926,7 +7179,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time",
+          "document": "<P>Specifies the expiration time.</p>.",
           "example": "1566144000",
           "member": "uint64",
           "name": "ExpireTime",
@@ -6936,7 +7189,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability Zone List",
+          "document": "<P>Specifies the availability zone list.</p>.",
           "example": "[100003,100004]",
           "member": "int64",
           "name": "ZoneIds",
@@ -6946,7 +7199,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the ckafka cluster instance version.",
+          "document": "<P>Specifies the ckafka cluster instance version.</p>.",
           "example": "1.1.1",
           "member": "string",
           "name": "Version",
@@ -6956,7 +7209,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of groups.",
+          "document": "<P>Specifies the maximum number of groups.</p>.",
           "example": "500",
           "member": "int64",
           "name": "MaxGroupNum",
@@ -6966,7 +7219,7 @@
         },
         {
           "disabled": false,
-          "document": "Sale type. valid values: 0 (standard version), 1 (pro edition).",
+          "document": "<P>Sale type. 0: standard version; 1: pro edition.</p>.",
           "example": "1",
           "member": "int64",
           "name": "Cvm",
@@ -6976,7 +7229,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. valid values:. \nSpecifies the pro edition.    \nStandard version.\npremium. specifies the advanced edition.\nSpecifies the serverless version.",
+          "document": "<p>Instance type. enumerates the list: profession: pro edition; standards2: standard version; premium: advanced edition; serverless: serverless edition.</p>.",
           "example": "profession",
           "member": "string",
           "name": "InstanceType",
@@ -6986,7 +7239,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL means the policy support for configuring subnets.",
+          "document": "<p>Indicates the characteristics supported by the instance. FEATURE_SUBNET_ACL: indicates that the ACL policy supports setting subnets.</p>.",
           "example": "[\"FEATURE_TOPIC_QUOTA\",\"CLOUD_EKS_TSE\",\"CLOUD_EKS_CROS_ZONE\",\"FEATURE_SASL_SCRAM\"]",
           "member": "string",
           "name": "Features",
@@ -6996,7 +7249,7 @@
         },
         {
           "disabled": false,
-          "document": "Dynamic message retention policy.",
+          "document": "<P>Dynamic message retention policy.</p>.",
           "example": "无",
           "member": "DynamicRetentionTime",
           "name": "RetentionTimeConfig",
@@ -7006,7 +7259,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of connections.",
+          "document": "<P>Maximum number of connections.</p>.",
           "example": "50000",
           "member": "uint64",
           "name": "MaxConnection",
@@ -7016,7 +7269,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network bandwidth",
+          "document": "<P>Public network bandwidth.</p>.",
           "example": "3",
           "member": "int64",
           "name": "PublicNetwork",
@@ -7026,7 +7279,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the deprecated field with no actual meaning.",
+          "document": "<P>Deprecated. no actual meaning.</p>.",
           "example": "1566144000",
           "member": "string",
           "name": "DeleteRouteTimestamp",
@@ -7036,7 +7289,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of remaining creatable partitions.",
+          "document": "<P>Number of remaining creatable partitions.</p>.",
           "example": "310",
           "member": "int64",
           "name": "RemainingPartitions",
@@ -7046,7 +7299,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of remaining creatable topics.",
+          "document": "<P>Number of remaining creatable topics.</p>.",
           "example": "190",
           "member": "int64",
           "name": "RemainingTopics",
@@ -7056,7 +7309,7 @@
         },
         {
           "disabled": false,
-          "document": "Scaling policy for dynamic disk.",
+          "document": "<P>Dynamic disk expansion policy.</p>.",
           "example": "无",
           "member": "DynamicDiskConfig",
           "name": "DynamicDiskConfig",
@@ -7066,7 +7319,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the system maintenance time.",
+          "document": "<P>Specifies the system maintenance time.</p>.",
           "example": "2019-08-19 00:00:00",
           "member": "string",
           "name": "SystemMaintenanceTime",
@@ -7076,7 +7329,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum size of messages at the instance level.",
+          "document": "<P>Specifies the maximum size of instance level messages.</p>.",
           "example": "8388608",
           "member": "uint64",
           "name": "MaxMessageByte",
@@ -7086,7 +7339,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.",
+          "document": "<p>Specifies the instance billing type. POSTPAID_BY_HOUR: hourly billing; PREPAID: annual/monthly package.</p>.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -7096,7 +7349,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the elastic bandwidth allowlist.   \nIndicates the allowlist feature with elastic bandwidth enabled.\n0: elastic bandwidth allowlist feature is disabled.",
+          "document": "<p>Specifies whether to enable the elastic bandwidth allowlist. valid values: 1 (enabled), 0 (disabled).</p>.",
           "example": "1",
           "member": "int64",
           "name": "ElasticBandwidthSwitch",
@@ -7106,7 +7359,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the elastic bandwidth activation status.\n1: indicates elastic bandwidth is disabled.\nEnable elastic bandwidth.\nEnable elastic bandwidth successfully.\n33: disabling elastic bandwidth.\nIndicates that the elastic bandwidth is successfully disabled.\nEnable elastic bandwidth failed.\nBandwidth failure.",
+          "document": "<P>Specifies the elastic bandwidth activation status. 1: elastic bandwidth is disabled; 16: enabling elastic bandwidth; 32: elastic bandwidth enabled successfully; 33: disabling elastic bandwidth; 34: elastic bandwidth disabled successfully; 64: failed to enable elastic bandwidth; 65: failed to disable elastic bandwidth.</p>.",
           "example": "1",
           "member": "int64",
           "name": "ElasticBandwidthOpenStatus",
@@ -7116,7 +7369,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster type.  \nCLOUD_IDC idc cluster.\nCLOUD_CVM_SHARE shared cluster.\nCLOUD_CVM_YUNTI yunti cvm cluster.\nCLOUD_CVM. specifies the cvm cluster.\nCLOUD_CDC cdc cluster.\nCLOUD_EKS_TSE eks cluster.",
+          "document": "<p>ClusterType<br />CLOUD_IDC IDC cluster<br />CLOUD_CVM_SHARE CVM shared cluster<br />CLOUD_CVM_YUNTI YUNTI CVM cluster<br />CLOUD_CVM CVM cluster<br />CLOUD_CDC CDC cluster<br />CLOUD_EKS_TSE EKS cluster</p>.",
           "example": "CLOUD_CVM",
           "member": "string",
           "name": "ClusterType",
@@ -7126,7 +7379,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of free partitions.",
+          "document": "<P>Specifies the number of free partitions.</p>.",
           "example": "400",
           "member": "int64",
           "name": "FreePartitionNumber",
@@ -7136,7 +7389,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the elastic bandwidth upper limit.",
+          "document": "<P>Specifies the elastic bandwidth upper limit.</p>.",
           "example": "240",
           "member": "int64",
           "name": "ElasticFloatBandwidth",
@@ -7146,7 +7399,7 @@
         },
         {
           "disabled": false,
-          "document": "ssl custom certificate id. only returned for instance clusters with custom certificates.",
+          "document": "<p>ssl custom certificate id. only returned for instance clusters with custom certificates.</p>.",
           "example": "cert-test",
           "member": "string",
           "name": "CustomCertId",
@@ -7156,7 +7409,7 @@
         },
         {
           "disabled": false,
-          "document": "Default unclean.leader.election.enable configuration for cluster topic: 1 enable 0 disable.",
+          "document": "<P>Specifies the default unclean.leader.election.enable configuration for cluster topics. valid values: 1 (enable), 0 (disable).</p>.",
           "example": "1",
           "member": "int64",
           "name": "UncleanLeaderElectionEnable",
@@ -7166,7 +7419,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance deletion protection switch. 1: enabled; 0: disabled.",
+          "document": "<P>Specifies the instance deletion protection switch. valid values: 1 (enabled), 0 (disabled).</p>.",
           "example": "1",
           "member": "int64",
           "name": "DeleteProtectionEnable",
@@ -7260,7 +7513,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ckafka cluster instance Id.",
+          "document": "<p>ckafka cluster instance Id.</p>.",
           "example": "ckafka-test",
           "member": "string",
           "name": "InstanceId",
@@ -7270,7 +7523,7 @@
         },
         {
           "disabled": false,
-          "document": "CKafka cluster instance name.",
+          "document": "<P>Specifies the name of the ckafka cluster instance.</p>.",
           "example": "ckafka测试",
           "member": "string",
           "name": "InstanceName",
@@ -7280,7 +7533,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance VIP information",
+          "document": "<P>Specifies the vip information for accessing the instance.</p>.",
           "example": "10.0.0.5",
           "member": "string",
           "name": "Vip",
@@ -7290,7 +7543,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance port information",
+          "document": "<P>Specifies the port information to access the instance.</p>.",
           "example": "9092",
           "member": "string",
           "name": "Vport",
@@ -7300,8 +7553,8 @@
         },
         {
           "disabled": false,
-          "document": "Virtual IP list",
-          "example": "[{\"Vip\":\"10.0.0.5\",\"Vport\":\"9092\"}]",
+          "document": "<p>Specifies the virtual IP list.</p>.",
+          "example": "无",
           "member": "VipEntity",
           "name": "VipList",
           "output_required": true,
@@ -7310,7 +7563,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. 0: creating, 1: running, 2: deleting, 3: deleted, 5: isolated, 7: upgrading, -1: creation failed.",
+          "document": "<P>Specifies the instance status. valid values: 0 (creating), 1 (running), 2 (deleting), 3 (deleted), 5 (isolated), 7 (upgrading), -1 (creation failed).</p>.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -7320,7 +7573,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance bandwidth in Mbps",
+          "document": "<p>Specifies the instance bandwidth in Mbps.</p>.",
           "example": "300",
           "member": "int64",
           "name": "Bandwidth",
@@ -7330,7 +7583,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the ckafka cluster instance disk size in gb.",
+          "document": "<p>Specifies the disk size of the ckafka cluster instance, in gb.</p>.",
           "example": "800",
           "member": "int64",
           "name": "DiskSize",
@@ -7340,7 +7593,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ ID",
+          "document": "<p>Specifies the available zone ID.</p>.",
           "example": "100003",
           "member": "int64",
           "name": "ZoneId",
@@ -7350,7 +7603,7 @@
         },
         {
           "disabled": false,
-          "document": "vpcId. If this parameter is empty, it means the basic network",
+          "document": "<p>vpcId. if empty, indicates a basic network.</p>.",
           "example": "vpc-test",
           "member": "string",
           "name": "VpcId",
@@ -7360,7 +7613,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "<P>Subnet id.</p>.",
           "example": "subnet-test",
           "member": "string",
           "name": "SubnetId",
@@ -7370,7 +7623,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no",
+          "document": "<P>Specifies whether to renew the instance. int enumeration value: 1 means auto-renew, 2 means explicitly no auto-renew.</p>.",
           "example": "1",
           "member": "int64",
           "name": "RenewFlag",
@@ -7380,7 +7633,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional",
+          "document": "<p>Specifies the instance status. valid values: 1 (healthy), 2 (alarm), 3 (instance status exception).</p>.",
           "example": "1",
           "member": "int64",
           "name": "Healthy",
@@ -7390,7 +7643,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status information",
+          "document": "<P>Specifies the instance status information.</p>.",
           "example": "\"健康\"",
           "member": "string",
           "name": "HealthyMessage",
@@ -7400,7 +7653,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance creation time",
+          "document": "<P>Specifies the instance creation time.</p>.",
           "example": "1566144000",
           "member": "int64",
           "name": "CreateTime",
@@ -7410,7 +7663,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance expiration time",
+          "document": "<P>Specifies the instance expiration time.</p>.",
           "example": "1566144000",
           "member": "int64",
           "name": "ExpireTime",
@@ -7420,7 +7673,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is an internal customer. 1: yes",
+          "document": "<P>Specifies whether it is an internal customer. a value of 1 indicates an internal customer.</p>.",
           "example": "1",
           "member": "int64",
           "name": "IsInternal",
@@ -7430,7 +7683,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of topics",
+          "document": "<p>Specifies the number of topics.</p>.",
           "example": "10",
           "member": "int64",
           "name": "TopicNum",
@@ -7440,8 +7693,8 @@
         },
         {
           "disabled": false,
-          "document": "Tag",
-          "example": "[{\"TagKey\":\"tagkey-test\",\"TagValue\":\"tagvalue-test\"}]",
+          "document": "<P>Specifies the identifier tag.</p>.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
@@ -7450,7 +7703,7 @@
         },
         {
           "disabled": false,
-          "document": "kafka version information.",
+          "document": "<p>kafka version information.</p>.",
           "example": "1.1.1",
           "member": "string",
           "name": "Version",
@@ -7460,7 +7713,7 @@
         },
         {
           "disabled": false,
-          "document": "Cross-Availability zone.",
+          "document": "<P>Specifies the cross-availability zone.</p>.",
           "example": "[100003,100004]",
           "member": "int64",
           "name": "ZoneIds",
@@ -7470,7 +7723,7 @@
         },
         {
           "disabled": false,
-          "document": "ckafka sales type.",
+          "document": "<P>Specifies the ckafka sales type.</p>.",
           "example": "0",
           "member": "int64",
           "name": "Cvm",
@@ -7480,7 +7733,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster instance type of ckafka.",
+          "document": "<P>Specifies the ckafka cluster instance type.</p>.",
           "example": "profession",
           "member": "string",
           "name": "InstanceType",
@@ -7490,7 +7743,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the ckafka cluster instance disk type.",
+          "document": "<P>Specifies the disk type of the ckafka cluster instance.</p>.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
@@ -7500,7 +7753,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of topics for current specifications.",
+          "document": "<p>Maximum number of topics for current specifications.</p>.",
           "example": "400",
           "member": "int64",
           "name": "MaxTopicNumber",
@@ -7510,7 +7763,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of partitions for current specifications.",
+          "document": "<p>Specifies the maximum number of partitions for current specifications.</p>.",
           "example": "800",
           "member": "int64",
           "name": "MaxPartitionNumber",
@@ -7520,7 +7773,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled configuration upgrade time.",
+          "document": "<P>Specifies the planned configuration upgrade time.</p>.",
           "example": "0000-00-00 00:00:00",
           "member": "string",
           "name": "RebalanceTime",
@@ -7530,7 +7783,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the number of partitions in the current instance.",
+          "document": "<P>Current number of partitions of the instance.</p>.",
           "example": "30",
           "member": "uint64",
           "name": "PartitionNumber",
@@ -7540,7 +7793,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public network bandwidth type of the ckafka cluster instance.",
+          "document": "<P>Specifies the public network bandwidth type of the ckafka cluster instance.</p>.",
           "example": "BANDWIDTH_PREPAID",
           "member": "string",
           "name": "PublicNetworkChargeType",
@@ -7550,7 +7803,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network bandwidth. minimum 3 Mbps. maximum 999 Mbps. only the pro edition supports filling in.",
+          "document": "<p>Specifies the public network bandwidth. value range: 3Mbps to 999Mbps. only supported in pro edition.</p>.",
           "example": "3",
           "member": "int64",
           "name": "PublicNetwork",
@@ -7560,7 +7813,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the underlying cluster type of the ckafka cluster instance.",
+          "document": "<P>Specifies the underlying cluster type of the ckafka cluster instance.</p>.",
           "example": "CLOUD_CVM",
           "member": "string",
           "name": "ClusterType",
@@ -7570,7 +7823,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance feature list.",
+          "document": "<P>Specifies the instance feature list.</p>.",
           "example": "[\"FEATURE_UPDATE_PROFESSION\"]",
           "member": "string",
           "name": "Features",
@@ -7760,6 +8013,72 @@
       ],
       "type": "object"
     },
+    "InstanceVersion": {
+      "document": "Instance version information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CKafka cluster instance version.",
+          "example": "1.1.1",
+          "member": "string",
+          "name": "KafkaVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Broker version information.",
+          "example": "1.1.1_1.0.9",
+          "member": "string",
+          "name": "CurBrokerVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Latest version information.",
+          "example": "[{\"KafkaVersion\":\"0.10.2\",\"BrokerVersion\":\"v0.10.2.1_r1.2.11\"},{\"KafkaVersion\":\"2.8.1\",\"BrokerVersion\":\"v2.8.1_r1.1.6\"},{\"KafkaVersion\":\"2.4.1\",\"BrokerVersion\":\"v2.4.2_r1.2.4\"},{\"KafkaVersion\":\"1.1.1\",\"BrokerVersion\":\"v1.1.1_r1.1.14\"}]",
+          "member": "LatestBrokerVersion",
+          "name": "LatestBrokerVersion",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow kernel upgrades across major versions.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllowUpgradeHighVersion",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Major version allowed for upgrades.",
+          "example": "[\"2.8.1\"]",
+          "member": "string",
+          "name": "HighVersionSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow automatic deletion of consumer groups during minor version configuration.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllowAutoDeleteTimestamp",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "JgwOperateResponse": {
       "document": "Returned result value of operation",
       "members": [
@@ -7792,6 +8111,32 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LatestBrokerVersion": {
+      "document": "List of the latest version information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CKafka cluster instance version.",
+          "example": "1.1.1",
+          "member": "string",
+          "name": "KafkaVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Broker version number.",
+          "example": "1.1.1_1.0.13",
+          "member": "string",
+          "name": "BrokerVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

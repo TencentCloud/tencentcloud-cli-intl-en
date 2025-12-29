@@ -469,6 +469,13 @@
       "output": "DescribeClustersResponse",
       "status": "online"
     },
+    "DescribeControlPlaneLogs": {
+      "document": "This API is used to query plug-in log collection settings.",
+      "input": "DescribeControlPlaneLogsRequest",
+      "name": "Query the collection enable status of managed component logs for a user",
+      "output": "DescribeControlPlaneLogsResponse",
+      "status": "online"
+    },
     "DescribeECMInstances": {
       "document": "This API is used to obtain the ECM instance information.",
       "input": "DescribeECMInstancesRequest",
@@ -679,6 +686,13 @@
       "output": "DisableClusterDeletionProtectionResponse",
       "status": "online"
     },
+    "DisableControlPlaneLogs": {
+      "document": "This API is used to delete the log collection configuration of a plugin.",
+      "input": "DisableControlPlaneLogsRequest",
+      "name": "Disable user managed component log collection",
+      "output": "DisableControlPlaneLogsResponse",
+      "status": "online"
+    },
     "DisableEncryptionProtection": {
       "document": "This API is used to disable encryption protection.",
       "input": "DisableEncryptionProtectionRequest",
@@ -698,6 +712,13 @@
       "input": "EnableClusterDeletionProtectionRequest",
       "name": "Enables cluster deletion protection",
       "output": "EnableClusterDeletionProtectionResponse",
+      "status": "online"
+    },
+    "EnableControlPlaneLogs": {
+      "document": "This API is used to create log collection settings for plugins.",
+      "input": "EnableControlPlaneLogsRequest",
+      "name": "Enable log collection for managed components in specified clusters",
+      "output": "EnableControlPlaneLogsResponse",
       "status": "online"
     },
     "EnableEncryptionProtection": {
@@ -3260,6 +3281,67 @@
         }
       ],
       "usage": "out"
+    },
+    "ComponentLogConfig": {
+      "document": "Component log collection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Component name",
+          "example": "kapenter",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log level. for components that support dynamic adjustment, you can specify this parameter when enabling logs.",
+          "example": "2",
+          "member": "int64",
+          "name": "LogLevel",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Logset ID. if not specified, auto-create.",
+          "example": "2912eb16-a56c-4b9b-adb0-9828db1ad342",
+          "member": "string",
+          "name": "LogSetId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID. if not specified, auto-create.",
+          "example": "2912eb16-a56c-4b9b-adb0-9828db1ad342",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "topic region. this parameter enables cross-region shipping of logs.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "TopicRegion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CreateBackupStorageLocationRequest": {
       "document": "CreateBackupStorageLocation request structure.",
@@ -7036,6 +7118,52 @@
       ],
       "type": "object"
     },
+    "DescribeControlPlaneLogsRequest": {
+      "document": "DescribeControlPlaneLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cls-kaftesta",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster type. currently only support tke.",
+          "example": "tke",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeControlPlaneLogsResponse": {
+      "document": "DescribeControlPlaneLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the query result of log collection configuration.",
+          "example": "无",
+          "member": "ComponentLogConfig",
+          "name": "Details",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeECMInstancesRequest": {
       "document": "DescribeECMInstances request structure.",
       "members": [
@@ -9042,6 +9170,60 @@
       ],
       "type": "object"
     },
+    "DisableControlPlaneLogsRequest": {
+      "document": "DisableControlPlaneLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cls-kaftesta",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster type. currently only support tke.",
+          "example": "tke",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Component name list. currently supports cluster-autoscaler, kapenter.",
+          "example": "[\"karpenter\"]",
+          "member": "string",
+          "name": "ComponentNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to delete the logset and topic. if the logset and topic are in use by other collection rules, they will not be deleted.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteLogSetAndTopic",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableControlPlaneLogsResponse": {
+      "document": "DisableControlPlaneLogs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisableEncryptionProtectionRequest": {
       "document": "DisableEncryptionProtection request structure.",
       "members": [
@@ -9656,6 +9838,51 @@
     },
     "EnableClusterDeletionProtectionResponse": {
       "document": "EnableClusterDeletionProtection response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableControlPlaneLogsRequest": {
+      "document": "EnableControlPlaneLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cls-kaftesta",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster type. currently only support tke.",
+          "example": "tke",
+          "member": "string",
+          "name": "ClusterType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Component name list. currently supports cluster-autoscaler, kapenter.",
+          "example": "无",
+          "member": "ComponentLogConfig",
+          "name": "Components",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "EnableControlPlaneLogsResponse": {
+      "document": "EnableControlPlaneLogs response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
