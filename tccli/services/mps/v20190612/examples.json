@@ -1045,6 +1045,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
         "title": "Resetting a transcoding rule"
       }
+    ],
+    "TextTranslation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextTranslation\n<Common request parameters>\n\n{\n    \"SourceText\": \"hello\",\n    \"Source\": \"zh\",\n    \"Target\": \"en\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6411c585-ee14-4a53-8642-dea0f16e161d\",\n        \"Source\": \"zh\",\n        \"Target\": \"en\",\n        \"TargetText\": \"hello\"\n    }\n}",
+        "title": "Text Translation Request Example"
+      }
     ]
   },
   "version": "1.0"

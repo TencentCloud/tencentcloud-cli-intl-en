@@ -477,7 +477,7 @@
       "status": "online"
     },
     "DescribeCDNUsageData": {
-      "document": "This API is used to query the CDN statistics of VOD such as traffic and bandwidth.\n   1. Only CDN usage data for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days.\n   3. The time granularity of usage data can be specified, including 5-minute, 1-hour, and 1-day.\n   4. Traffic refers to the total traffic within the query time granularity, while bandwidth the peak bandwidth.",
+      "document": "This API is used to query the CDN statistics of VOD such as traffic and bandwidth.\n   1. CDN usage data is retained on the system side for 13 months, while you can only query the CDN usage data for the most recent 365 days via the API.If you need to retrieve historical usage data beyond 365 days, please contact us.\n   2. The query time range cannot be more than 90 days.\n   3. The time granularity of usage data can be specified, including 5-minute, 1-hour, and 1-day.\n   4. Traffic refers to the total traffic within the query time granularity, while bandwidth the peak bandwidth.",
       "input": "DescribeCDNUsageDataRequest",
       "name": "Queries CDN usage data of VOD",
       "output": "DescribeCDNUsageDataResponse",
@@ -603,7 +603,7 @@
       "status": "online"
     },
     "DescribeMediaProcessUsageData": {
-      "document": "This API is used to query the information of video processing usage within the specified time range.\n   1. Statistics on video processing for the last 365 days can be queried.\n   2. The query time range cannot be more than 90 days.",
+      "document": "This API is used to query the information of video processing usage within the specified time range.\n   1. Video processing usage data is retained on the system side for 13 months, and you may only query the usage data for the most recent 365 days via the API. If you need to retrieve historical usage data beyond 365 days, please contact us.\n   2. The query time range cannot be more than 90 days.",
       "input": "DescribeMediaProcessUsageDataRequest",
       "name": "Queries video processing usage statistics",
       "output": "DescribeMediaProcessUsageDataResponse",
@@ -680,7 +680,7 @@
       "status": "online"
     },
     "DescribeStorageDetails": {
-      "document": "This API is used to query VOD storage usage in bytes within the query period.\n    1. You can only query storage usage for the last 365 days.\n    2. The query period is up to 90 days.\n    3. The query period at minute-level granularity is up to 7 days.",
+      "document": "This API is used to query VOD storage usage in bytes within the query period.\n    1. Storage usage data is retained on the system side for 13 months, and you may only query the usage data for the most recent 365 days via the API. If you need to retrieve historical usage data beyond 365 days, please contact us.\n    2. The query period is up to 90 days.\n    3. The query period at minute-level granularity is up to 7 days.",
       "input": "DescribeStorageDetailsRequest",
       "name": "Queries storage capacity usage details",
       "output": "DescribeStorageDetailsResponse",

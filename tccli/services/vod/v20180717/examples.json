@@ -688,12 +688,6 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeCDNUsageData\n&StartTime=2018-12-01T00:00:00+08:00\n&EndTime=2018-12-03T00:00:00+08:00\n&DataType=Bandwidth\n&SubAppId=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInterval\": 1440,\n        \"Data\": [\n            {\n                \"Time\": \"2018-12-01T00:00:00+08:00\",\n                \"Value\": 700000\n            },\n            {\n                \"Time\": \"2018-12-01T05:00:00+08:00\",\n                \"Value\": 800000\n            },\n            {\n                \"Time\": \"2018-12-01T10:00:00+08:00\",\n                \"Value\": 920000\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Querying bandwidth statistics of all domain names between December 1, 2018 and December 3, 2018 by an admin"
-      },
-      {
-        "document": "This example shows you how to query CDN traffic statistics between December 1, 2018 (inclusive) and December 3, 2018 (inclusive).",
-        "input": "https://vod.tencentcloudapi.com/?Action=DescribeCDNUsageData\n&DomainNames.0=123.vod2.myqcloud.com\n&DomainNames.1=test.a.com\n&StartTime=2018-12-01T00:00:00+08:00\n&EndTime=2018-12-03T00:00:00+08:00\n&DataType=Bandwidth\n&DataInterval=5\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DataInterval\": 5,\n        \"Data\": [\n            {\n                \"Time\": \"2018-12-01T00:00:00+08:00\",\n                \"Value\": 100000\n            },\n            {\n                \"Time\": \"2018-12-01T05:00:00+08:00\",\n                \"Value\": 200000\n            },\n            {\n                \"Time\": \"2018-12-01T10:00:00+08:00\",\n                \"Value\": 350000\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
-        "title": "This example shows you how to query bandwidth statistics (5-minute granularity) of the domain names `123.vod2.myqcloud.com` and `test.a.com` between December 1, 2018 and December 3, 2018."
       }
     ],
     "DescribeCdnLogs": [

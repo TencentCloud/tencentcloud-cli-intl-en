@@ -741,6 +741,13 @@
       "name": "Resets a workflow",
       "output": "ResetWorkflowResponse",
       "status": "online"
+    },
+    "TextTranslation": {
+      "document": "This API is used to translate text.",
+      "input": "TextTranslationRequest",
+      "name": "Translates text",
+      "output": "TextTranslationResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -10092,7 +10099,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.",
+          "document": "Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.",
           "example": "vts-213xxxx02-0",
           "member": "string",
           "name": "ResourceId",
@@ -10220,7 +10227,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
+          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmål Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -10247,7 +10254,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - If this field is unspecified or left blank, no subtitle file will be generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - Unspecified or left blank: no subtitle file generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n- Under the OCR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -10274,7 +10281,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle translation target language. This field is valid when the value of TranslateSwitch is `ON`.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`:Bemba.\n`bew`:Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`:Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat language.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`:Kiga.\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burmese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -10283,7 +10290,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
+          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n- 2: OCR recognition subtitle.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
           "example": "0",
           "member": "uint64",
           "name": "ProcessType",
@@ -17879,7 +17886,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification Type:\nTDMQ-CMQ: TDMQ for CMQ.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/api/1041/33680).\n\n<font color=\"red\">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>",
+          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -21515,7 +21522,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
+          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmål Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -21524,7 +21531,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - Unspecified or left blank: no subtitle file generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - Unspecified or left blank: no subtitle file generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n- Under the OCR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -21551,7 +21558,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`: Bemba.\n`bew`: Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`: Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`: Kiga\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka.\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew.\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burnese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -21560,7 +21567,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: If the field is unspecified, ASR is used by default.",
+          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n- 2: OCR recognition subtitle.\n**Note**: If the field is unspecified, ASR is used by default.",
           "example": "0",
           "member": "uint64",
           "name": "ProcessType",
@@ -23640,7 +23647,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.",
+          "document": "Resource ID. Ensure that the corresponding resource is enabled. The default value is the primary resource ID of the account.",
           "example": "vts-24000-0",
           "member": "string",
           "name": "ResourceId",
@@ -24415,7 +24422,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nCurrently, the following languages are supported:\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
+          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmål Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -24426,7 +24433,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     -vtt: WebVTT format subtitle.\n     -srt: SRT format subtitle.\n     - If this field is unspecified or left blank, no subtitle file will be generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation mode, this field cannot be unspecified or left blank.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Smart subtitle file format:\n- Under the ASR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n     - Unspecified or left blank: no subtitle file generated.\n- Under the pure subtitle translation processing type:\n    - original: consistent with the source file.\n    - vtt: WebVTT format subtitle.\n    - srt: SRT format subtitle.\n- Under the OCR recognition and translation processing type:\n     - vtt: WebVTT format subtitle.\n     - srt: SRT format subtitle.\n**Note**:\n- For ASR recognition mode, when 2 or more languages are involved in translation, this field cannot be unspecified or left blank.\n- For pure subtitle translation and OCR recognition mode, this field cannot be unspecified or left blank.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -24448,7 +24455,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`: Bemba.\n`bew`: Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`: Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`: Kiga\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka.\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew.\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burmese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -24481,7 +24488,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
+          "document": "Subtitle processing type:\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.\n- 2: OCR recognition subtitle.\n**Note**: The default processing type is ASR recognition subtitle if the field is unspecified.",
           "example": "0",
           "member": "uint64",
           "name": "ProcessType",
@@ -24489,6 +24496,17 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SelectingSubtitleAreasConfig",
+          "name": "SelectingSubtitleAreasConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -26059,6 +26077,45 @@
       ],
       "usage": "both"
     },
+    "SelectingSubtitleAreasConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EraseArea",
+          "name": "AutoAreas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "200",
+          "member": "uint64",
+          "name": "SampleWidth",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1000",
+          "member": "uint64",
+          "name": "SampleHeight",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SharpEnhanceConfig": {
       "document": "Detail enhancement configuration.",
       "members": [
@@ -26816,6 +26873,82 @@
       ],
       "usage": "out"
     },
+    "SmartSubtitleTaskFullTextResult": {
+      "document": "Full-text recognition result for smart subtitle tasks.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, which can be PROCESSING, SUCCESS, or FAIL.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "task fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input information for smart subtitle tasks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskResultInput",
+          "name": "Input",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output information for smart subtitle tasks.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskTextResultOutput",
+          "name": "Output",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "SmartSubtitleTaskResultInput": {
       "document": "Smart subtitle translation input.",
       "members": [
@@ -26835,6 +26968,42 @@
           "example": "自定义参数",
           "member": "RawSmartSubtitleParameter",
           "name": "RawParameter",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SmartSubtitleTaskTextResultOutput": {
+      "document": "Smart subtitle recognition result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subtitle recognition result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SubtitleResult",
+          "name": "RecognizeSubtitleResult",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle translation result.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SubtitleResult",
+          "name": "TransSubtitleResult",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Storage location of the subtitle file.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27201,7 +27370,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n- AsrFullTextRecognition: full speech recognition.\n- TransTextRecognition: speech translation.\n- PureSubtitleTrans: pure subtitle translation.",
+          "document": "Task type. Valid values:\n- AsrFullTextRecognition: full speech recognition.\n- TransTextRecognition: speech translation.\n- PureSubtitleTrans: pure subtitle translation.\n- OcrFullTextRecognition: text-based subtitle extraction.",
           "example": "AsrFullTextRecognition",
           "member": "string",
           "name": "Type",
@@ -27235,6 +27404,16 @@
           "example": "无",
           "member": "PureSubtitleTransResult",
           "name": "PureSubtitleTransTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Text-based subtitle extraction result. This field is valid when the value of Type is\nOcrFullTextRecognition.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskFullTextResult",
+          "name": "OcrFullTextTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -27604,6 +27783,45 @@
         }
       ],
       "usage": "out"
+    },
+    "SubtitleResult": {
+      "document": "Smart subtitle task result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Language of the subtitle file.",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the processing is successful.",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle file URL.",
+          "example": "/xx/310*****.vtt",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SubtitleTemplate": {
       "document": "The subtitle settings.",
@@ -28311,7 +28529,7 @@
         },
         {
           "disabled": false,
-          "document": "Statistical data details for tasks of various specifications.\n1. Transcoding specification:\n<li>Audio: audio-only.</li>\n<li>Remuxing: conversion to muxing.</li>\n<li>Other transcoding specifications: {TYPE}.{CODEC}.{SPECIFICATION}.</li> Specifically, valid values for TYPE:\n    Standard: standard transcoding.\n    TESHD-10: TSC transcoding for videos.\n    TESHD-20: TSC transcoding for audios.\n    TESHD-30: TSC transcoding for audios/videos.\n    TESHD-30-SDK: duration-based billing of TSC transcoding SDK for audios/videos.\n    TESHD-30-SDKCores: core number-based billing of TSC transcoding SDK for audios/videos.\n    Edit: video editing.\n  Specifically, valid values for CODEC:\n    H264: H. 264 encoding.\n    H265: H.265 encoding.\n    AV1: AV1 encoding.\n    MV-HEVC: MV-HEVC encoding.\n  Specifically, valid values for SPECIFICATION:\n    SD: standard definition.\n    HD: high definition.\n    FHD: full HD.\n    2K: 2K.\n    4K: 4K.\nFor example, TESHD-10.H265.HD indicates TSC transcoding using the H.265 encoding method.\n2. Enhancement specification: video enhancement format: {TYPE}.{CODEC}.{SPECIFICATION}.{FPS}, where valid values for CODEC and SPECIFICATION follow the transcoding descriptions mentioned above, and FPS is valid only when the atomic enhancement type is used; audio enhancement format: {TYPE}.\nValid values for enhancement TYPE:\n<li>Enhance: common enhancement type, which might be any atomic enhancement type.</li>\n<li>Atomic enhancement type</li>. Valid values for video atomic enhancement type:\n    Sdr2hdr: SDR2HDR.\n    SuperResolution: super resolution.\n    InsertFrame: frame interpolation.\n    ComprehensiveEnhancement: comprehensive enhancement.\n    NoiseReduction: video noise reduction.\n    ColorEnhancement: color enhancement.\n    RemoveScratches: scratch removal.\n    Deburr:  artifacts removal.\n    DetailEnhancement: detail enhancement.\n    LightEnhancement: low-light enhancement.\n    FaceEnhancement: face enhancement.\n  Valid value for audio atomic enhancement type.\n    AudioNoiseReduction\n    VolumeBalance\n    AudioBeautify\n    AudioSeparation\n\n3. Screenshot specification:\n<li>ImageSprite: sprite.</li>\n<li>SampleSnapshot: sampled screenshot.</li>\n<li>SnapshotByTime: time point screenshot.</li>\n4. Image processing specification: {TYPE}.{CODEC}.{SPECIFICATION}.\n<li> ImageCompression: image encoding.</li>\n<li> ImageSuperResolution: image super resolution.</li>\n<li>EnhanceImageColor: image color enhancement.</li>\n5. Intelligent analysis specification:\n<li>AIAnalysis: major category for analysis.</li>\n<li>VideoTag: video tag.</li>\n<li>VideoClassification: video category.</li>\n<li>SmartCover: smart cover.</li>\n<li>FrameLabel: frame tag.</li>\n<li>VideoSplit: video splitting.</li>\n<li>Highlights: highlights.</li>\n<li>OpeningAndEnding: opening and ending clips.</li>\n6. Intelligent recognition specification:\n<li>AIRecognition: major category for recognition without splitting.</li>\n<li>FaceRecognition: face recognition.</li>\n<li>TextRecognition: optical character recognition.</li>\n<li>ObjectRecognition: object recognition.</li>\n<li>VoiceRecognition: automatic speech recognition.</li>\n<li>VoiceTranslation: speech translation.</li>\n7. There are no segmentation specifications for content moderation and conversion to GIF.",
+          "document": "Statistical data details for tasks of various specifications.\n1. Transcoding specification:\n<li>Audio: audio-only.</li>\n<li>Remuxing: conversion to muxing.</li>\n<li>Other transcoding specifications: {TYPE}.{CODEC}.{SPECIFICATION}.</li> Specifically, valid values for TYPE:\n    Standard: standard transcoding.\n    TESHD-10: TSC transcoding for videos.\n    TESHD-20: TSC transcoding for audios.\n    TESHD-30: TSC transcoding for audios/videos.\n    TESHD-30-SDK: duration-based billing of TSC transcoding SDK for audios/videos.\n    TESHD-30-SDKCores: core number-based billing of TSC transcoding SDK for audios/videos.\n    Edit: video editing.\n  Specifically, valid values for CODEC:\n    H264: H. 264 encoding.\n    H265: H.265 encoding.\n    AV1: AV1 encoding.\n    MV-HEVC: MV-HEVC encoding.\n  Specifically, valid values for SPECIFICATION:\n    SD: standard definition.\n    HD: high definition.\n    FHD: full HD.\n    2K: 2K.\n    4K: 4K.\nFor example, TESHD-10.H265.HD indicates TSC transcoding using the H.265 encoding method.\n2. Enhancement specification: video enhancement format: {TYPE}.{CODEC}.{SPECIFICATION}.{FPS}, where valid values for CODEC and SPECIFICATION follow the transcoding descriptions mentioned above, and FPS is valid only when the atomic enhancement type is used; audio enhancement format: {TYPE}.\nValid values for enhancement TYPE:\n<li>Enhance: common enhancement type, which might be any atomic enhancement type.</li>\n<li>Atomic enhancement type</li>. Valid values for video atomic enhancement type:\n    Sdr2hdr: SDR2HDR.\n    SuperResolution: super resolution.\n    InsertFrame: frame interpolation.\n    ComprehensiveEnhancement: comprehensive enhancement.\n    NoiseReduction: video noise reduction.\n    ColorEnhancement: color enhancement.\n    RemoveScratches: scratch removal.\n    Deburr:  artifacts removal.\n    DetailEnhancement: detail enhancement.\n    LightEnhancement: low-light enhancement.\n    FaceEnhancement: face enhancement.\n  Valid value for audio atomic enhancement type.\n    AudioNoiseReduction\n    VolumeBalance\n    AudioBeautify\n    AudioSeparation\n\n3. Screenshot specification:\n<li>ImageSprite: sprite.</li>\n<li>SampleSnapshot: sampled screenshot.</li>\n<li>SnapshotByTime: time point screenshot.</li>\n4. Image processing specification: {TYPE}.{CODEC}.{SPECIFICATION}.\n<li> ImageCompression: image encoding.</li>\n<li> ImageSuperResolution: image super resolution.</li>\n<li>EnhanceImageColor: image color enhancement.</li>\n5. Intelligent analysis specification:\n<li>AIAnalysis: major category for analysis.</li>\n<li>VideoTag: video tag.</li>\n<li>VideoClassification: video category.</li>\n<li>SmartCover: smart cover.</li>\n<li>FrameLabel: frame tag.</li>\n<li>VideoSplit: video splitting.</li>\n<li>Highlights: highlights.</li>\n<li>OpeningAndEnding: opening and ending clips.</li>\n6. Intelligent recognition specification:\n<li>AIRecognition: major category for recognition.</li>\n<li>FaceRecognition: face recognition.</li>\n<li>TextRecognition: optical character recognition.</li>\n<li>ObjectRecognition: object recognition.</li>\n<li>VoiceRecognition: automatic speech recognition.</li>\n<li>VoiceTranslation: speech translation.</li>\n7. There are no segmentation specifications for content moderation and conversion to GIF.",
           "example": "无",
           "member": "SpecificationDataItem",
           "name": "Details",
@@ -28575,6 +28793,90 @@
         }
       ],
       "usage": "in"
+    },
+    "TextTranslationRequest": {
+      "document": "TextTranslation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.",
+          "example": "hello",
+          "member": "string",
+          "name": "SourceText",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source language. Valid values:\n    \"auto\": \"automatic recognition (recognized as a language).\",\n    \"ab\": \"Abkhaz language.\",\n    \"ace\": Acehnese.\",\n    \"ach\": \"Acholi.\",\n    \"af\": \"Afrikaans.\",\n    \"ak\": \"Twi (Akan).\",\n    \"am\": \"Amharic\",\n    \"ar\": \"Arabic.\",\n    \"as\": \"Assamese.\",\n    \"ay\": \"Aymara.\",\n    \"az\": \"Azerbaijani.\",\n    \"ba\": \"Bashkir.\",\n    \"ban\": \"Balinese\",\n    \"bbc\": \"Batak Toba.\",\n    \"bem\": \"Bemba\",\n    \"bew\": \"Betawi\",\n    \"bg\": \"Bulgarian.\",\n    \"bho\": \"Bhojpuri.\",\n    \"bik\": \"Bikol\",\n    \"bm\": \"Bambara.\",\n    \"bn\": \"Bengali.\",\n    \"br\": \"Breton.\",\n    \"bs\": \"Bosnian.\",\n    \"btx\": \"Batak Karo.\",\n    \"bts\": \"Batak Simalungun.\",\n    \"bua\": \"Buryat.\",\n    \"ca\": \"Catalan.\",\n    \"ceb\": \"Cebuano.\",\n    \"cgg\": \"Kiga\",\n    \"chm\": \"Meadow Mari language.\",\n    \"ckb\": \"Kurdish (Sorani).\",\n    \"cnh\": \"Hakha Chin.\",\n    \"co\": \"Corsican.\",\n    \"crh\": \"Crimean Tatar.\",\n    \"crs\": \"Seychellois Creole.\",\n    \"cs\": \"Czech.\",\n    \"cv\": \"Chuvash.\",\n    \"cy\": \"Welsh.\",\n    \"da\": \"Danish.\",\n    \"de\": \"German.\",\n    \"din\": \"Dinka\",\n    \"doi\": \"Dogri.\",\n    \"dov\": \"Dombe.\",\n    \"dv\": \"Divehi.\",\n    \"dz\": \"Dzongkha.\",\n    \"ee\": \"Ewe\",\n    \"el\": \"Greek.\",\n    \"en\": \"English.\",\n    \"eo\": \"Esperanto.\",\n    \"es\": \"Spanish.\",\n    \"et\": \"Estonian.\",\n    \"eu\": \"Basque.\",\n    \"fa\": \"Persian.\",\n    \"ff\": \"Fula.\",\n    \"fi\": \"Finnish.\",\n    \"fil\": \"Filipino (Tagalog).\",\n    \"fj\": \"Fijian.\",\n    \"fr\": \"French.\",\n    \"fr-CA\": \"French (Canada).\",\n    \"fr-FR\": \"French (France).\",\n    \"fy\": \"Frisian.\",\n    \"ga\": \"Irish.\",\n    \"gaa\": \"Ga.\",\n    \"gd\": \"Scottish Gaelic.\",\n    \"gl\": \"Galician.\",\n    \"gn\": \"Guarani.\",\n    \"gom\": \"Goan Konkani.\",\n    \"gu\": \"Gujarati.\",\n    \"gv\": \"Manx.\",\n    \"ha\": \"Hausa\",\n    \"haw\": \"Hawaiian.\",\n    \"he\": \"Hebrew.\",\n    \"hi\": \"Hindi.\",\n    \"hil\": \"Hiligaynon.\",\n    \"hmn\": \"Hmong.\",\n    \"hr\": \"Croatian.\",\n    \"hrx\": \"Hunsrik.\",\n    \"ht\": \"Haitian Creole.\",\n    \"hu\": \"Hungarian.\",\n    \"hy\": \"Armenian.\",\n    \"id\": \"Indonesian.\",\n    \"ig\": \"Igbo\",\n    \"ilo\": \"Iloko.\",\n    \"is\": \"Icelandic.\",\n    \"it\": \"Italian.\",\n    \"iw\": \"Hebrew.\",\n    \"ja\": \"Japanese.\",\n    \"jv\": \"Javanese.\",\n    \"jw\": \"Javanese.\",\n    \"ka\": \"Georgian.\",\n    \"kk\": \"Kazakh.\",\n    \"km\": \"Khmer.\",\n    \"kn\": \"Kanada.\",\n    \"ko\": \"Korean.\",\n    \"kri\": \"Krio\",\n    \"ku\": \"Kurdish (Kurmanji).\",\n    \"ktu\": \"Kituba.\",\n    \"ky\": \"Kirghiz.\",\n    \"la\": \"Latin.\",\n    \"lb\": \"Luxembourgish.\",\n    \"lg\": \"Ganda (Luganda).\",\n    \"li\": \"Limburgish.\",\n    \"lij\": \"Ligurian.\",\n    \"lmo\": \"Lombard.\",\n    \"ln\": \"Lingala.\",\n    \"lo\": \"Lao.\",\n    \"lt\": \"Lithuanian.\",\n    \"ltg\": \"Latgalian.\",\n    \"luo\": \"Luo\",\n    \"lus\": \"Mizo.\",\n    \"lv\": \"Latvian.\",\n    \"mai\": \"Maithili.\",\n    \"mak\": \"Makassar.\",\n    \"mg\": \"Malagasy.\",\n    \"mi\": \"Maori.\",\n    \"min\": \"Minangkabau.\",\n    \"mk\": \"Macedonian.\",\n    \"ml\": \"Malayalam.\",\n    \"mn\": \"Mongolian.\",\n    \"mr\": \"Marathi.\",\n    \"ms\": \"Malay.\",\n    \"mt\": \"Maltese.\",\n    \"my\": \"Burmese.\",\n    \"ne\": \"Nepali.\",\n    \"new\": \"Nepali (Newar).\",\n    \"nl\": \"Dutch.\",\n    \"no\": \"Norwegian.\",\n    \"nr\": \"Ndebele (South).\",\n    \"nso\": \"Northern Sotho (Sepedi).\",\n    \"nus\": \"Nuer.\",\n    \"ny\": \"Chichewa (Nyanja).\",\n    \"oc\": \"Occitan.\",\n    \"om\": \"Oromo\",\n    \"or\": \"Odia (Oria).\",\n    \"pa\": \"Punjabi.\",\n    \"pag\": \"Pangasinan.\",\n    \"pam\": \"Kapampangan.\",\n    \"pap\": \"Papiamento\",\n    \"pl\": \"Polish.\",\n    \"ps\": \"Pashto\",\n    \"pt\": \"Portuguese.\",\n    \"pt-BR\": \"Portuguese (Brazil).\",\n    \"pt-PT\": \"Portuguese (Portugal).\",\n    \"qu\": \"Quechuan.\",\n    \"ro\": \"Romanian.\",\n    \"rom\": \"Romani.\",\n    \"rn\": \"Rundi\",\n    \"ru\": \"Russian.\",\n    \"rw\": \"Kinyarwanda.\",\n    \"sa\": \"Sanskrit.\",\n    \"scn\": \"Sicilian.\",\n    \"sd\": \"Sindhi.\",\n    \"sg\": \"Sango\",\n    \"shn\": \"Shan.\",\n    \"si\": \"Sinhalese.\",\n    \"sk\": \"Slovak.\",\n    \"sl\": \"Slovene.\",\n    \"sm\": \"Samoan.\",\n    \"sn\": \"Shona.\",\n    \"so\": \"Somali.\",\n    \"sq\": \"Albanian.\",\n    \"sr\": \"Serbian.\",\n    \"ss\": \"Swati.\",\n    \"st\": \"Sesotho.\",\n    \"su\": \"Sundanese.\",\n    \"sv\": \"Swedish.\",\n    \"sw\": \"Swahili.\",\n    \"szl\": \"Silesian.\",\n    \"ta\": \"Tamil.\",\n    \"te\": \"Telugu.\",\n    \"tet\": \"Tetum.\",\n    \"tg\": \"Tajik.\",\n    \"th\": \"Thai.\",\n    \"ti\": \"Tigrinya.\",\n    \"tk\": \"Turkmen.\",\n    \"tl\": \" Filipino (Tagalog).\",\n    \"tn\": \"Tswana.\",\n    \"tr\": \"Turkish.\",\n    \"ts\": \"Tsonga.\",\n    \"tt\": \"Tatar.\",\n    \"ug\": \"Uyghur.\",\n    \"uk\": \"Ukrainian.\",\n    \"ur\": \"Urdu.\",\n    \"uz\": \"Uzbek.\",\n    \"vi\": \"Vietnamese.\",\n    \"xh\": \"Xhosa.\",\n    \"yi\": \"Yiddish.\",\n    \"yo\": \"Yoruba.\",\n    \"yua\": \"Yucatec Maya.\",\n    \"yue\": \"Cantonese.\",\n    \"zh\": \"Simplified Chinese.\",\n    \"zh-TW\": \"Chinese (Traditional).\",\n    \"zu\": \"Zulu.\"",
+          "example": "en",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target language. Valid values:\n    \"ab\": \"Abkhaz language.\",\n    \"ace\": \"Acehnese.\",\n    \"ach\": \"Acholi.\",\n    \"af\": \"Afrikaans.\",\n    \"ak\": \"Twi (Akan).\",\n    \"am\": \"Amharic\",\n    \"ar\": \"Arabic.\",\n    \"as\": \"Assamese.\",\n    \"ay\": \"Aymara.\",\n    \"az\": \"Azerbaijani.\",\n    \"ba\": \"Bashkir.\",\n    \"ban\": \"Balinese\",\n    \"bbc\": \"Batak Toba.\",\n    \"bem\": \"Bemba\",\n    \"bew\": \"Betawi\",\n    \"bg\": \"Bulgarian.\",\n    \"bho\": \"Bhojpuri.\",\n    \"bik\": \"Bikol\",\n    \"bm\": \"Bambara.\",\n    \"bn\": \"Bengali.\",\n    \"br\": \"Breton.\",\n    \"bs\": \"Bosnian.\",\n    \"btx\": \"Batak Karo.\",\n    \"bts\": \"Batak Simalungun.\",\n    \"bua\": \"Buryat.\",\n    \"ca\": \"Catalan.\",\n    \"ceb\": \"Cebuano.\",\n    \"cgg\": \"Kiga\",\n    \"chm\": \"Meadow Mari language.\",\n    \"ckb\": \"Kurdish (Sorani).\",\n    \"cnh\": \"Hakha Chin.\",\n    \"co\": \"Corsican.\",\n    \"crh\": \"Crimean Tatar.\",\n    \"crs\": \"Seychellois Creole.\",\n    \"cs\": \"Czech.\",\n    \"cv\": \"Chuvash.\",\n    \"cy\": \"Welsh.\",\n    \"da\": \"Danish.\",\n    \"de\": \"German.\",\n    \"din\": \"Dinka\",\n    \"doi\": \"Dogri.\",\n    \"dov\": \"Dombe.\",\n    \"dv\": \"Divehi.\",\n    \"dz\": \"Dzongkha.\",\n    \"ee\": \"Ewe\",\n    \"el\": \"Greek.\",\n    \"en\": \"English.\",\n    \"eo\": \"Esperanto.\",\n    \"es\": \"Spanish.\",\n    \"et\": \"Estonian.\",\n    \"eu\": \"Basque.\",\n    \"fa\": \"Persian.\",\n    \"ff\": \"Fula.\",\n    \"fi\": \"Finnish.\",\n    \"fil\": \"Filipino (Tagalog).\",\n    \"fj\": \"Fijian.\",\n    \"fr\": \"French.\",\n    \"fr-CA\": \"French (Canada).\",\n    \"fr-FR\": \"French (France).\",\n    \"fy\": \"Frisian.\",\n    \"ga\": \"Irish.\",\n    \"gaa\": \"Ga.\",\n    \"gd\": \"Scottish Gaelic.\",\n    \"gl\": \"Galician.\",\n    \"gn\": \"Guarani.\",\n    \"gom\": \"Goan Konkani.\",\n    \"gu\": \"Gujarati.\",\n    \"gv\": \"Manx.\",\n    \"ha\": \"Hausa\",\n    \"haw\": \"Hawaiian.\",\n    \"he\": \"Hebrew.\",\n    \"hi\": \"Hindi.\",\n    \"hil\": \"Hiligaynon.\",\n    \"hmn\": \"Hmong.\",\n    \"hr\": \"Croatian.\",\n    \"hrx\": \"Hunsrik.\",\n    \"ht\": \"Haitian Creole.\",\n    \"hu\": \"Hungarian.\",\n    \"hy\": \"Armenian.\",\n    \"id\": \"Indonesian.\",\n    \"ig\": \"Igbo\",\n    \"ilo\": \"Iloko.\",\n    \"is\": \"Icelandic.\",\n    \"it\": \"Italian.\",\n    \"iw\": \"Hebrew.\",\n    \"ja\": \"Japanese.\",\n    \"jv\": \"Javanese.\",\n    \"jw\": \"Javanese.\",\n    \"ka\": \"Georgian.\",\n    \"kk\": \"Kazakh.\",\n    \"km\": \"Khmer.\",\n    \"kn\": \"Kanada.\",\n    \"ko\": \"Korean.\",\n    \"kri\": \"Krio\",\n    \"ku\": \"Kurdish (Kurmanji).\",\n    \"ktu\": \"Kituba.\",\n    \"ky\": \"Kirghiz.\",\n    \"la\": \"Latin.\",\n    \"lb\": \"Luxembourgish.\",\n    \"lg\": \"Ganda (Luganda).\",\n    \"li\": \"Limburgish.\",\n    \"lij\": \"Ligurian.\",\n    \"lmo\": \"Lombard.\",\n    \"ln\": \"Lingala.\",\n    \"lo\": \"Lao.\",\n    \"lt\": \"Lithuanian.\",\n    \"ltg\": \"Latgalian.\",\n    \"luo\": \"Luo\",\n    \"lus\": \"Mizo.\",\n    \"lv\": \"Latvian.\",\n    \"mai\": \"Maithili.\",\n    \"mak\": \"Makassar.\",\n    \"mg\": \"Malagasy.\",\n    \"mi\": \"Maori.\",\n    \"min\": \"Minangkabau.\",\n    \"mk\": \"Macedonian.\",\n    \"ml\": \"Malayalam.\",\n    \"mn\": \"Mongolian.\",\n    \"mr\": \"Marathi.\",\n    \"ms\": \"Malay.\",\n    \"mt\": \"Maltese.\",\n    \"my\": \"Burmese.\",\n    \"ne\": \"Nepali.\",\n    \"new\": \"Nepali (Newar).\",\n    \"nl\": \"Dutch.\",\n    \"no\": \"Norwegian.\",\n    \"nr\": \"Ndebele (South).\",\n    \"nso\": \"Northern Sotho (Sepedi).\",\n    \"nus\": \"Nuer.\",\n    \"ny\": \"Chichewa (Nyanja).\",\n    \"oc\": \"Occitan.\",\n    \"om\": \"Oromo\",\n    \"or\": \"Odia (Oria).\",\n    \"pa\": \"Punjabi.\",\n    \"pag\": \"Pangasinan.\",\n    \"pam\": \"Kapampangan.\",\n    \"pap\": \"Papiamento\",\n    \"pl\": \"Polish.\",\n    \"ps\": \"Pashto\",\n    \"pt\": \"Portuguese.\",\n    \"pt-BR\": \"Portuguese (Brazil).\",\n    \"pt-PT\": \"Portuguese (Portugal).\",\n    \"qu\": \"Quechuan.\",\n    \"ro\": \"Romanian.\",\n    \"rom\": \"Romani.\",\n    \"rn\": \"Rundi\",\n    \"ru\": \"Russian.\",\n    \"rw\": \"Kinyarwanda.\",\n    \"sa\": \"Sanskrit.\",\n    \"scn\": \"Sicilian.\",\n    \"sd\": \"Sindhi.\",\n    \"sg\": \"Sango\",\n    \"shn\": \"Shan.\",\n    \"si\": \"Sinhalese.\",\n    \"sk\": \"Slovak.\",\n    \"sl\": \"Slovene.\",\n    \"sm\": \"Samoan.\",\n    \"sn\": \"Shona.\",\n    \"so\": \"Somali.\",\n    \"sq\": \"Albanian.\",\n    \"sr\": \"Serbian.\",\n    \"ss\": \"Swati.\",\n    \"st\": \"Sesotho.\",\n    \"su\": \"Sundanese.\",\n    \"sv\": \"Swedish.\",\n    \"sw\": \"Swahili.\",\n    \"szl\": \"Silesian.\",\n    \"ta\": \"Tamil.\",\n    \"te\": \"Telugu.\",\n    \"tet\": \"Tetum.\",\n    \"tg\": \"Tajik.\",\n    \"th\": \"Thai.\",\n    \"ti\": \"Tigrinya.\",\n    \"tk\": \"Turkmen.\",\n    \"tl\": \" Filipino (Tagalog).\",\n    \"tn\": \"Tswana.\",\n    \"tr\": \"Turkish.\",\n    \"ts\": \"Tsonga.\",\n    \"tt\": \"Tatar.\",\n    \"ug\": \"Uyghur.\",\n    \"uk\": \"Ukrainian.\",\n    \"ur\": \"Urdu.\",\n    \"uz\": \"Uzbek.\",\n    \"vi\": \"Vietnamese.\",\n    \"xh\": \"Xhosa.\",\n    \"yi\": \"Yiddish.\",\n    \"yo\": \"Yoruba.\",\n    \"yua\": \"Yucatec Maya.\",\n    \"yue\": \"Cantonese.\",\n    \"zh\": \"Simplified Chinese.\",\n    \"zh-TW\": \"Chinese (Traditional).\",\n    \"zu\": \"Zulu.\"",
+          "example": "zh",
+          "member": "string",
+          "name": "Target",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User extension parameter.",
+          "example": "用户扩展字段",
+          "member": "string",
+          "name": "UserExtPara",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextTranslationResponse": {
+      "document": "TextTranslation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text after translation.",
+          "example": "你好",
+          "member": "string",
+          "name": "TargetText",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source language. See the input parameter Source.",
+          "example": "en",
+          "member": "string",
+          "name": "Source",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target language. See the input parameter Target.",
+          "example": "zh",
+          "member": "string",
+          "name": "Target",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TextWatermarkTemplateInput": {
       "document": "Text watermarking template",
