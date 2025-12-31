@@ -594,7 +594,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Do you want to enable video enhancement? 1: Enable 0: Do not enable.",
           "example": "1",
           "member": "uint64",
           "name": "VideoEnhanceEnabled",
@@ -605,7 +605,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video enhancement configuration array.",
           "example": "无",
           "member": "VideoEnhanceSetting",
           "name": "VideoEnhanceSettings",
@@ -645,6 +645,17 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traceability watermark.",
+          "example": "[\"5E7818810943216A1234\"]",
+          "member": "string",
+          "name": "ForensicWatermarkIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -806,11 +817,11 @@
       "usage": "both"
     },
     "AbWatermarkSettingsReq": {
-      "document": "",
+      "document": "AB watermark configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Optional values: A/B.",
           "example": "A",
           "member": "string",
           "name": "Type",
@@ -3194,7 +3205,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark image’s horizontal distance from the origin as a percentage of the video width",
+          "document": "The watermark image's horizontal distance from the origin as a percentage of the video width",
           "example": "10",
           "member": "int64",
           "name": "XPos",
@@ -3204,7 +3215,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark image’s vertical distance from the origin as a percentage of the video height",
+          "document": "The watermark image's vertical distance from the origin as a percentage of the video height",
           "example": "10",
           "member": "int64",
           "name": "YPos",
@@ -7212,7 +7223,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Notification type. Currently only supports URLs",
           "example": "URL",
           "member": "string",
           "name": "Type",
@@ -7223,7 +7234,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Callback URL. Starting with http/https, supporting a maximum of 512 characters",
           "example": "https://www.tencent.com",
           "member": "string",
           "name": "NotifyUrl",
@@ -7459,7 +7470,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Video URL, starting with http/https, supports up to 512 characters, currently only supports complete single file videos, does not support streaming formats based on playlists and segments (such as HLS or DASH)",
           "example": "https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp&gws_rd=ssl",
           "member": "string",
           "name": "Url",
@@ -7533,11 +7544,11 @@
       "usage": "both"
     },
     "VideoEnhanceSetting": {
-      "document": "",
+      "document": "VideoEnhanceSetting",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Video enhancement types, optional: \"GameEnhance\", \"ColorEnhance\", \"Debur\", \"Comprehensive\", \"Denoising\", \"SR\", \"OutdoorSportsCompetitions\", \"IndoorSportsCompetitions\", \"ShowEnhance\"",
           "example": "GameEnhance",
           "member": "string",
           "name": "Type",
@@ -7548,7 +7559,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video enhancement intensity, 0-1.0, granularity 0.1",
           "example": "0.5",
           "member": "float",
           "name": "Strength",
@@ -7799,7 +7810,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video enhancement switch, 1: on 0: off.",
           "example": "0",
           "member": "uint64",
           "name": "VideoEnhanceEnabled",
@@ -7810,7 +7821,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video enhancement parameter array.",
           "example": "无",
           "member": "VideoEnhanceSetting",
           "name": "VideoEnhanceSettings",
@@ -7828,6 +7839,17 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traceability watermark.",
+          "example": "[\"5E7818810943216A1234\"]",
+          "member": "string",
+          "name": "ForensicWatermarkIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
