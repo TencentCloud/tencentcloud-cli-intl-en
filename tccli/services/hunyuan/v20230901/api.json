@@ -1,5 +1,12 @@
 {
   "actions": {
+    "QueryHunyuan3DPartJob": {
+      "document": "This API is used to query the generation task of a component.",
+      "input": "QueryHunyuan3DPartJobRequest",
+      "name": "Queries a component generation task",
+      "output": "QueryHunyuan3DPartJobResponse",
+      "status": "online"
+    },
     "QueryHunyuanTo3DProJob": {
       "document": "This API is used to intelligently generate 3D content based on the HunYuan Large Model and input text descriptions/images.\nThis API is used to provide 3 concurrent tasks by default, which can process 3 submitted tasks simultaneously. The next task can be processed only after the previous task is completed.",
       "input": "QueryHunyuanTo3DProJobRequest",
@@ -7,11 +14,32 @@
       "output": "QueryHunyuanTo3DProJobResponse",
       "status": "online"
     },
+    "QueryHunyuanTo3DRapidJob": {
+      "document": "This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.\nThis API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.",
+      "input": "QueryHunyuanTo3DRapidJobRequest",
+      "name": "Query a hunyuan 3D ultra-fast version task",
+      "output": "QueryHunyuanTo3DRapidJobResponse",
+      "status": "online"
+    },
+    "SubmitHunyuan3DPartJob": {
+      "document": "This API is used to automatically perform component identification and generation based on the model structure after inputting a 3D model file.",
+      "input": "SubmitHunyuan3DPartJobRequest",
+      "name": "Submit component generation task",
+      "output": "SubmitHunyuan3DPartJobResponse",
+      "status": "online"
+    },
     "SubmitHunyuanTo3DProJob": {
       "document": "This API is used to intelligently generate 3D content based on the HunYuan Large Model and input text descriptions/images.\nThis API is used to provide 3 concurrent tasks by default. Up to 3 submitted tasks can be processed simultaneously. A new task can be processed only after the previous one is completed.",
       "input": "SubmitHunyuanTo3DProJobRequest",
       "name": "Submit hunyuan 3D pro edition task",
       "output": "SubmitHunyuanTo3DProJobResponse",
+      "status": "online"
+    },
+    "SubmitHunyuanTo3DRapidJob": {
+      "document": "This API is used to intelligently generate 3D content based on the HunYuan Large Model with input text descriptions or images.\nThis API is used to provide 1 concurrent task by default, which means only 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.",
+      "input": "SubmitHunyuanTo3DRapidJobRequest",
+      "name": "Submit hunyuan 3D ultra-fast version task",
+      "output": "SubmitHunyuanTo3DRapidJobResponse",
       "status": "online"
     }
   },
@@ -59,6 +87,97 @@
         }
       ],
       "usage": "both"
+    },
+    "InputFile3D": {
+      "document": "3D file.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the file Url with a valid period of 24 hours.\t",
+          "example": "https://cos.ap-guangzhou.myqcloud.com/obj.obj\t",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the file format.\t",
+          "example": "OBJ",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "QueryHunyuan3DPartJobRequest": {
+      "document": "QueryHunyuan3DPartJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.\t",
+          "example": "1376862528873414656",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryHunyuan3DPartJobResponse": {
+      "document": "QueryHunyuan3DPartJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful. example value: RUN.\t",
+          "example": "WAIT",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code.\t",
+          "example": "InvalidParameter",
+          "member": "string",
+          "name": "ErrorCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.\t",
+          "example": "参数错误。\t",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generates the file URL with a valid period of 1 day.\t",
+          "example": "无",
+          "member": "File3D",
+          "name": "ResultFile3Ds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "QueryHunyuanTo3DProJobRequest": {
       "document": "QueryHunyuanTo3DProJob request structure.",
@@ -116,6 +235,110 @@
           "name": "ResultFile3Ds",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryHunyuanTo3DRapidJobRequest": {
+      "document": "QueryHunyuanTo3DRapidJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.\t",
+          "example": "1315932989749215232",
+          "member": "string",
+          "name": "JobId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryHunyuanTo3DRapidJobResponse": {
+      "document": "QueryHunyuanTo3DRapidJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.\t",
+          "example": "RUN",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code",
+          "example": "InvalidParameter",
+          "member": "string",
+          "name": "ErrorCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message\t",
+          "example": "参数错误\t",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the generated 3D file array.\t",
+          "example": "无",
+          "member": "File3D",
+          "name": "ResultFile3Ds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitHunyuan3DPartJobRequest": {
+      "document": "SubmitHunyuan3DPartJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Recommends inputting 3D models generated by AIGC. recommended file size ≤100MB. face count ≤1,500,000. only supports FBX format.",
+          "example": "无",
+          "member": "InputFile3D",
+          "name": "File",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitHunyuan3DPartJobResponse": {
+      "document": "SubmitHunyuan3DPartJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task id (valid period: 24 hours).",
+          "example": "1384898587778465792",
+          "member": "string",
+          "name": "JobId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -212,6 +435,79 @@
           "disabled": false,
           "document": "Task ID (valid period: 24 hours).",
           "example": "1357237233311637504",
+          "member": "string",
+          "name": "JobId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitHunyuanTo3DRapidJobRequest": {
+      "document": "SubmitHunyuanTo3DRapidJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text-To-3D, description of 3D content, forward Prompt content. supports up to 200 utf-8 characters. either ImageBase64, ImageUrl, or Prompt is required, and Prompt cannot coexist with ImageBase64/ImageUrl.\t",
+          "example": "一只小猫",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input image Base64 data. size: unilateral resolution requirement not less than 128, not greater than 5000, size ≤6m (after encoding, size increases by approximately 30%). format: jpg, png, jpeg, webp. imagebase64, imageurl, and Prompt are required, but Prompt and imagebase64/imageurl cannot coexist.\t",
+          "example": "/9j/4QlQaHR0c...N6a2M5ZCI\t",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input image Url. size: unilateral resolution requirement not less than 128, not greater than 5000. size ≤8m. format: jpg, png, jpeg, webp. imagebase64, imageurl, and Prompt are required, and Prompt cannot coexist with imagebase64/imageurl.\t",
+          "example": "https://***.cos.ap-guangzhou.myqcloud.com/***.jpg\t",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether PBR material generation is enabled, false by default.\t",
+          "example": "false",
+          "member": "bool",
+          "name": "EnablePBR",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable the single geometry generation option. when enabled, it generates a 3D model without textures (white model). enabled, the generative model does not support OBJ format. default model file format is GLB.\t",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableGeometry",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitHunyuanTo3DRapidJobResponse": {
+      "document": "SubmitHunyuanTo3DRapidJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID (valid period: 24 hours).\t",
+          "example": "1315932989749215232",
           "member": "string",
           "name": "JobId",
           "output_required": false,

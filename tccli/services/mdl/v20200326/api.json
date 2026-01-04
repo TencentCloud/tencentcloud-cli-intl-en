@@ -831,6 +831,82 @@
       ],
       "usage": "in"
     },
+    "AbWatermarkSettingsResp": {
+      "document": "AbWatermarkSettingsResp",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AB watermark type.",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Watermark payload.",
+          "example": "123415125",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AdBreakSetting": {
+      "document": "AdBreakSetting",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Advertising type, currently supports L-SQUEEZE",
+          "example": "L-SQUEEZE",
+          "member": "string",
+          "name": "Format",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Duration, in milliseconds, requires 1000<duration<=600000. The current accuracy is seconds, which is a multiple of 1000",
+          "example": "20000",
+          "member": "uint64",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "L-type compression recovery configuration",
+          "example": "无",
+          "member": "LSqueezeSetting",
+          "name": "LSqueezeSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "AdSource type, supports UPLOAD_CREATIVES",
+          "example": "UPLOAD_CREATIVES",
+          "member": "string",
+          "name": "AdSource",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AdditionalRateSetting": {
       "document": "additional bit rate configuration.",
       "members": [
@@ -1668,7 +1744,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
+          "document": "The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
           "example": "10",
           "member": "int64",
           "name": "XPos",
@@ -1678,7 +1754,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
+          "document": "The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
           "example": "10",
           "member": "int64",
           "name": "YPos",
@@ -1688,7 +1764,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.\n`0` means to scale the width proportionally to the height.\nYou cannot set both `Width` and `Height` to `0`.",
+          "document": "The watermark image's width as a percentage of the video width. Value range: 0-100. Default: 10.\n`0` means to scale the width proportionally to the height.\nYou cannot set both `Width` and `Height` to `0`.",
           "example": "10",
           "member": "int64",
           "name": "Width",
@@ -1698,7 +1774,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.\n`0` means to scale the height proportionally to the width.\nYou cannot set both `Width` and `Height` to `0`.",
+          "document": "The watermark image's height as a percentage of the video height. Value range: 0-100. Default: 10.\n`0` means to scale the height proportionally to the width.\nYou cannot set both `Width` and `Height` to `0`.",
           "example": "10",
           "member": "int64",
           "name": "Height",
@@ -2126,7 +2202,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
+          "document": "The watermark's horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
           "example": "10",
           "member": "int64",
           "name": "XPos",
@@ -2136,7 +2212,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
+          "document": "The watermark's vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
           "example": "10",
           "member": "int64",
           "name": "YPos",
@@ -3525,6 +3601,16 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AB watermark configuration.",
+          "example": "无",
+          "member": "AbWatermarkSettingsResp",
+          "name": "AbWatermarkSettings",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3914,6 +4000,15 @@
           "name": "MotionGraphicsActivateSetting",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Ad Settings",
+          "example": "无",
+          "member": "AdBreakSetting",
+          "name": "AdBreakSetting",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -4059,6 +4154,17 @@
           "example": "无",
           "member": "MotionGraphicsActivateSetting",
           "name": "MotionGraphicsActivateSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ad Settings",
+          "example": "无",
+          "member": "AdBreakSetting",
+          "name": "AdBreakSetting",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -4971,6 +5077,78 @@
       ],
       "usage": "both"
     },
+    "LSqueezeSetting": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Advertising benchmark position, 0 top left, 1 top right, 2 bottom right, 3 bottom left, default value 0, corresponding TOP_LEFT,TOP_RIGHT,BOTTOM_RIGHT,BOTTOM_LEFT",
+          "example": "0",
+          "member": "uint64",
+          "name": "Location",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The default value for the percentage in the X-axis direction is 20, with a range of 0-50",
+          "example": "20",
+          "member": "uint64",
+          "name": "OffsetX",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The default value for the percentage in the Y-axis direction is 20, with a range of 0-50",
+          "example": "20",
+          "member": "uint64",
+          "name": "OffsetY",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Background image URL, starting with http/https and ending in jpg/jpeg/png",
+          "example": "https://www.testL.jpg",
+          "member": "string",
+          "name": "BackgroundImgUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Compress time. Unit ms, default value 2000, range: 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration",
+          "example": "2000",
+          "member": "uint64",
+          "name": "SqueezeInPeriod",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Restore to full screen time. Unit ms, default value 2000, range 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration",
+          "example": "2000",
+          "member": "uint64",
+          "name": "SqueezeOutPeriod",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LogInfo": {
       "document": "Log information.",
       "members": [
@@ -5492,6 +5670,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name modification for sub m3u8.",
+          "example": "streamid_1080P",
+          "member": "string",
+          "name": "NameModifier",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5581,6 +5770,36 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session ID",
+          "example": "25123123",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rtt time, in milliseconds",
+          "example": "25123123",
+          "member": "int64",
+          "name": "RTT",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Is the Network parameter valid? 0 indicates invalid, 1 indicates valid",
+          "example": "1",
+          "member": "int64",
+          "name": "NetworkValid",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5630,6 +5849,16 @@
           "example": "5685584",
           "member": "uint64",
           "name": "NetworkOut",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Is the Network parameter valid? 0 indicates invalid, 1 indicates valid",
+          "example": "1",
+          "member": "int64",
+          "name": "NetworkValid",
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
@@ -6005,7 +6234,7 @@
         },
         {
           "disabled": false,
-          "document": "Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.",
+          "document": "Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.",
           "example": "0",
           "member": "uint64",
           "name": "Num",
@@ -6124,7 +6353,7 @@
         },
         {
           "disabled": false,
-          "document": "Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.",
+          "document": "Corresponds to SCTE-35 segment_num. This field provides support for numbering segments within a given collection of segments.",
           "example": "0",
           "member": "uint64",
           "name": "Num",
