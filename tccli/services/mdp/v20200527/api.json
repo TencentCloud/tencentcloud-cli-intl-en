@@ -729,7 +729,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Total list size.",
           "example": "",
           "member": "int64",
           "name": "TotalSize",
@@ -739,7 +739,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "List of associated domain name information.",
           "example": "",
           "member": "DomainRecordInfo",
           "name": "Records",
@@ -856,6 +856,28 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start offset, Valid when the Type is SpecifyTimeRange.",
+          "example": "0",
+          "member": "uint64",
+          "name": "StartOffset",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End offset, valid when Type is SpecifyTimeRange.",
+          "example": "86400000",
+          "member": "uint64",
+          "name": "EndOffset",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -891,7 +913,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "COS bucket name",
           "example": "file-1306038592",
           "member": "string",
           "name": "Bucket",
@@ -902,7 +924,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -913,7 +935,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "File object path",
           "example": "test/1163954307_1749787053508/index.m3u8",
           "member": "string",
           "name": "Object",
@@ -3041,7 +3063,7 @@
         {
           "disabled": false,
           "document": "Start time.",
-          "example": "2025-05-01T00:00:00+08:00",
+          "example": "2025-05-01T00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -3050,7 +3072,7 @@
         {
           "disabled": false,
           "document": "End time.",
-          "example": "2025-05-01T00:00:00+08:00",
+          "example": "2025-05-01T01+08:00",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -3059,7 +3081,7 @@
         {
           "disabled": false,
           "document": "Specifies the channel id you want to query.",
-          "example": "[681193A700007ED24C1A,680B1B1E00007FD18731]",
+          "example": "[\"681193A700007ED24C1A\",\"680B1B1E00007FD18731\"]",
           "member": "string",
           "name": "ChannelIds",
           "required": false,
@@ -3068,7 +3090,7 @@
         {
           "disabled": false,
           "document": "Specifies the ad type you want to query. valid values: Preroll/Midroll. if empty, query all types by default.",
-          "example": "[Preroll, Midroll]",
+          "example": "[\"Pre-roll\", \"Mid-roll\",\"VOD\"]",
           "member": "string",
           "name": "Types",
           "required": false,
@@ -3583,7 +3605,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Associated playback domain name.",
           "example": "",
           "member": "string",
           "name": "CdnDomain",
@@ -3593,7 +3615,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Belonging region.",
           "example": "",
           "member": "string",
           "name": "Region",
@@ -3603,7 +3625,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Channel ID.",
           "example": "",
           "member": "string",
           "name": "ChannelId",
@@ -3613,7 +3635,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The ID of a record",
           "example": "",
           "member": "string",
           "name": "Id",
@@ -3689,7 +3711,7 @@
         {
           "disabled": false,
           "document": "Endpoint authentication information.",
-          "example": "{         \"WhiteIpList\": [             \"0.0.0.0/0\"         ]    ",
+          "example": "无",
           "member": "EndpointAuthInfo",
           "name": "AuthInfo",
           "output_required": true,
@@ -3759,7 +3781,7 @@
         {
           "disabled": false,
           "document": "The customer-defined url parameter is inserted into the subscript at the specified position of the Endpoint url. The optional range of the subscript is: [0,3].",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CustomUrlParamIndex",
           "output_required": false,
@@ -3769,7 +3791,7 @@
         {
           "disabled": false,
           "document": "Customer-defined url parameters are inserted into the specified position of the Endpoint url based on the CustomUrlParamIndex.\nThe parameters can only contain digits, letters, underscores (_), and hyphens (-), with a length of 1 to 64 chars.",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "CustomUrlParam",
           "output_required": false,
@@ -3795,6 +3817,16 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The switch of absolute path.",
+          "example": "true",
+          "member": "bool",
+          "name": "AbsolutePathEnable",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3805,7 +3837,7 @@
         {
           "disabled": false,
           "document": "HarvestJob ID, a globally unique identifier.",
-          "example": "test",
+          "example": "awe",
           "member": "string",
           "name": "ID",
           "output_required": false,
@@ -3915,7 +3947,7 @@
         {
           "disabled": false,
           "document": "The associated ChannelID.",
-          "example": "test",
+          "example": "687F30250000410C7B30",
           "member": "string",
           "name": "ChannelId",
           "output_required": false,
@@ -3925,9 +3957,19 @@
         {
           "disabled": false,
           "document": "The region corresponding to the harvest job.",
-          "example": "无",
+          "example": "ap-singapore",
           "member": "string",
           "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Callback URL after recording is completed",
+          "example": "https://www.tencent.com",
+          "member": "string",
+          "name": "CallbackURL",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5662,7 +5704,7 @@
         {
           "disabled": false,
           "document": "Generated playback address prefix",
-          "example": "无",
+          "example": "http://251009588.ap-mumbai.streampackage.srclivepull.myqcloud.com/v1/ssai/master/019a2a490e74155a6e792245709abe/",
           "member": "string",
           "name": "PlaybackPrefix",
           "output_required": false,
@@ -5687,6 +5729,17 @@
           "example": "ap-mumbai",
           "member": "string",
           "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Used for clickthrough addresses",
+          "example": "http://251009588.ap-mumbai.streampackage.srclivepull.myqcloud.com/v1/ssai/master/019a2a490e74155a6e792245239abe/",
+          "member": "string",
+          "name": "SessionInitPrefix",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -6326,7 +6379,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The key of the source tag supports capital letters, numbers, underscores, and dashes from 1 to 50 digits",
           "example": "TESTKEY",
           "member": "string",
           "name": "Key",
@@ -6337,7 +6390,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The value of the source tag supports letters, numbers, underscores, dashes, periods, and percent signs (%) ranging from 1 to 200 characters\n",
           "example": "testvalue",
           "member": "string",
           "name": "Value",
@@ -6823,7 +6876,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Advertising tag time.",
           "example": "10.5",
           "member": "float",
@@ -6833,7 +6886,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Personalization replacement time.",
           "example": "10.5",
           "member": "float",
@@ -6843,7 +6896,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Fill factor for personalized ads.",
           "example": "0.5",
           "member": "float",
@@ -6853,7 +6906,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Number of pre-roll ad requests.",
           "example": "10",
           "member": "uint64",
@@ -6863,7 +6916,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Number of pre-roll ad replacements.",
           "example": "10",
           "member": "uint64",
@@ -6873,13 +6926,123 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Ad replacement rate.",
           "example": "0.5",
           "member": "float",
           "name": "PreReplaceRate",
           "output_required": false,
           "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of ad tags found in the list",
+          "example": "0",
+          "member": "uint64",
+          "name": "ADMarkerFound",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request advertising frequency from ADS",
+          "example": "0",
+          "member": "uint64",
+          "name": "MakeAdsRequest",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Received VAST returns from ADS",
+          "example": "0",
+          "member": "uint64",
+          "name": "VASTResponse",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Successfully filled the ad count",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilledAvail",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of issues encountered during ad replacement execution",
+          "example": "0",
+          "member": "uint64",
+          "name": "WarningNoAd",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of timeouts returned by ADS",
+          "example": "0",
+          "member": "uint64",
+          "name": "ErrorAdsTimeout",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of empty VAST responses returned by ADS",
+          "example": "0",
+          "member": "uint64",
+          "name": "EmptyVASTResponse",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of empty VMAP responses returned by ADS",
+          "example": "0",
+          "member": "uint64",
+          "name": "EmptyVMAPResponse",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date",
+          "example": "2025-07-28",
+          "member": "string",
+          "name": "Date",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "2025-09-20T00+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "2025-09-20T10+08:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
