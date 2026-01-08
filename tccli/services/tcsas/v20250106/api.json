@@ -426,7 +426,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -444,7 +444,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -481,7 +481,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-e71tvvilsh",
           "member": "string",
           "name": "AppId",
           "required": true,
@@ -490,7 +490,7 @@
         {
           "disabled": false,
           "document": "Approval result. 2: Rejected;\n3: Approved",
-          "example": "无",
+          "example": "3",
           "member": "int64",
           "name": "ApprovalResult",
           "required": true,
@@ -499,7 +499,7 @@
         {
           "disabled": false,
           "document": "Approval notes. It’s required when the request is rejected.",
-          "example": "无",
+          "example": "autotest approval pass",
           "member": "string",
           "name": "ApprovalNote",
           "required": false,
@@ -530,7 +530,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -539,7 +539,7 @@
         {
           "disabled": false,
           "document": "1: Set; 2: Cancel",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ActionType",
           "required": true,
@@ -548,7 +548,7 @@
         {
           "disabled": false,
           "document": "Mini program version ID",
-          "example": "无",
+          "example": "1000",
           "member": "int64",
           "name": "MNPVersionId",
           "required": true,
@@ -557,7 +557,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -566,7 +566,7 @@
         {
           "disabled": false,
           "document": "Path to the preview page",
-          "example": "无",
+          "example": "/index",
           "member": "string",
           "name": "PreivewEntrancePath",
           "required": false,
@@ -603,7 +603,7 @@
         {
           "disabled": false,
           "document": "Application name",
-          "example": "无",
+          "example": "YouTube",
           "member": "string",
           "name": "ApplicationName",
           "required": true,
@@ -612,7 +612,7 @@
         {
           "disabled": false,
           "document": "Logo address",
-          "example": "无",
+          "example": "http://127.0..0.1/T04257DS9431720WTAG/console/20240819193433-a67c2b912e.png",
           "member": "string",
           "name": "Logo",
           "required": true,
@@ -621,7 +621,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -630,7 +630,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "9213128346",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -638,46 +638,55 @@
         },
         {
           "disabled": false,
-          "document": "Application type. 1: Test; 2: Formal",
-          "example": "无",
-          "member": "int64",
-          "name": "ApplicationType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "Introduction",
-          "example": "无",
+          "example": "simple introduce",
           "member": "string",
           "name": "Intro",
           "required": true,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
+          "document": "Application type. 1: Test; 2: Formal",
+          "example": "1",
+          "member": "int64",
+          "name": "ApplicationType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
           "document": "Android app package name",
-          "example": "无",
+          "example": "com.tencent.demo",
           "member": "string",
           "name": "AndroidAppKey",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "iOS App bundleId",
-          "example": "无",
+          "example": "com.tencent.demo",
           "member": "string",
           "name": "IosAppKey",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Remarks",
-          "example": "无",
+          "example": "remark",
           "member": "string",
           "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheme",
+          "example": "scheme",
+          "member": "string",
+          "name": "Scheme",
           "required": false,
           "type": "string"
         }
@@ -711,36 +720,36 @@
       "members": [
         {
           "disabled": false,
-          "document": "API name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API name",
+          "example": "testState1",
           "member": "string",
           "name": "APIName",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API description",
+          "example": "testState1",
           "member": "string",
           "name": "APIDesc",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API type. 1: System; 2: Custom\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API type. 1: system; 2: custom.",
+          "example": "2",
           "member": "int64",
           "name": "APIType",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -751,7 +760,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh8xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -769,7 +778,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -806,7 +815,7 @@
         {
           "disabled": false,
           "document": "Array of domain name URLs",
-          "example": "无",
+          "example": "[\"https://www.baidu.com\"]",
           "member": "string",
           "name": "DomainUrlList",
           "required": true,
@@ -815,7 +824,7 @@
         {
           "disabled": false,
           "document": "Domain type. 1: requests domain; 2: WebView load domain, 3: sockets domain; 4: File upload; 5: File download",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "DomainType",
           "required": true,
@@ -830,7 +839,7 @@
         {
           "disabled": false,
           "document": "Domain name list",
-          "example": "无",
+          "example": "[https://www.qq.com]",
           "member": "string",
           "name": "DomainUrlList",
           "required": true,
@@ -839,7 +848,7 @@
         {
           "disabled": false,
           "document": "Domain type. 1: Allowed; 2: Blocked",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "DomainType",
           "required": true,
@@ -848,7 +857,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -884,43 +893,43 @@
       "members": [
         {
           "disabled": false,
-          "document": "Result\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Result",
+          "example": "false",
           "member": "bool",
           "name": "Result",
           "output_required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of duplicate domain names\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Indicates the duplicate domain name.",
+          "example": "[\"openapi.autotest.domain.com\"]",
           "member": "string",
           "name": "RepeatUrls",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of allowed domain names\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Lists allowed domain names.",
+          "example": "[\"openapi.autotest.domain.com\"]",
           "member": "string",
           "name": "ExistsWhiteUrls",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of blocked domain names\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Indicates the domain name already exists in the blocklist.",
+          "example": "[\"openapi.autotest.domain.com\"]",
           "member": "string",
           "name": "ExistsBlackUrls",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1012,7 +1021,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -1030,7 +1039,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T02245JR9111721GKOI",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1044,13 +1053,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1067,7 +1076,7 @@
         {
           "disabled": false,
           "document": "Mini program type",
-          "example": "无",
+          "example": "Life Service->144_Lilliputian Services",
           "member": "string",
           "name": "MNPType",
           "required": true,
@@ -1076,7 +1085,7 @@
         {
           "disabled": false,
           "document": "Mini program name",
-          "example": "无",
+          "example": "apiminiprogram",
           "member": "string",
           "name": "MNPName",
           "required": true,
@@ -1085,7 +1094,7 @@
         {
           "disabled": false,
           "document": "Mini app icon",
-          "example": "无",
+          "example": "https://127.0.0.1/console/20240812101023-f1ae758593.jpeg",
           "member": "string",
           "name": "MNPIcon",
           "required": true,
@@ -1094,7 +1103,7 @@
         {
           "disabled": false,
           "document": "Mini program introduction",
-          "example": "无",
+          "example": "api create mini program",
           "member": "string",
           "name": "MNPIntro",
           "required": true,
@@ -1103,7 +1112,7 @@
         {
           "disabled": false,
           "document": "Mini program description",
-          "example": "无",
+          "example": "api create mini program",
           "member": "string",
           "name": "MNPDesc",
           "required": true,
@@ -1112,7 +1121,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T02245JR9111721GKOI",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1121,7 +1130,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "6519624807",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -1158,7 +1167,7 @@
         {
           "disabled": false,
           "document": "API Id",
-          "example": "无",
+          "example": "api-k4or7z90c4mn62eo",
           "member": "string",
           "name": "APIId",
           "required": true,
@@ -1167,7 +1176,7 @@
         {
           "disabled": false,
           "document": "Reason for application",
-          "example": "无",
+          "example": "sample reason",
           "member": "string",
           "name": "ApplyReason",
           "required": true,
@@ -1176,7 +1185,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -1185,7 +1194,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791741VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1199,13 +1208,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "ResourceIdStringInfo",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1222,7 +1231,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -1231,7 +1240,7 @@
         {
           "disabled": false,
           "document": "Version number",
-          "example": "无",
+          "example": "1.0.167",
           "member": "string",
           "name": "MNPVersion",
           "required": true,
@@ -1240,7 +1249,7 @@
         {
           "disabled": false,
           "document": "Address of the mini program package. You can export the package from IDE and upload it to a file server.",
-          "example": "无",
+          "example": "https://tcmpp-sg-1258344699.cos.ap-singapore.myqcloud.com/T01661OP9261739AKZQ/tcmpp/6c43decd1d18erwcd334ec2ca4188.zip",
           "member": "string",
           "name": "FileUrl",
           "required": true,
@@ -1249,7 +1258,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791742VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1258,7 +1267,7 @@
         {
           "disabled": false,
           "document": "Version introduction",
-          "example": "无",
+          "example": "autotest_create",
           "member": "string",
           "name": "MNPVersionIntro",
           "required": true,
@@ -1272,14 +1281,14 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the task to create a mini program version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the ID of the task to create a mini program version.",
+          "example": "2025030711191997754",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1316,13 +1325,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "PresetResp",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1339,7 +1348,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20250307105916VYUXVF",
           "member": "string",
           "name": "UserId",
           "required": false,
@@ -1348,7 +1357,7 @@
         {
           "disabled": false,
           "document": "User role ID",
-          "example": "无",
+          "example": "20069",
           "member": "int64",
           "name": "UserRoleId",
           "required": false,
@@ -1363,7 +1372,7 @@
         {
           "disabled": false,
           "document": "Team name",
-          "example": "无",
+          "example": "AT_team0305080426",
           "member": "string",
           "name": "TeamName",
           "required": true,
@@ -1372,7 +1381,7 @@
         {
           "disabled": false,
           "document": "Admin name",
-          "example": "无",
+          "example": "U20250211162022WMDVCK",
           "member": "string",
           "name": "AdminUserId",
           "required": true,
@@ -1381,7 +1390,7 @@
         {
           "disabled": false,
           "document": "Permission assigned to the team. 1: Mini program; 2: Application (only one of these types is supported)",
-          "example": "无",
+          "example": "[2]",
           "member": "int64",
           "name": "TeamRoleTypeList",
           "required": true,
@@ -1390,7 +1399,7 @@
         {
           "disabled": false,
           "document": "Remarks",
-          "example": "无",
+          "example": "remark",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1399,7 +1408,7 @@
         {
           "disabled": false,
           "document": "Platform ID, required for API call",
-          "example": "无",
+          "example": "T08123WM5791744VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": false,
@@ -1408,7 +1417,7 @@
         {
           "disabled": false,
           "document": "Associated team ID",
-          "example": "无",
+          "example": "6889179250",
           "member": "string",
           "name": "RelatedTeamId",
           "required": false,
@@ -1435,7 +1444,7 @@
         {
           "disabled": false,
           "document": "User account",
-          "example": "无",
+          "example": "OpenApiUser0305080106",
           "member": "string",
           "name": "UserAccount",
           "required": true,
@@ -1444,7 +1453,7 @@
         {
           "disabled": false,
           "document": "User name",
-          "example": "无",
+          "example": "OpenApiUser0305080106",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -1453,7 +1462,7 @@
         {
           "disabled": false,
           "document": "User account type. 2: Platform admin; 3: Member.",
-          "example": "无",
+          "example": "3",
           "member": "int64",
           "name": "AccountType",
           "required": true,
@@ -1462,7 +1471,7 @@
         {
           "disabled": false,
           "document": "Account password. Use CreatePresetKey to get the public key to encrypt the password.",
-          "example": "无",
+          "example": "pEkZbT1Swu3tbHWs=",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -1471,7 +1480,7 @@
         {
           "disabled": false,
           "document": "Call CreatePresetKey to get the keyID from RequestId",
-          "example": "无",
+          "example": "ac14e3ec-42cd-44e6-8ab0-d854bbb89c32",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -1480,7 +1489,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791745VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1517,7 +1526,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh9xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -1526,7 +1535,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791746VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1540,13 +1549,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1563,7 +1572,7 @@
         {
           "disabled": false,
           "document": "API ID",
-          "example": "无",
+          "example": "api-k4or7z90c4mn63eo",
           "member": "string",
           "name": "APIId",
           "required": true,
@@ -1572,7 +1581,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791747VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1609,7 +1618,7 @@
         {
           "disabled": false,
           "document": "Domain ID",
-          "example": "无",
+          "example": "5279",
           "member": "int64",
           "name": "DomainId",
           "required": true,
@@ -1618,7 +1627,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791748VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1655,7 +1664,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -1664,7 +1673,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791749VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1678,13 +1687,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1701,7 +1710,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -1710,7 +1719,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20250305080107RLWGUS",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -1719,7 +1728,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791751VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1756,7 +1765,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -1765,7 +1774,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791751VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1802,7 +1811,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20250305080107RLWGUS",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -1811,7 +1820,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791752VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -1825,13 +1834,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1848,7 +1857,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh11xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -1856,21 +1865,21 @@
         },
         {
           "disabled": false,
-          "document": "Application platform. 2: Android; 3: iOS",
-          "example": "无",
-          "member": "int64",
-          "name": "AppType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791754VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Application platform. 2: Android; 3: iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "AppType",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1902,38 +1911,38 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-sxijccvok9",
           "member": "string",
           "name": "ApplicationId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "App ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "App Id.",
+          "example": "100011589",
           "member": "int64",
           "name": "AppIdentityId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Name",
+          "example": "wangyang_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Icon",
-          "example": "无",
+          "example": "https://mp-206722c805-1314481471.cos.accelerate.myqcloud.com/T05304JW9141741RLRN/tcmpp/4489b1d764e142cd93b7f7dcddd41b5d.png",
           "member": "string",
           "name": "Logo",
           "output_required": true,
@@ -1943,7 +1952,7 @@
         {
           "disabled": false,
           "document": "Remarks",
-          "example": "无",
+          "example": "remark",
           "member": "string",
           "name": "Remark",
           "output_required": true,
@@ -1952,68 +1961,68 @@
         },
         {
           "disabled": false,
-          "document": "Android app package name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Android app package name",
+          "example": "test.ai",
           "member": "string",
           "name": "AndroidAppKey",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "iOS App bundleId\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "iOS App bundleId",
+          "example": "test.ai",
           "member": "string",
           "name": "IosAppKey",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "wangyang",
           "member": "string",
           "name": "CreateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "2025-03-05 12:00:23",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Updater\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the updater.",
+          "example": "wangyang",
           "member": "string",
           "name": "UpdateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Update time",
+          "example": "2025-03-06 10:37:36",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Introduction",
-          "example": "无",
+          "example": "test",
           "member": "string",
           "name": "Intro",
           "output_required": true,
@@ -2022,43 +2031,43 @@
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team Id.",
+          "example": "1259398073",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "wangyang_app",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of sensitive APIs\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of sensitive apis.",
+          "example": "11",
           "member": "int64",
           "name": "SensitiveApiCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application type. 1: Test; 2: Formal\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application type. 1: Test; 2: Formal",
+          "example": "1",
           "member": "int64",
           "name": "ApplicationType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2069,7 +2078,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -2078,7 +2087,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -2087,7 +2096,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791755VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -2096,7 +2105,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (app name)",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -2105,7 +2114,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -2119,23 +2128,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeApplicationListData",
           "name": "DataList",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2168,7 +2177,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh10xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -2177,7 +2186,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791753VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -2191,163 +2200,173 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-w22lmkkih6",
           "member": "string",
           "name": "ApplicationId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Product ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Product ID.",
+          "example": "100030584",
           "member": "int64",
           "name": "AppIdentityId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app0307112110",
           "member": "string",
           "name": "ApplicationName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the application icon.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com//T03774IM9541735YJZV/tcmpp/5b2b0ce4fea04dbca99dd6492b1a16e9.png",
           "member": "string",
           "name": "Logo",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Remarks",
+          "example": "Remark",
           "member": "string",
           "name": "Remark",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Android package name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Android package name",
+          "example": "com.tencent.tcmpp.demo",
           "member": "string",
           "name": "AndroidAppKey",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "iOS bundleId\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "iOS bundleId",
+          "example": "com.tencent.tcmpp.demo",
           "member": "string",
           "name": "IosAppKey",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1741317672",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Updater\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the updater.",
+          "example": "800001096389",
           "member": "string",
           "name": "UpdateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Update time",
+          "example": "1741317672",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Describes the application description.",
+          "example": "test",
           "member": "string",
           "name": "Intro",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "9148280718",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "AT_team0307112110",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of sensitive APIs\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Number of sensitive apis.",
+          "example": "0",
           "member": "int64",
           "name": "SensitiveApiCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application type. 1: Test; 2: Formal\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application type. 1: Test; 2: Formal",
+          "example": "2",
           "member": "int64",
           "name": "ApplicationType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the application Scheme.",
+          "example": "",
+          "member": "string",
+          "name": "Scheme",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2380,7 +2399,7 @@
         {
           "disabled": false,
           "document": "APIID",
-          "example": "无",
+          "example": "api-28ghlp8yodkxxwzd",
           "member": "string",
           "name": "APIId",
           "output_required": true,
@@ -2390,7 +2409,7 @@
         {
           "disabled": false,
           "document": "API name",
-          "example": "无",
+          "example": "testState1",
           "member": "string",
           "name": "APIName",
           "output_required": true,
@@ -2400,7 +2419,7 @@
         {
           "disabled": false,
           "document": "API request method",
-          "example": "无",
+          "example": "testState1",
           "member": "string",
           "name": "APIMethod",
           "output_required": true,
@@ -2409,18 +2428,18 @@
         },
         {
           "disabled": false,
-          "document": "API description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API description",
+          "example": "testState1",
           "member": "string",
           "name": "APIDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator",
-          "example": "无",
+          "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
           "output_required": true,
@@ -2430,7 +2449,7 @@
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "无",
+          "example": "1741317548",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
@@ -2440,7 +2459,7 @@
         {
           "disabled": false,
           "document": "Updater",
-          "example": "无",
+          "example": "1741317548",
           "member": "string",
           "name": "UpdateUser",
           "output_required": true,
@@ -2450,7 +2469,7 @@
         {
           "disabled": false,
           "document": "Update time",
-          "example": "无",
+          "example": "1741317548",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -2459,73 +2478,73 @@
         },
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "6534341001",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "autotest_app_team",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the application icon.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationLogo",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API type. 1: System; 2: Custom\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API type. 1: system; 2: custom.",
+          "example": "2",
           "member": "int64",
           "name": "APIType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API status. 0: Public; 1: Restricted\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API status. 0: public; 1: restricted.",
+          "example": "0",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2536,7 +2555,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -2545,7 +2564,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -2554,7 +2573,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791756VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -2563,7 +2582,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh12xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -2572,7 +2591,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (API name or method)",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -2581,7 +2600,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -2595,23 +2614,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeApplicationSensitiveAPIListData",
           "name": "DataList",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2643,23 +2662,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Multiple domain separators ';'\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Multiple domain separators ';'.",
+          "example": "https://www.baidu.com",
           "member": "string",
           "name": "DomainUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Domain type 1-requests domain 2-WebView load domain\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Domain type 1-requests domain 2-business domain.",
+          "example": "1",
           "member": "int64",
           "name": "DomainType",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2670,7 +2689,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -2679,7 +2698,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -2688,7 +2707,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791757VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -2697,7 +2716,7 @@
         {
           "disabled": false,
           "document": "Domain type. 1: Allowed; 2: Blocked",
-          "example": "无",
+          "example": "[1]",
           "member": "int64",
           "name": "DomainTypes",
           "required": false,
@@ -2706,7 +2725,7 @@
         {
           "disabled": false,
           "document": "Domain names to be queried",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -2742,73 +2761,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Domain ID",
+          "example": "11075",
           "member": "int64",
           "name": "DomainId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Domain name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Domain name",
+          "example": "openapi.autotest.domain.com",
           "member": "string",
           "name": "DomainUrl",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Type. 1: Allowed; 2: Blocked\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Type. 1: allowlist; 2: blocklist.",
+          "example": "1",
           "member": "int64",
           "name": "DomainType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1741317668",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Updater\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the updater.",
+          "example": "800001096389",
           "member": "string",
           "name": "UpdateUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Update time",
+          "example": "1741317668",
           "member": "string",
           "name": "UpdateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2818,23 +2837,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of results\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Domain name information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Describes the domain information.",
           "example": "无",
           "member": "DescribeGlobalDomainsListData",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2845,7 +2864,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -2854,7 +2873,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -2890,193 +2909,193 @@
       "members": [
         {
           "disabled": false,
-          "document": "Approval request ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval ticket ID",
+          "example": "audenndhms24i27953",
           "member": "string",
           "name": "ApprovalNo",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval status : 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval status. valid values: 1 (processing), 2 (rejected), 3 (approved), 4 (cancelled).",
+          "example": "0",
           "member": "int64",
           "name": "ApprovalStatus",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program version.",
+          "example": "1.0.90",
           "member": "string",
           "name": "MNPVersion",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program version ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program version ID",
+          "example": "5845",
           "member": "int64",
           "name": "MNPVersionId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Applicant\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Applicant",
+          "example": "800001096389",
           "member": "string",
           "name": "ApplyUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application time",
+          "example": "1741317601",
           "member": "string",
           "name": "ApplyTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program name",
+          "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program icon",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the application icon.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationLogo",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "2666639703",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini Program QR code\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program review qr code.",
+          "example": "http://qrcode.com/sample",
           "member": "string",
           "name": "MNPQrCodeUrl",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program type",
+          "example": "IT tech-video",
           "member": "string",
           "name": "MNPType",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approver\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the reviewer.",
+          "example": "admin",
           "member": "string",
           "name": "ApprovalUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval time.",
+          "example": "0",
           "member": "string",
           "name": "ApprovalTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval notes\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval notes",
+          "example": "demostration",
           "member": "string",
           "name": "ApprovalNote",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3087,7 +3106,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -3096,7 +3115,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -3105,7 +3124,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791760VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3114,7 +3133,7 @@
         {
           "disabled": false,
           "document": "Approval status. 1: Processing; 2: Rejected; 3: Approved; 4 Cancelled",
-          "example": "无",
+          "example": "[0]",
           "member": "int64",
           "name": "ApprovalStatusList",
           "required": false,
@@ -3123,7 +3142,7 @@
         {
           "disabled": false,
           "document": "Keywords of the mini program name to search",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -3132,7 +3151,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh13xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": false,
@@ -3141,7 +3160,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -3155,23 +3174,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeMNPApprovalListData",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3181,13 +3200,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "DescribeMNPApprovalListResp",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3204,7 +3223,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791761VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3241,7 +3260,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -3250,7 +3269,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791762VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3287,7 +3306,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
@@ -3297,7 +3316,7 @@
         {
           "disabled": false,
           "document": "Mini program icon",
-          "example": "无",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
           "output_required": true,
@@ -3307,7 +3326,7 @@
         {
           "disabled": false,
           "document": "Mini program name",
-          "example": "无",
+          "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": true,
@@ -3317,7 +3336,7 @@
         {
           "disabled": false,
           "document": "Name of the associated team",
-          "example": "无",
+          "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
           "output_required": true,
@@ -3327,7 +3346,7 @@
         {
           "disabled": false,
           "document": "Mini program type",
-          "example": "无",
+          "example": "Logistics Services->2_Search,Logistics Services->10_Postal Service",
           "member": "string",
           "name": "MNPType",
           "output_required": true,
@@ -3336,103 +3355,103 @@
         },
         {
           "disabled": false,
-          "document": "Whether the mini program is released. 1: Released; 2: Removed\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program introduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program introduction",
+          "example": "for automation testing purposes",
           "member": "string",
           "name": "MNPIntro",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "autotest_op",
           "member": "string",
           "name": "CreateUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1735544027",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Updater\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the updater.",
+          "example": "800001096389",
           "member": "string",
           "name": "UpdateUser",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Update time",
+          "example": "1741317602",
           "member": "string",
           "name": "UpdateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Effective status of the bound application. 1: Not effective; 2: Effective\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Effective status of the bound application. valid values: 1 (not effective), 2 (effective).",
+          "example": "2",
           "member": "int64",
           "name": "EffectStatus",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID of the application bound with the mini program\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the ID of the application bound with the mini program.",
+          "example": "4644",
           "member": "int64",
           "name": "EffectMNPVersionId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Effective version number of the application that bound with the mini program\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the effective version number of the application bound to the mini program.",
+          "example": "1.0.1",
           "member": "string",
           "name": "EffectMNPVersion",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3443,7 +3462,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -3452,7 +3471,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -3461,7 +3480,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3470,7 +3489,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (mini program name)",
-          "example": "无",
+          "example": "name",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -3479,7 +3498,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -3488,7 +3507,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh8xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": false,
@@ -3502,23 +3521,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeMNPListData",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3528,13 +3547,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "DescribeMNPListResp",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3550,123 +3569,123 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program type \nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program type ",
+          "example": "IT tech-tools",
           "member": "string",
           "name": "MNPType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID",
+          "example": "mp4qnfj01bkbm1th",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program name",
+          "example": "autotest_online_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program icon",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program introduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program introduction",
+          "example": "flash",
           "member": "string",
           "name": "MNPIntro",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program description",
+          "example": "this app light your screen",
           "member": "string",
           "name": "MNPDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time, timestamp\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time, timestamp.",
+          "example": "1735544030",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "autotest_op",
           "member": "string",
           "name": "CreateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Connection status. 1: Not connected; 2: Connected\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Access status. 1: not connected; 2: connected.",
+          "example": "2",
           "member": "int64",
           "name": "AccessStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The name of the associated team\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Name of the associated team",
+          "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "2666639703",
           "member": "string",
           "name": "TeamId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program release status. 1: Released; 2: Removed\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3677,7 +3696,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -3686,7 +3705,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3723,7 +3742,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mpjnms6wibvjj8dd",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -3732,7 +3751,7 @@
         {
           "disabled": false,
           "document": "Mini program version ID",
-          "example": "无",
+          "example": "1000",
           "member": "int64",
           "name": "MNPVersionId",
           "required": true,
@@ -3741,7 +3760,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3755,83 +3774,83 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program name",
+          "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program description",
+          "example": "autotest",
           "member": "string",
           "name": "MNPDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program version.",
+          "example": "5763",
           "member": "string",
           "name": "MNPVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program introduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Describes the mini program version.",
+          "example": "new verstion intro",
           "member": "string",
           "name": "MNPVersionIntro",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program QR code\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program qr code.",
+          "example": "http://qr.com/abc",
           "member": "string",
           "name": "QRCodeUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Path to the preview\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the path to the preview version.",
+          "example": "http://exp.com/abc",
           "member": "string",
           "name": "PreviewEntrancePath",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "QR code content\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the qr code content.",
+          "example": "tcmpp://applet/?appId=mp4b3ykyne0wain0\\u0026type=2\\u0026businessId=0rtd0lmgbbh94kn9qm\\u0026timestamp=1741046458",
           "member": "string",
           "name": "QRCodeContent",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3841,13 +3860,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "DescribeMNPPreviewResp",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3864,7 +3883,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mpjnms6wibvjj8dd",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -3873,7 +3892,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3910,7 +3929,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -3919,7 +3938,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -3955,73 +3974,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "API ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API ID",
+          "example": "api-ggdnu054g29lvce3",
           "member": "string",
           "name": "APIId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API request method\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API method.",
+          "example": "testState1",
           "member": "string",
           "name": "APIMethod",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Reason for the request\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Reason for application",
+          "example": "We need it.",
           "member": "string",
           "name": "ApplyReason",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Reason for rejection\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Reason for rejection.",
+          "example": "refused",
           "member": "string",
           "name": "RejectReason",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval status. 20: Rejected; 30: Approved\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval status. valid values: 20 (rejected), 30 (approved).",
+          "example": "20",
           "member": "int64",
           "name": "ApprovalStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API feature description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API feature description.",
+          "example": "testState1",
           "member": "string",
           "name": "APIDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API type. 1: System; 2: Custom\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API type. 1: system; 2: custom.",
+          "example": "2",
           "member": "int64",
           "name": "APIType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4032,7 +4051,7 @@
         {
           "disabled": false,
           "document": "Approval ID",
-          "example": "无",
+          "example": "20250307gd3m7rtwix",
           "member": "string",
           "name": "ApprovalNo",
           "output_required": true,
@@ -4042,7 +4061,7 @@
         {
           "disabled": false,
           "document": "Sensitive API ID",
-          "example": "无",
+          "example": "api-28ghlp8yodkxxwzd",
           "member": "string",
           "name": "APIId",
           "output_required": true,
@@ -4052,7 +4071,7 @@
         {
           "disabled": false,
           "document": "API name",
-          "example": "无",
+          "example": "testState1",
           "member": "string",
           "name": "APIName",
           "output_required": true,
@@ -4062,7 +4081,7 @@
         {
           "disabled": false,
           "document": "API request method",
-          "example": "无",
+          "example": "testState1",
           "member": "string",
           "name": "APIMethod",
           "output_required": true,
@@ -4072,7 +4091,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
@@ -4082,7 +4101,7 @@
         {
           "disabled": false,
           "document": "Mini program name",
-          "example": "无",
+          "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": true,
@@ -4092,7 +4111,7 @@
         {
           "disabled": false,
           "document": "Applicant",
-          "example": "无",
+          "example": "800001096389",
           "member": "string",
           "name": "ApplyUser",
           "output_required": true,
@@ -4102,7 +4121,7 @@
         {
           "disabled": false,
           "document": "Application time",
-          "example": "无",
+          "example": "1741317549",
           "member": "string",
           "name": "ApplyTime",
           "output_required": true,
@@ -4112,7 +4131,7 @@
         {
           "disabled": false,
           "document": "Application notes",
-          "example": "无",
+          "example": "We need it.",
           "member": "string",
           "name": "ApplyNote",
           "output_required": true,
@@ -4122,7 +4141,7 @@
         {
           "disabled": false,
           "document": "Approval status. 1: Processing; 20: Rejected; 30: Approved",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ApprovalStatus",
           "output_required": true,
@@ -4131,83 +4150,83 @@
         },
         {
           "disabled": false,
-          "document": "Approver\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the review user.",
+          "example": "空字符串",
           "member": "string",
           "name": "ApprovalUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval time.",
+          "example": "0",
           "member": "string",
           "name": "ApprovalTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval notes\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval notes",
+          "example": "空字符串",
           "member": "string",
           "name": "ApprovalNote",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the application icon.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationLogo",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API type. 1: System; 2: Custom\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API type. 1: system; 2: custom.",
+          "example": "2",
           "member": "int64",
           "name": "APIType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API feature description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API feature description.",
+          "example": "testState1",
           "member": "string",
           "name": "APIDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4218,7 +4237,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -4227,7 +4246,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -4236,7 +4255,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -4245,7 +4264,7 @@
         {
           "disabled": false,
           "document": "Approval status. 1: Processing; 20: Rejected; 30: Approved",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ApprovalStatusList",
           "required": false,
@@ -4254,7 +4273,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (API name, API method or application name)",
-          "example": "无",
+          "example": "application name",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -4269,7 +4288,7 @@
         {
           "disabled": false,
           "document": "Total number of entries",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
@@ -4317,7 +4336,7 @@
         {
           "disabled": false,
           "document": "Approval request number",
-          "example": "无",
+          "example": "AN05057613DDC689717410984DB52",
           "member": "string",
           "name": "ApprovalNo",
           "required": true,
@@ -4326,7 +4345,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -4362,68 +4381,68 @@
       "members": [
         {
           "disabled": false,
-          "document": "API ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API ID",
+          "example": "api-28ghlp8yodkxxwzd",
           "member": "string",
           "name": "APIId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API name.",
+          "example": "testState1",
           "member": "string",
           "name": "APIName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API request method\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API request method",
+          "example": "testState1",
           "member": "string",
           "name": "APIMethod",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API status.",
+          "example": "1",
           "member": "int64",
           "name": "APIStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API application status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API application status.",
+          "example": "30",
           "member": "int64",
           "name": "APIApplyStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Reason for rejection\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Reason for rejection.",
+          "example": "空字符串",
           "member": "string",
           "name": "RejectReason",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Approval ID",
-          "example": "无",
+          "example": "20250307gd3m7rtwix",
           "member": "string",
           "name": "ApprovalNo",
           "output_required": true,
@@ -4432,53 +4451,53 @@
         },
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application ID",
+          "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the application icon.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationIcon",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Application name",
+          "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API type. 1: System; 2: Custom\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API type. 1: system; 2: custom.",
+          "example": "2",
           "member": "int64",
           "name": "APIType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "API feature description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "API feature description.",
+          "example": "testState1",
           "member": "string",
           "name": "APIDesc",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4489,7 +4508,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -4498,7 +4517,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -4507,7 +4526,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -4516,7 +4535,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791765VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -4525,7 +4544,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh14xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": false,
@@ -4534,7 +4553,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (API name)",
-          "example": "无",
+          "example": "demo",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -4548,13 +4567,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4574,13 +4593,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response parameters\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response parameters.",
           "example": "无",
           "member": "DescribeMNPSensitiveAPIPermissionListResp",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4698,183 +4717,183 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID.",
+          "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program version ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program version primary key id.",
+          "example": "5845",
           "member": "int64",
           "name": "MNPVersionId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program name",
+          "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program icon\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program avatar.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program type",
+          "example": "IT tech-tools",
           "member": "string",
           "name": "MNPType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program introduction\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program introduction",
+          "example": "lighter",
           "member": "string",
           "name": "MNPIntro",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program description",
+          "example": "this app light your screen",
           "member": "string",
           "name": "MNPDesc",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Developer\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the developer.",
+          "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The time when the developer created it\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Developer creation time.",
+          "example": "1741317559",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program version.",
+          "example": "1.0.90",
           "member": "string",
           "name": "MNPVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version features\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Describes version features.",
+          "example": "autotest_create",
           "member": "string",
           "name": "MNPVersionIntro",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Phase. Values: [Develop,Platform,Online]\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Development Platform Online.",
+          "example": "Develop",
           "member": "string",
           "name": "Phase",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "0 pending review; 1 under review; 2 review rejection; 3 pass review; 4 review cancellation.",
+          "example": "3",
           "member": "int64",
           "name": "ApprovalStatus",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Approval request number\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Approval ticket ID",
+          "example": "123451234123",
           "member": "string",
           "name": "ApprovalNo",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it is a preview\n0: Not a preview; 1: Preview\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies whether it is a trial version.\nSpecifies the version type. valid values: 0 (non-preview version); 1 (trial version).",
+          "example": "0",
           "member": "int64",
           "name": "ShowCase",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version number to roll back to\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Version number to roll back to.",
+          "example": "5809",
           "member": "int64",
           "name": "RollbackVersion",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Release status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Indicates the release status.",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version approval status. 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the current main status of the version. valid values: \"0\" (pending review), \"1\" (under review), \"2\" (review rejection), \"3\" (pass review), \"4\" (review cancellation).",
+          "example": "0",
           "member": "int64",
           "name": "VersionCurrentStatus",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4884,23 +4903,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "QueryOnlineVersionResp",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4910,53 +4929,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Role ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Role ID",
+          "example": "20068",
           "member": "int64",
           "name": "RoleId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Role name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Role name.",
+          "example": "applicaion manager",
           "member": "string",
           "name": "RoleName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "teamA",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1717575381",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Role type 1-Preset role 2-Custom role\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Role type 1-preset role 2-custom role.",
+          "example": "1",
           "member": "int64",
           "name": "RoleType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4967,7 +4986,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -4976,7 +4995,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -4985,7 +5004,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -4994,7 +5013,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (role name)",
-          "example": "无",
+          "example": "key",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -5003,7 +5022,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -5017,23 +5036,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List data",
           "example": "无",
           "member": "DescribeRoleListData",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5371,83 +5390,83 @@
       "members": [
         {
           "disabled": false,
-          "document": "User ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User ID",
+          "example": "U20250307130313NEIOOE",
           "member": "string",
           "name": "UserId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User account",
+          "example": "jaden_app",
           "member": "string",
           "name": "UserAccount",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User name",
+          "example": "jaden_app",
           "member": "string",
           "name": "UserName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team ID",
+          "example": "1259398073",
           "member": "string",
           "name": "TeamId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "wangyang_app",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team role name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the team role name.",
+          "example": "Application senior developer",
           "member": "string",
           "name": "TeamRoleName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team role ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the team role ID.",
+          "example": "20070",
           "member": "int64",
           "name": "TeamRoleId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Editable or not\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Whether it is editable",
+          "example": "true",
           "member": "bool",
           "name": "CanEdit",
           "output_required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5457,23 +5476,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of results.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Total number of entries",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List information",
           "example": "无",
           "member": "DescribeTeamMemberInfoResp",
           "name": "DataList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5484,7 +5503,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -5493,7 +5512,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -5502,7 +5521,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -5511,7 +5530,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -5520,7 +5539,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (user name)",
-          "example": "无",
+          "example": "key",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -5529,7 +5548,7 @@
         {
           "disabled": false,
           "document": "Role ID",
-          "example": "无",
+          "example": "[20074,20075]",
           "member": "int64",
           "name": "RoleIds",
           "required": false,
@@ -5638,7 +5657,7 @@
         {
           "disabled": false,
           "document": "Service name",
-          "example": "无",
+          "example": "tcmpp",
           "member": "string",
           "name": "BusinessName",
           "required": true,
@@ -5647,7 +5666,7 @@
         {
           "disabled": false,
           "document": "File suffix",
-          "example": "无",
+          "example": ".png",
           "member": "string",
           "name": "Suffix",
           "required": true,
@@ -5661,13 +5680,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "UploadFileTempSecret",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5683,43 +5702,43 @@
       "members": [
         {
           "disabled": false,
-          "document": "User ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User iD.",
+          "example": "U20250305080051BHQCMM",
           "member": "string",
           "name": "UserId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User account",
+          "example": "OpenApiUser0305080051",
           "member": "string",
           "name": "UserAccount",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User account\n1 - Super admin 2 - Platform admin 3 - Member\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User account\n1 - super admin 2 - platform admin 3 - ordinary member. not passing indicates all.",
+          "example": "3",
           "member": "int64",
           "name": "AccountType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User name",
+          "example": "OpenApiUser0305080051",
           "member": "string",
           "name": "UserName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5729,73 +5748,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "User ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User ID",
+          "example": "U20250305181019YVKIPN",
           "member": "string",
           "name": "UserId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User account\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User account",
+          "example": "xiebin_app",
           "member": "string",
           "name": "UserAccount",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account type. 1: Super admin; 2: Platform admin; 3: Member\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Account type. 1: super administrator; 2: platform administrator; 3: ordinary member.",
+          "example": "3",
           "member": "int64",
           "name": "AccountType",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User name",
+          "example": "xiebin_app",
           "member": "string",
           "name": "UserName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1741169419",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Status. 1: Normal; 2: Disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Status. 1: normal; 2: disabled.",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Team name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Team name",
+          "example": "undefined",
           "member": "string",
           "name": "TeamName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5806,7 +5825,7 @@
         {
           "disabled": false,
           "document": "Page offset",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -5815,7 +5834,7 @@
         {
           "disabled": false,
           "document": "Number of results per page",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -5824,7 +5843,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -5833,7 +5852,7 @@
         {
           "disabled": false,
           "document": "Keywords for search (username or account)",
-          "example": "无",
+          "example": "superapp",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -5842,7 +5861,7 @@
         {
           "disabled": false,
           "document": "User account 1 - Super admin 2 - Platform admin 3 - Member",
-          "example": "无",
+          "example": "3",
           "member": "int64",
           "name": "AccountType",
           "required": false,
@@ -5851,7 +5870,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": false,
@@ -5866,7 +5885,7 @@
         {
           "disabled": false,
           "document": "Total number of entries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "TotalCount",
           "output_required": false,
@@ -5891,13 +5910,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "DescribeUserListResp",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5914,7 +5933,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20241210111235IUXUVE",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -5923,7 +5942,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -5937,13 +5956,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "DescribeUserDetailResp",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5960,7 +5979,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791766VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -5969,7 +5988,7 @@
         {
           "disabled": false,
           "document": "API ID",
-          "example": "无",
+          "example": "api-k4or7z90c4mn64eo",
           "member": "string",
           "name": "APIId",
           "required": true,
@@ -6006,7 +6025,7 @@
         {
           "disabled": false,
           "document": "Configuration information in Base64 format\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "eyJjdXN......91ZC5jb20ifQ==",
           "member": "string",
           "name": "File",
           "output_required": true,
@@ -6022,7 +6041,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791767VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6031,7 +6050,7 @@
         {
           "disabled": false,
           "document": "API ID",
-          "example": "无",
+          "example": "api-k4or7z90c4mn65eo",
           "member": "string",
           "name": "APIId",
           "required": true,
@@ -6067,13 +6086,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response result\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Result.",
+          "example": "true",
           "member": "bool",
           "name": "Result",
           "output_required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6083,13 +6102,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "0: Success; 1: Allowed domains; 2: Blocked domains\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "0: success; 1: allowed domains exist; 2: blocked domains exist.",
+          "example": "0",
           "member": "int64",
           "name": "Result",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6099,69 +6118,69 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program category name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the mini program category name.",
+          "example": "Logistics Services",
           "member": "string",
           "name": "TypeName",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Mini program category value\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program category value.",
+          "example": "[\"1_Pickup/Delivery\", \"2_Search\", \"10_Postal Service\", \"11_Loading and unloading\", \"12_Warehousing\", \"13_Express Locker\", \"14_Cargo Transportation\", \"100000_test\"]",
           "member": "string",
           "name": "TypeValue",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Category ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Category ID.",
+          "example": "10000",
           "member": "int64",
           "name": "TypeId",
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creation time",
+          "example": "1719991302",
           "member": "int64",
           "name": "CreateTime",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Creator",
+          "example": "admin",
           "member": "string",
           "name": "CreateUser",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it is a system category\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Indicates whether it is a system category.",
+          "example": "true",
           "member": "bool",
           "name": "IsSystem",
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6172,7 +6191,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "无",
+          "example": "app-3ciprh15xqt",
           "member": "string",
           "name": "ApplicationId",
           "required": true,
@@ -6181,7 +6200,7 @@
         {
           "disabled": false,
           "document": "Application name",
-          "example": "无",
+          "example": "QQ",
           "member": "string",
           "name": "ApplicationName",
           "required": true,
@@ -6190,7 +6209,7 @@
         {
           "disabled": false,
           "document": "Application introduction",
-          "example": "无",
+          "example": "simple introduce",
           "member": "string",
           "name": "Intro",
           "required": true,
@@ -6199,7 +6218,7 @@
         {
           "disabled": false,
           "document": "Icon",
-          "example": "无",
+          "example": "http://127.0..0.1/T04257DS9431720WTAG/console/20240819193433-a67c2b913e.png",
           "member": "string",
           "name": "Logo",
           "required": true,
@@ -6208,36 +6227,45 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791768VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Android app package name",
-          "example": "无",
+          "example": "com.tencent.demo",
           "member": "string",
           "name": "AndroidAppKey",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "iOS App bundleId",
-          "example": "无",
+          "example": "com.tencent.demo",
           "member": "string",
           "name": "IosAppKey",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Remarks",
-          "example": "无",
+          "example": "remark",
           "member": "string",
           "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheme",
+          "example": "scheme",
+          "member": "string",
+          "name": "Scheme",
           "required": false,
           "type": "string"
         }
@@ -6272,7 +6300,7 @@
         {
           "disabled": false,
           "document": "Domain ID",
-          "example": "无",
+          "example": "5279",
           "member": "int64",
           "name": "DomainId",
           "required": true,
@@ -6281,7 +6309,7 @@
         {
           "disabled": false,
           "document": "Domain name",
-          "example": "无",
+          "example": "openapi.autotest.domain.modifyjcb",
           "member": "string",
           "name": "DomainUrl",
           "required": true,
@@ -6290,7 +6318,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791769VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6327,7 +6355,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -6336,7 +6364,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791771VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6359,13 +6387,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6382,7 +6410,7 @@
         {
           "disabled": false,
           "document": "Mini program type",
-          "example": "无",
+          "example": "Logistics Services->1_Pickup/Delivery,Life Service->144_Lilliputian Services",
           "member": "string",
           "name": "MNPType",
           "required": true,
@@ -6391,7 +6419,7 @@
         {
           "disabled": false,
           "document": "Mini program name",
-          "example": "无",
+          "example": "mini program name",
           "member": "string",
           "name": "MNPName",
           "required": true,
@@ -6400,7 +6428,7 @@
         {
           "disabled": false,
           "document": "Mini program introduction",
-          "example": "无",
+          "example": "mini program introduce",
           "member": "string",
           "name": "MNPIntro",
           "required": true,
@@ -6409,7 +6437,7 @@
         {
           "disabled": false,
           "document": "Mini program description",
-          "example": "无",
+          "example": "mini program describe",
           "member": "string",
           "name": "MNPDesc",
           "required": true,
@@ -6418,7 +6446,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mini program id",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -6427,7 +6455,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6436,7 +6464,7 @@
         {
           "disabled": false,
           "document": "Mini program icon",
-          "example": "无",
+          "example": "http://127.0.0.1/T04257DS9431720WTAG/console/20240820162809-c31a505943.png",
           "member": "string",
           "name": "MNPIcon",
           "required": false,
@@ -6473,7 +6501,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -6482,7 +6510,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20250305080107RLWGUS",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -6491,7 +6519,7 @@
         {
           "disabled": false,
           "document": "Role ID",
-          "example": "无",
+          "example": "20071",
           "member": "int64",
           "name": "RoleId",
           "required": true,
@@ -6500,7 +6528,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791773VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6537,7 +6565,7 @@
         {
           "disabled": false,
           "document": "Team ID",
-          "example": "无",
+          "example": "1151697965",
           "member": "string",
           "name": "TeamId",
           "required": true,
@@ -6546,7 +6574,7 @@
         {
           "disabled": false,
           "document": "Team name",
-          "example": "无",
+          "example": "AT_team0305080426",
           "member": "string",
           "name": "TeamName",
           "required": true,
@@ -6555,7 +6583,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791772VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6564,7 +6592,7 @@
         {
           "disabled": false,
           "document": "Team administrator",
-          "example": "无",
+          "example": "U20250211162022WMDVCK",
           "member": "string",
           "name": "AdminUserId",
           "required": false,
@@ -6601,7 +6629,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "无",
+          "example": "U20250305080107RLWGUS",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -6610,7 +6638,7 @@
         {
           "disabled": false,
           "document": "User name",
-          "example": "无",
+          "example": "OpenApiUser0305080106",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -6619,7 +6647,7 @@
         {
           "disabled": false,
           "document": "Account type 2 - Platform admin 3 - Member",
-          "example": "无",
+          "example": "3",
           "member": "int64",
           "name": "AccountType",
           "required": true,
@@ -6628,7 +6656,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791774VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6642,13 +6670,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6664,13 +6692,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "RSA encryption public key\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "RSA encryption public key.",
+          "example": "-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB......eZkenloeiHjP9x+doRcyz0wIDAQAB\\n-----END PUBLIC KEY-----\\n",
           "member": "string",
           "name": "Key",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6681,7 +6709,7 @@
         {
           "disabled": false,
           "document": "Approval ID",
-          "example": "无",
+          "example": "20250305yjv52ri4a6",
           "member": "string",
           "name": "ApprovalNo",
           "required": true,
@@ -6690,7 +6718,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791775VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6736,7 +6764,7 @@
         {
           "disabled": false,
           "document": "Approval ID",
-          "example": "无",
+          "example": "20250305yjv52ri4a6",
           "member": "string",
           "name": "ApprovalNo",
           "required": true,
@@ -6745,7 +6773,7 @@
         {
           "disabled": false,
           "document": "Approval status. 20: Rejected; 30: Approved",
-          "example": "无",
+          "example": "30",
           "member": "int64",
           "name": "ApprovalStatus",
           "required": true,
@@ -6754,7 +6782,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791776VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6763,7 +6791,7 @@
         {
           "disabled": false,
           "document": "Approval notes",
-          "example": "无",
+          "example": "20250305yjv52ri4a6",
           "member": "string",
           "name": "ApprovalNote",
           "required": false,
@@ -6799,53 +6827,53 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Mini program ID",
+          "example": "mpjnms6wibvjj8dd",
           "member": "string",
           "name": "MNPId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Version number",
+          "example": "5.0.0",
           "member": "string",
           "name": "MNPVersion",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Version ID.",
+          "example": "4605",
           "member": "int64",
           "name": "MNPVersionId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Version note\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Version remarks.",
+          "example": "5.0.0 34",
           "member": "string",
           "name": "MNPVersionNote",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Update time",
+          "example": "1736924793",
           "member": "string",
           "name": "UpdateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6856,7 +6884,7 @@
         {
           "disabled": false,
           "document": "Mini program version ID",
-          "example": "无",
+          "example": "1000",
           "member": "int64",
           "name": "MNPVersionId",
           "required": true,
@@ -6865,7 +6893,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791777VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6902,7 +6930,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -6911,7 +6939,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791778VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -6947,13 +6975,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource ID\n0: No preview\n1. A preview is currently available and uploaded by the current user.\n2. A preview is currently available and uploaded by another user.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specifies the resource ID returned by the business.\n0: no trial version available.\nA trial version is currently available and uploaded by the current user.\n2: a trial version is currently available and uploaded by another user.",
+          "example": "2940",
           "member": "int64",
           "name": "ResourceId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6964,7 +6992,7 @@
         {
           "disabled": false,
           "document": "The ID of the resource returned\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "mph6jvnzayt5ebb9",
           "member": "string",
           "name": "ResourceId",
           "output_required": true,
@@ -6980,7 +7008,7 @@
         {
           "disabled": false,
           "document": "Mini program ID",
-          "example": "无",
+          "example": "mp0eexzsjkl6p8q3",
           "member": "string",
           "name": "MNPId",
           "required": true,
@@ -6989,7 +7017,7 @@
         {
           "disabled": false,
           "document": "Mini program version ID",
-          "example": "无",
+          "example": "1000",
           "member": "int64",
           "name": "MNPVersionId",
           "required": true,
@@ -6998,7 +7026,7 @@
         {
           "disabled": false,
           "document": "Platform ID",
-          "example": "无",
+          "example": "T08123WM5791779VNCZ",
           "member": "string",
           "name": "PlatformId",
           "required": true,
@@ -7007,7 +7035,7 @@
         {
           "disabled": false,
           "document": "Mini program version number",
-          "example": "无",
+          "example": "1.0.167",
           "member": "string",
           "name": "MNPVersion",
           "required": true,
@@ -7043,14 +7071,14 @@
       "members": [
         {
           "disabled": false,
-          "document": "String type response data\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "string type response data.",
+          "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/mpp/mp4qnfj01bkbm1th_1.0.0.apkg",
           "member": "string",
           "name": "Data",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7061,7 +7089,7 @@
         {
           "disabled": false,
           "document": "Bucket\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "tcmpp-dev-renter-1258344699",
           "member": "string",
           "name": "Bucket",
           "output_required": true,
@@ -7071,7 +7099,7 @@
         {
           "disabled": false,
           "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "output_required": true,
@@ -7081,7 +7109,7 @@
         {
           "disabled": false,
           "document": "Destination of upload\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "T04914TJ0911724TSAK/tcmpp/4018de4e22b2464c81920eaab1554a04.jpeg",
           "member": "string",
           "name": "Path",
           "output_required": true,
@@ -7091,7 +7119,7 @@
         {
           "disabled": false,
           "document": "Temporary secret ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "AKIDO******DATD",
           "member": "string",
           "name": "TempSecretId",
           "output_required": true,
@@ -7101,7 +7129,7 @@
         {
           "disabled": false,
           "document": "Temporary secret key\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "EDoY******39YhA=",
           "member": "string",
           "name": "TempSecretKey",
           "output_required": true,
@@ -7111,7 +7139,7 @@
         {
           "disabled": false,
           "document": "Token \nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "pEKGcxS6Dut7bm1hzxFOmeaQxY4yvYaa058fb6e8d75cd5f157b4b1c60220637MeB8tV_M",
           "member": "string",
           "name": "Token",
           "output_required": true,
@@ -7121,7 +7149,7 @@
         {
           "disabled": false,
           "document": "Whether to enable global acceleration. Valid values: 0 (no), 1 (yes)",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "AccelerateEnable",
           "output_required": false,

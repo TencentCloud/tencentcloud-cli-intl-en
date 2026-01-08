@@ -1,0 +1,3057 @@
+{
+  "actions": {
+    "AddClientSubscription": {
+      "document": "This API is used to add a subscription for an MQTT client.",
+      "input": "AddClientSubscriptionRequest",
+      "name": "This API is used to add a subscription for an MQTT client.",
+      "output": "AddClientSubscriptionResponse",
+      "status": "online"
+    },
+    "CreateAuthorizationPolicy": {
+      "document": "This API is used to create a performance test task for an MQTT instance.",
+      "input": "CreateAuthorizationPolicyRequest",
+      "name": "Creates an authorization policy",
+      "output": "CreateAuthorizationPolicyResponse",
+      "status": "online"
+    },
+    "CreateInstance": {
+      "document": "This API is used to purchase a new MQTT instance.",
+      "input": "CreateInstanceRequest",
+      "name": "Purchase an MQTT instance",
+      "output": "CreateInstanceResponse",
+      "status": "online"
+    },
+    "CreateMessageEnrichmentRule": {
+      "document": "This API is used to create a message enrichment rule.",
+      "input": "CreateMessageEnrichmentRuleRequest",
+      "name": "Create message enrichment rule",
+      "output": "CreateMessageEnrichmentRuleResponse",
+      "status": "online"
+    },
+    "CreateUser": {
+      "document": "This API is used to add an MQTT role.",
+      "input": "CreateUserRequest",
+      "name": "Adds an MQTT role",
+      "output": "CreateUserResponse",
+      "status": "online"
+    },
+    "DeleteAuthorizationPolicy": {
+      "document": "This API is used to delete policy rules.",
+      "input": "DeleteAuthorizationPolicyRequest",
+      "name": "Delete an authorization policy",
+      "output": "DeleteAuthorizationPolicyResponse",
+      "status": "online"
+    },
+    "DeleteClientSubscription": {
+      "document": "This API is used to delete a subscription of an MQTT client.",
+      "input": "DeleteClientSubscriptionRequest",
+      "name": "Delete a subscription for an MQTT client",
+      "output": "DeleteClientSubscriptionResponse",
+      "status": "online"
+    },
+    "DeleteInstance": {
+      "document": "This API is used to delete an MQTT instance.",
+      "input": "DeleteInstanceRequest",
+      "name": "This API is used to delete an MQTT instance.",
+      "output": "DeleteInstanceResponse",
+      "status": "online"
+    },
+    "DeleteMessageEnrichmentRule": {
+      "document": "This API is used to delete the message enrichment rule.",
+      "input": "DeleteMessageEnrichmentRuleRequest",
+      "name": "Delete message enrichment rule",
+      "output": "DeleteMessageEnrichmentRuleResponse",
+      "status": "online"
+    },
+    "DeleteTopic": {
+      "document": "This API is used to delete an MQTT topic.",
+      "input": "DeleteTopicRequest",
+      "name": "This API is used to delete an MQTT topic.",
+      "output": "DeleteTopicResponse",
+      "status": "online"
+    },
+    "DeleteUser": {
+      "document": "This API is used to delete an MQTT user.",
+      "input": "DeleteUserRequest",
+      "name": "Delete an MQTT role",
+      "output": "DeleteUserResponse",
+      "status": "online"
+    },
+    "DescribeAuthorizationPolicies": {
+      "document": "This API is used to query authorization rules.",
+      "input": "DescribeAuthorizationPoliciesRequest",
+      "name": "Query an authorization policy",
+      "output": "DescribeAuthorizationPoliciesResponse",
+      "status": "online"
+    },
+    "DescribeClientList": {
+      "document": "This API is used to query the MQTT client details.",
+      "input": "DescribeClientListRequest",
+      "name": "Query the MQTT client list",
+      "output": "DescribeClientListResponse",
+      "status": "online"
+    },
+    "DescribeInstance": {
+      "document": "This API is used to query instance information.",
+      "input": "DescribeInstanceRequest",
+      "name": "Query MQTT instance details",
+      "output": "DescribeInstanceResponse",
+      "status": "online"
+    },
+    "DescribeMessageByTopic": {
+      "document": "This API is used to query messages based on subscription.",
+      "input": "DescribeMessageByTopicRequest",
+      "name": "Query messages based on subscription",
+      "output": "DescribeMessageByTopicResponse",
+      "status": "online"
+    },
+    "DescribeMessageDetails": {
+      "document": "This API is used to query the MQTT message details.",
+      "input": "DescribeMessageDetailsRequest",
+      "name": "Query MQTT detailed information",
+      "output": "DescribeMessageDetailsResponse",
+      "status": "online"
+    },
+    "DescribeMessageEnrichmentRules": {
+      "document": "This API is used to query message enrichment rules.",
+      "input": "DescribeMessageEnrichmentRulesRequest",
+      "name": "Query message enrichment rules",
+      "output": "DescribeMessageEnrichmentRulesResponse",
+      "status": "online"
+    },
+    "DescribeTopic": {
+      "document": "This API is used to query the MQTT topic details.",
+      "input": "DescribeTopicRequest",
+      "name": "Query MQTT topic details",
+      "output": "DescribeTopicResponse",
+      "status": "online"
+    },
+    "DescribeUserList": {
+      "document": "This API is used to query the user list. Filter parameter usage instructions are as follows:.\n\nThis API is used to perform Username fuzzy search.",
+      "input": "DescribeUserListRequest",
+      "name": "Query the MQTT user list",
+      "output": "DescribeUserListResponse",
+      "status": "online"
+    },
+    "KickOutClient": {
+      "document": "This API is used to kick out a client.",
+      "input": "KickOutClientRequest",
+      "name": "Kick out a client",
+      "output": "KickOutClientResponse",
+      "status": "online"
+    },
+    "ModifyAuthorizationPolicy": {
+      "document": "This API is used to modify policy rules. See the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+      "input": "ModifyAuthorizationPolicyRequest",
+      "name": "Modify an authorization policy",
+      "output": "ModifyAuthorizationPolicyResponse",
+      "status": "online"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to modify instance attributes. Only running clusters can call this API to perform configuration change.",
+      "input": "ModifyInstanceRequest",
+      "name": "Modify MQTT instance attributes",
+      "output": "ModifyInstanceResponse",
+      "status": "online"
+    },
+    "ModifyMessageEnrichmentRule": {
+      "document": "This API is used to modify message enrichment rules.\nNote: All attributes of the current rule must be submitted, even if specific fields are not modified.",
+      "input": "ModifyMessageEnrichmentRuleRequest",
+      "name": "Modify message enrichment rule",
+      "output": "ModifyMessageEnrichmentRuleResponse",
+      "status": "online"
+    },
+    "ModifyUser": {
+      "document": "This API is used to modify an MQTT role.",
+      "input": "ModifyUserRequest",
+      "name": "This API is used to modify an MQTT role.",
+      "output": "ModifyUserResponse",
+      "status": "online"
+    },
+    "UpdateAuthorizationPolicyPriority": {
+      "document": "This API is used to modify policy rule priority.",
+      "input": "UpdateAuthorizationPolicyPriorityRequest",
+      "name": "Update authorization policy priority",
+      "output": "UpdateAuthorizationPolicyPriorityResponse",
+      "status": "online"
+    },
+    "UpdateMessageEnrichmentRulePriority": {
+      "document": "This API is used to modify the priority for message enrichment rule.",
+      "input": "UpdateMessageEnrichmentRulePriorityRequest",
+      "name": "Update message enhancement rule priority",
+      "output": "UpdateMessageEnrichmentRulePriorityResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2024-05-16",
+    "serviceNameCN": "消息队列 MQTT 版",
+    "serviceShortName": "mqtt"
+  },
+  "objects": {
+    "AddClientSubscriptionRequest": {
+      "document": "AddClientSubscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID.",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the subscription.",
+          "example": "humidity/+/",
+          "member": "string",
+          "name": "TopicFilter",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service quality. valid values: 0, 1, 2.",
+          "example": "1",
+          "member": "string",
+          "name": "Qos",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddClientSubscriptionResponse": {
+      "document": "AddClientSubscription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AuthorizationPolicyItem": {
+      "document": "AuthorizationPolicyItem",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy rule ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MQTT cluster ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the policy rule name.",
+          "example": "allow-connect",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule syntax version. currently only support 1. defaults to 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "Version",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy priority. a smaller priority ID indicates the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the decision.\nallow specifies permission for access requests from devices that match this policy.\ndeny: denies access requests to the device that override the policy.\nRefer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "allow",
+          "member": "string",
+          "name": "Effect",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation.\nSpecifies the connection.\nPublishes an mqtt message.\nSub. specifies the subscription to mqtt messages.\nRefer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "connect",
+          "member": "string",
+          "name": "Actions",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "topic1",
+          "member": "string",
+          "name": "Resources",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the device ID for connection. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Condition - username. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the client IP address. see the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Condition - service quality. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "0",
+          "member": "string",
+          "name": "Qos",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\nIndicates the match of retain messages.\n2: indicates non-retain messages.\n3: indicates matching retain and non-retain messages.",
+          "example": "1",
+          "member": "int64",
+          "name": "Retain",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark with length not exceeding 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuthorizationPolicyPriority": {
+      "document": "Rule priority.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Priority",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateAuthorizationPolicyRequest": {
+      "document": "CreateAuthorizationPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, \"-\", and \"_\".",
+          "example": "name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy version, defaults to 1. currently only support 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyVersion",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Policy priority. a smaller value indicates higher priority and must be unique. a smaller priority ID means the policy takes effect with higher priority. see [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the decision.\nallow specifies permission for access requests from devices that match this policy.\ndeny: denies access requests to the device that override the policy.\nRefer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "allow",
+          "member": "string",
+          "name": "Effect",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\nSpecifies the connection.\nSpecifies the publish action.\nSub. specifies the subscription.",
+          "example": "connect",
+          "member": "string",
+          "name": "Actions",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Condition - message retention. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\nMatches message retention.\nMatches non-retention messages.\n3. match retained and non-retained messages.",
+          "example": "1",
+          "member": "int64",
+          "name": "Retain",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Condition: specifies the service quality.\n0: at most once.\nMinimum once.\n2: exactly once.\nRefer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "1",
+          "member": "string",
+          "name": "Qos",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\n",
+          "example": "topic1",
+          "member": "string",
+          "name": "Resources",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the condition-username.",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID. supports regular expressions.",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the client IP address, supporting IP or CIDR. refer to the [data plane authorization policy description](https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark information with a maximum length of 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuthorizationPolicyResponse": {
+      "document": "CreateAuthorizationPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceRequest": {
+      "document": "CreateInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance type, which needs to correspond to SkuCode. for details, see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api.\nBASIC: basic edition.\nPRO edition.\nPLATINUM version.\n",
+          "example": "BASIC",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the cluster name, cannot be empty, 3-64 characters, only comprised of digits, letters, \"-\", and \"_\".",
+          "example": "instance-1",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product specification, which must correspond to InstanceType. see the [get MQTT product sales spec](https://www.tencentcloud.comom/document/api/1778/116232?from_cn_redirect=1) api to obtain details.",
+          "example": "pro_10k_1",
+          "member": "string",
+          "name": "SkuCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark information with a maximum length of 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list",
+          "example": "[{\"tag1-key\":\"tag1-value\",\"tag2-key\":\"tag2-value\"}]",
+          "member": "Tag",
+          "name": "TagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the VPC information associated with the instance. the available VPC and SUBNET under the current user must be provided.",
+          "example": "无",
+          "member": "VpcInfo",
+          "name": "VpcList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether public network access is enabled. default false (disabled).",
+          "example": "true",
+          "member": "bool",
+          "name": "EnablePublic",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Public network bandwidth (unit: Mbps). this field is mandatory and must be more than 0 when EnablePublic is True.",
+          "example": "1",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Public network access allowlist. if not passed, it means deny all IP network access.",
+          "example": "无",
+          "member": "IpRule",
+          "name": "IpRules",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the instance is automatically renewed (0: no auto-renewal; 1: auto-renewal). this parameter is valid only when you purchase a prepaid cluster. default value: 1 (auto-renewal).",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the purchase duration (measurement unit: month). this parameter is valid only when you purchase a prepaid cluster. default: 1m (month). valid values: 1-12, 24, 36, 48, 60.",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode (0: postpaid; 1: prepaid). default: 0 (postpaid).",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceResponse": {
+      "document": "CreateInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "rmq-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMessageEnrichmentRuleRequest": {
+      "document": "CreateMessageEnrichmentRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule name",
+          "example": "rule1",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule matching conditions in JSON format, Base64 encoding is required.\nCreating a Billing Resource Order\n{\"clientId\":\"client-1\",\"username\":\"client-1\",\"topic\":\"home/room1\"}\nSpecifies the Base64-encoded content.\neyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9",
+          "example": "eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9",
+          "member": "string",
+          "name": "Condition",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the action of rule execution in JSON format, which must be Base64 encoded.\nCreating a Billing Resource Order\n{\"messageExpiryInterval\":360,\"responseTopic\":\"replies/devices/${clientid}\",\"correlationData\":\"${traceid}\",\"userProperty\":[{\"key\":\"trace-id\",\"value\":\"${traceid}\"}]}\nSpecifies the BASE64-encoded value.\neyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvZGV2aWNlcy8ke2NsaWVudGlkfSIsImNvcnJlbGF0aW9uRGF0YSI6IiR7dHJhY2VpZH0iLCJ1c2VyUHJvcGVydHkiOlt7ImtleSI6InRyYWNlLWlkIiwidmFsdWUiOiIke3RyYWNlaWR9In1dfQ==",
+          "example": "eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvZGV2aWNlcy8ke2NsaWVudGlkfSIsImNvcnJlbGF0aW9uRGF0YSI6IiR7dHJhY2VpZH0iLCJ1c2VyUHJvcGVydHkiOlt7ImtleSI6InRyYWNlLWlkIiwidmFsdWUiOiIke3RyYWNlaWR9In1dfQ==",
+          "member": "string",
+          "name": "Actions",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule priority. a smaller number indicates a higher priority. high priority overwrites low-priority. the userproperty field will be merged.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. valid values: 0 (undefined), 1 (activate), 2 (deactivate). default: deactivate.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark with length not exceeding 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMessageEnrichmentRuleResponse": {
+      "document": "CreateMessageEnrichmentRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserRequest": {
+      "document": "CreateUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the username, which cannot be empty, only supports numbers, uppercase and lowercase letters, and separators (\"_\", \"-\"), and must not exceed 32 characters.",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the password. if this field is empty, the backend performs default generation. when using a user-defined password, the value cannot be empty, only supports numbers, uppercase and lowercase letters, and separators (\"_\", \"-\"), and must not exceed 64 characters.",
+          "example": "pwd",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark with length not exceeding 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUserResponse": {
+      "document": "CreateUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuthorizationPolicyRequest": {
+      "document": "DeleteAuthorizationPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the authorization policy rule id, which can be obtained from the DescribeAuthorizationPolicies api (https://www.tencentcloud.comom/document/api/1778/111074?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuthorizationPolicyResponse": {
+      "document": "DeleteAuthorizationPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClientSubscriptionRequest": {
+      "document": "DeleteClientSubscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID.",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the subscription.",
+          "example": "humidity/+/",
+          "member": "string",
+          "name": "TopicFilter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteClientSubscriptionResponse": {
+      "document": "DeleteClientSubscription response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRequest": {
+      "document": "DeleteInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceResponse": {
+      "document": "DeleteInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMessageEnrichmentRuleRequest": {
+      "document": "DeleteMessageEnrichmentRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Message enrichment rule id.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMessageEnrichmentRuleResponse": {
+      "document": "DeleteMessageEnrichmentRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicRequest": {
+      "document": "DeleteTopic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Topic.",
+          "example": "sample-topic-name",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTopicResponse": {
+      "document": "DeleteTopic response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserRequest": {
+      "document": "DeleteUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUserResponse": {
+      "document": "DeleteUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuthorizationPoliciesRequest": {
+      "document": "DescribeAuthorizationPolicies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuthorizationPoliciesResponse": {
+      "document": "DescribeAuthorizationPolicies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule",
+          "example": "无",
+          "member": "AuthorizationPolicyItem",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClientListRequest": {
+      "document": "DescribeClientList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on the number of clients. Maximum value: 1024. Default value: 1024.",
+          "example": "1024",
+          "member": "string",
+          "name": "Number",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClientListResponse": {
+      "document": "DescribeClientList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the client list.",
+          "example": "无",
+          "member": "MQTTClientInfo",
+          "name": "Clients",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceRequest": {
+      "document": "DescribeInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceResponse": {
+      "document": "DescribeInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance type\nBASIC: basic edition.\nPRO edition.\nPLATINUM edition.",
+          "example": "PRO",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-mwmdg9dm",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "name",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of topics",
+          "example": "2",
+          "member": "int64",
+          "name": "TopicNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of topics per instance",
+          "example": "1000",
+          "member": "int64",
+          "name": "TopicNumLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TPS throttle value",
+          "example": "1000",
+          "member": "int64",
+          "name": "TpsLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, in seconds",
+          "example": "1711955420",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status. RUNNING: running; MAINTAINING: maintaining; ABNORMAL: abnormal; OVERDUE: in arrears; DESTROYED: deleted; CREATING: creating; MODIFYING: adjusting the configuration; CREATE_FAILURE: creation failed; MODIFY_FAILURE: configuration adjustment failed; DELETING: deleting.",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "InstanceStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance specification.",
+          "example": "pro_10k_1",
+          "member": "string",
+          "name": "SkuCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of subscriptions for a single client.",
+          "example": "30",
+          "member": "int64",
+          "name": "MaxSubscriptionPerClient",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of authorization rules.",
+          "example": "10",
+          "member": "int64",
+          "name": "AuthorizationPolicyLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of clients.",
+          "example": "1000",
+          "member": "int64",
+          "name": "ClientNumLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the registration method for the client certificate.\nJITP: automatically register.\nAPI: register manually through api.",
+          "example": "API",
+          "member": "string",
+          "name": "DeviceCertificateProvisionType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to automatically activate the device certificate during automatic registration.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutomaticActivation",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the instance is automatically renewed. this parameter is valid only for monthly subscription clusters. valid values: 1 (auto-renewal), 0 (non-automatic renewal).",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode. POSTPAID: pay-as-you-go billing. PREPAID: monthly subscription.",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "ExpiryTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled destruction time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "DestroyTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TLS, one-way authentication. mTLS, mutual authentication. BYOC, one certificate per device.",
+          "example": "TLS",
+          "member": "string",
+          "name": "X509Mode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum Ca quota.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxCaNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "FPS cert registration code.",
+          "example": "2140c1c2-e26d-47f6-9048-0573f91b219b",
+          "member": "string",
+          "name": "RegistrationCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of subscriptions for a cluster.",
+          "example": "120000",
+          "member": "int64",
+          "name": "MaxSubscription",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization policy switch.",
+          "example": "false",
+          "member": "bool",
+          "name": "AuthorizationPolicy",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum limit of shared subscription groups.",
+          "example": "20",
+          "member": "int64",
+          "name": "SharedSubscriptionGroupLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the topic filter number limit for each shared subscription group.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxTopicFilterPerSharedSubscriptionGroup",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the limit on number of auto-subscription rules.",
+          "example": "10",
+          "member": "int64",
+          "name": "AutoSubscriptionPolicyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number limit of TopicFilter in a single auto-subscription rule.",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxTopicFilterPerAutoSubscriptionPolicy",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to use the default server certificate.",
+          "example": "false",
+          "member": "bool",
+          "name": "UseDefaultServerCert",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum allowed number of server cas.",
+          "example": "3",
+          "member": "int64",
+          "name": "TrustedCaLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum allowed number of server certificates.",
+          "example": "3",
+          "member": "int64",
+          "name": "ServerCertLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the max level of the topic prefix.",
+          "example": "3",
+          "member": "int64",
+          "name": "TopicPrefixSlashLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the speed limit for sending messages by a single client in messages per second.",
+          "example": "10",
+          "member": "int64",
+          "name": "MessageRate",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the protocols supported by the server tls, separated by \",\". example: TLSv1.3,TLSv1.2,TLSv1.1,TLSv1.",
+          "example": "TLSv1.3,TLSv1.2,TLSv1.1,TLSv1",
+          "member": "string",
+          "name": "TransportLayerSecurity",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the message property enrichment rule quota.",
+          "example": "10",
+          "member": "int64",
+          "name": "MessageEnrichmentRuleLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageByTopicRequest": {
+      "document": "DescribeMessageByTopic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "home/room",
+          "example": "发送topic或者订阅表达式",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time. millisecond-level timestamp.",
+          "example": "1712025623202",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number of query messages. value range: 1-1024. default: 100.",
+          "example": "100",
+          "member": "int64",
+          "name": "MaxNumber",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageByTopicResponse": {
+      "document": "DescribeMessageByTopic response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message List",
+          "example": "无",
+          "member": "MQTTMessage",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageDetailsRequest": {
+      "document": "DescribeMessageDetails request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Message ID.",
+          "example": "0B8D67D3003505C29BFD077EC65B0002",
+          "member": "string",
+          "name": "MessageId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subscription expression.",
+          "example": "home/room",
+          "member": "string",
+          "name": "Subscription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageDetailsResponse": {
+      "document": "DescribeMessageDetails response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message body.",
+          "example": "body",
+          "member": "string",
+          "name": "Body",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the user-customized attribute.",
+          "example": "无",
+          "member": "UserProperty",
+          "name": "UserProperties",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the message storage time. millisecond-level timestamp.",
+          "example": "1745828681259",
+          "member": "int64",
+          "name": "StoreTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message ID.",
+          "example": "0B8D67D3003505C29BFD077EC65B0002",
+          "member": "string",
+          "name": "MessageId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Producer address.",
+          "example": "client-1",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Topic",
+          "example": "1",
+          "member": "string",
+          "name": "Qos",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the source topic.",
+          "example": "home/room",
+          "member": "string",
+          "name": "OriginTopic",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content type (MQTT5).\nIndicates the content type of the message payload using standard MIME type format. helps the receiver correctly parse and process the message content.\nSpecifies the example.\napplication/json: indicates the payload is data in json format.\nText/Plain: indicates the payload is plain text.\napplication/octet-stream: indicates the payload is binary data.",
+          "example": "application/json",
+          "member": "string",
+          "name": "ContentType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payload format indicator (MQTT5).\nIndicates the payload format, which is a boolean value. 0 means an unspecified format (binary), and 1 means a UTF-8 encoded string.\nSpecifies the example.\nValid values: 0 indicates the payload is binary data, such as images or audio.\nValid value 1: when the payload is UTF-8 encoded text, such as JSON string or XML.",
+          "example": "0",
+          "member": "int64",
+          "name": "PayloadFormatIndicator",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message expiration interval (MQTT5).\nSpecifies the validity time (in seconds) of the specified message before it is discarded. if the message fails to reach the MQTT server before expiration, it will be discarded.\nSpecifies the example.\nThe value 60 indicates that the message is valid within 60 seconds after release. unreached messages will be dropped after expiry.\nA value of 0 indicates the message never expires and remains permanently valid until received or the session ends.",
+          "example": "60",
+          "member": "int64",
+          "name": "MessageExpiryInterval",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response topic (MQTT5).\nSpecifies a topic for the response message in request-response mode. the sender can specify which topic the recipient should send the response to.\nSpecifies the example.\nSender publishes a request to the topic devices/device1/commands and sets ResponseTopic to devices/device1/responses.\nSpecifies the topic where the response is published after the recipient processes the request.",
+          "example": "home/room1",
+          "member": "string",
+          "name": "ResponseTopic",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated data (MQTT5).\nSpecifies the identifier used to associate a request and response, usually a byte array. in request-response mode, the sender sets this value, and the recipient includes the same value in the response so that the sender can identify the corresponding request.\nSpecifies the example.\nThe sender generates a unique ID (such as a byte[] of UUID) as CorrelationData and adds it to the request message.\nThe recipient includes the same CorrelationData in the response message. the sender compares this value to match the response and the request.",
+          "example": "uuid",
+          "member": "string",
+          "name": "CorrelationData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subscription identifier (MQTT5).\nSpecifies the unique identifier assigned to the subscription, used to identify a specific subscription of the client. when sending a message to the client, the server can include this identifier to help with client identification of the corresponding subscription.\nSpecifies the example.\nThe client subscribes to the topic devices/+/temperature and sets SubscriptionIdentifier to 123.\nWhen the server sends a message of this topic to the client, the message will contain SubscriptionIdentifier: 123. the client can know which subscription the message is sent through based on this value.",
+          "example": "subs-1",
+          "member": "string",
+          "name": "SubscriptionIdentifier",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageEnrichmentRulesRequest": {
+      "document": "DescribeMessageEnrichmentRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent cloud MQTT instance ID, obtained from the DescribeInstanceList API or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMessageEnrichmentRulesResponse": {
+      "document": "DescribeMessageEnrichmentRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message enrichment rule.",
+          "example": "无",
+          "member": "MessageEnrichmentRuleItem",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicRequest": {
+      "document": "DescribeTopic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Topic.",
+          "example": "sample-topic-name",
+          "member": "string",
+          "name": "Topic",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopicResponse": {
+      "document": "DescribeTopic response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-mwmdg9dm",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Topic name",
+          "example": "sample-topic-name",
+          "member": "string",
+          "name": "Topic",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "additional-remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, in seconds",
+          "example": "1712049671",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserListRequest": {
+      "document": "DescribeUserList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the supported fields in the query criteria list.\nUsername: specifies the Username for filtering, supports fuzzy filtering. type: String.",
+          "example": "[{\"Name\":\"Username\",\"Values\":[\"user1\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query start position. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the query result limit count. default value: 20. maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserListResponse": {
+      "document": "DescribeUserList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Role information list",
+          "example": "[ \t\t\t{ \t\t\t\t\"CreatedTime\": 1705392159000, \t\t\t\t\"ModifiedTime\": 1705392159000, \t\t\t\t\"Password\": \"pwd1\", \t\t\t\t\"PermRead\": true, \t\t\t\t\"PermWrite\": true, \t\t\t\t\"Remark\": \"\", \t\t\t\t\"Username\": \"user1\" \t\t\t} \t\t]",
+          "member": "MQTTUserItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Query filter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criterion name",
+          "example": "key",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criterion value",
+          "example": "value",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "IpRule": {
+      "document": "IP rules",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP address.",
+          "example": "0.0.0.0",
+          "member": "string",
+          "name": "Ip",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currently only support allowed by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "Allow",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "remark1",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KickOutClientRequest": {
+      "document": "KickOutClient request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-12345",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID.",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "KickOutClientResponse": {
+      "document": "KickOutClient response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MQTTClientInfo": {
+      "document": "MQTT client information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client ID",
+          "example": "ClientId",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client network address.",
+          "example": "127.0.0.1:10001",
+          "member": "string",
+          "name": "ClientAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MQTT protocol version.\n3: indicates MQTT version 3.1.\n4: indicates MQTT 3.1.1.\n5: indicates the MQTT 5.0 protocol.",
+          "example": "4",
+          "member": "int64",
+          "name": "ProtocolVersion",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Keep-alive duration. Unit: second.",
+          "example": "60",
+          "member": "int64",
+          "name": "Keepalive",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Connection status. CONNECTED: connected; DISCONNECTED: not connected.",
+          "example": "CONNECTED",
+          "member": "string",
+          "name": "ConnectionStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client creation time. millisecond-level timestamp.",
+          "example": "1701396000000",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last connection establishment time. millisecond-level timestamp.",
+          "example": "1701396000000",
+          "member": "int64",
+          "name": "ConnectTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last disconnection time, only applicable to persistent sessions (cleanSession=false) and when the client is currently disconnected, millisecond-level timestamp.",
+          "example": "1701403200000",
+          "member": "int64",
+          "name": "DisconnectTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client subscription list.",
+          "example": "无",
+          "member": "MQTTClientSubscription",
+          "name": "MQTTClientSubscriptions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MQTTClientSubscription": {
+      "document": "MQTT subscription relationship.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subscribed topic.",
+          "example": "mytopic/a/+",
+          "member": "string",
+          "name": "TopicFilter",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service quality grade.\nUp to once.\nAt least once.\nExactly once.",
+          "example": "1",
+          "member": "int64",
+          "name": "Qos",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the heaped messages.",
+          "example": "0",
+          "member": "int64",
+          "name": "Lag",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unconfirmed delivery count.",
+          "example": "0",
+          "member": "int64",
+          "name": "Inflight",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the user attribute.",
+          "example": "无",
+          "member": "SubscriptionUserProperty",
+          "name": "UserProperties",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MQTTMessage": {
+      "document": "MQTT message.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message ID",
+          "example": "15397032005D639FEE4879C38A130016",
+          "member": "string",
+          "name": "MessageId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client Id of the message sender.",
+          "example": "client-1",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message service quality grade.",
+          "example": "1",
+          "member": "string",
+          "name": "Qos",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message storage time on the server. millisecond-level timestamp.",
+          "example": "1745828681259",
+          "member": "int64",
+          "name": "StoreTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the source topic.",
+          "example": "home/room",
+          "member": "string",
+          "name": "OriginTopic",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MQTTUserItem": {
+      "document": "MQTT cluster user information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Password.",
+          "example": "pd",
+          "member": "string",
+          "name": "Password",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "remark1",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. millisecond-level timestamp.",
+          "example": "1712739629775",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time. millisecond-level timestamp.",
+          "example": "1712739629775",
+          "member": "int64",
+          "name": "ModifiedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MessageEnrichmentRuleItem": {
+      "document": "MessageEnrichmentRuleItem",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MQTT cluster ID.",
+          "example": "mqtt-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the rule name.",
+          "example": "rule1",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule matching conditions, in JSON format, must be Base64-encoded. \nSpecifies the client id, username, and topic. example: {\"clientId\":\"client-1\",\"username\":\"client-1\",\"topic\":\"home/room1\"}.\nSpecifies the Base64-encoded string \"eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9\".",
+          "example": "{\"clientId\":\"client-1\",\"username\":\"client-1\",\"topic\":\"home/room1\"}",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the action of rule execution in JSON format, which must be Base64 encoded.\n Creating a Billing Resource Order\n{\"messageExpiryInterval\":360,\"response Topic\":\"replies/devices/${clientid}\",\"correlationData\":\"${traceid}\",\"userProperty\":[{\"key\":\"trace-id\",\"value\":\"${traceid}\"},{\"key\":\"data-source\",\"value\":\"rule-engine\"}]}\nSpecifies the BASE64-encoded string \"eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2UgVG9waWMiOiJyZXBsaWVzL2RldmljZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9LHsia2V5IjoiZGF0YS1zb3VyY2UiLCJ2YWx1ZSI6InJ1bGUtZW5naW5lIn1dfQ==\".",
+          "example": "eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2UgVG9waWMiOiJyZXBsaWVzL2RldmljZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9XX0=",
+          "member": "string",
+          "name": "Actions",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule priority. a smaller number indicates a higher priority. high priority overrides low priority. the UserProperty field will be merged.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. valid values: 0 (undefined), 1 (activate), 2 (deactivate). default: deactivate.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time. millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MessageEnrichmentRulePriority": {
+      "document": "Message enrichment rule priority.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message enrichment rule id.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Priority",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyAuthorizationPolicyRequest": {
+      "document": "ModifyAuthorizationPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the authorization policy ID, which can be obtained from the query authorization policy API (https://www.tencentcloud.comom/document/product/1778/111074?from_cn_redirect=1).",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.\n",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, \"-\", and \"_\".",
+          "example": "name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy version, defaults to 1. currently only support 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyVersion",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Policy priority. a smaller value indicates a higher priority. must be unique.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the decision.\nallow. specifies the permission.\nDenies.",
+          "example": "allow",
+          "member": "string",
+          "name": "Effect",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation, supports multiple selections separated by commas. see the data plane policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\nSpecifies the connection.\nSpecifies the publish action.\nSub. specifies the subscription.",
+          "example": "connect",
+          "member": "string",
+          "name": "Actions",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the resource and subscription to match. supports configuration of multiple match rules, separated by commas. see the data plane authorization policy description (https://www.tencentcloud.comom/document/product/1778/109715?from_cn_redirect=1).\n",
+          "example": "topic1",
+          "member": "string",
+          "name": "Resources",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the condition-username.",
+          "example": "user1",
+          "member": "string",
+          "name": "Username",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Condition - message retention.\nMatches message retention.\nMatches non-retention messages.\n3. match retained and non-retained messages.",
+          "example": "1",
+          "member": "int64",
+          "name": "Retain",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Client ID. supports regular expressions.",
+          "example": "client1",
+          "member": "string",
+          "name": "ClientId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Condition: client IP address. supports IP or CIDR.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Condition: specifies the service quality.\n0: at most once.\nMinimum once.\n2: exactly once.",
+          "example": "1",
+          "member": "string",
+          "name": "Qos",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark information with a maximum length of 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuthorizationPolicyResponse": {
+      "document": "ModifyAuthorizationPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance name to be modified, cannot be empty, 3-64 characters, only comprised of digits, letters, \"-\", and \"_\".",
+          "example": "instance1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark information to be modified, with a maximum of 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the configuration specification to be changed.\nBasic version and professional edition clusters cannot be upgraded to platinum version specifications. platinum edition clusters cannot be downgraded to basic version and enhanced specifications.",
+          "example": "pro_10k_1",
+          "member": "string",
+          "name": "SkuCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Specifies the registration method for the client certificate.\nJITP: automatically register.\nAPI: register manually through api.",
+          "example": "JITP",
+          "member": "string",
+          "name": "DeviceCertificateProvisionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Specifies whether to automatically activate the cert after automatic registration.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutomaticActivation",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Authorization policy switch.",
+          "example": "false",
+          "member": "bool",
+          "name": "AuthorizationPolicy",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to use the default server certificate.",
+          "example": "false",
+          "member": "bool",
+          "name": "UseDefaultServerCert",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "TLS: one-way authentication.\nmTLS. specifies mutual authentication.\nBYOC: one device, one certificate.",
+          "example": "BYOC",
+          "member": "string",
+          "name": "X509Mode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the speed limit unit for client message send and receive in messages per second.",
+          "example": "10",
+          "member": "int64",
+          "name": "MessageRate",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMessageEnrichmentRuleRequest": {
+      "document": "ModifyMessageEnrichmentRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message enrichment rule ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.\n",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule name, which cannot be empty, contains 3 to 64 characters, and supports chinese, letters, digits, \"-\", and \"_\".",
+          "example": "rule1",
+          "member": "string",
+          "name": "RuleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule matching conditions in JSON format, Base64 encoding is required.\nCreating a Billing Resource Order\n{\"clientId\":\"client-1\",\"username\":\"client-1\",\"topic\":\"home/room1\"}\nSpecifies the Base64-encoded content.\neyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9",
+          "example": "eyJjbGllbnRJZCI6ImNsaWVudC0xIiwidXNlcm5hbWUiOiJjbGllbnQtMSIsInRvcGljIjoiaG9tZS9yb29tMSJ9",
+          "member": "string",
+          "name": "Condition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the action of rule execution in JSON format, which must be Base64 encoded. \nCreating a Billing Resource Order\n{\"messageExpiryInterval\":360,\"responseTopic\":\"replies/${clientid}\",\"correlationData\":\"${traceid}\",\"userProperty\":[{\"key\":\"trace-id\",\"value\":\"${traceid}\"}]}\nSpecifies the BASE64-encoded string eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9XX0=.",
+          "example": "eyJtZXNzYWdlRXhwaXJ5SW50ZXJ2YWwiOjM2MCwicmVzcG9uc2VUb3BpYyI6InJlcGxpZXMvJHtjbGllbnRpZH0iLCJjb3JyZWxhdGlvbkRhdGEiOiIke3RyYWNlaWR9IiwidXNlclByb3BlcnR5IjpbeyJrZXkiOiJ0cmFjZS1pZCIsInZhbHVlIjoiJHt0cmFjZWlkfSJ9XX0=",
+          "member": "string",
+          "name": "Actions",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule priority. a smaller number indicates a higher priority. high priority overrides low priority. the UserProperty field will be merged.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. valid values: 0 (undefined), 1 (activate), 2 (deactivate). default: deactivate.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark information with a maximum length of 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMessageEnrichmentRuleResponse": {
+      "document": "ModifyMessageEnrichmentRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserRequest": {
+      "document": "ModifyUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "user",
+          "member": "string",
+          "name": "Username",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the remark with length not exceeding 128 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserResponse": {
+      "document": "ModifyUser response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubscriptionUserProperty": {
+      "document": "Subscribed UserProperty structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the key of the UserProperty for subscription.",
+          "example": "UserProperty-key",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the value of the UserProperty for subscription.",
+          "example": "UserProperty-value",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag name.",
+          "example": "tag-key",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value",
+          "example": "tag-value",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpdateAuthorizationPolicyPriorityRequest": {
+      "document": "UpdateAuthorizationPolicyPriority request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID and priority.",
+          "example": "[ \t\t{ \t\t\t\"Id\": 1, \t\t\t\"Priority\": 3 \t\t}, \t\t{ \t\t\t\"Id\": 6, \t\t\t\"Priority\": 1 \t\t}, \t\t{ \t\t\t\"Id\": 7, \t\t\t\"Priority\": 2 \t\t} \t]",
+          "member": "AuthorizationPolicyPriority",
+          "name": "Priorities",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAuthorizationPolicyPriorityResponse": {
+      "document": "UpdateAuthorizationPolicyPriority response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateMessageEnrichmentRulePriorityRequest": {
+      "document": "UpdateMessageEnrichmentRulePriority request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.comom/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "example": "mqtt-x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID and priority.",
+          "example": "无",
+          "member": "MessageEnrichmentRulePriority",
+          "name": "Priorities",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateMessageEnrichmentRulePriorityResponse": {
+      "document": "UpdateMessageEnrichmentRulePriority response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UserProperty": {
+      "document": "Returned mapping structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "key",
+          "example": "key1",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "value",
+          "example": "value1",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VpcInfo": {
+      "document": "VPC information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID.",
+          "example": "subnet-xxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    }
+  },
+  "version": "1.0"
+}

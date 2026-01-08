@@ -2327,40 +2327,40 @@
         {
           "disabled": false,
           "document": "Replication mode of secondary database 2. Value range: async, semi-sync",
-          "example": "",
+          "example": "async",
           "member": "string",
           "name": "ReplicationMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name of the AZ of secondary database 2, such as ap-shanghai-1",
-          "example": "",
+          "document": "Name of the AZ of secondary database 2, such as ap-shanghai-2",
+          "example": "ap-shanghai-2",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Private IP address of secondary database 2",
-          "example": "",
+          "example": "172.1.1.1",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Access port of secondary database 2",
-          "example": "",
+          "example": "3306",
           "member": "uint64",
           "name": "Vport",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -3101,7 +3101,7 @@
           "example": "Z3",
           "member": "string",
           "name": "TypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3111,7 +3111,7 @@
           "example": "[\"5.6\",\"5.7\"]",
           "member": "string",
           "name": "EngineVersion",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3121,7 +3121,7 @@
           "example": "[1,2,3]",
           "member": "int64",
           "name": "ConfigIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -3170,7 +3170,7 @@
         {
           "disabled": false,
           "document": "AZ name",
-          "example": "广州二区",
+          "example": "广州三区",
           "member": "string",
           "name": "ZoneName",
           "output_required": true,
@@ -3260,7 +3260,7 @@
         {
           "disabled": false,
           "document": "AZ name",
-          "example": "ap-guangzhou-2",
+          "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
           "output_required": true,
@@ -3270,7 +3270,7 @@
         {
           "disabled": false,
           "document": "Multi-AZ information",
-          "example": "{\"BackupZone\": [\"ap-guangzhou-7\", \"ap-guangzhou-5\", \"ap-guangzhou-4\", \"ap-guangzhou-3\" ], \"DeployMode\": [0, 1 ], \"MasterZone\": [], \"SlaveZone\": [\"ap-guangzhou-7\", \"ap-guangzhou-5\", \"ap-guangzhou-4\", \"ap-guangzhou-3\" ] }",
+          "example": "无",
           "member": "ZoneConf",
           "name": "ZoneConf",
           "output_required": true,
@@ -3280,7 +3280,7 @@
         {
           "disabled": false,
           "document": "Information of supported disaster recovery AZs",
-          "example": "[\"ap-guangzhou-2\"]",
+          "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "DrZone",
           "output_required": true,
@@ -3300,7 +3300,7 @@
         {
           "disabled": false,
           "document": "Information of supported cross-AZ read-only zone",
-          "example": "[\"ap-guangzhou-2\"]",
+          "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "RemoteRoZone",
           "output_required": true,
@@ -3320,7 +3320,7 @@
         {
           "disabled": false,
           "document": "Information of cross-AZ read-only zones supported by a dedicated instance",
-          "example": "[\"ap-guangzhou-2\"]",
+          "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "ExClusterRemoteRoZone",
           "output_required": true,
@@ -3330,7 +3330,7 @@
         {
           "disabled": false,
           "document": "AZ information of a multi-AZ deployed dedicated instance.",
-          "example": "{\"BackupZone\": [\"ap-guangzhou-7\", \"ap-guangzhou-5\", \"ap-guangzhou-4\", \"ap-guangzhou-3\" ], \"DeployMode\": [0, 1 ], \"MasterZone\": [], \"SlaveZone\": [\"ap-guangzhou-7\", \"ap-guangzhou-5\", \"ap-guangzhou-4\", \"ap-guangzhou-3\" ] }",
+          "example": "无",
           "member": "ZoneConf",
           "name": "ExClusterZoneConf",
           "output_required": true,
@@ -3340,7 +3340,7 @@
         {
           "disabled": false,
           "document": "Array of purchasable instance types. The value of `configIds` and `configs` have a one-to-one correspondence.",
-          "example": "{\"ConfigIds\": [187 ], \"EngineVersion\": [\"5.7\", \"8.0\" ], \"TypeName\": \"CLOUD_NATIVE_CLUSTER_EXCLUSIVE\" }",
+          "example": "无",
           "member": "CdbSellType",
           "name": "SellType",
           "output_required": true,
@@ -3350,7 +3350,7 @@
         {
           "disabled": false,
           "document": "AZ ID",
-          "example": "200001",
+          "example": "200002",
           "member": "int64",
           "name": "ZoneId",
           "output_required": true,
@@ -3360,7 +3360,7 @@
         {
           "disabled": false,
           "document": "Whether IPv6 is supported",
-          "example": "fasle",
+          "example": "false",
           "member": "bool",
           "name": "IsSupportIpv6",
           "output_required": true,
@@ -7573,7 +7573,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProtectMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7583,17 +7583,17 @@
           "example": "1",
           "member": "int64",
           "name": "DeployMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance AZ information in the format of \"ap-shanghai-1\".",
+          "document": "Instance AZ information in the format of \"ap-shanghai-2\".",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7603,7 +7603,7 @@
           "example": "无",
           "member": "SlaveConfig",
           "name": "SlaveConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7613,7 +7613,7 @@
           "example": "无",
           "member": "BackupConfig",
           "name": "BackupConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7623,7 +7623,7 @@
           "example": "false",
           "member": "bool",
           "name": "Switched",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -15366,8 +15366,8 @@
         },
         {
           "disabled": false,
-          "document": "Name of RO AZ, such as ap-shanghai-1",
-          "example": "ap-shanghai-1",
+          "document": "Name of RO AZ, such as ap-shanghai-2",
+          "example": "ap-shanghai-2",
           "member": "string",
           "name": "Zone",
           "output_required": true,
@@ -16019,20 +16019,22 @@
         {
           "disabled": false,
           "document": "Replication mode of the secondary database. Value range: async, semi-sync",
-          "example": "",
+          "example": "aysnc",
           "member": "string",
           "name": "ReplicationMode",
-          "required": true,
-          "type": "string"
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "AZ name of the secondary database, such as ap-shanghai-1",
-          "example": "",
+          "document": "AZ name of the secondary database, such as ap-shanghai-2",
+          "example": "ap-shanghai-2",
           "member": "string",
           "name": "Zone",
-          "required": true,
-          "type": "string"
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -17448,7 +17450,7 @@
         {
           "disabled": false,
           "document": "AZ where the primary instance is located",
-          "example": "[\"ap-shanghai-1\"]",
+          "example": "[\"ap-shanghai-2\"]",
           "member": "string",
           "name": "MasterZone",
           "output_required": true,

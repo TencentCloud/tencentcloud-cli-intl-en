@@ -28,6 +28,20 @@
       "output": "CreateAdaptiveDynamicStreamingTemplateResponse",
       "status": "online"
     },
+    "CreateAigcImageTask": {
+      "document": "This API is used to create an AIGC image generation task.",
+      "input": "CreateAigcImageTaskRequest",
+      "name": "Create AIGC Image Task",
+      "output": "CreateAigcImageTaskResponse",
+      "status": "online"
+    },
+    "CreateAigcVideoTask": {
+      "document": "This API is used to create an AIGC video generation task.",
+      "input": "CreateAigcVideoTaskRequest",
+      "name": "Create AIGC Video Task",
+      "output": "CreateAigcVideoTaskResponse",
+      "status": "online"
+    },
     "CreateAnimatedGraphicsTemplate": {
       "document": "This API is used to create a custom animated image generating template. Up to 16 templates can be created.",
       "input": "CreateAnimatedGraphicsTemplateRequest",
@@ -320,6 +334,20 @@
       "input": "DescribeAdaptiveDynamicStreamingTemplatesRequest",
       "name": "Gets the list of adaptive bitrate streaming templates",
       "output": "DescribeAdaptiveDynamicStreamingTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeAigcImageTask": {
+      "document": "This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "input": "DescribeAigcImageTaskRequest",
+      "name": "Describe AIGC Image Task",
+      "output": "DescribeAigcImageTaskResponse",
+      "status": "online"
+    },
+    "DescribeAigcVideoTask": {
+      "document": "This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "input": "DescribeAigcVideoTaskRequest",
+      "name": "Describe AIGC Video Task",
+      "output": "DescribeAigcVideoTaskResponse",
       "status": "online"
     },
     "DescribeAnimatedGraphicsTemplates": {
@@ -6555,6 +6583,157 @@
       ],
       "usage": "in"
     },
+    "AigcImageExtraParam": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "16:9",
+          "member": "string",
+          "name": "AspectRatio",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1080P",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcImageInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://****.vod-qcloud.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/Clc***E6jcA.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "asset",
+          "member": "string",
+          "name": "ReferenceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcStoreCosParam": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "aigc-test-video-1303333058",
+          "member": "string",
+          "name": "CosBucketName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "my_cos_file",
+          "member": "string",
+          "name": "CosBucketPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcVideoExtraParam": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "720P",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "16:9",
+          "member": "string",
+          "name": "AspectRatio",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcVideoReferenceImageInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "http://myimage.com/mps/image.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "asset",
+          "member": "string",
+          "name": "ReferenceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AnimatedGraphicTaskInput": {
       "document": "Type of an animated image generating task.",
       "members": [
@@ -9192,6 +9371,260 @@
       ],
       "type": "object"
     },
+    "CreateAigcImageTaskRequest": {
+      "document": "CreateAigcImageTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model Name. Currently supported models include: Hunyuan,GEM,Qwen.",
+          "example": "GEM",
+          "member": "string",
+          "name": "ModelName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  \n1. GEM, available options [2.5, 3.0].\n",
+          "example": "2.0",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "\nGenerate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.\n",
+          "example": "draw a cat",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  \nOverhead lighting, vibrant colors  \nHuman figures, animals  \nMultiple vehicles, wind",
+          "example": "adult face",
+          "member": "string",
+          "name": "NegativePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.\n",
+          "example": "false",
+          "member": "bool",
+          "name": "EnhancePrompt",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "\nSupports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  \nRecommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.\n",
+          "example": "无",
+          "member": "AigcImageInfo",
+          "name": "ImageInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Used to pass additional parameters.",
+          "example": "无",
+          "member": "AigcImageExtraParam",
+          "name": "ExtraParameters",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.",
+          "example": "无",
+          "member": "AigcStoreCosParam",
+          "name": "StoreCosParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Interface operator name.",
+          "example": "admin",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcImageTaskResponse": {
+      "document": "CreateAigcImageTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Returns the task ID.",
+          "example": "4-AigcImage-c3b145ec76****94ac55b9e63be17d",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcVideoTaskRequest": {
+      "document": "CreateAigcVideoTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV",
+          "example": "Hailuo",
+          "member": "string",
+          "name": "ModelName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  \n1. Hailuo: Available options [02, 2.3].  \n2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  \n3. Vidu: Available options [q2, q2-pro, q2-turbo].  \n4. GV: Available option [3.1].  \n5. OS: Available option [2.0].",
+          "example": "2.3",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.",
+          "example": "move the picture",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  \nOverhead lighting, vibrant colors  \nHuman figures, animals  \nMultiple vehicles, wind",
+          "example": "Top lighting, bright colors",
+          "member": "string",
+          "name": "NegativePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnhancePrompt",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the image used to guide video generation, which must be publicly accessible via the internet.  \nNotes:  \n1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  \n2. Supported image formats: JPEG, PNG.  \n3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.",
+          "example": "https://1500039689.vod-xxx.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/xxdjoxE6jcA.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The model will utilize the image provided via this parameter as the ending frame for video generation.  \nSupported models for this parameter:  \n1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  \n2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  \n3. Vidu, q2-pro, q2-turbo: Support start&end frames. \nNotes:  \n1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  \n2. Supported image formats: JPEG, PNG.",
+          "example": "https://aigc-xxx-image-1303333058.cos.ap-guangzhou.myqcloud.com/xxx_8655.png",
+          "member": "string",
+          "name": "LastImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  \nModels supporting multi-image input:  \n1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  \n2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.\nNotes:  \n1. Each image must not exceed 10MB in size.  \n2. Supported image formats: JPEG, PNG.",
+          "example": "无",
+          "member": "AigcVideoReferenceImageInfo",
+          "name": "ImageInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Duration of generated videos.  \nNotes:  \n1. Kling supports 5 and 10 seconds. Default: 5 seconds.  \n2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  \n3. Vidu supports 1 to 10 seconds.  \n4. GV supports 8 seconds. Default: 8 seconds.  \n5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.",
+          "example": "8",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Used to pass additional parameters.",
+          "example": "无",
+          "member": "AigcVideoExtraParam",
+          "name": "ExtraParameters",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.",
+          "example": "无",
+          "member": "AigcStoreCosParam",
+          "name": "StoreCosParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "\nUsed to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {\"camera_control\":{\"type\":\"simple\"}}",
+          "example": "{\\\"test\\\":1}",
+          "member": "string",
+          "name": "AdditionalParameters",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Interface operator name.",
+          "example": "admin",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcVideoTaskResponse": {
+      "document": "CreateAigcVideoTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.",
+          "example": "2147483792",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAnimatedGraphicsTemplateRequest": {
       "document": "CreateAnimatedGraphicsTemplate request structure.",
       "members": [
@@ -11618,6 +12051,130 @@
           "name": "AdaptiveDynamicStreamingTemplateSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcImageTaskRequest": {
+      "document": "DescribeAigcImageTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AIGC image task processing task ID.",
+          "example": "4-AigcImage-c3b145ec76****94ac55b9e63be17d",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcImageTaskResponse": {
+      "document": "DescribeAigcImageTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current task status:\nWAIT: Pending,\nRUN: In progress,\nFAIL: Task failed,\nDONE: Task completed successfully.\n",
+          "example": "DONE",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.",
+          "example": "[\"https://live-aigc-****.cos.ap-guangzhou.myqcloud.com/4_7113610711****.png\"]",
+          "member": "string",
+          "name": "ImageUrls",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the task status is FAIL, the failure information is returned.",
+          "example": "fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcVideoTaskRequest": {
+      "document": "DescribeAigcVideoTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AIGC video task processing task ID.",
+          "example": "4-AigcVideo-c3b145******4ac55b699e63be17d",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcVideoTaskResponse": {
+      "document": "DescribeAigcVideoTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current task status:\nWAIT: Pending,\nRUN: In progress,\nFAIL: Task failed,\nDONE: Task completed successfully.",
+          "example": "DONE",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.",
+          "example": "[\"https://live-xxx-video-*****.cos.ap-guangzhou.myqcloud.com/251006278_2147483790_711361074106890375.mp4\"]",
+          "member": "string",
+          "name": "VideoUrls",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The resolution of the output video. Example: 1080*720.",
+          "example": "1920x1088",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the task status is FAIL, the failure information is returned.",
+          "example": "ok",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
