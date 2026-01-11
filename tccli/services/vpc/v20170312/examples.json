@@ -2552,6 +2552,14 @@
         "title": "Replacing a route"
       }
     ],
+    "ReplaceRoutesWithRoutePolicy": [
+      {
+        "document": "Match route reception policy",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReplaceRoutesWithRoutePolicy\n<Common request parameters>\n\n{\n    \"RouteTableId\": \"rtb-65ckdx3a\",\n    \"Routes\": [\n        {\n            \"RouteItemId\": \"rti-g8jl2vll\",\n            \"ForceMatchPolicy\": true\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"93512103-76f6-4780-a146-73380b1ab748\"\n    }\n}",
+        "title": "Match Route Reception Policy"
+      }
+    ],
     "ReplaceSecurityGroupPolicies": [
       {
         "document": "This example shows you how to batch modify security group policies.",

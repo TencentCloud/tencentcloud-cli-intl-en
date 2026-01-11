@@ -1854,9 +1854,10 @@
         {
           "disabled": false,
           "document": "Video parameter information.",
-          "example": "null",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "Video",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": false
@@ -1864,9 +1865,10 @@
         {
           "disabled": false,
           "document": "Audio parameter information.",
-          "example": "null",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "Audio",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": false
@@ -1877,6 +1879,7 @@
           "example": "0",
           "member": "uint64",
           "name": "RemoveAudio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1887,6 +1890,7 @@
           "example": "0",
           "member": "uint64",
           "name": "RemoveVideo",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1894,9 +1898,21 @@
         {
           "disabled": false,
           "document": "TESHD transcoding parameters\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "null",
+          "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Audio/Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7518,25 +7534,144 @@
       ],
       "type": "object"
     },
-    "AudioDenoiseInfo": {
-      "document": "Noise removal configuration.",
+    "AudioBeautifyInfo": {
+      "document": "The audio improvement configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable noise removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "document": "Whether to enable audio improvement. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`weak`</li>\n<li>`normal`</li>\n<li>`strong`</li>\nDefault value: `weak`.",
-          "example": "weak",
+          "document": "The audio improvement options. You can specify multiple options. Valid values:\n<li>`declick`: Noise removal.</li>\n<li>`deesser`: De-essing.</li>\nDefault: `declick`.",
+          "example": "[\"declick\"]",
+          "member": "string",
+          "name": "Types",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioDenoiseInfo": {
+      "document": "Noise removal configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable noise removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>\nDefault value: `OFF`.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:\n<li>`normal`</li>\nDefault value: `normal`.",
+          "example": "normal",
           "member": "string",
           "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioEnhanceConfig": {
+      "document": "The audio enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The audio noise reduction configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioDenoiseInfo",
+          "name": "Denoise",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio separation configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioSeparateInfo",
+          "name": "Separate",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The volume equalization configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioVolumeBalanceInfo",
+          "name": "VolumeBalance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio improvement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioBeautifyInfo",
+          "name": "Beautify",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioSeparateInfo": {
+      "document": "The audio separation configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable audio separation. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `OFF`.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The scenario. Valid values:\n<li>`normal`: Separate voice and background audio.</li>\n<li>`music`: Separate vocals and instrumentals.</li>\nDefault value: `normal`.",
+          "example": "normal",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The output audio track. Valid values:\n<li>`vocal`: Voice.</li>\n<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>\nDefault value: `vocal`.",
+          "example": "vocal",
+          "member": "string",
+          "name": "Track",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7723,6 +7858,34 @@
           "output_required": true,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioVolumeBalanceInfo": {
+      "document": "The volume equalization configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable volume equalization. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `OFF`.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The type. Valid values:\n<li>`loudNorm`: Loudness normalization.</li>\n<li>`gainControl`: Volume leveling.</li>\nDefault value: `loudNorm`.",
+          "example": "gainControl",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -12931,6 +13094,15 @@
         },
         {
           "disabled": false,
+          "document": "Audio/Video enhancement parameter.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "The segment type. This parameter is valid only if `Container` is `hls`. Valid values:\n<li>ts: TS segment</li>\n<li>fmp4: fMP4 segment</li>\nDefault: ts",
           "example": "ts",
           "member": "string",
@@ -17829,7 +18001,7 @@
         {
           "disabled": false,
           "document": "Unique ID filter of transcoding templates. Array length limit: 100.",
-          "example": "[\"10\\n\"]",
+          "example": "[10]",
           "member": "int64",
           "name": "Definitions",
           "required": false,
@@ -17879,6 +18051,24 @@
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Enhancement type. Valid values:\n<li>VideoEnhance: video enhancement only.</li>\n<li>AudioEnhance: audio enhancement only.</li>\n<li>AudioVideoEnhance: video and audio enhancement included.</li>\n<li> AnyEnhance: `VideoEnhance`, `AudioEnhance ` and `AudioVideoEnhance` included.</li>\n<li> None: Not any enhancement type</li>",
+          "example": "VideoEnhance",
+          "member": "string",
+          "name": "EnhanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enhancement scenario configuration. Valid values:\n<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>\n<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>\n<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>\n<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>\n<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>\n<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>\n<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>\n<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>",
+          "example": "common",
+          "member": "string",
+          "name": "EnhanceScenarioType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -18163,6 +18353,34 @@
         }
       ],
       "type": "object"
+    },
+    "DiffusionEnhanceInfo": {
+      "document": "LLM enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable LLM enhancement. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: normal.",
+          "example": "strong",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DomainDetailInfo": {
       "document": "Domain name information",
@@ -19005,6 +19223,62 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EnhanceConfig": {
+      "document": "Audio/Video enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoEnhanceConfig",
+          "name": "VideoEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioEnhanceConfig",
+          "name": "AudioEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EnhanceConfigForUpdate": {
+      "document": "Audio/Video enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoEnhanceConfig",
+          "name": "VideoEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioEnhanceConfig",
+          "name": "AudioEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -20624,6 +20898,45 @@
       ],
       "usage": "both"
     },
+    "FrameRateWithDenInfo": {
+      "document": "Frame interpolation configuration, which supports fractional frame rates.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Capability configuration switch. Valid values:\n<li>ON: enabled.</li>\n<li>OFF: disabled.</li>\nDefault value: OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate numerator. Value range: non-negative number, which should be less than 100 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.",
+          "example": "0",
+          "member": "int64",
+          "name": "FpsNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.",
+          "example": "1",
+          "member": "int64",
+          "name": "FpsDen",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "FrameTagConfigureInfo": {
       "document": "Control parameter of intelligent frame-specific tagging task",
       "members": [
@@ -20681,20 +20994,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable HDR. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "document": "Whether to enable HDR. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>\nDefault value: `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The HDR type. Valid values:\n<li>`hdr10`</li>\n<li>`hlg`</li>\n\nNote:\n<li>This parameter is valid only if `Switch` is `ON`.</li>\n<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx265`.</li>",
+          "document": "The HDR type. Valid values:\n<li>`hdr10`</li>\n<li>`hlg`</li>\n\nNote:\n<li>This parameter is valid only if `Switch` is `ON`.</li>\n<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx264` or`libx265`.</li>",
           "example": "hlg",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -21426,6 +21741,34 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageQualityEnhanceInfo": {
+      "document": "Overall enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable overall enhancement. Valid values:\n<li>ON</li>\n<li>OFF</li>\nDefault value: OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The strength. Valid values:\n<li>weak</li>\n<li>normal</li>\n<li>strong</li>\nDefault value: weak.",
+          "example": "weak",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ImageReviewUsageDataItem": {
       "document": "The usage statistics for the image recognition feature.",
@@ -28438,6 +28781,15 @@
           "example": "无",
           "member": "TEHDConfigForUpdate",
           "name": "TEHDConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Audio/Video enhancement parameter.",
+          "example": "无",
+          "member": "EnhanceConfigForUpdate",
+          "name": "EnhanceConfig",
           "required": false,
           "type": "object"
         },
@@ -36016,20 +36368,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable banding removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>",
+          "document": "Whether to enable banding removal. Valid values:\n<li>`ON`</li>\n<li>`OFF`</li>\nDefault value: `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The banding removal strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.\nDefault value: `0.0`.",
-          "example": "0",
+          "document": "The banding removal strength. Value range: 0.0 - 1.0. This parameter is valid only if `Switch` is `ON`.\nDefault value: `0.0`.",
+          "example": "0.0",
           "member": "float",
           "name": "Intensity",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": false
@@ -36040,6 +36394,7 @@
           "example": "normal",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -37873,10 +38228,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable super resolution. Valid values:\n<li>ON</li>\n<li>`OFF`</li>\nIf super resolution is enabled, the output resolution will double.",
+          "document": "Whether to enable super resolution. Valid values:\n<li>ON</li>\n<li>`OFF`</li>\nIf super resolution is enabled, the output resolution will double.\nDefault value: `OFF`.",
           "example": "ON",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -37887,6 +38243,7 @@
           "example": "lq",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -37897,6 +38254,7 @@
           "example": "2",
           "member": "int64",
           "name": "Size",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -39046,6 +39404,16 @@
         },
         {
           "disabled": false,
+          "document": "Audio/Video enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EnhanceConfig",
+          "name": "EnhanceConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Container filter. Valid values:\n<li>Video: video container that can contain both video stream and audio stream;</li>\n<li>PureAudio: audio container that can contain only audio stream.</li>",
           "example": "Video",
           "member": "string",
@@ -39802,6 +40170,133 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VideoEnhanceConfig": {
+      "document": "Video enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enhancement scenario configuration. Valid values:\n<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>\n<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>\n<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>\n<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>\n<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>\n<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>\n<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>\n<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>\n<li>Input of a null string indicates that the enhancement scenario is not used.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "common",
+          "member": "string",
+          "name": "EnhanceScenarioType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SuperResolutionInfo",
+          "name": "SuperResolution",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HDR configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HDRInfo",
+          "name": "Hdr",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoDenoiseInfo",
+          "name": "Denoise",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ImageQualityEnhanceInfo",
+          "name": "ImageQualityEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Color enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ColorEnhanceInfo",
+          "name": "ColorEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Low-light enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LowLightEnhanceInfo",
+          "name": "LowLightEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Banding removal configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ScratchRepairInfo",
+          "name": "ScratchRepair",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ArtifactRepairInfo",
+          "name": "ArtifactRepair",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DiffusionEnhanceInfo",
+          "name": "DiffusionEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FrameRateWithDenInfo",
+          "name": "FrameRateWithDen",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
