@@ -15377,7 +15377,7 @@
         },
         {
           "disabled": false,
-          "document": "Alert expression. see <a href=\"https://www.tencentcloud.comom/document/product/1416/56008?from_cn_redirect=1\">alert rule description</a>.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Alert expression. see <a href=\"https://www.tencentcloud.com/document/product/1416/56008?from_cn_redirect=1\">alert rule description</a>.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "job:request_latency_seconds:mean5m{job=\"myjob\"} > 0.5",
           "member": "string",
           "name": "Expr",

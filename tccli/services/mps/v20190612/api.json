@@ -7364,7 +7364,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7425,7 +7425,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7874,7 +7874,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -7884,7 +7884,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -13028,7 +13028,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -14400,7 +14400,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "Start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2019-07-02T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
@@ -14409,7 +14409,7 @@
         },
         {
           "disabled": false,
-          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2019-07-03T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
@@ -16334,7 +16334,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -18443,7 +18443,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
+          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -25838,7 +25838,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
+          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
           "example": " input",
           "member": "string",
           "name": "ErrCodeExt",
@@ -26949,7 +26949,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -27105,7 +27105,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
@@ -27115,7 +27115,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
@@ -27445,7 +27445,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28027,7 +28027,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
+          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
           "example": "/storage/{inputName}_smartsubtitle_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -29102,7 +29102,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).",
+          "document": "Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).",
           "example": "",
           "member": "string",
           "name": "Time",

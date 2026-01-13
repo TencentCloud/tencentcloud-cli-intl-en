@@ -470,7 +470,7 @@
         },
         {
           "disabled": false,
-          "document": "BASIC: Basic Version (default).",
+          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
           "example": "ENHANCED",
           "member": "string",
           "name": "SdkVersion",
@@ -1202,7 +1202,7 @@
         {
           "disabled": false,
           "document": "The liveness algorithm package generated during this SDK-based liveness detection.",
-          "example": "{ \"MD5\": \"b2852d5..\", \"Size\": 972506, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "LiveData",
           "output_required": true,
@@ -1212,7 +1212,7 @@
         {
           "disabled": false,
           "document": "The download URL of the video used for verification, which contains specific color reflection effects, is valid for 10 minutes.",
-          "example": "{ \"MD5\": \"24d2fde9b...\", \"Size\": 407308, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "LiveVideo",
           "output_required": true,
@@ -1222,7 +1222,7 @@
         {
           "disabled": false,
           "document": "Records the specific action performed by the user, used for AI Face Shield analysis.",
-          "example": "{ \"MD5\": \"ef179aa94f06b989...\", \"Size\": 191015, \"Url\": \"https://faceid-intl-test-1258344699.com....\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "ActionVideo",
           "output_required": true,
@@ -1252,7 +1252,7 @@
         {
           "disabled": false,
           "document": "The download URL of the face screenshot during verification, which is valid for 10 minutes.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "{ \"MD5\": \"1c4a918dc..\", \"Size\": 243050, \"Url\": \"https://faceid-intl-test-1258344699...\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "BestFrame",
           "output_required": true,
@@ -1262,7 +1262,7 @@
         {
           "disabled": false,
           "document": "The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.",
-          "example": "{ \"MD5\": \"\", \"Size\": 0, \"Url\": \"\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "ProfileImage",
           "output_required": true,
@@ -1312,7 +1312,7 @@
         {
           "disabled": false,
           "document": "The identity document photo info edited by the user. Currently, this parameter is not applied.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{ \"MD5\": \"\", \"Size\": 0, \"Url\": \"\" }",
+          "example": "无",
           "member": "FileInfo",
           "name": "CardInfoInputJson",
           "output_required": true,
@@ -1328,6 +1328,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the detailed reason for the current liveness detection failure. Output only when SdkVersion is PLUS. Details are as follows:\n01 - User kept eyes closed throughout the process.\n02 - User failed to complete the specified action.\n03 - Suspected photo replay attack.\n04 - Suspected synthetic image.\n05 - Suspected synthetic video.\n06 - Suspected synthetic action.\n07 - Suspected fraud template.\n08 - Suspected watermark existence.\n09 - Light verification failed.\n10 - Face verification failed.\n11 - Poor face quality.\n12 - Unqualified collection quality.\n13 - Suspected adversarial sample attack.",
+          "example": "[\"04\"]",
+          "member": "string",
+          "name": "LivenessInfoTag",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1732,7 +1742,7 @@
         {
           "disabled": false,
           "document": "License number\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "S7033777J",
           "member": "string",
           "name": "LicenseNumber",
           "output_required": true,
@@ -1742,7 +1752,7 @@
         {
           "disabled": false,
           "document": "Personal number, which is returned when it is a passport\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "K2152143P",
           "member": "string",
           "name": "PersonalNumber",
           "output_required": true,
@@ -1752,7 +1762,7 @@
         {
           "disabled": false,
           "document": "The first line of passport machine reading code\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "EM98767821CHN9302280F3407105LKMOLPMC<<<<A926",
           "member": "string",
           "name": "PassportCodeFirst",
           "output_required": true,
@@ -1762,7 +1772,7 @@
         {
           "disabled": false,
           "document": "The first line of passport machine reading code\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "POCHNHE<<KE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
           "name": "PassportCodeSecond",
           "output_required": true,
@@ -1772,7 +1782,7 @@
         {
           "disabled": false,
           "document": "Date of expiry in the format of YYYY-MM-DD\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2026/09/11",
           "member": "string",
           "name": "ExpirationDate",
           "output_required": true,
@@ -1782,7 +1792,7 @@
         {
           "disabled": false,
           "document": "Valid date in the format of YYYY-MM-DD\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2021/03/09",
           "member": "string",
           "name": "DueDate",
           "output_required": true,
@@ -1792,7 +1802,7 @@
         {
           "disabled": false,
           "document": "Date of issue in the format of YYYY-MM-DD\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2021/03/09",
           "member": "string",
           "name": "IssuedDate",
           "output_required": true,
@@ -1802,7 +1812,7 @@
         {
           "disabled": false,
           "document": "Issuing authority\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "MINISTRY OF HOME AFFAIRS",
           "member": "string",
           "name": "IssuedAuthority",
           "output_required": true,
@@ -1812,7 +1822,7 @@
         {
           "disabled": false,
           "document": "Issuing country, which is returned following the ISO 3166 country coding specification\nNote: This field may return null, indicating that no valid values can be obtained.\nExample: MYS",
-          "example": "MYS",
+          "example": "SGP",
           "member": "string",
           "name": "IssuedCountry",
           "output_required": true,
@@ -1822,7 +1832,7 @@
         {
           "disabled": false,
           "document": "Full Name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "LCY KAI LIM",
           "member": "string",
           "name": "FullName",
           "output_required": true,
@@ -1832,7 +1842,7 @@
         {
           "disabled": false,
           "document": "First name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "LCY",
           "member": "string",
           "name": "FirstName",
           "output_required": true,
@@ -1842,7 +1852,7 @@
         {
           "disabled": false,
           "document": "Last name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "LIM",
           "member": "string",
           "name": "LastName",
           "output_required": true,
@@ -1862,7 +1872,7 @@
         {
           "disabled": false,
           "document": "Age. 0 indicates that no valid information is obtained.\nExample: 0",
-          "example": "无",
+          "example": "0",
           "member": "string",
           "name": "Age",
           "output_required": true,
@@ -1882,7 +1892,7 @@
         {
           "disabled": false,
           "document": "Birth place\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "SINGAPORE",
           "member": "string",
           "name": "BirthPlace",
           "output_required": true,
@@ -1902,7 +1912,7 @@
         {
           "disabled": false,
           "document": "Registration number\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1140",
           "member": "string",
           "name": "RegistrationNumber",
           "output_required": true,
@@ -1918,6 +1928,36 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Localized name.",
+          "example": "刘洋",
+          "member": "string",
+          "name": "FullNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Localization.",
+          "example": "洋",
+          "member": "string",
+          "name": "FirstNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Localized surname.",
+          "example": "刘",
+          "member": "string",
+          "name": "LastNameLocal",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2251,7 +2291,7 @@
         },
         {
           "disabled": false,
-          "document": "BASIC: Basic Version (Default).",
+          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
           "example": "BASIC",
           "member": "string",
           "name": "SdkVersion",
@@ -4042,7 +4082,7 @@
         {
           "disabled": false,
           "document": "Telex code correspondint to the Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "中文姓名对应电码",
           "member": "string",
           "name": "RegistrationNumber",
           "output_required": false,
@@ -4072,7 +4112,7 @@
         {
           "disabled": false,
           "document": "Permanent resident ID card: 0-non-permanent; 1-permanent; -1-unknown\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "Permanent",
           "output_required": false,
@@ -4092,7 +4132,7 @@
         {
           "disabled": false,
           "document": "Lisence symbol, which is the symbol below Birthday. Example: \"***AZ\"\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "***AZ",
           "member": "string",
           "name": "Symbol",
           "output_required": false,
@@ -4102,7 +4142,7 @@
         {
           "disabled": false,
           "document": "The first date of issue\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "无   ",
           "member": "string",
           "name": "IssuedDate",
           "output_required": false,
@@ -4112,9 +4152,19 @@
         {
           "disabled": false,
           "document": "The current date of issue\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "16-06-06",
           "member": "string",
           "name": "CurrentIssueDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Hong kong identity card version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HKID-2003",
+          "member": "string",
+          "name": "HKIDVersion",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true

@@ -15,7 +15,7 @@
       "status": "online"
     },
     "AssociateTargetGroups": {
-      "document": "This API is used to bind target groups to Cloud Load Balancer listeners (Layer-4 protocol) or forwarding rules (L7 protocol).\nThis API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-Binding a legacy version target group to a Layer-4 listener requires the listener to have backend target groups enabled.\n-Layer-7 bind target group. LocationId is a required item in the data structure TargetGroupAssociation.\n-The VPC of the Cloud Load Balancer must match the VPC of the target group.",
+      "document": "This API is used to bind target groups to Cloud Load Balancer listeners (Layer-4 protocol) or forwarding rules (L7 protocol).\nThis API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-Binding a legacy version target group to a Layer-4 listener requires the listener to have backend target groups enabled.\n-Layer-7 bind target group. LocationId is a required item in the data structure TargetGroupAssociation.\n-The VPC of the Cloud Load Balancer must match the VPC of the target group.",
       "input": "AssociateTargetGroupsRequest",
       "name": "Binds target groups to rules",
       "output": "AssociateTargetGroupsResponse",
@@ -57,7 +57,7 @@
       "status": "online"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to clone a load balancing instance with identical rules and binding relationships based on the designated Cloud Load Balancer. The cloning process is an asynchronous operation. The cloned data is based on the status when calling CloneLoadBalancer. If the source CLB changes after calling CloneLoadBalancer, the change rules will not be cloned.\n\nNote: The instance creation status can be queried based on the returned requestId by accessing the DescribeTaskStatus API (https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1).\n\nThis API is used to describe restriction descriptions.\nThis API is used to set instance attribute restrictions.\n-The cloning feature supports both pay-as-you-go and monthly subscription instances. For cloned monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.\n-CLB instances not associated with billable items cannot be cloned (historic free activity creation).\n-Classic CLB instances and Anti-DDoS CLBs cannot be cloned.\n-Cloning of classic network-based instances is not supported.\n-Anycast instances cannot be cloned.\n-IPv6 NAT64 edition instances cannot be cloned.\n-Blocked or frozen instances cannot be cloned.\n-Before performing the cloning operation, make sure that all certificates used on the instance have not expired, otherwise cloning will fail.\nThis API is used to set quota dimension restrictions.\n-Cloning is not supported when the number of instance listeners exceeds 50.\n-Cloning is not supported when the public network bandwidth cap of a shared instance exceeds 2G.\n\nThis API is used to call APIs.\nThis API is used to specify the BGP bandwidth package ID.\nThis API is used to perform exclusive cluster cloning with corresponding parameters, otherwise shared instance creation will be used.",
+      "document": "This API is used to clone a load balancing instance with identical rules and binding relationships based on the designated Cloud Load Balancer. The cloning process is an asynchronous operation. The cloned data is based on the status when calling CloneLoadBalancer. If the source CLB changes after calling CloneLoadBalancer, the change rules will not be cloned.\n\nNote: The instance creation status can be queried based on the returned requestId by accessing the DescribeTaskStatus API (https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1).\n\nThis API is used to describe restriction descriptions.\nThis API is used to set instance attribute restrictions.\n-The cloning feature supports both pay-as-you-go and monthly subscription instances. For cloned monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.\n-CLB instances not associated with billable items cannot be cloned (historic free activity creation).\n-Classic CLB instances and Anti-DDoS CLBs cannot be cloned.\n-Cloning of classic network-based instances is not supported.\n-Anycast instances cannot be cloned.\n-IPv6 NAT64 edition instances cannot be cloned.\n-Blocked or frozen instances cannot be cloned.\n-Before performing the cloning operation, make sure that all certificates used on the instance have not expired, otherwise cloning will fail.\nThis API is used to set quota dimension restrictions.\n-Cloning is not supported when the number of instance listeners exceeds 50.\n-Cloning is not supported when the public network bandwidth cap of a shared instance exceeds 2G.\n\nThis API is used to call APIs.\nThis API is used to specify the BGP bandwidth package ID.\nThis API is used to perform exclusive cluster cloning with corresponding parameters, otherwise shared instance creation will be used.",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse",
@@ -85,14 +85,14 @@
       "status": "online"
     },
     "CreateLoadBalancerSnatIps": {
-      "document": "This API is used to add SnatIp for SnatPro Cloud Load Balancer. If SnatPro is not enabled, it will be auto on after adding SnatIp.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to add SnatIp for SnatPro Cloud Load Balancer. If SnatPro is not enabled, it will be auto on after adding SnatIp.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "CreateLoadBalancerSnatIpsRequest",
       "name": "Adds SNAT IP",
       "output": "CreateLoadBalancerSnatIpsResponse",
       "status": "online"
     },
     "CreateRule": {
-      "document": "This API is used to create forwarding rules under an existing layer-7 CLB listener. In layer-7 CLB listeners, backend services must be bound to rules instead of the listener.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
+      "document": "This API is used to create forwarding rules under an existing layer-7 CLB listener. In layer-7 CLB listeners, backend services must be bound to rules instead of the listener.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
       "input": "CreateRuleRequest",
       "name": "Creates a forwarding rule for a layer-7 CLB listener",
       "output": "CreateRuleResponse",
@@ -120,7 +120,7 @@
       "status": "online"
     },
     "DeleteListener": {
-      "document": "This API is used to delete listeners (layer-4 and layer-7) under a Cloud Load Balancer instance.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to delete listeners (layer-4 and layer-7) under a Cloud Load Balancer instance.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteListenerRequest",
       "name": "Deletes a CLB listener",
       "output": "DeleteListenerResponse",
@@ -134,14 +134,14 @@
       "status": "online"
     },
     "DeleteLoadBalancerListeners": {
-      "document": "This API is used to delete multiple listeners of Cloud Load Balancer.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to delete multiple listeners of Cloud Load Balancer.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteLoadBalancerListenersRequest",
       "name": "Deletes multiple CLB listeners",
       "output": "DeleteLoadBalancerListenersResponse",
       "status": "online"
     },
     "DeleteLoadBalancerSnatIps": {
-      "document": "This API is used to delete the SnatIp of the SnatPro load balancing.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to delete the SnatIp of the SnatPro load balancing.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteLoadBalancerSnatIpsRequest",
       "name": "Deletes SNAT IP",
       "output": "DeleteLoadBalancerSnatIpsResponse",
@@ -155,7 +155,7 @@
       "status": "online"
     },
     "DeleteRule": {
-      "document": "This API is used to delete forwarding rules under a layer-7 listener of a load balancing instance.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to delete forwarding rules under a layer-7 listener of a load balancing instance.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeleteRuleRequest",
       "name": "Deletes a rule from a layer-7 CLB listener",
       "output": "DeleteRuleResponse",
@@ -169,14 +169,14 @@
       "status": "online"
     },
     "DeregisterFunctionTargets": {
-      "document": "This API is used to unbind a cloud function from the forwarding rule of a Cloud Load Balancer. For a layer-7 (HTTP/HTTPS) listener, the forwarding rule must be specified by LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.comom/document/product/1199/49090?from_cn_redirect=1).\n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n-CLB binding SCF only supports binding cloud functions of the \"Event function\" type.",
+      "document": "This API is used to unbind a cloud function from the forwarding rule of a Cloud Load Balancer. For a layer-7 (HTTP/HTTPS) listener, the forwarding rule must be specified by LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1).\n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n-CLB binding SCF only supports binding cloud functions of the \"Event function\" type.",
       "input": "DeregisterFunctionTargetsRequest",
       "name": "Unbinding an SCF function from a forwarding rule",
       "output": "DeregisterFunctionTargetsResponse",
       "status": "online"
     },
     "DeregisterTargetGroupInstances": {
-      "document": "This API is used to unbind a server from a target group.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to unbind a server from a target group.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "DeregisterTargetGroupInstancesRequest",
       "name": "Unbinds a server from a target group",
       "output": "DeregisterTargetGroupInstancesResponse",
@@ -463,14 +463,14 @@
       "status": "online"
     },
     "ModifyDomain": {
-      "document": "This API is used to modify the domain name under a layer-7 (HTTP/HTTPS) listener of Cloud Load Balancer.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
+      "document": "This API is used to modify the domain name under a layer-7 (HTTP/HTTPS) listener of Cloud Load Balancer.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
       "input": "ModifyDomainRequest",
       "name": "Modifies a domain name of a layer-7 forwarding rule",
       "output": "ModifyDomainResponse",
       "status": "online"
     },
     "ModifyDomainAttributes": {
-      "document": "This API is used to modify domain-level attributes of Cloud Load Balancer layer-7 listener forwarding rules, such as modifying domain name, changing DefaultServer, enabling/disabling Http/2, and modifying certificates.\nThis is an async API. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to check whether this task is successful.",
+      "document": "This API is used to modify domain-level attributes of Cloud Load Balancer layer-7 listener forwarding rules, such as modifying domain name, changing DefaultServer, enabling/disabling Http/2, and modifying certificates.\nThis is an async API. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to check whether this task is successful.",
       "input": "ModifyDomainAttributesRequest",
       "name": "Modifies the domain name-level attributes of a layer-7 listener's forwarding rule",
       "output": "ModifyDomainAttributesResponse",
@@ -491,7 +491,7 @@
       "status": "online"
     },
     "ModifyLoadBalancerAttributes": {
-      "document": "This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.\nNon-bandwidth-upshift users must add their CLB instance to a bandwidth package to configure cross-domain attributes. To modify the network billing mode, go to the console.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.\nNon-bandwidth-upshift users must add their CLB instance to a bandwidth package to configure cross-domain attributes. To modify the network billing mode, go to the console.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "ModifyLoadBalancerAttributesRequest",
       "name": "Modifies the attributes of a CLB instance",
       "output": "ModifyLoadBalancerAttributesResponse",
@@ -512,7 +512,7 @@
       "status": "online"
     },
     "ModifyRule": {
-      "document": "This API is used to modify the properties of forwarding rules under a layer-7 (HTTP/HTTPS) listener in Cloud Load Balancer, including forwarding path, health check attributes and forwarding policy.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
+      "document": "This API is used to modify the properties of forwarding rules under a layer-7 (HTTP/HTTPS) listener in Cloud Load Balancer, including forwarding path, health check attributes and forwarding policy.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
       "input": "ModifyRuleRequest",
       "name": "Modifies a forwarding rule of a CLB listener",
       "output": "ModifyRuleResponse",
@@ -547,14 +547,14 @@
       "status": "online"
     },
     "ModifyTargetWeight": {
-      "document": "This API is used to modify the forwarding weight of backend service bound to Cloud Load Balancer.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
+      "document": "This API is used to modify the forwarding weight of backend service bound to Cloud Load Balancer.\nThis is an asynchronous API. After it returns the result successfully, you can call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestId as an input parameter to query whether the task is successful.",
       "input": "ModifyTargetWeightRequest",
       "name": "Modifies the forwarding weight of a real server bound to a listener",
       "output": "ModifyTargetWeightResponse",
       "status": "online"
     },
     "RegisterFunctionTargets": {
-      "document": "This API is used to bind a cloud function to the forwarding rule of a Cloud Load Balancer. Before that, you need to create a related HTTP or HTTPS listener and forwarding rule.\nThis API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.comom/document/product/1199/49090?from_cn_redirect=1). \n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n- CLB binding SCF only supports binding SCF of the \"Event function\" type.\n-A forwarding rule supports binding only one SCF.",
+      "document": "This API is used to bind a cloud function to the forwarding rule of a Cloud Load Balancer. Before that, you need to create a related HTTP or HTTPS listener and forwarding rule.\nThis API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [account type upgrade instructions](https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1). \n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n- CLB binding SCF only supports binding SCF of the \"Event function\" type.\n-A forwarding rule supports binding only one SCF.",
       "input": "RegisterFunctionTargetsRequest",
       "name": "Binds an SCF function with a forwarding rule",
       "output": "RegisterFunctionTargetsResponse",
@@ -568,7 +568,7 @@
       "status": "online"
     },
     "RegisterTargets": {
-      "document": "This API is used to bind one or more backend services to a Cloud Load Balancer listener or layer-7 forwarding rule. Before that, you need to create a related CLB layer-4 listener or layer-7 forwarding rule. For Layer-4 listeners (TCP/UDP), only specify the listener ID. For layer-7 (HTTP/HTTPS) listeners, forwarding rules must be specified through LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "document": "This API is used to bind one or more backend services to a Cloud Load Balancer listener or layer-7 forwarding rule. Before that, you need to create a related CLB layer-4 listener or layer-7 forwarding rule. For Layer-4 listeners (TCP/UDP), only specify the listener ID. For layer-7 (HTTP/HTTPS) listeners, forwarding rules must be specified through LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.",
       "input": "RegisterTargetsRequest",
       "name": "Binds real servers to a listener",
       "output": "RegisterTargetsResponse",
@@ -603,14 +603,14 @@
       "status": "online"
     },
     "SetLoadBalancerSecurityGroups": {
-      "document": "This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the DescribeLoadBalancers API (https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1). This API follows set semantics.\nThis API is used to pass in all security groups that should be bound to the Cloud Load Balancer instance during the binding operation (bound + new binding).\nFor unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.",
+      "document": "This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the DescribeLoadBalancers API (https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1). This API follows set semantics.\nThis API is used to pass in all security groups that should be bound to the Cloud Load Balancer instance during the binding operation (bound + new binding).\nFor unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.",
       "input": "SetLoadBalancerSecurityGroupsRequest",
       "name": "Configures security groups for a CLB instance",
       "output": "SetLoadBalancerSecurityGroupsResponse",
       "status": "online"
     },
     "SetLoadBalancerStartStatus": {
-      "document": "This API is used to start or stop a load balancing instance or listener.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.comom/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.",
+      "document": "This API is used to start or stop a load balancing instance or listener.\nThis API is used to perform asynchronous operations. After returning a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.",
       "input": "SetLoadBalancerStartStatusRequest",
       "name": "Enables or disables a CLB instance or listener",
       "output": "SetLoadBalancerStartStatusResponse",
@@ -2119,7 +2119,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "Specifies the clb ID. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
           "example": "lb-5luefaho",
           "member": "string",
           "name": "LoadBalancerId",
@@ -2164,7 +2164,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to specify availability zone.",
+          "document": "Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ZoneId",
@@ -2218,7 +2218,7 @@
         },
         {
           "disabled": false,
-          "document": "BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).",
+          "document": "BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies this parameter indicates the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE).",
           "example": "bwp-pnbe****",
           "member": "string",
           "name": "BandwidthPackageId",
@@ -2245,7 +2245,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.comom/document/product/214/49278?from_cn_redirect=1) api.",
+          "document": "Public network exclusive cluster ID or CDCId. can be obtained through the [DescribeExclusiveClusters](https://www.tencentcloud.com/document/product/214/49278?from_cn_redirect=1) api.",
           "example": "[\"cluster-gbo2****\"]",
           "member": "string",
           "name": "ClusterIds",
@@ -2272,7 +2272,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.",
+          "document": "Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.",
           "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "Zones",
@@ -2281,7 +2281,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1).",
+          "document": "The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).",
           "example": "eip-qhx8udkc",
           "member": "string",
           "name": "EipAddressId",
@@ -2883,7 +2883,7 @@
         },
         {
           "disabled": false,
-          "document": "BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.comom/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.",
+          "document": "BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.",
           "example": "bwp-pnbe****",
           "member": "string",
           "name": "BandwidthPackageId",
@@ -2955,7 +2955,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.\nNote: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.comom/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.\nNote: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "SlaveZoneId",
@@ -2964,7 +2964,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.",
+          "document": "The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.",
           "example": "eip-qhx8udkc",
           "member": "string",
           "name": "EipAddressId",
@@ -3074,7 +3074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.",
+          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID, such as lb-12345678.",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3083,7 +3083,7 @@
         },
         {
           "disabled": false,
-          "document": "Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.comom/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.",
+          "document": "Added SnatIp information. specify IP for request or designated subnet for automatic application. can be accessed through [DescribeSubnets](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to query and retrieve. the default upper limit for one CLB instance is 10.",
           "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
@@ -3119,7 +3119,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3128,7 +3128,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "Specifies the listener ID, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "lbl-4fbx*****",
           "member": "string",
           "name": "ListenerId",
@@ -3514,7 +3514,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3523,7 +3523,7 @@
         },
         {
           "disabled": false,
-          "document": "The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "The listener ID to be deleted, can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "lbl-4udz****",
           "member": "string",
           "name": "ListenerId",
@@ -3550,7 +3550,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
           "example": "lb-db2n****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3559,7 +3559,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "Specifies the listener ID array to be deleted, with a maximum of 20 elements. if left blank, all listeners of the clb will be deleted. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "[\"lbl-4fo6k8na\"]",
           "member": "string",
           "name": "ListenerIds",
@@ -3622,7 +3622,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.",
+          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID, such as lb-12345678.",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3712,7 +3712,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
           "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
@@ -3721,7 +3721,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
           "example": "lbl-4fbxq45k",
           "member": "string",
           "name": "ListenerId",
@@ -3730,7 +3730,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.",
+          "document": "Array of ids of forwarding rules to be deleted, can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.",
           "example": "[\"loc-5lc6****\"]",
           "member": "string",
           "name": "LocationIds",
@@ -3739,7 +3739,7 @@
         },
         {
           "disabled": false,
-          "document": "Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1) api.",
+          "document": "Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -3748,7 +3748,7 @@
         },
         {
           "disabled": false,
-          "document": "Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.comom/document/api/214/46916?from_cn_redirect=1).",
+          "document": "Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).",
           "example": "/bar2",
           "member": "string",
           "name": "Url",
@@ -3757,7 +3757,7 @@
         },
         {
           "disabled": false,
-          "document": "A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "www.default.example.com",
           "member": "string",
           "name": "NewDefaultServerDomain",
@@ -4434,7 +4434,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/product/214/60009?from_cn_redirect=1) api.",
+          "document": "Specifies the configuration ID, which can be obtained through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/product/214/60009?from_cn_redirect=1) api.",
           "example": "pz-fi018waq",
           "member": "string",
           "name": "UconfigId",
@@ -4461,7 +4461,7 @@
         },
         {
           "disabled": false,
-          "document": "Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.comom/document/product/214/46916?from_cn_redirect=1) API return value.",
+          "document": "Search Domain. can be queried through the `Domain` field in the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/product/214/46916?from_cn_redirect=1) API return value.",
           "example": "a.cc",
           "member": "string",
           "name": "Domain",
@@ -4544,7 +4544,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.comom/document/api/214/60009?from_cn_redirect=1) api.",
+          "document": "Configuration ID, can be accessed through the [DescribeCustomizedConfigList](https://www.tencentcloud.com/document/api/214/60009?from_cn_redirect=1) api.",
           "example": "pz-12345678",
           "member": "string",
           "name": "UconfigIds",
@@ -4553,7 +4553,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria as follows:.\n- loadbalancer-id\nFilter by [cloud load balancer ID]. instance billing mode such as lb-9vxezxza.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).\n- vip\nFilter by [clb VIP]. network billing mode such as \"1.1.1.1\", \"2204::22:3\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).",
+          "document": "Filter criteria as follows:.\n- loadbalancer-id\nFilter by [cloud load balancer ID]. instance billing mode such as lb-9vxezxza.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).\n- vip\nFilter by [clb VIP]. network billing mode such as \"1.1.1.1\", \"2204::22:3\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).",
           "example": "[{\"Name\":\"loadbalancer-id\",\"Values\":[\"lb-12345678\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -4618,7 +4618,7 @@
         },
         {
           "disabled": false,
-          "document": "The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.comom/document/product/1596/77930?from_cn_redirect=1).",
+          "document": "The Region of the cloud load balancer can be obtained through the `RegionSet.Region` field in the API return value of [DescribeRegions](https://www.tencentcloud.com/document/product/1596/77930?from_cn_redirect=1).",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "LoadBalancerRegion",
@@ -4739,7 +4739,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/api/214/30685?from_cn_redirect=1) api to obtain the ID.",
           "example": "lb-aniq****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -4748,7 +4748,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.",
+          "document": "Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.com/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.",
           "example": "[\"lbl-8cnl****\",\"lbl-we2d\"]",
           "member": "string",
           "name": "ListenerIds",
@@ -4813,7 +4813,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.comom/document/api/400/41674?from_cn_redirect=1) api.\nSpecifies the maximum length of the array is 20.",
+          "document": "Specifies the server certificate ID or client certificate ID. can be accessed through the [DescribeCertificate](https://www.tencentcloud.com/document/api/400/41674?from_cn_redirect=1) api.\nSpecifies the maximum length of the array is 20.",
           "example": "[\"RwFAfr8Y\"]",
           "member": "string",
           "name": "CertIds",
@@ -4976,7 +4976,7 @@
         },
         {
           "disabled": false,
-          "document": "Querying conditions for cloud load balancer detailed information list. detailed filter criteria.\n- loadbalancer-id\nFilter by [clb ID], for example: lb-rbw5skde.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1).\n- project-id\nFilters by [project ID]. for example: \"0\", \"123\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1).\n- network\nFilters by [clb network type]. for example: Public.\nType: String.\nRequired: No\nValid values: Private (Private network), Public (Public network).\n- vip\nFilter by [cloud load balancer VIP], such as \"1.1.1.1\", \"2204::22:3\".\nType: String.\nRequired: No\n- vpcid\nFilter by the vpc to which the cloud load balancer belongs, such as \"vpc-12345678\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).\n- target-ip\nFilters by the private network IP of the backend destination. for example: \"1.1.1.1\", \"2203::214:4\".\nType: String.\nRequired: No\n- zone\nFilter by [availability zone of the cloud load balancer]. for example: \"ap-guangzhou-1\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeZones](https://www.tencentcloud.comom/document/product/213/15707?from_cn_redirect=1).\n- tag-key\nFilters by [tag key of the cloud load balancer tag], for example: \"name\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeTags](https://www.tencentcloud.comom/document/api/651/35316?from_cn_redirect=1).\n- tag:*\nFilter by [cloud load balancer tag], where ':' is followed by the tag key. for example, to filter by tag key 'name' with tag Values 'zhangsan' and 'lisi', use {\"name\": \"tag:name\",\"Values\": [\"zhangsan\", \"lisi\"]}.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeTagKeys](https://www.tencentcloud.comom/document/api/651/35318?from_cn_redirect=1).\n- fuzzy-search\nSearches by [clb VIP, clb name] using fuzzy search, for example: \"1.1\".\nType: String.\nRequired: No",
+          "document": "Querying conditions for cloud load balancer detailed information list. detailed filter criteria.\n- loadbalancer-id\nFilter by [clb ID], for example: lb-rbw5skde.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1).\n- project-id\nFilters by [project ID]. for example: \"0\", \"123\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1).\n- network\nFilters by [clb network type]. for example: Public.\nType: String.\nRequired: No\nValid values: Private (Private network), Public (Public network).\n- vip\nFilter by [cloud load balancer VIP], such as \"1.1.1.1\", \"2204::22:3\".\nType: String.\nRequired: No\n- vpcid\nFilter by the vpc to which the cloud load balancer belongs, such as \"vpc-12345678\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).\n- target-ip\nFilters by the private network IP of the backend destination. for example: \"1.1.1.1\", \"2203::214:4\".\nType: String.\nRequired: No\n- zone\nFilter by [availability zone of the cloud load balancer]. for example: \"ap-guangzhou-1\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1).\n- tag-key\nFilters by [tag key of the cloud load balancer tag], for example: \"name\".\nType: String.\nRequired: No\nMethod for obtaining: [DescribeTags](https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1).\n- tag:*\nFilter by [cloud load balancer tag], where ':' is followed by the tag key. for example, to filter by tag key 'name' with tag Values 'zhangsan' and 'lisi', use {\"name\": \"tag:name\",\"Values\": [\"zhangsan\", \"lisi\"]}.\nType: String.\nRequired: No\nMethod for obtaining: [DescribeTagKeys](https://www.tencentcloud.com/document/api/651/35318?from_cn_redirect=1).\n- fuzzy-search\nSearches by [clb VIP, clb name] using fuzzy search, for example: \"1.1\".\nType: String.\nRequired: No",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -5140,7 +5140,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.",
+          "document": "Project ID of the cloud load balancer instance. you can call the [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1) api to obtain the ID. defaults to all projects if not passed.",
           "example": "1",
           "member": "int64",
           "name": "ProjectId",
@@ -5158,7 +5158,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api to obtain it.\nSearches for cloud load balancer of basic network type. allows input '0'.",
+          "document": "Specifies the unique vpc ID of the load balancing instance, such as vpc-bhqkbhdx. you can call the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api to obtain it.\nSearches for cloud load balancer of basic network type. allows input '0'.",
           "example": "vpc-bhqk****",
           "member": "string",
           "name": "VpcId",
@@ -5167,7 +5167,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).",
+          "document": "Security group ID, such as sg-m1cc****, can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).",
           "example": "sg-m1cc****",
           "member": "string",
           "name": "SecurityGroup",
@@ -6425,7 +6425,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-dr0mo6w4",
           "member": "string",
           "name": "LoadBalancerId",
@@ -6471,7 +6471,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-eth6my23",
           "member": "string",
           "name": "LoadBalancerId",
@@ -6508,7 +6508,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-xxxxxxxx",
           "member": "string",
           "name": "LoadBalancerId",
@@ -6789,7 +6789,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPC ID in string format. Only string format is supported.\nCan be queried through the [DescribeVpcs](https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1) api.",
+          "document": "VPC ID in string format. Only string format is supported.\nCan be queried through the [DescribeVpcs](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api.",
           "example": "vpc-p5sf61yj",
           "member": "string",
           "name": "VpcId",
@@ -6798,7 +6798,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the private IP address for backend querying, which can be CVM or eni.\nCan be queried through the [DescribeAddresses](https://www.tencentcloud.comom/document/product/215/16702?from_cn_redirect=1) api.",
+          "document": "Specifies the private IP address for backend querying, which can be CVM or eni.\nCan be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) api.",
           "example": "10.0.0.3",
           "member": "string",
           "name": "PrivateIp",
@@ -7345,7 +7345,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type of the load balancing instance.\nOPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.comom/document/product/215/16700?from_cn_redirect=1).",
+          "document": "Network type of the load balancing instance.\nOPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).",
           "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
@@ -7554,7 +7554,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).",
+          "document": "Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).",
           "example": "77599",
           "member": "uint64",
           "name": "NumericalVpcId",
@@ -8712,7 +8712,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
           "example": "lb-1wvl****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -8721,7 +8721,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the CLB instance listener. You can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
           "example": "lbl-n8mb****",
           "member": "string",
           "name": "ListenerId",
@@ -8730,7 +8730,7 @@
         },
         {
           "disabled": false,
-          "document": "Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "Domain name (must be a domain name under a created forwarding rule). if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -8829,7 +8829,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
           "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
@@ -8838,7 +8838,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the clb listener. you can call the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
           "example": "lbl-d1ubsydq",
           "member": "string",
           "name": "ListenerId",
@@ -8847,7 +8847,7 @@
         },
         {
           "disabled": false,
-          "document": "An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "An existing domain under the listener, can be queried through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "foo.net",
           "member": "string",
           "name": "Domain",
@@ -9189,7 +9189,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
           "example": "lb-6efswuxa",
           "member": "string",
           "name": "LoadBalancerId",
@@ -9261,7 +9261,7 @@
         },
         {
           "disabled": false,
-          "document": "The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.comom/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.",
+          "document": "The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.",
           "example": "vpce-h0fk8lfc",
           "member": "string",
           "name": "AssociateEndpoint",
@@ -9334,7 +9334,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ids.\nSpecifies the maximum length supported by the list is 20.",
+          "document": "One or more load balancing instance ids to be operated. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ids.\nSpecifies the maximum length supported by the list is 20.",
           "example": "[\"lb-1234abcd\",\"lb-5678wwqq\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -9370,7 +9370,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
           "example": "lb-cuxw2rm0",
           "member": "string",
           "name": "LoadBalancerId",
@@ -9379,7 +9379,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1) api.",
+          "document": "ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.",
           "example": "lbl-4fbxq45k",
           "member": "string",
           "name": "ListenerId",
@@ -9388,7 +9388,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1).",
+          "document": "Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).",
           "example": "loc-9dr7bsl3",
           "member": "string",
           "name": "LocationId",
@@ -10088,7 +10088,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.comom/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.",
+          "document": "Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.",
           "example": "loc-fi8g****",
           "member": "string",
           "name": "LocationId",
@@ -10411,7 +10411,7 @@
         },
         {
           "disabled": false,
-          "document": "Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.comom/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.",
+          "document": "Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.",
           "example": "tag_target",
           "member": "string",
           "name": "Tag",
@@ -11068,7 +11068,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.\nSpecifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.comom/document/product/214/15171?from_cn_redirect=1).",
+          "document": "Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.\nSpecifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).",
           "example": "client_max_body_size 222M;",
           "member": "string",
           "name": "ConfigContent",
@@ -11086,7 +11086,7 @@
         },
         {
           "disabled": false,
-          "document": "CLB instance ID. this field is required for bind/unbind operations.\nCan be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.",
+          "document": "CLB instance ID. this field is required for bind/unbind operations.\nCan be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.",
           "example": "[lb-55rh44i6]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -11123,7 +11123,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-cuxw2r00",
           "member": "string",
           "name": "LoadBalancerId",
@@ -11132,7 +11132,7 @@
         },
         {
           "disabled": false,
-          "document": "Log set ID of cloud log service (CLS).\n<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.comom/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
+          "document": "Log set ID of cloud log service (CLS).\n<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
           "example": "ac251c08-778c-4fbc-981b-4898dd48d928",
           "member": "string",
           "name": "LogSetId",
@@ -11141,7 +11141,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the log topic ID of cloud log service (CLS).\n<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.comom/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
+          "document": "Specifies the log topic ID of cloud log service (CLS).\n<li>Specifies the log topic ID can be obtained by calling the [DescribeTopics](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
           "example": "f43636fe-06fc-417b-9349-da4bc8a03745",
           "member": "string",
           "name": "LogTopicId",
@@ -11177,7 +11177,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-cuxw2r00",
           "member": "string",
           "name": "LoadBalancerId",
@@ -11186,7 +11186,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies an array of security group ids. a load balancing instance supports a maximum binding of 50 security groups. to unbind all security groups, omit this parameter.\nCan be queried through the [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1) api.",
+          "document": "Specifies an array of security group ids. a load balancing instance supports a maximum binding of 50 security groups. to unbind all security groups, omit this parameter.\nCan be queried through the [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1) api.",
           "example": "[\"sg-0936o7sd\",\"sg-12345678\"]",
           "member": "string",
           "name": "SecurityGroups",
@@ -11222,7 +11222,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
+          "document": "ID of the cloud load balancer instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.",
           "example": "lb-hwdt33e0",
           "member": "string",
           "name": "LoadBalancerId",
@@ -11258,7 +11258,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).",
+          "document": "Security group ID, such as sg-12345678. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).",
           "example": "sg-12345678",
           "member": "string",
           "name": "SecurityGroup",
@@ -11276,7 +11276,7 @@
         },
         {
           "disabled": false,
-          "document": "ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) API to query the ID.\nSpecifies the maximum length supported by the list is 20.",
+          "document": "ID array of the clb instance. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) API to query the ID.\nSpecifies the maximum length supported by the list is 20.",
           "example": "[\"lb-0936o712\",\"lb-tttt5555\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -11303,7 +11303,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB instance ID.\nCan be queried through the [DescribeLoadBalancers](https://www.tencentcloud.comom/document/product/1108/48459?from_cn_redirect=1) api.",
+          "document": "CLB instance ID.\nCan be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1) api.",
           "example": "lb-57x2wzka",
           "member": "string",
           "name": "LoadBalancerId",

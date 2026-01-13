@@ -512,7 +512,7 @@
       "status": "online"
     },
     "RenewInstances": {
-      "document": "This API is used to renew annual and monthly subscription instances.\n\nThis API is used to operate on monthly subscription instances only.\nThis API is used to ensure your account balance is sufficient for renewal. You can check the balance via the DescribeAccountBalance API (https://www.tencentcloud.comom/document/product/555/20253?from_cn_redirect=1).\n* You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.",
+      "document": "This API is used to renew annual and monthly subscription instances.\n\nThis API is used to operate on monthly subscription instances only.\nThis API is used to ensure your account balance is sufficient for renewal. You can check the balance via the DescribeAccountBalance API (https://www.tencentcloud.com/document/product/555/20253?from_cn_redirect=1).\n* You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.",
       "input": "RenewInstancesRequest",
       "name": "Renew an instance",
       "output": "RenewInstancesResponse",
@@ -6710,7 +6710,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.\n<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>.\nIf needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.\n\nThis feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.",
+          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.\n<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>.\nIf needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.\n\nThis feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",
@@ -9582,7 +9582,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID to be operated. can be obtained from the `InstanceId` in the return value from the DescribeInstances api (https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1).",
+          "document": "Instance ID to be operated. can be obtained from the `InstanceId` in the return value from the DescribeInstances api (https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1).",
           "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
@@ -9591,7 +9591,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the configuration information of the data disk to be expanded, only supporting specifying the target capacity of the disk to be expanded. only non-elastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://www.tencentcloud.comom/document/api/362/16315?from_cn_redirect=1)) can be expanded. the unit of data disk capacity is GiB. the minimum expansion step is 10 GiB. for data disk type selection, refer to [disk product introduction](https://www.tencentcloud.comom/document/product/362/2353?from_cn_redirect=1). the available data disk type is restricted by the instance type `InstanceType`. additionally, the maximum allowable capacity for expansion varies by data disk type.\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
+          "document": "Specifies the configuration information of the data disk to be expanded, only supporting specifying the target capacity of the disk to be expanded. only non-elastic data disks (with `Portable` being `false` in the return values of [DescribeDisks](https://www.tencentcloud.com/document/api/362/16315?from_cn_redirect=1)) can be expanded. the unit of data disk capacity is GiB. the minimum expansion step is 10 GiB. for data disk type selection, refer to [disk product introduction](https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1). the available data disk type is restricted by the instance type `InstanceType`. additionally, the maximum allowable capacity for expansion varies by data disk type.\n<dx-alert infotype=\"explain\" title=\"\">You should specify either DataDisks or SystemDisk, but you cannot specify both at the same time.</dx-alert>",
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
