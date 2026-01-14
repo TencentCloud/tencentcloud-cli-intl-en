@@ -114,6 +114,22 @@
         "title": "CreateAdaptiveDynamicStreamingTemplate"
       }
     ],
+    "CreateAigcImageTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcImageTask\n<Common request parameters>\n\n{\n    \"SubAppId\": 251007502,\n    \"ModelName\": \"GEM\",\n    \"ModelVersion\": \"2.5\",\n    \"FileInfos\": [\n        {\n            \"FileId\": \"3704211***509819\"\n        }\n    ],\n    \"Prompt\": \"generate a car\",\n    \"NegativePrompt\": \"red\",\n    \"EnhancePrompt\": \"Enabled\",\n    \"OutputConfig\": {\n        \"StorageMode\": \"Temporary\",\n        \"AspectRatio\": \"16:9\",\n        \"PersonGeneration\": \"AllowAdult\",\n        \"InputComplianceCheck\": \"Enabled\",\n        \"OutputComplianceCheck\": \"Enabled\"\n    },\n    \"SessionId\": \"mysession\",\n    \"SessionContext\": \"mySessionContext\",\n    \"TasksPriority\": \"10\",\n    \"ExtInfo\": \"myextinfo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"251007502-AigcImage***2782aff1e896673f1ft\",\n        \"RequestId\": \"f50d7667-72d8-46bb-a7e3-0613588971b6\"\n    }\n}",
+        "title": "Triggering the AIGC Image Generation Task"
+      }
+    ],
+    "CreateAigcVideoTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcVideoTask\n<Common request parameters>\n\n{\n    \"SubAppId\": 251007502,\n    \"ModelName\": \"GV\",\n    \"ModelVersion\": \"3.1-fast\",\n    \"FileInfos\": [\n        {\n            \"FileId\": \"3704211***509819\"\n        }\n    ],\n    \"LastFrameFileId\": \"3704211***509911\",\n    \"Prompt\": \"generate a car\",\n    \"NegativePrompt\": \"red\",\n    \"EnhancePrompt\": \"Enabled\",\n    \"OutputConfig\": {\n        \"StorageMode\": \"Temporary\",\n        \"AspectRatio\": \"9:16\",\n        \"AudioGeneration\": \"Enabled\",\n        \"PersonGeneration\": \"AllowAdult\",\n        \"InputComplianceCheck\": \"Enabled\",\n        \"OutputComplianceCheck\": \"Enabled\"\n    },\n    \"SessionId\": \"mysession2\",\n    \"SessionContext\": \"mysessionContext\",\n    \"TasksPriority\": \"10\",\n    \"ExtInfo\": \"myextinfo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"251007502-AigcVideo***25dacdcef7dd2b20fdt\",\n        \"RequestId\": \"d68920a4-c989-4afe-ac4d-2f06de99368e\"\n    }\n}",
+        "title": "Triggering the AIGC Video Generation Task"
+      }
+    ],
     "CreateAnimatedGraphicsTemplate": [
       {
         "document": " ",
@@ -310,6 +326,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=CreateSampleSnapshotTemplate\n&Name=Screencapture by image long side\n&Width=1920\n&Height=0\n&SampleType=Percent\n&SampleInterval=10\n&Format=jpg\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1009,\n        \"RequestId\": \"45ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a sampled screenshot template (with the long side of the screenshot specified)"
+      }
+    ],
+    "CreateSceneAigcImageTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSceneAigcImageTask\n<Common request parameters>\n\n{\n    \"SubAppId\": 251440382,\n    \"SceneInfo\": {\n        \"Type\": \"change_clothes\",\n        \"ChangeClothesConfig\": {\n            \"ClothesFileInfos\": [\n                {\n                    \"FileId\": \"3704211***509819\"\n                }\n            ]\n        }\n    },\n    \"FileInfos\": [\n        {\n            \"FileId\": \"3704211***509820\"\n        }\n    ],\n    \"OutputConfig\": {\n        \"StorageMode\": \"Temporary\",\n        \"MediaName\": \"myfile\",\n        \"ClassId\": 0\n    },\n    \"SessionId\": \"mysession\",\n    \"SessionContext\": \"mySessionContext\",\n    \"TasksPriority\": 10,\n    \"ExtInfo\": \"myextinfo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3185a050-c13a-4119-83a2-ed55802034c7\",\n        \"TaskId\": \"251440382-SceneAigcImageTask-*****8a5d76bcacaaec9a6d823e4t\"\n    }\n}",
+        "title": "Trigger a Scenario-Based AIGC Image Generation Task"
       }
     ],
     "CreateSnapshotByTimeOffsetTemplate": [

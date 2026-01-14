@@ -63,6 +63,20 @@
       "output": "CreateAdaptiveDynamicStreamingTemplateResponse",
       "status": "online"
     },
+    "CreateAigcImageTask": {
+      "document": "This API is used to generate AIGC images. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>",
+      "input": "CreateAigcImageTaskRequest",
+      "name": "Create an AIGC image generation task",
+      "output": "CreateAigcImageTaskResponse",
+      "status": "online"
+    },
+    "CreateAigcVideoTask": {
+      "document": "This API is used to generate AIGC videos. <b>The API is in beta. If needed, contact us. API calls will incur actual fees.</b>",
+      "input": "CreateAigcVideoTaskRequest",
+      "name": "Create an AIGC video task",
+      "output": "CreateAigcVideoTaskResponse",
+      "status": "online"
+    },
     "CreateAnimatedGraphicsTemplate": {
       "document": "This API is used to create a custom animated image generating template. Up to 16 templates can be created.",
       "input": "CreateAnimatedGraphicsTemplateRequest",
@@ -187,6 +201,13 @@
       "input": "CreateSampleSnapshotTemplateRequest",
       "name": "Creates a sampled screencapturing template",
       "output": "CreateSampleSnapshotTemplateResponse",
+      "status": "online"
+    },
+    "CreateSceneAigcImageTask": {
+      "document": "This API is used to generate scenario-based AIGC images. <b>This interface is in beta. If you need to use it, please contact us. API calls will incur actual fees.</b>",
+      "input": "CreateSceneAigcImageTaskRequest",
+      "name": "Create an AIGC scenario-based image generation task",
+      "output": "CreateSceneAigcImageTaskResponse",
       "status": "online"
     },
     "CreateSnapshotByTimeOffsetTemplate": {
@@ -6827,6 +6848,999 @@
       ],
       "usage": "in"
     },
+    "AigcImageOutputConfig": {
+      "document": "Output media file configuration for the AIGC image generation task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated image file will be stored in VOD (video on demand), and the FileId can be obtained in the event notification.</li> <li>Temporary: Temporary storage. the generated image file will not be stored in vod, and the Temporary access URL can be obtained in the event notification.</li>.\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output filename, up to 64 characters. default filename is assigned by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicating other categories.</li>.",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "0000-00-00T00:00:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image generation resolution. available values are 720P, 1080P, 2K, 4K, 1024x1024, 2048x2048, 2304x1728, 2496x1664, 2560x1440, 3024x1296, 4096x4096, 4694x3520, 4992x3328, 5404x3040, 6198x2656.",
+          "example": "1024x1024",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify the aspect ratio of the generated image. <li>when ModelName is GEM, the available values are 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li> <li>when ModelName is Qwen, it is not currently supported.</li>.",
+          "example": "16:9",
+          "member": "string",
+          "name": "AspectRatio",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow figure or human face generation. valid values: <li>AllowAdult: allow adult generation.</li> <li>Disallowed: forbid including figures or human faces in images.</li>.",
+          "example": "AllowAdult",
+          "member": "string",
+          "name": "PersonGeneration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable compliance check for input content. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "InputComplianceCheck",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable compliance check for output content. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "OutputComplianceCheck",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcImageSceneInfo": {
+      "document": "Scenario-Based AIGC image generation configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AI image generation scenario type. valid values:\n-change_clothes: AI clothing change.\n-product_image: AI-generated product image.",
+          "example": "change_clothes",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when Type is change_clothes. this item is required and indicates the AI clothes-changing image generation config.",
+          "example": "无",
+          "member": "ChangeClothesConfig",
+          "name": "ChangeClothesConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when Type is product_image. indicates the AI-generated product image config.",
+          "example": "无",
+          "member": "ProductImageConfig",
+          "name": "ProductImageConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcImageTask": {
+      "document": "AIGC image task information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task ID.",
+          "example": "251007502-AigcImageTask-ca5fdd3e74c6bd1b28974b6c136de507t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status, value: <li>PROCESSING: processing;</li><li>FINISH: completed.</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A non-zero error code is returned when the source is abnormal. If 0 is returned, use the ErrCode of each specific task.",
+          "example": "70000",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message. If the source is abnormal, the corresponding exception message is returned. Otherwise, use the message of each specific task.",
+          "example": "fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The execution progress of a single adaptive bitrate stream. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of AIGC image task.",
+          "example": "无",
+          "member": "AigcImageTaskInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of AIGC image task.",
+          "example": "无",
+          "member": "AigcImageTaskOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
+          "example": "mySessionId",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcImageTaskInput": {
+      "document": "Input of AIGC image task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model name. ",
+          "example": "Seedream",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model version. ",
+          "example": "4.0",
+          "member": "string",
+          "name": "ModelVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File information of the input image for the AIGC image generation task.",
+          "example": "无",
+          "member": "AigcImageTaskInputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The prompt content for image generation.",
+          "example": "generate a car",
+          "member": "string",
+          "name": "Prompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prevent the model from generating image generation prompts.",
+          "example": "red",
+          "member": "string",
+          "name": "NegativePrompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to optimize Prompt content automatically. when Enabled, it will optimize the passed in Prompt automatically to enhance generation quality. valid values: <li>Enabled: turn on;</li> <li>Disabled: turn off;</li>",
+          "example": "Enabled",
+          "member": "string",
+          "name": "EnhancePrompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Professional",
+          "member": "string",
+          "name": "GenerationMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output media file configuration for the task.",
+          "example": "无",
+          "member": "AigcImageOutputConfig",
+          "name": "OutputConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcImageTaskInputFileInfo": {
+      "document": "AIGC image generation task input file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input video File type. valid values: <li>File: on-demand media File;</li> <li>Url: accessible Url;</li>.",
+          "example": "File",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The media File ID of the image File, which is the globally unique identifier of the File in vod, is assigned by the vod backend after successful upload. you can get this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File.\nDescription:.\n1. recommended for use: image less than 7 mb.\n2. Valid values of image format: jpeg, jpg, png, and webp.",
+          "example": "3704211***509819",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accessible file URL. this parameter is valid when the Type value is URL.\nDescription:.\n1. recommended for use: image less than 7 mb.\n2. Valid values of image format: jpeg, jpg, png, and webp.",
+          "example": "https://test.com/1.png",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description of the input image, used to help the model understand the image. valid for GEM 2.5 and GEM 3.0 only.",
+          "example": "任务背景：这是需要翻新的主建筑（图1），不得改变其几何结构。",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcImageTaskOutput": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File information of the out image for the AIGC image generation task.",
+          "example": "无",
+          "member": "AigcImageTaskOutputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcImageTaskOutputFileInfo": {
+      "document": "AIGC image task output file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated image file will be stored in VOD (video on demand).</li> <li>Temporary: Temporary storage. the generated image file will not be stored in vod.</li>.\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output filename, up to 64 characters. default filename is assigned by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicating other categories.</li>.",
+          "example": "1",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-28T00:35:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Type.",
+          "example": "png",
+          "member": "string",
+          "name": "FileType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Url.",
+          "example": "http://251007502.vod-qcloud.com/1a1***1510859450449/aigcImageGenFile.png",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File ID.",
+          "example": "3704211***450449",
+          "member": "string",
+          "name": "FileId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Meta Data.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcVideoOutputConfig": {
+      "document": "Output media file configuration for AIGC video task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated video file will be stored in vod, and the FileId can be obtained from the event notification.</li> <li>Temporary: Temporary storage. the generated video file will not be stored in vod, and a Temporary access URL can be obtained from the event notification.</li>\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output media filename, longest 64 characters. default filename is specified by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicate other categories.</li>.",
+          "example": "1",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-28T00:35:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video duration, unit: seconds. <li>when ModelName is Kling, optional values: 5, 10, defaults to 5;</li> <li>when ModelName is Hailuo, optional values: 6, 10, defaults to 6;</li> <li>when ModelName is Vidu, specify 1-10;</li> <li>when ModelName is GV, optional values: 8, defaults to 8;</li> <li>when ModelName is OS, optional values: 4, 8, 12, defaults to 8;</li>",
+          "example": "8.0",
+          "member": "float",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated video resolution.\n<li>When ModelName is Kling, available values are 720P and 1080P, with a default value of 720P.</li>\n<li>When ModelName is Hailuo, optional values are 768P and 1080P, with a default value of 768P.</li>\n<li>When ModelName is Vidu, optional values are 720P, 1080P, defaults to 720P.</li>\n<li>When ModelName is GV, optional values are 720P, 1080P, with a default value of 720P.</li>\n<li>When ModelName is OS, the optional values are 720P.</li>",
+          "example": "720P",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify the aspect ratio of the generated video.\n<li>When ModelName is Kling, for text-to-video, the optional values are 16:9, 9:16, 1:1, default is 16:9.</li>\n<li>When ModelName is Vidu, the optional values for video generation and image generation usage reference are 16:9, 9:16, 4:3, 3:4, and 1:1. among them, only version q2 supports 4:3 and 3:4.</li>\n<li>When ModelName is GV, optional values are 16:9 and 9:16, with a default value of 16:9.</li>\n<li>When ModelName is OS, for text-to-video, optional values are 16:9, 9:16, default is 16:9;</li>\n<li>When ModelName is Hailuo, it is not currently supported.</li>",
+          "example": "16:9",
+          "member": "string",
+          "name": "AspectRatio",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to generate audio. supported models include GV, OS, Vidu. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>\nDefault value: Disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "AudioGeneration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow figure or human face generation. valid values: <li>AllowAdult: allow adult generation.</li> <li>Disallowed: forbid including figures or human faces in images.</li>",
+          "example": "AllowAdult",
+          "member": "string",
+          "name": "PersonGeneration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable compliance check for input content. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>",
+          "example": "Disabled",
+          "member": "string",
+          "name": "InputComplianceCheck",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable compliance check for output content. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>",
+          "example": "Disabled",
+          "member": "string",
+          "name": "OutputComplianceCheck",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable video enhancement. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>\nNote:\n1. when the selected resolution exceeds the resolution the model can generate, enhancement is enabled by default.\n2. for resolutions that the model can directly output, you can also proactively select the model to directly output low-resolution images and use enhancement to obtain the specified resolution.",
+          "example": "Disabled",
+          "member": "string",
+          "name": "EnhanceSwitch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable vidu intelligent frame interpolation. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>",
+          "example": "Disabled",
+          "member": "string",
+          "name": "FrameInterpolate",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcVideoTask": {
+      "document": "AIGC video generation task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task ID.",
+          "example": "251007502-AigcVideoTask-ca5fdd3e74c6bd1b28974b6c136de507t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status, value: <li>PROCESSING: processing;</li><li>FINISH: completed.</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A non-zero error code is returned when the source is abnormal. If 0 is returned, use the ErrCode of each specific task.",
+          "example": "70000",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message. If the source is abnormal, the corresponding exception message is returned. Otherwise, use the message of each specific task.",
+          "example": "fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The execution progress of a single adaptive bitrate stream. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of AIGC video task.",
+          "example": "无",
+          "member": "AigcVideoTaskInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of AIGC video task.",
+          "example": "无",
+          "member": "AigcVideoTaskOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
+          "example": "mySessionId",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcVideoTaskInput": {
+      "document": "Aigc video task input.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model name.",
+          "example": "GV",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model version. ",
+          "example": "3.1-fast",
+          "member": "string",
+          "name": "ModelVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File information of the input video for the AIGC video generation task. ",
+          "example": "无",
+          "member": "AigcVideoTaskInputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The media file ID used as the end frame to generate video. ",
+          "example": "3704211***509911",
+          "member": "string",
+          "name": "LastFrameFileId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prompt content for video generation. ",
+          "example": "generate a car",
+          "member": "string",
+          "name": "Prompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prevent the model from generating video prompts.",
+          "example": "red",
+          "member": "string",
+          "name": "NegativePrompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to optimize Prompt content automatically. when Enabled, the passed-in Prompt will be optimized automatically to enhance generation quality. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "EnhancePrompt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Professional",
+          "member": "string",
+          "name": "GenerationMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the output media file configuration for the video task.",
+          "example": "无",
+          "member": "AigcVideoOutputConfig",
+          "name": "OutputConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcVideoTaskInputFileInfo": {
+      "document": "Image file info for AIGC video task input.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input video File type. valid values: <li>File: on-demand media File;</li> <li>Url: accessible Url;</li>",
+          "example": "File",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The media File ID, which is the globally unique identifier (guid) of the File in vod, is assigned by the vod backend after successful upload. you can retrieve this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File. description:.\n1. recommended image size: less than 10 mb.\n2. image format value is jpeg, jpg, png.",
+          "example": "3704211***509819",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accessible file URL. this parameter is valid when Type value is URL.\nNote:.\n1. recommended image size: less than 10 mb.\n2. image format value is jpeg, jpg, png.",
+          "example": "https://test.com/1.png",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reference type. Used for the GV model.\nNote:\nWhen using the GV model, can be used as a reference method, selectable asset (material), style.",
+          "example": "asset",
+          "member": "string",
+          "name": "ReferenceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Object id.\nApplicable model: Vidu-q2.\nWhen an image identifier is required, each image must have a subject id. the subject id can be used via @subject id in subsequent generation.",
+          "example": "obj1",
+          "member": "string",
+          "name": "ObjectId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Suitable for the Vidu-q2 model.\nWhen all images carry object ids, you can set the timbre id for the object. timbre list: https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg.",
+          "example": "male-qn-qingse",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AigcVideoTaskOutput": {
+      "document": "AIGC video task output.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File information of the output video for the AIGC video generation task.",
+          "example": "无",
+          "member": "AigcVideoTaskOutputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AigcVideoTaskOutputFileInfo": {
+      "document": "AIGC video task output file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated video file will be stored in vod.</li> <li>Temporary: Temporary storage. the generated video file will not be stored in vod.</li>\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output media filename, longest 64 characters. default filename is specified by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicate other categories.</li>.",
+          "example": "1",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-28T00:35:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Type.",
+          "example": "mp4",
+          "member": "string",
+          "name": "FileType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Url.",
+          "example": "http://251007502.vod-qcloud.com/1a1***1510859450449/aigcVideoGenFile.mp4",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File ID.",
+          "example": "3704211***450449",
+          "member": "string",
+          "name": "FileId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Meta Data.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AnimatedGraphicTaskInput": {
       "document": "Animated image generating task type",
       "members": [
@@ -9130,6 +10144,23 @@
       ],
       "usage": "out"
     },
+    "ChangeClothesConfig": {
+      "document": "AI outfit change parameter configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Manually input the image list of **clothing** that needs to be replaced. currently support a maximum of 4 images.",
+          "example": "无",
+          "member": "SceneAigcImageTaskInputFileInfo",
+          "name": "ClothesFileInfos",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ClassificationConfigureInfo": {
       "document": "Control parameter of intelligent categorization task",
       "members": [
@@ -10931,6 +11962,305 @@
       ],
       "type": "object"
     },
+    "CreateAigcImageTaskRequest": {
+      "document": "CreateAigcImageTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "251007502",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Model name. valid values:.\n<li>GEM:Gemini;</li>\n<Li>Qwen: qianwen.</li>\n<Li>Hunyuan: hunyuan.</li>",
+          "example": "GEM",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model version. valid values:.\n<li>When ModelName is GEM, optional values are 2.5, 3.0;</li>\n<li>When ModelName is Qwen, optional values are 0925.</li>\n<li>When ModelName is Hunyuan, the optional values are 3.0.</li>",
+          "example": "2.5",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File information of the input image for the AIGC image generation task. By default only one image can be specified; when using the GEM model, version 2.5 supports up to 3 images and version 3.0 supports up to 14 images.",
+          "example": "无",
+          "member": "AigcImageTaskInputFileInfo",
+          "name": "FileInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The prompt content for image generation. this parameter is required when FileInfos is empty.",
+          "example": "generate a car",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prevent the model from generating image generation prompts.",
+          "example": "red",
+          "member": "string",
+          "name": "NegativePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to optimize Prompt content automatically. when Enabled, it will optimize the passed in Prompt automatically to enhance generation quality. valid values: <li>Enabled: turn on;</li> <li>Disabled: turn off;</li>",
+          "example": "Enabled",
+          "member": "string",
+          "name": "EnhancePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Output media file configuration for the task.",
+          "example": "无",
+          "member": "AigcImageOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "An identifier for deduplication. if there has been a request with the same identifier within the past 3 days, an error will be returned for the current request. the maximum length is 50 characters. leaving it blank or using an empty string indicates no deduplication.",
+          "example": "mysession",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source context, used to pass through user request information. the audio and video quality revival complete callback will return the value of this field. longest 1000 characters.",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task priority. the higher the value, the higher the priority. value range is from -10 to 10. if left blank, the default value is 0.",
+          "example": "10",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field, used when special purpose.",
+          "example": "myextinfo",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcImageTaskResponse": {
+      "document": "CreateAigcImageTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "251007502-AigcImage***2782aff1e896673f1ft",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcVideoTaskRequest": {
+      "document": "CreateAigcVideoTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "251007502",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Model name. valid values: <li>Hailuo: conch;</li><li>Kling: Kling;</li><li>Jimeng: Jimeng;</li><li>Vidu;</li><li>Hunyuan: Hunyuan;</li><li>Mingmou: bright eyes;</li>",
+          "example": "GV",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model version. parameter value: <li>when ModelName is Hailuo, optional values are 02, 2.3, 2.3-fast;</li><li>when ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, O1;</li><li>when ModelName is Jimeng, optional values are 3.0pro;</li><li>when ModelName is Vidu, optional values are q2, q2-pro, q2-turbo;</li><li>when ModelName is GV, optional values are 3.1, 3.1-fast;</li><li>when ModelName is OS, optional values are 2.0;</li><li>when ModelName is Hunyuan, optional values are 1.5;</li><li>when ModelName is Mingmou, optional values are 1.0;</li>",
+          "example": "3.1",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of up to three material resources for description of resource images to be used by the model in video generation.\n\nVideo generation with first and last frame: use the first table in FileInfos to represent the first frame (FileInfos contains at most one image at this point). LastFrameFileId or LastFrameUrl represents the last frame.\n\nModel supporting multi-image input.\n1. GV, when entering multiple images, LastFrameFileId and LastFrameUrl are unavailable.\n2. Vidu supports multi-image reference for video generation. the q2 model accepts 1-7 images. use the ObjectId in FileInfos as the subject id for input.\n\nNote:.\n1. Image size: the size should not exceed 10 mb.\n2. supported image formats: jpeg, png.",
+          "example": "无",
+          "member": "AigcVideoTaskInputFileInfo",
+          "name": "FileInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The media file ID used as the end frame to generate video. this file has a globally unique ID on vod, assigned by the vod backend after successful upload. you can get this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). description:.\n1. only models GV, Kling, and Vidu are supported. other models are not currently supported. when ModelName is GV, if you specify this parameter, you must simultaneously specify FileInfos as the first frame of the video to be generated. when ModelName is Kling and ModelVersion is 2.1 and specify output Resolution Resolution as 1080P, you can specify this parameter. when ModelName is Vidu and ModelVersion is q2-pro or q2-turbo, you can specify this parameter.\n2. Image size: the size should be less than 5 mb.\n3. image format value is jpeg, jpg, png, webp.",
+          "example": "3704211***509911",
+          "member": "string",
+          "name": "LastFrameFileId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Media file URL used as frames to generate video. description:.\n1. only models GV, Kling, and Vidu are supported. other models are not currently supported. when ModelName is GV, if you specify this parameter, you must simultaneously specify FileInfos as the first frame of the video to be generated. when ModelName is Kling and ModelVersion is 2.1 and specify output Resolution Resolution as 1080P, you can specify this parameter. when ModelName is Vidu and ModelVersion is q2-pro or q2-turbo, you can specify this parameter.\n2. Image size: the size should be less than 5 mb.\n3. image format value is jpeg, jpg, png, webp.",
+          "example": "https://test.com/1.png",
+          "member": "string",
+          "name": "LastFrameUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prompt content for video generation. this parameter is required when FileInfos is empty.\nExample value: move the picture.",
+          "example": "generate a car",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prevent the model from generating video prompts.",
+          "example": "red",
+          "member": "string",
+          "name": "NegativePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to optimize Prompt content automatically. when Enabled, the passed-in Prompt will be optimized automatically to enhance generation quality. valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li>.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "EnhancePrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the output media file configuration for the video task.",
+          "example": "无",
+          "member": "AigcVideoOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "An identifier for deduplication. if there has been a request with the same identifier within the past 3 days, an error will be returned for the current request. the maximum length is 50 characters. leaving it blank or using an empty string indicates no deduplication.",
+          "example": "mysession2",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source context, used to pass through user request information. the audio and video quality revival complete callback will return the value of this field, up to 1000 characters.",
+          "example": "mysessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task priority. the higher the value, the higher the priority. the value range is from -10 to 10. if left blank, the default value is 0.",
+          "example": "10",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field, used for special purpose.",
+          "example": "myextinfo",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the region information of the input image. when the image url is a foreign address, selectable Oversea. default Mainland.",
+          "example": "Mainland",
+          "member": "string",
+          "name": "InputRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAigcVideoTaskResponse": {
+      "document": "CreateAigcVideoTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "251007502-AigcVideo***25dacdcef7dd2b20fdt",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAnimatedGraphicsTemplateRequest": {
       "document": "CreateAnimatedGraphicsTemplate request structure.",
       "members": [
@@ -12680,6 +14010,106 @@
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSceneAigcImageTaskRequest": {
+      "document": "CreateSceneAigcImageTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "251007502",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Scenario-Based image generation parameter configuration.",
+          "example": "无",
+          "member": "AigcImageSceneInfo",
+          "name": "SceneInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Input image list. supported image formats: jpg, jpeg, png, webp. different scenarios require different input data.\n\n- AI clothing change scenario: input only 1 model image.\n- AI product image scenario: manually input 1-10 images of different angles per product.",
+          "example": "无",
+          "member": "SceneAigcImageTaskInputFileInfo",
+          "name": "FileInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the output media file configuration for the scenario-based image task.",
+          "example": "无",
+          "member": "SceneAigcImageOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "An identifier for deduplication. if there has been a request with the same identifier within the past 3 days, an error will be returned for the current request. the maximum length is 50 characters. leaving it blank or using an empty string indicates no deduplication.",
+          "example": "mysession",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source context, used to pass through user request information. the audio and video quality revival complete callback will return the value of this field, up to 1000 characters.",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task priority. the higher the value, the higher the priority. the value range is from -10 to 10. if left blank, the default value is 0.",
+          "example": "10",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field, used for special purpose.",
+          "example": "myextinfo",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSceneAigcImageTaskResponse": {
+      "document": "CreateSceneAigcImageTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "251007502-AigcImage***2782aff1e896673f1ft",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -17868,6 +19298,46 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "AIGC image task information. This field contains a value only when TaskType is AigcImageTask.",
+          "example": "无",
+          "member": "AigcImageTask",
+          "name": "AigcImageTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AIGC video task information. This field contains a value only when TaskType is AigcVideoTask.",
+          "example": "无",
+          "member": "AigcVideoTask",
+          "name": "AigcVideoTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ImportMediaKnowledgeTask",
+          "name": "ImportMediaKnowledge",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scenario-based AIGC image task information. This field contains a value only when TaskType is SceneAigcImageTask.",
+          "example": "无",
+          "member": "SceneAigcImageTask",
+          "name": "SceneAigcImageTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -19531,7 +21001,7 @@
         {
           "disabled": false,
           "document": "Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.",
-          "example": "123**456",
+          "example": "14253**42576",
           "member": "string",
           "name": "EventHandle",
           "output_required": true,
@@ -19551,7 +21021,7 @@
         {
           "disabled": false,
           "document": "Media uploaded event, valid when the event type is NewFileUpload.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "FileUploadTask",
           "name": "FileUploadEvent",
           "output_required": true,
@@ -19561,7 +21031,7 @@
         {
           "disabled": false,
           "document": "Task flow status changed event, valid when the event type is ProcedureStateChanged.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "ProcedureTask",
           "name": "ProcedureStateChangeEvent",
           "output_required": true,
@@ -19571,7 +21041,7 @@
         {
           "disabled": false,
           "document": "File deleted event, valid when the event type is FileDeleted.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "FileDeleteTask",
           "name": "FileDeleteEvent",
           "output_required": true,
@@ -19581,7 +21051,7 @@
         {
           "disabled": false,
           "document": "PullUpload completion event, valid when the event type is PullComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "PullUploadTask",
           "name": "PullCompleteEvent",
           "output_required": true,
@@ -19591,7 +21061,7 @@
         {
           "disabled": false,
           "document": "EditMedia completion event, valid when the event type is EditMediaComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaCompleteEvent",
           "output_required": true,
@@ -19601,7 +21071,7 @@
         {
           "disabled": false,
           "document": "SplitMedia completion event, valid when the event type is SplitMediaComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "SplitMediaTask",
           "name": "SplitMediaCompleteEvent",
           "output_required": true,
@@ -19611,7 +21081,7 @@
         {
           "disabled": false,
           "document": "ComposeMedia completion event, valid when the event type is ComposeMediaComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "ComposeMediaTask",
           "name": "ComposeMediaCompleteEvent",
           "output_required": true,
@@ -19621,7 +21091,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "ClipTask2017",
           "name": "ClipCompleteEvent",
           "output_required": true,
@@ -19631,7 +21101,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "TranscodeTask2017",
           "name": "TranscodeCompleteEvent",
           "output_required": true,
@@ -19641,7 +21111,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "CreateImageSpriteTask2017",
           "name": "CreateImageSpriteCompleteEvent",
           "output_required": true,
@@ -19651,7 +21121,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "ConcatTask2017",
           "name": "ConcatCompleteEvent",
           "output_required": true,
@@ -19661,7 +21131,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "SnapshotByTimeOffsetTask2017",
           "name": "SnapshotByTimeOffsetCompleteEvent",
           "output_required": true,
@@ -19671,7 +21141,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "WechatPublishTask",
           "name": "WechatPublishCompleteEvent",
           "output_required": true,
@@ -19681,7 +21151,7 @@
         {
           "disabled": false,
           "document": "WechatMiniProgramPublish completion event, valid when the event type is WechatMiniProgramPublishComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "WechatMiniProgramPublishTask",
           "name": "WechatMiniProgramPublishCompleteEvent",
           "output_required": true,
@@ -19691,7 +21161,7 @@
         {
           "disabled": false,
           "document": "RemoveWatermark completion event, valid when the event type is RemoveWatermark.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "RemoveWatermarkTask",
           "name": "RemoveWatermarkCompleteEvent",
           "output_required": true,
@@ -19701,7 +21171,7 @@
         {
           "disabled": false,
           "document": "RestoreMedia completion event, valid when the event type is RestoreMediaComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "RestoreMediaTask",
           "name": "RestoreMediaCompleteEvent",
           "output_required": true,
@@ -19711,7 +21181,7 @@
         {
           "disabled": false,
           "document": "RebuildMedia completion event, valid when the event type is RebuildMediaComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "RebuildMediaTask",
           "name": "RebuildMediaCompleteEvent",
           "output_required": true,
@@ -19721,7 +21191,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "ExtractTraceWatermarkTask",
           "name": "ExtractTraceWatermarkCompleteEvent",
           "output_required": true,
@@ -19741,7 +21211,7 @@
         {
           "disabled": false,
           "document": "ReviewAudioVideo completion event, valid when the event type is ReviewAudioVideoComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "ReviewAudioVideoTask",
           "name": "ReviewAudioVideoCompleteEvent",
           "output_required": true,
@@ -19751,7 +21221,7 @@
         {
           "disabled": false,
           "document": "Expired.",
-          "example": "null",
+          "example": "无",
           "member": "ReduceMediaBitrateTask",
           "name": "ReduceMediaBitrateCompleteEvent",
           "output_required": true,
@@ -19761,7 +21231,7 @@
         {
           "disabled": false,
           "document": "DescribeFileAttributes completion event, valid when the event type is DescribeFileAttributesComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "DescribeFileAttributesTask",
           "name": "DescribeFileAttributesCompleteEvent",
           "output_required": true,
@@ -19801,7 +21271,7 @@
         {
           "disabled": false,
           "document": "Persistence completion event, valid when the event type is PersistenceComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "PersistenceCompleteTask",
           "name": "PersistenceCompleteEvent",
           "output_required": true,
@@ -19811,12 +21281,42 @@
         {
           "disabled": false,
           "document": "Complex adaptive bitrate streaming processing completion event, valid when the event type is ComplexAdaptiveDynamicStreamingComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "ComplexAdaptiveDynamicStreamingTask",
           "name": "ComplexAdaptiveDynamicStreamingCompleteEvent",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ProcessMediaByMPS",
+          "name": "ProcessMediaByMPSCompleteEvent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AIGC image task completion event, valid when the event type is AigcImageTaskComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AigcImageTask",
+          "name": "AigcImageCompleteEvent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AIGC video task completion event, valid when the event type is AigcVideoTaskComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AigcVideoTask",
+          "name": "AigcVideoCompleteEvent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -22292,6 +23792,52 @@
       ],
       "type": "object"
     },
+    "ImportMediaKnowledgeTask": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "260038383-ImportMediaKnowledge-d716b4aed5acd161bc80ec8a7fc339bat",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "70000",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "success",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InspectMediaQualityRequest": {
       "document": "InspectMediaQuality request structure.",
       "members": [
@@ -22920,11 +24466,11 @@
       "usage": "both"
     },
     "MPSOutputFile": {
-      "document": "",
+      "document": "Used to describe the returned file results in ProcessMediaByMPS tasks.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "File type. Used to identify the specific file returned in the ProcessMediaByMPS task execution results. Values: <li>AiAnalysis.DeLogo.Video: The erased video file generated by the smart erase task;</li><li>AiAnalysis.DeLogo.OriginSubtitle: The subtitle file extracted based on the screen in the smart erase task;</li><li>AiAnalysis.DeLogo.TranslateSubtitle: The subtitle translation file extracted based on the screen in the smart erase task.</li>",
           "example": "AiAnalysis.DeLogo.Video",
           "member": "string",
           "name": "FileType",
@@ -22934,7 +24480,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage mode. It is used to indicate the storage mode of the result file. The possible values are: <li> Permanent: permanent storage; </li><li> Temporary: temporary storage. </li>",
           "example": "Temporary",
           "member": "string",
           "name": "StorageMode",
@@ -22944,7 +24490,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Media file ID. Valid when Type is Permanent, indicating that the result file is stored in the VOD platform as a video media asset. The field value is the FileId of the video media asset.",
           "example": "5233524878",
           "member": "string",
           "name": "FileId",
@@ -22954,7 +24500,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Downloadable URL for the result file.",
           "example": "https://example.com/dir/a.mp4",
           "member": "string",
           "name": "Url",
@@ -22964,7 +24510,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Expiration time. Valid when StorageMode is Temporary. It indicates the expiration time of the URL in seconds.",
           "example": "720",
           "member": "uint64",
           "name": "ExpiredTime",
@@ -22976,11 +24522,11 @@
       "usage": "out"
     },
     "MPSSubTaskResult": {
-      "document": "",
+      "document": "MPS specific subtask query result type.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Task type. Specific subtask type in the MPS WorkflowTask structure. Value: <li>AiAnalysis.DeLogo: Intelligent erasure task.</li>",
           "example": "AiAnalysis.DeLogo",
           "member": "string",
           "name": "TaskType",
@@ -22990,7 +24536,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task status. There are three types: PROCESSING, SUCCESS, and FAIL.",
           "example": "PROCESSING",
           "member": "string",
           "name": "Status",
@@ -23000,7 +24546,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error code. Returns 0 for success, other values for failure.",
           "example": "0",
           "member": "string",
           "name": "ErrCode",
@@ -23010,7 +24556,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error message.",
           "example": "SUCCESS",
           "member": "string",
           "name": "Message",
@@ -23020,7 +24566,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MPS media processing task input. This field corresponds to the Input result in the MPS task response and is returned in JSON format.",
           "example": "{\"Definition\": 24}",
           "member": "string",
           "name": "Input",
@@ -23030,7 +24576,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MPS media processing task output.",
           "example": "无",
           "member": "MPSTaskOutput",
           "name": "Output",
@@ -23042,11 +24588,11 @@
       "usage": "out"
     },
     "MPSTaskOutput": {
-      "document": "",
+      "document": "The MPS subtask output returns the result.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The file type in the task's return result. For example, in a smart erase, the erased video file will be stored in the media asset and its FileId will be given in this field. The URL of the subtitle file extracted based on the image will also be given in this field.",
           "example": "无",
           "member": "MPSOutputFile",
           "name": "OutputFiles",
@@ -31008,11 +32554,11 @@
       "usage": "out"
     },
     "ProcessMediaByMPS": {
-      "document": "",
+      "document": "MPS media processing task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The task ID.",
           "example": "150000001-ProcessMediaByMPS-2fe36a647bfa0e6b319c545277f1405dtt0",
           "member": "string",
           "name": "TaskId",
@@ -31022,7 +32568,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task status, value: <li>PROCESSING: processing;</li><li>FINISH: completed.</li>",
           "example": "FINISH",
           "member": "string",
           "name": "Status",
@@ -31032,7 +32578,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error code. A non-zero error code is returned when the source is abnormal. If 0 is returned, use the ErrCode of each specific task.",
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
@@ -31042,7 +32588,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error message. If the source is abnormal, the corresponding exception message is returned. Otherwise, use the message of each specific task.",
           "example": "SUCCESS",
           "member": "string",
           "name": "Message",
@@ -31052,7 +32598,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MPS media processing tasks.",
           "example": "无",
           "member": "MPSSubTaskResult",
           "name": "SubTaskSet",
@@ -31472,6 +33018,67 @@
         }
       ],
       "type": "object"
+    },
+    "ProductImageConfig": {
+      "document": "AI product image parameter configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Prompt content for image generation background. if this field is default, inspiration is automatically generated internally.",
+          "example": "帮我把图片替换成红色春节背景。",
+          "member": "string",
+          "name": "Prompt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prevent the model from generating image prompts.",
+          "example": "red",
+          "member": "string",
+          "name": "NegativePrompt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product description describes in detail, helping generate images that meet requirements.",
+          "example": "这个一瓶可乐",
+          "member": "string",
+          "name": "ProductDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Special requirements. if any, import them through this field.",
+          "example": "蓝色色调",
+          "member": "string",
+          "name": "MoreRequirement",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the number of images to generate. defaults to 1 if left empty. valid value: 10.",
+          "example": "6",
+          "member": "uint64",
+          "name": "OutputImageCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ProhibitedAsrReviewTemplateInfo": {
       "document": "Control parameter of prohibited information detection in speech task",
@@ -35064,7 +36671,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This field has been disused.",
           "example": "0",
           "member": "int64",
@@ -35074,7 +36681,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "This field has been disused.",
           "example": "success",
           "member": "string",
@@ -36358,6 +37965,340 @@
           "name": "FillType",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SceneAigcImageOutputConfig": {
+      "document": "Output media file configuration for the scenario-based AIGC image generation task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated image file will be stored in vod, and the FileId can be obtained from the event notification.</li> <li>Temporary: Temporary storage. the generated image file will not be stored in vod, and the Temporary access URL can be obtained from the event notification.</li>\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output filename, longest 64 characters. default filename is specified by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicate other categories.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "0000-00-00T00:00:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify the aspect ratio of the generated image. input format is W:H.\n\nOnly valid for product_image scenarios. available values are: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 16:9, 9:16, 21:9.",
+          "example": "1:1",
+          "member": "string",
+          "name": "AspectRatio",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SceneAigcImageTask": {
+      "document": "Scenario-based AIGC Image Generation Task Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task ID.",
+          "example": "251007502-AigcImageTask-ca5fdd3e74c6bd1b28974b6c136de507t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status, value: <li>PROCESSING: processing;</li><li>FINISH: completed.</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. A non-zero error code is returned when the source is abnormal. If 0 is returned, use the ErrCode of each specific task.",
+          "example": "70000",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message. If the source is abnormal, the corresponding exception message is returned. Otherwise, use the message of each specific task.",
+          "example": "fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The execution progress of a single adaptive bitrate stream. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of AIGC image task.",
+          "example": "无",
+          "member": "SceneAigcImageTaskInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of AIGC image task.",
+          "example": "无",
+          "member": "SceneAigcImageTaskOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is not carried or is left empty, no deduplication will be performed.",
+          "example": "mySessionId",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this parameter. It can contain up to 1000 characters.",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SceneAigcImageTaskInput": {
+      "document": "Scene AIGC image task input.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scenario-based Image Generation Parameter Configuration.",
+          "example": "无",
+          "member": "AigcImageSceneInfo",
+          "name": "SceneInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File information of the input image.",
+          "example": "无",
+          "member": "SceneAigcImageTaskInputFileInfo",
+          "name": "FileInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output media file configuration for the task.",
+          "example": "无",
+          "member": "SceneAigcImageOutputConfig",
+          "name": "OutputConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SceneAigcImageTaskInputFileInfo": {
+      "document": "Input file information for the scenario-based AIGC image generation task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Input video File type. valid values: <li>File: on-demand media File;</li> <li>Url: accessible Url;</li>",
+          "example": "File",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The media File ID of the image File, which is the globally unique identifier of the File in vod, is assigned by the vod backend after successful upload. you can obtain this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File.\nNote:\n1. recommended for use with images less than 7 mb.\n2. image format value is jpeg, jpg, png, webp.",
+          "example": "3704211***509819",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accessible file URL. this parameter is valid when Type value is Url.\nNote:\n1. recommended for use with images less than 7 MB.\n2. image format value is jpeg, jpg, png, webp.",
+          "example": "https://test.com/1.png",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SceneAigcImageTaskOutput": {
+      "document": "Scene AIGC image task output.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File information of the out image for the AIGC image generation task.",
+          "example": "无",
+          "member": "SceneAigcImageTaskOutputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SceneAigcImageTaskOutputFileInfo": {
+      "document": "Scene AIGC image task output file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage mode. valid values: <li>Permanent: Permanent storage. the generated image file will be stored in VOD (video on demand).</li> <li>Temporary: Temporary storage. the generated image file will not be stored in vod.</li>.\nDefault value: Temporary.",
+          "example": "Permanent",
+          "member": "string",
+          "name": "StorageMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output filename, up to 64 characters. default filename is assigned by the system.",
+          "example": "myfile",
+          "member": "string",
+          "name": "MediaName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used to categorize and manage media. you can create a category and obtain the category ID via the [create classification](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) api.\n<Li>Default value: 0, indicating other categories.</li>.",
+          "example": "1",
+          "member": "int64",
+          "name": "ClassId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-28T00:35:00Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Type.",
+          "example": "png",
+          "member": "string",
+          "name": "FileType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Url.",
+          "example": "http://251007502.vod-qcloud.com/1a1***1510859450449/aigcImageGenFile.png",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File ID.",
+          "example": "3704211***450449",
+          "member": "string",
+          "name": "FileId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Meta Data.",
+          "example": "无",
+          "member": "MediaMetaData",
+          "name": "MetaData",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
