@@ -24,6 +24,14 @@
         "title": "CreateApplication"
       }
     ],
+    "CreateApplicationConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationConfig\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"app-dxkhxra09s\",\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationType\": 1,\n    \"ApplicationPlatformType\": 3,\n    \"AppKey\": \"com.tencent.demo\",\n    \"AppURL\": \"http://fileserver.com/test.png\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"ae8289a7-a839-4b7a-85ff-ab54ea38e4b9\"\n    }\n}",
+        "title": "create application config"
+      }
+    ],
     "CreateApplicationSensitiveAPI": [
       {
         "document": "",
@@ -160,6 +168,38 @@
         "title": "DeleteUser"
       }
     ],
+    "DescribeAPPDataDetailLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAPPDataDetailLineChart\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexIds\": [\n        \"app_online_minigame_num\"\n    ],\n    \"QueryData\": \"eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIwIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDEiLCJFbmREYXRlIjoiMjAyNTEyMDEifQ==\",\n    \"ApplicationIds\": [\n        \"app-1ro3zp3nta\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNTEyMDEiLCIyIl1d\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"app_online_minigame_num\"\n            }\n        ],\n        \"RequestId\": \"b9fe1a47-9185-4f16-b0e6-c8d5e0c8c1c4\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeAPPDataOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAPPDataOverview\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataTime\": 20251201,\n    \"ApplicationIds\": [\n        \"app-1ro3zp3nta\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BaseData\": null,\n            \"Overview\": {\n                \"AllActiveDeviceNum\": 20,\n                \"AllNewDeviceNum\": 19,\n                \"CorpNum\": 3,\n                \"FlushTime\": \"1764593209\",\n                \"GameActiveDeviceNum\": 12,\n                \"GameNewDeviceNum\": 10,\n                \"MiniAppNum\": 15,\n                \"MngNum\": 8,\n                \"NewDeviceNum\": 9,\n                \"OnlineMiniAppNum\": 2,\n                \"OnlineMngNum\": 2,\n                \"VisitNum\": 9\n            },\n            \"PageData\": null,\n            \"Payment\": null\n        },\n        \"RequestId\": \"736b149f-3eae-41f8-bd27-c32fa98fd2ad\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeAdvertisingLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAdvertisingLineChart\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251104\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251201\",\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ClicksNumber\": [\n                {\n                    \"DataTime\": \"20251104\",\n                    \"Number\": \"0\"\n                }\n            ],\n            \"ECPM\": [\n                {\n                    \"DataTime\": \"20251104\",\n                    \"Number\": \"0\"\n                }\n            ],\n            \"EstimatedEarnings\": [\n                {\n                    \"DataTime\": \"20251104\",\n                    \"Number\": \"0\"\n                }\n            ],\n            \"Impressions\": [\n                {\n                    \"DataTime\": \"20251104\",\n                    \"Number\": \"0\"\n                }\n            ],\n            \"RequestsNumber\": [\n                {\n                    \"DataTime\": \"20251104\",\n                    \"Number\": \"0\"\n                }\n            ]\n        },\n        \"RequestId\": \"436ff70f-32b8-4929-b6c0-ed17e236e153\"\n    }\n}",
+        "title": "Ad Revenue Line Chart Data"
+      }
+    ],
+    "DescribeAdvertisingOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAdvertisingOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251104\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251201\",\n    \"Platform\": 0,\n    \"AdUnitType\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"OverviewData\": {\n                \"ClicksNumber\": 0,\n                \"ECPM\": \"2.41\",\n                \"EstimatedEarnings\": \"0.01\",\n                \"Impressions\": 3,\n                \"RequestsNumber\": 7\n            }\n        },\n        \"RequestId\": \"b5bc03ab-ae15-4fe3-98db-f386aa2a4ea5\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
     "DescribeApplication": [
       {
         "document": "",
@@ -174,6 +214,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationConfigFile\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"app-cc6g35711m\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"File\": \"eyJjdXN0b21JZCI6IlQwNDI1N0RTOTQzMTcyMFdUQUciLCJwcm9kdWN0SWQiOiIxMDAwOTc2MTEiLCJwYWNrYWdlTmFtZSI6ImNvbS50ZW5jZW50LnRjbXBwLmRlbW8iLCJidW5kbGVJZCI6IiIsIm1hdGVyaWFsIjoiMDFid1A4OVhKZTY4dm50WlVwdTRtdDd0MUo4VVVGeXdXU1ZxMG1QWXRYUmVQazJibkZZN2Fuc1RsY1dDSGNNVHBuKzB2OTlBaCtBT0g5MENKNzBEK1UzNTFEVXkyTkdYeEwrMzlTazI4L0NUVzcwZGIrc3B5d2IxSWw1TTBtRFpLMGkyVGxkRXJmOG4yL1RFSWRuckg0VlNNVFl3ZWh6b2VWUmx4cFhhL1JnMVVpNlM1STJQbG1SVFd6elZZdG84Q3ZuYzVKL1ZMenlWY1RPOWE4TDl3MmI2eSttTVptVTdMSTljOW9xWEVjR1pPU2VLYklwdGNzbG54dXNSbHdIMDB5VG1PWnRtcDB1azJweVdWUHBvanlpN1MyM0dhQW1LYnU1cWw4UXR4NklNYXIzRHhzd3dnMnN2YnRkWmZjSy95TTI3VGFKZ0NKbE94QzZPRHVCdXoyTHF4Uk52RUhmK3NoQjJGZGc3UmVmdGo4eXM0bE82d0lFNHZ2M09rbG1ZQlRqUFNqRGQxUjRhaWpwU2NGMGJSRmpzc25SRU5DTmhlVDdEc0ZGTnNOcW5nWStrOUwrak9mZVhhYlpwbVRyUitwUUVWamZUajRNSU1uL09Qbnp2clBqVzVhQnRCOFRVREc0dGFEYWlqS1B0N1ZaRkphSndSWUxWd1J4ZmRSbXpYeGJhOGRWR0V4dVlJVmRLTVByQXNPZUdDdE1LeGV6S1JjenZYUC9FTkI4NkFMTENsOCsxMnBkV1hnTmNSakJ1cEg5aDFlc245U2M5N3g2NFZLSVpJb0d3PT1jNTc2NTA5MTRkYzkwMmQ5Iiwic2hhcmsiOnsiaHR0cFVybCI6Imh0dHA6Ly8xMjcuMC4wLjEiLCJ0Y3BIb3N0IjoiMTI3LjAuMC4xIiwidGNwUG9ydCI6MzAwMTQsImFwcEtleSI6ImFwcC1jYzZnMzU3MTFtIiwic3ltRW5jIjoxLCJhc3ltRW5jIjowfSwiZmVlZGJhY2siOiJodHRwOi8vMTI3LjAuMC4xOjgwODEiLCJxYXBtVXJsIjoiaHR0cDovLzEyNy4wLjAuMSJ9\"\n        },\n        \"RequestId\": \"208ad6f9-67c1-4d90-8170-afd932351742\"\n    }\n}",
         "title": "DescribeApplicationConfigFile"
+      }
+    ],
+    "DescribeApplicationConfigInfos": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationConfigInfos\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationId\": \"app-sb1uz0q9ce\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"AndroidConfig\": [\n                {\n                    \"AppKey\": \"asd.asd.asd\",\n                    \"AppURL\": \"\",\n                    \"ApplicationType\": 2,\n                    \"Id\": 675\n                }\n            ],\n            \"IosConfig\": [\n                {\n                    \"AppKey\": \"com.tencent.demo1\",\n                    \"AppURL\": \"\",\n                    \"ApplicationType\": 2,\n                    \"Id\": 1793\n                }\n            ]\n        },\n        \"RequestId\": \"0dfcbf7b-e46b-4295-bbfe-75d878769d84\"\n    }\n}",
+        "title": "describe applicaton config list"
       }
     ],
     "DescribeApplicationList": [
@@ -200,12 +248,172 @@
         "title": "DescribeGlobalDomainACL"
       }
     ],
+    "DescribeGlobalOverviewDataSummary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGlobalOverviewDataSummary\n<Common request parameters>\n\n{\n    \"DataType\": \"Overview\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataTime\": 20251130\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BaseData\": null,\n            \"Overview\": {\n                \"AppNum\": 1,\n                \"CorpNum\": 25,\n                \"FlushTime\": \"1764547506\",\n                \"MiniAppNum\": 15,\n                \"MiniGameNum\": 8,\n                \"MiniGameVisitNum\": 5,\n                \"UpdateNum\": 1,\n                \"VisitNum\": 7\n            },\n            \"PageData\": null,\n            \"Payment\": null\n        },\n        \"RequestId\": \"ee56bce9-bc8d-4760-8362-767513dfea6c\"\n    }\n}",
+        "title": "Global Overview Parameter Example"
+      }
+    ],
+    "DescribeGlobalOverviewReportDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGlobalOverviewReportDetail\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T05517TF5041761HGVN\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexId\": \"app_num\",\n    \"QueryData\": \"eyJCZWdpbkRhdGUiOjIwMjUxMTExLCJFbmREYXRlIjoyMDI1MTExNX0=\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNTExMTEiLCIxIl0sWyIyMDI1MTExMiIsIjEiXSxbIjIwMjUxMTEzIiwiMSJdLFsiMjAyNTExMTQiLCIxIl0sWyIyMDI1MTExNSIsIjEiXV0=\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"app_num\"\n            }\n        ],\n        \"RequestId\": \"d5d34683-1564-41a6-8fde-3c8c5fae533e\"\n    }\n}",
+        "title": "Response"
+      }
+    ],
+    "DescribeMNGAccessAnalysisDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAccessAnalysisDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"DataType\": 1,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"Platform\": 0,\n    \"TimeEnd\": 20251130\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ActiveCount\": 0,\n                \"AvgDevice\": \"0.00\",\n                \"AvgOnce\": \"0.00\",\n                \"AvgOpenCount\": \"0.00\",\n                \"DataTime\": \"20251130\",\n                \"FlushTime\": \"\",\n                \"NewCount\": 0,\n                \"OpenCount\": 0,\n                \"TotalShareNum\": 0,\n                \"TotalUserNum\": 0\n            }\n        ],\n        \"RequestId\": \"541badb7-7bfa-4b19-8c12-eeb869b9c903\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNGAccessAnalysisLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAccessAnalysisLineChart\n<Common request parameters>\n\n{\n    \"MNPId\": \"mge6a1crlvjiul0v\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexId\": \"active_device_num\",\n    \"QueryData\": \"eyJEYXRhVHlwZSI6IjEiLCJQbGF0Zm9ybSI6MCwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzB9\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNTExMjQiLCI0MSJdLFsiMjAyNTExMjUiLCI0MSJdLFsiMjAyNTExMjYiLCIzNiJdLFsiMjAyNTExMjciLCI2Il0sWyIyMDI1MTEyOCIsIjI2Il0sWyIyMDI1MTEyOSIsIjMiXSxbIjIwMjUxMTMwIiwiNCJdXQ==\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"active_device_num\"\n            }\n        ],\n        \"RequestId\": \"ba03fb52-a0ce-4bab-b102-2bbf3207ffa6\"\n    }\n}",
+        "title": "Mini Game Visit Analysis Line Chart Request Example"
+      }
+    ],
+    "DescribeMNGAccessAnalysisOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAccessAnalysisOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": 20251130\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BaseData\": {\n                \"ActiveCount\": 1,\n                \"AvgDevice\": \"4.00\",\n                \"AvgOnce\": \"2.00\",\n                \"AvgOpenCount\": \"2.00\",\n                \"DataTime\": \"\",\n                \"FlushTime\": \"1764547504\",\n                \"NewCount\": 1,\n                \"OpenCount\": 2,\n                \"TotalShareNum\": 0,\n                \"TotalUserNum\": 1\n            },\n            \"Overview\": null,\n            \"PageData\": null,\n            \"Payment\": null\n        },\n        \"RequestId\": \"f861a672-875e-4f7c-817d-7577b7ae9407\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGActiveUserRealTimeStatistics": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGActiveUserRealTimeStatistics\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexId\": \"active_device_num\",\n    \"QueryData\": \"eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIwIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDEiLCJFbmREYXRlIjoiMjAyNTEyMDEifQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W10=\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"active_device_num\"\n            }\n        ],\n        \"RequestId\": \"1610c4f9-4a5e-46a4-ae0f-463ac83f7b2b\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeMNGAdvertisingDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAdvertisingDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251010\",\n    \"MNPId\": \"mge6a1crlvjiul0v\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251201\",\n    \"AdUnitType\": \"1\",\n    \"Platform\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClicksNumber\": 0,\n                \"DataTime\": \"20251016\",\n                \"ECPM\": \"0.81\",\n                \"EstimatedEarnings\": \"0.00\",\n                \"Impressions\": 4,\n                \"MNPName\": \"autotest_online_minigame\",\n                \"MNPType\": \"u4f11u95f2->u6d88u9664\",\n                \"RequestsNumber\": 4\n            }\n        ],\n        \"RequestId\": \"94568b3b-02df-4ed4-8402-27b36170eb7b\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeMNGAdvertisingLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAdvertisingLineChart\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251128\",\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251128\",\n    \"AdUnitType\": \"1\",\n    \"Platform\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ClicksNumber\": null,\n            \"ECPM\": null,\n            \"EstimatedEarnings\": null,\n            \"Impressions\": null,\n            \"RequestsNumber\": null\n        },\n        \"RequestId\": \"b3bbbcf4-17c2-42ac-a4f2-937bc294f1c4\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeMNGAdvertisingOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAdvertisingOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251128\",\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251128\",\n    \"AdUnitType\": \"2\",\n    \"Platform\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"OverviewData\": {\n                \"ClicksNumber\": 0,\n                \"ECPM\": \"\",\n                \"EstimatedEarnings\": \"\",\n                \"Impressions\": 0,\n                \"RequestsNumber\": 0\n            }\n        },\n        \"RequestId\": \"2b6433e4-7f89-43c0-a31b-64c4cec1cd5e\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeMNGMAUDataDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGMAUDataDetail\n<Common request parameters>\n\n{\n    \"DataType\": 0,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ApplicationId\": \"app-1ro3zp3nta\",\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"MNPTeamId\": 9432130281\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataList\": [\n                    {\n                        \"DataTime\": 202501,\n                        \"MAUCount\": \"/\"\n                    }\n                ],\n                \"MNPName\": \"autotest_minigame\"\n            }\n        ],\n        \"RequestId\": \"552c9f92-b8b4-4d7b-8f92-1e43d67ed1a2\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGMAULineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGMAULineChart\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"app-7ovakj60hy\",\n    \"DataType\": 0,\n    \"MNPTeamId\": 9432130281,\n    \"PlatformId\": \"T05517TF5041761HGVN\",\n    \"MNPId\": \"mgmkszumvhpdc3gf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataTime\": 202501,\n                \"MAUCount\": 0,\n                \"UpdateTime\": 0\n            }\n        ],\n        \"RequestId\": \"4c9278c9-da5b-44fb-9e89-b7201f89d568\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGMAUMonthlyComparisonMetricCard": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGMAUMonthlyComparisonMetricCard\n<Common request parameters>\n\n{\n    \"SourceMonth\": 202511,\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"DataType\": 1,\n    \"MNPTeamId\": 9432130281,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TargetMonth\": 202512,\n    \"ApplicationId\": \"app-1ro3zp3nta\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ComparisonRatio\": \"-90.36%\",\n            \"ComparisonResult\": 2,\n            \"FlushTime\": 1764575700,\n            \"SourceMAUNum\": 83,\n            \"TargetMAUNum\": 8\n        },\n        \"RequestId\": \"7a51b2d4-460d-4583-aeb6-ea3ff676ed11\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGPaymentLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGPaymentLineChart\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"payment_data_analysis\",\n    \"IndexId\": \"paid_user_num\",\n    \"QueryData\": \"eyJQbGF0Zm9ybSI6MCwiTW5wSWQiOiJtZ21rc3p1bXZocGRjM2dmIiwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzAsIkRhdGFUeXBlIjoiMSIsIlBheW1lbnRUeXBlIjoyfQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W10=\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"paid_user_num\"\n            }\n        ],\n        \"RequestId\": \"2ce64baf-d18c-4672-9d7a-e6ec273f3be0\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNGPaymentOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGPaymentOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251130,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ARPPu\": \"0.00\",\n            \"DataTime\": \"\",\n            \"NewPaidUseRatio\": \"0.00\",\n            \"NewPaidUserNum\": 0,\n            \"NewUserPaidAmount\": \"\",\n            \"PaidAmount\": \"\",\n            \"PaidUserNum\": 0,\n            \"RefundAmount\": \"\",\n            \"RefundNum\": 0,\n            \"UpdateTime\": 0\n        },\n        \"RequestId\": \"5a952a94-fa4f-4f60-8e3e-f988c4986872\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNGPaymentReportDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGPaymentReportDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251128,\n    \"MNPId\": \"mgmkszumvhpdc3gf\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 0,\n    \"TimeEnd\": 20251128,\n    \"Platform\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": null,\n        \"RequestId\": \"9a190f7e-2c04-44d3-a44d-37f90b82825f\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
+    "DescribeMNGPaymentRetentionAnalysis": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGPaymentRetentionAnalysis\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251128,\n    \"MNPId\": \"mge6a1crlvjiul0v\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251204,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataTime\": \"2025-12-04\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 4,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-12-03\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 2,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-12-02\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 4,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-12-01\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 4,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-11-30\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-11-29\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"DataTime\": \"2025-11-28\",\n                \"FifteenDayRetentionUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"PaymentUserNum\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            }\n        ],\n        \"RequestId\": \"0cad4955-3664-46ad-98a8-cf2be92a69e0\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNGRetentionData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGRetentionData\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251128,\n    \"MNPId\": \"mge6a1crlvjiul0v\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251201,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ActiveUserCount\": 0,\n                \"DataTime\": \"2025-12-01\",\n                \"FiveDayRetentionNewUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionNewUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionNewUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"NewUserCount\": 14,\n                \"OneDayRetentionNewUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"SevenDayRetentionNewUsers\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionNewUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionNewUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionNewUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionNewUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"ActiveUserCount\": 0,\n                \"DataTime\": \"2025-11-30\",\n                \"FiveDayRetentionNewUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionNewUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionNewUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"NewUserCount\": 4,\n                \"OneDayRetentionNewUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"SevenDayRetentionNewUsers\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionNewUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionNewUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionNewUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionNewUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"ActiveUserCount\": 0,\n                \"DataTime\": \"2025-11-29\",\n                \"FiveDayRetentionNewUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionNewUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionNewUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"NewUserCount\": 3,\n                \"OneDayRetentionNewUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"SevenDayRetentionNewUsers\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionNewUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionNewUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionNewUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionNewUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            },\n            {\n                \"ActiveUserCount\": 0,\n                \"DataTime\": \"2025-11-28\",\n                \"FiveDayRetentionNewUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionNewUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionNewUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"NewUserCount\": 26,\n                \"OneDayRetentionNewUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"SevenDayRetentionNewUsers\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionNewUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionNewUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionNewUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionNewUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            }\n        ],\n        \"RequestId\": \"ad8c688f-555b-492a-8fdb-c5f755f70997\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
     "DescribeMNP": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNP\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpjl3td541qppx9k\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"MNPId\": \"mpjnms6wibvjj8dd\",\n            \"MNPType\": \"Finance->99_Bank\",\n\"MNPName\": \"Want Want Milk\"\n            \"MNPIcon\": \"http://127.0.0.1/T08123WM5791733VNCZ/tcmpp/7987dcb3ddcd4d58840895b1eaf29f03.jpeg\",\n\"MNPIntro\": \"Want Want Milk\"\n            \"MNPDesc\": \"\",\n            \"CreateTime\": \"1733800640\",\n            \"CreateUser\": \"murphypeng_app_mini\",\n            \"TeamName\": \"murphypeng_mini\",\n            \"TeamId\": \"1151697965\",\n            \"AccessStatus\": 2,\n            \"Status\": 1\n        },\n        \"RequestId\": \"U20241210103555DVWIFK_0305105310644_99643\"\n    }\n}",
         "title": "DescribeMNP"
+      }
+    ],
+    "DescribeMNPAccessAnalysisOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPAccessAnalysisOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251101,\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": 20251130,\n    \"ProdData\": 1,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"BaseData\": {\n                \"ActiveCount\": 161,\n                \"AvgDevice\": \"124.98\",\n                \"AvgOnce\": \"123.45\",\n                \"AvgOpenCount\": \"1.01\",\n                \"DataTime\": \"\",\n                \"FlushTime\": \"1764547504\",\n                \"NewCount\": 161,\n                \"OpenCount\": 163,\n                \"TotalShareNum\": 0,\n                \"TotalUserNum\": 150\n            },\n            \"Overview\": null,\n            \"PageData\": null,\n            \"Payment\": null\n        },\n        \"RequestId\": \"1e788d19-666f-4cf7-9e71-bd1b52411596\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPActiveUserRealTimeStatistics": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPActiveUserRealTimeStatistics\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexId\": \"realtime_pv_num\",\n    \"QueryData\": \"eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIxIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDQiLCJFbmREYXRlIjoiMjAyNTEyMDQifQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNS0xMi0wNCAwMDowNTowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDA6MTA6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAwOjE1OjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMDoyMDowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDA6MjU6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAwOjMwOjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMDozNTowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDA6NDA6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAwOjQ1OjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMDo1MDowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDA6NTU6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAxOjAwOjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMTowNTowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDE6MTA6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAxOjE1OjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMToyMDowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDE6MjU6MDAiLCIwIl0sWyIyMDI1LTEyLTA0IDAxOjMwOjAwIiwiMCJdLFsiMjAyNS0xMi0wNCAwMTozNTowMCIsIjAiXSxbIjIwMjUtMTItMDQgMDE6NDA6MDAiLCIwIl0sWyIyMDI1LTEyLTE1IDEyOjU1OjAwIiwiMCJdLFsiMjAyNS0xMi0xNSAxMzowMDowMCIsIjAiXSxbIjIwMjUtMTItMTUgMTM6MDU6MDAiLCIwIl0sWyIyMDI1LTEyLTE1IDEzOjEwOjAwIiwiMCJdLFsiMjAyNS0xMi0xNSAxMzoxNTowMCIsIjAiXSxbIjIwMjUtMTItMTUgMTM6MjA6MDAiLCIwIl0sWyIyMDI1LTEyLTE1IDEzOjI1OjAwIiwiMCJdLFsiMjAyNS0xMi0xNSAxMzozMDowMCIsIjAiXSxbIjIwMjUtMTItMTUgMTM6MzU6MDAiLCIwIl0sWyIyMDI1LTEyLTE1IDEzOjQwOjAwIiwiMCJdLFsiMjAyNS0xMi0xNSAxMzo0NTowMCIsIjAiXSxbIjIwMjUtMTItMTUgMTM6NTA6MDAiLCIwIl0sWyIyMDI1LTEyLTE1IDEzOjU1OjAwIiwiMCJdLFsiMjAyNS0xMi0xNSAxNDowMDowMCIsIjAiXSxbIjIwMjUtMTItMTUgMTQ6MDU6MDAiLCIwIl1d\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"realtime_pv_num\"\n            }\n        ],\n        \"RequestId\": \"91d9abb5-8115-4830-b7b5-cb239137df30\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPAdvertisingDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPAdvertisingDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": \"20251104\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TimeEnd\": \"20251201\",\n    \"AdUnitType\": \"1\",\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClicksNumber\": 0,\n                \"DataTime\": \"20251124\",\n                \"ECPM\": \"2.41\",\n                \"EstimatedEarnings\": \"0.01\",\n                \"Impressions\": 3,\n                \"MNPName\": \"autotest_online_miniapp\",\n                \"MNPType\": \"ITu79d1u6280->u97f3u89c6u9891u8bbeu5907\",\n                \"RequestsNumber\": 7\n            }\n        ],\n        \"RequestId\": \"2c691d11-7cf8-41dd-aba5-7fd666e88b44\"\n    }\n}",
+        "title": "demo"
       }
     ],
     "DescribeMNPAllStageVersions": [
@@ -248,12 +456,44 @@
         "title": "DescribeMNPList"
       }
     ],
+    "DescribeMNPMAUDataDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPMAUDataDetail\n<Common request parameters>\n\n{\n    \"DataType\": 1,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ApplicationId\": \"app-1ro3zp3nta\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"MNPTeamId\": -1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataList\": [\n                    {\n                        \"DataTime\": 202501,\n                        \"MAUCount\": \"/\"\n                    }\n                ],\n                \"MNPName\": \"autotest_online_miniapp\"\n            }\n        ],\n        \"RequestId\": \"6b9e373a-aaa5-449c-a780-88c36b68e12d\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPMAULineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPMAULineChart\n<Common request parameters>\n\n{\n    \"DataType\": 1,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ApplicationId\": \"app-1ro3zp3nta\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"MNPTeamId\": 9432130281\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataTime\": 202501,\n                \"MAUCount\": 0,\n                \"UpdateTime\": 0\n            }\n        ],\n        \"RequestId\": \"307bc779-d2bf-4945-a8d4-e1ffb27b3ca4\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPMAUMetricCard": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPMAUMetricCard\n<Common request parameters>\n\n{\n    \"SourceMonth\": 202511,\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"DataType\": 1,\n    \"MNPTeamId\": 9432130281,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"TargetMonth\": 202512,\n    \"ApplicationId\": \"ApplicationId\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ComparisonRatio\": \"-85.19%\",\n            \"ComparisonResult\": 2,\n            \"FlushTime\": 1764593542,\n            \"SourceMAUNum\": 27,\n            \"TargetMAUNum\": 4\n        },\n        \"RequestId\": \"4aa0dad4-a5df-4ec2-8417-d077eedc223b\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
     "DescribeMNPOfflinePackageURL": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPOfflinePackageURL\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpjl3td541qppx9k\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Data\": \"http127.0.0.1/T04257DS9431720WTAG/mpp/mpjl3td541qppx9k_1.0.321.apkg\"\n        },\n        \"RequestId\": \"c4547fc8-050e-4d47-93c4-df783d309345\"\n    }\n}",
         "title": "DescribeMNPOfflinePackageURL"
+      }
+    ],
+    "DescribeMNPPageAnalysisDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPPageAnalysisDetail\n<Common request parameters>\n\n{\n    \"DataType\": 1,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"TimeBegin\": 20251124,\n    \"TimeEnd\": 20251130,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"AvgCountVisitDeep\": \"2.29\",\n                \"AvgCountVisitDuration\": \"383.71\",\n                \"AvgDeviceVisitDeep\": \"2.67\",\n                \"AvgPageVisitDuration\": \"167.88\",\n                \"DataTime\": 20251130,\n                \"VisitCount\": 16\n            }\n        ],\n        \"RequestId\": \"f6ab2c14-7dd2-4913-8b78-75d249422ca8\"\n    }\n}",
+        "title": "demo"
       }
     ],
     "DescribeMNPPreview": [
@@ -270,6 +510,30 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPReleasedVersionHistory\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpjl3td541qppx9k\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"MNPId\": \"mpjl3td541qppx9k\",\n                    \"MNPVersion\": \"1.0.320\",\n                    \"MNPVersionId\": 2548,\n                    \"MNPVersionNote\": \"mini program version note\",\n                    \"UpdateTime\": \"1724019035\"\n                },\n                {\n                    \"MNPId\": \"mpjl3td541qppx9k\",\n                    \"MNPVersion\": \"1.0.319\",\n                    \"MNPVersionId\": 2543,\n                    \"MNPVersionNote\": \"mini program version note\",\n                    \"UpdateTime\": \"1723932635\"\n                }\n            ],\n            \"TotalCount\": 2\n        },\n        \"RequestId\": \"9a6ad6c7-796d-47c3-bce0-5658b4f05b1d\"\n    }\n}",
         "title": "DescribeMNPReleasedVersionHistory"
+      }
+    ],
+    "DescribeMNPReportDataLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPReportDataLineChart\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"mnp_data_analysis\",\n    \"IndexId\": \"active_device_num\",\n    \"QueryData\": \"eyJEYXRhVHlwZSI6IjEiLCJQbGF0Zm9ybSI6MCwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzB9\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNTExMjQiLCI0MiJdLFsiMjAyNTExMjUiLCI0MyJdLFsiMjAyNTExMjYiLCIzMyJdLFsiMjAyNTExMjciLCI3Il0sWyIyMDI1MTEyOCIsIjI2Il0sWyIyMDI1MTEyOSIsIjUiXSxbIjIwMjUxMTMwIiwiNiJdXQ==\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"active_device_num\"\n            }\n        ],\n        \"RequestId\": \"f2f547b6-0233-44ef-8324-762fd63cba38\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPReportDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPReportDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"DataType\": 1,\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"Platform\": 0,\n    \"TimeEnd\": 20251130\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ActiveCount\": 6,\n                \"AvgDevice\": \"447.67\",\n                \"AvgOnce\": \"383.71\",\n                \"AvgOpenCount\": \"1.17\",\n                \"DataTime\": \"20251130\",\n                \"FlushTime\": \"\",\n                \"NewCount\": 6,\n                \"OpenCount\": 7,\n                \"TotalShareNum\": 0,\n                \"TotalUserNum\": 6\n            }\n        ],\n        \"RequestId\": \"c1c69c3e-1d3a-4d62-9e7f-cac616501401\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribeMNPRetentionData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPRetentionData\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251204,\n    \"MNPId\": \"mp1vd81ntbitj9k2\",\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251204,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ActiveUserCount\": 0,\n                \"DataTime\": \"2025-12-04\",\n                \"FiveDayRetentionNewUsers\": 0,\n                \"FiveDayRetentionUsers\": 0,\n                \"FourDayRetentionNewUsers\": 0,\n                \"FourDayRetentionUsers\": 0,\n                \"FourteenDayRetentionNewUsers\": 0,\n                \"FourteenDayRetentionUsers\": 0,\n                \"NewUserCount\": 24,\n                \"OneDayRetentionNewUsers\": 0,\n                \"OneDayRetentionUsers\": 0,\n                \"SevenDayRetentionNewUsers\": 0,\n                \"SevenDayRetentionUsers\": 0,\n                \"SixDayRetentionNewUsers\": 0,\n                \"SixDayRetentionUsers\": 0,\n                \"ThirtyDayRetentionNewUsers\": 0,\n                \"ThirtyDayRetentionUsers\": 0,\n                \"ThreeDayRetentionNewUsers\": 0,\n                \"ThreeDayRetentionUsers\": 0,\n                \"TwoDayRetentionNewUsers\": 0,\n                \"TwoDayRetentionUsers\": 0\n            }\n        ],\n        \"RequestId\": \"3f1dd0b0-4152-4568-aec0-e7dac58a3b8d\"\n    }\n}",
+        "title": "demo"
       }
     ],
     "DescribeMNPSensitiveAPIPermissionApproval": [
@@ -302,6 +566,30 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPVersion\n<Common request parameters>\n\n{\n    \"BusinessId\": \"2024082016302581955\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"MNPId\": \"mpjnms6wibvjj8dd\",\n            \"TaskId\": \"2025022715274599210\",\n\"TaskMsg\": \"Success\"\n            \"TaskStatus\": 60\n        },\n        \"RequestId\": \"b00cb037-e132-4a70-9a08-267fa26b11a1\"\n    }\n}",
         "title": "DescribeMNPVersion"
+      }
+    ],
+    "DescribePaymentDataDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePaymentDataDetail\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPIds\": [\n        \"mp1vd81ntbitj9k2\"\n    ],\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251130,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataTime\": \"2025-11-30\",\n                \"OrderMNPNum\": 0,\n                \"OrderNum\": 0,\n                \"OrderPaidNum\": 0,\n                \"OrderRefundNum\": 0,\n                \"OrderUnpaidNum\": 0,\n                \"OrderUserNum\": 0,\n                \"PaidAmount\": \"0.00\",\n                \"RefundAmount\": \"0.00\",\n                \"TotalAmount\": \"0.00\",\n                \"UnpaidAmount\": \"0.00\",\n                \"UpdateTime\": 0\n            }\n        ],\n        \"RequestId\": \"c3aa1deb-02d5-473d-9aec-2769289ceada\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribePaymentDataLineChart": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePaymentDataLineChart\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"ReportId\": \"payment_data_analysis\",\n    \"IndexId\": \"order_unpaid_num\",\n    \"QueryData\": \"eyJQbGF0Zm9ybSI6MCwiTW5wSWRzIjpbIm1wMXZkODFudGJpdGo5azIiXSwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzAsIkRhdGFUeXBlIjoiMSIsIlBheW1lbnRUeXBlIjoxfQ==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"DataResult\": \"W1siMjAyNTExMjQiLCIwIl0sWyIyMDI1MTEyNSIsIjAiXSxbIjIwMjUxMTI2IiwiMCJdLFsiMjAyNTExMjciLCIwIl0sWyIyMDI1MTEyOCIsIjMiXSxbIjIwMjUxMTI5IiwiMCJdLFsiMjAyNTExMzAiLCIwIl1d\",\n                \"ExecSql\": \"\",\n                \"ExecTime\": 0,\n                \"IndexId\": \"order_unpaid_num\"\n            }\n        ],\n        \"RequestId\": \"ca5464dd-b288-4454-9e62-2dfccf30647b\"\n    }\n}",
+        "title": "demo"
+      }
+    ],
+    "DescribePaymentDataOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePaymentDataOverview\n<Common request parameters>\n\n{\n    \"TimeBegin\": 20251124,\n    \"MNPIds\": [\n        \"mp1vd81ntbitj9k2\"\n    ],\n    \"PlatformId\": \"T04398WY9481762VZTT\",\n    \"DataType\": 1,\n    \"TimeEnd\": 20251130,\n    \"Platform\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataTime\": \"\",\n            \"OrderMNPNum\": 1,\n            \"OrderNum\": 22,\n            \"OrderPaidNum\": 19,\n            \"OrderRefundNum\": 0,\n            \"OrderUnpaidNum\": 3,\n            \"OrderUserNum\": 3,\n            \"PaidAmount\": \"104002.00\",\n            \"RefundAmount\": \"0.00\",\n            \"TotalAmount\": \"112116.00\",\n            \"UnpaidAmount\": \"8114.00\",\n            \"UpdateTime\": 1764374703\n        },\n        \"RequestId\": \"7688ca1d-cc7f-4d35-abf4-3761cb84d479\"\n    }\n}",
+        "title": "demo"
       }
     ],
     "DescribeRoleList": [
@@ -382,6 +670,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplication\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"app-fa9k2i3c42\",\n    \"ApplicationName\": \"autotest_app0819210523\",\n    \"Logo\": \"https://127.0.0.1T04257DS9431720WTAG/console/20240819210517-6638b98fe1.png\",\n    \"Intro\": \"Introduction\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"e134087b-0e6c-4e0f-bbfe-e1b481482ff3\"\n    }\n}",
         "title": "ModifyApplication"
+      }
+    ],
+    "ModifyApplicationConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationConfig\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"app-sb1uz0q9ce\",\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"Id\": 3569,\n    \"AppKey\": \"com.pkg.demo\",\n    \"AppURL\": \"http://appfileserver.com/app.pkg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"f6a2f6bd-4cff-46a4-8aca-608a2b96d7a8\"\n    }\n}",
+        "title": "modify application config"
       }
     ],
     "ModifyGlobalDomain": [

@@ -2214,7 +2214,7 @@
         },
         {
           "disabled": false,
-          "document": "Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:\n1 - Secure\n2 - Low Risk\n3 - Medium Risk\n4 - High Risk\nEmpty - Risk level not obtained.\nOnly returned for the ENHANCED version, with the default value being empty.",
+          "document": "Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:\n1 - Secure\n2 - Low Risk\n3 - Medium Risk\n4 - High Risk\nEmpty - Risk level not obtained.\nOnly returned for the Enhance and Plus version, with the default value being empty.",
           "example": "1",
           "member": "string",
           "name": "DeviceInfoLevel",
@@ -2470,7 +2470,7 @@
         },
         {
           "disabled": false,
-          "document": "Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:\n1 - Secure\n2 - Low Risk\n3 - Medium Risk\n4 - High Risk\nEmpty - Risk level not obtained.\nOnly returned for the ENHANCED version, with the default value being empty.",
+          "document": "Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:\n1 - Secure\n2 - Low Risk\n3 - Medium Risk\n4 - High Risk\nEmpty - Risk level not obtained.\nOnly returned for the Enhance and Plus version, with the default value being empty.",
           "example": "1",
           "member": "string",
           "name": "DeviceInfoLevel",

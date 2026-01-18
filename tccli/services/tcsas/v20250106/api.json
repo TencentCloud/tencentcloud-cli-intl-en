@@ -21,6 +21,13 @@
       "output": "CreateApplicationResponse",
       "status": "online"
     },
+    "CreateApplicationConfig": {
+      "document": "This API is used to create the configuration for a specified superapp.",
+      "input": "CreateApplicationConfigRequest",
+      "name": "Creates superapp configuration",
+      "output": "CreateApplicationConfigResponse",
+      "status": "online"
+    },
     "CreateApplicationSensitiveAPI": {
       "document": "This API is used to create a sensitive API of an application.",
       "input": "CreateApplicationSensitiveAPIRequest",
@@ -140,6 +147,34 @@
       "output": "DeleteUserResponse",
       "status": "online"
     },
+    "DescribeAPPDataDetailLineChart": {
+      "document": "This API is used to retrieve the line chart data for selected superapp metrics.",
+      "input": "DescribeAPPDataDetailLineChartRequest",
+      "name": "Line chart for selected superapp metrics",
+      "output": "DescribeAPPDataDetailLineChartResponse",
+      "status": "online"
+    },
+    "DescribeAPPDataOverview": {
+      "document": "This API is used to retrieve an overview of the superapp data.",
+      "input": "DescribeAPPDataOverviewRequest",
+      "name": "Superapp data overview",
+      "output": "DescribeAPPDataOverviewResponse",
+      "status": "online"
+    },
+    "DescribeAdvertisingLineChart": {
+      "document": "This API is used to retrieve the advertising line chart data for a mini program within a specified date range.",
+      "input": "DescribeAdvertisingLineChartRequest",
+      "name": "Mini program advertisement line chart",
+      "output": "DescribeAdvertisingLineChartResponse",
+      "status": "online"
+    },
+    "DescribeAdvertisingOverview": {
+      "document": "This API is used to retrieve an overview of mini program ad metrics within a specified date range.",
+      "input": "DescribeAdvertisingOverviewRequest",
+      "name": "Mini program advertising overview",
+      "output": "DescribeAdvertisingOverviewResponse",
+      "status": "online"
+    },
     "DescribeApplication": {
       "document": "This API is used to query the application details.",
       "input": "DescribeApplicationRequest",
@@ -152,6 +187,13 @@
       "input": "DescribeApplicationConfigFileRequest",
       "name": "Queries the configuration files of an application",
       "output": "DescribeApplicationConfigFileResponse",
+      "status": "online"
+    },
+    "DescribeApplicationConfigInfos": {
+      "document": "This API is used to retrieve the configuration details for an superapp.",
+      "input": "DescribeApplicationConfigInfosRequest",
+      "name": "Superapp configuration details",
+      "output": "DescribeApplicationConfigInfosResponse",
       "status": "online"
     },
     "DescribeApplicationList": {
@@ -175,11 +217,151 @@
       "output": "DescribeGlobalDomainACLResponse",
       "status": "online"
     },
+    "DescribeGlobalOverviewDataSummary": {
+      "document": "This API is used to retrieve a global overview summary of usage statistics.",
+      "input": "DescribeGlobalOverviewDataSummaryRequest",
+      "name": "Global overview summary of usage statistics",
+      "output": "DescribeGlobalOverviewDataSummaryResponse",
+      "status": "online"
+    },
+    "DescribeGlobalOverviewReportDetail": {
+      "document": "This API is used to retrieve the detailed report data for global overview within a specified date range.",
+      "input": "DescribeGlobalOverviewReportDetailRequest",
+      "name": "Detailed report data for global overview",
+      "output": "DescribeGlobalOverviewReportDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGAccessAnalysisDetail": {
+      "document": "This API is used to retrieve the detailed visit analysis data for a mini game within a specified date range.",
+      "input": "DescribeMNGAccessAnalysisDetailRequest",
+      "name": "Detailed mini game visit data",
+      "output": "DescribeMNGAccessAnalysisDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGAccessAnalysisLineChart": {
+      "document": "This API is used to retrieve line chart analysis data for mini game visits.",
+      "input": "DescribeMNGAccessAnalysisLineChartRequest",
+      "name": "Mini game visit analysis line chart",
+      "output": "DescribeMNGAccessAnalysisLineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNGAccessAnalysisOverview": {
+      "document": "This API is used to retrieve an overview of visit analysis data for a mini game within a specified date range.",
+      "input": "DescribeMNGAccessAnalysisOverviewRequest",
+      "name": "Overview of mini game visit analysis data",
+      "output": "DescribeMNGAccessAnalysisOverviewResponse",
+      "status": "online"
+    },
+    "DescribeMNGActiveUserRealTimeStatistics": {
+      "document": "This API is used to retrieve the real-time active user statistics for a mini game.",
+      "input": "DescribeMNGActiveUserRealTimeStatisticsRequest",
+      "name": "Mini game real-time active user statistics",
+      "output": "DescribeMNGActiveUserRealTimeStatisticsResponse",
+      "status": "online"
+    },
+    "DescribeMNGAdvertisingDetail": {
+      "document": "This API is used to retrieve the advertising detailed data for a mini game over a specified period.",
+      "input": "DescribeMNGAdvertisingDetailRequest",
+      "name": "Detailed mini game advertising data",
+      "output": "DescribeMNGAdvertisingDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGAdvertisingLineChart": {
+      "document": "This API is used to retrieve mini game advertising data in a line chart format.",
+      "input": "DescribeMNGAdvertisingLineChartRequest",
+      "name": "Mini game advertising line chart",
+      "output": "DescribeMNGAdvertisingLineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNGAdvertisingOverview": {
+      "document": "This API is used to retrieve an overview of mini game ad metrics within a specified date range.",
+      "input": "DescribeMNGAdvertisingOverviewRequest",
+      "name": "Mini game advertising overview",
+      "output": "DescribeMNGAdvertisingOverviewResponse",
+      "status": "online"
+    },
+    "DescribeMNGMAUDataDetail": {
+      "document": "This API is used to retrieve the detailed mini game monthly active user data.",
+      "input": "DescribeMNGMAUDataDetailRequest",
+      "name": "Detailed mini game MAU data",
+      "output": "DescribeMNGMAUDataDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGMAULineChart": {
+      "document": "This API is used to retrieve mini game monthly active user data in a line chart format.",
+      "input": "DescribeMNGMAULineChartRequest",
+      "name": "Mini game MAU line chart",
+      "output": "DescribeMNGMAULineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNGMAUMonthlyComparisonMetricCard": {
+      "document": "This API is used to retrieve MAU comparison data for a mini game between two months.",
+      "input": "DescribeMNGMAUMonthlyComparisonMetricCardRequest",
+      "name": "Mini game MAU comparison",
+      "output": "DescribeMNGMAUMonthlyComparisonMetricCardResponse",
+      "status": "online"
+    },
+    "DescribeMNGPaymentLineChart": {
+      "document": "This API is used to retrieve the line chart data for mini game payment.",
+      "input": "DescribeMNGPaymentLineChartRequest",
+      "name": "Mini game payment line chart",
+      "output": "DescribeMNGPaymentLineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNGPaymentOverview": {
+      "document": "This API is used to retrieve an overview of mini game payment data within a specified period.",
+      "input": "DescribeMNGPaymentOverviewRequest",
+      "name": "Mini game payment data overview",
+      "output": "DescribeMNGPaymentOverviewResponse",
+      "status": "online"
+    },
+    "DescribeMNGPaymentReportDetail": {
+      "document": "This API is used to retrieve a detailed payment report data for a mini game.",
+      "input": "DescribeMNGPaymentReportDetailRequest",
+      "name": "Detailed mini game payment report data",
+      "output": "DescribeMNGPaymentReportDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGPaymentRetentionAnalysis": {
+      "document": "This API is used to retrieve the mini game payment retention data.",
+      "input": "DescribeMNGPaymentRetentionAnalysisRequest",
+      "name": "Mini game payment retention data",
+      "output": "DescribeMNGPaymentRetentionAnalysisResponse",
+      "status": "online"
+    },
+    "DescribeMNGRetentionData": {
+      "document": "This API is used to retrieve user retention data for a mini game within a specified date range.",
+      "input": "DescribeMNGRetentionDataRequest",
+      "name": "Mini game user retention data",
+      "output": "DescribeMNGRetentionDataResponse",
+      "status": "online"
+    },
     "DescribeMNP": {
       "document": "This API is used to query the mini program details.",
       "input": "DescribeMNPRequest",
       "name": "Queries the mini program details",
       "output": "DescribeMNPResponse",
+      "status": "online"
+    },
+    "DescribeMNPAccessAnalysisOverview": {
+      "document": "This API is used to retrieve an overview of visit analysis data for a mini program within a specified date range.",
+      "input": "DescribeMNPAccessAnalysisOverviewRequest",
+      "name": "Overview of mini program visit analysis data",
+      "output": "DescribeMNPAccessAnalysisOverviewResponse",
+      "status": "online"
+    },
+    "DescribeMNPActiveUserRealTimeStatistics": {
+      "document": "This API is used to retrieve the real-time active user statistics for a mini program.",
+      "input": "DescribeMNPActiveUserRealTimeStatisticsRequest",
+      "name": "Mini program real-time active user statistics",
+      "output": "DescribeMNPActiveUserRealTimeStatisticsResponse",
+      "status": "online"
+    },
+    "DescribeMNPAdvertisingDetail": {
+      "document": "This API is used to retrieve the detailed advertising data for a mini program within a specified date range.",
+      "input": "DescribeMNPAdvertisingDetailRequest",
+      "name": "Detailed mini program advertising data",
+      "output": "DescribeMNPAdvertisingDetailResponse",
       "status": "online"
     },
     "DescribeMNPAllStageVersions": {
@@ -217,11 +399,39 @@
       "output": "DescribeMNPListResponse",
       "status": "online"
     },
+    "DescribeMNPMAUDataDetail": {
+      "document": "This API is used to retrieve the detailed mini program monthly active user data.",
+      "input": "DescribeMNPMAUDataDetailRequest",
+      "name": "Detailed mini program MAU data",
+      "output": "DescribeMNPMAUDataDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNPMAULineChart": {
+      "document": "This API is used to retrieve mini program monthly active user data in a line chart format.",
+      "input": "DescribeMNPMAULineChartRequest",
+      "name": "Mini program MAU line chart",
+      "output": "DescribeMNPMAULineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNPMAUMetricCard": {
+      "document": "This API is used to retrieve MAU comparison data for a mini program between two months.",
+      "input": "DescribeMNPMAUMetricCardRequest",
+      "name": "Mini program MAU comparison",
+      "output": "DescribeMNPMAUMetricCardResponse",
+      "status": "online"
+    },
     "DescribeMNPOfflinePackageURL": {
       "document": "DescribeMNPOfflinePackageURL",
       "input": "DescribeMNPOfflinePackageURLRequest",
       "name": "Queries the address to download the mini program package",
       "output": "DescribeMNPOfflinePackageURLResponse",
+      "status": "online"
+    },
+    "DescribeMNPPageAnalysisDetail": {
+      "document": "This API is used to retrieve the detailed page visit data for a mini program over a specified period.",
+      "input": "DescribeMNPPageAnalysisDetailRequest",
+      "name": "Detailed mini program page visit data",
+      "output": "DescribeMNPPageAnalysisDetailResponse",
       "status": "online"
     },
     "DescribeMNPPreview": {
@@ -236,6 +446,27 @@
       "input": "DescribeMNPReleasedVersionHistoryRequest",
       "name": "Lists all released versions of a mini program",
       "output": "DescribeMNPReleasedVersionHistoryResponse",
+      "status": "online"
+    },
+    "DescribeMNPReportDataLineChart": {
+      "document": "This API is used to retrieve the line chart data for mini program visit analysis within a given date range.",
+      "input": "DescribeMNPReportDataLineChartRequest",
+      "name": "Mini program visit analysis line chart",
+      "output": "DescribeMNPReportDataLineChartResponse",
+      "status": "online"
+    },
+    "DescribeMNPReportDetail": {
+      "document": "This API is used to retrieve the detailed mini program visit analysis data.",
+      "input": "DescribeMNPReportDetailRequest",
+      "name": "Detailed mini program visit analysis data",
+      "output": "DescribeMNPReportDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNPRetentionData": {
+      "document": "This API is used to retrieve user retention data for a mini program within a specified date range.",
+      "input": "DescribeMNPRetentionDataRequest",
+      "name": "Mini program user retention data",
+      "output": "DescribeMNPRetentionDataResponse",
       "status": "online"
     },
     "DescribeMNPSensitiveAPIPermissionApproval": {
@@ -264,6 +495,27 @@
       "input": "DescribeMNPVersionRequest",
       "name": "Queries the mini program version creation results",
       "output": "DescribeMNPVersionResponse",
+      "status": "online"
+    },
+    "DescribePaymentDataDetail": {
+      "document": "This API is used to retrieve the detailed standard payment data for specified  mini programs within a specified date range.",
+      "input": "DescribePaymentDataDetailRequest",
+      "name": "Mini program standard payment data details",
+      "output": "DescribePaymentDataDetailResponse",
+      "status": "online"
+    },
+    "DescribePaymentDataLineChart": {
+      "document": "This API is used to retrieve the line chart data related to standard payment for a mini program within a specified date range.",
+      "input": "DescribePaymentDataLineChartRequest",
+      "name": "Mini program standard payment line chart",
+      "output": "DescribePaymentDataLineChartResponse",
+      "status": "online"
+    },
+    "DescribePaymentDataOverview": {
+      "document": "This API is used to retrieve an overview of mini program payment data within a specified date range.",
+      "input": "DescribePaymentDataOverviewRequest",
+      "name": "Mini program payment data overview",
+      "output": "DescribePaymentDataOverviewResponse",
       "status": "online"
     },
     "DescribeRoleList": {
@@ -334,6 +586,13 @@
       "input": "ModifyApplicationRequest",
       "name": "Changes the application information",
       "output": "ModifyApplicationResponse",
+      "status": "online"
+    },
+    "ModifyApplicationConfig": {
+      "document": "This API is used to edit the configuration of a superapp.",
+      "input": "ModifyApplicationConfigRequest",
+      "name": "Edits superapp configuration",
+      "output": "ModifyApplicationConfigResponse",
       "status": "online"
     },
     "ModifyGlobalDomain": {
@@ -420,6 +679,386 @@
     "serviceShortName": "tcsas"
   },
   "objects": {
+    "APPOverview": {
+      "document": "Superapp data overview",
+      "members": [
+        {
+          "disabled": false,
+          "document": "No data available\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APPOverviewData",
+          "name": "BaseData",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Superapp overview summary data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APPOverviewData",
+          "name": "Overview",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "No data available\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APPOverviewData",
+          "name": "PageData",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "No data available\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APPOverviewData",
+          "name": "Payment",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "APPOverviewData": {
+      "document": "Superapp overview data details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Superapp active device count",
+          "example": "10",
+          "member": "int64",
+          "name": "AllActiveDeviceNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Superapp new device count",
+          "example": "10",
+          "member": "int64",
+          "name": "AllNewDeviceNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team count",
+          "example": "10",
+          "member": "int64",
+          "name": "CorpNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini game active device count",
+          "example": "10",
+          "member": "int64",
+          "name": "GameActiveDeviceNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini game new device count",
+          "example": "10",
+          "member": "int64",
+          "name": "GameNewDeviceNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Created mini program count\n",
+          "example": "10",
+          "member": "int64",
+          "name": "MiniAppNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Created mini game count\n",
+          "example": "10",
+          "member": "int64",
+          "name": "MngNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program new device count",
+          "example": "10",
+          "member": "int64",
+          "name": "NewDeviceNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Released mini program count\n",
+          "example": "10",
+          "member": "int64",
+          "name": "OnlineMiniAppNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Released mini game count\n",
+          "example": "10",
+          "member": "int64",
+          "name": "OnlineMngNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program active device count",
+          "example": "10",
+          "member": "int64",
+          "name": "VisitNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data refresh timestamp",
+          "example": "1764901826",
+          "member": "string",
+          "name": "FlushTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccessAnalysisDetail": {
+      "document": "Detailed visit analysis data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of active devices",
+          "example": "",
+          "member": "int64",
+          "name": "ActiveCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average visit duration per user",
+          "example": "",
+          "member": "string",
+          "name": "AvgDevice",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average visit duration per session",
+          "example": "",
+          "member": "string",
+          "name": "AvgOnce",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average opens per user",
+          "example": "",
+          "member": "string",
+          "name": "AvgOpenCount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data time",
+          "example": "",
+          "member": "string",
+          "name": "FlushTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of new devices",
+          "example": "",
+          "member": "int64",
+          "name": "NewCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of opens",
+          "example": "",
+          "member": "int64",
+          "name": "OpenCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of shares",
+          "example": "",
+          "member": "int64",
+          "name": "TotalShareNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cumulative users",
+          "example": "",
+          "member": "int64",
+          "name": "TotalUserNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AccessAnalysisOverview": {
+      "document": "Overview of mini game visit analysis data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Overview of visit analysis data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AccessAnalysisDetail",
+          "name": "BaseData",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This API does not respond.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "Overview",
+          "name": "Overview",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This API does not respond.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AccessAnalysisDetail",
+          "name": "PageData",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This API does not respond.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AccessAnalysisDetail",
+          "name": "Payment",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AdTrendChart": {
+      "document": "Advertising line chart data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Estimated revenue\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AnalysisData",
+          "name": "EstimatedEarnings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Requests\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AnalysisData",
+          "name": "RequestsNumber",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Impressions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AnalysisData",
+          "name": "Impressions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Effective Cost Per Mille\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AnalysisData",
+          "name": "ECPM",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Taps\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AnalysisData",
+          "name": "ClicksNumber",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AddTeamMemberRequest": {
       "document": "AddTeamMember request structure.",
       "members": [
@@ -474,6 +1113,150 @@
         }
       ],
       "type": "object"
+    },
+    "AdvertDataOverview": {
+      "document": "Advertising data overview",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Estimated revenue\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "EstimatedEarnings",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Requests\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "RequestsNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Impressions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Impressions",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Taps\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "ClicksNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Impressions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ECPM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalysisAdvertOverview": {
+      "document": "Advertising analysis data overview",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Advertising overview\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "AdvertDataOverview",
+          "name": "OverviewData",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalysisData": {
+      "document": "Line chart data values",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value",
+          "example": "",
+          "member": "string",
+          "name": "Number",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApplicationConfigInfo": {
+      "document": "Application configuration info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Superapp configuration type: 1 Non-production, 2 Production",
+          "example": "",
+          "member": "int64",
+          "name": "ApplicationType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Superapp package name",
+          "example": "",
+          "member": "string",
+          "name": "AppKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Superapp URL",
+          "example": "",
+          "member": "string",
+          "name": "AppURL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Superapp configuration ID",
+          "example": "",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ApprovalItem": {
       "document": "Result of the mini program approval requests",
@@ -577,6 +1360,88 @@
     },
     "ConfigureMNPPreviewResponse": {
       "document": "ConfigureMNPPreview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response data",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationConfigRequest": {
+      "document": "CreateApplicationConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-dxkhxra09s",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform ID",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp type. 1: Test; 2: Formal",
+          "example": "1",
+          "member": "int64",
+          "name": "ApplicationType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp operating system. 2 Android 3 iOS",
+          "example": "3",
+          "member": "int64",
+          "name": "ApplicationPlatformType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Package name: corresponds to packageName on Android and bundleId on iOS",
+          "example": "com.tencent.demo",
+          "member": "string",
+          "name": "AppKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp URL",
+          "example": "http://fileserver.com/test.png",
+          "member": "string",
+          "name": "AppURL",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationConfigResponse": {
+      "document": "CreateApplicationConfig response structure.",
       "members": [
         {
           "disabled": false,
@@ -1851,6 +2716,298 @@
       ],
       "type": "object"
     },
+    "DescribeAPPDataDetailLineChartRequest": {
+      "document": "DescribeAPPDataDetailLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId (optional):\napp_minigame_num: Number of created mini games\napp_online_miniapp_num: Number of available mini programs\napp_miniapp_num: Number of created mini programs\napp_related_corp_num: Mini program team data\napp_online_minigame_num: Number of available mini games\napp_active_device_num: Number of active devices\napp_new_device_num: Number of new devices",
+          "example": "[\"app_online_minigame_num\"]",
+          "member": "string",
+          "name": "IndexIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"BeginDate\":\"20251122\",\"EndDate\":\"20251128\"}",
+          "example": "eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIwIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDEiLCJFbmREYXRlIjoiMjAyNTEyMDEifQ==",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "[\"app-1ro3zp3nta\"]",
+          "member": "string",
+          "name": "ApplicationIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPPDataDetailLineChartResponse": {
+      "document": "DescribeAPPDataDetailLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPPDataOverviewRequest": {
+      "document": "DescribeAPPDataOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251201",
+          "member": "int64",
+          "name": "DataTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "[\"app-1ro3zp3nta\"]",
+          "member": "string",
+          "name": "ApplicationIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAPPDataOverviewResponse": {
+      "document": "DescribeAPPDataOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "APPOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAdvertisingLineChartRequest": {
+      "document": "DescribeAdvertisingLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251104",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251201",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 0 All, 2-Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "  1-BANNER  2-REWARDED",
+          "example": "1",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAdvertisingLineChartResponse": {
+      "document": "DescribeAdvertisingLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AdTrendChart",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAdvertisingOverviewRequest": {
+      "document": "DescribeAdvertisingOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251104",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251201",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 0 All, 2-Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "//1-BANNER  2-REWARDED",
+          "example": "1",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAdvertisingOverviewResponse": {
+      "document": "DescribeAdvertisingOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MNPAdvertisingOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeApplicationConfigFileRequest": {
       "document": "DescribeApplicationConfigFile request structure.",
       "members": [
@@ -1894,6 +3051,78 @@
           "member": "DownloadApplicationConfigResp",
           "name": "Data",
           "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationConfigInfo": {
+      "document": "Response data for retrieving superapp configuration information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Android configuration list",
+          "example": "",
+          "member": "ApplicationConfigInfo",
+          "name": "AndroidConfig",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "iOS configuration list",
+          "example": "",
+          "member": "ApplicationConfigInfo",
+          "name": "IosConfig",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeApplicationConfigInfosRequest": {
+      "document": "DescribeApplicationConfigInfos request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Platform ID",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationConfigInfosResponse": {
+      "document": "DescribeApplicationConfigInfos response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response data",
+          "example": "无",
+          "member": "DescribeApplicationConfigInfo",
+          "name": "Data",
+          "output_required": false,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2858,6 +4087,1547 @@
       ],
       "usage": "out"
     },
+    "DescribeGlobalOverviewDataSummaryRequest": {
+      "document": "DescribeGlobalOverviewDataSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "string: Overview",
+          "example": "Overview",
+          "member": "string",
+          "name": "DataType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Date in YYYYMMDD format",
+          "example": "20251130",
+          "member": "int64",
+          "name": "DataTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalOverviewDataSummaryResponse": {
+      "document": "DescribeGlobalOverviewDataSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessAnalysisOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalOverviewReportDetailRequest": {
+      "document": "DescribeGlobalOverviewReportDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T05517TF5041761HGVN",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value: app_num|corp_num|miniapp_num|miniapp_visit_pv|minigame_num|minigame_visit_pv",
+          "example": "app_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 string containing start and end time: {\"BeginDate\":20251111,\"EndDate\":20251125}",
+          "example": "eyJCZWdpbkRhdGUiOjIwMjUxMTExLCJFbmREYXRlIjoyMDI1MTExNX0=",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalOverviewReportDetailResponse": {
+      "document": "DescribeGlobalOverviewReportDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisDetailRequest": {
+      "document": "DescribeMNGAccessAnalysisDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisDetailResponse": {
+      "document": "DescribeMNGAccessAnalysisDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessAnalysisDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisLineChartRequest": {
+      "document": "DescribeMNGAccessAnalysisLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mge6a1crlvjiul0v",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId (optional):\nactive_device_num: Number of active users\nnew_device_num: Number of new users\ntotal_user_num: Total number of users\nshare_num: Number of shares\nminiapp_open_num: Number of mini game opens\navg_device_open_num: Average opens per user\navg_device_open_duration: Average visit duration per user\navg_count_open_duration: Average visit duration per session",
+          "example": "active_device_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"DataType\":\"1\",\"Platform\":0,\"BeginDate\":20251118,\"EndDate\":20251124}",
+          "example": "eyJEYXRhVHlwZSI6IjEiLCJQbGF0Zm9ybSI6MCwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzB9",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisLineChartResponse": {
+      "document": "DescribeMNGAccessAnalysisLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisOverviewRequest": {
+      "document": "DescribeMNGAccessAnalysisOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251130",
+          "member": "uint64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1 Production data, 0 Non-production data",
+          "example": "1",
+          "member": "int64",
+          "name": "ProdData",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2-Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAccessAnalysisOverviewResponse": {
+      "document": "DescribeMNGAccessAnalysisOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessAnalysisOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGActiveUserRealTimeStatisticsRequest": {
+      "document": "DescribeMNGActiveUserRealTimeStatistics request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId",
+          "example": "active_device_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"Platform\":0,\"DataType\":\"1\",\"BeginDate\":\"20251125\",\"EndDate\":\"20251125\"}",
+          "example": "eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIwIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDEiLCJFbmREYXRlIjoiMjAyNTEyMDEifQ==",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGActiveUserRealTimeStatisticsResponse": {
+      "document": "DescribeMNGActiveUserRealTimeStatistics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingDetailRequest": {
+      "document": "DescribeMNGAdvertisingDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251010",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mge6a1crlvjiul0v",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251201",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "//1-BANNER  2-REWARDED",
+          "example": "1",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 2 Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingDetailResponse": {
+      "document": "DescribeMNGAdvertisingDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OverviewDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingLineChartRequest": {
+      "document": "DescribeMNGAdvertisingLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "//1-BANNER  2-REWARDED",
+          "example": "1",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 2 Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingLineChartResponse": {
+      "document": "DescribeMNGAdvertisingLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AdTrendChart",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingOverviewRequest": {
+      "document": "DescribeMNGAdvertisingOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "//1-BANNER  2-REWARDED",
+          "example": "2",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 2 Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAdvertisingOverviewResponse": {
+      "document": "DescribeMNGAdvertisingOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalysisAdvertOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAUDataDetailRequest": {
+      "document": "DescribeMNGMAUDataDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type",
+          "example": "0",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-1ro3zp3nta",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team ID",
+          "example": "9432130281",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAUDataDetailResponse": {
+      "document": "DescribeMNGMAUDataDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MAUDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAULineChartRequest": {
+      "document": "DescribeMNGMAULineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data ",
+          "example": "0",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T05517TF5041761HGVN",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-7ovakj60hy",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team ID",
+          "example": "9432130281",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAULineChartResponse": {
+      "document": "DescribeMNGMAULineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MNGMAULineChartData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAUMonthlyComparisonMetricCardRequest": {
+      "document": "DescribeMNGMAUMonthlyComparisonMetricCard request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "202511",
+          "member": "int64",
+          "name": "SourceMonth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data ",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "202512",
+          "member": "int64",
+          "name": "TargetMonth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID starting with App",
+          "example": "app-1ro3zp3nta",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team ID, required. When provided, the query is performed based on the mini program team.",
+          "example": "9432130281",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGMAUMonthlyComparisonMetricCardResponse": {
+      "document": "DescribeMNGMAUMonthlyComparisonMetricCard response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page",
+          "example": "无",
+          "member": "MAUIndicatorCard",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentLineChartRequest": {
+      "document": "DescribeMNGPaymentLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: payment_data_analysis",
+          "example": "payment_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Valid values:\nmng_paid_amount: Virtual payment amount,\npaid_user_num: Number of paying users,\nnew_paid_user_num: Number of new paying users,\nnew_paid_user_amount: Revenue from new paying users,\nnew_paid_user_ratio: Percentage of new users who made payments,\narppu: Average revenue per paying user (ARPPU),\nmng_refund_num: Number of refund orders\nmng_refund_amount: Refund amount",
+          "example": "paid_user_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"Platform\":0,\"MnpId\":\"mgcp5xc2yzw8aixv\",\"BeginDate\":20251028,\"EndDate\":20251126,\"DataType\":\"1\",\"PaymentType\":2}",
+          "example": "eyJQbGF0Zm9ybSI6MCwiTW5wSWQiOiJtZ21rc3p1bXZocGRjM2dmIiwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzAsIkRhdGFUeXBlIjoiMSIsIlBheW1lbnRUeXBlIjoyfQ==",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentLineChartResponse": {
+      "document": "DescribeMNGPaymentLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentOverviewRequest": {
+      "document": "DescribeMNGPaymentOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentOverviewResponse": {
+      "document": "DescribeMNGPaymentOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MNGPaymentOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentReportDetailRequest": {
+      "document": "DescribeMNGPaymentReportDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251128",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "0",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251128",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2-Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentReportDetailResponse": {
+      "document": "DescribeMNGPaymentReportDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MNGPaymentOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentRetentionAnalysisRequest": {
+      "document": "DescribeMNGPaymentRetentionAnalysis request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mgmkszumvhpdc3gf",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251128",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2-Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGPaymentRetentionAnalysisResponse": {
+      "document": "DescribeMNGPaymentRetentionAnalysis response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PaymentActiveRetention",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGRetentionDataRequest": {
+      "document": "DescribeMNGRetentionData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251128",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "[\"mgmkszumvhpdc3gf\"]",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 1 Production data, 0 Non-production data",
+          "example": "0",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251201",
+          "member": "uint64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2 Android, 3 iOS",
+          "example": "2",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGRetentionDataResponse": {
+      "document": "DescribeMNGRetentionData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RetentionData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAccessAnalysisOverviewRequest": {
+      "document": "DescribeMNPAccessAnalysisOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time: 20251123 (example)",
+          "example": "20251101",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time: 20251123 (example)",
+          "example": "20251130",
+          "member": "uint64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1 Production data, 0 Non-production data",
+          "example": "1",
+          "member": "int64",
+          "name": "ProdData",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAccessAnalysisOverviewResponse": {
+      "document": "DescribeMNPAccessAnalysisOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessAnalysisOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPActiveUserRealTimeStatisticsRequest": {
+      "document": "DescribeMNPActiveUserRealTimeStatistics request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mpdsadadxdsa",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId \nrealtime_pv_num or realtime_uv_num",
+          "example": "realtime_pv_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"Platform\":0,\"DataType\":\"1\",\"BeginDate\":\"20251125\",\"EndDate\":\"20251125\"}",
+          "example": "eyJQbGF0Zm9ybSI6MCwiRGF0YVR5cGUiOiIxIiwiQmVnaW5EYXRlIjoiMjAyNTEyMDIiLCJFbmREYXRlIjoiMjAyNTEyMDIifQ==",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPActiveUserRealTimeStatisticsResponse": {
+      "document": "DescribeMNPActiveUserRealTimeStatistics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAdvertisingDetailRequest": {
+      "document": "DescribeMNPAdvertisingDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251104",
+          "member": "string",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251201",
+          "member": "string",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "// 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "//1-BANNER  2-REWARDED",
+          "example": "1",
+          "member": "string",
+          "name": "AdUnitType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAdvertisingDetailResponse": {
+      "document": "DescribeMNPAdvertisingDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MAUDetailData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNPAllStageVersionsRequest": {
       "document": "DescribeMNPAllStageVersions request structure.",
       "members": [
@@ -3564,6 +6334,243 @@
       ],
       "type": "object"
     },
+    "DescribeMNPMAUDataDetailRequest": {
+      "document": "DescribeMNPMAUDataDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-1ro3zp3nta",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Program team ID, -1 means not provided",
+          "example": "-1",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPMAUDataDetailResponse": {
+      "document": "DescribeMNPMAUDataDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MAUDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPMAULineChartRequest": {
+      "document": "DescribeMNPMAULineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-1ro3zp3nta",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team ID",
+          "example": "9432130281",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPMAULineChartResponse": {
+      "document": "DescribeMNPMAULineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MAUChartData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPMAUMetricCardRequest": {
+      "document": "DescribeMNPMAUMetricCard request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "202511",
+          "member": "int64",
+          "name": "SourceMonth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data ",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "202512",
+          "member": "int64",
+          "name": "TargetMonth",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp ID starting with App",
+          "example": "ApplicationId",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid, required. When provided, the query is performed based on the mini program.",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program team ID, required. When provided, the query is performed based on the mini program team.",
+          "example": "9432130281",
+          "member": "int64",
+          "name": "MNPTeamId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPMAUMetricCardResponse": {
+      "document": "DescribeMNPMAUMetricCard response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page",
+          "example": "无",
+          "member": "MAUIndicatorCard",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNPManagerDetailData": {
       "document": "Mini program details",
       "members": [
@@ -3726,6 +6733,88 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPPageAnalysisDetailRequest": {
+      "document": "DescribeMNPPageAnalysisDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPPageAnalysisDetailResponse": {
+      "document": "DescribeMNPPageAnalysisDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VisitData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3923,6 +7012,161 @@
       ],
       "type": "object"
     },
+    "DescribeMNPReportDataLineChartRequest": {
+      "document": "DescribeMNPReportDataLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: mnp_data_analysis",
+          "example": "mnp_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId (optional):\nactive_device_num: Active users\nnew_device_num: New users\ntotal_user_num: Total users\nshare_num: Number of shares\nminiapp_open_num: Number of opens\navg_device_open_num: Average opens per user\navg_device_open_duration: Average duration per user\navg_count_open_duration: Average duration per session",
+          "example": "active_device_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"DataType\":\"1\",\"Platform\":0,\"BeginDate\":20251118,\"EndDate\":20251124}",
+          "example": "eyJEYXRhVHlwZSI6IjEiLCJQbGF0Zm9ybSI6MCwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzB9",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPReportDataLineChartResponse": {
+      "document": "DescribeMNPReportDataLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPReportDetailRequest": {
+      "document": "DescribeMNPReportDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in YYYYMMDD format",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time in YYYYMMDD format",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPReportDetailResponse": {
+      "document": "DescribeMNPReportDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display at the top of the page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccessAnalysisDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNPRequest": {
       "document": "DescribeMNP request structure.",
       "members": [
@@ -3958,6 +7202,88 @@
           "name": "Data",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPRetentionDataRequest": {
+      "document": "DescribeMNPRetentionData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "mp1vd81ntbitj9k2",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 1 Production data, 0 Non-production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPRetentionDataResponse": {
+      "document": "DescribeMNPRetentionData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RetentionData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -4897,6 +8223,234 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribePaymentDataDetailRequest": {
+      "document": "DescribePaymentDataDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "[\"mp1vd81ntbitj9k2\"]",
+          "member": "string",
+          "name": "MNPIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePaymentDataDetailResponse": {
+      "document": "DescribePaymentDataDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PaymentDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePaymentDataLineChartRequest": {
+      "document": "DescribePaymentDataLineChart request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fixed value: payment_data_analysis",
+          "example": "payment_data_analysis",
+          "member": "string",
+          "name": "ReportId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IndexId (optional):\norder_user_num: Number of users placing orders\norder_num: Total orders\ntotal_amount: Total amount\norder_unpaid_num: Total unpaid orders\nunpaid_amount: Unpaid amount\norder_paid_num: Total paid orders\npaid_amount: Amount paid\norder_refund_num: Total refunded orders\nrefund_amount: Total amount refunded",
+          "example": "order_unpaid_num",
+          "member": "string",
+          "name": "IndexId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Input parameter base64 string: {\"Platform\":0,\"MnpIds\":[\"mp9e7qluz4i3z3km\"],\"BeginDate\":20251031,\"EndDate\":20251129,\"DataType\":\"1\",\"PaymentType\":1}",
+          "example": "eyJQbGF0Zm9ybSI6MCwiTW5wSWRzIjpbIm1wMXZkODFudGJpdGo5azIiXSwiQmVnaW5EYXRlIjoyMDI1MTEyNCwiRW5kRGF0ZSI6MjAyNTExMzAsIkRhdGFUeXBlIjoiMSIsIlBheW1lbnRUeXBlIjoxfQ==",
+          "member": "string",
+          "name": "QueryData",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePaymentDataLineChartResponse": {
+      "document": "DescribePaymentDataLineChart response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ReportDataResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePaymentDataOverviewRequest": {
+      "document": "DescribePaymentDataOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "20251124",
+          "member": "int64",
+          "name": "TimeBegin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Mini program appid",
+          "example": "[\"mp1vd81ntbitj9k2\"]",
+          "member": "string",
+          "name": "MNPIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "T04398WY9481762VZTT",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type: 0 Non-production data, 1 Production data",
+          "example": "1",
+          "member": "int64",
+          "name": "DataType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "20251130",
+          "member": "int64",
+          "name": "TimeEnd",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system: 0 All, 2 Android, 3 iOS",
+          "example": "0",
+          "member": "int64",
+          "name": "Platform",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePaymentDataOverviewResponse": {
+      "document": "DescribePaymentDataOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MNPPaymentOverview",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeRevertOnlineVersionPageResp": {
       "document": "Response of querying the rollback version list",
@@ -6113,6 +9667,586 @@
       ],
       "usage": "out"
     },
+    "MAUChartData": {
+      "document": "MAU line chart data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Year and month: 2024-12",
+          "example": "",
+          "member": "int64",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value",
+          "example": "",
+          "member": "int64",
+          "name": "MAUCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data update time, only available when MAUCount is greater than 0.",
+          "example": "",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MAUDetail": {
+      "document": "Mini program MAU details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mini program name",
+          "example": "",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MAU details",
+          "example": "",
+          "member": "MAULineChartData",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MAUDetailData": {
+      "document": "MAU detailed data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Date",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program name",
+          "example": "",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program type",
+          "example": "",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated revenue",
+          "example": "",
+          "member": "string",
+          "name": "EstimatedEarnings",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Requests",
+          "example": "",
+          "member": "int64",
+          "name": "RequestsNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Impressions",
+          "example": "",
+          "member": "int64",
+          "name": "Impressions",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective Cost Per Mille",
+          "example": "",
+          "member": "string",
+          "name": "ECPM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Taps",
+          "example": "",
+          "member": "int64",
+          "name": "ClicksNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MAUIndicatorCard": {
+      "document": "MAU metric comparison response data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Growth rate (targetData - sourceData) / sourceData, returns 0 when SourceMAUNum is 0",
+          "example": "-29.84%",
+          "member": "string",
+          "name": "ComparisonRatio",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "1 Increase\n2 Decrease\nReturns 0 when SourceMAUNum is 0",
+          "example": "2",
+          "member": "int64",
+          "name": "ComparisonResult",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last month's MAU data",
+          "example": "124",
+          "member": "int64",
+          "name": "SourceMAUNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This month's MAU data",
+          "example": "87",
+          "member": "int64",
+          "name": "TargetMAUNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data timestamp",
+          "example": "1764903300",
+          "member": "int64",
+          "name": "FlushTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MAULineChartData": {
+      "document": "Line chart data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Year-month date data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MAU data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "MAUCount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MNGMAULineChartData": {
+      "document": "Mini game MAU line chart data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Year-month-date data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "202502",
+          "member": "int64",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MAU data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "MAUCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time",
+          "example": "0",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MNGPaymentOverview": {
+      "document": "Payment overview data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paid revenue / Number of paying users * 100%",
+          "example": "",
+          "member": "string",
+          "name": "ARPPu",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data time in YYYYMMDD format",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New paying user ratio = NewUserNum / OrderUserNum * 100%",
+          "example": "",
+          "member": "string",
+          "name": "NewPaidUseRatio",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of new paying users",
+          "example": "",
+          "member": "int64",
+          "name": "NewPaidUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total payment amount from new users",
+          "example": "",
+          "member": "string",
+          "name": "NewUserPaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total payment amount",
+          "example": "",
+          "member": "string",
+          "name": "PaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of paying users",
+          "example": "",
+          "member": "int64",
+          "name": "PaidUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refund amount",
+          "example": "",
+          "member": "string",
+          "name": "RefundAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of refund orders",
+          "example": "",
+          "member": "int64",
+          "name": "RefundNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time (timestamp in seconds)",
+          "example": "",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MNPAdOverview": {
+      "document": "Mini program advertisement overview",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Estimated revenue\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "EstimatedEarnings",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Effective Cost Per Mille\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ECPM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Requests\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "RequestsNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Impressions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Impressions",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Taps\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "ClicksNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MNPAdvertisingOverview": {
+      "document": "Mini program advertising revenue",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "MNPAdOverview",
+          "name": "OverviewData",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MNPPaymentOverview": {
+      "document": "Payment overview data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of mini programs involved in the order\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderMNPNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total orders\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "OrderNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total paid orders\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "OrderPaidNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total refunded orders\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderRefundNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total unpaid orders\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderUnpaidNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total order users\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total paying users\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "PaidUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Amount paid\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00",
+          "member": "string",
+          "name": "PaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total amount refunded\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20.00",
+          "member": "string",
+          "name": "RefundAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total order amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00",
+          "member": "string",
+          "name": "TotalAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unpaid amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20.00",
+          "member": "string",
+          "name": "UnpaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1764901826",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data date\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20251001",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "MNPTypeDefine": {
       "document": "Mini program category information",
       "members": [
@@ -6184,6 +10318,79 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyApplicationConfigRequest": {
+      "document": "ModifyApplicationConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Superapp ID",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform ID",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp configuration ID",
+          "example": "3569",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Package name: corresponds to packageName on Android and bundleId on iOS",
+          "example": "com.pkg.demo",
+          "member": "string",
+          "name": "AppKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Superapp URL",
+          "example": "http://appfileserver.com/app.pkg",
+          "member": "string",
+          "name": "AppURL",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationConfigResponse": {
+      "document": "ModifyApplicationConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response data",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyApplicationRequest": {
       "document": "ModifyApplication request structure.",
@@ -6687,6 +10894,430 @@
       ],
       "type": "object"
     },
+    "Overview": {
+      "document": "Global overview data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Superapps",
+          "example": "",
+          "member": "int64",
+          "name": "AppNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Teams",
+          "example": "",
+          "member": "int64",
+          "name": "CorpNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh time",
+          "example": "",
+          "member": "string",
+          "name": "FlushTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini programs",
+          "example": "",
+          "member": "int64",
+          "name": "MiniAppNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini games",
+          "example": "",
+          "member": "int64",
+          "name": "MiniGameNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini game visits",
+          "example": "",
+          "member": "int64",
+          "name": "MiniGameVisitNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program updates",
+          "example": "",
+          "member": "int64",
+          "name": "UpdateNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mini program visits",
+          "example": "",
+          "member": "int64",
+          "name": "VisitNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OverviewDetail": {
+      "document": "Advertising data list fields",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category",
+          "example": "",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated revenue",
+          "example": "",
+          "member": "string",
+          "name": "EstimatedEarnings",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Requests",
+          "example": "",
+          "member": "int64",
+          "name": "RequestsNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Impressions",
+          "example": "",
+          "member": "int64",
+          "name": "Impressions",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective Cost Per Mille",
+          "example": "",
+          "member": "string",
+          "name": "ECPM",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Taps",
+          "example": "",
+          "member": "int64",
+          "name": "ClicksNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PaymentActiveRetention": {
+      "document": "Payment active retention data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Day 1 active retention of paying users",
+          "example": "10",
+          "member": "int64",
+          "name": "OneDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 2 active retention of paying users",
+          "example": "10",
+          "member": "int64",
+          "name": "TwoDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 3 active retention of paying users",
+          "example": "10",
+          "member": "int64",
+          "name": "ThreeDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 4 active retention of paying users",
+          "example": "10",
+          "member": "int64",
+          "name": "FourDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 5 active retention of paying users",
+          "example": "10",
+          "member": "int64",
+          "name": "FiveDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 6 active retention of paying users",
+          "example": "3",
+          "member": "int64",
+          "name": "SixDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 7 active retention of paying users",
+          "example": "2",
+          "member": "int64",
+          "name": "SevenDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 14 active retention of paying users",
+          "example": "2",
+          "member": "int64",
+          "name": "FourteenDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 15 active retention of paying users",
+          "example": "2",
+          "member": "int64",
+          "name": "FifteenDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 30 active retention of paying users",
+          "example": "2",
+          "member": "int64",
+          "name": "ThirtyDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of paying users",
+          "example": "20",
+          "member": "int64",
+          "name": "PaymentUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data time in YYYYMMDD format",
+          "example": "2025-12-01",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PaymentDetail": {
+      "document": "Mini program payment detailed data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Date in YYYYMMDD format",
+          "example": "",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of mini programs involved in the order",
+          "example": "",
+          "member": "int64",
+          "name": "OrderMNPNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total orders",
+          "example": "",
+          "member": "int64",
+          "name": "OrderNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Paid orders",
+          "example": "",
+          "member": "int64",
+          "name": "OrderPaidNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total refunded orders",
+          "example": "",
+          "member": "int64",
+          "name": "OrderRefundNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unpaid orders",
+          "example": "",
+          "member": "int64",
+          "name": "OrderUnpaidNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of users placing orders (openid)",
+          "example": "",
+          "member": "int64",
+          "name": "OrderUserNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Amount paid",
+          "example": "",
+          "member": "string",
+          "name": "PaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Amount refunded",
+          "example": "",
+          "member": "string",
+          "name": "RefundAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total order amount",
+          "example": "",
+          "member": "string",
+          "name": "TotalAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unpaid amount",
+          "example": "",
+          "member": "string",
+          "name": "UnpaidAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data update timestamp",
+          "example": "",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PresetResp": {
       "document": "Encryption key returned",
       "members": [
@@ -6970,6 +11601,52 @@
       ],
       "type": "object"
     },
+    "ReportDataResult": {
+      "document": "General response for data query reports",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64-encoded result data",
+          "example": "",
+          "member": "string",
+          "name": "DataResult",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Executed SQL\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ExecSql",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "ExecTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query index ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "IndexId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ResourceIdInfo": {
       "document": "Unified operation success ID - integer",
       "members": [
@@ -6998,6 +11675,222 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RetentionData": {
+      "document": "Retention data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of active users",
+          "example": "10",
+          "member": "int64",
+          "name": "ActiveUserCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 1 retention of active users",
+          "example": "8",
+          "member": "int64",
+          "name": "OneDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 2 retention of active users",
+          "example": "3",
+          "member": "int64",
+          "name": "TwoDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 3 retention of active users",
+          "example": "3",
+          "member": "int64",
+          "name": "ThreeDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 4 retention of active users",
+          "example": "2",
+          "member": "int64",
+          "name": "FourDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 5 retention of active users",
+          "example": "2",
+          "member": "int64",
+          "name": "FiveDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 6 retention of active users",
+          "example": "1",
+          "member": "int64",
+          "name": "SixDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 7 retention of active users",
+          "example": "1",
+          "member": "int64",
+          "name": "SevenDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 14 retention of active users",
+          "example": "1",
+          "member": "int64",
+          "name": "FourteenDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 30 retention of active users",
+          "example": "0",
+          "member": "int64",
+          "name": "ThirtyDayRetentionUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of new users",
+          "example": "10",
+          "member": "int64",
+          "name": "NewUserCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 1 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "OneDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 2 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "TwoDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 3 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "ThreeDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 4 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "FourDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 5 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "FiveDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 6 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "SixDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 7 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "SevenDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 14 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "FourteenDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Day 30 retention of new users",
+          "example": "2",
+          "member": "int64",
+          "name": "ThirtyDayRetentionNewUsers",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data time in YYYYMMDD format",
+          "example": "20251202",
+          "member": "string",
+          "name": "DataTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7152,6 +12045,72 @@
           "example": "0",
           "member": "int64",
           "name": "AccelerateEnable",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VisitData": {
+      "document": "Page visit data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of visits",
+          "example": "",
+          "member": "int64",
+          "name": "VisitCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average pages per device - visit_page_count / active_device_num",
+          "example": "",
+          "member": "string",
+          "name": "AvgDeviceVisitDeep",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pages per visit - visit_page_count / miniapp_open_num",
+          "example": "",
+          "member": "string",
+          "name": "AvgCountVisitDeep",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average visit duration - miniapp_total_duration / visit_page_count",
+          "example": "",
+          "member": "string",
+          "name": "AvgPageVisitDuration",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average visit duration per session\nminiapp_total_duration/miniapp_open_num",
+          "example": "",
+          "member": "string",
+          "name": "AvgCountVisitDuration",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh time in YYYYMMDD format",
+          "example": "",
+          "member": "int64",
+          "name": "DataTime",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
