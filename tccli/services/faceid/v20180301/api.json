@@ -470,7 +470,7 @@
         },
         {
           "disabled": false,
-          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
+          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPRO: Pro version, enable additional output of attack type fields.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
           "example": "ENHANCED",
           "member": "string",
           "name": "SdkVersion",
@@ -2291,7 +2291,7 @@
         },
         {
           "disabled": false,
-          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
+          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPRO: Pro version, enable additional output of attack type fields.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
           "example": "BASIC",
           "member": "string",
           "name": "SdkVersion",

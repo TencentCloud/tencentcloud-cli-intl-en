@@ -3872,7 +3872,7 @@
         {
           "disabled": false,
           "document": "Date of birth",
-          "example": "20230414",
+          "example": "20230415",
           "member": "string",
           "name": "DateOfBirth",
           "output_required": true,
@@ -3962,7 +3962,7 @@
         {
           "disabled": false,
           "document": "The second row of the MRZ at the bottom",
-          "example": "`JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04`",
+          "example": "1357",
           "member": "string",
           "name": "CodeCrc",
           "output_required": true,
@@ -4002,7 +4002,7 @@
         {
           "disabled": false,
           "document": "Document content in Information Zone",
-          "example": "{\"DateOfBirth\":\"11 Apr 1990\"}",
+          "example": "无",
           "member": "PassportRecognizeInfos",
           "name": "PassportRecognizeInfos",
           "output_required": true,
@@ -4027,6 +4027,16 @@
           "name": "CardCount",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "complete or not",
+          "example": "true",
+          "member": "bool",
+          "name": "IsComplete",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         },
         {
@@ -9217,6 +9227,16 @@
           "name": "CardCount",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The card information field complete or not\ntrue: complete; false: incomplete",
+          "example": "false",
+          "member": "bool",
+          "name": "IsComplete",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         },
         {

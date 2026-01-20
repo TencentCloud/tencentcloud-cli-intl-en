@@ -408,6 +408,15 @@
       "members": [
         {
           "disabled": false,
+          "document": "Tencent HY 3D Global model version\nDefaults to 3.0, with optional choices: 3.0, 3.1\nWhen selecting version 3.1, the LowPoly parameter is unavailable\nExample value:3.0",
+          "example": "3.0",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Generates 3D content, describes 3D content.\nSupports up to 1024 utf-8 characters.\nText-To-3D. Specifies either ImageBase64/ImageUrl or Prompt is required. Prompt and ImageBase64/ImageUrl cannot coexist.",
           "example": "1",
           "member": "string",
@@ -435,7 +444,7 @@
         },
         {
           "disabled": false,
-          "document": "Multi-Perspective model image. reference value for viewing angle:.\nleft view.\nright view.\nback view.\n\nEach perspective is limited to one image.\nImage size limit. the value must not exceed 8 mb after encoding.\nImage resolution limitation: the unilateral resolution should be less than 5000 and greater than 128.\nSupported image format: JPG or PNG",
+          "document": "Multi-Perspective model image. reference value for viewing angle:.\nleft: Left view;\nright: Right view;\nback: Rear view;\ntop: Top view (only supported in Model 3.1);\nbottom: Bottom view (only supported in Model 3.1);\nleft_front: Left front 45 degree view (only supported in Model 3.1);\nright_front: Right front 45 degree view (only supported in Model 3.1);\n\nEach perspective is limited to one image.\nImage size limit. the value must not exceed 8 mb after encoding.\nImage resolution limitation: the unilateral resolution should be less than 5000 and greater than 128.\nSupported image format: JPG or PNG",
           "example": "无",
           "member": "ViewImage",
           "name": "MultiViewImages",

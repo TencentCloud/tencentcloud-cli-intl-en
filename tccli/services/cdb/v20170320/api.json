@@ -42,6 +42,13 @@
       "output": "BalanceRoGroupLoadResponse",
       "status": "online"
     },
+    "CloseAuditService": {
+      "document": "This API is used to disable the audit service for an instance.",
+      "input": "CloseAuditServiceRequest",
+      "name": "Disables the audit service for an instance",
+      "output": "CloseAuditServiceResponse",
+      "status": "online"
+    },
     "CloseCDBProxy": {
       "document": "This API is used to disable database proxy.",
       "input": "CloseCDBProxyRequest",
@@ -70,11 +77,25 @@
       "output": "CreateAccountsResponse",
       "status": "online"
     },
+    "CreateAuditLogFile": {
+      "document": "This API is used to create an audit log file for a TencentDB instance.",
+      "input": "CreateAuditLogFileRequest",
+      "name": "Creates an audit log file",
+      "output": "CreateAuditLogFileResponse",
+      "status": "online"
+    },
     "CreateAuditPolicy": {
       "document": "This API is used to create an audit policy for a TencentDB instance by associating an audit rule with the TencentDB instance.",
       "input": "CreateAuditPolicyRequest",
       "name": "Creates an audit policy",
       "output": "CreateAuditPolicyResponse",
+      "status": "online"
+    },
+    "CreateAuditRuleTemplate": {
+      "document": "This API is used to create an audit rule template.",
+      "input": "CreateAuditRuleTemplateRequest",
+      "name": "Creates an audit rule template",
+      "output": "CreateAuditRuleTemplateResponse",
       "status": "online"
     },
     "CreateBackup": {
@@ -147,11 +168,39 @@
       "output": "CreateRoInstanceIpResponse",
       "status": "online"
     },
+    "CreateRotationPassword": {
+      "document": "This API is used to enable password rotation.",
+      "input": "CreateRotationPasswordRequest",
+      "name": "Enabling Password Rotation",
+      "output": "CreateRotationPasswordResponse",
+      "status": "online"
+    },
     "DeleteAccounts": {
       "document": "This API (DeleteAccounts) is used to delete TencentDB accounts.",
       "input": "DeleteAccountsRequest",
       "name": "Deletes TencentDB accounts",
       "output": "DeleteAccountsResponse",
+      "status": "online"
+    },
+    "DeleteAuditLogFile": {
+      "document": "This API is used to delete an audit log file of a TencentDB instance.",
+      "input": "DeleteAuditLogFileRequest",
+      "name": "Deletes an audit log file",
+      "output": "DeleteAuditLogFileResponse",
+      "status": "online"
+    },
+    "DeleteAuditPolicy": {
+      "document": "This API is used to delete an audit policy.",
+      "input": "DeleteAuditPolicyRequest",
+      "name": "Deletes an audit policy",
+      "output": "DeleteAuditPolicyResponse",
+      "status": "online"
+    },
+    "DeleteAuditRuleTemplates": {
+      "document": "This API is used to delete audit rule templates.",
+      "input": "DeleteAuditRuleTemplatesRequest",
+      "name": "Deletes audit rule templates",
+      "output": "DeleteAuditRuleTemplatesResponse",
       "status": "online"
     },
     "DeleteBackup": {
@@ -196,6 +245,27 @@
       "output": "DescribeAsyncRequestInfoResponse",
       "status": "online"
     },
+    "DescribeAuditConfig": {
+      "document": "This API is used to query the service configurations for a TencentDB audit policy, including the audit log retention period.",
+      "input": "DescribeAuditConfigRequest",
+      "name": "Queries audit service configurations",
+      "output": "DescribeAuditConfigResponse",
+      "status": "online"
+    },
+    "DescribeAuditInstanceList": {
+      "document": "This API is used to obtain the list of audit instances.",
+      "input": "DescribeAuditInstanceListRequest",
+      "name": "Obtains the list of audit instances",
+      "output": "DescribeAuditInstanceListResponse",
+      "status": "online"
+    },
+    "DescribeAuditLogFiles": {
+      "document": "This API is used to query the audit log files of a TencentDB instance.",
+      "input": "DescribeAuditLogFilesRequest",
+      "name": "Queries audit log files",
+      "output": "DescribeAuditLogFilesResponse",
+      "status": "online"
+    },
     "DescribeAuditLogs": {
       "document": "This API is used to query a database audit log.",
       "input": "DescribeAuditLogsRequest",
@@ -208,6 +278,20 @@
       "input": "DescribeAuditPoliciesRequest",
       "name": "Queries the audit policies",
       "output": "DescribeAuditPoliciesResponse",
+      "status": "online"
+    },
+    "DescribeAuditRuleTemplateModifyHistory": {
+      "document": "This API is used to query the change history of rule templates.",
+      "input": "DescribeAuditRuleTemplateModifyHistoryRequest",
+      "name": "Queries the change history of rule templates",
+      "output": "DescribeAuditRuleTemplateModifyHistoryResponse",
+      "status": "online"
+    },
+    "DescribeAuditRuleTemplates": {
+      "document": "This API is used to query the information of audit rule templates.",
+      "input": "DescribeAuditRuleTemplatesRequest",
+      "name": "Queries audit rule templates",
+      "output": "DescribeAuditRuleTemplatesResponse",
       "status": "online"
     },
     "DescribeAuditRules": {
@@ -616,6 +700,27 @@
       "output": "ModifyAccountPrivilegesResponse",
       "status": "online"
     },
+    "ModifyAuditConfig": {
+      "document": "This API is used to modify the service configurations for a TencentDB audit policy, including the audit log retention period.",
+      "input": "ModifyAuditConfigRequest",
+      "name": "Modifies audit service configurations",
+      "output": "ModifyAuditConfigResponse",
+      "status": "online"
+    },
+    "ModifyAuditRuleTemplates": {
+      "document": "This API is used to modify audit rule templates.",
+      "input": "ModifyAuditRuleTemplatesRequest",
+      "name": "Modifies audit rule templates",
+      "output": "ModifyAuditRuleTemplatesResponse",
+      "status": "online"
+    },
+    "ModifyAuditService": {
+      "document": "This API is used to modify the service configurations for a TencentDB instance, including the audit log retention period and the audit rules.",
+      "input": "ModifyAuditServiceRequest",
+      "name": "Modifies the audit service for an instance",
+      "output": "ModifyAuditServiceResponse",
+      "status": "online"
+    },
     "ModifyAutoRenewFlag": {
       "document": "This API is used to modify the auto-renewal flag of a TencentDB instance.",
       "input": "ModifyAutoRenewFlagRequest",
@@ -944,24 +1049,24 @@
         {
           "disabled": false,
           "document": "New account name",
-          "example": "无",
+          "example": "andy",
           "member": "string",
           "name": "User",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "New account domain name",
-          "example": "无",
+          "example": "172.1.1.1",
           "member": "string",
           "name": "Host",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1663,6 +1768,88 @@
       ],
       "usage": "both"
     },
+    "AuditInstanceFilters": {
+      "document": "Filter conditions for querying audit instances.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter condition name. Valid values: InstanceId - Instance ID, InstanceName - Instance name, ProjectId - Project ID, TagKey - Tag key, Tag - Tag (using a vertical bar as separator, for example: TagKey|Tagvalue).",
+          "example": "InstanceId",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "true indicates exact matching; false indicates fuzzy matching.",
+          "example": "true",
+          "member": "bool",
+          "name": "ExactMatch",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter value.",
+          "example": "cdb-euu5fkcj",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "AuditInstanceInfo": {
+      "document": "Audit instance details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "23414",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information.",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
+          "member": "TagInfoUnit",
+          "name": "TagList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database engine type.",
+          "example": "MYSQL",
+          "member": "string",
+          "name": "DbType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database engine version.",
+          "example": "5.7",
+          "member": "string",
+          "name": "DbVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AuditLog": {
       "document": "Audit log details",
       "members": [
@@ -1885,88 +2072,146 @@
       ],
       "usage": "out"
     },
+    "AuditLogFile": {
+      "document": "Audit log file.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit log file name.",
+          "example": "1308***106_cdb-3gj***th_1730***660_373***68.csv",
+          "member": "string",
+          "name": "FileName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the audit log file, in the format: \"2019-03-20 17:09:13\".",
+          "example": "2024-03-20 17:09:13",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File status. Possible return values:\"creating\" - Generating;\"failed\" - Creation failed;\"success\" - Generated.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File size in KB.",
+          "example": "1",
+          "member": "int64",
+          "name": "FileSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Download URL for the audit log.",
+          "example": "https://gz-audit-125****829.cos.ap-guangzhou.myqcloud.com/130****106_cdb-3_37****68.csv?q-sign-algorithm=sh***",
+          "member": "string",
+          "name": "DownloadUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "error msg",
+          "member": "string",
+          "name": "ErrMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AuditLogFilter": {
       "document": "Filter condition for an audit log, which is used by users to filter the returned audit logs when querying them.",
       "members": [
         {
           "disabled": false,
           "document": "Client address",
-          "example": "无",
+          "example": "[\"172.1.1.1\",\"182.1.1.1\"]",
           "member": "string",
           "name": "Host",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Username",
-          "example": "无",
+          "example": "[\"root\",\"andy\"]",
           "member": "string",
           "name": "User",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "[\"db1\",\"db2\"]",
           "member": "string",
           "name": "DBName",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Table name",
-          "example": "无",
+          "example": "[\"andy_table1\",\"andy_table2\"]",
           "member": "string",
           "name": "TableName",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Audit policy name",
-          "example": "无",
+          "example": "[\"Policy1\",\"Policy2\"]",
           "member": "string",
           "name": "PolicyName",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "",
-          "example": "“”",
+          "example": "CREATE TABLE employees",
           "member": "string",
           "name": "Sql",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "SELECT",
           "member": "string",
           "name": "SqlType",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Execution time in ms, which is used to filter the audit log with execution time greater than this value.",
-          "example": "1",
+          "example": "10",
           "member": "int64",
           "name": "ExecTime",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -1975,98 +2220,88 @@
           "member": "int64",
           "name": "AffectRows",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "SQL type (Multiple types can be queried at same time). Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `ALTER`, `SET`, `REPLACE`, `EXECUTE`.",
-          "example": "无",
+          "example": "[\"SELECT\", \"INSERT\"]",
           "member": "string",
           "name": "SqlTypes",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "SQL statement. Multiple SQL statements can be passed in.",
-          "example": "无",
+          "example": "[\"CREATE TABLE employees\",\"SELECT * FROM employees\"]",
           "member": "string",
           "name": "Sqls",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Number of rows affected in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "AffectRowsSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Number of rows returned in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "SentRowsSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Execution time in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "ExecTimeSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Lock wait time in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "LockWaitTimeSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "IO wait time in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "IoWaitTimeSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Transaction duration in the format of M-N, such as 10-200.",
-          "example": "无",
+          "example": "10-200",
           "member": "string",
           "name": "TransactionLivingTimeSection",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Thread ID",
-          "example": "无",
+          "example": "[\"1015\",\"1016\"]",
           "member": "string",
           "name": "ThreadId",
           "required": false,
-          "type": "list",
-          "value_allowed_null": true
+          "type": "list"
         },
         {
           "disabled": false,
@@ -2075,18 +2310,16 @@
           "member": "int64",
           "name": "SentRows",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "MySQL error codes",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ErrCode",
           "required": false,
-          "type": "list",
-          "value_allowed_null": true
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -2268,16 +2501,123 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audit rule \nNote:  This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "A single audit rule.",
+          "example": "[{\"Type\": \"sqlType\",\"INC\": \"employees\",\"Value\": [\"employees\"]}]",
           "member": "RuleFilters",
           "name": "RuleFilters",
+          "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
+    },
+    "AuditRuleTemplateInfo": {
+      "document": "Details of an audit rule template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule template ID.",
+          "example": "cdb-art-dnpg9p3r",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template name.",
+          "example": "andy",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions of the rule template.",
+          "example": "[{\"Type\": \"sqlType\",\"INC\": \"employees\",\"Value\": [\"employees\"]}]",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template description.",
+          "example": "dd_yif",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template creation time.",
+          "example": "2022-11-15 11:11:11",
+          "member": "string",
+          "name": "CreateAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.",
+          "example": "3",
+          "member": "uint64",
+          "name": "AlarmLevel",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AlarmPolicy",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instances to which this rule template is applied.",
+          "example": "[\"cdb-gbpmgksv\",\"cdb-geyhwksv\"]",
+          "member": "string",
+          "name": "AffectedInstances",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template status. Valid values: 0 - No task, 1 - modifying.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template update time.",
+          "example": "2023-11-08 15:34:57",
+          "member": "string",
+          "name": "UpdateAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AutoStrategy": {
       "document": "Automatic scale-out policy for elastic CPU scale-out.",
@@ -3486,6 +3826,33 @@
       ],
       "usage": "out"
     },
+    "CloseAuditServiceRequest": {
+      "document": "CloseAuditService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "example": "cdb-22dhn3e3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseAuditServiceResponse": {
+      "document": "CloseAuditService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CloseCDBProxyRequest": {
       "document": "CloseCDBProxy request structure.",
       "members": [
@@ -3864,6 +4231,106 @@
       ],
       "type": "object"
     },
+    "CreateAuditLogFileRequest": {
+      "document": "CreateAuditLogFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "example": "cdb-cdtkp3hr",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time. We recommend that the interval between start and end time does not exceed 7 days.",
+          "example": "2023-06-07 15:59:45",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time. We recommend that the interval between start and end time does not exceed 7 days.",
+          "example": "2023-06-16 14:27:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. Valid values: \"ASC\" - Ascending order, \"DESC\" - Descending order. Default value: \"DESC\".",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Field to sort by. Valid values: \"timestamp\" - Timestamp; \"affectRows\" - Number of affected rows; \"execTime\" - Execution time. Default value: \"timestamp\".",
+          "example": "timestamp",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Deprecated.",
+          "example": "{\"SqlTypes\": [\"CREATE\"]}",
+          "member": "AuditLogFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. You can filter logs based on these conditions.",
+          "example": "[{\"Type\": \"host\", \"Compare\": \"EXC\",\"Value\": \"10.0.\"}]",
+          "member": "InstanceAuditLogFilters",
+          "name": "LogFilter",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Columns to include in the download.",
+          "example": "{\"ColumnFilter\": [\"AffectRows\", \"ErrCode\", \"SqlType\", \"TableName\", \"DBName\", \"Sql\", \"Host\", \"User\", \"ExecTime\", \"CheckRows\", \"SentRows\", \"ThreadId\", \"NsTime\", \"IoWaitTime\", \"TrxLivingTime\", \"Timestamp\", \"Result\",\"RiskLevel\",\"TrxId\"]}",
+          "member": "string",
+          "name": "ColumnFilter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditLogFileResponse": {
+      "document": "CreateAuditLogFile response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit log file name.",
+          "example": "shenji.csv",
+          "member": "string",
+          "name": "FileName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAuditPolicyRequest": {
       "document": "CreateAuditPolicy request structure.",
       "members": [
@@ -3916,6 +4383,79 @@
           "member": "string",
           "name": "PolicyId",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditRuleTemplateRequest": {
+      "document": "CreateAuditRuleTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit rule.",
+          "example": "[{\"Type\": \"host\",\"Compare\": \"EQS\",\"Value\": [\"100.122.76.176\",\"10.0.0.9\"]}]",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rule template name. Up to 30 characters are allowed.",
+          "example": "andy",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule template description. Up to 200 characters are allowed.",
+          "example": "用于测试的规则模板",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk. Default value: 1.",
+          "example": "3",
+          "member": "uint64",
+          "name": "AlarmLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled. Default value: 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AlarmPolicy",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAuditRuleTemplateResponse": {
+      "document": "CreateAuditRuleTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generated rule template ID.",
+          "example": "cdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5562,6 +6102,42 @@
       ],
       "type": "object"
     },
+    "CreateRotationPasswordRequest": {
+      "document": "CreateRotationPassword request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB for MySQL console page.",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Information about the account for which password rotation needs to be enabled. The account and host names are included.",
+          "example": "[{\"User\": \"andy\",\"Host\": \"192.1.1.1\"}]",
+          "member": "Account",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRotationPasswordResponse": {
+      "document": "CreateRotationPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CustomConfig": {
       "document": "Proxy configuration",
       "members": [
@@ -5731,6 +6307,105 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditLogFileRequest": {
+      "document": "DeleteAuditLogFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.",
+          "example": "13123**346_cdb-0ej6n21d_1734**9765_42322441.csv",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "example": "cdb-0ej6n21d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditLogFileResponse": {
+      "document": "DeleteAuditLogFile response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditPolicyRequest": {
+      "document": "DeleteAuditPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit policy ID.",
+          "example": "cdbpolicy-234",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdb-0ej6n21d",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditPolicyResponse": {
+      "document": "DeleteAuditPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditRuleTemplatesRequest": {
+      "document": "DeleteAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.",
+          "example": "cdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAuditRuleTemplatesResponse": {
+      "document": "DeleteAuditRuleTemplates response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -6046,6 +6721,240 @@
       ],
       "type": "object"
     },
+    "DescribeAuditConfigRequest": {
+      "document": "DescribeAuditConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.",
+          "example": "cdb-txcniupi",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditConfigResponse": {
+      "document": "DescribeAuditConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit log retention period. Valid values: [0, 7, 30, 180, 365, 1095, 1825].",
+          "example": "365",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit log storage type. Valid value: \"storage\" - Storage type.",
+          "example": "\"storage\"",
+          "member": "string",
+          "name": "LogType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the audit service is being disabled. Valid values: \"false\" - No, \"true\" - Yes.",
+          "example": "\"false\"",
+          "member": "string",
+          "name": "IsClosing",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the audit service is being enabled. Valid values: \"false\" - No, \"true\" - Yes.",
+          "example": "\"true\"",
+          "member": "string",
+          "name": "IsOpening",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time when the audit service was activated.",
+          "example": "\"2021-07-13 11:34:35“",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListRequest": {
+      "document": "DescribeAuditInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether audit is enabled for the instance. Valid values: 1 - Enabled; 0 - Disabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions for querying the instance list.",
+          "example": "[{\"Values\": [\"cdb-euu5fkcj\"], \"Name\": \"InstanceId\",\"ExactMatch\": true}]",
+          "member": "AuditInstanceFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Audit rule mode for the instance. Valid values: 1 - Rule-based audit; 0 - Full audit.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries to return per request. Default value: 30. Maximum value: 20000.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListResponse": {
+      "document": "DescribeAuditInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of eligible instances.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of audit instance details.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"BillingAmount\": 0,\"LowRealStorage\": 0,\"InstanceId\": \"cdb-euu5fkcj\",\"AuditTask\": 1,\"CreateAt\": \"2022-03-02 10:09:08\",\"AuditStatus\": \"1\"...}]",
+          "member": "InstanceDbAuditStatus",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditLogFilesRequest": {
+      "document": "DescribeAuditLogFiles request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.",
+          "example": "cdb-qwerasdf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page size. Default value: 20; minimum value: 1; maximum value: 300.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audit log file name.",
+          "example": "shenji_andy",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditLogFilesResponse": {
+      "document": "DescribeAuditLogFiles response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of eligible audit log files.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit log file details.",
+          "example": "[{\"FileName\": \"shenji_andy\", \"CreateTime\": \"2024-03-20 17:09:13\",\"Status\": \"success\"...}]",
+          "member": "AuditLogFile",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAuditLogsRequest": {
       "document": "DescribeAuditLogs request structure.",
       "members": [
@@ -6247,6 +7156,190 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplateModifyHistoryRequest": {
+      "document": "DescribeAuditRuleTemplateModifyHistory request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "example": "[\"cdb-art-8qx2kcr7\"]",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the query range.",
+          "example": "2023-08-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the query range.",
+          "example": "2023-08-02 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries to return. Default value: 20. Maximum value: 1000.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. DESC - Sorted by modification time in descending order, ASC - Ascending order. Default value: DESC.",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplateModifyHistoryResponse": {
+      "document": "DescribeAuditRuleTemplateModifyHistory response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of entries.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Change details.",
+          "example": "[\"TaskId\": 12,\"ModifyBeforeInfo\": {},\"ModifyAfterInfo\": {},\"AffectedInstances\": [\"cdb-xqwe\"],\"Operator\": \"700000579947\",\"UpdateTime\": \"2023-07-26 00:09:00\"}]",
+          "member": "RuleTemplateRecordInfo",
+          "name": "Items",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplatesRequest": {
+      "document": "DescribeAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule template ID.",
+          "example": "cdb-art-nuzwpha1",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rule template name.",
+          "example": "测试template",
+          "member": "string",
+          "name": "RuleTemplateNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries to return per request. Default value: 20. Maximum value: 1000.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.",
+          "example": "3",
+          "member": "uint64",
+          "name": "AlarmLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AlarmPolicy",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditRuleTemplatesResponse": {
+      "document": "DescribeAuditRuleTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of eligible instances.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of rule template details.",
+          "example": "[\"Description\": \"all_template_des\",\"RuleFilters\": [{\"Compare\": \"INC\"}],\"RuleTemplateId\": \"cdb-art-lcpm4as3\"}]",
+          "member": "AuditRuleTemplateInfo",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -11120,6 +12213,212 @@
       ],
       "usage": "in"
     },
+    "InstanceDbAuditStatus": {
+      "document": "Instance audit details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdb-euu5fkcj",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit status. ON - Audit is enabled, OFF - Audit is disabled.",
+          "example": "ON",
+          "member": "string",
+          "name": "AuditStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: 0 - No task; 1 - Enabling audit; 2 - Disabling audit.",
+          "example": "0",
+          "member": "uint64",
+          "name": "AuditTask",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-frequency storage period. Valid values:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Low-frequency storage period (in days). This equals the log retention period minus the high-frequency storage period.",
+          "example": "23",
+          "member": "uint64",
+          "name": "LowLogExpireDay",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log storage volume (in GB).",
+          "example": "173749.248",
+          "member": "float",
+          "name": "BillingAmount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-frequency storage volume (in GB).",
+          "example": "45639.68",
+          "member": "float",
+          "name": "HighRealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Low-frequency storage volume (in GB).",
+          "example": "128109.568",
+          "member": "float",
+          "name": "LowRealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether full audit is enabled. true - Full audit.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditAll",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time when the audit service was activated.",
+          "example": "2022-10-12 11:41:42",
+          "member": "string",
+          "name": "CreateAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Related information about the instance.",
+          "example": "无",
+          "member": "AuditInstanceInfo",
+          "name": "InstanceInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total storage volume (in GB).",
+          "example": "173749.248",
+          "member": "float",
+          "name": "RealStorage",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether an audit policy is configured.",
+          "example": "false",
+          "member": "bool",
+          "name": "OldRule",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template applied to the instance.",
+          "example": "[\"cdb-art-8qx2kcr7\"]",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trial status.",
+          "example": "\"TRIAL/EXPIRED/NONE\"",
+          "member": "string",
+          "name": "TrialStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trial start time.",
+          "example": "1",
+          "member": "int64",
+          "name": "TrialStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trial duration.",
+          "example": "1",
+          "member": "int64",
+          "name": "TrialDuration",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trial end time.",
+          "example": "1",
+          "member": "int64",
+          "name": "TrialCloseTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log query time limit during the trial period.",
+          "example": "1",
+          "member": "int64",
+          "name": "TrialDescribeLogHours",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceInfo": {
       "document": "Instance details",
       "members": [
@@ -12308,6 +13607,204 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditConfigRequest": {
+      "document": "ModifyAuditConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "example": "cdb-txcniupi",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "365",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable the audit service. Valid values: true - Disable; false - Do not disable. Default value: false.Notes:1. When the audit service is disabled, your audit logs and files will be deleted, and all audit policies for this instance will be removed.2. At least one of CloseAudit and LogExpireDay must be provided. If both are provided, CloseAudit takes priority.3. You can use this parameter to disable the audit service. Once disabled, the audit service cannot be re-enabled via this API.",
+          "example": "true",
+          "member": "bool",
+          "name": "CloseAudit",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "High-frequency audit log retention period. Valid values:7 - One week;30 - One month;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "7",
+          "member": "int64",
+          "name": "HighLogExpireDay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditConfigResponse": {
+      "document": "ModifyAuditConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditRuleTemplatesRequest": {
+      "document": "ModifyAuditRuleTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "example": "cdb-art-l1mlbo59",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Modified audit rule.",
+          "example": "无",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Modified rule template name.",
+          "example": "新规则模板名称",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified rule template description.",
+          "example": "新规则模板名称",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.",
+          "example": "3",
+          "member": "uint64",
+          "name": "AlarmLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AlarmPolicy",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditRuleTemplatesResponse": {
+      "document": "ModifyAuditRuleTemplates response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditServiceRequest": {
+      "document": "ModifyAuditService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "example": "cdb-22dhn3e3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log retention period. Valid values:7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "30",
+          "member": "uint64",
+          "name": "LogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "High-frequency log retention period. Default value: 7. This value must be less than or equal to LogExpireDay. Valid values include:3 - 3 days;7 - One week;30 - One month;90 - Three months;180 - Six months;365 - One year;1095 - Three years;1825 - Five years.",
+          "example": "7",
+          "member": "uint64",
+          "name": "HighLogExpireDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the instance audit rule to Full audit.",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": true,
+          "document": "Deprecated.",
+          "example": "无",
+          "member": "AuditRuleFilters",
+          "name": "AuditRuleFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "example": "[\"cdb-art-nuf7e111\"]",
+          "member": "string",
+          "name": "RuleTemplateIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditServiceResponse": {
+      "document": "ModifyAuditService response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -15944,6 +17441,138 @@
       ],
       "usage": "both"
     },
+    "RuleTemplateInfo": {
+      "document": "Rule template content.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule template ID.",
+          "example": "cdb-art-8qx2kcr7",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template name.",
+          "example": "andy",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule content.",
+          "example": "[{\"Type\":\"host\",\"Compare\":\"INC\",\"Value\":[\"100.122.76.176\"]}]",
+          "member": "RuleFilters",
+          "name": "RuleFilters",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmLevel",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy. Valid values: 0 - Alarm disabled, 1 - Alarm enabled.",
+          "example": "0",
+          "member": "int64",
+          "name": "AlarmPolicy",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule description.",
+          "example": "这不单单是一个的描述",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RuleTemplateRecordInfo": {
+      "document": "Rule template change history.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "172",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of the original rule template.",
+          "example": "[{\"RuleTemplateId\": \"cdb-art-8qx2kcr7\",\"RuleTemplateName\": \"andy\",\"RuleFilters\": [{\"Type\": \"sqltype\",\"Compare\": \"INC\",\"Value\": \"UPDATE\"}],\"AlarmLevel\": \"1\",\"AlarmPolicy\": \"1\",\"Description\": \"触发推送报告\"}]",
+          "member": "RuleTemplateInfo",
+          "name": "ModifyBeforeInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of the modified rule template.",
+          "example": "[{\"RuleTemplateId\": \"cdb-art-8qx2kcr7\",\"RuleTemplateName\": \"andy\",\"RuleFilters\": [{\"Type\": \"sqltype\",\"Compare\": \"INC\",\"Value\": \"logout\"}],\"AlarmLevel\": \"1\",\"AlarmPolicy\": \"1\",\"Description\": \"触发推送报告\"}]",
+          "member": "RuleTemplateInfo",
+          "name": "ModifyAfterInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Affected instances.",
+          "example": "[\"cdb-3gj2ya11\",\"cdb-3gj2ya22\"]",
+          "member": "string",
+          "name": "AffectedInstances",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operator (account UIN).",
+          "example": "1000***3726",
+          "member": "string",
+          "name": "Operator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time of the change.",
+          "example": "2024-03-17 02:10:37",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SecurityGroup": {
       "document": "Security group details",
       "members": [
@@ -16920,20 +18549,20 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "created-by",
           "member": "string",
           "name": "TagKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "andy",
           "member": "string",
           "name": "TagValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }

@@ -54,6 +54,14 @@
         "title": "Rebalancing the loads of instances in an RO group"
       }
     ],
+    "CloseAuditService": [
+      {
+        "document": "None",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-6990cckk\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
+        "title": "Disabling Audit"
+      }
+    ],
     "CloseCDBProxy": [
       {
         "document": " ",
@@ -86,12 +94,28 @@
         "title": "Creating a TencentDB account"
       }
     ],
+    "CreateAuditLogFile": [
+      {
+        "document": "This example shows you how to successfully query audit logs.",
+        "input": "https://cdb.tencentcloudapi.com/?Action=CreateAuditLogFile\r\n&InstanceId=cdb-qwerasdf\r\n&StartTime=2017-07-12 10:29:20\r\n&EndTime=2017-07-13 10:29:20\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"FileName\": \"shenji.csv\"\n    }\n}",
+        "title": "Creating an Audit Log File"
+      }
+    ],
     "CreateAuditPolicy": [
       {
         "document": " ",
         "input": "https://cdb.tencentcloudapi.com/?Action=CreateAuditPolicy\n&Name=audit_policy_1\n&RuleId=cdbrule-asdfghjk\n&InstanceId=cdb-qwerasdf\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"PolicyId\": \"cdbpolicy-asdfqwer\"\n    }\n}",
         "title": "Creating an audit policy"
+      }
+    ],
+    "CreateAuditRuleTemplate": [
+      {
+        "document": "None",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAuditRuleTemplate\n<Common request parameters>\n\n{\n    \"RuleFilters\": [\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"100.122.76.176\",\n                \"10.0.0.9\"\n            ]\n        },\n        {\n            \"Type\": \"user\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"wy\"\n            ]\n        },\n        {\n            \"Type\": \"sqlType\",\n            \"Compare\": \"EQS\",\n            \"Value\": [\n                \"Update\",\n                \"Delete\"\n            ]\n        }\n    ],\n    \"RuleTemplateName\": \"andy\",\n    \"Description\": \"Rule template for testing\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleTemplateId\": \"cdb-rt-ws23fwu8\",\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
+        "title": "Creating an Audit Rule Template"
       }
     ],
     "CreateBackup": [
@@ -186,12 +210,44 @@
         "title": "Creating a VIP exclusive to a TencentDB read-only replica"
       }
     ],
+    "CreateRotationPassword": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRotationPassword\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-0zgqlqmd\",\n    \"Accounts\": [\n        {\n            \"User\": \"andy\",\n            \"Host\": \"192.1.1.1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Enabling Password Rotation"
+      }
+    ],
     "DeleteAccounts": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAccounts\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Accounts\": [\n        {\n            \"Host\": \"192.168.1.1\",\n            \"User\": \"user1\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"256117ed-efa08b54-61784d44-91781bbd\"\n    }\n}",
         "title": "Deleting a TencentDB account"
+      }
+    ],
+    "DeleteAuditLogFile": [
+      {
+        "document": " ",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DeleteAuditLogFile\r\n&InstanceId=cdb-test1234\r\n&FileName=test.csv\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Deleting an Audit Log File"
+      }
+    ],
+    "DeleteAuditPolicy": [
+      {
+        "document": " ",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DeleteAuditPolicy\r\n&PolicyId=cdbpolicy-234\r\n&InstanceId=cdb-xxxxxxx\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Deleting an Audit Policy"
+      }
+    ],
+    "DeleteAuditRuleTemplates": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateIds\": [\n        \"cdb-rt-ws23fwu8\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
+        "title": "Deleting an Audit Rule Template"
       }
     ],
     "DeleteBackup": [
@@ -242,6 +298,30 @@
         "title": "Querying the execution result of an async task"
       }
     ],
+    "DescribeAuditConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdbro-6zpy4ei1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"507f6863-2827-4c2c-9c3b-fbbcc32e1ed4\",\n        \"CreateTime\": \"2025-04-11 15:13:07\",\n        \"IsClosing\": \"false\",\n        \"IsOpening\": \"false\",\n        \"LogExpireDay\": 90,\n        \"LogType\": \"storage\"\n    }\n}",
+        "title": "Querying Instance Configuration"
+      }
+    ],
+    "DescribeAuditInstanceList": [
+      {
+        "document": "This example shows you how to obtain the audit instance list.",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditInstanceList\n<Common request parameters>\n\n{\n    \"AuditMode\": 0,\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"cdb-euu5fkcj\"\n            ],\n            \"Name\": \"InstanceId\",\n            \"ExactMatch\": true\n        }\n    ],\n    \"AuditSwitch\": 0,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"InstanceId\": \"cdb-euu5fkcj\",\n                \"AuditStatus\": \"OFF\",\n                \"AuditTask\": 1,\n                \"LogExpireDay\": 1,\n                \"HighLogExpireDay\": 1,\n                \"LowLogExpireDay\": 1,\n                \"BillingAmount\": 0,\n                \"HighRealStorage\": 0,\n                \"LowRealStorage\": 0,\n                \"AuditAll\": true,\n                \"CreateAt\": \"2022-03-02 10:09:08\",\n                \"InstanceInfo\": {\n                    \"ProjectId\": 0,\n                    \"TagList\": [\n                        {\n                            \"TagKey\": \"andy\",\n                            \"TagValue\": \"1\"\n                        }\n                    ],\n                    \"DbType\": \"MYSQL\",\n                    \"DbVersion\": \"5.7\"\n                },\n                \"RealStorage\": 0,\n                \"OldRule\": true,\n                \"RuleTemplateIds\": [\n                    \"cdb-art-nuf7ej8d\"\n                ]\n            }\n        ],\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Obtaining the Audit Instance List"
+      }
+    ],
+    "DescribeAuditLogFiles": [
+      {
+        "document": " ",
+        "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAuditLogFiles\n&InstanceId=cdb-qwerasdf\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"FileName\": \"andy.txt\",\n                \"Status\": \"running\",\n                \"CreateTime\": \"2019-03-20 17:09:13\",\n                \"FileSize\": 3,\n                \"DownloadUrl\": \"http://xxxxxx\",\n                \"ErrMsg\": \"\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Audit Log Files"
+      }
+    ],
     "DescribeAuditLogs": [
       {
         "document": "",
@@ -268,6 +348,22 @@
         "input": "https://cdb.tencentcloudapi.com/?Action=DescribeAuditPolicies\n&InstanceId=cdb-qwerasdf\n&PolicyId=cdbpolicy-asdfqwer\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"PolicyId\": \"cdbpolicy-asdfqwer\"\n                \"Status\": \"running\",\n                \"InstanceId\": \"cdb-qwerasdf\",\n                \"InstanceName\": \"test\",\n                \"CreateTime\": \"2019-03-20 17:09:13\",\n                \"ModifyTime\": \"2019-03-20 17:09:13\",\n                \"PolicyName\": \"audit_policy_1\",\n                \"RuleId\": \"cdbrule-asdfqwer\",\n                \"RuleName\": \"audit1\"\n            }\n        ]\n    }\n}",
         "title": "Querying the audit policies"
+      }
+    ],
+    "DescribeAuditRuleTemplateModifyHistory": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRuleTemplateModifyHistory\n<Common request parameters>\n\n{\n    \"RuleTemplateIds\": [\n        \"cdb-art-8qx2kcr7\"\n    ],\n    \"StartTime\": \"2023-07-26 00:00:00\",\n    \"EndTime\": \"2023-07-27 00:00:00\",\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"DESC\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"TaskId\": 1997098,\n                \"ModifyBeforeInfo\": {\n                    \"RuleTemplateId\": \"cdb-art-8qx2kcr7\",\n                    \"RuleTemplateName\": \"wy_1\",\n                    \"RuleFilters\": [\n                        {\n                            \"Type\": \"sqlType\",\n                            \"Compare\": \"EQS\",\n                            \"Value\": [\n                                \"DROP\"\n                            ]\n                        }\n                    ],\n                    \"AlarmLevel\": 1,\n                    \"AlarmPolicy\": 0,\n                    \"Description\": \"andyaudit\"\n                },\n                \"ModifyAfterInfo\": {\n                    \"RuleTemplateId\": \"cdb-art-8qx2kcr7\",\n                    \"RuleTemplateName\": \"wy_1\",\n                    \"RuleFilters\": [\n                        {\n                            \"Type\": \"sqlType\",\n                            \"Compare\": \"EQS\",\n                            \"Value\": [\n                                \"DROP\",\n                                \"DELETE\"\n                            ]\n                        }\n                    ],\n                    \"AlarmLevel\": 2,\n                    \"AlarmPolicy\": 0,\n                    \"Description\": \"andyrule2\"\n                },\n                \"AffectedInstances\": [\n                    \"cdb-nzg4gv35\",\n                    \"cdb-12y4cjjd\"\n                ],\n                \"Operator\": \"700000579947\",\n                \"UpdateTime\": \"2023-07-26 00:09:00\"\n            }\n        ],\n        \"RequestId\": \"186905b7-756c-4aae-a403-a40568aa5952\"\n    }\n}",
+        "title": "Correct Return"
+      }
+    ],
+    "DescribeAuditRuleTemplates": [
+      {
+        "document": "None",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateNames\": [\n        \"template_1\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateAt\": \"2022-12-06 00:54:01\",\n                \"Description\": \"all_template_des\",\n                \"RuleFilters\": [\n                    {\n                        \"Compare\": \"INC\",\n                        \"Type\": \"sqlType\",\n                        \"Value\": [\n                            \"ALTER\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"EQS\",\n                        \"Type\": \"host\",\n                        \"Value\": [\n                            \"10.0.0.2\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"NEQ\",\n                        \"Type\": \"user\",\n                        \"Value\": [\n                            \"lue\"\n                        ]\n                    },\n                    {\n                        \"Compare\": \"INC\",\n                        \"Type\": \"dbName\",\n                        \"Value\": [\n                            \"lue\"\n                        ]\n                    }\n                ],\n                \"RuleTemplateId\": \"cdb-art-lcpm4as3\",\n                \"RuleTemplateName\": \"template_test\"\n            }\n        ],\n        \"RequestId\": \"a19ebcfb-8b35-40f4-85ee-383109c9134b\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying Audit Rule Template Information"
       }
     ],
     "DescribeAuditRules": [
@@ -738,6 +834,30 @@
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccountPrivileges\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-f35wr6wj\",\n    \"Accounts\": [\n        {\n            \"Host\": \"127.0.0.1\",\n            \"User\": \"ajnnw\"\n        }\n    ],\n    \"GlobalPrivileges\": [\n        \"SELECT\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"256117ed-efa08b54-61784d44-91781bbd\"\n    }\n}",
         "title": "Modifying the permissions of a TencentDB instance account"
+      }
+    ],
+    "ModifyAuditConfig": [
+      {
+        "document": " ",
+        "input": "https://cdb.tencentcloudapi.com/?Action=ModifyAuditConfig\n&LogExpireDay=365\n&InstanceId=cdb-txcniupi\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Modifying Audit Service Configurations"
+      }
+    ],
+    "ModifyAuditRuleTemplates": [
+      {
+        "document": "None",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditRuleTemplates\n<Common request parameters>\n\n{\n    \"RuleTemplateIds\": [\n        \"cdb-rt-ws23fwu8\"\n    ],\n    \"RuleTemplateName\": \"andyrule\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
+        "title": "Modifying an Audit Rule Template"
+      }
+    ],
+    "ModifyAuditService": [
+      {
+        "document": "None",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-6990cckk\",\n    \"LogExpireDay\": 30,\n    \"HighLogExpireDay\": 7,\n    \"AuditAll\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"43-12121-812w1221213-62usf9093\"\n    }\n}",
+        "title": "Modifying the Audit Service"
       }
     ],
     "ModifyAutoRenewFlag": [
