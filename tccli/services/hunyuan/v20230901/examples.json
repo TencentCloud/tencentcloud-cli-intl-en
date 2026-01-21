@@ -8,6 +8,14 @@
         "title": "API Request Example"
       }
     ],
+    "Describe3DSmartTopologyJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: Describe3DSmartTopologyJob\n<Common request parameters>\n\n{\n    \"JobId\": \"1405140131170074624\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"\",\n        \"ErrorMessage\": \"\",\n        \"ResultFile3Ds\": [\n            {\n                \"Type\": \"OBJ\",\n                \"Url\": \"https://cos.ap-singapore.tencentcos.cn/xxx.obj\"\n            }\n        ],\n        \"Status\": \"DONE\",\n        \"RequestId\": \"75882497-fd9d-4b80-a2c0-1d7abf86e040\"\n    }\n}",
+        "title": "Calling the API"
+      }
+    ],
     "QueryHunyuan3DPartJob": [
       {
         "document": "",
@@ -30,6 +38,14 @@
         "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryHunyuanTo3DRapidJob\n<Common request parameters>\n\n{\n    \"JobId\": \"1336255233494892544\"\n}",
         "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"\",\n        \"ErrorMessage\": \"\",\n        \"RequestId\": \"3020cd6c-4ad6-4df3-8560-c233f35d6221\",\n        \"ResultFile3Ds\": [\n            {\n                \"PreviewImageUrl\": \"https://xxx.cos.ap-guangzhou.tencentcos.cn/xxx.png\",\n                \"Type\": \"OBJ\",\n                \"Url\": \"https:/xxx.cos.ap-guangzhou.tencentcos.cn/xxx.zip\"\n            }\n        ],\n        \"Status\": \"DONE\"\n    }\n}",
         "title": "Query Task Sample Call"
+      }
+    ],
+    "Submit3DSmartTopologyJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: Submit3DSmartTopologyJob\n<Common request parameters>\n\n{\n    \"File3D\": {\n        \"Url\": \"https://cos.ap-guangzhou.myqcloud.com/xxx.glb\",\n        \"Type\": \"GLB\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1405140131170074624\",\n        \"RequestId\": \"f1dcd98c-47d2-47fe-81f2-26f4e0fec5d7\"\n    }\n}",
+        "title": "Calling the API"
       }
     ],
     "SubmitHunyuan3DPartJob": [
