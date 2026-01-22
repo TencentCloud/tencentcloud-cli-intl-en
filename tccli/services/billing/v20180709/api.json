@@ -6109,7 +6109,7 @@
         },
         {
           "disabled": false,
-          "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "document": "Product code\nNote: To query the product codes used in the current month, call <a href=\"https://www.tencentcloud.com/document/product/555/32374\">DescribeBillSummaryByProduct</a>.",
           "example": "p_cvm",
           "member": "string",
           "name": "BusinessCode",

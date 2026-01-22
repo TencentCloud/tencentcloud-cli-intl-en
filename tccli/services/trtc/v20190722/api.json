@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CreateCloudRecording": {
-      "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.\nMixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.",
+      "document": "API description:.\nStart on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.\nBefore official online operation, pay attention to the recording best practices (https://www.tencentcloud.comom/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.\n\nThis API is used to achieve the following goals:.\nSpecify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.\n* This API is used to specify the storage parameter (StorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Video on Demand (VOD), Cloud Object Storage (COS), and third-party AWS are supported.\nSpecify detailed parameters for audio and video transcoding in mixed-stream mode (MixTranscodeParams), including video resolution, video bitrate, video frame rate, and sound quality.\n* Specify the position and layout of each stream in mixed-stream mode, or configure via an automatic Template.\n\nKey nouns:.\n* Single stream recording: Record the audio and video of subscribed UserIds in the room separately. The recording service uploads the files to your designated cloud storage in real time.\nMixed-stream recording: Mix the audio and video of subscribed UserId in the room into a video file and upload the recorded files to your designated cloud storage. (After recording ends, go to the VOD console https://console.cloud.tencent.com/vod/media or the object storage COS console https://console.cloud.tencent.com/cos/bucket to view files).",
       "input": "CreateCloudRecordingRequest",
       "name": "Starts an on-cloud recording task",
       "output": "CreateCloudRecordingResponse",
@@ -811,7 +811,7 @@
         },
         {
           "disabled": false,
-          "document": "The region of cloud storage.",
+          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.",
           "example": "ap-shanghai(cos, 具体参考云存储厂商支持的地域)",
           "member": "string",
           "name": "Region",
@@ -829,7 +829,7 @@
         },
         {
           "disabled": false,
-          "document": "The access_key of the cloud storage account.",
+          "document": "access_key account information of the cloud storage.\nTo store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.",
           "example": "test-accesskey",
           "member": "string",
           "name": "AccessKey",
@@ -838,7 +838,7 @@
         },
         {
           "disabled": false,
-          "document": "The secret_key of the cloud storage account.",
+          "document": "secret_key account information of the cloud storage.\nTo store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.",
           "example": "test-secretkey",
           "member": "string",
           "name": "SecretKey",
@@ -847,7 +847,7 @@
         },
         {
           "disabled": false,
-          "document": "The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z), numbers (0-9), underscores (_), and hyphens (-). For example, if the value of this parameter is `[\"prefix1\", \"prefix2\"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.",
+          "document": "The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of [\"prefix1\", \"prefix2\"].",
           "example": "[\"prefix1\", \"prefix2\"]",
           "member": "string",
           "name": "FileNamePrefix",
@@ -1033,7 +1033,7 @@
         {
           "disabled": false,
           "document": "The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
-          "example": "1234",
+          "example": "140000000",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -1041,8 +1041,8 @@
         },
         {
           "disabled": false,
-          "document": "The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.",
-          "example": "1234",
+          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.\nNote: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.\n",
+          "example": "room_366",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -1114,7 +1114,7 @@
         {
           "disabled": false,
           "document": "The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.",
-          "example": "无",
+          "example": "24",
           "member": "uint64",
           "name": "ResourceExpiredHour",
           "required": false,
@@ -1122,8 +1122,8 @@
         },
         {
           "disabled": false,
-          "document": "The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.",
-          "example": "无",
+          "document": "The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users' [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.",
+          "example": "eJw1jcEKgkAURX9FZlvY****fL9rfNX4_",
           "member": "string",
           "name": "PrivateMapKey",
           "required": false,
@@ -1138,10 +1138,10 @@
         {
           "disabled": false,
           "document": "The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends. After a recording task starts, if you want to perform other actions on the task, you need to specify the task ID when making API requests.",
-          "example": "test",
+          "example": "-m9-bVVU7k801X-VX8gO***GrDFLaZwKKZ5-fTXqywE.",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4072,8 +4072,7 @@
           "member": "uint64",
           "name": "Top",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4082,8 +4081,7 @@
           "member": "uint64",
           "name": "Left",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4092,8 +4090,7 @@
           "member": "uint64",
           "name": "Width",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4102,18 +4099,16 @@
           "member": "uint64",
           "name": "Height",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "The user ID (string) of the anchor whose video is shown in the window. If you do not set this parameter, anchors’ videos will be shown in their room entry sequence.",
-          "example": "123",
+          "example": "user_1",
           "member": "string",
           "name": "UserId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4122,8 +4117,7 @@
           "member": "uint64",
           "name": "Alpha",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4132,8 +4126,7 @@
           "member": "uint64",
           "name": "RenderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4142,8 +4135,7 @@
           "member": "uint64",
           "name": "MediaId",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4152,18 +4144,16 @@
           "member": "uint64",
           "name": "ImageLayer",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.",
-          "example": "https://xxxx",
+          "document": "The image url supports only jpg, png, and jpeg formats. the resolution limitation is no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension. the url supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.",
+          "example": "https://xxxx/image.jpg,  https://xxxx/image.jpg?token=xxx",
           "member": "string",
           "name": "SubBackgroundImage",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -4173,13 +4163,12 @@
       "members": [
         {
           "disabled": false,
-          "document": "Layout mode:\n1: Floating\n2: Screen sharing\n3: Grid (default)\n4: Custom\n\nFloating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.\n\nScreen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.\n\nGrid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.\n\nCustom: Specify the layout of videos by using the `MixLayoutList` parameter.",
+          "document": "Layout mode.\n1: floating layout.\n2: screen sharing layout.\n3: nine-grid layout.\n4: custom layout.\n\nFloating layout: by default, the video footage of the first host who enters the room (or a specified host) fills the entire screen. other hosts' video images are arranged horizontally from the bottom-left corner in the room entry sequence, displayed as small pictures floating above the large screen. when the number of screens is less than or equal to 17, each line has 4 (4 x 4 arrangement). when the number of screens exceeds 17, the small pictures are rearranged with 5 per line (5 x 5 arrangement). a maximum of 25 screens are supported. if the user only sends audio, it still occupies a screen position.\n\nScreen sharing layout: specifies a large screen position on the left side for one host (if not specified, the large screen position uses the background color). other hosts are arranged vertically on the right side from top to bottom. when the number of screens is less than 17, each column on the right supports up to 8 hosts, occupying a maximum of two columns. when the number of screens exceeds 17, hosts beyond the 17th are arranged horizontally starting from the bottom-left corner. a maximum of 25 screens is supported. if a host only sends audio, it still occupies a screen position.\n\nNine-Grid layout: automatically adjust the size of each frame based on the number of hosts. each host's frame size is the same, supporting up to 25 frames.\n\nCustom layout: customize the layout of each host's video as needed in MixLayoutList.",
           "example": "3",
           "member": "uint64",
           "name": "MixLayoutMode",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4188,28 +4177,25 @@
           "member": "MixLayout",
           "name": "MixLayoutList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "The background color, which is a hexadecimal value (starting with \"#\", followed by the color value) converted from an 8-bit RGB value. For example, the RGB value of orange is `R:255 G:165 B:0`, and its hexadecimal value is `#FFA500`. The default color is black.",
-          "example": "123",
+          "example": "#FF0000",
           "member": "string",
           "name": "BackGroundColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "The user whose video is displayed in the big window. This parameter is valid if `MixLayoutMode` is set to `1` (floating) or `2` (screen sharing). If it is left empty, the first anchor entering the room is displayed in the big window in the floating mode and the canvas background is displayed in the screen sharing mode.",
-          "example": "123",
+          "example": "user_1",
           "member": "string",
           "name": "MaxResolutionUserId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4218,48 +4204,43 @@
           "member": "uint64",
           "name": "MediaId",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.",
-          "example": "https://xxxx",
+          "document": "The image url supports only jpg, png, and jpeg. the image resolution is limited to no more than 2K, and the image size limit is no more than 5MB. note that the url must carry the format extension, and only specific strings are supported in the url, including a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', and '='.",
+          "example": "https://xxxx/image.jpg,  https://xxxx/image.jpg?token=xxx",
           "member": "string",
           "name": "BackgroundImageUrl",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "`1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.",
+          "document": "Set to 1 to enable the placeholder image function, and 0 to disable it. default is 0. when enabled, the corresponding placeholder image can be displayed in the preset position if the user has no upload audio and video.",
           "example": "0",
           "member": "uint64",
           "name": "PlaceHolderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.",
+          "document": "Handling solution when the background image aspect ratio is not the same, consistent with the RenderMode defined in MixLayoutList.",
           "example": "1",
           "member": "uint64",
           "name": "BackgroundImageRenderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.",
-          "example": "https://xxxx",
+          "document": "Sub-Picture placeholder image url supports only jpg, png, jpeg. resolution limitation is no more than 2K. image size limit is no more than 5MB. note that the url must carry format extension and supports only specific string literals within the range of a-z a-z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.",
+          "example": "https://xxxx/image.jpg,  https://xxxx/image.jpg?token=xxx",
           "member": "string",
           "name": "DefaultSubBackgroundImage",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4268,18 +4249,16 @@
           "member": "WaterMark",
           "name": "WaterMarkList",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
-          "document": "The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.",
+          "document": "When the aspect ratio of the background image does not match in the template layout, the handling solution is applied. the custom layout is disabled and aligns with the RenderMode defined in MixLayoutList.",
           "example": "1",
           "member": "uint64",
           "name": "RenderMode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4288,8 +4267,16 @@
           "member": "uint64",
           "name": "MaxResolutionUserAlign",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Controls whether audio users inside the room occupy the stream mixing layout. this takes effect only in mixed stream recording and template layout. true: represents that audio users do not occupy placeholders. false: represents that audio users occupy placeholders (false by default).",
+          "example": "false",
+          "member": "bool",
+          "name": "PureAudioDisableLayout",
+          "required": false,
+          "type": "bool"
         }
       ],
       "usage": "in"
@@ -4755,7 +4742,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The recording mode.\n1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.\n2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.",
+          "document": "Recording mode:.\n1: single stream recording, record the audio and video of the subscribed UserId in the room separately, and upload the recording files to cloud storage.\n2: mixed-stream recording. mix the audio and video of the subscribed UserId in the room into an audio-video file and upload the recording file to cloud storage.",
           "example": "1",
           "member": "uint64",
           "name": "RecordMode",
@@ -4764,7 +4751,7 @@
         },
         {
           "disabled": false,
-          "document": "The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.",
+          "document": "Recording stops automatically when there is no host inside the room for a duration exceeding MaxIdleTime. measurement unit: second. default value: 30 seconds. the value must be greater than or equal to 5 seconds and less than or equal to 86400 seconds (24 hours).",
           "example": "30",
           "member": "uint64",
           "name": "MaxIdleTime",
@@ -4773,7 +4760,7 @@
         },
         {
           "disabled": false,
-          "document": "The media type of the streams to record.\n0: Audio and video streams (default)\n1: Audio streams only\n2: Video streams only",
+          "document": "Media stream type for recording.\n0: recording audio and video streams (default).\n1: record audio streams only.\n2: record video stream only.",
           "example": "0",
           "member": "uint64",
           "name": "StreamType",
@@ -4782,7 +4769,7 @@
         },
         {
           "disabled": false,
-          "document": "The allowlist/blocklist for stream subscription.",
+          "document": "Specifies the allowlist or blocklist for the subscription stream.",
           "example": "无",
           "member": "SubscribeStreamUserIds",
           "name": "SubscribeStreamUserIds",
@@ -4791,7 +4778,7 @@
         },
         {
           "disabled": false,
-          "document": "The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC;  `3` : MP4,  `4` : AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
+          "document": "Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.\n\nThis parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).",
           "example": "0",
           "member": "uint64",
           "name": "OutputFormat",
@@ -4800,7 +4787,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.",
+          "document": "In single-stream recording mode, determine whether to merge the user's audio and video. 0: do not merge the audio and video of a stream (default). 1: merge the audio and video of a stream into one ts. in mixed-stream recording, this parameter is not required, and the audio and video are merged by default.",
           "example": "0",
           "member": "uint64",
           "name": "AvMerge",
@@ -4809,7 +4796,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.\nThis parameter is invalid if the output format is HLS.",
+          "document": "If the file format is aac or mp4, the system will automatically split the video file when the length limit is exceeded. measurement unit: minute. defaults to 1440 min (24h). value range: 1-1440. [single file limit is 2G. if file size exceeds 2G or recording duration exceeds 24h, the file will be automatically split.].\nHls format recording. this parameter is not effective.",
           "example": "1440",
           "member": "uint64",
           "name": "MaxMediaFileDuration",
@@ -4818,10 +4805,28 @@
         },
         {
           "disabled": false,
-          "document": "The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.",
+          "document": "Specify recording streams. 0: mainstream + auxiliary stream (default); 1: mainstream; 2: auxiliary stream.",
           "example": "0",
           "member": "uint64",
           "name": "MediaId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the type of frame to fill when the upstream video stream stops:\n- 0: Fill with the last frame (freeze the last video frame)\n- 1: Fill with black frames",
+          "example": "0",
+          "member": "uint64",
+          "name": "FillType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the recording task subscribes to the stream published by the Mixed Stream Robot. \n\n- 1: Subscribe. \n- 0: Do not subscribe (default).\n> Note: \nWhen this option is enabled, it is recommended to use the \"Subscription Allowlist.\" Avoid subscribing to both the stream published by the Mixed Stream Robot and the streams published by the hosts simultaneously; otherwise, it will result in audio echoing (duplicate audio) in the recorded file.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SubscribeAbility",
           "required": false,
           "type": "int"
         }
@@ -6370,7 +6375,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.",
+          "document": "Subsequent media task processing operations allow automatic task initiation after media upload is completed. the parameter value is the task flow template name. VOD (video on demand) supports creating task flow templates and template naming.",
           "example": "LongVideoPreset",
           "member": "string",
           "name": "Procedure",
@@ -6379,7 +6384,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.",
+          "document": "Media file expiry time is the absolute expiration time from the current system time. to save for one day, enter \"86400\". to retain permanently, enter \"0\". the default is permanent preservation.",
           "example": "86400",
           "member": "uint64",
           "name": "ExpireTime",
@@ -6388,7 +6393,7 @@
         },
         {
           "disabled": false,
-          "document": "The storage region. Set this parameter if you have special requirements on the storage region.",
+          "document": "Specify the upload park, applicable only to the user with special requirement for upload region.",
           "example": "ap-shanghai",
           "member": "string",
           "name": "StorageRegion",
@@ -6397,7 +6402,7 @@
         },
         {
           "disabled": false,
-          "document": "The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.\nThe default value is `0`, which means others.",
+          "document": "Category ID is used to categorize and manage media. you can create a category and obtain the category ID through the create category api.\nThe default value is 0, indicating other categories.",
           "example": "0",
           "member": "uint64",
           "name": "ClassId",
@@ -6406,7 +6411,7 @@
         },
         {
           "disabled": false,
-          "document": "The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "document": "Subapplication ID for video-on-demand (vod). if you need to access resources belonging to a subapplication, fill in this field with the subapplication ID. otherwise, this field is not required.",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -6415,7 +6420,7 @@
         },
         {
           "disabled": false,
-          "document": "The task flow context, which is passed through after the task is completed.",
+          "document": "Task flow context, passed through when task complete.",
           "example": "\"session_context_example\"",
           "member": "string",
           "name": "SessionContext",
@@ -6424,7 +6429,7 @@
         },
         {
           "disabled": false,
-          "document": "The upload context, which is passed through after upload is completed.",
+          "document": "Upload context, passed through on upload completion callback.",
           "example": "\"source_context_example\"",
           "member": "string",
           "name": "SourceContext",
@@ -6433,7 +6438,7 @@
         },
         {
           "disabled": false,
-          "document": "The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`); `3`: HLS+MP4; `4`: HLS+AAC.",
+          "document": "The recording file format type uploaded to the vod platform. valid values: 0: mp4 (default), 1: hls, 2: aac (valid at that time when StreamType=1 for audio-only recording).\n3: hls+mp4, 4: hls+aac (valid at that time when StreamType=1 is audio-only recording).",
           "example": "1",
           "member": "uint64",
           "name": "MediaType",
@@ -6442,7 +6447,7 @@
         },
         {
           "disabled": false,
-          "document": "The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.",
+          "document": "Only supports API recording upload to vod. this parameter indicates you can customize the recording file name prefix. [length limit: 64 bytes, only allows a combination of uppercase and lowercase letters (a-zA-Z), numbers (0-9), underline, and hyphen]. the prefix is separated from the automatically generated recording file name by `__UserDefine_u_`.",
           "example": "\"user_prefix\"",
           "member": "string",
           "name": "UserDefineRecordId",
@@ -7169,7 +7174,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The watermark type. 0 (default): image; 1: text (not supported yet).",
+          "document": "The watermark type. 0 (default): image; 1: text; 2: timestamp.",
           "example": "0",
           "member": "uint64",
           "name": "WaterMarkType",
@@ -7220,8 +7225,7 @@
           "member": "uint64",
           "name": "Top",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7230,8 +7234,7 @@
           "member": "uint64",
           "name": "Left",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7240,8 +7243,7 @@
           "member": "uint64",
           "name": "Width",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7250,8 +7252,7 @@
           "member": "uint64",
           "name": "Height",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7260,8 +7261,7 @@
           "member": "string",
           "name": "Chars",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -7270,8 +7270,7 @@
           "member": "uint64",
           "name": "FontSize",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7280,8 +7279,7 @@
           "member": "string",
           "name": "FontColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -7290,8 +7288,7 @@
           "member": "string",
           "name": "BackGroundColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -7301,13 +7298,12 @@
       "members": [
         {
           "disabled": false,
-          "document": "The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.",
-          "example": "https://xxxx",
+          "document": "The download url address supports only jpg, png, and jpeg with a size limit of no more than 5M. note that the url must carry the format extension and supports only specific strings within the range of a-z, a-z, 0-9, '-', '.', '_', '~', ':', '/', '?', '#', '[', ']', '@', '!', '&', '(', ')', '*', '+', ',', '%', '='.",
+          "example": "https://xxxx/image.jpg,  https://xxxx/image.jpg?token=xxx",
           "member": "string",
           "name": "WaterMarkUrl",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -7316,8 +7312,7 @@
           "member": "uint64",
           "name": "Top",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7326,8 +7321,7 @@
           "member": "uint64",
           "name": "Left",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7336,8 +7330,7 @@
           "member": "uint64",
           "name": "Width",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7346,8 +7339,7 @@
           "member": "uint64",
           "name": "Height",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -7362,8 +7354,7 @@
           "member": "uint64",
           "name": "Pos",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -7372,8 +7363,7 @@
           "member": "uint64",
           "name": "TimeZone",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         }
       ],
       "usage": "in"
