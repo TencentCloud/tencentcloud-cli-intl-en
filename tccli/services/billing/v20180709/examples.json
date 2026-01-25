@@ -44,6 +44,14 @@
         "title": "Create a Nested Collection Rule"
       }
     ],
+    "CreateInstance": [
+      {
+        "document": "Create a Cloud Workload Protection - Log Analytics instance with a purchase quantity of 1, purchase duration of 1 month, and set auto-renewal.",
+        "input": "POST / HTTP/1.1\nHost: billing.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstance\n<Common request parameters>\n\n{\n    \"ClientToken\": \"46E6BF87-AF23-4710-8C82-21032D5F985F\",\n    \"ProductCode\": \"p_yunjing\",\n    \"SubProductCode\": \"sp_yunjing_vas\",\n    \"RegionCode\": \"ap-guangzhou\",\n    \"ZoneCode\": \"ap-guangzhou-1\",\n    \"PayMode\": \"PrePay\",\n    \"Parameter\": \"{\\\"pid\\\":1005305,\\\"productCode\\\":\\\"p_yunjing\\\",\\\"subProductCode\\\":\\\"sp_yunjing_vas\\\",\\\"sv_yunjing_vas_la\\\":\\\"50\\\",\\\"timeSpan\\\":1,\\\"timeUnit\\\":\\\"m\\\"}\",\n    \"Quantity\": 1,\n    \"Period\": 1,\n    \"PeriodUnit\": \"m\",\n    \"ProjectId\": 0,\n    \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\"\n}",
+        "output": "{\n    \"Response\": {\n        \"OrderId\": \"20251201********\",\n        \"InstanceIdList\": [\n            \"*******\"\n        ],\n        \"RequestId\": \"9792e525-4002-4fb2-8a35-74ebf854bee7\"\n    }\n}",
+        "title": "Create an Instance"
+      }
+    ],
     "DeleteAllocationRule": [
       {
         "document": " ",
