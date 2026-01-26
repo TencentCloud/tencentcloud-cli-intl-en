@@ -36,7 +36,7 @@
       "status": "online"
     },
     "Submit3DSmartTopologyJob": {
-      "document": "The SmartTopoly API uses the Polygon 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.\n1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.",
+      "document": "The SmartTopoly API uses the Polygen 1.5 model. After manually inputting a 3D high-poly model, it can generate a neat 3D model with lower polygon count.\n1 concurrent is provided by default, which means 1 submitted task can be processed simultaneously. The next task can be processed only after the previous task is completed.",
       "input": "Submit3DSmartTopologyJobRequest",
       "name": "Submit an intelligent topology task",
       "output": "Submit3DSmartTopologyJobResponse",
@@ -461,7 +461,7 @@
         },
         {
           "disabled": false,
-          "document": "Polygon type, indicates the model surface is composed of grid components, defaults to triangle\nReference value:\ntriangle: triangle face\nquadrilateral: quadrangle face",
+          "document": "Polygon type, indicates the model surface is composed of grid components, defaults to triangle\nReference value:\ntriangle: triangle face\nquadrilateral: triangular and quadrilateral mixed face",
           "example": "triangle",
           "member": "string",
           "name": "PolygonType",
