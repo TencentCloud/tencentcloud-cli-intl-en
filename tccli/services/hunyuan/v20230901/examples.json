@@ -1,5 +1,13 @@
 {
   "actions": {
+    "ChatTranslations": [
+      {
+        "document": "Non-streaming call to Translation API",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChatTranslations\n<Common request parameters>\n\n{\n    \"Model\": \"hunyuan-translation\",\n    \"Stream\": false,\n    \"Text\": \"Playing video games leads to lasting improvements in cognitive abilities.\",\n    \"Source\": \"en\",\n    \"Target\": \"zh\",\n\"Field\": \"Game plot\"\n    \"References\": [\n        {\n            \"Type\": \"sentence\",\n            \"Text\": \"Computer games are a perfect recipe for strengthening our cognitive skills\",\n\"Translation\": \"Computer games are the perfect recipe to enhance our cognition\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e638f0a0-a2a5-4c43-a1c6-798a7cbfbb18\",\n        \"Id\": \"e638f0a0-a2a5-4c43-a1c6-798a7cbfbb18\",\n        \"Created\": 1733133524,\n        \"Choices\": [\n            {\n                \"Index\": 0,\n                \"Message\": {\n                    \"Role\": \"assistant\",\n                    \"Content\": \"Playing video games can cause persistent enhancement in cognition.\"\n                },\n                \"FinishReason\": \"stop\"\n            }\n        ],\n        \"Usage\": {\n            \"PromptTokens\": 96,\n            \"CompletionTokens\": 10,\n            \"TotalTokens\": 106\n        },\n        \"Note\": \"The above content is AI generation and does not mean the developer standpoint. Do not delete or modify this tag.\"\n    }\n}",
+        "title": "Non-Streaming Call to Translation API"
+      }
+    ],
     "Convert3DFormat": [
       {
         "document": "",
