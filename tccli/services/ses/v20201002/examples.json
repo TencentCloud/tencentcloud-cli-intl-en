@@ -76,6 +76,14 @@
         "title": "Creating a Recipient"
       }
     ],
+    "CreateReceiverDetailWithData": [
+      {
+        "document": "Add recipient address with template parameter",
+        "input": "POST / HTTP/1.1\nHost: ses.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReceiverDetailWithData\n<Common request parameters>\n\n{\n    \"ReceiverId\": 123,\n    \"Datas\": [\n        {\n            \"Email\": \"example@gmail.com\",\n            \"TemplateData\": \"{\\\"name\\\":\\\"john\\\",\\\"age\\\":\\\"12\\\"}\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8979fc1e-9564-4fc9-bf7d-2958ce679b72\"\n    }\n}",
+        "title": "Add Recipient Address with Template Parameter"
+      }
+    ],
     "DeleteAddressUnsubscribeConfig": [
       {
         "document": "",

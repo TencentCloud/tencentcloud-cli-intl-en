@@ -35,6 +35,13 @@
       "output": "DeleteRiskScanTaskResponse",
       "status": "online"
     },
+    "DescribeCFWAssetStatistics": {
+      "document": "Cloud Defense Asset Center Statistics",
+      "input": "DescribeCFWAssetStatisticsRequest",
+      "name": "Cloud Defense Asset Center Statistics",
+      "output": "DescribeCFWAssetStatisticsResponse",
+      "status": "online"
+    },
     "DescribeCVMAssetInfo": {
       "document": "This API is used to query details of CVM assets.",
       "input": "DescribeCVMAssetInfoRequest",
@@ -47,6 +54,13 @@
       "input": "DescribeCVMAssetsRequest",
       "name": "Queries the list of CVM assets.",
       "output": "DescribeCVMAssetsResponse",
+      "status": "online"
+    },
+    "DescribeClusterAssets": {
+      "document": "This example shows you how to obtain the cluster list.",
+      "input": "DescribeClusterAssetsRequest",
+      "name": "This example shows you how to obtain the cluster list.",
+      "output": "DescribeClusterAssetsResponse",
       "status": "online"
     },
     "DescribeClusterPodAssets": {
@@ -77,11 +91,25 @@
       "output": "DescribeDomainAssetsResponse",
       "status": "online"
     },
+    "DescribeGatewayAssets": {
+      "document": "Obtain Gateway List",
+      "input": "DescribeGatewayAssetsRequest",
+      "name": "Gateway list",
+      "output": "DescribeGatewayAssetsResponse",
+      "status": "online"
+    },
     "DescribeListenerList": {
       "document": "This API is used to query the list of TCP listeners.",
       "input": "DescribeListenerListRequest",
       "name": "Queries the list of TCP listeners.",
       "output": "DescribeListenerListResponse",
+      "status": "online"
+    },
+    "DescribeNICAssets": {
+      "document": "Obtain Network Interface Card List",
+      "input": "DescribeNICAssetsRequest",
+      "name": "Network Interface Card List",
+      "output": "DescribeNICAssetsResponse",
       "status": "online"
     },
     "DescribeOrganizationInfo": {
@@ -98,11 +126,25 @@
       "output": "DescribeOrganizationUserInfoResponse",
       "status": "online"
     },
+    "DescribeOtherCloudAssets": {
+      "document": "Asset list.",
+      "input": "DescribeOtherCloudAssetsRequest",
+      "name": "Asset list",
+      "output": "DescribeOtherCloudAssetsResponse",
+      "status": "online"
+    },
     "DescribePublicIpAssets": {
       "document": "This API is used to query the list of public IP assets.",
       "input": "DescribePublicIpAssetsRequest",
       "name": "Queries the list of public IP assets.",
       "output": "DescribePublicIpAssetsResponse",
+      "status": "online"
+    },
+    "DescribeRepositoryImageAssets": {
+      "document": "Repository Image List",
+      "input": "DescribeRepositoryImageAssetsRequest",
+      "name": "Repository Image List",
+      "output": "DescribeRepositoryImageAssetsResponse",
       "status": "online"
     },
     "DescribeRiskCenterAssetViewCFGRiskList": {
@@ -222,6 +264,13 @@
       "input": "DescribeVpcAssetsRequest",
       "name": "Gets the list of VPCs",
       "output": "DescribeVpcAssetsResponse",
+      "status": "online"
+    },
+    "ModifyOrganizationAccountStatus": {
+      "document": "Modify Group Account Status",
+      "input": "ModifyOrganizationAccountStatusRequest",
+      "name": "Modify Group Account Status",
+      "output": "ModifyOrganizationAccountStatusResponse",
       "status": "online"
     },
     "ModifyRiskCenterRiskStatus": {
@@ -563,6 +612,282 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AssetCluster": {
+      "document": "This example shows you how to obtain the cluster list.\n\nCluster protection status. enumerate on the left. display on the right.\nCluster protection status. \nNot connected.\nUnprotected. \n2: partial protection. \n3: under protection. \n4: access exception. \n5: accessing. \n6: uninstalling. \n7: uninstallation exception.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "1002532",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tenant uin.",
+          "example": "124123362",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tenant Nickname",
+          "example": "nick-test",
+          "member": "string",
+          "name": "Nick",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cluster-1we2",
+          "member": "string",
+          "name": "AssetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster name.",
+          "example": "tke-test",
+          "member": "string",
+          "name": "AssetName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster type.",
+          "example": "tke",
+          "member": "string",
+          "name": "AssetType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster Creation Time",
+          "example": "2024-08-22 20:52:16",
+          "member": "string",
+          "name": "InstanceCreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "runing",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster protection status, enumerate on the left, display on the right.\nProtection status of the cluster. \n0: not connected.\nUnprotected. \n2: partial protection. \n3: under protection. \n4: access exception. \n5: accessing. \nUninstalling. \n7: uninstallation exception.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProtectStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access information, being empty indicates no access exception info.",
+          "example": "error info",
+          "member": "string",
+          "name": "ProtectInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC id.",
+          "example": "vpc-w24et",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC name.",
+          "example": "vpc-default",
+          "member": "string",
+          "name": "VpcName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "kubernetes version.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "KubernetesVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Runtime component.",
+          "example": "nginx",
+          "member": "string",
+          "name": "Component",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Runtime component version.",
+          "example": "1.0.1",
+          "member": "string",
+          "name": "ComponentVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component status.",
+          "example": "running",
+          "member": "string",
+          "name": "ComponentStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health Checkup Time",
+          "example": "2024-08-22 20:52:16",
+          "member": "string",
+          "name": "CheckTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated hosts.",
+          "example": "1",
+          "member": "int64",
+          "name": "MachineCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated Pod Count",
+          "example": "0",
+          "member": "int64",
+          "name": "PodCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated Service Count",
+          "example": "4",
+          "member": "int64",
+          "name": "ServiceCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability risk.",
+          "example": "2",
+          "member": "int64",
+          "name": "VulRisk",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "CFGRisk",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health Checkup Count",
+          "example": "1",
+          "member": "int64",
+          "name": "CheckCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is core. 1: Core; 2: Non-core.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsCore",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New Asset or Not. 1: New",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsNewAsset",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud asset type: 0: tencent cloud, 1: aws, 2: azure.",
+          "example": "0",
+          "member": "int64",
+          "name": "CloudType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3004,233 +3329,233 @@
       "members": [
         {
           "disabled": false,
-          "document": "Asset ID\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Asset ID",
+          "example": "postgres-n3rvf26b",
           "member": "string",
           "name": "AssetId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Asset name\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Asset name.",
+          "example": "Unnamed",
           "member": "string",
           "name": "AssetName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Asset type\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Asset type.",
+          "example": "POSTGRES",
           "member": "string",
           "name": "AssetType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "无",
+          "document": "vpcid",
+          "example": "vpc-ewf1aiej",
           "member": "string",
           "name": "VpcId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "VPC tags\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "vpc Tag.",
+          "example": "vpc-name",
           "member": "string",
           "name": "VpcName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Region.",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Domain name\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Domain",
+          "example": "foo.example.com",
           "member": "string",
           "name": "Domain",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Asset creation time\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Asset creation time.",
+          "example": "2024-01-30 16:17:21",
           "member": "string",
           "name": "AssetCreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Last scan time\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Last scan time",
+          "example": "2024-01-30 16:17:21",
           "member": "string",
           "name": "LastScanTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Configuration risks\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Configuration risk.",
+          "example": "1",
           "member": "uint64",
           "name": "ConfigurationRisk",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Network attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Network attack.",
+          "example": "1",
           "member": "uint64",
           "name": "Attack",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "无",
+          "document": "Network access.",
+          "example": "1",
           "member": "uint64",
           "name": "Access",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Scan tasks\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Scan Task",
+          "example": "1",
           "member": "uint64",
           "name": "ScanTask",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User `appid`\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User appid.",
+          "example": "133023962095",
           "member": "uint64",
           "name": "AppId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User UIN\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "User UIN",
+          "example": "100014592919708",
           "member": "string",
           "name": "Uin",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "User name\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Nickname Alias",
+          "example": "nickname",
           "member": "string",
           "name": "NickName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Port\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Port.",
+          "example": " 0",
           "member": "uint64",
           "name": "Port",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tags\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Tag.",
+          "example": "[             {               \"Name\": \"new\",               \"Value\": \"sign\"             }           ]",
           "member": "Tag",
           "name": "Tag",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Private IP\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Private IP address",
+          "example": "192.168.222.12:5432",
           "member": "string",
           "name": "PrivateIp",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Public IP\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Public IP address",
+          "example": "58.221.*.*:5342",
           "member": "string",
           "name": "PublicIp",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Status\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Status.",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it's a critical asset\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Core or Not",
+          "example": "2",
           "member": "uint64",
           "name": "IsCore",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it's a newly-added asset. Values: `1` (Yes), `0` (No)\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "New Asset or Not. 1: New",
+          "example": "1",
           "member": "uint64",
           "name": "IsNewAsset",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3537,6 +3862,133 @@
       ],
       "type": "object"
     },
+    "DescribeCFWAssetStatisticsRequest": {
+      "document": "DescribeCFWAssetStatistics request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCFWAssetStatisticsResponse": {
+      "document": "DescribeCFWAssetStatistics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of network assets",
+          "example": "1",
+          "member": "int64",
+          "name": "NetworkTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset CLB Quantity",
+          "example": "1",
+          "member": "int64",
+          "name": "ClbTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of NATs",
+          "example": "1",
+          "member": "int64",
+          "name": "NatTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of Public IP Addresses",
+          "example": "1",
+          "member": "int64",
+          "name": "PublicAssetTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of hosts",
+          "example": "1",
+          "member": "int64",
+          "name": "CVMAssetTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "CFGTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "PortTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "WebsiteTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk service exposure.",
+          "example": "1",
+          "member": "int64",
+          "name": "ServerTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Weak password risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "WeakPasswordTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability risk.",
+          "example": "1",
+          "member": "int64",
+          "name": "VULTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCVMAssetInfoRequest": {
       "document": "DescribeCVMAssetInfo request structure.",
       "members": [
@@ -3689,6 +4141,132 @@
           "name": "OsList",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAssetsRequest": {
+      "document": "DescribeClusterAssets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "[   {     \"Name\": \"TimeRange\",     \"Values\": [       \"2\"     ],     \"OperatorType\": 7   } ]",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterAssetsResponse": {
+      "document": "DescribeClusterAssets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "[     {         \"AppId\": 1302396215,         \"AssetId\": \"cls-bc1916ky\",         \"AssetName\": \"benben\"     } ]",
+          "member": "AssetCluster",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "8",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster Type Enumeration",
+          "example": "[     {         \"Text\": \"托管集群\",         \"Value\": \"managed_cluster\"     } ]",
+          "member": "FilterDataObject",
+          "name": "ClusterTypeList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster Status Enumeration",
+          "example": "[         {           \"Text\": \"运行中\",           \"Value\": \"running\"         }       ]",
+          "member": "FilterDataObject",
+          "name": "ClusterStatusList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component Status Enumeration",
+          "example": "[         {           \"Text\": \"未安装\",           \"Value\": \"defender_uninstall\"         }       ]",
+          "member": "FilterDataObject",
+          "name": "ComponentStatusList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC Enumeration",
+          "example": "[     {         \"Text\": \"wy conflict\",         \"Value\": \"vpc-39sc6ru5\"     } ]",
+          "member": "FilterDataObject",
+          "name": "VpcList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region Enumeration",
+          "example": "[         {           \"Text\": \"广州\",           \"Value\": \"ap-guangzhou\"         }       ]",
+          "member": "FilterDataObject",
+          "name": "RegionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tenant Enumeration",
+          "example": "[         {           \"Text\": \"1300448058\",           \"Value\": \"1300448058\"         }       ]",
+          "member": "FilterDataObject",
+          "name": "AppIdList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster protection status enumeration.",
+          "example": "[{\"Text\":\"未接入\",\"Value\":\"0\"},{\"Text\":\"未防护\",\"Value\":\"1\"},{\"Text\":\"防护中\",\"Value\":\"3\"}]",
+          "member": "FilterDataObject",
+          "name": "ProtectStatusList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4023,6 +4601,102 @@
       ],
       "type": "object"
     },
+    "DescribeGatewayAssetsRequest": {
+      "document": "DescribeGatewayAssets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameters.",
+          "example": "{     \"Filters\": [       {         \"Name\": \"Status\",         \"Values\": [           \"0\"         ],         \"OperatorType\": 7       },       {         \"Name\": \"Uin\",         \"Values\": [           \"100065\"         ],         \"OperatorType\": 7       }     ],     \"Limit\": 10,     \"Offset\": 0,     \"StartTime\": \"2024-10-26 00:00:00\",     \"EndTime\": \"2024-11-01 23:59:59\"   }",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGatewayAssetsResponse": {
+      "document": "DescribeGatewayAssets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "[ \t\t\t{ \t\t\t\t\"AddressIPV6\": \"27::1\", \t\t\t\t\"AppId\": \"1827324\", \t\t\t\t\"AssetId\": \"cfwnat-a2b9957b\", \t\t\t\t\"AssetName\": \"autoDev\", \t\t\t\t\"AssetType\": \"NATFW\", \t\t\t\t\"ConfigureRisk\": 0, \t\t\t\t\"CreateTime\": \"2022-11-28 01:30:55\", \t\t\t\t\"EngineRegion\": \"sg\", \t\t\t\t\"ExposedPort\": 0, \t\t\t\t\"ExposedVUL\": 0, \t\t\t\t\"InboundCumulativeFlow\": \"352.00KB\", \t\t\t\t\"InboundPeakBandwidth\": \"1.75Kbps\", \t\t\t\t\"IsCore\": 1, \t\t\t\t\"IsNewAsset\": 0, \t\t\t\t\"LastScanTime\": \"2024-08-22 21:45:10\", \t\t\t\t\"NetworkAttack\": 0, \t\t\t\t\"Nick\": \"master\", \t\t\t\t\"OutboundCumulativeFlow\": \"38.67KB\", \t\t\t\t\"OutboundPeakBandwidth\": \"272.00bps\", \t\t\t\t\"PrivateIp\": \"172.0.12.3\", \t\t\t\t\"PublicIp\": \"1.**.***.59\", \t\t\t\t\"Region\": \"ap-shanghai\", \t\t\t\t\"RiskExposure\": 0, \t\t\t\t\"ScanTask\": 0, \t\t\t\t\"Status\": \"1\", \t\t\t\t\"Tag\": [{\"Name\":\"name1\",\"Value\":\"value1\"}], \t\t\t\t\"Uin\": \"18146\", \t\t\t\t\"VpcId\": \"vpc-omoo5lv\", \t\t\t\t\"VpcName\": \"vpc-omoo5lv\" \t\t\t} \t\t]",
+          "member": "GateWayAsset",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region list",
+          "example": "[       {         \"Text\": \"上海\",         \"Value\": \"ap-shanghai\"       },       {         \"Text\": \"北京\",         \"Value\": \"ap-beijing\"       },       {         \"Text\": \"广州\",         \"Value\": \"ap-guangzhou\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "RegionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset Type List",
+          "example": "[       {         \"Text\": \"ENI\",         \"Value\": \"ENI\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "AssetTypeList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC List",
+          "example": "[       {         \"Text\": \"fengqqian3\",         \"Value\": \"vpc-m819242\"       },       {         \"Text\": \"fengqqian2\",         \"Value\": \"vpc-fw2dus5f\"       },       {         \"Text\": \"Default-VPC\",         \"Value\": \"vpc-omoo5lv\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "VpcList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AppID List",
+          "example": "[   {     \"Value\": \"1894\",     \"Text\": \"1894\"   } ]",
+          "member": "FilterDataObject",
+          "name": "AppIdList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeListenerListRequest": {
       "document": "DescribeListenerList request structure.",
       "members": [
@@ -4060,6 +4734,102 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNICAssetsRequest": {
+      "document": "DescribeNICAssets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameters.",
+          "example": "{     \"Filters\": [       {         \"Name\": \"Status\",         \"Values\": [           \"0\"         ],         \"OperatorType\": 7       },       {         \"Name\": \"Uin\",         \"Values\": [           \"100065\"         ],         \"OperatorType\": 7       }     ],     \"Limit\": 10,     \"Offset\": 0,     \"StartTime\": \"2024-10-26 00:00:00\",     \"EndTime\": \"2024-11-01 23:59:59\"   }",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeNICAssetsResponse": {
+      "document": "DescribeNICAssets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "[   {     \"AppId\": \"13451\",     \"Uin\": \"10944446\",     \"AssetId\": \"eni-4r05m1wj\",     \"AssetName\": \"未命名\",     \"AssetType\": \"ENI\",     \"PrivateIp\": \"172.16.0.6\",     \"PublicIp\": \"10.4.**.**\",     \"Region\": \"ap-guangzhou\",     \"VpcId\": \"vpc-hbe549z5\",     \"VpcName\": \"league-vpc-2\",     \"Tag\": {       \"Name\": \"env\",       \"Value\": \"dev\"     },     \"OutboundPeakBandwidth\": \"0bps\",     \"InboundPeakBandwidth\": \"0bps\",     \"OutboundCumulativeFlow\": \"0B\",     \"InboundCumulativeFlow\": \"0B\",     \"NetworkAttack\": 0,     \"ExposedPort\": 0,     \"ExposedVUL\": 0,     \"ConfigureRisk\": 0,     \"CreateTime\": \"2023-11-23 19:58:39\",     \"ScanTask\": 1,     \"LastScanTime\": \"2024-10-12 16:33:37\",     \"Nick\": \"nickname\",     \"IsCore\": 0,     \"IsNewAsset\": 0   } ]",
+          "member": "NICAsset",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region list",
+          "example": "[       {         \"Text\": \"广州\",         \"Value\": \"ap-guangzhou\"       },       {         \"Text\": \"南京\",         \"Value\": \"ap-nanjing\"       },       {         \"Text\": \"上海\",         \"Value\": \"ap-shanghai\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "RegionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset Type List",
+          "example": "[       {         \"Text\": \"ENI\",         \"Value\": \"ENI\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "AssetTypeList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC List",
+          "example": "[       {         \"Text\": \"league-vpc-2\",         \"Value\": \"vpc-hdbed9z5\"       },       {         \"Text\": \"vpc-gz-0\",         \"Value\": \"vpc-63z25m89\"       }     ]",
+          "member": "FilterDataObject",
+          "name": "VpcList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AppID List",
+          "example": "[   {     \"Value\": \"1894\",     \"Text\": \"1894\"   } ]",
+          "member": "FilterDataObject",
+          "name": "AppIdList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4202,6 +4972,111 @@
       ],
       "type": "object"
     },
+    "DescribeOtherCloudAssetsRequest": {
+      "document": "DescribeOtherCloudAssets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "-",
+          "example": "{\"Filters\":[{\"Name\":\"TimeRange\",\"Values\":[\"2\"],\"OperatorType\":7}],\"Limit\":10,\"Offset\":0,\"Order\":\"desc\",\"By\":\"AssetCreateTime\"}",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Asset type: MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS",
+          "example": "[\"MYSQL\",\"MARIADB\"]",
+          "member": "string",
+          "name": "AssetTypes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOtherCloudAssetsResponse": {
+      "document": "DescribeOtherCloudAssets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of assets",
+          "example": "[{\"AssetId\":\"LP1pduRZ\",\"AssetType\":\"SSL\",\"Region\":\"ap-guangzhou\",\"VpcName\":\"\",\"ConfigurationRisk\":1,\"AssetName\":\"\",\"VpcId\":\"\",\"Domain\":\"\",\"AssetCreateTime\":\"2025-06-2417:10:30\",\"LastScanTime\":\"2025-06-0320:04:30\",\"Attack\":0}]",
+          "member": "DBAssetVO",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region Enumeration",
+          "example": "[{\"Text\":\"上海\",\"Value\":\"ap-shanghai\"},{\"Text\":\"南京\",\"Value\":\"ap-nanjing\"},{\"Text\":\"北京\",\"Value\":\"ap-beijing\"},{\"Text\":\"成都\",\"Value\":\"ap-chengdu\"},{\"Text\":\"广州\",\"Value\":\"ap-guangzhou\"}]",
+          "member": "FilterDataObject",
+          "name": "RegionList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset Type Enumeration",
+          "example": "[{\"Text\":\"COS\",\"Value\":\"COS\"},{\"Text\":\"KMS\",\"Value\":\"KMS\"},{\"Text\":\"ACL\",\"Value\":\"ACL\"},{\"Text\":\"CloudAudit\",\"Value\":\"CloudAudit\"},{\"Text\":\"CFS\",\"Value\":\"CFS\"},{\"Text\":\"CKafka\",\"Value\":\"KAFKA\"}]",
+          "member": "FilterDataObject",
+          "name": "AssetTypeList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC Enumeration",
+          "example": "[{\"Text\":\"xuann\",\"Value\":\"vpc-cwcsulhn\"},{\"Text\":\"Default-VPC\",\"Value\":\"vpc-1hhbcwsu\"},{\"Text\":\"Default-VPC\",\"Value\":\"vpc-iyn6tg27\"},{\"Text\":\"Default-VPC\",\"Value\":\"vpc-guv4i1h5\"}]",
+          "member": "FilterDataObject",
+          "name": "VpcList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Appid Enumeration",
+          "example": "[{\"Text\":\"1256299843\",\"Value\":\"1256299843\"}]",
+          "member": "FilterDataObject",
+          "name": "AppIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribePublicIpAssetsRequest": {
       "document": "DescribePublicIpAssets request structure.",
       "members": [
@@ -4308,6 +5183,72 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRepositoryImageAssetsRequest": {
+      "document": "DescribeRepositoryImageAssets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filters",
+          "example": "{\"Filters\":[{\"Name\":\"TimeRange\",\"Values\":[\"2\"],\"OperatorType\":7}],\"Limit\":10,\"Offset\":0,\"Order\":\"desc\",\"By\":\"InstanceCreateTime\"}",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRepositoryImageAssetsResponse": {
+      "document": "DescribeRepositoryImageAssets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Repository Image List",
+          "example": "[{\"InstanceType\":\"TCR镜像\",\"Region\":\"ap-guangzhou\",\"InstanceVersion\":\"v0.13.2\",\"InstanceSize\":\"69.22MB\",\"BuildCount\":5,\"CheckCount\":3,\"VulRisk\":0,\"AuthStatus\":0,\"IsCore\":2,\"CheckTime\":\"2025-06-0320:04:30\",\"IsNewAsset\":0}]",
+          "member": "RepositoryImageVO",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region List",
+          "example": "[{\"Text\":\"广州\",\"Value\":\"ap-guangzhou\"},{\"Text\":\"新加坡\",\"Value\":\"ap-singapore\"}]",
+          "member": "FilterDataObject",
+          "name": "RegionList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6202,6 +7143,312 @@
       ],
       "usage": "out"
     },
+    "GateWayAsset": {
+      "document": "Gateway asset.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "1300848851",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin",
+          "example": "100011949811",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset ID.",
+          "example": "cfwnat-ab99957b",
+          "member": "string",
+          "name": "AssetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset name.",
+          "example": "asset-name",
+          "member": "string",
+          "name": "AssetName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset type.",
+          "example": "NATFW",
+          "member": "string",
+          "name": "AssetType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC IP",
+          "example": "172.**.22.**",
+          "member": "string",
+          "name": "PrivateIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IP address",
+          "example": "1.***.130.**",
+          "member": "string",
+          "name": "PublicIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC id.",
+          "example": "vpc-dfe11",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC Name",
+          "example": "vpcname",
+          "member": "string",
+          "name": "VpcName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tag",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Outbound peak bandwidth.",
+          "example": "272.00bps",
+          "member": "string",
+          "name": "OutboundPeakBandwidth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inbound peak bandwidth.",
+          "example": "1.75Kbps",
+          "member": "string",
+          "name": "InboundPeakBandwidth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cumulative Outbound Traffic",
+          "example": "38.67KB",
+          "member": "string",
+          "name": "OutboundCumulativeFlow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cumulative Inbound Traffic",
+          "example": "352.00KB",
+          "member": "string",
+          "name": "InboundCumulativeFlow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network attack.",
+          "example": "0",
+          "member": "int64",
+          "name": "NetworkAttack",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expose ports.",
+          "example": "0",
+          "member": "int64",
+          "name": "ExposedPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exposed vulnerability.",
+          "example": "0",
+          "member": "int64",
+          "name": "ExposedVUL",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration risk.",
+          "example": "0",
+          "member": "int64",
+          "name": "ConfigureRisk",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\n",
+          "example": "2022-11-28 01:30:55",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "ScanTask",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last scan time",
+          "example": "2022-11-28 01:30:55",
+          "member": "string",
+          "name": "LastScanTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname.",
+          "example": "nickname",
+          "member": "string",
+          "name": "Nick",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 address",
+          "example": "FF01::1101",
+          "member": "string",
+          "name": "AddressIPV6",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Core or Not",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsCore",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk service exposure.",
+          "example": "0",
+          "member": "int64",
+          "name": "RiskExposure",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New Asset or Not. 1: New",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsNewAsset",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gateway Status",
+          "example": "normal",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TSE's Actual Gateway Region",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "EngineRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Weak password risk.",
+          "example": "",
+          "member": "uint64",
+          "name": "WeakPasswordRisk",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "IpAssetListVO": {
       "document": "List of IPs",
       "members": [
@@ -6558,6 +7805,52 @@
       ],
       "usage": "out"
     },
+    "ModifyOrganizationAccountStatusRequest": {
+      "document": "ModifyOrganizationAccountStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Modify Group Account Status. 1: Enabled; 2: Disabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOrganizationAccountStatusResponse": {
+      "document": "ModifyOrganizationAccountStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "If the returned value is 0, the modification was successful.",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyRiskCenterRiskStatusRequest": {
       "document": "ModifyRiskCenterRiskStatus request structure.",
       "members": [
@@ -6602,6 +7895,262 @@
         }
       ],
       "type": "object"
+    },
+    "NICAsset": {
+      "document": "Network interface card asset.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "1311843551",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin",
+          "example": "100011944446",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset ID.",
+          "example": "eni-4r05m1wj",
+          "member": "string",
+          "name": "AssetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset name.",
+          "example": "未命名",
+          "member": "string",
+          "name": "AssetName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset type.",
+          "example": "ENI",
+          "member": "string",
+          "name": "AssetType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC IP",
+          "example": "172.16.0.6",
+          "member": "string",
+          "name": "PrivateIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IP address",
+          "example": "10.4.**.**",
+          "member": "string",
+          "name": "PublicIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC id.",
+          "example": "vpc-hbe549z5",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC Name",
+          "example": "league-vpc-2",
+          "member": "string",
+          "name": "VpcName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "{\"Name\": \"tag-name\", \"Value\": \"tag-value\"}",
+          "member": "Tag",
+          "name": "Tag",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Outbound peak bandwidth.",
+          "example": "0bps",
+          "member": "string",
+          "name": "OutboundPeakBandwidth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inbound peak bandwidth.",
+          "example": "0bps",
+          "member": "string",
+          "name": "InboundPeakBandwidth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cumulative Outbound Traffic",
+          "example": "0B",
+          "member": "string",
+          "name": "OutboundCumulativeFlow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cumulative Inbound Traffic",
+          "example": "0B",
+          "member": "string",
+          "name": "InboundCumulativeFlow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network attack.",
+          "example": "0",
+          "member": "int64",
+          "name": "NetworkAttack",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expose ports.",
+          "example": "0",
+          "member": "int64",
+          "name": "ExposedPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exposed vulnerability.",
+          "example": "0",
+          "member": "int64",
+          "name": "ExposedVUL",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration risk.",
+          "example": "0",
+          "member": "int64",
+          "name": "ConfigureRisk",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\n",
+          "example": "2023-11-23 19:58:39",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of tasks.",
+          "example": "1",
+          "member": "int64",
+          "name": "ScanTask",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last scan time",
+          "example": "2024-10-12 16:33:37",
+          "member": "string",
+          "name": "LastScanTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname.",
+          "example": "nickname",
+          "member": "string",
+          "name": "Nick",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Core or Not",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsCore",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New Asset or Not. 1: New",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsNewAsset",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "OrganizationInfo": {
       "document": "",
@@ -7345,6 +8894,221 @@
         }
       ],
       "usage": "in"
+    },
+    "RepositoryImageVO": {
+      "document": "Repository Image List",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User appid.",
+          "example": "1256211843",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User UIN",
+          "example": "1753404506473",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname.",
+          "example": "未命名",
+          "member": "string",
+          "name": "NickName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mirror id.",
+          "example": "de470fd94cfa6e21054",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image name.",
+          "example": "de470fd94cfa6e21054",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image creation time.",
+          "example": "2024-11-20 14:28:15",
+          "member": "string",
+          "name": "InstanceCreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image Size with Unit",
+          "example": "265.16MB",
+          "member": "string",
+          "name": "InstanceSize",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Build times.",
+          "example": "31",
+          "member": "int64",
+          "name": "BuildCount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image type.",
+          "example": "TCR镜像",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization status.",
+          "example": "0",
+          "member": "int64",
+          "name": "AuthStatus",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mirror version.",
+          "example": "4.1.5",
+          "member": "string",
+          "name": "InstanceVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Repository address.",
+          "example": "loudcr.com/redau/apereo-cas",
+          "member": "string",
+          "name": "RepositoryUrl",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Repository name.",
+          "example": "apereo-cas",
+          "member": "string",
+          "name": "RepositoryName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Core or Not",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsCore",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability risk.",
+          "example": "0",
+          "member": "int64",
+          "name": "VulRisk",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Check task.",
+          "example": "6",
+          "member": "int64",
+          "name": "CheckCount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health Checkup Time",
+          "example": "2025-06-03 20:04:30",
+          "member": "string",
+          "name": "CheckTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New Asset or Not. 1: New",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsNewAsset",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RiskCenterStatusKey": {
       "document": "Risk data",
@@ -8630,9 +10394,10 @@
         {
           "disabled": false,
           "document": "Tag name.",
-          "example": "无",
+          "example": "name1",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8640,9 +10405,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "无",
+          "example": "value1",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9850,7 +11616,7 @@
         },
         {
           "disabled": false,
-          "document": " \n`1`: =; `2`: >; `3`: <; `4`: ≥; `5`: ≤; `6`: ≠;\n`7`: Exact match; `9`: Fuzzy match; `13`: Non-fuzzy match; `14`: AND\n",
+          "document": "Central platform definition:.\n1 equal 2 larger than 3 less than 4 greater than or equal to 5 less than or equal to 6 not equal to 9 fuzzy matching 13 non-fuzzy matching 14 bitwise and.\nExact match fills 7. fuzzy matching fills 9. \n",
           "example": "9",
           "member": "int64",
           "name": "OperatorType",
