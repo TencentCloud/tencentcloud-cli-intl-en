@@ -59,17 +59,17 @@
     "CreateAigcImageTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost:mps.tencentcloudapi.com\nContent-Type:application/json\nX-TC-Action: CreateAigcImageTask\n<Common Request Parameters>",
+        "input": "POST / HTTP/1.1\nHost:mps.tencentcloudapi.com\nContent-Type:application/json\nX-TC-Action: CreateAigcImageTask\n<Common request parameters>\n\n{\n    \"Prompt\": \"draw a cat\",\n    \"Operator\": \"admin\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1047d0dc-6dc8-4898-a7f3-03726a822b0e\",\n        \"TaskId\": \"4-AigcImage-c3b145ec76****94ac55b9e63be17d\"\n    }\n}",
-        "title": "Example"
+        "title": "Request Example"
       }
     ],
     "CreateAigcVideoTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcVideoTask\n<Common Request Parameters>\n\n{\n    \"ModelName\": \"GV\",\n    \"Prompt\": \"move the picture\",\n    \"NegativePrompt\": \"Top lighting,bright colors\",\n    \"EnhancePrompt\": false,\n    \"ImageUrl\": \"https://1500039689.vod-**.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/**oxE6jcA.png\",\n    \"LastImageUrl\": \"https://aigc-**-image-1303333058.cos.ap-guangzhou.myqcloud.com/xxx_8655.png\",\n    \"Duration\": 8,\n    \"ExtraParameters\": {\n        \"Resolution\": \"720P\",\n        \"AspectRatio\": \"16:9\"\n    },\n    \"StoreCosParam\": {\n        \"CosBucketName\": \"aigc-***-video-1**58\",\n        \"CosBucketRegion\": \"ap-guangzhou\",\n        \"CosBucketPath\": \"my_cos_file\"\n    },\n    \"Operator\": \"admin\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcVideoTask\n<Common request parameters>\n\n{\n    \"ModelName\": \"GV\",\n    \"Prompt\": \"move the picture\",\n    \"NegativePrompt\": \"Top lighting,bright colors\",\n    \"EnhancePrompt\": false,\n    \"ImageUrl\": \"https://1500039689.vod-**.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/**oxE6jcA.png\",\n    \"LastImageUrl\": \"https://aigc-**-image-1303333058.cos.ap-guangzhou.myqcloud.com/xxx_8655.png\",\n    \"Duration\": 8,\n    \"ExtraParameters\": {\n        \"Resolution\": \"720P\",\n        \"AspectRatio\": \"16:9\"\n    },\n    \"StoreCosParam\": {\n        \"CosBucketName\": \"aigc-***-video-1**58\",\n        \"CosBucketRegion\": \"ap-guangzhou\",\n        \"CosBucketPath\": \"my_cos_file\"\n    },\n    \"Operator\": \"admin\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"2147**3792\",\n        \"RequestId\": \"643fb583-0032-44ac-bfa8-bef25e310998\"\n    }\n}",
-        "title": "Example"
+        "title": "Request Example"
       }
     ],
     "CreateAnimatedGraphicsTemplate": [
@@ -459,17 +459,17 @@
     "DescribeAigcImageTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost:mps.tencentcloudapi.com\nContent-Type:application/json\nX-TC-Action: DescribeAigcImageTask\n<Common Request Parameters>\n\n{\n    \"TaskId\": \"4-AigcImage-c3b145ec76****94ac55b9e63be17d\"\n}",
+        "input": "POST / HTTP/1.1\nHost:mps.tencentcloudapi.com\nContent-Type:application/json\nX-TC-Action: DescribeAigcImageTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"4-AigcImage-c3b145ec76****94ac55b9e63be17d\"\n}",
         "output": "{\n    \"Response\": {\n        \"Message\": \"ok\",\n        \"RequestId\": \"1047d0dc-6dc8-4898-a7f3-03726a822b0e\",\n        \"Status\": \"DONE\",\n        \"ImageUrls\": [\n            \"https://test-aigc-video-*****.cos.ap-guangzhou.myqcloud.com/4_2147483784_711361***94779.png\"\n        ]\n    }\n}",
-        "title": "Example"
+        "title": "Request Example"
       }
     ],
     "DescribeAigcVideoTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcVideoTask\n<Common Request Parameters>\n\n{\n    \"TaskId\": \"4-AigcVideo-c3b145ec764****55b699e63be17d\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcVideoTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"4-AigcVideo-c3b145ec764****55b699e63be17d\"\n}",
         "output": "{\n    \"Response\": {\n        \"Message\": \"ok\",\n        \"Resolution\": \"1920x1088\",\n        \"Status\": \"DONE\",\n        \"VideoUrls\": [\n            \"https://live-**-video-*****.cos.ap-guangzhou.myqcloud.com/251006278_***_711361***06890375.mp4\"\n        ],\n        \"RequestId\": \"0b9ff3d7-959e-4b9d-8553-7c125305c868\"\n    }\n}",
-        "title": "Example"
+        "title": "Request Example"
       }
     ],
     "DescribeAnimatedGraphicsTemplates": [
@@ -1068,6 +1068,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProcessMedia\n<Common request parameters>\n\n{\n    \"MediaProcessTask\": {\n        \"TranscodeTaskSet\": [\n            {\n                \"Definition\": \"30\"\n            },\n            {\n                \"Definition\": \"20\"\n            },\n            {\n                \"Definition\": \"40\"\n            }\n        ]\n    },\n    \"InputInfo\": {\n        \"Type\": \"COS\",\n        \"CosInputInfo\": {\n            \"Region\": \"ap-chongqing\",\n            \"Object\": \"/movie/201907/WildAnimal.mov\",\n            \"Bucket\": \"TopRankVideo-125xxx88\"\n        }\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
         "title": "Initiating a Transcoding Task"
+      }
+    ],
+    "RecognizeAudio": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeAudio\n<Common request parameters>\n\n{\n    \"Source\": \"zh\",\n    \"AudioFormat\": \"pcm\",\n    \"AudioData\": \"KwDn/zIA5v///wUA0v8D\"\n}",
+        "output": "{\n    \"RequestId\": \"f27f3866-3882-4c18-a4ac-3b3d83fd2f5a\",\n    \"Response\": {\n        \"AudioLength\": 4.2,\n        \"RequestId\": \"f27f3866-3882-4c18-a4ac-3b3d83fd2f5a\",\n        \"Sentence\": [\n            {\n                \"End\": 3.59,\n                \"Start\": 0.03,\n                \"Text\": \"The third and fourth meetings were held at the Great Hall of the People.\",\n                \"WordsInfo\": [\n                    {\n                        \"End\": 0.27,\n                        \"Start\": 0.03,\n                        \"Word\": \"The\"\n                    },\n                    {\n                        \"End\": 0.43,\n                        \"Start\": 0.27,\n                        \"Word\": \"third\"\n                    },\n                    {\n                        \"End\": 0.51,\n                        \"Start\": 0.43,\n                        \"Word\": \"and\"\n                    },\n                    {\n                        \"End\": 0.71,\n                        \"Start\": 0.51,\n                        \"Word\": \"fourth\"\n                    },\n                    {\n                        \"End\": 0.91,\n                        \"Start\": 0.71,\n                        \"Word\": \"meetings\"\n                    },\n                    {\n                        \"End\": 1.07,\n                        \"Start\": 0.91,\n                        \"Word\": \"were\"\n                    },\n                    {\n                        \"End\": 1.55,\n                        \"Start\": 1.39,\n                        \"Word\": \"held\"\n                    },\n                    {\n                        \"End\": 1.71,\n                        \"Start\": 1.55,\n                        \"Word\": \"at\"\n                    },\n                    {\n                        \"End\": 1.95,\n                        \"Start\": 1.75,\n                        \"Word\": \"the\"\n                    },\n                    {\n                        \"End\": 2.15,\n                        \"Start\": 1.95,\n                        \"Word\": \"Great\"\n                    },\n                    {\n                        \"End\": 2.39,\n                        \"Start\": 2.15,\n                        \"Word\": \"Hall\"\n                    },\n                    {\n                        \"End\": 2.75,\n                        \"Start\": 2.47,\n                        \"Word\": \"of\"\n                    },\n                    {\n                        \"End\": 2.91,\n                        \"Start\": 2.75,\n                        \"Word\": \"the\"\n                    },\n                    {\n                        \"End\": 3.11,\n                        \"Start\": 2.91,\n                        \"Word\": \"People.\"\n                    }\n                ]\n            }\n        ],\n        \"Text\": \"The third and fourth meetings were held at the Great Hall of the People.\"\n    }\n}",
+        "title": "RecognizeAudio"
       }
     ],
     "ResetWorkflow": [

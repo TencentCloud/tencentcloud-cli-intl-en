@@ -52,10 +52,10 @@
     ],
     "CheckCnameStatus": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCnameStatus\n<Common request parameters>\n\n{\n    \"RecordNames\": [\n        \"example.qq.com\"\n    ],\n    \"ZoneId\": \"zone-20hyebgyfsko\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CnameStatus\": [\n            {\n                \"RecordName\": \"test.qq.com\",\n                \"Cname\": \"test.qq.com.acc.tyxcdn.com\",\n                \"Status\": \"active\"\n            }\n        ],\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
-        "title": "Querying the CNAME status of a domain name"
+        "document": "Perform CNAME configuration status verification for the domain name test.qq.com. The result is active (CNAME configuration is completed). EdgeOne assigns the CNAME domain test.qq.com.eo.dnse0.com to the domain name.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCnameStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-20hyebgyfsko\",\n    \"RecordNames\": [\n        \"example.qq.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CnameStatus\": [\n            {\n                \"RecordName\": \"test.qq.com\",\n                \"Cname\": \"test.qq.com.eo.dnse0.com\",\n                \"Status\": \"active\"\n            }\n        ],\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
+        "title": "Validate CNAME Configuration Status"
       }
     ],
     "CheckFreeCertificateVerification": [

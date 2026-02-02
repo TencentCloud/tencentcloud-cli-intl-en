@@ -29,16 +29,16 @@
       "status": "online"
     },
     "CreateAigcImageTask": {
-      "document": "This API is used to create an AIGC image generation task.",
+      "document": "This API is used to create AIGC image generation tasks.",
       "input": "CreateAigcImageTaskRequest",
-      "name": "Create AIGC Image Task",
+      "name": "Creates an AIGC image generation task",
       "output": "CreateAigcImageTaskResponse",
       "status": "online"
     },
     "CreateAigcVideoTask": {
-      "document": "This API is used to create an AIGC video generation task.",
+      "document": "This API is used to create AI video generation tasks.",
       "input": "CreateAigcVideoTaskRequest",
-      "name": "Create AIGC Video Task",
+      "name": "Creates an AIGC video generation task",
       "output": "CreateAigcVideoTaskResponse",
       "status": "online"
     },
@@ -337,16 +337,16 @@
       "status": "online"
     },
     "DescribeAigcImageTask": {
-      "document": "This API is used to query the details of the AIGC image task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "document": "This API is used to query the progress of AIGC image generation tasks and obtain the generation results.",
       "input": "DescribeAigcImageTaskRequest",
-      "name": "Describe AIGC Image Task",
+      "name": "Queries an AIGC image generation task",
       "output": "DescribeAigcImageTaskResponse",
       "status": "online"
     },
     "DescribeAigcVideoTask": {
-      "document": "This API is used to query the details of the AIGC video task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
+      "document": "This API is used to query the progress of AIGC video generation tasks and obtain the generation results.",
       "input": "DescribeAigcVideoTaskRequest",
-      "name": "Describe AIGC Video Task",
+      "name": "Queries an AIGC video generation task",
       "output": "DescribeAigcVideoTaskResponse",
       "status": "online"
     },
@@ -374,7 +374,7 @@
     "DescribeBatchTaskDetail": {
       "document": "This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).",
       "input": "DescribeBatchTaskDetailRequest",
-      "name": "Queries the details of a batch task",
+      "name": "Queries the details of a multi-input task",
       "output": "DescribeBatchTaskDetailResponse",
       "status": "online"
     },
@@ -761,6 +761,13 @@
       "input": "ProcessMediaRequest",
       "name": "Starts a media processing task",
       "output": "ProcessMediaResponse",
+      "status": "online"
+    },
+    "RecognizeAudio": {
+      "document": "This API is used to return the speech recognition results synchronously.",
+      "input": "RecognizeAudioRequest",
+      "name": "Recognizes audio",
+      "output": "RecognizeAudioResponse",
       "status": "online"
     },
     "ResetWorkflow": {
@@ -1825,11 +1832,11 @@
         },
         {
           "disabled": false,
-          "document": "Type. Valid values:\n<li>standard: standard super-resolution.</li>\n<li>super: advanced super-resolution.</li>\nDefault value: standard.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Type. Valid values:<li>standard: standard super-resolution.</li><li>super: super advanced super-resolution.</li><li>ultra: ultra advanced super-resolution.</li>Default value: standard.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "standard",
           "member": "string",
           "name": "Type",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1840,40 +1847,62 @@
           "example": "percent",
           "member": "string",
           "name": "Mode",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Magnification factor of super-resolution, which can be a decimal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Scale factor of super-resolution, which can be a decimal.Note: This is used when Mode is percent.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "2.0",
           "member": "float",
           "name": "Percent",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Width of the target image. The value cannot exceed 4096.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Width of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1280",
           "member": "int64",
           "name": "Width",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Height of the target image. The value cannot exceed 4096.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Height of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "720",
           "member": "int64",
           "name": "Height",
-          "output_required": true,
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Long side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1280",
+          "member": "int64",
+          "name": "LongSide",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Short side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1280",
+          "member": "int64",
+          "name": "ShortSide",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -1886,7 +1915,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<li>Classification: smart classification.</li>\n<li>Cover: smart cover.</li>\n<li>Tag: smart tag.</li>\n<li>FrameTag: smart frame tag.</li>\n<li>Highlight: smart highlights.</li>\n<li>DeLogo: smart erasing.</li>\n<li>Description: LLM summary.</li>\n<li>Dubbing: smart dubbing.</li>\n<li>VideoRemake: video deduplication.</li>\n<li>VideoComprehension: video (audio) recognition.</li>",
+          "document": "Task type. Valid values:<li>Classification: intelligent classification.</li><li>Cover: intelligent cover.</li><li>Tag: intelligent tagging.</li><li>FrameTag: intelligent frame-level tagging.</li><li>Highlight: intelligent highlights.</li><li>DeLogo: intelligent removal.</li><li>Description: LLM summarization.</li><li>Dubbing: intelligent dubbing.</li><li>VideoRemake: video recreation.</li><li>VideoComprehension: video (audio) recognition.</li>\n<li>Cutout: video matting.</li><li>Reel: intelligent video editing.</li>",
           "example": "Classification",
           "member": "string",
           "name": "Type",
@@ -2020,6 +2049,26 @@
           "example": "无",
           "member": "AiAnalysisTaskVideoComprehensionResult",
           "name": "VideoComprehensionTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query result of a video matting task for video analysis, which is valid if the task type is Cutout.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskCutoutResult",
+          "name": "CutoutTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query result of a video editing task for video analysis, which is valid if the task type is Reel.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskReelResult",
+          "name": "ReelTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -2229,6 +2278,135 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskCutoutInput": {
+      "document": "Input type of the intelligent video matting task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the intelligent video matting template.",
+          "example": "34",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AiAnalysisTaskCutoutOutput": {
+      "document": "Video matting result information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File path for the intelligent video matting.",
+          "example": "/output/htv-process-result.mp4",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage location for the intelligent video matting.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskCutoutResult": {
+      "document": "Data structure of the video matting result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. Valid values are `PROCESSING`, `SUCCESS`, and `FAIL`.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of the video matting task.",
+          "example": "无",
+          "member": "AiAnalysisTaskCutoutInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of the video matting task.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskCutoutOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task start time, in ISO date and time format.",
+          "example": "2025-03-25T06:16:39Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task completion time, in ISO date and time format.",
+          "example": "2025-03-25T06:17:10Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2505,6 +2683,16 @@
           "member": "string",
           "name": "SpeakerPath",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voice type ID.",
+          "example": "v1_cjYJK5SMrD583Pa28RJIGirQltxJz2M7opo7kX9OaPi3zqUitPkBTfSWSZw=",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3006,6 +3194,154 @@
         }
       ],
       "usage": "both"
+    },
+    "AiAnalysisTaskReelInput": {
+      "document": "Input type of the intelligent video editing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the intelligent video editing template.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskReelOutput": {
+      "document": "Intelligent video editing result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Path of the edited video.",
+          "example": "/output/dub-result-0.mp4",
+          "member": "string",
+          "name": "VideoPath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Script file path.\n",
+          "example": "/output/dub-result-0.json",
+          "member": "string",
+          "name": "ScriptPath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage location of the edited video.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiAnalysisTaskReelResult": {
+      "document": "Type of the intelligent video editing result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. Valid values are PROCESSING, SUCCESS, and FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0: Task successful. Other values: Task failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of the intelligent video editing task.",
+          "example": "无",
+          "member": "AiAnalysisTaskReelInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of the intelligent video editing task.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiAnalysisTaskReelOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of MPS error codes.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "InvalidInput",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task start time, in ISO date and time format.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-25T02:55:55Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task completion time, in ISO date and time format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-25T02:56:19Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "AiAnalysisTaskSegmentInput": {
       "document": "Splitting task input type.",
@@ -6584,11 +6920,11 @@
       "usage": "in"
     },
     "AigcImageExtraParam": {
-      "document": "",
+      "document": "Extended parameters used for AIGC image generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.",
           "example": "16:9",
           "member": "string",
           "name": "AspectRatio",
@@ -6599,7 +6935,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.",
           "example": "1080P",
           "member": "string",
           "name": "Resolution",
@@ -6612,11 +6948,11 @@
       "usage": "both"
     },
     "AigcImageInfo": {
-      "document": "",
+      "document": "Image information for AIGC generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.",
           "example": "https://****.vod-qcloud.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/Clc***E6jcA.png",
           "member": "string",
           "name": "ImageUrl",
@@ -6627,7 +6963,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference type.\nNote:1. When the model uses Vidu's q2 multi-reference image generation, this can also be used to specify the subject ID.2. If the GV model is used, this serves as the reference method. Valid values are asset and style.",
           "example": "asset",
           "member": "string",
           "name": "ReferenceType",
@@ -6640,11 +6976,11 @@
       "usage": "both"
     },
     "AigcStoreCosParam": {
-      "document": "",
+      "document": "Information required for uploading AIGC result files to COS. The LVB_QCSRole role needs to be created and authorized.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Name of the COS bucket to store to. This value is required if you need to store the results in COS. Example value: bucket.",
           "example": "aigc-test-video-1303333058",
           "member": "string",
           "name": "CosBucketName",
@@ -6655,7 +6991,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region of the COS bucket to store to. This is required if you need to upload the results to COS. Example value: ap-guangzhou.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "CosBucketRegion",
@@ -6666,7 +7002,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Path of the COS bucket to store to.Optional.Example value: my_file.",
           "example": "my_cos_file",
           "member": "string",
           "name": "CosBucketPath",
@@ -6679,11 +7015,11 @@
       "usage": "both"
     },
     "AigcVideoExtraParam": {
-      "document": "",
+      "document": "Extended parameters used for AIGC video generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The resolution of the generated video, which is related to the selected model and set video duration.Supported resolution options for different models:1. Kling: 720P (default) and 1080P.2. Hailuo: 768P (default) and 1080P.3. Vidu: 720P (default) and 1080P.4. GV: 720P (default) and 1080P.5. OS: 720P. For images, only 1280x720 and 720x1280 are supported. Resolution cannot be specified.Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.",
           "example": "720P",
           "member": "string",
           "name": "Resolution",
@@ -6694,7 +7030,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The aspect ratio of the generated video.Support for this parameter by different models:1. Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.2. Hailuo does not support this parameter.3. Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.4. GV supports 16:9 (default) and 9:16.5. OS only supports this parameter for text-to-video, with aspect ratios of 16:9 (default) and 9:16.Note: For more information about the supported aspect ratios of specific models, see the model website.",
           "example": "16:9",
           "member": "string",
           "name": "AspectRatio",
@@ -6702,16 +7038,49 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to add a logo watermark.1. Hailuo supports this parameter.2. Kling supports this parameter.\n3. Vidu supports this parameter.",
+          "example": "0",
+          "member": "int64",
+          "name": "LogoAdd",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to generate audio for the video. Valid values: true or false.Models that support this parameter:1. GV. Default value: true.2. OS. Default value: true.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableAudio",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to use the off-peak scheduling mode. Only Vidu supports this parameter.Tasks submitted in off-peak mode will be processed within 48 hours. Uncompleted tasks will be canceled.",
+          "example": "false",
+          "member": "bool",
+          "name": "OffPeak",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
     },
     "AigcVideoReferenceImageInfo": {
-      "document": "",
+      "document": "Reference image information for AIGC video generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Image URL for video generation. The URL must be accessible from the public network and must be accessible to crawlers.",
           "example": "http://myimage.com/mps/image.png",
           "member": "string",
           "name": "ImageUrl",
@@ -6722,7 +7091,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference type.\nNote:1. If the GV model is used, this serves as the reference method. Valid values are asset and style.",
           "example": "asset",
           "member": "string",
           "name": "ReferenceType",
@@ -7364,7 +7733,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7425,7 +7794,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7874,7 +8243,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -7884,7 +8253,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -9339,7 +9708,7 @@
         },
         {
           "disabled": false,
-          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.\n \nNote: The segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.",
+          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.",
           "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
@@ -9376,7 +9745,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Model Name. Currently supported models include: Hunyuan,GEM,Qwen.",
+          "document": "Model name.\nSupported models:Hunyuan,\nGEM,\nQwen.",
           "example": "GEM",
           "member": "string",
           "name": "ModelName",
@@ -9385,7 +9754,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the version number of a particular model. By default, the system utilizes the currently supported stable version of the model.  \n1. GEM, available options [2.5, 3.0].\n",
+          "document": "Specific version number of the model. By default, the system uses the supported stable version of the model.1. GEM: [2.5 and 3.0].",
           "example": "2.0",
           "member": "string",
           "name": "ModelVersion",
@@ -9394,7 +9763,7 @@
         },
         {
           "disabled": false,
-          "document": "\nGenerate a description of the image. (Note: The maximum supported length is 1000 characters.) This parameter is mandatory when no reference image is provided.\n",
+          "document": "Description of the generated image. (Note: A maximum of 1000 characters is supported.) This parameter is required when no reference image is specified.",
           "example": "draw a cat",
           "member": "string",
           "name": "Prompt",
@@ -9403,7 +9772,7 @@
         },
         {
           "disabled": false,
-          "document": "Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  \nOverhead lighting, vibrant colors  \nHuman figures, animals  \nMultiple vehicles, wind",
+          "document": "Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.",
           "example": "adult face",
           "member": "string",
           "name": "NegativePrompt",
@@ -9412,7 +9781,7 @@
         },
         {
           "disabled": false,
-          "document": "The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.\n",
+          "document": "The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.",
           "example": "false",
           "member": "bool",
           "name": "EnhancePrompt",
@@ -9421,7 +9790,7 @@
         },
         {
           "disabled": false,
-          "document": "\nSupports single image input by default. Models supporting multi-image input include GEM (up to 3 images).  \nRecommended image size should be under 7MB, with support for JPEG, PNG, and WebP formats.\n",
+          "document": "Reference resource images. By default, one image can be specified.Model that supports multiple images:1. GEM supports up to 3 resource images.Note:1. The recommended image size is less than 7 MB. Different models have different limits.2. Supported image format: JPEG, PNG, and WebP.",
           "example": "无",
           "member": "AigcImageInfo",
           "name": "ImageInfos",
@@ -9430,7 +9799,7 @@
         },
         {
           "disabled": false,
-          "document": "Used to pass additional parameters.",
+          "document": "Additional parameters required for the model.",
           "example": "无",
           "member": "AigcImageExtraParam",
           "name": "ExtraParameters",
@@ -9439,7 +9808,7 @@
         },
         {
           "disabled": false,
-          "document": "The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.",
+          "document": "COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.",
           "example": "无",
           "member": "AigcStoreCosParam",
           "name": "StoreCosParam",
@@ -9448,7 +9817,7 @@
         },
         {
           "disabled": false,
-          "document": "Interface operator name.",
+          "document": "API operator name.",
           "example": "admin",
           "member": "string",
           "name": "Operator",
@@ -9463,7 +9832,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Returns the task ID.",
+          "document": "Returned task ID.",
           "example": "4-AigcImage-c3b145ec76****94ac55b9e63be17d",
           "member": "string",
           "name": "TaskId",
@@ -9485,7 +9854,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Model Name. Currently supported models include: Hunyuan, Hailuo, Kling, Vidu, OS, GV",
+          "document": "Model name.\nSupported models:Hunyuan,\nHailuo,\nKling,\nVidu,\nOS,\nGV.",
           "example": "Hailuo",
           "member": "string",
           "name": "ModelName",
@@ -9494,7 +9863,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the version number of a particular model. By default, the system uses the currently supported stable version of the model.  \n1. Hailuo: Available options [02, 2.3].  \n2. Kling: Available options [2.0, 2.1, 2.5, O1, 2.6].  \n3. Vidu: Available options [q2, q2-pro, q2-turbo].  \n4. GV: Available option [3.1].  \n5. OS: Available option [2.0].",
+          "document": "Specific version number of the model. By default, the system uses the supported stable version of the model.1. Hailuo: [02 and 2.3].2. Kling: [2.0, 2.1, 2.5, O1, and 2.6].3. Vidu: [q2, q2-pro, and q2-turbo].4. GV: [3.1].5. OS: [2.0].",
           "example": "2.3",
           "member": "string",
           "name": "ModelVersion",
@@ -9503,7 +9872,16 @@
         },
         {
           "disabled": false,
-          "document": "Generate video description. (Note: Maximum 2000 characters supported). This parameter is mandatory when no images are provided.",
+          "document": "Scenario for the generated video.Note: Not all models support scenarios.1. Kling supports motion control (motion_control).2. Mingmou supports landscape-to-portrait conversion (land2port).3. Vidu supports special effect templates (template_effect).",
+          "example": "motion_control",
+          "member": "string",
+          "name": "SceneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.",
           "example": "move the picture",
           "member": "string",
           "name": "Prompt",
@@ -9512,7 +9890,7 @@
         },
         {
           "disabled": false,
-          "document": "Used to specify the content you wish to prevent the model from generating.Note: Supported by select models.Examples:  \nOverhead lighting, vibrant colors  \nHuman figures, animals  \nMultiple vehicles, wind",
+          "document": "Content you want to prevent the model from generating.Note: Not all models support this.For example:Top lighting and bright color.People and animals.Multiple vehicles and wind.",
           "example": "Top lighting, bright colors",
           "member": "string",
           "name": "NegativePrompt",
@@ -9521,7 +9899,7 @@
         },
         {
           "disabled": false,
-          "document": "The default value is False, where the model strictly adheres to instructions. For optimal results with more refined prompts, setting this parameter to True will automatically optimize the input prompt to enhance generation quality.",
+          "document": "The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.",
           "example": "false",
           "member": "bool",
           "name": "EnhancePrompt",
@@ -9530,7 +9908,7 @@
         },
         {
           "disabled": false,
-          "document": "The URL of the image used to guide video generation, which must be publicly accessible via the internet.  \nNotes:  \n1. The recommended image size should not exceed 10MB, though size limitations may vary across different models.  \n2. Supported image formats: JPEG, PNG.  \n3. When using the OS model, the input image dimensions must be either 1280x720 or 720x1280.",
+          "document": "Image URL for video generation. The URL must be accessible from the public network.Note:1. The recommended image size is no more than 10 MB. Different models have different size limits.2. Supported image formats: JPEG and PNG.3. If the OS model is used, the input image dimension should be 1280x720 or 720x1280.",
           "example": "https://1500039689.vod-xxx.com/6cd2c44bvodcq1500039689/179cafb25145403699605999621/xxdjoxE6jcA.png",
           "member": "string",
           "name": "ImageUrl",
@@ -9539,7 +9917,7 @@
         },
         {
           "disabled": false,
-          "document": "The model will utilize the image provided via this parameter as the ending frame for video generation.  \nSupported models for this parameter:  \n1. GV: When an ending frame image is provided, the ImageUrl parameter must also be specified as the starting frame.  \n2. Kling: Under Resolution: 1080P, version 2.1 supports both start&end frames.  \n3. Vidu, q2-pro, q2-turbo: Support start&end frames. \nNotes:  \n1. It is recommended that the image size does not exceed 10MB, though specific model limitations may vary.  \n2. Supported image formats: JPEG, PNG.",
+          "document": "The model will generate a video using the image of this parameter as the ending frame.Models that support this parameter:1. GV. If the ending frame image is specified, ImageUrl is required as the starting frame.2. Kling. Version 2.1 supports starting and ending frames with a resolution of 1080P.3. Vidu. q2-pro and q2-turbo support starting and ending frames.Note:1. The recommended image size is no more than 10 MB. Different models have different limits.2. Supported image formats: JPEG and PNG.",
           "example": "https://aigc-xxx-image-1303333058.cos.ap-guangzhou.myqcloud.com/xxx_8655.png",
           "member": "string",
           "name": "LastImageUrl",
@@ -9548,7 +9926,7 @@
         },
         {
           "disabled": false,
-          "document": "A list comprising up to three material resource images, utilized to depict the reference images the model will employ for video generation.  \nModels supporting multi-image input:  \n1. GV: When utilizing multi-image input, neither ImageUrl nor LastImageUrl should be used.  \n2. Vidu: Supports video generation with multiple reference images. For model q2, 1-7 images can be provided, with the subject ID specified via ReferenceType within ImageInfos.\nNotes:  \n1. Each image must not exceed 10MB in size.  \n2. Supported image formats: JPEG, PNG.",
+          "document": "List of up to 3 asset images, used to describe the images the model should use for video generation.Model that supports multiple images:1. GV. If multiple images are specified, ImageUrl and LastImageUrl are unavailable.2. Vidu supports video generation with multiple reference images. The q2 model accepts 1 to 7 images. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.Note:1. The image size cannot exceed 10 MB.2. Supported image formats: JPEG and PNG.",
           "example": "无",
           "member": "AigcVideoReferenceImageInfo",
           "name": "ImageInfos",
@@ -9557,7 +9935,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration of generated videos.  \nNotes:  \n1. Kling supports 5 and 10 seconds. Default: 5 seconds.  \n2. Hailuo's standard mode supports 6 and 10 seconds, while other modes only support 6 seconds. Default: 6 seconds.  \n3. Vidu supports 1 to 10 seconds.  \n4. GV supports 8 seconds. Default: 8 seconds.  \n5. OS supports 4, 8, and 12 seconds. Default: 8 seconds.",
+          "document": "Duration of the generated video.Note:1. Kling supports 5 and 10 seconds. Default value: 5 seconds.2. The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.3. Vidu supports 1 to 10 seconds.4. GV supports 8 seconds. Default value: 8 seconds.5. OS supports 4, 8, and 12 seconds. Default value: 8 seconds.",
           "example": "8",
           "member": "int64",
           "name": "Duration",
@@ -9566,7 +9944,7 @@
         },
         {
           "disabled": false,
-          "document": "Used to pass additional parameters.",
+          "document": "Additional parameters required.",
           "example": "无",
           "member": "AigcVideoExtraParam",
           "name": "ExtraParameters",
@@ -9575,7 +9953,7 @@
         },
         {
           "disabled": false,
-          "document": "The output files will be stored in the specified COS bucket. Note: COS service must be activated, and the MPS_QcsRole needs to be created and properly authorized.",
+          "document": "COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.",
           "example": "无",
           "member": "AigcStoreCosParam",
           "name": "StoreCosParam",
@@ -9584,7 +9962,7 @@
         },
         {
           "disabled": false,
-          "document": "\nUsed to pass specific scenario parameters required by the model, serialized into a JSON format string. Example: {\"camera_control\":{\"type\":\"simple\"}}",
+          "document": "Special scenario parameters required by the model, formatted as a JSON serialized string.Example:{\\\"camera_control\\\":{\\\"type\\\":\\\"simple\\\"}}",
           "example": "{\\\"test\\\":1}",
           "member": "string",
           "name": "AdditionalParameters",
@@ -9593,7 +9971,7 @@
         },
         {
           "disabled": false,
-          "document": "Interface operator name.",
+          "document": "API operator name.",
           "example": "admin",
           "member": "string",
           "name": "Operator",
@@ -9608,7 +9986,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Upon successful task creation, the returned task ID can be used to invoke the query interface for polling task progress and retrieving generated results.",
+          "document": "ID of the successfully created task.\nThe task progress and generation results can be obtained by calling the query API.",
           "example": "2147483792",
           "member": "string",
           "name": "TaskId",
@@ -10660,7 +11038,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmål Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n",
+          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmal Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -10714,7 +11092,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`:Bemba.\n`bew`:Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`:Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat language.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`:Kiga.\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burmese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
+          "document": "Target language for subtitle translation.\nThis parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.\n`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -10729,6 +11107,15 @@
           "name": "ProcessType",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Area configurations for the subtitle OCR extraction box.",
+          "example": "无",
+          "member": "SelectingSubtitleAreasConfig",
+          "name": "SelectingSubtitleAreasConfig",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -12067,7 +12454,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AIGC image task processing task ID.",
+          "document": "ID of the created AIGC image generation task.",
           "example": "4-AigcImage-c3b145ec76****94ac55b9e63be17d",
           "member": "string",
           "name": "TaskId",
@@ -12082,7 +12469,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Current task status:\nWAIT: Pending,\nRUN: In progress,\nFAIL: Task failed,\nDONE: Task completed successfully.\n",
+          "document": "Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.",
           "example": "DONE",
           "member": "string",
           "name": "Status",
@@ -12092,7 +12479,7 @@
         },
         {
           "disabled": false,
-          "document": "When the task status is DONE, the returned image URL list will be available for 12 hours. Please retrieve and utilize the images promptly.",
+          "document": "When the task status is DONE, the list of image URLs is returned. The images are stored for 12 hours. Please retrieve them as soon as possible.",
           "example": "[\"https://live-aigc-****.cos.ap-guangzhou.myqcloud.com/4_7113610711****.png\"]",
           "member": "string",
           "name": "ImageUrls",
@@ -12124,7 +12511,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AIGC video task processing task ID.",
+          "document": "Task ID returned when the AIGC video generation task is created.",
           "example": "4-AigcVideo-c3b145******4ac55b699e63be17d",
           "member": "string",
           "name": "TaskId",
@@ -12139,7 +12526,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Current task status:\nWAIT: Pending,\nRUN: In progress,\nFAIL: Task failed,\nDONE: Task completed successfully.",
+          "document": "Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.",
           "example": "DONE",
           "member": "string",
           "name": "Status",
@@ -12149,7 +12536,7 @@
         },
         {
           "disabled": false,
-          "document": "When the task status is DONE, the returned video URL list will be available for 12 hours. Please retrieve and utilize the video promptly.",
+          "document": "When the task status is DONE, the list of video URLs is returned. The videos are stored for 12 hours. Please retrieve them as soon as possible.",
           "example": "[\"https://live-xxx-video-*****.cos.ap-guangzhou.myqcloud.com/251006278_2147483790_711361074106890375.mp4\"]",
           "member": "string",
           "name": "VideoUrls",
@@ -12159,7 +12546,7 @@
         },
         {
           "disabled": false,
-          "document": "The resolution of the output video. Example: 1080*720.",
+          "document": "Output video resolution. Example: 1080*720.",
           "example": "1920x1088",
           "member": "string",
           "name": "Resolution",
@@ -13028,7 +13415,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -14400,7 +14787,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "Start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2019-07-02T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
@@ -14409,7 +14796,7 @@
         },
         {
           "disabled": false,
-          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2019-07-03T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
@@ -14418,7 +14805,7 @@
         },
         {
           "disabled": false,
-          "document": "Queries the MPS task type. The transcoding task is queried by default.\n<li>Transcode: transcoding.</li>\n<li>Enhance: enhancement.</li>\n<li>AIAnalysis: intelligent analysis.</li>\n<li>AIRecognition: intelligent recognition.</li>\n<li>AIReview: content moderation.</li>\n<li>Snapshot: screenshot.</li>\n<li>AnimatedGraphics: conversion to GIF.</li>\n<li>AiQualityControl: media quality inspection.</li>\n<li>Evaluation: video assessment.</li>\n<li>ImageProcess: image processing.</li>\n<li>AddBlindWatermark: add a basic copyright digital watermark.</li>\n<li>AddNagraWatermark: add a NAGRA digital watermark.</li>\n<li>ExtractBlindWatermark: extract a basic copyright digital watermark.</li>",
+          "document": "Type of MPS tasks to query. The transcoding tasks are queried by default.<li>Transcode: transcoding.</li><li>Enhance: enhancement.</li><li>AIAnalysis: intelligent analysis.</li><li>AIRecognition: intelligent identification.</li><li>AIReview: content moderation.</li><li>Snapshot: screenshot.</li><li>AnimatedGraphics: animated graphics.</li><li>AiQualityControl: quality inspection.</li><li>Evaluation: video evaluation.</li><li>ImageProcess: image processing.</li>\n<li>AddBlindWatermark: adding basic copyright digital watermarks.</li><li>AddNagraWatermark: adding NAGRA digital watermarks.</li><li>ExtractBlindWatermark: extracting basic copyright digital watermarks.</li><li>AIGC: AIGC</li>",
           "example": "[\"Transcode\"]",
           "member": "string",
           "name": "Types",
@@ -14427,7 +14814,7 @@
         },
         {
           "disabled": false,
-          "document": "MPS park. ap-guangzhou park is returned by default.\n<li>ap-guangzhou: Guangzhou.</li>\n<li>ap-hongkong: Hong Kong (China).</li>\n<li>ap-taipei: Taipei (China).</li>\n<li>ap-singapore: Singapore.</li>\n<li>ap-mumbai: India.</li>\n<li>ap-jakarta: Jakarta.</li>\n<li>ap-seoul: Seoul.</li>\n<li>ap-bangkok: Thailand.</li>\n<li>ap-tokyo: Japan.</li>\n<li>na-siliconvalley: Silicon Valley.</li>\n<li>na-ashburn: Virginia.</li>\n<li>na-toronto: Toronto.</li>\n<li>sa-saopaulo: São Paulo.</li>\n<li>eu-frankfurt: Frankfurt.</li>\n<li>eu-moscow: Russia.</li>\n<li>aws: AWS.</li>",
+          "document": "MPS park. ap-guangzhou park is returned by default.\n<li>ap-guangzhou: Guangzhou.</li>\n<li>ap-hongkong: Hong Kong (China).</li>\n<li>ap-taipei: Taipei (China).</li>\n<li>ap-singapore: Singapore.</li>\n<li>ap-mumbai: India.</li>\n<li>ap-jakarta: Jakarta.</li>\n<li>ap-seoul: Seoul.</li>\n<li>ap-bangkok: Thailand.</li>\n<li>ap-tokyo: Japan.</li>\n<li>na-siliconvalley: Silicon Valley.</li>\n<li>na-ashburn: Virginia.</li>\n<li>na-toronto: Toronto.</li>\n<li>sa-saopaulo: Sao Paulo.</li>\n<li>eu-frankfurt: Frankfurt.</li>\n<li>eu-moscow: Russia.</li>\n<li>aws: AWS.</li>",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "ProcessRegions",
@@ -16315,6 +16702,16 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Processing result of the image-to-text task.",
+          "example": "\"图片中有一个美丽的女士\"",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -16334,7 +16731,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -18443,7 +18840,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
+          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -21015,7 +21412,7 @@
         },
         {
           "disabled": false,
-          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: TS+Packed Audio</li>; <li>mp4-packed-audio: MP4+Packed Audio</li>. The default value is ts-segment.\nNote: The HLS segment format for the adaptive bitrate streaming is based on this field. The value of SegmentType can only be mp4-byterange in DASH format.",
+          "document": "Segment type. Valid values: <li>ts-segment: HLS+TS segment</li>; <li>ts-byterange: HLS+TS byte range</li>; <li>mp4-segment: HLS+MP4 segment</li>; <li>mp4-byterange: HLS/DASH+MP4 byte range</li>; <li>ts-packed-audio: HLS+TS+Packed Audio segment</li>; <li>mp4-packed-audio: HLS+MP4+Packed Audio segment</li>; <li>ts-ts-segment: HLS+TS+TS segment</li>; <li>ts-ts-byterange: HLS+TS+TS byte range</li>; <li>mp4-mp4-segment: HLS+MP4+MP4 segment</li>; <li>mp4-mp4-byterange: HLS/DASH+MP4+MP4 byte range</li>; <li>ts-packed-audio-byterange: HLS+TS+Packed Audio byte range</li>; <li>mp4-packed-audio-byterange: HLS+MP4+Packed Audio byte range</li>. Default value: ts-segment. Note: The segment format for adaptive bitrate streaming is determined by this field. For DASH format, SegmentType can only be mp4-byterange or mp4-mp4-byterange.",
           "example": "ts-segment",
           "member": "string",
           "name": "SegmentType",
@@ -22079,7 +22476,7 @@
         },
         {
           "disabled": false,
-          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmål Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n",
+          "document": "Source language of the video with smart subtitles.\nOCR recognition only supports the following languages:\n`zh_en`: Chinese and English.\n`multi`: others.\nASR recognition and pure subtitle translation currently support the following languages:\n`auto`: automatic recognition (it is only supported in pure subtitle translation).\n`zh`: Simplified Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`vi`: Vietnamese.\n`ms`: Malay.\n`id`: Indonesian.\n`fil`: Filipino.\n`th`: Thai.\n`pt`: Portuguese.\n`tr`: Turkish.\n`ar`: Arabic.\n`es`: Spanish.\n`hi`: Hindi.\n`fr`: French.\n`de`: German.\n`it`: Italian.\n`zh_dialect`: Chinese dialect.\n`zh_en`: Chinese and English.\n`yue`: Cantonese.\n`ru`: Russian.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`af-ZA`: Afrikaans (South Africa).\n`sq-AL`: Albanian (Albania).\n`am-ET`: Amharic (Ethiopia).\n`ar-DZ`: Arabic (Algeria).\n`ar-BH`: Arabic (Bahrain).\n`ar-EG`: Arabic (Egypt).\n`ar-IQ`: Arabic (Iraq).\n`ar-IL`: Arabic (Israel).\n`ar-JO`: Arabic (Jordan).\n`ar-KW`: Arabic (Kuwait).\n`ar-LB`: Arabic (Lebanon).\n`ar-MR`: Arabic (Mauritania).\n`ar-MA`: Arabic (Morocco).\n`ar-OM`: Arabic (Oman).\n`ar-QA`: Arabic (Qatar).\n`ar-SA`: Arabic (Saudi Arabia).\n`ar-PS`: Arabic (State of Palestine).\n`ar-SY`: Arabic (Syria).\n`ar-TN`: Arabic (Tunisia).\n`ar-AE`: Arabic (United Arab Emirates).\n`ar-YE`: Arabic (Yemen).\n`hy-AM`: Armenian (Armenia).\n`az-AZ`: Azerbaijani (Azerbaijan).\n`eu-ES`: Basque (Spain).\n`bn-BD`: Bengali (Bangladesh).\n`bn-IN`: Bengali (India).\n`bs-BA`: Bosnian (Bosnia and Herzegovina).\n`bg-BG`: Bulgarian (Bulgaria).\n`my-MM`: Burmese (Myanmar).\n`ca-ES`: Catalan (Spain).\n`hr-HR`: Croatian (Croatia).\n`cs-CZ`: Czech (Czech Republic).\n`da-DK`: Danish (Denmark).\n`nl-BE`: Dutch (Belgium).\n`nl-NL`: Dutch (Holland).\n`en-AU`: English (Australia).\n`en-CA`: English (Canada).\n`en-GH`: English (Ghana).\n`en-HK`: English (Hong Kong (China)).\n`en-IN`: English (India).\n`en-IE`: English (Ireland).\n`en-KE`: English (Kenya).\n`en-NZ`: English (New Zealand).\n`en-NG`: English (Nigeria).\n`en-PK`: English (Pakistan).\n`en-PH`: English (Philippines).\n`en-SG`: English (Singapore).\n`en-ZA`: English (South Africa).\n`en-TZ`: English (Tanzania).\n`en-GB`: English (UK).\n`en-US`: English (US).\n`et-EE`: Estonian (Estonia).\n`fil-PH`: Filipino (Philippines).\n`fi-FI`: Finnish (Finland).\n`fr-BE`: French (Belgium).\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fr-CH`: French (Switzerland).\n`gl-ES`: Galician (Spain).\n`ka-GE`: Georgian (Georgia).\n`el-GR`: Greek (Greece).\n`gu-IN`: Gujarati (India).\n`iw-IL`: Hebrew (Israel).\n`hi-IN`: Hindi (India).\n`hu-HU`: Hungarian (Hungary).\n`is-IS`: Icelandic (Iceland).\n`id-ID`: Indonesian (Indonesia).\n`it-IT`: Italian (Italy).\n`it-CH`: Italian (Switzerland).\n`ja-JP`: Japanese (Japan).\n`jv-ID`: Javanese (Indonesia).\n`kn-IN`: Kannada (India).\n`kk-KZ`: Kazakh (Kazakhstan).\n`km-KH`: Khmer (Cambodia).\n`rw-RW`: Kinyarwanda (Rwanda).\n`ko-KR`: Korean (South Korea).\n`lo-LA`: Lao (Laos).\n`lv-LV`: Latvian (Latvia).\n`lt-LT`: Lithuanian (Lithuania).\n`mk-MK`: Macedonian (North Macedonia).\n`ms-MY`: Malay (Malaysia).\n`ml-IN`: Malayalam (India).\n`mr-IN`: Marathi (India).\n`mn-MN`: Mongolian (Mongolia).\n`ne-NP`: Nepali (Nepal).\n`no-NO`: Bokmal Norwegian (Norway).\n`fa-IR`: Persian (Iran).\n`pl-PL`: Polish (Poland).\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`ro-RO`: Romanian (Romania).\n`ru-RU`: Russian (Russia).\n`sr-RS`: Serbian (Serbia).\n`si-LK`: Sinhalese (Sri Lanka).\n`sk-SK`: Slovak (Slovakia).\n`sl-SI`: Slovenian (Slovenia).\n`st-ZA`: Sesotho (South Africa).\n`es-AR`: Spanish (Argentina).\n`es-BO`: Spanish (Bolivia).\n`es-CL`: Spanish (Chile).\n`es-CO`: Spanish (Colombia).\n`es-CR`: Spanish (Costa Rica).\n`es-DO`: Spanish (Dominican Republic).\n`es-EC`: Spanish (Ecuador).\n`es-SV`: Spanish (El Salvador).\n`es-GT`: Spanish (Guatemala).\n`es-HN`: Spanish (Honduras).\n`es-MX`: Spanish (Mexico).\n`es-NI`: Spanish (Nicaragua).\n`es-PA`: Spanish (Panama).\n`es-PY`: Spanish (Paraguay).\n`es-PE`: Spanish (Peru).\n`es-PR`: Spanish (Puerto Rico).\n`es-ES`: Spanish (Spain).\n`es-US`: Spanish (US).\n`es-UY`: Spanish (Uruguay).\n`es-VE`: Spanish (Venezuela).\n`su-ID`: Sundanese (Indonesia).\n`sw-KE`: Swahili (Kenya).\n`sw-TZ`: Swahili (Tanzania).\n`sv-SE`: Swedish (Sweden).\n`ta-IN`: Tamil (India).\n`ta-MY`: Tamil (Malaysia).\n`ta-SG`: Tamil (Singapore).\n`ta-LK`: Tamil (Sri Lanka).\n`te-IN`: Telugu (India).\n`th-TH`: Thai (Thailand).\n`ts-ZA`: Tsonga (South Africa).\n`tr-TR`: Turkish (Turkey).\n`uk-UA`: Ukrainian (Ukraine).\n`ur-IN`: Urdu (India).\n`ur-PK`: Urdu (Pakistan).\n`uz-UZ`: Uzbek (Uzbekistan).\n`ve-ZA`: Venda (South Africa).\n`vi-VN`: Vietnamese (Vietnam).\n`xh-ZA`: Xhosa (South Africa).\n`zu-ZA`: Zulu (South Africa).\n\n",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -22115,7 +22512,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`: Bemba.\n`bew`: Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`: Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`: Kiga\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka.\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew.\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burnese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
+          "document": "Target language for subtitle translation.\nThis parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.\n`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -22130,6 +22527,15 @@
           "name": "ProcessType",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Area configurations for the subtitle OCR extraction box.",
+          "example": "无",
+          "member": "SelectingSubtitleAreasConfig",
+          "name": "SelectingSubtitleAreasConfig",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -25012,7 +25418,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON. List of translation languages:\n`ab`: Abkhaz language.\n`ace`: Acehnese.\n`ach`: Acholi.\n`af`: Afrikaans.\n`ak`: Twi (Akan).\n`am`: Amharic.\n`ar`: Arabic.\n`as`: Assamese.\n`ay`: Aymara.\n`az`: Azerbaijani.\n`ba`: Bashkir.\n`ban`: Balinese.\n`bbc`: Batak Toba.\n`bem`: Bemba.\n`bew`: Betawi.\n`bg`: Bulgarian.\n`bho`: Bhojpuri.\n`bik`: Bikol.\n`bm`: Bambara.\n`bn`: Bengali.\n`br`: Breton.\n`bs`: Bosnian.\n`btx`: Batak Karo.\n`bts`: Batak Simalungun.\n`bua`: Buryat.\n`ca`: Catalan.\n`ceb`: Cebuano.\n`cgg`: Kiga\n`chm`: Meadow Mari language.\n`ckb`: Kurdish (Sorani).\n`cnh`: Hakha Chin.\n`co`: Corsican.\n`crh`: Crimean Tatar.\n`crs`: Seychellois Creole.\n`cs`: Czech.\n`cv`: Chuvash.\n`cy`: Welsh.\n`da`: Danish.\n`de`: German.\n`din`: Dinka.\n`doi`: Dogri.\n`dov`: Dombe.\n`dv`: Divehi.\n`dz`: Dzongkha.\n`ee`: Ewe.\n`el`: Greek.\n`en`: English.\n`eo`: Esperanto.\n`es`: Spanish.\n`et`: Estonian.\n`eu`: Basque.\n`fa`: Persian.\n`ff`: Fula.\n`fi`: Finnish.\n`fil`: Filipino (Tagalog).\n`fj`: Fijian.\n`fr`: French.\n`fr-CA`: French (Canada).\n`fr-FR`: French (France).\n`fy`: Frisian.\n`ga`: Irish.\n`gaa`: Ga.\n`gd`: Scottish Gaelic.\n`gl`: Galician.\n`gn`: Guaraní.\n`gom`: Goan Konkani.\n`gu`: Gujarati.\n`gv`: Manx.\n`ha`: Hausa.\n`haw`: Hawaiian.\n`he`: Hebrew.\n`hi`: Hindi.\n`hil`: Hiligaynon.\n`hmn`: Hmong.\n`hr`: Croatian.\n`hrx`: Hunsrik.\n`ht`: Haitian Creole.\n`hu`: Hungarian.\n`hy`: Armenian.\n`id`: Indonesian.\n`ig`: Igbo.\n`ilo`: Iloko.\n`is`: Icelandic.\n`it`: Italian.\n`iw`: Hebrew.\n`ja`: Japanese.\n`jv`: Javanese.\n`jw`: Javanese.\n`ka`: Georgian.\n`kk`: Kazakh.\n`km`: Khmer.\n`kn`: Kannada.\n`ko`: Korean.\n`kri`: Krio.\n`ku`: Kurdish (Kurmanji).\n`ktu`: Kituba.\n`ky`: Kirghiz.\n`la`: Latin.\n`lb`: Luxembourgish.\n`lg`: Ganda (Luganda).\n`li`: Limburgish.\n`lij`: Ligurian.\n`lmo`: Lombard.\n`ln`: Lingala.\n`lo`: Lao.\n`lt`: Lithuanian.\n`ltg`: Latgalian.\n`luo`: Luo.\n`lus`: Mizo.\n`lv`: Latvian.\n`mai`: Maithili.\n`mak`: Makassar.\n`mg`: Malagasy.\n`mi`: Maori.\n`min`: Minangkabau.\n`mk`: Macedonian.\n`ml`: Malayalam.\n`mn`: Mongolian.\n`mr`: Marathi.\n`ms`: Malay.\n`mt`: Maltese.\n`my`: Burmese.\n`ne`: Nepali.\n`new`: Newar.\n`nl`: Dutch.\n`no`: Norwegian.\n`nr`: Ndebele (South).\n`nso`: Northern Sotho (Sepedi).\n`nus`: Nuer.\n`ny`: Chichewa (Nyanja).\n`oc`: Occitan.\n`om`: Oromo.\n`or`: Odia.\n`pa`: Punjabi.\n`pag`: Pangasinan.\n`pam`: Kapampangan.\n`pap`: Papiamento.\n`pl`: Polish.\n`ps`: Pashto.\n`pt`: Portuguese.\n`pt-BR`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`qu`: Quechuan.\n`ro`: Romanian.\n`rom`: Romani.\n`rn`: Rundi.\n`ru`: Russian.\n`rw`: Kinyarwanda.\n`sa`: Sanskrit.\n`scn`: Sicilian.\n`sd`: Sindhi.\n`sg`: Sango.\n`shn`: Shan.\n`si`: Sinhalese.\n`sk`: Slovak.\n`sl`: Slovene.\n`sm`: Samoan.\n`sn`: Shona.\n`so`: Somali.\n`sq`: Albanian.\n`sr`: Serbian.\n`ss`: Swati.\n`st`: Sesotho.\n`su`: Sundanese.\n`sv`: Swedish.\n`sw`: Swahili.\n`szl`: Silesian.\n`ta`: Tamil.\n`te`: Telugu.\n`tet`: Tetum.\n`tg`: Tajik.\n`th`: Thai.\n`ti`: Tigrinya.\n`tk`: Turkmen.\n`tl`: Filipino (Tagalog).\n`tn`: Tswana.\n`tr`: Turkish.\n`ts`: Tsonga.\n`tt`: Tatar.\n`ug`: Uyghur.\n`uk`: Ukrainian.\n`ur`: Urdu.\n`uz`: Uzbek.\n`vi`: Vietnamese.\n`xh`: Xhosa.\n`yi`: Yiddish.\n`yo`: Yoruba.\n`yua`: Yucatec Maya.\n`yue`: Cantonese.\n`zh`: Simplified Chinese.\n`zh-TW`: Chinese (Traditional).\n`zu`: Zulu.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Target language for subtitle translation.\nThis parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:`ab`: Abkhazian.`ace`: Acehnese.`ach`: Acholi.`af`: Afrikaans.`ak`: Twi (Akan).`am`: Amharic.`ar`: Arabic.`as`: Assamese.`ay`: Aymara.`az`: Azerbaijani.`ba`: Bashkir.`ban`: Balinese.`bbc`: Batak toba.`bem`: Bemba.`bew`: Betawi.`bg`: Bulgarian.`bho`: Bhojpuri.`bik`: Bikol.`bm`: Bambara.`bn`: Bengali.`br`: Breton.`bs`: Bosnian.`btx`: Batak Karo.`bts`: Batak Simalungun.`bua`: Buryat.`ca`: Catalan.`ceb`: Cebuano.`cgg`: Kiga.`chm`: Meadow Mari.`ckb`: Kurdish (Sorani).`cnh`: Hakha Chin.`co`: Corsican.`crh`: Crimean Tatar.`crs`: Seychellois Creole.`cs`: Czech.`cv`: Chuvash.`cy`: Welsh.`da`: Danish.`de`: German.`din`: Dinka.`doi`: Dogri.`dov`: Dombe.`dv`: Dhivehi.`dz`: Dzongkha.`ee`: Ewe.`el`: Greek.`en`: English.`eo`: Esperanto.`es`: Spanish.`et`: Estonian.`eu`: Basque.`fa`: Persian.`ff`: Fulah.`fi`: Finnish.`fil`: Filipino (Tagalog).`fj`: Fijian.`fr`: French.`fr-CA`: French (Canada).`fr-FR`: French (France).`fy`: Frisian.`ga`: Irish.`gaa`: Ga.\n`gd`: Scottish Gaelic.`gl`: Galician.`gn`: Guarani.`gom`: Konkani.`gu`: Gujarati.`gv`: Manx.`ha`: Hausa.`haw`: Hawaiian.`he`: Hebrew.`hi`: Hindi.`hil`: Hiligaynon.`hmn`: Hmong.`hr`: Croatian.`hrx`: Hunsrik.`ht`: Haitian Creole.`hu`: Hungarian.`hy`: Armenian.`id`: Indonesian.`ig`: Igbo.`ilo`: Iloko.`is`: Icelandic.`it`: Italian.`iw`: Hebrew.`ja`: Japanese.`jv`: Javanese.`ka`: Georgian.`kk`: Kazakh.`km`: Khmer.`kn`: Kannada.`ko`: Korean.`kri`: Krio.`ku`: Kurdish (Kurmanji).`ktu`: Kituba.`ky`: Kyrgyz.`la`: Latin.`lb`: Luxembourgish.`lg`: Ganda (Luganda).`li`: Limburgish.`lij`: Ligurian.`lmo`: Lombard.`ln`: Lingala.`lo`: Lao.`lt`: Lithuanian.`ltg`: Latgalian.`luo`: Luo.`lus`: Mizo.`lv`: Latvian.`mai`: Maithili.`mak`: Makasar.`mg`: Malagasy.`mi`: Maori.`min`: Minangkabau.`mk`: Macedonian.`ml`: Malayalam.`mn`: Mongolian.`mr`: Marathi.`ms`: Malay.`mt`: Maltese.`my`: Burmese.`ne`: Nepali.`new`: Newari.`nl`: Dutch.`no`: Norwegian.`nr`: Southern Ndebele.`nso`: Northern Sotho (Sepedi).`nus`: Nuer.`ny`: Chichewa (Nyanja).`oc`: Occitan.`om`: Oromo.`or`: Odia.`pa`: Punjabi.`pag`: Pangasinan.`pam`: Kapampangan.`pap`: Papiamento.`pl`: Polish.`ps`: Pashto.`pt`: Portuguese.`pt-BR`: Portuguese (Brazil).`pt-PT`: Portuguese (Portugal).`qu`: Quechua.`ro`: Romanian.`rom`: Romani.`rn`: Rundi.`ru`: Russian.`rw`: Kinyarwanda.`sa`: Sanskrit.`scn`: Sicilian.`sd`: Sindhi.`sg`: Sango.`shn`: Shan.`si`: Sinhala.`sk`: Slovak.`sl`: Slovenian.`sm`: Samoan.`sn`: Shona.`so`: Somali.`sq`: Albanian.`sr`: Serbian.`ss`: Swazi.`st`: Southern Sotho.`su`: Sundanese.`sv`: Swedish.`sw`: Swahili.`szl`: Silesian.`ta`: Tamil.`te`: Telugu.`tet`: Tetum.`tg`: Tajik.`th`: Thai.`ti`: Tigrinya.`tk`: Turkmen.`tn`: Tswana.`tr`: Turkish.`ts`: Tsonga.`tt`: Tatar.`ug`: Uyghur.`uk`: Ukrainian.`ur`: Urdu.`uz`: Uzbek.`vi`: Vietnamese.`xh`: Xhosa.`yi`: Yiddish.`yo`: Yoruba.`yua`: Yucatec Maya.`yue`: Cantonese.`zh`: Chinese (Simplified).`zh-TW`: Chinese (Traditional).`zu`: Zulu.**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -25056,7 +25462,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SelectingSubtitleAreasConfig",
           "name": "SelectingSubtitleAreasConfig",
@@ -25233,6 +25639,145 @@
         }
       ],
       "usage": "both"
+    },
+    "RecognizeAudioRequest": {
+      "document": "RecognizeAudio request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64-encoded audio data.",
+          "example": "KwDn/zIA5v///wUA0v8D",
+          "member": "string",
+          "name": "AudioData",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target language for recognition. If this is not specified, the language is automatically identified (auto).Note: If the automatic identification provides unsatisfactory results, you can specify the language to improve the accuracy.Supported languages:auto: automatic identification.zh: Simplified Chinese.en: English.ja: Japanese.ko: Korean.vi: Vietnamese.ms: Malay.id: Indonesian.fil: Filipino.th: Thai.pt: Portuguese.tr: Turkish.ar: Arabic.es: Spanish.hi: Hindi.fr: French.de: German.it: Italian.yue: Cantonese.ru: Russian.af: Afrikaans.sq: Albanian.am: Amharic.hy: Armenian.az: Azerbaijani.eu: Basque.bn: Bengali.bs: Bosnian.bg: Bulgarian.my: Burmese.ca: Catalan.hr: Croatian.cs: Czech.da: Danish.nl: Dutch.et: Estonian.fi: Finnish.gl: Galician.ka: Georgian.el: Greek.gu: Gujarati.iw: Hebrew.hu: Hungarian.is: Icelandic.jv: Javanese.kn: Kannada.kk: Kazakh.km: Khmer.rw: Kinyarwanda.lo: Lao.lv: Latvian.lt: Lithuanian.mk: Macedonian.ml: Malayalam.mr: Marathi.mn: Mongolian.ne: Nepali.no: Norwegian Bokmal.fa: Persian.pl: Polish.ro: Romanian.sr: Serbian.si: Sinhala.sk: Slovak.sl: Slovenian.st: Southern Sotho.su: Sundanese.sw: Swahili.sv: Swedish.ta: Tamil.te: Telugu.ts: Tsonga.uk: Ukrainian.ur: Urdu.uz: Uzbek.ve: Vendaxh: Xhosa.zu: Zulu.\n",
+          "example": "zh",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio data format. Default value: pcm.Supported formats:pcm (mono 16-bit PCM data with a sample rate of 16000).ogg-opus (mono Opus-encoded Ogg data with sample rates of 16000, 24000, or 48000).",
+          "example": "pcm",
+          "member": "string",
+          "name": "AudioFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio sample rate.Supported sample rates:pcm 16000\nogg-opus 16000 / 24000 / 48000",
+          "example": "16000",
+          "member": "int64",
+          "name": "SampleRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Extended parameter. This is left empty by default. Use this parameter for special requirements.",
+          "example": "{\"key\":1}",
+          "member": "string",
+          "name": "UserExtPara",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeAudioResponse": {
+      "document": "RecognizeAudio response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Recognition result of the entire audio.",
+          "example": "腾讯云，媒体处理",
+          "member": "string",
+          "name": "Text",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio duration, in seconds.",
+          "example": "4.1",
+          "member": "float",
+          "name": "AudioLength",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recognition results of individual sentences.",
+          "example": "无",
+          "member": "RecognizeAudioSentence",
+          "name": "Sentence",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeAudioSentence": {
+      "document": "Result of the sentence recognition.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time in the audio, in seconds.",
+          "example": "1.00",
+          "member": "float",
+          "name": "Start",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time in the audio, in seconds.",
+          "example": "2.00",
+          "member": "float",
+          "name": "End",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio recognition result.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word timestamp result.",
+          "example": "无",
+          "member": "WordResult",
+          "name": "WordsInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ResetWorkflowRequest": {
       "document": "ResetWorkflow request structure.",
@@ -25838,7 +26383,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
+          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
           "example": " input",
           "member": "string",
           "name": "ErrCodeExt",
@@ -26635,11 +27180,11 @@
       "usage": "both"
     },
     "SelectingSubtitleAreasConfig": {
-      "document": "",
+      "document": "Area configurations for the subtitle OCR extraction box.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Automatically selects custom areas.For the selected areas, the AI model is used to automatically detect and extract the target content.",
           "example": "无",
           "member": "EraseArea",
           "name": "AutoAreas",
@@ -26650,7 +27195,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Width of the sample video or image, in pixels.",
           "example": "200",
           "member": "uint64",
           "name": "SampleWidth",
@@ -26661,7 +27206,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Height of the sample video or image, in pixels.",
           "example": "1000",
           "member": "uint64",
           "name": "SampleHeight",
@@ -26949,7 +27494,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -27105,7 +27650,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
@@ -27115,7 +27660,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
@@ -27360,6 +27905,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Speaker ID (if speaker recognition is enabled).",
+          "example": "speaker_0",
+          "member": "string",
+          "name": "SpeakerId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -27445,7 +28000,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -27841,7 +28396,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format:\n- vtt: WebVTT format.\n- srt: SRT format.\n- original: consistent with the source subtitle file (it is used for the pure subtitle translation template).\n- If this field is unspecified or left blank, no subtitle file will be generated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Smart subtitle file format.\n- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -27911,13 +28466,23 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle processing type.\n- 0: ASR recognition subtitle.\n- 1: pure subtitle translation.",
+          "document": "Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.",
           "example": "0",
           "member": "uint64",
           "name": "ProcessType",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SelectingSubtitleAreasConfig",
+          "name": "SelectingSubtitleAreasConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -28027,7 +28592,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
+          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
           "example": "/storage/{inputName}_smartsubtitle_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -28535,7 +29100,7 @@
           "output_required": false,
           "required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28546,7 +29111,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28557,7 +29122,7 @@
           "output_required": false,
           "required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28568,7 +29133,7 @@
           "output_required": false,
           "required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28579,7 +29144,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28590,7 +29155,7 @@
           "output_required": false,
           "required": false,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28601,7 +29166,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -28612,7 +29177,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -29102,7 +29667,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).",
+          "document": "Start time of the time interval where the data resides. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). For example, when the time granularity is day, 2018-12-01T00:00:00+08:00 indicates the interval from December 1, 2018 (inclusive) to December 2, 2018 (exclusive).",
           "example": "",
           "member": "string",
           "name": "Time",
