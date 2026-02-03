@@ -6035,7 +6035,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The StreamLive input ID.",
+          "document": "The StreamLive input ID.Currently, only RTMP_PUSH and RTMPS_PUSH are supported",
           "example": "5E7818810943216A1234",
           "member": "string",
           "name": "Id",

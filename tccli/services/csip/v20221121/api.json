@@ -2589,7 +2589,7 @@
         {
           "disabled": false,
           "document": "The unique ID.",
-          "example": "-",
+          "example": "067691ed696bf9",
           "member": "string",
           "name": "Id",
           "output_required": true,
@@ -2599,7 +2599,7 @@
         {
           "disabled": false,
           "document": "Configuration name",
-          "example": "无",
+          "example": "高风险子账号应该开启登录保护",
           "member": "string",
           "name": "CFGName",
           "output_required": true,
@@ -2609,7 +2609,7 @@
         {
           "disabled": false,
           "document": "Check type",
-          "example": "无",
+          "example": "账号安全",
           "member": "string",
           "name": "CheckType",
           "output_required": true,
@@ -2619,7 +2619,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "无",
+          "example": "1000*****",
           "member": "string",
           "name": "InstanceId",
           "output_required": true,
@@ -2629,7 +2629,7 @@
         {
           "disabled": false,
           "document": "Instance name",
-          "example": "无",
+          "example": "inscance-name",
           "member": "string",
           "name": "InstanceName",
           "output_required": true,
@@ -2639,7 +2639,7 @@
         {
           "disabled": false,
           "document": "Instance type",
-          "example": "无",
+          "example": "2",
           "member": "string",
           "name": "InstanceType",
           "output_required": true,
@@ -2649,7 +2649,7 @@
         {
           "disabled": false,
           "document": "Affected assets",
-          "example": "无",
+          "example": "ins-wr33tu",
           "member": "string",
           "name": "AffectAsset",
           "output_required": true,
@@ -2659,7 +2659,7 @@
         {
           "disabled": false,
           "document": "Risk level",
-          "example": "无",
+          "example": "high",
           "member": "string",
           "name": "Level",
           "output_required": true,
@@ -2669,7 +2669,7 @@
         {
           "disabled": false,
           "document": "First detected",
-          "example": "无",
+          "example": "2024-06-30 16:19:03",
           "member": "string",
           "name": "FirstTime",
           "output_required": true,
@@ -2679,7 +2679,7 @@
         {
           "disabled": false,
           "document": "Last detected ",
-          "example": "无",
+          "example": "2024-06-30 16:19:03",
           "member": "string",
           "name": "RecentTime",
           "output_required": true,
@@ -2689,7 +2689,7 @@
         {
           "disabled": false,
           "document": "Source of the task",
-          "example": "无",
+          "example": "云安全配置",
           "member": "string",
           "name": "From",
           "output_required": true,
@@ -2699,7 +2699,7 @@
         {
           "disabled": false,
           "document": "Status",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Status",
           "output_required": true,
@@ -2709,7 +2709,7 @@
         {
           "disabled": false,
           "document": "u200c-",
-          "example": "无",
+          "example": "腾讯基线",
           "member": "string",
           "name": "CFGSTD",
           "output_required": true,
@@ -2719,7 +2719,7 @@
         {
           "disabled": false,
           "document": "Configuration details.",
-          "example": "无",
+          "example": "如果账号被盗用，您的云资产会面临非常高的安全风险，登录保护为您的账号登录提供二次校验，降低账号被恶意登录的可能性。",
           "member": "string",
           "name": "CFGDescribe",
           "output_required": true,
@@ -2729,7 +2729,7 @@
         {
           "disabled": false,
           "document": "Fix suggestion",
-          "example": "无",
+          "example": "建议您立即对账号开启登录保护，且建议您使用MFA进行登录保护。点击“前往处置”，进入安全设置，点击登录保护旁的编辑按钮，开启操作保护，建议您采用“虚拟MFA设备校验”。",
           "member": "string",
           "name": "CFGFix",
           "output_required": true,
@@ -2739,7 +2739,7 @@
         {
           "disabled": false,
           "document": "URL of the help documentation",
-          "example": "无",
+          "example": "http://example.help.com",
           "member": "string",
           "name": "CFGHelpURL",
           "output_required": true,
@@ -2749,7 +2749,7 @@
         {
           "disabled": false,
           "document": "Data entry key",
-          "example": "无",
+          "example": "index-value",
           "member": "string",
           "name": "Index",
           "output_required": true,
@@ -2759,7 +2759,7 @@
         {
           "disabled": false,
           "document": "User AppId",
-          "example": "无",
+          "example": "130*******",
           "member": "string",
           "name": "AppId",
           "output_required": true,
@@ -2769,22 +2769,22 @@
         {
           "disabled": false,
           "document": "User name.\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "nickname",
           "member": "string",
           "name": "Nick",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "User UIN\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1000***",
           "member": "string",
           "name": "Uin",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -8560,8 +8560,17 @@
       "members": [
         {
           "disabled": false,
+          "document": "Group account member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "Filter conditions",
-          "example": "无",
+          "example": "{     \"Filters\": [       {         \"Name\": \"Status\",         \"Values\": [           \"0\"         ],         \"OperatorType\": 7       },       {         \"Name\": \"Uin\",         \"Values\": [           \"100065\"         ],         \"OperatorType\": 7       }     ],     \"Limit\": 10,     \"Offset\": 0,     \"StartTime\": \"2024-10-26 00:00:00\",     \"EndTime\": \"2024-11-01 23:59:59\"   }",
           "member": "Filter",
           "name": "Filter",
           "required": false,
@@ -8570,7 +8579,7 @@
         {
           "disabled": false,
           "document": "Asset tags",
-          "example": "无",
+          "example": "[   {     \"Text\": \"本地镜像\",     \"Value\": \"Local\"   },   {     \"Text\": \"CLB\",     \"Value\": \"CLB\"   } ]",
           "member": "AssetTag",
           "name": "Tags",
           "required": false,
@@ -8595,7 +8604,7 @@
         {
           "disabled": false,
           "document": "List of configuration risks",
-          "example": "无",
+          "example": "[       {         \"AffectAsset\": \"1*.**.132.***\",         \"AppId\": \"1302133215\",         \"CFGDescribe\": \"为了实现集群管理，Docker 提供了远程管理接口。Docker Daemon 作为守护进程，运行在后台，可以执行发送到管理接口上的 Docker 命令。正是因为错误的使用了 Docker 远端 2375 接口，引起安全漏洞。\",         \"CFGFix\": \"关闭 2375 端口，使用加密的远程管理端口 2376。\\n如果已通过安全组或者防火墙进行该端口的访问IP限制，请忽略。\",         \"CFGHelpURL\": \"url.***.com\",         \"CFGName\": \"Docker Daemon  2375 管理端口开启\",         \"CFGSTD\": \"none\",         \"CheckType\": \"Docker Daemon  2375 管理端口开启\",         \"ClbId\": \"clb-***\",         \"FirstTime\": \"2024-09-18 10:30:14\",         \"From\": \"主机检测\",         \"Id\": \"067691ed696bf9***c7076e9a126b\",         \"Index\": \"d90439359e*****a74ee616d226a713f\",         \"InstanceId\": \"ins-elxffb4w\",         \"InstanceName\": \"安全中心x主机自动化机器\",         \"InstanceType\": \"CVM\",         \"Level\": \"high\",         \"Nick\": \"声声乌龙\",         \"RecentTime\": \"2024-10-25 11:36:49\",         \"Status\": 0,         \"Uin\": \"100011122178\"       }     ]",
           "member": "AssetViewCFGRisk",
           "name": "Data",
           "output_required": true,
@@ -8605,7 +8614,7 @@
         {
           "disabled": false,
           "document": "List of risk handling status",
-          "example": "无",
+          "example": "[       {         \"Text\": \"未处理\",         \"Value\": \"0\"       },       {         \"Text\": \"已处置\",         \"Value\": \"1\"       },       {         \"Text\": \"已忽略\",         \"Value\": \"2\"       },       {         \"Text\": \"已封禁\",         \"Value\": \"3\"       }     ]",
           "member": "FilterDataObject",
           "name": "StatusLists",
           "output_required": true,
@@ -8615,7 +8624,7 @@
         {
           "disabled": false,
           "document": "List of risk levels",
-          "example": "无",
+          "example": "[       {         \"Text\": \"严重\",         \"Value\": \"extreme\"       },       {         \"Text\": \"高危\",         \"Value\": \"high\"       },       {         \"Text\": \"中危\",         \"Value\": \"middle\"       },       {         \"Text\": \"低危\",         \"Value\": \"low\"       },       {         \"Text\": \"提示\",         \"Value\": \"info\"       }     ]",
           "member": "FilterDataObject",
           "name": "LevelLists",
           "output_required": true,
@@ -8625,7 +8634,7 @@
         {
           "disabled": false,
           "document": "List of configuration names",
-          "example": "无",
+          "example": "[       {         \"Text\": \"检查\\\"拒绝作为批处理作业登录\\\"策略是否包含Guests\",         \"Value\": \"检查\\\"拒绝作为批处理作业登录\\\"策略是否包含Guests\"       },       {         \"Text\": \"应启用安全审计功能，审计覆盖到每个用户，对重要的用户行为和重要安全事件进行审计\",         \"Value\": \"应启用安全审计功能，审计覆盖到每个用户，对重要的用户行为和重要安全事件进行审计\"       },       {         \"Text\": \"检查\\\"账号锁定阈值\\\"是否大于0并且小于等于10\",         \"Value\": \"检查\\\"账号锁定阈值\\\"是否大于0并且小于等于10\"       },       {         \"Text\": \"检查\\\"拒绝通过远程桌面服务登录\\\"策略是否设置\",         \"Value\": \"检查\\\"拒绝通过远程桌面服务登录\\\"策略是否设置\"       },       {         \"Text\": \"禁止SSH空密码用户登录\",         \"Value\": \"禁止SSH空密码用户登录\"       }     ]",
           "member": "FilterDataObject",
           "name": "CFGNameLists",
           "output_required": true,
@@ -8635,7 +8644,7 @@
         {
           "disabled": false,
           "document": "List of check types",
-          "example": "无",
+          "example": "[       {         \"Text\": \"CentOS基线检查\",         \"Value\": \"CentOS基线检查\"       },       {         \"Text\": \"国际标准-CentOS 7安全基线检查Level1\",         \"Value\": \"国际标准-CentOS 7安全基线检查Level1\"       },       {         \"Text\": \"账号安全\",         \"Value\": \"账号安全\"       },       {         \"Text\": \"Docker Daemon  2375 管理端口开启\",         \"Value\": \"Docker Daemon  2375 管理端口开启\"       },       {         \"Text\": \"国际标准-Windows 2012 R2安全基线检查\",         \"Value\": \"国际标准-Windows 2012 R2安全基线检查\"       },       {         \"Text\": \"国际标准-CentOS 7安全基线检查Level2\",         \"Value\": \"国际标准-CentOS 7安全基线检查Level2\"       },       {         \"Text\": \"等保三级-Windows 2012 R2安全基线检查\",         \"Value\": \"等保三级-Windows 2012 R2安全基线检查\"       },       {         \"Text\": \"网络安全\",         \"Value\": \"网络安全\"       },       {         \"Text\": \"数据安全\",         \"Value\": \"数据安全\"       },       {         \"Text\": \"等保三级-CentOS 7安全基线检查\",         \"Value\": \"等保三级-CentOS 7安全基线检查\"       },       {         \"Text\": \"基础安全\",         \"Value\": \"基础安全\"       },       {         \"Text\": \"Nginx安全基线检查\",         \"Value\": \"Nginx安全基线检查\"       },       {         \"Text\": \"等保二级-CentOS 7安全基线检查\",         \"Value\": \"等保二级-CentOS 7安全基线检查\"       },       {         \"Text\": \"Linux安全基线检查\",         \"Value\": \"Linux安全基线检查\"       }     ]",
           "member": "FilterDataObject",
           "name": "CheckTypeLists",
           "output_required": true,
@@ -8645,7 +8654,7 @@
         {
           "disabled": false,
           "document": "List of asset types",
-          "example": "无",
+          "example": "[       {         \"Text\": \"CVM\",         \"Value\": \"CVM\"       },       {         \"Text\": \"其他\",         \"Value\": \"0\"       },       {         \"Text\": \"子账号\",         \"Value\": \"2\"       },       {         \"Text\": \"协作者\",         \"Value\": \"4\"       },       {         \"Text\": \"CDB\",         \"Value\": \"CDB\"       },       {         \"Text\": \"CBS\",         \"Value\": \"CBS\"       },       {         \"Text\": \"ACL\",         \"Value\": \"ACL\"       },       {         \"Text\": \"COS\",         \"Value\": \"COS\"       },       {         \"Text\": \"POSTGRES\",         \"Value\": \"POSTGRES\"       },       {         \"Text\": \"LISTENER\",         \"Value\": \"LISTENER\"       },       {         \"Text\": \"MARIADB\",         \"Value\": \"MARIADB\"       },       {         \"Text\": \"SECURITYGROUP\",         \"Value\": \"SECURITYGROUP\"       },       {         \"Text\": \"TKECLUSTER\",         \"Value\": \"TKECLUSTER\"       },       {         \"Text\": \"APIGATEWAY\",         \"Value\": \"APIGATEWAY\"       },       {         \"Text\": \"SUBNET\",         \"Value\": \"SUBNET\"       },       {         \"Text\": \"CLB\",         \"Value\": \"CLB\"       }     ]",
           "member": "FilterDataObject",
           "name": "InstanceTypeLists",
           "output_required": true,
@@ -8655,7 +8664,7 @@
         {
           "disabled": false,
           "document": "List of check source",
-          "example": "无",
+          "example": "[       {         \"Text\": \"云安全中心\",         \"Value\": \"0\"       },       {         \"Text\": \"主机检测\",         \"Value\": \"1\"       },       {         \"Text\": \"容器检测\",         \"Value\": \"5\"       }     ]",
           "member": "FilterDataObject",
           "name": "FromLists",
           "output_required": true,
