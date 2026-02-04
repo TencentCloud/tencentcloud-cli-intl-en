@@ -168,6 +168,13 @@
       "output": "CheckNetDetectStateResponse",
       "status": "online"
     },
+    "CheckTrafficMirror": {
+      "document": "This API is used to check the collector and receiver for traffic mirroring (public IP address type).",
+      "input": "CheckTrafficMirrorRequest",
+      "name": "Checks the collector and receiver for traffic mirroring",
+      "output": "CheckTrafficMirrorResponse",
+      "status": "online"
+    },
     "CloneSecurityGroup": {
       "document": "This API is used to create a security group with the same rule configurations as an existing security group. The cloning only copies the security group and its rules, but not the security group tags.",
       "input": "CloneSecurityGroupRequest",
@@ -411,6 +418,13 @@
       "input": "CreateSubnetsRequest",
       "name": "Creates subnets in batches",
       "output": "CreateSubnetsResponse",
+      "status": "online"
+    },
+    "CreateTrafficMirror": {
+      "document": "This API is used to create a traffic mirroring instance.",
+      "input": "CreateTrafficMirrorRequest",
+      "name": "Creates traffic mirroring",
+      "output": "CreateTrafficMirrorResponse",
       "status": "online"
     },
     "CreateVpc": {
@@ -677,6 +691,13 @@
       "input": "DeleteTemplateMemberRequest",
       "name": "Deletes a parameter template",
       "output": "DeleteTemplateMemberResponse",
+      "status": "online"
+    },
+    "DeleteTrafficMirror": {
+      "document": "This API is used to delete a traffic mirroring instance.",
+      "input": "DeleteTrafficMirrorRequest",
+      "name": "Deletes traffic mirroring",
+      "output": "DeleteTrafficMirrorResponse",
       "status": "online"
     },
     "DeleteTrafficPackages": {
@@ -1132,6 +1153,13 @@
       "input": "DescribeTaskResultRequest",
       "name": "Queries the async job execution results",
       "output": "DescribeTaskResultResponse",
+      "status": "online"
+    },
+    "DescribeTrafficMirrors": {
+      "document": "This API is used to query the information of a traffic mirroring instance.",
+      "input": "DescribeTrafficMirrorsRequest",
+      "name": "Queries traffic mirroring for a user",
+      "output": "DescribeTrafficMirrorsResponse",
       "status": "online"
     },
     "DescribeTrafficPackages": {
@@ -1771,6 +1799,13 @@
       "output": "ModifyTemplateMemberResponse",
       "status": "online"
     },
+    "ModifyTrafficMirrorAttribute": {
+      "document": "This API is used to modify the attributes of a traffic mirroring instance.\nNote: Only the name and description can be modified.",
+      "input": "ModifyTrafficMirrorAttributeRequest",
+      "name": "Modifies traffic mirroring attributes",
+      "output": "ModifyTrafficMirrorAttributeResponse",
+      "status": "online"
+    },
     "ModifyVpcAttribute": {
       "document": "This API (ModifyVpcAttribute) is used to modify VPC attributes.",
       "input": "ModifyVpcAttributeRequest",
@@ -1974,6 +2009,27 @@
       "output": "ResetRoutesResponse",
       "status": "online"
     },
+    "ResetTrafficMirrorFilter": {
+      "document": "This API is used to update a traffic mirroring instance filter rule.\nNote: A traffic mirroring instance cannot simultaneously support filtering based on NAT gateway and five tuple rules.",
+      "input": "ResetTrafficMirrorFilterRequest",
+      "name": "Updates a traffic mirroring filter rule",
+      "output": "ResetTrafficMirrorFilterResponse",
+      "status": "online"
+    },
+    "ResetTrafficMirrorSrcs": {
+      "document": "This API is used to reset the collection object of a traffic mirroring instance.",
+      "input": "ResetTrafficMirrorSrcsRequest",
+      "name": "Resets the traffic mirroring collection object",
+      "output": "ResetTrafficMirrorSrcsResponse",
+      "status": "online"
+    },
+    "ResetTrafficMirrorTarget": {
+      "document": "This API is used to update the receiving destination information of a traffic mirroring instance.",
+      "input": "ResetTrafficMirrorTargetRequest",
+      "name": "Updates the traffic mirroring receiving destination information",
+      "output": "ResetTrafficMirrorTargetResponse",
+      "status": "online"
+    },
     "ResetVpnConnection": {
       "document": "The API is used to reset a VPN tunnel.",
       "input": "ResetVpnConnectionRequest",
@@ -2016,6 +2072,20 @@
       "output": "SetVpnGatewaysRenewFlagResponse",
       "status": "online"
     },
+    "StartTrafficMirror": {
+      "document": "This API is used to start a traffic mirroring instance.",
+      "input": "StartTrafficMirrorRequest",
+      "name": "Enables traffic mirroring",
+      "output": "StartTrafficMirrorResponse",
+      "status": "online"
+    },
+    "StopTrafficMirror": {
+      "document": "This API is used to stop a traffic mirroring instance.",
+      "input": "StopTrafficMirrorRequest",
+      "name": "Disables traffic mirroring",
+      "output": "StopTrafficMirrorResponse",
+      "status": "online"
+    },
     "TransformAddress": {
       "document": "This API is used to convert a common public IP into an [Elastic IP](https://intl.cloud.tencent.com/document/product/213/1941?from_cn_redirect=1) (EIP for short).\n* Tencent Cloud limits the number of times that a user can unbind EIPs and reassign public IPs in each region per day. For more information, see product introduction of [Elastic IP](https://intl.cloud.tencent.com/document/product/213/5733?from_cn_redirect=1). The preceding quota can be obtained through the API [DescribeAddressQuota](https://intl.cloud.tencent.com/document/product/215/16701).",
       "input": "TransformAddressRequest",
@@ -2049,6 +2119,20 @@
       "input": "UnassignPrivateIpAddressesRequest",
       "name": "Returns the private IPs of an ENI",
       "output": "UnassignPrivateIpAddressesResponse",
+      "status": "online"
+    },
+    "UpdateTrafficMirrorAllFilter": {
+      "document": "This API is used to update the filter rule or collection object of a traffic mirroring instance.",
+      "input": "UpdateTrafficMirrorAllFilterRequest",
+      "name": "Updates a traffic mirroring filter rule or collection object",
+      "output": "UpdateTrafficMirrorAllFilterResponse",
+      "status": "online"
+    },
+    "UpdateTrafficMirrorDirection": {
+      "document": "This API is used to update the collection direction of a traffic mirroring instance.",
+      "input": "UpdateTrafficMirrorDirectionRequest",
+      "name": "Updates the traffic mirroring collection direction",
+      "output": "UpdateTrafficMirrorDirectionResponse",
       "status": "online"
     },
     "WithdrawNotifyRoutes": {
@@ -4950,6 +5034,69 @@
       ],
       "type": "object"
     },
+    "CheckTrafficMirrorRequest": {
+      "document": "CheckTrafficMirror request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring VPC.",
+          "example": "vpc-bx0vq62",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Collector IP address list for traffic mirroring.",
+          "example": "['10.0.0.1']",
+          "member": "string",
+          "name": "CollectorSources",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Receiver subnet for traffic mirroring.",
+          "example": "subnet-dl3wd0vq",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collector.",
+          "example": "无",
+          "member": "TrafficMirrorTarget",
+          "name": "CollectorTarget",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckTrafficMirrorResponse": {
+      "document": "CheckTrafficMirror response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CidrForCcn": {
       "document": "Publishes the routing policy of the VPC subnet to CCN",
       "members": [
@@ -7419,6 +7566,142 @@
       ],
       "type": "object"
     },
+    "CreateTrafficMirrorRequest": {
+      "document": "CreateTrafficMirror request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC instance ID.",
+          "example": "vpc-39lpx32d",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring name.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring description.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorDescribe",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring status. Valid values: RUNNING/STOPED (VPC) and RUNNING (public IP address). It is required when VPC traffic mirroring is collected.",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "State",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection direction. Valid values: EGRESS/INGRESS/ALL (VPC) and ALL (public IP address).",
+          "example": "EGRESS",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection object.",
+          "example": "[\"vpc-39lpv32n\"]",
+          "member": "string",
+          "name": "CollectorSrcs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "NAT gateway instance filtered by traffic mirroring.",
+          "example": "nat-qo7kugz0",
+          "member": "string",
+          "name": "NatId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Five tuple rule to be filtered.",
+          "example": "无",
+          "member": "TrafficMirrorFilter",
+          "name": "CollectorNormalFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring destination address.",
+          "example": "无",
+          "member": "TrafficMirrorTarget",
+          "name": "CollectorTarget",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID of the sender of the traffic mirroring collection traffic.",
+          "example": "subnet-iamq13a",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Created traffic mirroring type. Valid values: VPC and PUBLICIP. Default value: VPC.",
+          "example": "VPC",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the list of bound tags. For example, [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "[{\"Key\": \"city\", \"Value\": \"shanghai\"}]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTrafficMirrorResponse": {
+      "document": "CreateTrafficMirror response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance.",
+          "example": "无",
+          "member": "TrafficMirror",
+          "name": "TrafficMirror",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateVpcEndPointRequest": {
       "document": "CreateVpcEndPoint request structure.",
       "members": [
@@ -9503,6 +9786,33 @@
     },
     "DeleteTemplateMemberResponse": {
       "document": "DeleteTemplateMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTrafficMirrorRequest": {
+      "document": "DeleteTrafficMirror request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTrafficMirrorResponse": {
+      "document": "DeleteTrafficMirror response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -13796,6 +14106,70 @@
           "name": "Result",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrafficMirrorsRequest": {
+      "document": "DescribeTrafficMirrors request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Collection of traffic mirroring instance IDs.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring query filtering and adjustment.\nvpc-id: VPC instance ID, for example: vpc-f49l6u0z.\ntraffic-mirror-id: traffic mirroring instance ID.\nTraffic-Mirror-Name: traffic mirroring name.\ntag-key: filters according to the tag key.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returns. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTrafficMirrorsResponse": {
+      "document": "DescribeTrafficMirrors response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance information.",
+          "example": "无",
+          "member": "TrafficMirror",
+          "name": "TrafficMirrorSet",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -20040,6 +20414,51 @@
       ],
       "type": "object"
     },
+    "ModifyTrafficMirrorAttributeRequest": {
+      "document": "ModifyTrafficMirrorAttribute request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-7h62jza4",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance name.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance description information.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorDescription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTrafficMirrorAttributeResponse": {
+      "document": "ModifyTrafficMirrorAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyVpcAttributeRequest": {
       "document": "ModifyVpcAttribute request structure.",
       "members": [
@@ -22973,6 +23392,132 @@
       ],
       "type": "object"
     },
+    "ResetTrafficMirrorFilterRequest": {
+      "document": "ResetTrafficMirrorFilter request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "NAT gateway instance ID to be filtered by traffic mirroring.",
+          "example": "nat-qo7kugzg",
+          "member": "string",
+          "name": "NatId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Five tuple rule to be filtered by traffic mirroring.",
+          "example": "无",
+          "member": "TrafficMirrorFilter",
+          "name": "CollectorNormalFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetTrafficMirrorFilterResponse": {
+      "document": "ResetTrafficMirrorFilter response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetTrafficMirrorSrcsRequest": {
+      "document": "ResetTrafficMirrorSrcs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection object.",
+          "example": "[\"subnet-7v7ev09m\\r\\n\"]",
+          "member": "string",
+          "name": "CollectorSrcs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetTrafficMirrorSrcsResponse": {
+      "document": "ResetTrafficMirrorSrcs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetTrafficMirrorTargetRequest": {
+      "document": "ResetTrafficMirrorTarget request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring receiving destination information.",
+          "example": "无",
+          "member": "TrafficMirrorTarget",
+          "name": "CollectorTarget",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet of the sender of the traffic mirroring collection traffic of the public IP address type.",
+          "example": "subnet-as2osi38",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetTrafficMirrorTargetResponse": {
+      "document": "ResetTrafficMirrorTarget response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResetVpnConnectionRequest": {
       "document": "ResetVpnConnection request structure.",
       "members": [
@@ -25112,6 +25657,60 @@
       ],
       "usage": "both"
     },
+    "StartTrafficMirrorRequest": {
+      "document": "StartTrafficMirror request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartTrafficMirrorResponse": {
+      "document": "StartTrafficMirror response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopTrafficMirrorRequest": {
+      "document": "StopTrafficMirror request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopTrafficMirrorResponse": {
+      "document": "StopTrafficMirror response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Subnet": {
       "document": "Subnet object",
       "members": [
@@ -25357,6 +25956,289 @@
         }
       ],
       "usage": "both"
+    },
+    "TrafficMirror": {
+      "document": "Traffic mirroring instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC instance ID.",
+          "example": "vpc-7zayowkt",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance.",
+          "example": "imgf-oc2mpbni",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring name.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring description.",
+          "example": "demo",
+          "member": "string",
+          "name": "TrafficMirrorDescribe",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring status.",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection direction.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Direction",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection object.",
+          "example": "[\"vpc-7zayowkt\"]",
+          "member": "string",
+          "name": "CollectorSrcs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NAT gateway instance ID filtered by traffic mirroring.",
+          "example": "nat-qo7kugz0",
+          "member": "string",
+          "name": "NatId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Five tuple rule filtered by traffic mirroring.",
+          "example": "无",
+          "member": "TrafficMirrorFilter",
+          "name": "CollectorNormalFilters",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring receiving target.",
+          "example": "无",
+          "member": "TrafficMirrorTarget",
+          "name": "CollectorTarget",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring creation time.",
+          "example": "2021-03-02 14:41:15",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring type.",
+          "example": "VPC",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring subnet ID.",
+          "example": "subnet-6zwa44xm",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource information of the traffic mirroring receiving target, returned when the receiving target is ENI or CLB.",
+          "example": "{\"TargetId\": \"eni-kiaim12s\", \"TargetName\": \"demo\"}",
+          "member": "TrafficMirrorTargetResourceInfo",
+          "name": "TargetInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TrafficMirrorFilter": {
+      "document": "Five tuple filter rule object for traffic mirroring.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source network segment of the filter rule.",
+          "example": "10.0.0.0/24",
+          "member": "string",
+          "name": "SrcNet",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Destination network segment of the filter rule.",
+          "example": "192.168.0.0/24",
+          "member": "string",
+          "name": "DstNet",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protocol of the filter rule.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source port of the filter rule. Default value: 1–65535.",
+          "example": "5000",
+          "member": "string",
+          "name": "SrcPort",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Destination port of the filter rule. Default value: 1–65535.",
+          "example": "3456",
+          "member": "string",
+          "name": "DstPort",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TrafficMirrorTarget": {
+      "document": "Traffic mirroring collection target type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Receiving IP address for traffic mirroring.",
+          "example": "[\"10.0.0.0\"]",
+          "member": "string",
+          "name": "TargetIps",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receiving IP address group for traffic mirroring. Load balancing rule. Valid values: ENI/FIVE_TUPLE_FLOW (VPC) and FIVE_TUPLE_FLOW (public IP address).",
+          "example": "FIVE_TUPLE_FLOW",
+          "member": "string",
+          "name": "AlgHash",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receiving endpoint for traffic mirroring (public IP address).",
+          "example": "10.0.0.0",
+          "member": "string",
+          "name": "TargetEndPoints",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receiving type for traffic mirroring. Valid values: IP, ENI, and CLB.",
+          "example": "IP",
+          "member": "string",
+          "name": "TargetType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TrafficMirrorTargetResourceInfo": {
+      "document": "Traffic mirroring receiving traffic information, returned when the receiving target is ENI or CLB.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID belonging to the receiving target.",
+          "example": "eni-kiaim12s",
+          "member": "string",
+          "name": "TargetId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource name belonging to the receiving target.",
+          "example": "name",
+          "member": "string",
+          "name": "TargetName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TrafficPackage": {
       "document": "Information of a traffic package",
@@ -25652,6 +26534,105 @@
     },
     "UnassignPrivateIpAddressesResponse": {
       "document": "UnassignPrivateIpAddresses response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTrafficMirrorAllFilterRequest": {
+      "document": "UpdateTrafficMirrorAllFilter request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection direction.",
+          "example": "ALL",
+          "member": "string",
+          "name": "Direction",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection object.",
+          "example": "[\"eni-1iso930s\"]",
+          "member": "string",
+          "name": "CollectorSrcs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "NAT gateway instance to be filtered by traffic mirroring.",
+          "example": "nat-sow01oa8",
+          "member": "string",
+          "name": "NatId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Five tuple rule to be filtered by traffic mirroring.",
+          "example": "无",
+          "member": "TrafficMirrorFilter",
+          "name": "CollectorNormalFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTrafficMirrorAllFilterResponse": {
+      "document": "UpdateTrafficMirrorAllFilter response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTrafficMirrorDirectionRequest": {
+      "document": "UpdateTrafficMirrorDirection request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic mirroring instance ID.",
+          "example": "imgf-cvfp7xo8",
+          "member": "string",
+          "name": "TrafficMirrorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic mirroring collection direction.",
+          "example": "INGRESS",
+          "member": "string",
+          "name": "Direction",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateTrafficMirrorDirectionResponse": {
+      "document": "UpdateTrafficMirrorDirection response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

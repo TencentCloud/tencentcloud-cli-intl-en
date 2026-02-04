@@ -92,7 +92,7 @@
       "status": "online"
     },
     "DescribeGeneralMetricData": {
-      "document": "This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.\nThe API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.",
+      "document": "This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.\nThe API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.\n**Usage of the General Interface for Fetching Metric Data**\nDescribeGeneralMetricData is a general interface for querying metric data, supporting flexible data retrieval. The query method of this interface is similar to using the following SQL statement:\nSELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}.\n1. View (ViewName)\nDetermines the data domain you want to query.\nExamples: service_metric (Service Monitoring View), db_metric (Database View), etc. For views supported by APM, please refer to [Metric Views](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=)\n2. Metrics (Metrics)\nUsed to specify one or more metric items to be included in the returned results.\nExamples: request_count (Total Requests), duration_avg (Average Latency), error_rate (Error Rate). For metrics supported by APM, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n3. Filters (Filters)\nSupports one or more filtering conditions in the form of Key-Value pairs.\nExample: Querying only a specific service: service.name = \"order-service\". Common dimensions and specific dimensions supported by each ViewName can be used as keys in filtering conditions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n4. Aggregation (GroupBy)\nSupports one or more aggregation dimensions, equivalent to the GROUP BY clause in SQL.\nExample: Grouping by the interface name operation to view the performance of each interface. Common dimensions and specific dimensions supported by each ViewName can be used as aggregation dimensions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n5. Granularity (Period)\nThis parameter determines whether the data needs to be aggregated by time slices.\n    - Period = 1 (Time Series Mode): The returned results are aggregated by time slices. The multiple values contained in the TimeSerial and DataSerial correspond one-to-one, representing the aggregation results for specific time slices. Time Series Mode is primarily used for displaying time trend charts.\n    - Period = 0 (Summary Statistics Mode): In the returned results, the DataSerial contains only a single value, representing the summarized data for the entire time range.",
       "input": "DescribeGeneralMetricDataRequest",
       "name": "General interface to obtain metric data (recommend)",
       "output": "DescribeGeneralMetricDataResponse",
@@ -3030,7 +3030,7 @@
         {
           "disabled": false,
           "document": "Metric name to be queried, which cannot be customized. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).",
-          "example": "[\"request_count\"、“duration_avg”]",
+          "example": "[\"request_count\", \"duration_avg\"]",
           "member": "string",
           "name": "Metrics",
           "required": true,
@@ -3066,7 +3066,7 @@
         {
           "disabled": false,
           "document": "Aggregated dimension; different views have corresponding metric dimensions. (for details, see <https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1>.).",
-          "example": "[\"service.name\"、\"span.kind\"]",
+          "example": "[\"service.name\", \"span.kind\"]",
           "member": "string",
           "name": "GroupBy",
           "required": false,
@@ -3092,7 +3092,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to aggregate by a fixed time span: enter 1 for values of 1 and greater, and 0 if not filled in.\n-If 0 is filled in, it calculates the metric data from the start time to the cutoff time.\n- if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.\n -If the time span is (0,12) hours, it is aggregated by one-minute granularity.\n -If the time span is [12,48] hours, it is aggregated at a five-minute granularity.\n -If the time span is (48, +∞) hours, it is aggregated at an hourly granularity.",
+          "document": "Whether to aggregate by a fixed time span: enter 1 for values of 1 and greater, and 0 if not filled in.\n-If 0 is filled in, it calculates the metric data from the start time to the cutoff time.\n- if 1 is filled in, the aggregation granularity will be selected according to the time span from the start time to the deadline:.\n -If the time span is (0,12) hours, it is aggregated by one-minute granularity.\n -If the time span is [12,48] hours, it is aggregated at a five-minute granularity.\n -If the time span is (48, +inf) hours, it is aggregated at an hourly granularity.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -3102,7 +3102,7 @@
         {
           "disabled": false,
           "document": "Sort query metrics.\nKey: enter the tencentcloud api metric name. [for details, see](https://intl.cloud.tencent.com/document/product/248/101681?from_cn_redirect=1) .\nValue: specify the sorting method:.     \n-Asc: sorts query metrics in ascending order.\n- desc: sort query metrics in descending order.",
-          "example": "{ \t\"Key\": \"duration_avg\",         \"Value\": \"desc\" \t}",
+          "example": "无",
           "member": "OrderBy",
           "name": "OrderBy",
           "required": false,

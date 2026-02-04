@@ -820,7 +820,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Cache configuration\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "CacheInfo",
@@ -1117,7 +1117,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Cache configuration.",
           "example": "无",
           "member": "CacheInfo",
@@ -2145,7 +2145,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "SourceLocation Id.",
+          "document": "Source Id.",
           "example": "66503E8E0000930000F1",
           "member": "string",
           "name": "Id",
@@ -4687,7 +4687,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Cache configuration.",
           "example": "无",
           "member": "CacheInfo",
