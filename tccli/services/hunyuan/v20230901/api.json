@@ -1139,7 +1139,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File URL of the 3D model file that requires texture edit\nSupported formats: FBX, OBJ, GLB\n3D model limit: less than 100000 faces",
+          "document": "File URL of the 3D model file that requires texture edit\nSupported formats: FBX\n3D model limit: less than 100000 faces",
           "example": "无",
           "member": "InputFile3D",
           "name": "File3D",
