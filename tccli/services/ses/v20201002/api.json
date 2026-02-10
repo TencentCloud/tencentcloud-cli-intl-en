@@ -2575,21 +2575,21 @@
         },
         {
           "disabled": false,
-          "document": "Recipient email address, supports up to 50 recipients in mass sending. note: the email content displays all recipient addresses. for non-mass sending, call the API multiple times to send.",
-          "example": "[\"destination@mail.qcloud.com\"]",
-          "member": "string",
-          "name": "Destination",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
           "document": "Email subject.",
           "example": "YourTestSubject",
           "member": "string",
           "name": "Subject",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.\nSpecifies that at least one of the Destination, Cc, or Bcc parameters must exist.",
+          "example": "[\"destination@mail.qcloud.com\"]",
+          "member": "string",
+          "name": "Destination",
+          "required": false,
+          "type": "list"
         },
         {
           "disabled": false,
