@@ -50,7 +50,7 @@
       "status": "online"
     },
     "QueryHunyuanTo3DTextureEditJob": {
-      "document": "Query 3D texture edit tasks.",
+      "document": "Query 3D texture edit tasks, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.",
       "input": "QueryHunyuanTo3DTextureEditJobRequest",
       "name": "Query texture edit tasks",
       "output": "QueryHunyuanTo3DTextureEditJobResponse",
@@ -85,7 +85,7 @@
       "status": "online"
     },
     "SubmitHunyuanTo3DTextureEditJob": {
-      "document": "After inputting the 3D model, perform 3D model texture redrawing based on semantics or images.",
+      "document": "After inputting the 3D model, redraw the texture of the 3D model based on semantics or images, and output a redrawn texture image.",
       "input": "SubmitHunyuanTo3DTextureEditJobRequest",
       "name": "Submit a texture edit task",
       "output": "SubmitHunyuanTo3DTextureEditJobResponse",
@@ -453,11 +453,11 @@
       "usage": "out"
     },
     "File3D": {
-      "document": "3D file.",
+      "document": "3D model related files, files or textures.",
       "members": [
         {
           "disabled": false,
-          "document": "3D file format. valid values: GIF, OBJ.",
+          "document": "3D model or texture. valid values: GIF or OBJ or Image.",
           "example": "GIF",
           "member": "string",
           "name": "Type",
@@ -810,7 +810,7 @@
         },
         {
           "disabled": false,
-          "document": "Generate the file URL with a valid period of 1 day",
+          "document": "The URL address for generating texture files is valid for 1 day.",
           "example": "无",
           "member": "File3D",
           "name": "ResultFile3Ds",
@@ -1088,6 +1088,15 @@
           "example": "https://***.cos.ap-guangzhou.myqcloud.com/***.jpg\t",
           "member": "string",
           "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Returns the 3D file format. valid values:\nOBJ, GLB, STL, USDZ, FBX, MP4, GIF\nRecommended input models below 50W, may timeout when selecting USDZ, MP4, or GIF format\nExample value: STL",
+          "example": "OBJ",
+          "member": "string",
+          "name": "ResultFormat",
           "required": false,
           "type": "string"
         },

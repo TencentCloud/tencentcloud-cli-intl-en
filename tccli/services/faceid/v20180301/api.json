@@ -2194,7 +2194,7 @@
         },
         {
           "disabled": false,
-          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.\nNote: The Similarity metric is exclusively valid for \"compare\" mode. In \"liveness\" mode, the returned Similarity value (0.0) is non-significant and should be ignored.",
           "example": "89.99",
           "member": "float",
           "name": "Similarity",

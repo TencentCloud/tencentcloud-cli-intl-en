@@ -1829,7 +1829,7 @@
         },
         {
           "disabled": false,
-          "document": "Database engine type.",
+          "document": "Database kernel type.",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
@@ -1839,7 +1839,7 @@
         },
         {
           "disabled": false,
-          "document": "Database engine version.",
+          "document": "Database kernel version.",
           "example": "5.7",
           "member": "string",
           "name": "DbVersion",
