@@ -112,6 +112,13 @@
       "output": "DeleteReceiverResponse",
       "status": "online"
     },
+    "GetAbuseReport": {
+      "document": "Retrieve reported spam data.",
+      "input": "GetAbuseReportRequest",
+      "name": "Retrieve abuse spam records",
+      "output": "GetAbuseReportResponse",
+      "status": "online"
+    },
     "GetEmailIdentity": {
       "document": "This API is used to get the configuration details of a sender domain.",
       "input": "GetEmailIdentityRequest",
@@ -252,6 +259,155 @@
     "serviceShortName": "ses"
   },
   "objects": {
+    "AbuseReport": {
+      "document": "Reported spam data.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Send time.",
+          "example": "2025-10-01 11:11:11",
+          "member": "string",
+          "name": "DeliverTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "example@qcloudmail.com",
+          "member": "string",
+          "name": "OriginalMailFrom",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receive email.",
+          "example": "example@gmail.com",
+          "member": "string",
+          "name": "OriginalRcptTo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sender domain name.",
+          "example": "qcloudmail.com",
+          "member": "string",
+          "name": "FromDomain",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Complaint time.",
+          "example": "2025-10-01 11:11:11",
+          "member": "string",
+          "name": "ComplainTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recipient domain name.",
+          "example": "gmail.com",
+          "member": "string",
+          "name": "Mta",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source IP",
+          "example": "198.0.0.1",
+          "member": "string",
+          "name": "SourceIp",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data time.",
+          "example": "2025-10-01 11:11:11",
+          "member": "string",
+          "name": "InsertTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template ID",
+          "example": "100",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "bulkId",
+          "example": "qcloudapi-xxx-xxx",
+          "member": "string",
+          "name": "BulkId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message-Id in mail.",
+          "example": "xxx-xxx@example.com",
+          "member": "string",
+          "name": "MessageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Complaint time.",
+          "example": "2025-10-01 11:11:11",
+          "member": "string",
+          "name": "AbuseTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Email subject.",
+          "example": "abuse for example.com",
+          "member": "string",
+          "name": "Subject",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AddressUnsubscribeConfigData": {
       "document": "Address-Level unsubscribe configuration.",
       "members": [
@@ -1463,6 +1619,125 @@
         }
       ],
       "usage": "out"
+    },
+    "GetAbuseReportRequest": {
+      "document": "GetAbuseReport request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2025-10-14",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2025-10-15",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit quantity (default: 1000).",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sender domain name.",
+          "example": "qcloudmail.com",
+          "member": "string",
+          "name": "FromDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sender address.",
+          "example": "example@qcloudmail.com",
+          "member": "string",
+          "name": "FromAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Recipient domain name.",
+          "example": "gmail.com",
+          "member": "string",
+          "name": "Mta",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Receive email.",
+          "example": "example@gmail.com",
+          "member": "string",
+          "name": "ToAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template ID",
+          "example": "100",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAbuseReportResponse": {
+      "document": "GetAbuseReport response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log data.",
+          "example": "无",
+          "member": "AbuseReport",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total quantity.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "GetEmailIdentityRequest": {
       "document": "GetEmailIdentity request structure.",
