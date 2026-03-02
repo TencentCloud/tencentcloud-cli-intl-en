@@ -230,16 +230,16 @@
     ],
     "InquiryPriceCreateDisks": [
       {
-        "document": " ",
-        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_TSSD\n&DiskCount=1\n&DiskSize=500\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&ThroughputPerformance=100\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc2611d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": 800.0,\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": \"800\",\n            \"OriginalPrice\": 800.0,\n            \"UnitPriceDiscount\": null,\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPriceHigh\": \"800\",\n            \"UnitPrice\": null,\n            \"ChargeUnit\": null\n        }\n    }\n}",
-        "title": "Querying the price of purchasing a 500 GB ulTra SSD cloud disk with the extra performance of 100 MB/s for one month"
+        "document": "This example shows you how to query the price of purchasing a 100GB high-performance cloud block storage with hourly postpaid billing type.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskSize=100\n&DiskCount=1\n&DiskChargeType=POSTPAID_BY_HOUR\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc26d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": null,\n            \"UnitPrice\": 0.04,\n            \"UnitPriceHigh\": \"0.042\",\n            \"OriginalPriceHigh\": null,\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.04,\n            \"UnitPriceDiscountHigh\": \"0.042\",\n            \"DiscountPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\"\n        }\n    }\n}",
+        "title": "Querying the Price of Hourly Postpaid Cloud Disk Purchase"
       },
       {
         "document": "This example shows you how to query the price of purchasing an hourly pay-as-you-go 100 GB premium cloud disk.",
-        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_PREMIUM\n&DiskSize=100\n&DiskCount=1\n&DiskChargeType=POSTPAID_BY_HOUR\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc26d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": null,\n            \"UnitPrice\": 0.04,\n            \"UnitPriceHigh\": \"0.042\",\n            \"OriginalPriceHigh\": null,\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.04,\n            \"UnitPriceDiscountHigh\": \"0.042\",\n            \"DiscountPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\"\n        }\n    }\n}",
-        "title": "Querying the price of purchasing an hourly pay-as-you-go cloud disk"
+        "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceCreateDisks\n&DiskType=CLOUD_TSSD\n&DiskCount=1\n&DiskSize=500\n&DiskChargeType=PREPAID\n&DiskChargePrepaid.Period=1\n&ThroughputPerformance=100\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"55e84d71-26f1-4b7c-8dc4-6bc2611d0a2411\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": 800.0,\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": \"800\",\n            \"OriginalPrice\": 800.0,\n            \"UnitPriceDiscount\": null,\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPriceHigh\": \"800\",\n            \"UnitPrice\": null,\n            \"ChargeUnit\": null\n        }\n    }\n}",
+        "title": "Querying Purchase of 1-Month 500G TSSD with 100M Additional Performance Inquiry"
       }
     ],
     "InquiryPriceResizeDisk": [
@@ -302,6 +302,20 @@
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySnapshotsSharePermission\n<Common request parameters>\n\n{\n    \"AccountIds\": [\n        \"123456789\"\n    ],\n    \"Permission\": \"SHARE\",\n    \"SnapshotIds\": [\n        \"snap-cgrmci8t\",\n        \"snap-124p95lf\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ab150b9-538d-48fb-8821-7fa185f1d07c\"\n    }\n}",
         "title": "Sharing a snapshot with users"
+      }
+    ],
+    "RenewDisk": [
+      {
+        "document": "This example shows you how to renew a CBS for one month and set the auto-renewal flag.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewDisk\n<Common request parameters>\n\n{\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": 1\n    },\n    \"DiskId\": \"disk-jwk0zvrg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e2e5089-244a-4102-d347-5a1f8058b1db\"\n    }\n}",
+        "title": "Renewing a CBS for One Month and Setting the Auto-Renewal Flag"
+      },
+      {
+        "document": "This example shows you how to renew an instance with the current expiration time of 2018-03-30 20:15:03 for one month by calling this API to renew the mounted prepaid CBS, aligning the CBS expiration time with the instance, and setting the CBS to auto renewal.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewDisk\n<Common request parameters>\n\n{\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"CurInstanceDeadline\": \"2018-03-30 20:15:03\",\n        \"Period\": \"1\"\n    },\n    \"DiskId\": \"disk-jwk0zvrg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6e2e5089-244a-4102-d347-5a1f8058b1db\"\n    }\n}",
+        "title": "Renewing an Instance and Aligning the Expiration Time of Mounted Prepaid CBS"
       }
     ],
     "ResizeDisk": [
