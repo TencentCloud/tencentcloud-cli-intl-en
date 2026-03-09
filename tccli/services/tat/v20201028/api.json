@@ -1,7 +1,7 @@
 {
   "actions": {
     "CancelInvocation": {
-      "document": "This API is used to cancel the command executed on one or more CVM instances.\n\n* If the command has not been delivered to the TAT agent, the task status is `PENDING`, `DELIVERING`, or `DELIVER_DELAYED`, and will be `CANCELLED` after the command is canceled.\n* If the command has been delivered to the TAT agent, the task status is `RUNNING`, and will be `TERMINATED` after the command is canceled.",
+      "document": "Cancel the executed command on one or multiple instances.\n\n* If the command is not delivered to the agent and the task status is in PENDING, DELIVERING, or DELIVER_DELAYED, the state of a task is CANCELLED after cancellation.\n* If the command is sent to the agent and the task status is RUNNING, the task status is TERMINATED after cancellation.",
       "input": "CancelInvocationRequest",
       "name": "Cancels the execution of a command",
       "output": "CancelInvocationResponse",
@@ -21,6 +21,13 @@
       "output": "CreateInvokerResponse",
       "status": "online"
     },
+    "CreateRegisterCode": {
+      "document": "This API is used to create a registration code.",
+      "input": "CreateRegisterCodeRequest",
+      "name": "Create a registration code",
+      "output": "CreateRegisterCodeResponse",
+      "status": "online"
+    },
     "DeleteCommand": {
       "document": "This API is used to delete a command.\nCommands bound to an invoker cannot be deleted.",
       "input": "DeleteCommandRequest",
@@ -28,11 +35,32 @@
       "output": "DeleteCommandResponse",
       "status": "online"
     },
+    "DeleteCommands": {
+      "document": "This API is used to execute batch deletion commands.",
+      "input": "DeleteCommandsRequest",
+      "name": "Delete in batches command",
+      "output": "DeleteCommandsResponse",
+      "status": "online"
+    },
     "DeleteInvoker": {
       "document": "This API is used to delete an invoker.",
       "input": "DeleteInvokerRequest",
       "name": "Deletes an invoker",
       "output": "DeleteInvokerResponse",
+      "status": "online"
+    },
+    "DeleteRegisterCodes": {
+      "document": "This API is used to delete registration codes in batches.",
+      "input": "DeleteRegisterCodesRequest",
+      "name": "Delete registration codes in batches",
+      "output": "DeleteRegisterCodesResponse",
+      "status": "online"
+    },
+    "DeleteRegisterInstance": {
+      "document": "This API is used to delete managed instances.",
+      "input": "DeleteRegisterInstanceRequest",
+      "name": "Delete a managed instance",
+      "output": "DeleteRegisterInstanceResponse",
       "status": "online"
     },
     "DescribeAutomationAgentStatus": {
@@ -77,6 +105,13 @@
       "output": "DescribeInvokersResponse",
       "status": "online"
     },
+    "DescribeQuotas": {
+      "document": "This API is used to obtain quota information.",
+      "input": "DescribeQuotasRequest",
+      "name": "Query quota information",
+      "output": "DescribeQuotasResponse",
+      "status": "online"
+    },
     "DescribeRegions": {
       "document": "This API is used to query the list of regions that supports TAT.\nIf the `RegionState` is `AVAILABLE`, it means that TAT is available in the region. If no value is returned, TAT is not available in the region.",
       "input": "DescribeRegionsRequest",
@@ -84,11 +119,39 @@
       "output": "DescribeRegionsResponse",
       "status": "online"
     },
+    "DescribeRegisterCodes": {
+      "document": "This API is used to query registration code info.",
+      "input": "DescribeRegisterCodesRequest",
+      "name": "Query a registration code",
+      "output": "DescribeRegisterCodesResponse",
+      "status": "online"
+    },
+    "DescribeRegisterInstances": {
+      "document": "This API is used to query managed instance information.",
+      "input": "DescribeRegisterInstancesRequest",
+      "name": "Query a managed instance",
+      "output": "DescribeRegisterInstancesResponse",
+      "status": "online"
+    },
+    "DescribeScenes": {
+      "document": "This API is used to query scenario details.",
+      "input": "DescribeScenesRequest",
+      "name": "Query scenario",
+      "output": "DescribeScenesResponse",
+      "status": "online"
+    },
     "DisableInvoker": {
       "document": "This API is used to disable an invoker.",
       "input": "DisableInvokerRequest",
       "name": "Disables an invoker",
       "output": "DisableInvokerResponse",
+      "status": "online"
+    },
+    "DisableRegisterCodes": {
+      "document": "This API is used to bulk disable registration codes.",
+      "input": "DisableRegisterCodesRequest",
+      "name": "Bulk disable registration codes",
+      "output": "DisableRegisterCodesResponse",
       "status": "online"
     },
     "EnableInvoker": {
@@ -117,6 +180,13 @@
       "input": "ModifyInvokerRequest",
       "name": "Modifies an invoker",
       "output": "ModifyInvokerResponse",
+      "status": "online"
+    },
+    "ModifyRegisterInstance": {
+      "document": "This API is used to modify managed instance information.",
+      "input": "ModifyRegisterInstanceRequest",
+      "name": "Edit a managed instance",
+      "output": "ModifyRegisterInstanceResponse",
       "status": "online"
     },
     "PreviewReplacedCommandContent": {
@@ -175,7 +245,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent status. Valid values:\n<li> `Online`\n<li> `Offline`",
+          "document": "Agent status. valid values:.\nOnline: Online, Offline: Offline.\n",
           "example": "Online",
           "member": "string",
           "name": "AgentStatus",
@@ -185,7 +255,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent runtime environment. Valid values:\n<li> `Linux`: Linux instance\n<li> `Windows`: Windows instance",
+          "document": "Agent execution environment. valid values: Linux: Linux instance. Windows: Windows instance.",
           "example": "Linux",
           "member": "string",
           "name": "Environment",
@@ -211,7 +281,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Execution activity ID",
+          "document": "Execution activity ID.\n\nCall the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.",
           "example": "inv-xxxxxxxx",
           "member": "string",
           "name": "InvocationId",
@@ -220,7 +290,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:\n<li> `CVM`\n<li> `LIGHTHOUSE`",
+          "document": "Instance ID list. upper limit: 100.\n\nInstance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.\n- CVM\n- Lighthouse\n- TAT Register instance.",
           "example": "[\"ins-xxxxxxxx\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -247,7 +317,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Command ID.",
+          "document": "<p>Command ID.</p>.",
           "example": "cmd-aaaaaaaa",
           "member": "string",
           "name": "CommandId",
@@ -257,7 +327,7 @@
         },
         {
           "disabled": false,
-          "document": "Command name.",
+          "document": "<P>Command name.</p>.",
           "example": "cmdname",
           "member": "string",
           "name": "CommandName",
@@ -267,7 +337,7 @@
         },
         {
           "disabled": false,
-          "document": "Command description.",
+          "document": "<P>Command description.</p>.",
           "example": "the cmd",
           "member": "string",
           "name": "Description",
@@ -277,7 +347,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64-encoded command.",
+          "document": "<p>The Base64-encoded command content.</p>.",
           "example": "bHMgMTIzCmVjaG8ge3tifX0ge3tjfX0=",
           "member": "string",
           "name": "Content",
@@ -287,7 +357,7 @@
         },
         {
           "disabled": false,
-          "document": "Command type.",
+          "document": "<p>Command type. value is one of SHELL, POWERSHELL, BAT.</p>.",
           "example": "SHELL",
           "member": "string",
           "name": "CommandType",
@@ -297,7 +367,7 @@
         },
         {
           "disabled": false,
-          "document": "Command execution path.",
+          "document": "<P>Command execution path.</p>.",
           "example": "/root",
           "member": "string",
           "name": "WorkingDirectory",
@@ -307,7 +377,7 @@
         },
         {
           "disabled": false,
-          "document": "Command timeout period.",
+          "document": "<p>Command timeout time.</p><p>unit: seconds.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.",
           "example": "60",
           "member": "uint64",
           "name": "Timeout",
@@ -317,7 +387,7 @@
         },
         {
           "disabled": false,
-          "document": "Command creation time.",
+          "document": "<p>Command creation time. the format is YYYY-MM-DDThh:MM:ssZ.</p>.",
           "example": "2021-05-12T02:49:04Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -327,7 +397,7 @@
         },
         {
           "disabled": false,
-          "document": "Command update time.",
+          "document": "<p>Command last update time. format: YYYY-MM-DDThh:MM:ssZ.</p>.",
           "example": "2021-05-12T02:49:04Z",
           "member": "datetime_iso",
           "name": "UpdatedTime",
@@ -337,7 +407,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the custom parameter feature.",
+          "document": "<P>Whether to enable the custom parameter feature.</p>.",
           "example": "false",
           "member": "bool",
           "name": "EnableParameter",
@@ -347,7 +417,7 @@
         },
         {
           "disabled": false,
-          "document": "Default custom parameter value.",
+          "document": "<P>Default value of custom parameter.</p>.",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "DefaultParameters",
@@ -357,8 +427,28 @@
         },
         {
           "disabled": false,
-          "document": "Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.",
-          "example": "{\\\"cmd_description\\\":{\\\"en\\\":\\\"cmd1\\\",\\\"zh-cn\\\":\\\"cmd1\\\",\\\"name-",
+          "document": "<P>Default value of custom parameters.</p>.",
+          "example": "无",
+          "member": "DefaultParameterConf",
+          "name": "DefaultParameterConfs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Command association scenarios</p>.",
+          "example": "[\"sc-12345678\"]",
+          "member": "string",
+          "name": "Scenes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Structured description of the command. public commands have values, and user commands are empty strings.</p>.",
+          "example": "{\"scenes\":[\"sc-e22tn6f2\"],\"cmd_description\":{\"en\":\"english description\",\"zh-cn\":\"中文描述\",\"name-en\":\"EngName\",\"name-zh-cn\":\"中文名\"},\"parameter_description\":{},\"cmdName\":\"name\",\"cmdDesc\":\"desc\"}",
           "member": "string",
           "name": "FormattedDescription",
           "output_required": true,
@@ -367,7 +457,7 @@
         },
         {
           "disabled": false,
-          "document": "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
+          "document": "<p>Command creator.</p><p>enumeration value:</p><ul><li>TAT: public command</li><li>USER: personal creation command</li></ul>.",
           "example": "TAT",
           "member": "string",
           "name": "CreatedBy",
@@ -377,8 +467,8 @@
         },
         {
           "disabled": false,
-          "document": "The list of tags bound to the command.",
-          "example": "[]",
+          "document": "<P>Tag list associated with the command.</p>.",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
@@ -387,7 +477,7 @@
         },
         {
           "disabled": false,
-          "document": "The user who executes the command on the instance.",
+          "document": "<P>Username to run command on the instance.</p>.",
           "example": "root",
           "member": "string",
           "name": "Username",
@@ -397,7 +487,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS bucket URL for uploading logs.",
+          "document": "<P>The cos bucket address for log upload.</p>.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
           "name": "OutputCOSBucketUrl",
@@ -407,7 +497,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS bucket directory where the logs are saved.",
+          "document": "<P>Directory of logs in the cos bucket.</p>.",
           "example": "aa/bb/cc",
           "member": "string",
           "name": "OutputCOSKeyPrefix",
@@ -433,7 +523,7 @@
         },
         {
           "disabled": false,
-          "document": "Command type.",
+          "document": "Command type. value is one of SHELL, POWERSHELL, BAT.",
           "example": "SHELL",
           "member": "string",
           "name": "CommandType",
@@ -443,7 +533,7 @@
         },
         {
           "disabled": false,
-          "document": "Timeout period.",
+          "document": "Timeout period. unit: seconds.",
           "example": "60",
           "member": "uint64",
           "name": "Timeout",
@@ -526,7 +616,7 @@
         },
         {
           "disabled": false,
-          "document": "Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.",
+          "document": "Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.",
           "example": "SHELL",
           "member": "string",
           "name": "CommandType",
@@ -562,12 +652,21 @@
         },
         {
           "disabled": false,
-          "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided in the `InvokeCommand` API, the default value is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+          "document": "Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nIf no parameter value is provided when invoking the command, the default value here will be used to replace it.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.\nAllow settings only when the EnableParameter parameter is true.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "DefaultParameters",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter array.\nIf no parameter value is provided when invoking the command, the default value here will be used to replace it.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.\nAllow settings only when the EnableParameter parameter is true.\nCustom parameters can be up to 20.",
+          "example": "[ { \"ParameterName\": \"test01\",  \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test01\"         }, {  \"ParameterName\": \"test02\", \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test02\"}     ]",
+          "member": "DefaultParameterConf",
+          "name": "DefaultParameterConfs",
+          "required": false,
+          "type": "list"
         },
         {
           "disabled": false,
@@ -635,7 +734,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Invoker name.",
+          "document": "Executor name. length not exceeding 120 characters.",
           "example": "invoker-test",
           "member": "string",
           "name": "Name",
@@ -644,7 +743,7 @@
         },
         {
           "disabled": false,
-          "document": "Invoker type. It can only be `SCHEDULE` (recurring invokers).",
+          "document": "Executor type.\n\nSelectable values (currently only support one):.\n\n-`SCHEDULE`: period type executor.",
           "example": "SCHEDULE",
           "member": "string",
           "name": "Type",
@@ -653,7 +752,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command ID.",
+          "document": "Remote command ID.\n\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-k4ypdij0",
           "member": "string",
           "name": "CommandId",
@@ -662,7 +761,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the instance bound to the trigger. Up to 100 IDs are allowed.",
+          "document": "Trigger associated instance ID. list cap 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -671,7 +770,7 @@
         },
         {
           "disabled": false,
-          "document": "The user who executes the command.",
+          "document": "Command execution user. length not exceeding 256 characters.",
           "example": "root",
           "member": "string",
           "name": "Username",
@@ -680,7 +779,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameters of the command.",
+          "document": "Command custom parameter. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
           "name": "Parameters",
@@ -689,12 +788,21 @@
         },
         {
           "disabled": false,
-          "document": "Settings required for a recurring invoker.",
-          "example": "{          \"Policy\":\"ONCE\",     \"InvokeTime\":\"2021-09-01T00:00:00+08:00\" }",
+          "document": "Recurring invoker settings.\n\nWhen the executor type is `SCHEDULE`, specify this parameter.",
+          "example": "无",
           "member": "ScheduleSettings",
           "name": "ScheduleSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Tag associated with the command. list length not exceeding 10.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -721,12 +829,134 @@
       ],
       "type": "object"
     },
+    "CreateRegisterCodeRequest": {
+      "document": "CreateRegisterCode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Describes the registration code. maximum length is 128 characters.",
+          "example": "此注册码用于注册托管实例。",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prefix of the registered instance name. maximum length is 32 characters.",
+          "example": "register-test",
+          "member": "string",
+          "name": "InstanceNamePrefix",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances allowed by the registration code. default value is 10, minimum value is 1, maximum value is 10000.",
+          "example": "10",
+          "member": "int64",
+          "name": "RegisterLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The validity time of the registration code is measured in hours. default value is 4.\n\n-If the input value is less than or equal to 99999, the time is deemed valid in hours.\n-If the input value is more than 99999, it is set to permanently valid.",
+          "example": "4",
+          "member": "int64",
+          "name": "EffectiveTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Restrict the registration code to register only from the public outbound ip described by IpAddressRange.\n\nEmpty by default, meaning no restrictions.\n\nThe value should be in standard IPv4 or CIDRv4 format, such as 192.168.1.1 or 192.168.0.0/16.",
+          "example": "133.12.234.0/24",
+          "member": "string",
+          "name": "IpAddressRange",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRegisterCodeResponse": {
+      "document": "CreateRegisterCode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID.",
+          "example": "d0b7xxxx-a6xx-40x9-898x-44c9f508axxx",
+          "member": "string",
+          "name": "RegisterCodeId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Registration code value.",
+          "example": "5xx127965b0b498195xxxxx80ad926c53e1xxxx3d85e41e0ad93555941111111",
+          "member": "string",
+          "name": "RegisterCodeValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DefaultParameterConf": {
+      "document": "Custom parameter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "name",
+          "member": "string",
+          "name": "ParameterName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default parameter value.",
+          "example": "value",
+          "member": "string",
+          "name": "ParameterValue",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter description.",
+          "example": "This is a parameter.",
+          "member": "string",
+          "name": "ParameterDescription",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DeleteCommandRequest": {
       "document": "DeleteCommand request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the command to be deleted.",
+          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-7efujjs6",
           "member": "string",
           "name": "CommandId",
@@ -748,12 +978,39 @@
       ],
       "type": "object"
     },
+    "DeleteCommandsRequest": {
+      "document": "DeleteCommands request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "example": "[\"cmd-0v4tysy3\",\"cmd-0v4tysy4\"]",
+          "member": "string",
+          "name": "CommandIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCommandsResponse": {
+      "document": "DeleteCommands response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteInvokerRequest": {
       "document": "DeleteInvoker request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the invoker to be deleted.",
+          "document": "Pending deletion executor ID.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -775,12 +1032,66 @@
       ],
       "type": "object"
     },
+    "DeleteRegisterCodesRequest": {
+      "document": "DeleteRegisterCodes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
+          "example": "[\"d0b7xxxx-a6xx-40x9-898x-44c9f508axxx\"]",
+          "member": "string",
+          "name": "RegisterCodeIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRegisterCodesResponse": {
+      "document": "DeleteRegisterCodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRegisterInstanceRequest": {
+      "document": "DeleteRegisterInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
+          "example": "[\"rins-8d5cxxxx\"]",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRegisterInstanceResponse": {
+      "document": "DeleteRegisterInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAutomationAgentStatusRequest": {
       "document": "DescribeAutomationAgentStatus request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "List of instance IDs for the query.",
+          "document": "List of instance ids to be queried.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe maximum per request is 100.\n\nParameters must not be specified simultaneously `InstanceIds` and `Filters`.",
           "example": "[\"lhins-ar5wyn4x\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -789,7 +1100,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.",
+          "document": "-agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. \n-environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.\n-instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"instance-id\", \"Values\": [\"ins-zcewfho0\"] }]",
           "member": "Filter",
           "name": "Filters",
@@ -823,7 +1134,7 @@
         {
           "disabled": false,
           "document": "Agent information list.",
-          "example": "[       {         \"AgentStatus\": \"Offline\",         \"Environment\": \"Windows\",         \"InstanceId\": \"rins-lpuf78i4\",         \"LastHeartbeatTime\": \"2024-10-25T03:21:08Z\",         \"SupportFeatures\": [           \"SESSION_MANAGER\"         ],         \"Version\": \"1.0.17\"       }]",
+          "example": "无",
           "member": "AutomationAgentInfo",
           "name": "AutomationAgentSet",
           "output_required": true,
@@ -863,7 +1174,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions.\n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.\n<li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.\n<li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.\n<li> `created-by` - String - Required: No - (Filter condition) Filter by the creator. Valid values: `TAT` (public commands) or `USER` (custom commands).\n<li> `tag-key` - String - Required: No - (Filter condition) Filter by the tag key.</li>\n<li> `tag-value` - String - Required: No - (Filter condition) Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Required: No - (Filter) Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 4.</li>\n\nUp to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter criteria\n\n- command-id - String - required: no - (filter condition) filter by the command id.\n- command-name - String - required: no - (filter condition) filter by the command name.\n-command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.\n-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.\n-created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.\n- tag-key - String - required: no - (filter condition) filter by the tag key.\n- tag-value - String - required: no - (filter condition) filter by the tag value.\n- tag:tag-key - String - required: no - (filter condition) filter by the tag-key - value pair. replace tag-key with a specific tag key. for usage, see example 4.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `CommandIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"command-id\", \"Values\": [\"cmd-nrncl292\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -897,7 +1208,7 @@
         {
           "disabled": false,
           "document": "Total number of matching commands.",
-          "example": "1",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
           "output_required": true,
@@ -907,7 +1218,7 @@
         {
           "disabled": false,
           "document": "List of command details.",
-          "example": "[{   \"CommandId\": \"cmd-fqk6gaqy\",   \"CommandName\": \"anchorpeng-test002\",   \"CommandType\": \"SHELL\",   \"Content\": \"ZWNobyB7e3Rlc3R9fQ==\",   \"CreatedBy\": \"USER\",   \"CreatedTime\": \"2023-08-28T08:13:51Z\",   \"DefaultParameterConfs\": [     {       \"ParameterDescription\": \"for test\",       \"ParameterName\": \"test\",       \"ParameterValue\": \"666\"     }   ],   \"DefaultParameters\": \"\",   \"Description\": \"\",   \"EnableParameter\": true,   \"FormattedDescription\": \"\",   \"OutputCOSBucketUrl\": \"\",   \"OutputCOSKeyPrefix\": \"\",   \"Scenes\": [],   \"Tags\": [],   \"Timeout\": 60,   \"UpdatedTime\": \"2023-08-28T08:13:51Z\",   \"Username\": \"root\",   \"WorkingDirectory\": \"/root\" }]",
+          "example": "无",
           "member": "Command",
           "name": "CommandSet",
           "output_required": true,
@@ -937,7 +1248,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.",
+          "document": "Filter conditions.<br>.\n\n-invocation-task-id - String - required: no - (filter condition) filter by executing task id.\n- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.\n-instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.\n-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"instance-id\", \"Values\": [\"ins-zcewfho0\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -964,7 +1275,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>",
+          "document": "Whether to hide the command output result. valid values:.\n\n-true: hide output.\n- false: do not hide.\n \nThe default value is true.",
           "example": "true",
           "member": "bool",
           "name": "HideOutput",
@@ -990,7 +1301,7 @@
         {
           "disabled": false,
           "document": "List of execution tasks.",
-          "example": "[{         \"CommandDocument\": {           \"CommandType\": \"POWERSHELL\",           \"Content\": \"cHdk\",           \"OutputCOSBucketUrl\": \"\",           \"OutputCOSKeyPrefix\": \"\",           \"Timeout\": 60,           \"Username\": \"System\",           \"WorkingDirectory\": \"C:\\\\Program Files\\\\qcloud\\\\tat_agent\\\\workdir\"         },         \"CommandId\": \"cmd-f3epw86m\",         \"CreatedTime\": \"2024-10-25T03:18:37Z\",         \"EndTime\": \"2024-10-25T03:18:39Z\",         \"ErrorInfo\": \"\",         \"InstanceId\": \"rins-lpuf78i4\",         \"InvocationId\": \"inv-fc91n6g7k1\",         \"InvocationSource\": \"USER\",         \"InvocationTaskId\": \"invt-fc91n6g7k2\",         \"StartTime\": \"2024-10-25T03:18:38Z\",         \"TaskResult\": {           \"Dropped\": 0,           \"ExecEndTime\": \"2024-10-25T03:18:39Z\",           \"ExecStartTime\": \"2024-10-25T03:18:38Z\",           \"ExitCode\": 0,           \"Output\": \"\",           \"OutputUploadCOSErrorInfo\": \"\",           \"OutputUrl\": \"\"         },         \"TaskStatus\": \"SUCCESS\",         \"UpdatedTime\": \"2024-10-25T03:18:39Z\"       }]",
+          "example": "无",
           "member": "InvocationTask",
           "name": "InvocationTaskSet",
           "output_required": true,
@@ -1020,8 +1331,8 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> \n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. \n<li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).\n<li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. \n<br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.",
-          "example": "[ { \"Name\": \"instance-id\", \"Values\": [\"ins-zcewfho0\"] } ]",
+          "document": "Filter conditions.<br>.\n\n<li> invocation-id - String - required: no - (filter condition) filter by execution activity id.</li>.\n<li>command-id - String - required: no - (filter condition) filter by command id.</li>. \n<li> command-created-by - String - required: no - (filter criteria) filter by executed command type. valid values: TAT or USER. TAT represents public command, USER represents USER created command.</li>.\n<li> instance-kind - String - required: no - (filtering conditions) filter by running instance type. valid values: CVM or LIGHTHOUSE. CVM represents cloud virtual machine, LIGHTHOUSE represents tencent cloud LIGHTHOUSE.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationIds` and `Filters` parameters cannot be specified at the same time.",
+          "example": "[ { \"Name\": \"invocation-id\", \"Values\": [\"inv-zcewfho0\"] } ]",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -1064,7 +1375,7 @@
         {
           "disabled": false,
           "document": "List of execution activities.",
-          "example": "[{         \"CommandContent\": \"cHdk\",         \"CommandId\": \"cmd-kpfoo6py\",         \"CommandType\": \"SHELL\",         \"CreatedTime\": \"2024-10-25T03:18:37Z\",         \"DefaultParameters\": \"\",         \"Description\": \"\",         \"EndTime\": \"2024-10-25T03:18:38Z\",         \"InstanceKind\": \"REGISTERINST\",         \"InvocationId\": \"inv-hc91n6ga8c\",         \"InvocationSource\": \"USER\",         \"InvocationStatus\": \"SUCCESS\",         \"InvocationTaskBasicInfoSet\": [           {             \"InstanceId\": \"rins-0c54k0xs\",             \"InvocationTaskId\": \"invt-hc91n6ga8d\",             \"TaskStatus\": \"SUCCESS\"           }         ],         \"OutputCOSBucketUrl\": \"\",         \"OutputCOSKeyPrefix\": \"\",         \"Parameters\": \"\",         \"StartTime\": \"2024-10-25T03:18:37Z\",         \"Timeout\": 60,         \"UpdatedTime\": \"2024-10-25T03:18:38Z\",         \"Username\": \"root\",         \"WorkingDirectory\": \"/root\"       }]",
+          "example": "无",
           "member": "Invocation",
           "name": "InvocationSet",
           "output_required": true,
@@ -1085,7 +1396,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of invoker IDs. Up to 100 IDs are allowed.",
+          "document": "Executor ID list. the list has a cap of 100.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "[\"ivk-b7s3qa5l\"]",
           "member": "string",
           "name": "InvokerIds",
@@ -1150,7 +1461,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of invoker IDs.",
+          "document": "Executor ID list.\n\nThe maximum per request is 100.\n\nParameters must not be specified simultaneously `InvokerIds` and `Filters`.\n",
           "example": "[\"ivk-b7s3qa5l\"]",
           "member": "string",
           "name": "InvokerIds",
@@ -1159,7 +1470,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions:\n\n<li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.\n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.\n<li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.",
+          "document": "Filter criteria:.\n\n- invoker-id - String - required: no - (filter condition) filter by executor id.\n-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\n- invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"command-id\", \"Values\": [\"cmd-nrncl292\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -1203,10 +1514,47 @@
         {
           "disabled": false,
           "document": "Invoker information.",
-          "example": "[       {         \"CommandId\": \"cmd-lvj80ae8\",         \"CreatedTime\": \"2024-10-25T03:26:04Z\",         \"Enable\": true,         \"InstanceIds\": [           \"ins-6t770knh\"         ],         \"InvokerId\": \"ivk-ngqk4bda\",         \"Name\": \"test\",         \"Parameters\": \"\",         \"ScheduleSettings\": {           \"InvokeTime\": \"\",           \"Policy\": \"ONCE\",           \"Recurrence\": \"\"         },         \"Type\": \"SCHEDULE\",         \"UpdatedTime\": \"2024-10-25T22:24:13Z\",         \"Username\": \"\"       }]",
+          "example": "无",
           "member": "Invoker",
           "name": "InvokerSet",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQuotasRequest": {
+      "document": "DescribeQuotas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource name\n\nValue is:.\n\n- COMMAND: COMMAND.\n-REGISTER_CODE: managed instance registration code.",
+          "example": "[\"COMMAND\"]",
+          "member": "string",
+          "name": "ResourceNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQuotasResponse": {
+      "document": "DescribeQuotas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource quota list.",
+          "example": "[       {         \"ResourceName\": \"COMMAND\",         \"ResourceQuotaTotal\": 500,         \"ResourceQuotaUsed\": 27       }     ]",
+          "member": "GeneralResourceQuotaSet",
+          "name": "GeneralResourceQuotaSet",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1256,12 +1604,225 @@
       ],
       "type": "object"
     },
+    "DescribeRegisterCodesRequest": {
+      "document": "DescribeRegisterCodes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID.\n\nThe maximum per request is 100.\n\nParameters must not be specified simultaneously `RegisterCodeIds` and `Filters`.",
+          "example": "[\"d0b7xxxx-a6xx-40x9-898x-44c9f508axxx\"]",
+          "member": "string",
+          "name": "RegisterCodeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results, defaults to 20, maximum value is 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegisterCodesResponse": {
+      "document": "DescribeRegisterCodes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of queried registration codes.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Registration code information list.",
+          "example": "无",
+          "member": "RegisterCodeInfo",
+          "name": "RegisterCodeSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegisterInstancesRequest": {
+      "document": "DescribeRegisterInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Managed instance id.\n\nThe maximum per request is 100.\n\nParameters must not be specified simultaneously `InstanceIds` and `Filters`.\n",
+          "example": "[\"rins-8d88xxxx\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter list. the maximum number of `Filters` is 10 per request, and the maximum number of `Filter.Values` is 5. parameters must not be specified simultaneously for `InstanceIds` and `Filters`.\n\n\n- instance-name\n\nFilter by [managed instance name].\nType: String.\nRequired: No\n\n- instance-id\n\nFilter by [managed instance ID].\nType: String.\nRequired: No\n\n- register-status\n\nFilter by [managed instance status]. valid values: Online | Offline.\nType: String.\nRequired: No\n\n- local-ip\n\nFilter by [managed instance nic IP].\nType: String.\nRequired: No\n\n- register-code-id\n\nFilter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.\nType: String.\nRequired: No\n\n- sys-name\n\nFilter by [operating system type]. valid values: Linux | Windows.\nType: String.\nRequired: No\n\n- tag-key\n\nFilter by [tag key].\nType: String.\nRequired: No\n\n- tag-value\n\nFilter by [tag value].\nType: String.\nRequired: No\n\n- tag:tag-key\n\nFilter by [tag key-value pair]. replace tag-key with a specific Tag key.\nType: String.\nRequired: No\n\nFor example, the Filter is {\"Name\": \"tag:key1\", \"Values\": [\"v1\", \"v2\"] }, which queries all resources belonging to tag key1:v1 or key1:v2.\n\n",
+          "example": "[{\"name\":\"register-code-id\",\"value\":\"67c6df82-fa3e-48fb-9c17-07e3e1e9c2c3\"}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results, defaults to 20, maximum value is 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRegisterInstancesResponse": {
+      "document": "DescribeRegisterInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of registration codes registered by the instance.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of managed instance information.",
+          "example": "无",
+          "member": "RegisterInstanceInfo",
+          "name": "RegisterInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScenesRequest": {
+      "document": "DescribeScenes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scene ID array.\n\nThe maximum per request is 100.\n\nParameters must not specify both `SceneIds` and `Filters` simultaneously.\n",
+          "example": "[\"sc-12345678\"]",
+          "member": "string",
+          "name": "SceneIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria\n\n- scene-id - String - required: no - (filter condition) filter by the scene id.\n-scene-name - String - required: no - (filtering conditions) filter by scenario name.\n-created-by - String - required: no - (filter criteria) filter by scene creator, currently only support TAT, representing public scenarios.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `SceneIds` and `Filters` parameters cannot be specified at the same time.",
+          "example": "{\"scene-id\": \"sc-12345678\"}",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScenesResponse": {
+      "document": "DescribeScenes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of eligible scenarios.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of scenario details.",
+          "example": "[{         \"CreatedBy\": \"TAT\",         \"CreatedTime\": \"2024-09-23T07:52:26Z\",         \"SceneId\": \"sc-r8ct2mkc\",         \"SceneName\": \"Windows\",         \"UpdatedTime\": \"2024-09-23T08:12:27Z\"       }]",
+          "member": "Scene",
+          "name": "SceneSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisableInvokerRequest": {
       "document": "DisableInvoker request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the invoker to be disabled.",
+          "document": "ID of the executor to terminate.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -1283,12 +1844,39 @@
       ],
       "type": "object"
     },
+    "DisableRegisterCodesRequest": {
+      "document": "DisableRegisterCodes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
+          "example": "[\"d0b7xxxx-a6xx-40x9-898x-44c9f508axxx\"]",
+          "member": "string",
+          "name": "RegisterCodeIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableRegisterCodesResponse": {
+      "document": "DisableRegisterCodes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EnableInvokerRequest": {
       "document": "EnableInvoker request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the invoker to be enabled.",
+          "document": "Executor ID to be enabled.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -1311,7 +1899,7 @@
       "type": "object"
     },
     "Filter": {
-      "document": "> Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\n> * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` is the logical `OR`.\n>\n> Take the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API as an example. You can use the following filters to query the instances whose availability zone (`zone`) is Guangzhou 1 ***and*** billing method (`instance-charge-type`) is prepaid ***or*** pay-as-you-go:\n```\nFilters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-1\n&Filters.1.Name=instance-charge-type\n&Filters.1.Values.0=PREPAID\n&Filters.1.Values.1=POSTPAID_BY_HOUR\n```",
+      "document": "Describes the key-value pair filter, which is used for conditional filtering queries. for example, filter by ID, name, and status.\n- if there are multiple `Filter`s, the logical relationship between them is `AND`.\n- if there are multiple Values in the same Filter, the relationship between Values under the same Filter is logical OR.\n> \nTake the `Filters` of the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` \"print working directory\" and the `command-type` \"POWERSHELL\" or \"BAT\", it can be implemented as follows:.\n```\nFilters.0.Name=command-name\n&Filters.0.Values.0=Print working directory.\n\n&Filters.1.Name=command-type\n&Filters.1.Values.0=POWERSHELL\n&Filters.1.Values.1=BAT\n```",
       "members": [
         {
           "disabled": false,
@@ -1333,6 +1921,45 @@
         }
       ],
       "usage": "in"
+    },
+    "GeneralResourceQuotaSet": {
+      "document": "User quota information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource name\n\nValue is:.\n\n- COMMAND: COMMAND.\n-REGISTER_CODE: managed instance registration code.",
+          "example": "COMMAND",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Used credit limit.",
+          "example": "200",
+          "member": "int64",
+          "name": "ResourceQuotaUsed",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total quota.",
+          "example": "500",
+          "member": "int64",
+          "name": "ResourceQuotaTotal",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Invocation": {
       "document": "Execution activity details.",
@@ -1359,7 +1986,17 @@
         },
         {
           "disabled": false,
-          "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed\n<li> TIMEOUT: Command timed out\n<li> PARTIAL_FAILED: Partial failure",
+          "document": "Name of the executed command.",
+          "example": "cleanDisk",
+          "member": "string",
+          "name": "CommandName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n- RUNNING: command RUNNING.\n-Canceling.\n-SUCCESS: command success.\n-TIMEOUT: command timeout.\n- FAILED: command FAILED.\n-CANCELLED: all commands canceled.\n-PARTIAL_FAILED: the command partially failed.\n-PARTIAL_CANCELLED: the command is partially canceled.",
           "example": "SUCCESS",
           "member": "string",
           "name": "InvocationStatus",
@@ -1370,7 +2007,7 @@
         {
           "disabled": false,
           "document": "Execution task information list.",
-          "example": "[           {        \"InstanceId\": \"lhins-71itjmdd\",             \"InvocationTaskId\": \"invt-bd1w17gx22\",             \"TaskStatus\": \"FAILED\"           }         ],         \"OutputCOSBucketUrl\": \"\",         \"OutputCOSKeyPrefix\": \"\",         \"Parameters\": \"{}\",         \"StartTime\": \"2024-11-13T00:20:32Z\",         \"Timeout\": 600,         \"UpdatedTime\": \"2024-11-13T00:20:32Z\",         \"Username\": \"root\",         \"WorkingDirectory\": \"/data\"       }     ]",
+          "example": "[{\"InstanceId\":\"lhins-71itjmdd\",\"InvocationTaskId\":\"invt-bd1w17gx22\",\"TaskStatus\":\"SUCCESS\"}]",
           "member": "InvocationTaskBasicInfo",
           "name": "InvocationTaskBasicInfoSet",
           "output_required": true,
@@ -1389,8 +2026,8 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the execution activity.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Execute the activity start time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "StartTime",
           "output_required": true,
@@ -1399,18 +2036,18 @@
         },
         {
           "disabled": false,
-          "document": "End time of the execution activity.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Execute activity end time. format: YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "EndTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Time when the execution activity is created.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Execution activity createtime. format: YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "output_required": true,
@@ -1419,8 +2056,8 @@
         },
         {
           "disabled": false,
-          "document": "Time when the execution activity is updated.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Update time of the execution activity. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "UpdatedTime",
           "output_required": true,
@@ -1469,7 +2106,7 @@
         },
         {
           "disabled": false,
-          "document": "Invocation source.",
+          "document": "Invocation source.\n\n-USER: originate from user invocation.\n-INVOKER: originate from scheduled execution.",
           "example": "USER",
           "member": "string",
           "name": "InvocationSource",
@@ -1575,7 +2212,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> DELIVERING: Delivering\n<li> DELIVER_DELAYED: Delivery delayed \n<li> DELIVER_FAILED: Delivery failed\n<li> START_FAILED: Failed to start the command\n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.\n<li> TIMEOUT: Command timed out\n<li> TASK_TIMEOUT: Task timed out\n<li> CANCELLING: Canceling\n<li> CANCELLED: Canceled (canceled before execution)\n<li> TERMINATED: Terminated (canceled during execution)",
+          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n-DELIVERING: distributing.\n-DELIVER_DELAYED: delivery delay.\n-DELIVER_FAILED: delivery fail.\n-START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n-SUCCESS: command success.\n-FAILED: command execution failed, exit code not 0.\n-TIMEOUT: command timeout.\n-TASK_TIMEOUT: client no response.\n-Canceling.\n- CANCELLED: canceled (command canceled before startup).\n-TERMINATED: suspended (canceled during command execution).",
           "example": "SUCCESS",
           "member": "string",
           "name": "TaskStatus",
@@ -1596,7 +2233,7 @@
         {
           "disabled": false,
           "document": "Execution result.",
-          "example": "{           \"Dropped\": 0,           \"ExecEndTime\": \"2024-11-13T02:10:32Z\",           \"ExecStartTime\": \"2024-11-13T02:10:32Z\",           \"ExitCode\": 7,           \"Output\": \"\",           \"OutputUploadCOSErrorInfo\": \"\",           \"OutputUrl\": \"\"         }",
+          "example": "无",
           "member": "TaskResult",
           "name": "TaskResult",
           "output_required": true,
@@ -1605,8 +2242,8 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the execution task.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Task start time. format: YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "StartTime",
           "output_required": true,
@@ -1615,8 +2252,8 @@
         },
         {
           "disabled": false,
-          "document": "End time of the execution task.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Task end time. format: YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "EndTime",
           "output_required": true,
@@ -1625,8 +2262,8 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Creation time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "output_required": true,
@@ -1635,8 +2272,8 @@
         },
         {
           "disabled": false,
-          "document": "Update time.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Update time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "UpdatedTime",
           "output_required": true,
@@ -1646,7 +2283,7 @@
         {
           "disabled": false,
           "document": "Command details of the execution task.",
-          "example": "{           \"CommandType\": \"SHELL\",           \"Content\": \"cHdk\",           \"OutputCOSBucketUrl\": \"\",           \"OutputCOSKeyPrefix\": \"prefix\",           \"Timeout\": 600,           \"Username\": \"root\",           \"WorkingDirectory\": \"/data\"         }",
+          "example": "无",
           "member": "CommandDocument",
           "name": "CommandDocument",
           "output_required": true,
@@ -1665,10 +2302,20 @@
         },
         {
           "disabled": false,
-          "document": "Invocation source.",
+          "document": "Invocation source.\n\n-USER: originate from user invocation.\n-INVOKER: originate from scheduled execution.",
           "example": "USER",
           "member": "string",
           "name": "InvocationSource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the executed command.",
+          "example": "name",
+          "member": "string",
+          "name": "CommandName",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1685,17 +2332,17 @@
           "example": "invt-aaaabbbb",
           "member": "string",
           "name": "InvocationTaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> DELIVERING: Delivering\n<li> DELIVER_DELAYED: Delivery delayed \n<li> DELIVER_FAILED: Delivery failed\n<li> START_FAILED: Failed to start the command\n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.\n<li> TIMEOUT: Command timed out\n<li> TASK_TIMEOUT: Task timed out\n<li> CANCELLING: Canceling\n<li> CANCELLED: Canceled (canceled before execution)\n<li> TERMINATED: Terminated (canceled during execution)",
-          "example": "TERMINATED",
+          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n-DELIVERING: distributing.\n-DELIVER_DELAYED: delivery delay.\n-DELIVER_FAILED: delivery fail.\n-START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n-SUCCESS: command success.\n-FAILED: command execution failed, exit code not 0.\n-TIMEOUT: command timeout.\n-TASK_TIMEOUT: client no response.\n-Canceling.\n- CANCELLED: canceled (command canceled before startup).\n-TERMINATED: suspended (canceled during command execution).",
+          "example": "SUCCESS",
           "member": "string",
           "name": "TaskStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1705,7 +2352,7 @@
           "example": "ins-aaaabbbb",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1717,7 +2364,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the command to be triggered.",
+          "document": "Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-ffxdx79i",
           "member": "string",
           "name": "CommandId",
@@ -1726,7 +2373,7 @@
         },
         {
           "disabled": false,
-          "document": "IDs of instances about to execute commands. At most 100 IDs are allowed.",
+          "document": "Instance ID list for the command to be executed, with a cap of 200.\n\nInstance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.\n- CVM\n- Lighthouse\n-TAT register instance.",
           "example": "[\"lhins-ar5wyn40\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -1735,7 +2382,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameters of the command. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided, the DefaultParameters of the command is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+          "document": "Custom parameter of Command. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\nIf the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
@@ -1837,7 +2484,7 @@
         },
         {
           "disabled": false,
-          "document": "Invoker type.",
+          "document": "Executor type. currently only support SCHEDULE.",
           "example": "SCHEDULE",
           "member": "string",
           "name": "Type",
@@ -1868,7 +2515,7 @@
         {
           "disabled": false,
           "document": "Custom parameters.",
-          "example": "{\"var\": 1}",
+          "example": "{\"var\": \"1\"}",
           "member": "string",
           "name": "Parameters",
           "output_required": true,
@@ -1897,17 +2544,17 @@
         },
         {
           "disabled": false,
-          "document": "Execution schedule of the invoker. This field is returned for recurring invokers.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Executor periodic schedule. recurring invoker will return this field.",
           "example": "无",
           "member": "ScheduleSettings",
           "name": "ScheduleSettings",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "Creation time. the format is YYYY-MM-DDThh:MM:ssZ.",
           "example": "2021-08-30T06:42:02Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -1917,7 +2564,7 @@
         },
         {
           "disabled": false,
-          "document": "Modification time.",
+          "document": "Last modified. the format is YYYY-MM-DDThh:MM:ssZ.",
           "example": "2021-08-30T06:42:02Z",
           "member": "datetime_iso",
           "name": "UpdatedTime",
@@ -1937,17 +2584,17 @@
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Execution time.",
+          "document": "Execution time. format: YYYY-MM-DDThh:MM:ssZ.",
           "example": "2021-10-30T00:00:00Z",
           "member": "datetime_iso",
           "name": "InvokeTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1957,7 +2604,7 @@
           "example": "start an invocation at scheduled time.",
           "member": "string",
           "name": "Reason",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1967,17 +2614,17 @@
           "example": "inv-4ybg8gmj",
           "member": "string",
           "name": "InvocationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Trigger result.",
+          "document": "Trigger result.\n\n-PENDING: waiting for distribution.\n- RUNNING: command RUNNING.\n-Canceling.\n-SUCCESS: command success.\n-TIMEOUT: command timeout.\n- FAILED: command FAILED.\n-CANCELLED: all commands canceled.\n-PARTIAL_FAILED: the command partially failed.\n-PARTIAL_CANCELLED: the command is partially canceled.",
           "example": "SUCCESS",
           "member": "string",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1989,7 +2636,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Command ID.",
+          "document": "<p>Command ID. call the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands</a> api to query command details.</p>.",
           "example": "cmd-7efujjs6",
           "member": "string",
           "name": "CommandId",
@@ -1998,7 +2645,7 @@
         },
         {
           "disabled": false,
-          "document": "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
+          "document": "<p>Command name. name only supports chinese, english, digits, underscore, separator \"-\", and decimal point. the maximum length cannot exceed 60 bytes.</p>.",
           "example": "tat-command",
           "member": "string",
           "name": "CommandName",
@@ -2007,7 +2654,7 @@
         },
         {
           "disabled": false,
-          "document": "Command description. The maximum length is 120 characters.",
+          "document": "<P>Command description. no more than 120 characters.</p>.",
           "example": "this is a command",
           "member": "string",
           "name": "Description",
@@ -2016,7 +2663,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64-encoded command. The maximum length is 64 KB.",
+          "document": "<p>The Base64-encoded command content, length cannot exceed 64KB.</p>.",
           "example": "cHdk",
           "member": "string",
           "name": "Content",
@@ -2025,7 +2672,7 @@
         },
         {
           "disabled": false,
-          "document": "Command type. `SHELL` and `POWERSHELL` are supported.",
+          "document": "<p>Command type. currently supports SHELL, POWERSHELL, BAT.</p>.",
           "example": "SHELL",
           "member": "string",
           "name": "CommandType",
@@ -2034,7 +2681,7 @@
         },
         {
           "disabled": false,
-          "document": "Command execution path.",
+          "document": "<P>Command execution path.</p>.",
           "example": "/root",
           "member": "string",
           "name": "WorkingDirectory",
@@ -2043,7 +2690,7 @@
         },
         {
           "disabled": false,
-          "document": "Command timeout period. Value range: [1, 86400].",
+          "document": "<p>Command timeout time.</p><p>value range: [1, 86400].</p><p>unit: seconds.</p><p>default value: 60.</p><p>when specifying the OutputCOSBucketUrl parameter, the timeout period includes the time taken to upload command output to COS.</p>.",
           "example": "60",
           "member": "uint64",
           "name": "Timeout",
@@ -2052,7 +2699,7 @@
         },
         {
           "disabled": false,
-          "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\nAll parameters are overwritten. All default values are required for modification.\nModification is only allowed when `EnableParameter` is `true`.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+          "document": "<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {\"varA\": \"222\"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "DefaultParameters",
@@ -2061,7 +2708,16 @@
         },
         {
           "disabled": false,
-          "document": "The username used to execute the command on the CVM or Lighthouse instance.\nThe principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.",
+          "document": "<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.",
+          "example": "无",
+          "member": "DefaultParameterConf",
+          "name": "DefaultParameterConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The username to run commands in a CVM or Lighthouse instance.<br>using minimum permission to execute commands is the best practice for permission management. we recommend running cloud assistant commands as a regular user identity.</p>.",
           "example": "root",
           "member": "string",
           "name": "Username",
@@ -2070,7 +2726,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
+          "document": "<p>Specifies the cos bucket address for the uploaded log, which must start with https, such as https://BucketName-123454321.cos.ap-beijing.myqcloud.com.</p>.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
           "name": "OutputCOSBucketUrl",
@@ -2079,7 +2735,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS bucket directory where the logs are saved. Check below for the rules of the directory name. \n1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.\n2. Use a slash (/) to create a subdirectory.\n3. \"..\" can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.",
+          "document": "<P>Specify the directory for logs in the cos bucket. the directory naming has the following rules:</p><ol><li>use a combination of numbers, chinese and english, and visible characters, with a maximum length of 60.</li><li>use / to split the path and quickly create subdirectories.</li><li>consecutive / are not allowed; cannot start with /; cannot use .. as the folder name.</li></ol>.",
           "example": "aa/bb/cc",
           "member": "string",
           "name": "OutputCOSKeyPrefix",
@@ -2106,7 +2762,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the invoker to be modified.",
+          "document": "Executor ID to be modified.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-n0t6rxtv",
           "member": "string",
           "name": "InvokerId",
@@ -2115,7 +2771,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the invoker to be modified.",
+          "document": "Executor name to be modified. length not exceeding 120 characters.",
           "example": "invoker-test",
           "member": "string",
           "name": "Name",
@@ -2124,7 +2780,7 @@
         },
         {
           "disabled": false,
-          "document": "Invoker type. It can only be `SCHEDULE` (recurring invokers).",
+          "document": "Executor type to be modified.\n\nSelectable values (currently only support one):.\n\n-`SCHEDULE`: period type executor.",
           "example": "SCHEDULE",
           "member": "string",
           "name": "Type",
@@ -2133,7 +2789,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the command to be modified.",
+          "document": "Command ID to be modified.\n\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-m7uma92n",
           "member": "string",
           "name": "CommandId",
@@ -2142,7 +2798,7 @@
         },
         {
           "disabled": false,
-          "document": "The username to be modified.",
+          "document": "Username to be modified. length not exceeding 256 characters.",
           "example": "root",
           "member": "string",
           "name": "Username",
@@ -2151,7 +2807,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameters to be modified.",
+          "document": "Custom parameters to be modified. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
           "name": "Parameters",
@@ -2160,7 +2816,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instance IDs to be modified. Up to 100 IDs are allowed.",
+          "document": "List of instance ids to be modified. list length limit 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -2169,7 +2825,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled invoker settings to be modified.",
+          "document": "Recurring invoker settings to be modified.\n\nChange the executor type to `SCHEDULE` and specify this parameter.",
           "example": "{          \"Policy\":\"ONCE\",     \"InvokeTime\":\"2021-09-01T00:00:00+08:00\" }",
           "member": "ScheduleSettings",
           "name": "ScheduleSettings",
@@ -2191,13 +2847,49 @@
       ],
       "type": "object"
     },
+    "ModifyRegisterInstanceRequest": {
+      "document": "ModifyRegisterInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
+          "example": "rins-8dz6cwxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name. valid length is 1–60 characters.",
+          "example": "register-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRegisterInstanceResponse": {
+      "document": "ModifyRegisterInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "PreviewReplacedCommandContentRequest": {
       "document": "PreviewReplacedCommandContent request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Custom parameters for the preview. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and \"value\" is its specified value. Both \"key\" and \"value\" are strings.\nAt most 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].\nThis parameter can be left empty if DefaultParameters is set for the previewed CommandId.",
-          "example": "{\\\"varA\\\": \\\"222\\\"}",
+          "document": "The preview uses custom parameters. field type is json encoded string, for example: {\"varA\": \"222\"}.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\nIf DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.\n\nkey specifies the custom parameter name, and value specifies the parameter. both kv are string-type.\nCustom parameters are limited to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].\nIf the previewed CommandId has DefaultParameters set, this parameter can be empty.",
+          "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
           "required": false,
@@ -2205,7 +2897,7 @@
         },
         {
           "disabled": false,
-          "document": "The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.\n`CommandId` or `Content` must be specified.",
+          "document": "Perform the replace preview command.\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.\nCommandId and Content, you must provide one and can only provide one.",
           "example": "cmd-abcdefgh",
           "member": "string",
           "name": "CommandId",
@@ -2255,7 +2947,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2265,18 +2957,250 @@
           "example": "广州",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region status. `AVAILABLE` indicates the region is available.",
+          "document": "Region availability status. AVAILABLE indicates the region is AVAILABLE. UNAVAILABLE indicates the region is UNAVAILABLE.",
           "example": "AVAILABLE",
           "member": "string",
           "name": "RegionState",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RegisterCodeInfo": {
+      "document": "Register code info.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID.",
+          "example": "d0b7xxxx-a6xx-40x9-898x-44c9f508axxx",
+          "member": "string",
+          "name": "RegisterCodeId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the registration code.",
+          "example": "此注册码用于注册托管实例。",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prefix of the registered instance name.",
+          "example": "register-test",
+          "member": "string",
+          "name": "InstanceNamePrefix",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of instances the registration code allows.",
+          "example": "100",
+          "member": "int64",
+          "name": "RegisterLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiry date of the registration code is in ISO8601 standard representation and uses UTC time. \nThe format is YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-09-07T13:13:29Z",
+          "member": "datetime_iso",
+          "name": "ExpiredTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The registration code limits tat_agent to register only from the public outbound ip described by IpAddressRange.",
+          "example": "133.12.234.0/24",
+          "member": "string",
+          "name": "IpAddressRange",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Is the registration code available.",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of registered registration codes.",
+          "example": "10",
+          "member": "int64",
+          "name": "RegisteredCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Registration code creation time, represented as ISO8601 standard and using UTC time. \nThe format is YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-12-01 00:00:00",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time of the registration code, as ISO8601 standard representation and using UTC time. \nThe format is YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-12-01 00:00:00",
+          "member": "datetime_iso",
+          "name": "UpdatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RegisterInstanceInfo": {
+      "document": "Register instance info.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Registration code ID.",
+          "example": "d0b7xxxx-a6xx-40x9-898x-44c9f508axxx",
+          "member": "string",
+          "name": "RegisterCodeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed instance ID.",
+          "example": "rins-8d5cxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Managed instance name.",
+          "example": "register-test",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Machine ID.",
+          "example": "00xxxxx-0fxx-xxxx-xxxx-33951xxxxxxx",
+          "member": "string",
+          "name": "MachineId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "System name. valid values: Linux | Windows.",
+          "example": "Linux",
+          "member": "string",
+          "name": "SystemName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Host name.",
+          "example": "VM-0-01-ubuntu",
+          "member": "string",
+          "name": "HostName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private network IP",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "LocalIp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public key.",
+          "example": "-----BEGIN RSA PUBLIC KEY-----\\nXXXXX...",
+          "member": "string",
+          "name": "PublicKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hosting status.\nReturn Online means the instance is managed, return Offline means the instance is unhosted.",
+          "example": "Online",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2025-03-05T20:07:29Z",
+          "member": "datetime_iso",
+          "name": "UpdatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "[{\"name\": \"owner\", \"value\": \"zhang san\"}]",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2296,7 +3220,7 @@
         },
         {
           "disabled": false,
-          "document": "IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:\n<li> `CVM`\n<li> `LIGHTHOUSE`",
+          "document": "Instance ID list for the command to be executed, with a cap of 200.\n\nInstance ID can be obtained through the query instance interface of corresponding cloud services. currently supported instance types:.\n- CVM\n- Lighthouse\n-TAT register instance.",
           "example": "[\"ins-zcxx4ga1\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -2323,7 +3247,7 @@
         },
         {
           "disabled": false,
-          "document": "Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.",
+          "document": "Command type. currently supports SHELL, POWERSHELL, BAT. default: SHELL.",
           "example": "SHELL",
           "member": "string",
           "name": "CommandType",
@@ -2350,7 +3274,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to save the command. Valid values:\n<li> `True`: Save\n<li> `False`: Do not save\nThe default value is `False`.",
+          "document": "Whether to save the command. value range:.\n<li>true: save</li>.\n<li>false: not saved.</li>.\nThe default value is false.",
           "example": "false",
           "member": "bool",
           "name": "SaveCommand",
@@ -2359,7 +3283,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the custom parameter feature.\nThis cannot be modified once created.\nDefault value: `false`.",
+          "document": "Whether to enable the custom parameter feature.\nOnce created, this value does not offer modification.\nValid values:.\n<li>true: enable</li>.\n<li>false: disabled.</li>.\nThe default value is false.",
           "example": "false",
           "member": "bool",
           "name": "EnableParameter",
@@ -2368,7 +3292,7 @@
         },
         {
           "disabled": false,
-          "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf Parameters is not provided, the default values specified here are used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+          "document": "Enable the custom parameter feature. default value of the custom parameter. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nThis parameter can be set only when the EnableParameter of the command is true.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.\nIf Parameters is not provided, the default value here will be used to replace.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "DefaultParameters",
@@ -2377,7 +3301,16 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameters of `Command`. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided, the `DefaultParameters` is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
+          "document": "Custom parameter array. if Parameters is not provided, the default value here will be used to replace. up to 20 custom Parameters are allowed.\nIf Parameters is not provided, the default value here will be used to replace.\nThis parameter can be set only when the EnableParameter of the command is true.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.",
+          "example": "[ { \"ParameterName\": \"test01\",  \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test01\"         }, {  \"ParameterName\": \"test02\", \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test02\"}     ]",
+          "member": "DefaultParameterConf",
+          "name": "DefaultParameterConfs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter of Command. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nThis parameter can be set only when the EnableParameter of the command is true.\nIf the parameter value is not provided, DefaultParameters or DefaultParameterConfs will be used.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
@@ -2455,15 +3388,77 @@
       ],
       "type": "object"
     },
+    "Scene": {
+      "document": "Scenario details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scene ID.",
+          "example": "sc-12345678",
+          "member": "string",
+          "name": "SceneId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scenario name.",
+          "example": "运维场景",
+          "member": "string",
+          "name": "SceneName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scene creator.\n\n- TAT: public scenario.",
+          "example": "TAT",
+          "member": "string",
+          "name": "CreatedBy",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2021-05-12T02:49:04Z",
+          "member": "string",
+          "name": "CreatedTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time. the format is YYYY-MM-DDThh:MM:ssZ.",
+          "example": "2021-05-12T02:49:04Z",
+          "member": "string",
+          "name": "UpdatedTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ScheduleSettings": {
       "document": "Settings of a scheduled invoker",
       "members": [
         {
           "disabled": false,
-          "document": "Execution policy:\n<br><li>`ONCE`: Execute once\n<br><li>`RECURRENCE`: Execute repeatedly",
+          "document": "Execution policy.\n\n-ONCE: one-time execution.\n-RECURRENCE: execute periodically.",
           "example": "ONCE",
           "member": "string",
           "name": "Policy",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2474,16 +3469,18 @@
           "example": "0 0 1 * *",
           "member": "string",
           "name": "Recurrence",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The next execution time of the invoker. This field is required if `Policy` is `ONCE`.",
+          "document": "Next execution time of the executor. this field requires specifying when Policy is ONCE.\n\nThe time format is YYYY-MM-DDThh:MM:ssZ.",
           "example": "2021-09-01T00:00:00+08:00",
           "member": "datetime_iso",
           "name": "InvokeTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2544,8 +3541,8 @@
         },
         {
           "disabled": false,
-          "document": "Time when the execution is started.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Command execution start time. the format is YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "ExecStartTime",
           "output_required": true,
@@ -2554,8 +3551,8 @@
         },
         {
           "disabled": false,
-          "document": "Time when the execution is ended.",
-          "example": "2014-08-03 12:00:00",
+          "document": "Execution end time of the command. format: YYYY-MM-DDThh:MM:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025-03-05T20:07:29Z",
           "member": "datetime_iso",
           "name": "ExecEndTime",
           "output_required": true,

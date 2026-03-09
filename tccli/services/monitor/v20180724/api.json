@@ -3242,7 +3242,7 @@
         {
           "disabled": false,
           "document": "The list of successfully created integrations.",
-          "example": "kafka-name",
+          "example": "[\"kafka-name\"]",
           "member": "string",
           "name": "Names",
           "output_required": true,

@@ -1080,7 +1080,7 @@
           "example": "bundle_gen_01",
           "member": "string",
           "name": "BundleId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1090,7 +1090,7 @@
           "example": "1",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1100,7 +1100,7 @@
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "SystemDiskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1110,7 +1110,7 @@
           "example": "40",
           "member": "int64",
           "name": "SystemDiskSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1120,7 +1120,7 @@
           "example": "300",
           "member": "int64",
           "name": "MonthlyTraffic",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1130,7 +1130,7 @@
           "example": "true",
           "member": "bool",
           "name": "SupportLinuxUnixPlatform",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -1140,17 +1140,17 @@
           "example": "true",
           "member": "bool",
           "name": "SupportWindowsPlatform",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Current package unit price information.",
-          "example": " {           \"InstancePrice\": {             \"OriginalBundlePrice",
+          "example": "无",
           "member": "Price",
           "name": "Price",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1160,7 +1160,7 @@
           "example": "1",
           "member": "int64",
           "name": "CPU",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1170,7 +1170,7 @@
           "example": "3",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1180,7 +1180,7 @@
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1190,29 +1190,29 @@
           "example": "SOLD_OUT",
           "member": "string",
           "name": "BundleSalesState",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bundle type. \nValid values: \n<li>STARTER_BUNDLE: Starter bundle</li>\n<li>GENERAL_BUNDLE: General bundle</li>\n<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>\n<li>STORAGE_BUNDLE: Storage-optimized bundle</li>\n<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>\n<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>\n<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>\n<li>BEFAST_BUNDLE: BeFast bundle </li>",
+          "document": "Package type.\nValue range:.\n<Li>GENERAL_BUNDLE: general.</li>.\n<Li>STORAGE_BUNDLE: storage type</li>.\n<Li>ENTERPRISE_BUNDLE: enterprise type</li>.\n<Li>EXCLUSIVE_BUNDLE: exclusive</li>.\n<Li>BEFAST_BUNDLE: beefast bundle</li>.\n<Li>STARTER_BUNDLE: entry-level.</li>.\n<Li>CAREFREE_BUNDLE: carefree</li>.\n<Li>RAZOR_SPEED_BUNDLE: razor speed bundle</li>.",
           "example": "GENERAL_BUNDLE",
           "member": "string",
           "name": "BundleType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bundle type description \nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "document": "Package type description.",
           "example": "通用型",
           "member": "string",
           "name": "BundleTypeDescription",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1220,8 +1220,18 @@
           "example": "NORMAL",
           "member": "string",
           "name": "BundleDisplayLabel",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the traffic volume is unlimited.",
+          "example": "true",
+          "member": "bool",
+          "name": "TrafficUnlimited",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1778,63 +1788,63 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cloud disk ID.",
+          "document": "<p>Cloud disk ID.</p>.",
           "example": "lhdisk-f3vgfci1",
           "member": "string",
           "name": "DiskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cloud disk unit price.",
+          "document": "<P>Cloud block storage (cbs) unit price.</p><p>unit: usd</p>.",
           "example": "0.8",
           "member": "float",
           "name": "OriginalDiskPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total price of cloud disk",
+          "document": "<P>Total CBS price.</p><p>unit: usd</p>.",
           "example": "0.8",
           "member": "float",
           "name": "OriginalPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount.",
+          "document": "<p>Discount.</p>.",
           "example": "0.5",
           "member": "float",
           "name": "Discount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted total price.",
+          "document": "<P>Discounted total price.</p><p>unit: usd</p>.",
           "example": "0.4",
           "member": "float",
           "name": "DiscountPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID of the instance to which the data disk is mounted.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "<p>Instance ID for data disk mounting.</p>.",
           "example": "lhins-abcdef",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2239,7 +2249,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Package ID list.",
+          "document": "List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).",
           "example": "[\"bundle_ntp_small1_500”]",
           "member": "string",
           "name": "BundleIds",
@@ -2266,7 +2276,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter list.\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>`support-platform-type`<li>Filter by the **system type**.\nValues: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValues: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValues: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.",
+          "document": "Filter list.\n<li>bundle-id</li>Filter by [bundle id].\nType: String.\nRequired: No\n<li>`support-platform-type`</li>Filter by the system type.\nValue: LINUX_UNIX (LINUX/UNIX system); WINDOWS (WINDOWS systems).\nType: String.\nRequired: No\n<li>bundle-type</li>Filter by [package type].\nValid values: GENERAL_BUNDLE (GENERAL BUNDLE); STORAGE_BUNDLE (STORAGE BUNDLE); ENTERPRISE_BUNDLE (ENTERPRISE BUNDLE); EXCLUSIVE_BUNDLE (dedicated BUNDLE); BEFAST_BUNDLE (SPEED BUNDLE); STARTER_BUNDLE (STARTER BUNDLE); CAREFREE_BUNDLE (CAREFREE BUNDLE); RAZOR_SPEED_BUNDLE (RAZOR SPEED BUNDLE).\nType: String.\nRequired: No\n<li>bundle-state</li>Filter by [package status].\nValid values: ONLINE, OFFLINE.\nType: String.\nRequired: No\nThe maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. the parameter does not support specifying both `BundleIds` and `Filters`.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2275,8 +2285,8 @@
         },
         {
           "disabled": false,
-          "document": "AZ list, which contains all AZs by default.",
-          "example": "无",
+          "document": "AZ list. default to all availability zones.\n<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.",
+          "example": "[\"ap-guangzhou-1\",\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -2294,7 +2304,7 @@
           "example": "无",
           "member": "Bundle",
           "name": "BundleSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2304,12 +2314,12 @@
           "example": "2",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2386,7 +2396,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cloud disk type. Valid values: \"CLOUD_PREMIUM\".",
+          "document": "CLOUD disk type. valid values: CLOUD_PREMIUM: high-performance CLOUD block storage, CLOUD_SSD: SSD CLOUD disk.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
@@ -2395,7 +2405,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud disk size.",
+          "document": "CBS disk capacity, unit: GB.",
           "example": "50",
           "member": "int64",
           "name": "DiskSize",
@@ -2404,7 +2414,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.",
+          "document": "Specify the cloud disk backup point quota. by default, no backup point quota is set if not specified. currently only support setting no quota or a cloud disk backup point quota within [0 - 500].",
           "example": "1",
           "member": "int64",
           "name": "DiskBackupQuota",
@@ -2419,11 +2429,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Currency: CNY, USD.",
+          "document": "Currency: USD.",
           "example": "CNY",
           "member": "string",
           "name": "Currency",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2433,12 +2443,12 @@
           "example": "无",
           "member": "DiscountDetail",
           "name": "DiscountDetail",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3799,51 +3809,51 @@
       "members": [
         {
           "disabled": false,
-          "document": "Values: \n<li>\"DiskSpace\": Cloud disk space</li>\n<li>\"DiskBackupQuota\": Cloud disk backups</li>",
+          "document": "<p>Name of a billable item, current parameter.</p><li>\"DiskSpace\" represents the CBS space charge item.</li><li>\"DiskBackupQuota\" represents the data disk backup point quota charge item.</li><li>\"Instance\" represents the Instance charge item.</li><li>\"SystemDiskBackupQuota\" represents the system disk backup point quota charge item.</li>.",
           "example": "DiskSpace",
           "member": "string",
           "name": "PriceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Official unit price of the billable item",
+          "document": "<P>Unit price per billing item dimension.</p><p>unit: usd</p>.",
           "example": "1.1",
           "member": "float",
           "name": "OriginUnitPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Official total price of the billable item",
+          "document": "<P>Total price of billing item dimension.</p><p>unit: usd</p>.",
           "example": "2.2",
           "member": "float",
           "name": "OriginalPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount of the billable item",
+          "document": "<P>Dimensional discount for billing items.</p>.",
           "example": "0.8",
           "member": "float",
           "name": "Discount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted total price of the billable item",
+          "document": "<P>Discounted total price by billing item dimension.</p><p>unit: usd</p>.",
           "example": "2.1",
           "member": "float",
           "name": "DiscountPrice",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -3891,61 +3901,61 @@
       "members": [
         {
           "disabled": false,
-          "document": "Billing duration.",
-          "example": "",
+          "document": "<P>Billing duration.</p>.",
+          "example": "1",
           "member": "int64",
           "name": "TimeSpan",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing unit.",
-          "example": "",
+          "document": "<P>Time unit.<br>value is:</p><ul><li>m - month</li><li>d - day</li></ul>.",
+          "example": "m",
           "member": "string",
           "name": "TimeUnit",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total price.",
-          "example": "",
+          "document": "<P>Total price.</p><p>unit: usd</p>.",
+          "example": "50",
           "member": "float",
           "name": "TotalCost",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted total price.",
-          "example": "",
+          "document": "<P>Discounted total price.</p><p>unit: usd</p>.",
+          "example": "50",
           "member": "float",
           "name": "RealTotalCost",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount.",
-          "example": "",
-          "member": "int64",
+          "document": "<p>Discount.</p>.",
+          "example": "100",
+          "member": "float",
           "name": "Discount",
-          "required": true,
-          "type": "int",
+          "output_required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount details.",
-          "example": "",
+          "document": "<P>Specific discount details.</p>.",
+          "example": "无",
           "member": "PolicyDetail",
           "name": "PolicyDetail",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -5125,7 +5135,7 @@
         {
           "disabled": false,
           "document": "IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
-          "example": "[\"lhins-11110001\\r\\n\"]",
+          "example": "[\"lhins-11110001\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5170,26 +5180,29 @@
           "example": "无",
           "member": "Price",
           "name": "Price",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of data disk price information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data disk price information list.",
           "example": "无",
           "member": "DataDiskPrice",
           "name": "DataDiskPriceSet",
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Price list of the instances to be renewed.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Price list for instances to be renewed.",
           "example": "无",
           "member": "InstancePriceDetail",
           "name": "InstancePriceDetailSet",
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5197,11 +5210,12 @@
           "example": "无",
           "member": "TotalPrice",
           "name": "TotalPrice",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5490,23 +5504,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
-          "example": "",
+          "document": "Duration of instance purchase. measurement unit: month.\n-Valid values when creating an instance: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.\n-When renewing an instance, valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
-          "example": "",
+          "document": "AUTO-Renewal flag. valid values:<br><li>NOTIFY_AND_AUTO_RENEW: NOTIFY AND AUTO-RENEW on expiration</li><br><li>NOTIFY_AND_MANUAL_RENEW: NOTIFY expiration without AUTO-RENEW. users need to manually RENEW.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: no AUTO-renewal AND no notification</li><br><br>default value: NOTIFY_AND_MANUAL_RENEW. if this parameter is set to NOTIFY_AND_AUTO_RENEW, the instance will automatically RENEW on a monthly basis after expiration when the account balance is sufficient.",
+          "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -5538,57 +5550,67 @@
       "usage": "out"
     },
     "InstancePrice": {
-      "document": "Price information of Lighthouse instances",
+      "document": "About Lighthouse Instance price.",
       "members": [
         {
           "disabled": false,
-          "document": "Original package unit price.",
-          "example": "无",
+          "document": "<P>Unit price of the package.</p><p>unit: usd</p>.",
+          "example": "90.0",
           "member": "float",
           "name": "OriginalBundlePrice",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original price.",
-          "example": "无",
+          "document": "<P>Original price.</p><p>unit: usd</p>.",
+          "example": "90.0",
           "member": "float",
           "name": "OriginalPrice",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discount.",
-          "example": "无",
-          "member": "int64",
+          "document": "<p>Discount.</p>.",
+          "example": "100.0",
+          "member": "float",
           "name": "Discount",
-          "required": false,
-          "type": "int",
+          "output_required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Discounted price.",
-          "example": "无",
+          "document": "<P>Discounted price.</p><p>unit: usd</p>.",
+          "example": "90.0",
           "member": "float",
           "name": "DiscountPrice",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Currency unit. Valid values: `CNY` and `USD`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>Price currency unit. valid values: USD.</p>.",
           "example": "CNY",
           "member": "string",
           "name": "Currency",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Billing item detail.</p>.",
+          "example": "无",
+          "member": "DetailPrice",
+          "name": "DetailPrices",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5598,33 +5620,33 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Instance ID.",
           "example": "lhins-xxxxxx",
           "member": "string",
           "name": "InstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Price query information.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Price inquiry information.",
           "example": "无",
           "member": "InstancePrice",
           "name": "InstancePrice",
-          "required": false,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Discount gradient details. each gradient includes duration, discount percentage, total price, discount price, and discount details (user discount, official website discount, final discount).",
           "example": "无",
           "member": "DiscountDetail",
           "name": "DiscountDetail",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6409,50 +6431,50 @@
         {
           "disabled": false,
           "document": "User discount.",
-          "example": "无",
-          "member": "int64",
+          "example": "100",
+          "member": "float",
           "name": "UserDiscount",
-          "required": false,
-          "type": "int",
+          "output_required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public discount.",
-          "example": "无",
-          "member": "int64",
+          "example": "88",
+          "member": "float",
           "name": "CommonDiscount",
-          "required": false,
-          "type": "int",
+          "output_required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Final discount.",
-          "example": "无",
-          "member": "int64",
+          "example": "88",
+          "member": "float",
           "name": "FinalDiscount",
-          "required": false,
-          "type": "int",
+          "output_required": true,
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Activity discount. The value `null` indicates no discount.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "100",
           "member": "float",
           "name": "ActivityDiscount",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Discount type.\nValid values: `user` (user discount), `common` (discount displayed on the official website), `activity` (activity discount), `null` (no discount).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "common",
           "member": "string",
           "name": "DiscountType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -6465,10 +6487,10 @@
         {
           "disabled": false,
           "document": "Instance price.",
-          "example": "",
+          "example": "无",
           "member": "InstancePrice",
           "name": "InstancePrice",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -7432,23 +7454,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total original price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<P>Original total price.</p><p>unit: usd</p>.",
           "example": "10.0",
           "member": "float",
           "name": "OriginalPrice",
-          "required": false,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total discounted price\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<P>Total price after discount.</p><p>unit: usd</p>.",
           "example": "9.0",
           "member": "float",
           "name": "DiscountPrice",
-          "required": false,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
