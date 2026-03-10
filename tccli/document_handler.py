@@ -266,7 +266,7 @@ class ActionDocumentHandler(BaseDocumentHandler):
 
         if not params_info:
             self.doc.style.indent()
-            self.doc.doc_title(u'无')
+            self.doc.doc_title(u'None')
             # self.doc.style.new_line()
 
         if not detail:

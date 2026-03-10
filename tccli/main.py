@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import _locale
-_locale._getdefaultlocale = (lambda *args: ['zh_CN', 'utf8'])
+_locale._getdefaultlocale = (lambda *args: ['en_US', 'utf8'])
 
 import io
 import sys
