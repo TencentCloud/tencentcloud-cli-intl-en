@@ -1,5 +1,13 @@
 {
   "actions": {
+    "ApplyPathLifecyclePolicy": [
+      {
+        "document": " ",
+        "input": "https://cfs.tencentcloudapi.com/?Action=ApplyPathLifecyclePolicy\n&LifecyclePolicyID=policy-ek8aw4id\n&Paths.0.FileSystemId=cfs-4030acd30\n&Paths.0.Path=/data\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"CheckResults\": [\n            {\n                \"LifecyclePolicyID\": \"policy-4cqyxcma\",\n                \"FileSystemId\": \"cfs-5ajk45jk8\",\n                \"Path\": \"/data/home/user00/\",\n                \"LifecycleRules\": [\n                    {\n                        \"StorageType\": \"InfrequentAccess\",\n                        \"Interval\": \"DEFAULT_ATIME_14\",\n                        \"FileType\": \"All\",\n                        \"Action\": \"Archive\",\n                        \"FileMaxSize\": \"1G\",\n                        \"FileMinSize\": \"1M\"\n                    }\n                ],\n                \"TargetPath\": \"/data/home/user00/\"\n            }\n        ],\n        \"RequestId\": \"a1b2c3-d4e5f6-g7h8j9\"\n    }\n}",
+        "title": "Configure the Directory Associated with the Lifecycle Policy"
+      }
+    ],
     "BindAutoSnapshotPolicy": [
       {
         "document": "This example shows you how to bind a file system to a snapshot policy.",
@@ -10,18 +18,18 @@
     ],
     "CreateAutoSnapshotPolicy": [
       {
-        "document": "This example shows you how to create a file system snapshot policy.",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"DayOfWeek\": \"\\\"1,2\\\"\",\n    \"Hour\": \"\\\"2,3\\\"\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
-        "title": "Creating a file system snapshot policy"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"Hour\": \"1\",\n    \"PolicyName\": \"abd\",\n    \"DayOfWeek\": \"1\",\n    \"AliveDays\": 1,\n    \"ResourceTags\": [\n        {\n            \"TagKey\": \"u90e8u95e8\",\n            \"TagValue\": \"u4e91u4ea7u54c1u4e00u90e8\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicyId\": \"asp-fglw8r91\",\n        \"RequestId\": \"0c37adaf-f6bc-4fca-b387-454ea93127e1\"\n    }\n}",
+        "title": "Creating a Snapshot Policy"
       }
     ],
     "CreateCfsFileSystem": [
       {
-        "document": "This example shows you how to create a file system.",
-        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsFileSystem\n&NetInterface=basic\n&Zone=ap-beijing-1\n&PGroupId=pgroupbasic\n&FsName=test_fs\n&<Common request parameters>",
+        "document": "File system creation scenario",
+        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsFileSystem\n&NetInterface=VPC\n&Zone=ap-beijing-1\n&PGroupId=pgroupbasic\n&FsName=test_fs\n&VpcId=vpc-123abc\n&SubnetId=subnet-123abc\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CreationTime\": \"2017-11-23 20:51:34\",\n        \"CreationToken\": \"test_fs\",\n        \"FileSystemId\": \"cfs-ocakq8tt\",\n        \"LifeCycleState\": \"creating\",\n        \"SizeByte\": 0,\n        \"ZoneId\": 800001,\n        \"FsName\": \"test_fs\",\n        \"Encrypted\": false\n    }\n}",
-        "title": "Creating a file system instance"
+        "title": "Creating a File System Instance"
       }
     ],
     "CreateCfsPGroup": [
@@ -35,41 +43,73 @@
     "CreateCfsRule": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"AuthClientIp\": \"10.1.1.10\",\n    \"PGroupId\": \"pgroup-12345\",\n    \"Priority\": \"9\",\n    \"UserPermission\": \"root_squash\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"AuthClientIp\": \"10.1.1.10\",\n    \"PGroupId\": \"pgroup-12345\",\n    \"Priority\": 9,\n    \"UserPermission\": \"root_squash\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"RuleId\": \"rule-12345\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"AuthClientIp\": \"10.1.1.10\",\n        \"RWPermission\": \"rw\",\n        \"UserPermission\": \"root_squash\",\n        \"Priority\": 9\n    }\n}",
-        "title": "Creating a permission group rule"
+        "title": "Create permission group rules."
       }
     ],
     "CreateCfsSnapshot": [
       {
         "document": " ",
-        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsSnapshot\n&FileSystemId=cfs-abcdefgh\n&SnapshotName=test\n&<Common request parameters>",
+        "input": "https://cfs.tencentcloudapi.com/?Action=CreateCfsSnapshot\n&FileSystemId=cfs-abcdefgh\n&SnapshotName=defaulsnapshot\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-abababb\"\n    }\n}",
-        "title": "Creating a file system snapshot"
+        "title": "Creating a File System Snapshot"
+      }
+    ],
+    "CreateDataFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataFlow\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-44d53b63e\",\n    \"SourceStorageType\": \"S3_COS\",\n    \"SourceStorageAddress\": \"https://aileen-data-flow-1251000004.cos.ap-guangzhou.myqcloud.com\",\n    \"SourcePath\": \"test3\",\n    \"TargetPath\": \"/cfs/test11\",\n    \"SecretId\": \"AKIDbzzYj65vue75sC1yg8P4cyBHBpLk\",\n    \"SecretKey\": \"onE8m9NN82ik6h3FCvXt2uc3Sjp\",\n    \"DataFlowName\": \"abctest\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataFlowId\": \"cfs-dataflow-4f827203\",\n        \"RequestId\": \"c5369436-a47c-4504-9cfa-f1f40c2c969f\"\n    }\n}",
+        "title": "Creating a Data Flow"
+      }
+    ],
+    "CreateLifecycleDataTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLifecycleDataTask\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4agcdretg\",\n    \"Type\": \"archive\",\n    \"TaskPath\": \"/cfs/data\",\n    \"TaskName\": \"dataarchive\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"task-abcdefg\",\n        \"RequestId\": \"req-gagagagagag\"\n    }\n}",
+        "title": "CreateLifecycleDataTask"
+      }
+    ],
+    "CreateLifecyclePolicy": [
+      {
+        "document": "Create a file storage lifecycle policy",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLifecyclePolicy\n<Common request parameters>\n\n{\n    \"LifecyclePolicyName\": \"default\",\n    \"LifecycleRules\": [\n        {\n            \"StorageType\": \"InfrequentAccess\",\n            \"Interval\": \"DEFAULT_ATIME_14\",\n            \"FileType\": \"ALL\",\n            \"Action\": \"Release\",\n            \"FileMaxSize\": \"10240\",\n            \"FileMinSize\": \"64\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"LifecyclePolicyID\": \"policy-13epvfrn\",\n        \"RequestId\": \"req-acb\"\n    }\n}",
+        "title": "Creating a File Storage Lifecycle Policy"
+      }
+    ],
+    "CreateLifecyclePolicyDownloadTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLifecyclePolicyDownloadTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"task-202311gafgagl\",\n    \"Type\": \"FileTotalList\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DownloadAddress\": \"https://cfs-migrate-xxxxx.cos.ap-chongqi\",\n        \"RequestId\": \"req-abcdefgh\"\n    }\n}",
+        "title": "Downloading the File List in a Lifecycle Task"
       }
     ],
     "CreateMigrationTask": [
       {
-        "document": "This example shows you how to create a data migration task.",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrationTask\n<Common request parameters>\n\n{\n    \"BucketRegion\": \"ap-nanjing\",\n    \"SrcService\": \"COS\",\n    \"CoverType\": \"1\",\n    \"SrcSecretKey\": \"*****************************\",\n    \"BucketPath\": \"cos/\",\n    \"MigrationMode\": \"0\",\n    \"FileSystemId\": \"cfs-8dd58fd7\",\n    \"BucketName\": \"test-1-1256238147\",\n    \"FsPath\": \"/test/\",\n    \"MigrationType\": \"0\",\n    \"TaskName\": \"test\",\n    \"SrcSecretId\": \"**************************************************\",\n    \"FsName\": \"test\"\n}",
+        "document": "Used to create a data migration task",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrationTask\n<Common request parameters>\n\n{\n    \"BucketRegion\": \"ap-nanjing\",\n    \"SrcService\": \"COS\",\n    \"CoverType\": 1,\n    \"SrcSecretKey\": \"*****************************\",\n    \"BucketPath\": \"cos/\",\n    \"MigrationMode\": 0,\n    \"FileSystemId\": \"cfs-8dd58fd7\",\n    \"BucketName\": \"test-1-1256238147\",\n    \"FsPath\": \"/test/\",\n    \"MigrationType\": 0,\n    \"TaskName\": \"migrate1\",\n    \"SrcSecretId\": \"**************************************************\",\n    \"FsName\": \"oldfs\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"cfsmigrate-dfe9b1f2\",\n        \"RequestId\": \"91cd4a08-a105-4c59-b229-82f0fs7363b8\"\n    }\n}",
-        "title": "Creating a migration task"
+        "title": "Creating a Migration Task"
       }
     ],
     "DeleteAutoSnapshotPolicy": [
       {
-        "document": " ",
+        "document": "",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
-        "title": "Deleting a policy"
+        "title": "Delete Scheduled Snapshot Policy"
       }
     ],
     "DeleteCfsFileSystem": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsFileSystem\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx\"\n    }\n}",
-        "title": "Deleting a file system"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\"\n    }\n}",
+        "title": "Delete File System"
       }
     ],
     "DeleteCfsPGroup": [
@@ -90,42 +130,50 @@
     ],
     "DeleteCfsSnapshot": [
       {
-        "document": " ",
+        "document": "Delete snapshot scenario",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCfsSnapshot\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-12345\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-12345\"\n    }\n}",
-        "title": "Deleting a snapshot"
+        "title": "Delete Snapshot"
+      }
+    ],
+    "DeleteDataFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDataFlow\n<Common request parameters>\n\n{\n    \"DataFlowId\": \"cfs-dataflow-4f827203\",\n    \"FileSystemId\": \"cfs-44d53b63e\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8ea860fd-e946-41a5-9c7e-72337d5084dc\"\n    }\n}",
+        "title": "Delete a Data Flow"
+      }
+    ],
+    "DeleteLifecyclePolicy": [
+      {
+        "document": "Delete a lifecycle management policy",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLifecyclePolicy\n<Common request parameters>\n\n{\n    \"LifecyclePolicyID\": \"policy-13epvfrn\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-aggagagag\"\n    }\n}",
+        "title": "Deleting a Lifecycle Management Policy"
       }
     ],
     "DeleteMigrationTask": [
       {
-        "document": "This example shows you how to delete a data migration task.",
+        "document": "Used to delete a data migration task",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMigrationTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"cfsmigrate-4e78dae8\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b72e3de2-6770-4388-af42-7e511935ad8e\"\n    }\n}",
-        "title": "Deleting a migration task"
-      }
-    ],
-    "DeleteMountTarget": [
-      {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMountTarget\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"MountTargetId\": \"mount-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\"\n    }\n}",
-        "title": "Deleting a mount target"
+        "title": "Deleting the Migration Task"
       }
     ],
     "DescribeAutoSnapshotPolicies": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAutoSnapshotPolicies\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"TotalCount\": 1,\n        \"AutoSnapshotPolicies\": [\n            {\n                \"AutoSnapshotPolicyId\": \"asp-12345\",\n                \"PolicyName\": \"Unnamed\",\n                \"RegionName\": \"ap-guangzhou\",\n                \"CreationTime\": \"2021-08-26 15:19:46\",\n                \"AliveDays\": 1,\n                \"DayOfWeek\": \"1\",\n                \"Hour\": \"1\",\n                \"IsActivated\": 0,\n                \"AppId\": 1255558577,\n                \"FileSystemNums\": 0,\n                \"Status\": \"available\",\n                \"NextActiveTime\": \"2021-11-22 01:00:00\",\n                \"FileSystems\": []\n            }\n        ]\n    }\n}",
-        "title": "Querying snapshot policies"
+        "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicies\": [\n            {\n                \"AliveDays\": 30,\n                \"AppId\": 1,\n                \"AutoSnapshotPolicyId\": \"asp-12345\",\n                \"CreationTime\": \"2021-08-11 19:36:53\",\n                \"CrossRegionsAliveDays\": 0,\n                \"DayOfMonth\": \"\",\n                \"DayOfWeek\": \"1,2,3,4,5,6,7\",\n                \"FileSystemNums\": 0,\n                \"FileSystems\": [],\n                \"Hour\": \"11,12,13,14,15,16,17,18,19,20,21\",\n                \"IntervalDays\": 0,\n                \"IsActivated\": 1,\n                \"NextActiveTime\": \"2024-12-12 16:00:00\",\n                \"PolicyName\": \"default\",\n                \"RegionName\": \"ap-guangzhou\",\n                \"Status\": \"available\"\n            }\n        ],\n        \"RequestId\": \"d803fa9b-cbd1-42a8-9098-c5f8a5bd763c\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying Snapshot Policies"
       }
     ],
     "DescribeAvailableZoneInfo": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableZoneInfo\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RegionZones\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"gz\",\n                \"RegionCnName\": \"Guangzhou\",\n                \"RegionStatus\": \"AVAILABLE\",\n                \"Zones\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-2\",\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"Guangzhou Zone 2\",\n                        \"ZoneCnName\": \"Guangzhou Zone 2\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"Guangzhou Zone 3\",\n                        \"ZoneCnName\": \"Guangzhou Zone 3\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"Zone\": \"ap-guangzhou-4\",\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"Guangzhou Zone 4\",\n                        \"ZoneCnName\": \"Guangzhou Zone 4\",\n                        \"Types\": [\n                            {\n                                \"Type\": \"SD\",\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"a7493b9c-8650-409a-a950-8d4afa18b5ec\"\n    }\n}",
-        "title": "Querying the region availability"
+        "output": "{\n    \"Response\": {\n        \"RegionZones\": [\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionCnName\": \"Guangzhou\",\n                \"RegionName\": \"gz\",\n                \"RegionStatus\": \"AVAILABLE\",\n                \"Zones\": [\n                    {\n                        \"Types\": [\n                            {\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    },\n                                    {\n                                        \"Protocol\": \"CIFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ],\n                                \"Type\": \"SD\"\n                            }\n                        ],\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"ZoneCnName\": \"Guangzhou Zone 3\",\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"Guangzhou Zone 3\"\n                    },\n                    {\n                        \"Types\": [\n                            {\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    },\n                                    {\n                                        \"Protocol\": \"CIFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ],\n                                \"Type\": \"SD\"\n                            }\n                        ],\n                        \"Zone\": \"ap-guangzhou-4\",\n                        \"ZoneCnName\": \"Guangzhou Zone 4\",\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"Guangzhou Zone 4\"\n                    },\n                    {\n                        \"Types\": [\n                            {\n                                \"Prepayment\": true,\n                                \"Protocols\": [\n                                    {\n                                        \"Protocol\": \"NFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    },\n                                    {\n                                        \"Protocol\": \"CIFS\",\n                                        \"SaleStatus\": \"saling\"\n                                    }\n                                ],\n                                \"Type\": \"SD\"\n                            }\n                        ],\n                        \"Zone\": \"ap-guangzhou-6\",\n                        \"ZoneCnName\": \"Guangzhou Zone 6\",\n                        \"ZoneId\": 100006,\n                        \"ZoneName\": \"Guangzhou Zone 6\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"f3585511-5134-43f2-ba14-b4b528119fa3\"\n    }\n}",
+        "title": "Querying the Availability Zone Information on a Region"
       }
     ],
     "DescribeBucketList": [
@@ -146,18 +194,18 @@
     ],
     "DescribeCfsFileSystems": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsFileSystems\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"TotalCount\": 1,\n        \"FileSystems\": [\n            {\n                \"Protocol\": \"NFS\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"CreationToken\": \"test_fs\",\n                \"StorageType\": \"SD\",\n                \"Encrypted\": false,\n                \"CreationTime\": \"2019-07-29 18:57:17\",\n                \"StorageResourcePkg\": \"\",\n                \"ZoneId\": 100003,\n                \"SizeByte\": 0,\n                \"FileSystemId\": \"cfs-12345\",\n                \"KmsKeyId\": \"\",\n                \"LifeCycleState\": \"mounting\",\n                \"Capacity\": 1000,\n                \"PGroup\": {\n                    \"PGroupId\": \"pgroupbasic\",\n                    \"Name\": \"Default permission group\"\n                },\n                \"SizeLimit\": 0,\n                \"BandwidthResourcePkg\": \"\",\n                \"FsName\": \"test_fs\",\n                \"AppId\": 12700000,\n                \"BandwidthLimit\": 200,\n                \"TieringDetail\": {\n                    \"TieringSizeInBytes\": 0\n                },\n                \"TieringState\": \"xx\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
-        "title": "Querying file systems"
+        "document": "Query File System",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsFileSystems\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-318f2b7ba\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FileSystems\": [\n            {\n                \"AppId\": 1300275735,\n                \"AutoScaleUpRule\": {\n                    \"ScaleThreshold\": 80,\n                    \"TargetThreshold\": 70,\n                    \"Status\": \"open\"\n                },\n                \"AutoSnapshotPolicyId\": \"\",\n                \"BandwidthLimit\": 100,\n                \"BandwidthResourcePkg\": \"\",\n                \"Capacity\": 2097152,\n                \"CreationTime\": \"2024-07-09 10:52:35\",\n                \"CreationToken\": \"denny-test-003\",\n                \"Encrypted\": false,\n                \"FileSystemId\": \"cfs-318f2b7ba\",\n                \"FsName\": \"denny-test-003\",\n                \"KmsKeyId\": \"\",\n                \"LifeCycleState\": \"available\",\n                \"PGroup\": {\n\"Name\": \"Default permission group\"\n                    \"PGroupId\": \"pgroupbasic\"\n                },\n                \"Protocol\": \"NFS\",\n                \"SizeByte\": 0,\n                \"SizeLimit\": 1000000,\n                \"SnapStatus\": \"normal\",\n                \"StorageResourcePkg\": \"\",\n                \"StorageType\": \"SD\",\n                \"Tags\": [],\n                \"TieringDetail\": {\n                    \"SecondaryTieringSizeInBytes\": -1,\n                    \"TieringSizeInBytes\": -1\n                },\n                \"TieringState\": \"NotAvailable\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"8edb5b83-6bd2-4f0a-8ee9-d8ee96fff8dc\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query File System"
       }
     ],
     "DescribeCfsPGroups": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsPGroups\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupList\": [\n            {\n                \"PGroupId\": \"pgroup-12345\",\n                \"Name\": \"test\",\n                \"DescInfo\": \"test\",\n                \"BindCfsNum\": 0,\n                \"CDate\": \"2019-07-05 19:04:18\"\n            },\n            {\n                \"PGroupId\": \"pgroup-67890\",\n                \"Name\": \"test2\",\n                \"DescInfo\": \"test2\",\n                \"BindCfsNum\": 0,\n                \"CDate\": \"2019-07-06 10:57:29\"\n            },\n            {\n                \"PGroupId\": \"pgroup-54321\",\n                \"Name\": \"Test\",\n                \"DescInfo\": \"use for test\",\n                \"BindCfsNum\": 1,\n                \"CDate\": \"2019-07-03 16:06:38\"\n            },\n            {\n                \"PGroupId\": \"pgroupbasic\",\n                \"Name\": \"Default permission group\",\n                \"DescInfo\": \"Default permission group\",\n                \"BindCfsNum\": 5,\n                \"CDate\": \"2019-06-21 17:30:05\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the list of permission groups"
+        "output": "{\n    \"Response\": {\n        \"PGroupList\": [\n            {\n                \"BindCfsNum\": 7,\n                \"CDate\": \"2017-06-21 17:30:05\",\n\"DescInfo\": \"Default permission group\",\n\"Name\": \"Default permission group\"\n                \"PGroupId\": \"pgroupbasic\"\n            }\n        ],\n        \"RequestId\": \"7a533ad4-7d11-4a67-87a9-b02891475647\"\n    }\n}",
+        "title": "Query permission group lists"
       }
     ],
     "DescribeCfsRules": [
@@ -187,25 +235,49 @@
     "DescribeCfsSnapshots": [
       {
         "document": " ",
-        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeCfsSnapshots\n&FileSystemId=cfs-12345\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalSize\": 1,\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\",\n        \"Snapshots\": [\n            {\n                \"Status\": 1,\n                \"SnapshotName\": \"xx\",\n                \"Percent\": 1,\n                \"FileSystemId\": \"xx\",\n                \"Size\": 1,\n                \"AppId\": 1,\n                \"SnapshotId\": \"xx\",\n                \"AliveDay\": 1,\n                \"CreationTime\": \"xx\",\n                \"DeleteTime\": \"xx\",\n                \"FsName\": \"xx\",\n                \"RegionName\": \"xx\"\n            }\n        ]\n    }\n}",
-        "title": "Querying a snapshot"
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfsSnapshots\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dd01b47d-2b57-4721-a237-1bdf59eac8b4\",\n        \"Snapshots\": [\n            {\n                \"AliveDay\": 0,\n                \"AppId\": 1300275735,\n                \"CreationTime\": \"2024-09-27 16:03:06\",\n                \"DeleteTime\": \"0\",\n                \"FileSystemId\": \"cfs-12345\",\n                \"FsName\": \"aileen-api-charge\",\n                \"Percent\": 0,\n                \"RegionName\": \"ap-guangzhou\",\n                \"Size\": 0,\n                \"SnapshotId\": \"snapcfs-5v2hgj3p\",\n                \"SnapshotName\": \"heihei\",\n                \"SnapshotTime\": \"2024-09-27 16:03:06\",\n                \"SnapshotType\": \"Standard\",\n                \"Status\": \"creating\",\n                \"Tags\": []\n            }\n        ],\n        \"TotalCount\": 1,\n        \"TotalSize\": 0\n    }\n}",
+        "title": "Querying a Snapshot"
+      }
+    ],
+    "DescribeDataFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataFlow\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"DataFlows\": [\n            {\n                \"CreationTime\": \"2025-06-10 10:23:28\",\n                \"DataFlowId\": \"cfs-dataflow-23e12b77\",\n                \"DataFlowName\": \"aileen-test\",\n                \"FileSystemId\": \"cfs-4551ef87e\",\n                \"SourcePath\": \"test3\",\n                \"SourceStorageAddress\": \"https://aileen-data-flow-1251000004.cos.ap-guangzhou.myqcloud.com\",\n                \"SourceStorageType\": \"S3_COS\",\n                \"Status\": \"available\",\n                \"TargetPath\": \"/cfs/test3/\"\n            },\n            {\n                \"CreationTime\": \"2025-06-10 15:01:26\",\n                \"DataFlowId\": \"cfs-dataflow-dcee19a7\",\n                \"DataFlowName\": \"aileen-test\",\n                \"FileSystemId\": \"cfs-4551ef87e\",\n                \"SourcePath\": \"test4\",\n                \"SourceStorageAddress\": \"https://aileen-data-flow-1251000001.cos.ap-guangzhou.myqcloud.com\",\n                \"SourceStorageType\": \"S3_COS\",\n                \"Status\": \"available\",\n                \"TargetPath\": \"/cfs/test4/\"\n            },\n            {\n                \"CreationTime\": \"2025-06-10 15:01:45\",\n                \"DataFlowId\": \"cfs-dataflow-13ff99f9\",\n                \"DataFlowName\": \"aileen-test\",\n                \"FileSystemId\": \"cfs-44d53b63e\",\n                \"SourcePath\": \"test4\",\n                \"SourceStorageAddress\": \"https://aileen-data-flow-1251000001.cos.ap-guangzhou.myqcloud.com\",\n                \"SourceStorageType\": \"S3_COS\",\n                \"Status\": \"available\",\n                \"TargetPath\": \"/cfs/test8/\"\n            },\n            {\n                \"CreationTime\": \"2025-06-10 15:01:53\",\n                \"DataFlowId\": \"cfs-dataflow-7368df7c\",\n                \"DataFlowName\": \"aileen-test\",\n                \"FileSystemId\": \"cfs-44d53b63e\",\n                \"SourcePath\": \"test3\",\n                \"SourceStorageAddress\": \"https://aileen-data-flow-1251000001.cos.ap-guangzhou.myqcloud.com\",\n                \"SourceStorageType\": \"S3_COS\",\n                \"Status\": \"available\",\n                \"TargetPath\": \"/cfs/test9/\"\n            },\n            {\n                \"CreationTime\": \"2025-06-10 15:23:25\",\n                \"DataFlowId\": \"cfs-dataflow-4f827203\",\n                \"DataFlowName\": \"test\",\n                \"FileSystemId\": \"cfs-44d53b63e\",\n                \"SourcePath\": \"test3\",\n                \"SourceStorageAddress\": \"https://aileen-data-flow-1251000001.cos.ap-guangzhou.myqcloud.com\",\n                \"SourceStorageType\": \"S3_COS\",\n                \"Status\": \"available\",\n                \"TargetPath\": \"/cfs/test11/\"\n            }\n        ],\n        \"RequestId\": \"adf187c6-a557-4331-b103-dded23e9bfeb\",\n        \"TotalCount\": 5\n    }\n}",
+        "title": "Querying Data Flow"
+      }
+    ],
+    "DescribeLifecycleDataTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLifecycleDataTask\n<Common request parameters>\n\n{\n    \"StartTime\": \"2024-11-19 10:15:37\",\n    \"EndTime\": \"2024-10-19 10:15:37\",\n    \"TaskId\": \"task-c1a2b3f4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LifecycleDataTask\": [\n            {\n                \"TaskId\": \"task-c1a2b3f4\",\n                \"TaskStatus\": \"init\",\n                \"CreationTime\": \"2024-11-19 10:15:37\",\n                \"Type\": \"restore\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"req-abc\"\n    }\n}",
+        "title": "DescribeLifecycleDataTask"
+      }
+    ],
+    "DescribeLifecyclePolicies": [
+      {
+        "document": " ",
+        "input": "https://cfs.tencentcloudapi.com/?Action=DescribeLifecyclePolicies\n&PageNumber=1\n&PageSize=10\n&LifecyclePolicyName=test\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"PageNumber\": 1,\n        \"PageSize\": 10,\n        \"TotalCount\": 2,\n        \"LifecyclePolicies\": [\n            {\n                \"CreateTime\": \"2022-03-01 10:38:54\",\n                \"LifecyclePolicyID\": \"policy-ek8aw4id\",\n                \"LifecyclePolicyName\": \"test\",\n                \"LifecycleRules\": [\n                    {\n                        \"StorageType\": \"InfrequentAccess\",\n                        \"Interval\": \"DEFAULT_ATIME_14\",\n                        \"FileType\": \"BIG_FILE\",\n                        \"Action\": \"noarchive\",\n                        \"FileMinSize\": \"\",\n                        \"FileMaxSize\": \"1G\"\n                    },\n                    {\n                        \"StorageType\": \"InfrequentAccess\",\n                        \"Interval\": \"DEFAULT_ATIME_14\",\n                        \"FileType\": \"ALL\",\n                        \"Action\": \"archive\",\n                        \"FileMinSize\": \"\",\n                        \"FileMaxSize\": \"\"\n                    }\n                ],\n                \"Paths\": [\n                    {\n                        \"FileSystemId\": \"cfs-4030acd30\",\n                        \"Path\": \"/data/log1/\"\n                    },\n                    {\n                        \"FileSystemId\": \"cfs-4030acd30\",\n                        \"Path\": \"/data/log2/\"\n                    }\n                ]\n            },\n            {\n                \"CreateTime\": \"2022-03-02 14:27:46\",\n                \"LifecyclePolicyID\": \"policy-phpizowr\",\n                \"LifecyclePolicyName\": \"test-jay\",\n                \"LifecycleRules\": [\n                    {\n                        \"StorageType\": \"InfrequentAccess\",\n                        \"Interval\": \"DEFAULT_ATIME_14\",\n                        \"FileType\": \"BIG_FILE\",\n                        \"Action\": \"noarchive\",\n                        \"FileMinSize\": \"\",\n                        \"FileMaxSize\": \"1G\"\n                    },\n                    {\n                        \"StorageType\": \"InfrequentAccess\",\n                        \"Interval\": \"DEFAULT_ATIME_14\",\n                        \"FileType\": \"ALL\",\n                        \"Action\": \"archive\",\n                        \"FileMinSize\": \"\",\n                        \"FileMaxSize\": \"\"\n                    }\n                ],\n                \"Paths\": []\n            }\n        ],\n        \"RequestId\": \"aaaa-bbbb-cccc-eeeee\"\n    }\n}",
+        "title": "Querying Lifecycle Management Policies"
       }
     ],
     "DescribeMigrationTasks": [
       {
-        "document": "This example shows you how to get the migration task list.",
+        "document": "To obtain the migration task list",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMigrationTasks\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"MigrationTasks\": [\n            {\n                \"TaskName\": \"taskName\",\n                \"TaskId\": \"cfsmigrate-29d43e98\",\n                \"MigrationType\": 0,\n                \"MigrationMode\": 0,\n                \"BucketName\": \"bucket-1\",\n                \"BucketRegion\": \"oss-cn-beijing\",\n                \"BucketAddress\": \"https://test-1.oss-cn-beijing.aliyuncs.com\",\n                \"BucketPath\": \"\",\n                \"ListAddress\": \"\",\n                \"FsName\": \"t1\",\n                \"FileSystemId\": \"cfs-qz5c44o1\",\n                \"FsPath\": \"/ahh\",\n                \"CoverType\": 0,\n                \"Status\": 6,\n                \"FileTotalCount\": 0,\n                \"FileMigratedCount\": 0,\n                \"FileFailedCount\": 0,\n                \"FileTotalSize\": 0,\n                \"FileMigratedSize\": 0,\n                \"FileFailedSize\": 0,\n                \"FileTotalList\": null,\n                \"FileCompletedList\": null,\n                \"FileFailedList\": null,\n                \"CreateTime\": 1662023240000,\n                \"EndTime\": 1662023548000\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"c0f7c5d9-c8c4-401a-a6da-2106f3c6db76\"\n    }\n}",
-        "title": "Getting the migration task list"
+        "output": "{\n    \"Response\": {\n        \"MigrationTasks\": [\n            {\n                \"TaskName\": \"taskName\",\n                \"TaskId\": \"cfsmigrate-29d43e98\",\n                \"MigrationType\": 0,\n                \"MigrationMode\": 0,\n                \"BucketName\": \"bucket-1\",\n                \"BucketRegion\": \"oss-cn-beijing\",\n                \"BucketAddress\": \"https://test-1.oss-cn-beijing.aliyuncs.com\",\n                \"BucketPath\": \"\",\n                \"ListAddress\": \"\",\n                \"FsName\": \"t1\",\n                \"FileSystemId\": \"cfs-qz5c44o1\",\n                \"FsPath\": \"/ahh\",\n                \"CoverType\": 0,\n                \"Status\": 6,\n                \"FileTotalCount\": 0,\n                \"FileMigratedCount\": 0,\n                \"FileFailedCount\": 0,\n                \"FileTotalSize\": 0,\n                \"FileMigratedSize\": 0,\n                \"FileFailedSize\": 0,\n                \"FileTotalList\": \"\",\n                \"FileCompletedList\": \"\",\n                \"FileFailedList\": \"\",\n                \"CreateTime\": 1662023240000,\n                \"EndTime\": 1662023548000,\n                \"Direction\": 0\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"c0f7c5d9-c8c4-401a-a6da-2106f3c6db76\"\n    }\n}",
+        "title": "Obtaining the Migration Task List"
       }
     ],
     "DescribeMountTargets": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMountTargets\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"NumberOfMountTargets\": 1,\n        \"RequestId\": \"12345-54321-12345\",\n        \"MountTargets\": [\n            {\n                \"MountTargetId\": \"mount-12345\",\n                \"VpcId\": \"vpc-12345\",\n                \"CidrBlock\": \"xx\",\n                \"CcnID\": \"xx\",\n                \"NetworkInterface\": \"vpc\",\n                \"SubnetName\": \"test\",\n                \"FileSystemId\": \"cfs-12345\",\n                \"VpcName\": \"12345\",\n                \"LifeCycleState\": \"available\",\n                \"SubnetId\": \"subnet-12345\",\n                \"IpAddress\": \"10.0.0.10\",\n                \"FSID\": \"12345\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the mount targets of a file system"
+        "output": "{\n    \"Response\": {\n        \"NumberOfMountTargets\": 1,\n        \"RequestId\": \"12345-54321-12345\",\n        \"MountTargets\": [\n            {\n                \"MountTargetId\": \"mount-12345\",\n                \"VpcId\": \"vpc-12345\",\n                \"CidrBlock\": \"10.0.0.0/24\",\n                \"CcnID\": \"ccn-123456\",\n                \"NetworkInterface\": \"vpc\",\n                \"SubnetName\": \"test_subnet\",\n                \"FileSystemId\": \"cfs-1gag2345\",\n                \"VpcName\": \"defaultvpc\",\n                \"LifeCycleState\": \"available\",\n                \"SubnetId\": \"subnet-12345\",\n                \"IpAddress\": \"10.0.0.10\",\n                \"FSID\": \"bb1234\"\n            }\n        ]\n    }\n}",
+        "title": "This API is used to query the mount points of a file system."
       }
     ],
     "DescribeSnapshotOperationLogs": [
@@ -216,20 +288,44 @@
         "title": "Querying the operation logs of a snapshot"
       }
     ],
+    "DoDirectoryOperation": [
+      {
+        "document": "Perform operations on some types of file system directories",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetUserQuota\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"OpetationType\": \"create\",\n    \"DirectoryPath\": \"/user1/dir1/\",\n    \"Mode\": \"0644\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"Result\": 1\n    }\n}",
+        "title": "File System Directory Operation API"
+      }
+    ],
+    "ModifyDataFlow": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDataFlow\n<Common request parameters>\n\n{\n    \"DataFlowId\": \"cfs-dataflow-9e911f3c\",\n    \"FileSystemId\": \"cfs-44d53b63e\",\n    \"DataFlowName\": \"testest\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataFlowId\": \"cfs-dataflow-9e911f3c\",\n        \"RequestId\": \"948ff9b3-5950-4dff-841d-78796f21396c\"\n    }\n}",
+        "title": "Rectifying Data Flow Parameters"
+      }
+    ],
     "ModifyFileSystemAutoScaleUpRule": [
       {
-        "document": "This example shows you how to modify the automatic scaling policy of a file system.",
+        "document": "Update file system auto scale-out policy",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCFSFileSystemAutoScaleRule\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-agaga\",\n    \"Status\": 1,\n    \"ScaleUpThreshold\": 85,\n    \"TargetThreshold\": 70\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"gagagagad-xdx\",\n        \"FileSystemId\": \"cfs-agaga\",\n        \"Status\": 1,\n        \"ScaleUpThreshold\": 85,\n        \"TargetThreshold\": 70\n    }\n}",
-        "title": "Modifying the automatic scaling policy of a file system"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"FileSystemId\": \"cfs-agaga\",\n        \"Status\": 1,\n        \"ScaleUpThreshold\": 85,\n        \"TargetThreshold\": 70\n    }\n}",
+        "title": "Updating File System Auto Scale-Out Policy"
+      }
+    ],
+    "ModifyLifecyclePolicy": [
+      {
+        "document": "Update lifecycle management policy",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLifecyclePolicy\n<Common request parameters>\n\n{\n    \"LifecyclePolicyName\": \"mypolicy-abc\",\n    \"LifecycleRules\": [\n        {\n            \"StorageType\": \"InfrequentAccess\",\n            \"Interval\": \"DEFAULT_ATIME_14\",\n            \"FileType\": \"All\",\n            \"Action\": \"Archive\",\n            \"FileMaxSize\": \"1G\",\n            \"FileMinSize\": \"1M\"\n        }\n    ],\n    \"LifecyclePolicyID\": \"policy-4cqyxcma\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LifecyclePolicyID\": \"policy-4cqyxcma\",\n        \"RequestId\": \"\"\n    }\n}",
+        "title": "Refreshing Lifecycle Management Policy"
       }
     ],
     "ScaleUpFileSystem": [
       {
-        "document": "This example shows you how to scale up a file system.",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeCFSFileSystem\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-agagag\",\n    \"TargetCapacity\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"agagaga-tatatatata-tatata\",\n        \"FileSystemId\": \"cfs-agagag\",\n        \"TargetCapacity\": 10\n    }\n}",
-        "title": "Scaling up a file system"
+        "document": "Extend File System",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeCFSFileSystem\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4abc12345\",\n    \"TargetCapacity\": 20480\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"agagaga-tatatatata-tatata\",\n        \"FileSystemId\": \"cfs-4abc12345\",\n        \"TargetCapacity\": 20480\n    }\n}",
+        "title": "Extend File System"
       }
     ],
     "SignUpCfsService": [
@@ -240,12 +336,20 @@
         "title": "Activating the CFS service"
       }
     ],
+    "StopLifecycleDataTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLifecyclePolicy\n<Common request parameters>\n\n{\n    \"TaskId\": \"task-abcgefg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-abcdefg\"\n    }\n}",
+        "title": "StopLifecycleDataTask"
+      }
+    ],
     "StopMigrationTask": [
       {
-        "document": "This example shows you how to stop a migration task.",
+        "document": "Terminate a migration task",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopMigrationTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"cfsmigrate-29de0e87\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TaskId\": \"cfsmigrate-29de0e87\",\n        \"Status\": 2,\n        \"RequestId\": \"eff7c5d9-c8c4-401a-deda-2108d3cc8b76\"\n    }\n}",
-        "title": "Stopping a migration task"
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"cfsmigrate-29de0e87\",\n        \"Status\": 3,\n        \"RequestId\": \"eff7c5d9-c8c4-401a-deda-2108d3cc8b76\"\n    }\n}",
+        "title": "Terminate a Migration Task"
       }
     ],
     "UnbindAutoSnapshotPolicy": [
@@ -258,8 +362,8 @@
     ],
     "UpdateAutoSnapshotPolicy": [
       {
-        "document": "This example shows you how to update the snapshot policy of a file system.",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\",\n    \"PolicyName\": \"abc\"\n}",
+        "document": "This example shows you how to update a file system snapshot policy.",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-12345\",\n    \"PolicyName\": \"abgaga\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"AutoSnapshotPolicyId\": \"asp-12345\"\n    }\n}",
         "title": "UpdateAutoSnapshotPolicy"
       }
@@ -268,8 +372,8 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemName\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CreationToken\": \"test\",\n        \"FsName\": \"test\",\n        \"FileSystemId\": \"cfs-12345\"\n    }\n}",
-        "title": "Renaming a file system"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"CreationToken\": \"defaultcfs\",\n        \"FsName\": \"defaultcfs\",\n        \"FileSystemId\": \"cfs-12345\"\n    }\n}",
+        "title": "Updating the Name of a File System"
       }
     ],
     "UpdateCfsFileSystemPGroup": [
@@ -283,33 +387,33 @@
     "UpdateCfsFileSystemSizeLimit": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemSizeLimit\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"FsLimit\": \"1000\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsFileSystemSizeLimit\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-abc12345\",\n    \"FsLimit\": 1000\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\"\n    }\n}",
-        "title": "Updating the capacity limit of a file system"
+        "title": "Updating the Limit of the File System Storage Capacity"
       }
     ],
     "UpdateCfsPGroup": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsPGroup\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\",\n    \"DescInfo\": \"test\",\n    \"Name\": \"test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"Name\": \"test\",\n        \"DescInfo\": \"test\"\n    }\n}",
-        "title": "Updating the information of a permission group"
+        "document": "Update permission group information",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsPGroup\n<Common request parameters>\n\n{\n    \"PGroupId\": \"pgroup-12345\",\n    \"DescInfo\": \"pgroup-default\",\n    \"Name\": \"pgroup-default\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"Name\": \"pgroup-default\",\n        \"DescInfo\": \"pgroup-default\"\n    }\n}",
+        "title": "Update permission group information"
       }
     ],
     "UpdateCfsRule": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"Priority\": \"7\",\n    \"PGroupId\": \"pgroup-12345\",\n    \"RuleId\": \"rule-12345\",\n    \"AuthClientIp\": \"10.0.0.10\",\n    \"UserPermission\": \"no_root_squash\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsRule\n<Common request parameters>\n\n{\n    \"RWPermission\": \"rw\",\n    \"Priority\": 7,\n    \"PGroupId\": \"pgroup-12345\",\n    \"RuleId\": \"rule-12345\",\n    \"AuthClientIp\": \"10.0.0.10\",\n    \"UserPermission\": \"no_root_squash\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"PGroupId\": \"pgroup-12345\",\n        \"RuleId\": \"rule-12345\",\n        \"AuthClientIp\": \"10.0.0.10\",\n        \"RWPermission\": \"rw\",\n        \"UserPermission\": \"no_root_squash\",\n        \"Priority\": 7\n    }\n}",
-        "title": "Updating a permission group rule"
+        "title": "Update permission group rules."
       }
     ],
     "UpdateCfsSnapshotAttribute": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsSnapshotAttribute\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-12345\",\n    \"SnapshotName\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-12345\"\n    }\n}",
-        "title": "Updating the content of a snapshot"
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCfsSnapshotAttribute\n<Common request parameters>\n\n{\n    \"SnapshotId\": \"snapcfs-agabg\",\n    \"SnapshotName\": \"defaultsnapshot\",\n    \"AliveDays\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"SnapshotId\": \"snapcfs-agabg\"\n    }\n}",
+        "title": "Update Snapshot Content"
       }
     ]
   },
