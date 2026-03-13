@@ -1845,7 +1845,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Selfie verification comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
+          "document": "The return code of the verification result.\n0: Succeeded.\n1001: Failed to call the liveness engine.\n1002:Suspected spoofed recording.\n1004: Selfie verification comparison failed.\n1005:Liveness detection failed.\n1201:Lighting is too dark or overexposed.\n2004: The image passed in is too large or too small.\n2012: Multiple faces detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n2017:Facial occlusion detected.\n-999: The verification process wasn't finished.",
           "example": "0",
           "member": "string",
           "name": "Result",

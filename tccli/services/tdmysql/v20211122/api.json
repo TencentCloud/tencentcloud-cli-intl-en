@@ -1,0 +1,1946 @@
+{
+  "actions": {
+    "CancelIsolateDBInstances": {
+      "document": "This API is used to lift isolation for instances in batch.",
+      "input": "CancelIsolateDBInstancesRequest",
+      "name": "Removes isolated instances in bulk",
+      "output": "CancelIsolateDBInstancesResponse",
+      "status": "online"
+    },
+    "CreateDBSBackup": {
+      "document": "Create an instance backup set.",
+      "input": "CreateDBSBackupRequest",
+      "name": "Create an instance backup",
+      "output": "CreateDBSBackupResponse",
+      "status": "online"
+    },
+    "DeleteDBSBackupSets": {
+      "document": "Delete instance backup sets.",
+      "input": "DeleteDBSBackupSetsRequest",
+      "name": "Clean up instance backups",
+      "output": "DeleteDBSBackupSetsResponse",
+      "status": "online"
+    },
+    "DescribeBillingEnable": {
+      "document": "No place to call.\n\nThis API is used to query whether billing is enabled.",
+      "input": "DescribeBillingEnableRequest",
+      "name": "Query whether billing is enabled",
+      "output": "DescribeBillingEnableResponse",
+      "status": "offline"
+    },
+    "DescribeDBParameters": {
+      "document": "This API is used to obtain the current parameter settings of the instance.",
+      "input": "DescribeDBParametersRequest",
+      "name": "View instance parameters",
+      "output": "DescribeDBParametersResponse",
+      "status": "online"
+    },
+    "DescribeDBSAvailableRecoveryTime": {
+      "document": "Query recoverable time.",
+      "input": "DescribeDBSAvailableRecoveryTimeRequest",
+      "name": "Retrieve recoverable time",
+      "output": "DescribeDBSAvailableRecoveryTimeResponse",
+      "status": "online"
+    },
+    "DescribeDBSCloneInstances": {
+      "document": "Query clone list of instances.",
+      "input": "DescribeDBSCloneInstancesRequest",
+      "name": "Query instance clone list",
+      "output": "DescribeDBSCloneInstancesResponse",
+      "status": "online"
+    },
+    "DescribeDBSecurityGroups": {
+      "document": "This API is used to query instance security group information.",
+      "input": "DescribeDBSecurityGroupsRequest",
+      "name": "Querying Instance Security Group Information",
+      "output": "DescribeDBSecurityGroupsResponse",
+      "status": "online"
+    },
+    "DescribeDatabaseObjects": {
+      "document": "This API is used to query the object list in the database of a cloud database instance, including table, stored procedure, view and function.",
+      "input": "DescribeDatabaseObjectsRequest",
+      "name": "Query a database object list",
+      "output": "DescribeDatabaseObjectsResponse",
+      "status": "online"
+    },
+    "DescribeDatabaseTable": {
+      "document": "Redundant API, no API calls.\n\nThis API is used to query table information of a cloud database instance.",
+      "input": "DescribeDatabaseTableRequest",
+      "name": "Query database table information",
+      "output": "DescribeDatabaseTableResponse",
+      "status": "offline"
+    },
+    "DescribeFlow": {
+      "document": "This API is used to query the process status of an asynchronous task.",
+      "input": "DescribeFlowRequest",
+      "name": "Query process status",
+      "output": "DescribeFlowResponse",
+      "status": "online"
+    },
+    "DestroyInstances": {
+      "document": "This API is used to destroy instances in batch.",
+      "input": "DestroyInstancesRequest",
+      "name": "Destroy instances in batch",
+      "output": "DestroyInstancesResponse",
+      "status": "online"
+    },
+    "IsolateDBInstance": {
+      "document": "This API is used to batch isolate instances.",
+      "input": "IsolateDBInstanceRequest",
+      "name": "Isolates instances in batch",
+      "output": "IsolateDBInstanceResponse",
+      "status": "online"
+    },
+    "ModifyAutoRenewFlag": {
+      "document": "This API is used to modify the auto-renewal flag.",
+      "input": "ModifyAutoRenewFlagRequest",
+      "name": "Modify the auto-renewal flag",
+      "output": "ModifyAutoRenewFlagResponse",
+      "status": "online"
+    },
+    "ModifyBinlogStatus": {
+      "document": "This API is used to entirely overwrite the API feature of ModifyInstanceCdc.\n\nModify the binlog status.",
+      "input": "ModifyBinlogStatusRequest",
+      "name": "Modify the binlog status",
+      "output": "ModifyBinlogStatusResponse",
+      "status": "offline"
+    },
+    "ModifyDBInstanceSecurityGroups": {
+      "document": "This API is used to modify cloud database security groups.",
+      "input": "ModifyDBInstanceSecurityGroupsRequest",
+      "name": "Modifying the CloudDB Security Group",
+      "output": "ModifyDBInstanceSecurityGroupsResponse",
+      "status": "online"
+    },
+    "ModifyDBParameters": {
+      "document": "This API is used to modify instance parameters.",
+      "input": "ModifyDBParametersRequest",
+      "name": "Modify instance parameters",
+      "output": "ModifyDBParametersResponse",
+      "status": "online"
+    },
+    "ModifyDBSBackupPolicy": {
+      "document": "Modify the instance backup strategy.",
+      "input": "ModifyDBSBackupPolicyRequest",
+      "name": "Modify the instance backup strategy",
+      "output": "ModifyDBSBackupPolicyResponse",
+      "status": "online"
+    },
+    "ModifyDBSBackupSetComment": {
+      "document": "Modify the backup set remark.",
+      "input": "ModifyDBSBackupSetCommentRequest",
+      "name": "Modify the instance backup alias name",
+      "output": "ModifyDBSBackupSetCommentResponse",
+      "status": "online"
+    },
+    "ModifyInstanceName": {
+      "document": "This API is used to modify instance name.",
+      "input": "ModifyInstanceNameRequest",
+      "name": "Modifies the instance name",
+      "output": "ModifyInstanceNameResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-11-22",
+    "serviceNameCN": "TDSQL",
+    "serviceShortName": "tdmysql"
+  },
+  "objects": {
+    "ArchiveLogInterval": {
+      "document": "Recoverable time interval.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "End time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-18 00:00:57",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Major version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MajorVersion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Minor version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MinorVersion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-18 00:00:57",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BackupPolicyModelInput": {
+      "document": "Modify backup policy object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<P>Backup end time.</p>.",
+          "example": "04:00",
+          "member": "string",
+          "name": "BackupEndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Backup method: physical physical backup, snapshot snapshot backup</p>.",
+          "example": "physical",
+          "member": "string",
+          "name": "BackupMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Backup start time</p>.",
+          "example": "00:00",
+          "member": "string",
+          "name": "BackupStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Whether full backup is enabled</p>.",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableFull",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Whether to enable log backup</p>.",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableLog",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Full backup retention time can currently only be set to 7 days.</p>.",
+          "example": "7",
+          "member": "int64",
+          "name": "FullRetentionPeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>.",
+          "example": "tdsql3-b8dfc518",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Log retention days. currently, can only set retention to 7 days.</p>.",
+          "example": "7",
+          "member": "int64",
+          "name": "LogRetentionPeriod",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Days of the week to perform backup.</p>.",
+          "example": "0,1,2,3,4,5,6",
+          "member": "string",
+          "name": "PeriodTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>.",
+          "example": "COS",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CancelIsolateDBInstancesRequest": {
+      "document": "CancelIsolateDBInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of isolated instance ids required.",
+          "example": "[\"tdsql3-d8fffc3c\",\"tdsql3-d8fffc4s\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelIsolateDBInstancesResponse": {
+      "document": "CancelIsolateDBInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of successfully isolated instance ids.",
+          "example": "\"tdsql3-d8fffc3c\"",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Isolation removal failed instance Id list.",
+          "example": "\"tdsql3-d8fffc4s\"",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneInstanceModel": {
+      "document": "Clone instance object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Clone task end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneEndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Clone record ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CloneId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Clone instance type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneInsType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Clone instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneInstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the clone instance is deleted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "CloneInstanceIsDeleted",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task progress of clone.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "CloneProgress",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task start time of the clone.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneStartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Clone time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Clone type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CloneType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Engine type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DBType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceInstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConstraintRange": {
+      "document": "Value range of the constraint type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Minimum value when the constraint type is section.",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "Min",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maximum value when the constraint type is section.",
+          "example": "\"2\"",
+          "member": "string",
+          "name": "Max",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDBSBackupRequest": {
+      "document": "CreateDBSBackup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Backup method: physical, snapshot. this value should be consistent with the backupMethod in the api response of DescribeDBSBackupPolicy.</p>enumeration value:<ul><li> physical: physical backup</li><li> snapshot: snapshot backup</li></ul>",
+          "example": "physical",
+          "member": "string",
+          "name": "BackupMethod",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Backup type: currently, only supports full.</p>",
+          "example": "full",
+          "member": "string",
+          "name": "BackupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-f31c034x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Backup notes.</p>",
+          "example": "mybak",
+          "member": "string",
+          "name": "BackupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDBSBackupResponse": {
+      "document": "CreateDBSBackup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Backup set ID.</p>.",
+          "example": "6454534321",
+          "member": "int64",
+          "name": "BackupSetId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Whether it is successful</p>.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSuccess",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DBParamValue": {
+      "document": "Cloud database parameter information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "\"lower_case_table_names\"",
+          "member": "string",
+          "name": "Param",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value.",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "DatabaseFunction": {
+      "document": "Database function information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Function name.",
+          "example": "123",
+          "member": "string",
+          "name": "Func",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseProcedure": {
+      "document": "Database stored procedure information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Stored procedure name.",
+          "example": "123",
+          "member": "string",
+          "name": "Proc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseTable": {
+      "document": "Database table information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Table name",
+          "example": "123",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseView": {
+      "document": "Database view information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "View name.",
+          "example": "123",
+          "member": "string",
+          "name": "View",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteDBSBackupSetsRequest": {
+      "document": "DeleteDBSBackupSets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-f31c034x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backup set list. the value comes from the DescribeDBSBackupSets api response.</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "BackupSetIdList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDBSBackupSetsResponse": {
+      "document": "DeleteDBSBackupSets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<P>Number of backups deleted this time.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Deleted",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Whether all are deleted successfully.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSuccess",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Total number of backups to be deleted.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillingEnableRequest": {
+      "document": "DescribeBillingEnable request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeBillingEnableResponse": {
+      "document": "DescribeBillingEnable response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBParametersRequest": {
+      "document": "DescribeDBParameters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, for example: tdsql3-ow728lmc.",
+          "example": "tdsql3-ow728lmc",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBParametersResponse": {
+      "document": "DescribeDBParameters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, for example: tdsql3-ow728lmc.",
+          "example": "tdsql3-ow728lmc",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request the current parameter value of the instance.",
+          "example": "无",
+          "member": "ParamDesc",
+          "name": "Params",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSAvailableRecoveryTimeRequest": {
+      "document": "DescribeDBSAvailableRecoveryTime request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>db instance ID.</p>",
+          "example": "tdsql3-d2ba1f6b",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backup set ID. the value comes from the DescribeDBSBackupSets api response.</p>",
+          "example": "36154356969282",
+          "member": "int64",
+          "name": "BackupSetId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSAvailableRecoveryTimeResponse": {
+      "document": "DescribeDBSAvailableRecoveryTime response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<P>End time</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-18 00:00:57",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<P>Recoverable time interval.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ArchiveLogInterval",
+          "name": "Intervals",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<P>Start time</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-05-18 00:00:57",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSCloneInstancesRequest": {
+      "document": "DescribeDBSCloneInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Source instance ID.</p>",
+          "example": "tdsql3-b4d8fd2c",
+          "member": "string",
+          "name": "SourceInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Engine type</p>",
+          "example": "tdstore",
+          "member": "string",
+          "name": "DBType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Creation end time</p>",
+          "example": "2024-11-25 10:10:00",
+          "member": "string",
+          "name": "EndCreateTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Clone kind: PITR time point BackupSet backup set</p>",
+          "example": "PITR",
+          "member": "string",
+          "name": "FilterCloneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Query count [0,200]</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query offset [0,INF]</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field: CloneTime, CreateTime</p>",
+          "example": "CloneTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting type: ASC, DESC</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Creation start time</p>",
+          "example": "2024-11-24 10:10:00",
+          "member": "string",
+          "name": "StartCreateTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSCloneInstancesResponse": {
+      "document": "DescribeDBSCloneInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<P>Clone list</p>.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CloneInstanceModel",
+          "name": "Items",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsRequest": {
+      "document": "DescribeDBSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tdsql3eb2w7dto",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBSecurityGroupsResponse": {
+      "document": "DescribeDBSecurityGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group description.",
+          "example": "无",
+          "member": "SecurityGroup",
+          "name": "Groups",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance VIP.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VIP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance port.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VPort",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsRequest": {
+      "document": "DescribeDatabaseObjects request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, for example: tdsql3-42f40429.",
+          "example": "tdsql3-42f40429",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name, obtained via the DescribeDatabases api.",
+          "example": "mysql",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsResponse": {
+      "document": "DescribeDatabaseObjects response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Passthrough input parameter.",
+          "example": "tdsql3-42f40429",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "mysql",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "user",
+          "member": "DatabaseTable",
+          "name": "Tables",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "View list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DatabaseView",
+          "name": "Views",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Stored procedure list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DatabaseProcedure",
+          "name": "Procs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Function list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DatabaseFunction",
+          "name": "Funcs",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseTableRequest": {
+      "document": "DescribeDatabaseTable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, for example: tdsql3-ow7t8lmc.",
+          "example": "tdsql3-52s53yyh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name, obtained via the DescribeDatabases api.",
+          "example": "test",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table name, obtained through the DescribeDatabaseObjects api.",
+          "example": "persons",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseTableResponse": {
+      "document": "DescribeDatabaseTable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "tdsql3-52s53yyh",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "test",
+          "member": "string",
+          "name": "DbName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "persons",
+          "member": "string",
+          "name": "Table",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TableColumn",
+          "name": "Cols",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFlowRequest": {
+      "document": "DescribeFlow request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeFlowResponse": {
+      "document": "DescribeFlow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstancesRequest": {
+      "document": "DestroyInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of isolated instance ids required.",
+          "example": "[\"tdsql3-d8fffc3c\",\"tdsql3-d8fffc4s\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstancesResponse": {
+      "document": "DestroyInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of successfully isolated instance ids.",
+          "example": "\"tdsql3-d8fffc3c\"",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Isolation removal failed instance Id list.",
+          "example": "\"tdsql3-d8fffc4s\"",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstanceRequest": {
+      "document": "IsolateDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of isolated instance ids required.",
+          "example": "[\"tdsql3-d8fffc3c\",\"tdsql3-d8fffc4s\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDBInstanceResponse": {
+      "document": "IsolateDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Isolation successful instance Id list.",
+          "example": "\"tdsql3-d8fffc3c\"",
+          "member": "string",
+          "name": "SuccessInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Isolation failed instance Id list.",
+          "example": "\"tdsql3-d8fffc4s\"",
+          "member": "string",
+          "name": "FailedInstanceIds",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoRenewFlagRequest": {
+      "document": "ModifyAutoRenewFlag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance list that needs to be modified.",
+          "example": "[\"tdsql3-e234db15\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "1 indicates enable automatic renewal, 0 indicates disable automatic renewal.",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoRenewFlagResponse": {
+      "document": "ModifyAutoRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBinlogStatusRequest": {
+      "document": "ModifyBinlogStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tdsql3-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "1 on 0 off.",
+          "example": "1/0",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBinlogStatusResponse": {
+      "document": "ModifyBinlogStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process id of the flow.",
+          "example": "123457",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsRequest": {
+      "document": "ModifyDBInstanceSecurityGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id.",
+          "example": "tdsql3-eb2w7dto",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID list to modify. an array of one or more security group ids.",
+          "example": "[\"sg-ajr1jzgj\\n\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSecurityGroupsResponse": {
+      "document": "ModifyDBInstanceSecurityGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBParametersRequest": {
+      "document": "ModifyDBParameters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, for example: tdsql3-ow728lmc.",
+          "example": "tdsql3-ige1a5k3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter list, each element is a combination of Param and Value.",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "Params",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBParametersResponse": {
+      "document": "ModifyDBParameters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task id.",
+          "example": "任务ID",
+          "member": "int64",
+          "name": "TaskID",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSBackupPolicyRequest": {
+      "document": "ModifyDBSBackupPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Backup policy.",
+          "example": "无",
+          "member": "BackupPolicyModelInput",
+          "name": "BackupPolicy",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tdsql3-b8dfc518",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSBackupPolicyResponse": {
+      "document": "ModifyDBSBackupPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Success status.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSuccess",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message.",
+          "example": "Modify backup policy successfully",
+          "member": "string",
+          "name": "Msg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSBackupSetCommentRequest": {
+      "document": "ModifyDBSBackupSetComment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-f31c034x",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backup set ID. the value comes from the DescribeDBSBackupSets api response.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "BackupSetId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<P>Backup notes.</p>",
+          "example": "my-backup",
+          "member": "string",
+          "name": "NewBackupName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBSBackupSetCommentResponse": {
+      "document": "ModifyDBSBackupSetComment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<P>Whether it is successful</p>.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSuccess",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Modify information</p>.",
+          "example": "Modify backup set successfully",
+          "member": "string",
+          "name": "Msg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNameRequest": {
+      "document": "ModifyInstanceName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance id that needs to be modified.",
+          "example": "\"tdsql3-e732378b\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified instance name. required length: 1-60. can contain chinese, english uppercase and lowercase letters, digits, -, _.",
+          "example": "\"new-instance-name\"",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNameResponse": {
+      "document": "ModifyInstanceName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ParamConstraint": {
+      "document": "Parameter constraints.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Constraint type, for example enumeration, interval.",
+          "example": "\"enum\"",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Lists the available options when the constraint type is enum.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"REPEATABLE-READ,SERIALIZABLE,READ-COMMITTED,READ-UNCOMMITTED\"",
+          "member": "string",
+          "name": "Enum",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Value range when the constraint type is section.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConstraintRange",
+          "name": "Range",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Valid values when the constraint type is string.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"0,1\"",
+          "member": "string",
+          "name": "String",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ParamDesc": {
+      "document": "DB parameter description.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "\"long_query_time\"",
+          "member": "string",
+          "name": "Param",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current parameter value.",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The configured value is the same as the value once the parameter takes effect.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"2\"",
+          "member": "string",
+          "name": "SetValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "System default value.",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "Default",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter limits.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ParamConstraint",
+          "name": "Constraint",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether a value has been set. false: not set. true: has set.",
+          "example": "true",
+          "member": "bool",
+          "name": "HaveSetValue",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "true: restart required.",
+          "example": "false",
+          "member": "bool",
+          "name": "NeedRestart",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parameter description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroup": {
+      "document": "Security group details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CreationTime, time format: yyyy-mm-dd hh:mm:ss.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Security group name.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Security group remarks",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupRemark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inbound rule.",
+          "example": "无",
+          "member": "SecurityGroupBound",
+          "name": "Inbound",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Outbound rule.",
+          "example": "无",
+          "member": "SecurityGroupBound",
+          "name": "Outbound",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SecurityGroupBound": {
+      "document": "Inbound and outbound rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source IP or IP range, such as 192.168.0.0/16.",
+          "example": "无",
+          "member": "string",
+          "name": "CidrIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy, ACCEPT or DROP.",
+          "example": "无",
+          "member": "string",
+          "name": "Action",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "无",
+          "member": "string",
+          "name": "PortRange",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network protocol, supports UDP, TCP.",
+          "example": "无",
+          "member": "string",
+          "name": "IpProtocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TableColumn": {
+      "document": "Database column information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Column name.",
+          "example": "123",
+          "member": "string",
+          "name": "Col",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Column type",
+          "example": "123",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
