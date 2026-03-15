@@ -21,13 +21,6 @@
       "output": "DeleteDBSBackupSetsResponse",
       "status": "online"
     },
-    "DescribeBillingEnable": {
-      "document": "No place to call.\n\nThis API is used to query whether billing is enabled.",
-      "input": "DescribeBillingEnableRequest",
-      "name": "Query whether billing is enabled",
-      "output": "DescribeBillingEnableResponse",
-      "status": "offline"
-    },
     "DescribeDBParameters": {
       "document": "This API is used to obtain the current parameter settings of the instance.",
       "input": "DescribeDBParametersRequest",
@@ -63,13 +56,6 @@
       "output": "DescribeDatabaseObjectsResponse",
       "status": "online"
     },
-    "DescribeDatabaseTable": {
-      "document": "Redundant API, no API calls.\n\nThis API is used to query table information of a cloud database instance.",
-      "input": "DescribeDatabaseTableRequest",
-      "name": "Query database table information",
-      "output": "DescribeDatabaseTableResponse",
-      "status": "offline"
-    },
     "DescribeFlow": {
       "document": "This API is used to query the process status of an asynchronous task.",
       "input": "DescribeFlowRequest",
@@ -97,13 +83,6 @@
       "name": "Modify the auto-renewal flag",
       "output": "ModifyAutoRenewFlagResponse",
       "status": "online"
-    },
-    "ModifyBinlogStatus": {
-      "document": "This API is used to entirely overwrite the API feature of ModifyInstanceCdc.\n\nModify the binlog status.",
-      "input": "ModifyBinlogStatusRequest",
-      "name": "Modify the binlog status",
-      "output": "ModifyBinlogStatusResponse",
-      "status": "offline"
     },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify cloud database security groups.",
@@ -148,7 +127,7 @@
   },
   "objects": {
     "ArchiveLogInterval": {
-      "document": "Recoverable time interval.",
+      "document": "Recoverable time interval",
       "members": [
         {
           "disabled": false,
@@ -202,7 +181,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<P>Backup end time.</p>.",
+          "document": "<P>Backup end time.</p>",
           "example": "04:00",
           "member": "string",
           "name": "BackupEndTime",
@@ -211,7 +190,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Backup method: physical physical backup, snapshot snapshot backup</p>.",
+          "document": "<P>Backup method: physical physical backup, snapshot snapshot backup</p>",
           "example": "physical",
           "member": "string",
           "name": "BackupMethod",
@@ -220,7 +199,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Backup start time</p>.",
+          "document": "<P>Backup start time</p>",
           "example": "00:00",
           "member": "string",
           "name": "BackupStartTime",
@@ -229,7 +208,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Whether full backup is enabled</p>.",
+          "document": "<P>Whether full backup is enabled</p>",
           "example": "1",
           "member": "int64",
           "name": "EnableFull",
@@ -238,7 +217,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Whether to enable log backup</p>.",
+          "document": "<P>Whether to enable log backup</p>",
           "example": "1",
           "member": "int64",
           "name": "EnableLog",
@@ -247,7 +226,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Full backup retention time can currently only be set to 7 days.</p>.",
+          "document": "<P>Full backup retention time can currently only be set to 7 days.</p>",
           "example": "7",
           "member": "int64",
           "name": "FullRetentionPeriod",
@@ -256,7 +235,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance ID.</p>.",
+          "document": "<p>Instance ID.</p>",
           "example": "tdsql3-b8dfc518",
           "member": "string",
           "name": "InstanceId",
@@ -265,7 +244,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Log retention days. currently, can only set retention to 7 days.</p>.",
+          "document": "<P>Log retention days. currently, can only set retention to 7 days.</p>",
           "example": "7",
           "member": "int64",
           "name": "LogRetentionPeriod",
@@ -274,7 +253,7 @@
         },
         {
           "disabled": false,
-          "document": "<P>Days of the week to perform backup.</p>.",
+          "document": "<P>Days of the week to perform backup.</p>",
           "example": "0,1,2,3,4,5,6",
           "member": "string",
           "name": "PeriodTime",
@@ -283,7 +262,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>.",
+          "document": "<p>Storage type: COS, SNAPSHOT</p>valid values: <ul><li> COS: COS storage</li><li> SNAPSHOT: cloud disk SNAPSHOT</li></ul>",
           "example": "COS",
           "member": "string",
           "name": "StorageType",
@@ -742,23 +721,6 @@
       ],
       "type": "object"
     },
-    "DescribeBillingEnableRequest": {
-      "document": "DescribeBillingEnable request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DescribeBillingEnableResponse": {
-      "document": "DescribeBillingEnable response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeDBParametersRequest": {
       "document": "DescribeDBParameters request structure.",
       "members": [
@@ -1144,91 +1106,6 @@
       ],
       "type": "object"
     },
-    "DescribeDatabaseTableRequest": {
-      "document": "DescribeDatabaseTable request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID, for example: tdsql3-ow7t8lmc.",
-          "example": "tdsql3-52s53yyh",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Database name, obtained via the DescribeDatabases api.",
-          "example": "test",
-          "member": "string",
-          "name": "DbName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Table name, obtained through the DescribeDatabaseObjects api.",
-          "example": "persons",
-          "member": "string",
-          "name": "Table",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeDatabaseTableResponse": {
-      "document": "DescribeDatabaseTable response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance name.",
-          "example": "tdsql3-52s53yyh",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Database name.",
-          "example": "test",
-          "member": "string",
-          "name": "DbName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Table name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "persons",
-          "member": "string",
-          "name": "Table",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Column information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TableColumn",
-          "name": "Cols",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeFlowRequest": {
       "document": "DescribeFlow request structure.",
       "members": [],
@@ -1345,7 +1222,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance list that needs to be modified.",
+          "document": "<P>Instance list that needs to be modified</p>.",
           "example": "[\"tdsql3-e234db15\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -1354,7 +1231,7 @@
         },
         {
           "disabled": false,
-          "document": "1 indicates enable automatic renewal, 0 indicates disable automatic renewal.",
+          "document": "<P>1 enables automatic renewal, 0 disables automatic renewal.</p>.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -1367,52 +1244,6 @@
     "ModifyAutoRenewFlagResponse": {
       "document": "ModifyAutoRenewFlag response structure.",
       "members": [
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyBinlogStatusRequest": {
-      "document": "ModifyBinlogStatus request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID.",
-          "example": "tdsql3-xxx",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "1 on 0 off.",
-          "example": "1/0",
-          "member": "uint64",
-          "name": "Status",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyBinlogStatusResponse": {
-      "document": "ModifyBinlogStatus response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Process id of the flow.",
-          "example": "123457",
-          "member": "int64",
-          "name": "FlowId",
-          "output_required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -1909,32 +1740,6 @@
           "member": "string",
           "name": "IpProtocol",
           "output_required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "out"
-    },
-    "TableColumn": {
-      "document": "Database column information.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Column name.",
-          "example": "123",
-          "member": "string",
-          "name": "Col",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Column type",
-          "example": "123",
-          "member": "string",
-          "name": "Type",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         }

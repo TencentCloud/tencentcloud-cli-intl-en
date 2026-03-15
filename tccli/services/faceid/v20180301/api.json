@@ -979,7 +979,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The final verification result code.\n0: Success.\n1001: Failed to call the liveness detection engine.\n1004: Face detection failed.\n2004: The uploaded face image is too large or too small.\n2012: The face is not fully exposed.\n2013: No face is detected.\n2014: The resolution of the uploaded image is too low . Please upload a new one.\n2015: Face comparison failed.\n2016: The similarity did not reach the passing standard.",
+          "document": "The final verification result code.\n0: Succeeded.\n1001: Failed to call the liveness engine.\n1002: Suspected spoofed recording.\n1004: Face detection failed.\n1005: Liveness detection failed.\n1201: Lighting is too dark or overexposed.\n2004: The image passed in is too large or too small.\n2012: Multiple faces detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n2017: Facial occlusion detected.",
           "example": "0",
           "member": "string",
           "name": "ErrorCode",
@@ -1029,7 +1029,7 @@
         },
         {
           "disabled": false,
-          "document": "The liveness detection result code.\n0: Success.\n1001: Failed to call the liveness detection engine.\n1004: Face detection failed.",
+          "document": "The liveness detection result code.\n0: Success.\n1001: Failed to call the liveness detection engine.\n1002: Suspected spoofed recording.\n1004: Face detection failed.\n1005: Liveness detection failed.\n1201: Lighting is too dark or overexposed.\n",
           "example": "0",
           "member": "string",
           "name": "LiveErrorCode",
@@ -1069,7 +1069,7 @@
         },
         {
           "disabled": false,
-          "document": "The face comparison result code.\n0: Success.\n2004: The uploaded face image is too large or too small.\n2012: The face is not fully exposed.\n2013: No face is detected.\n2014: The resolution of the uploaded image is too low . Please upload a new one.\n2015: Face comparison failed.\n2016: The similarity did not reach the passing standard.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "The face comparison result code.\n0: Success.\n2004: The image passed in is too large or too small.\n2012: Multiple faces detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n2017: Facial occlusion detected.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "string",
           "name": "CompareErrorCode",

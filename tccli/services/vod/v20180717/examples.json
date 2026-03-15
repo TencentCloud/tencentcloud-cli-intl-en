@@ -114,6 +114,14 @@
         "title": "CreateAdaptiveDynamicStreamingTemplate"
       }
     ],
+    "CreateAigcApiToken": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcApiToken\n<Common request parameters>\n\n{\n    \"SubAppId\": 251006666\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\",\n        \"ApiToken\": \"hGjH1dsBbjUbT9Cu\"\n    }\n}",
+        "title": "Creating an AIGC API Token"
+      }
+    ],
     "CreateAigcImageTask": [
       {
         "document": "",
@@ -436,6 +444,14 @@
         "title": "Deleting an adaptive bitrate streaming template"
       }
     ],
+    "DeleteAigcApiToken": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAigcApiToken\n<Common request parameters>\n\n{\n    \"SubAppId\": 251006666,\n    \"ApiToken\": \"dqFQejeK2BMU8PRmc57gx9OSGKa72PwN\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Deleting an AIGC API Token"
+      }
+    ],
     "DeleteAnimatedGraphicsTemplate": [
       {
         "document": " ",
@@ -666,6 +682,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeAdaptiveDynamicStreamingTemplates\n&Definitions.0=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AdaptiveDynamicStreamingTemplateSet\": [\n            {\n                \"Definition\": 1001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Adaptive bitrate streaming template 1\",\n                \"Format\": \"HLS\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"DrmType\": \"\",\n                \"DisableHigherVideoResolution\": 0,\n                \"DisableHigherVideoBitrate\": 0,\n                \"StreamInfos\": [\n                    {\n                        \"RemoveVideo\": 0,\n                        \"Audio\": {\n                            \"Codec\": \"libfdk_aac\",\n                            \"SampleRate\": 44100,\n                            \"AudioChannel\": 2,\n                            \"Bitrate\": 128\n                        },\n                        \"Video\": {\n                            \"Fps\": 25,\n                            \"Width\": 720,\n                            \"Height\": 1080,\n                            \"Codec\": \"libx264\",\n                            \"ResolutionAdaptive\": \"open\",\n                            \"FillType\": \"black\",\n                            \"Bitrate\": 12500,\n                            \"Vcrf\": 23,\n                            \"Gop\": 0\n                        },\n                        \"RemoveAudio\": 0,\n                        \"TEHDConfig\": {\n                            \"MaxVideoBitrate\": 10000,\n                            \"Type\": \"TEHD-100\"\n                        }\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Querying adaptive bitrate streaming templates"
+      }
+    ],
+    "DescribeAigcApiTokens": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcApiTokens\n<Common request parameters>\n\n{\n    \"SubAppId\": 251006666\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\",\n        \"ApiTokens\": [\n            \"dqFQejeK2BMU8PRmc57gx9OSGKa72PwN\",\n            \"8Tul4P4EiJKZ80AfF11HApbYSyK4uj1e\"\n        ]\n    }\n}",
+        "title": "Querying the AIGC API Token List"
       }
     ],
     "DescribeAllClass": [
