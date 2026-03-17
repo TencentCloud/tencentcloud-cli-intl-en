@@ -337,7 +337,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
+          "document": "Transaction type, which can be yearly/monthly subscription\u0005 purchase, monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -367,7 +367,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash account",
+          "document": "Cash credit: The amount paid from the user's cash account",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -377,7 +377,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -397,7 +397,7 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
@@ -2304,7 +2304,7 @@
         {
           "disabled": false,
           "document": "Extended Field 1: The extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef1",
           "member": "string",
           "name": "ExtendField1",
           "output_required": true,
@@ -2314,7 +2314,7 @@
         {
           "disabled": false,
           "document": "Extended field 2: The extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef2",
           "member": "string",
           "name": "ExtendField2",
           "output_required": true,
@@ -2399,12 +2399,12 @@
           "name": "TransferPayAmount",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef3",
           "member": "string",
           "name": "ExtendField3",
           "output_required": true,
@@ -2414,7 +2414,7 @@
         {
           "disabled": false,
           "document": "Extended field 4: The extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef4",
           "member": "string",
           "name": "ExtendField4",
           "output_required": true,
@@ -2424,7 +2424,7 @@
         {
           "disabled": false,
           "document": "Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef5",
           "member": "string",
           "name": "ExtendField5",
           "output_required": true,
@@ -2434,17 +2434,17 @@
         {
           "disabled": false,
           "document": "Tag information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"项目\",\"TagValue\":\"element_test\"}]",
           "member": "BillTagInfo",
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Owner account ID: The account ID of the actual resource user.",
-          "example": "xxx",
+          "example": "909619411",
           "member": "string",
           "name": "OwnerUin",
           "output_required": true,
@@ -2454,7 +2454,7 @@
         {
           "disabled": false,
           "document": "Operator account ID: The account or role ID of the operator who purchases or activates a resource.",
-          "example": "xxx",
+          "example": "909619412",
           "member": "string",
           "name": "OperateUin",
           "output_required": true,
@@ -2539,7 +2539,7 @@
           "name": "BillMonth",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6066,7 +6066,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).",
+          "document": "Billing mode, which can be `prePay` (yearly/monthly subscription) or `postPay` (pay-as-you-go).",
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
@@ -6084,7 +6084,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nMonthly subscription purchase\nMonthly subscription renewal\nMonthly subscription upgrade/downgrade\nMonthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nMonthly subscription resource migration in \nMonthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nMonthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
+          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nYearly/monthly subscription purchase\nYearly/monthly subscription renewal\nYearly/monthly subscription upgrade/downgrade\nYearly/monthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nYearly/monthly subscription resource migration in \nYearly/monthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nYearly/monthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
           "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
@@ -6152,7 +6152,7 @@
           "name": "Context",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6258,7 +6258,7 @@
         },
         {
           "disabled": false,
-          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
+          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
@@ -6442,7 +6442,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
           "example": "byPayTime",
           "member": "string",
@@ -6453,7 +6453,7 @@
         {
           "disabled": false,
           "document": "Indicates whether the total number of records is required, used for pagination.\nValid values: `1` (required), `0` (not required).",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "NeedRecordNum",
           "required": false,
@@ -6461,7 +6461,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nMonthly subscription purchase\nMonthly subscription renewal\nMonthly subscription upgrade/downgrade\nMonthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nMonthly subscription resource migration in \nMonthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nMonthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
+          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nYearly/monthly subscription purchase\nYearly/monthly subscription renewal\nYearly/monthly subscription upgrade/downgrade\nYearly/monthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nYearly/monthly subscription resource migration in \nYearly/monthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nYearly/monthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -6522,7 +6522,7 @@
         {
           "disabled": false,
           "document": "Resource summary list.",
-          "example": "无",
+          "example": "[{\"PayerUin\":\"909619400\",\"OwnerUin\":\"909619400\",\"OperateUin\":\"909619400\",\"BusinessCodeName\":\"COS 对象存储\",\"ProductCodeName\":\"COS 标准存储\",\"BusinessCode\":\"p_cos\",\"ProductCode\":\"sp_cos_std\"}]",
           "member": "BillDistributionResourceSummary",
           "name": "ResourceSummarySet",
           "output_required": true,
@@ -6598,7 +6598,7 @@
         },
         {
           "disabled": false,
-          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
+          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -7112,7 +7112,7 @@
         {
           "disabled": false,
           "document": "Bills summarized by multiple dimensions.",
-          "example": "无",
+          "example": "{\"GroupKey\":\"p_cvm\",\"GroupValue\":\"云服务器\",\"TotalCost\":\"4.00000000\",\"Business\":[{\"BusinessCode\":\"p_cvm\",\"BusinessCodeName\":\"云服务器\",\"TotalCost\":\"4.00000000\"}]}",
           "member": "SummaryDetail",
           "name": "SummaryDetail",
           "output_required": true,
@@ -7152,11 +7152,29 @@
         {
           "disabled": false,
           "document": "Tag key, which is used when `GroupType` is `tag`.",
-          "example": "测试键",
+          "example": "[\"测试键\"]",
           "member": "string",
           "name": "TagKey",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "909619400",
+          "member": "string",
+          "name": "OperateUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "909619400",
+          "member": "string",
+          "name": "PayerUin",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8737,7 +8755,7 @@
           "name": "Tags",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8747,7 +8765,7 @@
           "name": "BusinessCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8757,7 +8775,7 @@
           "name": "ProductCode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8767,7 +8785,7 @@
           "name": "ActionType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8777,7 +8795,7 @@
           "name": "RegionId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8797,7 +8815,7 @@
           "name": "PriceInfo",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8807,7 +8825,7 @@
           "name": "AssociatedOrder",
           "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8817,7 +8835,7 @@
           "name": "Formula",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8827,7 +8845,7 @@
           "name": "FormulaUrl",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8837,7 +8855,7 @@
           "name": "BillMonth",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8847,7 +8865,7 @@
           "name": "BillDay",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
