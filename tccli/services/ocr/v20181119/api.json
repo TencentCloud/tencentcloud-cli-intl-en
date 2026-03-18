@@ -24,7 +24,7 @@
     "GeneralAccurateOCR": {
       "document": "This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.\n\nIt is suitable for scenarios with a lot of characters in complex layouts and requiring high recognition accuracy, such as examination papers, online images, signboards, and legal documents.\n\nStrengths: compared with general print recognition, it provides higher-precision character recognition services. Its accuracy and recall rate are higher in difficult scenarios such as a large number of characters, long strings of digits, small characters, blurry characters, and tilted text.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "GeneralAccurateOCRRequest",
-      "name": "Recognizes general print (high-precision)",
+      "name": "General ocr (high-precision version)",
       "output": "GeneralAccurateOCRResponse",
       "status": "online"
     },
@@ -1892,20 +1892,20 @@
         {
           "disabled": false,
           "document": "Confidence. Value range: 0–100",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "A possible character",
-          "example": "无",
+          "example": "字",
           "member": "string",
           "name": "Character",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2190,8 +2190,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
-          "example": "无",
+          "document": "The Base64 value of an image/PDF. the image must be no more than 10M after encoding, with a resolution of 600*800 or higher recommended. supported formats include PNG, JPG, JPEG, BMP, and PDF. either ImageUrl or ImageBase64 must be provided. if both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -2200,7 +2200,7 @@
         {
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nThe image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -2208,16 +2208,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to return the character information. Default value: `false`",
-          "example": "false",
-          "member": "bool",
-          "name": "IsWords",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.",
+          "document": "Whether to enable original image slicing detection. once enabled, it improves recognition accuracy in scenarios where \"the overall image area is large but the single character area is small\" (for example: exam paper). default: disabled. note: only supported when ConfigID is configured as OCR.",
           "example": "false",
           "member": "bool",
           "name": "EnableDetectSplit",
@@ -2241,6 +2232,24 @@
           "name": "PdfPageNumber",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Text detection switch, default is true. set to false to directly perform single-line text recognition, suitable for image scenarios containing only forward single-line text.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableDetectText",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration ID supports: OCR - general scenario MulOCR - multilingual scenario. default value is OCR.",
+          "example": "OCR",
+          "member": "string",
+          "name": "ConfigID",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2254,22 +2263,32 @@
           "example": "无",
           "member": "TextDetection",
           "name": "TextDetections",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Image rotation angle in degrees. 0°: The horizontal direction of the text on the image; a positive value: rotate clockwise; a negative value: rotate counterclockwise.",
-          "example": "0",
+          "example": "359.989990234375",
           "member": "float",
           "name": "Angel",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "Image rotation angle (angle system). the text's horizontal direction is 0°. clockwise is positive, counterclockwise is negative. click to view <a href=\"https://www.tencentcloud.com/document/product/866/45139?from_cn_redirect=1\">how to correct tilt text</a>.",
+          "example": "359.989990234375",
+          "member": "float",
+          "name": "Angle",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

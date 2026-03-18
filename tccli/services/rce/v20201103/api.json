@@ -10,7 +10,7 @@
   },
   "metadata": {
     "apiVersion": "2020-11-03",
-    "serviceNameCN": "全栈式风控引擎",
+    "serviceNameCN": "风险识别 RCE",
     "serviceShortName": "rce"
   },
   "objects": {
@@ -75,7 +75,7 @@
         {
           "disabled": false,
           "document": "Encrypted content.",
-          "example": "无",
+          "example": "****QpLQfNqD",
           "member": "string",
           "name": "CryptoContent",
           "required": true,
@@ -95,17 +95,17 @@
           "name": "Code",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Returned information\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "OK",
           "member": "string",
           "name": "Message",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -120,12 +120,12 @@
         {
           "disabled": false,
           "document": "Request ID.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "****-a88508484ebb",
           "member": "string",
           "name": "UUid",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -139,9 +139,9 @@
           "example": "brand",
           "member": "string",
           "name": "Key",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -149,9 +149,9 @@
           "example": "apple",
           "member": "string",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -167,7 +167,7 @@
           "name": "RiskLevel",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -187,7 +187,7 @@
           "name": "DeviceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -197,7 +197,7 @@
           "name": "ExtraInfo",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -207,7 +207,7 @@
           "name": "TokenTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

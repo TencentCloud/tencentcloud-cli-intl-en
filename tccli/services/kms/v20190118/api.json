@@ -520,6 +520,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -713,6 +722,15 @@
           "name": "DataKeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -750,6 +768,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -777,6 +804,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1298,6 +1334,36 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account appId.",
+          "example": "251002343",
+          "member": "uint64",
+          "name": "AccountAppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account UIN",
+          "example": "100000007998",
+          "member": "uint64",
+          "name": "AccountUin",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account name.",
+          "example": "加密组测试环境账号",
+          "member": "string",
+          "name": "AccountName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1441,6 +1507,15 @@
           "name": "DataKeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1478,6 +1553,15 @@
           "name": "DataKeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1488,7 +1572,7 @@
         {
           "disabled": false,
           "document": "Response data key attribute information list.",
-          "example": " { \"DataKeyName\": \"x\", \"CreateTime\": xxx, \"CreatorUin\": xxx, \"DeletionDate\": 0, \"Description\": \"x\", \"HsmClusterId\": \"cls-x-x\",\"NumberOfBytes\":32, \"DataKeyId\": \"xxx\", \"KeyId\": \"xxx\",  \"KeyState\": \"xxx\", \"Origin\": \"xxx\",\"ResourceId\": \"creatorUin/xxx/xxx\" } ",
+          "example": "无",
           "member": "DataKeyMetadata",
           "name": "DataKeyMetadatas",
           "output_required": true,
@@ -1515,6 +1599,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1552,6 +1645,15 @@
           "name": "KeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1562,7 +1664,7 @@
         {
           "disabled": false,
           "document": "The attribute information list returned.",
-          "example": "{\"Alias\":\"test11lzc\",\"CreateTime\":1730357927,\"CreatorUin\":700001224419,\"DeletionDate\":0,\"Description\":\"倒入外部密钥\",\"HsmClusterId\":\"\",\"KeyId\":\"93866e69-9755-11ef-8e65-52540089bc41\",\"KeyRotationEnabled\":false}",
+          "example": "无",
           "member": "KeyMetadata",
           "name": "KeyMetadatas",
           "output_required": true,
@@ -1857,6 +1959,15 @@
           "name": "DataKeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1884,6 +1995,15 @@
           "name": "DataKeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1911,6 +2031,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1938,6 +2067,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1965,6 +2103,15 @@
           "name": "KeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2046,6 +2193,15 @@
           "name": "DataKeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2068,11 +2224,20 @@
         {
           "disabled": false,
           "document": "The Id list of datakeys that need to be batch enabled supports a maximum of 100 data keys.",
-          "example": "\t [\"23e80852-1e38-11e9-b129-5cb9019b4b02\"]",
+          "example": "[\"23e80852-1e38-11e9-b129-5cb9019b4b02\"]",
           "member": "string",
           "name": "DataKeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2100,6 +2265,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2136,6 +2310,15 @@
           "name": "RotateDays",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2163,6 +2346,15 @@
           "name": "KeyIds",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2614,6 +2806,15 @@
           "name": "DataKeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2706,6 +2907,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3541,6 +3751,36 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account appId.",
+          "example": "260082377",
+          "member": "uint64",
+          "name": "AccountAppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account UIN",
+          "example": "700002334915",
+          "member": "uint64",
+          "name": "AccountUin",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account name.",
+          "example": "kms-700002334915",
+          "member": "string",
+          "name": "AccountName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3691,6 +3931,15 @@
           "example": "无",
           "member": "TagFilter",
           "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Array of member account information.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccounts",
           "required": false,
           "type": "list"
         }
@@ -3881,7 +4130,7 @@
         {
           "disabled": false,
           "document": "Tag filter condition",
-          "example": "[{\"TagKey\":\"env\",\"TagValue\":[\"dev\"]}]",
+          "example": "无",
           "member": "TagFilter",
           "name": "TagFilters",
           "required": false,
@@ -3895,6 +4144,15 @@
           "name": "HsmClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Array of trusted service member account information.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccounts",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4004,6 +4262,34 @@
         }
       ],
       "type": "object"
+    },
+    "MemberAccount": {
+      "document": "Shared member account information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Member account appid.\n",
+          "example": "260082377",
+          "member": "uint64",
+          "name": "MemberAppId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Member account UIN",
+          "example": "700002334915881",
+          "member": "uint64",
+          "name": "MemberUin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "OverwriteWhiteBoxDeviceFingerprintsRequest": {
       "document": "OverwriteWhiteBoxDeviceFingerprints request structure.",
@@ -4363,7 +4649,7 @@
         {
           "disabled": false,
           "document": "Unique id of a data key.",
-          "example": "\t 93866e69-9755-11ef-8e65-52540089bc41",
+          "example": "93866e69-9755-11ef-8e65-52540089bc41",
           "member": "string",
           "name": "DataKeyId",
           "required": true,
@@ -4377,6 +4663,15 @@
           "name": "PendingWindowInDays",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4433,6 +4728,15 @@
           "name": "PendingWindowInDays",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4646,6 +4950,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4682,6 +4995,15 @@
           "name": "Description",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4713,11 +5035,20 @@
         {
           "disabled": false,
           "document": "Name of the data key.",
-          "example": "test",
+          "example": "testDatakeyName",
           "member": "string",
           "name": "DataKeyName",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -4754,6 +5085,15 @@
           "name": "KeyId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Trusted service member account information. valid at that time when the current account is admin or delegated admin.",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
