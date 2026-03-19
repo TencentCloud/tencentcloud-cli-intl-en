@@ -134,9 +134,9 @@
       "status": "online"
     },
     "CreateDBInstance": {
-      "document": "This API is used to create a monthly subscribed TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, purchased duration, and quantity.\n\nThis is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instance has been successfully delivered.\n\n1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.\n2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.\n3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported.\n4. Source instances, read-only instances, and disaster recovery instances can be created.\n5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.\n6. If `Port`, `ParamTemplateId`, or `AlarmPolicyList` is specified in the input parameters, you need to update your SDK to the latest version.",
+      "document": "This API is used to create a cloud database instance with an annual/monthly subscription, including primary instance, disaster recovery instance, and read-only instance. You can create a cloud database instance by importing instance specification, MySQL version number, purchase period, and quantity information.\n\nThis API is an asynchronous API. You can also use the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) to query the instance details. When the Status of the instance is 1 and TaskStatus is 0, it means the instance has been delivered successfully.\n\n1. First, please use the API for the query (https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) to obtain the purchasable specifications of cloud databases, then please use the API for the query (https://www.tencentcloud.com/document/api/236/18566?from_cn_redirect=1) to query database price.\n2. You can create up to 100 instances at a time, with a maximum instance duration of 36 months.\n3. Support creating MySQL 5.5, MySQL 5.6, MySQL 5.7, and MySQL 8.0 versions.\n4. Support creating primary instance, read-only instance, disaster recovery instance.\n5. When ParamTemplateId or AlarmPolicyList is specified in the input parameters, you need to upgrade the SDK to the latest version to support it.",
       "input": "CreateDBInstanceRequest",
-      "name": "Creates a monthly subscribed TencentDB instance",
+      "name": "Creates a yearly/monthly subscribed TencentDB instance",
       "output": "CreateDBInstanceResponse",
       "status": "online"
     },
@@ -456,7 +456,7 @@
       "status": "online"
     },
     "DescribeDBPrice": {
-      "document": "This API is used to query the purchase or renewal price of a pay-as-you-go or monthly subscribed TencentDB instance by passing in information such as instance type, purchase duration, number of instances to purchase, memory size, disk size, and AZ. For the price of instance renewal, you can pass in instance name to query.\n\nNote: To query prices in a specific region, you need to use the access point of the region. For more information on access points, see <a href=\"https://www.tencentcloud.com/document/product/236/15832\">Service Address</a>. For example, to query prices in Guangzhou, send a request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, to query prices in Shanghai, send a request to: cdb.ap-shanghai.tencentcloudapi.com.",
+      "document": "This API is used to query the price of purchasing or renewing a cloud database instance. It supports querying the price of pay-as-you-go or yearly/monthly subscription. You can input instance type, purchase period, purchase quantity, memory size, disk capacity and availability zone information to query instance price. You can input instance name to query instance renewal price.\n\nNote: To request a price for a certain region, please use the access point of the corresponding region. For access point information, please refer to the <a href=\"https://www.tencentcloud.com/document/api/236/15832?from_cn_redirect=1\">service address</a> document. For example, to request a price for the Guangzhou region, send the request to: cdb.ap-guangzhou.tencentcloudapi.com. Likewise, for the Shanghai region, send the request to: cdb.ap-shanghai.tencentcloudapi.com.",
       "input": "DescribeDBPriceRequest",
       "name": "Queries the prices of TencentDB instances",
       "output": "DescribeDBPriceResponse",
@@ -918,7 +918,7 @@
       "status": "online"
     },
     "RenewDBInstance": {
-      "document": "This API is used to renew a monthly subscribed TencentDB instance, and a pay-as-you-go instance can be renewed as a monthly subscribed one by this API.",
+      "document": "This API is used to renew cloud database instances. It supports yearly/monthly subscription instances. Pay-as-you-go instances can be renewed as yearly/monthly subscription instances through this API.",
       "input": "RenewDBInstanceRequest",
       "name": "Renews a TencentDB instance",
       "output": "RenewDBInstanceResponse",
@@ -3401,7 +3401,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance), `BASIC_V2` (basic v2 instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Instance type, possible value ranges from UNIVERSAL (universal type), EXCLUSIVE (exclusive), BASIC (basic), to BASIC_V2 (basic v2).",
           "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
@@ -3437,7 +3437,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Name of the purchasable instance. Valid values: `Z3` (High-availability instance. `DeviceType`:`UNIVERSAL`, `EXCLUSIVE`; `CVM` (basic instance. `DeviceType`: `BASIC`); `TKE` (basic v2 instance. `DeviceType`: `BASIC_V2`).",
+          "document": "Purchasable instance name.\nZ3: High-availability, corresponds to the specified specification DeviceType, including UNIVERSAL and EXCLUSIVE.\nCVM: It is a basic edition type, and the DeviceType in the corresponding specifications is BASIC (Offline).\nTKE: It is the basic version v2 type, and the DeviceType in the corresponding specifications is BASIC_V2.\nCLOUD_NATIVE_CLUSTER: Represents the standard type of cloud disk edition.\nCLOUD_NATIVE_CLUSTER_EXCLUSIVE: Indicates the enhanced cloud disk edition.\nECONOMICAL: Means economical.",
           "example": "Z3",
           "member": "string",
           "name": "TypeName",
@@ -3579,7 +3579,7 @@
         },
         {
           "disabled": false,
-          "document": "Supported billing method. Valid values: `0` (monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)",
+          "document": "Supported billing method. Valid values: `0` (yearly/monthly subscribed), `1` (hourly billed), `2` (pay-as-you-go)",
           "example": "[\"0\",\"1\"]",
           "member": "string",
           "name": "PayType",
@@ -3714,6 +3714,26 @@
           "member": "string",
           "name": "EngineType",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sales status of the cloud disk edition instance in the current availability zone. Possible returned values: 1-launched; 3-not available for sale; 4-not displayed.",
+          "example": "1",
+          "member": "int64",
+          "name": "CloudNativeClusterStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk edition or single-node basic edition supported disk type.",
+          "example": "无",
+          "member": "DiskTypeConfigItem",
+          "name": "DiskTypeConf",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         }
@@ -4009,6 +4029,30 @@
         }
       ],
       "usage": "both"
+    },
+    "ClusterTopology": {
+      "document": "Topology configuration of nodes for cloud disk edition.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RW node topology.\nDescription: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).",
+          "example": "无",
+          "member": "ReadWriteNode",
+          "name": "ReadWriteNode",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "RO node topology.\nDescription: NodeId can be obtained through [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1).",
+          "example": "无",
+          "member": "ReadonlyNode",
+          "name": "ReadOnlyNodes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     },
     "ColumnPrivilege": {
       "document": "Column permission information",
@@ -5542,7 +5586,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.",
+          "document": "For AZ information, please use the [Obtain the Purchasable Specifications of Cloud Databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to obtain the availability zones that can be created.\nDescription: If you create a single-node, two-node, or three-node instance, this parameter is required. Specify an availability zone. If you do not specify an availability zone, the system will automatically select one (possibly not the availability zone you want to deploy in). If you create a cloud disk edition instance, leave this parameter empty. Configure the availability zone for the read-write node and read-only node with parameter ClusterTopology.",
           "example": "ap-beijing-3",
           "member": "string",
           "name": "Zone",
@@ -5551,7 +5595,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.",
+          "document": "VPC ID. Please use [Querying VPC list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1).\nDescription: If a cloud disk edition instance is created, this item is required and must be a VPC type. If this item is left blank, the system will select the default VPC.",
           "example": "vpc-5l7l5q11",
           "member": "string",
           "name": "UniqVpcId",
@@ -5560,7 +5604,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.",
+          "document": "Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1).\nDescription: If this item is left empty, the system will select the default subnet in the Default VPC.",
           "example": "subnet-b5v6i111",
           "member": "string",
           "name": "UniqSubnetId",
@@ -5578,7 +5622,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom port. Value range: 1024-65535.",
+          "document": "Custom port. Port range: 1024-65535.\nDescription: If this item is left blank, it defaults to 3306.",
           "example": "3306",
           "member": "int64",
           "name": "Port",
@@ -5587,7 +5631,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).",
+          "document": "Instance type. Supported values include: master - indicates the primary instance, dr - indicates the disaster recovery instance, ro - indicates the read-only instance.\nDescription: Select instance type. The master type is selected by default if left empty.",
           "example": "master",
           "member": "string",
           "name": "InstanceRole",
@@ -5596,7 +5640,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.",
+          "document": "Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API to query the cloud database instance ID.",
           "example": "cdb-q72dnodd",
           "member": "string",
           "name": "MasterInstanceId",
@@ -5605,7 +5649,7 @@
         },
         {
           "disabled": false,
-          "document": "MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.",
+          "document": "MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to get the version of the instance created.\nDescription: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left empty, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.",
           "example": "5.7",
           "member": "string",
           "name": "EngineVersion",
@@ -5641,7 +5685,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of replica AZ 1, which is the `Zone` value by default.",
+          "document": "AZ information of standby database 1.\nDescription: For two-node and three-node instances, specify this parameter. If not specified, it defaults to the value of Zone. For cloud disk edition instances, this parameter is optional. Configure the availability zone for read-write nodes and read-only nodes with parameter ClusterTopology. Single-node instances are single availability zone and no need to specify this parameter.",
           "example": "ap-beijing-3",
           "member": "string",
           "name": "SlaveZone",
@@ -5650,8 +5694,8 @@
         },
         {
           "disabled": false,
-          "document": "List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.",
-          "example": "[]",
+          "document": "Parameter list. The parameter format is ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can query the configurable parameters by default by referring to [Querying the Default Configurable Parameter List](https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1).\nDescription: table name case sensitivity can be enabled or disabled with parameter lower_case_table_names. A parameter value of 0 means enabling, and 1 means disabling. If not set, the default value is 0. For MySQL 8.0 edition instances, you need to set the lower_case_table_names parameter when creating an instance to turn on or off table name case sensitivity. Once created, the parameter cannot be modified, meaning table name case sensitivity cannot be changed after creation. Other database versions support modifying the lower_case_table_names parameter after the instance is created. For the function invocation method to set table name case sensitivity when creating an instance, please see example 3 in this document.",
+          "example": "无",
           "member": "ParamInfo",
           "name": "ParamList",
           "required": false,
@@ -5668,7 +5712,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).",
+          "document": "Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -5687,7 +5731,7 @@
         {
           "disabled": false,
           "document": "Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.",
-          "example": "[]",
+          "example": "[\"sg-9stjvjn1\"]",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -5696,7 +5740,7 @@
         {
           "disabled": false,
           "document": "Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.",
-          "example": "{}",
+          "example": "无",
           "member": "RoGroup",
           "name": "RoGroup",
           "required": false,
@@ -5714,7 +5758,7 @@
         {
           "disabled": false,
           "document": "Instance tag information",
-          "example": "[]",
+          "example": "无",
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
@@ -5740,7 +5784,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.",
+          "document": "Instance isolation type. Supported values include \"UNIVERSAL\" - general-purpose instance, \"EXCLUSIVE\" - dedicated instance, \"BASIC_V2\" - ONTKE single-node instance, \"CLOUD_NATIVE_CLUSTER\" - standard type for cloud disk edition, \"CLOUD_NATIVE_CLUSTER_EXCLUSIVE\" - enhanced for cloud disk edition. Default to general-purpose instance if not specified.\nDescription: If a cloud disk edition instance is created, this parameter is required.",
           "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
@@ -5749,7 +5793,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter template ID",
+          "document": "Parameter template id.\nRemark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, inputting the parameter template ID is invalid, and you need to set ParamTemplateType.",
           "example": "0",
           "member": "int64",
           "name": "ParamTemplateId",
@@ -5759,7 +5803,7 @@
         {
           "disabled": false,
           "document": "Array of alarm policy IDs, which can be obtained through the `OriginId` field in the return value of the `DescribeAlarmPolicy` API of TCOP.",
-          "example": "[]",
+          "example": "[7957756]",
           "member": "int64",
           "name": "AlarmPolicyList",
           "required": false,
@@ -5803,7 +5847,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).",
+          "document": "Default parameter template type. Supported values include: \"HIGH_STABILITY\" - high-stability template, \"HIGH_PERFORMANCE\" - high-performance template.\nRemark: If you need to use the TencentDB for MySQL default parameter template, set up ParamTemplateType.",
           "example": "HIGH_STABILITY",
           "member": "string",
           "name": "ParamTemplateType",
@@ -5813,7 +5857,7 @@
         {
           "disabled": false,
           "document": "The array of alarm policy names, such as [\"policy-uyoee9wg\"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.",
-          "example": "[]",
+          "example": "[\"policy-uyoee9wg\"]",
           "member": "string",
           "name": "AlarmPolicyIdList",
           "required": false,
@@ -5821,7 +5865,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.",
+          "document": "Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check failed, return the corresponding error code; if the check passed, return RequestId. false: Send a normal request and create the instance directly after passing the check.\nDefaults to false.",
           "example": "true",
           "member": "bool",
           "name": "DryRun",
@@ -5840,11 +5884,47 @@
         {
           "disabled": false,
           "document": "The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.",
-          "example": "[]",
+          "example": "[\"172.1.1.1\"]",
           "member": "string",
           "name": "Vips",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Data protection space size of the cloud disk edition instance in GB. Setting range is 1 - 10.",
+          "example": "1",
+          "member": "int64",
+          "name": "DataProtectVolume",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk edition node topology configuration.\nDescription: If a cloud disk edition instance is purchased, this parameter is required. Set the RW and RO node topology for the cloud disk edition instance. The RO node scope is 1-5. Set at least 1 RO node.",
+          "example": "无",
+          "member": "ClusterTopology",
+          "name": "ClusterTopology",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Disk Type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instance. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD refers to enhanced SSD cloud disk, and CLOUD_PREMIUM indicates high-performance cloud block storage.\nDescription: The supported regions for the hard disk type of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For the specific support situation, refer to [Regions and Availability Zones](https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1).",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Turn on or off instance destruction protection. on - enabled, off - disabled.",
+          "example": "on",
+          "member": "string",
+          "name": "DestroyProtect",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5855,7 +5935,7 @@
         {
           "disabled": false,
           "document": "Billing sub-order ID",
-          "example": "['20230728051036129204961']",
+          "example": "[\"20230728051036129204961\"]",
           "member": "string",
           "name": "DealIds",
           "output_required": true,
@@ -5865,7 +5945,7 @@
         {
           "disabled": false,
           "document": "List of instance IDs",
-          "example": "['cdb-pn6gd5jp']",
+          "example": "[\"cdb-pn6gd5jp\"]",
           "member": "string",
           "name": "InstanceIds",
           "output_required": true,
@@ -9341,7 +9421,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory size in MB. This parameter is required when `InstanceId` is empty.",
+          "document": "Instance memory size, unit: MB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable instance memory size range.",
           "example": "1000",
           "member": "int64",
           "name": "Memory",
@@ -9350,7 +9430,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size in GB. This parameter is required when `InstanceId` is empty.",
+          "document": "Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable disk size range.",
           "example": "50",
           "member": "int64",
           "name": "Volume",
@@ -9368,7 +9448,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `PRE_PAID` (monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.",
+          "document": "Billing mode. Valid values: `PRE_PAID` (yearly/monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.",
           "example": "PRE_PAID",
           "member": "string",
           "name": "PayType",
@@ -9386,7 +9466,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance isolation types Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.  Default value: `UNIVERSAL`.",
+          "document": "Instance isolation type. Supported values include: \"UNIVERSAL\" - general-purpose instance, \"EXCLUSIVE\" - dedicated instance, \"BASIC_V2\" - single-node instance of cloud disk edition, \"CLOUD_NATIVE_CLUSTER\" - cluster version standard type, \"CLOUD_NATIVE_CLUSTER_EXCLUSIVE\" - cluster version enhanced. Default to general-purpose instance if not specified.",
           "example": "UNIVERSAL",
           "member": "string",
           "name": "DeviceType",
@@ -9431,7 +9511,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Disk Type. Specify this parameter when querying the price of a cluster edition or single-node instance of cloud disk edition. Supported values include \"CLOUD_SSD\" - SSD cloud disk, \"CLOUD_HSSD\" - enhanced SSD cloud disk. Default is SSD cloud disk.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
@@ -11878,6 +11958,34 @@
         }
       ],
       "type": "object"
+    },
+    "DiskTypeConfigItem": {
+      "document": "Disk sale type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type of instance corresponding to the disk. Only support single node (cloud disk) and cloud disk edition.",
+          "example": "CLOUD_NATIVE_CLUSTER",
+          "member": "string",
+          "name": "DeviceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of disk types to choose.",
+          "example": "[\"CLOUD_SSD\",\"CLOUD_HSSD\"]",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DrInfo": {
       "document": "Disaster recovery instance information",
@@ -16261,6 +16369,63 @@
       ],
       "usage": "in"
     },
+    "ReadWriteNode": {
+      "document": "Configuration of the cloud disk edition RW node.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone where the RW node is located.",
+          "example": "ap-guangzhou-4",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.",
+          "example": "dbn-73ktfl1j",
+          "member": "string",
+          "name": "NodeId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ReadonlyNode": {
+      "document": "RO node configuration for cloud disk edition.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether distributed in a random availability Zone. Import YES means random availability Zone. Otherwise used specified availability Zone.",
+          "example": "YES",
+          "member": "string",
+          "name": "IsRandomZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the availability zone for node distribution.",
+          "example": "ap-beijing-3",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "When upgrading a cloud disk edition instance, if you need to adjust the Availability Zone of Read-Only Nodes, you must specify the node ID.",
+          "example": "dbn-h7erp111",
+          "member": "string",
+          "name": "NodeId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "ReleaseIsolatedDBInstancesRequest": {
       "document": "ReleaseIsolatedDBInstances request structure.",
       "members": [
@@ -16459,12 +16624,21 @@
         },
         {
           "disabled": false,
-          "document": "To renew a pay-as-you-go instance to a monthly subscribed one, you need to set this parameter to `PREPAID`.",
+          "document": "To renew a pay-as-you-go instance to a yearly/monthly subscribed one, you need to set this parameter to `PREPAID`.",
           "example": "PREPAID",
           "member": "string",
           "name": "ModifyPayType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. 0 means no auto-renewal, 1 means auto-renewal.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenew",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -16560,7 +16734,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Read-only group mode. Valid values: `alone` (the system assigns a read-only group automatically), `allinone` (a new read-only group will be created), `join` (an existing read-only group will be used).",
+          "document": "<p>Read-only group mode. Available values are: alone-automatic allocation by the system; allinone-create a read-only group; join-use an existing read-only group.</p>",
           "example": "alone",
           "member": "string",
           "name": "RoGroupMode",
@@ -16571,7 +16745,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-only group ID.\nNote: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.",
+          "document": "<p>Read-only group ID.<br>Note: If the data structure is used during instance purchase, this item is required only when the read-only group mode is set to join.</p>",
           "example": "cdbrg-92zkeaq2",
           "member": "string",
           "name": "RoGroupId",
@@ -16582,7 +16756,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-only group name.",
+          "document": "<p>Read-only group name.</p>",
           "example": "your_group_name",
           "member": "string",
           "name": "RoGroupName",
@@ -16593,7 +16767,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the function of isolating an instance that exceeds the latency threshold. If it is enabled, when the latency between the read-only instance and the primary instance exceeds the latency threshold, the read-only instance will be isolated. Valid values: 1 (enabled), 0 (not enabled)",
+          "document": "<p>Whether to enable the feature to isolate an instance that exceeds the latency threshold. After enabling this feature, if the delay between a read-only instance and the primary instance exceeds the delay threshold, the read-only instance will be isolated. Available values: 1-enable; 0-disable.</p>",
           "example": "0",
           "member": "int64",
           "name": "RoOfflineDelay",
@@ -16604,7 +16778,7 @@
         },
         {
           "disabled": false,
-          "document": "Delay threshold, in seconds. Value range: 1–10000. The value is an integer.",
+          "document": "<p>Delay threshold, in seconds. Value range: 1–10000. The value is an integer.</p>",
           "example": "1",
           "member": "int64",
           "name": "RoMaxDelayTime",
@@ -16615,7 +16789,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum number of instances to be retained. If the number of the purchased read-only instances is smaller than the set value, they will not be removed.",
+          "document": "<p>Minimum number of instances to retain. If the number of read-only instances purchased is less than the set number, removal will not occur.</p>",
           "example": "1",
           "member": "int64",
           "name": "MinRoInGroup",
@@ -16626,7 +16800,7 @@
         },
         {
           "disabled": false,
-          "document": "Read/write weight distribution mode. Valid values: `system` (weights are assigned by the system automatically), `custom` (weights are customized)",
+          "document": "<p>Read-write weight allocation mode. Available values: system-automatic allocation by the system; custom-customization.</p>",
           "example": "system",
           "member": "string",
           "name": "WeightMode",
@@ -16637,7 +16811,7 @@
         },
         {
           "disabled": false,
-          "document": "This field has been disused. To view the weight of a read-only instance, check the `Weight` value in the `RoInstances` field.",
+          "document": "<p>This field is deprecated and meaningless. To view the weight of a read-only instance, check the Weight value in the RoInstances field.</p>",
           "example": "0",
           "member": "int64",
           "name": "Weight",
@@ -16648,7 +16822,7 @@
         },
         {
           "disabled": false,
-          "document": "Details of read-only instances in read-only group",
+          "document": "<p>Details of read-only instances in the read-only group.</p>",
           "example": "无",
           "member": "RoInstanceInfo",
           "name": "RoInstances",
@@ -16659,7 +16833,7 @@
         },
         {
           "disabled": false,
-          "document": "Private IP of read-only group.",
+          "document": "<p>Private IP address of the read-only group.</p>",
           "example": "10.89.90.66",
           "member": "string",
           "name": "Vip",
@@ -16670,7 +16844,7 @@
         },
         {
           "disabled": false,
-          "document": "Private network port number of read-only group.",
+          "document": "<p>Private network port number of the read-only group.</p>",
           "example": "3306",
           "member": "int64",
           "name": "Vport",
@@ -16681,7 +16855,7 @@
         },
         {
           "disabled": false,
-          "document": "Virtual Private Cloud (VPC) ID.",
+          "document": "<p>VPC ID.</p>",
           "example": "vpc-ja6ts123",
           "member": "string",
           "name": "UniqVpcId",
@@ -16692,7 +16866,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID.",
+          "document": "<p>Subnet ID.</p>",
           "example": "subnet-njh2bc99",
           "member": "string",
           "name": "UniqSubnetId",
@@ -16703,7 +16877,7 @@
         },
         {
           "disabled": false,
-          "document": "Region of the read-only group.",
+          "document": "<p>Region of the read-only group.</p>",
           "example": "ap-beijing",
           "member": "string",
           "name": "RoGroupRegion",
@@ -16714,7 +16888,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ of the read-only group.",
+          "document": "<p>AZ of the read-only group.</p>",
           "example": "ap-beijing-3",
           "member": "string",
           "name": "RoGroupZone",
@@ -16725,7 +16899,7 @@
         },
         {
           "disabled": false,
-          "document": "Replication delay time, in seconds. Value range: 1–259200. The value is an integer.",
+          "document": "<p>Replication delay time, in seconds. Value range: 1–259200. The value is an integer.</p>",
           "example": "1000",
           "member": "int64",
           "name": "DelayReplicationTime",
@@ -16863,7 +17037,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of RO AZ, such as ap-shanghai-2",
+          "document": "Canonical name of the RO Availability Zone, for example ap-shanghai-2",
           "example": "ap-shanghai-2",
           "member": "string",
           "name": "Zone",

@@ -1175,6 +1175,50 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enable global encryption.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsSupportGlobalEncryption",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The causes for unsupported global encryption.",
+          "example": "mysql version 8.0 , >= 3.1.15.005; Other versions are not supported",
+          "member": "string",
+          "name": "NoSupportGlobalEncryptionReason",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status code for unsupported tde reason.",
+          "example": "InvalidDbVersion",
+          "member": "string",
+          "name": "NoSupportTransparentDataEncryptionReasonCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status code for unsupported global encryption.",
+          "example": "NotInWhitelist",
+          "member": "string",
+          "name": "NoSupportGlobalEncryptionReasonCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1274,7 +1318,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task flow ID",
+          "document": "Task flow ID.",
           "example": "147842",
           "member": "int64",
           "name": "FlowId",
@@ -3107,7 +3151,7 @@
         {
           "disabled": false,
           "document": "Specifies the time when it can be executed. valid values: [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"].",
-          "example": "Mon",
+          "example": "[\"Mon\"]",
           "member": "string",
           "name": "MaintainWeekDays",
           "output_required": false,
@@ -3136,7 +3180,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance machine type.",
+          "document": "Instance machine type.\n1. common: general.\n2. exclusive, dedicated.",
           "example": "exclusive",
           "member": "string",
           "name": "InstanceDeviceType",
@@ -3146,7 +3190,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance storage type.",
+          "document": "Instance storage type.\nDescription: this parameter returns a value only when querying resources belonging to LibraDB.",
           "example": "CLOUD_TCS",
           "member": "string",
           "name": "InstanceStorageType",
@@ -3166,7 +3210,7 @@
         },
         {
           "disabled": false,
-          "document": "Node list",
+          "document": "Node list\nDescription: this parameter returns a value only when querying LibraDB resources.",
           "example": "[\"libran-0\"]",
           "member": "string",
           "name": "NodeList",
@@ -3799,7 +3843,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. `0`: pay-as-you-go; `1`: monthly subscription. Default value: `0`",
+          "document": "Billing mode. supported values: 0 and 1. default value: 0.\nValue is 0, indicating pay-as-you-go billing.\nValue is 1, which means yearly/monthly subscription.",
           "example": "0",
           "member": "int64",
           "name": "PayMode",
@@ -3862,7 +3906,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage upper limit of normal instance in GB\nIf `DbType` is `MYSQL` and the storage billing mode is monthly subscription, the parameter value can’t exceed the maximum storage corresponding to the CPU and memory specifications.",
+          "document": "Storage upper limit of normal instance in GB\nIf `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscription, the parameter value can't exceed the maximum storage corresponding to the CPU and memory specifications.",
           "example": "100",
           "member": "int64",
           "name": "StorageLimit",
@@ -3871,7 +3915,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchase duration of monthly subscription plan",
+          "document": "Purchase duration of yearly/monthly subscription plan",
           "example": "1",
           "member": "int64",
           "name": "TimeSpan",
@@ -3880,7 +3924,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration unit of monthly subscription. Valid values: `s`, `d`, `m`, `y`",
+          "document": "Duration unit of yearly/monthly subscription. Valid values: `s`, `d`, `m`, `y`",
           "example": "m",
           "member": "string",
           "name": "TimeUnit",
@@ -3889,7 +3933,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether the annual/monthly subscription is auto-renewed. the default value is 0.\n0 indicates the default renewal method. 1 means auto-renewal. 2 means no auto-renewal.",
+          "document": "Specifies whether the annual/yearly/monthly subscription is auto-renewed. the default value is 0.\n0 indicates the default renewal method. 1 means auto-renewal. 2 means no auto-renewal.",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -3979,7 +4023,7 @@
         },
         {
           "disabled": false,
-          "document": "The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (monthly subscription). Default value: `0`.\nIf `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.\nClusters with storage billed in monthly subscription can’t be cloned or rolled back.",
+          "document": "The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (yearly/monthly subscription). Default value: `0`.\nIf `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.\nClusters with storage billed in yearly/monthly subscription can't be cloned or rolled back.",
           "example": "0",
           "member": "int64",
           "name": "StoragePayMode",
@@ -4006,7 +4050,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of parameters. Valid values: `character_set_server` (utf8｜latin1｜gbk｜utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).",
+          "document": "Array of parameters. Valid values: `character_set_server` (utf8/latin1/gbk/utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).",
           "example": "无",
           "member": "ParamItem",
           "name": "ClusterParams",
@@ -4024,7 +4068,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter template ID, which can be obtained by querying parameter template information “DescribeParamTemplates”",
+          "document": "Parameter template ID, which can be obtained by querying parameter template information \"DescribeParamTemplates\"",
           "example": "0",
           "member": "int64",
           "name": "ParamTemplateId",
@@ -4048,6 +4092,51 @@
           "name": "InstanceInitInfos",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Global database unique identifier.",
+          "example": "cynosmysql-gdn-dbsgxagb",
+          "member": "string",
+          "name": "GdnId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database proxy configuration.",
+          "example": "无",
+          "member": "ProxyConfig",
+          "name": "ProxyConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Automatically archive.",
+          "example": "yes",
+          "member": "string",
+          "name": "AutoArchive",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Archiving processing time after pausing.",
+          "example": "12",
+          "member": "int64",
+          "name": "AutoArchiveDelayHours",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Kernel minor version number.",
+          "example": "3.1.16.002",
+          "member": "string",
+          "name": "CynosVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5203,7 +5292,7 @@
         },
         {
           "disabled": false,
-          "document": "Payment mode. 0: pay-as-you-go; 1: monthly subscription.",
+          "document": "Payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -5285,6 +5374,17 @@
           "member": "string",
           "name": "CynosVersion",
           "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cynos version tag.",
+          "example": "beta",
+          "member": "string",
+          "name": "CynosVersionTag",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5390,7 +5490,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster storage payment mode. 0: pay-as-you-go; 1: monthly subscription.",
+          "document": "Cluster storage payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.",
           "example": "1",
           "member": "int64",
           "name": "StoragePayMode",
@@ -5530,6 +5630,28 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Global database unique Id.",
+          "example": "cynosdbmysql-gdn-dbssdfa1",
+          "member": "string",
+          "name": "GdnId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster role. primary cluster - primary, slave cluster - standby. if GdnId is empty, the field is invalid.",
+          "example": "primary",
+          "member": "string",
+          "name": "GdnRole",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5589,7 +5711,7 @@
         },
         {
           "disabled": false,
-          "document": "Status",
+          "document": "Status. supported values are as follows:.\n-Creating: creating.\n- running: running.\n-isolating.\n-Isolated: isolated.\n-activating: restore from recycle bin.\n-offlining: offline.\n-offlined: offline.\n- deleting: deleting.\n- deleted: deleted.",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -5659,7 +5781,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage billing type. 1 indicates monthly subscription, and 0 indicates pay-as-you-go.",
+          "document": "Storage billing type. 1 indicates yearly/monthly subscription, and 0 indicates pay-as-you-go.",
           "example": "1",
           "member": "int64",
           "name": "StoragePayMode",
@@ -5799,7 +5921,7 @@
         },
         {
           "disabled": false,
-          "document": "VIP and vport of the read-only instance in a cluster",
+          "document": "VIP and vport of the read-only instance in a cluster.",
           "example": "无",
           "member": "Addr",
           "name": "RoAddr",
@@ -6045,6 +6167,66 @@
           "name": "CynosVersionTag",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Global database network unique id.",
+          "example": "cynosdbmysql-gdn-xdgsdbsa",
+          "member": "string",
+          "name": "GdnId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The role of clusters in the global data network.\nprimary cluster.\nSlave cluster - standby.\nIf empty, the field is invalid.",
+          "example": "primary",
+          "member": "string",
+          "name": "GdnRole",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Secondary storage usage, unit: G.",
+          "example": "100",
+          "member": "int64",
+          "name": "UsedArchiveStorage",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Archiving status, enumeration value <li>normal: normal</li><li>archiving: archiving</li><li>resuming: recovering</li><li>archived: archived</li>.",
+          "example": "normal",
+          "member": "string",
+          "name": "ArchiveStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Archive progress, percentage.",
+          "example": "64",
+          "member": "int64",
+          "name": "ArchiveProgress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether transparent encryption is enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsOpenTDE",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -13084,6 +13266,15 @@
           "name": "MaxRoCpu",
           "required": false,
           "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Instance machine type.\n1. common: general.\n2. exclusive: exclusive.",
+          "example": "exclusive",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -17586,6 +17777,84 @@
       ],
       "usage": "out"
     },
+    "ProxyConfig": {
+      "document": "Access proxy configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.",
+          "example": "cynosdbmysql-xxxxxxx",
+          "member": "int64",
+          "name": "ProxyCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores",
+          "example": "2",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Memory.",
+          "example": "4000",
+          "member": "int64",
+          "name": "Mem",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Connection pool type: SessionConnectionPool (session-level connection pool).",
+          "example": "SessionConnectionPool",
+          "member": "string",
+          "name": "ConnectionPoolType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the connection pool. valid values: yes (enable), no (not enabled).",
+          "example": "yes",
+          "member": "string",
+          "name": "OpenConnectionPool",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Connection pool threshold. measurement unit (seconds).",
+          "example": "0",
+          "member": "int64",
+          "name": "ConnectionPoolTimeOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Description.",
+          "example": "只读代理",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).",
+          "example": "无",
+          "member": "ProxyZone",
+          "name": "ProxyZones",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "ProxyConfigInfo": {
       "document": "Access proxy configuration.",
       "members": [
@@ -18267,7 +18536,7 @@
         {
           "disabled": false,
           "document": "Whether to use exact match",
-          "example": "1",
+          "example": "false",
           "member": "bool",
           "name": "ExactMatch",
           "required": false,
@@ -18283,7 +18552,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Operator",
           "example": "1000****4352",
           "member": "string",
@@ -20488,6 +20757,16 @@
           "name": "BinlogSyncWay",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Semi-Sync timeout period in milliseconds.",
+          "example": "10000",
+          "member": "int64",
+          "name": "SemiSyncTimeout",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
