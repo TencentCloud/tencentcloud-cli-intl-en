@@ -631,7 +631,7 @@
       "status": "online"
     },
     "InquiryPriceUpgradeDBInstance": {
-      "document": "This API is used to query the upgrade prices of a monthly subscribed instance.\n.",
+      "document": "This API is used to query the upgrade prices of a yearly/monthly subscribed instance.\n.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries upgrade price of instance",
       "output": "InquiryPriceUpgradeDBInstanceResponse",
@@ -3085,7 +3085,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).",
+          "document": "Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).",
           "example": "POSTPAID",
           "member": "string",
           "name": "InstanceChargeType",
