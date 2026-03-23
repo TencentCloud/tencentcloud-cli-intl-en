@@ -50,10 +50,10 @@
     ],
     "CreateDBInstance": [
       {
-        "document": "This example shows you how to create a monthly subscribed TencentDB for MariaDB instance.",
+        "document": "This example shows you how to create a yearly/monthly subscribed TencentDB for MariaDB instance.",
         "input": "https://mariadb.tencentcloudapi.com/?Action=CreateDBInstance&Zones.0=ap-guangzhou-2&Zones.1=ap-guangzhou-2&Memory=2000&Storage=10000&NodeCount=1&Count=1&Period=1&AutoVoucher=true&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"DealName\": \"20171103110163\",\n        \"InstanceIds\": null\n    }\n}",
-        "title": "Creating a monthly subscribed TencentDB for MariaDB instance"
+        "title": "Creating a yearly/monthly subscribed TencentDB for MariaDB instance"
       }
     ],
     "CreateHourDBInstance": [
@@ -274,10 +274,10 @@
     ],
     "IsolateDBInstance": [
       {
-        "document": "This example shows you how to isolate a monthly subscribed TencentDB for MariaDB instance.",
+        "document": "This example shows you how to isolate ayearly/monthly subscribed TencentDB for MariaDB instance.",
         "input": "POST / HTTP/1.1Host: mariadb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: IsolateDBInstance<common request parameters>{    \"InstanceIds\": [        \"tdsql-cq3ndzu7\"    ]}",
         "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"15eec42b-2c7b-410b-8efc-46da52e217a9\",\n        \"SuccessInstanceIds\": [\n            \"tdsql-cq3ndzu7\"\n        ]\n    }\n}",
-        "title": "Isolating a monthly subscribed TencentDB for MariaDB instance"
+        "title": "Isolating a yearly/monthly subscribed TencentDB for MariaDB instance"
       }
     ],
     "IsolateDedicatedDBInstance": [

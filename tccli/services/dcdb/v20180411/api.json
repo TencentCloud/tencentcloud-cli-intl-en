@@ -50,9 +50,9 @@
       "status": "online"
     },
     "CreateDCDBInstance": {
-      "document": "This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.",
+      "document": "This API is used to create a yearly/monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.",
       "input": "CreateDCDBInstanceRequest",
-      "name": "Creates a monthly subscribed TDSQL instance",
+      "name": "Creates a yearly/monthly subscribed TDSQL instance",
       "output": "CreateDCDBInstanceResponse",
       "status": "online"
     },
@@ -253,9 +253,9 @@
       "status": "online"
     },
     "DestroyDCDBInstance": {
-      "document": "This API is used to terminate an isolated monthly subscribed TDSQL instance.",
+      "document": "This API is used to terminate an isolated yearly/monthly subscribed TDSQL instance.",
       "input": "DestroyDCDBInstanceRequest",
-      "name": "Terminates an isolated monthly subscribed TDSQL instance",
+      "name": "Terminates an isolated yearly/monthly subscribed TDSQL instance",
       "output": "DestroyDCDBInstanceResponse",
       "status": "online"
     },
@@ -288,9 +288,9 @@
       "status": "online"
     },
     "IsolateDCDBInstance": {
-      "document": "This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.",
+      "document": "This API is used to isolate a yearly/monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.",
       "input": "IsolateDCDBInstanceRequest",
-      "name": "Isolates a monthly subscribed TDSQL instance",
+      "name": "Isolates a yearly/monthly subscribed TDSQL instance",
       "output": "IsolateDCDBInstanceResponse",
       "status": "online"
     },
@@ -1176,7 +1176,7 @@
         {
           "disabled": false,
           "document": "Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.",
-          "example": "无",
+          "example": "1077641",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -1185,7 +1185,7 @@
         {
           "disabled": false,
           "document": "VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.",
-          "example": "无",
+          "example": "vpc-qdiqptn3",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -1194,7 +1194,7 @@
         {
           "disabled": false,
           "document": "VPC subnet ID, which is required when `VpcId` is specified.",
-          "example": "无",
+          "example": "subnet-0r3bgq4c",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -1221,7 +1221,7 @@
         {
           "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
-          "example": "无",
+          "example": "[\"ZRPCQJGMYSYV73IYOTFJD8\"]",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -1230,7 +1230,7 @@
         {
           "disabled": false,
           "document": "Security group ID",
-          "example": "无",
+          "example": "sg-9tfjckm6",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -1239,7 +1239,7 @@
         {
           "disabled": false,
           "document": "Custom name of the instance",
-          "example": "无",
+          "example": "tdsql_MySQL",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -1248,7 +1248,7 @@
         {
           "disabled": false,
           "document": "Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Ipv6Flag",
           "required": false,
@@ -1275,7 +1275,7 @@
         {
           "disabled": false,
           "document": "DCN source region",
-          "example": "无",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "DcnRegion",
           "required": false,
@@ -1284,7 +1284,7 @@
         {
           "disabled": false,
           "document": "DCN source instance ID",
-          "example": "无",
+          "example": "tdsqlshard-b0wbmr9p",
           "member": "string",
           "name": "DcnInstanceId",
           "required": false,
@@ -1302,11 +1302,29 @@
         {
           "disabled": false,
           "document": "Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.",
-          "example": "无",
+          "example": "[\"sg-5ozc4vtq\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "DcnSyncMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Intel/AMD",
+          "member": "string",
+          "name": "CpuType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1320,7 +1338,7 @@
           "example": "20181103110163",
           "member": "string",
           "name": "DealName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1330,9 +1348,9 @@
           "example": "[\"dcdbt-avw0207d\"]",
           "member": "string",
           "name": "InstanceIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1756,7 +1774,7 @@
         {
           "disabled": false,
           "document": "Security group ID",
-          "example": "sg-12345",
+          "example": "sg-egre3rqv",
           "member": "string",
           "name": "SecurityGroupId",
           "required": false,
@@ -1819,7 +1837,7 @@
         {
           "disabled": false,
           "document": "ID of the instance to be rolled back",
-          "example": "无",
+          "example": "tdsqlshard-d0uvh7ep",
           "member": "string",
           "name": "RollbackInstanceId",
           "required": false,
@@ -1828,7 +1846,7 @@
         {
           "disabled": false,
           "document": "Rollback time, such as \"2021-11-22 00:00:00\".",
-          "example": "无",
+          "example": "2024-12-14 12:00:00",
           "member": "string",
           "name": "RollbackTime",
           "required": false,
@@ -1837,11 +1855,29 @@
         {
           "disabled": false,
           "document": "Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)",
-          "example": "无",
+          "example": "[\"sg-grefw6tr\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "DcnSyncMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Intel/AMD",
+          "member": "string",
+          "name": "CpuType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1855,7 +1891,7 @@
           "example": "[\"tdsql-xxxxxx\"]",
           "member": "string",
           "name": "InstanceIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1865,7 +1901,7 @@
           "example": "1122",
           "member": "int64",
           "name": "FlowId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1875,7 +1911,7 @@
           "example": "20200409111543",
           "member": "string",
           "name": "DealName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2117,22 +2153,20 @@
         {
           "disabled": false,
           "document": "Parameter name",
-          "example": "",
+          "example": "autocommit",
           "member": "string",
           "name": "Param",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Parameter value",
-          "example": "",
+          "example": "ON",
           "member": "string",
           "name": "Value",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -4153,6 +4187,7 @@
           "example": "tdsqlshard-rlye31jd",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4162,6 +4197,7 @@
           "example": "tdsqlshard-rlye31jd",
           "member": "string",
           "name": "InstanceName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4171,6 +4207,7 @@
           "example": "2",
           "member": "int64",
           "name": "Status",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4180,6 +4217,7 @@
           "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4189,6 +4227,7 @@
           "example": "172.16.0.39",
           "member": "string",
           "name": "Vip",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4198,6 +4237,7 @@
           "example": "3306",
           "member": "int64",
           "name": "Vport",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4207,6 +4247,7 @@
           "example": "2",
           "member": "int64",
           "name": "NodeCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4216,6 +4257,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4225,6 +4267,7 @@
           "example": "vpc-4x1eyoyv",
           "member": "string",
           "name": "VpcId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4234,6 +4277,7 @@
           "example": "subnet-58oypmoq",
           "member": "string",
           "name": "SubnetId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4243,24 +4287,27 @@
           "example": "0",
           "member": "int64",
           "name": "WanStatus",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Domain name for public network access, which can be resolved by the public network.",
-          "example": "无",
+          "example": "gz-tdsqlshard-rlye31jd.sql.tencentcdb.com",
           "member": "string",
           "name": "WanDomain",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public IP address, which can be accessed over the public network.",
-          "example": "无",
+          "example": "43.136.248.14",
           "member": "string",
           "name": "WanVip",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4270,6 +4317,7 @@
           "example": "0",
           "member": "int64",
           "name": "WanPort",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4279,6 +4327,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4288,6 +4337,7 @@
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4297,15 +4347,17 @@
           "example": "dbdc-odgvdv66",
           "member": "string",
           "name": "ExclusterId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).",
+          "document": "Billing mode. Valid values: `prepaid` (yearly/monthly subscription), `postpaid` (pay-as-you-go).",
           "example": "prepaid",
           "member": "string",
           "name": "PayMode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4315,6 +4367,7 @@
           "example": "2020-04-08 13:59:39",
           "member": "datetime",
           "name": "CreateTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4324,6 +4377,7 @@
           "example": "2020-05-08 13:59:39",
           "member": "datetime",
           "name": "PeriodEndTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4333,6 +4387,7 @@
           "example": "5.7.17",
           "member": "string",
           "name": "DbVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4342,6 +4397,7 @@
           "example": "1",
           "member": "int64",
           "name": "IsAuditSupported",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4351,6 +4407,7 @@
           "example": "0",
           "member": "int64",
           "name": "IsEncryptSupported",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4360,6 +4417,7 @@
           "example": "SH02D",
           "member": "string",
           "name": "Machine",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4369,6 +4427,7 @@
           "example": "12",
           "member": "int64",
           "name": "Memory",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4378,6 +4437,7 @@
           "example": "40",
           "member": "int64",
           "name": "Storage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4387,6 +4447,7 @@
           "example": "0.001",
           "member": "float",
           "name": "StorageUsage",
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4396,6 +4457,7 @@
           "example": "16",
           "member": "int64",
           "name": "LogStorage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4405,6 +4467,7 @@
           "example": "11128",
           "member": "int64",
           "name": "Pid",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4414,6 +4477,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZone",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4423,6 +4487,7 @@
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
           "name": "SlaveZones",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4432,17 +4497,19 @@
           "example": "无",
           "member": "ShardBriefInfo",
           "name": "Shards",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Private network IPv6 address\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2402:5e00:1011:2d01:1:90cb:55fa:e4f4",
           "member": "string",
           "name": "Vip6",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4450,8 +4517,9 @@
           "example": "1",
           "member": "int64",
           "name": "Cpu",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4459,8 +4527,9 @@
           "example": "4000",
           "member": "int64",
           "name": "Qps",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4468,8 +4537,9 @@
           "example": "Mysql",
           "member": "string",
           "name": "DbEngine",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4477,17 +4547,19 @@
           "example": "0",
           "member": "int64",
           "name": "Ipv6Flag",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public IPv6 address, which can be accessed over the public network\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2402:4e00:1012:2c01:1:90cb:55fa:e4d2",
           "member": "string",
           "name": "WanVipv6",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4495,8 +4567,9 @@
           "example": "0",
           "member": "int64",
           "name": "WanStatusIpv6",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4504,8 +4577,9 @@
           "example": "0",
           "member": "int64",
           "name": "WanPortIpv6",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4513,6 +4587,7 @@
           "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4522,8 +4597,9 @@
           "example": "0",
           "member": "int64",
           "name": "DcnFlag",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4531,8 +4607,9 @@
           "example": "0",
           "member": "int64",
           "name": "DcnStatus",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4540,8 +4617,9 @@
           "example": "0",
           "member": "int64",
           "name": "DcnDstNum",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4549,8 +4627,9 @@
           "example": "2",
           "member": "int64",
           "name": "InstanceType",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4558,8 +4637,9 @@
           "example": "true",
           "member": "bool",
           "name": "IsMaxUserConnectionsSupported",
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4567,8 +4647,9 @@
           "example": "5.7",
           "member": "string",
           "name": "DbVersionId",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4576,8 +4657,9 @@
           "example": "0",
           "member": "int64",
           "name": "EncryptStatus",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4585,8 +4667,9 @@
           "example": "0",
           "member": "int64",
           "name": "ExclusterType",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4594,8 +4677,9 @@
           "example": "0",
           "member": "int64",
           "name": "RsAccessStrategy",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4603,6 +4687,7 @@
           "example": "无",
           "member": "ReservedNetResource",
           "name": "ReservedNetResources",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4612,7 +4697,58 @@
           "example": "true",
           "member": "bool",
           "name": "IsPhysicalReplicationSupported",
+          "output_required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "IsDcnStrongSyncSupported",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "IsDcnSwitchSupported",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Intel/AMD",
+          "member": "string",
+          "name": "CpuType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "ProtectedProperty",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1351487408",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4955,7 +5091,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).",
+          "document": "Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (yearly/monthly subscription).",
           "example": "prepaid",
           "member": "string",
           "name": "Paymode",
@@ -4968,6 +5104,15 @@
           "example": "pent",
           "member": "string",
           "name": "AmountUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Intel/AMD",
+          "member": "string",
+          "name": "CpuType",
           "required": false,
           "type": "string"
         }
@@ -4983,7 +5128,7 @@
           "example": "42240",
           "member": "int64",
           "name": "OriginalPrice",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4993,7 +5138,7 @@
           "example": "42240",
           "member": "int64",
           "name": "Price",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5639,7 +5784,6 @@
           "example": "tdsqlshard-f35wr6wj",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5649,7 +5793,6 @@
           "example": "100",
           "member": "int64",
           "name": "FlowId",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6068,7 +6211,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of `tdsqlshard-avw0207d`,  which is the same as the instance ID displayed on the TencentDB console and can be queried through the `DescribeDBInstances` API.",
-          "example": "tdsqlshard-avw0207d",
+          "example": "[\"tdsqlshard-pevrkilh\",\"tdsqlshard-0n6swl0t\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6083,18 +6226,20 @@
         {
           "disabled": false,
           "document": "IDs of isolated instances",
-          "example": "[]",
+          "example": "[\"tdsqlshard-pevrkilh\"]",
           "member": "string",
           "name": "SuccessInstanceIds",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IDs of instances failed to be isolated",
-          "example": "[]",
+          "example": "[\"tdsqlshard-0n6swl0t\"]",
           "member": "string",
           "name": "FailedInstanceIds",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6943,20 +7088,20 @@
         {
           "disabled": false,
           "document": "Node ID",
-          "example": "",
+          "example": "4ddc0ea18433",
           "member": "string",
           "name": "NodeId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node role. Valid values: `master`, `slave`.",
-          "example": "",
+          "example": "master",
           "member": "string",
           "name": "Role",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -7227,9 +7372,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "qta-tdsql20",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7237,9 +7383,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "tdsql50",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -7378,7 +7525,7 @@
           "example": "set_1612751240_1",
           "member": "string",
           "name": "ShardSerialId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7388,7 +7535,7 @@
           "example": "shard-lbt0utcz",
           "member": "string",
           "name": "ShardInstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7398,7 +7545,7 @@
           "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7408,7 +7555,7 @@
           "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7418,7 +7565,7 @@
           "example": "2021-02-08 10:25:08",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7428,7 +7575,7 @@
           "example": "2",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7438,7 +7585,7 @@
           "example": "10",
           "member": "int64",
           "name": "Storage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7448,7 +7595,7 @@
           "example": "8",
           "member": "int64",
           "name": "LogDisk",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7458,7 +7605,7 @@
           "example": "3",
           "member": "int64",
           "name": "NodeCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7468,7 +7615,7 @@
           "example": "0.007",
           "member": "float",
           "name": "StorageUsage",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -7478,7 +7625,7 @@
           "example": "1.14.63-M-V2R667D003",
           "member": "string",
           "name": "ProxyVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7488,7 +7635,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ShardMasterZone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7498,7 +7645,7 @@
           "example": "[\"ap-guangzhou-1\", \"ap-guangzhou-2\"]",
           "member": "string",
           "name": "ShardSlaveZones",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7508,19 +7655,19 @@
           "example": "1",
           "member": "int64",
           "name": "Cpu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node information\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "[{\"NodeId\": \"4ddc0ea18433\", \"Role\": \"master\"}, { \"NodeId\": \"5d51cf1f018c\",\"Role\": \"slave\" }]",
           "member": "NodeInfo",
           "name": "NodesInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

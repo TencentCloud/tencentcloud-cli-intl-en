@@ -13206,7 +13206,7 @@
         },
         {
           "disabled": false,
-          "document": "Optional parameters. 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription",
+          "document": "Optional parameters. 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription",
           "example": "1",
           "member": "uint64",
           "name": "LicenseType",
@@ -13332,7 +13332,7 @@
         },
         {
           "disabled": false,
-          "document": "Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2 - Ultimate Edition-monthly subscriptionThe default is 0.",
+          "document": "Authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2 - Ultimate Edition-yearly/monthly subscription default is 0.",
           "example": "0",
           "member": "uint64",
           "name": "LicenseType",
@@ -13377,7 +13377,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to auto-renew. The default is not to auto-renew.\nThis parameter is only valid for monthly subscription.",
+          "document": "Whether to auto-renew. The default is not to auto-renew.\nThis parameter is only valid for yearly/monthly subscription.",
           "example": "false",
           "member": "bool",
           "name": "AutoRenewFlag",
@@ -24179,7 +24179,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Take the intersection when filtering with multiple conditions.\n<li> LicenseStatus authorization status information: 0 - not used; 1 - partially used; 2 - used up; 3 - unavailable; 4 - available</li>\n<li> BuyTime: time of purchase</li>\n<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>\n<li>DeadlineStatus expiration status: NotExpired -not expired; expire - expired (including terminated); nearexpiry - about to expire</li>\n<li>ResourceId resource ID</li>\n<li>Keywords IP filtering</li>\n<li>PayMode payment mode. 0: pay-as-you-go; 1: monthly subscription</li>\n<li>OrderStatus order status. 1: normal; 2: isolated; 3: terminated</li>\n<li>DealNames sub-order number, with a maximum length of 10, exceeding this will result in a failure.</li>",
+          "document": "Take the intersection when filtering with multiple conditions.\n<li> LicenseStatus authorization status information: 0 - not used; 1 - partially used; 2 - used up; 3 - unavailable; 4 - available</li>\n<li> BuyTime: time of purchase</li>\n<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>\n<li>DeadlineStatus expiration status: NotExpired -not expired; expire - expired (including terminated); nearexpiry - about to expire</li>\n<li>ResourceId resource ID</li>\n<li>Keywords IP filtering</li>\n<li>PayMode payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription</li>\n<li>OrderStatus order status. 1: normal; 2: isolated; 3: terminated</li>\n<li>DealNames sub-order number, with a maximum length of 10, exceeding this will result in a failure.</li>",
           "example": "[{\"Name\":\"Keywords\",\"Values\":[\"dev\"]}]",
           "member": "Filters",
           "name": "Filters",
@@ -24212,6 +24212,24 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "LicenseCnt",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -25848,7 +25866,7 @@
         {
           "disabled": false,
           "document": "Filter criteria\n<li>Ips - String - required: no - query by IP</li>\n<li>Names - String - required: no - query by instance name</li>\n<li>InstanceIds - String - required: no - instance ID for query </li>\n<li>Status - String - required: no - client online status (OFFLINE: offline/shut down | ONLINE: online | UNINSTALLED: not installed | AGENT_OFFLINE: agent offline | AGENT_SHUTDOWN: agent shut down)</li>\n<li>Version - String required: no - current edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions)</li>\n<li>Risk - String - required: no - risky host (yes)</li>\n<li>Os - String - required: no - operating system (value of DescribeMachineOsList)</li>\nEach filter criterion supports only one value.\n<li>Quuid - String - required: no - CVM instance UUID. Maximum value: 100.</li>\n<li>AddedOnTheFifteen - String required: no - whether to query only hosts added within the last 15 days (1: yes) </li>\n<li> TagId - String required: no - query the list of hosts associated with the specified tag </li>",
-          "example": "[{\"Name\": \"Status\", \"Values\": [\"AGENT_OFF****\"], \"ExactMatch\": true}]",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -25857,7 +25875,7 @@
         {
           "disabled": false,
           "document": "ID List of Businesses to which machines belong",
-          "example": "1",
+          "example": "[1024]",
           "member": "uint64",
           "name": "ProjectIds",
           "required": false,
@@ -25872,7 +25890,7 @@
         {
           "disabled": false,
           "document": "List of hosts",
-          "example": "[             {                 \"BaselineNum\": 0,                 \"CloudFrom\": 0,                 \"CloudTags\": [                     {                         \"TagKey\": \"Department\",                         \"TagValue\": \"dev\"                     }                 ],                 \"CyberAttackNum\": 0,                 \"HasAssetScan\": 0,                 \"InstanceId\": \"ins-111\",                 \"InstanceState\": \"NORMAL\",                 \"InvasionNum\": 3,                 \"IpList\": \"1.1.1.1\",                 \"IsAddedOnTheFifteen\": 1,                 \"IsProVersion\": false,                 \"KernelVersion\": \"3.10.0-1160.88.1.el7.x86_64\",                 \"LicenseStatus\": 0,                 \"MachineExtraInfo\": {                     \"HostName\": \"demo-instance\",                     \"InstanceID\": \"ins-111\",                     \"NetworkName\": \"vpc-111\",                     \"NetworkType\": 1,                     \"PrivateIP\": \"1.1.1.1\",                     \"WanIP\": \"1.1.1.1\"                 },                 \"MachineIp\": \"1.1.1.1\",                 \"MachineName\": \"test\",                 \"MachineOs\": \"CentOS 7.6 64位\",                 \"MachineStatus\": \"ONLINE\",                 \"MachineType\": \"CVM\",                 \"MachineWanIp\": \"1.1.1.1\",                 \"MalwareNum\": 0,                 \"PayMode\": \"POSTPAY\",                 \"ProjectId\": 0,                 \"ProtectType\": \"BASIC_VERSION\",                 \"Quuid\": \"3377add2-ee61-4c9a-99a3-************\",                 \"RegionInfo\": {                     \"Region\": \"ap-nanjing\",                     \"RegionCode\": \"nj\",                     \"RegionId\": 33,                     \"RegionName\": \"华东地区（南京）\",                     \"RegionNameEn\": \"East China (Nanjing)\"                 },                 \"Remark\": \"do not remove\",                 \"SecurityStatus\": \"RISK\",                 \"Tag\": [                     {                         \"Rid\": 1001,                         \"Name\": \"cwp\",                         \"TagId\": 1022                     }                 ],                 \"Uuid\": \"3377add2-ee61-4c9a-99a3-************\",                 \"VpcId\": \"vpc-1dj4***\",                 \"VulNum\": 0             }         ]",
+          "example": "无",
           "member": "Machine",
           "name": "Machines",
           "output_required": true,
@@ -25903,7 +25921,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Type of the machine's zone\nCVM: Cloud Virtual Machine\nBM: BM\nECM: Edge Computing Machine\nLH: Lighthouse\nOther: Hybrid Cloud Zone",
+          "document": "Type of the machine's zone\nCVM: Cloud Virtual Machine\nBM: BM\nECM: Edge Computing Machine\nLH: Lighthouse\nOther: Hybrid Cloud Zone",
           "example": "CVM",
           "member": "string",
           "name": "MachineType",
@@ -25939,8 +25957,8 @@
         },
         {
           "disabled": false,
-          "document": "Filtering criteria\n<li>Keywords - String - required: no - keywords for querying </li>\n<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in monthly subscription mode)</li>\n<li>TagId - String - required: no - tag ID </li>",
-          "example": "[{\"ExactMatch\": false, \"Name\": \"Version\", \"Values\": [\"PRO_VERSION\"]}]",
+          "document": "Filtering criteria\n<li>Keywords - String - required: no - keywords for querying </li>\n<li>Version - String required: no - current protection edition ( PRO_VERSION: Pro Edition | BASIC_VERSION: Basic Edition | Flagship: Ultimate Edition | ProtectedMachines: Pro + Ultimate Editions | UnFlagship: Non-Ultimate Edition | PRO_POST_PAY: Pro Edition in pay-as-you-go mode | PRO_PRE_PAY: Pro Edition in yearly/monthly subscription mode)</li>\n<li>TagId - String - required: no - tag ID </li>",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -25949,7 +25967,7 @@
         {
           "disabled": false,
           "document": "ID list of businesses to which machines belong",
-          "example": "1",
+          "example": "[1042,1043]",
           "member": "uint64",
           "name": "ProjectIds",
           "required": false,
@@ -25964,7 +25982,7 @@
         {
           "disabled": false,
           "document": "Host list",
-          "example": "[{\"MachineName\":\"test-name\",\"MachineOs\":\"Windows Server 2022 数据中心版 64位 中文版\",\"Uuid\":\"24c9be55-c743-4a75-a5c7-2a2912341234\",\"Quuid\":\"24c9be55-c743-4a75-a5c7-2a2912341234\",\"MachineIp\":\"10.0.0.11\",\"IsProVersion\":true,\"MachineWanIp\":\"110.84.0.11\",\"PayMode\":\"\",\"Tag\":[{\"Rid\":0,\"Name\":\"test-name\",\"TagId\":1}],\"RegionInfo\":{\"Region\":\"ap-guangzhou\",\"RegionName\":\"test-name\",\"RegionId\":1,\"RegionCode\":\"gz\",\"RegionNameEn\":\"test-name\"},\"InstanceState\":\"EXPIRED\",\"ProjectId\":0,\"MachineType\":\"CVM\",\"KernelVersion\":\"0.1.1\",\"ProtectType\":\"BASIC_VERSION\",\"LicenseOrder\":{\"LicenseId\":1,\"LicenseType\":1,\"Status\":1,\"SourceType\":1,\"ResourceId\":\"uf6iskfrpy4g3xg2k1jm\"},\"CloudTags\":[],\"InstanceId\":\"i-uf6iskfrpy4g3xg2k1jm\",\"CloudFrom\":1}]",
+          "example": "无",
           "member": "MachineSimple",
           "name": "Machines",
           "output_required": true,
@@ -33570,7 +33588,7 @@
         },
         {
           "disabled": false,
-          "document": "Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.",
+          "document": "Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.",
           "example": "0",
           "member": "uint64",
           "name": "LicenseType",
@@ -36383,7 +36401,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Take the intersection when filtering with multiple conditions: LicenseStatus, DeadlineStatus, ResourceId, and Keywords\n<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-monthly subscription; 2: Ultimate Edition-monthly subscription</li>\n<li>ResourceId resource ID</li>",
+          "document": "Take the intersection when filtering with multiple conditions: LicenseStatus, DeadlineStatus, ResourceId, and Keywords\n<li> LicenseType authorization type. 0: Pro Edition-pay-as-you-go; 1: Pro Edition-yearly/monthly subscription; 2: Ultimate Edition-yearly/monthly subscription</li>\n<li>ResourceId resource ID</li>",
           "example": "[{\"Keywords\":[\"CVE\"]}]",
           "member": "Filters",
           "name": "Filters",
@@ -40207,7 +40225,7 @@
         },
         {
           "disabled": false,
-          "document": "Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - monthly subscription; 2: Ultimate Edition - monthly subscription.",
+          "document": "Authorization type. 0: Pro Edition - pay-as-you-go; 1: Pro Edition - yearly/monthly subscription; 2: Ultimate Edition - yearly/monthly subscription.",
           "example": "0",
           "member": "uint64",
           "name": "LicenseType",
@@ -40839,6 +40857,26 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "ONLINE",
+          "member": "string",
+          "name": "AgentStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "InstanceStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Yunjing client UUID. If the client is offline for a long time, an empty string is returned.",
           "example": "8c09e1b1-5611-45b3-9c02-737996011b81",
           "member": "string",
@@ -40899,7 +40937,7 @@
         },
         {
           "disabled": false,
-          "document": "Host status\n<li>POSTPAY: postpaid, indicating pay-as-you-go mode  </li>\n<li>PREPAY: prepaid, indicating monthly subscription mode</li>",
+          "document": "Host status\n<li>POSTPAY: postpaid, indicating pay-as-you-go mode  </li>\n<li>PREPAY: prepaid, indicating yearly/monthly subscription mode</li>",
           "example": "PREPAY",
           "member": "string",
           "name": "PayMode",
@@ -41114,6 +41152,16 @@
           "member": "string",
           "name": "Remark",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2.0.1.1",
+          "member": "string",
+          "name": "AgentVersion",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }

@@ -58,10 +58,10 @@
     ],
     "CreateDCDBInstance": [
       {
-        "document": "This example shows you how to create a monthly subscribed TDSQL instance.",
+        "document": "This example shows you how to create a yearly/monthly subscribed TDSQL instance.",
         "input": "POST / HTTP/1.1Host: dcdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateDCDBInstance<common request parameters>{    \"Count\": \"1\",    \"DbVersionId\": \"5.7.17\",    \"ShardNodeCount\": \"3\",    \"Period\": \"1\",    \"AutoVoucher\": \"true\",    \"Zones\": [        \"ap-guangzhou-2\",        \"ap-guangzhou-2\"    ],    \"ShardMemory\": \"2\",    \"ShardCount\": \"  \"ShardStorage\": \"10\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"DealName\": \"20181103110163\",\n        \"InstanceIds\": [\n            \"dcdbt-avw0207d\"\n        ]\n    }\n}",
-        "title": "Creating a monthly subscribed TDSQL instance"
+        "title": "Creating a yearly/monthly subscribed TDSQL instance"
       }
     ],
     "CreateDedicatedClusterDCDBInstance": [
@@ -74,10 +74,10 @@
     ],
     "CreateHourDCDBInstance": [
       {
-        "document": "This example shows you how to create a monthly subscribed TDSQL instance.",
+        "document": "This example shows you how to create a yearly/monthly subscribed TDSQL instance.",
         "input": "POST / HTTP/1.1Host: dcdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: CreateHourDCDBInstance<common request parameters>{    \"ShardCount\": \"2\",    \"ShardMemory\": \"2\",    \"ShardNodeCount\": \"2\",    \"ShardStorage\": \"10\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"InstanceIds\": [\n            \"tdsql-xxxxxx\"\n        ],\n        \"DealName\": \"20200409111543\",\n        \"FlowId\": 1122\n    }\n}",
-        "title": "Creating a monthly subscribed TDSQL instance"
+        "title": "Creating a yearly/monthly subscribed TDSQL instance"
       }
     ],
     "CreateOnlineDDLJob": [
@@ -314,7 +314,7 @@
     ],
     "DestroyDCDBInstance": [
       {
-        "document": "This example shows you how to terminate an isolated monthly subscribed TDSQL instance.",
+        "document": "This example shows you how to terminate an isolated yearly/monthly subscribed TDSQL instance.",
         "input": "https://dcdb.tencentcloudapi.com/?Action=DestroyDCDBInstance&InstanceId=tdsqlshard-avw0207d&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8c4fba95-01e4-61d9-4146-59fc5afdf962\",\n        \"FlowId\": 100,\n        \"InstanceId\": \"tdsqlshard-avw0207d\"\n    }\n}",
         "title": "Terminating an isolated monthly-subscribed TDSQL instance"
@@ -354,10 +354,10 @@
     ],
     "IsolateDCDBInstance": [
       {
-        "document": "This example shows you how to isolate a monthly subscribed TDSQL instance.",
+        "document": "This example shows you how to isolate a yearly/monthly subscribed TDSQL instance.",
         "input": "POST / HTTP/1.1Host: dcdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: IsolateDCDBInstance<common request parameters>{    \"InstanceIds\": [        \"tdsqlshard-pevrkilh\"    ]}",
         "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"e3b9a860-5864-43b2-8f0f-9684dea8fa58\",\n        \"SuccessInstanceIds\": [\n            \"tdsqlshard-pevrkilh\"\n        ]\n    }\n}",
-        "title": "Isolating a monthly subscribed TDSQL instance"
+        "title": "Isolating a yearly/monthly subscribed TDSQL instance"
       }
     ],
     "IsolateDedicatedDBInstance": [

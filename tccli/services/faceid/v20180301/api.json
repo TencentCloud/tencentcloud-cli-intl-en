@@ -1845,7 +1845,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The return code of the verification result.\n0: Succeeded.\n1001: Failed to call the liveness engine.\n1002:Suspected spoofed recording.\n1004: Selfie verification comparison failed.\n1005:Liveness detection failed.\n1201:Lighting is too dark or overexposed.\n2004: The image passed in is too large or too small.\n2012: Multiple faces detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n2017:Facial occlusion detected.\n-999: The verification process wasn't finished.",
+          "document": "The return code of the verification result.\n0: Success.\n1001: Failed to call the liveness engine.\n1002: Suspected spoofed recording.\n1004: Face detection failed.\n1005: Liveness detection failed.\n1201: Lighting is too dark or overexposed.\n2004: The image passed in is too large or too small.\n2012: Multiple faces detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n2017: Facial occlusion detected.\n-999: The verification process wasn't finished.",
           "example": "0",
           "member": "string",
           "name": "Result",
@@ -1925,7 +1925,7 @@
         },
         {
           "disabled": false,
-          "document": "Describes the detailed reason for the current liveness detection failure. Output only when SdkVersion is PLUS. Details are as follows:\n01 - User kept eyes closed throughout the process.\n02 - User failed to complete the specified action.\n03 - Suspected photo replay attack.\n04 - Suspected synthetic image.\n05 - Suspected synthetic video.\n06 - Suspected synthetic action.\n07 - Suspected fraud template.\n08 - Suspected watermark existence.\n09 - Light verification failed.\n10 - Face verification failed.\n11 - Poor face quality.\n12 - Unqualified collection quality.\n13 - Suspected adversarial sample attack.",
+          "document": "Describes the detailed reason for the current liveness detection failure. Output only when SdkVersion is PLUS or PRO. Details are as follows:\n01 - User kept eyes closed throughout the process.\n02 - User failed to complete the specified action.\n03 - Suspected photo replay attack.\n04 - Suspected synthetic image.\n05 - Suspected synthetic video.\n06 - Suspected synthetic action.\n07 - Suspected fraud template.\n08 - Suspected watermark existence.\n09 - Light verification failed.\n10 - Face verification failed.\n11 - Poor face quality.\n12 - Unqualified collection quality.\n13 - Suspected adversarial sample attack.",
           "example": "[\"04\"]",
           "member": "string",
           "name": "LivenessInfoTag",
