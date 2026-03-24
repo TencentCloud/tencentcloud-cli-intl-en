@@ -719,8 +719,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Protocol and sale details",
-          "example": "NFS",
+          "document": "<p>Protocol and sale details</p>",
+          "example": "无",
           "member": "AvailableProtoStatus",
           "name": "Protocols",
           "output_required": true,
@@ -729,7 +729,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage type. the return value SD indicates general standard storage, HP indicates general performance storage, TB indicates Turbo standard, and TP indicates high-performance Turbo.",
+          "document": "<p>Storage type. In the return value, SD indicates General Standard Storage, HP indicates General Performance Storage, TB indicates Standard Turbo, and TP indicates High-Performance Turbo.</p>",
           "example": "SD",
           "member": "string",
           "name": "Type",
@@ -739,12 +739,22 @@
         },
         {
           "disabled": false,
-          "document": "Indicates whether prepaid is supported. `true`: yes; `false`: no",
+          "document": "<p>Support for prepaid. In the return value, true means supported and false means unsupported.</p>",
           "example": "true",
           "member": "bool",
           "name": "Prepayment",
           "output_required": true,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File system version</p><p>Enumeration value:</p><ul><li>v1.5: Universal Series</li><li>v3.1: Universal Series (enhanced)</li><li>v4.0: Turbo series</li></ul>",
+          "example": "v1.5",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2610,7 +2620,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Information such as resource availability in each AZ and the supported storage classes and protocols",
+          "document": "<p>Resource sale status in each availability zone as well as supported storage types, storage protocol, etc.</p>",
           "example": "无",
           "member": "AvailableRegion",
           "name": "RegionZones",
