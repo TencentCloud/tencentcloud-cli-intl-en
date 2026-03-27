@@ -2347,7 +2347,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -7820,7 +7820,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7881,7 +7881,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -8330,7 +8330,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -8340,7 +8340,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -13539,7 +13539,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -14920,7 +14920,7 @@
         },
         {
           "disabled": false,
-          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "document": "End date, which should be greater than or equal to the start date. Use the [ISO date and time format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
           "example": "2019-07-03T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
@@ -15211,7 +15211,7 @@
       "type": "object"
     },
     "DiagnoseResult": {
-      "document": "",
+      "document": "Diagnosis result item.",
       "members": [
         {
           "disabled": false,
@@ -15235,7 +15235,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The PTS timestamp for the exception start.",
           "example": "5.966",
           "member": "float",
           "name": "Timestamp",
@@ -15245,7 +15245,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Diagnosed abnormal description.",
           "example": "Open url http://xxx.mp4 failed.",
           "member": "string",
           "name": "Description",
@@ -15255,7 +15255,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Abnormality detection time in Beijing time, using ISO date format.",
           "example": "2023-06-09T06:54:32Z",
           "member": "string",
           "name": "DateTime",
@@ -16864,7 +16864,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidParameterValue.FaceNotFound",
           "member": "string",
           "name": "ErrMsg",
@@ -17947,7 +17947,7 @@
       "usage": "both"
     },
     "LiveStreamAiAnalysisResultInfo": {
-      "document": "",
+      "document": "Live streaming analysis results",
       "members": [
         {
           "disabled": false,
@@ -17963,7 +17963,7 @@
       "usage": "out"
     },
     "LiveStreamAiAnalysisResultItem": {
-      "document": "",
+      "document": "Live streaming AI analysis results",
       "members": [
         {
           "disabled": false,
@@ -17977,7 +17977,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Segmentation results are valid when Type is\nSegmentRecognition.",
           "example": "无",
           "member": "SegmentRecognitionItem",
           "name": "SegmentResultSet",
@@ -18023,7 +18023,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "Format diagnostic results list.",
           "example": "无",
           "member": "DiagnoseResult",
           "name": "DiagnoseResults",
@@ -18155,7 +18155,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Tagging results are valid when Type is TagRecognition.",
           "example": "NULL",
           "member": "LiveStreamTagRecognitionResult",
           "name": "TagRecognitionResultSet",
@@ -18603,7 +18603,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recognition start UTC time.",
           "example": "2025-03-21T10:11:13Z",
           "member": "string",
           "name": "StartTime",
@@ -18613,7 +18613,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recognition end UTC time.",
           "example": "2025-03-21T10:13:13Z",
           "member": "string",
           "name": "EndTime",
@@ -18623,7 +18623,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Steady state marker.",
           "example": "true",
           "member": "bool",
           "name": "SteadyState",
@@ -19053,11 +19053,11 @@
       "usage": "out"
     },
     "LiveStreamTagRecognitionResult": {
-      "document": "",
+      "document": "Live streaming AI tagging recognition results",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Tagging events.",
           "example": "击杀黑暗暴君",
           "member": "string",
           "name": "Id",
@@ -19067,7 +19067,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Start PTS time of the recognition segment, unit: seconds.",
           "example": "899.916",
           "member": "float",
           "name": "StartPtsTime",
@@ -19077,7 +19077,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Termination PTS time of the recognition segment, unit: seconds.",
           "example": "899.916",
           "member": "float",
           "name": "EndPtsTime",
@@ -19087,7 +19087,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recognition segment confidence. Range: 0-100.",
           "example": "100",
           "member": "float",
           "name": "Confidence",
@@ -19103,7 +19103,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
+          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -19236,7 +19236,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Translation start UTC time.",
           "example": "2025-03-21T10:11:52Z",
           "member": "string",
           "name": "StartTime",
@@ -19246,7 +19246,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Translation end UTC time.",
           "example": "2025-03-21T10:12:52Z",
           "member": "string",
           "name": "EndTime",
@@ -19256,7 +19256,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Steady state marker.",
           "example": "true",
           "member": "bool",
           "name": "SteadyState",
@@ -19521,7 +19521,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Classification list of frame-level tags, where CategorySet.N represents the (N+1)th level classification.\n\nFor example, when the Tag is \"tower\", CategorySet contains two elements: CategorySet.0 is \"scene\" and CategorySet.1 is \"architecture\", indicating the frame-level tag is \"tower\" with Level 1 classification as \"scene\" and Level 2 classification as \"architecture\".",
           "example": "[\"场景\",\"人文建筑\"]",
           "member": "string",
           "name": "CategorySet",
@@ -21396,7 +21396,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video Codecs.",
           "example": "avc1.ffe100",
           "member": "string",
           "name": "Codecs",
@@ -24630,7 +24630,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href=\"https://www.tencentcloud.comom/product/leb?from_cn_redirect=1\">LEB</a> live streams. For more information about how to obtain the address, see <a href=\"https://www.tencentcloud.comom/document/product/267/32720?from_cn_redirect=1\">this reference</a>.</p><p>For supported SRT addresses, see <a href=\"https://ffmpeg.org/ffmpeg-protocols.html#srt\">this reference</a>.</p>",
+          "document": "<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID, which is a number.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href=\"https://www.tencentcloud.com/product/leb?from_cn_redirect=1\">LEB</a> live streams. For more information about how to obtain the address, see <a href=\"https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1\">this reference</a>.</p><p>For supported SRT addresses, see <a href=\"https://ffmpeg.org/ffmpeg-protocols.html#srt\">this reference</a>.</p>",
           "example": "http://www.adc.com/adc.m3u8",
           "member": "string",
           "name": "Url",
@@ -26692,7 +26692,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
+          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
           "example": " input",
           "member": "string",
           "name": "ErrCodeExt",
@@ -27344,11 +27344,11 @@
       "usage": "out"
     },
     "SegmentRecognitionItem": {
-      "document": "",
+      "document": "Smart segmentation clips.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Confidence.",
           "example": "85.32",
           "member": "float",
           "name": "Confidence",
@@ -27358,7 +27358,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Segment start time offset.",
           "example": "0",
           "member": "float",
           "name": "StartTimeOffset",
@@ -27368,7 +27368,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Segment end time offset.",
           "example": "59.52",
           "member": "float",
           "name": "EndTimeOffset",
@@ -27813,7 +27813,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -27969,7 +27969,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
@@ -27979,7 +27979,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
@@ -28319,7 +28319,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28911,7 +28911,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
+          "document": "Output path of the generated subtitle file, which can be a relative or absolute path.\nTo define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.com/document/product/862/37039.?from_cn_redirect=1\n\nRelative path example:\n - File name_{variable name}.{format}.\n - File name.{format}.\n\nAbsolute path example:\n -/Custom path/File name_{variable name}.{format}.\n\nIf this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.",
           "example": "/storage/{inputName}_smartsubtitle_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -31008,7 +31008,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Video source language.",
           "example": "zh",
           "member": "string",
           "name": "SourceLanguage",
@@ -31019,7 +31019,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Translated target language.",
           "example": "en",
           "member": "string",
           "name": "DestinationLanguage",

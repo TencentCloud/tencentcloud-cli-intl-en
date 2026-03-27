@@ -1106,7 +1106,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Architecture ID",
           "example": "arch-xxxx",
           "member": "string",
           "name": "ArchId",
@@ -1115,7 +1115,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Architecture Name",
           "example": "游戏战斗服架构图",
           "member": "string",
           "name": "ArchName",

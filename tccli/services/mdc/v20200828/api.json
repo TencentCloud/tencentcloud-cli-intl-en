@@ -257,11 +257,11 @@
       "usage": "in"
     },
     "CreateInputHLSPullSettings": {
-      "document": "",
+      "document": "Created input HLS pull stream configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The origin server address for the HLS origin server. There can be only one.",
           "example": "无",
           "member": "HLSPullSourceAddress",
           "name": "SourceAddresses",
@@ -273,11 +273,11 @@
       "usage": "in"
     },
     "CreateInputRTMPPullSettings": {
-      "document": "",
+      "document": "Created input RTMP pull stream configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The origin server address for the RTMP origin server. There can be only one.",
           "example": "无",
           "member": "RTMPPullSourceAddress",
           "name": "SourceAddresses",
@@ -315,11 +315,11 @@
       "usage": "in"
     },
     "CreateInputRTSPPullSettings": {
-      "document": "",
+      "document": "Created input RTSP pull stream configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The origin server address for the RTSP origin server. There can be only one.",
           "example": "无",
           "member": "RTSPPullSourceAddress",
           "name": "SourceAddresses",
@@ -1062,11 +1062,11 @@
       "usage": "out"
     },
     "DescribeHLSPullSourceAddress": {
-      "document": "",
+      "document": "Query the input HLS configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The Url of the HLS origin server.",
           "example": "http://domain[:port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1192,7 +1192,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Input RTMP_PULL configuration.",
           "example": "无",
           "member": "DescribeInputRTMPPullSettings",
           "name": "RTMPPullSettings",
@@ -1202,7 +1202,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Input RTSP_PULL configuration.",
           "example": "无",
           "member": "DescribeInputRTSPPullSettings",
           "name": "RTSPPullSettings",
@@ -1212,7 +1212,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Input HLS_PULL configuration.",
           "example": "无",
           "member": "DescribeInputHLSPullSettings",
           "name": "HLSPullSettings",
@@ -1222,7 +1222,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Delayed broadcast smooth stream delivery configuration.",
           "example": "无",
           "member": "ResilientStreamConf",
           "name": "ResilientStream",
@@ -1244,11 +1244,11 @@
       "usage": "out"
     },
     "DescribeInputHLSPullSettings": {
-      "document": "",
+      "document": "Query the input HLS configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The address information of the HLS origin server.",
           "example": "无",
           "member": "DescribeHLSPullSourceAddress",
           "name": "SourceAddresses",
@@ -1260,11 +1260,11 @@
       "usage": "out"
     },
     "DescribeInputRTMPPullSettings": {
-      "document": "",
+      "document": "Query the input RTMP configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The address information of the RTMP origin server.",
           "example": "streamKey",
           "member": "DescribeRTMPPullSourceAddress",
           "name": "SourceAddresses",
@@ -1328,11 +1328,11 @@
       "usage": "out"
     },
     "DescribeInputRTSPPullSettings": {
-      "document": "",
+      "document": "Query the input RTSP configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The address information of the RTSP origin server.",
           "example": "无",
           "member": "DescribeRTSPPullSourceAddress",
           "name": "SourceAddresses",
@@ -1564,7 +1564,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output RTSP pull stream configuration.",
           "example": "无",
           "member": "DescribeOutputRTSPPullSettings",
           "name": "RTSPPullSettings",
@@ -1574,7 +1574,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output HLS pull stream configuration.",
           "example": "无",
           "member": "DescribeOutputHLSPullSettings",
           "name": "HLSPullSettings",
@@ -1584,7 +1584,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum pull stream concurrency, maximum 4, default 4.",
           "example": "1",
           "member": "uint64",
           "name": "MaxConcurrent",
@@ -1606,11 +1606,11 @@
       "usage": "out"
     },
     "DescribeOutputHLSPullServerUrl": {
-      "document": "",
+      "document": "Query output HLS pull stream URL information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The Url of the HLS pull stream address.",
           "example": "http://domain[port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1622,11 +1622,11 @@
       "usage": "out"
     },
     "DescribeOutputHLSPullSettings": {
-      "document": "",
+      "document": "Query the output HLS pull stream configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "HLS pull stream address list.",
           "example": "无",
           "member": "DescribeOutputHLSPullServerUrl",
           "name": "ServerUrls",
@@ -1752,11 +1752,11 @@
       "usage": "out"
     },
     "DescribeOutputRTSPPullServerUrl": {
-      "document": "",
+      "document": "Query output RTSP pull stream URL information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "RTSP pull stream address Url.",
           "example": "rtsp://ip_or_domain[:rtsp_port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1768,11 +1768,11 @@
       "usage": "out"
     },
     "DescribeOutputRTSPPullSettings": {
-      "document": "",
+      "document": "Query output RTSP pull stream configuration information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "RTSP pull stream address list.",
           "example": "无",
           "member": "DescribeOutputRTSPPullServerUrl",
           "name": "ServerUrls",
@@ -1890,11 +1890,11 @@
       "usage": "out"
     },
     "DescribeRTMPPullSourceAddress": {
-      "document": "",
+      "document": "Query the input RTMP configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The TcUrl address of the RTMP origin server.",
           "example": "rtmp://domain/live",
           "member": "string",
           "name": "TcUrl",
@@ -1904,7 +1904,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The StreamKey of the RTMP origin server.\n\nThe concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.",
           "example": "streamKey",
           "member": "string",
           "name": "StreamKey",
@@ -1916,11 +1916,11 @@
       "usage": "out"
     },
     "DescribeRTSPPullSourceAddress": {
-      "document": "",
+      "document": "Query the input RTSP configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The Url address of the RTSP origin server.",
           "example": "rtsp://ip_or_domain[:rtsp_port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -3354,11 +3354,11 @@
       "usage": "out"
     },
     "HLSPullSourceAddress": {
-      "document": "",
+      "document": "Created input HLS pull stream origin server configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The Url of the HLS origin server.",
           "example": "http://testdomain.com:8806/live/streamname",
           "member": "string",
           "name": "Url",
@@ -3820,11 +3820,11 @@
       "usage": "out"
     },
     "RTMPPullSourceAddress": {
-      "document": "",
+      "document": "Created input RTMP pull stream origin server configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The TcUrl address of the RTMP origin server.",
           "example": "rtmp://domain/live",
           "member": "string",
           "name": "TcUrl",
@@ -3834,7 +3834,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The StreamKey of the RTMP origin server.",
           "example": "streamKey",
           "member": "string",
           "name": "StreamKey",
@@ -3872,11 +3872,11 @@
       "usage": "out"
     },
     "RTSPPullSourceAddress": {
-      "document": "",
+      "document": "Created input RTSP pull stream origin server configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The Url address of the RTSP origin server.",
           "example": "rtsp://9.223.70.41:8806/live/streamname",
           "member": "string",
           "name": "Url",
@@ -3904,11 +3904,11 @@
       "usage": "out"
     },
     "ResilientStreamConf": {
-      "document": "",
+      "document": "Delayed broadcast smooth stream delivery configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.",
           "example": "true",
           "member": "bool",
           "name": "Enable",
@@ -3918,7 +3918,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.",
           "example": "133",
           "member": "uint64",
           "name": "BufferTime",

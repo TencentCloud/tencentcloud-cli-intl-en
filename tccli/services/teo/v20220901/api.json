@@ -2951,7 +2951,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Host record.",
           "example": "edgeonereclaim",
           "member": "string",
           "name": "Subdomain",
@@ -3724,7 +3724,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule name can only consist of English letters, numbers, and underscores, and cannot start with an underscore.",
           "example": "rule",
           "member": "string",
           "name": "RuleName",
@@ -23236,11 +23236,11 @@
       "usage": "out"
     },
     "OriginPullProtocolParameters": {
-      "document": "",
+      "document": "Origin HTTPS configuration parameters.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin protocol configuration, with values:\n<li>http: Use HTTP protocol for origin pull;</li>\n<li>https: Use HTTPS protocol for origin pull;</li>\n<li>follow: Protocol following.</li>",
           "example": "https",
           "member": "string",
           "name": "Protocol",
@@ -23904,7 +23904,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Single batch submission quota limit.",
           "example": "1",
           "member": "int64",
           "name": "Batch",
@@ -25574,7 +25574,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin HTTPS configuration parameters. When Name is set to OriginPullProtocol, this parameter is required.",
           "example": "无",
           "member": "OriginPullProtocolParameters",
           "name": "OriginPullProtocolParameters",

@@ -2292,7 +2292,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "TDSQL connection method: proxy - access each set node via TDSQL proxy hosts. Note that this connection method is only available in self-developed cloud environments. Only proxy host information needs to be provided in Info. set - directly connect to set nodes. If selecting direct set connection, both proxy host information and all set node information must be correctly filled in Info. Mandatory when source is TDSQL MySQL type.",
           "example": "proxy",
           "member": "string",
           "name": "ConnectType",
@@ -5606,7 +5606,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster",
           "example": "cynos-ins-xxxx",
           "member": "string",
           "name": "ChildInstanceId",
@@ -5617,7 +5617,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.",
           "example": "ro",
           "member": "string",
           "name": "ChildInstanceType",
@@ -5628,7 +5628,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Shard id of tdsql. Mandatory when node type is set.",
           "example": "set_1693279393_1(s1)",
           "member": "string",
           "name": "SetId",
@@ -5821,7 +5821,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster",
           "example": "cynos-ins-xxxx",
           "member": "string",
           "name": "ChildInstanceId",
@@ -5832,7 +5832,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.",
           "example": "ro",
           "member": "string",
           "name": "ChildInstanceType",
@@ -6625,7 +6625,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "PostgreSQL migration types: logical (logical migration), physical (physical migration)",
           "example": "logical",
           "member": "string",
           "name": "MigrateWay",
@@ -7704,7 +7704,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to filter out begin and commit messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.",
           "example": "false",
           "member": "bool",
           "name": "FilterBeginCommit",
@@ -7715,7 +7715,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to filter out checkpoint messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.",
           "example": "false",
           "member": "bool",
           "name": "FilterCheckpoint",

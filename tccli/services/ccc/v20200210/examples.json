@@ -50,10 +50,10 @@
     ],
     "CreateAIAgentCall": [
       {
-        "document": "This example shows you how to initiate an outbound call using AI Agent.",
-        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIAgentCall\n<Common request parameters>\n\n{\n    \"Callee\": \"008612300000000\",\n    \"SdkAppId\": 1400000000,\n    \"AIAgentId\": 15,\n    \"Callers\": [\n        \"008601012345678\",\n        \"008601012345679\"\n    ],\n    \"PromptVariables\": [\n        {\n            \"Key\": \"foo\",\n            \"Value\": \"bar\"\n        }\n    ]\n}",
+        "document": "Use Intelligent Agent to initiate outbound call",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAIAgentCall\n<Common request parameters>\n\n{\n    \"Callee\": \"008612300000000\",\n    \"SdkAppId\": 1400000000,\n    \"AIAgentId\": 15,\n    \"Callers\": [\n        \"008601012345678\",\n        \"008601012345679\"\n    ],\n    \"Variables\": [\n        {\n            \"Key\": \"foo\",\n            \"Value\": \"bar\"\n        },\n        {\n            \"Key\": \"dify-inputs-key\",\n            \"Value\": \"value\"\n        },\n        {\n            \"Key\": \"dify-inputs-user\",\n            \"Value\": \"value\"\n        },\n        {\n            \"Key\": \"dify-inputs-conversation_id\",\n            \"Value\": \"value\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"SessionId\": \"6bb56a09278740bc80c5dc6dab783eff\"\n    }\n}",
-        "title": "Initiate an Outbound Call Using AI Agent"
+        "title": "Using Intelligent Agent to Initiate Outbound Call"
       }
     ],
     "CreateAICall": [
@@ -218,10 +218,10 @@
     ],
     "DescribeAILatency": [
       {
-        "document": "This example shows you how to retrieve AI call latency information.",
+        "document": "Used for querying processing latency details and stats of AI service in a specified session",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAILatency\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"SessionId\": \"adcf61b8-dbb9-4c20-87bf-c0744c04bade\",\n    \"StartTime\": 1737350008,\n    \"EndTime\": 1737356008\n}",
         "output": "{\n    \"Response\": {\n        \"AILatencyStatistics\": {\n            \"ASRLatency\": {\n                \"MiddleLatency\": 308,\n                \"MinLatency\": 267,\n                \"P90Latency\": 338\n            },\n            \"ETELatency\": {\n                \"MiddleLatency\": 1327,\n                \"MinLatency\": 1209,\n                \"P90Latency\": 1540\n            },\n            \"LLMLatency\": {\n                \"MiddleLatency\": 754,\n                \"MinLatency\": 642,\n                \"P90Latency\": 912\n            },\n            \"TTSLatency\": {\n                \"MiddleLatency\": 267,\n                \"MinLatency\": 146,\n                \"P90Latency\": 366\n            }\n        },\n        \"RequestId\": \"ca9c3062-202b-4401-a930-3728d1ef7886\"\n    }\n}",
-        "title": "Get AI Call Latency Information"
+        "title": "Retrieve AI Service Latency Info for Intelligent Agent in a Call"
       }
     ],
     "DescribeAgentCruiseDialingCampaign": [
@@ -355,9 +355,9 @@
     "DescribeStaffInfoList": [
       {
         "document": "This example shows you how to access agent list.",
-        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffInfoList\n<Common request parameters>\n\n{\n    \"ModifiedTime\": 1590147606,\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"StaffMail\": \"121223@qq.com\"\n    \"SdkAppId\": \"1400000000\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 602,\n        \"StaffList\": [\n            {\n                \"Name\": \"xiao\",\n                \"Mail\": \"1000273@qq.com\",\n                \"Phone\": \"008617636049517\",\n                \"Nick\": \"Test 3\",\n                \"StaffNumber\": \"125\",\n                \"RoleId\": 1,\n                \"SkillGroupList\": [\n                    {\n                        \"SkillGroupId\": 53,\n                        \"SkillGroupName\": \"ALL-dingoding-Test\",\n                        \"Priority\": 3,\n                        \"Type\": \"ALL\"\n                    },\n                    {\n                        \"SkillGroupId\": 82,\n                        \"SkillGroupName\": \"uu\",\n                        \"Priority\": 1,\n                        \"Type\": \"IM\"\n                    }\n                ],\n                \"LastModifyTimestamp\": 1613988825\n            }\n        ]\n    }\n}",
-        "title": "Example Of Accessing Agent List"
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffInfoList\n<Common request parameters>\n\n{\n    \"ModifiedTime\": 1590147606,\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"StaffMail\": \"121223@qq.com\",\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 602,\n        \"StaffList\": [\n            {\n                \"Name\": \"xiao\",\n                \"Mail\": \"1000273@qq.com\",\n                \"Phone\": \"008617636049517\",\n                \"Nick\": \"Test3\",\n                \"StaffNumber\": \"125\",\n                \"RoleId\": 1,\n                \"SkillGroupList\": [\n                    {\n                        \"SkillGroupId\": 53,\n                        \"SkillGroupName\": \"ALL-dingoding-Test\",\n                        \"Priority\": 3,\n                        \"Type\": \"ALL\"\n                    },\n                    {\n                        \"SkillGroupId\": 82,\n                        \"SkillGroupName\": \"uu\",\n                        \"Priority\": 1,\n                        \"Type\": \"IM\"\n                    }\n                ],\n                \"LastModifyTimestamp\": 1613988825\n            }\n        ]\n    }\n}",
+        "title": "Access Agent List Example"
       }
     ],
     "DescribeStaffStatusHistory": [
@@ -378,10 +378,10 @@
     ],
     "DescribeTelCallInfo": [
       {
-        "document": "This example shows you how to access phone call statistics",
-        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTelCallInfo\n<Common request parameters>\n\n{\n    \"StartTimeStamp\": \"0\",\n    \"EndTimeStamp\": \"0\",\n    \"SdkAppIdList\": [\n        \"0\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TelCallOutCount\": 0,\n        \"TelCallInCount\": 0,\n        \"SeatUsedCount\": 0,\n        \"VOIPCallInCount\": 0,\n        \"AsrOfflineCount\": 0,\n        \"AsrRealtimeCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Accessing Phone Call Statistics"
+        "document": "Access phone call statistics",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTelCallInfo\n<Common request parameters>\n\n{\n    \"StartTimeStamp\": 1773041460,\n    \"EndTimeStamp\": 1773042460,\n    \"SdkAppIdList\": [\n        140000000\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TelCallOutCount\": 0,\n        \"TelCallInCount\": 0,\n        \"SeatUsedCount\": 0,\n        \"VOIPCallInCount\": 0,\n        \"AsrOfflineCount\": 0,\n        \"AsrRealtimeCount\": 0,\n        \"RequestId\": \"sfahfj-fasf\"\n    }\n}",
+        "title": "Accessing Phone Call Statistics Example"
       }
     ],
     "DescribeTelCdr": [
@@ -464,12 +464,28 @@
         "title": "Changing the Password"
       }
     ],
+    "PauseAutoCalloutTask": [
+      {
+        "document": "Normally call, suspend task successful",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PauseAutoCalloutTask\n<Common request parameters>\n\n{\n    \"TaskId\": 16498,\n    \"SdkAppId\": 1400692008\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a1c5200-25be-4a80-8a45-9183745188ea\"\n    }\n}",
+        "title": "Normally Call"
+      }
+    ],
     "PausePredictiveDialingCampaign": [
       {
         "document": "This example shows you how to pause the predictive outbound call task.",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PausePredictiveDialingCampaign\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Pausing Predictive Outbound Call Task"
+      }
+    ],
+    "PlaySoundCall": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PlaySoundCall\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400692008,\n    \"SessionId\": \"f3be95fb-2786-466a-beab-5e3d8cb76272\",\n    \"FileId\": 275,\n    \"PlayTimes\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e9f09db3-c740-430d-8713-33b35bc9ae7f\"\n    }\n}",
+        "title": "Playback Instance in a Call"
       }
     ],
     "ResetExtensionPassword": [
@@ -486,6 +502,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestoreMemberOnline\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"UserId\": \"user@example.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896cd\"\n    }\n}",
         "title": "Restore Customer Service to Go Live"
+      }
+    ],
+    "ResumeAutoCalloutTask": [
+      {
+        "document": "Normally called, resume successfully",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeAutoCalloutTask\n<Common request parameters>\n\n{\n    \"TaskId\": 16497,\n    \"SdkAppId\": 1400692008\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d9c840d7-6d6a-4300-8273-6e0a7f00276e\"\n    }\n}",
+        "title": "Normally Call"
       }
     ],
     "ResumePredictiveDialingCampaign": [

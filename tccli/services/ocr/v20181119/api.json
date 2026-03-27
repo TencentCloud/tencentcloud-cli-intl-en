@@ -4588,11 +4588,11 @@
       "type": "object"
     },
     "MedicalInvoice": {
-      "document": "",
+      "document": "Medical bill information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Invoice name.",
           "example": "无",
           "member": "string",
           "name": "Title",
@@ -4602,7 +4602,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Invoice code.",
           "example": "无",
           "member": "string",
           "name": "Code",
@@ -4612,7 +4612,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Invoice number.",
           "example": "无",
           "member": "string",
           "name": "Number",
@@ -4622,7 +4622,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total amount (in figures).",
           "example": "无",
           "member": "string",
           "name": "Total",
@@ -4632,7 +4632,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total Amount (in words).",
           "example": "无",
           "member": "string",
           "name": "TotalCn",
@@ -4642,7 +4642,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Invoice date.",
           "example": "无",
           "member": "string",
           "name": "Date",
@@ -4652,7 +4652,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Verification code",
           "example": "无",
           "member": "string",
           "name": "CheckCode",
@@ -4662,7 +4662,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Place of Issue.",
           "example": "无",
           "member": "string",
           "name": "Place",
@@ -4672,7 +4672,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reviewer.",
           "example": "无",
           "member": "string",
           "name": "Reviewer",
@@ -5520,11 +5520,11 @@
       "usage": "out"
     },
     "PassportRecognizeInfos": {
-      "document": "",
+      "document": "Information Section Content.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Document Type (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -5534,7 +5534,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Issuing Country (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "IssuingCountry",
@@ -5544,7 +5544,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Passport Number (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "PassportID",
@@ -5554,7 +5554,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Surname (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "Surname",
@@ -5564,7 +5564,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Given Name (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "GivenName",
@@ -5574,7 +5574,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Full Name (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "Name",
@@ -5584,7 +5584,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Nationality Information (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "Nationality",
@@ -5594,7 +5594,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Date of Birth (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "DateOfBirth",
@@ -5604,7 +5604,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Gender (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "Sex",
@@ -5614,7 +5614,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Date of Issue (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "DateOfIssuance",
@@ -5624,7 +5624,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Expiry Date (Passport Information Page Recognition Result).",
           "example": "无",
           "member": "string",
           "name": "DateOfExpiration",
@@ -5634,7 +5634,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cardholder Signature (Passport Information Page Recognition Result)\n\nThis field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.",
           "example": "无",
           "member": "string",
           "name": "Signature",
@@ -5644,7 +5644,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Place of Issue (Passport Information Page Recognition Result)\n\nThis field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.",
           "example": "无",
           "member": "string",
           "name": "IssuePlace",
@@ -5654,7 +5654,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Issuing Authority (Passport Information Page Recognition Result)\n\nThis field is only supported for Chinese mainland passports and not available for Hong Kong (China), Macao (China), and Taiwan (China) passports or foreign passports.",
           "example": "无",
           "member": "string",
           "name": "IssuingAuthority",
@@ -10046,7 +10046,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Medical Outpatient Fee Invoice (Electronic).",
           "example": "无",
           "member": "MedicalInvoice",
           "name": "MedicalOutpatientInvoice",
@@ -10056,7 +10056,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Inpatient Medical Fee Invoice (Electronic).",
           "example": "无",
           "member": "MedicalInvoice",
           "name": "MedicalHospitalizedInvoice",
@@ -12301,7 +12301,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether fully electronic and paper tickets exist (0: No, 1: Yes).",
           "example": "无",
           "member": "int64",
           "name": "ElectronicFullMark",
@@ -12311,7 +12311,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Fully Electronic Number",
           "example": "无",
           "member": "string",
           "name": "ElectronicFullNumber",
@@ -12321,7 +12321,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Co-branded Invoice.",
           "example": "无",
           "member": "string",
           "name": "FormName",

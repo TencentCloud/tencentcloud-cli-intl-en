@@ -13309,7 +13309,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether delay metrics",
           "example": "1",
           "member": "int64",
           "name": "IsLatenessMetric",

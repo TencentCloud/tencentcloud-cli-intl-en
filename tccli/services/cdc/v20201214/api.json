@@ -1053,7 +1053,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Acceptance Status",
           "example": "DELIVERING",
           "member": "string",
           "name": "CheckStatus",
@@ -1063,7 +1063,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Expected Delivery Time",
           "example": "2024-01-01 12:00:00",
           "member": "string",
           "name": "DeliverExpectTime",
@@ -1073,7 +1073,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Actual Delivery Completion Time",
           "example": "2024-01-01 12:00:00",
           "member": "string",
           "name": "DeliverFinishTime",
@@ -1083,7 +1083,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Expected Acceptance Time",
           "example": "2024-01-01 12:00:00",
           "member": "string",
           "name": "CheckExpectTime",
@@ -1093,7 +1093,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Actual Acceptance Completion Time",
           "example": "2024-01-01 12:00:00",
           "member": "string",
           "name": "CheckFinishTime",
@@ -1103,7 +1103,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Order SLA",
           "example": "null",
           "member": "string",
           "name": "OrderSLA",
@@ -1113,7 +1113,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Order Payment Plan",
           "example": "null",
           "member": "string",
           "name": "OrderPayPlan",
@@ -1777,7 +1777,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Order Type List",
           "example": "[\"PUSH\"]",
           "member": "string",
           "name": "OrderTypes",
@@ -2332,11 +2332,11 @@
       "usage": "out"
     },
     "HostDetailInfo": {
-      "document": "",
+      "document": "Host Machine Resource Overview Details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Type Family",
           "example": "标准型S5",
           "member": "string",
           "name": "HostTypeFamily",
@@ -2346,7 +2346,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total CPU",
           "example": "64",
           "member": "float",
           "name": "CpuTotal",
@@ -2356,7 +2356,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Available CPU",
           "example": "64",
           "member": "float",
           "name": "CpuAvailable",
@@ -2366,7 +2366,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total Memory",
           "example": "320",
           "member": "float",
           "name": "MemTotal",
@@ -2376,7 +2376,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Available Memory",
           "example": "320",
           "member": "float",
           "name": "MemAvailable",

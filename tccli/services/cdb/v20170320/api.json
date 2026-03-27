@@ -1359,7 +1359,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable adaptive load balancing. Disabled by default.",
           "example": "false",
           "member": "bool",
           "name": "AutoLoadBalance",
@@ -1368,7 +1368,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access Mode: nearby - nearby access, balance - balanced allocation. Default is nearby access.",
           "example": "balance",
           "member": "string",
           "name": "AccessMode",
@@ -1875,7 +1875,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SQL Type.",
           "example": "“SELECT”",
           "member": "string",
           "name": "SqlType",
@@ -1895,7 +1895,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name.",
           "example": "“test_db”",
           "member": "string",
           "name": "DBName",
@@ -1905,7 +1905,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SQL Statement.",
           "example": "“SELECT * FROM test LIMIT 1;\"",
           "member": "string",
           "name": "Sql",
@@ -2161,7 +2161,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name.",
           "example": "[\"db1\",\"db2\"]",
           "member": "string",
           "name": "DBName",
@@ -2188,7 +2188,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SQL statement. Supports fuzzy matching.",
           "example": "CREATE TABLE employees",
           "member": "string",
           "name": "Sql",
@@ -2197,7 +2197,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SQL Type. Currently supports: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"ALTER\", \"SET\", \"REPLACE\", \"EXECUTE\".",
           "example": "SELECT",
           "member": "string",
           "name": "SqlType",
@@ -3851,7 +3851,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
           "example": "cdb-22dhn3e3",
           "member": "string",
           "name": "InstanceId",
@@ -4280,7 +4280,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
           "example": "cdb-cdtkp3hr",
           "member": "string",
           "name": "InstanceId",
@@ -4743,7 +4743,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable adaptive load balancing. Disabled by default.",
           "example": "false",
           "member": "bool",
           "name": "AutoLoadBalance",
@@ -4752,7 +4752,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access Mode. nearBy - nearby access, balance - balanced allocation. Default value: nearBy.",
           "example": "nearBy",
           "member": "string",
           "name": "AccessMode",
@@ -5975,7 +5975,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name, up to 64 characters in length.",
           "example": "db_test",
           "member": "string",
           "name": "DBName",
@@ -6401,7 +6401,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.comom/document/api/236/45454?from_cn_redirect=1) API.",
+          "document": "Audit log file name, which can be obtained through the [DescribeAuditLogFiles](https://www.tencentcloud.com/document/api/236/45454?from_cn_redirect=1) API.",
           "example": "13123**346_cdb-0ej6n21d_1734**9765_42322441.csv",
           "member": "string",
           "name": "FileName",
@@ -6410,7 +6410,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
           "example": "cdb-0ej6n21d",
           "member": "string",
           "name": "InstanceId",
@@ -6473,7 +6473,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.",
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API. A maximum of 5 rule templates can be deleted per request.",
           "example": "cdb-art-l1mlbo59",
           "member": "string",
           "name": "RuleTemplateIds",
@@ -7251,7 +7251,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.",
           "example": "[\"cdb-art-8qx2kcr7\"]",
           "member": "string",
           "name": "RuleTemplateIds",
@@ -13729,7 +13729,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
           "example": "cdb-txcniupi",
           "member": "string",
           "name": "InstanceId",
@@ -13783,7 +13783,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "document": "Audit rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.",
           "example": "cdb-art-l1mlbo59",
           "member": "string",
           "name": "RuleTemplateIds",
@@ -13855,7 +13855,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.comom/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
           "example": "cdb-22dhn3e3",
           "member": "string",
           "name": "InstanceId",
@@ -13900,7 +13900,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.comom/document/api/236/101811?from_cn_redirect=1) API.",
+          "document": "Rule template ID, which can be obtained through the [DescribeAuditRuleTemplates](https://www.tencentcloud.com/document/api/236/101811?from_cn_redirect=1) API.",
           "example": "[\"cdb-art-nuf7e111\"]",
           "member": "string",
           "name": "RuleTemplateIds",

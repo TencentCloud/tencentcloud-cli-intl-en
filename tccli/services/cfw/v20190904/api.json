@@ -1079,7 +1079,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "Remarks",
           "example": "comment",
           "member": "string",
           "name": "Comment",
@@ -7393,11 +7393,11 @@
       "usage": "out"
     },
     "VpcRuleItem": {
-      "document": "",
+      "document": "VPC Private Network Rules",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Access source example:\n\nnet: IP/CIDR (192.168.0.2)",
           "example": "192.168.0.2",
           "member": "string",
           "name": "SourceContent",
@@ -7408,7 +7408,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access source type, which can be: net",
           "example": "net",
           "member": "string",
           "name": "SourceType",
@@ -7419,7 +7419,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access destination example:\n\nnet: IP/CIDR (192.168.0.2)\n\ndomain: domain name rules, for example *.qq.com",
           "example": "*.qq.com",
           "member": "string",
           "name": "DestContent",
@@ -7430,7 +7430,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access destination type, which can be: net, domain, dnsparse",
           "example": "net",
           "member": "string",
           "name": "DestType",
@@ -7441,7 +7441,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Protocol, optional values:\n\nTCP\n\nUDP\n\nICMP\n\nANY\n\nHTTP\n\nHTTPS\n\nHTTP/HTTPS\n\nSMTP\n\nSMTPS\n\nSMTP/SMTPS\n\nFTP\n\nDNS\n\nTLS/SSL",
           "example": "ANY",
           "member": "string",
           "name": "Protocol",
@@ -7452,7 +7452,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "How traffic set in the access control policy passes through CFW. Values:\n\naccept: allow\n\ndrop: deny\n\nlog: observe",
           "example": "accept",
           "member": "string",
           "name": "RuleAction",
@@ -7463,7 +7463,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access control policy ports. Values:\n\n-1/-1: all ports\n\n80: port 80",
           "example": "-1/-1",
           "member": "string",
           "name": "Port",
@@ -7474,7 +7474,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Description",
           "example": "andy使用的模板",
           "member": "string",
           "name": "Description",
@@ -7485,7 +7485,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule order, where -1 indicates the lowest and 1 indicates the highest.",
           "example": "-1",
           "member": "int64",
           "name": "OrderIndex",
@@ -7496,7 +7496,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule status, where true indicates enabled and false indicates disabled.",
           "example": "true",
           "member": "string",
           "name": "Enable",
@@ -7507,7 +7507,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The scope of effect for the rule, specifying whether it applies between a specific pair of VPCs or across all VPCs.",
           "example": "cfws-d92f04f8或者ALL",
           "member": "string",
           "name": "EdgeId",
@@ -7518,7 +7518,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The unique id corresponding to the rule. This field is ignored when adding a rule; when modifying the rule, the Uuid needs to be filled in. This parameter will be returned in query results.",
           "example": "8888",
           "member": "int64",
           "name": "Uuid",
@@ -7529,7 +7529,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The hit count of the rule. This parameter does not need to be passed during CRUD operations and is mainly used for returning query result data.",
           "example": "0",
           "member": "int64",
           "name": "DetectedTimes",
@@ -7540,7 +7540,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Description of the firewall between the pair of VPCs corresponding to EdgeId",
           "example": "andy的edge",
           "member": "string",
           "name": "EdgeName",
@@ -7551,7 +7551,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Internal-use uuid, generally not used",
           "example": "8921",
           "member": "int64",
           "name": "InternalUuid",
@@ -7562,7 +7562,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule deletion status: 1 indicates deleted; 0 indicates not deleted",
           "example": "0",
           "member": "int64",
           "name": "Deleted",
@@ -7573,7 +7573,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The firewall instance ID where the rule takes effect",
           "example": "cfwew-d92f04f8",
           "member": "string",
           "name": "FwGroupId",
@@ -7584,7 +7584,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Firewall name",
           "example": "防火墙名称",
           "member": "string",
           "name": "FwGroupName",
@@ -7595,7 +7595,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "beta task details",
           "example": "[{\"TaskId\":\"9001\",\"TaskName\":\"autotest\",\"LastTime\":\"1999-01-01 00:00:01\"}]",
           "member": "BetaInfoByACL",
           "name": "BetaList",
@@ -7606,7 +7606,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Port Protocol Group ID",
           "example": "pp-1q2w3e4r",
           "member": "string",
           "name": "ParamTemplateId",
@@ -7617,7 +7617,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Port Protocol Group Name",
           "example": "常用参数模版",
           "member": "string",
           "name": "ParamTemplateName",
@@ -7628,7 +7628,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access destination name",
           "example": "目的Cvm",
           "member": "string",
           "name": "TargetName",
@@ -7639,7 +7639,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access source name",
           "example": "来源实例",
           "member": "string",
           "name": "SourceName",
@@ -7650,7 +7650,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Ip version, 0: IPv4, 1: IPv6, default is IPv4",
           "example": "0",
           "member": "int64",
           "name": "IpVersion",
@@ -7661,7 +7661,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the rule is invalid, where 0 indicates a valid rule and 1 indicates an invalid rule, used in output parameters.",
           "example": "0",
           "member": "int64",
           "name": "Invalid",

@@ -6914,7 +6914,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "0000-00-00T00:00:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -7181,7 +7181,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>",
           "example": "Professional",
           "member": "string",
           "name": "GenerationMode",
@@ -7253,7 +7253,7 @@
       "usage": "both"
     },
     "AigcImageTaskOutput": {
-      "document": "",
+      "document": "AIGC image generation task output.",
       "members": [
         {
           "disabled": false,
@@ -7303,7 +7303,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "2025-12-28T00:35:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -7418,7 +7418,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "2025-12-28T00:35:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -7700,7 +7700,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Generation mode. Available values: <li>Standard: Standard mode;</li> <li>Professional: High-quality mode;</li>",
           "example": "Professional",
           "member": "string",
           "name": "GenerationMode",
@@ -7844,7 +7844,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "2025-12-28T00:35:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -13843,7 +13843,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit template name, length limit: 64 characters.",
           "example": "TestTemplate",
           "member": "string",
           "name": "Name",
@@ -13852,7 +13852,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit template description, length limit: 256 characters.",
           "example": "test template",
           "member": "string",
           "name": "Comment",
@@ -14371,7 +14371,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Application type. Available values: <li>AllInOne: All-in-one;</li><li>Professional: Professional.</li>Default value: AllInOne.",
           "example": "AllInOne",
           "member": "string",
           "name": "Type",
@@ -20165,7 +20165,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP access limit configuration information.",
           "example": "无",
           "member": "IPFilterPolicy",
           "name": "IPFilterPolicy",
@@ -21518,7 +21518,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MPS video processing task information, valid only when EventType is ProcessMediaByMPSComplete.",
           "example": "无",
           "member": "ProcessMediaByMPS",
           "name": "ProcessMediaByMPSCompleteEvent",
@@ -23227,11 +23227,11 @@
       "usage": "both"
     },
     "IPFilterPolicy": {
-      "document": "",
+      "document": "IP access restriction rules, currently supports configuring IP blocklist and allowlist.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "IP access restriction status. Optional values:\n<li>Enabled: enable;</li>\n<li>Disabled: disable.</li>",
           "example": "Enabled",
           "member": "string",
           "name": "Status",
@@ -23242,7 +23242,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP access restriction type:\n<li>Black: blocklist-based verification. Only IP requests from the IPList will be blocked.</li>\n<li>White: allowlist-based verification. Only IP requests from the IPList will be allowed.</li>When Status is set to Enabled, FilterType must be assigned.",
           "example": "Black",
           "member": "string",
           "name": "FilterType",
@@ -23253,7 +23253,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP list, supporting IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or CIDR notation /N (IPV4: 1 ≤ N ≤ 32; IPV6: 1 ≤ N ≤ 128). A maximum of 200 IPs or CIDR blocks can be added. When Status is set to Enabled, IPList must be assigned.",
           "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "IPList",
@@ -23838,7 +23838,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Image transparency, value range: [0, 100]\n\n<li>0: Completely opaque</li>\n\n<li>100: Completely transparent</li>\n\nDefault value: 0.",
           "example": "0",
           "member": "int64",
           "name": "Transparency",
@@ -23897,7 +23897,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Image transparency, value range: [0, 100]\n\n<li>0: Completely opaque</li>\n\n<li>100: Completely transparent.</li>",
           "example": "0",
           "member": "int64",
           "name": "Transparency",
@@ -23954,7 +23954,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Image transparency, value range: [0, 100]\n\n<li>0: Completely opaque</li>\n\n<li>100: Completely transparent.</li>",
           "example": "0",
           "member": "int64",
           "name": "Transparency",
@@ -24021,11 +24021,11 @@
       "type": "object"
     },
     "ImportMediaKnowledgeTask": {
-      "document": "",
+      "document": "Media import knowledge base task",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Task ID.",
           "example": "260038383-ImportMediaKnowledge-d716b4aed5acd161bc80ec8a7fc339bat",
           "member": "string",
           "name": "TaskId",
@@ -24035,7 +24035,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Status. Valid values: <li>PROCESSING: Processing;</li><li>FINISH: Completed.</li>",
           "example": "FINISH",
           "member": "string",
           "name": "Status",
@@ -24045,7 +24045,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error code; 0 indicates success, other values indicate failure",
           "example": "70000",
           "member": "int64",
           "name": "ErrCode",
@@ -24055,7 +24055,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error message.",
           "example": "success",
           "member": "string",
           "name": "Message",
@@ -25509,11 +25509,11 @@
       "usage": "out"
     },
     "MediaCastEvent": {
-      "document": "",
+      "document": "Media relay event notification message.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Media relay ID.",
           "example": "cid_07de729068074300011c0efe",
           "member": "string",
           "name": "CastId",
@@ -25524,7 +25524,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Relay status. Valid values:\n<li>Working: Running;</li>\n<li>Scheduled: To be started after the scheduled time arrives;</li>\n<li>Stopped: Relay stopped;</li>\n<li>Idle: Idle.</li>",
           "example": "Working",
           "member": "string",
           "name": "Status",
@@ -26386,7 +26386,7 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewElem": {
-      "document": " ",
+      "document": "Mini Program Audio-Video Review Summary Metadata",
       "members": [
         {
           "disabled": false,
@@ -26422,7 +26422,7 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewInfo": {
-      "document": " ",
+      "document": "Mini Program Audio-Video Review Information",
       "members": [
         {
           "disabled": false,
@@ -26438,7 +26438,7 @@
       "usage": "out"
     },
     "MediaMiniProgramReviewInfoItem": {
-      "document": " ",
+      "document": "Mini Program Audio-Video Review Information Unit",
       "members": [
         {
           "disabled": false,
@@ -27986,7 +27986,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Copyright information.",
           "example": "None",
           "member": "string",
           "name": "CopyRightWatermarkText",
@@ -29885,7 +29885,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit template unique ID.",
           "example": "10",
           "member": "int64",
           "name": "Definition",
@@ -29903,7 +29903,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit template name, length limit: 64 characters.",
           "example": "MyModifyReviewTemplate",
           "member": "string",
           "name": "Name",
@@ -29912,7 +29912,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit template description, length limit: 256 characters.",
           "example": "my modify review template",
           "member": "string",
           "name": "Comment",
@@ -31504,7 +31504,7 @@
       "type": "object"
     },
     "PersistenceCompleteTask": {
-      "document": "",
+      "document": "Finalized editing task information.",
       "members": [
         {
           "disabled": false,
@@ -38236,7 +38236,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is never expire. format according to ISO 8601 standard. see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "0000-00-00T00:00:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -38481,7 +38481,7 @@
         },
         {
           "disabled": false,
-          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.comom/document/product/266/11732?from_cn_redirect=1#I).",
+          "document": "The expiry date of the output file. files will be deleted longer than this time. default is no expiration. format according to ISO 8601 standard. for details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
           "example": "2025-12-28T00:35:00Z",
           "member": "string",
           "name": "ExpireTime",
@@ -39250,7 +39250,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "This field is deprecated.",
           "example": "Rough",
           "member": "string",
           "name": "Precision",
@@ -39259,7 +39259,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output video type. Valid values are: <li>hls: outputs hls files.</li> Default value: hls.",
           "example": "hls",
           "member": "string",
           "name": "OutputMediaType",
@@ -39268,7 +39268,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved field, used for special purposes. Example value: \"\"",
           "example": "extinfo",
           "member": "string",
           "name": "ExtInfo",
@@ -40601,7 +40601,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Basic information of the media files generated after transcoding and pulling.",
           "example": "无",
           "member": "MediaBasicInfo",
           "name": "MediaBasicInfo",

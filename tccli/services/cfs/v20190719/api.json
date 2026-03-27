@@ -2387,7 +2387,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.",
+          "document": "Snapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.",
           "example": "snapcfs-1245abcd",
           "member": "string",
           "name": "SnapshotId",
@@ -2396,7 +2396,7 @@
         },
         {
           "disabled": false,
-          "document": "Snapshot ID of the file system snapshot that needs to be deleted. specify either the snapshot ID or the ID list, at least one is required.\nSnapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.comom/document/api/582/80206?from_cn_redirect=1) api.",
+          "document": "Snapshot ID of the file system snapshot that needs to be deleted. specify either the snapshot ID or the ID list, at least one is required.\nSnapshot ID, which can be obtained by querying through the [DescribeCfsSnapshots](https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1) api.",
           "example": "[\"snapcfs-xx\",\"snapcfs-xx1\"]",
           "member": "string",
           "name": "SnapshotIds",
@@ -3762,7 +3762,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.comom/document/api/582/38144?from_cn_redirect=1).",
+          "document": "Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",

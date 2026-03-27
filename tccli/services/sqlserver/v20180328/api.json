@@ -1806,11 +1806,11 @@
       "usage": "out"
     },
     "CheckItem": {
-      "document": "",
+      "document": "Instance Resizing Inspection Items",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Check item names: CK_CPU - Post-Resizing CPU Risk Check; CK_MASTER_STORAGE - During read-only replica resizing, verify that read-only replica storage space is not less than that of the primary instance; CK_MEMORY - Post-Resizing Memory Risk Check; CK_STORAGE - Post-Resizing Storage Space Risk Check; CK_UPGRATE - Resizing Migration Requirement Check;",
           "example": "CK_CPU",
           "member": "string",
           "name": "CheckName",
@@ -1820,7 +1820,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Check item return values: CK_CPU - Maximum CPU utilization (%) in the last 7 days; CK_MASTER_STORAGE - Disk space of the primary instance (GB); CK_MEMORY - Maximum memory usage (GB) in the last 7 days;\n\nCK_STORAGE - Maximum disk usage (GB) in the last 7 days; CK_UPGRATE - Whether the current resizing check requires migration: MIGRATE indicates migration resizing is required, LOCAL indicates local resizing;",
           "example": "0",
           "member": "string",
           "name": "CurrentValue",
@@ -1830,7 +1830,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Check item pass status: 0 - Not passed, resizing not allowed; 1 - Passed, resizing allowed",
           "example": "0",
           "member": "int64",
           "name": "Passed",
@@ -1840,7 +1840,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether this resizing item affects the instance: 0 - No impact; 1 - Impact exists",
           "example": "0",
           "member": "int64",
           "name": "IsAffect",
@@ -1850,7 +1850,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Required description when impact exists or the check is not passed",
           "example": "0",
           "member": "string",
           "name": "Msg",
@@ -1860,7 +1860,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Describe the corresponding code",
           "example": "0",
           "member": "int64",
           "name": "MsgCode",
@@ -2678,7 +2678,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "COS_URL",
           "example": "http://bucket/file.txt",
           "member": "string",
           "name": "FileURL",
@@ -4024,11 +4024,11 @@
       "usage": "out"
     },
     "CrossSummaryDetailRes": {
-      "document": "",
+      "document": "Cross-Region Backup Real-Time Statistics List Items",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Status",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -4038,7 +4038,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -4048,7 +4048,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID",
           "example": "mssql-xxx",
           "member": "string",
           "name": "InstanceId",
@@ -4058,7 +4058,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Name",
           "example": "name",
           "member": "string",
           "name": "Name",
@@ -4068,7 +4068,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Backup Status: enable - Enabled, disable - Disabled",
           "example": "enable",
           "member": "string",
           "name": "CrossBackupEnabled",
@@ -4078,7 +4078,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Backup Target Region",
           "example": "[\"ap-beijing\",\"ap-shanghai\"]",
           "member": "string",
           "name": "CrossRegions",
@@ -4088,7 +4088,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Latest Backup Start Time",
           "example": "2022-06-21 11:47:17",
           "member": "string",
           "name": "LastBackupStartTime",
@@ -4098,7 +4098,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Backup Retention Days",
           "example": "7",
           "member": "int64",
           "name": "CrossBackupSaveDays",
@@ -4108,7 +4108,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Data Backup Total Space",
           "example": "0",
           "member": "uint64",
           "name": "DataBackupSpace",
@@ -4118,7 +4118,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Data Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "DataBackupCount",
@@ -4128,7 +4128,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Log Backup Total Space",
           "example": "0",
           "member": "uint64",
           "name": "LogBackupSpace",
@@ -4138,7 +4138,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Log Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "LogBackupCount",
@@ -4148,7 +4148,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Backup Total Space",
           "example": "0",
           "member": "uint64",
           "name": "ActualUsedSpace",
@@ -4158,7 +4158,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cross-Region Backup Total Count",
           "example": "0",
           "member": "uint64",
           "name": "ActualUsedCount",
@@ -4873,7 +4873,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Multi-Node Instance Secondary AZ Information",
           "example": "无",
           "member": "SlaveZones",
           "name": "MultiSlaveZones",
@@ -4993,7 +4993,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name",
           "example": "test_db",
           "member": "string",
           "name": "DBName",
@@ -5013,11 +5013,11 @@
       "usage": "in"
     },
     "DataBasePrivilegeModifyInfo": {
-      "document": "",
+      "document": "Database Account Permission Modification Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name",
           "example": "db1",
           "member": "string",
           "name": "DataBaseName",
@@ -5026,7 +5026,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Permission Modification Information",
           "example": "[{\"UserName\": \"andy\",\"Privilege\": \"ReadOnly\",\"AccountType\": \"\tL0\"}]",
           "member": "AccountPrivilege",
           "name": "AccountPrivileges",
@@ -5037,11 +5037,11 @@
       "usage": "in"
     },
     "DatabaseTuple": {
-      "document": "",
+      "document": "This data structure represents two databases that have a publish-subscribe relationship.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Publish Database Name",
           "example": "db1",
           "member": "string",
           "name": "PublishDatabase",
@@ -5050,7 +5050,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Database Name",
           "example": "db2",
           "member": "string",
           "name": "SubscribeDatabase",
@@ -5061,11 +5061,11 @@
       "usage": "in"
     },
     "DatabaseTupleStatus": {
-      "document": "",
+      "document": "This data structure represents two databases with a publish-subscribe relationship, along with the status information of that relationship between them.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Publish Database Name",
           "example": "db1",
           "member": "string",
           "name": "PublishDatabase",
@@ -5075,7 +5075,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Database Name",
           "example": "db2",
           "member": "string",
           "name": "SubscribeDatabase",
@@ -5085,7 +5085,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Latest Synchronization Time",
           "example": "2024-12-23 00:24:26",
           "member": "string",
           "name": "LastSyncTime",
@@ -5095,7 +5095,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Publish/Subscribe Status Between Databases: running, success, fail, unknow",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -10577,7 +10577,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID",
           "example": "mssql-j8kv137v",
           "member": "string",
           "name": "InstanceId",
@@ -10586,7 +10586,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Target instance ID for restoration; if left blank, defaults to restoring to the original instance.",
           "example": "mssql-dj5i29c5n",
           "member": "string",
           "name": "TargetInstanceId",
@@ -11737,11 +11737,11 @@
       "usage": "out"
     },
     "InstanceTask": {
-      "document": "",
+      "document": "Instance Asynchronous Task",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Unique id",
           "example": "100374",
           "member": "int64",
           "name": "Id",
@@ -11751,7 +11751,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Job Type",
           "example": "62",
           "member": "int64",
           "name": "Type",
@@ -11761,7 +11761,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Job Status",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -11771,7 +11771,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Progress Percentage 0~100",
           "example": "50",
           "member": "int64",
           "name": "Progress",
@@ -11781,7 +11781,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Start Time",
           "example": "2024-08-15 14:25:20",
           "member": "string",
           "name": "StartTime",
@@ -11791,7 +11791,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "End Time",
           "example": "2024-08-15 14:26:22",
           "member": "string",
           "name": "EndTime",
@@ -11801,7 +11801,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error Code",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -11811,7 +11811,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Error Message Description",
           "example": "Asynchronous task failed",
           "member": "string",
           "name": "Message",
@@ -13630,11 +13630,11 @@
       "type": "object"
     },
     "ModifyDataBaseTuple": {
-      "document": "",
+      "document": "Database Subscription Publication Relationship Collection to be Modified",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Relationship to be Modified",
           "example": "无",
           "member": "DatabaseTuple",
           "name": "DatabaseTuple",
@@ -13644,7 +13644,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Modified subscription relationship. Takes effect when DeleteDataBasesTuple is false",
           "example": "无",
           "member": "DatabaseTuple",
           "name": "NewDatabaseTuple",
@@ -13654,7 +13654,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to delete the subscription relationship. When this option is true, NewDatabaseTuple is invalid",
           "example": "true",
           "member": "bool",
           "name": "DeleteDataBasesTuple",
@@ -14748,11 +14748,11 @@
       "usage": "out"
     },
     "Price": {
-      "document": "",
+      "document": "Reference price. This price covers CPU and memory specifications, excluding disk usage. The actual price is subject to the quotation API.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference price for yearly/monthly subscription, unit-cent",
           "example": "1",
           "member": "uint64",
           "name": "PrepaidPrice",
@@ -14762,7 +14762,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Price unit for yearly/monthly subscription, M-month",
           "example": "M",
           "member": "string",
           "name": "PrepaidPriceUnit",
@@ -14772,7 +14772,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pay-as-you-go price, unit-cent",
           "example": "1",
           "member": "uint64",
           "name": "PostpaidPrice",
@@ -14782,7 +14782,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pay-as-you-go price unit, H-hour",
           "example": "H",
           "member": "string",
           "name": "PostpaidPriceUnit",
@@ -14794,11 +14794,11 @@
       "usage": "out"
     },
     "PublishSubscribe": {
-      "document": "",
+      "document": "Pub/Sub Object",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Pub/Sub ID",
           "example": "172631",
           "member": "uint64",
           "name": "Id",
@@ -14808,7 +14808,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pub/Sub Name",
           "example": "sqlPublishSubscribe",
           "member": "string",
           "name": "Name",
@@ -14818,7 +14818,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Published Instance ID",
           "example": "mssql-2cwisu23",
           "member": "string",
           "name": "PublishInstanceId",
@@ -14828,7 +14828,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Published Instance Name",
           "example": "mssql-andy",
           "member": "string",
           "name": "PublishInstanceName",
@@ -14838,7 +14838,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Published Instance IP",
           "example": "172.1.1.1",
           "member": "string",
           "name": "PublishInstanceIp",
@@ -14848,7 +14848,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Instance ID",
           "example": "mssql-hlh6yka1",
           "member": "string",
           "name": "SubscribeInstanceId",
@@ -14858,7 +14858,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Instance Name",
           "example": "mssql-toto",
           "member": "string",
           "name": "SubscribeInstanceName",
@@ -14868,7 +14868,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subscription Instance IP",
           "example": "172.2.2.2",
           "member": "string",
           "name": "SubscribeInstanceIp",
@@ -14878,7 +14878,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Publication-Subscription Relationship Collection of Database",
           "example": "[{\"PublishDatabase\": \"db1\",\"SubscribeDatabase\": \"db2\",\"LastSyncTime\": \"2024-12-23 00:24:26\",\"Status\": \"\trunning\"}]",
           "member": "DatabaseTupleStatus",
           "name": "DatabaseTupleSet",
@@ -14947,11 +14947,11 @@
       "type": "object"
     },
     "ReadOnlyGroup": {
-      "document": "",
+      "document": "Read-Only Group Object",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group ID",
           "example": "mssqlrg-dj5i29c5n",
           "member": "string",
           "name": "ReadOnlyGroupId",
@@ -14961,7 +14961,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group Name",
           "example": "andy_ReadOnlyGroup",
           "member": "string",
           "name": "ReadOnlyGroupName",
@@ -14971,7 +14971,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region ID of the Read-Only Group, same as the Primary Instance",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "RegionId",
@@ -14981,7 +14981,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group's AZ ID, same as the Primary Instance",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "ZoneId",
@@ -14991,7 +14991,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable the timeout culling feature; 0 - disabled, 1 - enabled",
           "example": "1",
           "member": "int64",
           "name": "IsOfflineDelay",
@@ -15001,7 +15001,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timeout threshold used after enabling the timeout culling feature",
           "example": "100",
           "member": "int64",
           "name": "ReadOnlyMaxDelayTime",
@@ -15011,7 +15011,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Minimum number of read-only replicas retained in the read-only group after enabling the timeout culling feature",
           "example": "1",
           "member": "int64",
           "name": "MinReadOnlyInGroup",
@@ -15021,7 +15021,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group vip",
           "example": "127.0.0.1",
           "member": "string",
           "name": "Vip",
@@ -15031,7 +15031,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group vport",
           "example": "1433",
           "member": "int64",
           "name": "Vport",
@@ -15041,7 +15041,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group VPC ID",
           "example": "vpc-kw88teud",
           "member": "string",
           "name": "VpcId",
@@ -15051,7 +15051,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group VPC Subnet ID",
           "example": "subnet-8z5n8tcg",
           "member": "string",
           "name": "SubnetId",
@@ -15061,7 +15061,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Group Status: 1-Running, 5-Creating",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -15071,7 +15071,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Primary instance ID, in the form of mssql-sgeshe3th",
           "example": "mssql-sgeshe3th",
           "member": "string",
           "name": "MasterInstanceId",
@@ -15081,7 +15081,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Instance Replica Set",
           "example": "无",
           "member": "ReadOnlyInstance",
           "name": "ReadOnlyInstanceSet",
@@ -15113,11 +15113,11 @@
       "usage": "out"
     },
     "ReadOnlyInstance": {
-      "document": "",
+      "document": "Read-Only Replica Instance",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica ID, in the format of: mssqlro-3l3fgqn7",
           "example": "mssql-dj5i29c5n",
           "member": "string",
           "name": "InstanceId",
@@ -15127,7 +15127,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Name",
           "example": "andy",
           "member": "string",
           "name": "Name",
@@ -15137,7 +15137,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Unique UID",
           "example": "gamedb.gz000.cdb.db",
           "member": "string",
           "name": "Uid",
@@ -15147,7 +15147,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Project ID",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -15157,7 +15157,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Status: 1: Creating, 2: Running, 3: Delayed Removal, 4: Isolated, 5: Recycling, 6: Recycled, 7: Task Executing, 8: Offline, 9: Instance Scaling, 10: Instance Migrating, 12: Restarting",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -15167,7 +15167,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Creation Time",
           "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "CreateTime",
@@ -15177,7 +15177,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Update Time",
           "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "UpdateTime",
@@ -15187,7 +15187,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Memory Size (Unit: GB)",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -15197,7 +15197,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Storage Space Size (Unit: GB)",
           "example": "100",
           "member": "int64",
           "name": "Storage",
@@ -15207,7 +15207,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica cpu Core Count",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -15217,7 +15217,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Codenames",
           "example": "2008R2",
           "member": "string",
           "name": "Version",
@@ -15227,7 +15227,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host Machine Code",
           "example": "TS85",
           "member": "string",
           "name": "Type",
@@ -15237,7 +15237,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Mode, 2-Standalone",
           "example": "2",
           "member": "int64",
           "name": "Model",
@@ -15247,7 +15247,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Billing Mode, 1-yearly/monthly subscription, 0-pay-as-you-go",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -15257,7 +15257,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Weight",
           "example": "1",
           "member": "int64",
           "name": "Weight",
@@ -15267,7 +15267,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Latency Time (Unit: seconds)",
           "example": "1",
           "member": "string",
           "name": "DelayTime",
@@ -15277,7 +15277,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Synchronization status between the read-only replica and the primary instance.\n\nInit: Initializing\n\nDeployReadOnlyInPorgress: Deploying replica in progress\n\nDeployReadOnlySuccess: Replica deployment succeeded\n\nDeployReadOnlyFail: Replica deployment failed\n\nDeployMasterDBInPorgress: Adding replica database to primary node in progress\n\nDeployMasterDBSuccess: Successfully added replica database to primary node\n\nDeployMasterDBFail: Failed to add replica database to primary node\n\nDeployReadOnlyDBInPorgress: Replica restoration and database joining started\n\nDeployReadOnlyDBSuccess: Replica restoration and database joining succeeded\n\nDeployReadOnlyDBFail: Replica restoration and database joining failed\n\nSyncDelay: Synchronization delayed\n\nSyncFail: Synchronization failed\n\nSyncExcluded: Removed from read-only group\n\nSyncNormal: Normal",
           "example": "Init",
           "member": "string",
           "name": "SynStatus",
@@ -15287,7 +15287,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Databases not synchronized between the read-only replica and the primary instance",
           "example": "db1",
           "member": "string",
           "name": "DatabaseDifference",
@@ -15297,7 +15297,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Accounts not synchronized between the read-only replica and the primary instance",
           "example": "ac1",
           "member": "string",
           "name": "AccountDifference",
@@ -15307,7 +15307,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Billing Start Time",
           "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -15317,7 +15317,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Billing End Time",
           "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "EndTime",
@@ -15327,7 +15327,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Isolation Time",
           "example": "2020-04-09 00:00:00",
           "member": "string",
           "name": "IsolateTime",
@@ -15337,7 +15337,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica Region Location",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "RegionId",
@@ -15347,7 +15347,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Replica AZ Location",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "ZoneId",
@@ -15359,11 +15359,11 @@
       "usage": "out"
     },
     "ReadOnlyInstanceWeightPair": {
-      "document": "",
+      "document": "Read-Only Instance to Weight Mapping",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Instance ID, in the format of: mssqlro-3l3fgqn7",
           "example": "mssqlro-3l3fgqn7",
           "member": "string",
           "name": "ReadOnlyInstanceId",
@@ -15372,7 +15372,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Read-Only Instance Weight, in the range of 0-100",
           "example": "10",
           "member": "int64",
           "name": "ReadOnlyWeight",
@@ -15820,11 +15820,11 @@
       "type": "object"
     },
     "RestoreTask": {
-      "document": "",
+      "document": "Rollback Task Record",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Target Instance ID",
           "example": "mssql-8932uijww",
           "member": "string",
           "name": "TargetInstanceId",
@@ -15834,7 +15834,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Target Instance Name",
           "example": "mssql-890oiioew",
           "member": "string",
           "name": "TargetInstanceName",
@@ -15844,7 +15844,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Target Instance Status. Valid values:\n1: Creating\n2: Running\n3: Restricted Running (primary/secondary switching)\n4: Isolated\n5: Recycling\n6: Recycled\n7: Task Executing (instance backup, rollback, etc.)\n8: Offline\n9: Instance Scaling\n10: Instance Migrating\n11: Read-Only\n12: Restarting",
           "example": "2",
           "member": "int64",
           "name": "TargetInstanceStatus",
@@ -15854,7 +15854,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Target Instance Region",
           "example": "ap-shanghai",
           "member": "string",
           "name": "TargetRegion",
@@ -15864,7 +15864,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Record ID",
           "example": "2090292",
           "member": "int64",
           "name": "RestoreId",
@@ -15874,7 +15874,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Restoration target instance type: 0 - current instance, 1 - existing instance, 2 - new instance",
           "example": "1",
           "member": "int64",
           "name": "TargetType",
@@ -15884,7 +15884,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback method: 0 - by point-in-time, 1 - by backup set",
           "example": "1",
           "member": "int64",
           "name": "RestoreType",
@@ -15894,7 +15894,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Target Time",
           "example": "2023-01-01 12:00:00",
           "member": "string",
           "name": "RestoreTime",
@@ -15904,7 +15904,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Start Time",
           "example": "2023-01-01 12:00:00",
           "member": "string",
           "name": "StartTime",
@@ -15914,7 +15914,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "End Time",
           "example": "2023-01-02 12:00:00",
           "member": "string",
           "name": "EndTime",
@@ -15924,7 +15924,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback status: 0 - Initialization, 1 - Running, 2 - Success, 3 - Failure",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -15934,7 +15934,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Asynchronous Task ID",
           "example": "0",
           "member": "int64",
           "name": "FlowId",
@@ -16064,11 +16064,11 @@
       "type": "object"
     },
     "SSLConfig": {
-      "document": "",
+      "document": "SSL Encryption Configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "SSL Encryption Status\nenable - Enabled\ndisable - Disabled\nenable_doing - Enabling\ndisable_doing - Disabling\nrenew_doing - Updating\nwait_doing - Waiting to be executed during maintenance window",
           "example": "disable",
           "member": "string",
           "name": "Encryption",
@@ -16078,7 +16078,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SSL Certificates Validity Period, Time Format YYYY-MM-DD HH:MM:SS",
           "example": "2023-10-01 12:00:00",
           "member": "string",
           "name": "SSLValidityPeriod",
@@ -16088,7 +16088,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "SSL Certificates Validity: 0 - Invalid, 1 - Valid",
           "example": "0",
           "member": "uint64",
           "name": "SSLValidity",
@@ -16100,11 +16100,11 @@
       "usage": "out"
     },
     "SecurityGroup": {
-      "document": "",
+      "document": "Security Group",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Project ID",
           "example": "172632",
           "member": "int64",
           "name": "ProjectId",
@@ -16114,7 +16114,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Creation Time, Time format: yyyy-mm-dd hh:mm:ss",
           "example": "2024-12-23 00:23:13",
           "member": "string",
           "name": "CreateTime",
@@ -16124,7 +16124,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Inbound Rules",
           "example": "[{\"Action\": \"ACCEPT\",\"CidrIp\": \"0.0.0.0/0\",\"Dir\": \"INPUT\",\"IpProtocol\": \"ALL\",\"PortRange\": \"ALL\"}]",
           "member": "SecurityGroupPolicy",
           "name": "InboundSet",
@@ -16134,7 +16134,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Outbound Rules",
           "example": "[{\"Action\": \"ACCEPT\",\"CidrIp\": \"0.0.0.0/0\",\"Dir\": \"OUTPUT\",\"IpProtocol\": \"ALL\",\"PortRange\": \"ALL\"}]",
           "member": "SecurityGroupPolicy",
           "name": "OutboundSet",
@@ -16144,7 +16144,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Security Group ID",
           "example": "sg-igw86yth",
           "member": "string",
           "name": "SecurityGroupId",
@@ -16154,7 +16154,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Security Group Name",
           "example": "default",
           "member": "string",
           "name": "SecurityGroupName",
@@ -16164,7 +16164,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Security Group Remarks",
           "example": "System created security group",
           "member": "string",
           "name": "SecurityGroupRemark",
@@ -16176,11 +16176,11 @@
       "usage": "out"
     },
     "SecurityGroupPolicy": {
-      "document": "",
+      "document": "Security Group Policy",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Policy, ACCEPT or DROP",
           "example": "ACCEPT",
           "member": "string",
           "name": "Action",
@@ -16190,7 +16190,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Destination IP or IP range, for example 172.16.0.0/12",
           "example": "172.16.0.0/12",
           "member": "string",
           "name": "CidrIp",
@@ -16200,7 +16200,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "port or port range",
           "example": "1433",
           "member": "string",
           "name": "PortRange",
@@ -16210,7 +16210,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Network protocol supports UDP, TCP, etc.",
           "example": "TCP",
           "member": "string",
           "name": "IpProtocol",
@@ -16220,7 +16220,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rule direction, OUTPUT - Outbound Rules, INPUT - Inbound Rules",
           "example": " INPUT",
           "member": "string",
           "name": "Dir",
@@ -16596,11 +16596,11 @@
       "usage": "out"
     },
     "SpecSellStatus": {
-      "document": "",
+      "document": "Offering Configuration Status",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Sellable Specification Unique ID",
           "example": "1",
           "member": "string",
           "name": "Id",
@@ -16610,7 +16610,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Type ID",
           "example": "23",
           "member": "uint64",
           "name": "SpecId",
@@ -16620,7 +16620,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Supported payment modes for this specification: POST - only supports pay-as-you-go, PRE - only supports yearly/monthly subscription, ALL - supports all.",
           "example": "ALL",
           "member": "string",
           "name": "PayModeStatus",
@@ -16630,7 +16630,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Product type. Types of instances for purchase: HA - Local Disk High Availability (including dual-node high availability, alwaysOn cluster), RO - Local Disk Read-Only Replica, SI - Cloud Disk Edition Single Node, BI - Business Intelligence Service, cvmHA - Cloud Disk Edition High Availability, cvmRO - Cloud Disk Edition Read-Only Replica, MultiHA - Multi-node, cvmMultiHA - Cloud Disk Multi-node.",
           "example": "HA",
           "member": "string",
           "name": "InstanceType",
@@ -16640,7 +16640,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether this specification supports cross-AZ deployment: MultiZones - only supports cross-AZ, SameZones - only supports same-AZ, ALL - supports all.",
           "example": "SameZones",
           "member": "string",
           "name": "MultiZonesStatus",
@@ -16650,7 +16650,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Architecture Type, SINGLE - single node, DOUBLE - dual node, TRIPLE - three-node, MULTI - multi-node\nExample value: SINGLE",
           "example": "SINGLE",
           "member": "string",
           "name": "Architecture",
@@ -16660,7 +16660,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Type identifier, EXCLUSIVE - Dedicated, SHARED - Shared",
           "example": "EXCLUSIVE",
           "member": "string",
           "name": "Style",
@@ -16670,7 +16670,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Version Information",
           "example": "2008R2",
           "member": "string",
           "name": "Version",
@@ -16680,7 +16680,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sellable Status Set Per AZ",
           "example": "无",
           "member": "ZoneStatus",
           "name": "ZoneStatusSet",
@@ -16690,7 +16690,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference price for specifications. The actual price is subject to the quotation API.",
           "example": "无",
           "member": "Price",
           "name": "Price",
@@ -16700,7 +16700,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specification Sale Status: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -16849,11 +16849,11 @@
       "type": "object"
     },
     "StepDetail": {
-      "document": "",
+      "document": "Progress Steps Details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Detailed Steps Return Information",
           "example": "检查数据传输服务器是否能连通源数据库",
           "member": "string",
           "name": "Msg",
@@ -16863,7 +16863,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Current Step Status, 0 Success, -2 Not Started",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -16873,7 +16873,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Step Name",
           "example": "源库连接性检查",
           "member": "string",
           "name": "Name",
@@ -16885,11 +16885,11 @@
       "usage": "out"
     },
     "SummaryDetailRes": {
-      "document": "",
+      "document": "Backup Overview Real-Time Statistics",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Region Identifier",
           "example": "1",
           "member": "uint64",
           "name": "RegionId",
@@ -16899,7 +16899,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Status. Valid values:\n1: Creating\n2: Running\n3: Restricted Running (primary/secondary switching)\n4: Isolated\n5: Recycling\n6: Recycled\n7: Task Executing (performing instance backup, rollback, etc.)\n8: Offline\n9: Instance Scaling\n10: Instance Migrating",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -16909,7 +16909,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID",
           "example": "mssql-7vfv3rk3",
           "member": "string",
           "name": "InstanceId",
@@ -16919,7 +16919,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Name",
           "example": "andy",
           "member": "string",
           "name": "Name",
@@ -16929,7 +16929,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup Space",
           "example": "0",
           "member": "uint64",
           "name": "ActualUsedSpace",
@@ -16939,7 +16939,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Data Backup Space",
           "example": "0",
           "member": "uint64",
           "name": "DataBackupSpace",
@@ -16949,7 +16949,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Data Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "DataBackupCount",
@@ -16959,7 +16959,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log Backup Space",
           "example": "0",
           "member": "uint64",
           "name": "LogBackupSpace",
@@ -16969,7 +16969,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "LogBackupCount",
@@ -16979,7 +16979,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Automatic Backup Space",
           "example": "0",
           "member": "uint64",
           "name": "AutoBackupSpace",
@@ -16989,7 +16989,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Automatic Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "AutoBackupCount",
@@ -16999,7 +16999,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Manual Backup Space",
           "example": "0",
           "member": "uint64",
           "name": "ManualBackupSpace",
@@ -17009,7 +17009,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Manual Backup Total File Count",
           "example": "0",
           "member": "uint64",
           "name": "ManualBackupCount",
@@ -17019,7 +17019,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Region Code",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -17077,11 +17077,11 @@
       "type": "object"
     },
     "SwitchLog": {
-      "document": "",
+      "document": "Primary/Secondary Switchover Log",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Switchover Event ID",
           "example": "f39bc24b76d1c5d3ce60f0dcb9e0bd79",
           "member": "string",
           "name": "EventId",
@@ -17091,7 +17091,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Switchover Mode 0-System Automatic Switchover, 1-Manual Switchover",
           "example": "0",
           "member": "uint64",
           "name": "SwitchType",
@@ -17101,7 +17101,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Switchover Start Time",
           "example": "2023-01-01 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -17111,7 +17111,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Switchover End Time",
           "example": "2023-01-01 00:00:00",
           "member": "string",
           "name": "EndTime",
@@ -17121,7 +17121,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Machine failure causes automatic switchover.",
           "example": "AUTO",
           "member": "string",
           "name": "Reason",
@@ -17379,11 +17379,11 @@
       "usage": "out"
     },
     "ZoneStatus": {
-      "document": "",
+      "document": "Specification Sellable Status in a Specific Region's AZ",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Specification AZ",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -17393,7 +17393,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specification Region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -17403,7 +17403,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specification Sale Status in the AZ: 1 - Normal, 2 - Sale disabled but upgradable, 3 - Sale completely disabled.",
           "example": "1",
           "member": "uint64",
           "name": "Status",

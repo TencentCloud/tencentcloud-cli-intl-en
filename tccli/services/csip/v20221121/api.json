@@ -1560,7 +1560,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc-id",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -4012,7 +4012,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc id",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -4889,11 +4889,11 @@
       "usage": "out"
     },
     "CloudCountDesc": {
-      "document": "",
+      "document": "Multi-cloud account statistics",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "0 represents Tencent Cloud\n1 represents AWS",
           "example": "0",
           "member": "int64",
           "name": "CloudType",
@@ -4903,7 +4903,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Account quantity",
           "example": "10",
           "member": "int64",
           "name": "CloudCount",
@@ -4913,7 +4913,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The cloud account type description",
           "example": "AWS",
           "member": "string",
           "name": "CloudDesc",
@@ -5830,7 +5830,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc information",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -12244,7 +12244,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -13019,11 +13019,11 @@
       "usage": "out"
     },
     "OrganizationInfo": {
-      "document": "",
+      "document": "Group account details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account name",
           "example": "名称",
           "member": "string",
           "name": "NickName",
@@ -13033,7 +13033,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Department node name, department of account",
           "example": "部门名",
           "member": "string",
           "name": "NodeName",
@@ -13043,7 +13043,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member/Admin/DelegatedAdmin/EntityAdmin; Member/Admin/DelegatedAdmin/EntityAdmin",
           "example": "Member",
           "member": "string",
           "name": "Role",
@@ -13053,7 +13053,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account id",
           "example": "mem-12c2bg363",
           "member": "string",
           "name": "MemberId",
@@ -13063,7 +13063,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "account joining method,create/invite",
           "example": "create",
           "member": "string",
           "name": "JoinType",
@@ -13073,7 +13073,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Group name",
           "example": "腾讯科技",
           "member": "string",
           "name": "GroupName",
@@ -13083,7 +13083,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Admin account name",
           "example": "安全管理员",
           "member": "string",
           "name": "AdminName",
@@ -13093,7 +13093,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Admin Uin",
           "example": "10251**2146",
           "member": "string",
           "name": "AdminUin",
@@ -13103,7 +13103,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Creation Time",
           "example": "2022-01-01 12:12:12",
           "member": "string",
           "name": "CreateTime",
@@ -13113,7 +13113,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of departments",
           "example": "10",
           "member": "int64",
           "name": "NodeCount",
@@ -13123,7 +13123,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of members",
           "example": "10",
           "member": "int64",
           "name": "MemberCount",
@@ -13133,7 +13133,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sub-account count",
           "example": "10",
           "member": "int64",
           "name": "SubAccountCount",
@@ -13143,7 +13143,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Abnormal sub-account quantity",
           "example": "2",
           "member": "int64",
           "name": "AbnormalSubUserCount",
@@ -13153,7 +13153,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Organization Relationship Policy Permissions",
           "example": "[\"read\"]",
           "member": "string",
           "name": "GroupPermission",
@@ -13163,7 +13163,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Membership Policy Permissions",
           "example": "[     \"查看账单\",     \"查看余额\",     \"资金划拨\",     \"合并出账\",     \"开票\" ]",
           "member": "string",
           "name": "MemberPermission",
@@ -13173,7 +13173,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Organization Billing Mode; 0/Self-paid, 1/Proxy-paid",
           "example": "1",
           "member": "int64",
           "name": "GroupPayMode",
@@ -13183,7 +13183,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Personal Billing Mode; 0/Self-paid, 1/Proxy-paid",
           "example": "1",
           "member": "int64",
           "name": "MemberPayMode",
@@ -13193,7 +13193,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "CFWProtect",
@@ -13203,7 +13203,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "WAFProtect",
@@ -13213,7 +13213,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "CWPProtect",
@@ -13223,7 +13223,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Array of all departments",
           "example": "[     \"Root\",     \"开发组\",     \"测试组\" ]",
           "member": "string",
           "name": "Departments",
@@ -13233,7 +13233,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member Creation Time",
           "example": "2022-01-01 12:12:12",
           "member": "string",
           "name": "MemberCreateTime",
@@ -13253,7 +13253,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "1 indicates the quota consumer",
           "example": "1",
           "member": "int64",
           "name": "QuotaConsumer",
@@ -13263,7 +13263,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of enabled Admin/Delegated Admin accounts",
           "example": "1",
           "member": "int64",
           "name": "EnableAdminCount",
@@ -13273,7 +13273,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Multi-cloud account statistics in array format. Refer to the CloudCountDesc description for details.",
           "example": "[     {         \"CloudType\": 0,         \"CloudCount\": 14,         \"CloudDesc\": \"腾讯云\"     } ]",
           "member": "CloudCountDesc",
           "name": "CloudCountDesc",
@@ -13283,7 +13283,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total Number of Admin/Delegated Admin Accounts",
           "example": "2",
           "member": "int64",
           "name": "AdminCount",
@@ -13295,11 +13295,11 @@
       "usage": "out"
     },
     "OrganizationUserInfo": {
-      "document": "",
+      "document": "Group Account Member Details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account Uin",
           "example": "100000001",
           "member": "string",
           "name": "Uin",
@@ -13309,7 +13309,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account name",
           "example": "名称",
           "member": "string",
           "name": "NickName",
@@ -13319,7 +13319,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Department node name, department of account",
           "example": "部门名",
           "member": "string",
           "name": "NodeName",
@@ -13329,7 +13329,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Asset Quantity",
           "example": "10",
           "member": "int64",
           "name": "AssetCount",
@@ -13339,7 +13339,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Risk Quantity",
           "example": "10",
           "member": "int64",
           "name": "RiskCount",
@@ -13349,7 +13349,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Attack Quantity",
           "example": "10",
           "member": "int64",
           "name": "AttackCount",
@@ -13359,7 +13359,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member/Admin/;Member or Administrator",
           "example": "Member",
           "member": "string",
           "name": "Role",
@@ -13369,7 +13369,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account id",
           "example": "mem-au8xh56",
           "member": "string",
           "name": "MemberId",
@@ -13379,7 +13379,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Member account Appid",
           "example": "125000000",
           "member": "string",
           "name": "AppId",
@@ -13389,7 +13389,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "account joining method,create/invite",
           "example": "create",
           "member": "string",
           "name": "JoinType",
@@ -13399,7 +13399,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "CFWProtect",
@@ -13409,7 +13409,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "WAFProtect",
@@ -13419,7 +13419,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If empty, it is not enabled; otherwise, different strings correspond to different versions, with 'common' being general and not version-specific.",
           "example": "common",
           "member": "string",
           "name": "CWPProtect",
@@ -13429,7 +13429,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "1 enable, 0 not enabled",
           "example": "1",
           "member": "int64",
           "name": "Enable",
@@ -13439,7 +13439,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "\"Free\"      \n   //Free edition\n   \"Advanced\"   //Advanced edition \"Enterprise\" //Enterprise edition \"Ultimate\"  \n   //Ultimate edition",
           "example": "Advanced",
           "member": "string",
           "name": "CSIPProtect",
@@ -13449,7 +13449,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "1 indicates the quota consumer",
           "example": "1",
           "member": "int64",
           "name": "QuotaConsumer",
@@ -13459,7 +13459,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Account type: 0 for Tencent Cloud account, 1 for AWS account",
           "example": "0",
           "member": "int64",
           "name": "CloudType",
@@ -13469,7 +13469,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "0 indicates the default value; 1 indicates 10 minutes; 2 indicates 1 hour; 3 indicates 24 hours",
           "example": "0",
           "member": "int64",
           "name": "SyncFrequency",
@@ -13479,7 +13479,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the multi-cloud account has expired",
           "example": "false",
           "member": "bool",
           "name": "IsExpired",
@@ -13489,7 +13489,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Multi-cloud account permissions list",
           "example": "[\"ReadHost\",\"ReadNetwork\"]\"]",
           "member": "string",
           "name": "PermissionList",
@@ -13509,7 +13509,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "0 Tencent Cloud group account\n1 Tencent Cloud access account\n2 non-Tencent Cloud",
           "example": "0",
           "member": "int64",
           "name": "TcMemberType",
@@ -13519,7 +13519,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sub-account count",
           "example": "5",
           "member": "int64",
           "name": "SubUserCount",
@@ -13529,7 +13529,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Joining method details",
           "example": "密钥托管 子账号:100001",
           "member": "string",
           "name": "JoinTypeInfo",
@@ -14501,7 +14501,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Exception status codes",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -15269,11 +15269,11 @@
       "type": "object"
     },
     "SubUserInfo": {
-      "document": "",
+      "document": "Sub-account details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Primary key ID, which has no business meaning and serves solely as a unique identifier",
           "example": "601606",
           "member": "int64",
           "name": "ID",
@@ -15283,7 +15283,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "sub-account Appid",
           "example": "1325**26086",
           "member": "string",
           "name": "AppID",
@@ -15293,7 +15293,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "sub-account UIn",
           "example": "100*3**012345",
           "member": "string",
           "name": "Uin",
@@ -15303,7 +15303,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sub-account name",
           "example": "张三",
           "member": "string",
           "name": "NickName",
@@ -15313,7 +15313,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "master account Appid",
           "example": "132586**086",
           "member": "string",
           "name": "OwnerAppID",
@@ -15323,7 +15323,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "master account Uin",
           "example": "10033**12345",
           "member": "string",
           "name": "OwnerUin",
@@ -15333,7 +15333,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "master account name",
           "example": "张三的老板",
           "member": "string",
           "name": "OwnerNickName",
@@ -15343,7 +15343,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "master account's memberId information",
           "example": "mem-abx0gds1",
           "member": "string",
           "name": "OwnerMemberID",
@@ -15353,7 +15353,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Account type: 0 for Tencent Cloud account, 1 for AWS account",
           "example": "0",
           "member": "int64",
           "name": "CloudType",
@@ -15363,7 +15363,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Accessible services count",
           "example": "20",
           "member": "int64",
           "name": "ServiceCount",
@@ -15373,7 +15373,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Accessible API count",
           "example": "100",
           "member": "int64",
           "name": "InterfaceCount",
@@ -15383,7 +15383,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Accessible resources count",
           "example": "2122",
           "member": "int64",
           "name": "AssetCount",
@@ -15393,7 +15393,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Access/Behavior Logs Count",
           "example": "10259",
           "member": "int64",
           "name": "LogCount",
@@ -15403,7 +15403,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Permissions configuration risk",
           "example": "5",
           "member": "int64",
           "name": "ConfigRiskCount",
@@ -15413,7 +15413,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Dangerous behavior alarm",
           "example": "3",
           "member": "int64",
           "name": "ActionRiskCount",
@@ -15423,7 +15423,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whether to enable CloudAudit logs",
           "example": "false",
           "member": "bool",
           "name": "IsAccessCloudAudit",
@@ -15433,7 +15433,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whether risk configuration security assessment",
           "example": "false",
           "member": "bool",
           "name": "IsAccessCheck",
@@ -15443,7 +15443,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whether to configure user behavior management policies",
           "example": "false",
           "member": "bool",
           "name": "IsAccessUeba",

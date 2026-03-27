@@ -638,11 +638,11 @@
   },
   "objects": {
     "AICallConfig": {
-      "document": "",
+      "document": "Smart Conversation",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable voice interaction feature",
           "example": "false",
           "member": "bool",
           "name": "EnableVoiceInteract",
@@ -653,7 +653,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable voice call",
           "example": "false",
           "member": "bool",
           "name": "EnableVoiceCall",
@@ -664,7 +664,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable digital human",
           "example": "false",
           "member": "bool",
           "name": "EnableDigitalHuman",
@@ -675,7 +675,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timbre Configuration",
           "example": " ",
           "member": "VoiceConfig",
           "name": "Voice",
@@ -686,7 +686,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital Human Configuration",
           "example": " ",
           "member": "DigitalHumanConfig",
           "name": "DigitalHuman",
@@ -699,11 +699,11 @@
       "usage": "both"
     },
     "AgentDebugInfo": {
-      "document": "",
+      "document": "Agent Debugging Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Input Information for Tools and Large Models, json",
           "example": "无",
           "member": "string",
           "name": "Input",
@@ -714,7 +714,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output Information for Tools and Large Models, json",
           "example": "无",
           "member": "string",
           "name": "Output",
@@ -5375,7 +5375,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Application type. Optional values: knowledge_qa(knowledge QA)/plugin_parsing_qa(plugin)/shared_knowledge(knowledge base)/evaluate_test(evaluation). If not filled, query all types.",
           "example": "knowledge_qa",
           "member": "string",
           "name": "AppType",
@@ -5384,7 +5384,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter Sub-scenarios",
           "example": "[\"KnowledgeQA\"]",
           "member": "string",
           "name": "SubScenes",
@@ -5522,7 +5522,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Application type (knowledge_qa application management, shared_knowlege shared knowledge base)",
           "example": "knowledge_qa",
           "member": "string",
           "name": "AppType",
@@ -5531,7 +5531,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Space ID, used to limit the query scope. When not filled, data from all spaces are queried.",
           "example": "space1",
           "member": "string",
           "name": "SpaceId",
@@ -5728,11 +5728,11 @@
       "type": "object"
     },
     "DigitalHumanConfig": {
-      "document": "",
+      "document": "Digital Human Configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital Human Asset key",
           "example": "qPfqrKkXGihmCqbJM2mZgkZGvKG1dFdvsLplgctolz4=",
           "member": "string",
           "name": "AssetKey",
@@ -5743,7 +5743,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital Human Name",
           "example": "呦呦",
           "member": "string",
           "name": "Name",
@@ -5754,7 +5754,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Image",
           "example": "https://xxxx.png",
           "member": "string",
           "name": "Avatar",
@@ -5767,11 +5767,11 @@
       "usage": "both"
     },
     "DocFilterFlag": {
-      "document": "",
+      "document": "Document list filter flag",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Flag",
           "example": "is_created_qa",
           "member": "string",
           "name": "Flag",
@@ -5780,7 +5780,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "ID Value",
           "example": "true",
           "member": "bool",
           "name": "Value",
@@ -5897,11 +5897,11 @@
       "usage": "out"
     },
     "DuplicateFileHandle": {
-      "document": "",
+      "document": "Duplicate document handling method",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Duplicate document identification method, 1: By document content, i.e., using the cos_hash field to determine whether duplicates exist",
           "example": "1",
           "member": "uint64",
           "name": "CheckType",
@@ -5910,7 +5910,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Duplicate document handling method, 1: Return an error, 2: Skip and return the business ID of the duplicate document",
           "example": "1",
           "member": "uint64",
           "name": "HandleType",
@@ -6102,11 +6102,11 @@
       "type": "object"
     },
     "ExtraInfo": {
-      "document": "",
+      "document": "Extended Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "ECharts Information",
           "example": "无",
           "member": "string",
           "name": "EChartsInfo",
@@ -7387,11 +7387,11 @@
       "type": "object"
     },
     "IntentAchievement": {
-      "document": "",
+      "document": "Intent Implementation Approach",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Intent Implementation Approach, qa: Q&A response, doc: document-based response, workflow: workflow-based response, llm: LLM response",
           "example": "qa",
           "member": "string",
           "name": "Name",
@@ -7402,7 +7402,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Intent Implementation Approach Description",
           "example": "问答回复",
           "member": "string",
           "name": "Desc",
@@ -13430,7 +13430,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether it can be downloaded. This value is meaningful only when IsRefer is true and ReferUrlType is 0.",
           "example": "false",
           "member": "bool",
           "name": "IsDownload",
@@ -13439,7 +13439,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Duplicate document handling method, processed by sequentially matching the first condition that is met",
           "example": "无",
           "member": "DuplicateFileHandle",
           "name": "DuplicateFileHandles",
@@ -13448,7 +13448,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Custom Segmentation Rules\n\nThe request parameter is a **JSON Object**. For specific format, refer to the interface sample value. It contains the following main fields:\n\n| Field Name          | Type     | Description                                  |\n|--------------------|----------|---------------------------------------------|\n| `xlsx_splitter`    | Object   | **Excel (xlsx) file segmentation policy configuration**, valid only when processing Excel files |\n| `common_splitter`  | Object   | **General file (e.g., txt, pdf) segmentation policy configuration**, segmented by page or tag |\n| `table_style`      | String   | Output format of table content, e.g., HTML or Markdown |\n\n---\n\n## `xlsx_splitter` (Excel Segmentation Policy)\n\nUsed to configure **segmentation methods for spreadsheet files**.\n**Type: Object**\n\n```json\n\"xlsx_splitter\": {\n  \"header_interval\": [1, 2],\n  \"content_start\": 10,\n  \"split_row\": 2\n}\n```\n\n### Field Description:\n\n| Field Name         | Type          | Description                                                                \n   |\n|--------------------|---------------|-----------------------------------------------------------------------------|\n| `header_interval` | Array\\<Number\\> | Row range of headers, formatted as `[start_row, end_row]`, **row numbers start from 1**. E.g., `[1, 2]` indicates rows 1-2 are headers. |\n| `content_start`   | Number        | **Starting row number of table content (1-based)**.                        \n   |\n| `split_row`       | Number        | **Number of rows per segment**.                                            \n   |\n\n---\n## `common_splitter` (General File Segmentation Policy)\n\nUsed to configure **segmentation methods for non-Excel files (e.g., TXT, PDF, DOCX)**, supporting two strategies: **by-page segmentation** or **by-tag segmentation**.\n\n**Type: Object**\n\n```json\n\"common_splitter\": {\n  \"splitter\": \"page\",\n  \"page_splitter\": {\n    \"chunk_length\": 1000,\n    \"chunk_overlap_length\": 100\n  }\n}\n```\n\n### Field Description:\n\n| Field Name                     | Type          | Description                                                                \n   |\n|--------------------------------|---------------|-----------------------------------------------------------------------------|\n| `splitter`                     | String        | Segmentation strategy type. Valid values: `\"page\"` (by-page) or `\"tag\"` (by-tag). |\n| `page_splitter`                | Object        | **By-page segmentation configuration**.                                     |\n| `page_splitter.chunk_length`   | Number        | **Maximum chunk length**.                                                  \n   |\n| `page_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  \n   |\n| `tag_splitter`                 | Object        | **Custom segmentation configuration**.                                      |\n| `tag_splitter.tag`             | Array\\<String\\> | **Segmentation tags**.                                                     \n   |\n| `tag_splitter.chunk_length`    | Number        | **Maximum chunk length**.                                                  \n   |\n| `tag_splitter.chunk_overlap_length` | Number | **Chunk overlap length**.                                                  \n   |\n\n🔹 **Additional Notes:**\n\n- Valid values for `splitter`:\n    - `\"page\"`: Only use by-page segmentation logic. Only `page_splitter` fields are relevant.\n    - `\"tag\"`: Only use by-tag segmentation logic (e.g., using delimiters like semicolons or line breaks). Only `tag_splitter` fields are relevant.\n---\n\n## `table_style` (Table Output Style)\n\nSpecifies **the format in which tabular content (e.g., tables extracted from Excel or CSV) is returned**, facilitating frontend display or subsequent processing.\n\n**Type: String**\n\n```json\n\"table_style\": \"md\"\n```\n\n### Field Description:\n\n| Field Name     | Type   | Description                                                                \n   |\n|----------------|--------|-----------------------------------------------------------------------------|\n| `table_style`  | String | Output format of table content. Valid values:<br>• `\"html\"`: Returns as HTML tables, suitable for web display.<br>• `\"md\"`: Returns in Markdown table syntax, suitable for documentation or Markdown rendering environments. |",
           "example": "{\"split_config_new\":{\"table_style\":\"md\",\"rm_spec_symbol\":1,\"xlsx_splitter\":{\"header_interval\":[1,1],\"content_start\":2,\"split_row\":1},\"common_splitter\":{\"splitter\":\"tag\",\"tag_splitter\":{\"tag\":[\"\\n\"],\"chunk_length\":1000,\"chunk_overlap_length\":100}}}}",
           "member": "string",
           "name": "SplitRule",
@@ -13457,7 +13457,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Document update frequency, default value is 0 (no updates)",
           "example": "无",
           "member": "UpdatePeriodInfo",
           "name": "UpdatePeriodInfo",
@@ -14214,11 +14214,11 @@
       "usage": "out"
     },
     "UpdatePeriodInfo": {
-      "document": "",
+      "document": "Update Policy",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Document update frequency type: 0: No update, -H: Hourly granularity. Currently only supports 24 (1 day), 72 (3 days), 168 (7 days). Only valid for source=2 Tencent document type.",
           "example": "0",
           "member": "uint64",
           "name": "UpdatePeriodH",
@@ -14490,11 +14490,11 @@
       "type": "object"
     },
     "VoiceConfig": {
-      "document": "",
+      "document": "Timbre Parameters",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Public Cloud Timbre ID",
           "example": "501001",
           "member": "uint64",
           "name": "VoiceType",
@@ -14505,7 +14505,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timbre Key",
           "example": "tts_timbre_yuehua",
           "member": "string",
           "name": "TimbreKey",
@@ -14516,7 +14516,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timbre Name",
           "example": "月华",
           "member": "string",
           "name": "VoiceName",
@@ -14612,11 +14612,11 @@
       "usage": "both"
     },
     "WorkflowInfo": {
-      "document": "",
+      "document": "Workflow Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Workflow ID",
           "example": "无",
           "member": "string",
           "name": "WorkflowId",
@@ -14627,7 +14627,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Workflow Name",
           "example": "挂号工作流",
           "member": "string",
           "name": "WorkflowName",
@@ -14638,7 +14638,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Workflow Run ID",
           "example": "无",
           "member": "string",
           "name": "WorkflowRunId",
@@ -14649,7 +14649,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Tab",
           "example": "[\"选项A\",\"选项B\"]",
           "member": "string",
           "name": "OptionCards",
@@ -14660,7 +14660,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Multi-bubble output results",
           "example": "[\"是的\",\"请稍等，正在为您查询\"]",
           "member": "string",
           "name": "Outputs",
@@ -14671,7 +14671,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Workflow Publish Time, unix timestamp",
           "example": "1746800121",
           "member": "string",
           "name": "WorkflowReleaseTime",

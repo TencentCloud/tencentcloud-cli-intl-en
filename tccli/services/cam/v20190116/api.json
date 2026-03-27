@@ -5163,7 +5163,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Recent Login IP",
           "example": "127.0.0.1",
           "member": "string",
           "name": "LastLoginIp",
@@ -5172,7 +5172,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Recent login time; if the returned value is empty, it means the console has never been logged in to.",
           "example": "2021-03-15 20:00:00",
           "member": "string",
           "name": "LastLoginTime",

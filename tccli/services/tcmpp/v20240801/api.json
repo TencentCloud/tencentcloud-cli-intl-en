@@ -9946,7 +9946,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Domain Name ID",
           "example": "无",
           "member": "int64",
           "name": "DomainId",
@@ -9955,7 +9955,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Platform ID",
           "example": "无",
           "member": "string",
           "name": "PlatformId",

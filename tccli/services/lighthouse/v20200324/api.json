@@ -2249,7 +2249,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.comom/document/product/1207/47575?from_cn_redirect=1).",
+          "document": "List of bundle ids. the maximum is 100 per request for batch packages. you can get the BundleId in the return value from the API [DescribeBundles](https://www.tencentcloud.com/document/product/1207/47575?from_cn_redirect=1).",
           "example": "[\"bundle_ntp_small1_500”]",
           "member": "string",
           "name": "BundleIds",
@@ -2285,7 +2285,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ list. default to all availability zones.\n<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.comom/document/product/1207/57513?from_cn_redirect=1)</li>.",
+          "document": "AZ list. default to all availability zones.\n<li>AZs can be queried through the API [DescribeZones](https://www.tencentcloud.com/document/product/1207/57513?from_cn_redirect=1)</li>.",
           "example": "[\"ap-guangzhou-1\",\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
@@ -5911,7 +5911,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Key ID list. You can specify up to 5 keys simultaneously. After associating keys, you can access the instance using the corresponding private key. Keys and passwords cannot be specified simultaneously. Additionally, the WINDOWS operating system does not support key specification. The key ID list can be obtained via the [DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540) API.",
           "example": "[\"lhkp-7f7lh1fv\"]",
           "member": "string",
           "name": "KeyIds",

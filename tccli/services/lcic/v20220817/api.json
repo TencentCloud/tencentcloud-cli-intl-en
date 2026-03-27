@@ -1643,7 +1643,7 @@
       "type": "object"
     },
     "CustomMsgContent": {
-      "document": "",
+      "document": "Custom Message",
       "members": [
         {
           "disabled": false,
@@ -5443,7 +5443,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable Focus Mode. 0: View all participants (default) 1: View only teacher and TA",
           "example": "0",
           "member": "int64",
           "name": "InteractionMode",
@@ -5453,7 +5453,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Landscape/Portrait. 0: Landscape broadcast (default); 1: Portrait broadcast. Currently supported only for video-only type on mobile devices.",
           "example": "0",
           "member": "int64",
           "name": "VideoOrientation",
@@ -5463,7 +5463,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable post-class evaluation. 0: Disable (default) 1: Enable",
           "example": "0",
           "member": "int64",
           "name": "IsGradingRequiredPostClass",
@@ -5483,7 +5483,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Overtime duration: Unit in minutes. 0: No limitation (default); -1: Overtime prohibited; Values >0: Overtime duration in minutes, maximum 120 minutes",
           "example": "0",
           "member": "int64",
           "name": "EndDelayTime",
@@ -5493,7 +5493,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Live Streaming Type: 0: Regular (default) 1: Simulated Live",
           "example": "0",
           "member": "uint64",
           "name": "LiveType",
@@ -5503,7 +5503,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Simulated Live Playback Link",
           "example": "https://class.qcloudclass.com?classId=123456",
           "member": "string",
           "name": "RecordLiveUrl",
@@ -5513,7 +5513,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to auto-start class: 0: Do not auto-start (default) 1: Auto-start. Effective when live_type=1",
           "example": "0",
           "member": "uint64",
           "name": "EnableAutoStart",
@@ -5523,7 +5523,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Background image for recording files, supports png, jpg, jpeg, bmp formats. Alpha channel is currently not supported.",
           "example": "https://picture.com?picid=123456",
           "member": "string",
           "name": "RecordBackground",
@@ -5533,7 +5533,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recording custom scenes. This parameter is valid only when recordlayout=9. The data content consists of user-defined scene parameters in json key-value pair format, where the value is of string type.",
           "example": "{\"scene\":\"test\",\"lng\":\"zh\",\"type\":\"h5\",\"subjectId\":\"57\",\"customToken\":\"sajdlfjasdglweqioiu\"}",
           "member": "string",
           "name": "RecordScene",
@@ -5543,7 +5543,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recording custom language. This parameter is valid only when recordlayout=9.",
           "example": "en",
           "member": "string",
           "name": "RecordLang",

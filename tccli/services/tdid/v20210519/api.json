@@ -355,7 +355,7 @@
           "type": "int"
         },
         {
-          "document": "",
+          "document": "tdid",
           "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
           "member": "string",
           "name": "Did",
@@ -1440,7 +1440,7 @@
           "type": "string"
         },
         {
-          "document": " ",
+          "document": "Deployment mechanism: 1 for enabled, 0 for disabled",
           "example": "0",
           "member": "uint64",
           "name": "Relegation",

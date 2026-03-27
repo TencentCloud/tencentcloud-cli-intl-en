@@ -3603,7 +3603,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specify the time zone for query time, default UTC+08:00",
           "example": "UTC+08:00",
           "member": "string",
           "name": "TimeZone",
@@ -4247,7 +4247,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "whether to query node IPV6 information.",
           "example": "true/false",
           "member": "bool",
           "name": "ShowIpv6",
@@ -11257,7 +11257,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Detection Cycle, Unit: Minutes, 60 or 1440",
           "example": "60",
           "member": "uint64",
           "name": "Cycle",

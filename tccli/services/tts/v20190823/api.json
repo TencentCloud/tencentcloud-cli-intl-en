@@ -148,7 +148,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "One-sentence version VRS Voice ID, must be filled in when using the one-sentence version VRS voice.",
           "example": "WCHN-766926cXXXXXXXX5e76537fc",
           "member": "string",
           "name": "FastVoiceType",
@@ -202,7 +202,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Controls the emotion of synthesized audio, applicable only to multi-emotion voices. Values: neutral, sad, happy, angry, fear, news, story, radio, poetry, call, sajiao (coquettish), disgusted, amaze (surprised), peaceful, exciting, aojiao (haughty), jieshuo (narration)\nSample value: neutral",
           "example": "neutral",
           "member": "string",
           "name": "EmotionCategory",
@@ -211,7 +211,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Controls the emotion intensity of synthesized audio, with a value range of [50,200], defaults to 100; takes effect only when EmotionCategory is not empty;",
           "example": "100",
           "member": "int64",
           "name": "EmotionIntensity",

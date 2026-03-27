@@ -3724,7 +3724,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Interactive whiteboard room ID",
           "example": "12345",
           "member": "uint64",
           "name": "RoomID",
@@ -4260,7 +4260,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recording mode\n\n\n\nREALTIME_MODE - Real-time recording mode (default)\n\nVIDEO_GENERATION_MODE - Video generation mode (internal testing, requires email application to activate)",
           "example": "REALTIME_MODE",
           "member": "string",
           "name": "RecordMode",
@@ -4269,7 +4269,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Chat group ID. This field is only applicable to `video generation mode`.\n\n\n\nIn `video generation mode`, non-whiteboard signaling messages in the whiteboard group are recorded by default. If `ChatGroupId` is specified, chat messages from the designated group ID will be recorded.",
           "example": "12345",
           "member": "string",
           "name": "ChatGroupId",

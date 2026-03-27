@@ -169,7 +169,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "This field indicates the input image auditing type, with values including: IMAGE (Content Security) and IMAGE_AIGC (AI-generated content recognition). The default value is IMAGE.",
           "example": "IMAGE_AIGC",
           "member": "string",
           "name": "Type",

@@ -4537,7 +4537,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "k8s version number",
           "example": "1.22.5",
           "member": "string",
           "name": "K8SVersion",
@@ -9576,7 +9576,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "k8s version number",
           "example": "1.20.6",
           "member": "string",
           "name": "K8SVersion",
@@ -12467,7 +12467,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Status information",
           "example": "enabled",
           "member": "string",
           "name": "AutoscalingGroupStatus",

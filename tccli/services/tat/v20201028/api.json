@@ -281,7 +281,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Execution activity ID.\n\nCall the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api to query execution.",
+          "document": "Execution activity ID.\n\nCall the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api to query execution.",
           "example": "inv-xxxxxxxx",
           "member": "string",
           "name": "InvocationId",
@@ -752,7 +752,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote command ID.\n\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "document": "Remote command ID.\n\nCall the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-k4ypdij0",
           "member": "string",
           "name": "CommandId",
@@ -761,7 +761,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger associated instance ID. list cap 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.",
+          "document": "Trigger associated instance ID. list cap 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -779,7 +779,7 @@
         },
         {
           "disabled": false,
-          "document": "Command custom parameter. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.",
+          "document": "Command custom parameter. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
           "name": "Parameters",
@@ -956,7 +956,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-7efujjs6",
           "member": "string",
           "name": "CommandId",
@@ -983,7 +983,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "document": "Command ID to be deleted. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "[\"cmd-0v4tysy3\",\"cmd-0v4tysy4\"]",
           "member": "string",
           "name": "CommandIds",
@@ -1010,7 +1010,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Pending deletion executor ID.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
+          "document": "Pending deletion executor ID.\n\nCall the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -1037,7 +1037,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
+          "document": "Registration code ID list. limits the input registration code ID quantity to more than 0 and less than 100.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
           "example": "[\"d0b7xxxx-a6xx-40x9-898x-44c9f508axxx\"]",
           "member": "string",
           "name": "RegisterCodeIds",
@@ -1064,7 +1064,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
+          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
           "example": "[\"rins-8d5cxxxx\"]",
           "member": "string",
           "name": "InstanceId",
@@ -1174,7 +1174,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria\n\n- command-id - String - required: no - (filter condition) filter by the command id.\n- command-name - String - required: no - (filter condition) filter by the command name.\n-command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.\n-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.comom/document/api/1340/109968?from_cn_redirect=1) api.\n-created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.\n- tag-key - String - required: no - (filter condition) filter by the tag key.\n- tag-value - String - required: no - (filter condition) filter by the tag value.\n- tag:tag-key - String - required: no - (filter condition) filter by the tag-key - value pair. replace tag-key with a specific tag key. for usage, see example 4.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `CommandIds` and `Filters` parameters cannot be specified at the same time.",
+          "document": "Filter criteria\n\n- command-id - String - required: no - (filter condition) filter by the command id.\n- command-name - String - required: no - (filter condition) filter by the command name.\n-command-type - String - required: no - (filtering conditions) filters by command type. valid values: SHELL, POWERSHELL, BAT.\n-scene-id - String - required: no - (filter condition) filter by scenario id. obtain scenario id through the [DescribeScenes (query scenario)](https://www.tencentcloud.com/document/api/1340/109968?from_cn_redirect=1) api.\n-created-by - String - required: no - (filter condition) filter by command creator, value is TAT or USER. TAT represents public command, USER represents USER created command.\n- tag-key - String - required: no - (filter condition) filter by the tag key.\n- tag-value - String - required: no - (filter condition) filter by the tag value.\n- tag:tag-key - String - required: no - (filter condition) filter by the tag-key - value pair. replace tag-key with a specific tag key. for usage, see example 4.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `CommandIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"command-id\", \"Values\": [\"cmd-nrncl292\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -1248,7 +1248,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions.<br>.\n\n-invocation-task-id - String - required: no - (filter condition) filter by executing task id.\n- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.comom/document/api/1340/52679?from_cn_redirect=1) api.\n-instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.\n-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1).\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.",
+          "document": "Filter conditions.<br>.\n\n-invocation-task-id - String - required: no - (filter condition) filter by executing task id.\n- invocation-id - String - required: no - (filter condition) filter by the execution activity id. you can obtain it through the [DescribeInvocations](https://www.tencentcloud.com/document/api/1340/52679?from_cn_redirect=1) api.\n-instance-id - String - required: no - (filtering conditions) filter by instance id. you can get the instance id through the query instance interface of corresponding cloud services. currently supported instance types: CVM, Lighthouse, and managed instances of TAT.\n-command-id - String - required: no - (filter criteria) filter by command id. obtain through the api [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1).\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvocationTaskIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"instance-id\", \"Values\": [\"ins-zcewfho0\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -1396,7 +1396,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Executor ID list. the list has a cap of 100.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
+          "document": "Executor ID list. the list has a cap of 100.\n\nCall the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "[\"ivk-b7s3qa5l\"]",
           "member": "string",
           "name": "InvokerIds",
@@ -1470,7 +1470,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria:.\n\n- invoker-id - String - required: no - (filter condition) filter by executor id.\n-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\n- invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.",
+          "document": "Filter criteria:.\n\n- invoker-id - String - required: no - (filter condition) filter by executor id.\n-command-id - String - required: no - (filter condition) filters commands by id. you can obtain the id through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.\n- invoker-type - String - required: no - (filter condition) filter by the executor type. currently only support SCHEDULE.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InvokerIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"command-id\", \"Values\": [\"cmd-nrncl292\"] } ]",
           "member": "Filter",
           "name": "Filters",
@@ -1683,7 +1683,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter list. the maximum number of `Filters` is 10 per request, and the maximum number of `Filter.Values` is 5. parameters must not be specified simultaneously for `InstanceIds` and `Filters`.\n\n\n- instance-name\n\nFilter by [managed instance name].\nType: String.\nRequired: No\n\n- instance-id\n\nFilter by [managed instance ID].\nType: String.\nRequired: No\n\n- register-status\n\nFilter by [managed instance status]. valid values: Online | Offline.\nType: String.\nRequired: No\n\n- local-ip\n\nFilter by [managed instance nic IP].\nType: String.\nRequired: No\n\n- register-code-id\n\nFilter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.\nType: String.\nRequired: No\n\n- sys-name\n\nFilter by [operating system type]. valid values: Linux | Windows.\nType: String.\nRequired: No\n\n- tag-key\n\nFilter by [tag key].\nType: String.\nRequired: No\n\n- tag-value\n\nFilter by [tag value].\nType: String.\nRequired: No\n\n- tag:tag-key\n\nFilter by [tag key-value pair]. replace tag-key with a specific Tag key.\nType: String.\nRequired: No\n\nFor example, the Filter is {\"Name\": \"tag:key1\", \"Values\": [\"v1\", \"v2\"] }, which queries all resources belonging to tag key1:v1 or key1:v2.\n\n",
+          "document": "Filter list. the maximum number of `Filters` is 10 per request, and the maximum number of `Filter.Values` is 5. parameters must not be specified simultaneously for `InstanceIds` and `Filters`.\n\n\n- instance-name\n\nFilter by [managed instance name].\nType: String.\nRequired: No\n\n- instance-id\n\nFilter by [managed instance ID].\nType: String.\nRequired: No\n\n- register-status\n\nFilter by [managed instance status]. valid values: Online | Offline.\nType: String.\nRequired: No\n\n- local-ip\n\nFilter by [managed instance nic IP].\nType: String.\nRequired: No\n\n- register-code-id\n\nFilter by [managed instance registration code ID]. call the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.\nType: String.\nRequired: No\n\n- sys-name\n\nFilter by [operating system type]. valid values: Linux | Windows.\nType: String.\nRequired: No\n\n- tag-key\n\nFilter by [tag key].\nType: String.\nRequired: No\n\n- tag-value\n\nFilter by [tag value].\nType: String.\nRequired: No\n\n- tag:tag-key\n\nFilter by [tag key-value pair]. replace tag-key with a specific Tag key.\nType: String.\nRequired: No\n\nFor example, the Filter is {\"Name\": \"tag:key1\", \"Values\": [\"v1\", \"v2\"] }, which queries all resources belonging to tag key1:v1 or key1:v2.\n\n",
           "example": "[{\"name\":\"register-code-id\",\"value\":\"67c6df82-fa3e-48fb-9c17-07e3e1e9c2c3\"}]",
           "member": "Filter",
           "name": "Filters",
@@ -1766,7 +1766,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.comom/document/API/213/15688?from_cn_redirect=1).",
+          "document": "Number of returned results, defaults to 20 with a maximum value of 100. for further introduction about `Limit`, see relevant sections in the API [overview](https://www.tencentcloud.com/document/API/213/15688?from_cn_redirect=1).",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -1822,7 +1822,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the executor to terminate.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
+          "document": "ID of the executor to terminate.\n\nCall the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -1849,7 +1849,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Registration code ID.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.comom/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
+          "document": "Registration code ID.\n\nCall the [DescribeRegisterCodes](https://www.tencentcloud.com/document/api/1340/96925?from_cn_redirect=1) api to query registration codes.",
           "example": "[\"d0b7xxxx-a6xx-40x9-898x-44c9f508axxx\"]",
           "member": "string",
           "name": "RegisterCodeIds",
@@ -1876,7 +1876,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Executor ID to be enabled.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
+          "document": "Executor ID to be enabled.\n\nCall the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
           "name": "InvokerId",
@@ -1899,7 +1899,7 @@
       "type": "object"
     },
     "Filter": {
-      "document": "Describes the key-value pair filter, which is used for conditional filtering queries. for example, filter by ID, name, and status.\n- if there are multiple `Filter`s, the logical relationship between them is `AND`.\n- if there are multiple Values in the same Filter, the relationship between Values under the same Filter is logical OR.\n> \nTake the `Filters` of the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` \"print working directory\" and the `command-type` \"POWERSHELL\" or \"BAT\", it can be implemented as follows:.\n```\nFilters.0.Name=command-name\n&Filters.0.Values.0=Print working directory.\n\n&Filters.1.Name=command-type\n&Filters.1.Values.0=POWERSHELL\n&Filters.1.Values.1=BAT\n```",
+      "document": "Describes the key-value pair filter, which is used for conditional filtering queries. for example, filter by ID, name, and status.\n- if there are multiple `Filter`s, the logical relationship between them is `AND`.\n- if there are multiple Values in the same Filter, the relationship between Values under the same Filter is logical OR.\n> \nTake the `Filters` of the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api as an example. if we need to query commands with the `command-name` \"print working directory\" and the `command-type` \"POWERSHELL\" or \"BAT\", it can be implemented as follows:.\n```\nFilters.0.Name=command-name\n&Filters.0.Values.0=Print working directory.\n\n&Filters.1.Name=command-type\n&Filters.1.Values.0=POWERSHELL\n&Filters.1.Values.1=BAT\n```",
       "members": [
         {
           "disabled": false,
@@ -2364,7 +2364,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "document": "Pending trigger command ID. call the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-ffxdx79i",
           "member": "string",
           "name": "CommandId",
@@ -2382,7 +2382,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameter of Command. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\nIf the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
+          "document": "Custom parameter of Command. field type is json encoded string. for example: {\"varA\": \"222\"}.\nThe key is the custom parameter name, and the value is the default. both kv are string-type.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.\nIf the parameter value is not provided, the DefaultParameters or DefaultParameterConfs of Command will be used to replace it.\nCustom parameters can be up to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
@@ -2636,7 +2636,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Command ID. call the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands</a> api to query command details.</p>.",
+          "document": "<p>Command ID. call the <a href=\"https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands</a> api to query command details.</p>.",
           "example": "cmd-7efujjs6",
           "member": "string",
           "name": "CommandId",
@@ -2699,7 +2699,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {\"varA\": \"222\"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.",
+          "document": "<p>The default value of custom parameters when the custom parameter feature is enabled. the field type is a json-encoded string, for example: {\"varA\": \"222\"}.<br>parameters must not be specified simultaneously for <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>a comprehensive modification is applied, meaning all new default values must be provided when modifying.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings of the command through the <a href=\"https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>the key is the custom parameter name, and the value is the default value of this parameter. both key and value are string-type.<br>there is an upper limit of 20 custom parameters.<br>custom parameter names must meet the following requirements: the upper limit of character quantity is 64, and the optional range is [a-zA-Z0-9-_].</p>.",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "DefaultParameters",
@@ -2708,7 +2708,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href=\"https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.",
+          "document": "<p>Custom parameter array. if no parameter value is provided when invoking the command, the default value here will be used to replace it.<br>parameters do not support specifying both <code>DefaultParameters</code> and <code>DefaultParameterConfs</code>.<br>this parameter can be modified only when EnableParameter of the command is true. obtain the EnableParameter settings through the <a href=\"https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1\">DescribeCommands (query command details)</a> api.<br>up to 20 custom parameters are allowed.</p>.",
           "example": "无",
           "member": "DefaultParameterConf",
           "name": "DefaultParameterConfs",
@@ -2762,7 +2762,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Executor ID to be modified.\n\nCall the [DescribeInvokers](https://www.tencentcloud.comom/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
+          "document": "Executor ID to be modified.\n\nCall the [DescribeInvokers](https://www.tencentcloud.com/document/api/1340/61759?from_cn_redirect=1) api to query execution.",
           "example": "ivk-n0t6rxtv",
           "member": "string",
           "name": "InvokerId",
@@ -2789,7 +2789,7 @@
         },
         {
           "disabled": false,
-          "document": "Command ID to be modified.\n\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
+          "document": "Command ID to be modified.\n\nCall the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.",
           "example": "cmd-m7uma92n",
           "member": "string",
           "name": "CommandId",
@@ -2807,7 +2807,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameters to be modified. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.",
+          "document": "Custom parameters to be modified. field type is JSON encode string.\n\nThis parameter can be set only when EnableParameter of the command specified by CommandId is true. obtain the EnableParameter settings through the [DescribeCommands (query command details)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
           "name": "Parameters",
@@ -2816,7 +2816,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instance ids to be modified. list length limit 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.comom/document/api/1340/52682?from_cn_redirect=1) api.",
+          "document": "List of instance ids to be modified. list length limit 100.\n\nYou can get the instance ID through the query instance interface of corresponding cloud services. currently supports instance types: CVM, Lighthouse, and TAT managed instances.\n\nThe instance needs to have the TAT client installed, and the client must be in Online status. you can query client status via the [DescribeAutomationAgentStatus](https://www.tencentcloud.com/document/api/1340/52682?from_cn_redirect=1) api.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -2852,7 +2852,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.comom/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
+          "document": "Managed instance ID.\n\nCall the [DescribeRegisterInstances](https://www.tencentcloud.com/document/api/1340/96924?from_cn_redirect=1) api to query managed instances.",
           "example": "rins-8dz6cwxx",
           "member": "string",
           "name": "InstanceId",
@@ -2888,7 +2888,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The preview uses custom parameters. field type is json encoded string, for example: {\"varA\": \"222\"}.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api.\nIf DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.\n\nkey specifies the custom parameter name, and value specifies the parameter. both kv are string-type.\nCustom parameters are limited to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].\nIf the previewed CommandId has DefaultParameters set, this parameter can be empty.",
+          "document": "The preview uses custom parameters. field type is json encoded string, for example: {\"varA\": \"222\"}.\nThis parameter can be set only when the EnableParameter of the command is true. you can obtain the EnableParameter settings through the [DescribeCommands (detailed command information)](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api.\nIf DefaultParameters or DefaultParameterConfs has set, it will overlay with Parameters and prioritize the value of Parameters.\n\nkey specifies the custom parameter name, and value specifies the parameter. both kv are string-type.\nCustom parameters are limited to 20.\nThe custom parameter name must meet the following standard: the number of characters has a cap of 64, and the optional range is [a-zA-Z0-9-_].\nIf the previewed CommandId has DefaultParameters set, this parameter can be empty.",
           "example": "{\"varA\": \"222\"}",
           "member": "string",
           "name": "Parameters",
@@ -2897,7 +2897,7 @@
         },
         {
           "disabled": false,
-          "document": "Perform the replace preview command.\nCall the [DescribeCommands](https://www.tencentcloud.comom/document/api/1340/52681?from_cn_redirect=1) api to query command details.\nCommandId and Content, you must provide one and can only provide one.",
+          "document": "Perform the replace preview command.\nCall the [DescribeCommands](https://www.tencentcloud.com/document/api/1340/52681?from_cn_redirect=1) api to query command details.\nCommandId and Content, you must provide one and can only provide one.",
           "example": "cmd-abcdefgh",
           "member": "string",
           "name": "CommandId",

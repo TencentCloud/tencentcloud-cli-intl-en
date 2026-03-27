@@ -8437,7 +8437,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IP List",
           "example": "[]",
           "member": "IPDetail",
           "name": "IPList",

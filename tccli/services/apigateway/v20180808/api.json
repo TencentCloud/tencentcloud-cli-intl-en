@@ -1137,11 +1137,11 @@
       "usage": "out"
     },
     "ApiEnvironmentStrategyStatus": {
-      "document": "",
+      "document": "API Binding Policy List",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The quantity of rate limiting policies bound to APIs.",
           "example": "",
           "member": "int64",
           "name": "TotalCount",
@@ -1151,7 +1151,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "API Binding Rate Limiting Policy List.",
           "example": "",
           "member": "ApiEnvironmentStrategy",
           "name": "ApiEnvironmentStrategySet",
@@ -3276,7 +3276,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Tag",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -8607,11 +8607,11 @@
       "usage": "both"
     },
     "IPStrategiesStatus": {
-      "document": "",
+      "document": "Policy List",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of policies.",
           "example": "",
           "member": "int64",
           "name": "TotalCount",
@@ -8621,7 +8621,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Policy List.",
           "example": "",
           "member": "IPStrategy",
           "name": "StrategySet",

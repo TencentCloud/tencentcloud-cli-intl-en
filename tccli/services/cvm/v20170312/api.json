@@ -885,7 +885,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "MinIO type: whether to use Tencent Cloud's minios or the customer's own minios.",
           "example": "public",
           "member": "string",
           "name": "MiniOsType",
@@ -896,7 +896,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Server architecture and boot mode. Value: x86_legacy, arm_uefi.",
           "example": "x86_legacy",
           "member": "string",
           "name": "BootType",
@@ -907,7 +907,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The boot file used by PXE. Default: pxelinux.0.",
           "example": "pxelinux.0",
           "member": "string",
           "name": "BootFile",
@@ -918,7 +918,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "tftp server ip address.",
           "example": "169.254.68.10",
           "member": "string",
           "name": "NextServerAddress",
@@ -1242,7 +1242,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Additional parameters for deployment network, used to specify minios type, bios boot mode, etc.",
           "example": "无",
           "member": "ChcDeployExtraConfig",
           "name": "ChcDeployExtraConfig",
@@ -1296,7 +1296,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "dhcp option parameters required for deployment",
           "example": "无",
           "member": "ChcDeployExtraConfig",
           "name": "ChcDeployExtraConfig",
@@ -1448,7 +1448,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The affinity of the placement group. Instances in the placement group are distributed according to this affinity. The affinity value range is: 1-10, and defaults to 1.",
           "example": "3",
           "member": "int64",
           "name": "Affinity",
@@ -1960,7 +1960,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)",
           "example": "false",
           "member": "bool",
           "name": "EnableJumboFrame",
@@ -2276,7 +2276,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)",
           "example": "false",
           "member": "bool",
           "name": "EnableJumboFrame",
@@ -4176,7 +4176,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "placement group affinity",
           "example": "1",
           "member": "int64",
           "name": "Affinity",
@@ -4277,7 +4277,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The shutdown mode of the instance. Valid values: <br><li>SOFT_FIRST: Indicates a forced shutdown after a graceful shutdown fails</li><br><li>HARD: Direct forced shutdown</li><br><li>SOFT: Soft shutdown only</li><br>Default value: SOFT.",
           "example": "HARD",
           "member": "string",
           "name": "StopType",
@@ -5421,7 +5421,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "User data provided for the instance, which must be base64-encoded. The maximum supported data size is 16KB. For detailed instructions on obtaining this parameter, see [Windows](https://cloud.tencent.com/document/product/213/17526) and [Linux](https://cloud.tencent.com/document/product/213/17525) documentation on executing commands during startup.",
           "example": "TXlVc2VyRGF0YQo",
           "member": "string",
           "name": "UserData",
@@ -5812,7 +5812,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance launch template.",
           "example": "无",
           "member": "LaunchTemplate",
           "name": "LaunchTemplate",
@@ -6619,7 +6619,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The number of physical GPU cards mapped to the instance model, unit: card. For vGPU configurations, the value is less than 1; for passthrough configurations, the value is greater than or equal to 1. vGPU utilizes slicing virtualization technology to partition physical GPU cards, allowing a single GPU card to be allocated to multiple instances after virtualization. Passthrough configurations directly mount GPU devices to instances.",
           "example": "1.0",
           "member": "float",
           "name": "GpuCount",
@@ -6710,7 +6710,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.\n<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>.\nIf needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.\n\nThis feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.",
+          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.\n<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>.\nIf needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.\n\nThis feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",

@@ -206,11 +206,11 @@
       "usage": "out"
     },
     "SentimentAnalysis": {
-      "document": "",
+      "document": "Sentiment analysis result",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Sentiment Tag",
           "example": "Positive",
           "member": "string",
           "name": "Label",
@@ -220,7 +220,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Tag score, ranging from 0 to 100",
           "example": "50",
           "member": "int64",
           "name": "Score",
@@ -230,7 +230,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sentiment analysis details",
           "example": "无",
           "member": "SentimentDetail",
           "name": "Detail",
@@ -240,7 +240,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Response code; \"OK\" for success, \"InternalError\" for failure",
           "example": "OK",
           "member": "string",
           "name": "Code",
@@ -250,7 +250,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Exception information",
           "example": "InternalError",
           "member": "string",
           "name": "Message",
@@ -262,11 +262,11 @@
       "usage": "out"
     },
     "SentimentDetail": {
-      "document": "",
+      "document": "Sentiment analysis details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Positive score, ranging from 0 to 100",
           "example": "50",
           "member": "int64",
           "name": "Positive",
@@ -276,7 +276,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Negative score, ranging from 0 to 100",
           "example": "50",
           "member": "int64",
           "name": "Negative",

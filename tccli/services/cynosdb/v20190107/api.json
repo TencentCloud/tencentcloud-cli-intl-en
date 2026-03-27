@@ -1610,11 +1610,11 @@
       "usage": "out"
     },
     "AuditInstanceFilters": {
-      "document": "",
+      "document": "Query filter conditions for audit instances",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter condition values. Supports InstanceId-Instance ID, InstanceName-Instance Name, ProjectId-Project ID, TagKey-Tag Key, Tag-Tag (separated by a vertical bar, e.g.: Tagkey|Tagvalue).",
           "example": "InstanceId",
           "member": "string",
           "name": "Name",
@@ -1624,7 +1624,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "true indicates exact match; false indicates fuzzy match.",
           "example": "true",
           "member": "bool",
           "name": "ExactMatch",
@@ -1634,7 +1634,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter value",
           "example": "cynosdbmysql-ins-3nskq234",
           "member": "string",
           "name": "Values",
@@ -1646,7 +1646,7 @@
       "usage": "in"
     },
     "AuditInstanceInfo": {
-      "document": "",
+      "document": "Audit instance details",
       "members": [
         {
           "disabled": false,
@@ -2251,11 +2251,11 @@
       "usage": "out"
     },
     "BizTaskInfo": {
-      "document": "",
+      "document": "Task information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Task id",
           "example": "0",
           "member": "int64",
           "name": "ID",
@@ -2265,7 +2265,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "User appid",
           "example": "1334748",
           "member": "int64",
           "name": "AppId",
@@ -2275,7 +2275,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "cluster id",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "ClusterId",
@@ -2295,7 +2295,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Creation Time",
           "example": "2004-05-03T17:30:08+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -2325,7 +2325,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "asynchronous task flow id",
           "example": "1",
           "member": "int64",
           "name": "FlowId",
@@ -2335,7 +2335,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "task input information",
           "example": "{\"uin\":\"7043509\"}",
           "member": "string",
           "name": "Input",
@@ -2345,7 +2345,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "instance group id",
           "example": "cynosdbmysql-grp-xx",
           "member": "string",
           "name": "InstanceGrpId",
@@ -2355,7 +2355,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "instance group id",
           "example": "cynosdbmysql-grp-xx",
           "member": "string",
           "name": "InstanceGroupId",
@@ -2365,7 +2365,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance id",
           "example": "cynosmysql-ins-xx",
           "member": "string",
           "name": "InstanceId",
@@ -2375,7 +2375,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Operation Target id",
           "example": "cynosmysql-ins-xx",
           "member": "string",
           "name": "ObjectId",
@@ -2385,7 +2385,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Operation Target Type",
           "example": "cluster",
           "member": "string",
           "name": "ObjectType",
@@ -2395,7 +2395,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Operator uin",
           "example": "1",
           "member": "string",
           "name": "Operator",
@@ -2405,7 +2405,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "task output information",
           "example": "1",
           "member": "string",
           "name": "Output",
@@ -2415,7 +2415,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Status",
           "example": "success",
           "member": "string",
           "name": "Status",
@@ -2425,7 +2425,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "task type",
           "example": "taskCreateCluster",
           "member": "string",
           "name": "TaskType",
@@ -2435,7 +2435,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Parent Task ID that Triggered This Task",
           "example": "0",
           "member": "int64",
           "name": "TriggerTaskId",
@@ -2445,7 +2445,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Update Time",
           "example": "2004-05-03T17:30:08+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -2455,7 +2455,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Start Time",
           "example": "2004-05-03T17:30:08+08:00",
           "member": "string",
           "name": "StartTime",
@@ -2465,7 +2465,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task End Time",
           "example": "2004-05-03T17:30:08+08:00",
           "member": "string",
           "name": "EndTime",
@@ -2475,7 +2475,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Name",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "ClusterName",
@@ -2485,7 +2485,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Name",
           "example": "cynosdbmysql-ins-4vdtei33",
           "member": "string",
           "name": "InstanceName",
@@ -2495,7 +2495,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Progress",
           "example": "100",
           "member": "int64",
           "name": "Process",
@@ -2505,7 +2505,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "Parameter Modification Task Information",
           "example": "无",
           "member": "ModifyParamsData",
           "name": "ModifyParamsData",
@@ -2545,7 +2545,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Manual Backup Task Information",
           "example": "无",
           "member": "ManualBackupData",
           "name": "ManualBackupData",
@@ -2575,7 +2575,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Log Conversion",
           "example": "无",
           "member": "SwitchClusterLogBin",
           "name": "SwitchClusterLogBin",
@@ -2585,7 +2585,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Parameter Modification",
           "example": "无",
           "member": "BizTaskModifyParamsData",
           "name": "ModifyInstanceParamsData",
@@ -2627,11 +2627,11 @@
       "usage": "out"
     },
     "BizTaskModifyInstanceParam": {
-      "document": "",
+      "document": "Instance Parameter Modification Task Details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID",
           "example": "cynosdbmysql-ins-xxx",
           "member": "string",
           "name": "InstanceId",
@@ -2653,11 +2653,11 @@
       "usage": "out"
     },
     "BizTaskModifyParamsData": {
-      "document": "",
+      "document": "Parameter Modification Task Data",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID",
           "example": "cynosdbmysql-xxx",
           "member": "string",
           "name": "ClusterId",
@@ -2689,11 +2689,11 @@
       "usage": "out"
     },
     "CLSInfo": {
-      "document": "",
+      "document": "CLS Log Delivery Configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic operation: optional create, reuse.\ncreate: create a new log topic using TopicName.\nreuse: use an existing log topic by specifying TopicId.\nCombining the use of an existing log topic and creating a new log set is not allowed.",
           "example": "create",
           "member": "string",
           "name": "TopicOperation",
@@ -2702,7 +2702,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log set operation: optional create, reuse.\ncreate: create a new log set using GroupName.\nreuse: use an existing log set by specifying GroupId.\nCombining the use of an existing log topic and creating a new log set is not allowed.",
           "example": "create",
           "member": "string",
           "name": "GroupOperation",
@@ -2711,7 +2711,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log Delivery Region",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -2720,7 +2720,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "log topic id",
           "example": "8c392615-b4c0-4f70-b07d-1fb5cd688f60",
           "member": "string",
           "name": "TopicId",
@@ -2729,7 +2729,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "log topic name",
           "example": "cloud_lala_topic",
           "member": "string",
           "name": "TopicName",
@@ -2738,7 +2738,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "log set id",
           "example": "95a03fb4-395b-4ce7-802b-4ce10c7431dd",
           "member": "string",
           "name": "GroupId",
@@ -2747,7 +2747,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "log set name",
           "example": "cloud_haha_logset",
           "member": "string",
           "name": "GroupName",
@@ -3248,7 +3248,7 @@
       "usage": "out"
     },
     "ClusterSlaveData": {
-      "document": "",
+      "document": "Cluster AZ Information",
       "members": [
         {
           "disabled": false,
@@ -3262,7 +3262,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Standby AZ",
           "example": "[ap-guangzhou-5]",
           "member": "string",
           "name": "OldSlaveZone",
@@ -3282,7 +3282,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "New Standby AZ",
           "example": "[ap-guangzhou-5]",
           "member": "string",
           "name": "NewSlaveZone",
@@ -3686,11 +3686,11 @@
       "type": "object"
     },
     "CreateClustersData": {
-      "document": "",
+      "document": "Cluster Creation Task Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance CPU",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -3700,7 +3700,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Memory",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -3710,7 +3710,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster storage limit",
           "example": "3000",
           "member": "int64",
           "name": "StorageLimit",
@@ -7794,7 +7794,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name",
           "example": "[\"db1\"]",
           "member": "string",
           "name": "DbNames",
@@ -8598,7 +8598,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Snapshot type. Optional values: full, full backup; increment, incremental backup",
           "example": "full",
           "member": "string",
           "name": "SnapShotType",
@@ -8625,7 +8625,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup file name, fuzzy search",
           "example": "sls_20241028221204",
           "member": "string",
           "name": "FileNames",
@@ -9890,7 +9890,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Keywords, supports fuzzy search",
           "example": "unconnected",
           "member": "string",
           "name": "KeyWords",
@@ -11892,7 +11892,7 @@
       "usage": "both"
     },
     "ExchangeInstanceInfo": {
-      "document": "",
+      "document": "Exchange Instance Information",
       "members": [
         {
           "disabled": false,
@@ -11918,7 +11918,7 @@
       "usage": "out"
     },
     "ExchangeRoGroupInfo": {
-      "document": "",
+      "document": "Swap RO group information",
       "members": [
         {
           "disabled": false,
@@ -12002,7 +12002,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Keywords",
           "example": "reading communication packets",
           "member": "string",
           "name": "KeyWords",
@@ -12502,7 +12502,7 @@
         },
         {
           "disabled": false,
-          "document": "device type:common, exclusive",
+          "document": "Instance device type. Supported values are as follows:\n- common: indicates the general type\n- exclusive: indicates the exclusive type.",
           "example": "exclusive",
           "member": "string",
           "name": "DeviceType",
@@ -12572,7 +12572,7 @@
         {
           "disabled": false,
           "document": "Instance price",
-          "example": "{\"ChargeUnit\":\"\",\"Discount\":100,\"TotalPrice\":200,\"TotalPriceDiscount\":200,\"UnitPrice\":0,\"UnitPriceDiscount\":0}",
+          "example": "无",
           "member": "TradePrice",
           "name": "InstancePrice",
           "output_required": true,
@@ -12582,7 +12582,7 @@
         {
           "disabled": false,
           "document": "Storage price",
-          "example": "{\"ChargeUnit\":\"GB*h\",\"Discount\":100,\"TotalPrice\":0,\"TotalPriceDiscount\":0,\"UnitPrice\":350,\"UnitPriceDiscount\":350}",
+          "example": "无",
           "member": "TradePrice",
           "name": "StoragePrice",
           "output_required": true,
@@ -12859,7 +12859,7 @@
       "type": "object"
     },
     "InstanceAbility": {
-      "document": "",
+      "document": "Allowed Operations List for Instances",
       "members": [
         {
           "disabled": false,
@@ -12941,11 +12941,11 @@
       "usage": "out"
     },
     "InstanceAuditStatus": {
-      "document": "",
+      "document": "Audit instance details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-3nskq234",
           "member": "string",
           "name": "InstanceId",
@@ -12955,7 +12955,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit status. ON- Audit is enabled; OFF- Audit is disabled.",
           "example": "ON",
           "member": "string",
           "name": "AuditStatus",
@@ -13097,7 +13097,7 @@
       "usage": "out"
     },
     "InstanceCLSDeliveryInfo": {
-      "document": "",
+      "document": "Instance Log Delivery Information",
       "members": [
         {
           "disabled": false,
@@ -13766,7 +13766,7 @@
       "type": "object"
     },
     "LogicBackupConfigInfo": {
-      "document": "",
+      "document": "Logical Backup Configuration Information",
       "members": [
         {
           "disabled": false,
@@ -13825,7 +13825,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Logical Backup Cross-Region",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "LogicCrossRegions",
@@ -13838,11 +13838,11 @@
       "usage": "both"
     },
     "ManualBackupData": {
-      "document": "",
+      "document": "Manual Backup Task Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup type. snapshot-snapshot backup",
           "example": "snapshot",
           "member": "string",
           "name": "BackupType",
@@ -13852,7 +13852,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup method. auto-automatic backup, manual-manual",
           "example": "manual",
           "member": "string",
           "name": "BackupMethod",
@@ -13862,7 +13862,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup Time",
           "example": "2023-11-03 15:27:22",
           "member": "string",
           "name": "SnapshotTime",
@@ -13888,7 +13888,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the parameter is modifiable. 1: Yes 0: No",
           "example": "1",
           "member": "int64",
           "name": "IsModifiable",
@@ -14246,7 +14246,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Logical Backup Configuration",
           "example": "无",
           "member": "LogicBackupConfigInfo",
           "name": "LogicBackupConfig",
@@ -14255,7 +14255,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to delete the automatic logical backup",
           "example": "false",
           "member": "bool",
           "name": "DeleteAutoLogicBackup",
@@ -14870,7 +14870,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Semi-sync timeout period in ms. To ensure business stability, the semi-synchronous replication includes a degradation mechanism. If the primary AZ cluster exceeds this timeout while waiting for transaction confirmation from the secondary AZ cluster, the replication mode will fall back to asynchronous replication. Minimum setting: 1000 ms; maximum support: 4294967295 ms; default: 10000 ms.",
           "example": "10000",
           "member": "int64",
           "name": "SemiSyncTimeout",
@@ -14948,11 +14948,11 @@
       "type": "object"
     },
     "ModifyDbVersionData": {
-      "document": "",
+      "document": "Database Kernel Version Modification Task Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "pre-modification version",
           "example": "3.1.11",
           "member": "string",
           "name": "OldVersion",
@@ -14962,7 +14962,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Post-modification Version",
           "example": "3.1.13",
           "member": "string",
           "name": "NewVersion",
@@ -14972,7 +14972,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Upgrade Method",
           "example": "upgradeInMaintain",
           "member": "string",
           "name": "UpgradeType",
@@ -14984,11 +14984,11 @@
       "usage": "out"
     },
     "ModifyInstanceData": {
-      "document": "",
+      "document": "Instance Resizing Task Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "CPU After Resizing",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -14998,7 +14998,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Memory After Resizing",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -15008,7 +15008,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage Limit After Resizing",
           "example": "156000",
           "member": "int64",
           "name": "StorageLimit",
@@ -15018,7 +15018,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "CPU Before Resizing",
           "example": "1",
           "member": "int64",
           "name": "OldCpu",
@@ -15028,7 +15028,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Memory Before Resizing",
           "example": "2",
           "member": "int64",
           "name": "OldMemory",
@@ -15038,7 +15038,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage Limit Before Resizing",
           "example": "100000",
           "member": "int64",
           "name": "OldStorageLimit",
@@ -15068,7 +15068,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Upgrade Method. Switchover is performed after upgrade completion or during maintenance windows",
           "example": "upgradeInMaintain",
           "member": "string",
           "name": "UpgradeType",
@@ -15412,11 +15412,11 @@
       "type": "object"
     },
     "ModifyParamsData": {
-      "document": "",
+      "document": "Parameter Modification Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter Name",
           "example": "",
           "member": "string",
           "name": "Name",
@@ -15426,7 +15426,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter Value Before Modification",
           "example": "",
           "member": "string",
           "name": "OldValue",
@@ -15436,7 +15436,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter Value After Modification",
           "example": "",
           "member": "string",
           "name": "CurValue",
@@ -17534,7 +17534,7 @@
       "usage": "out"
     },
     "ParamItemInfo": {
-      "document": "",
+      "document": "Parameter Change Information",
       "members": [
         {
           "disabled": false,
@@ -18425,7 +18425,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Proxy Node Name",
           "example": "cynosdbmysql-proxyNode-q52v1wp4",
           "member": "string",
           "name": "OssProxyNodeName",
@@ -19207,11 +19207,11 @@
       "type": "object"
     },
     "RollbackData": {
-      "document": "",
+      "document": "Rollback Task Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance CPU",
           "example": "5",
           "member": "int64",
           "name": "Cpu",
@@ -19221,7 +19221,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Memory",
           "example": "48",
           "member": "int64",
           "name": "Memory",
@@ -19231,7 +19231,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster storage limit",
           "example": "10",
           "member": "int64",
           "name": "StorageLimit",
@@ -19241,7 +19241,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Original Cluster id",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "OriginalClusterId",
@@ -19251,7 +19251,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Original Cluster Name",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "OriginalClusterName",
@@ -19261,7 +19261,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Method",
           "example": "ROLLBACK_STRATEGY_SNAP",
           "member": "string",
           "name": "RollbackStrategy",
@@ -19271,7 +19271,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Snapshot Time",
           "example": "2022.01.01",
           "member": "string",
           "name": "SnapshotTime",
@@ -19311,7 +19311,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Database",
           "example": "无",
           "member": "RollbackDatabase",
           "name": "RollbackDatabases",
@@ -19321,7 +19321,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback Data Table",
           "example": "无",
           "member": "RollbackTable",
           "name": "RollbackTables",
@@ -19353,11 +19353,11 @@
       "usage": "out"
     },
     "RollbackDatabase": {
-      "document": "",
+      "document": "Rollback Database Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Old Database Name",
           "example": "db1",
           "member": "string",
           "name": "OldDatabase",
@@ -19368,7 +19368,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "New Database Name",
           "example": "db2",
           "member": "string",
           "name": "NewDatabase",
@@ -19381,7 +19381,7 @@
       "usage": "both"
     },
     "RollbackInstanceInfo": {
-      "document": "",
+      "document": "Rollback Instance Information",
       "members": [
         {
           "disabled": false,
@@ -19507,7 +19507,7 @@
       "usage": "out"
     },
     "RollbackProcessInfo": {
-      "document": "",
+      "document": "Rollback Progress Details",
       "members": [
         {
           "disabled": false,
@@ -19531,7 +19531,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Exchange Instance List",
           "example": "无",
           "member": "ExchangeInstanceInfo",
           "name": "ExchangeInstanceInfoList",
@@ -19541,7 +19541,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Swap RO Group List",
           "example": "无",
           "member": "ExchangeRoGroupInfo",
           "name": "ExchangeRoGroupInfoList",
@@ -19583,7 +19583,7 @@
       "usage": "out"
     },
     "RollbackRoGroupInfo": {
-      "document": "",
+      "document": "Rollback RO Group Information",
       "members": [
         {
           "disabled": false,
@@ -19639,11 +19639,11 @@
       "usage": "out"
     },
     "RollbackTable": {
-      "document": "",
+      "document": "Rollback Database and Tables",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Name",
           "example": "db1",
           "member": "string",
           "name": "Database",
@@ -19654,7 +19654,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database Table",
           "example": "[\"OldTable\": \"tb1\", \"NewTable\": \"tb2\"]",
           "member": "RollbackTableInfo",
           "name": "Tables",
@@ -19667,7 +19667,7 @@
       "usage": "both"
     },
     "RollbackTableInfo": {
-      "document": "",
+      "document": "Rollback Table Information",
       "members": [
         {
           "disabled": false,
@@ -20080,7 +20080,7 @@
       "usage": "both"
     },
     "RuleTemplateInfo": {
-      "document": "",
+      "document": "Rule Template Content",
       "members": [
         {
           "disabled": false,
@@ -20737,7 +20737,7 @@
       "type": "object"
     },
     "SlaveZoneAttrItem": {
-      "document": "",
+      "document": "AZ Attribute Item",
       "members": [
         {
           "disabled": false,
@@ -20773,7 +20773,7 @@
       "usage": "out"
     },
     "SlaveZoneStockInfo": {
-      "document": "",
+      "document": "Secondary AZ Inventory Information",
       "members": [
         {
           "disabled": false,
@@ -21123,7 +21123,7 @@
       "type": "object"
     },
     "SwitchClusterLogBin": {
-      "document": "",
+      "document": "Toggle Cluster log bin Switch",
       "members": [
         {
           "disabled": false,
@@ -21579,7 +21579,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource total price under prepaid mode, excluding discounts. unit: cent.",
+          "document": "Resource total price under prepaid mode, excluding discounts. unit: microCent. 1 US dollar equals 1e8 microCents.",
           "example": "6000",
           "member": "int64",
           "name": "TotalPrice",
@@ -21590,7 +21590,7 @@
         {
           "disabled": false,
           "document": "Total discount. `100` means no discount.",
-          "example": "100",
+          "example": "100.0",
           "member": "float",
           "name": "Discount",
           "output_required": true,
@@ -21599,7 +21599,7 @@
         },
         {
           "disabled": false,
-          "document": "Discounted total price under prepaid mode, unit: fen. for example, the user enjoys a Discount = TotalPrice × Discount.",
+          "document": "Discounted total price under prepaid mode, unit: cent. 1 US dollar equals 1e8 microCents. for example, the user enjoys a Discount = TotalPrice * Discount.",
           "example": "6000",
           "member": "int64",
           "name": "TotalPriceDiscount",
@@ -21609,7 +21609,7 @@
         },
         {
           "disabled": false,
-          "document": "Unit resource price in postpaid mode, excluding discounts. unit: cent.",
+          "document": "Unit resource price in postpaid mode, excluding discounts. unit: cent. 1 US dollar equals 1e2 cents",
           "example": "350",
           "member": "int64",
           "name": "UnitPrice",
@@ -21619,7 +21619,7 @@
         },
         {
           "disabled": false,
-          "document": "Unit resource price in postpaid mode after Discount, unit: fen. for example, the user enjoys a Discount = unitprice × Discount.",
+          "document": "Unit resource price in postpaid mode after Discount, unit: cent. 1 US dollar equals 1e2 cents. for example, the user enjoys a Discount = unitprice * Discount.",
           "example": "350",
           "member": "int64",
           "name": "UnitPriceDiscount",
@@ -21634,6 +21634,36 @@
           "member": "string",
           "name": "ChargeUnit",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Excludes discounted rates under high precision.",
+          "example": "100",
+          "member": "string",
+          "name": "UnitPriceHighPrecision",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted price under high precision.",
+          "example": "50",
+          "member": "string",
+          "name": "UnitPriceDiscountHighPrecision",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Currency unit.",
+          "example": "pent",
+          "member": "string",
+          "name": "AmountUnit",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }

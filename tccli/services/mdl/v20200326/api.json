@@ -5061,7 +5061,7 @@
       "usage": "both"
     },
     "InputTracks": {
-      "document": "",
+      "document": "Audio track configuration list.",
       "members": [
         {
           "disabled": false,
@@ -5078,7 +5078,7 @@
       "usage": "both"
     },
     "LSqueezeSetting": {
-      "document": "",
+      "document": "Compression recovery configuration",
       "members": [
         {
           "disabled": false,
@@ -5513,7 +5513,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "AB watermark configuration.",
           "example": "无",
           "member": "AbWatermarkSettingsReq",
           "name": "AbWatermarkSettings",
@@ -5536,7 +5536,7 @@
       "type": "object"
     },
     "MotionGraphicsActivateSetting": {
-      "document": "",
+      "document": "Motion Graphic Activate Setting",
       "members": [
         {
           "disabled": false,
@@ -5564,7 +5564,7 @@
       "usage": "both"
     },
     "MotionGraphicsSetting": {
-      "document": "",
+      "document": "Motion Graphic Setting",
       "members": [
         {
           "disabled": false,
@@ -7476,7 +7476,7 @@
       "usage": "both"
     },
     "ThumbnailSettings": {
-      "document": "",
+      "document": "Thumbnail configuration",
       "members": [
         {
           "disabled": false,

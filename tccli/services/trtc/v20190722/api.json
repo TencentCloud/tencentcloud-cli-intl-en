@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CreateCloudRecording": {
-      "document": "API description:.\nStart on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.\nBefore official online operation, pay attention to the recording best practices (https://www.tencentcloud.comom/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.\n\nThis API is used to achieve the following goals:.\nSpecify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.\n* This API is used to specify the storage parameter (StorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Video on Demand (VOD), Cloud Object Storage (COS), and third-party AWS are supported.\nSpecify detailed parameters for audio and video transcoding in mixed-stream mode (MixTranscodeParams), including video resolution, video bitrate, video frame rate, and sound quality.\n* Specify the position and layout of each stream in mixed-stream mode, or configure via an automatic Template.\n\nKey nouns:.\n* Single stream recording: Record the audio and video of subscribed UserIds in the room separately. The recording service uploads the files to your designated cloud storage in real time.\nMixed-stream recording: Mix the audio and video of subscribed UserId in the room into a video file and upload the recorded files to your designated cloud storage. (After recording ends, go to the VOD console https://console.cloud.tencent.com/vod/media or the object storage COS console https://console.cloud.tencent.com/cos/bucket to view files).",
+      "document": "API description:.\nStart on-cloud recording to complete audio and video recording in the room and upload to designated cloud storage. This API is used to record each audio and video stream in the TRTC room separately or merge multiple video images into one stream.\nBefore official online operation, pay attention to the recording best practices (https://www.tencentcloud.com/document/product/647/76497?from_cn_redirect=1#e7e2f04c-6cde-43c9-9cd0-0f8d22dee68c). In conjunction with best practices, it can greatly improve API recording availability.\n\nThis API is used to achieve the following goals:.\nSpecify the subscription stream parameter (RecordParams) to specify the blocklist or allowlist of anchors that need to be recorded.\n* This API is used to specify the storage parameter (StorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Video on Demand (VOD), Cloud Object Storage (COS), and third-party AWS are supported.\nSpecify detailed parameters for audio and video transcoding in mixed-stream mode (MixTranscodeParams), including video resolution, video bitrate, video frame rate, and sound quality.\n* Specify the position and layout of each stream in mixed-stream mode, or configure via an automatic Template.\n\nKey nouns:.\n* Single stream recording: Record the audio and video of subscribed UserIds in the room separately. The recording service uploads the files to your designated cloud storage in real time.\nMixed-stream recording: Mix the audio and video of subscribed UserId in the room into a video file and upload the recorded files to your designated cloud storage. (After recording ends, go to the VOD console https://console.cloud.tencent.com/vod/media or the object storage COS console https://console.cloud.tencent.com/cos/bucket to view files).",
       "input": "CreateCloudRecordingRequest",
       "name": "Starts an on-cloud recording task",
       "output": "CreateCloudRecordingResponse",
@@ -811,7 +811,7 @@
         },
         {
           "disabled": false,
-          "document": "[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.",
+          "document": "[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.",
           "example": "ap-shanghai(cos, 具体参考云存储厂商支持的地域)",
           "member": "string",
           "name": "Region",
@@ -1041,7 +1041,7 @@
         },
         {
           "disabled": false,
-          "document": "[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.\nNote: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.\n",
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC, which is the RoomId corresponding to the TRTC room in the recording.\nNote: the room id type defaults to integer. if the room id type is a string, specify it via RoomIdType.\n",
           "example": "room_366",
           "member": "string",
           "name": "RoomId",
@@ -3064,11 +3064,11 @@
       "type": "object"
     },
     "EmulateMobileParams": {
-      "document": "",
+      "document": "Render mobile mode parameters. Do not set this parameter when not rendering the mobile mode.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Mobile device types,\n0: Phone\n1: Tablet",
           "example": "0",
           "member": "uint64",
           "name": "MobileDeviceType",
@@ -3079,7 +3079,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Screen orientation,\n0: Portrait,\n1: Landscape",
           "example": "0",
           "member": "uint64",
           "name": "ScreenOrientation",
@@ -3246,7 +3246,7 @@
       "usage": "in"
     },
     "McuCloudVod": {
-      "document": "",
+      "document": "Mcu relay recording; video on demand (VOD) related parameters.",
       "members": [
         {
           "disabled": false,
@@ -3724,7 +3724,7 @@
       "usage": "in"
     },
     "McuStorageParams": {
-      "document": "",
+      "document": "Mcu relay recording; third-party storage parameters.",
       "members": [
         {
           "disabled": false,
@@ -4778,7 +4778,7 @@
         },
         {
           "disabled": false,
-          "document": "Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.\n\nThis parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.comom/document/api/647/44055?from_cn_redirect=1#TencentVod).",
+          "document": "Output file format (valid when stored in third-party storage such as COS). 0: (default) output file is in hls format. 1: output file format is hls+mp4. 2: output file format is hls+aac. 3: output file format is mp4. 4: output file format is aac.\n\nThis parameter is invalid when storing in VOD. when storing in VOD, set MediaType in TencentVod (https://www.tencentcloud.com/document/api/647/44055?from_cn_redirect=1#TencentVod).",
           "example": "0",
           "member": "uint64",
           "name": "OutputFormat",
@@ -5815,7 +5815,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specify that the video plays from a specific second timestamp.",
           "example": "无",
           "member": "int64",
           "name": "SeekSecond",
@@ -6354,11 +6354,11 @@
       "usage": "out"
     },
     "TTSConfig": {
-      "document": "",
+      "document": "TTS-related configurations",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Voice ID",
           "example": "xiaoming",
           "member": "string",
           "name": "VoiceId",
@@ -7216,7 +7216,7 @@
       "usage": "in"
     },
     "WaterMarkChar": {
-      "document": "",
+      "document": "Custom text watermark data structure",
       "members": [
         {
           "disabled": false,
@@ -7345,7 +7345,7 @@
       "usage": "in"
     },
     "WaterMarkTimestamp": {
-      "document": "",
+      "document": "Timestamp watermark data structure",
       "members": [
         {
           "disabled": false,
@@ -7369,11 +7369,11 @@
       "usage": "in"
     },
     "WebRecordVideoParams": {
-      "document": "",
+      "document": "Page recording control parameters",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Recording screen width, defaults to 1280, value range [0, 1920]",
           "example": "1280",
           "member": "uint64",
           "name": "Width",
@@ -7382,7 +7382,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Recording screen height, defaults to 720, value range [0, 1080]",
           "example": "720",
           "member": "uint64",
           "name": "Height",
@@ -7391,7 +7391,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Specify the output format, optional hls, mp4. When storing to VOD, this parameter is invalid; please use the MediaType setting within TencentVod (https://cloud.tencent.com/document/api/647/44055#TencentVod).\n ",
           "example": "mp4",
           "member": "string",
           "name": "Format",
@@ -7400,7 +7400,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If the file format is aac or mp4, the system will automatically split the video file when it exceeds the length limit. Unit: minutes. Default: 1440 min (24h), value range: 1-1440. [Single file size is limited to a maximum of 2G. Files will be automatically split if either condition is met: file size >2G or recording duration > 24h]\nThis parameter does not take effect for Hls format recordings.\nSample value: 1440",
           "example": "1440",
           "member": "int64",
           "name": "MaxMediaFileDuration",

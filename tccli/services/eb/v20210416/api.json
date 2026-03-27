@@ -220,7 +220,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Event Information",
           "example": "event消息json字符串",
           "member": "string",
           "name": "Event",
@@ -229,7 +229,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "EventPattern Information",
           "example": "EventPattern json字符串",
           "member": "string",
           "name": "EventPattern",

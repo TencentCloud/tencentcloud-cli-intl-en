@@ -1627,7 +1627,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "DCN synchronization mode: 0: asynchronous, 1: strong synchronization",
           "example": "1",
           "member": "int64",
           "name": "DcnSyncMode",

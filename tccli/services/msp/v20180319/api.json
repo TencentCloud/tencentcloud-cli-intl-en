@@ -134,7 +134,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Migration destination Ip",
           "example": "",
           "member": "string",
           "name": "Ip",
@@ -530,7 +530,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Migration source Ip",
           "example": "",
           "member": "string",
           "name": "Ip",

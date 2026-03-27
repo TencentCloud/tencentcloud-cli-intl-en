@@ -1187,11 +1187,11 @@
       "type": "object"
     },
     "CatalogPermission": {
-      "document": "",
+      "document": "catalog Level Permission",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "catalog Name",
           "example": "无",
           "member": "string",
           "name": "CatalogName",
@@ -1202,7 +1202,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "catalog permission",
           "example": "无",
           "member": "string",
           "name": "Permissions",
@@ -4499,7 +4499,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID",
           "example": "cdwch-xxxx",
           "member": "string",
           "name": "InstanceId",
@@ -4508,7 +4508,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pagination parameter, offset, starting from 0",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -4517,7 +4517,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pagination parameter, page size, default 10",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -4526,7 +4526,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Start Time",
           "example": "-",
           "member": "string",
           "name": "StartTime",
@@ -4535,7 +4535,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "End Time",
           "example": "-",
           "member": "string",
           "name": "EndTime",

@@ -1526,11 +1526,11 @@
       "usage": "both"
     },
     "AnonymousInfo": {
-      "document": "",
+      "document": "Authentication-free information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Operation list supports trackLog (JS/HTTP log upload) and realtimeProducer (kafka protocol log upload).",
           "example": "无",
           "member": "string",
           "name": "Operations",
@@ -1541,7 +1541,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Condition list",
           "example": "无",
           "member": "ConditionInfo",
           "name": "Conditions",
@@ -1889,11 +1889,11 @@
       "usage": "both"
     },
     "ConditionInfo": {
-      "document": "",
+      "document": "Authentication-free condition information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Condition attribute, currently supports only VpcID",
           "example": "VpcID",
           "member": "string",
           "name": "Attributes",
@@ -1904,7 +1904,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Condition rule, 1: equal to, 2: not equal to",
           "example": "1",
           "member": "uint64",
           "name": "Rule",
@@ -1915,7 +1915,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Value of the corresponding condition attribute",
           "example": "vpc-6jfhit1t",
           "member": "string",
           "name": "ConditionValue",
@@ -11682,11 +11682,11 @@
       "usage": "both"
     },
     "TopicExtendInfo": {
-      "document": "",
+      "document": "Log topic extended information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic authentication-free configuration information",
           "example": "无",
           "member": "AnonymousInfo",
           "name": "AnonymousAccess",
@@ -11883,7 +11883,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic extended information",
           "example": "无",
           "member": "TopicExtendInfo",
           "name": "Extends",

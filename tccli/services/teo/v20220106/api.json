@@ -2475,7 +2475,7 @@
           "type": "string"
         },
         {
-          "document": "",
+          "document": "Time to Live Value",
           "example": "300",
           "member": "int64",
           "name": "Ttl",
@@ -10629,7 +10629,7 @@
           "type": "string"
         },
         {
-          "document": "",
+          "document": "Time to Live Value",
           "example": "600",
           "member": "int64",
           "name": "Ttl",
@@ -11826,7 +11826,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "",
+          "document": "When the origin site configuration type Type=proto, it indicates the client request protocol, values: http/https",
           "example": "http",
           "member": "string",
           "name": "Proto",
@@ -12401,7 +12401,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Region, with values:\n\n<li>mainland: Chinese mainland;</li>\n\n<li>overseas: Overseas.</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -13699,7 +13699,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "Site access region, with values:\n\n<li> global: Global;</li>\n\n<li> mainland: Chinese mainland;</li>\n\n<li> overseas: Overseas regions.</li>",
           "example": "overseas",
           "member": "string",
           "name": "Area",

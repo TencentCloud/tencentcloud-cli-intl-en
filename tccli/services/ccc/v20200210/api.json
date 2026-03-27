@@ -43,9 +43,9 @@
       "status": "online"
     },
     "CreateAIAgentCall": {
-      "document": "This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/70681).",
+      "document": "Used to create one-time Intelligent Agent outbound calls. You can create a voice Intelligent Agent in the management console - Intelligent Agent Management and perform dialogue process configuration (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). This API is used to initiate a single outbound call task with a configured Intelligent Agent. To create batch Intelligent Agent outbound call tasks, refer to the documentation for creating automatic outbound call tasks (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1).\n\nThe feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).",
       "input": "CreateAIAgentCallRequest",
-      "name": "Create an intelligent agent call",
+      "name": "Create a single intelligent agent call",
       "output": "CreateAIAgentCallResponse",
       "status": "online"
     },
@@ -71,9 +71,9 @@
       "status": "online"
     },
     "CreateAutoCalloutTask": {
-      "document": "This API is used to create the automatic outbound call task.",
+      "document": "This API is used to create bulk automatic outbound calls. The system will automatically initiate outbound calls to the designated called number list based on task configuration. This API can call the configured Intelligent Agent to perform batch outbound call tasks. You can create a voice Intelligent Agent in the management console-Intelligent Agent Management and configure the dialogue process (https://www.tencentcloud.comom/document/product/679/119796?from_cn_redirect=1). To create a single Intelligent Agent outbound call task, refer to the documentation (https://www.tencentcloud.comom/document/product/679/115681?from_cn_redirect=1).\n\nThe feature requires purchase of the Intelligent Agent call package and is only available for own telephone number. For details, refer to the [Intelligent Agent Call Purchase Guide](https://www.tencentcloud.comom/document/product/679/125953?from_cn_redirect=1).",
       "input": "CreateAutoCalloutTaskRequest",
-      "name": "Creates auto-dial task",
+      "name": "Create a bulk automatic outbound call task",
       "output": "CreateAutoCalloutTaskResponse",
       "status": "online"
     },
@@ -169,9 +169,9 @@
       "status": "online"
     },
     "DescribeAIAgentInfoList": {
-      "document": "This API is used to get the list of Intelligent Agents.",
+      "document": "This API is used to query the information list of configured Intelligent Agents under a specified instance (SdkAppId) by paging, including basic information such as Intelligent Agent ID and name.",
       "input": "DescribeAIAgentInfoListRequest",
-      "name": "Retrieve the intelligent agent information list",
+      "name": "Query the information list of the intelligent agent",
       "output": "DescribeAIAgentInfoListResponse",
       "status": "online"
     },
@@ -183,16 +183,16 @@
       "status": "online"
     },
     "DescribeAICallExtractResult": {
-      "document": "Obtain AI call content extraction result",
+      "document": "This API is used to query specified session's post-call Tag results by Session ID after the Intelligent Agent call session ends. Related post-call Tags need to be configured in advance in the management console. For details, please refer to post-call Tags (https://www.tencentcloud.comom/document/product/679/119800?from_cn_redirect=1).",
       "input": "DescribeAICallExtractResultRequest",
-      "name": "Query ai call content extraction result",
+      "name": "Query intelligent agent call Tag data",
       "output": "DescribeAICallExtractResultResponse",
       "status": "online"
     },
     "DescribeAILatency": {
-      "document": "This API is used to obtain AI latency information.",
+      "document": "Call this API to query the processing latency detail and stats of specified Session by Session ID within a specific time period. The latency info includes:.\n-End-to-end (ETE) delay: Statistics of the overall duration from user voice input to AI returning a complete response.\n-ASR latency: statistics of the processing time consumption required for voice input to be recognized as text.\n-LLM latency: Statistics of inference latency for AI model to generate text content.\n-Text To Speech (TTS) latency: Statistics of text conversion to speech audio synthesis duration.",
       "input": "DescribeAILatencyRequest",
-      "name": "Retrieve the AI duration",
+      "name": "Query the AI service latency info of an intelligent agent in a call",
       "output": "DescribeAILatencyResponse",
       "status": "online"
     },
@@ -204,7 +204,7 @@
       "status": "online"
     },
     "DescribeAutoCalloutTask": {
-      "document": "This API is used to query automatic outbound call task details.",
+      "document": "This API is used to query detailed information of an automatic outbound call task by TaskId, including basic configuration, start and end time, name list, execution status, and call status.\nThis API is usually used together with Create Bulk Automatic Outbound Call Task (https://www.tencentcloud.comom/document/product/679/69194?from_cn_redirect=1) to check whether the task configuration takes effect, the current task status, and real-time progress during execution once created.",
       "input": "DescribeAutoCalloutTaskRequest",
       "name": "Queries automatic outbound call task details",
       "output": "DescribeAutoCalloutTaskResponse",
@@ -295,7 +295,7 @@
       "status": "online"
     },
     "DescribeSessionDetail": {
-      "document": "This API is used to query call detail.",
+      "document": "This API is used to query call details for a single call by session id and timestamp after call ends, including caller and contact information, voice recording.",
       "input": "DescribeSessionDetailRequest",
       "name": "Query call detail",
       "output": "DescribeSessionDetailResponse",
@@ -311,7 +311,7 @@
     "DescribeStaffInfoList": {
       "document": "This API is used to access the agent information list.",
       "input": "DescribeStaffInfoListRequest",
-      "name": "Accesses agent information list",
+      "name": "Retrieve the agent information list",
       "output": "DescribeStaffInfoListResponse",
       "status": "online"
     },
@@ -406,11 +406,25 @@
       "output": "ModifyStaffPasswordResponse",
       "status": "online"
     },
+    "PauseAutoCalloutTask": {
+      "document": "This API is used to suspend an ongoing automatic outbound call task by TaskId. After calling this API, the task will be temporarily interrupted and no longer initiate new outbound call requests; initiated calls are not affected.\nA paused task can continue execution via the [Restore Suspended Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/125356?from_cn_redirect=1) API. If needed, refer to [Stop Automatic Outbound Call Task](https://www.tencentcloud.comom/document/product/679/69192?from_cn_redirect=1) to permanently terminate the task.",
+      "input": "PauseAutoCalloutTaskRequest",
+      "name": "Suspend an automatic outbound call task",
+      "output": "PauseAutoCalloutTaskResponse",
+      "status": "online"
+    },
     "PausePredictiveDialingCampaign": {
       "document": "This API is used to pause the predictive outbound call task.",
       "input": "PausePredictiveDialingCampaignRequest",
       "name": "Pauses predictive outbound call task",
       "output": "PausePredictiveDialingCampaignResponse",
+      "status": "online"
+    },
+    "PlaySoundCall": {
+      "document": "This API is used to perform playback for a session in a call with an agent.",
+      "input": "PlaySoundCallRequest",
+      "name": "Playback in a call",
+      "output": "PlaySoundCallResponse",
       "status": "online"
     },
     "ResetExtensionPassword": {
@@ -425,6 +439,13 @@
       "input": "RestoreMemberOnlineRequest",
       "name": "Restore customer service to go online",
       "output": "RestoreMemberOnlineResponse",
+      "status": "online"
+    },
+    "ResumeAutoCalloutTask": {
+      "document": "This API is used to restore a paused automatic outbound call task by TaskId. This API is suitable for scenarios where you need to continue execution of the remaining outbound call plan after calling Suspend Automatic Outbound Call Task. After a successful call, the task will resume from the paused state and re-initiate incomplete outbound requests.",
+      "input": "ResumeAutoCalloutTaskRequest",
+      "name": "Restore a suspended automatic outbound call task",
+      "output": "ResumeAutoCalloutTaskResponse",
       "status": "online"
     },
     "ResumePredictiveDialingCampaign": {
@@ -518,6 +539,16 @@
           "name": "AIAgentName",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of intelligent agent variable names.",
+          "example": "[\"orderId\"]",
+          "member": "string",
+          "name": "VariableNames",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -1148,7 +1179,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status:.\n0 initial: task creation, call not started.\n1 running.\n2 completed: all calls in the task are completed.\n3 ending: the task has expired, but there are still some calls not ended.\n4 ended: task terminated due to expiration.",
+          "document": "Task status:.\n0 initial: task created, call not started.\n1: running.\n2 completed: all calls in the task are done.\n3 ending: the task expires, but some calls are not ended.\n4 stopped: the task expired and ended.\n5 paused: recoverable to continue execution.",
           "example": "1",
           "member": "uint64",
           "name": "State",
@@ -1163,6 +1194,16 @@
           "member": "uint64",
           "name": "TaskId",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.",
+          "example": "15",
+          "member": "int64",
+          "name": "MaxRingTimeoutSecond",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1290,20 +1331,20 @@
           "type": "string"
         },
         {
-          "disabled": true,
-          "document": "Bound skill group list.",
-          "example": "[1,2,3,4,5,6]",
-          "member": "int64",
-          "name": "SkillGroupList",
-          "required": false,
-          "type": "list"
-        },
-        {
           "disabled": false,
           "document": "Bound skill group list (required).",
           "example": "[{\"SkillGroupId\":100,\"Priority\":1},{\"SkillGroupId\":200,\"Priority\":2}]",
           "member": "StaffSkillGroupList",
           "name": "StaffSkillGroupList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": true,
+          "document": "Bound skill group list.",
+          "example": "[1,2,3,4,5,6]",
+          "member": "int64",
+          "name": "SkillGroupList",
           "required": false,
           "type": "list"
         }
@@ -1674,7 +1715,7 @@
         {
           "disabled": true,
           "document": "Prompt variable.",
-          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "example": "无",
           "member": "Variable",
           "name": "PromptVariables",
           "required": false,
@@ -1683,11 +1724,20 @@
         {
           "disabled": false,
           "document": "<P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  \n\ndify-inputs-xxx specifies the inputs variable for dify.\n2. the dify-inputs-user specifies the user value for dify.\n3. dify-inputs-conversation_id is the conversation_id value of dify.",
-          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "example": "无",
           "member": "Variable",
           "name": "Variables",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports current parameter.",
+          "example": "15",
+          "member": "int64",
+          "name": "MaxRingTimeoutSecond",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1764,7 +1814,7 @@
         },
         {
           "disabled": false,
-          "document": "## Identity\nYou are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.\n\n## Style Guardrails\nBe Concise: Respond succinctly, addressing one topic at most.\nEmbrace Variety: Use diverse language and rephrasing to enhance clarity without repeating content.\nBe Conversational: Use everyday language, making the chat feel like talking to a friend.\nBe Proactive: Lead the conversation, often wrapping up with a question or next-step suggestion.\nAvoid multiple questions in a single response.\nGet clarity: If the user only partially answers a question, or if the answer is unclear, keep asking to get clarity.\nUse a colloquial way of referring to the date (like Friday, January 14th, or Tuesday, January 12th, 2024 at 8am).\n\n## Response Guideline\nAdapt and Guess: Try to understand transcripts that may contain transcription errors. Avoid mentioning \"transcription error\" in the response.\nStay in Character: Keep conversations within your role's scope, guiding them back creatively without repeating.\nEnsure Fluid Dialogue: Respond in a role-appropriate, direct manner to maintain a smooth conversation flow.\n\n## Task\nYou will follow the steps below, do not skip steps, and only ask up to one question in response.\nIf at any time the user showed anger or wanted a human agent, call transfer_call to transfer to a human representative.\n1. Begin with a self-introduction and verify if callee is Cindy.\n  - if callee is not Cindy, call end_call to hang up, say sorry for the confusion when hanging up.\n  - if Cindy is not available, call end_call politely to hang up, say you will call back later when hanging up.\n2. Inform Cindy she has an annual body check coming up on April 4th, 2024 at 10am PDT. Check if Cindy is available.\n  - If not, tell Cindy to reschedule online and jump to step 5.\n3. Ask Cindy if there's anything that the doctor should know before the annual checkup.\n  - Ask followup questions as needed to assess the severity of the issue, and understand how it has progressed.\n4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.\n5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.\n  - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.\n  - If user do not have any questions, call function end_call to hang up.",
+          "document": "## Identity\nYou are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.\n\n## Style Guardrails\nBe Concise: Respond succinctly, addressing one topic at most.\nEmbrace Variety: Use diverse language and rephrasing to enhance clarity without repeating content.\nBe Conversational: Use everyday language, making the chat feel like talking to a friend.\nBe Proactive: Lead the conversation, often wrapping up with a question or next-step suggestion.\nAvoid multiple questions in a single response.\nGet clarity: If the user only partially answers a question, or if the answer is unclear, keep asking to get clarity.\nUse a colloquial way of referring to the date (like Friday, January 14th, or Tuesday, January 12th, 2024 at 8am).\n\n## Response Guideline\nAdapt and Guess: Try to understand transcripts that may contain transcription errors. Avoid mentioning \"transcription error\" in the response.\nStay in Character: Keep conversations within your role's scope, guiding them back creatively without repeating.\nEnsure Fluid Dialogue: Respond in a role-appropriate, direct manner to maintain a smooth conversation flow.\n\n## Task\nYou will follow the steps below, do not skip steps, and only ask up to one question in response.\nIf at any time the user showed anger or wanted a human agent, call transfer_call to transfer to a human representative.\n1. Begin with a self-introduction and verify if callee is Cindy.\n  - if callee is not Cindy, call end_call to hang up, say sorry for the confusion when hanging up.\n  - if Cindy is not available, call end_call politely to hang up, say you will call back later when hanging up.\n2. Inform Cindy she has an annual body check coming up on April 4th, 2024 at 10am PDT. Check if Cindy is available.\n  - If not, tell Cindy to reschedule online and jump to step 5.\n3. Ask Cindy if there's anything that the doctor should know before the annual checkup.\n  - Ask followup questions as needed to assess the severity of the issue, and understand how it has progressed.\n4. Tell Cindy to not eat or drink that day before the checkup. Also tell Cindy to give you a callback if there's any changes in health condition.\n5. Ask Cindy if she has any questions, and if so, answer them until there are no questions.\n  - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.\n  - If user do not have any questions, call function call_end to hang up.",
           "example": "示例值请看上方描述",
           "member": "string",
           "name": "SystemPrompt",
@@ -1926,7 +1976,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>.\n<ul>\n<li>Tencent TTS<br>\nFor configuration, see <a href=\"https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823\" target=\"_blank\">tencent cloud TTS documentation link</a></li>.\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{ \n\"TTSType\": \"tencent\", // String TTS type. currently supports \"tencent\" and \"minixmax\". the rest manufacturers are under support.\n  \"AppId\": \"your application ID\", // String required.\n  \"SecretId\": \"your key ID\", // String required.\n  \"SecretKey\": \"your Key\", // String required.\n  \"VoiceType\": 101001, // Integer  required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.\n  \"Speed\": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.\n  \"Volume\": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.\n  \"PrimaryLanguage\": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.\n\"FastVoiceType\": \"xxxx\"   //  optional parameter. parameters for quick voice clone. \n  }\n</code></pre>\n </div><ul>\n<li>Minimax TTS<br>\nFor configuration, refer to the <a href=\"https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643\" target=\"_blank\">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href=\"https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572\" target=\"_blank\">Minimax TTS frequency limit documentation link</a>.</li>.\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"minimax\",  // String TTS type. \n        &quot;Model&quot;: &quot;speech-01-turbo&quot;,\n        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,\n        &quot;APIKey&quot;: &quot;eyxxxx&quot;,\n        &quot;GroupId&quot;: &quot;181000000000000&quot;,\n        &quot;VoiceType&quot;:&quot;female-tianmei&quot;,\n        &quot;Speed&quot;: 1.2\n}\n</code></pre>\n</div><ul>\n<li>Volcano TTS</li>.\n</ul>\n<p>Configure the timbre type. see <a href=\"https://www.volcengine.com/docs/6561/162929\" target=\"_blank\">volcano TTS documentation link</a><br>.\nText to speech timbre list - voice technology - volcano engine.\nLarge model TTS timbre list - voice technology - volcano engine</p>.\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"volcengine\",  // required: String TTS type.\n\"AppId\": \"xxxxxxxx\",   // required: String AppId assigned by volcano engine.\n\"Token\": \"TY9d4sQXHxxxxxxx\", // required: String type, access Token for volcano engine.\n\"Speed\": 1.0,            // optional parameter. speaking rate, defaults to 1.0.\n\"Volume\": 1.0,            // optional parameter, Volume, defaults to 1.0.\n\"Cluster\": \"volcano_tts\", // optional parameter, business Cluster, is selected by default.\n\"VoiceType\": \"zh_male_aojiaobazong_moon_bigtts\" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.\n}\n</code></pre>\n</div><ul>\n<li>Azure TTS<br>\nFor configuration, refer to the <a href=\"https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice\" target=\"_blank\">AzureTTS documentation link</a></li>.\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"azure\", // required: String TTS type.\n\"SubscriptionKey\": \"xxxxxxxx\", // required: String subscription Key.\n\"Region\": \"chinanorth3\",  // required: String the Region to subscribe to.\n\"VoiceName\": \"zh-CN-XiaoxiaoNeural\", // required: String specifies the required VoiceName.\n\"Language\": \"zh-CN\", // required: String specifies the synthesis Language.  \n\"Rate\": 1 // optional: float, speech speed. value range: 0.5–2. default is 1.\n}\n</code></pre>\n</div><ul>\n<li>Custom TTS</li>.\n</ul>\n<p>For the specific protocol specification, refer to <a href=\"https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw\" target=\"_blank\">tencent documentation</a></p>.\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"custom\", // String required.\n\"APIKey\": \"APIKey\", // String required. be used to authenticate.\n\"APIUrl\": \"http://0.0.0.0:8080/stream-audio\" // String, required, TTS API URL.\n\"AudioFormat\": \"wav\", // String, optional, specifies the desired audio format, such as mp3, ogg_opus, pcm, wav. defaults to wav. currently only support pcm and wav.\n\"SampleRate\": 16000,  // Integer, optional, audio sample rate, defaults to 16000 (16k), recommended value is 16000.\n\"AudioChannel\": 1,    // Integer, optional, audio channel quantity. valid values: 1 or 2. default is 1.  \n}\n</code></pre>\n</div>",
+          "document": "<p>Either the VoiceType field or a custom TTS is required. this uses your own custom TTS, while VoiceType provides some built-in voice types.</p>\n<ul>\n<li>Tencent TTS<br>\nFor configuration, see <a href=\"https://www.tencentcloud.comom/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823\" target=\"_blank\">tencent cloud TTS documentation link</a></li>\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{ \n\"TTSType\": \"tencent\", // String TTS type. currently supports \"tencent\" and \"minixmax\". the rest manufacturers are under support.\n\"AppId\": \"your application ID\", // String required.\n\"SecretId\": \"your key ID\", // String required.\n\"SecretKey\": \"your Key\", // String required.\n\"VoiceType\": 101001, // Integer required. the voice ID, including standard timbre and premium timbre. premium timbre has higher fidelity and different pricing from standard timbre. please refer to the text to speech billing overview. for the complete supported timbre list, see the text to speech timbre list.\n \"Speed\": 1.25, // Integer optional, speaking rate, value range: [-2,6], respectively represent different speaking rates: -2: 0.6x -1: 0.8x 0: 1.0x (default) 1: 1.2x 2: 1.5x 6: 2.5x. if more refined speaking rates are needed, up to 2 decimal places can be retained, such as 0.5, 1.25, or 2.81. for parameter value to actual speech Speed conversion, refer to speech Speed switch.\n \"Volume\": 5, // Integer optional. specifies the Volume level. value range: [0,10], corresponding to 11 severity levels respectively. default value: 0, which represents normal Volume.\n \"PrimaryLanguage\": 1, // Integer option primary language 1-chinese (default) 2-english 3-japanese.\n\"FastVoiceType\": \"xxxx\"   // optional parameter. parameters for quick voice clone. \n }\n</code></pre>\n </div><ul>\n<li>Minimax TTS<br>\nFor configuration, refer to the <a href=\"https://platform.minimaxi.com/document/T2a%20V2?key=66719005a427f0c8a5701643\" target=\"_blank\">Minimax TTS documentation link</a>. note that Minimax TTS has frequency limits. overfrequency may result in response delays. see the <a href=\"https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572\" target=\"_blank\">Minimax TTS frequency limit documentation link</a>.</li>\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"minimax\",  // String TTS type. \n\"Model\": \"speech-01-turbo\",\n\"APIUrl\": \"https://api.minimax.chat/v1/t2a_v2\",\n\"APIKey\": \"eyxxxx\",\n\"GroupId\": \"181000000000000\",\n\"VoiceType\":\"female-tianmei\",\n\"Speed\": 1.2\n}\n</code></pre>\n</div><ul>\n<li>Volcano TTS</li>\n</ul>\n<p>Configure the timbre type. see <a href=\"https://www.volcengine.com/docs/6561/162929\" target=\"_blank\">volcano TTS documentation link</a><br>\nText to speech timbre list - voice technology - volcano engine.\nLarge model TTS timbre list - voice technology - volcano engine</p>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"volcengine\",  // required: String TTS type.\n\"AppId\": \"xxxxxxxx\",   // required: String AppId assigned by volcano engine.\n\"Token\": \"TY9d4sQXHxxxxxxx\", // required: String type, access Token for volcano engine.\n\"Speed\": 1.0,  // optional parameter. speaking rate, defaults to 1.0.\n\"Volume\": 1.0,  // optional parameter, Volume, defaults to 1.0.\n\"Cluster\": \"volcano_tts\", // optional parameter, business Cluster, is selected by default.\n\"VoiceType\": \"zh_male_aojiaobazong_moon_bigtts\" // timbre type, defaults to the TTS voice type of the large model. if using ordinary text to speech, you need to fill in the corresponding voice type. input errors in voice type can cause no sound.\n}\n</code></pre>\n</div><ul>\n<li>Azure TTS<br>\nFor configuration, refer to the <a href=\"https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice\" target=\"_blank\">AzureTTS documentation link</a></li>\n</ul>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"azure\", // required: String TTS type.\n\"SubscriptionKey\": \"xxxxxxxx\", // required: String subscription Key.\n\"Region\": \"chinanorth3\",  // required: String the Region to subscribe to.\n\"VoiceName\": \"zh-CN-XiaoxiaoNeural\", // required: String specifies the required VoiceName.\n\"Language\": \"zh-CN\", // required: String specifies the synthesis Language.  \n\"Rate\": 1 // optional: float, speech speed. value range: 0.5-2. default is 1.\n}\n</code></pre>\n</div><ul>\n<li>Custom TTS</li>\n</ul>\n<p>For the specific protocol specification, refer to <a href=\"https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw \" target=\"_blank\">tencent documentation</a></p>\n<div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n\"TTSType\": \"custom\", // String required.\n\"APIKey\": \"APIKey\", // String required. be used to authenticate.\n\"APIUrl\": \"http://0.0.0.0:8080/stream-audio\" // String, required, TTS API URL.\n\"AudioFormat\": \"wav\", // String, optional, specifies the desired audio format, such as mp3, ogg_opus, pcm, wav. defaults to wav. currently only support pcm and wav.\n\"SampleRate\": 16000,  // Integer, optional, audio sample rate, defaults to 16000 (16k), recommended value is 16000.\n\"AudioChannel\": 1,    // Integer, optional, audio channel quantity. valid values: 1 or 2. default is 1.  \n}\n</code></pre>\n</div>\n",
           "example": "{ \"TTSType\": \"azure\", \"SubscriptionKey\": \"xx\", \"Region\": \"chinanorth3\", \"VoiceName\": \"zh-CN-\", \"Language\": \"zh-CN\", \"Rate\": 1 }",
           "member": "string",
           "name": "CustomTTSConfig",
@@ -2058,6 +2108,24 @@
           "name": "MaxRingTimeoutSecond",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Ambient sound scenario. if so, leave it blank.\nCoffee_shops: chat in the coffee shop communication environment with background.\nbusy_office: customer service center.",
+          "example": "coffee_shops",
+          "member": "string",
+          "name": "AmbientSoundType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Ambient sound volume. if AmbientSoundType is empty, this field is left blank. value ranges from [0,2]. the lower the value, the softer the ambient sound; the higher the value, the louder the ambient sound. if not set, use the default value 1.",
+          "example": "1",
+          "member": "float",
+          "name": "AmbientSoundVolume",
+          "required": false,
+          "type": "float"
         }
       ],
       "type": "object"
@@ -2385,6 +2453,24 @@
           "name": "AIAgentId",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Retry interval for task failure. value range: 600-86400 seconds.",
+          "example": "600",
+          "member": "int64",
+          "name": "RetryInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.",
+          "example": "15",
+          "member": "int64",
+          "name": "MaxRingTimeoutSecond",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2489,7 +2575,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.",
+          "document": "Agent email, underwrite the mobile number has been bound. https://www.tencentcloud.comom/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "UserId",
@@ -2671,7 +2757,7 @@
         {
           "disabled": false,
           "document": "List of calling numbers.",
-          "example": "[00861,00862]",
+          "example": "[\"008602155066897\"]",
           "member": "string",
           "name": "Callers",
           "required": false,
@@ -2680,7 +2766,7 @@
         {
           "disabled": false,
           "document": "Custom variable.",
-          "example": "{\"name\":\"foo-bar\"}",
+          "example": "无",
           "member": "Variable",
           "name": "Variables",
           "required": false,
@@ -2694,6 +2780,15 @@
           "name": "UUI",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.",
+          "example": "15",
+          "member": "int64",
+          "name": "MaxRingTimeoutSecond",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3145,21 +3240,21 @@
         },
         {
           "disabled": false,
+          "document": "Signature data of the user. required field. standard JSON format.",
+          "example": "参考下文示例",
+          "member": "string",
+          "name": "ClientData",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Valid period, in seconds, no more than 1 hr.",
           "example": "3600",
           "member": "int64",
           "name": "ExpiredTime",
           "required": true,
           "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Signature data of the user. required field. standard JSON format.",
-          "example": "参考下文示例",
-          "member": "string",
-          "name": "ClientData",
-          "required": false,
-          "type": "string"
         }
       ],
       "type": "object"
@@ -3823,7 +3918,7 @@
         {
           "disabled": false,
           "document": "Called information list.",
-          "example": "[{\"State\":1,\"Callee\":\"foobar\",\"Sessions\":[\"foobar\"]}]",
+          "example": "无",
           "member": "AutoCalloutTaskCalleeInfo",
           "name": "Callees",
           "output_required": true,
@@ -3842,11 +3937,21 @@
         },
         {
           "disabled": false,
-          "document": "Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - terminated.",
+          "document": "Task status 0 initial 1 running 2 completed 3 ending 4 terminated 5 suspended.",
           "example": "1",
           "member": "uint64",
           "name": "State",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ringing duration. auto hang up when the duration threshold is reached. only own number supports this parameter.",
+          "example": "15",
+          "member": "int64",
+          "name": "MaxRingTimeoutSecond",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4394,7 +4499,7 @@
         {
           "disabled": false,
           "document": "Number list.",
-          "example": "[{\"Number\":\"0086075512345678\",\"State\":1,\"CallOutSkillGroupIds\":[1]}]",
+          "example": "无",
           "member": "NumberInfo",
           "name": "Numbers",
           "output_required": true,
@@ -4962,7 +5067,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "App ID (required). can be used to view https://console.cloud.tencent.com/ccc.",
+          "document": "<p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -4971,7 +5076,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the session id of the call.",
+          "document": "<P>Call session id</p>.",
           "example": "6164325c-39aa-45dc-83e2-2ecbc9b37ad5",
           "member": "string",
           "name": "SessionId",
@@ -4980,7 +5085,7 @@
         },
         {
           "disabled": false,
-          "document": "Start timestamp. Unix second-level timestamp. supports up to nearly 180 days.",
+          "document": "<p>Start timestamp, Unix second-level timestamp, supports up to the last 180 days.</p>.",
           "example": "1756372067",
           "member": "int64",
           "name": "StartTimestamp",
@@ -4989,7 +5094,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.",
+          "document": "<p>End timestamp, Unix second-level timestamp. the interval range between end time and start time is less than 90 days.</p>.",
           "example": "1756372167",
           "member": "int64",
           "name": "EndTimestamp",
@@ -5004,7 +5109,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Calling number.",
+          "document": "<P>Calling number</p>.",
           "example": "0086130xxxxxxxx",
           "member": "string",
           "name": "Caller",
@@ -5014,7 +5119,7 @@
         },
         {
           "disabled": false,
-          "document": "Called number.",
+          "document": "<P>Called number</p>.",
           "example": "0086010xxxxxxxx",
           "member": "string",
           "name": "Callee",
@@ -5024,7 +5129,7 @@
         },
         {
           "disabled": false,
-          "document": "Call type. valid values: 1 (outgoing call), 2 (incoming call), 3 (audio dial-in), 5 (predictive outbound call), 6 (internal call).",
+          "document": "<P>Call type 1 outgoing call 2 incoming call 3 audio dial-in 5 predictive outbound call 6 extension call</p>.",
           "example": "1",
           "member": "int64",
           "name": "CallType",
@@ -5034,7 +5139,7 @@
         },
         {
           "disabled": false,
-          "document": "Start timestamp. Unix second-level timestamp.",
+          "document": "<p>Start timestamp, Unix second-level timestamp</p>.",
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -5044,7 +5149,7 @@
         },
         {
           "disabled": false,
-          "document": "Ring timestamp. UNIX second-level timestamp.",
+          "document": "<p>Ring timestamp, UNIX second-level timestamp</p>.",
           "example": "1611631885",
           "member": "int64",
           "name": "RingTimestamp",
@@ -5054,7 +5159,7 @@
         },
         {
           "disabled": false,
-          "document": "Answer timestamp. UNIX second-level timestamp.",
+          "document": "<p>Answer timestamp, UNIX second-level timestamp</p>.",
           "example": "1611631891",
           "member": "int64",
           "name": "AcceptTimestamp",
@@ -5064,7 +5169,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, UNIX second-level timestamp.",
+          "document": "<p>End timestamp, UNIX second-level timestamp</p>.",
           "example": "1611631991",
           "member": "int64",
           "name": "EndedTimestamp",
@@ -5074,7 +5179,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue entry time. Unix second-level timestamp.",
+          "document": "<p>Queue entry time, Unix second-level timestamp</p>.",
           "example": "1611631889",
           "member": "int64",
           "name": "QueuedTimestamp",
@@ -5084,7 +5189,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent account.",
+          "document": "<P>Agent account</p>.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "StaffUserId",
@@ -5094,7 +5199,7 @@
         },
         {
           "disabled": false,
-          "document": "Refers to the EndStatus field in the DescribeTelCdr api.",
+          "document": "<p>Refer to the EndStatus field in the DescribeTelCdr api.</p>.",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -5104,7 +5209,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue skill group ID.",
+          "document": "<p>Queue skill group ID</p>.",
           "example": "203",
           "member": "int64",
           "name": "QueuedSkillGroupId",
@@ -5114,7 +5219,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue skill group name.",
+          "document": "<P>Queue skill group name</p>.",
           "example": "销售组",
           "member": "string",
           "name": "QueuedSkillGroupName",
@@ -5124,7 +5229,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording url with authentication and valid period. obtain and pull within a short time frame. do not persist this link.",
+          "document": "<P>The recording link comes with authentication and a valid period. after obtaining it, please retrieve the content within 24 hours. do not persist this link. if the link has expired, call this api again to get a new link.</p>.",
           "example": "https://xxxxx",
           "member": "string",
           "name": "RecordURL",
@@ -5134,7 +5239,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the COS link for recording transfer to a third party.",
+          "document": "<p>Recording transfer to external COS link</p>.",
           "example": "https://xxxxx",
           "member": "string",
           "name": "CustomRecordURL",
@@ -5144,7 +5249,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording text information link with authentication and valid period. retrieve it within a short time frame. do not persist this link.",
+          "document": "<P>Text information link of the voice recording, with authentication and valid period. please retrieve it within 24 hr after obtaining. do not persist this link. if the link has expired, call this api again to get a new link.</p>.",
           "example": "https://xxxxx",
           "member": "string",
           "name": "AsrURL",
@@ -5154,7 +5259,7 @@
         },
         {
           "disabled": false,
-          "document": "Voicemail recording url.",
+          "document": "<P>Voicemail recording link</p>.",
           "example": "[\"https://xxxxx\"]",
           "member": "string",
           "name": "VoicemailRecordURL",
@@ -5164,7 +5269,7 @@
         },
         {
           "disabled": false,
-          "document": "Voicemail recording text information url. purchase the offline speech recognition package through the console and enable the offline speech recognition switch.",
+          "document": "<P>Voicemail voice recording text information link. you need to purchase an offline speech recognition package through the console and enable the offline speech recognition switch.</p>.",
           "example": "[\"https://xxxxx\"]",
           "member": "string",
           "name": "VoicemailAsrURL",
@@ -5174,7 +5279,7 @@
         },
         {
           "disabled": false,
-          "document": "IVR key information.",
+          "document": "<P>IVR key information</p>.",
           "example": "无",
           "member": "IVRKeyPressedElement",
           "name": "IVRKeyPressed",
@@ -5184,7 +5289,7 @@
         },
         {
           "disabled": false,
-          "document": "Satisfaction rate keystroke information.",
+          "document": "<P>Key information of satisfaction rate</p>.",
           "example": "无",
           "member": "IVRKeyPressedElement",
           "name": "PostIVRKeyPressed",
@@ -5194,7 +5299,7 @@
         },
         {
           "disabled": false,
-          "document": "Hang-Up side. valid values: seat, user, system.",
+          "document": "<P>Hang-Up side seat agent user system</p>.",
           "example": "user",
           "member": "string",
           "name": "HungUpSide",
@@ -5204,7 +5309,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer custom data (User-to-User Interface).",
+          "document": "<p>Customer custom data (User-to-User Interface)</p>.",
           "example": "foo-bar",
           "member": "string",
           "name": "UUI",
@@ -5214,7 +5319,7 @@
         },
         {
           "disabled": false,
-          "document": "List of events during a call.",
+          "document": "<P>Event list for calls in progress</p>.",
           "example": "无",
           "member": "SessionEvent",
           "name": "Events",
@@ -5224,12 +5329,32 @@
         },
         {
           "disabled": false,
-          "document": "List of service participants.",
+          "document": "<P>Service participant list</p>.",
           "example": "无",
           "member": "ServeParticipant",
           "name": "ServeParticipants",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Status code for reason of system hang-up after connect.</p><p><a href=\"https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1\">details</a></p>.",
+          "example": "1010",
+          "member": "int64",
+          "name": "SysHangupReason",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<P>Reason for system hang up after connect.</p><p><a href=\"https://www.tencentcloud.com/document/product/679/123938?from_cn_redirect=1\">details</a></p>.",
+          "example": "userHangupDuringAIAgent",
+          "member": "string",
+          "name": "SysHangupReasonString",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -5338,7 +5463,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "<p>App ID (required). can check https://console.cloud.tencent.com/ccc</p>.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -5347,7 +5472,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size, upper limit 9,999.",
+          "document": "<P>Pagination size. upper limit: 9999.</p>.",
           "example": "9999",
           "member": "int64",
           "name": "PageSize",
@@ -5356,7 +5481,7 @@
         },
         {
           "disabled": false,
-          "document": "Page number starting from 0.",
+          "document": "<P>Page number, starting from 0.</p>.",
           "example": "0",
           "member": "int64",
           "name": "PageNumber",
@@ -5365,7 +5490,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent account used when querying a single agent.",
+          "document": "<P>Agent account, used when query single agent.</p>.",
           "example": "102992@qq.com",
           "member": "string",
           "name": "StaffMail",
@@ -5374,7 +5499,7 @@
         },
         {
           "disabled": false,
-          "document": "Use when querying for agents with a modification time greater or equal to modifiedtime.",
+          "document": "<p>Use when querying for agents with modified time equal to or greater than ModifiedTime</p>.",
           "example": "1611631881",
           "member": "int64",
           "name": "ModifiedTime",
@@ -5383,7 +5508,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group id.",
+          "document": "<p>Skill group ID</p>.",
           "example": "1145",
           "member": "int64",
           "name": "SkillGroupId",
@@ -5398,7 +5523,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of agent users.",
+          "document": "<P>Total number of agent users</p>.",
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
@@ -5408,8 +5533,8 @@
         },
         {
           "disabled": false,
-          "document": "Agent user information list.",
-          "example": "[{\"Name\":\"n\",\"Mail\":\"m@e.com\",\"Phone\":\"123\",\"Nick\":\"t\",\"StaffNumber\":\"1\",\"RoleId\":1,\"SkillGroupList\":[{\"SkillGroupId\":1,\"SkillGroupName\":\"sg\",\"Priority\":1,\"Type\":\"IM\"}],\"LastModifyTimestamp\":1}]",
+          "document": "<P>Agent user information list</p>.",
+          "example": "无",
           "member": "StaffInfo",
           "name": "StaffList",
           "output_required": true,
@@ -5576,8 +5701,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-01 23:59:59\" timestamp. to query may 1st and may 2nd, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-02 23:59:59\" timestamp).",
-          "example": "0",
+          "document": "<p>Start timestamp, Unix timestamp (query dimension only supports day, for example, to query may 1, you should pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp; to query may 1 and may 2, you should pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp)</p>.",
+          "example": "1773041460",
           "member": "int64",
           "name": "StartTimeStamp",
           "required": true,
@@ -5585,8 +5710,8 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-01 23:59:59\" timestamp. to query may 1st and may 2nd, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-02 23:59:59\" timestamp).",
-          "example": "0",
+          "document": "<p>End timestamp, Unix timestamp. the maximum query time range is 90 days (query dimension only supports day, for example, to query may 1, you should pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp; to query may 1 and may 2, you should pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp).</p>.",
+          "example": "1773042460",
           "member": "int64",
           "name": "EndTimeStamp",
           "required": true,
@@ -5594,8 +5719,8 @@
         },
         {
           "disabled": false,
-          "document": "Application id list, when having multiple ids, the returned value is the sum of all the ids.",
-          "example": "[\"0\\n\"]",
+          "document": "<p>Application ID list. for multiple ids, the return value is the sum of multiple ids.</p>.",
+          "example": "[140000000]",
           "member": "int64",
           "name": "SdkAppIdList",
           "required": true,
@@ -5609,7 +5734,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of minutes consumed by outbound package.",
+          "document": "<P>Minutes consumed by outbound package</p>.",
           "example": "10",
           "member": "int64",
           "name": "TelCallOutCount",
@@ -5619,7 +5744,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by inbound package.",
+          "document": "<P>Minutes consumed by inbound package</p>.",
           "example": "10",
           "member": "int64",
           "name": "TelCallInCount",
@@ -5629,7 +5754,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of agent usage statistics.",
+          "document": "<P>Number of agent usage statistics</p>.",
           "example": "50",
           "member": "int64",
           "name": "SeatUsedCount",
@@ -5639,7 +5764,7 @@
         },
         {
           "disabled": true,
-          "document": "Number of minutes consumed by audio package.",
+          "document": "<P>Minutes consumed by audio package</p>.",
           "example": "10",
           "member": "int64",
           "name": "VoipCallInCount",
@@ -5649,7 +5774,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by audio package.",
+          "document": "<P>Minutes consumed by audio package</p>.",
           "example": "10",
           "member": "int64",
           "name": "VOIPCallInCount",
@@ -5659,7 +5784,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by offline speech-to-text package.",
+          "document": "<P>Minutes consumed by offline speech-to-text package</p>.",
           "example": "1",
           "member": "int64",
           "name": "AsrOfflineCount",
@@ -5669,7 +5794,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by real-time speech-to-text package.",
+          "document": "<P>Minutes consumed by real-time speech-to-text package</p>.",
           "example": "1",
           "member": "int64",
           "name": "AsrRealtimeCount",
@@ -7177,6 +7302,42 @@
       ],
       "usage": "out"
     },
+    "PauseAutoCalloutTaskRequest": {
+      "document": "PauseAutoCalloutTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "16498",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID (required). you can view it at https://console.cloud.tencent.com/ccc.\n",
+          "example": "1400692008",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PauseAutoCalloutTaskResponse": {
+      "document": "PauseAutoCalloutTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "PausePredictiveDialingCampaignRequest": {
       "document": "PausePredictiveDialingCampaign request structure.",
       "members": [
@@ -7279,6 +7440,60 @@
       ],
       "usage": "out"
     },
+    "PlaySoundCallRequest": {
+      "document": "PlaySoundCall request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID (required). you can view it at https://console.cloud.tencent.com/ccc.",
+          "example": "1400692008",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Session ID.",
+          "example": "f3be95fb-2786-466a-beab-5e3d8cb76272",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio file ID. please refer to the management console - telephone customer service - audio file management.",
+          "example": "27500",
+          "member": "int64",
+          "name": "FileId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of playbacks. default 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PlayTimes",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PlaySoundCallResponse": {
+      "document": "PlaySoundCall response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResetExtensionPasswordRequest": {
       "document": "ResetExtensionPassword request structure.",
       "members": [
@@ -7351,6 +7566,42 @@
     },
     "RestoreMemberOnlineResponse": {
       "document": "RestoreMemberOnline response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeAutoCalloutTaskRequest": {
+      "document": "ResumeAutoCalloutTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "16497",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "App ID (required). you can view it at https://console.cloud.tencent.com/ccc.",
+          "example": "1400692008",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeAutoCalloutTaskResponse": {
+      "document": "ResumeAutoCalloutTask response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7693,8 +7944,8 @@
         },
         {
           "disabled": false,
-          "document": "Ending status.",
-          "example": "ok unconnected seatGiveUp seatForward outboundForward ivrGiveUp ",
+          "document": "End status.\n\nFor chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).\n\nFor english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
+          "example": "ok seatGiveUp seatForward outboundForward ivrGiveUp",
           "member": "string",
           "name": "EndStatusString",
           "output_required": true,
@@ -8788,7 +9039,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario**\tEndStatus\tEndStatusString\tStatus description.\n\nIncoming & outgoing calls. 1. ok. normal call.\n\nIVR period user give up.\n\n**User give up while in queue**.\n\nInbound call 104 ringingGiveUp. specifies the user gives up during ringing.\n\nInbound call 105. specifies no agent online.\n\nInbound call notWorkTime **off hours**.   \n\nIVR ends automatically (no manual intervention).\n\nInbound call. 100. blocklist (system side).\n\nrestrictedCallee. specifies the global outbound call risk number interception (system side).\n\nOutbound call 109 tooManyRequest **outbound call frequency control interception (system side)**.\n\nOutbound call 110 restrictedArea **block outgoing calls by region (system side)**.\n\nrestrictedTime. specifies the outbound call interception period on the system side.\n                         \n202 notAnswer **callee unanswered**.\n\nOutbound call 203 userReject **callee reject hangup**.\n\nPower off. **callee powered off**.\n\n205            numberNotExist\t**callee nonexistent number**.\n\nBusy. specifies the callee is busy.\n\nOutbound call 207 outOfCredit **callee in arrears**.\n\n208 operatorError indicates operator channel exception.\n\nOutgoing call caller cancellation.\n\nOutgoing call\t        210\t           notInService\t**callee out of service area**.\n\nPhone call in/out 211 clientError **client error**.\n\nOutgoing call 212 carrierBlocked **carrier blocklist**.\n\nNote: call reminder.\n\nOutbound call 215 numberInvalid **called number is invalid**.\n\nOutbound call 216 callRestricted. note: call restricted.\n\nCallee restricted by blocklist.\n\nOutbound call 218 areaRestricted. **callee area restricted**.\n\nPrompt call forwarding.\n\nCaller cancellation during ringing.\n\nCaller cancel without ring.\n\nAudio dial-in 501 call conflict **VoIP user call termination**.\n\nVoIP user client timeout.\n\nAudio dial-in 503 VoIP user client error.\n\nChinese version please go domestic site (https://cloud.tencent.com/document/product/679/123938).\n\nEnglish version please go international site (https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
+          "document": "EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.\n\n**Scenario**  **EndStatus**  **EndStatusString**  **status description**.\n\nCall in & out    1        ok                        **normal call**.\n\nInbound call    102    ivrGiveUp    **user give up during IVR period**.\n\nInbound call 103 waitingGiveUp **user give up in queue**.\n\nInbound call 104 ringingGiveUp **user gives up during ring**.\n\nInbound call\t105\tnoSeatOnline\t**no agent online**.\n\nInbound call              106\t       notWorkTime\t       **off hours**.   \n\nInbound call    107    ivrEnd    **IVR ends automatically (no manual intervention)**.\n\nInbound calls    100    blocklist (system side).\n\nOutgoing call              108        restrictedCallee        **global outbound call risk number blocklist (system side)**.\n\nOutgoing call     109        tooManyRequest    **outbound call frequency control block (system side)**.\n\nOutbound call  110  restrictedArea  **outgoing call region block (system side)**.\n\nOutgoing call 111 restrictedTime **outbound call interception (system side)**.\n                         \nOutgoing call             202            notAnswer\t **callee unanswered**.\n\nOutgoing call            203\t    userReject\t**callee reject hangup**.\n\nOutgoing call    204    powerOff    **callee shutdown**.\n\nOutgoing call           205            numberNotExist\t**called nonexistent number**.\n\nOutbound call    206    busy    **callee busy**.\n\nOutbound call    207    outOfCredit    **callee in arrears**.\n\n208    operatorError    **operator channel exception**.\n\nOutgoing call          209           callerCancel          **call cancellation by the caller**.\n\nOutgoing call 210 notInService **callee out of service area**.\n\nPhone call in & out 211 clientError **agent client error**.\n\nOutgoing call    212     carrierBlocked      **isp blocked**.\n\nOutgoing call 213 callReminder **note: call reminder**.\n\nOutbound call 215 numberInvalid **called number invalid**.\n\nOutgoing call 216 callRestricted **note: call restricted**.\n\nOutgoing call 217 calleeRestricted **callee blocklist restricted**.\n\nOutbound call 218 areaRestricted **callee area restricted**.\n\nOutbound call    219     promptCallForwarding      **note call transfer**.\n\nOutbound call 220 callerCancelWhileRing **caller cancellation while ringing**.\n\nOutgoing call 221 callerCancelWithoutRing **called number anomaly without ring**.\n\nOutgoing call  222  voiceMailReached  **voice mail hangup**.\n\nAudio inbound 501 callConflict **VoIP user call conflict termination**.\n\nAudio dial-in 502 clientTimeout **VoIP user client timeout**.\n\nAudio inbound 503 voipClientError **VoIP client error**.\n\nFor chinese description, see [https://www.tencentcloud.com/zh/document/product/1229/71847](https://www.tencentcloud.com/zh/document/product/1229/71847).\n\nFor english details, see [reference](https://www.tencentcloud.com/document/product/1229/71847?lang=en).",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -9074,6 +9325,46 @@
           "name": "VoicemailAsrURL",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If it is a call related to intelligent agent, this is the intelligent agent ID.",
+          "example": "9527",
+          "member": "int64",
+          "name": "AIAgentId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If it is a call related to intelligent agent, this is the intelligent agent name.",
+          "example": "新款智能体销售",
+          "member": "string",
+          "name": "AIAgentName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasons for system hang-up after connection, enumeration class.",
+          "example": "1010",
+          "member": "int64",
+          "name": "SysHangupReason",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reason for hang-up after connect, text description.",
+          "example": "用户挂断智能体通话",
+          "member": "string",
+          "name": "SysHangupReasonString",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

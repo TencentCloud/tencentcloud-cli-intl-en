@@ -10872,11 +10872,11 @@
       "usage": "both"
     },
     "ExchangeQuota": {
-      "document": "",
+      "document": "exchange usage quota information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of creatable exchanges",
           "example": "10",
           "member": "int64",
           "name": "MaxExchange",
@@ -13036,11 +13036,11 @@
       "usage": "out"
     },
     "PrometheusEndpointInfo": {
-      "document": "",
+      "document": "rabbitmq Prometheus Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Status of the Prometheus switch",
           "example": "ON/OFF/CREATING/DELETEING",
           "member": "string",
           "name": "PrometheusEndpointStatus",
@@ -13050,7 +13050,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "prometheus Information",
           "example": "1.2.3.4:15692",
           "member": "string",
           "name": "VpcPrometheusEndpoint",
@@ -13060,7 +13060,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Node Information",
           "example": "node1:15692",
           "member": "string",
           "name": "NodePrometheusAddress",
@@ -13070,7 +13070,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc information",
           "example": "vpc sunbet ip",
           "member": "VpcEndpointInfo",
           "name": "VpcEndpointInfo",
@@ -13876,11 +13876,11 @@
       "usage": "out"
     },
     "QueueQuota": {
-      "document": "",
+      "document": "queue usage quota information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of creatable queues",
           "example": "10",
           "member": "int64",
           "name": "MaxQueue",
@@ -14018,11 +14018,11 @@
       "usage": "out"
     },
     "RabbitMQClusterAccessInfo": {
-      "document": "",
+      "document": "RabbitMQ Cluster Access Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Public Network Access Address",
           "example": "101.10.10.101:5672",
           "member": "string",
           "name": "PublicAccessEndpoint",
@@ -14032,7 +14032,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Console Access Address",
           "example": "https://amqp-xx.com",
           "member": "string",
           "name": "WebConsoleEndpoint",
@@ -14042,7 +14042,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Console Login Username",
           "example": "username",
           "member": "string",
           "name": "WebConsoleUsername",
@@ -14052,7 +14052,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Console Login Password",
           "example": "56A1S61651fd56a1",
           "member": "string",
           "name": "WebConsolePassword",
@@ -14062,7 +14062,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deprecated",
           "example": "true",
           "member": "bool",
           "name": "PublicAccessEndpointStatus",
@@ -14072,7 +14072,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deprecated",
           "example": "true",
           "member": "bool",
           "name": "PublicControlConsoleSwitchStatus",
@@ -14082,7 +14082,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deprecated",
           "example": "true",
           "member": "bool",
           "name": "VpcControlConsoleSwitchStatus",
@@ -14092,7 +14092,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Vpc management console access address, example value: http://1.1.1.1:15672",
           "example": "http://1.1.1.1:15672",
           "member": "string",
           "name": "VpcWebConsoleEndpoint",
@@ -14198,7 +14198,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Name",
           "example": "prod_rabbitmq",
           "member": "string",
           "name": "ClusterName",
@@ -14208,7 +14208,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region Information",
           "example": "华南地区",
           "member": "string",
           "name": "Region",
@@ -14238,7 +14238,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "VPC and network information",
           "example": "[{\"VpcId\":\"vpc-5ghsr4p9\",\"SubnetId\":\"subnet-67y9wil4\",\"VpcEndpoint\":\"amqp://127.0.0.1:5672\",\"VpcDataStreamEndpointStatus\":\"ON\"}]",
           "member": "VpcEndpointInfo",
           "name": "Vpcs",
@@ -14258,7 +14258,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Virtual Host Quantity",
           "example": "10",
           "member": "int64",
           "name": "VirtualHostNumber",
@@ -14268,7 +14268,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of Queues",
           "example": "10",
           "member": "int64",
           "name": "QueueNumber",
@@ -14278,7 +14278,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of messages produced per second Unit: messages/second",
           "example": "2.3",
           "member": "float",
           "name": "MessagePublishRate",
@@ -14288,7 +14288,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of backlogged messages Unit: messages",
           "example": "5",
           "member": "int64",
           "name": "MessageStackNumber",
@@ -14308,7 +14308,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Channel Count",
           "example": "10",
           "member": "int64",
           "name": "ChannelNumber",
@@ -14318,7 +14318,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connection Count",
           "example": "10",
           "member": "int64",
           "name": "ConnectionNumber",
@@ -14328,7 +14328,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Consumer Count",
           "example": "10",
           "member": "int64",
           "name": "ConsumerNumber",
@@ -14338,7 +14338,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Exchange Count",
           "example": "10",
           "member": "int64",
           "name": "ExchangeNumber",
@@ -14470,11 +14470,11 @@
       "usage": "out"
     },
     "RabbitMQClusterSpecInfo": {
-      "document": "",
+      "document": "RabbitMQ Cluster Specifications Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Specification Name",
           "example": "标准型",
           "member": "string",
           "name": "SpecName",
@@ -14484,7 +14484,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of Nodes",
           "example": "3",
           "member": "uint64",
           "name": "NodeCount",
@@ -14494,7 +14494,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Peak tps",
           "example": "5000",
           "member": "uint64",
           "name": "MaxTps",
@@ -14504,7 +14504,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Peak bandwidth Unit: mbps",
           "example": "50",
           "member": "uint64",
           "name": "MaxBandWidth",
@@ -14514,7 +14514,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage capacity Unit: GB",
           "example": "100",
           "member": "uint64",
           "name": "MaxStorage",
@@ -14524,7 +14524,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "public network bandwidth tps. Unit: Mbps",
           "example": "1",
           "member": "uint64",
           "name": "PublicNetworkTps",
@@ -14536,7 +14536,7 @@
       "usage": "out"
     },
     "RabbitMQClusterWhiteListInfo": {
-      "document": "",
+      "document": "RabbitMQ Cluster Allowlist Information",
       "members": [
         {
           "disabled": false,
@@ -14570,7 +14570,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Public Network Management Console Allowlist Status",
           "example": "OFF/ON/MODIFYING",
           "member": "string",
           "name": "PublicControlConsoleWhiteListStatus",
@@ -14580,7 +14580,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Public Network Data Flow Allowlist Status",
           "example": "OFF/ON/MODIFYING",
           "member": "string",
           "name": "PublicDataStreamWhiteListStatus",
@@ -17053,7 +17053,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of queues per topic",
           "example": "16",
           "member": "uint64",
           "name": "MaxQueuesPerTopic",
@@ -19226,11 +19226,11 @@
       "type": "object"
     },
     "VirtualHostQuota": {
-      "document": "",
+      "document": "vhost usage quota information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of vhosts allowed to be created",
           "example": "10",
           "member": "int64",
           "name": "MaxVirtualHost",
@@ -19376,11 +19376,11 @@
       "usage": "both"
     },
     "VpcEndpointInfo": {
-      "document": "",
+      "document": "VPC Access Point Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc id",
           "example": "vpc-xxxx",
           "member": "string",
           "name": "VpcId",
@@ -19391,7 +19391,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "subnet id",
           "example": "subnet-xxx",
           "member": "string",
           "name": "SubnetId",
@@ -19402,7 +19402,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "vpc Access Point Information",
           "example": "ip:port",
           "member": "string",
           "name": "VpcEndpoint",

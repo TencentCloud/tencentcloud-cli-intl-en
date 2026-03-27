@@ -913,7 +913,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Total VCore Seconds",
           "example": "33",
           "member": "int64",
           "name": "SumVCoreSeconds",
@@ -3278,7 +3278,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "If the value is 0, MultiZone, MultiDeployStrategy, and MultiZoneSettings are disabled. If the value is 1, ResourceSpec is deprecated and MultiZoneSettings is used instead.",
           "example": "1",
           "member": "int64",
           "name": "VersionID",
@@ -3441,7 +3441,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Deployment Mode",
           "example": "Active-Standby",
           "member": "string",
           "name": "DeploymentMode",
@@ -5206,7 +5206,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether it includes specific parameter suggestions and other information",
           "example": "false",
           "member": "bool",
           "name": "MustHasContext",
@@ -9009,7 +9009,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The current default value is 0. After cross-AZ feature support is enabled, it becomes 1.",
           "example": "0",
           "member": "uint64",
           "name": "VersionID",
@@ -17066,7 +17066,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "id, for frontend",
           "example": "1",
           "member": "int64",
           "name": "Id",
@@ -18472,7 +18472,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Password",
           "example": "PassWord_123",
           "member": "string",
           "name": "PassWord",
@@ -18481,7 +18481,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Remarks",
           "example": "提交mr任务",
           "member": "string",
           "name": "ReMark",

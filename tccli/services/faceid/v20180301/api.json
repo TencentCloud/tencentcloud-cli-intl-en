@@ -106,7 +106,7 @@
   },
   "objects": {
     "Address": {
-      "document": "",
+      "document": "Overseas Document Address",
       "members": [
         {
           "disabled": false,
@@ -1386,7 +1386,7 @@
       "type": "object"
     },
     "EditDetail": {
-      "document": "",
+      "document": "EKYC ID Document OCR Result Modification Details",
       "members": [
         {
           "disabled": false,
@@ -1422,7 +1422,7 @@
       "usage": "out"
     },
     "Encryption": {
-      "document": "",
+      "document": "Sensitive Data Encryption",
       "members": [
         {
           "disabled": false,
@@ -1483,11 +1483,11 @@
       "usage": "both"
     },
     "ExtraInfo": {
-      "document": "",
+      "document": "Additional Details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Details of matched templates, only returns the template information with the highest similarity",
           "example": "无",
           "member": "RetrievalLivenessExtraInfo",
           "name": "RetrievalLivenessExtraInfo",
@@ -4748,11 +4748,11 @@
       "usage": "out"
     },
     "RetrievalLivenessExtraInfo": {
-      "document": "",
+      "document": "Template search details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Matched template types, where Common - public library; Auto - automatic clustering library; Owner - self-built template library.",
           "example": "Common",
           "member": "string",
           "name": "HitGroup",
@@ -4762,7 +4762,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Matched Similarity",
           "example": "0.98",
           "member": "float",
           "name": "SimilarityScore",
@@ -4772,7 +4772,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Matched Template id",
           "example": "45",
           "member": "string",
           "name": "HitTemplate",

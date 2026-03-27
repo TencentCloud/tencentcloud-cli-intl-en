@@ -6043,7 +6043,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sort field: InsertTime (Insertion time, default), UpdateTime (Update time)",
           "example": "InsertTime",
           "member": "string",
           "name": "Sort",
@@ -6052,7 +6052,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sort order: false (descending, default), true (ascending)",
           "example": "false",
           "member": "bool",
           "name": "Asc",
@@ -7605,7 +7605,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to use managed storage as result storage",
           "example": "false",
           "member": "bool",
           "name": "UseLakeFs",
@@ -7614,7 +7614,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "User-defined Result Storage Path",
           "example": "cosn://test-bucket/dir",
           "member": "string",
           "name": "CustomResultPath",

@@ -4555,7 +4555,7 @@
         },
         {
           "disabled": false,
-          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1). default value: BGP.\n\n<Li>BGP: general bgp line.</li>.\nFor a user who has enabled the static single-line IP allowlist, valid values include:.\n\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom.</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n",
+          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.\n\n<Li>BGP: general bgp line.</li>.\nFor a user who has enabled the static single-line IP allowlist, valid values include:.\n\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom.</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n",
           "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
@@ -4566,7 +4566,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.comom/document/product/1199/41646?from_cn_redirect=1).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).",
+          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",
@@ -5404,7 +5404,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/group\">console</a>.</li><li>obtain scaling group ids by calling the <a href=\"https://www.tencentcloud.comom/document/api/377/20438?from_cn_redirect=1\">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.",
+          "document": "<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/group\">console</a>.</li><li>obtain scaling group ids by calling the <a href=\"https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1\">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.",
           "example": "asg-gf5r6t7u",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5440,7 +5440,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/config\">console</a>.</li><li>obtain the launch configuration ID by calling the <a href=\"https://www.tencentcloud.comom/document/api/377/20445?from_cn_redirect=1\">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.",
+          "document": "<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/config\">console</a>.</li><li>obtain the launch configuration ID by calling the <a href=\"https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1\">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.",
           "example": "asc-gf5r6t7u",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -5467,7 +5467,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href=\"https://www.tencentcloud.comom/document/api/651/78725?from_cn_redirect=1\">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.",
+          "document": "<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href=\"https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1\">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -5476,7 +5476,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/subnet\">console</a> for querying. you can also call the API <a href=\"https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1\">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.",
+          "document": "<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/subnet\">console</a> for querying. you can also call the API <a href=\"https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1\">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.",
           "example": "[\"subnet-gf5r6t7u\"]",
           "member": "string",
           "name": "SubnetIds",
@@ -5494,7 +5494,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/vpc\">console</a>; you can also call the <a href=\"https://www.tencentcloud.comom/document/api/215/15778?from_cn_redirect=1\">DescribeVpc</a> api and get the VpcId field from the api response.</p>.",
+          "document": "<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/vpc\">console</a>; you can also call the <a href=\"https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1\">DescribeVpc</a> api and get the VpcId field from the api response.</p>.",
           "example": "vpc-gf5r6t7u",
           "member": "string",
           "name": "VpcId",
@@ -5557,7 +5557,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.comom/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.comom/document/product/214/6097?from_cn_redirect=1).</li>.",
+          "document": "<p>Scaling group instance health check type, values are as follows:</p><li>CVM: determine whether an instance is unhealthy based on its network status. an unhealthy network status refers to an event where instances become unreachable via PING. for detailed criteria of judgment, refer to [instance health check](https://www.tencentcloud.com/document/product/377/8553?from_cn_redirect=1).</li><li>CLB: determine whether an instance is unhealthy based on the health check status of CLB. for the principle of CLB health check, see [health check](https://www.tencentcloud.com/document/product/214/6097?from_cn_redirect=1).</li>.",
           "example": "CLB",
           "member": "string",
           "name": "HealthCheckType",

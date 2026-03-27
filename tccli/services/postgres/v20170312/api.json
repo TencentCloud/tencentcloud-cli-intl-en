@@ -2134,7 +2134,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>",
           "example": "cls-hsm-xxxxxxx",
           "member": "string",
           "name": "KMSClusterId",
@@ -2471,7 +2471,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Dedicated Cluster ID</p>",
           "example": "dedicatedCluster-gz",
           "member": "string",
           "name": "DedicatedClusterId",
@@ -6787,7 +6787,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>",
           "example": "postgresql",
           "member": "string",
           "name": "DBEngine",

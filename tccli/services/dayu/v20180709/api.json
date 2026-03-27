@@ -9828,7 +9828,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "",
+          "document": "ttl",
           "member": "uint64",
           "name": "TTL",
           "required": true,

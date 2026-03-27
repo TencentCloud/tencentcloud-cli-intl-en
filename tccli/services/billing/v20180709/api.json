@@ -252,6 +252,13 @@
       "output": "DescribeGatherRuleDetailResponse",
       "status": "online"
     },
+    "DescribeRenewInstances": {
+      "document": "Notes:\n1. This API supports querying annual and monthly subscription instances integrated into the renewal management page, including running and isolated instances (some products unsupported).\n2. When using this API, a sub-user should have the QcloudFinanceRenewManageFullAccess permission policy.",
+      "input": "DescribeRenewInstancesRequest",
+      "name": "Query a renew instance",
+      "output": "DescribeRenewInstancesResponse",
+      "status": "online"
+    },
     "DescribeTagList": {
       "document": "This API is used to get cost allocation tags.",
       "input": "DescribeTagListRequest",
@@ -314,6 +321,13 @@
       "name": "Renew an instance",
       "output": "RenewInstanceResponse",
       "status": "online"
+    },
+    "SetRenewal": {
+      "document": "Notes:\n1. This API supports setting auto-renewal mode and period for annual and monthly subscription instances.\n2. Obtain the product code and region code through an instance query API.\n3. When using this API, a sub-user must possess the QcloudFinanceRenewManageFullAccess permission policy.",
+      "input": "SetRenewalRequest",
+      "name": "Set renewal parameters",
+      "output": "SetRenewalResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -337,7 +351,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be yearly/monthly subscription\u0005 purchase, monthly subscription renewal, or pay-as-you-go deduction.",
+          "document": "Transaction type, which can be yearly/monthly subscription\u0005 purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -6258,7 +6272,7 @@
         },
         {
           "disabled": false,
-          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
+          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew yearly/monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
@@ -6598,7 +6612,7 @@
         },
         {
           "disabled": false,
-          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
+          "document": "Hourly settlement\nDaily settlement\nYearly/monthly subscription\nSpot\nNew yearly/monthly subscription\nYearly/monthly subscription renewal\nYearly/monthly subscription specification adjustment\nYearly/monthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -8209,6 +8223,107 @@
       ],
       "type": "object"
     },
+    "DescribeRenewInstancesRequest": {
+      "document": "DescribeRenewInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum number of instances per page. Value range: 1-100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Token for querying the next page of returned results. NextToken is not needed when calling the API for the first time.",
+          "example": "VDAwMSu3Y69lZhLwW1bRxLiwKafWBv_6TqKBnp-YH12b0uWcwTBf3DIK7Myza6EVdhDKoFGpKANnZkfmmLy5K8uH1lJYqyvuT_mSXc8VoOdX-8kcKJrB3JbyW9dM0edrKm3Q",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Get the sorting order of the instance. The enumerated values are as follows:\nfalse = Ascending (default)\ntrue=Descending",
+          "example": "true",
+          "member": "bool",
+          "name": "Reverse",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag. Multiple values separated by commas. Enumeration value as follows:\nNOTIFY_AND_MANUAL_RENEW: manual renewal.\nNOTIFY_AND_AUTO_RENEW: automatic renewal.\nDISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.",
+          "example": "[\"DISABLE_NOTIFY_AND_MANUAL_RENEW\"]",
+          "member": "string",
+          "name": "RenewFlagList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID. Multiple IDs separated by commas, with a maximum of 100.",
+          "example": "[\"std_storage-20241106185002290002691-0\"]",
+          "member": "string",
+          "name": "InstanceIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time start, format yyyy-MM-dd HH:mm:ss.",
+          "example": "2025-06-26 00:38:46",
+          "member": "string",
+          "name": "ExpireTimeStart",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time in the format of yyyy-MM-dd HH:mm:ss.",
+          "example": "2025-09-27 15:38:46",
+          "member": "string",
+          "name": "ExpireTimeEnd",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRenewInstancesResponse": {
+      "document": "DescribeRenewInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance summary list.",
+          "example": "无",
+          "member": "RenewInstance",
+          "name": "InstanceList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token for querying the next page of returned results.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "VDAwMSu3Y69lZhLwW1bRxLiwKafWBv_6TqKBnp-YH12b0uWcwTBf3DIK7Myza6EVdhDKoFGpKANnZkfmmLy5K8uH1lJYqyvuT_mSXc8VoOdX-8kcKJrB3JbyW9dM0edrKm3Q",
+          "member": "string",
+          "name": "NextToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTagListRequest": {
       "document": "DescribeTagList request structure.",
       "members": [
@@ -9100,6 +9215,42 @@
       ],
       "type": "object"
     },
+    "OperateRsp": {
+      "document": "Operate related resources return detail",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation failure code at the instance dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Failure reason for operating related resources\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "PayDealsRequest": {
       "document": "PayDeals request structure.",
       "members": [
@@ -9621,6 +9772,144 @@
       ],
       "usage": "out"
     },
+    "RenewInstance": {
+      "document": "Resource instance information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product code",
+          "example": "",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code",
+          "example": "",
+          "member": "string",
+          "name": "SubProductCode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region encoding\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "RegionCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status:\nNORMAL\nISOLATED Isolated\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag:\nNOTIFY_AND_MANUAL_RENEW: manual renewal\nNOTIFY_AND_AUTO_RENEW: auto-renewal.\nDISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "RenewFlag",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance expiration time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance alias: The name set by the user for the instance in the console, which is empty by default if not set.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product name: Cloud products purchased by users, such as Cloud Virtual Machine (CVM)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ProductName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name: Instance Ownership of the project. User can autonomously assign project to the instance on the console. Default project if not allocated.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Automatic renewal cycle length\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "uint64",
+          "name": "RenewPeriod",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Automatic renewal cycle unit: y year, m month\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "RenewPeriodUnit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "RenewInstanceRequest": {
       "document": "RenewInstance request structure.",
       "members": [
@@ -9699,6 +9988,88 @@
           "example": "[\"20251201**********\"]",
           "member": "string",
           "name": "OrderIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetRenewalRequest": {
+      "document": "SetRenewal request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product code.",
+          "example": "p_cos",
+          "member": "string",
+          "name": "ProductCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region code.",
+          "example": "ap-others",
+          "member": "string",
+          "name": "RegionCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID. Only one can be specified.",
+          "example": "std_storage-20240902185001827926251-1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag. Enumeration values are as follows:\nNOTIFY_AND_MANUAL_RENEW: manual renewal.\nNOTIFY_AND_AUTO_RENEW: automatic renewal.\nDISABLE_NOTIFY_AND_MANUAL_RENEW: non-renewal upon expiration.",
+          "example": "NOTIFY_AND_MANUAL_RENEW",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic renewal cycle length. If left empty, the default value set by product is used.\nIf it is month, support: 1-11\nIf it is year, support: 1-5.\nSupported range mainly depends on the product side.",
+          "example": "3",
+          "member": "string",
+          "name": "RenewPeriod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic renewal cycle unit. If left empty, the default value set by the product is used.\nYear y, month m\nSupported range mainly depends on the product side.",
+          "example": "m",
+          "member": "string",
+          "name": "RenewPeriodUnit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetRenewalResponse": {
+      "document": "SetRenewal response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance list when the operation fails.",
+          "example": "无",
+          "member": "OperateRsp",
+          "name": "InstanceList",
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
@@ -9971,7 +10342,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Product Details",
           "example": "某子产品",
           "member": "string",
           "name": "SubProductName",

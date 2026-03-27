@@ -3672,7 +3672,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "group by parameter value enumeration: 1:1m\n   2:5m  3:30m \n   4:1h\n 5:1d",
           "example": "1",
           "member": "int64",
           "name": "GroupByType",
@@ -3681,7 +3681,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "1: Query Intelligent Research\n0: Use old logic, already offline, do not use",
           "example": "1",
           "member": "int64",
           "name": "IsNewData",

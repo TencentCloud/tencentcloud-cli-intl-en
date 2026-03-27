@@ -12438,7 +12438,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Vulnerability categories: 1 web cms vulnerabilities, 2 application vulnerabilities, 4 linux software vulnerabilities, 5 windows system vulnerabilities",
           "example": "1",
           "member": "uint64",
           "name": "VulCategory",
@@ -13651,7 +13651,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Perform allowlisting operations on pending historical items; 0 indicates no action, 1 indicates processing",
           "example": "1",
           "member": "uint64",
           "name": "IsHandleHistoryEvents",
@@ -14115,7 +14115,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repair method: 0 component update or patch installation, 1 disable service",
           "example": "0",
           "member": "uint64",
           "name": "FixMethod",
@@ -33995,7 +33995,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Service status: 0 not started, · in progress, 2 completed",
           "example": "0",
           "member": "uint64",
           "name": "Status",
@@ -44758,7 +44758,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Machines to be excluded",
           "example": "[\"quuidB\"]",
           "member": "string",
           "name": "ExcludedQuuids",
@@ -44893,7 +44893,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Machines to be excluded",
           "example": "[\"quuidB\"]",
           "member": "string",
           "name": "ExcludedQuuids",
@@ -49810,7 +49810,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "0 version comparison, 2 version comparison + poc",
           "example": "0",
           "member": "uint64",
           "name": "ScanMethod",
@@ -49928,7 +49928,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "0 version comparison, 2 version comparison + poc",
           "example": "0",
           "member": "uint64",
           "name": "ScanMethod",
@@ -54335,7 +54335,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repair method: 0 component update or patch installation, 1 disable service",
           "example": "0",
           "member": "uint64",
           "name": "FixMethod",

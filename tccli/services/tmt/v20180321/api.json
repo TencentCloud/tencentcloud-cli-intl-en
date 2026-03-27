@@ -64,7 +64,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Term base list to be used; obtain by creating your own term base via the [Term Base Operation Guide](https://cloud.tencent.com/document/product/551/107926).",
           "example": "[\"144aed******************fc7321d4\"]",
           "member": "string",
           "name": "TermRepoIDList",
@@ -73,7 +73,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The list of example sentence libraries to be used; obtain by creating your own example sentence library via the [Example Sentence Library Operation Guide](https://cloud.tencent.com/document/product/551/107927).",
           "example": "[\"b77f64******************6d88df30\"]",
           "member": "string",
           "name": "SentRepoIDList",

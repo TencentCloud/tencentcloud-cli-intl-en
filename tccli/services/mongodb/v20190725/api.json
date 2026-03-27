@@ -428,7 +428,7 @@
       "type": "object"
     },
     "Auth": {
-      "document": "",
+      "document": "User permissions",
       "members": [
         {
           "disabled": false,

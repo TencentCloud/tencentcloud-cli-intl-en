@@ -1041,7 +1041,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "ISO2 standard country/region code",
           "example": "AL",
           "member": "string",
           "name": "IOS2",
@@ -1051,7 +1051,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "ISO3 standard country/region code",
           "example": "ALB",
           "member": "string",
           "name": "IOS3",

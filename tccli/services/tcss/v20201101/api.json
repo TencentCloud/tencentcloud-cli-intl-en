@@ -7926,7 +7926,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Name",
           "example": "混合集群（地产/家电/酒店/水生态****",
           "member": "string",
           "name": "ClusterName",
@@ -7936,7 +7936,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID",
           "example": "cls-q0qd****",
           "member": "string",
           "name": "ClusterID",
@@ -7946,7 +7946,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "pod uid",
           "example": "20461430-67c2-455b-932e-6a6c8981****",
           "member": "string",
           "name": "PodUid",
@@ -9946,7 +9946,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Specify the cluster list. If empty, it indicates synchronization of all clusters.",
           "example": "test-cluster-id",
           "member": "string",
           "name": "ClusterIDs",
@@ -9955,7 +9955,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to synchronize only the list",
           "example": "false",
           "member": "bool",
           "name": "IsSyncListOnly",
@@ -15720,7 +15720,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter Field",
           "example": "[{Name: \"OnlyShowLatest\", ExactMatch: true, Values: [\"1\"]}]",
           "member": "AssetFilters",
           "name": "Filters",
@@ -27431,7 +27431,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Offset, defaults to 0.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -29265,7 +29265,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Name",
           "example": "cluster-bj",
           "member": "string",
           "name": "ClusterName",
@@ -29275,7 +29275,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Access Status",
           "example": "Accessed",
           "member": "string",
           "name": "ClusterAccessedStatus",
@@ -30042,11 +30042,11 @@
       "usage": "out"
     },
     "ImageRepoRegistryInfo": {
-      "document": "",
+      "document": "Container Security Image Repository List",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository id",
           "example": "24673",
           "member": "uint64",
           "name": "RegistryId",
@@ -30056,7 +30056,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository Name",
           "example": "jfrog****",
           "member": "string",
           "name": "Name",
@@ -30066,7 +30066,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository Type, list: harbor, tcr",
           "example": "jfrog",
           "member": "string",
           "name": "RegistryType",
@@ -30076,7 +30076,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository url",
           "example": "https://trialkn050p.jfro****",
           "member": "string",
           "name": "Url",
@@ -30086,7 +30086,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Network Type, list: public",
           "example": "public",
           "member": "string",
           "name": "NetType",
@@ -30096,7 +30096,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Region, list: default",
           "example": "default",
           "member": "string",
           "name": "RegistryRegion",
@@ -30106,7 +30106,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository Version",
           "example": "V1",
           "member": "string",
           "name": "RegistryVersion",
@@ -30116,7 +30116,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository connection error message (to be deprecated, use ConnDetectException instead)",
           "example": "connect failed",
           "member": "string",
           "name": "ConnectMsg",
@@ -30126,7 +30126,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connectivity Detection Method",
           "example": "agent or backend",
           "member": "string",
           "name": "ConnDetectType",
@@ -30136,7 +30136,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connectivity Detection Host Count",
           "example": "1",
           "member": "uint64",
           "name": "ConnDetectHostCount",
@@ -30146,7 +30146,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connectivity Detection Details",
           "example": "[{'ConnDetectMessage': '', 'ConnDetectStatus': 'status_conne****', 'FailReason': '', 'Quuid': 'backend', 'Solution': '', 'Uuid': 'backend'}]",
           "member": "RegistryConnDetectResult",
           "name": "ConnDetectDetail",
@@ -30156,7 +30156,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "instance_id in tcr",
           "example": "1",
           "member": "string",
           "name": "InstanceID",
@@ -30166,7 +30166,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Latest Successful Synchronization Time",
           "example": "2023-10-01 00:00:00",
           "member": "string",
           "name": "LatestSyncTime",
@@ -30176,7 +30176,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Synchronization Status",
           "example": "doing/success/failed",
           "member": "string",
           "name": "SyncStatus",
@@ -30186,7 +30186,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Synchronization Failure Reason",
           "example": "sync fail reason",
           "member": "string",
           "name": "SyncFailReason",
@@ -30196,7 +30196,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Synchronization Failure Solution",
           "example": "sync solution",
           "member": "string",
           "name": "SyncSolution",
@@ -30206,7 +30206,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Synchronization Failure Message",
           "example": "sync failed msg",
           "member": "string",
           "name": "SyncMessage",
@@ -35042,11 +35042,11 @@
       "usage": "out"
     },
     "RegistryConnDetectResult": {
-      "document": "",
+      "document": "Image Repository Connectivity Detection Result",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Host quuid or backend for Connectivity Detection",
           "example": "5a540076-d38a-4078-aa98-e7c86371d322",
           "member": "string",
           "name": "Quuid",
@@ -35056,7 +35056,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host uuid or backend for Connectivity Detection",
           "example": "5a540076-d38a-4078-aa98-e7c86371d322",
           "member": "string",
           "name": "Uuid",
@@ -35066,7 +35066,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Detection Result Status",
           "example": "status_connected",
           "member": "string",
           "name": "ConnDetectStatus",
@@ -35076,7 +35076,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Detection Result Information",
           "example": "success",
           "member": "string",
           "name": "ConnDetectMessage",
@@ -35086,7 +35086,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Failure Resolution",
           "example": "solution desc",
           "member": "string",
           "name": "Solution",
@@ -35096,7 +35096,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Failure Cause",
           "example": "fail reason",
           "member": "string",
           "name": "FailReason",
@@ -36504,7 +36504,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -36514,7 +36514,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "WorkloadType",
           "example": "StatefulSet",
           "member": "string",
           "name": "WorkloadType",
@@ -37838,7 +37838,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to synchronize all image repositories",
           "example": "true",
           "member": "bool",
           "name": "All",
@@ -37847,7 +37847,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Partial image repositories requiring synchronization",
           "example": "[1,2,3]",
           "member": "uint64",
           "name": "RegistryIds",
@@ -38320,7 +38320,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether running containers exist",
           "example": "false",
           "member": "bool",
           "name": "ContainerRunning",
@@ -38329,7 +38329,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Scan End Time",
           "example": "20:00",
           "member": "string",
           "name": "ScanEndTime",
@@ -38338,7 +38338,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Scan Scope: 0 All Images, 1 Custom Images, 2 Recommended Scan Images",
           "example": "1",
           "member": "uint64",
           "name": "ScanScope",
@@ -38347,7 +38347,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository Type tcr,ccr,harbor",
           "example": "tcr",
           "member": "string",
           "name": "RegistryType",
@@ -38356,7 +38356,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "tke-images",
           "member": "string",
           "name": "Namespace",
@@ -40247,7 +40247,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -40257,7 +40257,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Workload",
           "example": "CVM",
           "member": "string",
           "name": "WorkloadType",

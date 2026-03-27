@@ -162,11 +162,11 @@
       "type": "object"
     },
     "FuseFaceReviewDetail": {
-      "document": "",
+      "document": "Face Fusion is not suitable for CR facial information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved Field",
           "example": "string",
           "member": "string",
           "name": "Field",
@@ -176,7 +176,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Tag name matched in audit",
           "example": "string",
           "member": "string",
           "name": "Label",
@@ -186,7 +186,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Confidence score corresponding to the identified label. A higher score indicates a higher probability of violation.\n\n0 to 70: Suggestion is PASS;\n\n70 to 80: Suggestion is REVIEW;\n\n80 to 100: Suggestion is BLOCK.",
           "example": "1",
           "member": "float",
           "name": "Confidence",
@@ -196,7 +196,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit conclusion for identified scenarios:\n\nPASS: Normal\n\nREVIEW: Suspected\n\nBLOCK: Violation",
           "example": "string",
           "member": "string",
           "name": "Suggestion",
@@ -208,11 +208,11 @@
       "usage": "out"
     },
     "FuseFaceReviewResult": {
-      "document": "",
+      "document": "Face Fusion is not suitable for the returned parameter item in CR.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved Field",
           "example": "Politics",
           "member": "string",
           "name": "Category",
@@ -222,7 +222,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Status code; 0 indicates successful processing, other values indicate processing failure",
           "example": "0",
           "member": "string",
           "name": "Code",
@@ -232,7 +232,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Description for the status code",
           "example": "OK",
           "member": "string",
           "name": "CodeDescription",
@@ -242,7 +242,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved Field",
           "example": "PASS",
           "member": "float",
           "name": "Confidence",
@@ -252,7 +252,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved Field",
           "example": "30",
           "member": "string",
           "name": "Suggestion",
@@ -262,7 +262,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit Details",
           "example": "[{\"Label\": \"丁俊晖\",\"Confidence\": 30,\"Suggestion\": \"PASS\"}]",
           "member": "FuseFaceReviewDetail",
           "name": "DetailSet",
