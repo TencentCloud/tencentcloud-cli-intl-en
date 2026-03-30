@@ -90,16 +90,34 @@
     ],
     "CreateAccelerationDomain": [
       {
+        "document": "Create an acceleration domain name and use the specified shared CNAME.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"www.example.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"1.1.1.1\"\n    },\n    \"OriginProtocol\": \"FOLLOW\",\n    \"HttpOriginPort\": 80,\n    \"HttpsOriginPort\": 443,\n    \"IPv6Status\": \"follow\",\n    \"SharedCNAME\": \"sharedomain.225qgrnvbi9w.share.dnse5.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"OwnershipVerification\": null,\n        \"RequestId\": \"3d310306-f298-439a-9daa-29eec8490769\"\n    }\n}",
+        "title": "Creating an Acceleration Domain Name with a Shared CNAME"
+      },
+      {
+        "document": "This example shows you how to create an acceleration domain name for an AWS S3 origin server, with private network access enabled and authentication algorithm set to AWS Signature Version 2.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"qq.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"test.s3.ap-east-1.amazonaws.com\",\n        \"PrivateAccess\": \"on\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"AKID***********************************************\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-east-1\"\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a703\"\n    }\n}",
+        "title": "Creating an Acceleration Domain Name for an AWS S3 Origin Server"
+      },
+      {
+        "document": "Create an acceleration domain name with the origin server type set to VOD, and specify origin retrieval for all files within the current VOD application.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-36oiczk333c3\",\n    \"DomainName\": \"vbt-06.bennyddeng.work\",\n    \"OriginInfo\": {\n        \"OriginType\": \"VOD\",\n        \"Origin\": \"220643\",\n        \"VodOriginScope\": \"all\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"OwnershipVerification\": null,\n        \"RequestId\": \"ec58b4d5-9154-4fd8-a148-7b39af634f2b\"\n    }\n}",
+        "title": "Create an Acceleration Domain Name with the Origin Server Type As VOD, Origin Request Range: all"
+      },
+      {
+        "document": "Create an acceleration domain name with the origin server type as VOD, and specify origin retrieval to files in a bucket under the present VOD application.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-36oiczk333c3\",\n    \"DomainName\": \"vbt-05.bennyddeng.work\",\n    \"OriginInfo\": {\n        \"OriginType\": \"VOD\",\n        \"Origin\": \"220643\",\n        \"VodOriginScope\": \"bucket\",\n        \"VodBucketId\": \"9n15dnlrwu800zh\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"OwnershipVerification\": null,\n        \"RequestId\": \"8e26894c-e6f5-43ae-be0e-ef2377b88ea6\"\n    }\n}",
+        "title": "Create an Acceleration Domain Name with the Origin Server Type As VOD, Back-To-Origin Scope: bucket"
+      },
+      {
         "document": "This example shows you how to create an acceleration domain name for a domain-name origin server.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"qq.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"www.test.com\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Creating an Acceleration Domain Name for a Domain-Name Origin Server"
-      },
-      {
-        "document": "This example shows you how to create an acceleration domain name for an AWS S3 origin server, with private network access enabled and authentication algorithm set to AWS Signature Version 2.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"qq.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"test.s3.ap-east-1.amazonaws.com\",\n        \"PrivateAccess\": \"on\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"AKID***********************************************\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-east-1\"\n            }\n        ]\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a703\"\n    }\n}",
-        "title": "Creating an Acceleration Domain Name for an AWS S3 Origin Server"
       }
     ],
     "CreateAliasDomain": [
