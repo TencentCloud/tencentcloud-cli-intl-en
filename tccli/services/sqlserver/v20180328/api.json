@@ -2742,7 +2742,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory size in GB",
+          "document": "Instance memory size in GB.",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -2751,7 +2751,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk size in GB",
+          "document": "Instance disk size in GB.",
           "example": "100",
           "member": "int64",
           "name": "Storage",
@@ -2760,7 +2760,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of CPU cores",
+          "document": "Number of CPU cores.",
           "example": "2",
           "member": "uint64",
           "name": "Cpu",
@@ -2778,7 +2778,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).",
+          "document": "Billing mode. Valid values: `PREPAID` (yearly/monthly subscription), `POSTPAID` (pay-as-you-go).",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2787,7 +2787,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID.",
           "example": "1003",
           "member": "int64",
           "name": "ProjectId",
@@ -2841,8 +2841,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of voucher IDs (currently, only one voucher can be used per order)",
-          "example": "xxxxx",
+          "document": "Array of voucher IDs (currently, only one voucher can be used per order).",
+          "example": "VoucherIds",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -2859,7 +2859,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.",
+          "document": "Auto-renewal flag, which takes effect only when purchasing a yearly/monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2895,7 +2895,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour",
+          "document": "Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour.",
           "example": "2",
           "member": "int64",
           "name": "Span",
@@ -2913,8 +2913,8 @@
         },
         {
           "disabled": false,
-          "document": "Tags associated with the instances to be created",
-          "example": "无",
+          "document": "Tags associated with the instances to be created.",
+          "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
           "member": "ResourceTag",
           "name": "ResourceTags",
           "required": false,
@@ -2937,6 +2937,33 @@
           "name": "TimeZone",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.",
+          "example": "false",
+          "member": "bool",
+          "name": "MultiNodes",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.",
+          "example": "[\"ap-guangzhou-1\"]",
+          "member": "string",
+          "name": "DrZones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Disk encryption identifier, 0-unencrypted, 1-encrypted.",
+          "example": "0",
+          "member": "int64",
+          "name": "DiskEncryptFlag",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2946,7 +2973,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order name",
+          "document": "Order name.",
           "example": "20200318114212",
           "member": "string",
           "name": "DealName",

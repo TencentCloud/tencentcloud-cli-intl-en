@@ -485,7 +485,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sender'S email address. please fill in the sender's email address, such as noreply@mail.qcloud.com. if you need to fill in the sender's description, please follow.\nSender &lt;email address&gt; via fill in, such as:.\nTencent cloud team &lt;noreply@mail.qcloud.com&gt;.",
+          "document": "<p>Sender's email address. Please fill in the sender's email address, for example: noreply@mail.qcloud.com. If you need to fill in the sender description, please enter it via<br>sender &lt;email address&gt;, for example:<br>Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;</p>",
           "example": "test@example.com",
           "member": "string",
           "name": "FromEmailAddress",
@@ -494,7 +494,7 @@
         },
         {
           "disabled": false,
-          "document": "Recipient list ID.",
+          "document": "<p>Recipient list ID</p>",
           "example": "1",
           "member": "uint64",
           "name": "ReceiverId",
@@ -503,7 +503,7 @@
         },
         {
           "disabled": false,
-          "document": "Email subject.",
+          "document": "<p>Email Subject</p>",
           "example": "邮件主题",
           "member": "string",
           "name": "Subject",
@@ -512,7 +512,7 @@
         },
         {
           "disabled": false,
-          "document": "Task type 1: send now 2: scheduled sending 3: cycle (frequency) sending.",
+          "document": "<p>Task type 1: Send now 2: Scheduled sending 3: Cycle (frequency) sending</p>",
           "example": "1",
           "member": "uint64",
           "name": "TaskType",
@@ -521,7 +521,7 @@
         },
         {
           "disabled": false,
-          "document": "The \"reply\" email address of the mail. can be filled with an email address you can receive mail from, can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.",
+          "document": "<p>The \"reply\" email address of the mail. Can be filled with an email address you can receive mail, can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>",
           "example": "test@example.com",
           "member": "string",
           "name": "ReplyToAddresses",
@@ -530,7 +530,7 @@
         },
         {
           "disabled": false,
-          "document": "When using a template to send, fill in the related parameters of the template.\n<Dx-Alert infotype=\"notice\" title=\"note\">this field must be specified if you have not applied for special configuration.</dx-alert>.",
+          "document": "<p>Template-related parameters to fill in when sending with a template</p><blockquote class=\"rno-document-tips rno-document-tips-notice\">    <div class=\"rno-document-tips-body\">        <i class=\"rno-document-tip-icon\"></i>        <div class=\"rno-document-tip-title\">Note</div>        <div class=\"rno-document-tip-desc\"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>",
           "example": "无",
           "member": "Template",
           "name": "Template",
@@ -539,7 +539,7 @@
         },
         {
           "disabled": false,
-          "document": "Abandoned<Dx-Alert infotype=\"notice\" title=\"description\">only customers who historically applied for special configuration require the use of it. if you have not applied for special configuration, this field does not exist.</dx-alert>.",
+          "document": "<p>Abandoned<blockquote class=\"rno-document-tips rno-document-tips-notice\">    <div class=\"rno-document-tips-body\">        <i class=\"rno-document-tip-icon\"></i>        <div class=\"rno-document-tip-title\">Description</div>        <div class=\"rno-document-tip-desc\"><p>Only customers who historically applied for special configuration need to use this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote></p>",
           "example": "无",
           "member": "Simple",
           "name": "Simple",
@@ -548,7 +548,7 @@
         },
         {
           "disabled": false,
-          "document": "Send attachment when required. fill in related parameters (not supported).",
+          "document": "<p>When you need to send an attachment, fill in the related parameters (not supported).</p>",
           "example": "无",
           "member": "Attachment",
           "name": "Attachments",
@@ -557,7 +557,7 @@
         },
         {
           "disabled": false,
-          "document": "Required parameter for sending tasks periodically.",
+          "document": "<p>Required parameter for sending tasks periodically</p>",
           "example": "无",
           "member": "CycleEmailParam",
           "name": "CycleParam",
@@ -566,7 +566,7 @@
         },
         {
           "disabled": false,
-          "document": "Required parameter for scheduled task assignment.",
+          "document": "<p>Required parameter of scheduled task assignment</p>",
           "example": "无",
           "member": "TimedEmailParam",
           "name": "TimedParam",
@@ -575,7 +575,7 @@
         },
         {
           "disabled": false,
-          "document": "Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.",
+          "document": "Unsubscription link options 0: do not add 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai. 11: indonesian.",
           "example": "1",
           "member": "string",
           "name": "Unsubscribe",
@@ -584,7 +584,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to add an ad flag. valid values: 0 (do not add), 1 (add to the previous subject), 2 (add to the following subject).",
+          "document": "<p>Whether to add an ad flag 0: do not add 1: add to the previous subject 2: add to the following subject</p>",
           "example": "0",
           "member": "uint64",
           "name": "ADLocation",
@@ -599,7 +599,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Send task ID.",
+          "document": "<p>Send task ID</p>",
           "example": "1",
           "member": "uint64",
           "name": "TaskId",
@@ -2841,7 +2841,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sender'S email address. when not using an alias, enter the sender's email address directly, for example: noreply@mail.qcloud.com. to enter a sender alias, follow this format (note that a space must separate the alias and email address): alias+space+<email address>. the alias cannot contain a colon (:).",
+          "document": "<p>Sender's email address. If no alias is used, enter the sender's email address directly, for example: noreply@mail.qcloud.com. To use a sender alias, follow this format (note that a space must be used between the alias and the email address): alias+space+&lt;email address&gt;. The alias cannot contain a colon (:).</p>",
           "example": "QCLOUDTEAM &ltnoreply@mail.qcloud.com&gt",
           "member": "string",
           "name": "FromEmailAddress",
@@ -2850,7 +2850,7 @@
         },
         {
           "disabled": false,
-          "document": "Email subject.",
+          "document": "<p>Email Subject</p>",
           "example": "YourTestSubject",
           "member": "string",
           "name": "Subject",
@@ -2859,7 +2859,7 @@
         },
         {
           "disabled": false,
-          "document": "Recipient email address, supports up to 50 recipients for mass sending. note: the email content will display all recipient addresses. for non-mass sending, call the API multiple times to send.\nSpecifies that at least one of the Destination, Cc, or Bcc parameters must exist.",
+          "document": "<p>Recipient email address, supports up to 50 recipients in mass sending. Note: The email content displays all recipient addresses. For non-mass sending, call the API multiple times to send.<br>At least one of the three parameters Destination/Cc/Bcc must exist.</p>",
           "example": "[\"destination@mail.qcloud.com\"]",
           "member": "string",
           "name": "Destination",
@@ -2868,7 +2868,7 @@
         },
         {
           "disabled": false,
-          "document": "The \"reply\" email address of the mail. can be filled with an email address where you can receive mail, which can be a personal mailbox. if left empty, the recipient's reply mail will fail to send.",
+          "document": "<p>The \"reply\" email address of the mail. Can be filled with a mailbox address where you can receive emails, which can be a personal mailbox. If left empty, the recipient's reply mail will fail to send.</p>",
           "example": "noreply@mail.qcloud.com",
           "member": "string",
           "name": "ReplyToAddresses",
@@ -2877,7 +2877,7 @@
         },
         {
           "disabled": false,
-          "document": "Cc recipient email address, supports up to 20 carbon copies.",
+          "document": "<p>Email address of CC recipients, supports up to 20 carbon copies.</p>",
           "example": "[\"cc@mail.qcloud.com\"]",
           "member": "string",
           "name": "Cc",
@@ -2886,7 +2886,7 @@
         },
         {
           "disabled": false,
-          "document": "Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.",
+          "document": "<p>Bcc email address, supports up to 20 carbon copies. Bcc and Destination must be unique.</p>",
           "example": "[\"bcc@mail.qcloud.com\"]",
           "member": "string",
           "name": "Bcc",
@@ -2895,7 +2895,7 @@
         },
         {
           "disabled": false,
-          "document": "Use template for sending and fill in related parameters.\n<dx-alert infotype=\"notice\" title=\"note\">this field must be specified if you have not applied for special configuration.</dx-alert>.",
+          "document": "<p>Fill in the template parameters when sending with a template.</p><blockquote class=\"rno-document-tips rno-document-tips-notice\">    <div class=\"rno-document-tips-body\">        <i class=\"rno-document-tip-icon\"></i>        <div class=\"rno-document-tip-title\">Note</div>        <div class=\"rno-document-tip-desc\"><p>This field must be specified if you have not applied for special configuration</p></div>    </div></blockquote>",
           "example": "无",
           "member": "Template",
           "name": "Template",
@@ -2904,7 +2904,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter has been deprecated.\n<dx-alert infotype=\"notice\" title=\"description\"> only customers who have applied for special configuration in the past need to use this. if you have not applied for special configuration, this field does not exist.</dx-alert>.",
+          "document": "<p>Abandoned</p><blockquote class=\"rno-document-tips rno-document-tips-notice\">    <div class=\"rno-document-tips-body\">        <i class=\"rno-document-tip-icon\"></i>        <div class=\"rno-document-tip-title\">Description</div>        <div class=\"rno-document-tip-desc\"><p>Only customers who historically applied for special configuration require the use of this. If you have not applied for special configuration, this field does not exist.</p></div>    </div></blockquote>",
           "example": "无",
           "member": "Simple",
           "name": "Simple",
@@ -2913,7 +2913,7 @@
         },
         {
           "disabled": false,
-          "document": "When sending an attachment, fill in the related parameters. the tencent cloud API request supports a maximum of 8M request packet. the attachment content transits Base64 and is expected to expand by 1.5 times. you should control the total size of all attachments within 4M. the API will return an error if the overall request exceeds 8M.",
+          "document": "<p>To send an attachment, fill in the relevant parameters. The Tencent Cloud API request supports a maximum of 8M request packet. The attachment content is expected to expand by 1.5 times after Base64 encoding. The total size of all attachments should not exceed 4M. The API will return an error if the overall request exceeds 8M.</p>",
           "example": "无",
           "member": "Attachment",
           "name": "Attachments",
@@ -2922,7 +2922,7 @@
         },
         {
           "disabled": false,
-          "document": "Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai.",
+          "document": "Unsubscription link options 0: do not add unsubscription link 1: english 2: simplified chinese 3: traditional chinese 4: spanish 5: french 6: german 7: japanese 8: korean 9: arabic 10: thai 11: indonesian.",
           "example": "1",
           "member": "string",
           "name": "Unsubscribe",
@@ -2931,7 +2931,7 @@
         },
         {
           "disabled": false,
-          "document": "Mail trigger type. 0: non-trigger class, default type, select this type for marketing emails and non-instant emails. 1: trigger class, instant delivery emails such as captcha-intl. if the mail exceeds a certain size, the system will automatically select the non-trigger class channel.",
+          "document": "<p>Mail trigger type 0: Non-trigger class, default type, select this type for marketing email, non-instant mail. 1: Trigger class, instant delivery mail such as verification code. If the mail exceeds a certain size, the system will automatically select a non-trigger type channel.</p>",
           "example": "1",
           "member": "uint64",
           "name": "TriggerType",
@@ -2940,7 +2940,7 @@
         },
         {
           "disabled": false,
-          "document": "Message-Id field in the smtp header.",
+          "document": "<p>Message-Id field in the smtp header</p>",
           "example": "<2SNZPF1T2NU4.5OB8TNNRVRYM3@qcloudmail.com>",
           "member": "string",
           "name": "SmtpMessageId",
@@ -2949,7 +2949,7 @@
         },
         {
           "disabled": false,
-          "document": "Other fields that can be set in the smtp header.",
+          "document": "<p>Other fields that can be set in the smtp header</p>",
           "example": "{\"header1\": \"value1\", \"header2\": \"value2\"}",
           "member": "string",
           "name": "SmtpHeaders",
@@ -2958,7 +2958,7 @@
         },
         {
           "disabled": false,
-          "document": "from field in the smtp header. the domain name should be consistent with FromEmailAddress.",
+          "document": "<p>The from field in the smtp header. The domain name should be consistent with the FromEmailAddress.</p>",
           "example": "noreply@mail.qcloud.com",
           "member": "string",
           "name": "HeaderFrom",
@@ -2973,7 +2973,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Uniquely generated message identifier for receive message.",
+          "document": "<p>Uniquely generated message identifier for receiving messages.</p>",
           "example": "qcloud-ses-messageid",
           "member": "string",
           "name": "MessageId",

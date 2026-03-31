@@ -7707,7 +7707,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPC instance ID",
+          "document": "VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).",
           "example": "vpc-q26u781x。",
           "member": "string",
           "name": "VpcId",
@@ -7716,7 +7716,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet instance ID",
+          "document": "Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.",
           "example": "subnet-qmqye6ew。",
           "member": "string",
           "name": "SubnetId",
@@ -7725,8 +7725,8 @@
         },
         {
           "disabled": false,
-          "document": "Endpoint name",
-          "example": "示例名称。",
+          "document": "Endpoint name. limited to 60 characters.",
+          "example": "EndPointName1。",
           "member": "string",
           "name": "EndPointName",
           "required": true,
@@ -7734,7 +7734,7 @@
         },
         {
           "disabled": false,
-          "document": "Endpoint service ID",
+          "document": "Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.",
           "example": "vpcsvc-ettmyyrn。",
           "member": "string",
           "name": "EndPointServiceId",
@@ -7752,10 +7752,28 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID",
+          "document": "Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).",
           "example": "sg-123456。",
           "member": "string",
           "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of tags to be bound, for example, [{\"Key\": \"city\", \"Value\": \"shanghai\"}].",
+          "example": "[{\"Key\": \"env\", \"Value\": \"prod\"}]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Protocol type. supports Ipv4 and Ipv6. default is Ipv4.",
+          "example": "Ipv4",
+          "member": "string",
+          "name": "IpAddressType",
           "required": false,
           "type": "string"
         }
@@ -16440,7 +16458,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).",
           "example": "vpc-hj3he929",
           "member": "string",
           "name": "VpcId",
@@ -16530,7 +16548,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "Creation time. format: YYYY-MM-DD HH:MM:SS.",
           "example": "2018-04-03 15:00:00",
           "member": "string",
           "name": "CreateTime",
@@ -16550,13 +16568,33 @@
         },
         {
           "disabled": false,
-          "document": "Endpoint service name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Endpoint service name.",
           "example": "demo",
           "member": "string",
           "name": "ServiceName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CDC cluster unique ID.",
+          "example": "cluster-d8htgb6k",
+          "member": "string",
+          "name": "CdcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag key-value pair.\t\t",
+          "example": "[{\"Key\": \"tag-key\", \"Value\": \"tag-value\"}]",
+          "member": "Tag",
+          "name": "TagSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
