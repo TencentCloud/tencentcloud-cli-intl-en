@@ -250,6 +250,14 @@
         "title": "Create Just In Time Transcode Template"
       }
     ],
+    "CreateLLMComprehendTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLLMComprehendTemplate\n<Common request parameters>\n\n{\n    \"Level\": \"Audio\",\n    \"SubAppId\": 220885,\n    \"Name\": \"Template name\",\n    \"Comment\": \"Template description\",\n    \"Summary\": {\n        \"Switch\": \"ON\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 100004,\n        \"RequestId\": \"818fc227-67cf-4857-aadb-3259499468dd\"\n    }\n}",
+        "title": "Creating a New Template"
+      }
+    ],
     "CreatePersonSample": [
       {
         "document": " ",
@@ -522,6 +530,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteJustInTimeTranscodeTemplate\n<Public request parameters>\n\n{\n    \"Name\": \"testtempaltename\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Delete Just In Time Transcode Template"
+      }
+    ],
+    "DeleteLLMComprehendTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLLMComprehendTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 100001,\n    \"SubAppId\": 220885\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e6af0548-b7a6-4bdb-ba40-a7aa37756546\"\n    }\n}",
+        "title": "Delete an existing template"
       }
     ],
     "DeleteMedia": [
@@ -862,6 +878,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeJustInTimeTranscodeTemplates\n<Public request parameters>\n\n{\n    \"Names\": [\n        \"testtempaltename\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"JustInTimeTranscodeTemplateSet\": [\n            {\n                \"Type\": \"Custom\",\n                \"Name\": \"test\",\n                \"Comment\": \"comment\",\n                \"VideoConfigure\": {\n                    \"Width\": 720,\n                    \"Height\": 1080,\n                    \"Bitrate\": 10000,\n                    \"ResolutionAdaptive\": \"open\"\n                },\n                \"WatermarkConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"Url\": \"http://example.com/aa.png\",\n                    \"Width\": \"10%\",\n                    \"Height\": \"10%\",\n                    \"XPos\": \"10%\",\n                    \"YPos\": \"10%\"\n                }\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Describe Just In Time Transcode Templates"
+      }
+    ],
+    "DescribeLLMComprehendTemplates": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLLMComprehendTemplates\n<Common request parameters>\n\n{\n    \"SubAppId\": 221086\n}",
+        "output": "{\n    \"Response\": {\n        \"LLMComprehendTemplateSet\": [\n            {\n                \"Asr\": {\n                    \"Switch\": \"ON\"\n                },\n\"Comment\": \"Suitable for parsing content such as lectures and meeting recordings that is independent of visual elements.\"\n                \"CreateTime\": \"2026-02-05T12:00:00+08:00\",\n                \"Definition\": 100,\n                \"Level\": \"Audio\",\n\"Name\": \"Basic Audio Parsing Template\"\n                \"Summary\": {\n                    \"ExtendedParameter\": \"\",\n                    \"Switch\": \"ON\"\n                },\n                \"UpdateTime\": \"2026-01-29T12:00:00+08:00\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"df838f51-db7c-45c1-899d-6a8597d2afaa\"\n    }\n}",
+        "title": "Retrieve the existing template list"
       }
     ],
     "DescribeLicenseUsageData": [
@@ -1227,9 +1251,9 @@
     "ImportMediaKnowledge": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImportMediaKnowledge\n<Common request parameters>\n\n{\n    \"SubAppId\": 1490012345,\n    \"FileId\": \"966263*******14024\",\n    \"ImportTasks\": [\n        \"AiAnalysis.DescriptionTask\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"82d8af52-0bab-4894-bf4b-831e38fba6f4\",\n        \"TaskId\": \"1490012345-ImportMediaKnowledge-6c93a80f3f49a2426299c0ec0096349ft\"\n    }\n}",
-        "title": "Importing Media"
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImportMediaKnowledge\n<Common request parameters>\n\n{\n    \"SubAppId\": 221086,\n    \"FileId\": \"966263618988054052\",\n    \"Definition\": 100003\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"221086-ImportMediaKnowledge-5838a3e1d4855683e93991e35f8a3ccet\",\n        \"RequestId\": \"2cf4b3ad-fd68-46f5-8456-e9f0a34f021a\"\n    }\n}",
+        "title": "Import Media"
       }
     ],
     "InspectMediaQuality": [
@@ -1400,6 +1424,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyJustInTimeTranscodeTemplate\n<Public request parameters>\n\n{\n    \"Name\": \"testtempaltename\",\n    \"Comment\": \"this is a test comment\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Modify Just In Time Transcode Template"
+      }
+    ],
+    "ModifyLLMComprehendTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLLMComprehendTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 100002,\n    \"SubAppId\": 220885,\n    \"Model\": \"Basic\",\n    \"Summary\": {\n        \"Switch\": \"OFF\",\n        \"ExtendedParameter\": \"\"\n    },\n    \"Asr\": {\n        \"Switch\": \"OFF\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b6c7338-2dae-4454-a91b-1bdc219c5b9f\"\n    }\n}",
+        "title": "Modify an existing template"
       }
     ],
     "ModifyMediaInfo": [

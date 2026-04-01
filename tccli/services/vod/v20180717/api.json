@@ -161,6 +161,13 @@
       "output": "CreateJustInTimeTranscodeTemplateResponse",
       "status": "online"
     },
+    "CreateLLMComprehendTemplate": {
+      "document": "Create a large model comprehend template",
+      "input": "CreateLLMComprehendTemplateRequest",
+      "name": "Create a large model parsing template",
+      "output": "CreateLLMComprehendTemplateResponse",
+      "status": "online"
+    },
     "CreatePersonSample": {
       "document": "This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.",
       "input": "CreatePersonSampleRequest",
@@ -362,6 +369,13 @@
       "input": "DeleteJustInTimeTranscodeTemplateRequest",
       "name": "Delete Just In Time Transcode Template",
       "output": "DeleteJustInTimeTranscodeTemplateResponse",
+      "status": "online"
+    },
+    "DeleteLLMComprehendTemplate": {
+      "document": "This API is used to delete a user-customized  large model comprehend template.\n\nNote: Templates with an ID below 10000 are system-preset templates and cannot be deleted.",
+      "input": "DeleteLLMComprehendTemplateRequest",
+      "name": "Delete a large model comprehend template",
+      "output": "DeleteLLMComprehendTemplateResponse",
       "status": "online"
     },
     "DeleteMedia": {
@@ -628,6 +642,13 @@
       "input": "DescribeJustInTimeTranscodeTemplatesRequest",
       "name": "Describe Just In Time Transcode Templates",
       "output": "DescribeJustInTimeTranscodeTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeLLMComprehendTemplates": {
+      "document": "This API is used to obtain the template detail list based on the Template Unique Identifier of the large model comprehend template. The returned results include all eligible customized large model parsing templates.",
+      "input": "DescribeLLMComprehendTemplatesRequest",
+      "name": "Retrieve the large model comprehend template list",
+      "output": "DescribeLLMComprehendTemplatesResponse",
       "status": "online"
     },
     "DescribeLicenseUsageData": {
@@ -978,6 +999,13 @@
       "input": "ModifyJustInTimeTranscodeTemplateRequest",
       "name": "Modify Just In Time Transcode Template",
       "output": "ModifyJustInTimeTranscodeTemplateResponse",
+      "status": "online"
+    },
+    "ModifyLLMComprehendTemplate": {
+      "document": "Modify the parsing template of a large model",
+      "input": "ModifyLLMComprehendTemplateRequest",
+      "name": "Modify a large model parsing template",
+      "output": "ModifyLLMComprehendTemplateResponse",
       "status": "online"
     },
     "ModifyMediaInfo": {
@@ -13366,6 +13394,97 @@
       ],
       "type": "object"
     },
+    "CreateLLMComprehendTemplateRequest": {
+      "document": "CreateLLMComprehendTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resolution level. Available values are:</p><ul><li>Audio: Audio-level comprehension</li><li>Video: Video-level comprehension</li></ul>",
+          "example": "Audio",
+          "member": "string",
+          "name": "Level",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>",
+          "example": "220885",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Large model comprehend template name. The length cannot exceed 64 characters.</p>",
+          "example": "模板名称",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Large model comprehend template description information. The length cannot exceed 256 characters.</p>",
+          "example": "模板描述",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Segment summary parsing configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendSummary",
+          "name": "Summary",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text transcription parsing configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendAsr",
+          "name": "Asr",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Face identification configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendFaceRecognition",
+          "name": "FaceRecognition",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLLMComprehendTemplateResponse": {
+      "document": "CreateLLMComprehendTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique identifier of the Large Model Understanding Template</p>",
+          "example": "100004",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePersonSampleRequest": {
       "document": "CreatePersonSample request structure.",
       "members": [
@@ -15377,6 +15496,42 @@
     },
     "DeleteJustInTimeTranscodeTemplateResponse": {
       "document": "DeleteJustInTimeTranscodeTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLLMComprehendTemplateRequest": {
+      "document": "DeleteLLMComprehendTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the Large Model Comprehend Template",
+          "example": "100001",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>",
+          "example": "220885",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLLMComprehendTemplateResponse": {
+      "document": "DeleteLLMComprehendTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -17773,6 +17928,80 @@
           "member": "JustInTimeTranscodeTemplate",
           "name": "JustInTimeTranscodeTemplateSet",
           "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLLMComprehendTemplatesRequest": {
+      "document": "DescribeLLMComprehendTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b>",
+          "example": "221086",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition for the unique identifier of the large model comprehend template. The maximum array length is 100.",
+          "example": "[10003]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLLMComprehendTemplatesResponse": {
+      "document": "DescribeLLMComprehendTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet the filtering conditions.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of large model comprehend template details.",
+          "example": "无",
+          "member": "LLMComprehendTemplateItem",
+          "name": "LLMComprehendTemplateSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -23988,11 +24217,20 @@
         },
         {
           "disabled": false,
+          "document": "Unique identifier of the Large Model Comprehend Template",
+          "example": "100003",
+          "member": "int64",
+          "name": "Definition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
           "document": "Specifies the task type for importing the knowledge base. valid values:.\n- AiAnalysis.DescriptionTask\n- SmartSubtitle.AsrFullTextTask",
           "example": "[\"AiAnalysis.DescriptionTask\"]",
           "member": "string",
           "name": "ImportTasks",
-          "required": true,
+          "required": false,
           "type": "list"
         }
       ],
@@ -24356,6 +24594,288 @@
           "name": "WatermarkConfigure",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LLMComprehendAsr": {
+      "document": "Large model parse text transcribe parse configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text transcription task switch. Available values:\n-ON: Enable the transcription task.\n-OFF: Disable text transcription task.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LLMComprehendAsrForUpdate": {
+      "document": "Large model parse text transcribe parse configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text transcription task switch. Available values:\n-ON: Enable the transcription task.\n-OFF: Disable text transcription task.",
+          "example": "OFF",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "LLMComprehendFaceRecognition": {
+      "document": "Large model parses face identification configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p><p>Default value: 95.</p>",
+          "example": "95",
+          "member": "float",
+          "name": "Score",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>",
+          "example": "[\"entertainmen\"]",
+          "member": "string",
+          "name": "DefaultLibraryLabelSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>",
+          "example": "[\"my_library\"]",
+          "member": "string",
+          "name": "UserDefineLibraryLabelSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>",
+          "example": "All",
+          "member": "string",
+          "name": "FaceLibrary",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LLMComprehendFaceRecognitionForUpdate": {
+      "document": "Large model parses face identification configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Face recognition task switch</p><p>Enumeration value:</p><ul><li>ON: Enable intelligent face recognition task</li><li>OFF: Disable intelligent face recognition task</li></ul><p>Default value: OFF</p>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Face recognition filter score. The recognition result is returned when it reaches or exceeds this score.</p><p>Value ranges from 0 to 100.</p>",
+          "example": "95",
+          "member": "float",
+          "name": "Score",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default character filter tag. Specifies the tag of the default character to return. If left blank or empty, all default character results are returned.</p><p>Enumeration value:</p><ul><li>entertainment: entertainment star</li><li>sport: sports celebrity</li><li>politician: political figure</li></ul>",
+          "example": "[\"entertainmen\"]",
+          "member": "string",
+          "name": "DefaultLibraryLabelSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User-defined character filter tag specifies the tags of user-defined characters to return. If left blank or empty, all customized figure results are returned.</p><p>Input limit: The number of tags is limited to 100, and each tag is limited to 16 characters in length.</p>",
+          "example": "[\"my_library\"]",
+          "member": "string",
+          "name": "UserDefineLibraryLabelSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Figure library selection</p><p>Enumeration value:</p><ul><li>Default: Use default figure library</li><li>UserDefine: Use user-defined figure library</li><li>All: Use default and user-defined figure libraries simultaneously</li></ul><p>Default value: All</p>",
+          "example": "All",
+          "member": "string",
+          "name": "FaceLibrary",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "LLMComprehendSummary": {
+      "document": "Large model parsing segment summary parse configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Segment summary task switch, available values:\n-ON: Enable segment summary task.\n-OFF: Disable segment summary.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).",
+          "example": "{\n  \t \"mvc\": {\n        \"mode\": \"shotVideo\",\n      \t \"prompt\": \"按分镜进行摘要\"\n    }\n}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LLMComprehendSummaryForUpdate": {
+      "document": "Large model parsing segment summary parse configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Segment summary task switch, available values:\n-ON: Enable segment summary task.\n-OFF: Disable segment summary.",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Extended parameter, which is a serialized json string. See [Extended Parameter description](https://www.tencentcloud.com/document/product/862/104493?from_cn_redirect=1#note).",
+          "example": "{\"des\": {\"dstlang\": \"zh\"}}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "LLMComprehendTemplateItem": {
+      "document": "Large model parses template detail.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the image asynchronous processing template.",
+          "example": "100004",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image async processing template name.",
+          "example": "模板名称",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the image asynchronous processing template.",
+          "example": "模板描述",
+          "member": "string",
+          "name": "Comment",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Parsing level. Optional values:\n-Audio: Audio-level parsing\n-Video: Video-level parsing",
+          "example": "Video",
+          "member": "string",
+          "name": "Level",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Segment summary parsing configuration",
+          "example": "无",
+          "member": "LLMComprehendSummary",
+          "name": "Summary",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Text transcription parsing configuration",
+          "example": "无",
+          "member": "LLMComprehendAsr",
+          "name": "Asr",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template creation time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2026-02-09T09:42:33+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template last modified time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2026-02-09T09:34:09+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -29263,6 +29783,96 @@
     },
     "ModifyJustInTimeTranscodeTemplateResponse": {
       "document": "ModifyJustInTimeTranscodeTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLLMComprehendTemplateRequest": {
+      "document": "ModifyLLMComprehendTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique identifier of the Large Model Understanding Template</p>",
+          "example": "100002",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>",
+          "example": "220885",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Large model parsing template name. The length cannot exceed 64 characters.</p>",
+          "example": "模板名称",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Large model parses template description information. The length cannot exceed 256 characters.</p>",
+          "example": "模板描述",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parse model. Optional values:</p><ul><li>Basic: Base Model</li><li>Pro: Optimization Model</li></ul>",
+          "example": "Basic",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Segment summary parsing configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendSummaryForUpdate",
+          "name": "Summary",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text transcription parsing configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendAsrForUpdate",
+          "name": "Asr",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Face identification configuration</p>",
+          "example": "无",
+          "member": "LLMComprehendFaceRecognitionForUpdate",
+          "name": "FaceRecognition",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLLMComprehendTemplateResponse": {
+      "document": "ModifyLLMComprehendTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -38576,7 +39186,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. for customers who activate on-demand services after december 25, 2023, this field must be filled with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. For customers who activate on-demand services from December 25, 2023, they must fill this field with the application ID when accessing resources in on-demand applications (whether it's the default application or a newly created application).</b></p>",
           "example": "1500035838",
           "member": "uint64",
           "name": "SubAppId",
@@ -38585,7 +39195,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the search content.",
+          "document": "<p>Search content</p>",
           "example": "包含夕阳的海边视频",
           "member": "string",
           "name": "Text",
@@ -38594,7 +39204,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the number of returned records. the default value is 20.",
+          "document": "<p>Number of returned records. The default value is 20.</p><p>Value ranges from 1 to 100.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -38603,7 +39213,7 @@
         },
         {
           "disabled": false,
-          "document": "File type. matches any element in the collection: <li>Video: Video file</li> <li>Audio: Audio file</li> <li>Image: Image file</li>.",
+          "document": "<p>File type. Match any element in the collection: <li>Video: video file</li> <li>Audio: audio file</li> <li>Image: image file</li></p>",
           "example": "[\"Video\"]",
           "member": "string",
           "name": "Categories",
@@ -38612,7 +39222,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag set, match any element in the collection. <li>single Tag length limit: 32 characters.</li> <li>array length limit: 16.</li>",
+          "document": "<p>Tag set, match any element in the collection.</p><p>Input parameter limit: single tag length limited to 32 characters. Array length limit: 16.</p>",
           "example": "[\"Sports\", \"Food\"]",
           "member": "string",
           "name": "Tags",
@@ -38621,7 +39231,16 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the task type for the search. valid values:. \n- AiAnalysis.DescriptionTask \n- SmartSubtitle.AsrFullTextTask",
+          "document": "<p>Figure collection, matching video clips where all imported figures appear.</p><p>Input limit: Array length limit: 16.</p>",
+          "example": "[\"张三\"]",
+          "member": "string",
+          "name": "Persons",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task type to search. Optional values: </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>",
           "example": "[\"AiAnalysis.DescriptionTask \"]",
           "member": "string",
           "name": "TaskTypes",
@@ -38636,7 +39255,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Media list.",
+          "document": "<p>Media list.</p>",
           "example": "无",
           "member": "SemanticsSearchResult",
           "name": "SearchResults",
@@ -39028,7 +39647,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the end time of the video clip, in seconds.",
+          "document": "Segment end time of the video, in seconds.",
           "example": "20.0",
           "member": "float",
           "name": "EndTimeOffset",

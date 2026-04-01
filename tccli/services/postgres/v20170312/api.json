@@ -463,7 +463,7 @@
       "status": "online"
     },
     "ModifyDBInstanceChargeType": {
-      "document": "This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.",
+      "document": "This API is used to switch the instance billing mode from pay-as-you-go to yearly/monthly subscription.",
       "input": "ModifyDBInstanceChargeTypeRequest",
       "name": "Modifies the instance billing mode",
       "output": "ModifyDBInstanceChargeTypeResponse",
@@ -1262,8 +1262,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the original instance to be cloned.",
-          "example": "postgres-abcd1234",
+          "document": "The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-ascg1724",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -1280,7 +1280,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance storage capacity in GB.",
+          "document": "Instance disk capacity size. set step size to 10. unit: GB.",
           "example": "10",
           "member": "int64",
           "name": "Storage",
@@ -1298,7 +1298,7 @@
         },
         {
           "disabled": false,
-          "document": "Renewal Flag:\n\n- `0`: manual renewal\n`1`: auto-renewal\n\nDefault value: 0",
+          "document": "Specifies the auto-renewal flag. this parameter is valid only when the billing mode is prepaid.\nValid values:.\n\n- `0`: specifies manual renewal.\n-`1`: specifies auto-renewal.\n\nDefault value: 0",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -1325,7 +1325,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the newly purchased instance, which can contain up to 60 letters, digits, or symbols (-_). If this parameter is not specified, \"Unnamed\" will be displayed by default.",
+          "document": "Specifies the instance name for new purchase, only supports chinese/english/digits/\"_\"/\"-\" with length less than 60. displays \"source instance name-Copy\" by default if no instance name is specified.",
           "example": "ins-name-clone-1",
           "member": "string",
           "name": "Name",
@@ -1334,7 +1334,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing type, which currently supports:\n\n- PREPAID: Prepaid, i.e., monthly subscription\n- POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption\n\nDefault value: PREPAID",
+          "document": "Instance billing type, which currently supports:\n\n- PREPAID: Prepaid, i.e., yearly/monthly subscription\n- POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption\n\nDefault value: PREPAID",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -1343,8 +1343,8 @@
         },
         {
           "disabled": false,
-          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
-          "example": "[             {                 \"SecurityGroupId\": \"sg-05bb4upy\",                 \"SecurityGroupName\": \"TestGroup\",                 \"SecurityGroupDesc\": \"test-group-desc\",                 \"ProjectId\": \"0\",                 \"IsDefault\": true,                 \"CreatedTime\": \"2017-04-18 21:02:30\",                 \"UpdateTime\": \"\",                 \"TagSet\": []             }         ]",
+          "document": "Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.\n",
+          "example": "[\"sg-95hf6965\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -1352,7 +1352,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID.",
+          "document": "Project ID. default value is 0, which means it belongs to the default project.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -1362,7 +1362,7 @@
         {
           "disabled": false,
           "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
-          "example": "[     {         \"TagKey\": \"abc\",         \"TagValue\": \"123\",         \"CanDelete\": 1     } ]",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
           "required": false,
@@ -1370,8 +1370,8 @@
         },
         {
           "disabled": false,
-          "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
-          "example": "[     {         \"Role\": \"Standby\",         \"Zone\": \"ap-guangzhou-3\"     },     {         \"Role\": \"Primary\",         \"Zone\": \"ap-guangzhou-3\"     } ]",
+          "document": "Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.\nAZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.",
+          "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
           "required": false,
@@ -1398,7 +1398,7 @@
         {
           "disabled": false,
           "document": "Campaign ID.",
-          "example": "123",
+          "example": "2364",
           "member": "int64",
           "name": "ActivityId",
           "required": false,
@@ -1406,7 +1406,7 @@
         },
         {
           "disabled": false,
-          "document": "Basic backup set ID.",
+          "document": "Basic backup set ID. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.",
           "example": "f6yecd1a-087c-5c66-cdas-95c835d7ec24",
           "member": "string",
           "name": "BackupSetId",
@@ -1415,7 +1415,7 @@
         },
         {
           "disabled": false,
-          "document": "Restoration point in time.",
+          "document": "Specifies the recovery time point. either `BackupSetId` or `RecoveryTargetTime` must be provided, and cannot include both.",
           "example": "2021/12/25 1:27:35",
           "member": "string",
           "name": "RecoveryTargetTime",
@@ -1430,6 +1430,15 @@
           "name": "SyncMode",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).",
+          "example": "true",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1439,33 +1448,33 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Order number.",
           "example": "20211225711000768276461",
           "member": "string",
           "name": "DealName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bill ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Order transaction number.",
           "example": "20211225711000768276471",
           "member": "string",
           "name": "BillId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID of the cloned instance, which will be returned only when the instance is pay-as-you-go.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the instance ID of the cloned instance. only support postpaid return this value.",
           "example": "postgres-2uepfuz1",
           "member": "string",
           "name": "DBInstanceId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1900,7 +1909,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Primary AZ of the instance in the format of `ap-guangzhou-3`. To support multiple AZs, add information of the primary and standby AZs in the `DBNodeSet.N` field.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "document": "<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href=\"https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1\">DescribeZones</a> api and checking the Zone field in the returned value.</p>",
           "example": "ap-guangzhou-6",
           "member": "string",
           "name": "Zone",
@@ -1909,7 +1918,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
+          "document": "<p>Purchasable specification code. Obtain this parameter by calling the `SpecCode` field in the return value of <a href=\"https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1\">DescribeClasses</a>.</p>",
           "example": "pg.it.2xlarge16",
           "member": "string",
           "name": "SpecCode",
@@ -1918,7 +1927,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance storage capacity in GB",
+          "document": "<p>Instance disk capacity size, unit: GB. The step length for parameter settings is 10.</p>",
           "example": "60",
           "member": "uint64",
           "name": "Storage",
@@ -1927,7 +1936,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.",
+          "document": "<p>Number of instances to purchase, value ranges from 1 to 10. Single transaction supports a maximum quantity of 10. If exceeding this quantity, multiple calls can be performed to purchase.</p>",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -1936,7 +1945,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchase duration, in months.\n<li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>\n<li>Pay-as-you-go: Only supports `1`.</li>",
+          "document": "<p>Purchase duration, unit: month.</p><li>Prepaid: Supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li><li>Postpaid: Supports only `1`.</li>",
           "example": "12",
           "member": "uint64",
           "name": "Period",
@@ -1945,7 +1954,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance character set, which currently supports only:\n<li>UTF8</li>\n<li>LATIN1</li>",
+          "document": "<p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>",
           "example": "UTF8",
           "member": "string",
           "name": "Charset",
@@ -1954,7 +1963,7 @@
         },
         {
           "disabled": false,
-          "document": "Username of the instance root account, with the following specifications:\n<li>The username must consist of 1-16 characters, which can be letters, digits, or underscores.</li>\n<li>It cannot be postgres.</li>\n<li>It cannot start with digits or 'pg_'.</li>\n<li>All rules are case-insensitive.</li>",
+          "document": "<p>Username of the instance root account. Specific specifications are as follows:</p><li>The username must consist of 1-16 characters, which can only be letters, digits, or underscores.</li><li>Cannot be postgres.</li><li>Cannot begin with digits or pg_.</li><li>All rules are case-insensitive.</li>",
           "example": "pgadmin1",
           "member": "string",
           "name": "AdminName",
@@ -1963,7 +1972,7 @@
         },
         {
           "disabled": false,
-          "document": "Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with \"/\".\nIt must include the following four types of characters:\n<li>Lowercase letters: [a ~ z]</li>\n<li>Uppercase letters: [A ~ Z]</li>\n<li>Digits: 0-9</li>\n<li>Special symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>",
+          "document": "<p>Password for the instance root account username, with a length of 8-32 characters. It is recommended to use a password of more than 12 characters and it cannot start with \"/\".<br>Must contain the following four character types:</p><li>Lowercase letter: [a-z]</li><li>Uppercase letter: [a-z]</li><li>Number: 0-9</li><li>Special character: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>",
           "example": "A8b!C2d#E4f&",
           "member": "string",
           "name": "AdminPassword",
@@ -1972,7 +1981,7 @@
         },
         {
           "disabled": false,
-          "document": "The major version number of PostgreSQL (this parameter is currently required), and the version information can be obtained from [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1). Currently major versions `10`, `11`, `12`, `13`, `14`, and `15` are supported. For details, see [Kernel Version Overview](https://intl.cloud.tencent.com/document/product/409/67018).\nWhen this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.",
+          "document": "<p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href=\"https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1\">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href=\"https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1\">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
@@ -1981,7 +1990,7 @@
         },
         {
           "disabled": false,
-          "document": "PostgreSQL community major version + minor version number.\nIt's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.",
+          "document": "<p>PostgreSQL community major version + minor version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest minor version number under the current major version can be passed.</p>",
           "example": "12.7",
           "member": "string",
           "name": "DBVersion",
@@ -1990,7 +1999,7 @@
         },
         {
           "disabled": false,
-          "document": "PostgreSQL kernel version number.\nIt's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.",
+          "document": "<p>PostgreSQL kernel version number.<br>It's generally not recommended to pass in this parameter. If needed, only the latest kernel version number under the current major version can be passed.</p>",
           "example": "v12.7_r1.8",
           "member": "string",
           "name": "DBKernelVersion",
@@ -1999,7 +2008,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing type, which currently supports:\n<li>PREPAID: Prepaid, i.e., monthly subscription</li>\n<li>POSTPAID_BY_HOUR: Pay-as-you-go, i.e., pay by consumption</li>\nDefault value: PREPAID",
+          "document": "<p>Instance billing type. Currently supports:</p><li>PREPAID: Prepayment, i.e., yearly/monthly subscription</li><li>POSTPAID_BY_HOUR: Postpaid, i.e., pay-as-you-go</li>Default value: PREPAID",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2008,7 +2017,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
+          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href=\"https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1\">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>",
           "example": "vpc-8e0ypm3z",
           "member": "string",
           "name": "VpcId",
@@ -2017,7 +2026,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "document": "<p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is currently required). Effective VPC subnet IDs can be queried by logging in to the console or by calling the API <a href=\"https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1\">DescribeSubnets</a> and acquiring the unSubnetId field in the API return.</p>",
           "example": "subnet-bthucmmy",
           "member": "string",
           "name": "SubnetId",
@@ -2026,7 +2035,7 @@
         },
         {
           "disabled": false,
-          "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "document": "<p>Instance node deployment information. When multi-availability zone deployment is supported, it requires specifying the AZ information for each node.<br>AZ information can be obtained from the Zone field in the returned value by calling the <a href=\"https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1\">DescribeZones</a> API.</p>",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -2035,7 +2044,7 @@
         },
         {
           "disabled": false,
-          "document": "Renewal Flag:\n<li>`0`: manual renewal</li>\n<li>`1`: auto-renewal</li>\nDefault value: 0",
+          "document": "<p>Auto-renewal flag:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2044,7 +2053,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use coupons:\n<li>`0`: no</li>\n<li>`1`: yes</li>\nDefault value: 0",
+          "document": "<p>Whether to automatically use a voucher:</p><li>0: No</li><li>1: Yes</li>Default value: 0",
           "example": "0",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -2053,7 +2062,7 @@
         },
         {
           "disabled": false,
-          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "document": "<p>Voucher ID list. Currently only support specifying one voucher.</p>",
           "example": "[     \"OZRCGNAV8D9BMI9KMG1FIQ\" ]",
           "member": "string",
           "name": "VoucherIds",
@@ -2062,7 +2071,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "<p>Project ID. The default value is 0, which means it belongs to the default project.</p>",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -2071,7 +2080,7 @@
         },
         {
           "disabled": false,
-          "document": "Campaign ID",
+          "document": "<p>Activity ID.</p>",
           "example": "14542",
           "member": "int64",
           "name": "ActivityId",
@@ -2080,7 +2089,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, \"Unnamed\" will be displayed by default.\n",
+          "document": "<p>Instance name only supports Chinese/English/number/\"_\"/\"-\" with length less than 60. If no instance name is specified, \"unnamed\" is displayed by default.</p>",
           "example": "pg-instance-1",
           "member": "string",
           "name": "Name",
@@ -2089,8 +2098,8 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
-          "example": "[             {                 \"TagKey\": \"abc\",                 \"TagValue\": \"123\",                 \"CanDelete\": 1             }         ]",
+          "document": "<p>Tag information that should be bound to the instance is empty by default. You can get it by calling <a href=\"https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1\">DescribeTags</a> and checking the Tags field in the return value.</p>",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
           "required": false,
@@ -2098,7 +2107,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
+          "document": "<p>Security group to which an instance belongs. Obtain this parameter by calling the sgId field in the returned value of <a href=\"https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1\">DescribeSecurityGroups</a>. If not specified, the default security group is bound.</p>",
           "example": "[         \"sg-g09vl0p7\"     ]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -2107,7 +2116,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether data transparent encryption is required:\n<li>`0`: no</li>\n<li>`1`: yes</li>\nDefault value: 0See [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).",
+          "document": "<p>Whether data transparent encryption is required:</p><li>0: No</li><li>1: Yes</li>Default value: 0. See [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).",
           "example": "1",
           "member": "uint64",
           "name": "NeedSupportTDE",
@@ -2116,7 +2125,7 @@
         },
         {
           "disabled": false,
-          "document": "KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.\nFor more information on creating `KeyId`, see [Enabling TDE](https://www.tencentcloud.com/document/product/409/47762).",
+          "document": "<p>The KeyId of the custom key. If you select custom key encryption, you need to input the KeyId of the custom key. KeyId is the unique identifier of CMK.<br>For related reference on KeyId creation and retrieval, see <a href=\"https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1\">Enable Transparent Data Encryption</a></p>",
           "example": "7f370325-bb06-11ec-b54a-525400bb1222",
           "member": "string",
           "name": "KMSKeyId",
@@ -2125,7 +2134,7 @@
         },
         {
           "disabled": false,
-          "document": "The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.\nFor more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).",
+          "document": "<p>For regions using the KMS service, KMSRegion is empty by default and the local region KMS is used. If the local region is not supported, select another KMS supported region.<br>For details about KMSRegion, see <a href=\"https://www.tencentcloud.com/document/product/409/71749?from_cn_redirect=1\">enable transparent data encryption</a></p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "KMSRegion",
@@ -2134,7 +2143,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>For clusters that specify the KMS service, if KMSClusterId is empty, the default cluster's KMS is used. If you choose to specify a KMS cluster, you need to provide KMSClusterId. For details about KMSClusterId, see Enabling Transparent Data Encryption.</p>",
+          "document": "<p>Designate the service cluster for KMS. If KMSClusterId is empty, use the KMS of the Default Cluster. To select the specified KMS cluster, require the input of KMSClusterId. For details about KMSClusterId, see enable transparent data encryption.</p>",
           "example": "cls-hsm-xxxxxxx",
           "member": "string",
           "name": "KMSClusterId",
@@ -2143,7 +2152,7 @@
         },
         {
           "disabled": false,
-          "document": "Database engine, which supports:\n<li>`postgresql`: TencentDB for PostgreSQL</li>\n<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>\nDefault value: `postgresql`",
+          "document": "<p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql",
           "example": "postgresql",
           "member": "string",
           "name": "DBEngine",
@@ -2152,8 +2161,8 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information for the database engine, and the configuration format is as follows:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\nSupported engines include:\nmssql_compatible engine:\n<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>\n<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", and \"vi_VN\".</li>\n<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: \"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\", \"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", and \"vietnamese_ci_as\".</li>",
-          "example": "{     \"migrationMode\": \"single-db\",     \"defaultLocale\": \"zh_CN\",     \"serverCollationName\": \"sql_latin1_general_cp1250_ci_as\" }",
+          "document": "<p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: \"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: \"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".</li>",
+          "example": "{\"migrationMode\":\"single-db\",\"DefaultLocale\":\"zh_CN\",\"serverCollationName\":\"sql_latin1_general_cp1250_ci_as\"}",
           "member": "string",
           "name": "DBEngineConfig",
           "required": false,
@@ -2161,7 +2170,7 @@
         },
         {
           "disabled": false,
-          "document": "Primary-standby sync mode, which supports:\n<li>Semi-sync: Semi-sync</li>\n<li>Async: Asynchronous</li>\nDefault value for the primary instance: Semi-sync\nDefault value for the read-only instance: Async",
+          "document": "<p>Primary-standby sync mode, supports: </p><li>Semi-sync: semi-synchronous</li><li>Async: asynchronous</li>Default value for the primary instance: Semi-syncDefault value for the read-only instance: Async",
           "example": "Async",
           "member": "string",
           "name": "SyncMode",
@@ -2170,12 +2179,30 @@
         },
         {
           "disabled": false,
-          "document": "Whether support to IPv6 is required:\n<li>`0`: no</li>\n<li>`1`: yes</li>\nDefault value: 0",
+          "document": "<p>Whether required to support Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0",
           "example": "0",
           "member": "uint64",
           "name": "NeedSupportIpv6",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable deletion protection for the instance: true-enable deletion protection; false-disable deletion protection.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>",
+          "example": "PHYSICAL_LOCAL_SSD",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2185,7 +2212,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order number list. Each instance corresponds to an order number.",
+          "document": "<p>Order number list. Each instance corresponds to an order number.</p>",
           "example": "[     \"20180119110001\" ]",
           "member": "string",
           "name": "DealNames",
@@ -2195,7 +2222,7 @@
         },
         {
           "disabled": false,
-          "document": "Bill ID of frozen fees",
+          "document": "<p>Frozen transaction ID.</p>",
           "example": "20181225711000768276471",
           "member": "string",
           "name": "BillId",
@@ -2205,7 +2232,7 @@
         },
         {
           "disabled": false,
-          "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.",
+          "document": "<p>ID set of successfully created instances. Return value is available only in pay scenarios.</p>",
           "example": "[     \"postgres-2uepfuz1\" ]",
           "member": "string",
           "name": "DBInstanceIdSet",
@@ -2300,8 +2327,8 @@
         },
         {
           "disabled": false,
-          "document": "ID of the primary instance to which the read-only instance belongs",
-          "example": "pgrogrp-efacxt00",
+          "document": "Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-efacxt00",
           "member": "string",
           "name": "MasterDBInstanceId",
           "required": true,
@@ -2318,7 +2345,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance storage capacity in GB",
+          "document": "Instance disk capacity size in GB. specifies the step length for parameter settings as 10.",
           "example": "100",
           "member": "uint64",
           "name": "Storage",
@@ -2327,7 +2354,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.",
+          "document": "Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -2336,7 +2363,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period in months, valid values:\n<li>Monthly subscription: `1`, `2`, `3`, 4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
+          "document": "Purchase duration, in months.\n<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.\n<li>Pay-as-you-go: Only supports `1`.</li>",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -2345,7 +2372,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
+          "document": "VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
           "example": "vpc-e3t30r8t",
           "member": "string",
           "name": "VpcId",
@@ -2354,7 +2381,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "document": "VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
           "example": "subnet-jd9cvu0o",
           "member": "string",
           "name": "SubnetId",
@@ -2363,7 +2390,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid values: \n<li>`PREPAID`: Monthly subscription\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go\nDefault value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.",
+          "document": "Instance billing type, which currently supports:.\n<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.\n<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.\nDefault value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2372,7 +2399,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
+          "document": "Specifies whether to automatically use a voucher.\n<Li>0: no.</li>.\n<Li>`1`: yes.</li>.\nDefault value: 0",
           "example": "1",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -2382,7 +2409,7 @@
         {
           "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
-          "example": "[1,2,3]",
+          "example": "[     \"100\" ]",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -2390,7 +2417,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
+          "document": "Specifies the auto-renewal flag.\n<Li>`0`: manual renewal.</li>.\n<Li>`1`: auto-renewal</li>.\nDefault value: 0",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2399,7 +2426,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID. default value is 0, means it belongs to the default project.",
           "example": "1457",
           "member": "uint64",
           "name": "ProjectId",
@@ -2427,7 +2454,7 @@
         {
           "disabled": false,
           "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
-          "example": "空",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
           "required": false,
@@ -2444,7 +2471,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether IPv6 is supported.\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
+          "document": "Specifies whether to support Ipv6.\n<Li>0: no.</li>.\n<Li>`1`: yes.</li>.\nDefault value: 0",
           "example": "1",
           "member": "uint64",
           "name": "NeedSupportIpv6",
@@ -2453,7 +2480,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name (which will be supported in the future)",
+          "document": "Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.",
           "example": "Name",
           "member": "string",
           "name": "Name",
@@ -2462,7 +2489,7 @@
         },
         {
           "disabled": true,
-          "document": "(Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.",
+          "document": "Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.",
           "example": "DBVersion",
           "member": "string",
           "name": "DBVersion",
@@ -2471,12 +2498,21 @@
         },
         {
           "disabled": false,
-          "document": "<p>Dedicated Cluster ID</p>",
+          "document": "CDC ID.",
           "example": "dedicatedCluster-gz",
           "member": "string",
           "name": "DedicatedClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).",
+          "example": "true",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2512,6 +2548,16 @@
           "name": "DBInstanceIdSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.",
+          "example": "andy",
+          "member": "string",
+          "name": "BillingParameters",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -2964,7 +3010,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance region such as ap-guangzhou, which corresponds to the`Region` field in `RegionSet`.",
+          "document": "<p>Region of the instance, for example: ap-guangzhou, corresponds to the region field in RegionSet.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -2974,7 +3020,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`.",
+          "document": "<p>Availability zone to which the instance belongs, for example: ap-guangzhou-3, corresponds to the Zone field in ZoneSet.</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -2984,7 +3030,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API.",
+          "document": "<p>VPC ID, such as vpc-e6w23k31. A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href=\"https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1\">DescribeVpcs</a> and acquiring the unVpcId field in API return.</p>",
           "example": "vpc-e6w23k31",
           "member": "string",
           "name": "VpcId",
@@ -2994,7 +3040,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets ](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "document": "<p>VPC subnet ID, such as subnet-51lcif9y. An effective VPC subnet ID can be obtained by logging in to the console to query. You can also call API <a href=\"https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1\">DescribeSubnets</a> and get it from the unSubnetId field in API return.</p>",
           "example": "subnet-51lcif9y",
           "member": "string",
           "name": "SubnetId",
@@ -3004,7 +3050,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "<p>Instance ID.</p>",
           "example": "postgres-7lzldndx",
           "member": "string",
           "name": "DBInstanceId",
@@ -3014,7 +3060,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "<p>Instance name.</p>",
           "example": "数据库名称",
           "member": "string",
           "name": "DBInstanceName",
@@ -3024,7 +3070,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), and `primary-switching` (primary-secondary switching)",
+          "document": "<p>Instance status, including: `applying` (applying), `init` (to be initialized), `initing` (initializing), `running` (running), `limited run` (restricted operation), `isolating` (isolating), `isolated` (isolated), `disisolating` (de-isolating), `recycling` (recycling), `recycled` (recycled), `job running` (task executing), `offline` (offline), `migrating` (migrating), `expanding` (scaling out), `waitSwitch` (waiting to switch), `switching` (switching), `readonly` (readonly), `restarting` (restarting), `network changing` (network modification in progress), `upgrading` (kernel version upgrading), `audit-switching` (audit status changing), `primary-switching` (primary-secondary switching), `offlining` (offline), `deployment changing` (modify AZ), `cloning` (recovering data), `parameter modifying` (parameter modification in progress), `log-switching` (log status change), `restoring` (recovering), and `expanding` (scaling out)</p>",
           "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
@@ -3034,7 +3080,7 @@
         },
         {
           "disabled": false,
-          "document": "Assigned instance memory size in GB",
+          "document": "<p>Memory size allocated to the instance, measurement unit: GB</p>",
           "example": "2",
           "member": "uint64",
           "name": "DBInstanceMemory",
@@ -3044,7 +3090,7 @@
         },
         {
           "disabled": false,
-          "document": "Assigned instance storage capacity in GB",
+          "document": "<p>Storage space size allocated to the instance, measurement unit: GB</p>",
           "example": "10",
           "member": "uint64",
           "name": "DBInstanceStorage",
@@ -3054,7 +3100,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of assigned CPUs",
+          "document": "<p>Number of CPUs allocated to the instance, unit: piece</p>",
           "example": "2",
           "member": "uint64",
           "name": "DBInstanceCpu",
@@ -3064,7 +3110,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchasable specification ID",
+          "document": "<p>Purchasable specification ID.</p>",
           "example": "cdb.pg.ts1.2g",
           "member": "string",
           "name": "DBInstanceClass",
@@ -3074,7 +3120,7 @@
         },
         {
           "disabled": false,
-          "document": "The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>PostgreSQL major version number. Version information can be obtained from <a href=\"https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1\">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15.</p>",
           "example": "12",
           "member": "string",
           "name": "DBMajorVersion",
@@ -3084,7 +3130,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.",
+          "document": "<p>PostgreSQL community major version + minor version number, such as 12.4. Version information can be obtained from <a href=\"https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1\">DescribeDBVersions</a>.</p>",
           "example": "12.4",
           "member": "string",
           "name": "DBVersion",
@@ -3094,7 +3140,7 @@
         },
         {
           "disabled": false,
-          "document": "PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>PostgreSQL Kernel Version, for example v12.7_r1.8. Version information can be obtained from <a href=\"https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1\">DescribeDBVersions</a>.</p>",
           "example": "v12.4_r1.0",
           "member": "string",
           "name": "DBKernelVersion",
@@ -3104,7 +3150,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type, which includes:\n<li>primary: primary instance </li>\n<li>readonly: read-only instance</li>\n<li>guard: disaster recovery instance</li>\n<li>temp: temporary instance</li>",
+          "document": "<p>Instance types:</p><li>primary: Primary instance</li><li>readonly: Read-only instance</li><li>guard: Disaster recovery instance</li><li>temp: Temporary instance</li>",
           "example": "primary",
           "member": "string",
           "name": "DBInstanceType",
@@ -3114,7 +3160,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance version. Valid value: `standard` (dual-server high-availability; one-primary-one-standby).",
+          "document": "<p>Instance version currently only supports standard (dual-server high-availability edition, one master and one slave).</p>",
           "example": "standard",
           "member": "string",
           "name": "DBInstanceVersion",
@@ -3124,7 +3170,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance character set, which currently supports only:\n<li>UTF8</li>\n<li>LATIN1</li>",
+          "document": "<p>Instance character set, which currently supports only:</p><li>UTF8</li><li>LATIN1</li>",
           "example": "utf-8",
           "member": "string",
           "name": "DBCharset",
@@ -3134,7 +3180,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance creation time",
+          "document": "<p>Instance creation time.</p>",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "CreateTime",
@@ -3144,7 +3190,7 @@
         },
         {
           "disabled": false,
-          "document": "Last updated time of the instance attribute",
+          "document": "<p>The time when the instance executed the last update.</p>",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "UpdateTime",
@@ -3154,7 +3200,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance expiration time",
+          "document": "<p>Instance expiration time.</p>",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "ExpireTime",
@@ -3164,7 +3210,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance isolation time",
+          "document": "<p>Instance isolation time.</p>",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "IsolatedTime",
@@ -3174,7 +3220,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode:\n<li>prepaid: monthly subscription, prepaid</li>\n<li>postpaid: pay-as-you-go, postpaid</li>",
+          "document": "<p>Billing mode:</p><li>prepaid: Yearly/monthly subscription, prepayment</li><li>postpaid: Pay-as-you-go, postpaid</li>",
           "example": "prepaid",
           "member": "string",
           "name": "PayType",
@@ -3184,7 +3230,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal or not:\n<li>`0`: manual renewal</li>\n<li>`1`: auto-renewal</li>\nDefault value: 0",
+          "document": "<p>Auto-renewal or not:</p><li>0: Manual renewal</li><li>1: Auto renewal</li>Default value: 0",
           "example": "1",
           "member": "uint64",
           "name": "AutoRenew",
@@ -3194,7 +3240,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance network connection information",
+          "document": "<p>Instance network connection information.</p>",
           "example": "无",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
@@ -3204,7 +3250,7 @@
         },
         {
           "disabled": false,
-          "document": "Machine type",
+          "document": "<p>Machine type.</p>",
           "example": "TS85",
           "member": "string",
           "name": "Type",
@@ -3214,7 +3260,7 @@
         },
         {
           "disabled": false,
-          "document": "User `AppId`",
+          "document": "<p>User's app id.</p>",
           "example": "123455",
           "member": "uint64",
           "name": "AppId",
@@ -3224,7 +3270,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance `Uid`",
+          "document": "<p>Uid of the instance.</p>",
           "example": "12344",
           "member": "uint64",
           "name": "Uid",
@@ -3234,7 +3280,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "<p>Project ID.</p>",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -3244,8 +3290,8 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags associated with instances\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[     {         \"TagKey\": \"tag1\",         \"TagValue\": \"v1\"     } ]",
+          "document": "<p>Tag information associated with the instance.</p>",
+          "example": "无",
           "member": "Tag",
           "name": "TagList",
           "output_required": true,
@@ -3254,7 +3300,7 @@
         },
         {
           "disabled": false,
-          "document": "Primary instance information, which is returned only when the instance is read-only.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Primary instance information. Returned only when the instance is a read-only instance.</p>",
           "example": "postgres-7lzldndx",
           "member": "string",
           "name": "MasterDBInstanceId",
@@ -3264,7 +3310,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of read-only instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Number of read-only instances.</p>",
           "example": "6",
           "member": "int64",
           "name": "ReadOnlyInstanceNum",
@@ -3274,7 +3320,7 @@
         },
         {
           "disabled": false,
-          "document": "The status of a read-only instance in a read-only group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>State of the read-only instance in the read-only group.</p>",
           "example": "ok",
           "member": "string",
           "name": "StatusInReadonlyGroup",
@@ -3284,7 +3330,7 @@
         },
         {
           "disabled": false,
-          "document": "Offline time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Offline time.</p>",
           "example": "2014-08-03 12:00",
           "member": "string",
           "name": "OfflineTime",
@@ -3294,8 +3340,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance node information\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[     {         \"Role\": \"Primary\",         \"Zone\": \"ap-guangzhou-2\"     } ]",
+          "document": "<p>Instance node information.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
           "output_required": true,
@@ -3304,7 +3350,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the instance supports TDE data encryption:\n<li>0: not supported</li>\n<li>1: supported</li>\nDefault value: 0For TDE data encryption, see [Overview of Data Transparent Encryption](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether the instance supports TDE data encryption:</p><li>0: Not supported</li><li>1: Supported</li>Default value: 0. For TDE data encryption, see [Overview of Data Transparent Encryption](https://www.tencentcloud.com/document/product/409/71748?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "IsSupportTDE",
@@ -3314,7 +3360,7 @@
         },
         {
           "disabled": false,
-          "document": "Database engine, which supports:\n<li>`postgresql`: TencentDB for PostgreSQL</li>\n<li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>\nDefault value: `postgresql`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Database engine, support:</p><li>`postgresql`: TencentDB for PostgreSQL</li><li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>Default value: postgresql",
           "example": "postgresql",
           "member": "string",
           "name": "DBEngine",
@@ -3324,8 +3370,8 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information for the database engine, and the configuration format is as follows:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\nSupported engines include:\nmssql_compatible engine:\n<li>migrationMode: Database mode, an optional parameter, and its valid values are: single-db (single database schema) and multi-db (multiple database schema). The default value is single-db.</li>\n<li>defaultLocale: Sorting area rule, an optional parameter, which cannot be modified after initialization, its default value is en_US, and its valid values include:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", and \"vi_VN\".</li>\n<li>serverCollationName: Sorting rule name, an optional parameter, which cannot be modified after initialization, its default value is sql_latin1_general_cp1_ci_as, and its valid values include: \"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\", \"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", and \"vietnamese_ci_as\".</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{     \"migrationMode\": \"single-db\",     \"defaultLocale\": \"zh_CN\",     \"serverCollationName\": \"sql_latin1_general_cp1250_ci_as\" }",
+          "document": "<p>Configuration information for the database engine. The configuration format is as follows:<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>Supported engines:<br>mssql_compatible engine:</p><li>migrationMode: Database schema, optional parameter. Valid values: single-db (single-database mode), multi-db (multi-database mode). Default is single-db.</li><li>defaultLocale: Sorting area rule, optional parameter, cannot be modified after initialization. Default is en_US. Valid values include: \"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".</li><li>serverCollationName: Collation name, optional parameter, cannot be modified after initialization. Default is sql_latin1_general_cp1_ci_as. Valid values include: \"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".</li>",
+          "example": "{     \"migrationMode\": \"single-db\",     \"DefaultLocale\": \"zh_CN\",     \"serverCollationName\": \"sql_latin1_general_cp1250_ci_as\" }",
           "member": "string",
           "name": "DBEngineConfig",
           "output_required": true,
@@ -3334,7 +3380,7 @@
         },
         {
           "disabled": false,
-          "document": "Network access list of the instance (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>Instance network information list (deprecated)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
@@ -3344,12 +3390,42 @@
         },
         {
           "disabled": false,
-          "document": "Whether the instance supports IPv6:\n<li>`0`: no</li>\n<li>`1`: yes</li>\nDefault value: 0",
+          "document": "<p>Whether the instance supports Ipv6:</p><li>0: No</li><li>1: Yes</li>Default value: 0",
           "example": "1",
           "member": "uint64",
           "name": "SupportIpv6",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of cpu cores that have been elastically scaled out for the instance</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ExpandedCpu",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable deletion protection for the instance, values as follows:</p><ul><li>true: enable deletion protection</li><li>false: disable deletion protection</li></ul>",
+          "example": "true",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance storage type. Available values: PHYSICAL_LOCAL_SSD: LOCAL SSD hard disk of PHYSICAL machine; CLOUD_PREMIUM: high-performance CLOUD block storage; CLOUD_SSD: SSD CLOUD disk; CLOUD_HSSD: enhanced SSD CLOUD disk.</p>",
+          "example": "PHYSICAL_LOCAL_SSD",
+          "member": "string",
+          "name": "DBInstanceStorageType",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3410,7 +3486,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "VPC ID. specifies the ID of the virtual private cloud.",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
@@ -3420,7 +3496,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Subnet ID.",
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
@@ -3430,7 +3506,7 @@
         },
         {
           "disabled": false,
-          "document": "Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the protocol type to connect to the database. currently supported: postgresql, mssql (mssql compatible syntax).",
           "example": "postgresql",
           "member": "string",
           "name": "ProtocolType",
@@ -3442,7 +3518,7 @@
       "usage": "out"
     },
     "DBNode": {
-      "document": "Instance node information including node type and AZ.",
+      "document": "Describes the instance node information, including the node type, availability zone where the node is located, and dedicated cluster where the node resides.",
       "members": [
         {
           "disabled": false,
@@ -3463,6 +3539,17 @@
           "name": "Zone",
           "output_required": true,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CDC ID.",
+          "example": "cluster-d8htgb6k",
+          "member": "string",
+          "name": "DedicatedClusterId",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4685,7 +4772,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -4701,7 +4788,7 @@
         {
           "disabled": false,
           "document": "Instance details.",
-          "example": "{             \"Region\": \"ap-guangzhou\",             \"Zone\": \"ap-guangzhou-2\",             \"AppId\": 100000000,             \"Uid\": 1000001,             \"ProjectId\": 0,             \"VpcId\": \"vpc-xxxxxxxx\",             \"SubnetId\": \"subnet-xxxxxxxx\",             \"DBInstanceId\": \"postgres-xxxxxxxx\",             \"MasterDBInstanceId\": \"postgres-xxxxxxxx\",             \"Type\": 1,             \"DBInstanceName\": \"未命名\",             \"DBInstanceStatus\": \"running\",             \"DBInstanceMemory\": 4,             \"DBInstanceStorage\": 20,             \"DBInstanceCpu\": 2,             \"DBInstanceClass\": \"cdb.pg.z1.4g\",             \"DBInstanceType\": \"primary\",             \"DBInstanceVersion\": \"standard\",             \"DBInstanceNetInfo\": [                 {                     \"Address\": \"\",                     \"Ip\": \"10.10.10.220\",                     \"Port\": 5432,                     \"Status\": \"opened\",                     \"NetType\": \"private\",                     \"VpcId\": \"vpc-xxxxxxxx\",                     \"SubnetId\": \"subnet-xxxxxxxx\"                 },                 {                     \"Address\": \"\",                     \"Ip\": \"\",                     \"Port\": 0,                     \"Status\": \"initing\",                     \"NetType\": \"public\",                     \"VpcId\": \"\",                     \"SubnetId\": \"\"                 }             ],             \"DBCharset\": \"UTF8\",             \"IsSupportTDE\": 0,             \"DBVersion\": \"10.4\",             \"DBMajorVersion\": \"10\",             \"DBKernelVersion\": \"v10.4_r1.0\",             \"CreateTime\": \"2017-12-28 19:23:19\",             \"UpdateTime\": \"2018-01-18 15:54:32\",             \"ExpireTime\": \"2018-01-28 19:23:23\",             \"IsolatedTime\": \"0000-00-00 00:00:00\",             \"OfflineTime\": \"2019-12-28 19:23:19\",             \"PayType\": \"prepaid\",             \"AutoRenew\": 1,             \"ReadOnlyInstanceNum\": 1,             \"StatusInReadonlyGroup\": \"running\",             \"SupportIpv6\": 0,             \"TagList\": [                 {                     \"TagKey\": \"tag1\",                     \"TagValue\": \"v1\"                 }             ],             \"NetworkAccessList\": [],             \"DBNodeSet\": [                 {                     \"Role\": \"Primary\",                     \"Zone\": \"ap-guangzhou-2\"                 },                 {                     \"Role\": \"Standby\",                     \"Zone\": \"ap-guangzhou-3\"                 }             ]         }",
+          "example": "无",
           "member": "DBInstance",
           "name": "DBInstance",
           "output_required": true,
@@ -6314,7 +6401,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list. Currently, you can't remove multiple instances from isolation in batches. Only one instance ID can be passed in here.",
+          "document": "Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.",
           "example": "[\"postgres-xxxxxxx\"]",
           "member": "string",
           "name": "DBInstanceIdSet",
@@ -6323,7 +6410,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period in months\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
+          "document": "Purchase duration, in months.\n<Li>Prepaid: Yearly/monthly subscription, supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.\n<Li>Postpaid: Pay-as-you-go, this parameter does not take effect.</li>.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -6332,7 +6419,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use vouchers. Valid values:\n<li>`true`: Yes.\nu200c<li>`false`: No.\nDefault value: `false`.",
+          "document": "Whether to use vouchers.\n<li>true: use.</li>.\n<li>false: non-use.</li>.\nDefault value: `false`.",
           "example": "true",
           "member": "bool",
           "name": "AutoVoucher",
@@ -7361,7 +7448,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of `postgres-6fego161`",
+          "document": "Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-apzvwncr\t",
           "member": "string",
           "name": "DBInstanceId",
@@ -7370,7 +7457,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid values:\n<li>`PREPAID`: Monthly subscription.\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.\nDefault value: `PREPAID`.",
+          "document": "Instance billing type, which currently supports:.\n<Li>PREPAID: prepaid, i.e., yearly/monthly subscription</li>.\n<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.\nDefault value: PREPAID",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -7379,7 +7466,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period in months\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
+          "document": "Purchase duration, in months.\n<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.\n<li>Pay-as-you-go: Only supports `1`.</li>",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -7388,7 +7475,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
+          "document": "Specifies the auto-renewal flag.\n<Li>`0`: manual renewal.</li>.\n<Li>`1`: auto-renewal</li>.\nDefault value: 0",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -7397,7 +7484,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
+          "document": "Specifies whether to automatically use a voucher.\n<Li>0: no.</li>.\n<Li>`1`: yes.</li>.\nDefault value: 0",
           "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -8103,7 +8190,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Network resource ID, instance ID, or RO group ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network resource id, instance id, or RO group id.",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "ResourceId",
@@ -8113,7 +8200,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource type. Valid values: `1` (instance), `2` (RO group)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Resource type. valid values: 1 (instance), 2 (RO group).",
           "example": "1",
           "member": "uint64",
           "name": "ResourceType",
@@ -8123,7 +8210,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "VPC ID. specifies the ID of the virtual private cloud.",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
@@ -8133,7 +8220,7 @@
         },
         {
           "disabled": false,
-          "document": "IPv4 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "IPv4 Address",
           "example": "11.11.1.11",
           "member": "string",
           "name": "Vip",
@@ -8143,7 +8230,7 @@
         },
         {
           "disabled": false,
-          "document": "IPv6 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "IPv6 Address",
           "example": "2000:0000:0000:0000:0001:2345:6789:abcd",
           "member": "string",
           "name": "Vip6",
@@ -8153,7 +8240,7 @@
         },
         {
           "disabled": false,
-          "document": "Access port\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the access port.",
           "example": "5432",
           "member": "int64",
           "name": "Vport",
@@ -8163,7 +8250,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Subnet ID.",
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
@@ -8173,7 +8260,7 @@
         },
         {
           "disabled": false,
-          "document": "Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Network status. valid values: 1-applying, 2-active, 3-deleting, 4-deleted.",
           "example": "1",
           "member": "int64",
           "name": "VpcStatus",
