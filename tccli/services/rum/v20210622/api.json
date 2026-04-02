@@ -112,6 +112,13 @@
       "output": "DescribeDataResponse",
       "status": "online"
     },
+    "DescribeDataBridgeUrlV2": {
+      "document": "This API is used to obtain DescribeDataBridgeUrl information.",
+      "input": "DescribeDataBridgeUrlV2Request",
+      "name": "Obtains DescribeDataBridgeUrlV2 information",
+      "output": "DescribeDataBridgeUrlV2Response",
+      "status": "online"
+    },
     "DescribeDataCustomUrl": {
       "document": "This API is used to get the DescribeDataCustomUrl information.",
       "input": "DescribeDataCustomUrlRequest",
@@ -119,11 +126,25 @@
       "output": "DescribeDataCustomUrlResponse",
       "status": "online"
     },
+    "DescribeDataCustomUrlV2": {
+      "document": "This API is used to obtain DescribeDataCustomUrl information.",
+      "input": "DescribeDataCustomUrlV2Request",
+      "name": "Obtains DescribeDataCustomUrlV2 information",
+      "output": "DescribeDataCustomUrlV2Response",
+      "status": "online"
+    },
     "DescribeDataEventUrl": {
       "document": "This API is used to get the DescribeDataEventUrl information.",
       "input": "DescribeDataEventUrlRequest",
       "name": "Gets DescribeDataEventUrl information",
       "output": "DescribeDataEventUrlResponse",
+      "status": "online"
+    },
+    "DescribeDataEventUrlV2": {
+      "document": "This API is used to obtain DescribeDataEventUrl information.",
+      "input": "DescribeDataEventUrlV2Request",
+      "name": "Obtains DescribeDataEventUrl information (V2)",
+      "output": "DescribeDataEventUrlV2Response",
       "status": "online"
     },
     "DescribeDataFetchProject": {
@@ -147,6 +168,13 @@
       "output": "DescribeDataFetchUrlInfoResponse",
       "status": "online"
     },
+    "DescribeDataFetchUrlV2": {
+      "document": "This API is used to obtain DescribeDataFetchUrl information.",
+      "input": "DescribeDataFetchUrlV2Request",
+      "name": "Obtains DescribeDataFetchUrlV2 information",
+      "output": "DescribeDataFetchUrlV2Response",
+      "status": "online"
+    },
     "DescribeDataLogUrlInfo": {
       "document": "This API is used to get the loginfo information.",
       "input": "DescribeDataLogUrlInfoRequest",
@@ -161,11 +189,25 @@
       "output": "DescribeDataLogUrlStatisticsResponse",
       "status": "online"
     },
+    "DescribeDataLogUrlStatisticsV2": {
+      "document": "This API is used to obtain LogUrlStatistics information.",
+      "input": "DescribeDataLogUrlStatisticsV2Request",
+      "name": "Obtains LogUrlStatistics information (V2)",
+      "output": "DescribeDataLogUrlStatisticsV2Response",
+      "status": "online"
+    },
     "DescribeDataPerformancePage": {
       "document": "This API is used to get the PerformancePage information.",
       "input": "DescribeDataPerformancePageRequest",
       "name": "Gets PerformancePage information",
       "output": "DescribeDataPerformancePageResponse",
+      "status": "online"
+    },
+    "DescribeDataPerformancePageV2": {
+      "document": "This API is used to obtain PerformancePage information.",
+      "input": "DescribeDataPerformancePageV2Request",
+      "name": "Obtains PerformancePage information (V2)",
+      "output": "DescribeDataPerformancePageV2Response",
       "status": "online"
     },
     "DescribeDataPerformanceProject": {
@@ -189,11 +231,25 @@
       "output": "DescribeDataPvUrlStatisticsResponse",
       "status": "online"
     },
+    "DescribeDataPvUrlStatisticsV2": {
+      "document": "This API is used to obtain DescribeDataPvUrlStatistics information.",
+      "input": "DescribeDataPvUrlStatisticsV2Request",
+      "name": "Obtains DescribeDataPvUrlStatistics information (V2)",
+      "output": "DescribeDataPvUrlStatisticsV2Response",
+      "status": "online"
+    },
     "DescribeDataReportCount": {
       "document": "This API is used to get the number of reported data entries for a project.",
       "input": "DescribeDataReportCountRequest",
       "name": "Gets the number of reported data entries",
       "output": "DescribeDataReportCountResponse",
+      "status": "online"
+    },
+    "DescribeDataReportCountV2": {
+      "document": "This API is used to obtain the project reporting volume.",
+      "input": "DescribeDataReportCountV2Request",
+      "name": "Obtains the reporting volume (V2)",
+      "output": "DescribeDataReportCountV2Response",
       "status": "online"
     },
     "DescribeDataSetUrlStatistics": {
@@ -203,11 +259,25 @@
       "output": "DescribeDataSetUrlStatisticsResponse",
       "status": "online"
     },
+    "DescribeDataSetUrlStatisticsV2": {
+      "document": "This API is used to obtain DescribeDataSetUrlStatistics information.",
+      "input": "DescribeDataSetUrlStatisticsV2Request",
+      "name": "Obtains DescribeDataSetUrlStatisticsV2 information",
+      "output": "DescribeDataSetUrlStatisticsV2Response",
+      "status": "online"
+    },
     "DescribeDataStaticProject": {
       "document": "This API is used to get the DescribeDataStaticProject information.",
       "input": "DescribeDataStaticProjectRequest",
       "name": "Gets DescribeDataStaticProject information",
       "output": "DescribeDataStaticProjectResponse",
+      "status": "online"
+    },
+    "DescribeDataStaticProjectV2": {
+      "document": "This API is used to obtain DescribeDataStaticProject information.",
+      "input": "DescribeDataStaticProjectV2Request",
+      "name": "Obtains DescribeDataStaticProjectV2 information",
+      "output": "DescribeDataStaticProjectV2Response",
       "status": "online"
     },
     "DescribeDataStaticResource": {
@@ -217,6 +287,13 @@
       "output": "DescribeDataStaticResourceResponse",
       "status": "online"
     },
+    "DescribeDataStaticResourceV2": {
+      "document": "This API is used to obtain DescribeDataStaticResource information.",
+      "input": "DescribeDataStaticResourceV2Request",
+      "name": "Obtains DescribeDataStaticResourceV2 information",
+      "output": "DescribeDataStaticResourceV2Response",
+      "status": "online"
+    },
     "DescribeDataStaticUrl": {
       "document": "This API is used to get the DescribeDataStaticUrl information.",
       "input": "DescribeDataStaticUrlRequest",
@@ -224,11 +301,25 @@
       "output": "DescribeDataStaticUrlResponse",
       "status": "online"
     },
+    "DescribeDataStaticUrlV2": {
+      "document": "This API is used to obtain DescribeDataStaticUrl information.",
+      "input": "DescribeDataStaticUrlV2Request",
+      "name": "Obtains DescribeDataStaticUrlV2 information",
+      "output": "DescribeDataStaticUrlV2Response",
+      "status": "online"
+    },
     "DescribeDataWebVitalsPage": {
       "document": "This API is used to get the DescribeDataWebVitalsPage information, which is about core user activities.\nIt includes the Web Vitals metric for the page loading performance.",
       "input": "DescribeDataWebVitalsPageRequest",
       "name": "Gets DescribeDataWebVitalsPage information",
       "output": "DescribeDataWebVitalsPageResponse",
+      "status": "online"
+    },
+    "DescribeDataWebVitalsPageV2": {
+      "document": "This API is used to obtain DescribeDataWebVitalsPage information, which is the core user activity information.\nWeb Vitals for page loading performance are key performance metrics.",
+      "input": "DescribeDataWebVitalsPageV2Request",
+      "name": "Obtains DescribeDataWebVitalsPageV2 information",
+      "output": "DescribeDataWebVitalsPageV2Response",
       "status": "online"
     },
     "DescribeError": {
@@ -348,6 +439,13 @@
       "input": "DescribeScoresRequest",
       "name": "Gets the list of homepage scores",
       "output": "DescribeScoresResponse",
+      "status": "online"
+    },
+    "DescribeScoresV2": {
+      "document": "This API is used to obtain the home page score list.",
+      "input": "DescribeScoresV2Request",
+      "name": "Obtains the home page score list (V2)",
+      "output": "DescribeScoresV2Response",
       "status": "online"
     },
     "DescribeTawAreas": {
@@ -1317,6 +1415,340 @@
       ],
       "type": "object"
     },
+    "DescribeDataBridgeUrlV2Request": {
+      "document": "DescribeDataBridgeUrlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "pagepv: performance view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "ext1",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "ext2",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "ext3",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Global or not.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment variable.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "URL name.",
+          "example": "http",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "HTTP status code.",
+          "example": "200",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "retcode",
+          "example": "1",
+          "member": "string",
+          "name": "Ret",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network status.",
+          "example": "1",
+          "member": "string",
+          "name": "NetStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataBridgeUrlV2Response": {
+      "document": "DescribeDataBridgeUrlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "success",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataCustomUrlRequest": {
       "document": "DescribeDataCustomUrl request structure.",
       "members": [
@@ -1552,6 +1984,313 @@
       ],
       "type": "object"
     },
+    "DescribeDataCustomUrlV2Request": {
+      "document": "DescribeDataCustomUrlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "top: top resource view. allcount: performance view. day: 14-day data. condition: condition list. pagepv: performance view. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Value of the custom speed test key.",
+          "example": "自定义测速",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataCustomUrlV2Response": {
+      "document": "DescribeDataCustomUrlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"Result\": \"{\\\"request_id\\\":\\\"44202a67-c864-4d29-82f4-bfd483327e60\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0,\\\"offset\\\":\\\"\\\"},{\\\"statement_id\\\":1,\\\"total\\\":0,\\\"offset\\\":\\\"\\\"}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataEventUrlRequest": {
       "document": "DescribeDataEventUrl request structure.",
       "members": [
@@ -1771,6 +2510,304 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataEventUrlV2Request": {
+      "document": "DescribeDataEventUrlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "allcount: performance view. day: 14-day data. condition: condition list. ckuv: obtaining UV trend. ckpv: obtaining PV trend. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition.",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataEventUrlV2Response": {
+      "document": "DescribeDataEventUrlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"d446c290-7034-47d3-8d72-46e7a692f5ac\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2528,6 +3565,340 @@
       ],
       "type": "object"
     },
+    "DescribeDataFetchUrlV2Request": {
+      "document": "DescribeDataFetchUrlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "allcount: performance view. pagepv: PV view. day: 14-day data. count40x: 40X view. count50x: 50X view. count5xand4x: 40∑50 view. top: top resource view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "HTTP response code.",
+          "example": "200",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "retcode",
+          "example": "1",
+          "member": "string",
+          "name": "Ret",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network status.",
+          "example": "1",
+          "member": "string",
+          "name": "NetStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataFetchUrlV2Response": {
+      "document": "DescribeDataFetchUrlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"d446c290-7034-47d3-8d72-46e7a692f5ac\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataLogUrlInfoRequest": {
       "document": "DescribeDataLogUrlInfo request structure.",
       "members": [
@@ -2800,6 +4171,304 @@
       ],
       "type": "object"
     },
+    "DescribeDataLogUrlStatisticsV2Request": {
+      "document": "DescribeDataLogUrlStatisticsV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "analysis: exception analysis. compare: exception list comparison. allcount: performance view. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment differentiation.",
+          "example": "production",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "JavaScript exception message.",
+          "example": "Script error.",
+          "member": "string",
+          "name": "ErrorMsg",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataLogUrlStatisticsV2Response": {
+      "document": "DescribeDataLogUrlStatisticsV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"4d50a7e7-cb3a-47af-a4ff-f545bfd54880\\\",\\\"results\\\":[{\\\"statement_id\\\":1,\\\"series\\\":[{\\\"name\\\":\\\"log_url_statistics\\\",\\\"columns\\\":[\\\"time\\\",\\\"allCount\\\"],\\\"values\\\":[],\\\"total\\\":1,\\\"offset\\\":\\\"\\\"}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataPerformancePageRequest": {
       "document": "DescribeDataPerformancePage request structure.",
       "members": [
@@ -3028,6 +4697,322 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformancePageV2Request": {
+      "document": "DescribeDataPerformancePageV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "pagepv: PV view. allcount: performance view. falls: page loading waterfall chart. samp: first meaningful paint. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "50",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment variable.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network status.",
+          "example": "1",
+          "member": "string",
+          "name": "NetStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to return webvitals data.",
+          "example": "true",
+          "member": "bool",
+          "name": "WebVitals",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPerformancePageV2Response": {
+      "document": "DescribeDataPerformancePageV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"ddec0dc8-3268-4571-9ac0-566ae7537495\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0},{\\\"statement_id\\\":2,\\\"total\\\":0},{\\\"statement_id\\\":3,\\\"total\\\":0}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3713,6 +5698,313 @@
       ],
       "type": "object"
     },
+    "DescribeDataPvUrlStatisticsV2Request": {
+      "document": "DescribeDataPvUrlStatisticsV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "allcount: performance view. day: 14-day data. vp: performance. ckuv: UV. ckpv: PV. condition: condition list. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value enumeration for group by. 1: 1 minute. 2: 5 minutes. 3: 30 minutes. 4: 1 hour.\n 5:1d",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupByType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1: Queries Zhiyan.\n0: Uses the old logic, which is removed. Do not use this value.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsNewData",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataPvUrlStatisticsV2Response": {
+      "document": "DescribeDataPvUrlStatisticsV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"4f93b7fc-1857-4f4d-b3ac-eb63719a8bc5\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0,\\\"offset\\\":\\\"\\\"}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataReportCountRequest": {
       "document": "DescribeDataReportCount request structure.",
       "members": [
@@ -3779,6 +6071,79 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataReportCountV2Request": {
+      "document": "DescribeDataReportCountV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Reporting type (custom, event, log, miniProgramData, performance, pv, speed, and webvitals).",
+          "example": "custom",
+          "member": "string",
+          "name": "ReportType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "rum-abc",
+          "member": "string",
+          "name": "InstanceID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataReportCountV2Response": {
+      "document": "DescribeDataReportCountV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"4d50a7e7-cb3a-47af-a4ff-f545bfd54880\\\",\\\"results\\\":[{\\\"statement_id\\\":1,\\\"series\\\":[{\\\"name\\\":\\\"log_url_statistics\\\",\\\"columns\\\":[\\\"time\\\",\\\"allCount\\\"],\\\"values\\\":[],\\\"total\\\":1,\\\"offset\\\":\\\"\\\"}]}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4067,6 +6432,313 @@
       ],
       "type": "object"
     },
+    "DescribeDataSetUrlStatisticsV2Request": {
+      "document": "DescribeDataSetUrlStatisticsV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "allcount: performance view. data: mini program. component: related to mini program. day: 14-day data. nettype: network or platform view. performance: top page performance view. version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: ISP view, region view, browser view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Obtaining package.",
+          "example": "loadPackage",
+          "member": "string",
+          "name": "PackageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataSetUrlStatisticsV2Response": {
+      "document": "DescribeDataSetUrlStatisticsV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"65a8fec7-2b39-4b11-893f-3715279d235f\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0},{\\\"statement_id\\\":2,\\\"total\\\":0}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataStaticProjectRequest": {
       "document": "DescribeDataStaticProject request structure.",
       "members": [
@@ -4295,6 +6967,313 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticProjectV2Request": {
+      "document": "DescribeDataStaticProjectV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "allcount: performance view. day: 14-day data. condition: condition list. area: request speed distribution. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level (1 indicates allowlist log. 2 indicates general log. 4 indicates error log. 8 indicates Promise error. 16 indicates AJAX request exception. 32 indicates JavaScript loading exception. 64 indicates image loading exception. 128 indicates CSS loading exception. 256 indicates console.error. 512 indicates audio or video resource exception. 1024 indicates retcode exception. 2048 indicates Aegis report. 4096 indicates PV log. 8192 indicates custom event. 16384 indicates mini program page does not exist. 32768 indicates WebSocket error. 65536 indicates JavaScript bridge error).",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type (1, 2, 3, 4, 5, or 100). 1 indicates Wi-Fi. 2 indicates 2G. 3 indicates 3G. 4 indicates 4G. 5 indicates 5G. 6 indicates 6G. 100 indicates unknown.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "[\"http\"]",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticProjectV2Response": {
+      "document": "DescribeDataStaticProjectV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"series\\\":[{\\\"name\\\":\\\"static_project_statistics\\\",\\\"columns\\\":[\\\"time\\\",\\\"allCount\\\",\\\"successRate\\\",\\\"avgDuration\\\",\\\"connectTime\\\",\\\"domainLookupTime\\\"],\\\"values\\\":[[1737246360,null,null,null,null,null]],\\\"total\\\":1,\\\"offset\\\":\\\"\\\"}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4537,6 +7516,313 @@
       ],
       "type": "object"
     },
+    "DescribeDataStaticResourceV2Request": {
+      "document": "DescribeDataStaticResourceV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "top: top resource view. count40x: 40X view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticResourceV2Response": {
+      "document": "DescribeDataStaticResourceV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\\\"request_id\\\":\\\"65a8fec7-2b39-4b11-893f-3715279d235f\\\",\\\"results\\\":[{\\\"statement_id\\\":0,\\\"total\\\":0},{\\\"statement_id\\\":1,\\\"total\\\":0}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataStaticUrlRequest": {
       "document": "DescribeDataStaticUrl request structure.",
       "members": [
@@ -4772,6 +8058,313 @@
       ],
       "type": "object"
     },
+    "DescribeDataStaticUrlV2Request": {
+      "document": "DescribeDataStaticUrlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "pagepv: performance view. nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/: network platform view, version view, device view, ISP view, region view, browser view, ext1 view, and so on.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "optimized",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation method.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "http",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 4.",
+          "example": "ext4",
+          "member": "string",
+          "name": "ExtFourth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 5.",
+          "example": "ext5",
+          "member": "string",
+          "name": "ExtFifth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 6.",
+          "example": "ext6",
+          "member": "string",
+          "name": "ExtSixth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 7.",
+          "example": "ext7",
+          "member": "string",
+          "name": "ExtSeventh",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 8.",
+          "example": "ext8",
+          "member": "string",
+          "name": "ExtEighth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 9.",
+          "example": "ext9",
+          "member": "string",
+          "name": "ExtNinth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 10.",
+          "example": "ext10",
+          "member": "string",
+          "name": "ExtTenth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataStaticUrlV2Response": {
+      "document": "DescribeDataStaticUrlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\"request_id\":\"19f7743c-8a5d-4c41-ad6a-742a145b685d\",\"results\":[{\"statement_id\":0,\"total\":0,\"offset\":\"\"}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDataWebVitalsPageRequest": {
       "document": "DescribeDataWebVitalsPage request structure.",
       "members": [
@@ -4991,6 +8584,241 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataWebVitalsPageV2Request": {
+      "document": "DescribeDataWebVitalsPageV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1625444040",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1625454840",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 2.",
+          "example": "3.2.1",
+          "member": "string",
+          "name": "ExtSecond",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser engine.",
+          "example": "ie7",
+          "member": "string",
+          "name": "Engine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Internet service provider.",
+          "example": "中国移动",
+          "member": "string",
+          "name": "Isp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source page.",
+          "example": "index.html",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log level.",
+          "example": "1",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "No type.",
+          "example": "pagepv",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Brand.",
+          "example": "苹果",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "中国",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version.",
+          "example": "1.2.1",
+          "member": "string",
+          "name": "VersionNum",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Platform.",
+          "example": "2",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 3.",
+          "example": "normal",
+          "member": "string",
+          "name": "ExtThird",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom parameter 1.",
+          "example": "offline",
+          "member": "string",
+          "name": "ExtFirst",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network type.",
+          "example": "2",
+          "member": "string",
+          "name": "NetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model.",
+          "example": "三星",
+          "member": "string",
+          "name": "Device",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query global data. 1 indicates global. 0 indicates not global. This is empty by default, which means to query all data.",
+          "example": "1",
+          "member": "string",
+          "name": "IsAbroad",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operating system.",
+          "example": "ios",
+          "member": "string",
+          "name": "Os",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Browser.",
+          "example": "ie",
+          "member": "string",
+          "name": "Browser",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Duration calculation.",
+          "example": "avg",
+          "member": "string",
+          "name": "CostType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "prod",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time period.",
+          "example": "1m",
+          "member": "string",
+          "name": "Granularity",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDataWebVitalsPageV2Response": {
+      "document": "DescribeDataWebVitalsPageV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return value.",
+          "example": "\"{\"request_id\":\"2fe018e0-9e76-46cb-9ddb-cfbd6835ff19\",\"results\":[{\"statement_id\":0,\"series\":[{\"name\":\"webvitals_page_statistics\",\"columns\":[\"time\",\"LCP\",\"FID\",\"CLS\",\"FCP\"],\"values\":[[0,null,null,null,null]]}],\"total\":1,\"offset\":\"\"}]}\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -6116,6 +9944,79 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScoresV2Request": {
+      "document": "DescribeScoresV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2025080100",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2025080700",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID list.",
+          "example": "[120000, 120468]",
+          "member": "int64",
+          "name": "IDList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query granularity. Valid values: hour or day.",
+          "example": "day",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment.",
+          "example": "production",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeScoresV2Response": {
+      "document": "DescribeScoresV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project score array.",
+          "example": "无",
+          "member": "ScoreInfoV2",
+          "name": "ScoreSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7328,6 +11229,242 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ScoreInfoV2": {
+      "document": "Project score entity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "120000",
+          "member": "int64",
+          "name": "ProjectID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total project score.",
+          "example": "100.0",
+          "member": "float",
+          "name": "Score",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API performance score.",
+          "example": "0.0",
+          "member": "float",
+          "name": "ApiPerformanceScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API availability score.",
+          "example": "0.0",
+          "member": "float",
+          "name": "ApiAvailableScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total API calls.",
+          "example": "99",
+          "member": "int64",
+          "name": "ApiNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API failures.",
+          "example": "50",
+          "member": "int64",
+          "name": "ApiFail",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average API duration.",
+          "example": "100.0",
+          "member": "float",
+          "name": "ApiDuration",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page performance score.",
+          "example": "0.9",
+          "member": "float",
+          "name": "PagePerformanceScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page views.",
+          "example": "799",
+          "member": "int64",
+          "name": "PagePv",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique visitors.",
+          "example": "14",
+          "member": "int64",
+          "name": "PageUv",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page errors.",
+          "example": "114",
+          "member": "int64",
+          "name": "PageError",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First meaningful paint.",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageDuration",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average largest contentful paint (LCP).",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageLCP",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average first input delay (FID).",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageFID",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average cumulative layout shift (CLS).",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageCLS",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average first contentful paint (FCP).",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageFCP",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average interaction to next paint (INP).",
+          "example": "123.0",
+          "member": "float",
+          "name": "PageINP",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "JavaScript error score.",
+          "example": "0.1",
+          "member": "float",
+          "name": "JsErrorScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static resource availability score.",
+          "example": "0.5",
+          "member": "float",
+          "name": "StaticAvailableScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static resource performance score.",
+          "example": "0.6",
+          "member": "float",
+          "name": "StaticPerformanceScore",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total static resource requests.",
+          "example": "50",
+          "member": "int64",
+          "name": "StaticNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static resource loading failures.",
+          "example": "12",
+          "member": "int64",
+          "name": "StaticFail",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Static resource loading time.",
+          "example": "123.0",
+          "member": "float",
+          "name": "StaticDuration",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

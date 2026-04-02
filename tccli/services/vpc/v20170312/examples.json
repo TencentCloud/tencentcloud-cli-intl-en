@@ -1998,10 +1998,10 @@
     ],
     "InquiryPriceRenewVpnGateway": [
       {
-        "document": "This example shows you how to renew an annual/monthly subscription gateway and submit a gateway inquiry.",
+        "document": "This example shows you how to renew an yearly/monthly subscription gateway and submit a gateway inquiry.",
         "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewVpnGateway\n<Common request parameters>\n\n{\n    \"VpnGatewayId\": \"vpngw-abcxa123z\",\n    \"InstanceChargePrepaid\": {\n        \"Period\": 1,\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"InstancePrice\": {\n                \"OriginalPrice\": 380.0,\n                \"DiscountPrice\": 177.4,\n                \"UnitPrice\": 0.0,\n                \"ChargeUnit\": \"\"\n            },\n            \"BandwidthPrice\": {\n                \"OriginalPrice\": 0.0,\n                \"DiscountPrice\": 0.0,\n                \"UnitPrice\": 0.0,\n                \"ChargeUnit\": \"\"\n            }\n        },\n        \"RequestId\": \"74883e1b-5901-46de-ae1e-d6e2cf591c5b\"\n    }\n}",
-        "title": "Monthly Subscription Gateway Renewal Gateway Inquiry Input"
+        "title": "Yearly/Monthly Subscription Gateway Renewal Gateway Inquiry Input"
       }
     ],
     "InquiryPriceResetVpnGatewayInternetMaxBandwidth": [

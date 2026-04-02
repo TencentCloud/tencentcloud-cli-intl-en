@@ -1912,7 +1912,7 @@
       "status": "online"
     },
     "RenewVpnGateway": {
-      "document": "This API (RenewVpnGateway) is used to renew prepaid (monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.",
+      "document": "This API (RenewVpnGateway) is used to renew prepaid (yearly/monthly subscription) VPN gateways. Currently, only IPSEC gateways are supported.",
       "input": "RenewVpnGatewayRequest",
       "name": "Renews a VPN gateway",
       "output": "RenewVpnGatewayResponse",
@@ -8232,7 +8232,7 @@
         },
         {
           "disabled": false,
-          "document": "The VPN gateway billing mode. PREPAID: prepaid means monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.",
+          "document": "The VPN gateway billing mode. PREPAID: prepaid means yearly/monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -8241,7 +8241,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter settings for prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.",
+          "document": "Parameter settings for prepaid billing mode, also known as yearly/monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -8290,6 +8290,15 @@
           "example": "5",
           "member": "uint64",
           "name": "MaxConnection",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "uint64",
+          "name": "BgpAsn",
           "required": false,
           "type": "int"
         }
@@ -17880,7 +17889,7 @@
       "type": "object"
     },
     "InstanceChargePrepaid": {
-      "document": "Prepaid (monthly subscription) billing object.",
+      "document": "Prepaid (yearly/monthly subscription) billing object.",
       "members": [
         {
           "disabled": false,
@@ -20898,12 +20907,30 @@
         },
         {
           "disabled": false,
-          "document": "VPN gateway billing mode. Currently, only the conversion of prepaid (monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.",
+          "document": "VPN gateway billing mode. Currently, only the conversion of prepaid (yearly/monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "BgpAsn",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxConnection",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -22729,7 +22756,7 @@
         {
           "disabled": false,
           "document": "The ID of the VPN gateway instance.",
-          "example": "",
+          "example": "vpngw-cxkeaff3",
           "member": "string",
           "name": "VpnGatewayId",
           "required": true,
@@ -22738,7 +22765,7 @@
         {
           "disabled": false,
           "document": "Billing Methods",
-          "example": "",
+          "example": "{             'Period': 1,             'RenewFlag': 'NOTIFY_AND_MANUAL_RENEW'         }",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": true,
@@ -27382,7 +27409,7 @@
         },
         {
           "disabled": false,
-          "document": "Change of billing method. PREPAID_TO_POSTPAID: Monthly subscription prepaid to postpaid by hour.",
+          "document": "Change of billing method. PREPAID_TO_POSTPAID: Yearly/monthly subscription prepaid to postpaid by hour.",
           "example": "PREPAID_TO_POSTPAID",
           "member": "string",
           "name": "NewPurchasePlan",
@@ -27413,7 +27440,7 @@
         {
           "disabled": false,
           "document": "Gateway bandwidth quota information.",
-          "example": "null",
+          "example": "无",
           "member": "VpnGatewayQuota",
           "name": "VpnGatewayQuotaSet",
           "output_required": true,
@@ -27459,6 +27486,16 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "61413",
+          "member": "uint64",
+          "name": "BgpAsn",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -27469,30 +27506,30 @@
         {
           "disabled": false,
           "document": "The bandwidth quota.",
-          "example": "",
+          "example": "5",
           "member": "uint64",
           "name": "Bandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The bandwidth quota name in Chinese.",
-          "example": "",
+          "example": "微小型",
           "member": "string",
           "name": "Cname",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The bandwidth quota name in English.",
-          "example": "",
+          "example": "mini",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
