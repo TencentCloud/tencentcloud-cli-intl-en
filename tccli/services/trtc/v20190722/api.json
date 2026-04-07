@@ -28,6 +28,13 @@
       "output": "CreateCloudSliceTaskResponse",
       "status": "online"
     },
+    "CreateCloudTranscription": {
+      "document": "API description:\nEnable the cloud transcription feature.",
+      "input": "CreateCloudTranscriptionRequest",
+      "name": "Starts a cloud transcription task",
+      "output": "CreateCloudTranscriptionResponse",
+      "status": "online"
+    },
     "DeleteCloudModeration": {
       "document": "This API is used to stop submission for moderation after the cloud moderation task is successfully started.",
       "input": "DeleteCloudModerationRequest",
@@ -47,6 +54,13 @@
       "input": "DeleteCloudSliceTaskRequest",
       "name": "Stops a cloud slicing task",
       "output": "DeleteCloudSliceTaskResponse",
+      "status": "online"
+    },
+    "DeleteCloudTranscription": {
+      "document": "This API is used to terminate the transcription task after successful activation.",
+      "input": "DeleteCloudTranscriptionRequest",
+      "name": "Terminate a cloud transcription task.",
+      "output": "DeleteCloudTranscriptionResponse",
       "status": "online"
     },
     "DescribeAIConversation": {
@@ -89,6 +103,13 @@
       "input": "DescribeCloudSliceTaskRequest",
       "name": "Queries information about cloud slicing tasks",
       "output": "DescribeCloudSliceTaskResponse",
+      "status": "online"
+    },
+    "DescribeCloudTranscription": {
+      "document": "This API is used to query the transcription status after starting a transcription task. It is effective only when the transcription task is in process. Querying after termination will return an error.",
+      "input": "DescribeCloudTranscriptionRequest",
+      "name": "Query cloud-based transcription status",
+      "output": "DescribeCloudTranscriptionResponse",
       "status": "online"
     },
     "DescribeMixTranscodingUsage": {
@@ -556,6 +577,57 @@
           "example": "50",
           "member": "uint64",
           "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "AsrParam": {
+      "document": "Parameters used in speech recognition",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The model type used for the transcription service. Example: `\"zh\"`.\n\nSupported languages for speech-to-text:\n\n- `\"zh\"`: Chinese (Simplified) - Powered by the latest 16k large model engine. Supports Mandarin, English, multiple Chinese regional accents, and code-switching between Chinese and English.\n- `\"zh-TW\"`: Chinese (Traditional)\n- `\"vi\"`: Vietnamese\n- `\"ja\"`: Japanese\n- `\"ko\"`: Korean\n- `\"id\"`: Indonesian\n- `\"th\"`: Thai\n- `\"pt\"`: Portuguese\n- `\"tr\"`: Turkish\n- `\"ar\"`: Arabic\n- `\"es\"`: Spanish\n- `\"hi\"`: Hindi\n- `\"fr\"`: French\n- `\"ms\"`: Malay\n- `\"fil\"`: Filipino\n- `\"de\"`: German\n- `\"it\"`: Italian\n- `\"ru\"`: Russian\n- `\"sv\"`: Swedish\n- `\"da\"`: Danish\n- `\"no\"`: Norwegian\n\n> **Note:** If the language you need is not listed, please contact our support team.",
+          "example": "16k_zh_en",
+          "member": "string",
+          "name": "Lang",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The time for speech recognition vad ranges (ms) from 240 to 2000, with a default of 1000. A smaller value enables faster sentence segmentation in speech recognition.Example value: 1000.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "VadSilenceTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Temporary hotword list: This parameter is used for improving recognition accuracy.\n\n- Hotword limit: \"hotword|weight\". Each hotword contains no more than 30 characters (10 Chinese characters max). Weight ranges from 1 to 11 or 100, for example: \"Tencent Cloud|5\" or \"ASR|11\".\n- Restrictions for the temporary term list: multiple terms separated by commas, supports up to 128 terms, for example: \"Tencent Cloud|10,speech recognition|5,ASR|11\".\n\n> Note:\n- When the hotword weight is set to 11, the current hotword will be upgraded to a super term. It is advisable to only set important and must-effective hotwords to 11. Setting too many hotwords with weight 11 will affect overall accuracy.\n- When a hotword weight is set to 100, the hotword enhancement feature forces an exact match replacement: any recognized word that is a homophone of the configured hotword will be replaced with the hotword in the transcription output. \n- For example, if the hotword Lyft|100 is configured, the word lift, which is phonetically identical, will always be transcribed as Lyft. \n- Use this feature with caution. Only assign a weight of 100 to hotwords that are business-critical and must always appear verbatim in the output. Overuse of weight 100 hotwords may degrade overall transcription accuracy.\n- Hot words cannot contain spaces, for example: ASR Tencent Cloud\n- Example value: voice assistant|10",
+          "example": "腾讯云|10,语音识别|5,ASR|11",
+          "member": "string",
+          "name": "HotWordList",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fuzzy language detection is an advanced function, which is billed at the Advanced tier rate by default. Only Advanced tier languages are supported, excluding zh-dialect and zh-yue. Note: A maximum of 4 languages can be specified.\n",
+          "example": "[\"vi\", \"ja\"]",
+          "member": "string",
+          "name": "AlternativeLanguage",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "vad far-field voice suppression capacity (does not impact asr recognition accuracy), range [0, 3], default is 0. Recommended setting is 2 for better far-field voice suppression.",
+          "example": "0",
+          "member": "uint64",
+          "name": "VadLevel",
           "required": false,
           "type": "int"
         }
@@ -1263,6 +1335,88 @@
       ],
       "type": "object"
     },
+    "CreateCloudTranscriptionRequest": {
+      "document": "CreateCloudTranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.",
+          "example": "140000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.",
+          "example": "room_366",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters for transcribe service to join TRTC room.",
+          "example": "无",
+          "member": "TranscriptionParam",
+          "name": "TranscriptionParam",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters used by the ASR transcribe service.",
+          "example": "无",
+          "member": "AsrParam",
+          "name": "AsrParam",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Translation parameters used for transcription.",
+          "example": "无",
+          "member": "TranslationParam",
+          "name": "TranslationParam",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCloudTranscriptionResponse": {
+      "document": "CreateCloudTranscription response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.",
+          "example": "-m9-bVVU7k801X-VX8gO***GrDFLaZwKKZ5-fTXqywE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCloudModerationRequest": {
       "document": "DeleteCloudModeration request structure.",
       "members": [
@@ -1386,6 +1540,52 @@
           "disabled": false,
           "document": "Unique ID of the slicing task, which is returned after the task is started.",
           "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudTranscriptionRequest": {
+      "document": "DeleteCloudTranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.",
+          "example": "140000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique Id of the task will be returned upon success.",
+          "example": "-m9Ghi1U*****gjmwRxKiwE...",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCloudTranscriptionResponse": {
+      "document": "DeleteCloudTranscription response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID of the service allocation for transcribing. The task ID is the unique identifier for a transcription lifecycle process and loses its meaning once the transcription is complete.",
+          "example": "-m9Ghi1U*****gjmwRxKiwE...",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -1866,6 +2066,72 @@
           "example": "InProgress",
           "member": "string",
           "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudTranscriptionRequest": {
+      "document": "DescribeCloudTranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SDKAppId of TRTC, which is the same as the SDKAppId of the room being transcribed.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique Id of the transcription task will be returned upon successful startup.",
+          "example": "-m9Ghi1U7upt0******aR8QqgE...",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloudTranscriptionResponse": {
+      "document": "DescribeCloudTranscription response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time of starting the transcription task.",
+          "example": "1762156499146",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transcription task status. \n\n- Idle: Indicates the current transcription task is idle. \n- InProgress: Indicates the current transcription task is in progress. \n- Exited: Indicates the current transcription task is in the process of exiting.",
+          "example": "Idle",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique Id of the transcribe task.",
+          "example": "-m9Ghi1U7upt0******aR8QqgE...",
+          "member": "string",
+          "name": "TaskId",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6511,6 +6777,66 @@
       ],
       "usage": "out"
     },
+    "TranscriptionParam": {
+      "document": "Parameters for the transcription service to join TRTC room.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the transcription service in the TRTC room. Note that this userId cannot duplicate those already used by other TRTC or transcription services etc. You may use the room ID as part of the user identification.",
+          "example": "transcription_1234",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).",
+          "example": "transcription_1234_sig",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Allowlist of user IDs whose audio will be transcribed.\nSpecifies which anchor audio streams to transcribe when the service starts. If left empty or omitted, audio from all anchors will be transcribed. If one or more values are provided, only audio from the specified anchors will be transcribed.\n\n> Note: If a user ID appears in both the `SubscribeList` and `UnSubscribeList`, the `UnSubscribeList` takes precedence.",
+          "example": "无",
+          "member": "TranscriptionUserInfoParams",
+          "name": "SubscribeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Blocklist of user IDs whose audio will be excluded from transcription. \nLeave empty or omit to disable the blocklist. Provide specific values to exclude the specified anchors' audio from transcription.\n",
+          "example": "无",
+          "member": "TranscriptionUserInfoParams",
+          "name": "UnSubscribeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum idle duration before the transcription task is automatically stopped, in seconds.\nIf all anchors being transcribed continuously leave the TRTC room or switch to the audience role for longer than this value, the transcription task stops automatically.\n- Default: 30\n- Range: 5 - 86400 (24 hours)",
+          "example": "30",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SendCustomMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "TranscriptionParams": {
       "document": "AI Transcription Params",
       "members": [
@@ -6557,6 +6883,21 @@
           "member": "string",
           "name": "TargetUserId",
           "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "TranscriptionUserInfoParams": {
+      "document": "Transcribe user information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
           "type": "string"
         }
       ],
@@ -6611,6 +6952,21 @@
         }
       ],
       "usage": "both"
+    },
+    "TranslationParam": {
+      "document": "Translation parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target language for translation. Example: `[\"en\", \"ja\"]`.\n\nSupported target languages:\n\n- `\"zh\"`: Chinese\n- `\"en\"`: English\n- `\"vi\"`: Vietnamese\n- `\"ja\"`: Japanese\n- `\"ko\"`: Korean\n- `\"id\"`: Indonesian\n- `\"th\"`: Thai\n- `\"pt\"`: Portuguese\n- `\"ar\"`: Arabic\n- `\"es\"`: Spanish\n- `\"fr\"`: French\n- `\"ms\"`: Malay\n- `\"de\"`: German\n- `\"it\"`: Italian\n- `\"ru\"`: Russian",
+          "example": "[\"en\", \"ja\"]",
+          "member": "string",
+          "name": "TargetLang",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     },
     "TrtcUsage": {
       "document": "The TRTC audio/video duration generated in a certain time period.",

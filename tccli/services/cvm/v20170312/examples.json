@@ -110,6 +110,14 @@
         "title": "Checking whether the specified image can be deleted"
       }
     ],
+    "DeleteInstancesDisasterRecoverGroups": [
+      {
+        "document": "Remove CVM instance ins-23sh03x7 from placement group ps-c119a27y.",
+        "input": "POST / HTTP/1.1\nHost: cvm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteInstancesDisasterRecoverGroups\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"ins-23sh03x7\"\n    ],\n    \"DisasterRecoverGroupIds\": [\n        \"ps-c119a27y\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c43bdac-5c17-4c35-8bb7-7d5aff400472\"\n    }\n}",
+        "title": "Batch remove CVM instances from specified placement groups"
+      }
+    ],
     "DeleteKeyPairs": [
       {
         "document": " ",
