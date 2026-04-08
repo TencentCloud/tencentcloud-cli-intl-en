@@ -195,9 +195,9 @@
     "CreateSmartSubtitleTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"Example\"\n    \"VideoSrcLanguage\": \"zh\",\n    \"SubtitleType\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 202281,\n        \"RequestId\": \"42dc919b-2ec7-412c-85f0-88f003813d04\"\n    }\n}",
-        "title": "Creating a Template"
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSmartSubtitleTemplate\n<Common request parameters>\n\n{\n\"Name\": \"Create a smart subtitle template\"\n    \"VideoSrcLanguage\": \"auto\",\n    \"SubtitleType\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 286972,\n        \"RequestId\": \"d16800f5-479c-49b9-8ff1-62580cc87712\"\n    }\n}",
+        "title": "Creates a smart subtitle template"
       }
     ],
     "CreateSnapshotByTimeOffsetTemplate": [
@@ -206,6 +206,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSnapshotByTimeOffsetTemplate\n<Common request parameters>\n\n{\n    \"Width\": \"540\",\n    \"Format\": \"jpg\",\n    \"Name\": \"Time point screenshot template 1\",\n    \"Height\": \"960\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a time point screenshot template"
+      }
+    ],
+    "CreateSubtitleEmbedTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSubtitleEmbedTemplate\n<Common request parameters>\n\n{\n\"Name\": \"Subtitle suppression template\"\n    \"SubtitleEmbedConfig\": {\n        \"FontType\": \"kai\",\n        \"FontSize\": 50,\n        \"FontSizeUnit\": 0\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 260513,\n        \"RequestId\": \"3fceb699-e7de-4e17-8f6f-48976bf04c9e\"\n    }\n}",
+        "title": "Creating a Subtitle Suppression Template"
       }
     ],
     "CreateTranscodeTemplate": [
@@ -392,6 +400,14 @@
         "input": "https://mps.tencentcloudapi.com/?Action=DeleteSnapshotByTimeOffsetTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting a time point screenshot template"
+      }
+    ],
+    "DeleteSubtitleEmbedTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSubtitleEmbedTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 259484\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"81d235bc-7137-4346-919f-0d7343ce04ec\"\n    }\n}",
+        "title": "Deleting a Subtitle Suppression Template"
       }
     ],
     "DeleteTranscodeTemplate": [
@@ -634,6 +650,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamLinkSecurityGroup\n<Common request parameters>\n\n{\n    \"Id\": \"019202e96d9f09dc0f325e7f7a2a\"\n}",
         "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"019202e96d9f09dc0f325e7f7a2a\",\n            \"Name\": \"live_test\",\n            \"Whitelist\": [\n                \"0.0.0.0\"\n            ],\n            \"OccupiedInputs\": [\n                \"01937702c54509dc0f3269ca341f\"\n            ],\n            \"Region\": \"ap-shanghai\"\n        },\n        \"RequestId\": \"01941bb7827509dc0f320a9d3426\"\n    }\n}",
         "title": "Request Example"
+      }
+    ],
+    "DescribeSubtitleEmbedTemplates": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubtitleEmbedTemplates\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"SubtitleEmbedTemplateSet\": [\n            {\n                \"AliasName\": \"AutoFont-Background-LargeSize\",\n                \"Comment\": \"\",\n                \"CreateTime\": \"2026-03-17T15:06:16+08:00\",\n                \"Definition\": 4,\n\"Name\": \"Auto Font-Subtitles with Background\"\n                \"SubtitleEmbedConfig\": {\n                    \"CosInputInfo\": {\n                        \"Bucket\": \"\",\n                        \"Object\": \"\",\n                        \"Region\": \"\"\n                    },\n                    \"FontAlpha\": 1,\n                    \"FontColor\": \"0xFFFFFF\",\n                    \"FontPath\": \"\",\n                    \"FontSize\": 10,\n                    \"FontSizeUnit\": 1,\n                    \"FontType\": \"auto\",\n                    \"PosX\": 0,\n                    \"PosXUnit\": 1,\n                    \"PosY\": 13,\n                    \"PosYUnit\": 1,\n                    \"SampleHeight\": 0,\n                    \"SampleWidth\": 0,\n                    \"SubtitleBoardConfig\": {\n                        \"BoardAlpha\": 1,\n                        \"BoardColor\": \"0x000000\",\n                        \"BoardHeight\": 30,\n                        \"BoardHeightUnit\": 1,\n                        \"BoardWidth\": 90,\n                        \"BoardWidthUnit\": 1,\n                        \"BoardX\": 0,\n                        \"BoardXUnit\": 1,\n                        \"BoardY\": 10,\n                        \"BoardYUnit\": 1,\n                        \"SubtitleBoardConfigSwitch\": 1\n                    },\n                    \"SubtitleLayoutConfig\": {\n                        \"Alignment\": \"bottom\",\n                        \"LineSpacing\": 0,\n                        \"LineSpacingUnit\": 0,\n                        \"SubtitleLayoutConfigSwitch\": 0\n                    },\n                    \"SubtitleOutlineConfig\": {\n                        \"OutlineAlpha\": 1,\n                        \"OutlineColor\": \"0x000000\",\n                        \"OutlineWidth\": 1,\n                        \"OutlineWidthUnit\": 0,\n                        \"SubtitleOutlineConfigSwitch\": 1\n                    },\n                    \"SubtitleShadowConfig\": {\n                        \"ShadowAlpha\": 1,\n                        \"ShadowColor\": \"0x000000\",\n                        \"ShadowWidth\": 0,\n                        \"ShadowWidthUnit\": 0,\n                        \"SubtitleShadowConfigSwitch\": 0\n                    }\n                },\n                \"Type\": \"Preset\",\n                \"UpdateTime\": \"2026-03-17T15:06:16+08:00\"\n            }\n        ],\n        \"TotalCount\": 12,\n        \"RequestId\": \"52176f0d-29bd-4b2c-bb84-1670cbbeac0f\"\n    }\n}",
+        "title": "Retrieve subtitle suppression template list"
       }
     ],
     "DescribeTaskDetail": [
@@ -969,8 +993,8 @@
     "ModifySmartSubtitleTemplate": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 202281,\n    \"TranslateSwitch\": \"ON\",\n    \"Name\": \"New name\",\n    \"SubtitleType\": 1,\n    \"TranslateDstLanguage\": \"en\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"569d5d19-d01c-4efc-97dc-4ea53ae95647\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySmartSubtitleTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 266307,\n\"Name\": \"Modify intelligent subtitle template name\"\n    \"VideoSrcLanguage\": \"auto\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a38bc8ff-9826-4a43-a7d3-ed4c370d305f\"\n    }\n}",
         "title": "Modifying a Smart Subtitle Template"
       }
     ],
@@ -980,6 +1004,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySnapshotByTimeOffsetTemplate\n<Common request parameters>\n\n{\n    \"Definition\": \"10001\",\n    \"Format\": \"jpg\",\n    \"Height\": \"960\",\n    \"Name\": \"Time point screenshot template 1\",\n    \"Width\": \"540\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying a time point screenshot template"
+      }
+    ],
+    "ModifySubtitleEmbedTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySubtitleEmbedTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 278210,\n    \"Name\": \"camm\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1d5c55a9-6471-4877-8e8c-486b69e3810c\"\n    }\n}",
+        "title": "Modifying a Subtitle Suppression Template"
       }
     ],
     "ModifyTranscodeTemplate": [

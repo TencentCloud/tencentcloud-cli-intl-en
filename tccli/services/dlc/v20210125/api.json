@@ -863,6 +863,15 @@
           "name": "Asset",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "DatasourceConnectionName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1157,13 +1166,13 @@
         {
           "disabled": false,
           "document": "vpc id\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "vpc-xxx",
+          "example": "vpc-6z****3s",
           "member": "string",
           "name": "VpcId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1174,7 +1183,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1185,29 +1194,29 @@
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1560",
           "member": "int64",
           "name": "RuleId",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ag-groupId",
           "member": "string",
           "name": "AccessGroupId",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1493,7 +1502,7 @@
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1504,7 +1513,7 @@
           "output_required": false,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1518,6 +1527,7 @@
           "example": "col1",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1528,6 +1538,7 @@
           "example": "string",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1538,6 +1549,7 @@
           "example": "create by zhangsan",
           "member": "string",
           "name": "Comment",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1548,9 +1560,10 @@
           "example": "5",
           "member": "int64",
           "name": "Precision",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1558,9 +1571,10 @@
           "example": "2",
           "member": "int64",
           "name": "Scale",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1568,9 +1582,10 @@
           "example": "Nullable",
           "member": "string",
           "name": "Nullable",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1578,9 +1593,10 @@
           "example": "1",
           "member": "int64",
           "name": "Position",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1588,9 +1604,10 @@
           "example": "2021-09-07 06:19:23",
           "member": "string",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1598,9 +1615,10 @@
           "example": "2021-09-07 06:19:23",
           "member": "string",
           "name": "ModifiedTime",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1608,9 +1626,10 @@
           "example": "false",
           "member": "bool",
           "name": "IsPartition",
+          "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1621,7 +1640,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "96",
           "member": "float",
           "name": "CreateTaskTime",
           "output_required": true,
@@ -1631,7 +1650,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "223",
           "member": "float",
           "name": "ProcessTime",
           "output_required": true,
@@ -1641,7 +1660,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "float",
           "name": "QueueTime",
           "output_required": true,
@@ -1651,7 +1670,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "8981",
           "member": "float",
           "name": "ExecutionTime",
           "output_required": true,
@@ -1661,7 +1680,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "IsResultCacheHit",
           "output_required": true,
@@ -1671,7 +1690,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "...[]",
           "member": "int64",
           "name": "MatchedMVBytes",
           "output_required": true,
@@ -1681,7 +1700,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "null",
           "member": "string",
           "name": "MatchedMVs",
           "output_required": true,
@@ -1691,7 +1710,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "7614",
           "member": "string",
           "name": "AffectedBytes",
           "output_required": true,
@@ -1701,7 +1720,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "AffectedRows",
           "output_required": true,
@@ -1711,7 +1730,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "17562718",
           "member": "int64",
           "name": "ProcessedBytes",
           "output_required": true,
@@ -1721,7 +1740,7 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "19327",
           "member": "int64",
           "name": "ProcessedRows",
           "output_required": true,
@@ -1883,7 +1902,7 @@
         {
           "disabled": false,
           "document": "Engine name. When ProductName selects DLC products, this parameter must be specified. When ProductName selects other products, it can be unspecified.",
-          "example": "无",
+          "example": "guiyin",
           "member": "string",
           "name": "EngineName",
           "required": false,
@@ -1912,7 +1931,7 @@
           "name": "MountPointAssociates",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1995,6 +2014,15 @@
           "example": "group1",
           "member": "string",
           "name": "ResourceGroupname",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "hive",
+          "member": "string",
+          "name": "Catalog",
           "required": false,
           "type": "string"
         }
@@ -2473,7 +2501,7 @@
         {
           "disabled": false,
           "document": "The table partitions.",
-          "example": "无",
+          "example": "0",
           "member": "TPartition",
           "name": "Partitions",
           "required": false,
@@ -2497,10 +2525,10 @@
         {
           "disabled": false,
           "document": "The SQL statements for creating the managed internal table.",
-          "example": "无",
+          "example": "CREATE TABLE IF NOT EXISTS `DataLakeCatalog`.`devicedata_space`.`ods_m_grih_room` (\\n`roomid` BIGINT)",
           "member": "string",
           "name": "Execution",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2555,7 +2583,7 @@
           "example": "1234214",
           "member": "string",
           "name": "DownloadId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3390,7 +3418,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3401,7 +3429,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3412,7 +3440,7 @@
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3508,7 +3536,7 @@
           "name": "Location",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3528,7 +3556,7 @@
           "name": "ModifiedTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3538,7 +3566,7 @@
           "name": "CreateTime",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3548,7 +3576,7 @@
           "name": "InputFormat",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3558,7 +3586,7 @@
           "name": "StorageSize",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3568,17 +3596,17 @@
           "name": "RecordCount",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Materialized view name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "materializedview1",
           "member": "string",
           "name": "MapMaterializedViewName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3588,7 +3616,7 @@
           "name": "HeatValue",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -3767,6 +3795,7 @@
           "example": "11",
           "member": "string",
           "name": "DatabaseName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3774,9 +3803,10 @@
         {
           "disabled": false,
           "document": "Data directory name",
-          "example": "aaa",
+          "example": "schema1",
           "member": "string",
           "name": "SchemaName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3784,9 +3814,10 @@
         {
           "disabled": false,
           "document": "Table name",
-          "example": "aaa",
+          "example": "table1",
           "member": "string",
           "name": "TableName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3797,6 +3828,7 @@
           "example": "1",
           "member": "int64",
           "name": "DataVersion",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3804,9 +3836,10 @@
         {
           "disabled": false,
           "document": "Partition name",
-          "example": "aaa",
+          "example": "partition1",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3817,6 +3850,7 @@
           "example": "[\"aa\", \"bb\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -3827,6 +3861,7 @@
           "example": "1",
           "member": "int64",
           "name": "StorageSize",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3837,6 +3872,7 @@
           "example": "1",
           "member": "int64",
           "name": "RecordCount",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3847,6 +3883,7 @@
           "example": "2021-05-08 16:43:16",
           "member": "datetime_iso",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3857,6 +3894,7 @@
           "example": "2021-05-08 16:43:16",
           "member": "datetime_iso",
           "name": "ModifiedTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3867,6 +3905,7 @@
           "example": "2021-05-08 16:43:16",
           "member": "datetime_iso",
           "name": "LastAccessTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3877,6 +3916,7 @@
           "example": "无",
           "member": "KVPair",
           "name": "Params",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -3887,6 +3927,7 @@
           "example": "无",
           "member": "DMSSds",
           "name": "Sds",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -3903,6 +3944,7 @@
           "example": "cosn://aaa",
           "member": "string",
           "name": "Location",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3913,6 +3955,7 @@
           "example": "InputFormat",
           "member": "string",
           "name": "InputFormat",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3923,6 +3966,7 @@
           "example": "OutputFormat",
           "member": "string",
           "name": "OutputFormat",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3933,6 +3977,7 @@
           "example": "1",
           "member": "int64",
           "name": "NumBuckets",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -3943,6 +3988,7 @@
           "example": "false",
           "member": "bool",
           "name": "Compressed",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -3953,6 +3999,7 @@
           "example": "true",
           "member": "bool",
           "name": "StoredAsSubDirectories",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -3960,9 +4007,10 @@
         {
           "disabled": false,
           "document": "Serialization lib\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "aaa",
+          "example": "org.apache.hadoop.hive.serde2.OpenCSVSerde",
           "member": "string",
           "name": "SerdeLib",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3970,9 +4018,10 @@
         {
           "disabled": false,
           "document": "Serialization name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "aaa",
+          "example": "serde1",
           "member": "string",
           "name": "SerdeName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3983,6 +4032,7 @@
           "example": "[\"aa\", \"bb\"]",
           "member": "string",
           "name": "BucketCols",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -3993,6 +4043,7 @@
           "example": "无",
           "member": "KVPair",
           "name": "SerdeParams",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -4003,6 +4054,7 @@
           "example": "无",
           "member": "KVPair",
           "name": "Params",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -4013,6 +4065,7 @@
           "example": "无",
           "member": "DMSColumnOrder",
           "name": "SortCols",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -4023,6 +4076,7 @@
           "example": "无",
           "member": "DMSColumn",
           "name": "Cols",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -4033,6 +4087,7 @@
           "example": "无",
           "member": "DMSColumnOrder",
           "name": "SortColumns",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -4175,7 +4230,7 @@
           "name": "DataEngineId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -4206,24 +4261,24 @@
         {
           "disabled": false,
           "document": "Configuration items\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "dlc.query.execution.timeout",
           "member": "string",
           "name": "ConfigItem",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration values\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxxx",
+          "example": "360",
           "member": "string",
           "name": "ConfigValue",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -4506,7 +4561,7 @@
         {
           "disabled": false,
           "document": "Engine ID",
-          "example": "02345495-cfe0-461c-8c3d-5715d03feda4",
+          "example": "025495-cfe0-461c-8c3d-5715d03feda4",
           "member": "string",
           "name": "DataEngineId",
           "output_required": true,
@@ -4572,7 +4627,7 @@
         {
           "disabled": false,
           "document": "Key-value pair collection\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "[{\"TagKey\":\"mark002\"}]",
+          "example": "无",
           "member": "TagInfo",
           "name": "TagList",
           "output_required": true,
@@ -4583,7 +4638,7 @@
         {
           "disabled": false,
           "document": "Permissions owned by the engine\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "[USE]",
+          "example": "[\"USE\"]",
           "member": "string",
           "name": "Permissions",
           "output_required": true,
@@ -4627,7 +4682,7 @@
         {
           "disabled": false,
           "document": "Type of the task executed by the engine. Valid value: SQL/BATCH\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "无",
+          "example": "SQL",
           "member": "string",
           "name": "EngineExecType",
           "output_required": true,
@@ -4693,7 +4748,7 @@
         {
           "disabled": false,
           "document": "Cluster image version ID\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "xxxx",
+          "example": "7ac9cc78-bc95-440f-9768-4f4a79048755",
           "member": "string",
           "name": "ImageVersionId",
           "output_required": true,
@@ -4704,7 +4759,7 @@
         {
           "disabled": false,
           "document": "Minor cluster image version ID\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "xxxx",
+          "example": "772f03ca-92ed-4f02-aaa2-0c26b0818ec4",
           "member": "string",
           "name": "ChildImageVersionId",
           "output_required": true,
@@ -4715,7 +4770,7 @@
         {
           "disabled": false,
           "document": "Cluster image version name\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "xxxx",
+          "example": "SuperSQL-S 1.0",
           "member": "string",
           "name": "ImageVersionName",
           "output_required": true,
@@ -4792,7 +4847,7 @@
         {
           "disabled": false,
           "document": "User AppID\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "无",
+          "example": "125111081",
           "member": "int64",
           "name": "UserAppId",
           "output_required": true,
@@ -4803,7 +4858,7 @@
         {
           "disabled": false,
           "document": "User uin\nNote: The returned value of this field may be null, indicating that no valid value is obtained.",
-          "example": "无",
+          "example": "1000****4787",
           "member": "string",
           "name": "UserUin",
           "output_required": true,
@@ -4994,9 +5049,10 @@
           "example": "Customize",
           "member": "string",
           "name": "RuleType",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -5004,9 +5060,10 @@
           "example": "DataEngine-",
           "member": "string",
           "name": "GovernEngine",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5266,7 +5323,7 @@
         {
           "disabled": false,
           "document": "Names of metadata acceleration buckets to be unbound",
-          "example": "dlc-xxx",
+          "example": "dlc8519-*-*-*-*",
           "member": "string",
           "name": "MountPoint",
           "required": true,
@@ -5284,7 +5341,7 @@
         {
           "disabled": false,
           "document": "Product name",
-          "example": "DLC",
+          "example": "other",
           "member": "string",
           "name": "ProductName",
           "required": true,
@@ -5293,7 +5350,7 @@
         {
           "disabled": false,
           "document": "Engine name. When ProductName selects DLC products, this parameter must be specified. When ProductName selects other products, it can be unspecified.",
-          "example": "无",
+          "example": "dlc-saprk",
           "member": "string",
           "name": "EngineName",
           "required": false,
@@ -5329,7 +5386,7 @@
         {
           "disabled": false,
           "document": "Delete the name array of virtual clusters.",
-          "example": "[\"xxx\"]",
+          "example": "[\"public-engine\"]",
           "member": "string",
           "name": "DataEngineNames",
           "required": true,
@@ -5723,6 +5780,15 @@
           "example": "hive",
           "member": "string",
           "name": "TableFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "DatasourceConnectionName",
           "required": false,
           "type": "string"
         }
@@ -6155,7 +6221,7 @@
           "example": "无",
           "member": "DataEngineInfo",
           "name": "DataEngine",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -6294,7 +6360,7 @@
         {
           "disabled": false,
           "document": "The data engine ID.",
-          "example": "无",
+          "example": "DataEngine-r0xxxkls",
           "member": "string",
           "name": "DataEngineId",
           "required": true,
@@ -6309,27 +6375,40 @@
         {
           "disabled": false,
           "document": "The total cluster spec.",
-          "example": "无",
+          "example": "128",
           "member": "int64",
           "name": "Total",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The used cluster spec.",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Used",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The available cluster spec.",
-          "example": "无",
+          "example": "28",
           "member": "int64",
           "name": "Available",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "int64",
+          "name": "AvailPercent",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6568,7 +6647,7 @@
         {
           "disabled": false,
           "document": "Bucket name",
-          "example": "无",
+          "example": "dlc-buckeid",
           "member": "string",
           "name": "BucketId",
           "required": true,
@@ -6593,7 +6672,7 @@
         {
           "disabled": false,
           "document": "Total records",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Total",
           "output_required": true,
@@ -6710,9 +6789,9 @@
           "example": "cosn://bucket/123",
           "member": "string",
           "name": "Path",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -6720,7 +6799,7 @@
           "example": "success",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6730,39 +6809,39 @@
           "example": "success",
           "member": "string",
           "name": "Reason",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The temporary secret ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxxx",
+          "example": "AKIDEbKkzWJThxxxx",
           "member": "string",
           "name": "SecretId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The temporary secret key.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxxx",
+          "example": "Yxo9NW4xxxxx",
           "member": "string",
           "name": "SecretKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The temporary token.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "KHripBvMoTxxxx",
           "member": "string",
           "name": "Token",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7662,7 +7741,7 @@
         {
           "disabled": false,
           "document": "Sorting methods; desc means in reverse order; asc means in order.",
-          "example": "无",
+          "example": "asc",
           "member": "string",
           "name": "Sorting",
           "required": false,
@@ -7671,7 +7750,7 @@
         {
           "disabled": false,
           "document": "Quantity of returns. It is 10 by default, and the maximum value is 100.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7680,7 +7759,7 @@
         {
           "disabled": false,
           "document": "Offset, which is 0 by default.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7689,7 +7768,7 @@
         {
           "disabled": false,
           "document": "Sorting fields, which support the following type: create-time",
-          "example": "无",
+          "example": "create-time",
           "member": "string",
           "name": "SortBy",
           "required": false,
@@ -7698,7 +7777,7 @@
         {
           "disabled": false,
           "document": "Filter criteria. The following filter types are supported. The parameter Name should be one of them. The number of values that can be filtered by each type of parameter should not be bigger than 5.\napp-id - String - (filtering appid)\nengine-id - String - (filtering engine ID)",
-          "example": "无",
+          "example": "[{\"Name\":\"engine-id\",\"Values\":[\"DataEngine-houseid\"]",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7718,7 +7797,7 @@
           "name": "DataEngineConfigInstanceInfos",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7836,7 +7915,7 @@
         {
           "disabled": false,
           "document": "The number limit of enumerated user roles.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": true,
@@ -7845,7 +7924,7 @@
         {
           "disabled": false,
           "document": "The offset for starting enumeration. ",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": true,
@@ -7854,7 +7933,7 @@
         {
           "disabled": false,
           "document": "Fuzzy enumeration by arn.",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "Fuzzy",
           "required": false,
@@ -7872,11 +7951,20 @@
         {
           "disabled": false,
           "document": "The sorting order, descending or ascending, such as `desc`.",
-          "example": "无",
+          "example": "desc",
           "member": "string",
           "name": "Sorting",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "IsDefault",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -7887,7 +7975,7 @@
         {
           "disabled": false,
           "document": "The total number of user roles meeting the enumeration conditions.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Total",
           "output_required": true,
@@ -8443,6 +8531,15 @@
           "name": "EnvProps",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "DatasourceConnectionName",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8548,7 +8645,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8559,7 +8656,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8570,7 +8667,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8581,7 +8678,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8603,46 +8700,46 @@
         {
           "disabled": false,
           "document": "Prioritized items\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2147483647",
           "member": "int64",
           "name": "Priority",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Catalog name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "DataLakeCatalog",
           "member": "string",
           "name": "Catalog",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DataBase name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "dlc-db",
           "member": "string",
           "name": "DataBase",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Table name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "dlc-table",
           "member": "string",
           "name": "Table",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -8653,23 +8750,27 @@
         {
           "disabled": false,
           "document": "Attribute name. If more than one filter exists, the logical relationship between these filters is `OR`.",
-          "example": "house_name",
+          "example": "status",
           "member": "string",
           "name": "Name",
-          "required": true,
-          "type": "string"
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`.",
-          "example": "dlc-engine",
+          "example": "[\"dlc-engine\"]",
           "member": "string",
           "name": "Values",
-          "required": true,
-          "type": "list"
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "GenerateCreateMangedTableSqlRequest": {
       "document": "GenerateCreateMangedTableSql request structure.",
@@ -8928,22 +9029,24 @@
         {
           "disabled": false,
           "document": "Configured key\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "format-version",
           "member": "string",
           "name": "Key",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configured value\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxx",
+          "example": "1",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9534,7 +9637,7 @@
         {
           "disabled": false,
           "document": "User ID",
-          "example": "18274209342",
+          "example": "182xxxxx342",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -9547,6 +9650,15 @@
           "member": "string",
           "name": "UserType",
           "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "EntraAccount",
+          "member": "string",
+          "name": "AccountType",
+          "required": false,
           "type": "string"
         }
       ],
@@ -9606,52 +9718,52 @@
         {
           "disabled": false,
           "document": "Bucket ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "dlc-****",
           "member": "string",
           "name": "BucketId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "vpcId\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "vpc-hbaksjzx",
           "member": "string",
           "name": "VpcId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subnet address\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.0.0.0/24",
           "member": "string",
           "name": "VpcCidrBlock",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ag-dlcagid",
           "member": "string",
           "name": "AccessGroupId",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1855",
           "member": "int64",
           "name": "AccessRuleId",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9665,29 +9777,32 @@
           "example": "89876",
           "member": "int64",
           "name": "Id",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Unique identifier of network configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "e7b3c1f2-*-*-*-*",
           "member": "string",
           "name": "AssociateId",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Computing engine ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "DataEngine-0dxxxxbk2",
           "member": "string",
           "name": "HouseId",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9695,16 +9810,18 @@
           "example": "无",
           "member": "string",
           "name": "DatasourceConnectionId",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network configuration status (0 - initializing; 1 - normal)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "State",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -9712,19 +9829,21 @@
         {
           "disabled": false,
           "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1732278163",
           "member": "int64",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Modification time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1732278165",
           "member": "int64",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -9732,9 +9851,10 @@
         {
           "disabled": false,
           "document": "Create user Appid.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "131****187",
           "member": "int64",
           "name": "Appid",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -9742,29 +9862,32 @@
         {
           "disabled": false,
           "document": "Computing engine name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "dlc-saprk",
           "member": "string",
           "name": "HouseName",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network configuration name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "net_dlc-saprk",
           "member": "string",
           "name": "DatasourceConnectionName",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network configuration type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "4",
           "member": "int64",
           "name": "NetworkConnectionType",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -9772,9 +9895,10 @@
         {
           "disabled": false,
           "document": "Create user UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1000****1843",
           "member": "string",
           "name": "Uin",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9782,9 +9906,10 @@
         {
           "disabled": false,
           "document": "Create user SubAccountUin.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1000****2111",
           "member": "string",
           "name": "SubAccountUin",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9792,9 +9917,10 @@
         {
           "disabled": false,
           "document": "Network configuration description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "网络配置",
           "member": "string",
           "name": "NetworkConnectionDesc",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9802,9 +9928,10 @@
         {
           "disabled": false,
           "document": "Data source vpcid\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "vpc-nmxxxx",
           "member": "string",
           "name": "DatasourceConnectionVpcId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9812,9 +9939,10 @@
         {
           "disabled": false,
           "document": "Data source SubnetId\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "subnet-5roxxxxn",
           "member": "string",
           "name": "DatasourceConnectionSubnetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9822,9 +9950,10 @@
         {
           "disabled": false,
           "document": "Data source SubnetId\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.0.0.0/16",
           "member": "string",
           "name": "DatasourceConnectionCidrBlock",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9832,9 +9961,10 @@
         {
           "disabled": false,
           "document": "Data source SubnetCidrBlock\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.*.*.*/*",
           "member": "string",
           "name": "DatasourceConnectionSubnetCidrBlock",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -9894,12 +10024,12 @@
         {
           "disabled": false,
           "document": "Product name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "dlc",
           "member": "string",
           "name": "ProductName",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9907,29 +10037,29 @@
           "example": "root",
           "member": "string",
           "name": "SuperUser",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC configuration information\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"VpcId\":\"id\", \"VpcName\":\"name\", \"VpcCidrBlock\":{}}]",
           "member": "CHDFSProductVpcInfo",
           "name": "VpcInfo",
-          "required": false,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to bind the bucket (a discarded field)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "IsBind",
-          "required": false,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -9946,7 +10076,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9968,7 +10098,7 @@
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10209,20 +10339,20 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "float",
           "name": "LocalCacheHitRate",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "null",
           "member": "float",
           "name": "FragmentCacheHitRate",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         }
@@ -10264,7 +10394,7 @@
           "example": "d3018ad4-9a7e-4f64-a3f4-f38507c69742",
           "member": "string",
           "name": "SparkImageId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10274,29 +10404,29 @@
           "example": "d3dfgtr4-9a7e-4f64-a3f4-f38507c69742",
           "member": "string",
           "name": "ChildImageVersionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name of the spark image",
-          "example": "test",
+          "example": "pysaprk-1.1",
           "member": "string",
           "name": "SparkImageVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description of the spark image\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "测试",
+          "example": "pysaprk-1.1",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10304,7 +10434,7 @@
           "example": "2020-01-01 01:01:01",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10314,7 +10444,7 @@
           "example": "2020-01-01 01:01:01",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10354,7 +10484,7 @@
           "example": "20210521195919442157",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10364,29 +10494,29 @@
           "example": "[         [             \"allen\",             \"27\"         ],    ",
           "member": "string",
           "name": "ResultSet",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "schema",
-          "example": "{\"query_id\":\"q202108191952hzb9d11f040173825\",\"columns\":[{\"c_cust",
+          "example": "无",
           "member": "Column",
           "name": "ResultSchema",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Pagination information\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "objectListMarker={marker}&lastReadFile={filename}&lastReadOffset",
+          "example": "tokenxxx",
           "member": "string",
           "name": "NextToken",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -10561,7 +10691,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10572,7 +10702,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10583,7 +10713,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10594,7 +10724,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10605,7 +10735,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10616,7 +10746,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10633,7 +10763,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10644,7 +10774,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10655,7 +10785,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10666,7 +10796,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10682,13 +10812,13 @@
         {
           "disabled": false,
           "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10762,7 +10892,7 @@
         {
           "disabled": false,
           "document": "Engine ID",
-          "example": "DataEngine-xxx",
+          "example": "DataEngine-eexf",
           "member": "string",
           "name": "DataEngineId",
           "required": true,
@@ -10771,7 +10901,7 @@
         {
           "disabled": false,
           "document": "FromRecordId parameters returned by the API for checking the availability of rolling back",
-          "example": "xxxxx",
+          "example": "a7ac834a-501d-486b-8c9b-128df3479382",
           "member": "string",
           "name": "FromRecordId",
           "required": false,
@@ -10780,7 +10910,7 @@
         {
           "disabled": false,
           "document": "ToRecordId parameters returned by the API for checking the availability of rolling back",
-          "example": "xxxxx",
+          "example": "fb544b43-30d2-4b56-a289-4819370a5bcc",
           "member": "string",
           "name": "ToRecordId",
           "required": false,
@@ -10836,9 +10966,10 @@
           "example": "small",
           "member": "string",
           "name": "DriverSize",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10846,9 +10977,10 @@
           "example": "small",
           "member": "string",
           "name": "ExecutorSize",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10856,9 +10988,10 @@
           "example": "1",
           "member": "uint64",
           "name": "ExecutorNums",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10866,9 +10999,10 @@
           "example": "1",
           "member": "uint64",
           "name": "ExecutorMaxNumbers",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10885,7 +11019,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10902,7 +11036,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10913,10 +11047,10 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether to delete the table\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -10924,7 +11058,7 @@
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10935,7 +11069,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10946,7 +11080,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10957,13 +11091,13 @@
         {
           "disabled": false,
           "document": "Whether to inherit it\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "string",
           "name": "Inherit",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11024,6 +11158,17 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "WrittenAdvancePolicy",
+          "name": "AdvancePolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -11069,7 +11214,7 @@
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11080,7 +11225,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11091,7 +11236,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11102,7 +11247,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11113,7 +11258,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11124,7 +11269,46 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SortOrder": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "id",
+          "member": "string",
+          "name": "Column",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ASC",
+          "member": "string",
+          "name": "SortDirection",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "NULLS FIRST",
+          "member": "string",
+          "name": "NullOrder",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -11561,20 +11745,20 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "ShuffleWriteBytesCos",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "59174754650",
           "member": "int64",
           "name": "ShuffleWriteBytesTotal",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -11929,9 +12113,10 @@
         {
           "disabled": false,
           "document": "The details of the virtual cluster.",
-          "example": "无",
+          "example": "testHouse",
           "member": "string",
           "name": "DataEngineName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11950,7 +12135,7 @@
         {
           "disabled": false,
           "document": "Engine ID",
-          "example": "DataEngine-xxx",
+          "example": "DataEngine-kxxxxr13",
           "member": "string",
           "name": "DataEngineId",
           "required": true,
@@ -11959,7 +12144,7 @@
         {
           "disabled": false,
           "document": "New image version ID",
-          "example": "xxxxx",
+          "example": "7ac9cc78-bc95-440f-9768-4f4a79048755",
           "member": "string",
           "name": "NewImageVersionId",
           "required": true,
@@ -12022,79 +12207,79 @@
         {
           "disabled": false,
           "document": "Field name\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "column1",
           "member": "string",
           "name": "Name",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Field type\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "string",
           "member": "string",
           "name": "Type",
           "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Field description\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "test comment",
           "member": "string",
           "name": "Comment",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Field default values\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ddefault value",
           "member": "string",
           "name": "Default",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Is the field non-empty?\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "NotNull",
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Indicate the length of the entire numeric with a value of 1-38\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Precision",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Indicates the length of the decimal part.\nScale is smaller than Precision.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "Scale",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12105,7 +12290,7 @@
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12116,7 +12301,7 @@
           "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -12127,9 +12312,10 @@
         {
           "disabled": false,
           "document": "The field name.",
-          "example": "无",
+          "example": "patition1",
           "member": "string",
           "name": "Name",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -12137,9 +12323,10 @@
         {
           "disabled": false,
           "document": "The field type.",
-          "example": "无",
+          "example": "string",
           "member": "string",
           "name": "Type",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12147,9 +12334,10 @@
         {
           "disabled": false,
           "document": "The field description.",
-          "example": "无",
+          "example": "default comment",
           "member": "string",
           "name": "Comment",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12157,9 +12345,10 @@
         {
           "disabled": false,
           "document": "The partition type.",
-          "example": "无",
+          "example": "string",
           "member": "string",
           "name": "PartitionType",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12167,9 +12356,10 @@
         {
           "disabled": false,
           "document": "The partition format.",
-          "example": "无",
+          "example": "bucket",
           "member": "string",
           "name": "PartitionFormat",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12177,9 +12367,10 @@
         {
           "disabled": false,
           "document": "The separator count of the partition conversion policy.",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "PartitionDot",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -12187,9 +12378,10 @@
         {
           "disabled": false,
           "document": "The partition conversion policy.",
-          "example": "无",
+          "example": "bucket",
           "member": "string",
           "name": "Transform",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -12197,9 +12389,10 @@
         {
           "disabled": false,
           "document": "The policy parameters.",
-          "example": "无",
+          "example": "2",
           "member": "string",
           "name": "TransformArgs",
+          "output_required": false,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -12241,12 +12434,12 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The table remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "tb1501 描述aaa",
           "member": "string",
           "name": "TableComment",
           "output_required": true,
@@ -12263,7 +12456,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12274,18 +12467,18 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The table creator name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "aliaName",
           "member": "string",
           "name": "UserAlias",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12296,7 +12489,7 @@
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
@@ -12343,9 +12536,10 @@
           "example": "tagKey1",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12353,9 +12547,10 @@
           "example": "tagValue1",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -12432,7 +12627,7 @@
         {
           "disabled": false,
           "document": "Task output path",
-          "example": "cosn://test-bucket-123434324234/result/",
+          "example": "cosn://test-bucket-1/result/",
           "member": "string",
           "name": "OutputPath",
           "output_required": true,
@@ -12507,12 +12702,12 @@
           "name": "DataSet",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Failure information, such as `errorMessage`. This field has been disused.",
-          "example": "\"\"",
+          "example": "errorMessage",
           "member": "string",
           "name": "Error",
           "output_required": true,
@@ -12532,7 +12727,7 @@
         {
           "disabled": false,
           "document": "Output information of task execution",
-          "example": "\"\"",
+          "example": "Invalid compression codec: ,Available codecs are none,bzip2",
           "member": "string",
           "name": "OutputMessage",
           "output_required": true,
@@ -12542,7 +12737,7 @@
         {
           "disabled": false,
           "document": "Type of the engine executing the SQL statement",
-          "example": "\"\"",
+          "example": "SparkBatchSQL",
           "member": "string",
           "name": "TaskType",
           "output_required": true,
@@ -12557,7 +12752,7 @@
           "name": "ProgressDetail",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12567,7 +12762,7 @@
           "name": "UpdateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12577,7 +12772,7 @@
           "name": "DataEngineId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12587,7 +12782,7 @@
           "name": "OperateUin",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12597,7 +12792,7 @@
           "name": "DataEngineName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12607,7 +12802,7 @@
           "name": "InputType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12617,17 +12812,17 @@
           "name": "InputConf",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "111",
+          "example": "925",
           "member": "int64",
           "name": "DataNumber",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12637,7 +12832,7 @@
           "name": "CanDownload",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12647,7 +12842,7 @@
           "name": "UserAlias",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12657,7 +12852,7 @@
           "name": "SparkJobName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12667,7 +12862,7 @@
           "name": "SparkJobId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12677,7 +12872,7 @@
           "name": "SparkJobFile",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12687,7 +12882,7 @@
           "name": "UiUrl",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12697,7 +12892,7 @@
           "name": "TotalTime",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12707,7 +12902,7 @@
           "name": "CmdArgs",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12717,7 +12912,7 @@
           "name": "ImageVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12727,7 +12922,7 @@
           "name": "DriverSize",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12737,7 +12932,7 @@
           "name": "ExecutorSize",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12747,7 +12942,7 @@
           "name": "ExecutorNums",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12757,7 +12952,7 @@
           "name": "ExecutorMaxNumbers",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12797,7 +12992,7 @@
           "name": "ResultFormat",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12807,7 +13002,7 @@
           "name": "EngineTypeDetail",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -12817,7 +13012,7 @@
           "name": "ResourceGroupName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -13433,7 +13628,7 @@
         {
           "disabled": false,
           "document": "Engine ID",
-          "example": "DataEngine-1d7jxd34h",
+          "example": "DataEngine-1d7xxxx4h",
           "member": "string",
           "name": "DataEngineId",
           "required": true,
@@ -13779,7 +13974,7 @@
         {
           "disabled": false,
           "document": "The role ID.",
-          "example": "无",
+          "example": "219124",
           "member": "int64",
           "name": "RoleId",
           "output_required": true,
@@ -13789,7 +13984,7 @@
         {
           "disabled": false,
           "document": "The user's app ID.",
-          "example": "无",
+          "example": "1*****9",
           "member": "string",
           "name": "AppId",
           "output_required": true,
@@ -13799,7 +13994,7 @@
         {
           "disabled": false,
           "document": "The user ID.",
-          "example": "无",
+          "example": "1*****6",
           "member": "string",
           "name": "Uin",
           "output_required": true,
@@ -13809,7 +14004,7 @@
         {
           "disabled": false,
           "document": "The role permission.",
-          "example": "无",
+          "example": "test_arn",
           "member": "string",
           "name": "Arn",
           "output_required": true,
@@ -13819,7 +14014,7 @@
         {
           "disabled": false,
           "document": "The last modified timestamp.",
-          "example": "无",
+          "example": "1736953682315",
           "member": "int64",
           "name": "ModifyTime",
           "output_required": true,
@@ -13829,7 +14024,7 @@
         {
           "disabled": false,
           "document": "The role description.",
-          "example": "无",
+          "example": "test arn",
           "member": "string",
           "name": "Desc",
           "output_required": true,
@@ -13839,22 +14034,22 @@
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "arn_name",
           "member": "string",
           "name": "RoleName",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "test_user",
           "member": "string",
           "name": "Creator",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -13864,17 +14059,17 @@
           "name": "CosPermissionList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "deny",
           "member": "string",
           "name": "PermissionJson",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -13911,22 +14106,24 @@
         {
           "disabled": false,
           "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "subnet-e4****xj",
           "member": "string",
           "name": "CidrId",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subnet IP range\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.*.*.*/16",
           "member": "string",
           "name": "CidrAddr",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -13937,46 +14134,46 @@
         {
           "disabled": false,
           "document": "vpc Id\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "vpc-f37xxxx",
           "member": "string",
           "name": "VpcId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC subnet\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "10.0.0.1/22",
+          "example": "10.*.*.*/*",
           "member": "string",
           "name": "VpcCidrBlock",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Rule ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "4549",
           "member": "int64",
           "name": "RuleId",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ag-cj91234e",
           "member": "string",
           "name": "AccessGroupId",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -14260,6 +14457,133 @@
         }
       ],
       "usage": "out"
+    },
+    "WrittenAdvancePolicy": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "enable",
+          "member": "string",
+          "name": "CompactEnable",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "enable",
+          "member": "string",
+          "name": "DeleteEnable",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "MinInputFiles",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "128",
+          "member": "int64",
+          "name": "TargetFileSizeBytes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "RetainLast",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "BeforeDays",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "600",
+          "member": "int64",
+          "name": "ExpiredSnapshotsIntervalMin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1400",
+          "member": "int64",
+          "name": "RemoveOrphanIntervalMin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "enable",
+          "member": "string",
+          "name": "CowCompactEnable",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "binpack",
+          "member": "string",
+          "name": "CompactStrategy",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SortOrder",
+          "name": "SortOrders",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
