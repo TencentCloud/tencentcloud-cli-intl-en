@@ -696,6 +696,20 @@
         "title": "Modifying the Backup Mode of an Instance"
       }
     ],
+    "ModifyInstanceChargeType": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceChargeType\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"crs-fdfavarz\"\n    ],\n    \"InstanceChargeType\": \"POSTPAID\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"7ec26376-733c-4889-92e5-acb3a14fa8ec\"\n    }\n}",
+        "title": "Monthly subscription to pay-as-you-go billing"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceChargeType\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"crs-4xdghyew\"\n    ],\n    \"InstanceChargeType\": \"PREPAID\",\n    \"Period\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedInstanceIds\": [],\n        \"RequestId\": \"bf20dfeb-894e-410f-8973-93cb29e0b9cf\"\n    }\n}",
+        "title": "Transitioning from pay-as-you-go to monthly subscription"
+      }
+    ],
     "ModifyInstanceEvent": [
       {
         "document": "This example shows you how to modify the instance event information.",

@@ -1351,17 +1351,17 @@
           "example": "全产品通用",
           "member": "string",
           "name": "GoodsName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.",
-          "example": "*",
+          "example": "postPay",
           "member": "string",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8412,7 +8412,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
+          "document": "<p>How many data entries per page, 20 is selected by default, maximum not exceeding 1000</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -8421,7 +8421,7 @@
         },
         {
           "disabled": false,
-          "document": "The page number the records start from. The default is 1.",
+          "document": "<p>Page number, starts from 1 by default</p>",
           "example": "1",
           "member": "int64",
           "name": "Offset",
@@ -8430,7 +8430,7 @@
         },
         {
           "disabled": false,
-          "document": "The voucher status. Valid values: `unUsed`, `used`, `delivered`, `cancel`, `overdue`.",
+          "document": "<p>Voucher status: pending use: unUsed, Used: used, delivered: delivered, discarded: cancel, expired: overdue</p>",
           "example": "unUsed",
           "member": "string",
           "name": "Status",
@@ -8439,8 +8439,8 @@
         },
         {
           "disabled": false,
-          "document": "The voucher ID.",
-          "example": "123",
+          "document": "<p>Voucher id</p>",
+          "example": "FIQJQDYJLMA221ZFOGJ81R",
           "member": "string",
           "name": "VoucherId",
           "required": false,
@@ -8448,8 +8448,8 @@
         },
         {
           "disabled": false,
-          "document": "The voucher order ID.",
-          "example": "123",
+          "document": "<p>Voucher order id</p>",
+          "example": "20230627799000283860282011",
           "member": "string",
           "name": "CodeId",
           "required": false,
@@ -8457,8 +8457,8 @@
         },
         {
           "disabled": false,
-          "document": "The product code.",
-          "example": "a",
+          "document": "<p>product code</p>",
+          "example": "p_cvm",
           "member": "string",
           "name": "ProductCode",
           "required": false,
@@ -8466,8 +8466,8 @@
         },
         {
           "disabled": false,
-          "document": "The campaign ID.",
-          "example": "123",
+          "document": "<p>Activity id</p>",
+          "example": "570",
           "member": "string",
           "name": "ActivityId",
           "required": false,
@@ -8475,8 +8475,8 @@
         },
         {
           "disabled": false,
-          "document": "The voucher name.",
-          "example": "aa",
+          "document": "<p>Voucher name</p>",
+          "example": "代金券二期现金券",
           "member": "string",
           "name": "VoucherName",
           "required": false,
@@ -8484,7 +8484,7 @@
         },
         {
           "disabled": false,
-          "document": "The start date of the voucher issuance, such as `2021-01-01`.",
+          "document": "<p>Start time of delivery. Example: 2021-01-01</p>",
           "example": "2021-01-01",
           "member": "string",
           "name": "TimeFrom",
@@ -8493,7 +8493,7 @@
         },
         {
           "disabled": false,
-          "document": "The end date of the voucher issuance, such as `2021-01-01`.",
+          "document": "<p>Delivery end time. Example: 2021-01-01</p>",
           "example": "2021-01-01",
           "member": "string",
           "name": "TimeTo",
@@ -8502,7 +8502,7 @@
         },
         {
           "disabled": false,
-          "document": "The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.",
+          "document": "<p>Specified sorting field: BeginTime start time, EndTime expiry time, CreateTime creation time</p>",
           "example": "BeginTime",
           "member": "string",
           "name": "SortField",
@@ -8511,7 +8511,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to sort the records in ascending or descending order. Valid values: desc, asc.",
+          "document": "<p>Specify ascending/descending order: desc, asc</p>",
           "example": "desc",
           "member": "string",
           "name": "SortOrder",
@@ -8520,7 +8520,7 @@
         },
         {
           "disabled": false,
-          "document": "The payment mode. Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If this parameter is empty or `*`, `productCode` and `subProductCode` must also be empty.",
+          "document": "<p>Payment mode, postPay (postpaid)/prePay (prepaid)/riPay (reserved instance)/\"\" or \"*\" means all modes. If payMode is \"\" or \"*\", productCode and subProductCode must be empty.</p>",
           "example": "postPay",
           "member": "string",
           "name": "PayMode",
@@ -8529,8 +8529,8 @@
         },
         {
           "disabled": false,
-          "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
-          "example": "*",
+          "document": "<p>Payment scenario PayMode=postPay: spotpay - spot instance, \"settle account\" - standard post-paid. PayMode=prePay: purchase - monthly subscription new purchase, renew - annual and monthly renewal (auto renewal), modify - monthly subscription configuration change. PayMode=riPay: oneOffFee - prepayment of reserved instance, hourlyFee - hourly charge for reserved instance, * - support all payment scenarios.</p>",
+          "example": "postPay",
           "member": "string",
           "name": "PayScene",
           "required": false,
@@ -8538,8 +8538,8 @@
         },
         {
           "disabled": false,
-          "document": "The operator. The default is the UIN of the current user.",
-          "example": "aa",
+          "document": "<p>Operator is used by default as user uin</p>",
+          "example": "700000866965",
           "member": "string",
           "name": "Operator",
           "required": false,
@@ -8547,7 +8547,7 @@
         },
         {
           "disabled": false,
-          "document": "The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.",
+          "document": "<p>The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.</p>",
           "example": "no_price",
           "member": "string",
           "name": "VoucherMainType",
@@ -8556,10 +8556,73 @@
         },
         {
           "disabled": false,
-          "document": "Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.",
+          "document": "<p>Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.</p>",
           "example": "discount",
           "member": "string",
           "name": "VoucherSubType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher validity start time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "StartTimeFrom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher validity time end time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "StartTimeTo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher expiration time start time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "EndTimeFrom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher expiration time end time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "EndTimeTo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher issuance start time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "CreateTimeFrom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voucher issuance time end time</p>",
+          "example": "2021-01-01",
+          "member": "string",
+          "name": "CreateTimeTo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language parameter</p><p>Default value: zh</p><p>Expect the product name to return in Chinese or other languages. Currently only support Chinese and English. Return in Chinese when \"zh\" is entered or left blank; return in English in other cases.</p>",
+          "example": "zh, en, ja, ko",
+          "member": "string",
+          "name": "Lang",
           "required": false,
           "type": "string"
         }
@@ -8571,7 +8634,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The total number of vouchers.",
+          "document": "<p>Total count</p>",
           "example": "0",
           "member": "int64",
           "name": "TotalCount",
@@ -8581,7 +8644,7 @@
         },
         {
           "disabled": false,
-          "document": "The total voucher balance. The value of this parameter is the total balance (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
+          "document": "<p>Total balance (differential)</p>",
           "example": "0",
           "member": "int64",
           "name": "TotalBalance",
@@ -8591,13 +8654,23 @@
         },
         {
           "disabled": false,
-          "document": "The voucher information.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "<p>Voucher information related to</p>",
           "example": "无",
           "member": "VoucherInfos",
           "name": "VoucherInfos",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unit of the amount field in the API response</p><p>Default value: micro</p><p>Currency unit: micro (microcent)<br>Voucher issuance and use are processed with 8-digit high-precision, so the currency unit defaults to micro (microcent). If CNY or USD is needed, convert using the following formula:<br>CNY: 1 micro = 0.00000001  yuan<br>USD: 1 micro = 0.00000001  USD</p>",
+          "example": "micro",
+          "member": "string",
+          "name": "Unit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8994,17 +9067,17 @@
           "example": "某产品",
           "member": "string",
           "name": "GoodsName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
-          "example": "*",
+          "example": "postPay",
           "member": "string",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10395,10 +10468,10 @@
         {
           "disabled": false,
           "document": "The owner of the voucher.",
-          "example": "aa",
+          "example": "700000866965",
           "member": "string",
           "name": "OwnerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10408,7 +10481,7 @@
           "example": "unUsed",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10418,7 +10491,7 @@
           "example": "10000",
           "member": "int64",
           "name": "NominalValue",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10428,17 +10501,17 @@
           "example": "10000",
           "member": "int64",
           "name": "Balance",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The voucher ID.",
-          "example": "aa",
+          "example": "VHPIUDFG9GUZDESWPR4W99",
           "member": "string",
           "name": "VoucherId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10448,17 +10521,17 @@
           "example": "postPay",
           "member": "string",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
-          "example": "*",
+          "example": "common",
           "member": "string",
           "name": "PayScene",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10468,7 +10541,7 @@
           "example": "2020-01-01",
           "member": "string",
           "name": "BeginTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10478,29 +10551,49 @@
           "example": "2020-01-01",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The products that are applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "无",
+          "document": "Product information applies to",
+          "example": "{\"GoodsName\": \"全产品通用\",\"PayMode\": \"postPay\"}",
           "member": "ApplicableProducts",
           "name": "ApplicableProducts",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The products that are not applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "无",
+          "document": "Product information not applicable",
+          "example": "{\"GoodsName\": \"域名注册\",\"PayMode\": \"postPay\"}",
           "member": "ExcludedProducts",
           "name": "ExcludedProducts",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instructions/Batch Remarks",
+          "example": "不限使用",
+          "member": "string",
+          "name": "PolicyRemark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Coupon issuance time",
+          "example": "2017-03-08 15:25:20",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

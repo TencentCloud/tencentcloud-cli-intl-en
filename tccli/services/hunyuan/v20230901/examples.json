@@ -24,6 +24,14 @@
         "title": "Calling the API"
       }
     ],
+    "DescribeConvert3DFormatJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConvert3DFormatJob\n<Common request parameters>\n\n{\n    \"JobId\": \"1433027947910201888\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"\",\n        \"ErrorMessage\": \"\",\n        \"ResultFile3Ds\": [\n            {\n                \"Type\": \"OBJ\",\n                \"Url\": \"https://**************************.cos.ap-singapore.tencentcos.cn/3d/output/251292921/ef328ce7-034a-4f15-90e9-bde060a38865_output.obj?q-sign-algorithm=sha1&q-ak=************************************&q-sign-time=1775554903%3B1775641302&q-key-time=1775554903%3B1775641302&q-header-list=host&q-url-param-list=&q-signature=4553d0ec3cb72720254cd3820cfaccddfde651af\"\n            }\n        ],\n        \"Status\": \"DONE\",\n        \"RequestId\": \"e5b79dfe-c1a9-4527-81e6-a82b76cf7315\"\n    }\n}",
+        "title": "Querying Task"
+      }
+    ],
     "DescribeHunyuanTo3DUVJob": [
       {
         "document": "",
@@ -69,6 +77,14 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: Submit3DSmartTopologyJob\n<Common request parameters>\n\n{\n    \"File3D\": {\n        \"Url\": \"https://cos.ap-guangzhou.myqcloud.com/xxx.glb\",\n        \"Type\": \"GLB\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"1405140131170074624\",\n        \"RequestId\": \"f1dcd98c-47d2-47fe-81f2-26f4e0fec5d7\"\n    }\n}",
+        "title": "Calling the API"
+      }
+    ],
+    "SubmitConvert3DFormatJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitConvert3DFormatJob\n<Common request parameters>\n\n{\n    \"File\": {\n        \"Url\": \"https://**************************.cos.ap-singapore.myqcloud.com/%E4%BA%BA%E7%89%A97k.fbx\",\n        \"Type\": \"FBX\"\n    },\n    \"Format\": \"OBJ\"\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1433828173532856888\",\n        \"RequestId\": \"1d1618bf-4e44-4cc4-86ef-ca6bef862888\"\n    }\n}",
         "title": "Calling the API"
       }
     ],

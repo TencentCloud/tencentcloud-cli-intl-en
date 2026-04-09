@@ -163,7 +163,7 @@
     "CreateOrganizationMember": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"create member\",\n    \"Name\": \"member_name\",\n    \"NodeId\": 1001,\n    \"AccountName\": \"member_name\",\n    \"PermissionIds\": [\n        1,\n        2\n    ],\n    \"PolicyType\": \"Finical\",\n    \"IdentityRoleID\": [\n        1\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"create member\",\n    \"Name\": \"member_name\",\n    \"NodeId\": 1001,\n    \"AccountName\": \"member_name\",\n    \"PermissionIds\": [\n        1,\n        2,\n        7\n    ],\n    \"PayUin\": \"1000001000001\",\n    \"PolicyType\": \"Financial\"\n}",
         "output": "{\n    \"Response\": {\n        \"Uin\": 111111111111,\n        \"RequestId\": \"1a556fac-cd38-4732-86ef-6283d6abddd7\"\n    }\n}",
         "title": "Creating an Organization Member"
       }
@@ -718,6 +718,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListPermissionPoliciesInRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d83js823n\",\n    \"RoleConfigurationId\": \"rc-s93jw3ns\",\n    \"RolePolicyType\": \"System\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCounts\": 20,\n        \"RolePolicies\": [\n            {\n                \"RolePolicyName\": \"adminPolciy\",\n                \"RolePolicyType\": \"System\",\n                \"RolePolicyDocument\": \"\",\n                \"AddTime\": \"2020-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "Obtaining the Policy List in Permission Configurations"
+      }
+    ],
+    "ListPolicies": [
+      {
+        "document": "Viewing the Data of a Policy List",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListPolicies\n<Common request parameters>\n\n{\n    \"Scope\": \"Local\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AddTime\": \"2022-08-04 16:04:17\",\n                \"AttachedTimes\": 0,\n                \"Description\": \"deny policy\",\n                \"PolicyId\": 10001,\n                \"PolicyName\": \"policy_name\",\n                \"Type\": 1,\n                \"UpdateTime\": \"2022-08-04 16:04:17\"\n            }\n        ],\n        \"RequestId\": \"152482ca-5968-4557-ac1d-1e7ac28ce0da\",\n        \"TotalNum\": 1\n    }\n}",
+        "title": "Viewing the Data of a Policy List"
       }
     ],
     "ListPoliciesForTarget": [
