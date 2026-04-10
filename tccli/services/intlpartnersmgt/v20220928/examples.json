@@ -196,6 +196,14 @@
         "title": "Query Succeeded"
       }
     ],
+    "DescribeCustomerVoucherUsageDetails": [
+      {
+        "document": "Reseller queries sub-customer voucher usage details",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerVoucherUsageDetails\n<Common request parameters>\n\n{\n    \"Page\": 1,\n    \"PageSize\": 10,\n    \"CustomerUin\": 800000495142,\n    \"VoucherId\": 12130012,\n    \"Month\": \"2024-03\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CustomerUin\": 800000495142,\n        \"Data\": [],\n        \"Month\": \"2024-03\",\n        \"RecordsCountByMonth\": 0,\n        \"RemainAmount\": 0,\n        \"TotalAmount\": 1,\n        \"TotalRecordsCount\": 2,\n        \"VoucherId\": 12130012,\n        \"RequestId\": \"28404cbe-6694-4b52-84a7-74e61efac79f\"\n    }\n}",
+        "title": "Reseller Querying Sub-customer Voucher Usage Details"
+      }
+    ],
     "DescribeRebateDownloadUrl": [
       {
         "document": "This example shows you how to obtain the link to the monthly commission bill file as a reseller or an agent. The file has been generated. Please obtain the file via the download link.",
