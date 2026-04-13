@@ -18,10 +18,10 @@
     ],
     "CloseDBExtranetAccess": [
       {
-        "document": "This example shows you how to disable the public network access for the instance \"postgres-apzvwncr\".",
+        "document": "This example shows you how to shut down the public network for instance postgres-apzvwncr.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
-        "output": "{\n    \"Response\": {\n        \"FlowId\": 1234,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
-        "title": "Disabling the public network access for an instance"
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 25104,\n        \"TaskId\": 25104,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
+        "title": "Disabling Instance Public Network"
       }
     ],
     "CloseServerlessDBExtranetAccess": [
@@ -32,20 +32,42 @@
         "title": "Disabling the public network address of a PostgreSQL for Serverless instance"
       }
     ],
+    "CreateAccount": [
+      {
+        "document": "This example shows you how to create an ordinary account for a database.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccount\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"user_normal\",\n    \"Password\": \"Test_password1\",\n    \"Type\": \"normal\",\n    \"Remark\": \"Ordinary account\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d19322f-50fe-4084-a5d3-b0bc680fd3a1\"\n    }\n}",
+        "title": "Creating a Database Ordinary Account"
+      },
+      {
+        "document": "This example shows you how to create a super account for the database.\n",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccount\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"user_Super\",\n    \"Password\": \"Test_password1\",\n    \"Type\": \"tencentDBSuper\",\n    \"Remark\": \"Super user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fad9ac43-c906-4494-bbb5-88d154d2829c\"\n    }\n}",
+        "title": "Creating a Database Super Account"
+      }
+    ],
+    "CreateBackupPlan": [
+      {
+        "document": "This example shows you how to create a backup policy named plan1 that performs data backup from 1 AM to 2 AM on the 1st and 2nd of every month, with data files retained for 40 days.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBackupPlan\n<Common request parameters>\n\n{\n    \"PlanName\": \"plan1\",\n    \"BackupPeriodType\": \"month\",\n    \"DBInstanceId\": \"postgres-kwk4tq23\",\n    \"MinBackupStartTime\": \"01:00:00\",\n    \"MaxBackupStartTime\": \"02:00:00\",\n    \"BackupPeriod\": [\n        \"1\",\n        \"2\"\n    ],\n    \"BaseBackupRetentionPeriod\": 40\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"PlanId\": \"dfea3bb4-8ca7-5e79-aefb-9d231f2b66b6\"\n    }\n}",
+        "title": "Creating a Monthly Backup Policy"
+      }
+    ],
     "CreateBaseBackup": [
       {
-        "document": "Manually creates a data backup for an instance",
+        "document": "This example shows you how to manually create a data backup for an instance.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBaseBackup\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-dzg9p3kb\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\",\n        \"BaseBackupId\": \"443c810b-53c6-5d8c-b6d2-1abbe5794529\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e3fde8a-b062-40f9-bcd0-954259f887df\",\n        \"BaseBackupId\": \"443c810b-53c6-5d8c-b6d2-1abbe5794529\"\n    }\n}",
         "title": "Creating a Data Backup for an Instance"
       }
     ],
     "CreateDBInstanceNetworkAccess": [
       {
-        "document": "u200cu200cThis example shows you how to create a network for an instance.",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstanceNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\",\n    \"IsAssignVip\": \"false\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
-        "title": "Creating a network for an instance"
+        "document": "This example shows you how to create an instance network.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstanceNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"DBInstanceId\": \"postgres-6bwgamo3\",\n    \"IsAssignVip\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912,\n        \"TaskId\": 912\n    }\n}",
+        "title": "Creating an Instance Network"
       }
     ],
     "CreateDBInstances": [
@@ -54,6 +76,20 @@
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"AutoRenewFlag\": \"1\",\n    \"Zone\": \"ap-guangzhou-5\",\n    \"DBVersion\": \"12.4\",\n    \"Storage\": \"10\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"prepaid\",\n    \"AutoVoucher\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"DealNames\": [\n            \"20180119110001\"\n        ],\n        \"DBInstanceIdSet\": [\n            \"postgres-xxxx\"\n        ],\n        \"BillId\": \"xxxxxxxxx\"\n    }\n}",
         "title": "Creating a TencentDB for PostgreSQL instance"
+      }
+    ],
+    "CreateDatabase": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatabase\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"DatabaseName\": \"mydatabase\",\n    \"DatabaseOwner\": \"data_team\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"28004847-7a50-4740-a536-19ee9db9ccc0\"\n    }\n}",
+        "title": "Creating a Database"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatabase\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"DatabaseName\": \"mydatabase\",\n    \"DatabaseOwner\": \"data_team\",\n    \"Encoding\": \"UTF8\",\n    \"Collate\": \"zh_CN.utf8\",\n    \"Ctype\": \"zh_CN.utf8\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"28004847-7a50-4740-a536-19ee9db9ccc0\"\n    }\n}",
+        "title": "Creating a Database with Specified Character Encoding, Sorting Rule, and Character Category"
       }
     ],
     "CreateInstances": [
@@ -108,10 +144,10 @@
     ],
     "CreateReadOnlyGroupNetworkAccess": [
       {
-        "document": "u200cu200cu200cThis example shows you how to create the network for an RO group.",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyGroupNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"ReadOnlyGroupId\": \"pgro-4t9c6g7k\",\n    \"IsAssignVip\": \"false\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912\n    }\n}",
-        "title": "Creating the network for an RO group"
+        "document": "This example shows you how to create an RO group network.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyGroupNetworkAccess\n<Common request parameters>\n\n{\n    \"SubnetId\": \"subnet-4s9dejli\",\n    \"VpcId\": \"vpc-gaestjaf\",\n    \"ReadOnlyGroupId\": \"pgrogrp-4t9c6g7k\",\n    \"IsAssignVip\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\",\n        \"FlowId\": 912,\n        \"TaskId\": 912\n    }\n}",
+        "title": "Creating an RO Group Network"
       }
     ],
     "CreateServerlessDBInstance": [
@@ -122,12 +158,28 @@
         "title": "Creating PostgreSQL for Serverless instance"
       }
     ],
+    "DeleteAccount": [
+      {
+        "document": "This example shows you how to delete a database account.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAccount\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"asdfghjkl\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6a620-d337-4c7e-a4cc-8b7c082de489\"\n    }\n}",
+        "title": "Deleting a Database Account"
+      }
+    ],
+    "DeleteBackupPlan": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackupPlan\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-herclkx7\",\n    \"PlanId\": \"0ee6843a-475b-5514-bd29-c432b75bb036\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\"\n    }\n}",
+        "title": "Deleting a Backup Policy"
+      }
+    ],
     "DeleteBaseBackup": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaseBackup\n<Common request parameters>\n\n{\n    \"BaseBackupId\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",\n    \"DBInstanceId\": \"postgres-9n26zs6n\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e468f289-2313-4117-a5f0-f406faaefa24\"\n    }\n}",
-        "title": "Deleting Data Backup for an Instance"
+        "title": "Deleting a Data Backup for an Instance"
       }
     ],
     "DeleteDBInstanceNetworkAccess": [
@@ -184,12 +236,38 @@
         "title": "Deleting PostgreSQL for Serverless instance by name"
       }
     ],
+    "DescribeAccountPrivileges": [
+      {
+        "document": "This example shows you how to view the account type.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccountPrivileges\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"user_without_permission\",\n    \"DatabaseObjectSet\": [\n        {\n            \"ObjectType\": \"account\",\n            \"ObjectName\": \"user_without_permission\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PrivilegeSet\": [\n            {\n                \"Object\": {\n                    \"DatabaseName\": \"\",\n                    \"ObjectName\": \"without_per\",\n                    \"ObjectType\": \"account\",\n                    \"SchemaName\": \"\",\n                    \"TableName\": \"\"\n                },\n                \"PrivilegeSet\": [\n                    \"tencentDBSuper\"\n                ]\n            }\n        ],\n        \"RequestId\": \"dc43ec52-efbe-4bde-b588-bfa427a8c29b\"\n    }\n}",
+        "title": "View Account Type"
+      },
+      {
+        "document": "This example shows you how to query the permissions of account without_per on database user_database.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccountPrivileges\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"without_per\",\n    \"DatabaseObjectSet\": [\n        {\n            \"ObjectType\": \"database\",\n            \"ObjectName\": \"user_database\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PrivilegeSet\": [\n            {\n                \"Object\": {\n                    \"DatabaseName\": \"\",\n                    \"ObjectName\": \"user_database\",\n                    \"ObjectType\": \"database\",\n                    \"SchemaName\": \"\",\n                    \"TableName\": \"\"\n                },\n                \"PrivilegeSet\": [\n                    \"CREATE\",\n                    \"CONNECT\",\n                    \"TEMPORARY\"\n                ]\n            }\n        ],\n        \"RequestId\": \"fc891ba1-8943-4116-8eb6-4696873d90c8\"\n    }\n}",
+        "title": "Querying Database Permissions"
+      },
+      {
+        "document": "This example shows you how to query the permission of account without_per on user_schema in the user_database database.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccountPrivileges\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"without_per\",\n    \"DatabaseObjectSet\": [\n        {\n            \"ObjectType\": \"schema\",\n            \"ObjectName\": \"user_schema\",\n            \"DatabaseName\": \"user_database\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PrivilegeSet\": [\n            {\n                \"Object\": {\n                    \"DatabaseName\": \"user_database\",\n                    \"ObjectName\": \"user_schema\",\n                    \"ObjectType\": \"schema\",\n                    \"SchemaName\": \"\",\n                    \"TableName\": \"\"\n                },\n                \"PrivilegeSet\": [\n                    \"USAGE\",\n                    \"CREATE\"\n                ]\n            }\n        ],\n        \"RequestId\": \"410f0673-c35c-401e-97c8-d4e196d1f33c\"\n    }\n}",
+        "title": "Query Mode Permission"
+      },
+      {
+        "document": "This example shows you how to perform a batch query.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccountPrivileges\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"without_per\",\n    \"DatabaseObjectSet\": [\n        {\n            \"ObjectType\": \"table\",\n            \"ObjectName\": \"users\",\n            \"DatabaseName\": \"user_database\",\n            \"SchemaName\": \"user_schema\"\n        },\n        {\n            \"ObjectType\": \"schema\",\n            \"ObjectName\": \"user_schema\",\n            \"DatabaseName\": \"user_database\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PrivilegeSet\": [\n            {\n                \"Object\": {\n                    \"DatabaseName\": \"user_database\",\n                    \"ObjectName\": \"users\",\n                    \"ObjectType\": \"table\",\n                    \"SchemaName\": \"user_schema\",\n                    \"TableName\": \"\"\n                },\n                \"PrivilegeSet\": [\n                    \"DELETE\",\n                    \"TRUNCATE\",\n                    \"REFERENCES\",\n                    \"TRIGGER\",\n                    \"SELECT\",\n                    \"INSERT\",\n                    \"UPDATE\"\n                ]\n            },\n            {\n                \"Object\": {\n                    \"DatabaseName\": \"user_database\",\n                    \"ObjectName\": \"user_schema\",\n                    \"ObjectType\": \"schema\",\n                    \"SchemaName\": \"\",\n                    \"TableName\": \"\"\n                },\n                \"PrivilegeSet\": [\n                    \"CREATE\",\n                    \"USAGE\"\n                ]\n            }\n        ],\n        \"RequestId\": \"41d71515-447d-4557-a799-3b60ad86323d\"\n    }\n}",
+        "title": "Batch Query"
+      }
+    ],
     "DescribeAccounts": [
       {
-        "document": "u200cu200cu200cu200cThis example shows you how to get the user list for the instance \"postgres-apzvwncr\".",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccounts\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"Details\": [\n            {\n                \"UserName\": \"root\",\n                \"Status\": 2,\n                \"Remark\": \"(Test) This account is invalid\",\n                \"DBInstanceId\": \"postgres-apzvwncr\",\n                \"UpdateTime\": \"2018-06-12 17:21:57\",\n                \"CreateTime\": \"2018-06-12 17:21:54\"\n            }\n        ]\n    }\n}",
-        "title": "u200cu200cu200cu200cGetting the user list for the instance \"postgres-apzvwncr\"."
+        "document": "This example shows you how to get the account list of the instance postgres-hpe52jnz.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccounts\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-hpe52jnz\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Details\": [\n            {\n                \"CreateTime\": \"2024-05-06 21:00:12\",\n                \"DBInstanceId\": \"postgres-hpe52jnz\",\n                \"Remark\": \"\",\n                \"Status\": 2,\n                \"UpdateTime\": \"2024-06-06 21:00:12\",\n                \"UserName\": \"app_user\",\n                \"UserType\": \"tencentDBSuper\"\n            }\n        ],\n        \"RequestId\": \"1299fe3a-9958-440a-bfd0-e4eb1e71b7eb\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Getting the Account List of Instance postgres-hpe52jnz"
       }
     ],
     "DescribeAvailableRecoveryTime": [
@@ -210,10 +288,10 @@
     ],
     "DescribeBackupDownloadURL": [
       {
-        "document": "This example shows you how to get a backup download link.",
+        "document": "This example shows you how to obtain the backup download link.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupDownloadURL\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-oamgybor\",\n    \"BackupType\": \"LogBackup\",\n    \"BackupId\": \"f9509fc2-2281-551c-b937-86d38cf79f3b\",\n    \"URLExpireTime\": 12\n}",
-        "output": "{\n    \"Response\": {\n        \"BackupDownloadURL\": \"******\",\n        \"RequestId\": \"7c4e788e-5ec9-4125-bb80-7baabe2744dc\"\n    }\n}",
-        "title": "Getting a backup download link"
+        "output": "{\n    \"Response\": {\n        \"BackupDownloadURL\": \"https://postgres-backup-gz-xxxx.cos.ap-guangzhou.myqcloud.com/pgsql/xxxx\",\n        \"RequestId\": \"7c4e788e-5ec9-4125-bb80-7baabe2744dc\"\n    }\n}",
+        "title": "Obtaining the Backup Download Link"
       }
     ],
     "DescribeBackupOverview": [
@@ -258,7 +336,7 @@
     ],
     "DescribeCloneDBInstanceSpec": [
       {
-        "document": "u200cu200cu200cu200cu200cThis example shows you how to query the minimum specification for cloning the instance “postgres-apzvwncr”.",
+        "document": "This example shows you how to query the minimum specification for cloning the instance \"postgres-apzvwncr\".",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloneDBInstanceSpec\n<Common request parameters>\n\n{\n    \"RecoveryTargetTime\": \"2021-12-24 03:41:50\",\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\",\n        \"MinSpecCode\": \"cdb.pg.sh1.2g\",\n        \"MinStorage\": 10\n    }\n}",
         "title": "Querying the minimum specification for cloning the instance \"postgres-apzvwncr\""
@@ -312,22 +390,36 @@
       {
         "document": "This example shows you how to query the parameter information of the parameters `postgres-lzrwgg6d` and `max_connecions`.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceParameters\n<Common request parameters>\n\n{\n    \"ParamName\": \"max_connections\",\n    \"DBInstanceId\": \"postgres-lzrwgg6d\"\n}",
-        "output": "{\n  \"Response\": {\n    \"Detail\": [\n      {\n        \"Advanced\": false,\n        \"ClassificationCN\": \"u200cConnecting and authentication\",\n        \"ClassificationEN\": \"Connections and Authentication\",\n        \"CurrentValue\": \"2048\",\n        \"DefaultValue\": \"2048\",\n        \"EnumValue\": null,\n        \"ID\": 15124,\n        \"LastModifyTime\": \"\",\n        \"Max\": 2048,\n        \"Min\": 100,\n        \"Name\": \"max_connections\",\n        \"NeedReboot\": true,\n        \"ParamDescriptionCH\": \"Maximum instance connections\",\n        \"ParamDescriptionEN\": \"Sets the maximum number of concurrent connections.\",\n        \"ParamValueType\": \"integer\",\n        \"SpecRelated\": true,\n        \"SpecRelationSet\": null,\n        \"StandbyRelated\": 0,\n        \"Unit\": \"\",\n        \"VersionRelationSet\": null\n      }\n    ],\n    \"RequestId\": \"ce4ecf74-b26f-44e7-9340-539032e92b9f\",\n    \"TotalCount\": 1\n  }\n}",
+        "output": "{\n    \"Response\": {\n        \"Detail\": [\n            {\n                \"Advanced\": false,\n                \"ClassificationCN\": \"Connecting and authentication\",\n                \"ClassificationEN\": \"Connections and Authentication\",\n                \"CurrentValue\": \"2048\",\n                \"DefaultValue\": \"2048\",\n                \"EnumValue\": null,\n                \"ID\": 15124,\n                \"LastModifyTime\": \"\",\n                \"Max\": 2048,\n                \"Min\": 100,\n                \"Name\": \"max_connections\",\n                \"NeedReboot\": true,\n                \"ParamDescriptionCH\": \"Maximum instance connections\",\n                \"ParamDescriptionEN\": \"Sets the maximum number of concurrent connections.\",\n                \"ParamValueType\": \"integer\",\n                \"SpecRelated\": true,\n                \"SpecRelationSet\": null,\n                \"StandbyRelated\": 0,\n                \"Unit\": \"\",\n                \"VersionRelationSet\": null\n            }\n        ],\n        \"RequestId\": \"ce4ecf74-b26f-44e7-9340-539032e92b9f\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the information of parameter specified by the instance"
+      }
+    ],
+    "DescribeDBInstanceSSLConfig": [
+      {
+        "document": "This example shows you how to display the SSL info of an instance in the query result.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSSLConfig\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-hf8jo5pr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"25cc2555-14a2-454f-af08-6bd691315335\",\n        \"SSLEnabled\": true,\n        \"CAUrl\": \"http://testdownload.url\",\n        \"ConnectAddress\": \"10.0.0.4\"\n    }\n}",
+        "title": "Instance SSL Is in Enabled Status"
+      },
+      {
+        "document": "This example shows you how to check the query result indicating that SSL is disabled, with no download link or protected address information.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSSLConfig\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-6bwgamo3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CAUrl\": \"\",\n        \"ConnectAddress\": \"\",\n        \"RequestId\": \"042e21a5-14b2-4b41-8dd4-4cf870ae10bf\",\n        \"SSLEnabled\": false\n    }\n}",
+        "title": "Instance SSL Is Closed"
       }
     ],
     "DescribeDBInstanceSecurityGroups": [
       {
-        "document": "This example shows you how to query the security group of an instance.",
+        "document": "Querying Instance Security Groups",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-i2q4utnp\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"770234c2-8a51-4d06-b3f7-4454664848b1\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Ping service\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Ping service\",\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow remote Windows login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow remote Windows login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom template\",\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n                \"SecurityGroupName\": \"Custom template-20221020213819279\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the security group of an instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"770234c2-8a51-4d06-b3f7-4454664848b1\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Enable Ping service\"\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Enable Ping service\"\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Allow Linux SSH login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Allow SSH login for Linux\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Enable Windows Remote Login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Allow Windows Remote Login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Open the Web service port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Open the Web server port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Open the Web service port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Open the Web service port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n\"SecurityGroupDescription\": \"Custom template\"\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n\"SecurityGroupName\": \"custom template-20221020213819279\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Instance Security Groups"
       },
       {
-        "document": "u200cThis example shows you how to query the security group of an RO group.",
+        "document": "This example shows you how to query the security group of a read-only group.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceSecurityGroups\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"pgrogrp-nqwpkjb\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"47e3764e-bce4-477a-a293-49ffa1bfb447\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-08-30 21:36:58\",\n                \"Inbound\": [],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom222\",\n                \"SecurityGroupId\": \"sg-116auwb1\",\n                \"SecurityGroupName\": \"Custom222-202208302136517989\"\n            },\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Ping service\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Ping service\",\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow Linux SSH login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Allow remote Windows login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Allow remote Windows login\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n                        \"Description\": \"Enable the private network (VPC)\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n                        \"Description\": \"Open ports for Web service\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Custom template\",\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n                \"SecurityGroupName\": \"Custom template-20221020213819279\"\n            },\n            {\n                \"CreateTime\": \"2022-08-22 17:34:08\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open all inbound rules\",\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22,3389,80,443,20,21\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"Open all inbound rules\",\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"u200cOpen all inbound rules\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n                \"SecurityGroupDescription\": \"Deny all rules\",\n                \"SecurityGroupId\": \"sg-mpkb1net\",\n                \"SecurityGroupName\": \"Custom-2022082217335427078\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the security group of an RO group"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"47e3764e-bce4-477a-a293-49ffa1bfb447\",\n        \"SecurityGroupSet\": [\n            {\n                \"CreateTime\": \"2022-08-30 21:36:58\",\n                \"Inbound\": [],\n                \"Outbound\": [],\n                \"ProjectId\": 0,\n\"SecurityGroupDescription\": \"Custom222\"\n                \"SecurityGroupId\": \"sg-116auwb1\",\n\"SecurityGroupName\": \"custom222-202208302136517989\"\n            },\n            {\n                \"CreateTime\": \"2022-10-20 21:38:20\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\nAllow Ping service\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Enable Ping service\"\n                        \"IpProtocol\": \"icmpv6\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Allow Linux SSH login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Allow Linux SSH login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Enable Windows Remote Login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Allow Windows Remote Login\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"3389\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"10.0.0.0/8\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"172.16.0.0/12\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"192.168.0.0/16\",\n\"Description\": \"Allow internal network traffic (VPC)\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Open the Web server port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Open the Web server port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"80\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"Open the Web server port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"::/0\",\n\"Description\": \"Open the Web server port\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"443\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"\",\n                        \"Description\": \"\",\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n\"SecurityGroupDescription\": \"Custom template\"\n                \"SecurityGroupId\": \"sg-91jbmkp1\",\n\"SecurityGroupName\": \"custom template-20221020213819279\"\n            },\n            {\n                \"CreateTime\": \"2022-08-22 17:34:08\",\n                \"Inbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"One-click enablement of inbound rule\"\n                        \"IpProtocol\": \"tcp\",\n                        \"PortRange\": \"22,3389,80,443,20,21\"\n                    },\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"One-click enablement of inbound rule\"\n                        \"IpProtocol\": \"icmp\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"Outbound\": [\n                    {\n                        \"Action\": \"ACCEPT\",\n                        \"CidrIp\": \"0.0.0.0/0\",\n\"Description\": \"One-click enablement of outbound rule\"\n                        \"IpProtocol\": \"ALL\",\n                        \"PortRange\": \"ALL\"\n                    }\n                ],\n                \"ProjectId\": 0,\n\"SecurityGroupDescription\": \"deny all\"\n                \"SecurityGroupId\": \"sg-mpkb1net\",\n\"SecurityGroupName\": \"custom-2022082217335427078\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Read-Only Group Security Group"
       }
     ],
     "DescribeDBInstances": [
@@ -368,18 +460,52 @@
         "title": "Getting the Xlog list of the instance \"postgres-apzvwncr\""
       }
     ],
+    "DescribeDatabaseObjects": [
+      {
+        "document": "This example shows you how to query the database list.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabaseObjects\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"ObjectType\": \"database\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ObjectSet\": [\n            \"postgres\",\n            \"postgres_bak_1715170243\",\n            \"user_database\"\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"c90f7a9d-f519-4d2f-bb2f-e3966cd102b6\"\n    }\n}",
+        "title": "Query Object As database"
+      },
+      {
+        "document": "This example shows you how to query the mode in user_database.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabaseObjects\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"ObjectType\": \"schema\",\n    \"Limit\": 2,\n    \"Offset\": 1,\n    \"DatabaseName\": \"user_database\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ObjectSet\": [\n            \"information_schema\",\n            \"pg_catalog\"\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"bb6146b9-0c63-40ea-b89a-d83944805b79\"\n    }\n}",
+        "title": "Querying schema As the Query Object"
+      },
+      {
+        "document": "This example shows you how to query tables in the user_database database that belong to the user_schema mode.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabaseObjects\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"ObjectType\": \"table\",\n    \"DatabaseName\": \"user_database\",\n    \"SchemaName\": \"user_schema\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ObjectSet\": [\n            \"users\",\n            \"users1\",\n            \"users2\"\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"80530420-d73e-4a60-8149-93cf800220b9\"\n    }\n}",
+        "title": "Querying a table Object"
+      }
+    ],
     "DescribeDatabases": [
       {
         "document": "This example shows you how to pull the full list of databases of an instance without filtering.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-hf8jo5pr\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            \"postgres\",\n            \"postgres_bak_1715086333\",\n            \"postgres_bak_1715140150\",\n            \"rds\",\n            \"postgres_bak_1715152994\"\n        ],\n        \"RequestId\": \"4045d7a9-5330-4c2c-b968-475570200a97\",\n        \"TotalCount\": 5\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            \"postgres\",\n            \"postgres_bak_1715086333\",\n            \"postgres_bak_1715140150\",\n            \"rds\",\n            \"postgres_bak_1715152994\"\n        ],\n        \"Databases\": [\n            {\n                \"DatabaseName\": \"postgres\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"=Tc/postgres,postgres=CTc/postgres,pg_tencentdb_superuser=C/postgres\"\n            },\n            {\n                \"DatabaseName\": \"postgres_bak_1715086333\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            },\n            {\n                \"DatabaseName\": \"postgres_bak_1715140150\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            },\n            {\n                \"DatabaseName\": \"rds\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            },\n            {\n                \"DatabaseName\": \"postgres_bak_1715152994\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            }\n        ],\n        \"RequestId\": \"4045d7a9-5330-4c2c-b968-475570200a97\",\n        \"TotalCount\": 5\n    }\n}",
         "title": "Obtaining All Databases of an Instance"
       },
       {
         "document": "This example shows you how to return a partial list of databases using filtering conditions.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-hf8jo5pr\",\n    \"Filters\": [\n        {\n            \"Name\": \"database-name\",\n            \"Values\": [\n                \"postgres\"\n            ]\n        }\n    ],\n    \"Offset\": 1,\n    \"Limit\": 2\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            \"postgres_bak_1715086333\",\n            \"postgres_bak_1715140150\"\n        ],\n        \"RequestId\": \"25cc2555-14a2-454f-af08-6bd691315335\",\n        \"TotalCount\": 5\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            \"postgres_bak_1715086333\",\n            \"postgres_bak_1715140150\"\n        ],\n        \"Databases\": [\n            {\n                \"DatabaseName\": \"postgres_bak_1715086333\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            },\n            {\n                \"DatabaseName\": \"postgres_bak_1715140150\",\n                \"DatabaseOwner\": \"postgres\",\n                \"Encoding\": \"UTF8\",\n                \"Collate\": \"C\",\n                \"Ctype\": \"C\",\n                \"AllowConn\": true,\n                \"ConnLimit\": -1,\n                \"Privileges\": \"\"\n            }\n        ],\n        \"RequestId\": \"25cc2555-14a2-454f-af08-6bd691315335\",\n        \"TotalCount\": 5\n    }\n}",
         "title": "Obtaining Part of Databases of an Instance"
+      }
+    ],
+    "DescribeDedicatedClusters": [
+      {
+        "document": "This example shows you how to query all dedicated clusters.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDedicatedClusters\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"DedicatedClusterSet\": [\n            {\n                \"CpuAvailable\": 192,\n                \"CpuTotal\": 192,\n                \"DedicatedClusterId\": \"cluster-0jend45y\",\n                \"DiskAvailable\": 1000,\n                \"DiskTotal\": 1000,\n                \"InstanceCount\": 0,\n                \"MemAvailable\": 512,\n                \"MemTotal\": 512,\n                \"Name\": \"\",\n                \"StandbyDedicatedClusterSet\": [\n                    \"[\\\"cluster-0jend45y\\\"\",\n                    \"\\\"cluster-d8htgb6k\\\"]\"\n                ],\n                \"Zone\": \"ap-guangzhou-2\"\n            },\n            {\n                \"CpuAvailable\": 192,\n                \"CpuTotal\": 192,\n                \"DedicatedClusterId\": \"cluster-d8htgb6k\",\n                \"DiskAvailable\": 1000,\n                \"DiskTotal\": 1000,\n                \"InstanceCount\": 0,\n                \"MemAvailable\": 512,\n                \"MemTotal\": 512,\n                \"Name\": \"\",\n                \"StandbyDedicatedClusterSet\": [\n                    \"[\\\"cluster-0jend45y\\\"\",\n                    \"\\\"cluster-d8htgb6k\\\"]\"\n                ],\n                \"Zone\": \"ap-guangzhou-2\"\n            }\n        ],\n        \"RequestId\": \"187a6206-4811-447d-b223-87a8dd470c8c\"\n    }\n}",
+        "title": "Querying All Exclusive Clusters"
+      },
+      {
+        "document": "This example shows you how to query the exclusive cluster cluster-0jend45y.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDedicatedClusters\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"dedicated-cluster-id\",\n            \"Values\": [\n                \"cluster-0jend45y\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DedicatedClusterSet\": [\n            {\n                \"CpuAvailable\": 192,\n                \"CpuTotal\": 192,\n                \"DedicatedClusterId\": \"cluster-0jend45y\",\n                \"DiskAvailable\": 1000,\n                \"DiskTotal\": 1000,\n                \"InstanceCount\": 0,\n                \"MemAvailable\": 512,\n                \"MemTotal\": 512,\n                \"Name\": \"\",\n                \"StandbyDedicatedClusterSet\": [\n                    \"[\\\"cluster-0jend45y\\\"\",\n                    \"\\\"cluster-d8htgb6k\\\"]\"\n                ],\n                \"Zone\": \"ap-guangzhou-2\"\n            }\n        ],\n        \"RequestId\": \"04fcd633-8e56-4c2f-9783-7c49e00647f6\"\n    }\n}",
+        "title": "Querying a Specific Exclusive Cluster"
       }
     ],
     "DescribeDefaultParameters": [
@@ -392,9 +518,9 @@
     ],
     "DescribeEncryptionKeys": [
       {
-        "document": "This example shows you how to get the list of instance keys.",
+        "document": "This example shows you how to get the key information list of an instance.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEncryptionKeys\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \" postgres-abcdefg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"EncryptionKeys\": [\n            {\n                \"CreateTime\": \"2022-03-24 10:39:14\",\n                \"DEKCipherTextBlob\": \"xxxxxxxxxxx\",\n                \"IsEnabled\": 1,\n                \"KeyAlias\": \"PGSQL-KMS\",\n                \"KeyId\": \" f4d88aa7-ae72-11ec-9fcc-5254007ffd46\",\n                \"KeyRegion\": \"ap-guangzhou\"\n            }\n        ],\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"EncryptionKeys\": [\n            {\n                \"CreateTime\": \"2022-03-24 10:39:14\",\n                \"DEKCipherTextBlob\": \"xxxxxxxxxxx\",\n                \"IsEnabled\": 1,\n                \"KeyAlias\": \"PGSQL-KMS\",\n                \"KeyId\": \" f4d88aa7-ae72-11ec-9fcc-5254007ffd46\",\n                \"KMSClusterId\": \"cls-hsm-tyoxxxx\",\n                \"KeyRegion\": \"ap-guangzhou\"\n            }\n        ],\n        \"RequestId\": \"xxxxxxxx\"\n    }\n}",
         "title": "DescribeEncryptionKeys"
       }
     ],
@@ -404,6 +530,14 @@
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogBackups\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 0,\n    \"OrderBy\": \"FinishTime\",\n    \"OrderByType\": \"desc\"\n}",
         "output": "{\n    \"Response\": {\n        \"LogBackupSet\": [\n            {\n                \"BackupMethod\": \"physical\",\n                \"BackupMode\": \"automatic\",\n                \"DBInstanceId\": \"postgres-jdlmoll9\",\n                \"ExpireTime\": \"2023-02-22 21:10:52\",\n                \"FinishTime\": \"2023-02-15 21:10:52\",\n                \"Id\": \"2628bcde-ce13-554a-b47d-2b15187a02ec\",\n                \"Name\": \"******.tar.gz\",\n                \"Size\": 16783360,\n                \"StartTime\": \"2023-02-15 21:10:52\",\n                \"State\": \"finished\"\n            }\n        ],\n        \"RequestId\": \"c716c175-6037-4bdd-a35b-2c05399489f3\",\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying the list of log backups"
+      }
+    ],
+    "DescribeMaintainTimeWindow": [
+      {
+        "document": "This example shows you how to query the maintenance window of the postgres-rwwbeuyx instance.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMaintainTimeWindow\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-rwwbeuyx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DBInstanceId\": \"postgres-rwwbeuyx\",\n        \"MaintainDuration\": 1,\n        \"MaintainStartTime\": \"04:00\",\n        \"MaintainWeekDays\": [\n            \"monday\",\n            \"tuesday\",\n            \"wednesday\",\n            \"thursday\",\n            \"friday\",\n            \"saturday\",\n            \"sunday\"\n        ],\n        \"RequestId\": \"0f6113e2-f27c-4fe2-a63c-a298f4071e6c\"\n    }\n}",
+        "title": "Querying an Instance Maintenance Window"
       }
     ],
     "DescribeOrders": [
@@ -486,6 +620,26 @@
         "title": "Example of Querying the Slow Log List"
       }
     ],
+    "DescribeTasks": [
+      {
+        "document": "This example shows you how to query the latest task record",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 0,\n    \"OrderBy\": \"StartTime\",\n    \"OrderByType\": \"desc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskSet\": [\n            {\n                \"TaskId\": 1202345,\n                \"TaskType\": \"RestoreDatabase\",\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"StartTime\": \"2024-09-27 13:14:11\",\n                \"EndTime\": \"2024-09-27 13:18:11\",\n                \"Status\": \"Success\",\n                \"Progress\": 100,\n                \"TaskDetail\": {}\n            }\n        ],\n        \"RequestId\": \"3f164712-8746-464f-a490-3084a470000e\",\n        \"TotalCount\": 20\n    }\n}",
+        "title": "Querying the Latest Task Record"
+      },
+      {
+        "document": "This example shows you how to query a task with a specified task ID",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"TaskId\": 120321,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7460a34c-2cf8-4d5c-9346-6977830da6e1\",\n        \"TaskSet\": [\n            {\n                \"DBInstanceId\": \"postgres-0e3hth5b\",\n                \"EndTime\": \"\",\n                \"Progress\": 0,\n                \"StartTime\": \"2024-09-27 16:06:02\",\n                \"Status\": \"Running\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"\",\n                    \"Input\": \"\",\n                    \"Output\": \"\"\n                },\n                \"TaskId\": 120321,\n                \"TaskType\": \"DestroyInstance\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying a Task with a Specified Task ID"
+      },
+      {
+        "document": "This example shows you how to query all tasks of the specified instance by page",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-q6fj84vb\",\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"53872de1-b750-4aa4-b660-5a3627a44d34\",\n        \"TaskSet\": [\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 13:18:11\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 13:14:11\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"download cos file success, cost time:12 s\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"specifyBackupSet type ,skip download wal log and redo step\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetTime\\\":\\\"2024-09-26 19:11:45\\\"}\",\n                    \"Output\": \"{\\\"BeforeRestoreObjects\\\":[\\\"postgres\\\"],\\\"AfterRestoreObjects\\\":[\\\"postgres_bak_1727414053\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetTime\\\":\\\"2024-09-26 19:11:45\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120006,\n                \"TaskType\": \"RestoreDatabase\"\n            },\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 13:13:31\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 13:09:15\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"download cos file success, cost time:11 s\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"specifyBackupSet type ,skip download wal log and redo step\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetTime\\\":\\\"2024-09-26T19:11:45+08:00\\\"}\",\n                    \"Output\": \"{\\\"BeforeRestoreObjects\\\":[\\\"postgres\\\"],\\\"AfterRestoreObjects\\\":[\\\"postgres_bak_1727413757\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetTime\\\":\\\"2024-09-26T19:11:45+08:00\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120005,\n                \"TaskType\": \"RestoreDatabase\"\n            },\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 12:35:58\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 12:31:50\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"download cos file success, cost time:1 s\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"specifyBackupSet type ,skip download wal log and redo step\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\"}\",\n                    \"Output\": \"{\\\"BeforeRestoreObjects\\\":[\\\"postgres\\\"],\\\"AfterRestoreObjects\\\":[\\\"postgres_bak_1727411512\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120004,\n                \"TaskType\": \"RestoreDatabase\"\n            },\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 12:31:28\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 12:30:06\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"timestamp\\\",\\\"RestoreTargetTime\\\":\\\"2024-09-26 15:20:14\\\"}\",\n                    \"Output\": \"{\\\"BeforeRestoreObjects\\\":[\\\"postgres\\\"],\\\"AfterRestoreObjects\\\":[\\\"postgres_bak_1727411408\\\"],\\\"RestoreType\\\":\\\"timestamp\\\",\\\"RestoreTargetTime\\\":\\\"2024-09-26 15:20:14\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120003,\n                \"TaskType\": \"RestoreDatabase\"\n            },\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 12:29:04\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 12:24:29\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"timestamp\\\",\\\"RestoreTargetTime\\\":\\\"2024-09-26 15:20:14\\\"}\",\n                    \"Output\": \"{\\\"BeforeRestoreObjects\\\":[\\\"postgres\\\"],\\\"AfterRestoreObjects\\\":[\\\"postgres_bak_1727411071\\\"],\\\"RestoreType\\\":\\\"timestamp\\\",\\\"RestoreTargetTime\\\":\\\"2024-09-26 15:20:14\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120002,\n                \"TaskType\": \"RestoreDatabase\"\n            },\n            {\n                \"DBInstanceId\": \"postgres-q6fj84vb\",\n                \"EndTime\": \"2024-09-27 11:32:50\",\n                \"Progress\": 100,\n                \"StartTime\": \"2024-09-27 11:29:03\",\n                \"Status\": \"Success\",\n                \"TaskDetail\": {\n                    \"AllSteps\": \"[{\\\"StepId\\\":1,\\\"StepName\\\":\\\"Pre-check\\\"},{\\\"StepId\\\":2,\\\"StepName\\\":\\\"Download Base Backup\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"download cos file success, cost time:1 s\\\"},{\\\"StepId\\\":3,\\\"StepName\\\":\\\"Download WAL Logs and Redo\\\",\\\"StepProcess\\\":100,\\\"StepMessage\\\":\\\"specifyBackupSet type ,skip download wal log and redo step\\\"},{\\\"StepId\\\":4,\\\"StepName\\\":\\\"Execute Recovery\\\"},{\\\"StepId\\\":5,\\\"StepName\\\":\\\"Task Complete\\\"}]\",\n                    \"CurrentStep\": \"Task Complete\",\n                    \"Input\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetId\\\":\\\"17083520-3ce6-5b50-9c25-73ff3d4d80b7\\\"}\",\n                    \"Output\": \"{\\\"RestoreObjects\\\":[\\\"postgres\\\"],\\\"RestoreType\\\":\\\"specifyBackupSet\\\",\\\"BackupSetId\\\":\\\"17083520-3ce6-5b50-9c25-73ff3d4d80b7\\\",\\\"RestoreTargetTime\\\":\\\"1970-01-01 08:00:00\\\",\\\"Message\\\":\\\"success\\\"}\"\n                },\n                \"TaskId\": 120001,\n                \"TaskType\": \"RestoreDatabase\"\n            }\n        ],\n        \"TotalCount\": 6\n    }\n}",
+        "title": "Querying Tasks for a Specified Instance"
+      }
+    ],
     "DescribeZones": [
       {
         "document": " ",
@@ -526,10 +680,10 @@
     ],
     "InquiryPriceCreateDBInstances": [
       {
-        "document": "This example shows you how to query the purchase price of an instance.",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceCreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": \"1\",\n    \"Zone\": \"ap-guangzhou-7\",\n    \"Storage\": \"100\",\n    \"Pid\": \"11004\",\n    \"Period\": \"1\",\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"PREPAID\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"OriginalPrice\": 27600,\n        \"Price\": 27600,\n        \"Currency\": \"USD\"\n    }\n}",
-        "title": "Querying the purchase price of an instance"
+        "document": "This example shows you how to query the instance selling price.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceCreateDBInstances\n<Common request parameters>\n\n{\n    \"InstanceCount\": 1,\n    \"Zone\": \"ap-guangzhou-2\",\n    \"Storage\": 100,\n    \"Period\": 1,\n    \"SpecCode\": \"cdb.pg.z1.2g\",\n    \"InstanceChargeType\": \"PREPAID\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a61e500-aa33-454c-9ec2-da2a368c39ab\",\n        \"OriginalPrice\": 27600,\n        \"Price\": 27600,\n        \"Currency\": \"CNY\"\n    }\n}",
+        "title": "Querying the Instance Selling Price"
       }
     ],
     "InquiryPriceRenewDBInstance": [
@@ -554,6 +708,22 @@
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDBInstances\n<Common request parameters>\n\n{\n    \"DBInstanceIdSet\": [\n        \"postgres-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
         "title": "Isolating an instance"
+      }
+    ],
+    "LockAccount": [
+      {
+        "document": "This example shows you how to lock a database account.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LockAccount\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-4sfuv15b\",\n    \"UserName\": \"app_user\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
+        "title": "Locking a Database Account"
+      }
+    ],
+    "ModifyAccountPrivileges": [
+      {
+        "document": "This example shows you how to batch modify permissions for the without_per account: grant CREATE permission on the user_schema mode under the user_database library and revoke the corresponding USAGE permission; grant SELECT permission on the users table belonging to the user_schema mode under the user_database library. Modify the type of the without_per account to tencentDBSuper.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccountPrivileges\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5cz25tr5\",\n    \"UserName\": \"without_per\",\n    \"ModifyPrivilegeSet\": [\n        {\n            \"DatabasePrivilege\": {\n                \"Object\": {\n                    \"ObjectType\": \"schema\",\n                    \"ObjectName\": \"user_schema\",\n                    \"DatabaseName\": \"user_database\"\n                },\n                \"PrivilegeSet\": [\n                    \"USAGE\"\n                ]\n            },\n            \"ModifyType\": \"revokeObject\",\n            \"IsCascade\": false\n        },\n        {\n            \"DatabasePrivilege\": {\n                \"Object\": {\n                    \"ObjectType\": \"schema\",\n                    \"ObjectName\": \"user_schema\",\n                    \"DatabaseName\": \"user_database\"\n                },\n                \"PrivilegeSet\": [\n                    \"CREATE\"\n                ]\n            },\n            \"ModifyType\": \"grantObject\"\n        },\n        {\n            \"DatabasePrivilege\": {\n                \"Object\": {\n                    \"ObjectType\": \"table\",\n                    \"ObjectName\": \"users\",\n                    \"DatabaseName\": \"user_database\",\n                    \"SchemaName\": \"user_schema\"\n                },\n                \"PrivilegeSet\": [\n                    \"SELECT\"\n                ]\n            },\n            \"ModifyType\": \"grantObject\"\n        },\n        {\n            \"DatabasePrivilege\": {\n                \"Object\": {\n                    \"ObjectType\": \"account\",\n                    \"ObjectName\": \"without_per\"\n                },\n                \"PrivilegeSet\": [\n                    \"tencentDBSuper\"\n                ]\n            },\n            \"ModifyType\": \"alterRole\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"73086328-bdfa-4bf9-8206-8a3d6b2438b1\"\n    }\n}",
+        "title": "Modifying Permissions in Batches"
       }
     ],
     "ModifyAccountRemark": [
@@ -585,7 +755,7 @@
         "document": "This example shows you how to modify the expiration time to \"2023-02-18 23:59:59\" for the data backup set \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\" under the instance \"postgres-9n26zs6n\".",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaseBackupExpireTime\n<Common request parameters>\n\n{\n    \"BaseBackupId\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",\n    \"DBInstanceId\": \"postgres-9n26zs6n\",\n    \"NewExpireTime\": \"2023-02-18 23:59:59\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"be3bafde-f34e-4fda-9f40-04c5515e2148\"\n    }\n}",
-        "title": "Modifying the Expiration Time of Data Backup"
+        "title": "Modifying the Expiration Time of a Data Backup"
       }
     ],
     "ModifyDBInstanceChargeType": [
@@ -646,10 +816,10 @@
     ],
     "ModifyDBInstanceParameters": [
       {
-        "document": "u200cThis example shows you how to modify the value of the `max_replication_slots` parameter to `20` for an instance.",
+        "document": "This example shows you how to modify the max_replication_slots parameter value of an instance to 20.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceParameters\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-lzrwgg6d\",\n    \"ParamList\": [\n        {\n            \"Name\": \"max_replication_slots\",\n            \"ExpectedValue\": \"20\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec555918-0c22-42ea-aa23-730167195708\"\n    }\n}",
-        "title": "Modifying a single parameter for an instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ec555918-0c22-42ea-aa23-730167195708\",\n        \"TaskId\": 5432\n    }\n}",
+        "title": "Modifying a Single Instance Parameter"
       }
     ],
     "ModifyDBInstanceReadOnlyGroup": [
@@ -658,6 +828,20 @@
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceReadOnlyGroup\n<Common request parameters>\n\n{\n    \"NewReadOnlyGroupId\": \"NewGroup\",\n    \"ReadOnlyGroupId\": \"OldGroup\",\n    \"DBInstanceId\": \"postgres-k95qzetn\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\",\n        \"FlowId\": 912\n    }\n}",
         "title": "ModifyDBInstanceReadOnlyGroup"
+      }
+    ],
+    "ModifyDBInstanceSSLConfig": [
+      {
+        "document": "This example shows you how to shut down instance SSL.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSSLConfig\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5gevh7gr\",\n    \"SSLEnabled\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5878440a-028f-4fe4-8786-240665d0105e\",\n        \"TaskId\": 100015\n    }\n}",
+        "title": "Disable SSL"
+      },
+      {
+        "document": "This example shows you how to start instance SSL and set the protection address to the instance private network address.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSSLConfig\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-5gevh7gr\",\n    \"SSLEnabled\": true,\n    \"ConnectAddress\": \"10.6.0.4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e39921c1-2d50-4c55-8bca-8bdff0a387e8\",\n        \"TaskId\": 100016\n    }\n}",
+        "title": "Enabling SSL"
       }
     ],
     "ModifyDBInstanceSecurityGroups": [
@@ -690,12 +874,36 @@
         "title": "u200cu200cModifying the projects in batches"
       }
     ],
+    "ModifyDatabaseOwner": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatabaseOwner\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-mnhbbw99\",\n    \"DatabaseName\": \"alice_database\",\n    \"DatabaseOwner\": \"alice\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a11906eb-75b4-43c4-8d3e-aa6b2991c8f5\"\n    }\n}",
+        "title": "Changing the Database Owner"
+      }
+    ],
+    "ModifyMaintainTimeWindow": [
+      {
+        "document": "This example shows you how to modify the maintenance window of the postgres-c4wtbx1f instance to 23:00-00:00 every Monday and Tuesday.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMaintainTimeWindow\n<Common request parameters>\n\n{\n    \"MaintainWeekDays\": [\n        \"tuesday\",\n        \"monday\"\n    ],\n    \"MaintainDuration\": 1,\n    \"DBInstanceId\": \"postgres-c4wtbx1f\",\n    \"MaintainStartTime\": \"23:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0f6113e2-f27c-4fe2-a63c-a298f4071e6c\"\n    }\n}",
+        "title": "Modifying the Maintenance Time Window"
+      }
+    ],
     "ModifyParameterTemplate": [
       {
-        "document": "None",
-        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyParameterTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"497857b4-4676-5583-8359-b697fe5968d9\",\n    \"TemplateName\": \"test_template\",\n    \"TemplateDescription\": \"test\",\n    \"ModifyParamEntrySet\": [\n        {\n            \"Name\": \"max_wal_senders\",\n            \"ExpectedValue\": \"360\"\n        },\n        {\n            \"Name\": \"max_logical_replication_workers\",\n            \"ExpectedValue\": \"360\"\n        }\n    ],\n    \"DeleteParamSet\": [\n        \"wal_level\"\n    ]\n}",
+        "document": "This example shows you how to modify parameters in a template.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyParameterTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"497857b4-4676-5583-8359-b697fe5968d9\",\n    \"TemplateName\": \"test_template\",\n    \"TemplateDescription\": \"ThisTemplateIsUsedForTestingEnvironment\",\n    \"ModifyParamEntrySet\": [\n        {\n            \"Name\": \"max_wal_senders\",\n            \"ExpectedValue\": \"360\"\n        },\n        {\n            \"Name\": \"max_logical_replication_workers\",\n            \"ExpectedValue\": \"360\"\n        }\n    ],\n    \"DeleteParamSet\": [\n        \"wal_level\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
-        "title": "Modifying a parameter template"
+        "title": "This API is used to modify a parameter template."
+      }
+    ],
+    "ModifyReadOnlyDBInstanceWeight": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyReadOnlyDBInstanceWeight\n<Common request parameters>\n\n{\n    \"ReadOnlyGroupId\": \"pgrogp-test\",\n    \"DBInstanceId\": \"pgro-e0tfm161\",\n    \"Weight\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d43b2a9f-070c-480b-a0bb-7c210428cfe8\"\n    }\n}",
+        "title": "ModifyReadOnlyDBInstanceWeight"
       }
     ],
     "ModifyReadOnlyGroupConfig": [
@@ -716,10 +924,10 @@
     ],
     "OpenDBExtranetAccess": [
       {
-        "document": "This example shows you how to enable the public network access for the instance \"postgres-apzvwncr\".",
+        "document": "This example shows you how to enable the public network for instance postgres-apzvwncr.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenDBExtranetAccess\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-apzvwncr\"\n}",
-        "output": "{\n    \"Response\": {\n        \"FlowId\": 1234,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
-        "title": "Enabling the public network access for an instance"
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 23515,\n        \"TaskId\": 23515,\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
+        "title": "Enabling Instance Public Network"
       }
     ],
     "OpenServerlessDBExtranetAccess": [
@@ -810,6 +1018,14 @@
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchDBInstancePrimary\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-idabksrn\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"54eeac1a-1d21-43d9-8293-1352d5874860\"\n    }\n}",
         "title": "Enabling the primary-standby switch of an instance"
+      }
+    ],
+    "UnlockAccount": [
+      {
+        "document": "This example shows you how to unlock an account after lockout.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnlockAccount\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-4sfuv15b\",\n    \"UserName\": \"bob_admin\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ace8140-6b9e-4e81-a8ad-ef3f92b2aa90\"\n    }\n}",
+        "title": "Unlocking a Database Account"
       }
     ],
     "UpgradeDBInstance": [

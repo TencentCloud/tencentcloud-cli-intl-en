@@ -6958,7 +6958,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target language for translation. Example: `[\"en\", \"ja\"]`.\n\nSupported target languages:\n\n- `\"zh\"`: Chinese\n- `\"en\"`: English\n- `\"vi\"`: Vietnamese\n- `\"ja\"`: Japanese\n- `\"ko\"`: Korean\n- `\"id\"`: Indonesian\n- `\"th\"`: Thai\n- `\"pt\"`: Portuguese\n- `\"ar\"`: Arabic\n- `\"es\"`: Spanish\n- `\"fr\"`: French\n- `\"ms\"`: Malay\n- `\"de\"`: German\n- `\"it\"`: Italian\n- `\"ru\"`: Russian",
+          "document": "Target language for translation. Example: [\"en\", \"ja\"].\n\nSupported target languages:\n\n- <code>\"zh\"</code>: Chinese\n- <code>\"en\"</code>: English\n- <code>\"vi\"</code>: Vietnamese\n- <code>\"ja\"</code>: Japanese\n- <code>\"ko\"</code>: Korean\n- <code>\"id\"</code>: Indonesian\n- <code>\"th\"</code>: Thai\n- <code>\"pt\"</code>: Portuguese\n- <code>\"ar\"</code>: Arabic\n- <code>\"es\"</code>: Spanish\n- <code>\"fr\"</code>: French\n- <code>\"ms\"</code>: Malay\n- <code>\"de\"</code>: German\n- <code>\"it\"</code>: Italian\n- <code>\"ru\"</code>: Russian",
           "example": "[\"en\", \"ja\"]",
           "member": "string",
           "name": "TargetLang",

@@ -595,6 +595,13 @@
       "output": "DescribeProvinceIspPlayInfoListResponse",
       "status": "online"
     },
+    "DescribePushBandwidthAndFluxList": {
+      "document": "Live Streaming Push Bandwidth and Traffic Data Query. The push billing will first compare the global push usage with the global playback usage. If the billing conditions are met, billing will be issued based on the usage in each region. For details, refer to the Billing Documentation.(https://cloud.tencent.com/document/product/267/34175)",
+      "input": "DescribePushBandwidthAndFluxListRequest",
+      "name": "DescribePushBandwidthAndFluxList",
+      "output": "DescribePushBandwidthAndFluxListResponse",
+      "status": "online"
+    },
     "DescribeRecordTask": {
       "document": "This API is used to retrieve a list of recording tasks that were started and ended within a specified time range. \n- Prerequisites: \n1. This API is only used to query recording tasks created by the CreateRecordTask interface. \n2. It cannot retrieve recording tasks that have been deleted by the DeleteRecordTask interface or tasks that have expired (platform retains for 3 months).",
       "input": "DescribeRecordTaskRequest",
@@ -1197,7 +1204,7 @@
         {
           "disabled": false,
           "document": "Time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "example": "2022-11-14T16:40:00+08:00",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -1207,7 +1214,7 @@
         {
           "disabled": false,
           "document": "Bandwidth in Mbps.",
-          "example": "",
+          "example": "0.1",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -1217,7 +1224,7 @@
         {
           "disabled": false,
           "document": "Traffic in MB.",
-          "example": "",
+          "example": "0.1",
           "member": "float",
           "name": "Flux",
           "required": true,
@@ -1227,7 +1234,7 @@
         {
           "disabled": false,
           "document": "Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.",
-          "example": "",
+          "example": "2022-11-14T16:40:00+08:00",
           "member": "string",
           "name": "PeakTime",
           "required": true,
@@ -7247,6 +7254,147 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePushBandwidthAndFluxListRequest": {
+      "document": "DescribePushBandwidthAndFluxList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query start time point, accurate to minute granularity. The interface query supports two time formats:\n\nYYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.\n\nYYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.\n\nQueries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.",
+          "example": "2019-02-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time point, accurate to minute granularity. The interface query supports two time formats:\n\nYYYY-MM-DDThh:mm:ssZ: UTC time format, refer to ISO date format descriptionfor details.\n\nYYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.\n\nQueries for the most recent two months are supported. The span between query start and end time cannot exceed 31 days.",
+          "example": "2019-02-02 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domain name, you can fill in multiple. If left blank, it represents the overall data.",
+          "example": "[\"5000.pushdomain.com\"]",
+          "member": "string",
+          "name": "PushDomains",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Optional values: Mainland: Query data for Mainland China (domestic). Oversea: Query data for international/regions such as Hong Kong, Macao, Taiwan (overseas). If left blank, it defaults to querying global data (domestic + overseas).",
+          "example": "Mainland",
+          "member": "string",
+          "name": "MainlandOrOversea",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data granularity, supports the following granularities: 5: 5-minute granularity (span cannot exceed 1 day), 60: 1-hour granularity (span cannot exceed 1 month), 1440: daily granularity (span cannot exceed 1 month). Default value: 5.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Granularity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Region, mapping table as follows: China Mainland: Mainland China, Asia Pacific I: Asia Pacific Region 1, Asia Pacific II: Asia Pacific Region 2, Asia Pacific III: Asia Pacific Region 3, Europe: Europe, North America: North America, South America: South America, Middle East: Middle East, Africa: Africa.",
+          "example": "[\"China Mainland\"]",
+          "member": "string",
+          "name": "RegionNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Country, the mapping table is referenced as follows in the document: https://cloud.tencent.com/document/product/267/34019.",
+          "example": "[\"孟买\"]",
+          "member": "string",
+          "name": "CountryNames",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePushBandwidthAndFluxListResponse": {
+      "document": "DescribePushBandwidthAndFluxList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I)",
+          "example": "2019-02-01 00:00:00",
+          "member": "string",
+          "name": "PeakBandwidthTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Peak bandwidth, measured in Mbps.",
+          "example": "117042.495",
+          "member": "float",
+          "name": "PeakBandwidth",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "95th percentile peak bandwidth timestamp, using UTC time format, e.g., 2019-01-08T10:00:00Z. Note: Beijing time value equals UTC time value + 8 hours, expressed in ISO 8601 standard format. For details, refer to ISO Date Format Description.(https://cloud.tencent.com/document/product/266/11732#I).",
+          "example": "2019-02-01 00:00:00",
+          "member": "string",
+          "name": "P95PeakBandwidthTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "95th percentile peak bandwidth, measured in Mbps.",
+          "example": "117042.495",
+          "member": "float",
+          "name": "P95PeakBandwidth",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total traffic, measured in MB.",
+          "example": "12254567.55",
+          "member": "float",
+          "name": "SumFlux",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed data information.",
+          "example": "无",
+          "member": "BillDataInfo",
+          "name": "DataInfoList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

@@ -28,6 +28,20 @@
       "output": "CloseServerlessDBExtranetAccessResponse",
       "status": "online"
     },
+    "CreateAccount": {
+      "document": "This API is used to create a data account. The returned Oid is the unique identifier of the account, which matches the oid recorded in the database system table pg_roles.",
+      "input": "CreateAccountRequest",
+      "name": "Create a database account",
+      "output": "CreateAccountResponse",
+      "status": "online"
+    },
+    "CreateBackupPlan": {
+      "document": "This API is used to create a backup policy.",
+      "input": "CreateBackupPlanRequest",
+      "name": "Create a backup plan",
+      "output": "CreateBackupPlanResponse",
+      "status": "online"
+    },
     "CreateBaseBackup": {
       "document": "This API is used to create a data backup of an instance.",
       "input": "CreateBaseBackupRequest",
@@ -36,7 +50,7 @@
       "status": "online"
     },
     "CreateDBInstanceNetworkAccess": {
-      "document": "This API is used to create a network for an instance.",
+      "document": "This API is used to create instance networks. Each instance allows a maximum of 2 network configurations and a minimum of 1.",
       "input": "CreateDBInstanceNetworkAccessRequest",
       "name": "Creates a network for an instance",
       "output": "CreateDBInstanceNetworkAccessResponse",
@@ -47,6 +61,13 @@
       "input": "CreateDBInstancesRequest",
       "name": "(Disused) Creates an instance",
       "output": "CreateDBInstancesResponse",
+      "status": "online"
+    },
+    "CreateDatabase": {
+      "document": "This API is used to create a database, requiring the specified database name and owner.",
+      "input": "CreateDatabaseRequest",
+      "name": "Creates a database",
+      "output": "CreateDatabaseResponse",
       "status": "online"
     },
     "CreateInstances": {
@@ -78,7 +99,7 @@
       "status": "online"
     },
     "CreateReadOnlyGroupNetworkAccess": {
-      "document": "This API is used to create a network for an RO group.",
+      "document": "This API is used to create network for RO groups. The largest quantity of networks to create is 2.",
       "input": "CreateReadOnlyGroupNetworkAccessRequest",
       "name": "Creates a network for an RO group",
       "output": "CreateReadOnlyGroupNetworkAccessResponse",
@@ -89,6 +110,20 @@
       "input": "CreateServerlessDBInstanceRequest",
       "name": "Creates a PostgreSQL for Serverless instance",
       "output": "CreateServerlessDBInstanceResponse",
+      "status": "online"
+    },
+    "DeleteAccount": {
+      "document": "This API is used to delete a database account. Oid and UserName must be input simultaneously to avoid accidental deletion. Note: This API is reentrant. If the account no longer exists, calling this API to delete it will not trigger an error.",
+      "input": "DeleteAccountRequest",
+      "name": "Delete a database account",
+      "output": "DeleteAccountResponse",
+      "status": "online"
+    },
+    "DeleteBackupPlan": {
+      "document": "This API is used to delete a backup policy.",
+      "input": "DeleteBackupPlanRequest",
+      "name": "Delete a backup plan",
+      "output": "DeleteBackupPlanResponse",
       "status": "online"
     },
     "DeleteBaseBackup": {
@@ -138,6 +173,13 @@
       "input": "DeleteServerlessDBInstanceRequest",
       "name": "Deletes a PostgreSQL for Serverless instance",
       "output": "DeleteServerlessDBInstanceResponse",
+      "status": "online"
+    },
+    "DescribeAccountPrivileges": {
+      "document": "This API is used to query the permission list of a database account on a database object.",
+      "input": "DescribeAccountPrivilegesRequest",
+      "name": "Query database account permission information",
+      "output": "DescribeAccountPrivilegesResponse",
       "status": "online"
     },
     "DescribeAccounts": {
@@ -245,6 +287,13 @@
       "output": "DescribeDBInstanceParametersResponse",
       "status": "online"
     },
+    "DescribeDBInstanceSSLConfig": {
+      "document": "This API is used to query the SSL status of an instance.",
+      "input": "DescribeDBInstanceSSLConfigRequest",
+      "name": "Queries the SSL configuration of an instance",
+      "output": "DescribeDBInstanceSSLConfigResponse",
+      "status": "online"
+    },
     "DescribeDBInstanceSecurityGroups": {
       "document": "This API is used to query the security group of an instance.",
       "input": "DescribeDBInstanceSecurityGroupsRequest",
@@ -280,11 +329,25 @@
       "output": "DescribeDBXlogsResponse",
       "status": "online"
     },
+    "DescribeDatabaseObjects": {
+      "document": "This API is used to query database object list, such as the mode list in test database.",
+      "input": "DescribeDatabaseObjectsRequest",
+      "name": "Query a database object list",
+      "output": "DescribeDatabaseObjectsResponse",
+      "status": "online"
+    },
     "DescribeDatabases": {
       "document": "This API is used to query the database list of an instance.",
       "input": "DescribeDatabasesRequest",
       "name": "Queries the database list of an instance",
       "output": "DescribeDatabasesResponse",
+      "status": "online"
+    },
+    "DescribeDedicatedClusters": {
+      "document": "This API is used to query an exclusive cluster.",
+      "input": "DescribeDedicatedClustersRequest",
+      "name": "Queries an exclusive cluster",
+      "output": "DescribeDedicatedClustersResponse",
       "status": "online"
     },
     "DescribeDefaultParameters": {
@@ -306,6 +369,13 @@
       "input": "DescribeLogBackupsRequest",
       "name": "Queries the list of log backups",
       "output": "DescribeLogBackupsResponse",
+      "status": "online"
+    },
+    "DescribeMaintainTimeWindow": {
+      "document": "This API is used to query instance maintenance window.",
+      "input": "DescribeMaintainTimeWindowRequest",
+      "name": "Query the maintenance time window",
+      "output": "DescribeMaintainTimeWindowResponse",
       "status": "online"
     },
     "DescribeOrders": {
@@ -378,6 +448,13 @@
       "output": "DescribeSlowQueryListResponse",
       "status": "online"
     },
+    "DescribeTasks": {
+      "document": "This API is used to query the task list and show the progress of async task execution.\nThis API is used to show summarized steps, which may be adjusted during version iteration. It is not recommended for key logic usage.",
+      "input": "DescribeTasksRequest",
+      "name": "Queries the task list",
+      "output": "DescribeTasksResponse",
+      "status": "online"
+    },
     "DescribeZones": {
       "document": "This API is used to query the supported AZs.",
       "input": "DescribeZonesRequest",
@@ -432,6 +509,20 @@
       "input": "IsolateDBInstancesRequest",
       "name": "Isolates instances",
       "output": "IsolateDBInstancesResponse",
+      "status": "online"
+    },
+    "LockAccount": {
+      "document": "This API is used to lock a database account. After being locked, the current connection will disconnect and unable to establish a new connection.",
+      "input": "LockAccountRequest",
+      "name": "Locks a database account",
+      "output": "LockAccountResponse",
+      "status": "online"
+    },
+    "ModifyAccountPrivileges": {
+      "document": "This API is used to modify the permission of an account on a database object and modify the account type.",
+      "input": "ModifyAccountPrivilegesRequest",
+      "name": "Modify database account permission and type",
+      "output": "ModifyAccountPrivilegesResponse",
       "status": "online"
     },
     "ModifyAccountRemark": {
@@ -504,6 +595,13 @@
       "output": "ModifyDBInstanceReadOnlyGroupResponse",
       "status": "online"
     },
+    "ModifyDBInstanceSSLConfig": {
+      "document": "This API is used to modify the SSL configuration of an instance, including enabling, disabling, and modifying the connection address protected by an SSL certificate.",
+      "input": "ModifyDBInstanceSSLConfigRequest",
+      "name": "Modify instance SSL configuration",
+      "output": "ModifyDBInstanceSSLConfigResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security group of an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
@@ -525,11 +623,32 @@
       "output": "ModifyDBInstancesProjectResponse",
       "status": "online"
     },
+    "ModifyDatabaseOwner": {
+      "document": "This API is used to change database owner.",
+      "input": "ModifyDatabaseOwnerRequest",
+      "name": "Changes the database owner",
+      "output": "ModifyDatabaseOwnerResponse",
+      "status": "online"
+    },
+    "ModifyMaintainTimeWindow": {
+      "document": "This API is used to modify the instance maintenance window.",
+      "input": "ModifyMaintainTimeWindowRequest",
+      "name": "Modify the maintenance time window",
+      "output": "ModifyMaintainTimeWindowResponse",
+      "status": "online"
+    },
     "ModifyParameterTemplate": {
       "document": "This API is used to modify the configurations, such as parameter template name and description. It can also be used to manage the parameter list in the parameter template.",
       "input": "ModifyParameterTemplateRequest",
       "name": "Modifies a parameter template",
       "output": "ModifyParameterTemplateResponse",
+      "status": "online"
+    },
+    "ModifyReadOnlyDBInstanceWeight": {
+      "document": "This API is used to modify the read-only instance weight.",
+      "input": "ModifyReadOnlyDBInstanceWeightRequest",
+      "name": "Modify the read-only instance weight",
+      "output": "ModifyReadOnlyDBInstanceWeightResponse",
       "status": "online"
     },
     "ModifyReadOnlyGroupConfig": {
@@ -616,6 +735,13 @@
       "output": "SwitchDBInstancePrimaryResponse",
       "status": "online"
     },
+    "UnlockAccount": {
+      "document": "This API is used to unlock a database account. The account can log in to the database after being unlocked.",
+      "input": "UnlockAccountRequest",
+      "name": "Unlock a database account",
+      "output": "UnlockAccountResponse",
+      "status": "online"
+    },
     "UpgradeDBInstance": {
       "document": "This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.",
       "input": "UpgradeDBInstanceRequest",
@@ -650,61 +776,91 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
-          "example": "",
+          "example": "postgres-lnp6j617",
           "member": "string",
           "name": "DBInstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Account",
-          "example": "",
+          "example": "test_user",
           "member": "string",
           "name": "UserName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account remarks",
-          "example": "",
+          "document": "Specifies the account remark.",
+          "example": "remark",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting",
-          "example": "",
+          "document": "Account status. valid values: 1-creating, 2-normal, 3-modifying, 4-resetting password, 5-locked, -1-deleting.",
+          "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account creation time",
-          "example": "",
+          "document": "Creation time.",
+          "example": "2024-06-06 21:00:12",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Account last modified time",
-          "example": "",
+          "document": "Last update time of the account.",
+          "example": "2024-06-06 22:00:12",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the last modified time of the account.\n\nThis field will only take effect after 2025-10-31. No matter whether the password is modified before, the value will be the default value: 0000-00-00 00:00:00\nIndicates that this field is updated only when the password is modified via the cloud API or the console.",
+          "example": "2024-06-06 22:00:12",
+          "member": "string",
+          "name": "PasswordUpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account type. valid values: normal, tencentDBSuper. normal references a general user, tencentDBSuper possesses the pg_tencentdb_superuser user role.",
+          "example": "normal",
+          "member": "string",
+          "name": "UserType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether CAM verification is enabled for the user account.",
+          "example": "true",
+          "member": "bool",
+          "name": "OpenCam",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -897,8 +1053,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).",
-          "example": "无",
+          "document": "Backup file download limit type. valid values: NONE (unlimited, allows download from both private and public networks), INTRANET (only allows private network download), CUSTOMIZE (custom limits for download by vpc or ip). when the parameter value is CUSTOMIZE, at least one item must be filled in for vpc or ip information.",
+          "example": "NONE",
           "member": "string",
           "name": "RestrictionType",
           "required": false,
@@ -907,7 +1063,7 @@
         {
           "disabled": false,
           "document": "Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
-          "example": "无",
+          "example": "ALLOW",
           "member": "string",
           "name": "VpcRestrictionEffect",
           "required": false,
@@ -916,7 +1072,7 @@
         {
           "disabled": false,
           "document": "Whether it is allowed to download the VPC ID list of the backup files.",
-          "example": "无",
+          "example": "[     \"vpc-15ld6dhr\" ]",
           "member": "string",
           "name": "VpcIdSet",
           "required": false,
@@ -925,7 +1081,7 @@
         {
           "disabled": false,
           "document": "Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).",
-          "example": "无",
+          "example": "ALLOW",
           "member": "string",
           "name": "IpRestrictionEffect",
           "required": false,
@@ -934,7 +1090,7 @@
         {
           "disabled": false,
           "document": "Whether it is allowed to download IP list of the backup files.",
-          "example": "无",
+          "example": "[     \"10.10.10.220\" ]",
           "member": "string",
           "name": "IpSet",
           "required": false,
@@ -1111,7 +1267,7 @@
         {
           "disabled": false,
           "document": "Backup file name.",
-          "example": "0",
+          "example": "manual-20230215190924.tar.zst",
           "member": "string",
           "name": "Name",
           "output_required": true,
@@ -1120,8 +1276,8 @@
         },
         {
           "disabled": false,
-          "document": "Backup method, including physical and logical.",
-          "example": "0",
+          "document": "Specifies the backup method: physical - physical backup, logical - logical backup.",
+          "example": "physical",
           "member": "string",
           "name": "BackupMethod",
           "output_required": true,
@@ -1130,8 +1286,8 @@
         },
         {
           "disabled": false,
-          "document": "Backup mode, including automatic and manual.",
-          "example": "0",
+          "document": "Backup mode: automatic - automatic backup, manual - manual backup.",
+          "example": "manual",
           "member": "string",
           "name": "BackupMode",
           "output_required": true,
@@ -1140,8 +1296,8 @@
         },
         {
           "disabled": false,
-          "document": "Backup task status",
-          "example": "0",
+          "document": "Backup task status. valid values: init, running, finished, failed, canceled.",
+          "example": "finished",
           "member": "string",
           "name": "State",
           "output_required": true,
@@ -1151,7 +1307,7 @@
         {
           "disabled": false,
           "document": "Backup set size in bytes",
-          "example": "0",
+          "example": "39845888",
           "member": "uint64",
           "name": "Size",
           "output_required": true,
@@ -1161,7 +1317,7 @@
         {
           "disabled": false,
           "document": "Backup start time",
-          "example": "0",
+          "example": "2023-02-15 19:09:24",
           "member": "string",
           "name": "StartTime",
           "output_required": true,
@@ -1171,7 +1327,7 @@
         {
           "disabled": false,
           "document": "Backup end time",
-          "example": "0",
+          "example": "2023-02-15 19:09:36",
           "member": "string",
           "name": "FinishTime",
           "output_required": true,
@@ -1181,7 +1337,7 @@
         {
           "disabled": false,
           "document": "Backup expiration time",
-          "example": "0",
+          "example": "2023-02-18 23:59:59",
           "member": "string",
           "name": "ExpireTime",
           "output_required": true,
@@ -1490,8 +1646,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of postgres-6r233v55",
-          "example": "",
+          "document": "Specifies the instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). such as postgres-6r233v55.",
+          "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -1499,8 +1655,8 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
-          "example": "",
+          "document": "Specifies whether to close public network Ipv6. 1: yes. 0: no. default value: 0.",
+          "example": "0",
           "member": "int64",
           "name": "IsIpv6",
           "required": false,
@@ -1514,10 +1670,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task flow ID",
-          "example": "1234",
+          "document": "Process ID. FlowId is equivalent to TaskId.",
+          "example": "25441",
           "member": "int64",
           "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "25441",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1566,12 +1733,175 @@
       ],
       "type": "object"
     },
+    "CreateAccountRequest": {
+      "document": "CreateAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-4sfuv15b",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The name of the account created. Consists of letters (a-z, A-Z), numbers (0-9), underscores (_), starts with a letter or (_), up to 63 characters. Cannot use system reserved keywords, cannot be postgres, and cannot begin with pg_or tencentdb_",
+          "example": "readonly_user",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account type. currently supported: normal, tencentDBSuper. normal references a general user, tencentDBSuper is an account that possesses the pg_tencentdb_superuser role.",
+          "example": "normal",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the corresponding password for the account. the password rules are as follows:.\n<Li>Specifies a length of 8 to 32 characters. a password of more than 12 characters is recommended.</li>.\n<Li>Cannot start with \"/\".</li>.\n<Li>Specifies the following four items must be included.</li>.\n\nValid values: a to z (lowercase letters).           \nUppercase letters: A - Z.\nValid values: 0 - 9.\nSpecial symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.\n",
+          "example": "1357Qwe!",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account remark. only allow english letters, digits, underscore, hyphen, and chinese characters, limited to 60 characters.",
+          "example": "test Remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether CAM verification is enabled for the account.",
+          "example": "false",
+          "member": "bool",
+          "name": "OpenCam",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccountResponse": {
+      "document": "CreateAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupPlanRequest": {
+      "document": "CreateBackupPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-herclkx7",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the name of the backup plan.",
+          "example": "panl1",
+          "member": "string",
+          "name": "PlanName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the schedule type of the backup created. currently only support month.",
+          "example": "month",
+          "member": "string",
+          "name": "BackupPeriodType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup date. example: enable backup on the 2nd of every month.",
+          "example": "['2']",
+          "member": "string",
+          "name": "BackupPeriod",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the backup start time. if not passed, it follows the default backup plan.",
+          "example": "01:00:00\t",
+          "member": "string",
+          "name": "MinBackupStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup end time. follows the default plan if not specified.",
+          "example": "02:00:00\t",
+          "member": "string",
+          "name": "MaxBackupStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the data backup retention duration in days. value range: [0,30000).\nBackupPeriodType defaults to 7 when set to week and 31 when set to month.",
+          "example": "30",
+          "member": "uint64",
+          "name": "BaseBackupRetentionPeriod",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBackupPlanResponse": {
+      "document": "CreateBackupPlan response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Backup policy ID.",
+          "example": "0ee6843a-475b-5514-bd29-c432b75bb036",
+          "member": "string",
+          "name": "PlanId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateBaseBackupRequest": {
       "document": "CreateBaseBackup request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -1608,7 +1938,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of postgres-6bwgamo3.",
+          "document": "Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773).",
           "example": "postgres-6bwgamo3",
           "member": "string",
           "name": "DBInstanceId",
@@ -1644,8 +1974,8 @@
         },
         {
           "disabled": false,
-          "document": "Target VIP.",
-          "example": "无",
+          "document": "Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.",
+          "example": "10.*.*.*",
           "member": "string",
           "name": "Vip",
           "required": false,
@@ -1659,13 +1989,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1234",
+          "document": "Process ID. FlowId is equivalent to TaskId.",
+          "example": "26345",
           "member": "int64",
           "name": "FlowId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "26345",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1895,6 +2235,78 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatabaseRequest": {
+      "document": "CreateDatabase request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the user-created database name.\nName specification: consists of letters (a-z, a-z), digits (0-9), and underscores (_), starting with a letter or underscore (_), up to 63 characters. system reserved keywords cannot be used, and 'postgres' is not allowed.",
+          "example": "mydatabase",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "example": "data_team",
+          "member": "string",
+          "name": "DatabaseOwner",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the character encoding of the database.\nSupported character sets include UTF8, LATIN1, LATIN2, WIN1250, WIN1251, WIN1252, KOI8R, EUC_JP, and EUC_KR.\nDefault value: UTF8.",
+          "example": "UTF8",
+          "member": "string",
+          "name": "Encoding",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database sorting rule.",
+          "example": "C",
+          "member": "string",
+          "name": "Collate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the character category of the database.",
+          "example": "C",
+          "member": "string",
+          "name": "Ctype",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDatabaseResponse": {
+      "document": "CreateDatabase response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2574,8 +2986,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "RO group ID in the format of pgro-4t9c6g7k.",
-          "example": "pgro-4t9c6g7k",
+          "document": "ROGroupId specifies the read-only group ID in the format of pgrogrp-4t9c6g7k. it can be obtained through the DescribeReadOnlyGroups api (https://www.tencentcloud.com/document/product/409/39725?lang=en).",
+          "example": "pgrogrp-4t9c6g7k",
           "member": "string",
           "name": "ReadOnlyGroupId",
           "required": true,
@@ -2610,8 +3022,8 @@
         },
         {
           "disabled": false,
-          "document": "Target VIP.",
-          "example": "无",
+          "document": "Target VIP address. when this parameter is not specified and IsAssignVip is true, the system automatically assigns a VIP by default.",
+          "example": "10.*.*.*",
           "member": "string",
           "name": "Vip",
           "required": false,
@@ -2625,13 +3037,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1234",
+          "document": "Process ID. FlowId is equivalent to TaskId.",
+          "example": "26415",
           "member": "int64",
           "name": "FlowId",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "26415",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3556,12 +3978,386 @@
       ],
       "usage": "both"
     },
+    "Database": {
+      "document": "Describes the database detailed information, including owner and character encoding.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database owner.",
+          "example": "postgres",
+          "member": "string",
+          "name": "DatabaseOwner",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database character encoding.",
+          "example": "UTF8",
+          "member": "string",
+          "name": "Encoding",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database sorting rule.",
+          "example": "C",
+          "member": "string",
+          "name": "Collate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the character category of the database.",
+          "example": "C",
+          "member": "string",
+          "name": "Ctype",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether the database allows connections.",
+          "example": "false",
+          "member": "bool",
+          "name": "AllowConn",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of connections for the database. -1 indicates unlimited.",
+          "example": "-1",
+          "member": "int64",
+          "name": "ConnLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database permission list.",
+          "example": "postgres=CTc/postgres",
+          "member": "string",
+          "name": "Privileges",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DatabaseObject": {
+      "document": "Describes the type of a certain object in the database, and the database, mode, and table of the object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the supported object types in the database: account, database, schema, sequence, procedure, type, function, table, view, matview, column.",
+          "example": "database",
+          "member": "string",
+          "name": "ObjectType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database object name.",
+          "example": "test_database\t",
+          "member": "string",
+          "name": "ObjectName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the database object and the database name it belongs to. this parameter is required when the description object type is not database.",
+          "example": "test_database",
+          "member": "string",
+          "name": "DatabaseName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the schema name of the database object to describe. this parameter is required when the description object is not database or schema.",
+          "example": "test_schema",
+          "member": "string",
+          "name": "SchemaName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database object to describe and the table name it belongs to. this parameter is required when the object type is column.",
+          "example": "test_table",
+          "member": "string",
+          "name": "TableName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DatabasePrivilege": {
+      "document": "Specifies the permission list of the specified account for the database object.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The database object. when ObjectType is database, DatabaseName/SchemaName/TableName can be empty. when ObjectType is schema, SchemaName/TableName can be empty. when ObjectType is column, TableName cannot be empty. other cases can be empty.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"ObjectType\":\"table\",\"ObjectName\":\"test_table\",\"DatabaseName\":\"test_database\",\"SchemaName\":\"test_schema\"}",
+          "member": "DatabaseObject",
+          "name": "Object",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the permission list of the specified account for the database object.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"SELECT\"]",
+          "member": "string",
+          "name": "PrivilegeSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DedicatedCluster": {
+      "document": "Exclusive cluster-related information, used for querying the user's exclusive cluster list.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CDC ID.",
+          "example": "dedicatedCluster-gz",
+          "member": "string",
+          "name": "DedicatedClusterId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dedicated cluster name.",
+          "example": "TestDedicatedClusterName",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the AZ of the exclusive cluster.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster recovery cluster.",
+          "example": "dedicatedCluster-sh",
+          "member": "string",
+          "name": "StandbyDedicatedClusterSet",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance count.",
+          "example": "1",
+          "member": "int64",
+          "name": "InstanceCount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of cpus.",
+          "example": "10",
+          "member": "int64",
+          "name": "CpuTotal",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the available amount of Cpu.",
+          "example": "10",
+          "member": "int64",
+          "name": "CpuAvailable",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total memory capacity in GB.",
+          "example": "10",
+          "member": "int64",
+          "name": "MemTotal",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Available memory in GB.",
+          "example": "10",
+          "member": "int64",
+          "name": "MemAvailable",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total disk capacity (unit: GB).",
+          "example": "10",
+          "member": "int64",
+          "name": "DiskTotal",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk availability (unit: GB).",
+          "example": "10",
+          "member": "int64",
+          "name": "DiskAvailable",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DeleteAccountRequest": {
+      "document": "DeleteAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "example": "readonly_user",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccountResponse": {
+      "document": "DeleteAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupPlanRequest": {
+      "document": "DeleteBackupPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-herclkx7\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Backup plan ID. obtain through the api [DescribeBackupPlans](https://www.tencentcloud.com/document/product/409/45151?lang=en).",
+          "example": "0ee6843a-475b-5514-bd29-c432b75bb036",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBackupPlanResponse": {
+      "document": "DeleteBackupPlan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteBaseBackupRequest": {
       "document": "DeleteBaseBackup request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
@@ -3570,7 +4366,7 @@
         },
         {
           "disabled": false,
-          "document": "Data Backup ID.",
+          "document": "Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). automatic backup sets cannot be deleted within 7 days.",
           "example": "4c144959-aca8-5266-bb96-7fb7aa2ca409",
           "member": "string",
           "name": "BaseBackupId",
@@ -3856,12 +4652,67 @@
       ],
       "type": "object"
     },
+    "DescribeAccountPrivilegesRequest": {
+      "document": "DescribeAccountPrivileges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the permissions owned by this account for a database object. the account name can be obtained through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109?lang=en) api.",
+          "example": "app_user",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database object information to query.",
+          "example": "[{\"ObjectType\":\"table\",\"ObjectName\":\"users\",\"DatabaseName\":\"user_database\",\"SchemaName\":\"user_schema\"}]",
+          "member": "DatabaseObject",
+          "name": "DatabaseObjectSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccountPrivilegesResponse": {
+      "document": "DescribeAccountPrivileges response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies that the user has CREATE, CONNECT, and TEMPORARY permissions on the database user_database.",
+          "example": "{\"Object\": {\"DatabaseName\": \"\", \"ObjectName\": \"user_database\", \"ObjectType\": \"database\", \"SchemaName\": \"\", \"TableName\": \"\" }, \"PrivilegeSet\": [ \"CREATE\", \"CONNECT\", \"TEMPORARY\"] }",
+          "member": "DatabasePrivilege",
+          "name": "PrivilegeSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAccountsRequest": {
       "document": "DescribeAccounts request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of postgres-6fego161",
+          "document": "Instance ID, such as postgres-6fego161. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
@@ -3870,7 +4721,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of entries returned per page. Default value: 10. Value range: 1–100.",
+          "document": "Pagination return. maximum return per page. default 20. value range 1-100.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -3888,7 +4739,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)",
+          "document": "Return data is sorted by creation time or username. valid values: createTime, name, updateTime. createTime - sort by creation time; name - sort by username; updateTime - sort by update time.\nDefault value: createTime.",
           "example": "createTime",
           "member": "string",
           "name": "OrderBy",
@@ -3897,7 +4748,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)",
+          "document": "Specifies whether the returned results are in ascending or descending order. valid values: desc or asc. desc - descending order; asc - ascending order.\nDefault value: desc.",
           "example": "desc",
           "member": "string",
           "name": "OrderByType",
@@ -3922,8 +4773,8 @@
         },
         {
           "disabled": false,
-          "document": "Detailed account list information.",
-          "example": "无",
+          "document": "Detailed account list information. when the CreateTime field is 0000-00-00 00:00:00, it means the corresponding account is created by direct connection database, not through the CreateAccount api.",
+          "example": "[{\"CreateTime\":\"0000-00-00 00:00:00\",\"DBInstanceId\":\"postgres-hpe52jnz\",\"Remark\":\"\",\"Status\":2,\"UpdateTime\":\"2024-06-06 21:00:12\",\"UserName\":\"test\",\"UserType\":\"tencentDBSuper\"}]",
           "member": "AccountInfo",
           "name": "Details",
           "output_required": true,
@@ -4058,7 +4909,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -4085,7 +4936,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period of a URL, which is 12 hours by default.",
+          "document": "Validity time of the connection. value range: [0,36]. default value: 12 hours.",
           "example": "12",
           "member": "uint64",
           "name": "URLExpireTime",
@@ -4095,7 +4946,7 @@
         {
           "disabled": false,
           "document": "Backup download restriction",
-          "example": "无",
+          "example": "{     \"RestrictionType\": \"NONE\",     \"VpcRestrictionEffect\": \"ALLOW\",     \"VpcIdSet\": [         \"vpc-15ld6dhr\"     ],     \"IpRestrictionEffect\": \"ALLOW\",     \"IpSet\": [         \"10.10.10.220\"     ] }",
           "member": "BackupDownloadRestriction",
           "name": "BackupDownloadRestriction",
           "required": false,
@@ -4376,8 +5227,8 @@
         },
         {
           "disabled": false,
-          "document": "Filter instances by using one or more filters. Valid values:  `db-instance-idFilter` (filter by instance ID in string),  `db-instance-name` (filter by instance name in string),  `db-instance-ip` (filter by instance VPC IP address in string),  `base-backup-id` (filter by backup set ID in string), ",
-          "example": "无",
+          "document": "Query using one or more filter criteria. filter criteria currently supported include:.\ndb-instance-id: filter by instance id (string type).\ndb-instance-name: specifies the instance name to filter by, supports fuzzy matching (string type).\ndb-instance-ip: specifies the instance VPC ip for filtering (string type).\nbase-backup-id: filter by backup set id (in string format).\ndb-instance-status: filter by instance status (in string format). valid values refer to the DBInstanceStatus field in the DBInstance structure (https://www.tencentcloud.com/document/product/409/16778#dbinstance).",
+          "example": "[     {         \"Values\": [             \"postgres-jdlmoll9\"         ],         \"Name\": \"db-instance-id\"     } ]",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -4403,7 +5254,7 @@
         },
         {
           "disabled": false,
-          "document": "Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.",
+          "document": "Specifies the sorting field, supports StartTime, FinishTime, and Size. default value: StartTime.",
           "example": "StartTime",
           "member": "string",
           "name": "OrderBy",
@@ -4412,7 +5263,7 @@
         },
         {
           "disabled": false,
-          "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
+          "document": "Sorting method, including ascending: `asc` and descending: `desc`. the default value is `desc`.",
           "example": "asc",
           "member": "string",
           "name": "OrderByType",
@@ -4438,7 +5289,7 @@
         {
           "disabled": false,
           "document": "Detailed data backup information list.",
-          "example": "[     {         \"BackupMethod\": \"physical\",         \"BackupMode\": \"manual\",         \"DBInstanceId\": \"postgres-9n26zs6n\",         \"ExpireTime\": \"2023-02-18 23:59:59\",         \"FinishTime\": \"2023-02-15 19:09:36\",         \"Id\": \"88d3a71e-b822-5728-9d41-d8cfc0d0556e\",         \"Name\": \"manual-20230215190924.tar.gz\",         \"Size\": 39845888,         \"StartTime\": \"2023-02-15 19:09:24\",         \"State\": \"finished\"     } ]",
+          "example": "无",
           "member": "BaseBackup",
           "name": "BaseBackupSet",
           "output_required": true,
@@ -4514,7 +5365,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-abcd1234",
           "member": "string",
           "name": "DBInstanceId",
@@ -4523,7 +5374,7 @@
         },
         {
           "disabled": false,
-          "document": "Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.",
+          "document": "Basic backup set ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en). this parameter and RecoveryTargetTime must be selected. if set simultaneously with RecoveryTargetTime, this parameter takes precedence.",
           "example": "f22057d2-46c0-5808-ab8a-d0c3385afabc",
           "member": "string",
           "name": "BackupSetId",
@@ -4671,7 +5522,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID\t",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
@@ -4699,7 +5550,7 @@
         {
           "disabled": false,
           "document": "Database name",
-          "example": "postgres-xxx",
+          "example": "webapp-use",
           "member": "string",
           "name": "DatabaseName",
           "required": false,
@@ -4708,7 +5559,7 @@
         {
           "disabled": false,
           "document": "Keywords used for search",
-          "example": "test",
+          "example": "ERROR",
           "member": "string",
           "name": "SearchKeys",
           "required": false,
@@ -4751,7 +5602,7 @@
         {
           "disabled": false,
           "document": "Detailed sets of error logs",
-          "example": "[     {         \"UserName\": \"postgres\",         \"ErrTime\": \"2018-06-22 15:22:52\",         \"ErrMsg\": \"WARNING:  there is no transaction in progress \",         \"Database\": \"dee\"     },     {         \"UserName\": \"postgres\",         \"ErrTime\": \"2018-06-22 15:22:52\",         \"ErrMsg\": \"WARNING:  there is no transaction in progress \",         \"Database\": \"dee\"     },     {         \"UserName\": \"postgres\",         \"ErrTime\": \"2018-06-22 15:23:09\",         \"ErrMsg\": \"WARNING:  there is no transaction in progress \",         \"Database\": \"dee\"     } ]",
+          "example": "无",
           "member": "ErrLogDetail",
           "name": "Details",
           "output_required": true,
@@ -4886,7 +5737,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-xxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -4921,11 +5772,68 @@
         {
           "disabled": false,
           "document": "Details of the returned parameter list",
-          "example": "[     {         \"Advanced\": false,         \"ClassificationCN\": \"连接和认证\",         \"ClassificationEN\": \"Connections and Authentication\",         \"CurrentValue\": \"2048\",         \"DefaultValue\": \"2048\",         \"EnumValue\": null,         \"ID\": 15124,         \"LastModifyTime\": \"\",         \"Max\": 2048,         \"Min\": 100,         \"Name\": \"max_connections\",         \"NeedReboot\": true,         \"ParamDescriptionCH\": \"实例最大连接数\",         \"ParamDescriptionEN\": \"Sets the maximum number of concurrent connections.\",         \"ParamValueType\": \"integer\",         \"SpecRelated\": true,         \"SpecRelationSet\": null,         \"StandbyRelated\": 0,         \"Unit\": \"\",         \"VersionRelationSet\": null     } ]",
+          "example": "无",
           "member": "ParamInfo",
           "name": "Detail",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceSSLConfigRequest": {
+      "document": "DescribeDBInstanceSSLConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID, such as postgres-6bwgamo3. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceSSLConfigResponse": {
+      "document": "DescribeDBInstanceSSLConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "true represents enabled. false represents not enabled.",
+          "example": "false",
+          "member": "bool",
+          "name": "SSLEnabled",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate download url for the cloud root certificate.",
+          "example": "http://testdownload.url",
+          "member": "string",
+          "name": "CAUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the intranet or public network connection address in the server certificate.",
+          "example": "10.0.0.23",
+          "member": "string",
+          "name": "ConnectAddress",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -4942,7 +5850,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en). specify either DBInstanceId or ReadOnlyGroupId. if both are provided, ReadOnlyGroupId is ignored.",
           "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
@@ -4951,7 +5859,7 @@
         },
         {
           "disabled": false,
-          "document": "RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.",
+          "document": "ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en). valid values: DBInstanceId and ReadOnlyGroupId (at least one is required). if you need to query the associated security group of the read-only group, only ReadOnlyGroupId is required.",
           "example": "pgrogrp-nqwpkjbu",
           "member": "string",
           "name": "ReadOnlyGroupId",
@@ -4967,7 +5875,7 @@
         {
           "disabled": false,
           "document": "Information of security groups in array",
-          "example": "[     {         \"CreateTime\": \"2022-10-20 21:38:20\",         \"Inbound\": [             {                 \"Action\": \"ACCEPT\",                 \"CidrIp\": \"0.0.0.0/0\",                 \"Description\": \"放通Ping服务\",                 \"IpProtocol\": \"icmp\",                 \"PortRange\": \"ALL\"             },             {                 \"Action\": \"ACCEPT\",                 \"CidrIp\": \"::/0\",                 \"Description\": \"放通Ping服务\",                 \"IpProtocol\": \"icmpv6\",                 \"PortRange\": \"ALL\"             }         ],         \"Outbound\": [             {                 \"Action\": \"ACCEPT\",                 \"CidrIp\": \"0.0.0.0/0\",                 \"Description\": \"\",                 \"IpProtocol\": \"ALL\",                 \"PortRange\": \"ALL\"             },             {                 \"Action\": \"ACCEPT\",                 \"CidrIp\": \"\",                 \"Description\": \"\",                 \"IpProtocol\": \"ALL\",                 \"PortRange\": \"ALL\"             }         ],         \"ProjectId\": 0,         \"SecurityGroupDescription\": \"自定义模板\",         \"SecurityGroupId\": \"sg-91jbmkp1\",         \"SecurityGroupName\": \"自定义模板-20221020213819279\"     } ]",
+          "example": "无",
           "member": "SecurityGroup",
           "name": "SecurityGroupSet",
           "output_required": true,
@@ -5286,12 +6194,113 @@
       ],
       "type": "object"
     },
+    "DescribeDatabaseObjectsRequest": {
+      "document": "DescribeDatabaseObjects request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the object type for querying. supported objects: database, schema, sequence, procedure, type, function, table, view, matview, column.",
+          "example": "table",
+          "member": "string",
+          "name": "ObjectType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items displayed at a time. default 20. value range 0-100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Data offset, starting from 0.\t\t",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Describes the database the query object belongs to. this parameter is required when the query object type is not database.",
+          "example": "test_database",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the mode belonging to the query object. this parameter is required when the query object type is not database or schema.",
+          "example": "test_schema",
+          "member": "string",
+          "name": "SchemaName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the table belonging to the query object. this parameter is required when the query object type is column.",
+          "example": "test_table",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseObjectsResponse": {
+      "document": "DescribeDatabaseObjects response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query object list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"test\"]",
+          "member": "string",
+          "name": "ObjectSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the total number of objects.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDatabasesRequest": {
       "document": "DescribeDatabases request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the API [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?from_cn_redirect=1).",
           "example": "postgres-6bwgamo3",
           "member": "string",
           "name": "DBInstanceId",
@@ -5318,7 +6327,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of items displayed at a time",
+          "document": "Number of items displayed at a time. the maximum value is recommended to be 100.\nDefault value: 20.",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -5349,6 +6358,53 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the database details list.",
+          "example": "[{\"Privileges\":\"=Tc/postgres,postgres=CTc/postgres,pg_tencentdb_superuser=C/postgres\",\"AllowConn\":true,\"Collate\":\"C\",\"ConnLimit\":-1,\"Ctype\":\"C\",\"Encoding\":\"UTF8\",\"DatabaseName\":\"postgres\",\"DatabaseOwner\":\"postgres\"}]",
+          "member": "Database",
+          "name": "Databases",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDedicatedClustersRequest": {
+      "document": "DescribeDedicatedClusters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query using one or more filter criteria. filter criteria currently supported include:.\ndedicated-cluster-id: filters by dedicated cluster id. string type.",
+          "example": "[{\"Values\": [\"dedicatedCluster-gz\" ], \"Name\": \"dedicated-cluster-id\" } ]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDedicatedClustersResponse": {
+      "document": "DescribeDedicatedClusters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Exclusive cluster information.",
+          "example": "[{\"DedicatedClusterId\":\"dedicatedCluster-gz\",\"name\":\"TestDedicatedClusterName\",\"Zone\":\"ap-guangzhou\",\"StandbyDedicatedClusterSet\":[\"dedicatedCluster-sh\"],InstanceCount:1,CpuTotal:10,CpuAvailable:10,MemTotal:10,MemAvailable:10,DiskTotal:10,DiskAvailable:10}]",
+          "member": "DedicatedCluster",
+          "name": "DedicatedClusterSet",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -5421,7 +6477,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -5436,13 +6492,13 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance key list\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Specifies the key information list of the instance.",
           "example": "[     {         \"CreateTime\": \"2022-03-24 10:39:14\",         \"DEKCipherTextBlob\": \"xxxxxxxxxxx\",         \"IsEnabled\": 1,         \"KeyAlias\": \"PGSQL-KMS\",         \"KeyId\": \" f4d88aa7-ae72-11ec-9fcc-5254007ffd46\",         \"KeyRegion\": \"ap-guangzhou\"     } ]",
           "member": "EncryptionKey",
           "name": "EncryptionKeys",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5541,6 +6597,73 @@
           "example": "[     {         \"BackupMethod\": \"physical\",         \"BackupMode\": \"automatic\",         \"DBInstanceId\": \"postgres-jdlmoll9\",         \"ExpireTime\": \"2023-02-22 21:10:52\",         \"FinishTime\": \"2023-02-15 21:10:52\",         \"Id\": \"2628bcde-ce13-554a-b47d-2b15187a02ec\",         \"Name\": \"******.tar.gz\",         \"Size\": 16783360,         \"StartTime\": \"2023-02-15 21:10:52\",         \"State\": \"finished\"     } ]",
           "member": "LogBackup",
           "name": "LogBackupSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintainTimeWindowRequest": {
+      "document": "DescribeMaintainTimeWindow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-rwwbeuyx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintainTimeWindowResponse": {
+      "document": "DescribeMaintainTimeWindow response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "postgres-esb6u38t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance start time. time zone is UTC+8.",
+          "example": "22:00",
+          "member": "string",
+          "name": "MaintainStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance duration. unit: hr.",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaintainDuration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maintenance period.",
+          "example": "[\"monday\",\"tuesday\",\"wednesday\",\"thursday\",\"friday\"]",
+          "member": "string",
+          "name": "MaintainWeekDays",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -5786,7 +6909,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "”postgres-xxx\"",
           "member": "string",
           "name": "DBInstanceId",
@@ -5812,7 +6935,7 @@
         {
           "disabled": false,
           "document": "Details of parameter modification events",
-          "example": "[     {         \"EventCount\": 1,         \"EventDetail\": [             {                 \"EffectiveTime\": \"0001-01-01 00:00:00\",                 \"EventLog\": \"\",                 \"ModifyTime\": \"2021-08-11 21:51:12\",                 \"NewValue\": \"off\",                 \"OldValue\": \"on\",                 \"Operator\": \"100130115276\",                 \"ParamName\": \"array_nulls\",                 \"State\": \"success\"             }         ],         \"ParamName\": \"array_nulls\"     } ]",
+          "example": "无",
           "member": "EventItem",
           "name": "EventItems",
           "output_required": true,
@@ -6296,6 +7419,116 @@
       ],
       "type": "object"
     },
+    "DescribeTasksRequest": {
+      "document": "DescribeTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query by task ID. the FlowId and TaskId returned in other cloud apis are equivalent.",
+          "example": "120069",
+          "member": "uint64",
+          "name": "TaskId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query by database instance ID.",
+          "example": "postgres-q6fj84vb",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Earliest start time of the task, such as 2024-08-23 00:00:00. default shows data within the last 180 days.",
+          "example": "2024-09-23 00:00:00",
+          "member": "string",
+          "name": "MinStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Latest start time of the task, such as 2024-08-23 00:00:00, defaults to the current time.",
+          "example": "2024-09-30 00:00:00",
+          "member": "string",
+          "name": "MaxStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of results displayed per page. value range 1-100. default 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Data offset, starting from 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field, supports StartTime and EndTime. defaults to StartTime.",
+          "example": "StartTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the sorting method, including ascending: `asc` and descending: `desc`. defaults to `desc`.",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTasksResponse": {
+      "document": "DescribeTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of queried tasks.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task Information List",
+          "example": "[{\"DBInstanceId\":\"postgres-bs9lnokj\",\"EndTime\":\"2024-09-30 11:27:57\",\"Progress\":100,\"StartTime\":\"2024-09-30 11:26:23\",\"Status\":\"Success\",\"TaskDetail\":{\"AllSteps\":\"\",\"Input\":\"\",\"Output\":\"\"},\"TaskId\":23,\"TaskType\":\"RestartInstance\"}]",
+          "member": "TaskSet",
+          "name": "TaskSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeZonesRequest": {
       "document": "DescribeZones request structure.",
       "members": [],
@@ -6481,63 +7714,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "Encrypted KeyId of KMS instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "空",
+          "document": "Specifies the KeyId for KMS instance encryption.",
+          "example": "975982f8-b2d5-11ef-a4a2-525400000000",
           "member": "string",
           "name": "KeyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Encryption key alias of KMS instance \nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Alias name of the KMS instance encryption Key.",
           "example": "PGSQL-KMS",
           "member": "string",
           "name": "KeyAlias",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance DEK ciphertext\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "空",
+          "document": "Specifies the ciphertext of the instance encryption key DEK.",
+          "example": "A********9",
           "member": "string",
           "name": "DEKCipherTextBlob",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether the key is enabled. Valid values: `1` (yes), `0` (no)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether the key is enabled. valid values: 1 (enabled), 0 (disabled).",
           "example": "1",
           "member": "int64",
           "name": "IsEnabled",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Region where KMS key resides\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Specifies the region of the KMS key.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "KeyRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "DEK key creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Creation time of the DEK key.",
           "example": "2014-08-03 12:00:00",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the Id of the KMS service cluster where the key resides. being empty indicates the key is in the default KMS cluster. a non-empty value indicates the key is in the specified KMS service cluster.",
+          "example": "cls-hsm-tyoxxxx",
+          "member": "string",
+          "name": "KMSClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6548,40 +7791,40 @@
         {
           "disabled": false,
           "document": "Username",
-          "example": "",
+          "example": "app_user",
           "member": "string",
           "name": "UserName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Database name",
-          "example": "",
+          "example": "user-data-db",
           "member": "string",
           "name": "Database",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error occurrence time",
-          "example": "",
+          "example": "2024-12-04 21:13:46",
           "member": "string",
           "name": "ErrTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error message",
-          "example": "",
+          "example": "2024-12-04 21:13:46.789 UTC [12345] FATAL:  password authentication failed for user \"myuser\"",
           "member": "string",
           "name": "ErrMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6593,83 +7836,83 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter name.",
           "example": "wal_level",
           "member": "string",
           "name": "ParamName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Original parameter value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Original parameter value.",
           "example": "replica",
           "member": "string",
           "name": "OldValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "New parameter value in this modification event\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "This modification specifies the expected parameter value.",
           "example": "logical",
           "member": "string",
           "name": "NewValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Start time of parameter modification\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the start time for backend parameter modification.",
           "example": "2021-08-01 02:03:04",
           "member": "string",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Start time when the modified parameter takes effect\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the start of effective time for the backend parameter.",
           "example": "2021-08-01 02:03:34",
           "member": "string",
           "name": "EffectiveTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Modification status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Modification status. valid values: in progress, success, paused.",
           "example": "success",
           "member": "string",
           "name": "State",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Operator (generally, the value is the UIN of a sub-user)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Operator (normal: user sub UIN).",
           "example": "123344",
           "member": "string",
           "name": "Operator",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Event log\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "Time log.",
+          "example": "this event is success",
           "member": "string",
           "name": "EventLog",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6679,33 +7922,33 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter name.",
           "example": "wal_level",
           "member": "string",
           "name": "ParamName",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The number of modification events\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Number of modified events.",
           "example": "1",
           "member": "int64",
           "name": "EventCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Modification event details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "document": "Last modification time.",
+          "example": "无",
           "member": "EventInfo",
           "name": "EventDetail",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6802,7 +8045,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
+          "document": "<p>Availability zone name. The value of this parameter can be obtained from the returned Zone field of the <a href=\"https://www.tencentcloud.com/document/product/409/16769?from_cn_redirect=1\">DescribeZones</a> API.</p>",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -6811,7 +8054,7 @@
         },
         {
           "disabled": false,
-          "document": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.",
+          "document": "<p>Specification ID. The value of this parameter can be obtained from the returned SpecCode field of the <a href=\"https://www.tencentcloud.com/document/product/409/89019?from_cn_redirect=1\">DescribeClasses</a> API.</p>",
           "example": "cdb.pg.z1.2g",
           "member": "string",
           "name": "SpecCode",
@@ -6820,7 +8063,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage capacity size in GB.",
+          "document": "<p>Storage capacity, in GB. The value for this parameter must be set in increments of 10.</p>",
           "example": "100",
           "member": "uint64",
           "name": "Storage",
@@ -6829,7 +8072,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.",
+          "document": "<p>Instance quantity. The maximum allowed quantity is no more than 100. If you need to create more instances at a time, please contact customer service.</p>",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -6838,7 +8081,7 @@
         },
         {
           "disabled": false,
-          "document": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.",
+          "document": "<p>Purchased duration, in months. Only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.</p>",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -6847,7 +8090,7 @@
         },
         {
           "disabled": false,
-          "document": "[Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "<p>[Deprecated and no longer effective] Billing ID. The value of this parameter can be obtained from the returned Pid field of the DescribeProductConfig API.</p>",
           "example": "11004",
           "member": "uint64",
           "name": "Pid",
@@ -6856,7 +8099,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)",
+          "document": "<p>Instance billing type. Valid values: PREPAID (prepaid, also known as yearly/monthly subscription) and POSTPAID (pay-as-you-go).<br>Default value: PREPAID.</p>",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -6865,7 +8108,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Default value: `primary`. Valid values:\n`primary` (dual-server high-availability, one-primary-one-standby)\n`readonly` (read-only instance)",
+          "document": "<p>Instance type. The default value is primary. Valid values:<br>primary (dual-server high availability (one primary and one standby)).<br>readonly (read-only instance).</p>",
           "example": "primary",
           "member": "string",
           "name": "InstanceType",
@@ -6874,10 +8117,19 @@
         },
         {
           "disabled": false,
-          "document": "<p>DB engine, default is postgresql, supports the following:<br>postgresql (TencentDB for PostgreSQL)<br>mssql_compatible (MSSQL-compatible - TencentDB for PostgreSQL)</p>",
+          "document": "<p>Database engine. The default value is postgresql. Valid values:<br>postgresql (TencentDB for PostgreSQL).<br>mssql_compatible (MSSQL compatible - TencentDB for PostgreSQL).</p>",
           "example": "postgresql",
           "member": "string",
           "name": "DBEngine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance storage type. Valid values: PHYSICAL_LOCAL_SSD: local SSD of physical machine. CLOUD_PREMIUM: Premium Disk. CLOUD_SSD: Cloud SSD. CLOUD_HSSD: Enhanced SSD.</p>",
+          "example": "PHYSICAL_LOCAL_SSD",
+          "member": "string",
+          "name": "StorageType",
           "required": false,
           "type": "string"
         }
@@ -6889,7 +8141,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Published price in US Cent",
+          "document": "<p>List price, in cents.</p>",
           "example": "27600",
           "member": "uint64",
           "name": "OriginalPrice",
@@ -6899,7 +8151,7 @@
         },
         {
           "disabled": false,
-          "document": "Discounted total amount in US Cent",
+          "document": "<p>Actual payment amount after discount, in cents.</p>",
           "example": "27600",
           "member": "uint64",
           "name": "Price",
@@ -7112,6 +8364,42 @@
       ],
       "type": "object"
     },
+    "LockAccountRequest": {
+      "document": "LockAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.\t\t",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "db_user",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LockAccountResponse": {
+      "document": "LockAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "LogBackup": {
       "document": "Log backup information of a database",
       "members": [
@@ -7217,6 +8505,51 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyAccountPrivilegesRequest": {
+      "document": "ModifyAccountPrivileges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.",
+          "example": "readonly_user",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Permission information to modify. supports batch modification. the maximum number of modifications per batch is 50.",
+          "example": "无",
+          "member": "ModifyPrivilege",
+          "name": "ModifyPrivilegeSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccountPrivilegesResponse": {
+      "document": "ModifyAccountPrivileges response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyAccountRemarkRequest": {
       "document": "ModifyAccountRemark request structure.",
@@ -7403,7 +8736,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -7412,7 +8745,7 @@
         },
         {
           "disabled": false,
-          "document": "Data Backup ID.",
+          "document": "Data backup ID. obtain through the api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343?lang=en).",
           "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
           "member": "string",
           "name": "BaseBackupId",
@@ -7692,7 +9025,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
           "example": "postgres-q12ghoq1",
           "member": "string",
           "name": "DBInstanceId",
@@ -7702,7 +9035,7 @@
         {
           "disabled": false,
           "document": "Parameters to be modified and expected values.",
-          "example": "[     {         \"Name\": \"max_replication_slots\",         \"ExpectedValue\": \"20\"     } ]",
+          "example": "无",
           "member": "ParamEntry",
           "name": "ParamList",
           "required": true,
@@ -7714,6 +9047,16 @@
     "ModifyDBInstanceParametersResponse": {
       "document": "ModifyDBInstanceParameters response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "5423",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -7766,6 +9109,61 @@
           "member": "int64",
           "name": "FlowId",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSSLConfigRequest": {
+      "document": "ModifyDBInstanceSSLConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-6bwgamo3",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Turn on or off SSL. true - turn on; false - turn off.",
+          "example": "true",
+          "member": "bool",
+          "name": "SSLEnabled",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The unique connection address protected by an SSL certificate. for a primary instance, it can be set to private and public IP addresses. for a read-only instance, it can be set to the instance IP or read-only group IP. this parameter is required when enabling SSL or modifying the SSL-protected connection address. it will be ignored when disabling SSL.",
+          "example": "10.0.0.4",
+          "member": "string",
+          "name": "ConnectAddress",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceSSLConfigResponse": {
+      "document": "ModifyDBInstanceSSLConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "5423",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7996,12 +9394,111 @@
       ],
       "type": "object"
     },
+    "ModifyDatabaseOwnerRequest": {
+      "document": "ModifyDatabaseOwner request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
+          "example": "postgres-mnhbbw99",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).",
+          "example": "alice_database",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "example": "alice",
+          "member": "string",
+          "name": "DatabaseOwner",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDatabaseOwnerResponse": {
+      "document": "ModifyDatabaseOwner response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintainTimeWindowRequest": {
+      "document": "ModifyMaintainTimeWindow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-c4wtbx1f",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance start time. time zone is UTC+8.",
+          "example": "22:00",
+          "member": "string",
+          "name": "MaintainStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maintenance duration. unit: hr. value range: [1,4].",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaintainDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the maintenance period.",
+          "example": "[\"monday\",\"tuesday\",\"wednesday\",\"thursday\",\"friday\"]",
+          "member": "string",
+          "name": "MaintainWeekDays",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintainTimeWindowResponse": {
+      "document": "ModifyMaintainTimeWindow response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyParameterTemplateRequest": {
       "document": "ModifyParameterTemplate request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Parameter template ID, which uniquely identifies a parameter template and cannot be modified.",
+          "document": "Specifies the parameter template ID, which uniquely identifies the parameter template and cannot be modified. it can be obtained through the api [DescribeParameterTemplates](https://www.tencentcloud.com/document/product/409/52651?lang=en).",
           "example": "497857b4-4676-5583-8359-b697fe5968d9",
           "member": "string",
           "name": "TemplateId",
@@ -8020,7 +9517,7 @@
         {
           "disabled": false,
           "document": "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this parameter is not passed in, the original parameter template description will be used.",
-          "example": "test",
+          "example": "ThisTemplateIsUsedForTestingEnvironment",
           "member": "string",
           "name": "TemplateDescription",
           "required": false,
@@ -8029,7 +9526,7 @@
         {
           "disabled": false,
           "document": "The set of parameters to be modified or added. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.",
-          "example": "无",
+          "example": "[     {         \"Name\": \"max_wal_senders\",         \"ExpectedValue\": \"360\"     },     {         \"Name\": \"max_logical_replication_workers\",         \"ExpectedValue\": \"360\"     } ]",
           "member": "ParamEntry",
           "name": "ModifyParamEntrySet",
           "required": false,
@@ -8049,6 +9546,90 @@
     },
     "ModifyParameterTemplateResponse": {
       "document": "ModifyParameterTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPrivilege": {
+      "document": "Specifies the permissions for modifying a database object, including the data structure of the database object description, the list of permissions required for modification, and the modification type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the database object and permission list to be modified.",
+          "example": "\"Object\":{\"ObjectType\":\"table\",\"ObjectName\":\"test_table\",\"DatabaseName\":\"test_database\",\"SchemaName\":\"test_schema\"},\"Privileges\":[\"SELECT\"]",
+          "member": "DatabasePrivilege",
+          "name": "DatabasePrivilege",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modifies via grantObject, revokeObject, or alterRole. grantObject represents authorization, revokeObject represents withdraw, alterRole represents modify account type.",
+          "example": "grantObject",
+          "member": "string",
+          "name": "ModifyType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is required only when ModifyType is revokeObject. when set to true, the permission will be revoked with cascading effect. default false.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsCascade",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyReadOnlyDBInstanceWeightRequest": {
+      "document": "ModifyReadOnlyDBInstanceWeight request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "pgro-xxxx",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ReadOnlyGroupId. specifies the read-only group ID, which can be obtained through the api [DescribeReadOnlyGroups](https://www.tencentcloud.com/document/product/409/39725?lang=en).",
+          "example": "pgrogp-xxx",
+          "member": "string",
+          "name": "ReadOnlyGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the traffic weight of the read-only instance in the read-only group. valid values: 1-50.",
+          "example": "10",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyReadOnlyDBInstanceWeightResponse": {
+      "document": "ModifyReadOnlyDBInstanceWeight response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8432,8 +10013,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of postgres-hez4fh0v",
-          "example": "",
+          "document": "Specifies the instance ID, such as postgres-hez4fh0v. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/product/409/16773?lang=en).",
+          "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -8441,8 +10022,8 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
-          "example": "",
+          "document": "Specifies whether to enable public network Ipv6. valid values: 1 (yes), 0 (no).\nDefault value: 0",
+          "example": "0",
           "member": "int64",
           "name": "IsIpv6",
           "required": false,
@@ -8456,10 +10037,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task flow ID",
-          "example": "1234",
+          "document": "Process ID. FlowId is equivalent to TaskId.",
+          "example": "47161",
           "member": "int64",
           "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "47161",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8539,73 +10131,73 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter ID",
           "example": "0",
           "member": "int64",
           "name": "ID",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter name.",
           "example": "wal_level",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).\nFor an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. \nFor a `bool` parameter, the valid values include `true` and `false`; \nFor an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter value type: integer, real, bool, enum, mutil_enum.\nWhen the parameter type is integer or real (floating-point), the value range is determined based on the Max and Min of the return value. \nWhen the parameter type is boolean, the valid values are true or false. \nWhen the parameter type is enum (enumeration type) or mutil_enum (multi-enum type), the valid values are determined by EnumValue in the return value.",
           "example": "integer",
           "member": "string",
           "name": "ParamValueType",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter value unit. returns null if the parameter has no units.",
           "example": "ms",
           "member": "string",
           "name": "Unit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Default value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Default parameter value. returns in string form.",
           "example": "replica",
           "member": "string",
           "name": "DefaultValue",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Current value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the current value in string form.",
           "example": "replica",
           "member": "string",
           "name": "CurrentValue",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The maximum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the numerical type (integer, real) parameter and its lower bound.",
           "example": "0",
           "member": "float",
           "name": "Max",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8619,103 +10211,103 @@
         },
         {
           "disabled": false,
-          "document": "The minimum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Numerical type (integer, real) parameter specifies the upper bound.",
           "example": "1000",
           "member": "float",
           "name": "Min",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter description in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Chinese description.",
           "example": "此参数决定记录到日志的信息，不允许设置为minimal",
           "member": "string",
           "name": "ParamDescriptionCH",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter description in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the english description of the parameter.",
           "example": "Set the level of information written to the WAL.",
           "member": "string",
           "name": "ParamDescriptionEN",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies whether a restart is required for parameter modification (true indicates required, false indicates not required).",
           "example": "false",
           "member": "bool",
           "name": "NeedReboot",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter category in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter chinese category.",
           "example": "WAL",
           "member": "string",
           "name": "ClassificationCN",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter category in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Parameter english category.",
           "example": "Write-Ahead Log",
           "member": "string",
           "name": "ClassificationEN",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies whether it is related to the specification (true for related, false for unrelated).",
           "example": "false",
           "member": "bool",
           "name": "SpecRelated",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Indicates whether it is a key parameter (true means it is a key parameter, modification requires special attention and may affect instance performance).",
           "example": "false",
           "member": "bool",
           "name": "Advanced",
           "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The last modified time of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the last modified time.",
           "example": "2021-08-01 02:03:04",
           "member": "string",
           "name": "LastModifyTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter primary-secondary constraints, `0`: No constraint, `1`: Standby parameter value must be greater than that of the primary machine, `2`: Primary parameter value must be greater than that of the standby machine.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter primary-secondary constraints. `0`: no constraint between primary and standby. `1`: standby parameter value > primary machine parameter value. `2`: primary parameter value must be greater than that of the standby machine.",
           "example": "0",
           "member": "int64",
           "name": "StandbyRelated",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8745,63 +10337,63 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter name.",
           "example": "wal_level",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The specification that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter information belonging to specification.",
           "example": "2G",
           "member": "string",
           "name": "Memory",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The default parameter value under this specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Default value of the parameter for this specification.",
           "example": "1",
           "member": "string",
           "name": "Value",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter value unit. returns null if the parameter has no units.",
           "example": "s",
           "member": "string",
           "name": "Unit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Numerical type (integer, real) parameter specifies the upper bound.",
           "example": "20000",
           "member": "float",
           "name": "Max",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the numerical type (integer, real) parameter and its lower bound.",
           "example": "0",
           "member": "float",
           "name": "Min",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8821,63 +10413,63 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter name.",
           "example": "wal_level",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The kernel version that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter information belonging to kernel version.",
           "example": "v14.1_r1.2",
           "member": "string",
           "name": "DBKernelVersion",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Default parameter value under the kernel version and specification of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Default value of the parameter for this version and specification.",
           "example": "1",
           "member": "string",
           "name": "Value",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parameter value unit. returns null if the parameter has no units.",
           "example": "s",
           "member": "string",
           "name": "Unit",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Numerical type (integer, real) parameter specifies the upper bound.",
           "example": "20000",
           "member": "float",
           "name": "Max",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the numerical type (integer, real) parameter and its lower bound.",
           "example": "0",
           "member": "float",
           "name": "Min",
           "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -9023,7 +10615,7 @@
           "example": "ACCEPT",
           "member": "string",
           "name": "Action",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9033,7 +10625,7 @@
           "example": "0.0.0.0/0",
           "member": "string",
           "name": "CidrIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9043,7 +10635,7 @@
           "example": "ALL",
           "member": "string",
           "name": "PortRange",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9053,7 +10645,7 @@
           "example": "icmp",
           "member": "string",
           "name": "IpProtocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9063,7 +10655,7 @@
           "example": "放通Ping服务",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9660,7 +11252,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9670,27 +11262,27 @@
           "example": "2022-10-20 21:38:20",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Inbound rule",
-          "example": "无",
+          "example": "[     {         \"Action\": \"ACCEPT\",         \"CidrIp\": \"0.0.0.0/0\",         \"Description\": \"放通Ping服务\",         \"IpProtocol\": \"icmp\",         \"PortRange\": \"ALL\"     },     {         \"Action\": \"ACCEPT\",         \"CidrIp\": \"::/0\",         \"Description\": \"放通Ping服务\",         \"IpProtocol\": \"icmpv6\",         \"PortRange\": \"ALL\"     } ]",
           "member": "PolicyRule",
           "name": "Inbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Outbound rule",
-          "example": "无",
+          "example": "[     {         \"Action\": \"ACCEPT\",         \"CidrIp\": \"0.0.0.0/0\",         \"Description\": \"\",         \"IpProtocol\": \"ALL\",         \"PortRange\": \"ALL\"     },     {         \"Action\": \"ACCEPT\",         \"CidrIp\": \"\",         \"Description\": \"\",         \"IpProtocol\": \"ALL\",         \"PortRange\": \"ALL\"     } ]",
           "member": "PolicyRule",
           "name": "Outbound",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -9700,7 +11292,7 @@
           "example": "sg-mpkb1net",
           "member": "string",
           "name": "SecurityGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9710,7 +11302,7 @@
           "example": "securitygroup",
           "member": "string",
           "name": "SecurityGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9720,7 +11312,7 @@
           "example": "安全组",
           "member": "string",
           "name": "SecurityGroupDescription",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10349,6 +11941,219 @@
         }
       ],
       "usage": "both"
+    },
+    "TaskDetail": {
+      "document": "Task details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current task step name.",
+          "example": "Pre-check",
+          "member": "string",
+          "name": "CurrentStep",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Describes the step description of the current task you own.",
+          "example": "[{\"stepID\":1,\"stepName\":\"Pre-check\"},{\"stepID\":2,\"stepName\":\"Initialize New Instance\"},{\"stepID\":3,\"stepName\":\"Download Base Backup\",\"stepProcess\":100},{\"stepID\":4,\"stepName\":\"Add Instance Management Process\"},{\"stepID\":5,\"stepName\":\"Task Complete\"}]",
+          "member": "string",
+          "name": "AllSteps",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of the task.",
+          "example": "{\"DBInstanceId\":\"postgres-5gevh7gr\",\"IsAssignVip\":false,\"SubnetId\":\"subnet-cd0t5777\",\"Vip\":\"\",\"VpcId\":\"vpc-n0ofy999\"}",
+          "member": "string",
+          "name": "Input",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output parameter of the task.",
+          "example": "{\"DBInstanceId\":\"postgres-5gevh7gr\",\"DBInstanceNetInfo\":{\"Address\":\"\",\"Ip\":\"10.0.0.1\",\"Port\":5432,\"Status\":\"opened\",\"NetType\":\"private\",\"VpcId\":\"vpc-n0ofy999\",\"SubnetId\":\"subnet-cd0t5m77\",\"ProtocolType\":\"postgresql\"}}",
+          "member": "string",
+          "name": "Output",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the switch time after instance configurations are modified. default value: 0.\nThis task does not require switching.\nSwitch immediately.\n2: switch at specified time.\n3: switch during maintenance time window.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SwitchTag",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the switch time.",
+          "example": "03:00:00-04:00:00",
+          "member": "string",
+          "name": "SwitchTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Note of the task.",
+          "example": "This task requires a reboot",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TaskSet": {
+      "document": "Task list information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TaskId",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the task type.",
+          "example": "CloneInstance",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID of the task instance.",
+          "example": "postgres-6jt3ml1r",
+          "member": "string",
+          "name": "DBInstanceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the task.",
+          "example": "2024-08-22 10:06:38",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task end time.",
+          "example": "2024-08-22 10:06:38",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the task Running status, including Running, Success, WaitSwitch, Fail, Pause.",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the progress of task execution, with a value range of 0-100.",
+          "example": "75",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the task details.",
+          "example": "无",
+          "member": "TaskDetail",
+          "name": "TaskDetail",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UnlockAccountRequest": {
+      "document": "UnlockAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.\t\t",
+          "example": "postgres-4sfuv15b\t",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "bob_admin",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnlockAccountResponse": {
+      "document": "UnlockAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpgradeDBInstanceKernelVersionRequest": {
       "document": "UpgradeDBInstanceKernelVersion request structure.",
