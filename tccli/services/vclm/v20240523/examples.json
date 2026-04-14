@@ -15,6 +15,14 @@
         "output": "{\n    \"Response\": {\n        \"JobId\": \"1194931538865782784\",\n        \"RequestId\": \"4e6722ba-367b-454e-add0-681a5c50fe20\"\n    }\n}",
         "title": "Successful API call example"
       }
+    ],
+    "SubmitImageToVideoViduJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vclm.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitImageToVideoViduJob\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1384472585461940224\",\n        \"RequestId\": \"3ca4a3d1-28c7-4be5-a394-5902c97dcca4\"\n    }\n}",
+        "title": "Calling the API"
+      }
     ]
   },
   "version": "1.0"

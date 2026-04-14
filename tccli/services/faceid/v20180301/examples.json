@@ -24,6 +24,48 @@
         "title": "Apply Web Verification BizToken"
       }
     ],
+    "BankCard2EVerification": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCard2EVerification\n&Name=Wei Xiaobao\n&BankCard= 6225768888888888\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Authentication passed\",\n        \"RequestId\": \"c6daaf7f-dbdc-4a9d-a20b-9a14ffdd8328\"\n    }\n}",
+        "title": "Verification Match Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCard2EVerification\n&Name=Wei Xiaobao\n&BankCard= 6226090210146748\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"-4\",\n\"Description\": \"Cardholder information is incorrect\"\n        \"RequestId\": \"d668328c-7847-42d7-bdce-215ebadffd9b\"\n    }\n}",
+        "title": "Verification Mismatch Example"
+      }
+    ],
+    "BankCard4EVerification": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCard4EVerification\n&Name=Wei Xiaobao\n&BankCard=6225768888888888\n&Phone=16137688175\n&IdCard=11204416541220243X\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Authentication passed\",\n        \"RequestId\": \"74e742e8-f91d-49c3-9744-c20f3baca117\"\n    }\n}",
+        "title": "Verification Match Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCard4EVerification\n&Name=Wei Xiaobao\n&BankCard=6226090210146748\n&Phone=16137688175\n&IdCard= 11204416541220243X\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"-6\",\n\"Description\": \"Cardholder information is incorrect\"\n        \"RequestId\": \"24fe7851-49e9-4a4a-ac1e-3bd5c09323fd\"\n    }\n}",
+        "title": "Verification Mismatch Example"
+      }
+    ],
+    "BankCardVerification": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCardVerification\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&BankCard= 6226090210146748\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Authentication passed\",\n        \"RequestId\": \"a5fdb909-5ee6-43ff-a152-bb1b9744ee8b\"\n    }\n}",
+        "title": "Verification Match Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=BankCardVerification\n&IdCard= 11204416541220243X\n&Name=Wei Xiaobao\n&BankCard= 6225768888888888\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"-1\",\n        \"Description\": \"Authentication failed\",\n        \"RequestId\": \"89f695b2-18fd-44b6-bffc-96972052666f\"\n    }\n}",
+        "title": "Verification Mismatch Example"
+      }
+    ],
     "CompareFaceLiveness": [
       {
         "document": "Liveness detection and face comparison passed. Determined to be the same person.",
@@ -128,6 +170,14 @@
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LivenessCompare\n<Common Request Parameters>\n\n{\n    \"LivenessType\": \"SILENT\",\n    \"ImageBase64\": \"/9j/4AAQSk...GArFYH/9k=\",\n    \"VideoBase64\": \"AAAAIGZ0eX...cBQCKAowc=\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrameBase64\": \"/9j/4AAQSk...W8+nU//9k=\",\n        \"BestFrameList\": [\n            \"/9j/4AAQSk...px72+8/9k=\"\n        ],\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
         "title": "Silent Liveness Face Comparison Success Example"
+      }
+    ],
+    "VideoLivenessCompare": [
+      {
+        "document": " ",
+        "input": "https://faceid.tencentcloudapi.com/?Action=VideoLivenessCompare\n&ImageUrl=<ImageUrl>\n&VideoUrl=<VideoUrl>\n&LivenessType=SILENT\n&ImageMd5=682e24b207acf1825286c1fceef5631c\n&VideoMd5=682e24b207acf1825286c1fceef5631c\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrame\": {\n            \"Url\": \"https://intl-reflect-h5-1257237511.cos.ap-guangzhou.myqcloud.com\",\n            \"MD5\": \"682e24b207acf1825286c1fceef5631c\",\n            \"Size\": 9430792\n        },\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
+        "title": "Detecting liveness in silent mode and comparing face"
       }
     ]
   },

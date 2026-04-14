@@ -21,6 +21,27 @@
       "output": "ApplyWebVerificationBizTokenIntlResponse",
       "status": "online"
     },
+    "BankCard2EVerification": {
+      "document": "This API is used to validate the authenticity and consistency of the name and bank card number.",
+      "input": "BankCard2EVerificationRequest",
+      "name": "Bank Card Information Verification(2 input params)",
+      "output": "BankCard2EVerificationResponse",
+      "status": "online"
+    },
+    "BankCard4EVerification": {
+      "document": "This API is used to verify the authenticity and consistency of the bank card number, name, ID number, and mobile number for account opening.",
+      "input": "BankCard4EVerificationRequest",
+      "name": "Bank Card Information Verification(4 input params)",
+      "output": "BankCard4EVerificationResponse",
+      "status": "online"
+    },
+    "BankCardVerification": {
+      "document": "This API is used to verify the authenticity and consistency of the bank card number, name, and ID number of information.",
+      "input": "BankCardVerificationRequest",
+      "name": "Bank Card Information Verification(3 input params)",
+      "output": "BankCardVerificationResponse",
+      "status": "online"
+    },
     "CompareFaceLiveness": {
       "document": "This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.",
       "input": "CompareFaceLivenessRequest",
@@ -96,6 +117,13 @@
       "input": "LivenessCompareRequest",
       "name": "Detects liveness and compares faces",
       "output": "LivenessCompareResponse",
+      "status": "online"
+    },
+    "VideoLivenessCompare": {
+      "document": "This API is used to pass in URLs of a video and a photo, determine whether the person in the video is real, and if yes, then determine whether the person in the video is the same as that in the photo.",
+      "input": "VideoLivenessCompareRequest",
+      "name": "Detects liveness and compares face based on video",
+      "output": "VideoLivenessCompareResponse",
       "status": "online"
     }
   },
@@ -388,7 +416,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. \nAfter the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.\nExample: https://www.tencentcloud.com/products/faceid.",
+          "document": "Web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. \nAfter the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.\nExample: https://www.tencentcloud.com/products/faceid.",
           "example": "https://www.tencentcloud.com/products/faceid",
           "member": "string",
           "name": "RedirectURL",
@@ -557,6 +585,246 @@
         }
       ],
       "usage": "out"
+    },
+    "BankCard2EVerificationRequest": {
+      "document": "BankCard2EVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "韦小宝",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bank card.",
+          "example": "6225768888888888",
+          "member": "string",
+          "name": "BankCard",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sensitive data encryption info.\n- Users with encryption requirements for incoming information (name, bank card number) can use this parameter. For details, please click the left-side link.",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCard2EVerificationResponse": {
+      "document": "BankCard2EVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Verification result code.\n-Billing result code:\n'0': 'Authentication passed'.\n'-1': 'Authentication failed'.\n'-4': 'Cardholder information is incorrect'.\n'-5': 'Cardless payment not enabled'.\n'-6': 'Card confiscated'.\n'-7': 'Invalid card number'.\n'-8': 'No corresponding issuing bank for this card'.\n'-9': 'The card is uninitialized or a Sleep Card'.\n'-10': 'Cheat card, card confiscation'.\n'-11': 'Reported lost'.\n'-12': 'The card has expired'.\n'-13': 'Restricted card'.\n'-14': 'Number of password errors exceeds the limit'.\n'-15': 'Issuer does not support this transaction'.\n'-18': 'Card status exception or card number error'.\n\n-Non-billing Result Code:\n'-2': 'Name verification failed'.\n'-3': 'Incorrect bank card number format'.\n'-16': 'Verification Center Service busy'.\n'-17': 'Verification attempts exceeded. Please retry the next day.'\n",
+          "example": "0",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business result description.",
+          "example": "认证通过",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCard4EVerificationRequest": {
+      "document": "BankCard4EVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "韦小宝",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bank card.",
+          "example": "6225768888888888",
+          "member": "string",
+          "name": "BankCard",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number.",
+          "example": "16137688175",
+          "member": "string",
+          "name": "Phone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID number for account opening.\n-The document type must match the Type parameter, for example: input the ID card number for an identity card.",
+          "example": "11204416541220243X",
+          "member": "string",
+          "name": "IdCard",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document type.\n-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.\n-Currently defaults to 0: ID card. Other document types are not currently supported.",
+          "example": "0",
+          "member": "int64",
+          "name": "CertType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sensitive data encryption info.\n-Users with encryption requirements for incoming information (name, identity card number, mobile number, bank card number) can use this parameter. For details, please click the left-side link.",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCard4EVerificationResponse": {
+      "document": "BankCard4EVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Verification result code.\n-Result code for charges\n'0': 'Authentication passed'.\n'-1': 'Authentication failed'.\n'-6': 'Cardholder information is incorrect'.\n'-7': 'Cardless payment not enabled'.\n'-8': 'Card confiscated'.\n'-9': 'Invalid card number'.\n'-10': 'No corresponding issuing bank for this card'.\n'-11': 'The card is uninitialized or a Sleep Card'.\n'-12': 'Cheat card, card confiscation'.\n'-13': 'Reported lost'.\n'-14': 'The card has expired.'\n'-15': 'Restricted card'.\n'-16': 'Exceeded the number of password errors'.\n'-17': 'Issuer does not support this transaction'.\n'-21': 'Card status exception or card number error'.\n\n-Result code with no charge\n'-2': 'Name verification failed'.\n'-3': 'Identity number error'.\n'-4': 'Incorrect bank card number format'.\n'-5': 'Invalid phone number'.\n'-18': 'Verification Center Service busy'.\n'-19': 'Exceeded maximum verification attempts. Please retry the next day.'\n'-20': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'",
+          "example": "0",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business result description.",
+          "example": "认证通过",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCardVerificationRequest": {
+      "document": "BankCardVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID number for account opening.\n-The document type must match the Type parameter, for example: input the ID card number for an identity card.",
+          "example": "440111201903211111",
+          "member": "string",
+          "name": "IdCard",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "韦小宝",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bank card.",
+          "example": "6225768888888888",
+          "member": "string",
+          "name": "BankCard",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document type.\n-Please confirm this document is the document type used when opening an account. Document information not used for account opening is not supported for verification.\n-Currently default: 0 ID card. Other document types are not currently supported.",
+          "example": "0",
+          "member": "int64",
+          "name": "CertType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sensitive data encryption info.\n-Users with encryption requirements for incoming information (name, identity card number, bank card number) can use this parameter. For details, please click the left-side link.",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "BankCardVerificationResponse": {
+      "document": "BankCardVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Verification result code.\n-Result code for charges\n'0': 'Authentication passed'.\n'-1': 'Authentication failed'.\n'-5': 'Cardholder information is incorrect'.\n'-6': 'Cardless payment not enabled'.\n'-7': 'Card confiscated'.\n'-8': 'Invalid card number'.\n'-9': 'No corresponding issuing bank for this card'.\n'-10': 'The card is uninitialized or a Sleep Card'.\n'-11': 'Cheat card, card retention'.\n'-12': 'Reported lost'.\n'-13': 'The card has expired.'\n'-14': 'Restricted card'.\n'-15': 'Exceeded the number of password errors.'\n'-16': 'Issuer does not support this transaction'.\n'-20': 'Card status exception or card number error'.\n\n-Result code with no charge\n'-2': 'Name verification failed'.\n'-3': 'Identity number error'.\n'-4': 'Incorrect bank card number format'.\n'-17': 'Verification Center Service busy'.\n'-18': 'Exceeded verification attempts. Please retry the next day.'\n'-19': 'The ID number is not currently supported for verification. Currently only support second-generation resident identity card.'\t",
+          "example": "0",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business result description.",
+          "example": "认证通过",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CardInfo": {
       "document": "License OCR result",
@@ -1422,11 +1690,11 @@
       "usage": "out"
     },
     "Encryption": {
-      "document": "Sensitive Data Encryption",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "When using the encryption service, fill in the fields to be encrypted. One or more encrypted fields can be entered in this interface.",
+          "document": "<p>When using the encryption service, fill in the field to be encrypted. One or more encrypted fields can be auto-filled in this API.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"string\"]",
           "member": "string",
           "name": "EncryptList",
@@ -1437,7 +1705,7 @@
         },
         {
           "disabled": false,
-          "document": "Symmetric key after encryption. For the generation and usage of the key, please refer to the <a href=\"https://www.tencentcloud.com/document/product/1061/77849?lang=en&pg=\">Data Encryption</a> document.",
+          "document": "<p>Encrypted symmetric key. See the <a href=\"https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1\">data encryption</a> document for key generation and use.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
           "name": "CiphertextBlob",
@@ -1448,7 +1716,7 @@
         },
         {
           "disabled": false,
-          "document": "initialization vector for CBC encryption (a customer-defined string with a length of 16 characters).",
+          "document": "<p>Users with encryption requirements import the initial vector for CBC encryption (custom string with a length of 16 characters).</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
           "name": "Iv",
@@ -1459,7 +1727,7 @@
         },
         {
           "disabled": false,
-          "document": "Encryption algorithm (supports 'AES-256-CBC'/'SM4-GCM'); default: 'AES-256-CBC' if not specified.",
+          "document": "<p>Encryption algorithm (supports 'AES-256-CBC', 'SM4-GCM'). Defaults to 'AES-256-CBC' if not specified.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "SM4-GCM",
           "member": "string",
           "name": "Algorithm",
@@ -1470,7 +1738,7 @@
         },
         {
           "disabled": false,
-          "document": "Message digest generated by the SM4-GCM algorithm (used for verifying message integrity).",
+          "document": "<p>Message digest generated by the SM4-GCM algorithm (used when verifying message integrity)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"string\"]",
           "member": "string",
           "name": "TagList",
@@ -5177,6 +5445,118 @@
       ],
       "usage": "out"
     },
+    "VideoLivenessCompareRequest": {
+      "document": "VideoLivenessCompare request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.\n\nThe image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The 32-bit MD5 checksum of the image for comparison",
+          "example": "682e24b207acf1825286c1fceef5631c",
+          "member": "string",
+          "name": "ImageMd5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.\n\nThe video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The 32-bit MD5 checksum of the video",
+          "example": "682e24b207acf1825286c1fceef5631c",
+          "member": "string",
+          "name": "VideoMd5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "LivenessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "LIP parameter: Pass in a custom 4-digit verification code.\nACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).\nSILENT parameter: Null.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ValidateData",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VideoLivenessCompareResponse": {
+      "document": "VideoLivenessCompare response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).",
+          "example": "\"\"",
+          "member": "float",
+          "name": "Sim",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Result",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The service result description",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The best video screenshot after successful verification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "FileInfo",
+          "name": "BestFrame",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "WebVerificationConfigIntl": {
       "document": "eKYC Web related configuration",
       "members": [
@@ -5227,7 +5607,7 @@
         },
         {
           "disabled": false,
-          "document": "Liveness security level, the default value is 3. The currently supported security level are as follows:\n1:Silent mode;\n2:Action mode;\n3:Lighting mode;\n4:Action+Lighting mode;\n5:Action+Lighting(High security) mode.\nExample: 4",
+          "document": "Liveness security level, the default value is 3. The currently supported security level are as follows:\n1:Silent mode;\n2:Action mode;\n3:Lighting mode;\n4:Action+Lighting mode;\n5:Action+Lighting(High security) mode. This mode offers higher security but has a lower pass rate. Please contact us before use.\n\nExample: 4",
           "example": "3",
           "member": "int64",
           "name": "SecurityLevel",
@@ -5323,6 +5703,15 @@
           "name": "AllowExpiredDocument",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Service version, including Basic version (BASIC) and PLUS version (PLUS). The currently supported service version are as follows:\nBASIC: Basic version.\nPLUS: PLUS version.\nThe default value is BASIC.",
+          "example": "BASIC",
+          "member": "string",
+          "name": "Version",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
