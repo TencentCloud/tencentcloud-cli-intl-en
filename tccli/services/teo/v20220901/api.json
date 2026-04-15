@@ -4903,7 +4903,7 @@
       "usage": "both"
     },
     "CacheKeyParameters": {
-      "document": "Custom Cache Key configuration parameters. The FullURLCache and QueryString parameters are combined. For specific examples, refer to:\n- Retain all query strings. Enable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"on\",\n    \"QueryString\": {\n      \"Switch\": \"off\"\n    },\n    \"IgnoreCase\": \"on\"\n  }\n}\n```\n- Ignore all query strings. Enable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n      \"Switch\": \"off\"\n    },\n    \"IgnoreCase\": \"on\"\n  }\n}\n```\n- Retain specified query string parameters. Disable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n        \"Switch\": \"on\",\n        \"Action\": \"includeCustom\",\n        \"Values\": [\"name1\",\"name2\",\"name3\"]\n    },\n    \"IgnoreCase\": \"off\"\n  }\n}\n```\n-Query string ignore specified parameters. Disable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n        \"Switch\": \"on\",\n        \"Action\": \"excludeCustom\",\n        \"Values\": [\"name1\",\"name2\",\"name3\"]\n    },\n    \"IgnoreCase\": \"off\"\n  }\n}\n```",
+      "document": "Custom Cache Key configuration parameters.",
       "members": [
         {
           "disabled": false,
