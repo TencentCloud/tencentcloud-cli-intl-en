@@ -8,5 +8,6 @@
         "title": "Querying Resource utilization in Cloud Dedicated Zone"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

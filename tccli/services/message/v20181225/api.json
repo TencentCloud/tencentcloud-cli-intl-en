@@ -1,7 +1,7 @@
 {
   "actions": {
     "ModifySendChannelOnMsgTypes": {
-      "document": "This API is used to batch modify delivery methods.",
+      "document": "This API is used to batch modify delivery methods",
       "input": "ModifySendChannelOnMsgTypesRequest",
       "name": "Batch modify message reception channel",
       "output": "ModifySendChannelOnMsgTypesResponse",
@@ -19,7 +19,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Message sending channel.",
+          "document": "Message sending channel",
           "example": "",
           "member": "SendType",
           "name": "SendTypes",

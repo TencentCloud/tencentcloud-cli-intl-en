@@ -161,7 +161,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Unique id of the cloud dedicated zone.",
+          "document": "Unique id of the cloud dedicated zone",
           "example": "cdz-8wbc41r9",
           "member": "string",
           "name": "CdzId",
@@ -229,5 +229,6 @@
       ],
       "usage": "out"
     }
-  }
+  },
+  "version": "1.0"
 }

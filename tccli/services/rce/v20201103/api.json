@@ -1,7 +1,7 @@
 {
   "actions": {
     "DescribeRiskAssessment": {
-      "document": "This API is used to query risk assessment results.",
+      "document": "This API is used to query risk assessment results",
       "input": "DescribeRiskAssessmentRequest",
       "name": "Queries risk assessment results",
       "output": "DescribeRiskAssessmentResponse",

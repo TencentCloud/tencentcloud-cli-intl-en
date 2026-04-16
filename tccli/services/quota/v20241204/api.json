@@ -185,7 +185,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Alarm rule name. specifies the name of the Alarm rule.",
+          "document": "Alarm rule name. specifies the name of the Alarm rule",
           "example": "监控告警",
           "member": "string",
           "name": "Name",
@@ -231,7 +231,7 @@
         {
           "disabled": false,
           "document": "Alarm frequency.",
-          "example": "2",
+          "example": "900",
           "member": "int64",
           "name": "Frequency",
           "required": true,
