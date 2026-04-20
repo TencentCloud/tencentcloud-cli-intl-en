@@ -725,7 +725,7 @@
       "usage": "both"
     },
     "CdnDomainInfo": {
-      "document": "Channel-associated domain information list.",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -909,7 +909,7 @@
       "usage": "both"
     },
     "CosInputInfo": {
-      "document": "cos input information",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -1406,6 +1406,15 @@
           "name": "AdBreaks",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.",
+          "example": "PreCaching",
+          "member": "string",
+          "name": "VodAcquisitionMethod",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3601,7 +3610,7 @@
       "type": "object"
     },
     "DomainRecordInfo": {
-      "document": "Channel-associated domain record information.",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -4223,7 +4232,7 @@
         {
           "disabled": false,
           "document": "Channel linear assembly program information.",
-          "example": "无",
+          "example": "178",
           "member": "string",
           "name": "Name",
           "output_required": false,
@@ -4234,7 +4243,7 @@
         {
           "disabled": false,
           "document": "The type of the arrangement target source, divided into live broadcast and on-demand.",
-          "example": "无",
+          "example": "VOD",
           "member": "string",
           "name": "SourceType",
           "output_required": false,
@@ -4245,7 +4254,7 @@
         {
           "disabled": false,
           "document": "The associated source location id.",
-          "example": "无",
+          "example": "672B1348000043DF1091",
           "member": "string",
           "name": "SourceLocationId",
           "output_required": false,
@@ -4256,7 +4265,7 @@
         {
           "disabled": false,
           "document": "SourceId, uniquely identifies a source.",
-          "example": "无",
+          "example": "695DD7991D3E67AC3075",
           "member": "string",
           "name": "SourceId",
           "output_required": false,
@@ -4267,7 +4276,7 @@
         {
           "disabled": false,
           "document": "The associated live broadcast or on-demand broadcast, source name, and location are globally unique.",
-          "example": "无",
+          "example": "test_source",
           "member": "string",
           "name": "SourceName",
           "output_required": false,
@@ -4278,7 +4287,7 @@
         {
           "disabled": false,
           "document": "The bound channel.",
-          "example": "无",
+          "example": "695F7F2D1D3E679B61BC",
           "member": "string",
           "name": "AttachedChannel",
           "output_required": false,
@@ -4311,7 +4320,7 @@
         {
           "disabled": false,
           "document": "ID.",
-          "example": "无",
+          "example": "695F837B1D3E68092A75",
           "member": "string",
           "name": "Id",
           "output_required": false,
@@ -4322,7 +4331,7 @@
         {
           "disabled": false,
           "document": "Region.",
-          "example": "无",
+          "example": "ap-mumbai",
           "member": "string",
           "name": "Region",
           "output_required": false,
@@ -4333,9 +4342,20 @@
         {
           "disabled": false,
           "document": "SourceLocation name.",
-          "example": "无",
+          "example": "live_name",
           "member": "string",
           "name": "SourceLocationName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported",
+          "example": "PreCaching",
+          "member": "string",
+          "name": "VodAcquisitionMethod",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -4865,6 +4885,15 @@
           "name": "AdBreaks",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "VOD acquisition methods, supporting PreCaching and DynamicUpdating, with PreCaching as the default, and only Linear channels are supported.",
+          "example": "PreCaching",
+          "member": "string",
+          "name": "VodAcquisitionMethod",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5666,7 +5695,7 @@
       "usage": "both"
     },
     "SSAIChannelInfo": {
-      "document": "Ad insertion channel configuration information.",
+      "document": "",
       "members": [
         {
           "disabled": false,
