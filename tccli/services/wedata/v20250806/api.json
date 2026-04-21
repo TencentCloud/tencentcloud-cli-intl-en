@@ -875,6 +875,13 @@
       "output": "ListTenantRolesResponse",
       "status": "online"
     },
+    "ListTriggerTaskRuns": {
+      "document": "Query workflow operation",
+      "input": "ListTriggerTaskRunsRequest",
+      "name": "Query task execution details",
+      "output": "ListTriggerTaskRunsResponse",
+      "status": "online"
+    },
     "ListTriggerTaskVersions": {
       "document": "Task save version list.",
       "input": "ListTriggerTaskVersionsRequest",
@@ -15179,6 +15186,321 @@
         }
       ],
       "usage": "out"
+    },
+    "ListTriggerTaskRunBrief": {
+      "document": "Query job run list returned parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Running ID of the task\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ba84de3e-3c83-433c-a773-80f6a476a469",
+          "member": "string",
+          "name": "ExecutionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Workflow ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "25e2a265-9310-48e6-9ee8-176d51122f63",
+          "member": "string",
+          "name": "WorkflowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Running ID of the workflow\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "74bcce7c-be90-4347-9a80-0cbf53a08939",
+          "member": "string",
+          "name": "WorkflowExecutionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20260205211120670",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Trigger Type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Manual",
+          "member": "string",
+          "name": "TriggerType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Waiting duration, in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "132576",
+          "member": "string",
+          "name": "WaitTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operating Account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "700001893691",
+          "member": "string",
+          "name": "ExecuteUserUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Planned scheduling time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1770802186493",
+          "member": "string",
+          "name": "ScheduleTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1770802348000",
+          "member": "string",
+          "name": "ExecutionStartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Running end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1770802349000",
+          "member": "string",
+          "name": "ExecutionEndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Running time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5000",
+          "member": "string",
+          "name": "ExecutionTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Times of automatic retry\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "int64",
+          "name": "RetryTimes",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DependencyNotSatisfiedSkipped",
+          "member": "string",
+          "name": "ErrorCodeStr",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "t1_C",
+          "member": "string",
+          "name": "TaskName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Workflow name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "t1",
+          "member": "string",
+          "name": "WorkflowName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of manual rerun attempts by the user\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "RerunTimes",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SKIPPED",
+          "member": "string",
+          "name": "TaskExecutionState",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the most recent run\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsLatestExecution",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ListTriggerTaskRunResult": {
+      "document": "Query workflow results",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
+          "member": "uint64",
+          "name": "TotalPageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task running information collection\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ListTriggerTaskRunBrief",
+          "name": "Items",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ListTriggerTaskRunsRequest": {
+      "document": "ListTriggerTaskRuns request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "3149092944204222464",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering parameters: Keyword for task name or ID query, WorkflowId for workflow ID query, FolderId for folder query, InChargeUin for responsible person query, WorkflowExecutionId for workflow execution ID, ExecutionId for task execution ID, TaskId for task ID, ScheduleTimeGreaterEqual / ScheduleTimeLessEqual for planned scheduling time interval",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field, sorting field name as follows: start time: CreateTime, end time: EndTime, scheduled dispatch time: ScheduleTime",
+          "example": "无",
+          "member": "OrderField",
+          "name": "OrderFields",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ListTriggerTaskRunsResponse": {
+      "document": "ListTriggerTaskRuns response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task run query result",
+          "example": "无",
+          "member": "ListTriggerTaskRunResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ListTriggerTaskVersions": {
       "document": "Query task version pagination list.",

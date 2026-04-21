@@ -1240,6 +1240,14 @@
         "title": "Successful Call"
       }
     ],
+    "ListTriggerTaskRuns": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: wedata.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListTriggerTaskRuns\n<Common request parameters>\n\n{\n    \"ProjectId\": \"3149092944204222464\",\n    \"Filters\": [\n        {\n            \"Name\": \"Keyword\",\n            \"Values\": [\n                \"20260206114443865\"\n            ]\n        }\n    ],\n    \"OrderFields\": [\n        {\n            \"Name\": \"ScheduleTime\",\n            \"Direction\": \"DESC\"\n        }\n    ],\n    \"PageNumber\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Items\": [\n                {\n                    \"ErrorCodeStr\": \"runner exec wedata err\",\n                    \"ExecuteUserUin\": \"700001893691\",\n                    \"ExecutionEndTime\": \"1771987842000\",\n                    \"ExecutionId\": \"f68e0637-6b3d-48a7-8326-dd456009c5da\",\n                    \"ExecutionStartTime\": \"1771987841000\",\n                    \"ExecutionTime\": \"1000\",\n                    \"IsLatestExecution\": false,\n                    \"RerunTimes\": 0,\n                    \"RetryTimes\": 0,\n                    \"ScheduleTime\": \"1771987837144\",\n                    \"TaskExecutionState\": \"FAILED\",\n                    \"TaskId\": \"20260206114443865\",\n                    \"TaskName\": \"t_wf_skip_A_tnsd\",\n                    \"TriggerType\": \"Manual\",\n                    \"WaitTime\": \"3839\",\n                    \"WorkflowExecutionId\": \"16752a77-f4fa-4107-bf15-eb4f35537d0c\",\n                    \"WorkflowId\": \"7483e714-6607-47c5-887a-1f40996051c6\",\n                    \"WorkflowName\": \"t_wf_skip_8szRR2\"\n                }\n            ],\n            \"PageNumber\": 1,\n            \"PageSize\": 1,\n            \"TotalCount\": 8,\n            \"TotalPageNumber\": 8\n        },\n        \"RequestId\": \"54561345-8717-488d-b325-991be2c2f083\"\n    }\n}",
+        "title": "Workflow Task Execution Details List"
+      }
+    ],
     "ListTriggerTaskVersions": [
       {
         "document": "Query the version list of the query schedule successfully",

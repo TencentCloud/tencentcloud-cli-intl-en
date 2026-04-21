@@ -5061,7 +5061,7 @@
       "usage": "both"
     },
     "InputTracks": {
-      "document": "Audio track configuration list.",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -5078,7 +5078,7 @@
       "usage": "both"
     },
     "LSqueezeSetting": {
-      "document": "Compression recovery configuration",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -5513,7 +5513,7 @@
         },
         {
           "disabled": false,
-          "document": "AB watermark configuration.",
+          "document": "",
           "example": "无",
           "member": "AbWatermarkSettingsReq",
           "name": "AbWatermarkSettings",
@@ -5536,7 +5536,7 @@
       "type": "object"
     },
     "MotionGraphicsActivateSetting": {
-      "document": "Motion Graphic Activate Setting",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -5564,7 +5564,7 @@
       "usage": "both"
     },
     "MotionGraphicsSetting": {
-      "document": "Motion Graphic Setting",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -7476,7 +7476,7 @@
       "usage": "both"
     },
     "ThumbnailSettings": {
-      "document": "Thumbnail configuration",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -7536,10 +7536,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.",
+          "document": "Base64-encoded ID3 metadata information, with a maximum limit of 1024 characters. When both ID3 and Tag have values, the ID3 value takes precedence",
           "example": "dGl0bGU6IFNvbmcKYXJ0aXN0OiBBcnRpc3QKYWxidW06IEFsdWJtCnl lYXI6IDIwMjMKY29tbWVudDogQ29tbWVudAgnZW5yZTogUG9w",
           "member": "string",
           "name": "ID3",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Label, the maximum supported length is 1024 characters for the label, ",
+          "example": "sport",
+          "member": "string",
+          "name": "Tag",
           "output_required": false,
           "required": false,
           "type": "string",
