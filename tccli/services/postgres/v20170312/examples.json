@@ -766,6 +766,20 @@
         "title": "Modifying the billing mode for the instance `postgres-apzvwncr`"
       }
     ],
+    "ModifyDBInstanceDeletionProtection": [
+      {
+        "document": "This example shows you how to enable instance deletion protection. Once enabled, instances cannot be deleted via the console or API.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceDeletionProtection\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-iqmv0kaz\",\n    \"DeletionProtection\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ea7ffcbb-57ae-471d-8388-a092015908c4\"\n    }\n}",
+        "title": "Enabling Instance Deletion Protection"
+      },
+      {
+        "document": "This example shows you how to disable instance deletion protection and delete an instance via console or API.",
+        "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceDeletionProtection\n<Common request parameters>\n\n{\n    \"DBInstanceId\": \"postgres-j56ufjq9\",\n    \"DeletionProtection\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a546656c-aff7-4a4b-a3c5-c8a37529728d\"\n    }\n}",
+        "title": "Disabling Instance Deletion Protection"
+      }
+    ],
     "ModifyDBInstanceDeployment": [
       {
         "document": "This example shows you how to modify the node deployment of instance \"postgres-abcd1234\" so that both primary and standby nodes reside in Guangzhou Zone 3.",

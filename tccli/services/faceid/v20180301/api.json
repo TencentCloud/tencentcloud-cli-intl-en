@@ -141,7 +141,7 @@
   },
   "objects": {
     "Address": {
-      "document": "Overseas Document Address",
+      "document": "",
       "members": [
         {
           "disabled": false,
@@ -392,6 +392,24 @@
           "name": "AllowExpiredDocument",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "SkipResultPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"ChineseName\",\"FullName\"]",
+          "member": "string",
+          "name": "CardOcrDisplayFields",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1737,7 +1755,7 @@
       "type": "object"
     },
     "EditDetail": {
-      "document": "EKYC ID Document OCR Result Modification Details",
+      "document": "",
       "members": [
         {
           "disabled": false,
