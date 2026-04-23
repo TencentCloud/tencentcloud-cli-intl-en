@@ -22,12 +22,28 @@
         "title": "Deleting a Rule"
       }
     ],
+    "DescribeAggregateUserQuotas": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregateUserQuotas\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Count\": 1,\n        \"Data\": [\n            {\n                \"ApplyType\": 1,\n                \"MemberName\": \"\",\n                \"MemberUin\": 88888888888,\n                \"ProductName\": \"Your Product Name\",\n                \"QuotaDescription\": \"Quota Desc\",\n                \"QuotaDimensions\": [\n                    {\n                        \"DimensionName\": \"Dimension 1\",\n                        \"PrimaryValue\": \"value 1\"\n                    },\n                    {\n                        \"DimensionName\": \"Dimension 2\",\n                        \"PrimaryValue\": \"value 2\"\n                    }\n                ],\n                \"QuotaId\": 9999,\n                \"QuotaInstanceId\": \"\",\n                \"QuotaName\": \"quota name\",\n                \"QuotaUnit\": \"GB\",\n                \"TotalQuota\": 15,\n                \"TotalUsage\": 0\n            }\n        ],\n        \"OwnerUin\": 88888888888,\n        \"RequestId\": \"b351f392-eddd-42f5-ad53-xxxxxxxx\"\n    }\n}",
+        "title": "Example 1"
+      }
+    ],
     "DescribeAlarms": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarms\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"ProductId\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Count\": 5,\n        \"Data\": [\n            {\n                \"Id\": 102,\n                \"OwnerUin\": 100026600000,\n                \"MemberUin\": 100026600000,\n                \"Name\": \"234\",\n                \"ProductId\": 13,\n                \"Status\": 2,\n                \"QuotaId\": 2828,\n\"ProductName\": \"Tencent Cloud Assistant\"\n\"QuotaName\": \"quota name 001\"\n                \"Metrics\": 1,\n                \"Threshold\": 2,\n                \"Frequency\": 1\n            }\n        ],\n        \"RequestId\": \"e3836e25-700a-4759-bba2-7bcd57b9ab86\"\n    }\n}",
         "title": "List of rules"
+      }
+    ],
+    "DescribeUserQuota": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: quota.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserQuota\n<Common request parameters>\n\n{\n    \"ProductName\": \"Your Product Name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ProductName\": \"Your Product Name\",\n        \"QuotaDescription\": \"quota desc\",\n        \"QuotaId\": 8888,\n        \"QuotaName\": \"quota name\",\n        \"QuotaUnit\": \"quota unit\",\n        \"RequestId\": \"f089d37f-3d61-46fd-9b84-xxxxxx\",\n        \"TotalQuota\": 15,\n        \"TotalUsage\": 0\n    }\n}",
+        "title": "Example 1"
       }
     ],
     "EnableAlarm": [
