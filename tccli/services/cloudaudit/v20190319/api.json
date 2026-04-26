@@ -1,24 +1,10 @@
 {
   "actions": {
-    "CreateAudit": {
-      "document": "Parameter requirements:\n1. If the value of `IsCreateNewBucket` exists, `cosRegion` and `osBucketName` are required.\n2. If the value of `IsEnableCmqNotify` is 1, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` are required.\n3. If the value of `IsEnableCmqNotify` is 0, `IsCreateNewQueue`, `CmqRegion`, and `CmqQueueName` cannot be passed in.\n4. If the value of `IsEnableKmsEncry` is 1, `KmsRegion` and `KeyId` are required.",
-      "input": "CreateAuditRequest",
-      "name": "Creates tracking set",
-      "output": "CreateAuditResponse",
-      "status": "online"
-    },
     "CreateAuditTrack": {
       "document": "This API is used to create a tracking set.",
       "input": "CreateAuditTrackRequest",
       "name": "Creating CloudAudit tracking set",
       "output": "CreateAuditTrackResponse",
-      "status": "online"
-    },
-    "DeleteAudit": {
-      "document": "This API is used to delete a tracking set.",
-      "input": "DeleteAuditRequest",
-      "name": "Deletes tracking set",
-      "output": "DeleteAuditResponse",
       "status": "online"
     },
     "DeleteAuditTrack": {
@@ -129,7 +115,7 @@
   },
   "metadata": {
     "apiVersion": "2019-03-19",
-    "serviceNameCN": "云审计",
+    "serviceNameCN": "操作审计",
     "serviceShortName": "cloudaudit"
   },
   "objects": {
@@ -137,273 +123,168 @@
       "document": "`AttributeKey` value details",
       "members": [
         {
+          "disabled": false,
           "document": "Input box type",
-          "example": "xx",
+          "example": "type",
           "member": "string",
           "name": "LabelType",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Initial display",
-          "example": "xx",
+          "example": "12",
           "member": "string",
           "name": "Starter",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Display sort order",
-          "example": "1",
+          "example": "desc",
           "member": "int64",
           "name": "Order",
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "`AttributeKey` value",
-          "example": "xx",
+          "example": "tag1",
           "member": "string",
           "name": "Value",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag",
-          "example": "xx",
+          "example": "事件",
           "member": "string",
           "name": "Label",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AuditSummary": {
       "document": "Tracking set overview",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set status. 1: enabled, 0: disabled",
           "example": "1",
           "member": "int64",
           "name": "AuditStatus",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "COS bucket name",
-          "example": "xx",
+          "example": "gz_bucket",
           "member": "string",
           "name": "CosBucketName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "xx",
+          "example": "audit_track",
           "member": "string",
           "name": "AuditName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log prefix",
-          "example": "xx",
+          "example": "cloudtrail",
           "member": "string",
           "name": "LogFilePrefix",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "CmqRegionInfo": {
       "document": "CMQ region information",
       "members": [
         {
+          "disabled": false,
           "document": "Region description",
-          "example": "xx",
+          "example": "广州地域",
           "member": "string",
           "name": "CmqRegionName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "CMQ region",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "CmqRegion",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "CosRegionInfo": {
       "document": "COS region information",
       "members": [
         {
+          "disabled": false,
           "document": "COS region",
-          "example": "xx",
+          "example": "ap-guanghzou",
           "member": "string",
           "name": "CosRegion",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region description",
-          "example": "xx",
+          "example": "广州地域",
           "member": "string",
           "name": "CosRegionName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
-    },
-    "CreateAuditRequest": {
-      "document": "CreateAudit request structure.",
-      "members": [
-        {
-          "document": "Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsEnableCmqNotify",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
-          "example": "1",
-          "member": "int64",
-          "name": "ReadWriteAttribute",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "document": "Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).",
-          "example": "xx",
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
-          "example": "xx",
-          "member": "string",
-          "name": "CosRegion",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "Whether to create a COS bucket. 1: Yes; 0: No.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsCreateNewBucket",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
-          "example": "xx",
-          "member": "string",
-          "name": "CosBucketName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.",
-          "example": "xx",
-          "member": "string",
-          "name": "KeyId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
-          "example": "xx",
-          "member": "string",
-          "name": "CmqQueueName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.",
-          "example": "1",
-          "member": "string",
-          "name": "KmsRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsEnableKmsEncry",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "example": "xx",
-          "member": "string",
-          "name": "CmqRegion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is the account ID by default.",
-          "example": "xx",
-          "member": "string",
-          "name": "LogFilePrefix",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsCreateNewQueue",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateAuditResponse": {
-      "document": "CreateAudit response structure.",
-      "members": [
-        {
-          "document": "Whether creation succeeded.",
-          "example": "1",
-          "member": "int64",
-          "name": "IsSuccess",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
+      "usage": "both"
     },
     "CreateAuditTrackRequest": {
       "document": "CreateAuditTrack request structure.",
@@ -419,6 +300,24 @@
         },
         {
           "disabled": false,
+          "document": "Tracking set status (0: Not enabled; 1: Enabled).",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
+          "example": "无",
+          "member": "Storage",
+          "name": "Storage",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -429,7 +328,7 @@
         {
           "disabled": false,
           "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
-          "example": "*",
+          "example": "cos",
           "member": "string",
           "name": "ResourceType",
           "required": true,
@@ -437,17 +336,8 @@
         },
         {
           "disabled": false,
-          "document": "Tracking set status (0: Not enabled; 1: Enabled)",
-          "example": "1",
-          "member": "uint64",
-          "name": "Status",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
-          "example": "[*]",
+          "example": "[\"AddUser\"]",
           "member": "string",
           "name": "EventNames",
           "required": true,
@@ -455,21 +345,21 @@
         },
         {
           "disabled": false,
-          "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
-          "example": "cos",
-          "member": "Storage",
-          "name": "Storage",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
+          "document": "Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
           "example": "1",
           "member": "uint64",
           "name": "TrackForAllMembers",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "20250707_163212_1hxWz5otqS7akePfoX1xlWem1AuUVUGP",
+          "member": "string",
+          "name": "ExportId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -496,45 +386,11 @@
       ],
       "type": "object"
     },
-    "DeleteAuditRequest": {
-      "document": "DeleteAudit request structure.",
-      "members": [
-        {
-          "document": "Tracking set name",
-          "example": "xx",
-          "member": "string",
-          "name": "AuditName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteAuditResponse": {
-      "document": "DeleteAudit response structure.",
-      "members": [
-        {
-          "document": "Whether deletion succeeded",
-          "example": "1",
-          "member": "int64",
-          "name": "IsSuccess",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteAuditTrackRequest": {
       "document": "DeleteAuditTrack request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -549,7 +405,7 @@
       "document": "DeleteAuditTrack response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -561,8 +417,9 @@
       "document": "DescribeAudit request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "xx",
+          "example": "audit_log",
           "member": "string",
           "name": "AuditName",
           "required": true,
@@ -575,124 +432,137 @@
       "document": "DescribeAudit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether to enable CMQ message notification. 1: Yes; 0: No.",
           "example": "1",
           "member": "int64",
           "name": "IsEnableCmqNotify",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write)",
           "example": "1",
           "member": "int64",
           "name": "ReadWriteAttribute",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Globally unique CMK ID.",
-          "example": "xx",
+          "example": "ak-3aaaa444",
           "member": "string",
           "name": "KeyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set status. 1: enabled, 0: disabled.",
           "example": "1",
           "member": "int64",
           "name": "AuditStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set name.",
-          "example": "xx",
+          "example": "audit_log",
           "member": "string",
           "name": "AuditName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "COS bucket region.",
-          "example": "xx",
+          "example": "ap-beijing",
           "member": "string",
           "name": "CosRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Queue name.",
-          "example": "xx",
+          "example": "audit",
           "member": "string",
           "name": "CmqQueueName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "CMK alias.",
-          "example": "xx",
+          "example": "audit",
           "member": "string",
           "name": "KmsAlias",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "KMS region.",
-          "example": "xx",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "KmsRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when it is delivered to COS.",
           "example": "1",
           "member": "int64",
           "name": "IsEnableKmsEncry",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "COS bucket name.",
-          "example": "xx",
+          "example": "cos-audit",
           "member": "string",
           "name": "CosBucketName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Queue region.",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "CmqRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log prefix.",
-          "example": "xx",
+          "example": "audit",
           "member": "string",
           "name": "LogFilePrefix",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -704,6 +574,7 @@
       "document": "DescribeAuditTrack request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -718,79 +589,97 @@
       "document": "DescribeAuditTrack response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "云审计",
+          "example": "操作审计",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
           "name": "ActionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products",
-          "example": "*",
+          "example": "cos",
           "member": "string",
           "name": "ResourceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The list of API names of tracking set events (`*`: All)",
           "example": "1",
           "member": "string",
           "name": "EventNames",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
           "example": "cos",
           "member": "Storage",
           "name": "Storage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time of the tracking set",
           "example": "2021-02-01 18:03",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "TrackForAllMembers",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "Data delivery filter conditions",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -802,6 +691,7 @@
       "document": "DescribeAuditTracks request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Page number",
           "example": "1",
           "member": "uint64",
@@ -810,6 +700,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The number of tracking sets per page",
           "example": "10",
           "member": "uint64",
@@ -824,25 +715,27 @@
       "document": "DescribeAuditTracks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set list",
-          "example": "*",
+          "example": "[{}]",
           "member": "Tracks",
           "name": "Tracks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of tracking sets",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -936,12 +829,12 @@
         {
           "disabled": false,
           "document": "Logset.\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "[     {         \"CloudAuditEvent\": \"\",         \"EventName\": \"PostTrack\",         \"EventTime\": \"xxxx\",         \"EventId\": \"\",         \"SecretId\": \"xxxxxxA2bADrx2jeiQPQy2kIV05F4xjl9Nxxxxx\",         \"ErrorCode\": 0,         \"RequestID\": \"xxxxx-8fd8-4121-b1e8-6264292eeb4f\",         \"SourceIPAddress\": \"xx.xx.96.xx\",         \"EventSource\": \"xx.ap-chongqing.api.tencentyun.com/\",         \"EventRegion\": \"ap-guangzhou\",         \"Resources\": {             \"ResourceName\": \"\",             \"ResourceType\": \"tandon\"         },         \"Username\": \"root\",         \"AccountID\": xxxx,         \"Location\": \"xxxx\",         \"ResourceTypeCn\": \"腾讯云安灯\",         \"EventNameCn\": \"智能客服官网浏览记录上报\",         \"ResourceRegion\": \"\"     } ]",
+          "example": "无",
           "member": "Event",
           "name": "Events",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -951,7 +844,7 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -968,9 +861,10 @@
         {
           "disabled": false,
           "document": "Log ID",
-          "example": "xx",
+          "example": "9aa70d53-6d28-4b5d-94ca-f965816bf8a6",
           "member": "string",
           "name": "EventId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -978,9 +872,10 @@
         {
           "disabled": false,
           "document": "Username",
-          "example": "xx",
+          "example": "console",
           "member": "string",
           "name": "Username",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -988,9 +883,10 @@
         {
           "disabled": false,
           "document": "Event Time",
-          "example": "xx",
+          "example": "1742884755",
           "member": "string",
           "name": "EventTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -998,9 +894,10 @@
         {
           "disabled": false,
           "document": "Log details",
-          "example": "xx",
+          "example": "{\"userIdentity\":{}}",
           "member": "string",
           "name": "CloudAuditEvent",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1008,9 +905,10 @@
         {
           "disabled": false,
           "document": "Description of resource type in Chinese (please use this field as required; if you are using other languages, ignore this field)",
-          "example": "xx",
+          "example": "账号中心",
           "member": "string",
           "name": "ResourceTypeCn",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1021,6 +919,7 @@
           "example": "1",
           "member": "int64",
           "name": "ErrorCode",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1028,9 +927,10 @@
         {
           "disabled": false,
           "document": "Event name",
-          "example": "xx",
+          "example": "ConsoleLogin",
           "member": "string",
           "name": "EventName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1038,19 +938,21 @@
         {
           "disabled": false,
           "document": "Certificate ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": "AKIDY3c****N0DyAaUPZRd",
           "member": "string",
           "name": "SecretId",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Request source",
-          "example": "xx",
+          "example": "account.tencentcloudapi.com",
           "member": "string",
           "name": "EventSource",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1058,9 +960,10 @@
         {
           "disabled": false,
           "document": "Request ID",
-          "example": "xx",
+          "example": "9aa70d53-6d28-4b5d-94ca-f965816bf8a6",
           "member": "string",
           "name": "RequestID",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1068,9 +971,10 @@
         {
           "disabled": false,
           "document": "Resource region",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "ResourceRegion",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1078,9 +982,10 @@
         {
           "disabled": false,
           "document": "Root account ID",
-          "example": "1",
+          "example": "1000100007530",
           "member": "int64",
           "name": "AccountID",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1088,19 +993,21 @@
         {
           "disabled": false,
           "document": "Source IP\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": "127.0.0.1",
           "member": "string",
           "name": "SourceIPAddress",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description of event name in Chinese (please use this field as required; if you are using other languages, ignore this field)",
-          "example": "xx",
+          "example": "登录",
           "member": "string",
           "name": "EventNameCn",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1108,9 +1015,10 @@
         {
           "disabled": false,
           "document": "Resource pair",
-          "example": "xx",
+          "example": "无",
           "member": "Resource",
           "name": "Resources",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -1118,9 +1026,10 @@
         {
           "disabled": false,
           "document": "Event region",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "EventRegion",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1131,8 +1040,26 @@
           "example": "中国 江苏省 南京市 腾讯网络",
           "member": "string",
           "name": "Location",
+          "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Filter": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"ResourceType\":\"cam\",\"ActionType\":\"*\",\"EventNames\":[\"AddSubAccount\",\"AddSubAccountCheckingMFA\"]}]",
+          "member": "ResourceField",
+          "name": "ResourceFields",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -1142,8 +1069,9 @@
       "document": "GetAttributeKey request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "WebsiteType",
           "required": false,
@@ -1156,16 +1084,17 @@
       "document": "GetAttributeKey response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Valid values of `AttributeKey`",
-          "example": "xx",
+          "example": " [       {         \"Label\": \"只读\",         \"Value\": \"ReadOnly\",         \"Starter\": \"选择只读值\",         \"LabelType\": \"select\",         \"Order\": 1       }      ]",
           "member": "AttributeKeyDetail",
           "name": "AttributeKeyDetails",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1182,6 +1111,7 @@
       "document": "InquireAuditCredit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of tracking sets that can be created",
           "example": "1",
           "member": "int64",
@@ -1191,7 +1121,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1208,16 +1138,17 @@
       "document": "ListAudits response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Set of queried tracking set summaries\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": " {  \"AuditStatus\": 0, \"CosBucketName\": \"test bucket\",\"AuditName\": \"test\", \"LogFilePrefix\": \"audit\" }  ]",
           "member": "AuditSummary",
           "name": "AuditSummarys",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1229,8 +1160,9 @@
       "document": "ListCmqEnableRegion request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Website type. zh: Chinese mainland (default); en: outside Chinese mainland.",
-          "example": "xx",
+          "example": "zh",
           "member": "string",
           "name": "WebsiteType",
           "required": false,
@@ -1243,16 +1175,17 @@
       "document": "ListCmqEnableRegion response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "CloudAudit-enabled CMQ AZs",
-          "example": "xx",
+          "example": " [       {         \"CmqRegion\": \"sh\",         \"CmqRegionName\": \"上海\"       },       {         \"CmqRegion\": \"hk\",         \"CmqRegionName\": \"香港\"       }     ]",
           "member": "CmqRegionInfo",
           "name": "EnableRegions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1264,8 +1197,9 @@
       "document": "ListCosEnableRegion request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Website type. zh: Chinese mainland (default); en: outside Chinese mainland.",
-          "example": "xx",
+          "example": "zh",
           "member": "string",
           "name": "WebsiteType",
           "required": false,
@@ -1278,16 +1212,17 @@
       "document": "ListCosEnableRegion response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "CloudAudit-enabled COS AZs",
-          "example": "xx",
+          "example": "[{}]",
           "member": "CosRegionInfo",
           "name": "EnableRegions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1299,6 +1234,7 @@
       "document": "LookUpEvents request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Start time",
           "example": "1553056487",
           "member": "int64",
@@ -1307,6 +1243,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "End time",
           "example": "1553056687",
           "member": "int64",
@@ -1315,6 +1252,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Search criteria",
           "example": "无",
           "member": "LookupAttribute",
@@ -1323,14 +1261,16 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Credential for viewing more logs",
-          "example": "xxx",
+          "example": "79ba1f24-c21c-4858-a8e6-a9266b0599ff",
           "member": "string",
           "name": "NextToken",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Maximum number of logs to be returned",
           "example": "10",
           "member": "int64",
@@ -1339,6 +1279,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "CloudAudit mode. Valid values: standard, quick. Default value: standard",
           "example": "standard ",
           "member": "string",
@@ -1353,34 +1294,37 @@
       "document": "LookUpEvents response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Credential for viewing more logs\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "xxxxxxx",
+          "example": "79ba1f24-c21c-4858-a8e6-a9266b0599ff",
           "member": "string",
           "name": "NextToken",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Logset\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Event",
           "name": "Events",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether the logset ends\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "bool",
           "name": "ListOver",
-          "required": true,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1394,22 +1338,20 @@
         {
           "disabled": false,
           "document": "Valid values: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, and EventId\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": "EventName",
           "member": "string",
           "name": "AttributeKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Value of `AttributeValue`\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
-          "example": "xx",
+          "example": "ConsoleLogin",
           "member": "string",
           "name": "AttributeValue",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -1418,6 +1360,7 @@
       "document": "ModifyAuditTrack request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -1426,14 +1369,16 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
-          "example": "云审计",
+          "example": "操作审计",
           "member": "string",
           "name": "Name",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -1442,14 +1387,16 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
-          "example": "*",
+          "example": "cos",
           "member": "string",
           "name": "ResourceType",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
@@ -1458,23 +1405,26 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
-          "example": "1",
+          "example": "[\"AddUser\"]",
           "member": "string",
           "name": "EventNames",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
-          "example": "cos",
+          "example": "无",
           "member": "Storage",
           "name": "Storage",
           "required": false,
           "type": "object"
         },
         {
-          "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
+          "disabled": false,
+          "document": "Whether to enable the feature of shipping organization members' operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
           "example": "1",
           "member": "uint64",
           "name": "TrackForAllMembers",
@@ -1488,7 +1438,7 @@
       "document": "ModifyAuditTrack response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1508,7 +1458,7 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1519,7 +1469,46 @@
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceField": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cvm",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Read",
+          "member": "string",
+          "name": "ActionType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"AddUser\"]",
+          "member": "string",
+          "name": "EventNames",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1528,8 +1517,9 @@
       "document": "StartLogging request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "xx",
+          "example": "audit_log",
           "member": "string",
           "name": "AuditName",
           "required": true,
@@ -1542,16 +1532,17 @@
       "document": "StartLogging response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether enablement succeeded",
           "example": "1",
           "member": "int64",
           "name": "IsSuccess",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1563,8 +1554,9 @@
       "document": "StopLogging request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "xx",
+          "example": "audit_log",
           "member": "string",
           "name": "AuditName",
           "required": true,
@@ -1577,16 +1569,17 @@
       "document": "StopLogging response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether disablement succeeded",
           "example": "1",
           "member": "int64",
           "name": "IsSuccess",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1648,6 +1641,7 @@
       "document": "Tracking set list",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
           "example": "cloudaudit",
           "member": "string",
@@ -1657,6 +1651,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -1666,6 +1661,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products",
           "example": "cloudaudit",
           "member": "string",
@@ -1675,6 +1671,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
@@ -1684,6 +1681,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The list of API names of tracking set events (`*`: All)",
           "example": "[*]",
           "member": "string",
@@ -1693,6 +1691,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
           "example": "cos",
           "member": "Storage",
@@ -1702,6 +1701,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time of the tracking set",
           "example": "2021-01-20 11:06:00",
           "member": "string",
@@ -1711,6 +1711,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -1726,14 +1727,16 @@
       "document": "UpdateAudit request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tracking set name",
-          "example": "xx",
+          "example": "audit_log",
           "member": "string",
           "name": "AuditName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
           "example": "1",
           "member": "int64",
@@ -1742,6 +1745,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
           "example": "1",
           "member": "int64",
@@ -1750,30 +1754,34 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.",
-          "example": "xx",
+          "example": "ak-4m4mkl5433",
           "member": "string",
           "name": "KeyId",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
-          "example": "xx",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "CosRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
-          "example": "xx",
+          "example": "audit_queue",
           "member": "string",
           "name": "CmqQueueName",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to create a COS bucket. 1: Yes; 0: No.",
           "example": "1",
           "member": "int64",
@@ -1782,14 +1790,16 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.",
-          "example": "xx",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "KmsRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
           "example": "1",
           "member": "int64",
@@ -1798,30 +1808,34 @@
           "type": "int"
         },
         {
-          "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
-          "example": "xx",
+          "disabled": false,
+          "document": "User-defined COS bucket name, which can only contain 1-40 lowercase letters (a-z), digits (0-9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
+          "example": "audit_bucket",
           "member": "string",
           "name": "CosBucketName",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
-          "example": "xx",
+          "example": "ap-beijing",
           "member": "string",
           "name": "CmqRegion",
           "required": false,
           "type": "string"
         },
         {
-          "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).",
-          "example": "xx",
+          "disabled": false,
+          "document": "Log file prefix, which can only contain 3-40 ASCII letters (a-z; A-Z) and digits (0-9).",
+          "example": "audit",
           "member": "string",
           "name": "LogFilePrefix",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "example": "1",
           "member": "int64",
@@ -1836,16 +1850,17 @@
       "document": "UpdateAudit response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Whether update succeeded",
           "example": "1",
           "member": "int64",
           "name": "IsSuccess",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

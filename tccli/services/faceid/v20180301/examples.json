@@ -80,6 +80,34 @@
         "title": "Query Fail Example"
       }
     ],
+    "CheckIdCardInformation": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=CheckIdCardInformation\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&Config={\"CopyWarn\":true}\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n\"Address\": \"No. 4 Jingshan Front Street, Dongcheng District, Beijing, Jing Shi Fang, Forbidden City\"\n        \"Birth\": \"1654/12/20\",\n\"Description\": \"OCR alert occurred\"\n        \"IdNum\": \"11204416541220243X\",\n\"Name\": \"Wei Xiaobao\"\n\"Nation\": \"Manchu\"\n        \"Portrait\": \"/9j/4AAQSk...Se/wDkf//Z\",\n        \"Quality\": 99,\n        \"Encryption\": null,\n        \"RequestId\": \"6e6cfaad-3271-4eb1-a203-2866100eb283\",\n        \"Result\": \"FailedOperation.OcrWarningOccurred\",\n\"Sex\": \"Male\",\n        \"Sim\": 0,\n        \"Warnings\": \"-9101\"\n    }\n}",
+        "title": "Verifying an ID Card Portrait Photo Failure Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=CheckIdCardInformation\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&Config={\"CopyWarn\":true}\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n\"Address\": \"No. 4 Jingshan Front Street, Dongcheng District, Beijing, Jing Shi Fang, Forbidden City\"\n        \"Birth\": \"1654/12/20\",\n\"Description\": \"Success\"\n        \"Encryption\": null,\n        \"IdNum\": \"11204416541220243X\",\n\"Name\": \"Wei Xiaobao\"\n\"Nation\": \"Han\"\n        \"Portrait\": \"/9j/4AAQSk...m3Zt62P//Z\",\n        \"Quality\": 98,\n        \"RequestId\": \"8dc2b640-caad-4a13-ad8c-204d46d29fe1\",\n        \"Result\": \"Success\",\n\"Sex\": \"Male\",\n        \"Sim\": 99.76,\n        \"Warnings\": \"\"\n    }\n}",
+        "title": "Successful Example of ID Card Portrait Photo Verification"
+      }
+    ],
+    "CheckIdNameDate": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=CheckIdNameDate\n&Name=Wei Xiaobao\n&IdCard= 11204416541220243X\n&ValidityBegin=20160204\n&ValidityEnd=20260204\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Consistent\",\n        \"RequestId\": \"8695c53f-776f-4ff5-a66d-84e67b352d20\"\n    }\n}",
+        "title": "Verifying Identity Information and Valid Period Successful Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=CheckIdNameDate\n&Name=Wei Xiaobao\n&IdCard= 11204416541220243X\n&ValidityBegin=20160204\n&ValidityEnd=20260204\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Description\": \"Inconsistent\",\n        \"RequestId\": \"af4075de-427f-48a5-85cb-2be5b3751b76\",\n        \"Result\": \"-1\"\n    }\n}",
+        "title": "Example of Inconsistent Identity Information and Valid Period Verification"
+      }
+    ],
     "CompareFaceLiveness": [
       {
         "document": "Liveness detection and face comparison passed. Determined to be the same person.",
@@ -178,12 +206,116 @@
         "title": "Getting the result of a web-based verification process"
       }
     ],
+    "IdCardOCRVerification": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardOCRVerification\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://www.qq.com/image.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Name and identity card number match\"\n\"Name\": \"Wei Xiaobao\"\n        \"IdCard\": \"11204416541220243X\",\n\"Sex\": \"Male\",\n\"Nation\": \"Han\"\n        \"Birth\": \"1654/12/20\",\n\"Address\": \"No. 4 Jingshan Front Street, Dongcheng District, Beijing, Jing Shi Fang, Forbidden City\"\n        \"RequestId\": \"a62f567c-1eea-4ef3-b51a-a9eb9bd84cd9\"\n    }\n}",
+        "title": "Verifying with Photo URL Example"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardOCRVerification\n<Common request parameters>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Name and identity card number match\"\n\"Name\": \"Wei Xiaobao\"\n        \"IdCard\": \"11204416541220243X\",\n\"Sex\": \"Male\",\n\"Nation\": \"Han\"\n        \"Birth\": \"1654/12/20\",\n\"Address\": \"No. 4 Jingshan Front Street, Dongcheng District, Beijing, Jing Shi Fang, Forbidden City\"\n        \"RequestId\": \"022ffdd2-67a2-4177-8946-97bc1c4b3347\"\n    }\n}",
+        "title": "Verification Example Using Base64 Image"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardOCRVerification\n<Common request parameters>\n\n{\n    \"IdCard\": \"11204416541220243X\",\n    \"Name\": \"Wei Xiaobao\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Name and identity card number match\"\n\"Name\": \"Wei Xiaobao\"\n        \"IdCard\": \"11204416541220243X\",\n        \"Sex\": \"\",\n        \"Nation\": \"\",\n        \"Birth\": \"\",\n        \"Address\": \"\",\n        \"RequestId\": \"945c69ad-d86c-47ea-ba33-419b1dc4d242\"\n    }\n}",
+        "title": "Verifying with Name and Identity Card Number Example"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardOCRVerification\n<Common request parameters>\n\n{\n    \"IdCard\": \"11204416541220243Y\",\n    \"Name\": \"Wei Xiaobao\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birth\": \"\",\n\"Description\": \"Invalid ID number (incorrect length, check digit, etc.)\"\n        \"IdCard\": \"11204416541220243Y\",\n\"Name\": \"Wei Xiaobao\"\n        \"Nation\": \"\",\n        \"RequestId\": \"c528602c-6574-4dd7-a836-895ff62a13ed\",\n        \"Result\": \"-2\",\n        \"Sex\": \"\"\n    }\n}",
+        "title": "Verifying an ID Card and Information Verification Failure Example"
+      }
+    ],
+    "IdCardVerification": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardVerification\n<Common request parameters>\n\n{\n    \"IdCard\": \"11204416541220243X\",\n    \"Name\": \"Wei Xiaobao\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Name and identity card number match\"\n        \"RequestId\": \"94b54cdf-d975-4718-b091-32f8d79d6397\"\n    }\n}",
+        "title": "Identity Information Authentication Consistent Example"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdCardVerification\n<Common request parameters>\n\n{\n    \"IdCard\": \"440305199505132561\",\n    \"Name\": \"Liu Yang\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"-1\",\n\"Description\": \"Name and ID card number mismatch\"\n        \"RequestId\": \"80c7abb8-4563-4636-98c3-0499f1611a33\"\n    }\n}",
+        "title": "Example of Inconsistent Identity Information Authentication"
+      }
+    ],
+    "ImageRecognition": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=ImageRecognition\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&ImageBase64=<ImageBase64>\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n\"Description\": \"Success\"\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
+        "title": "Photo Face Verification"
+      }
+    ],
+    "ImageRecognitionV2": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=ImageRecognitionV2\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n\"Description\": \"Success\"\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
+        "title": "Photo Face Verification Successful Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=ImageRecognitionV2\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n\"Description\": \"Similarity comparison does not reach the pass standard\"\n        \"RequestId\": \"e9e198e4-4fa8-49f0-a67e-f8053bc49201\",\n        \"Result\": \"FailedOperation.CompareLowSimilarity\",\n        \"Sim\": 26.04\n    }\n}",
+        "title": "Photo Face Verification Similarity Substandard Example"
+      }
+    ],
     "LivenessCompare": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LivenessCompare\n<Common Request Parameters>\n\n{\n    \"LivenessType\": \"SILENT\",\n    \"ImageBase64\": \"/9j/4AAQSk...GArFYH/9k=\",\n    \"VideoBase64\": \"AAAAIGZ0eX...cBQCKAowc=\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"BestFrameBase64\": \"/9j/4AAQSk...W8+nU//9k=\",\n        \"BestFrameList\": [\n            \"/9j/4AAQSk...px72+8/9k=\"\n        ],\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
         "title": "Silent Liveness Face Comparison Success Example"
+      }
+    ],
+    "MobileNetworkTimeVerification": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=MobileNetworkTimeVerification\n&Mobile=13800138000\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Success\"\n        \"Range\": \"[24,+)\",\n        \"RequestId\": \"f893bfcf-167d-45df-99aa-60a23fe5809d\"\n    }\n}",
+        "title": "Verifying Mobile Number Duration Successful Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=MobileNetworkTimeVerification\n&Mobile=16137688175\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"-2\",\n\"Description\": \"Phone number not found\"\n        \"Range\": \"\",\n        \"RequestId\": \"3151331a-277e-4317-891d-0ef4e0afdd3e\"\n    }\n}",
+        "title": "Mobile Number Duration Verification Exception Example"
+      }
+    ],
+    "MobileStatus": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=MobileStatus\n&Mobile=16137688175\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n\"Description\": \"Invalid phone number format\"\n        \"RequestId\": \"7411a5fc-0ba6-431d-9e8a-5f6537fb8701\",\n        \"Result\": \"-2\",\n        \"StatusCode\": 99\n    }\n}",
+        "title": "Mobile Number Status Query Exception Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=MobileStatus\n&Mobile=13800138000\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n\"Description\": \"Success\"\n        \"StatusCode\": 1,\n        \"RequestId\": \"f893bfcf-167d-45df-99aa-60a23fe5809d\"\n    }\n}",
+        "title": "Mobile Number Status Query Successful Example"
+      }
+    ],
+    "PhoneVerification": [
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=PhoneVerification\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&Phone=16137688175\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"0\",\n        \"Description\": \"Authentication passed\",\n        \"Isp\": \"Telecom\",\n        \"RequestId\": \"a5fdb909-5ee6-43ff-a152-bb1b9744ee8b\"\n    }\n}",
+        "title": "Verifying a Phone Number with Three-Element Verification Matching Example"
+      },
+      {
+        "document": "",
+        "input": "https://faceid.tencentcloudapi.com/?Action=PhoneVerification\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&Phone=16137688175\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Description\": \"Information inconsistency\",\n        \"Isp\": \"China Unicom\",\n        \"RequestId\": \"884a35af-289f-4b4e-a0b3-2315f02ab31e\",\n        \"Result\": \"-4\"\n    }\n}",
+        "title": "Mobile Number Three-Element Verification Inconsistent Example"
       }
     ],
     "VideoLivenessCompare": [

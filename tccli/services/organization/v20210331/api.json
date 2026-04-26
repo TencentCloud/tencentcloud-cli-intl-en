@@ -1031,7 +1031,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).",
+          "document": "Parent node ID, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1)",
           "example": "101",
           "member": "uint64",
           "name": "ParentNodeId",

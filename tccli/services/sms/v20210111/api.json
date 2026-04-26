@@ -105,8 +105,15 @@
       "output": "ReportConversionResponse",
       "status": "online"
     },
+    "SendMultiGlobalSms": {
+      "document": "This API is used to send Global SMS messages in batches. Compared with the SendSms API, it supports sending SMS messages with different content to multiple phone numbers in a single request and allows specifying different SenderIds.",
+      "input": "SendMultiGlobalSmsRequest",
+      "name": "Send multi global SMS messages",
+      "output": "SendMultiGlobalSmsResponse",
+      "status": "online"
+    },
     "SendSms": {
-      "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).\n>- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.",
       "input": "SendSmsRequest",
       "name": "Sends SMS messages",
       "output": "SendSmsResponse",
@@ -1138,6 +1145,57 @@
       ],
       "usage": "out"
     },
+    "MultiSmsInfo": {
+      "document": "SMS information for each phone number in a batch delivery.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all global mobile numbers). For example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
+          "example": "+60198890000",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.",
+          "example": "1800103",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
+          "example": "[\"1871\"]",
+          "member": "string",
+          "name": "TemplateParamSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sender ID for Global SMS. For detail, please refer to the [Sender ID](https://www.tencentcloud.com/document/product/382/58270) Guidelines.\nNote: This parameter applies solely to Global SMS. If you do not require a dedicated Sender ID, the public Sender ID will be used by default, and this parameter may be left blank.\nExample: Qsms",
+          "example": "Qsms",
+          "member": "string",
+          "name": "SenderId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server. Note that the length must be less than 512 bytes.",
+          "example": "outsid_1729495320_1011",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "PhoneNumberInfo": {
       "document": "Mobile number information.",
       "members": [
@@ -1713,6 +1771,128 @@
       ],
       "usage": "out"
     },
+    "SendMultiGlobalSmsRequest": {
+      "document": "SendMultiGlobalSms request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 2400006666.",
+          "example": "1400006666",
+          "member": "string",
+          "name": "SmsSdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Multi SMS information list. Up to 200 phone numbers are supported in one request, which should be all Global SMS numbers. Each element contains a phone number and its corresponding template, template parameters, and other information.",
+          "example": "无",
+          "member": "MultiSmsInfo",
+          "name": "MultiSmsInfoSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SendMultiGlobalSmsResponse": {
+      "document": "SendMultiGlobalSms response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Multi SMS send status.",
+          "example": "无",
+          "member": "SendMultiStatus",
+          "name": "SendMultiStatusSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SendMultiStatus": {
+      "document": "SMS send status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Delivery serial number.",
+          "example": "c07754a8-323f-434f-8606-a52ff9beeab5",
+          "member": "string",
+          "name": "SerialNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
+          "example": "+60198890000",
+          "member": "string",
+          "name": "PhoneNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of billable SMS messages. For billing rules, see Billing Policy.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Fee",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User session content.",
+          "example": "outsid_1729495320_1011",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.",
+          "example": "Ok",
+          "member": "string",
+          "name": "Code",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SMS request error message.",
+          "example": "send success",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).",
+          "example": "TH",
+          "member": "string",
+          "name": "IsoCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SendSmsRequest": {
       "document": "SendSms request structure.",
       "members": [
@@ -1796,7 +1976,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "SMS delivery status.",
+          "document": "SMS send status.",
           "example": "无",
           "member": "SendStatus",
           "name": "SendStatusSet",
@@ -1814,7 +1994,7 @@
       "type": "object"
     },
     "SendStatus": {
-      "document": "SMS delivery status",
+      "document": "SMS send status",
       "members": [
         {
           "disabled": false,
@@ -1828,7 +2008,7 @@
         },
         {
           "disabled": false,
-          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
+          "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
           "example": "+8618501234444",
           "member": "string",
           "name": "PhoneNumber",
@@ -1878,7 +2058,7 @@
         },
         {
           "disabled": false,
-          "document": "Country/Region code, such as CN and US. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).",
+          "document": "Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).",
           "example": "CN",
           "member": "string",
           "name": "IsoCode",

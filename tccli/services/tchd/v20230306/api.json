@@ -37,7 +37,7 @@
         },
         {
           "disabled": false,
-          "document": " 1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.\n2. The region ID for non-region-specific products should be set to non-regional.",
+          "document": " 1. Query by Region ID(s). Region ID examples: ap-guangzhou, ap-shanghai, ap-singapore.\n2. The region ID for non-region-specific products should be set to non-regional.",
           "example": "[\"ap-beijing\"]",
           "member": "string",
           "name": "RegionIds",
@@ -151,12 +151,12 @@
         {
           "disabled": false,
           "document": "Detailed event information.\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "\"EventList\": [         {           \"ProductId\": \"cvm\",           \"ProductName\": \"云服务器\",           \"RegionId\": \"ap-chongqing\",           \"RegionName\": \"重庆\",           \"StartTime\": \"2023-06-09 14:16:00\",           \"EndTime\": \"2023-06-09 14:28:00\",           \"CurrentStatus\": \"正常\"         }       ]",
+          "example": "\"EventList\":[{\"ProductId\":\"cvm\",\"ProductName\":\"云服务器\",\"RegionId\":\"ap-chongqing\",\"RegionName\":\"重庆\",\"StartTime\":\"2023-06-09 14:16:00\",\"EndTime\":\"2023-06-09 14:28:00\",\"CurrentStatus\":\"正常\"}]",
           "member": "EventDetail",
           "name": "EventList",
           "output_required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"

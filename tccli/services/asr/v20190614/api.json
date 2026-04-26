@@ -53,7 +53,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio source.\n0: Audio URL.\n1: Local audio file (body of the POST request).",
+          "document": "Audio source.\n0: Audio URL.\n1: Local audio file (body of the POST request)",
           "example": "0",
           "member": "uint64",
           "name": "SourceType",
@@ -63,7 +63,7 @@
         {
           "disabled": false,
           "document": "Audio file Base64 code.\n** This parameter is required if SourceType is set to 1. Otherwise, it can be left blank. **\n\nNote: The audio data size cannot exceed 5 MB.",
-          "example": "无",
+          "example": "UklGRka1CQBXQVZFZm10zOjQzAABJU0ZUDgAAAE",
           "member": "string",
           "name": "Data",
           "required": false,
@@ -71,8 +71,8 @@
         },
         {
           "disabled": false,
-          "document": "Data length (before Base64 encoding).",
-          "example": "无",
+          "document": "Data length (before Base64 encoding)",
+          "example": "50",
           "member": "uint64",
           "name": "DataLen",
           "required": false,
@@ -90,7 +90,7 @@
         {
           "disabled": false,
           "document": "Callback URL\n\nUser-defined service URL for receiving recognition results.\nFor the callback format and content, see [Callback Description] (https://intl.cloud.tencent.com/document/product/1093/52632?from_cn_redirect=1).\n\nNotes:\n\n- If you use the polling method to obtain recognition results, this parameter is not required.\n- It is recommended to include your business ID and other information in the callback URL for handling business logic.",
-          "example": "无",
+          "example": "https://xxxx.xxx.xxx/callback",
           "member": "string",
           "name": "CallbackUrl",
           "required": false,
@@ -117,7 +117,7 @@
         {
           "disabled": false,
           "document": "This service is not available.",
-          "example": "无",
+          "example": "769762aexxxxxxxxxxec3cda3142e",
           "member": "string",
           "name": "HotwordId",
           "required": false,
@@ -135,7 +135,7 @@
         {
           "disabled": false,
           "document": "This service is not available.",
-          "example": "无",
+          "example": "769762aexxxxxxxxxxec3cda3142e",
           "member": "string",
           "name": "CustomizationId",
           "required": false,
@@ -207,7 +207,7 @@
         {
           "disabled": false,
           "document": "Additional parameter. ** (This parameter is meaningless. Ignore it.) **",
-          "example": "无",
+          "example": "无意义参数",
           "member": "string",
           "name": "Extra",
           "required": false,
@@ -216,7 +216,7 @@
         {
           "disabled": false,
           "document": "Temporary term list. This parameter is used to improve the recognition accuracy.\n\n- Restrictions for individual terms: The format is \"term|weight\". Each term can contain no more than 30 characters (or 10 Chinese characters. The weight can be in the range of [1-11] or 100. For example, \"Tencent Cloud|5\" or \"ASR|11\".\n\n- Restrictions for the temporary term list: Multiple terms are separated by commas. The list can contain up to 128 terms. For example, \"Tencent Cloud|10, Audio Recognition|5, ASR|11\".\n\n- Difference between hotword_id (term list) and hotword_list (temporary term list):\n\n    - hotword_id: Term list. You need to create a term list in the console or by using the API first and obtain the term list ID.\n\n    - hotword_list: Temporary term list. You can directly enter the ID of the temporary term list each time you initiate a request. The temporary term list is not retained on the cloud. This parameter applies to users with a massive number of terms.\n\nNotes:\n\n- If both hotword_id and hotword_list are specified, hotword_list will take effect first.\n\n- When the weight of a term is set to 11, this term becomes a super term. It is recommended that the weight is set to 11 only for critical and necessary terms. The overall accuracy will be affected if the weight is set to 11 for too many terms.\n\n- When the weight of a term is set to 100, the term enhancement feature is enabled to replace homophones of this term. (This feature is supported only for 8k_zh and 16k_zh engines.) For example, if you configure \"mizhi 1|100\", the recognized word \"mizhi 2\", which is a homophone of \"mizhi 2\", will be forcibly replaced with \"mizhi 2\". It is recommended that you enable this feature based on the actual needs. You can set the weight to 100 for only critical and necessary terms. The overall accuracy will be affected if the weight is set to 100 for too many terms.",
-          "example": "无",
+          "example": "腾讯云|10,语音识别|5,ASR|11",
           "member": "string",
           "name": "HotwordList",
           "required": false,
@@ -225,11 +225,20 @@
         {
           "disabled": false,
           "document": "List of keyword IDs for recognition. This parameter is left blank by default, indicating that no keyword is recognized. You can enter up to 10 IDs.\n",
-          "example": "无",
+          "example": "[\"sdsdasdasf\",\"asdfasdasd\"]",
           "member": "string",
           "name": "KeyWordLibIdList",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "26910027******d9fa530f9f39dcd35d8",
+          "member": "string",
+          "name": "ReplaceTextId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -395,7 +404,7 @@
         {
           "disabled": false,
           "document": "Word details of a sentence.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[{\"OffsetStartMs\": 120}]",
+          "example": "无",
           "member": "SentenceWords",
           "name": "Words",
           "output_required": true,
@@ -425,7 +434,7 @@
         {
           "disabled": false,
           "document": "Emotional energy value. This value is the result of dividing the sound volume in dB by 10. Value range: [1,10]. The higher the value, the stronger the emotion.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
+          "example": "1.0",
           "member": "float",
           "name": "EmotionalEnergy",
           "output_required": true,
@@ -445,7 +454,7 @@
         {
           "disabled": false,
           "document": "Emotion type. (This parameter may be left blank in two scenarios: 1. No corresponding resource package exists; 2. The emotion is not recognized because it is not strong enough, which is related to the emotional energy.)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "happy",
+          "example": "[\"happy\"]",
           "member": "string",
           "name": "EmotionType",
           "output_required": true,
@@ -455,7 +464,7 @@
         {
           "disabled": false,
           "document": "List of recognized keywords.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[       {         \"KeyWordLibID\": \"ec9g31d\",         \"KeyWordLibName\": \"测试词库\",         \"KeyWords\": [\"冰淇淋\",\"月亮\",\"六便士\"]       }     ]",
+          "example": "无",
           "member": "KeyWordResult",
           "name": "KeyWordResults",
           "output_required": false,

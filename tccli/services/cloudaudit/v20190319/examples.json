@@ -1,13 +1,5 @@
 {
   "actions": {
-    "CreateAudit": [
-      {
-        "document": "This example shows you how to create a tracking set.",
-        "input": "https://cloudaudit.tencentcloudapi.com/?Action=CreateAudit\n&AuditName=auditTest_1\n&CmqQueueName=cmq-01\n&CmqRegion=sh\n&CosBucketName=cos-01\n&CosRegion=ap-shanghai\n&IsCreateNewBucket=1\n&IsCreateNewQueue=1\n&IsEnableCmqNotify=1\n&LogFilePrefix=akshsb1j\n&ReadWriteAttribute=2\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": 1,\n        \"RequestId\": \"e9501707-784a-474c-b524-67ed9d3a6b50\"\n    }\n}",
-        "title": "Creating tracking set"
-      }
-    ],
     "CreateAuditTrack": [
       {
         "document": " ",
@@ -16,20 +8,12 @@
         "title": "Creating a tracking set"
       }
     ],
-    "DeleteAudit": [
-      {
-        "document": "This example shows you how to delete a tracking set.",
-        "input": "https://cloudaudit.tencentcloudapi.com/?Action=DeleteAudit\n&AuditName=xxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": 1,\n        \"RequestId\": \"e27d42d6-855a-40fa-9b5f-462059502463\"\n    }\n}",
-        "title": "Deleting tracking set"
-      }
-    ],
     "DeleteAuditTrack": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAuditTrack\n<Common request parameters>\n\n{\n    \"TrackId\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAuditTrack\n<Common Parameter>\n\n{\n    \"TrackId\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
-        "title": "Deleting a CloudAudit tracking set"
+        "title": "Delete operation audit trail set"
       }
     ],
     "DescribeAudit": [
@@ -43,17 +27,17 @@
     "DescribeAuditTrack": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditTrack\n<Common request parameters>\n\n{\n    \"TrackId\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"Name\": \"audit\",\n        \"ActionType\": \"Read\",\n        \"ResourceType\": \"audit\",\n        \"EventNames\": [\n            \"LookUpEvents\"\n        ],\n        \"Storage\": {\n            \"StorageName\": \"audit-cos\",\n            \"StoragePrefix\": \"test\",\n            \"StorageRegion\": \"ap-guangzhou\",\n            \"StorageType\": \"cos\"\n        },\n        \"TrackForAllMembers\": 1,\n        \"Status\": 1,\n        \"CreateTime\": \"2021-01-14 14:43:38\",\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
-        "title": "Querying the CloudAudit tracking set details"
+        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditTrack\n<Common Parameter>\n\n{\n    \"TrackId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"audit\",\n        \"ActionType\": \"Read\",\n        \"ResourceType\": \"audit\",\n        \"EventNames\": [\n            \"LookUpEvents\"\n        ],\n        \"Storage\": {\n            \"StorageName\": \"audit-cos\",\n            \"StoragePrefix\": \"audit\",\n            \"StorageRegion\": \"ap-guangzhou\",\n            \"StorageType\": \"cos\"\n        },\n        \"TrackForAllMembers\": 1,\n        \"Status\": 1,\n        \"CreateTime\": \"2021-01-14 14:43:38\",\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
+        "title": "Query operation audit trail set details"
       }
     ],
     "DescribeAuditTracks": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditTracks\n<Common request parameters>\n\n{\n    \"PageNumber\": 1,\n    \"PageSize\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"Tracks\": [\n            {\n                \"TrackId\": 1,\n                \"Name\": \"audit\",\n                \"ActionType\": \"Read\",\n                \"ResourceType\": \"audit\",\n                \"EventNames\": [\n                    \"LookUpEvents\"\n                ],\n                \"Storage\": {\n                    \"StorageName\": \"audit-cos\",\n                    \"StoragePrefix\": \"test\",\n                    \"StorageRegion\": \"ap-guangzhou\",\n                    \"StorageType\": \"cos\"\n                },\n                \"Status\": 1,\n                \"CreateTime\": \"2021-01-14 14:43:38\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
-        "title": "Querying the CloudAudit tracking set list"
+        "document": "View the list of created trail sets via the console or APIs.",
+        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditTracks\n<Common Parameter>\n\n{\n    \"PageNumber\": 1,\n    \"PageSize\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Tracks\": [\n            {\n                \"TrackId\": 1,\n                \"Name\": \"audit\",\n                \"ActionType\": \"Read\",\n                \"ResourceType\": \"audit\",\n                \"EventNames\": [\n                    \"LookUpEvents\"\n                ],\n                \"Storage\": {\n                    \"StorageName\": \"audit-cos\",\n                    \"StoragePrefix\": \"cloudtrail\",\n                    \"StorageRegion\": \"ap-guangzhou\",\n                    \"StorageType\": \"cos\"\n                },\n                \"Status\": 1,\n                \"CreateTime\": \"2021-01-14 14:43:38\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
+        "title": "Query Operation Audit Trail Set List"
       }
     ],
     "DescribeEvents": [
@@ -90,18 +74,18 @@
     ],
     "ListCmqEnableRegion": [
       {
-        "document": "This example shows you how to query CloudAudit-enabled CMQ AZs.",
-        "input": "https://cloudaudit.tencentcloudapi.com/?Action=ListCmqEnableRegion\n&WebsiteType=zh\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b69a7b60-e58f-4d27-a2b7-722fe01109c1\",\n        \"EnableRegions\": [\n            {\n                \"CmqRegion\": \"sh\",\n                \"CmqRegionName\": \"Shanghai\"\n            },\n            {\n                \"CmqRegion\": \"hk\",\n                \"CmqRegionName\": \"Hong Kong (China)\"\n            }\n        ]\n    }\n}",
-        "title": "Querying CloudAudit-enabled CMQ AZs"
+        "document": "",
+        "input": "https://cloudaudit.tencentcloudapi.com/?Action=ListCmqEnableRegion\n&WebsiteType=zh\n&<Common Paramter>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b69a7b60-e58f-4d27-a2b7-722fe01109c1\",\n        \"EnableRegions\": [\n            {\n                \"CmqRegion\": \"sh\",\n                \"CmqRegionName\": \"shanghai\"\n            },\n            {\n                \"CmqRegion\": \"hk\",\n                \"CmqRegionName\": \"Hong Kong\"\n            }\n        ]\n    }\n}",
+        "title": "Query Supported CMQ Availability Zones for Operation Audit"
       }
     ],
     "ListCosEnableRegion": [
       {
-        "document": "This example shows you how to query CloudAudit-enabled COS AZs.",
-        "input": "https://cloudaudit.tencentcloudapi.com/?Action=ListCosEnableRegion\n&WebsiteType=zh\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2e81bc9d-5463-498f-9336-32f814940018\",\n        \"EnableRegions\": [\n            {\n                \"CosRegion\": \"ap-shanghai\",\n                \"CosRegionName\": \"Shanghai (East China)\"\n            },\n            {\n                \"CosRegion\": \"ap-hongkong\",\n                \"CosRegionName\": \"Hong Kong (China)\"\n            }\n        ]\n    }\n}",
-        "title": "Querying CloudAudit-enabled COS AZs"
+        "document": "",
+        "input": "https://cloudaudit.tencentcloudapi.com/?Action=ListCosEnableRegion\n&WebsiteType=zh\n&<Common Paramter>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2e81bc9d-5463-498f-9336-32f814940018\",\n        \"EnableRegions\": [\n            {\n                \"CosRegion\": \"ap-shanghai\",\n                \"CosRegionName\": \"Shanghai (East China)\"\n            },\n            {\n                \"CosRegion\": \"ap-hongkong\",\n                \"CosRegionName\": \"Hong Kong\"\n            }\n        ]\n    }\n}",
+        "title": "Query Supported COS Availability Zones for Operation Audit"
       }
     ],
     "LookUpEvents": [
@@ -115,9 +99,9 @@
     "ModifyAuditTrack": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditTrack\n<Common request parameters>\n\n{\n    \"TrackId\": 1,\n    \"Name\": \"audit\",\n    \"ActionType\": \"Read\",\n    \"ResourceType\": \"audit\",\n    \"Status\": 0,\n    \"TrackForAllMembers\": 1,\n    \"EventNames\": [\n        \"LookUpEvents\",\n        \"DeleteAudit\"\n    ],\n    \"Storage\": {\n        \"StorageType\": \"cos\",\n        \"StorageRegion\": \"ap-guangzhou\",\n        \"StorageName\": \"audit-cos\",\n        \"StoragePrefix\": \"test\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuditTrack\n<Common Parameter>\n\n{\n    \"TrackId\": 1,\n    \"Name\": \"audit\",\n    \"ActionType\": \"Read\",\n    \"ResourceType\": \"audit\",\n    \"Status\": 0,\n    \"TrackForAllMembers\": 1,\n    \"EventNames\": [\n        \"LookUpEvents\",\n        \"DeleteAudit\"\n    ],\n    \"Storage\": {\n        \"StorageType\": \"cos\",\n        \"StorageRegion\": \"ap-guangzhou\",\n        \"StorageName\": \"audit-cos\",\n        \"StoragePrefix\": \"audit\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
-        "title": "Modifying CloudAudit tracking set"
+        "title": "Modify Operation Audit Trail"
       }
     ],
     "StartLogging": [
