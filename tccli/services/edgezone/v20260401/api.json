@@ -1,0 +1,2066 @@
+{
+  "actions": {
+    "ApplyPublicIps": {
+      "document": "This API is used to submit a request for multiple IP addresses from the static IP pool to specify a public network instance (random allocation). Need to check user quota before applying.\nThis API is applicable only to public network instances with `RouteMode=static`. Calling this API for BGP/OSPF instances will return an error.",
+      "input": "ApplyPublicIpsRequest",
+      "name": "Apply for a public IP",
+      "output": "ApplyPublicIpsResponse",
+      "status": "online"
+    },
+    "CreateInstances": {
+      "document": "This API is used to create a physical machine instance. The system automatically allocates physical machine resources and completes installation. If the user is not in the current availability zone, the system automatically enables billing. It supports concurrent allocation of physical machine resources and async execution of network assignment and installation tasks.",
+      "input": "CreateInstancesRequest",
+      "name": "Create a physical machine instance",
+      "output": "CreateInstancesResponse",
+      "status": "online"
+    },
+    "CreatePrivateNetworkInstance": {
+      "document": "Create a private network instance. A user can only create one private network instance in an availability zone. The subnet range is collectively determined by both parameters: Network (network number) and Mask (bit number of the mask). Network must be a valid network address from one of the three RFC 1918 private address ranges: 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16, and all host bits must be 0 (meaning the combination of Network and Mask cannot have any host bits set, such as 10.0.0.1/24 is illegal, use 10.0.0.0/24 instead). The maximum Mask is unified as 28, and the minimum is determined by the address range it belongs to: 10.x.x.x allows 8–28, 172.16.x.x allows 12–28, and 192.168.x.x allows 16–28.",
+      "input": "CreatePrivateNetworkInstanceRequest",
+      "name": "Create a private network instance",
+      "output": "CreatePrivateNetworkInstanceResponse",
+      "status": "online"
+    },
+    "CreatePublicNetworkInstance": {
+      "document": "The user inputs the availability zone ID, public network instance name, network line, and routing mode to create a public network instance. A user can only create one public network instance in an availability zone.\nPublic network instances in **static** routing mode require users to proactively apply for and release public IP addresses.\nPublic network instances with routing mode set to **OSPF, BGP** automatically allocate public IP ranges when creating and auto release public IP ranges upon termination.",
+      "input": "CreatePublicNetworkInstanceRequest",
+      "name": "Create a public network instance",
+      "output": "CreatePublicNetworkInstanceResponse",
+      "status": "online"
+    },
+    "DeletePrivateNetworkInstance": {
+      "document": "Delete a private network instance",
+      "input": "DeletePrivateNetworkInstanceRequest",
+      "name": "Delete a private network instance",
+      "output": "DeletePrivateNetworkInstanceResponse",
+      "status": "online"
+    },
+    "DeletePublicNetworkInstance": {
+      "document": "Modify public network instance info",
+      "input": "DeletePublicNetworkInstanceRequest",
+      "name": "Delete a Public Network Instance",
+      "output": "DeletePublicNetworkInstanceResponse",
+      "status": "online"
+    },
+    "DescribeInstanceTypes": {
+      "document": "This API is used to query the model quota list under the account by availability zone dimensionality based on AppId. If a Zone is input, it returns the model quota under the designated availability zone. If not, it returns the model quota of all AZs under the account.",
+      "input": "DescribeInstanceTypesRequest",
+      "name": "Query a physical machine model",
+      "output": "DescribeInstanceTypesResponse",
+      "status": "online"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to query physical machine instance list, support by instance ID, instance name, availability zone, instance status with conditional filtering, and support paging query.",
+      "input": "DescribeInstancesRequest",
+      "name": "Query physical machine instance list",
+      "output": "DescribeInstancesResponse",
+      "status": "online"
+    },
+    "DescribePrivateNetworkInstances": {
+      "document": "Query private network instances, support through parameters such as private network instance ID, instance name, and availability zone id.",
+      "input": "DescribePrivateNetworkInstancesRequest",
+      "name": "Query a private network instance",
+      "output": "DescribePrivateNetworkInstancesResponse",
+      "status": "online"
+    },
+    "DescribePublicIps": {
+      "document": "Query the public network Ip information of the user. For public network instances with routing mode set to Static, return all applied public network Ip information. For public network instances with routing mode set to Ospf and Bgp, return Ip range information directly.",
+      "input": "DescribePublicIpsRequest",
+      "name": "Query the public IP list",
+      "output": "DescribePublicIpsResponse",
+      "status": "online"
+    },
+    "DescribePublicNetworkInstances": {
+      "document": "Query public network instance list, support conditional filtering by instance ID, instance name, availability zone, and support paging query.",
+      "input": "DescribePublicNetworkInstancesRequest",
+      "name": "Query the public network instance list",
+      "output": "DescribePublicNetworkInstancesResponse",
+      "status": "online"
+    },
+    "DescribeZoneData": {
+      "document": "Query statistics by metric name. Data is aggregated at 1-minute intervals.",
+      "input": "DescribeZoneDataRequest",
+      "name": "Query metric data of IDCs in availability zones",
+      "output": "DescribeZoneDataResponse",
+      "status": "online"
+    },
+    "DescribeZones": {
+      "document": "Cross-regional aggregate query returns the AZ list for the specified AppId in ALL configured regions. The local region directly performs a database query, while remote regions send HTTP requests to each region's DescribeAppZones API and merge the results.",
+      "input": "DescribeZonesRequest",
+      "name": "Query edge physical machine AZ list",
+      "output": "DescribeZonesResponse",
+      "status": "online"
+    },
+    "ModifyInstanceAttribute": {
+      "document": "This API is used to modify the attributes of a physical machine instance, supporting modification of the instance name and update of the public IP address (IPv4/IPv6). At least one of InstanceName and NewPublicIp must be input.",
+      "input": "ModifyInstanceAttributeRequest",
+      "name": "Modify instance attributes.",
+      "output": "ModifyInstanceAttributeResponse",
+      "status": "online"
+    },
+    "ModifyPrivateNetworkInstance": {
+      "document": "Modify private network instance info",
+      "input": "ModifyPrivateNetworkInstanceRequest",
+      "name": "Modify a private network instance",
+      "output": "ModifyPrivateNetworkInstanceResponse",
+      "status": "online"
+    },
+    "ModifyPublicNetworkInstance": {
+      "document": "Modify public network instance info",
+      "input": "ModifyPublicNetworkInstanceRequest",
+      "name": "Modify a public network instance",
+      "output": "ModifyPublicNetworkInstanceResponse",
+      "status": "online"
+    },
+    "ReleasePublicIp": {
+      "document": "Batch release IPv4 addresses assigned to STATIC public network instances but not bound to physical servers\nThis API is applicable only to STATIC mode instances. The CIDR of BGP/OSPF instances is automatically returned during deletion with no need to manually release single IP addresses.",
+      "input": "ReleasePublicIpRequest",
+      "name": "Release a public IP",
+      "output": "ReleasePublicIpResponse",
+      "status": "online"
+    },
+    "TerminateInstances": {
+      "document": "This API is used to terminate a physical machine instance and free up resources. It synchronously releases network resources (IP recycling) and updates status to terminating, while performing disk cleanup asynchronously in the background. It supports partially successful operations.",
+      "input": "TerminateInstancesRequest",
+      "name": "Destroy an instance",
+      "output": "TerminateInstancesResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2026-04-01",
+    "serviceNameCN": "边缘可用区",
+    "serviceShortName": "edgezone"
+  },
+  "objects": {
+    "ApplyPublicIpsRequest": {
+      "document": "ApplyPublicIps request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID (route publishing mode must be STATIC)",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Apply for an Ip quantity, minimum is 1",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Applied Ip type, enumeration value: ipv4, ipv6",
+          "example": "ipv4",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyPublicIpsResponse": {
+      "document": "ApplyPublicIps response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Assigned public network IP address list.",
+          "example": "[\"224.12.10.25\"]",
+          "member": "string",
+          "name": "IpList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesRequest": {
+      "document": "CreateInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone code, such as ap-guangzhou-1.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Model specifications, such as BMS5.MEDIUM8.",
+          "example": "BMS5.MEDIUM8",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "my-epm-instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private network instance ID in the format of net-xxx.",
+          "example": "net-private-001",
+          "member": "string",
+          "name": "PrivateNetworkId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance ID, in the format of net-xxx.",
+          "example": "net-public-001",
+          "member": "string",
+          "name": "PublicNetworkId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image ID, for example img-centos-7.9.",
+          "example": "img-centos-7.9",
+          "member": "string",
+          "name": "ImageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the quantity. Default is 1. Maximum is 50.",
+          "example": "1",
+          "member": "uint64",
+          "name": "InstanceCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Image version number. Only public images have the concept of version.",
+          "example": "7.9.2009",
+          "member": "string",
+          "name": "VersionNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableIpv6",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstancesResponse": {
+      "document": "CreateInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of successfully created instance IDs.",
+          "example": "[\"ins-abcd1234\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Count of failed instances. This field is returned only when partially failed, not returned when all successful.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FailedCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrivateNetworkInstanceRequest": {
+      "document": "CreatePrivateNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "New instance name",
+          "example": "test-pri-instance",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The network address (host bits must be all 0s) must fall into one of the following RFC 1918 private ranges: `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.",
+          "example": "10.0.0.0",
+          "member": "string",
+          "name": "Network",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mask digits. The upper limit is fixed at `28`, while the lower limit depends on the private segment it belongs to: `10.0.0.0/8` allows `8~28`, `172.16.0.0/12` allows `12~28`, `192.168.0.0/16` allows `16~28`. It must together form a valid network address with Network (host bits all set to 0).",
+          "example": "24",
+          "member": "int64",
+          "name": "Mask",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePrivateNetworkInstanceResponse": {
+      "document": "CreatePrivateNetworkInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network instance ID",
+          "example": "ein-a1b2c3d4",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePublicNetworkInstanceRequest": {
+      "document": "CreatePublicNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-singapore-1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance name",
+          "example": "新加坡EPM公网实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Network line",
+          "example": "BGP",
+          "member": "string",
+          "name": "Line",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Routing mode",
+          "example": "static",
+          "member": "string",
+          "name": "RouteMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public network bandwidth (Mbps)",
+          "example": "100",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePublicNetworkInstanceResponse": {
+      "document": "CreatePublicNetworkInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID",
+          "example": "epn-dfghjk",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateNetworkInstanceRequest": {
+      "document": "DeletePrivateNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network instance Id",
+          "example": "ein-a1b2c3d4",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateNetworkInstanceResponse": {
+      "document": "DeletePrivateNetworkInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePublicNetworkInstanceRequest": {
+      "document": "DeletePublicNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePublicNetworkInstanceResponse": {
+      "document": "DeletePublicNetworkInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceTypesRequest": {
+      "document": "DescribeInstanceTypes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone code, such as ap-guangzhou-1. If not passed, return models under the account in all AZs.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceTypesResponse": {
+      "document": "DescribeInstanceTypes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model quota list.",
+          "example": "无",
+          "member": "InstanceTypeQuota",
+          "name": "InstanceTypeQuotaSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned records.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID list for filtering by instance ID",
+          "example": "[\"bms-abcd1234\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name, supports fuzzy matching",
+          "example": "my-instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone code for filtering instances in the specified availability zone",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.",
+          "example": "[\"running\"]",
+          "member": "string",
+          "name": "InstanceStatus",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Public IPv4 address list, used for filtering instances by public IP address",
+          "example": "[\"203.0.113.10\"]",
+          "member": "string",
+          "name": "PublicIps",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results. Default 20. Maximum 100.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance detail list",
+          "example": "无",
+          "member": "Instance",
+          "name": "InstanceSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of Eligible Instances",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateNetworkInstancesRequest": {
+      "document": "DescribePrivateNetworkInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network instance Id",
+          "example": "ein-a1b2c3d4",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New instance name",
+          "example": "测试私网实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset, default 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. Default 20. Maximum 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateNetworkInstancesResponse": {
+      "document": "DescribePrivateNetworkInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of private network instances",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private network instance set",
+          "example": "无",
+          "member": "PrivateNetworkInstanceInfo",
+          "name": "PrivateNetworkInstanceSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicIpsRequest": {
+      "document": "DescribePublicIps request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter by public network instance ID (substring match, union of multiple values)",
+          "example": "[\"epn-dfghjkl\", \"epn-a1b2c3d4\"]",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by availability zone/IDC",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by IP (substring match, union of multiple values)",
+          "example": "[\"10.100.12.1\", \"10.100.13.2\"]",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by status, available values: `InUse`, `Unbound` (multiple values are combined with OR)",
+          "example": "[\"Unbound\", \"InUse\"]",
+          "member": "string",
+          "name": "State",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by IP version. Available values: `Ipv4`, `Ipv6` (multiple values are combined).",
+          "example": "[\"ipv4\", \"ipv6\"]",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort by creation time, available values: `asc`, `desc` (default `desc`)",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByCreateTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort by update time, available values: `asc`, `desc` (priority is higher than sort by creation time)",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderByUpdateTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset, default 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. Default 20. Maximum 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicIpsResponse": {
+      "document": "DescribePublicIps response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of EIPs",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Assigned public network IP address list",
+          "example": "无",
+          "member": "IpInfo",
+          "name": "IpInfoSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicNetworkInstancesRequest": {
+      "document": "DescribePublicNetworkInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance name",
+          "example": "北京测试公网实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset, default 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page. Default 20. Maximum 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePublicNetworkInstancesResponse": {
+      "document": "DescribePublicNetworkInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of public network instances",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "public network instance collection",
+          "example": "无",
+          "member": "PublicNetworkInstanceInfo",
+          "name": "PublicNetworkInstanceSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneDataRequest": {
+      "document": "DescribeZoneData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone id",
+          "example": "ap-singapore-tez-shouer-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Metric name (inbw: inbound bandwidth, outbw: outbound bandwidth)",
+          "example": "inbw",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time (UTC time)",
+          "example": "2026-04-13T00:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time (UTC time), query up to 2 days.",
+          "example": "2026-04-13T00:00:00Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneDataResponse": {
+      "document": "DescribeZoneData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Stats, metrics inbw|outbw in Mbps",
+          "example": "无",
+          "member": "SwitchData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZonesRequest": {
+      "document": "DescribeZones request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeZonesResponse": {
+      "document": "DescribeZones response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone list of all regions.",
+          "example": "无",
+          "member": "ZoneInfo",
+          "name": "ZoneSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of availability zones.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FailedInstance": {
+      "document": "Failed instance info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "bms-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code.",
+          "example": "UnsupportedOperation.InvalidInstanceState",
+          "member": "string",
+          "name": "ErrorCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "Instance bms-abcd1234 is not in running status",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Instance": {
+      "document": "Describe physical machine instance information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "bms-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "my-epm-instance",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bound Physical Machine ID",
+          "example": "srv-abcd1234",
+          "member": "string",
+          "name": "MachineId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model specifications",
+          "example": "BM.S5.LARGE8",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone code",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image ID",
+          "example": "img-centos-7.9",
+          "member": "string",
+          "name": "ImageId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Image version number",
+          "example": "7.9.2009",
+          "member": "string",
+          "name": "VersionNumber",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status, value range: allocating, running, isolating, isolated, terminating, error.",
+          "example": "running",
+          "member": "string",
+          "name": "InstanceStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation status: normal, starting, stopping, stopped, rebooting.",
+          "example": "normal",
+          "member": "string",
+          "name": "OperateStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "net-private-001",
+          "member": "string",
+          "name": "PrivateNetworkId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "private IPv4 address",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "PrivateIp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "private IPv6 address",
+          "example": "fd00::1",
+          "member": "string",
+          "name": "PrivateIpV6",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network ID",
+          "example": "net-public-001",
+          "member": "string",
+          "name": "PublicNetworkId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IPv4 address",
+          "example": "203.0.113.10",
+          "member": "string",
+          "name": "PublicIp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IPv6 address",
+          "example": "2001:db8::1",
+          "member": "string",
+          "name": "PublicIpV6",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, expressed according to the ISO8601 standard and using the UTC time. The format is YYYY-MM-DDThh:mm:ssZ.",
+          "example": "2026-01-13T10:00:00Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceTypeQuota": {
+      "document": "Account model quota information in the availability zone, including availability zone, model detail and quota quantity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone code.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model specifications.",
+          "example": "BMS5.MEDIUM8",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model family.",
+          "example": "BM.S5",
+          "member": "string",
+          "name": "InstanceFamily",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores.",
+          "example": "8",
+          "member": "int64",
+          "name": "CpuCores",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPU type.",
+          "example": "6231C*2",
+          "member": "string",
+          "name": "CpuType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size (GB).",
+          "example": "32",
+          "member": "int64",
+          "name": "MemoryGb",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "System disk type.",
+          "example": "SSD",
+          "member": "string",
+          "name": "SystemDiskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "System disk size (GB).",
+          "example": "480",
+          "member": "int64",
+          "name": "SystemDiskSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of system disks.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SystemDiskCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data disk type.",
+          "example": "SSD",
+          "member": "string",
+          "name": "DataDiskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data disk size (GB).",
+          "example": "960",
+          "member": "int64",
+          "name": "DataDiskSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of data disks.",
+          "example": "4",
+          "member": "uint64",
+          "name": "DataDiskCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk description string (backward compatibility).",
+          "example": "SSD-480G*2, SSD-960G*4",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network interface type.",
+          "example": "25G*2",
+          "member": "string",
+          "name": "NetworkInterfaceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GPU type. Empty string if no GPU is available.",
+          "example": "",
+          "member": "string",
+          "name": "GpuType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quota quantity. 0 indicates no restriction.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Quota",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IpInfo": {
+      "document": "Public Ip information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "10.100.0.20",
+          "example": "公网IP",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "epn-asdfghjkl",
+          "example": "公网实例ID",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "epm-asdfghjkl",
+          "example": "物理服务器实例ID",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unbound",
+          "example": "IP使用状态状态，Unbound或InUse",
+          "member": "string",
+          "name": "State",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ipv4",
+          "example": "IP类型，Ipv4或Ipv6",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "2026-04-07T00:00:00",
+          "example": "申请时间",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "2026-04-07T00:00:00",
+          "example": "更新时间",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyInstanceAttributeRequest": {
+      "document": "ModifyInstanceAttribute request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "bms-abcd1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New instance name, 1-60 characters. Import at least one with NewPublicIp.",
+          "example": "new-instance-name",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New public IP address (select from available IP addresses of the public network instance bound to the instance). Provide at least one of this or InstanceName.",
+          "example": "203.0.113.20",
+          "member": "string",
+          "name": "NewPublicIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP type, ipv4 or ipv6. Default is ipv4. Valid only when NewPublicIp is specified.",
+          "example": "ipv4",
+          "member": "string",
+          "name": "IpType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceAttributeResponse": {
+      "document": "ModifyInstanceAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPrivateNetworkInstanceRequest": {
+      "document": "ModifyPrivateNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network instance Id",
+          "example": "ein-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New instance name",
+          "example": "测试私网实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPrivateNetworkInstanceResponse": {
+      "document": "ModifyPrivateNetworkInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublicNetworkInstanceRequest": {
+      "document": "ModifyPublicNetworkInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New instance name",
+          "example": "测试实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPublicNetworkInstanceResponse": {
+      "document": "ModifyPublicNetworkInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PrivateNetworkInstanceInfo": {
+      "document": "Private network instance information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network instance ID",
+          "example": "ein-a1b2c3d4",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private network instance name",
+          "example": "test-pri-instance",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network address.",
+          "example": "10.0.0.0",
+          "member": "string",
+          "name": "Network",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network mask",
+          "example": "8",
+          "member": "int64",
+          "name": "Mask",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of associated physical machines",
+          "example": "10",
+          "member": "int64",
+          "name": "ServerCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Available Ip quantity",
+          "example": "255",
+          "member": "int64",
+          "name": "AvailableIpCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2026-04-07T00:00:00",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time",
+          "example": "2026-04-07T00:00:00",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PublicNetworkInstanceInfo": {
+      "document": "Public network instance info, including instance ID, availability zone ID, instance name, line, routing mode, etc.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "北京测试公网实例",
+          "member": "string",
+          "name": "NetworkInstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bandwidth, Unit: Mbps\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "int64",
+          "name": "Bandwidth",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Line information",
+          "example": "BGP",
+          "member": "string",
+          "name": "Line",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Routing mode, enumeration value: STATIC, BGP, OSPF",
+          "example": "BGP",
+          "member": "string",
+          "name": "RouteMode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of Associated Physical Servers",
+          "example": "10",
+          "member": "int64",
+          "name": "ServerCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Applied Ipv4 quantity",
+          "example": "10",
+          "member": "int64",
+          "name": "Ipv4Count",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of applied Ipv6 addresses",
+          "example": "100",
+          "member": "int64",
+          "name": "Ipv6Count",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated Ipv4 subnet\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PublicNetworkSegment",
+          "name": "Ipv4CidrSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated Ipv6 segment\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PublicNetworkSegment",
+          "name": "Ipv6CidrSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance creation time",
+          "example": "2026-04-07T00:00:00",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network instance last modified",
+          "example": "2026-04-07T00:00:00",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PublicNetworkSegment": {
+      "document": "Public network ip range info, including cidr and gateway ip",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cidr of the subnet",
+          "example": "224.16.14.0/24",
+          "member": "string",
+          "name": "Cidr",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gateway Ip",
+          "example": "224.16.14.1",
+          "member": "string",
+          "name": "Gateway",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ReleasePublicIpRequest": {
+      "document": "ReleasePublicIp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Public network instance ID (route publishing mode is STATIC)",
+          "example": "epn-dfghjkl",
+          "member": "string",
+          "name": "NetworkInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Ip type to be released, enumeration value: ipv4, ipv6",
+          "example": "ipv4",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of Ip addresses to be released",
+          "example": "[\"226.10.12.3\", \"226.10.12.4\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleasePublicIpResponse": {
+      "document": "ReleasePublicIp response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchData": {
+      "document": "Switch data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "UTC time",
+          "example": "2026-04-13T00:00:00Z",
+          "member": "string",
+          "name": "Time",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistical value",
+          "example": "1.11",
+          "member": "float",
+          "name": "Value",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateInstancesRequest": {
+      "document": "TerminateInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID list. Maximum number of IDs: 100.",
+          "example": "[\"bms-mnop3456\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateInstancesResponse": {
+      "document": "TerminateInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of instance IDs successfully terminated.",
+          "example": "[\"bms-mnop3456\"]",
+          "member": "string",
+          "name": "InstanceIdSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of instances with termination failed (returned when partially successful).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FailedInstance",
+          "name": "FailedInstanceSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ZoneInfo": {
+      "document": "Cross-regional AZ information after aggregating.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "AZ ID.",
+          "example": "100001",
+          "member": "int64",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone code.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Chinese Name of Availability Zone.",
+          "example": "广州一区",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone English name.",
+          "example": "Guangzhou Zone 1",
+          "member": "string",
+          "name": "ZoneNameEn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region code.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Area code",
+          "example": "asia_pacific_1",
+          "member": "string",
+          "name": "Location",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Zone Name",
+          "example": "亚太1",
+          "member": "string",
+          "name": "LocationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

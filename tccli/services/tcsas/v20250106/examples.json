@@ -120,6 +120,14 @@
         "title": "CreateMNPDomainACL"
       }
     ],
+    "CreateMNPSecretKey": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPSecretKey\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPId\": \"mpjnms6wibvjj8dd\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"KeyId\": \"202603111414116361758560\",\n            \"SecretKey\": \"d1d9be684ffaa73e6fc81c8f7a04ad827aedf9779c593b09b5e375c64b4d3a0f\"\n        },\n        \"RequestId\": \"eff07e65-8f28-48d0-8b40-88c2de3fac03\"\n    }\n}",
+        "title": "DEMO"
+      }
+    ],
     "CreateMNPSensitiveAPIPermissionApproval": [
       {
         "document": "",

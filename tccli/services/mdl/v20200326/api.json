@@ -2073,7 +2073,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the channel for which you want to configure an event",
+          "document": "ID of the channel for which you want to configure an event.",
           "example": "AAAAAA",
           "member": "string",
           "name": "ChannelId",
@@ -2082,7 +2082,7 @@
         },
         {
           "disabled": false,
-          "document": "Event configuration",
+          "document": "Event configuration.",
           "example": "无",
           "member": "PlanReq",
           "name": "Plan",
@@ -3895,7 +3895,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`",
+          "document": "ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`.",
           "example": "68B3B564XXXXXXABF628",
           "member": "string",
           "name": "InputAttachment",
