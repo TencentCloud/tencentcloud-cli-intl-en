@@ -153,7 +153,7 @@
         {
           "disabled": false,
           "document": "Invitation ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "Id",
           "required": true,
@@ -180,7 +180,7 @@
         {
           "disabled": false,
           "document": "Parent organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "ParentNodeId",
           "required": true,
@@ -189,7 +189,7 @@
         {
           "disabled": false,
           "document": "Organizational unit name",
-          "example": "",
+          "example": "node_name",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -204,9 +204,10 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "NodeId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -225,7 +226,7 @@
         {
           "disabled": false,
           "document": "Invitation ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "Id",
           "required": true,
@@ -252,7 +253,7 @@
         {
           "disabled": false,
           "document": "Organization type; currently its value is fixed as `1`",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "OrgType",
           "required": true,
@@ -267,36 +268,40 @@
         {
           "disabled": false,
           "document": "Organization ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "OrgId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's name",
-          "example": "",
+          "example": "host_name",
           "member": "string",
           "name": "Nickname",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's email address",
-          "example": "",
+          "example": "23***.qq.com",
           "member": "string",
           "name": "Mail",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization type",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "OrgType",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -315,7 +320,7 @@
         {
           "disabled": false,
           "document": "UIN of the member to be deleted",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "MemberUin",
           "required": true,
@@ -324,7 +329,7 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "NodeId",
           "required": true,
@@ -377,8 +382,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Organizational unit ID list",
-          "example": "",
+          "document": "Organizational unit ID list.",
+          "example": "[1001]",
           "member": "uint64",
           "name": "NodeIds",
           "required": true,
@@ -422,7 +427,7 @@
         {
           "disabled": false,
           "document": "Invitation ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "Id",
           "required": true,
@@ -449,7 +454,7 @@
         {
           "disabled": false,
           "document": "Organization member UIN",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "MemberUin",
           "required": true,
@@ -464,63 +469,70 @@
         {
           "disabled": false,
           "document": "Organization member UIN",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "Uin",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization member name",
-          "example": "",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Notes",
-          "example": "",
+          "example": "create member",
           "member": "string",
           "name": "Remark",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Joining time ",
-          "example": "",
+          "example": "2020-10-08 12:09:12",
           "member": "datetime",
           "name": "JoinTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "NodeId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organizational unit name",
-          "example": "",
+          "example": "node_name",
           "member": "string",
           "name": "NodeName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parent organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "ParentNodeId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -544,54 +556,60 @@
         {
           "disabled": false,
           "document": "Organization ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "OrgId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator UIN",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "HostUin",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's name",
-          "example": "",
+          "example": "host_name",
           "member": "string",
           "name": "Nickname",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's email address",
-          "example": "",
+          "example": "23***@qq.com",
           "member": "string",
           "name": "Mail",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization type",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "OrgType",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether the organization is empty or not ",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "IsEmpty",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -610,7 +628,7 @@
         {
           "disabled": false,
           "document": "Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "Invited",
           "required": true,
@@ -619,7 +637,7 @@
         {
           "disabled": false,
           "document": "Offset",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -628,7 +646,7 @@
         {
           "disabled": false,
           "document": "Limit",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -643,18 +661,20 @@
         {
           "disabled": false,
           "document": "List of invitations",
-          "example": "",
+          "example": "[{\"Id\":1,\"Uin\":1000001,\"HostUin\":1000001,\"HostName\":\"host_name\",\"HostMail\":\"23**@qq.com\",\"Status\":1,\"Name\":\"member_name\",\"Remark\":\"invitation member\",\"OrgType\":1,\"InviteTime\":\"2021-03-04 12:22:21\",\"ExpireTime\":\"2021-03-04 12:22:21\"}]",
           "member": "OrgInvitation",
           "name": "Invitations",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -673,7 +693,7 @@
         {
           "disabled": false,
           "document": "Offset",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -682,7 +702,7 @@
         {
           "disabled": false,
           "document": "Limit",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -697,18 +717,20 @@
         {
           "disabled": false,
           "document": "Member list",
-          "example": "",
+          "example": "[{\"Uin\":100000000001,\"Name\":\"member_name\",\"Remark\":\"invitation member\",\"JoinTime\":\"2023-12-13 12:34:51\"}]",
           "member": "OrgMember",
           "name": "Members",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -727,7 +749,7 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "NodeId",
           "required": true,
@@ -736,7 +758,7 @@
         {
           "disabled": false,
           "document": "Offset",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -745,7 +767,7 @@
         {
           "disabled": false,
           "document": "Limit",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -760,18 +782,20 @@
         {
           "disabled": false,
           "document": "Total number of results",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Member list",
-          "example": "",
+          "example": "[{\"Uin\":100000000001,\"Name\":\"member_name\",\"Remark\":\"invitation member\",\"JoinTime\":\"2023-12-13 12:34:51\"}]",
           "member": "OrgMember",
           "name": "Members",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -795,10 +819,10 @@
         {
           "disabled": false,
           "document": "Organizational unit list",
-          "example": "无",
+          "example": "[{\"NodeId\":1,\"Name\":\"node_name\",\"ParentNodeId\":111,\"MemberCount\":11}]",
           "member": "OrgNode",
           "name": "Nodes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -817,7 +841,7 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "NodeId",
           "required": true,
@@ -826,7 +850,7 @@
         {
           "disabled": false,
           "document": "Member UIN list",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "Uins",
           "required": true,
@@ -853,110 +877,110 @@
         {
           "disabled": false,
           "document": "Invitation ID",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "UIN of the invitee",
-          "example": "",
+          "example": "1000001",
           "member": "uint64",
           "name": "Uin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator UIN",
-          "example": "",
+          "example": "1000001",
           "member": "uint64",
           "name": "HostUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's name",
-          "example": "",
+          "example": "host_name",
           "member": "string",
           "name": "HostName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creator's email address",
-          "example": "",
+          "example": "23**@qq.com",
           "member": "string",
           "name": "HostMail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name",
-          "example": "",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Notes",
-          "example": "",
+          "example": "invitation member",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Organization type",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "OrgType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Time of invitation",
-          "example": "",
+          "example": "2021-03-04 12:22:21",
           "member": "datetime",
           "name": "InviteTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Expiration time",
-          "example": "",
+          "example": "2021-03-04 15:22:21",
           "member": "datetime",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -969,40 +993,40 @@
         {
           "disabled": false,
           "document": "UIN",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "Uin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name",
-          "example": "",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Notes",
-          "example": "",
+          "example": "invitation member",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Joining time",
-          "example": "",
+          "example": "2023-12-13 12:34:51",
           "member": "datetime",
           "name": "JoinTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1015,40 +1039,40 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "NodeId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Name",
-          "example": "",
+          "example": "node_name",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parent organizational unit ID",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ParentNodeId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of members",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "MemberCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1061,7 +1085,7 @@
         {
           "disabled": false,
           "document": "Organization ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "OrgId",
           "required": true,
@@ -1088,7 +1112,7 @@
         {
           "disabled": false,
           "document": "UIN of the invitee",
-          "example": "100005229292",
+          "example": "100000000001",
           "member": "uint64",
           "name": "InviteUin",
           "required": true,
@@ -1097,7 +1121,7 @@
         {
           "disabled": false,
           "document": "Name",
-          "example": "testAccount",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -1106,7 +1130,7 @@
         {
           "disabled": false,
           "document": "Notes",
-          "example": "test",
+          "example": "invitation member",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -1133,7 +1157,7 @@
         {
           "disabled": false,
           "document": "Member UIN",
-          "example": "",
+          "example": "100000000001",
           "member": "uint64",
           "name": "MemberUin",
           "required": true,
@@ -1142,7 +1166,7 @@
         {
           "disabled": false,
           "document": "Name",
-          "example": "",
+          "example": "member_name",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -1151,7 +1175,7 @@
         {
           "disabled": false,
           "document": "Notes",
-          "example": "",
+          "example": "create member",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1178,7 +1202,7 @@
         {
           "disabled": false,
           "document": "Organizational unit ID",
-          "example": "",
+          "example": "1001",
           "member": "uint64",
           "name": "NodeId",
           "required": true,
@@ -1187,7 +1211,7 @@
         {
           "disabled": false,
           "document": "Name",
-          "example": "",
+          "example": "node_name",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -1196,7 +1220,7 @@
         {
           "disabled": false,
           "document": "Parent organizational unit ID",
-          "example": "",
+          "example": "101",
           "member": "uint64",
           "name": "ParentNodeId",
           "required": false,

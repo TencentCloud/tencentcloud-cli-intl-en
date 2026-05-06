@@ -1,7 +1,7 @@
 {
   "actions": {
     "ApplyFreeCertificate": {
-      "document": "This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.\nStep 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.\nStep 2: Configure the corresponding domain as verification content.\nStep 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.\nStep 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.\n\nThe application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). \ndescription:.\n- Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.\n- If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.\n- A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.",
+      "document": "This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.\nStep 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.\nStep 2: Configure the corresponding domain as verification content.\nStep 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.\nStep 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.\n\nThe application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). \ndescription:.\n- Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.\n- If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.\n- A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.",
       "input": "ApplyFreeCertificateRequest",
       "name": "Applies for a free certificate",
       "output": "ApplyFreeCertificateResponse",
@@ -36,7 +36,7 @@
       "status": "online"
     },
     "CheckFreeCertificateVerification": {
-      "document": "This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.\nThis API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.comom/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.",
+      "document": "This API is used to verify a free certificate and obtain the application result. If verified, you can query the free certificate information for the corresponding domain name application through this API. If failed to apply, this API will return the corresponding verification failure message.\nThis API is used to check the free certificate application result after triggering the [ApplyFreeCertificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1) . Once the application is successful, you need to configure through the [ModifyHostsCertificate](https://www.tencentcloud.com/document/product/1552/80764?from_cn_redirect=1) to deploy the free certificate to the acceleration domain.",
       "input": "CheckFreeCertificateVerificationRequest",
       "name": "Check free certificate application result",
       "output": "CheckFreeCertificateVerificationResponse",
@@ -232,7 +232,7 @@
       "status": "online"
     },
     "CreateRealtimeLogDeliveryTask": {
-      "document": "This API is used to create a real-time log delivery task. The following limits apply.\n-When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), L4 proxy logs, or edge function logs, an entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:.\n-A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address;.\n-A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible Cloud Object Storage;.\n-When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.\n-When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.\n\nThis API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.comom/document/product/1552/104110?from_cn_redirect=1) API first.",
+      "document": "This API is used to create a real-time log delivery task. The following limits apply.\n-When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), L4 proxy logs, or edge function logs, an entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:.\n-A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address;.\n-A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible Cloud Object Storage;.\n-When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.\n-When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.\n\nThis API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API first.",
       "input": "CreateRealtimeLogDeliveryTaskRequest",
       "name": "Creates a real-time log delivery task",
       "output": "CreateRealtimeLogDeliveryTaskResponse",
@@ -925,7 +925,7 @@
       "status": "online"
     },
     "DescribeTimingL4Data": {
-      "document": "<p>This API is used to query the time series Data list of Layer 4.</p>.",
+      "document": "<p>This API is used to query time series monitoring data for L4 proxy instences.</p>",
       "input": "DescribeTimingL4DataRequest",
       "name": "Queries the L4 traffic data over time",
       "output": "DescribeTimingL4DataResponse",
@@ -1436,7 +1436,7 @@
       "status": "online"
     },
     "ModifyZoneWorkMode": {
-      "document": "This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to version management (https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).",
+      "document": "This API is used to modify the working mode of configuration modules under a site. Configuration modules can enable version management mode or immediate effect mode by configuration group dimension. For details, refer to [version management](https://www.tencentcloud.com/document/product/1145/67719).",
       "input": "ModifyZoneWorkModeRequest",
       "name": "Modify site working mode",
       "output": "ModifyZoneWorkModeResponse",
@@ -1816,7 +1816,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.",
+          "document": "The server certificate configuration mode has the following valid values: <ul><li>disable: do not configure a server certificate.</li> <li>eofreecert: apply for a free certificate through automatic verification and deploy it. for verification methods, see: [supported verification methods for free certificate applications](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). - in NS or DNSPod hosting access mode, only the automatic verification method is supported for free certificate applications. - if the free certificate application fails, it will cause deployment failure. you can obtain the reason for the failure through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> <li>eofreecert_manual: deploy a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the <a href='https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1'>apply for free certificate</a> API to apply for a free certificate. once the application is successful, you can deploy the free certificate using this enumeration value.</li> <ul><li>note: when deploying a free certificate, ensure that a successfully applied free certificate already exists. you can check whether a successfully applied free certificate exists through the <a href='https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.</li> </ul> <li>sslcert: configure an SSL managed server-side certificate.</li></ul>.",
           "example": "\"ssl\"",
           "member": "string",
           "name": "Mode",
@@ -3037,7 +3037,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1). valid values:.\n<li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>\n<li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>\n\nNote: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.",
+          "document": "Specifies the verification method for applying for a free certificate. for detailed verification methods, refer to the [free certificate application documentation](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). valid values:.\n<li>http_challenge: specifies the file validation mode for http access. verifies by getting file information from the specified URL of the access domain to complete free certificate application.</li>\n<li>dns_challenge: specifies the dns delegation verification method. verifies the free certificate application by adding the designated host record pointing to EdgeOne.</li>\n\nNote: after triggering this api, you need to complete the verification content configuration based on the returned verification information. once configured, you must also verify by calling the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api. after verification passes, the application succeeds. once the application is successful, you can call the <a href = 'https://www.tencentcloud.com/document/product/1145/50539'>configure domain name certificate</a> API to deploy a free certificate for the current domain name.",
           "example": "http_challenge",
           "member": "string",
           "name": "VerificationMethod",
@@ -3243,7 +3243,7 @@
         {
           "disabled": false,
           "document": "Bandwidth abuse protection (applicable to chinese mainland) handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observe;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
-          "example": "参考 SecurityAction 结构",
+          "example": "无",
           "member": "SecurityAction",
           "name": "Action",
           "output_required": false,
@@ -4604,7 +4604,7 @@
         },
         {
           "disabled": false,
-          "document": "Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).",
+          "document": "Ownership verification information. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).",
           "example": "无",
           "member": "OwnershipVerification",
           "name": "OwnershipVerification",
@@ -5305,7 +5305,7 @@
         },
         {
           "disabled": false,
-          "document": "Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.comom/document/product/1552/124807?from_cn_redirect=1).",
+          "document": "Acceleration domain name, that domain name used when [applying for free certificate](https://www.tencentcloud.com/document/product/1552/124807?from_cn_redirect=1).",
           "example": "qq.com",
           "member": "string",
           "name": "Domain",
@@ -6043,7 +6043,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration group type. Valid values: \n<li>l7_acceleration: L7 acceleration configuration group. </li>\n<li>edge_functions: Edge function configuration group. </li>",
+          "document": "Configuration group type. Optional options are as follows: <li>l7_acceleration: layer-7 acceleration configuration group;</li><li>edge_functions: edge function configuration group;</li><li>web_security: web protection configuration group.</li>",
           "example": "l7_acceleration",
           "member": "string",
           "name": "GroupType",
@@ -7151,7 +7151,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Zone ID.",
+          "document": "Zone ID",
           "example": "zone-292mnbdkdzo6",
           "member": "string",
           "name": "ZoneId",
@@ -7360,7 +7360,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
+          "document": "Whether IPv6 access is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to [creating a new layer 4 proxy instance](https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Ipv6",
@@ -7369,7 +7369,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
+          "document": "Whether to enable static IP, default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
           "example": "off",
           "member": "string",
           "name": "StaticIp",
@@ -7378,7 +7378,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.comom/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
+          "document": "Whether network optimization in the chinese mainland is enabled. default off if left empty. this configuration can only be enabled in certain acceleration zones and security protection configurations. for details, refer to creating a new layer 4 proxy instance (https://www.tencentcloud.com/document/product/1552/90025?from_cn_redirect=1). valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "AccelerateMainland",
@@ -7387,7 +7387,7 @@
         },
         {
           "disabled": true,
-          "document": "Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.comom/document/product/1552/95994?from_cn_redirect=1).\nThis field is deprecated, please use DDosProtectionId field specification for associated protection configuration.",
+          "document": "Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://www.tencentcloud.com/document/product/1552/95994?from_cn_redirect=1).\nThis field is deprecated, please use DDosProtectionId field specification for associated protection configuration.",
           "example": "无",
           "member": "DDosProtectionConfig",
           "name": "DDosProtectionConfig",
@@ -7503,7 +7503,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Rule id list.",
+          "document": "Rule id list",
           "example": "[\"rule-qbjifysd\"]",
           "member": "string",
           "name": "RuleIds",
@@ -8019,7 +8019,7 @@
         },
         {
           "disabled": false,
-          "document": "List of resources to be preheated. required. each element format is as follows:.\nhttp://www.example.com/example.txt.\nNote: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.comom/document/product/1552/77380?from_cn_redirect=1).",
+          "document": "List of resources to be preheated. required. each element format is as follows:.\nhttp://www.example.com/example.txt.\nNote: the number of submitted tasks is limited by the quota of a billing package. check the [EO billing package](https://www.tencentcloud.com/document/product/1552/77380?from_cn_redirect=1).",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -8248,7 +8248,7 @@
         },
         {
           "disabled": false,
-          "document": "Predefined fields for delivery. valid values:.\n<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.comom/document/product/1552/105791?from_cn_redirect=1)</li>.\n<Li><A href=\"https://www.tencentcloud.comom/document/product/1552/105792?from_cn_redirect=1\">four-layer proxy logs</a></li>.\n<Li>Specifies the edge function logs (https://www.tencentcloud.comom/document/product/1552/115585?from_cn_redirect=1).</li>.",
+          "document": "Predefined fields for delivery. valid values:.\n<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li>.\n<Li><A href=\"https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1\">four-layer proxy logs</a></li>.\n<Li>Specifies the edge function logs (https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1).</li>.",
           "example": "[\"RequestID\",\"ClientIP\",\"RequestTime\"]",
           "member": "string",
           "name": "Fields",
@@ -8739,7 +8739,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Policy template ID.",
+          "document": "Policy template ID",
           "example": "temp-ygt2paxl",
           "member": "string",
           "name": "TemplateId",
@@ -9295,7 +9295,7 @@
           "example": "123",
           "member": "string",
           "name": "EventId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9305,7 +9305,7 @@
           "example": "ddos攻击",
           "member": "string",
           "name": "AttackType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9315,7 +9315,7 @@
           "example": "1",
           "member": "int64",
           "name": "AttackStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9325,7 +9325,7 @@
           "example": "4930",
           "member": "int64",
           "name": "AttackMaxBandWidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9335,7 +9335,7 @@
           "example": "4930",
           "member": "int64",
           "name": "AttackPacketMaxRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9345,7 +9345,7 @@
           "example": "4930",
           "member": "int64",
           "name": "AttackStartTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9355,7 +9355,7 @@
           "example": "4930",
           "member": "int64",
           "name": "AttackEndTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9365,7 +9365,7 @@
           "example": "4930",
           "member": "int64",
           "name": "PolicyId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -9375,7 +9375,7 @@
           "example": "\"zone-xx\"",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9385,7 +9385,7 @@
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9395,7 +9395,7 @@
           "example": "无",
           "member": "DDoSBlockData",
           "name": "DDoSBlockData",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -10995,7 +10995,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total of matched alias domain names.",
+          "document": "Total of matched alias domain names",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -11005,7 +11005,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of all matched acceleration domain names",
+          "document": "Information of all matched acceleration domain names.",
           "example": "无",
           "member": "AccelerationDomain",
           "name": "AccelerationDomains",
@@ -11645,7 +11645,7 @@
         },
         {
           "disabled": false,
-          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
+          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -11746,7 +11746,7 @@
         },
         {
           "disabled": false,
-          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
+          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -11874,7 +11874,7 @@
         },
         {
           "disabled": false,
-          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
+          "document": "Site ID set. this parameter will change from option to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1). a maximum of 100 site ids can be imported. use `*` to query all site data under the tencent cloud root account. querying account-level data requires all resource permissions for all sites in this interface.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -14060,7 +14060,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).",
+          "document": "Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
@@ -15066,7 +15066,7 @@
         },
         {
           "disabled": false,
-          "document": "End time. the query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.",
+          "document": "The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.",
           "example": "2020-04-30T00:00:00Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -15075,7 +15075,7 @@
         },
         {
           "disabled": false,
-          "document": "Query metrics. valid values:.\n<ul><li>**l4Flow_flux**: specifies the total access traffic. measurement unit: Byte. metric value type: Integer.</li>.\n<li>**l4Flow_inFlux**: specifies access inbound traffic. measurement unit: Byte. metric value type: Integer.</li>.\n<li>**l4Flow_outFlux**: access outbound traffic. measurement unit: Byte. metric value type: Integer.</li>.\n<li>**l4Flow_inBandwidth**: specifies the inbound bandwidth peak of the visit. measurement unit: bps. metric value type: Integer.</li>.\n<li>**l4Flow_outBandwidth**: specifies the outbound bandwidth peak. measurement unit: bps. metric value type: Integer.</li>.\n<li>**l4Flow_connections**: specifies the number of concurrent connections, measurement unit: unit, metric value type: Integer.</li>.\n<li>**l4Flow_newConnectionsRate**: the rate of new connections, measurement unit: per second, metric value type: Float, rounded to two decimal places.</li></ul>**note**:<ul><li>metrics of <code>Integer</code> type will return corresponding time series Data from <code>Data.N.TypeValue</code>;</li>.\n<li>Metrics with <code>Float</code> value type will return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.</li></ul>.",
+          "document": "Metric list. Valid values:\n<ul><li>**l4Flow_flux**: Total client traffic. Unit: Byte. Value type: Integer.</li>\n<li>**l4Flow_inFlux**: Inbound client traffic. Unit: Byte. Value type: Integer.</li>\n<li>**l4Flow_outFlux**: Outbound client traffic. Unit: Byte. Value type: Integer.</li>\n<li>**l4Flow_inBandwidth**: Peak inbound client bandwidth. Unit: bps. Value type: Integer.</li>\n<li>**l4Flow_outBandwidth**: Peak outbound client bandwidth. Unit: bps. Value type: Integer.</li>\n<li>**l4Flow_connections**: Concurrent client connections. Unit: count. Value type: Integer.</li>\n<li>**l4Flow_newConnectionsRate**: New connection rate. Unit: connections/second. Value type: Float. Rounded to two decimal places.</li></ul>**Note**:<ul><li>Metrics with an <code>Integer</code> value type return time-series data via <code>Data.N.TypeValue</code>;</li>\n<li>Metrics with a <code>Float</code> value type return time-series data via <code>Data.N.FloatTypeValue</code>.</li></ul>",
           "example": "[\"l4Flow_connections\"]",
           "member": "string",
           "name": "MetricNames",
@@ -15084,7 +15084,7 @@
         },
         {
           "disabled": false,
-          "document": "Site ID. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).\nImport up to 100 site ids. to query all site data under the tencent cloud root account, use `*` as a replacement. querying account-level data requires permission for all site resources of this api.",
+          "document": "Site ID. This parameter will change from selectable to required after May 30, 2024. For details, see the announcement: [Tencent Cloud EdgeOne: Tencent Cloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).\nImport up to 100 zone-ids. To query all site data under the Tencent Cloud root account, use `*` as a replacement. Querying account-level data requires permission for all site resources of this API.",
           "example": "[\"zone-2rntun0a1z6t\",\"zone-323urc8a9j0q\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -15102,7 +15102,7 @@
         },
         {
           "disabled": false,
-          "document": "Time granularity of the query. valid values:.\n<ul><li>**min**: 1 minute;</li>.\n<Li>**5min**: 5 minutes;</li>.\n<Li>**Hour**: 1 hour;</li>.\n<Li>**Day**: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.",
+          "document": "Time granularity of the query. Valid values:\n<ul><li>**min**: 1 minute;</li><Li>**5min**: 5 minutes;</li><Li>**hour**: 1 hour;</li><Li>**day**: 1 day.</li></ul>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, data will be queried with a granularity of <code>min</code>, <code>5min</code>, <code>hour</code>, and <code>day</code> respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.",
           "example": "hour",
           "member": "string",
           "name": "Interval",
@@ -15111,7 +15111,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. the detailed Key values of filter criteria are as follows:.\n<ul><li>**ruleId**: filter by forwarding rule ID.</li>.\n<li>**proxyId**: filters by l4 proxy instance ID.</li></ul>.",
+          "document": "Filter criteria. The detailed key values of filter criteria are as follows:.\n<ul><li>**ruleId**: filter by forwarding rule ID.</li>\n<li>**proxyId**: filter by L4 proxy instance ID.</li></ul>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -15145,7 +15145,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Layer 4 time series traffic Data list.<br>for different queried metrics, time series Data is returned from different parameters based on the value type.<br>currently, there are the following two value types:</p><ul><li><strong>Integer</strong>: metrics with <code>Integer</code> value type return corresponding time series Data from <code>Data.N.TypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_flux</code>: total access traffic;</li><li><code>l4Flow_inFlux</code>: access inbound traffic;</li><li><code>l4Flow_outFlux</code>: access outbound traffic;</li><li><code>l4Flow_inBandwidth</code>: inbound bandwidth peak;</li><li><code>l4Flow_outBandwidth</code>: outbound bandwidth peak;</li><li><code>l4Flow_connections</code>: number of concurrent connections.</li></ul></li><li><strong>Float</strong>: metrics with <code>Float</code> value type return corresponding time series Data from <code>Data.N.FloatTypeValue</code>.<br>queried metrics <code>MetricName</code> include:<ul><li><code>l4Flow_newConnectionsRate</code>: rate of new connections.</li></ul></li>.\n</ul><p>This API does not support dimension query for now. it aggregates and returns Data by root account by default, which means <code>Data.N.TypeKey = AppId</code>. AppId is the unique id of the tencent cloud root account, and N always equals 1.</p>.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Layer 4 time series traffic data list.<br>For different queried metrics, time series data is returned from different parameters based on the value type. Currently, there are the following two value types:<ul><li><strong>Integer</strong>: Metrics with <code>Integer</code> value type return corresponding time series data from <code>Data.N.TypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_flux</code>: Total client traffic.</li><li><code>l4Flow_inFlux</code>: Inbound client traffic.</li><li><code>l4Flow_outFlux</code>: Outbound client traffic.</li><li><code>l4Flow_inBandwidth</code>: Peak inbound client bandwidth.</li><li><code>l4Flow_outBandwidth</code>: Peak outbound client bandwidth.</li><li><code>l4Flow_connections</code>: Concurrent client connections.</li></ul></li><li><strong>Float</strong>: Metrics with <code>Float</code> value type return corresponding time series data from <code>Data.N.FloatTypeValue</code>. Queried metrics (<code>MetricName</code>) include:<ul><li><code>l4Flow_newConnectionsRate</code>: New connection rate. Rounded to two decimal places.</li></ul></li></ul>This API does not support dimension queries. It aggregates and returns data by root account by default, meaning <code>Data.N.TypeKey = AppId</code>. <code>AppId</code> is the unique ID of the Tencent Cloud root account, and <code>N</code> always equals <code>1</code>.<br><strong>Note</strong>: This field may return null, indicating a failure to obtain a valid value.",
           "example": "无",
           "member": "TimingDataRecord",
           "name": "Data",
@@ -15378,7 +15378,7 @@
         },
         {
           "disabled": false,
-          "document": "Metric list. valid values:\n<ul><li>l7Flow_outFlux_hy: specifies the request traffic from the EdgeOne node to the origin server direction. measurement unit: Byte.</li>\n<li>l7Flow_outBandwidth_hy: request bandwidth from EdgeOne node to origin server direction, measurement unit: bps;</li>.\n<li>l7Flow_request_hy: number of requests in the EdgeOne node to origin server direction. unit: count.</li>.\n<li>l7Flow_inFlux_hy: specifies the response traffic from the origin server to the EdgeOne node direction, measurement unit: Byte.</li>.\n<li>l7Flow_inBandwidth_hy: specifies the response bandwidth from the origin server to the EdgeOne node. measurement unit: bps.</li></ul>.",
+          "document": "Metric list. Valid values:\n<ul><li>l7Flow_outFlux_hy: Request traffic from the EdgeOne node to the origin server. Unit: Byte.</li><li>l7Flow_outBandwidth_hy: Request bandwidth from the EdgeOne node to the origin server. Unit: bps.</li><li>l7Flow_request_hy: Number of requests from the EdgeOne node to the origin server. Unit: count.</li><li>l7Flow_inFlux_hy: Response traffic from the origin server to the EdgeOne node. Unit: Byte.</li><li>l7Flow_inBandwidth_hy: Response bandwidth from the origin server to the EdgeOne node. Unit: bps.</li></ul>",
           "example": "[\"l7Flow_outFlux_hy\"]",
           "member": "string",
           "name": "MetricNames",
@@ -15405,7 +15405,7 @@
         },
         {
           "disabled": false,
-          "document": "Time granularity of the query. valid values:.\n<Ul><Li>Min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>if this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is within 2 hours, within 2 days, within 7 days, and exceeding 7 days.",
+          "document": "Time granularity of the query. Valid values:\n<ul><li>min: 1 minute;</li><li>5min: 5 minutes;</li><li>hour: 1 hour;</li><li>day: 1 day.</li></ul>If this parameter is not specified, the granularity will be automatically inferred based on the time range between the start time and end time. Specifically, the granularity will be min, 5min, hour, and day when the time range is within 2 hours, within 2 days, within 7 days, and exceeding 7 days, respectively.",
           "example": "hour",
           "member": "string",
           "name": "Interval",
@@ -15414,7 +15414,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. detailed filter criteria:.\n<ul><li><strong>domain</strong>: the requested domain name from the client. if accessing EdgeOne via wildcard domain, the data records the wildcard domain name rather than the specific domain.</li><li><strong>originStatusCode</strong>: origin status code. this filter item is supported only when <code>MetricNames = [\"l7Flow_request_hy\"]</code>.<br>the corresponding Value options are as follows:<ul><li><code>1xx</code>: status codes of the 1xx kind.</li><li><code>2xx</code>: status codes of the 2xx kind.</li><li><code>3xx</code>: status codes of the 3xx kind.</li><li><code>4xx</code>: status codes of the 4xx kind.</li><li><code>5xx</code>: status codes of the 5xx kind.</li><li>integer within range <code>[0, 600)</code> (excluding 600).</li></ul></li></ul>.\n**Note**: when <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.",
+          "document": "Filter criteria. Detailed filter criteria:\n<ul><li><strong>domain</strong>: The requested domain name from the client. If accessing EdgeOne via a wildcard domain, the data records the wildcard domain name rather than the specific subdomain.</li><li><strong>originStatusCode</strong>: Origin status code. This filter is supported only when <code>MetricNames = [\"l7Flow_request_hy\"]</code>.\nValid values:<ul><li><code>1xx</code>: Status codes in the 1xx range.</li><li><code>2xx</code>: Status codes in the 2xx range.</li><li><code>3xx</code>: Status codes in the 3xx range.</li><li><code>4xx</code>: Status codes in the 4xx range.</li><li><code>5xx</code>: Status codes in the 5xx range.</li><li>Any integer in the range <code>[0, 600)</code>.</li></ul></li></ul>**Note**: When <code>DimensionName</code> is not empty, only the <code>equals</code> operator is supported.",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -15423,7 +15423,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Query dimension name. valid values:</p><ul><li><strong>domain</strong>: the domain name requested by the client. if EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.<br>when using the domain dimension, the <code>Filters</code> must include the <code>domain</code> filter item, specifying a list of no more than 100 domain names to query.</li><li><strong>origin-status-code</strong>: origin status code, such as 200, 404.<br>this dimension is supported only when <code>MetricNames = [\"l7Flow_request_hy\"]</code>.</li><li><strong>origin-status-code-category</strong>: origin status code category, such as 2xx, 4xx.<br>this dimension is supported only when <code>MetricNames =[\"l7Flow_request_hy\"]</code>.</li></ul><p>if the <code>DimensionName</code> input parameter is empty, the data is aggregated by the <code>AppId</code> dimension by default, returning only one set of data.</p><p>if the <code>DimensionName</code> input parameter is not empty, the corresponding time series data is returned grouped by the specified query dimension. for example:</p><ul>when <code>DimensionName = origin-status-code</code>:<ul><li>the <code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li>the <code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul>.\n<strong>Note</strong>: when specifying DimensionName during queries, concurrent calls are forbidden. if exceeded the query frequency limit, it will return an error <code><strong>InvalidParameter.ActionInProgress</strong></code>.",
+          "document": "Query dimension name. Valid values:\n<ul><li><strong>domain</strong>: The domain name requested by the client. If EdgeOne is accessed via a wildcard domain name, the data records the wildcard domain name.\nWhen using the domain dimension, the <code>Filters</code> parameter must include the <code>domain</code> filter item, specifying a list of up to 100 domain names.</li><li><strong>origin-status-code</strong>: Origin status code, such as 200 or 404.\nThis dimension is supported only when <code>MetricNames = [\"l7Flow_request_hy\"]</code>.</li><li><strong>origin-status-code-category</strong>: Origin status code category, such as 2xx or 4xx.\nThis dimension is supported only when <code>MetricNames = [\"l7Flow_request_hy\"]</code>.</li></ul><p>If <code>DimensionName</code> is left empty, data is aggregated by the <code>AppId</code> dimension by default, returning a single set of data.</p><p>If <code>DimensionName</code> is specified, time series data is returned grouped by the specified dimension. For example:</p><ul>When <code>DimensionName = origin-status-code</code>:<ul><li><code>TimingDataRecords.TypeKey</code> in the returned data is the specific origin status code, such as 200.</li><li><code>TimingDataRecords.TypeValue</code> in the returned data is the time series data corresponding to that status code.</li></ul></ul><p><strong>Note</strong>: When <code>DimensionName</code> is specified, concurrent calls are not allowed. Exceeding the query rate limit will return the error <code><strong>InvalidParameter.ActionInProgress</strong></code>.</p>",
           "example": "domain",
           "member": "string",
           "name": "DimensionName",
@@ -15906,7 +15906,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The page offset. Default value: 0",
+          "document": "The page offset. Default value: 0.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -16712,7 +16712,7 @@
         },
         {
           "disabled": false,
-          "document": "The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).",
+          "document": "The site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the notice: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).",
           "example": "[\"zone-2m6jx63f6k3x\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -16804,7 +16804,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.comom/document/product/1552/104902?from_cn_redirect=1).",
+          "document": "Specifies the site ID set. this parameter will change from selectable to required after may 30, 2024. for details, see the announcement: [tencent cloud EdgeOne: tencentcloud API change notification](https://www.tencentcloud.com/document/product/1552/104902?from_cn_redirect=1).",
           "example": "[\"zone-2nepupfjtjlf\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -18442,7 +18442,7 @@
         },
         {
           "disabled": false,
-          "document": "List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.comom/document/product/1552/112542?from_cn_redirect=1).",
+          "document": "List of countries/regions. example value: CN: china, CN.GD: guangdong, china. for values, see: [country/region and corresponding code enumeration](https://www.tencentcloud.com/document/product/1552/112542?from_cn_redirect=1).",
           "example": "[\"CN\"]",
           "member": "string",
           "name": "Regions",
@@ -22552,7 +22552,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures the mode of the server certificate. valid values:.\nDisables server-side certificate configuration.\n<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.comom/document/product/1552/90437?from_cn_redirect=1).</li>.\n\n-In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.\n-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.\neofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.\nNote: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.comom/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.\nsslcert: specifies the managed service side certificate configuration.",
+          "document": "Configures the mode of the server certificate. valid values:.\nDisables server-side certificate configuration.\n<li>eofreecert: specifies to apply for a free certificate through automatic validation and deploy. for verification methods, see: [verification methods supported for free certificate application](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).</li>.\n\n-In ns or DNSPod hosting access mode, free certificates can only be applied for via automatic validation.\n-When the free certificate application fails, it can cause certificate deployment failure. you can obtain the reason for the application failure through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.\neofreecert_manual: specifies the deployment of a free certificate applied through DNS delegation verification or file verification. before deploying the free certificate, you need to trigger the apply for free certificate API to apply for a free certificate. once the application is successful, you can use this enumeration value to deploy the free certificate.\nNote: during deployment of a free certificate, ensure a successful application for a free certificate already exists. you can check whether a successful application for a free certificate already exists through the <a href = 'https://www.tencentcloud.com/document/product/1552/124806?from_cn_redirect=1'>check free certificate application result</a> api.\nsslcert: specifies the managed service side certificate configuration.",
           "example": "eofreecert",
           "member": "string",
           "name": "Mode",
@@ -22588,7 +22588,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.comom/online?from_cn_redirect=1-service).",
+          "document": "Specifies whether to enable/disable origin-pull mutual authentication and origin certificate verification. off by default. leave blank to indicate retaining the original configuration. the origin-pull mutual authentication configuration is currently in internal allowlist testing. if needed, please contact us (https://www.tencentcloud.com/online?from_cn_redirect=1-service).",
           "example": "无",
           "member": "UpstreamCertInfo",
           "name": "UpstreamCertInfo",
@@ -24479,7 +24479,7 @@
         },
         {
           "disabled": false,
-          "document": "Version management configuration group working mode. site configuration modules can enable \"version management mode\" or \"immediate effect mode\" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).",
+          "document": "Version management configuration group working mode. site configuration modules can enable \"version management mode\" or \"immediate effect mode\" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).",
           "example": "无",
           "member": "ConfigGroupWorkModeInfo",
           "name": "WorkModeInfos",
@@ -24834,7 +24834,7 @@
         },
         {
           "disabled": false,
-          "document": "Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.comom/document/product/1552/70789?from_cn_redirect=1).",
+          "document": "Ownership verification information. for sites with NS access type, switching the current NS server to the designated NS server of tencent cloud EdgeOne is deemed as passing the ownership verification. for details, refer to [site/domain ownership verification](https://www.tencentcloud.com/document/product/1552/70789?from_cn_redirect=1).",
           "example": "无",
           "member": "OwnershipVerification",
           "name": "OwnershipVerification",
@@ -27229,7 +27229,7 @@
         },
         {
           "disabled": false,
-          "document": "The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to the product document (https://www.tencentcloud.comom/document/product/1552/125343?from_cn_redirect=1).",
+          "document": "The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .",
           "example": "${http.request.uri.path} in ['/api/v3/test','/api/v3/submit']",
           "member": "string",
           "name": "Condition",
@@ -27273,7 +27273,7 @@
         },
         {
           "disabled": false,
-          "document": "The duration of an Action is only supported in the following units: <li>s: seconds, value range 1–120;</li> <li>m: minutes, value range 1–120;</li> <li>h: hours, value range 1–48;</li> <li>d: days, value range 1–30.</li>.",
+          "document": "The duration of an Action is only supported in the following units: <li>s: seconds, value range 1-120;</li> <li>m: minutes, value range 1-120;</li> <li>h: hours, value range 1-48;</li> <li>d: days, value range 1-30.</li>.",
           "example": "60s",
           "member": "string",
           "name": "ActionDuration",
@@ -31900,7 +31900,7 @@
         },
         {
           "disabled": false,
-          "document": "Version management configuration group working mode. site configuration modules can enable \"version management mode\" or \"immediate effect mode\" by configuration group dimension. for details, see [version management](https://www.tencentcloud.comom/document/product/1552/113690?from_cn_redirect=1).",
+          "document": "Version management configuration group working mode. site configuration modules can enable \"version management mode\" or \"immediate effect mode\" by configuration group dimension. for details, see [version management](https://www.tencentcloud.com/document/product/1552/113690?from_cn_redirect=1).",
           "example": "无",
           "member": "ConfigGroupWorkModeInfo",
           "name": "WorkModeInfos",
