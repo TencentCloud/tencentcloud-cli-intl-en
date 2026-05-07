@@ -83,12 +83,12 @@
         {
           "disabled": false,
           "document": "Voice Chat statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "{\"MainLandPcu\":0,\"MainLandDuration\":0,\"OverseaPcu\":0,\"OverseaDur",
+          "example": "{\"MainLandPcu\":1,\"OverseaDuration\":1,\"OverseaPcu\":1,\"OverseaDau\":1,\"MainLandDuration\":1,\"MainLandDau\":1}",
           "member": "RealTimeSpeechStatisticsItem",
           "name": "RealtimeSpeechStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -96,9 +96,9 @@
           "example": "{\"Dau\":1018}",
           "member": "VoiceMessageStatisticsItem",
           "name": "VoiceMessageStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -106,9 +106,9 @@
           "example": "{\"Duration\" : 18000}",
           "member": "VoiceFilterStatisticsItem",
           "name": "VoiceFilterStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -116,7 +116,7 @@
           "example": "2022-10-01",
           "member": "date",
           "name": "Date",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -126,9 +126,9 @@
           "example": "{\"Data\":0}",
           "member": "AudioTextStatisticsItem",
           "name": "AudioTextStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -136,9 +136,9 @@
           "example": "{\"Data\":0}",
           "member": "StreamTextStatisticsItem",
           "name": "StreamTextStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -146,9 +146,9 @@
           "example": "{\"Data\":0}",
           "member": "OverseaTextStatisticsItem",
           "name": "OverseaTextStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -156,9 +156,9 @@
           "example": "{\"Data\":0}",
           "member": "RealtimeTextStatisticsItem",
           "name": "RealtimeTextStatisticsItem",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -169,117 +169,130 @@
         {
           "disabled": false,
           "document": "Application ID",
+          "example": "1400000000",
           "member": "uint64",
           "name": "BizId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of DAU metrics",
+          "example": "25",
           "member": "uint64",
           "name": "DauDataNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DAUs in the Chinese mainland",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DauDataMainland",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DAUs outside the Chinese mainland",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DauDataOversea",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total DAUs",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DauDataSum",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of Voice Chat metrics",
+          "example": "34",
           "member": "uint64",
           "name": "DurationDataNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Duration of Voice Chat in the Chinese mainland (in minutes)",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DurationDataMainland",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Duration of Voice Chat outside the Chinese mainland (in minutes)",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DurationDataOversea",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total duration of Voice Chat (in minutes)",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "DurationDataSum",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of PCU metrics",
+          "example": "38",
           "member": "uint64",
           "name": "PcuDataNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "PCUs in the Chinese mainland",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "PcuDataMainland",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "PCUs outside the Chinese mainland",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "PcuDataOversea",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total PCUs",
+          "example": "无",
           "member": "StatisticsItem",
           "name": "PcuDataSum",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -311,9 +324,9 @@
           "example": "1.23",
           "member": "float",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -342,7 +355,7 @@
         {
           "disabled": false,
           "document": "List of engines to be supported.\nValid values: `android`, `ios`, `unity`, `cocos`, `unreal`, `windows`. All values are selected by default.",
-          "example": "无",
+          "example": "[\"0\",\"1\"]",
           "member": "string",
           "name": "EngineList",
           "required": false,
@@ -351,7 +364,7 @@
         {
           "disabled": false,
           "document": "List of regions.\nValid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan (China)), `sea` (Southeast Asia), `na` (North America), `eu` (Europe), `jpkr` (Japan, Korea and Asia Pacific), `sa` (South America), `oc` (Oceania), `me` (Middle East). All values are selected by default.",
-          "example": "无",
+          "example": "[\"mainland\",\"na\"]",
           "member": "string",
           "name": "RegionList",
           "required": false,
@@ -411,20 +424,20 @@
         {
           "disabled": false,
           "document": "Application ID, automatically generated by the backend.",
-          "example": "123456",
+          "example": "1400000000",
           "member": "uint64",
           "name": "BizId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Application name, the input of `AppName`.",
-          "example": "abcd",
+          "example": "app_test1",
           "member": "string",
           "name": "AppName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -434,7 +447,7 @@
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -444,57 +457,57 @@
           "example": "sdsd",
           "member": "string",
           "name": "SecretKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Timestamp, indicating when the service is created.",
-          "example": "123456",
+          "example": "1736238797",
           "member": "uint64",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration information of Voice Chat",
-          "example": "{}",
+          "example": "无",
           "member": "RealtimeSpeechConf",
           "name": "RealtimeSpeechConf",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration information of Voice Messaging",
-          "example": "{}",
+          "example": "无",
           "member": "VoiceMessageConf",
           "name": "VoiceMessageConf",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration information of Voice Analysis Service",
-          "example": "{}",
+          "example": "无",
           "member": "VoiceFilterConf",
           "name": "VoiceFilterConf",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Configuration information of Speech-to-Text",
-          "example": "{}",
+          "example": "无",
           "member": "AsrConf",
           "name": "AsrConf",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -510,12 +523,12 @@
           "example": "无",
           "member": "CreateAppResp",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -529,18 +542,20 @@
         {
           "disabled": false,
           "document": "Status code. `0`: Succeeded. Others: Failed\\",
+          "example": "1300000",
           "member": "int64",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Description",
+          "example": "room does not exist",
           "member": "string",
           "name": "ErrorMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -561,15 +576,6 @@
         },
         {
           "disabled": false,
-          "document": "List of the members to remove",
-          "example": "[\"1\\r\\n\",\"2\\r\\n\"]",
-          "member": "string",
-          "name": "Uids",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
           "document": "Operation type. `1`: Delete a room; `2`: Remove members",
           "example": "2",
           "member": "uint64",
@@ -580,11 +586,20 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "140014556",
+          "example": "1400000000",
           "member": "uint64",
           "name": "BizId",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of the members to remove",
+          "example": "[\"1\\r\\n\",\"2\\r\\n\"]",
+          "member": "string",
+          "name": "Uids",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -598,12 +613,12 @@
           "example": "无",
           "member": "DeleteResult",
           "name": "DeleteResult",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -678,12 +693,11 @@
           "example": "无",
           "member": "DescribeAppStatisticsResp",
           "name": "Data",
-          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -738,7 +752,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -779,9 +793,9 @@
           "example": "无",
           "member": "RecordInfo",
           "name": "RecordInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -789,7 +803,7 @@
           "example": "1",
           "member": "uint64",
           "name": "RecordMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -799,12 +813,12 @@
           "example": "7743",
           "member": "string",
           "name": "RoomId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -845,9 +859,9 @@
           "example": "446192236330927912",
           "member": "uint64",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -855,9 +869,9 @@
           "example": "1",
           "member": "uint64",
           "name": "RecordMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -865,12 +879,12 @@
           "example": "无",
           "member": "SubscribeRecordUserIds",
           "name": "SubscribeRecordUserIds",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -908,10 +922,10 @@
         {
           "disabled": false,
           "document": "GME application ID",
-          "example": "123456",
+          "example": "1400000000",
           "member": "uint64",
           "name": "BizId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -921,7 +935,7 @@
           "example": "open",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -942,7 +956,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -996,7 +1010,7 @@
       "document": "ModifyRecordInfo response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1010,12 +1024,12 @@
         {
           "disabled": false,
           "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1.23",
+          "example": "324.88",
           "member": "float",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1026,54 +1040,60 @@
         {
           "disabled": false,
           "document": "DAUs in the Chinese mainland",
+          "example": "764",
           "member": "uint64",
           "name": "MainLandDau",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "PCUs in the Chinese mainland",
+          "example": "471",
           "member": "uint64",
           "name": "MainLandPcu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total duration of use in the Chinese mainland (in minutes)",
+          "example": "98434",
           "member": "uint64",
           "name": "MainLandDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DAUs outside the Chinese mainland",
+          "example": "643",
           "member": "uint64",
           "name": "OverseaDau",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "PCUs outside the Chinese mainland",
+          "example": "848",
           "member": "uint64",
           "name": "OverseaPcu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total duration of use outside the Chinese mainland (in minutes)",
+          "example": "2682",
           "member": "uint64",
           "name": "OverseaDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1112,12 +1132,12 @@
         {
           "disabled": false,
           "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1.23",
+          "example": "451.26",
           "member": "float",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1170,7 +1190,41 @@
     },
     "SceneInfo": {
       "document": "Scenario information. Valid values:\n`RealTime`: Voice Chat analysis;\n`VoiceMessage`: Voice Messaging;\n`GMECloudApi`: GME cloud APIs",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "RealTime",
+          "member": "string",
+          "name": "SceneId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://0.0.0.0/user_callback",
+          "member": "string",
+          "name": "CallbackUrl",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
       "usage": "both"
     },
     "StartRecordRequest": {
@@ -1243,18 +1297,20 @@
         {
           "disabled": false,
           "document": "Date in the format of yyyy-mm-dd, such as 2018-07-13",
+          "example": "2020-09-22",
           "member": "date",
           "name": "StatDate",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Statistical value",
+          "example": "1087",
           "member": "uint64",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1289,7 +1345,7 @@
       "document": "StopRecord response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1303,12 +1359,12 @@
         {
           "disabled": false,
           "document": "Usage of the service (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1.23",
+          "example": "825.31",
           "member": "float",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "float",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1319,9 +1375,10 @@
         {
           "disabled": false,
           "document": "Blocklist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
-          "example": "无",
+          "example": "7619",
           "member": "string",
           "name": "UnSubscribeUserIds",
+          "output_required": false,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -1329,15 +1386,16 @@
         {
           "disabled": false,
           "document": "Allowlist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
-          "example": "无",
+          "example": "3342",
           "member": "string",
           "name": "SubscribeUserIds",
+          "output_required": false,
           "required": false,
           "type": "list",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "Tag": {
       "document": "Tag list",
@@ -1345,20 +1403,24 @@
         {
           "disabled": false,
           "document": "Tag key\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tag_key1",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag value\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tag_value1",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1369,9 +1431,10 @@
         {
           "disabled": false,
           "document": "Phrase Filtering status. Valid values: `open`, `close`.",
-          "example": "无",
+          "example": "open",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1382,9 +1445,10 @@
           "example": "无",
           "member": "SceneInfo",
           "name": "SceneInfos",
+          "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1411,8 +1475,10 @@
         {
           "disabled": false,
           "document": "Voice Message Service status. Valid values: `open`, `close`.",
+          "example": "open",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1420,8 +1486,10 @@
         {
           "disabled": false,
           "document": "Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.",
+          "example": "all",
           "member": "string",
           "name": "Language",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1435,9 +1503,10 @@
         {
           "disabled": false,
           "document": "DAUs of Voice Message Service",
+          "example": "1807",
           "member": "uint64",
           "name": "Dau",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }

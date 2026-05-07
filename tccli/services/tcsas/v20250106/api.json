@@ -1,7 +1,7 @@
 {
   "actions": {
     "AddTeamMember": {
-      "document": "This API is used to add a team member.",
+      "document": "This API is used to add a team member",
       "input": "AddTeamMemberRequest",
       "name": "Adds a team member",
       "output": "AddTeamMemberResponse",
@@ -1954,7 +1954,7 @@
         },
         {
           "disabled": false,
-          "document": "List of newly-added APIs",
+          "document": "List of newly-added APIs.",
           "example": "无",
           "member": "CreateApplicationSensitiveAPIReq",
           "name": "APIList",

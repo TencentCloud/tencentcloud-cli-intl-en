@@ -134,7 +134,7 @@
         {
           "disabled": false,
           "document": "Media library ID.",
-          "example": "smhfoobar",
+          "example": "smh3etdq8gpi2201",
           "member": "string",
           "name": "LibraryId",
           "output_required": true,

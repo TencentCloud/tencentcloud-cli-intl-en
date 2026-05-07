@@ -310,7 +310,7 @@
         {
           "disabled": false,
           "document": "Query parameter: Filtering and querying by instance ID (cluster_id) and instance name (name) are supported.",
-          "example": "[{\"Name\":\"name\", \"Values\":[\"test\"]}]",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -319,7 +319,7 @@
         {
           "disabled": false,
           "document": "Sorting parameter: Sorting by the creation time field (created_at) is supported. The value of Type can be set to DESC (descending order) or ASC (ascending order).",
-          "example": "[{\"Name\": \"created_at\", \"Type\": \"DESC\"}]",
+          "example": "无",
           "member": "Order",
           "name": "Orders",
           "required": false,
@@ -673,5 +673,6 @@
       ],
       "usage": "both"
     }
-  }
+  },
+  "version": "1.0"
 }

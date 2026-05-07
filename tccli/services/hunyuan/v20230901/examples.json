@@ -99,9 +99,9 @@
     "SubmitHunyuanTo3DProJob": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitHunyuanTo3DProJob\n<Common request parameters>\n\n{\n    \"Prompt\": \"A cat\"\n}",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"1375367755519696896\",\n        \"RequestId\": \"13f47dd0-1af9-4383-b401-dae18d6e99fc\"\n    }\n}",
-        "title": "Submitting a 3D Task"
+        "input": "POST / HTTP/1.1\nHost: hunyuan.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitHunyuanTo3DProJob\n<Common Request Parameter>\n\n{\n    \"Prompt\": \"cat\"\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"1422504058612350976\",\n        \"RequestId\": \"c942d2da-5dbc-40d6-aa55-f4631c4299d3\"\n    }\n}",
+        "title": "Call Example"
       }
     ],
     "SubmitHunyuanTo3DRapidJob": [
@@ -128,5 +128,6 @@
         "title": "Submitting a UV Unfolding Task Example"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }
