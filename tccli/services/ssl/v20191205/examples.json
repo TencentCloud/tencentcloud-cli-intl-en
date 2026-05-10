@@ -32,6 +32,34 @@
         "title": "Canceling a certificate order"
       }
     ],
+    "CertificateInfoSubmit": [
+      {
+        "document": "Submit documentation for a paid SSL certificate",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CertificateInfoSubmit\n<Common request parameters>\n\n{\n    \"AdminEmail\": \"ssl@tencent.com\",\n\"AdminFirstName\": \"Ning\"\n    \"AdminIdNumber\": \"110000000000000001\",\n    \"AdminIdType\": \"SFZ\",\n\"AdminLastName\": \"Huang\"\n    \"AdminPhone\": \"13112341234\",\n\"AdminTitle\": \"R&D\"\n    \"CertCommonName\": \"tencent.com\",\n    \"CertId\": \"J2lX2maH\",\n    \"CompanyId\": \"134\",\n    \"CompanyType\": 2,\n    \"CsrEncryptAlgo\": \"RSA\",\n    \"CsrKeyParameter\": \"2048\",\n    \"GenCsrType\": \"online\",\n    \"ManagerId\": \"2345\",\n\"OrgAddress\": \"No. 101, xxxxxx, xx District, Guangzhou, Guangdong Province\"\n\"OrgCity\": \"Guangzhou\",\n    \"OrgCountry\": \"CN\",\n\"OrgDivision\": \"R&D Department\",\n    \"OrgIdNumber\": \"111111111111110000\",\n    \"OrgIdType\": \"TYDMZ\",\n\"OrgOrganization\": \"Tencent Cloud SSL Certificate\"\n    \"OrgPhoneArea\": \"010\",\n    \"OrgPhoneNumber\": \"234123123\",\n\"OrgRegion\": \"Guangdong Province\"\n    \"TechEmail\": \"ssl@tencent.com\",\n\"TechFirstName\": \"Ning\",\n    \"TechIdNumber\": \"110000000000000001\",\n    \"TechIdType\": \"SFZ\",\n\"TechLastName\": \"Huang\"\n    \"TechPhone\": \"13112341234\",\n\"TechTitle\": \"R&D\"\n    \"VerifyType\": \"FILE\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"54c73858-77a6-435c-addc-65919b550900\"\n    }\n}",
+        "title": "Submit Documentation for Paid OV/EV Certificate - CFCA Brand Certificate"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CertificateInfoSubmit\n<Common request parameters>\n\n{\n    \"CertId\": \"LrmeMvQr\",\n    \"GenCsrType\": \"online\",\n    \"CertCommonName\": \"tencent.com\",\n    \"CompanyType\": \"2\",\n    \"OrgIdType\": \"\",\n    \"OrgIdNumber\": \"\",\n    \"AdminIdType\": \"\",\n    \"AdminIdNumber\": \"\",\n    \"TechIdType\": \"\",\n    \"TechIdNumber\": \"\",\n    \"CompanyId\": \"11772\",\n    \"Csr\": \"\",\n    \"KeyPass\": \"12345678\",\n\"OrgOrganization\": \"Tencent Cloud SSL Certificate Trial\"\n\"OrgDivision\": \"R&D Department\",\n\"OrgAddress\": \"Tencent Cloud SSL Certificate test URL\"\n    \"OrgCountry\": \"CN\",\n\"OrgCity\": \"Beijing\",\n\"OrgRegion\": \"Beijing\"\n    \"OrgPhoneArea\": \"010\",\n    \"OrgPhoneNumber\": \"123456789010\",\n\"AdminFirstName\": \"Ning\"\n\"AdminLastName\": \"Huang\"\n    \"AdminPhone\": \"18169239105\",\n    \"AdminEmail\": \"ssl@tencent.com\",\n\"AdminTitle\": \"R&D\"\n\"TechFirstName\": \"Test\",\n\"TechLastName\": \"Test\",\n    \"CsrKeyParameter\": \"2048\",\n    \"CsrEncryptAlgo\": \"RSA\",\n    \"TechEmail\": \"ssl@tencent.com\",\n    \"TechPhone\": \"18169239105\",\n\"TechTitle\": \"R&D\"\n    \"ManagerId\": \"12895\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"54c73858-77a6-435c-addc-65919b550900\"\n    }\n}",
+        "title": "Submit Documentation for a Paid SSL Certificate - Common"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CertificateInfoSubmit\n<Common request parameters>\n\n{\n    \"CertId\": \"LrmeMvQr\",\n    \"GenCsrType\": \"parse\",\n    \"CertCommonName\": \"tencent.com\",\n    \"CompanyType\": \"2\",\n    \"OrgIdType\": \"\",\n    \"OrgIdNumber\": \"\",\n    \"AdminIdType\": \"\",\n    \"AdminIdNumber\": \"\",\n    \"TechIdType\": \"\",\n    \"TechIdNumber\": \"\",\n    \"CompanyId\": \"11772\",\n    \"Csr\": \"-----BEGIN CERTIFICATE REQUEST-----\\nMIIC5zCCAc8CAQAweTELMAkGA1UEBhMCQ04xEjAQBgNVBAgMCea5luWNl+ecgTES\\nMBAGA1UEBwwJ6ZW/5rKZ5biCMRswGQYDVQQKDBLohb7orq/kupFTU0zor4HkuaYx\\nDzANBgNVBAsMBueglOWPkTEUMBIGA1UEAxMLdGVuY2VudC5jb20wggEiMA0GCSqG\\nSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDWACnWh6gA1dGDi/pJtGZtp/Wp4ou6//JM\\nEu4OpXQ5t/afvX4xPGm7laWE4aFItZpfhXc1SGVwOBwWsOArw9xwmdCDFY3Icbu9\\n8O1mIAIYfMDuc8bWL5lQfuyBeGJw+9i++E/1SkYnx3sRD+vMNlJdkaueWW4qXVo+\\nZnE7FX/6Mqi1PE53ccXU55iviLHAaSnztpmUmF4vcKIVbDTsI2TF1raHwdnmvQFx\\nvifh7h49xRz3Jj3QWCJqdtGKAktFzofDCYPKcIKT4A52u7WsoBspLIds1H93dITD\\nVxnZaE3oe4sHfQpnlHRbO72Cz1QEgGBQeOW/wH8/WygFiRIWHwZpAgMBAAGgKTAn\\nBgkqhkiG9w0BCQ4xGjAYMBYGA1UdEQQPMA2CC3RlbmNlbnQuY29tMA0GCSqGSIb3\\nDQEBCwUAA4IBAQAcr+Wy3uqr+PL+uUMwd1scB7x27/j2JDXTKBdZnsLnaEFCzz2f\\ny4aqN7hWLHNEoqGGNSg5luKO6DCFXOnzu6/bI4Ziy/w003RD1wMPinpo0C0YIzwM\\nW99sDPoI1qIxAoNEVLOP11EnPPdlq/D7T4UOMjPxjYSo4Ge2BcG5Bk1zTu/O8She\\nxHc6lEWniExaYomIboULnLTdSI1Dx0g7segNMvhLGUjRyump3/0jANfk7qbS0Nnz\\n6Q/i0NmiqUiA38iTdIBY57QAJBbXiJJ3HRF5wZyJESobTr9dHPuZH4ebJvfSaNBp\\n4KqzUxjAe5GZJs/z5EuJkG/LC/h1L3rFT7AS\\n-----END CERTIFICATE REQUEST-----\\n\",\n    \"KeyPass\": \"12345678\",\n\"OrgOrganization\": \"Tencent Cloud SSL Certificate Trial\"\n\"OrgDivision\": \"R&D Department\",\n\"OrgAddress\": \"Tencent Cloud SSL Certificate test URL\"\n    \"OrgCountry\": \"CN\",\n\"OrgCity\": \"Beijing\",\n\"OrgRegion\": \"Beijing\"\n    \"OrgPhoneArea\": \"010\",\n    \"OrgPhoneNumber\": \"123456789010\",\n\"AdminFirstName\": \"Ning\"\n\"AdminLastName\": \"Huang\"\n    \"AdminPhone\": \"18162039301\",\n    \"AdminEmail\": \"ssl@tencent.com\",\n\"AdminTitle\": \"R&D\"\n\"TechFirstName\": \"Ning\",\n\"TechLastName\": \"Huang\"\n    \"CsrKeyParameter\": \"\",\n    \"CsrEncryptAlgo\": \"\",\n    \"TechEmail\": \"ssl@tencent.com\",\n    \"TechPhone\": \"18162039301\",\n\"TechTitle\": \"R&D\"\n    \"ManagerId\": \"12895\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"54c73858-77a6-435c-addc-65919b550900\"\n    }\n}",
+        "title": "Submit Documentation for Paid SSL Certificate - Upload CSR"
+      }
+    ],
+    "CertificateOrderSubmit": [
+      {
+        "document": "Submit order for paid SSL certificate",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CertificateOrderSubmit\n<Common request parameters>\n\n{\n    \"CertId\": \"Dsqef134\",\n    \"DeleteDnsAutoRecord\": 1,\n    \"VerifyType\": \"DNS\"\n}",
+        "output": "{\n    \"Response\": {\n        \"OrderId\": \"SO8zRv29\",\n        \"Status\": 8,\n        \"IsAudited\": true,\n        \"RequestId\": \"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\n    }\n}",
+        "title": "Submit Order for Paid SSL Certificate"
+      }
+    ],
     "CommitCertificateInformation": [
       {
         "document": "Submit Certificate Order",

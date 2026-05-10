@@ -180,6 +180,14 @@
         "title": "Query Succeeded"
       }
     ],
+    "DescribeCustomerOwnVoucherUsageDetails": [
+      {
+        "document": "Sub-account queries its voucher usage details",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerOwnVoucherUsageDetails\n<Common request parameters>\n\n{\n    \"Page\": 1,\n    \"PageSize\": 100,\n    \"VoucherId\": 12365856,\n    \"Month\": \"2026-03\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [],\n        \"Month\": \"2026-03\",\n        \"RecordsCountByMonth\": 0,\n        \"RemainAmount\": 0,\n        \"TotalAmount\": 0,\n        \"TotalRecordsCount\": 0,\n        \"VoucherId\": 12365856,\n        \"RequestId\": \"3a9de07b-5f47-4f20-98b4-6fcb562af626\"\n    }\n}",
+        "title": "Sub-account querying self voucher usage details"
+      }
+    ],
     "DescribeCustomerUin": [
       {
         "document": "This example shows you how to query the list of customer UINs.",

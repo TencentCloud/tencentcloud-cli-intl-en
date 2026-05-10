@@ -28,6 +28,20 @@
       "output": "CancelCertificateOrderResponse",
       "status": "online"
     },
+    "CertificateInfoSubmit": {
+      "document": "Submit certificate information for payment",
+      "input": "CertificateInfoSubmitRequest",
+      "name": "Pay to submit certificate information",
+      "output": "CertificateInfoSubmitResponse",
+      "status": "online"
+    },
+    "CertificateOrderSubmit": {
+      "document": "Submit a certificate order",
+      "input": "CertificateOrderSubmitRequest",
+      "name": "Submit a paid SSL certificate order",
+      "output": "CertificateOrderSubmitResponse",
+      "status": "online"
+    },
     "CommitCertificateInformation": {
       "document": "Submit payment certificate orders; This API does not maintain new features, and you can use the new API to submit orders. [CertificateOrderSubmit](https://intl.cloud.tencent.com/document/product/400/116032?from_cn_redirect=1).",
       "input": "CommitCertificateInformationRequest",
@@ -1185,6 +1199,477 @@
         }
       ],
       "usage": "out"
+    },
+    "CertificateInfoSubmitRequest": {
+      "document": "CertificateInfoSubmit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paid SSL certificate ID of materials to be submitted.\t",
+          "example": "LrmeMvQr",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This field is required. CSR generation method, value is:\n-online: Tencent Cloud submits the filled parameter information to generate a CSR and private key, and by Tencent Cloud for encrypted storage.\n-parse: Generate CSR and private key manually, and apply for a certificate by uploading CSR.",
+          "example": "parse",
+          "member": "string",
+          "name": "GenCsrType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Common name for certificate binding. If an uploaded CSR is used, that domain name must match the common name resolved by the CSR.",
+          "example": "tencent.com",
+          "member": "string",
+          "name": "CertCommonName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Organization information type. Valid values:\n1 (Personal): Only DV-type certificates can be set to 1. For personal-type certificates, organization information fields (Org, Admin, Tech) can be omitted.\n2 (Company): All types of certificates can be set to 2. Pass organization information fields as needed.",
+          "example": "2",
+          "member": "uint64",
+          "name": "CompanyType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Company ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no company information is found, set this parameter to 0. If company information matching the current order exists, you can view the company ID via [DescribeCompanies](https://www.tencentcloud.com/document/product/400/90375?from_cn_redirect=1). If a company ID is provided, parameters starting with \"Org\" can be omitted.\n\n",
+          "example": "11772",
+          "member": "string",
+          "name": "CompanyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Company document type. Valid values:\nTYDMZ (unified social credit code): This field is required only for CFCA certificates, not required for other types.\nOTHERS",
+          "example": "TYDMZ",
+          "member": "string",
+          "name": "OrgIdType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Company identification number, value ranges from...to...\nTYDMZ (unified social credit code): 11532xxxxxxxx24820\n",
+          "example": "914400002111711112",
+          "member": "string",
+          "name": "OrgIdNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Document type of the manager. Valid values:\nSFZ (ID card): This field is required only for CFCA certs, not required for other types.\nHZ (passport): This field is required only for CFCA certs and not required for other types.",
+          "example": "SFZ",
+          "member": "string",
+          "name": "AdminIdType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID number of the manager. This field is required only for CFCA certificates, not required for other types. Value ranges from...to...\nID card: 110000xxxxxxxx1242\nHZ (Passport): EFxxxxxxx",
+          "example": "110000199101011001",
+          "member": "string",
+          "name": "AdminIdNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Contact person document type. Valid values:\nSFZ (ID card): This field is required only for CFCA certs, not required for other types.\nHZ (passport): This field is required only for CFCA certs and not required for other types.",
+          "example": "SFZ",
+          "member": "string",
+          "name": "TechIdType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID number of the contact person. This field is required only for CFCA certs and not required for other types. Value ranges from...to...\nID card: 110000xxxxxxxx1242\nHZ (Passport): EFxxxxxxx",
+          "example": "110000199101011001",
+          "member": "string",
+          "name": "TechIdNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Uploaded CSR content.\nIf GenCsrType is parse, this field is required.",
+          "example": "-----BEGIN CERTIFICATE REQUEST-----\\nxxxxxxxxx\\n-----END CERTIFICATE REQUEST-----",
+          "member": "string",
+          "name": "Csr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Other domains bound to the certificate. No need to provide for single domain or wildcard certificates. Required for multi-domain names and multiple wildcard certificates.",
+          "example": "[\"test.tencent.com\"]",
+          "member": "string",
+          "name": "DnsNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Private key password. Currently used only when generating certs in jks or pfx format; private key certificates in other formats are unencrypted.\t",
+          "example": "1234aaa5678",
+          "member": "string",
+          "name": "KeyPass",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Company name. This field is required if CompanyId or ManagerId is not provided.",
+          "example": "腾讯云SSL证书测试",
+          "member": "string",
+          "name": "OrgOrganization",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Department name. If not passing CompanyId or ManagerId, this field is required.",
+          "example": "研发部门",
+          "member": "string",
+          "name": "OrgDivision",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Company detailed address. If not pass CompanyId or ManagerId, this field is required.",
+          "example": "腾讯云SSL证书测试地址",
+          "member": "string",
+          "name": "OrgAddress",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Country/region name, for example China: CN. If not passing CompanyId or ManagerId, this field is required.",
+          "example": "CN",
+          "member": "string",
+          "name": "OrgCountry",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Located city. If not pass CompanyId or ManagerId, this field is required.",
+          "example": "北京市",
+          "member": "string",
+          "name": "OrgCity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Province where the company is located. If not passing CompanyId or ManagerId, this field is required.",
+          "example": "北京市",
+          "member": "string",
+          "name": "OrgRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Area code of the company. If not passing CompanyId or ManagerId, this field is required.\nFor example: 021. Pass 86 as the mobile number.",
+          "example": "010",
+          "member": "string",
+          "name": "OrgPhoneArea",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Company number. If CompanyId or ManagerId is not provided, this field is required.",
+          "example": "8423102",
+          "member": "string",
+          "name": "OrgPhoneNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Domain validation method of the certificate\nDNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.\nFILE: Manual addition of domain name FILE verification. Users are advised to manually add a specified path FILE in the root directory of the domain site to perform FILE verification. Either http or https passing is sufficient. The domain site must be accessible by overseas certificate authorities. The specific access allowlist is: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.",
+          "example": "DNS",
+          "member": "string",
+          "name": "VerifyType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manage name. If not passing ManagerId, this field is required.",
+          "example": "宁",
+          "member": "string",
+          "name": "AdminFirstName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manager name. If not, this field is required when ManagerId is not passed.",
+          "example": "黄",
+          "member": "string",
+          "name": "AdminLastName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manager mobile number. If not passing ManagerId, this field is required.",
+          "example": "13120934321",
+          "member": "string",
+          "name": "AdminPhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manager email address. If not passing ManagerId, this field is required.",
+          "example": "ssl@tencent.com",
+          "member": "string",
+          "name": "AdminEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manager position. If not passing ManagerId, this field is required.",
+          "example": "研发",
+          "member": "string",
+          "name": "AdminTitle",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Contact name. If not passing ManagerId, this field is required.",
+          "example": "宁",
+          "member": "string",
+          "name": "TechFirstName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Last name of the contact. If not, this field is required when ManagerId is not passed.",
+          "example": "黄",
+          "member": "string",
+          "name": "TechLastName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Contact email address. This field is required when CompanyType is 1.",
+          "example": "ssl@tencent.com",
+          "member": "string",
+          "name": "ContactEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable auto-renewal: 0, not enabled; 1, enabled; defaults to 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Key pair parameters. RSA supports 2048 and 4096. ECC is only supported for prime256v1. This parameter is required when the CSR generation method is online.\n",
+          "example": "2048",
+          "member": "string",
+          "name": "CsrKeyParameter",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption algorithm, value is ECC or RSA, defaults to RSA. This parameter is required when CSR generation method is online.",
+          "example": "RSA",
+          "member": "string",
+          "name": "CsrEncryptAlgo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Manager ID can be viewed in the [Tencent Cloud Console](https://console.cloud.tencent.com/ssl/info). If no administrator information is found, pass 0 for this parameter. If administrator information exists that meets the current order, the manager ID can be selected based on [DescribeManagers](https://www.tencentcloud.com/document/product/400/52672?from_cn_redirect=1). If the manager ID is passed, parameters beginning with Org, Admin, or Tech can be omitted. The manager ID includes company information.\n",
+          "example": "12895",
+          "member": "string",
+          "name": "ManagerId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Contact phone. If not passing ManagerId, this field is required.",
+          "example": "13120934321",
+          "member": "string",
+          "name": "TechPhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "contact email",
+          "example": "ssl@tencent.com",
+          "member": "string",
+          "name": "TechEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Contact person position. If not passing ManagerId, this field is required.",
+          "example": "研发",
+          "member": "string",
+          "name": "TechTitle",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Certificate type",
+          "example": "81",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Valid only for Dnspod series certs. ca organization kind can be sectigo and digicert.",
+          "example": "sectigo",
+          "member": "string",
+          "name": "CaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "signature algorithm",
+          "example": "SHA256",
+          "member": "string",
+          "name": "SignAlgo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use intersect root certificate",
+          "example": "true",
+          "member": "bool",
+          "name": "UseCrossSignRoot",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CertificateInfoSubmitResponse": {
+      "document": "CertificateInfoSubmit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CertificateOrderSubmitRequest": {
+      "document": "CertificateOrderSubmit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paid SSL certificate ID of materials to be submitted.\t",
+          "example": "Lr1eMvQr",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to delete automatic DNS validation: 0, do not delete; 1, delete; default is do not delete.",
+          "example": "0",
+          "member": "uint64",
+          "name": "DeleteDnsAutoRecord",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Domain validation method of the certificate\nDNS: Manually add domain DNS validation. The user needs to manually add the verification value at the DNS service provider.\nFILE: Manual domain addition via FILE verification. Users are advised to manually add the specified path FILE to the root directory of the domain site for FILE verification. Either http or https access is sufficient. The domain site must be accessible by overseas certificate authorities. For the specific access allowlist, refer to the console page.",
+          "example": "DNS",
+          "member": "string",
+          "name": "VerifyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CertificateOrderSubmitResponse": {
+      "document": "CertificateOrderSubmit response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number from the certificate authority.",
+          "example": "rcMcFK7a_b0iMMEH4",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate status. 0=Under review, 1=Approved, 2=Review failed, 3=Expired, 4=DNS record added, 5=Enterprise certificate, pending submission, 6=Order cancellation in progress, 7=Canceled, 8=Documents submitted, pending upload of confirmation letter, 9=Certificate revocation in progress, 10=Revoked, 11=Reissue in progress, 12=Pending upload of revocation confirmation letter, 13=Free certificate pending document submission.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether prereview is required or not",
+          "example": "0",
+          "member": "bool",
+          "name": "IsAudited",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Certificates": {
       "document": "Content of the `Certificates` parameter returned by `DescribeCertificates`",

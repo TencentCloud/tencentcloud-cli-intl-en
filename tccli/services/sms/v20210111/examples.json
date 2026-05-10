@@ -51,8 +51,8 @@
     "DescribeSmsSignList": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: sms.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSmsSignList\n<Common request parameters>\n\n{\n    \"International\": 0,\n    \"SignIdSet\": [\n        1110,\n        1111\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f36e4f00-605e-49b1-ad0d-bfaba81c7325\",\n        \"DescribeSignListStatusSet\": [\n            {\n                \"SignName\": \"Tencent Cloud\",\n                \"International\": 0,\n                \"SignId\": 1110,\n                \"ReviewReply\": \"xxx\",\n                \"CreateTime\": 1617508800,\n                \"StatusCode\": 0\n            },\n            {\n                \"SignName\": \"Tencent Cloud\",\n                \"International\": 1,\n                \"SignId\": 1111,\n                \"ReviewReply\": \"xxx\",\n                \"CreateTime\": 1617508801,\n                \"StatusCode\": 0\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: sms.intl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSmsSignList\n<Common request parameters>\n\n{\n    \"International\": 1,\n    \"SignIdSet\": [\n        1110,\n        1111\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f36e4f00-605e-49b1-ad0d-bfaba81c7325\",\n        \"DescribeSignListStatusSet\": [\n            {\n                \"SignName\": \"Tencent\",\n                \"International\": 1,\n                \"SignId\": 1110,\n                \"ReviewReply\": \"xxx\",\n                \"CreateTime\": 1617508800,\n                \"StatusCode\": 0\n            },\n            {\n                \"SignName\": \"TencentCloud\",\n                \"International\": 1,\n                \"SignId\": 1111,\n                \"ReviewReply\": \"xxx\",\n                \"CreateTime\": 1617508801,\n                \"StatusCode\": 0\n            }\n        ]\n    }\n}",
         "title": "Sample request"
       }
     ],
