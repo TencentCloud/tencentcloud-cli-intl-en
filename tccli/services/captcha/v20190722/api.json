@@ -28,7 +28,7 @@
         },
         {
           "disabled": false,
-          "document": "The user verification ticket returned by the frontend callback function",
+          "document": "The user verification ticket returned by the frontend callback function.",
           "example": "tr03XaCUZPAlPdIMqv17yvcfdXCzkqvLE09AbCA4ghlWfD8hkySfbU2TZVCyoOCjNI84pAYEMopKv7Uh8XwQDSE9DC0xJpXVC7kmlPENlbFINs_N937qkoEmU6Pl8e-9EkFQzvrrwsZOTKQ*",
           "member": "string",
           "name": "Ticket",
@@ -37,7 +37,7 @@
         },
         {
           "disabled": false,
-          "document": "The user public IP obtained from the customer backend server",
+          "document": "The user public IP obtained from the customer backend server.",
           "example": "127.0.0.1",
           "member": "string",
           "name": "UserIp",

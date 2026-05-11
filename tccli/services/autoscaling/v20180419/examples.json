@@ -70,6 +70,18 @@
     ],
     "CreateLaunchConfiguration": [
       {
+        "document": "This example shows you how to create a launch instance that supports two instance models: S2.SMALL2 and S2.SMALL4.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceTypes\": [\n        \"S2.SMALL4\",\n        \"S2.SMALL2\"\n    ],\n    \"LaunchConfigurationName\": \"multi_instance_types\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-77mh1cho\",\n        \"RequestId\": \"2864c860-27a0-439e-a1e1-0003b76734e7\"\n    }\n}",
+        "title": "Creating a launch configuration that supports multiple instance models"
+      },
+      {
+        "document": "This example shows you how to create a launch configuration with the following configurations. Launch configuration name: spot-test; model: Standard II 2C4G (S2.MEDIUM4); billing mode: spot instance (SPOTPAID); maximum bid: 0.99 USD/hr.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"SystemDisk\": {\n        \"DiskSize\": \"50\",\n        \"DiskType\": \"CLOUD_PREMIUM\"\n    },\n    \"InstanceMarketOptions\": {\n        \"SpotOptions\": {\n            \"SpotInstanceType\": \"one-time\",\n            \"MaxPrice\": \"0.99\"\n        },\n        \"MarketType\": \"spot\"\n    },\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceChargeType\": \"SPOTPAID\",\n    \"LaunchConfigurationName\": \"spot-test\",\n    \"InternetAccessible\": {\n        \"PublicIpAssigned\": \"true\",\n        \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n        \"InternetMaxBandwidthOut\": \"20\"\n    },\n    \"InstanceType\": \"S2.MEDIUM4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-hpzwe3o2\",\n        \"RequestId\": \"ccfe3052-e9c9-47ee-bf3d-5bc2dfd972c0\"\n    }\n}",
+        "title": "Creating a spot instance configuration"
+      },
+      {
         "document": "This example shows you how to create a launch configuration by only assigning values for the required parameters (launch configuration name, instance model, and image ID) and using system default values for other parameters. The specific configuration is as follows: launch configuration name: as_test; instance model: Standard II 1C1G (S2.SMALL1); image ID: img-8toqc6s3.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceType\": \"S2.SMALL1\",\n    \"LaunchConfigurationName\": \"as_test\"\n}",
         "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-23h37kyn\",\n        \"RequestId\": \"d639dd64-9e46-4246-b13c-80954f81c11b\"\n    }\n}",
@@ -80,18 +92,6 @@
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"SystemDisk\": {\n        \"DiskSize\": \"50\",\n        \"DiskType\": \"LOCAL_BASIC\"\n    },\n    \"LoginSettings\": {\n        \"KeyIds\": [\n            \"skey-k8eypc1l\"\n        ]\n    },\n    \"ImageId\": \"img-8toqc6s3\",\n    \"EnhancedService\": {\n        \"SecurityService\": {\n            \"Enabled\": \"TRUE\"\n        },\n        \"MonitorService\": {\n            \"Enabled\": \"TRUE\"\n        }\n    },\n    \"LaunchConfigurationName\": \"as_test\",\n    \"InternetAccessible\": {\n        \"PublicIpAssigned\": \"TRUE\",\n        \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n        \"InternetMaxBandwidthOut\": \"5\"\n    },\n    \"InstanceType\": \"S2.SMALL1\",\n    \"DataDisks\": [\n        {\n            \"Encrypt\": \"FALSE\",\n            \"DeleteWithInstance\": \"TRUE\",\n            \"DiskSize\": \"100\",\n            \"DiskType\": \"CLOUD_BASIC\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-fdz8j7dh\",\n        \"RequestId\": \"9a7209d3-2260-49d7-952a-dfa2001f8822\"\n    }\n}",
         "title": "Creating a launch configuration with detailed parameters"
-      },
-      {
-        "document": "This example shows you how to create a launch configuration with the following configurations. Launch configuration name: spot-test; model: Standard II 2C4G (S2.MEDIUM4); billing mode: spot instance (SPOTPAID); maximum bid: 0.99 USD/hr.",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"SystemDisk\": {\n        \"DiskSize\": \"50\",\n        \"DiskType\": \"CLOUD_PREMIUM\"\n    },\n    \"InstanceMarketOptions\": {\n        \"SpotOptions\": {\n            \"SpotInstanceType\": \"one-time\",\n            \"MaxPrice\": \"0.99\"\n        },\n        \"MarketType\": \"spot\"\n    },\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceChargeType\": \"SPOTPAID\",\n    \"LaunchConfigurationName\": \"spot-test\",\n    \"InternetAccessible\": {\n        \"PublicIpAssigned\": \"true\",\n        \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n        \"InternetMaxBandwidthOut\": \"20\"\n    },\n    \"InstanceType\": \"S2.MEDIUM4\"\n}",
-        "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-hpzwe3o2\",\n        \"RequestId\": \"ccfe3052-e9c9-47ee-bf3d-5bc2dfd972c0\"\n    }\n}",
-        "title": "Creating a spot instance configuration"
-      },
-      {
-        "document": "This example shows you how to create a launch instance that supports two instance models: S2.SMALL2 and S2.SMALL4.",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLaunchConfiguration\n<Common request parameters>\n\n{\n    \"ImageId\": \"img-8toqc6s3\",\n    \"InstanceTypes\": [\n        \"S2.SMALL4\",\n        \"S2.SMALL2\"\n    ],\n    \"LaunchConfigurationName\": \"multi_instance_types\"\n}",
-        "output": "{\n    \"Response\": {\n        \"LaunchConfigurationId\": \"asc-77mh1cho\",\n        \"RequestId\": \"2864c860-27a0-439e-a1e1-0003b76734e7\"\n    }\n}",
-        "title": "Creating a launch configuration that supports multiple instance models"
       }
     ],
     "CreateLifecycleHook": [

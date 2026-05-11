@@ -156,7 +156,7 @@
         },
         {
           "disabled": false,
-          "document": "Text to be translated.",
+          "document": "Text to be translated",
           "example": "Playing video games leads to lasting improvements in cognitive abilities.",
           "member": "string",
           "name": "Text",

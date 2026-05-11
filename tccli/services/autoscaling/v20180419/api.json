@@ -864,7 +864,7 @@
         {
           "disabled": false,
           "document": "List of application load balancers",
-          "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
+          "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancerSet",
           "output_required": true,
@@ -964,7 +964,7 @@
         {
           "disabled": false,
           "document": "Destruction policy. valid values are as follows:.\n<Li>OLDEST_INSTANCE: terminate the oldest instance in the scaling group first, default value.</li>.\n<Li>NEWEST_INSTANCE: terminate the newest instance in the scaling group first.</li>.",
-          "example": "OLDEST_INSTANCE",
+          "example": "[\"OLDEST_INSTANCE\"]",
           "member": "string",
           "name": "TerminationPolicySet",
           "output_required": true,
@@ -1014,7 +1014,7 @@
         {
           "disabled": false,
           "document": "List of auto scaling group tags",
-          "example": "[{\"Key\": \"Service_B\", \"Value\": \"pss3\", \"ResourceType\": \"auto-scaling-group\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
@@ -1024,7 +1024,7 @@
         {
           "disabled": false,
           "document": "Service settings",
-          "example": "{\"ReplaceMonitorUnhealthy\": false, \"ReplaceLoadBalancerUnhealthy\": false, \"ReplaceMode\": \"RECREATE\", \"ScalingMode\": \"CLASSIC_SCALING\"}",
+          "example": "无",
           "member": "ServiceSettings",
           "name": "ServiceSettings",
           "output_required": true,
@@ -1033,7 +1033,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).",
+          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/zh/document/product/215/78469).",
           "example": "0",
           "member": "int64",
           "name": "Ipv6AddressCount",
@@ -1084,7 +1084,7 @@
         {
           "disabled": false,
           "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nA valid value will be returned only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.",
-          "example": "{\"BaseCapacity\": 1, \"CompensateWithBaseInstance\": true, \"OnDemandPercentageAboveBaseCapacity\": 50, \"SpotAllocationStrategy\": \"COST_OPTIMIZED\"}",
+          "example": "无",
           "member": "SpotMixedAllocationPolicy",
           "name": "SpotMixedAllocationPolicy",
           "output_required": true,
@@ -1103,12 +1103,32 @@
         },
         {
           "disabled": false,
-          "document": "Instance name sequencing settings.",
-          "example": "{\"BeginIndex\": 0, \"Enabled\": true}",
+          "document": "Instance name index settings.",
+          "example": "无",
           "member": "InstanceNameIndexSettings",
           "name": "InstanceNameIndexSettings",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance host name index settings.",
+          "example": "无",
+          "member": "HostNameIndexSettings",
+          "name": "HostNameIndexSettings",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:\n\n- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.\n- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.\n- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.\nDefault: FALSE(indicating that concurrent scaling is disabled).",
+          "example": "false",
+          "member": "bool",
+          "name": "ConcurrentScaleOutForDesiredCapacity",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1627,7 +1647,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).",
+          "document": "The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://www.tencentcloud.com/document/product/215/78469).",
           "example": "1",
           "member": "int64",
           "name": "Ipv6AddressCount",
@@ -1690,12 +1710,30 @@
         },
         {
           "disabled": false,
-          "document": "Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.",
+          "document": "Instance name index settings. If not specified, it is disabled by default. When enabled, an incremental numeric index will be appended to the names of instances automatically created within the scaling group.",
           "example": "无",
           "member": "InstanceNameIndexSettings",
           "name": "InstanceNameIndexSettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the related settings for the instance hostname index number. If not specified, it is disabled by default. When enabled, it appends incremental numeric index to the hostname of instances auto-created within the scaling group.",
+          "example": "无",
+          "member": "HostNameIndexSettings",
+          "name": "HostNameIndexSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "This feature allows the system to perform multiple scale out operations concurrently in order to reach the desired capacity. However, the following constraints apply:\n\n- Compatibility: This option cannot be set if the InstanceAllocationPolicyis SPOT_MIXED or the ScalingMode is WAKE_UP_STOPPED_SCALING.\n- Concurrency Limit: The system currently supports a maximum of two concurrent scale-out operations.\n- Operation Restrictions: Other scaling actions such as scaling to a specific instance count or performing scale in, cannot be executed concurrently.\nDefault: FALSE(indicating that concurrent scaling is disabled).",
+          "example": "false",
+          "member": "bool",
+          "name": "ConcurrentScaleOutForDesiredCapacity",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1754,7 +1792,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.",
+          "document": "Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).\n`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.",
           "example": "S2.SMALL1",
           "member": "string",
           "name": "InstanceType",
@@ -1764,7 +1802,7 @@
         {
           "disabled": false,
           "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
-          "example": "{\"DiskSize\": 500, \"DiskType\": \"CLOUD_BSSD\"}",
+          "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
           "required": false,
@@ -1773,7 +1811,7 @@
         {
           "disabled": false,
           "document": "Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.",
-          "example": "[{\"DiskSize\": 200, \"DiskType\": \"CLOUD_BSSD\"}]",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "required": false,
@@ -1782,7 +1820,7 @@
         {
           "disabled": false,
           "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
-          "example": "{\"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\", \"InternetMaxBandwidthOut\": 0, \"PublicIpAssigned\": false}",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
           "required": false,
@@ -1791,7 +1829,7 @@
         {
           "disabled": false,
           "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
-          "example": "{\"KeyIds\": [\"skey-alaz9k65\"]}",
+          "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
           "required": false,
@@ -1809,7 +1847,7 @@
         {
           "disabled": false,
           "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
-          "example": "{\"MonitorService\": {\"Enabled\": true}, \"SecurityService\": {\"Enabled\": true}}",
+          "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
           "required": false,
@@ -1836,7 +1874,7 @@
         {
           "disabled": false,
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
-          "example": "{\"SpotOptions\": {\"MaxPrice\": 1000}}",
+          "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
           "required": false,
@@ -1844,7 +1882,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.\nThe `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
+          "document": "Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.\nThe `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
           "example": "[\"S5.MEDIUM2\", \"S6.MEDIUM2\"]",
           "member": "string",
           "name": "InstanceTypes",
@@ -1872,7 +1910,7 @@
         {
           "disabled": false,
           "document": "List of tags. This parameter is used to bind up to 10 tags to newly added instances.",
-          "example": "[{\"Key\": \"server-group-name\", \"Value\": \"as-tencent\"}]",
+          "example": "无",
           "member": "InstanceTag",
           "name": "InstanceTags",
           "required": false,
@@ -1881,7 +1919,7 @@
         {
           "disabled": false,
           "document": "List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.",
-          "example": "[{\"Key\": \"CCode\", \"Value\": \"ASTENCENT\", \"ResourceType\": \"launch-configuration\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -1889,8 +1927,8 @@
         },
         {
           "disabled": false,
-          "document": "CVM hostname settings.",
-          "example": "{\"HostName\": \"app-as\", \"HostNameStyle\": \"UNIQUE\"}",
+          "document": "Specifies the related settings for the cloud virtual machine HostName (HostName).\nwindows instances do not support setting hostname. \nWhen adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.\nValidates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.",
+          "example": "无",
           "member": "HostNameSettings",
           "name": "HostNameSettings",
           "required": false,
@@ -1898,8 +1936,8 @@
         },
         {
           "disabled": false,
-          "document": "Settings of CVM instance names\nIf this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.",
-          "example": "{\"InstanceName\": \"app-as\", \"InstanceNameStyle\": \"UNIQUE\"}",
+          "document": "Specifies the related settings of the cloud server instance name (InstanceName).\nIf the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as \"as-{{ scaling group AutoScalingGroupName }}\" and passed to CVM.\nSpecifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.\nVerifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.",
+          "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
           "required": false,
@@ -1908,7 +1946,7 @@
         {
           "disabled": false,
           "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
-          "example": "{\"Period\": 1, \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\"}",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "required": false,
@@ -1925,7 +1963,7 @@
         },
         {
           "disabled": false,
-          "document": "High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.\nNote: this field is empty by default.",
+          "document": "High-Performance computing cluster ID. This parameter is not currently supported for the international site.\nNote: this field is empty by default.",
           "example": "hpc-gt4es2q1",
           "member": "string",
           "name": "HpcClusterId",
@@ -1935,7 +1973,7 @@
         {
           "disabled": false,
           "document": "IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.",
-          "example": "{\"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\", \"InternetMaxBandwidthOut\": 1}",
+          "example": "无",
           "member": "IPv6InternetAccessible",
           "name": "IPv6InternetAccessible",
           "required": false,
@@ -2498,7 +2536,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).\nThis feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/zh/document/product/362/39611).\nThis feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "100",
           "member": "uint64",
           "name": "ThroughputPerformance",
@@ -4555,7 +4593,7 @@
         },
         {
           "disabled": false,
-          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1). default value: BGP.\n\n<Li>BGP: general bgp line.</li>.\nFor a user who has enabled the static single-line IP allowlist, valid values include:.\n\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom.</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n",
+          "document": "Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.\n\n<Li>BGP: general bgp line.</li>.\nFor a user who has enabled the static single-line IP allowlist, valid values include:.\n\n<Li>CMCC: china mobile.</li>.\n<Li>CTCC: china telecom.</li>.\n<Li>CUCC: china unicom</li>.\nNote: The static single-line IP is only supported in some regions.\n",
           "example": "BGP",
           "member": "string",
           "name": "InternetServiceProvider",
@@ -4566,7 +4604,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).",
+          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",
@@ -4682,7 +4720,7 @@
         {
           "disabled": false,
           "document": "Launch configuration ID",
-          "example": "asc-abcd0123",
+          "example": "asc-acbd0312",
           "member": "string",
           "name": "LaunchConfigurationId",
           "output_required": true,
@@ -4712,7 +4750,7 @@
         {
           "disabled": false,
           "document": "Information of the instance's system disk configuration.",
-          "example": "{\"DiskSize\": 500, \"DiskType\": \"CLOUD_BSSD\"}",
+          "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
           "output_required": true,
@@ -4722,7 +4760,7 @@
         {
           "disabled": false,
           "document": "Information of the instance's data disk configuration.",
-          "example": "[{\"DiskSize\": 200, \"DiskType\": \"CLOUD_BSSD\"}]",
+          "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
           "output_required": true,
@@ -4732,7 +4770,7 @@
         {
           "disabled": false,
           "document": "Instance login settings.",
-          "example": "{\"KeyIds\": [\"skey-sm1dxnap\"]}",
+          "example": "无",
           "member": "LimitedLoginSettings",
           "name": "LoginSettings",
           "output_required": true,
@@ -4742,7 +4780,7 @@
         {
           "disabled": false,
           "document": "Information of the public network bandwidth configuration.",
-          "example": "{\"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\", \"InternetMaxBandwidthOut\": 0, \"PublicIpAssigned\": false}",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
           "output_required": true,
@@ -4762,7 +4800,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group associated with the launch configuration.",
-          "example": "[{'AutoScalingGroupId': 'asg-1dbjno4d', 'AutoScalingGroupName': 'asg-v000'}]",
+          "example": "无",
           "member": "AutoScalingGroupAbstract",
           "name": "AutoScalingGroupAbstractSet",
           "output_required": true,
@@ -4792,7 +4830,7 @@
         {
           "disabled": false,
           "document": "Conditions of enhancement services for the instance and their settings.",
-          "example": "{\"MonitorService\": {\"Enabled\": true}, \"SecurityService\": {\"Enabled\": true}}",
+          "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
           "output_required": true,
@@ -4802,7 +4840,7 @@
         {
           "disabled": false,
           "document": "Image ID.",
-          "example": "img-abcd0123",
+          "example": "img-acbd0312",
           "member": "string",
           "name": "ImageId",
           "output_required": true,
@@ -4832,7 +4870,7 @@
         {
           "disabled": false,
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "{\"SpotOptions\": {\"SpotInstanceType\": \"one-time\", \"MaxPrice\": 1000}, \"MarketType\": \"spot\"}",
+          "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
           "output_required": true,
@@ -4852,7 +4890,7 @@
         {
           "disabled": false,
           "document": "List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.",
-          "example": "[{\"Key\": \"server-group-name\", \"Value\": \"as-tencent\"}]",
+          "example": "无",
           "member": "InstanceTag",
           "name": "InstanceTags",
           "output_required": true,
@@ -4862,7 +4900,7 @@
         {
           "disabled": false,
           "document": "Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.",
-          "example": "[{\"Key\": \"CCode\", \"Value\": \"ASTENCENT\", \"ResourceType\": \"launch-configuration\"}]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
@@ -4912,7 +4950,7 @@
         {
           "disabled": false,
           "document": "CVM hostname settings.",
-          "example": "{\"HostNameStyle\": \"UNIQUE\", \"HostName\": \"as-host\"}",
+          "example": "无",
           "member": "HostNameSettings",
           "name": "HostNameSettings",
           "output_required": true,
@@ -4922,7 +4960,7 @@
         {
           "disabled": false,
           "document": "Settings of CVM instance names",
-          "example": "{\"InstanceName\": \"app-as\", \"InstanceNameStyle\": \"UNIQUE\"}",
+          "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
           "output_required": true,
@@ -4932,7 +4970,7 @@
         {
           "disabled": false,
           "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
-          "example": "{\"Period\": 1, \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\"}",
+          "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
           "output_required": true,
@@ -4952,7 +4990,7 @@
         {
           "disabled": false,
           "document": "HPC ID<br>\nNote: This field is default to empty",
-          "example": "hpc-abcd0123",
+          "example": "hpc-acbd0321",
           "member": "string",
           "name": "HpcClusterId",
           "output_required": true,
@@ -4962,7 +5000,7 @@
         {
           "disabled": false,
           "document": "IPv6 public network bandwidth configuration.",
-          "example": "{\"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\", \"InternetMaxBandwidthOut\": 1}",
+          "example": "无",
           "member": "IPv6InternetAccessible",
           "name": "IPv6InternetAccessible",
           "output_required": true,
@@ -5719,7 +5757,7 @@
         },
         {
           "disabled": false,
-          "document": "Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
+          "document": "Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.\nThe launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).",
           "example": "[\"S5.SMALL2\"]",
           "member": "string",
           "name": "InstanceTypes",

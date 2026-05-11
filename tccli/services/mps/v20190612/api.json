@@ -1,7 +1,7 @@
 {
   "actions": {
     "BatchProcessMedia": {
-      "document": "This API is used to initiate batch processing tasks for URL video links, with features including:\nSmart subtitle (full speech, speech hotword, and speech translation)",
+      "document": "This API is used to initiate batch processing tasks for URL video links, with features including:\nSmart subtitle (full speech, speech hotword, and speech translation).",
       "input": "BatchProcessMediaRequest",
       "name": "Enters multiple video URLs and initiates multiple tasks",
       "output": "BatchProcessMediaResponse",
@@ -539,6 +539,13 @@
       "output": "DescribeTasksResponse",
       "status": "online"
     },
+    "DescribeTextToSpeechAsyncTask": {
+      "document": "This API is used to query the result of an asynchronous text to speech task.",
+      "input": "DescribeTextToSpeechAsyncTaskRequest",
+      "name": "Queries the result of a text to speech task",
+      "output": "DescribeTextToSpeechAsyncTaskResponse",
+      "status": "online"
+    },
     "DescribeTranscodeTemplates": {
       "document": "This API is used to get the list of transcoding templates based on unique template ID. The return result includes all eligible custom and [preset transcoding templates](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).",
       "input": "DescribeTranscodeTemplatesRequest",
@@ -551,6 +558,13 @@
       "input": "DescribeUsageDataRequest",
       "name": "Queries usage information",
       "output": "DescribeUsageDataResponse",
+      "status": "online"
+    },
+    "DescribeVoices": {
+      "document": "This synchronous API is used to query available voices. It supports filtering voices by type, tag, language, and other criteria.",
+      "input": "DescribeVoicesRequest",
+      "name": "Queries available voices",
+      "output": "DescribeVoicesResponse",
       "status": "online"
     },
     "DescribeWatermarkTemplates": {
@@ -572,6 +586,13 @@
       "input": "DescribeWorkflowsRequest",
       "name": "Get the workflow list",
       "output": "DescribeWorkflowsResponse",
+      "status": "online"
+    },
+    "DesignVoiceAsync": {
+      "document": "This API is used to design a voice. It generates a voice ID based on a prompt.",
+      "input": "DesignVoiceAsyncRequest",
+      "name": "Designs a voice asynchronously",
+      "output": "DesignVoiceAsyncResponse",
       "status": "online"
     },
     "DisableSchedule": {
@@ -812,6 +833,13 @@
       "output": "ProcessMediaResponse",
       "status": "online"
     },
+    "QueryProject": {
+      "document": "This API is used to query an episode project.",
+      "input": "QueryProjectRequest",
+      "name": "Queries an episode project",
+      "output": "QueryProjectResponse",
+      "status": "online"
+    },
     "RecognizeAudio": {
       "document": "This API is used to return the speech recognition results synchronously.",
       "input": "RecognizeAudioRequest",
@@ -833,11 +861,25 @@
       "output": "SyncDubbingResponse",
       "status": "online"
     },
+    "TextToSpeechAsync": {
+      "document": "This API is used to convert text to speech asynchronously and supports long text to speech.",
+      "input": "TextToSpeechAsyncRequest",
+      "name": "Converts text to speech asynchronously",
+      "output": "TextToSpeechAsyncResponse",
+      "status": "online"
+    },
     "TextTranslation": {
-      "document": "This API is used to translate text.",
+      "document": "",
       "input": "TextTranslationRequest",
       "name": "Translates text",
       "output": "TextTranslationResponse",
+      "status": "online"
+    },
+    "UpdateProject": {
+      "document": "This API is used to update an episode project.",
+      "input": "UpdateProjectRequest",
+      "name": "Updates an episode project",
+      "output": "UpdateProjectResponse",
       "status": "online"
     }
   },
@@ -2137,12 +2179,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent video categorization template ID.",
+          "document": "<p>ID of the intelligent video classification template.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"class\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2235,12 +2287,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent video cover generating template ID.",
+          "document": "<p>ID of the intelligent video cover template.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"cover\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2343,13 +2405,24 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the intelligent video matting template.",
+          "document": "<p>ID of the intelligent video matting template.</p>",
           "example": "34",
           "member": "uint64",
           "name": "Definition",
           "output_required": false,
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"cutout\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2396,7 +2469,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -2472,12 +2545,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent removal template ID.",
+          "document": "<p>ID of the intelligent video erasing template.</p>",
           "example": "293034",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"delogo\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2620,12 +2703,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent description template ID.",
+          "document": "<p>ID of the intelligent video description template.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"des\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2708,12 +2801,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video translation template ID.",
+          "document": "<p>ID of the video localization template.</p>",
           "example": "32",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"dubb\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2826,12 +2929,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent frame-specific video tagging template ID.",
+          "document": "<p>ID of the intelligent video frame-by-frame tagging template.</p>",
           "example": "20",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"frame\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -2924,12 +3037,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Opening and closing segments recognition template ID.",
+          "document": "<p>ID of the intro and outro recognition template.</p>",
           "example": "319919",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"seek\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3022,12 +3145,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the intelligent highlight generation template.",
+          "document": "<p>ID of the intelligent video highlight template.</p>",
           "example": "26",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"hht\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3120,13 +3253,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent landscape-to-portrait template ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>ID of the horizontal-to-vertical video transformation template.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "28",
           "member": "uint64",
           "name": "Definition",
           "output_required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"htv\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3256,12 +3399,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the intelligent video editing template.",
+          "document": "<p>ID of the intelligent video editing template.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"aianaly\":\"task\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3414,12 +3567,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Splitting task template ID.",
+          "document": "<p>ID of the video clipping task template.</p>",
           "example": "27",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"segment\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3512,12 +3675,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent video tagging template ID.",
+          "document": "<p>ID of the intelligent video tagging template.</p>",
           "example": "20",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"tag\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3610,12 +3783,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video (audio) recognition template ID.",
+          "document": "<p>ID of the video (audio) understanding template.</p>",
           "example": "33",
           "member": "uint64",
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"compre\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -3758,12 +3941,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Intelligent deduplication template ID.",
+          "document": "<p>ID of the intelligent video deduplication template.</p>",
           "example": "28",
           "member": "uint64",
           "name": "Definition",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"remake\":\"\"}",
+          "member": "string",
+          "name": "ExtendedParameter",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -7010,7 +7203,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The aspect ratio of the generated video.Supported aspect ratios for different models:1. GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.Note: For more information about the aspect ratios of specific models, see the model website.",
+          "document": "<p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>",
           "example": "16:9",
           "member": "string",
           "name": "AspectRatio",
@@ -7021,10 +7214,32 @@
         },
         {
           "disabled": false,
-          "document": "Output resolution of the image.Models that support this parameter:Valid values: 720P, 1080P, 2K, and 4K.",
+          "document": "<p>Output resolution of the image.</p><p>Models that support this parameter:<br>Valid values: 720P, 1080P, 2K, and 4K.</p>",
           "example": "1080P",
           "member": "string",
           "name": "Resolution",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to add a logo watermark. No watermark is added by default. 1 - A watermark is added. 0 - No watermark is added.</p><p>Value range: [0, 1].</p><p>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "LogoAdd",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "png",
+          "member": "string",
+          "name": "OutputFormat",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -7244,7 +7459,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Animated image generating template ID.",
+          "document": "<p>Video-to-GIF conversion template ID.</p>",
           "example": "20000",
           "member": "uint64",
           "name": "Definition",
@@ -7255,7 +7470,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of an animated image in a video in seconds.",
+          "document": "<p>Start time of the GIF in the video, in seconds.</p>",
           "example": "1.5",
           "member": "float",
           "name": "StartTimeOffset",
@@ -7266,7 +7481,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of an animated image in a video in seconds.",
+          "document": "<p>End time of the GIF in the video, in seconds.</p>",
           "example": "11.2",
           "member": "float",
           "name": "EndTimeOffset",
@@ -7277,7 +7492,7 @@
         },
         {
           "disabled": false,
-          "document": "Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Target storage for the file after GIF conversion. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -7288,11 +7503,22 @@
         },
         {
           "disabled": false,
-          "document": "Output path of a file after animated image generating, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).\nRelative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.",
+          "document": "<p>Output path of the file after GIF conversion, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href=\"https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1\">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_animatedGraphic_{definition}.{format}</code>.",
           "example": "文件名_{变量名}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
           "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"ainmated\":\"\"}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7869,7 +8095,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -7930,7 +8156,7 @@
         },
         {
           "disabled": false,
-          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.comom/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.\nFor details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).\nUnit: Hz.\nNote: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "44100",
           "member": "uint64",
           "name": "SampleRate",
@@ -8388,7 +8614,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "CreateTime",
@@ -8398,7 +8624,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2025-08-01T18:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
@@ -10018,7 +10244,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.</p>",
+          "document": "<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.<br>PixVerse.</p>",
           "example": "Hailuo",
           "member": "string",
           "name": "ModelName",
@@ -10027,7 +10253,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02 and 2.3].</li><li>Kling: [2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, and q3-turbo].</li><li>GV: [3.1].</li><li>OS: [2.0].</li></ol>",
+          "document": "<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>GV: [3.1 and 3.1-fast].</li><li>OS: [2.0].</li><li>PixVerse: [v5.6, v6, and c1].</li></ol>",
           "example": "2.3",
           "member": "string",
           "name": "ModelVersion",
@@ -11293,7 +11519,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br>ASR recognition and pure caption translation currently support the following languages:<br><code>auto</code>: Auto-identification<br><code>zh</code>: Simplified Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>zh-PY</code>: Chinese-English-Cantonese<br><code>zh_medical</code>: Chinese health care<br><code>vi</code>: Vietnamese<br><code>ms</code>: Malay<br><code>id</code>: Indonesian<br><code>fil</code>: Filipino<br><code>th</code>: Thai<br><code>pt</code>: Portuguese<br><code>tr</code>: Turkish<br><code>ar</code>: Arabic<br><code>es</code>: Spanish<br><code>hi</code>: Hindi<br><code>fr</code>: French<br><code>de</code>: German<br><code>it</code>: Italian<br><code>zh_dialect</code>: Chinese dialect<br><code>zh_en</code>: Chinese-English<br><code>yue</code>: Cantonese<br><code>ru</code>: Russian<br><code>prime_zh</code>: Chinese-English dialect<br><code>af-ZA</code>: Afrikaans (South Africa)<br><code>sq-AL</code>: Albanian (Albania)<br><code>am-ET</code>: Amharic (Ethiopia)<br><code>ar-DZ</code>: Arabic (Algeria)<br><code>ar-BH</code>: Arabic (Bahrain)<br><code>ar-EG</code>: Arabic (Egypt)<br><code>ar-IQ</code>: Arabic (Iraq)<br><code>ar-IL</code>: Arabic (Israel)<br><code>ar-JO</code>: Arabic (Jordan)<br><code>ar-KW</code>: Arabic (Kuwait)<br><code>ar-LB</code>: Arabic (Lebanon)<br><code>ar-MR</code>: Arabic (Mauritania)<br><code>ar-MA</code>: Arabic (Morocco)<br><code>ar-OM</code>: Arabic (Oman)<br><code>ar-QA</code>: Arabic (Qatar)<br><code>ar-SA</code>: Arabic (Saudi Arabia)<br><code>ar-PS</code>: Arabic (State of Palestine)<br><code>ar-SY</code>: Arabic (Syria)<br><code>ar-TN</code>: Arabic (Tunisia)<br><code>ar-AE</code>: Arabic (United Arab Emirates)<br><code>ar-YE</code>: Arabic (Yemen)<br><code>hy-AM</code>: Armenian (Armenia)<br><code>az-AZ</code>: Azerbaijani (Azerbaijan)<br><code>eu-ES</code>: Basque (Spain)<br><code>bn-BD</code>: Bengali (Bangladesh)<br><code>bn-IN</code>: Bengali (India)<br><code>bs-BA</code>: Bosnian (Bosnia and Herzegovina)<br><code>bg-BG</code>: Bulgarian (Bulgaria)<br><code>my-MM</code>: Burmese (Myanmar)<br><code>ca-ES</code>: Catalan (Spain)<br><code>hr-HR</code>: Croatian (Croatia)<br><code>cs-CZ</code>: Czech (Czech Republic)<br><code>da-DK</code>: Danish (Denmark)<br><code>nl-BE</code>: Dutch (Belgium)<br><code>nl-NL</code>: Dutch (Netherlands)<br><code>en-AU</code>: English (Australia)<br><code>en-CA</code>: English (Canada)<br><code>en-GH</code>: English (Ghana)<br><code>en-HK</code>: English (Hong Kong (China))<br><code>en-IN</code>: English (India)<br><code>en-IE</code>: English (Ireland)<br><code>en-KE</code>: English (Kenya)<br><code>en-NZ</code>: English (New Zealand)<br><code>en-NG</code>: English (Nigeria)<br><code>en-PK</code>: English (Pakistan)<br><code>en-PH</code>: English (Philippines)<br><code>en-SG</code>: English (Singapore)<br><code>en-ZA</code>: English (South Africa)<br><code>en-TZ</code>: English (Tanzania)<br><code>en-GB</code>: English (UK)<br><code>en-US</code>: English (United States)<br><code>et-EE</code>: Estonian (Estonia)<br><code>fil-PH</code>: Filipino (Philippines)<br><code>fi-FI</code>: Finnish (Finland)<br><code>fr-BE</code>: French (Belgium)<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fr-CH</code>: French (Switzerland)<br><code>gl-ES</code>: Galician (Spain)<br><code>ka-GE</code>: Georgian (Georgia)<br><code>el-GR</code>: Greek (Greece)<br><code>gu-IN</code>: Gujarati (India)<br><code>iw-IL</code>: Hebrew (Israel)<br><code>hi-IN</code>: Hindi (India)<br><code>hu-HU</code>: Hungarian (Hungary)<br><code>is-IS</code>: Icelandic (Iceland)<br><code>id-ID</code>: Indonesian (Indonesia)<br><code>it-IT</code>: Italian (Italy)<br><code>it-CH</code>: Italian (Switzerland)<br><code>ja-JP</code>: Japanese (Japan)<br><code>jv-ID</code>: Javanese (Indonesia)<br><code>kn-IN</code>: Kannada (India)<br><code>kk-KZ</code>: Kazakh (Kazakhstan)<br><code>km-KH</code>: Khmer (Cambodia)<br><code>rw-RW</code>: Kinyarwanda (Rwanda)<br><code>ko-KR</code>: Korean (South Korea)<br><code>lo-LA</code>: Lao (Laos)<br><code>lv-LV</code>: Latvian (Latvia)<br><code>lt-LT</code>: Lithuanian (Lithuania)<br><code>mk-MK</code>: Macedonian (North Macedonia)<br><code>ms-MY</code>: Malay (Malaysia)<br><code>ml-IN</code>: Malayalam (India)<br><code>mr-IN</code>: Marathi (India)<br><code>mn-MN</code>: Mongolian (Mongolia)<br><code>ne-NP</code>: Nepali (Nepal)<br><code>no-NO</code>: Norwegian Bokmål (Norway)<br><code>fa-IR</code>: Persian (Iran)<br><code>pl-PL</code>: Polish (Poland)<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>ro-RO</code>: Romanian (Romania)<br><code>ru-RU</code>: Russian (Russia)<br><code>sr-RS</code>: Serbian (Serbia)<br><code>si-LK</code>: Sinhalese (Sri Lanka)<br><code>sk-SK</code>: Slovak (Slovakia)<br><code>sl-SI</code>: Slovenian (Slovenia)<br><code>st-ZA</code>: Southern Sotho (South Africa)<br><code>es-AR</code>: Spanish (Argentina)<br><code>es-BO</code>: Spanish (Bolivia)<br><code>es-CL</code>: Spanish (Chile)<br><code>es-CO</code>: Spanish (Colombia)<br><code>es-CR</code>: Spanish (Costa Rica)<br><code>es-DO</code>: Spanish (Dominican Republic)<br><code>es-EC</code>: Spanish (Ecuador)<br><code>es-SV</code>: Spanish (El Salvador)<br><code>es-GT</code>: Spanish (Guatemala)<br><code>es-HN</code>: Spanish (Honduras)<br><code>es-MX</code>: Spanish (Mexico)<br><code>es-NI</code>: Spanish (Nicaragua)<br><code>es-PA</code>: Spanish (Panama)<br><code>es-PY</code>: Spanish (Paraguay)<br><code>es-PE</code>: Spanish (Peru)<br><code>es-PR</code>: Spanish (Puerto Rico)<br><code>es-ES</code>: Spanish (Spain)<br><code>es-US</code>: Spanish (United States)<br><code>es-UY</code>: Spanish (Uruguay)<br><code>es-VE</code>: Spanish (Venezuela)<br><code>su-ID</code>: Sundanese (Indonesia)<br><code>sw-KE</code>: Swahili (Kenya)<br><code>sw-TZ</code>: Swahili (Tanzania)<br><code>sv-SE</code>: Swedish (Sweden)<br><code>ta-IN</code>: Tamil (India)<br><code>ta-MY</code>: Tamil (Malaysia)<br><code>ta-SG</code>: Tamil (Singapore)<br><code>ta-LK</code>: Tamil (Sri Lanka)<br><code>te-IN</code>: Telugu (India)<br><code>th-TH</code>: Thai (Thailand)<br><code>ts-ZA</code>: Tsonga (South Africa)<br><code>tr-TR</code>: Turkish (Türkiye)<br><code>uk-UA</code>: Ukrainian (Ukraine)<br><code>ur-IN</code>: Urdu (India)<br><code>ur-PK</code>: Urdu (Pakistan)<br><code>uz-UZ</code>: Uzbek (Uzbekistan)<br><code>ve-ZA</code>: Venda (South Africa)<code>vi-VN</code>: Vietnamese (Vietnam)<br><code>xh-ZA</code>: Xhosa (South Africa)<br><code>zu-ZA</code>: Zulu (South Africa)</p>",
+          "document": "<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br><br>ASR recognition and pure caption translation currently support the following: \n\n[ASR Supported Languages](https://www.tencentcloud.com/zh/document/product/1041/68175#ASRlanguages)\n\n\nCommon available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplified Chinese), <br>`en` (English), <br>`ja` (Japanese), <br>`ko` (Korean), <br>`zh-PY `(Chinese, English and Cantonese), <br>`zh_medical `(Medical Chinese), <br>`vi` (Vietnamese), <br>`ms` (Malay), <br>`id` (Indonesian), <br>`fil` (Filipino), <br>`th` (Thai), <br>`pt` (Portuguese), <br>`tr` (Turkish), <br>`ar` (Arabic), <br>`es` (Spanish), <br>`hi` (Hindi), <br>`fr` (French), <br>`de` (German), <br>`it` (Italian), <br>`zh_dialect` (Chinese Dialects), <br>`zh_en` (Chinese & English Mixed), <br>`yue` (Cantonese), <br>`ru` (Russian), <br>`prime_zh` (Chinese, English & Chinese Dialects)",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -11378,6 +11604,24 @@
           "example": "1011",
           "member": "int64",
           "name": "SubtitleEmbedId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>By default, speaker identification is disabled.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>By default, the speaker is not output to the subtitle file.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerLabel",
           "required": false,
           "type": "int"
         }
@@ -15190,6 +15434,93 @@
       ],
       "type": "object"
     },
+    "DescribeTextToSpeechAsyncTaskRequest": {
+      "document": "DescribeTextToSpeechAsyncTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "1300057393-DubbingAsync-fc3f52cf-f5f2-453c-882c-8847e5b2fe2f",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTextToSpeechAsyncTaskResponse": {
+      "document": "DescribeTextToSpeechAsyncTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Error code. 0 is returned if the request is successful.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message. success is returned if the request is successful.</p>",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status.</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>fail: Failure, </li><li>processing: Processing.</li></ul>",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Synthetic audio URL.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.ap-nanjing.myqcloud.com/async_dubbing/fc3f52cf-f5f2-453c-882c-8847e5b2fe2f.wav",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Used voice ID.</p>",
+          "example": "s1_+DSBRZuGbfKlwsN1lV5OsriSYvOB3aSqqCsHH0LJ5BWHsmfmn13my4ki/QL+g+7RaRUWLhwPcEI6gtCTkA==",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended information.</p>",
+          "example": "{\"duration\":1.00325}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTranscodeTemplatesRequest": {
       "document": "DescribeTranscodeTemplates request structure.",
       "members": [
@@ -15399,6 +15730,72 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoicesRequest": {
+      "document": "DescribeVoices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>",
+          "example": "all",
+          "member": "string",
+          "name": "VoiceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:\nvoiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>",
+          "example": "{\n    \"labels\": [\"温柔\"]\n}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoicesResponse": {
+      "document": "DescribeVoices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Error code. 0 is returned if the request is successful.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message. success is returned if the request is successful.</p>",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Available voice list.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VoiceInfo",
+          "name": "Voices",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -15638,6 +16035,72 @@
           "name": "WorkflowInfoSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DesignVoiceAsyncRequest": {
+      "document": "DesignVoiceAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "电影解说男声，抑扬顿挫，低沉富有磁性",
+          "member": "string",
+          "name": "Prompt",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string.</p>",
+          "example": "{\n    \"promptEnhance\": true\n}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DesignVoiceAsyncResponse": {
+      "document": "DesignVoiceAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Error code. 0 is returned if the request is successful.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message. success is returned if the request is successful.</p>",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID, used when querying a task.</p>",
+          "example": "1300057393-DesignVoiceAsync-f255b8b7-82a7-41e1-8e88-b61e247cc510",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -17377,7 +17840,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of an image sprite generating template.",
+          "document": "<p>Sprite screenshot template ID.</p>",
           "example": "10001",
           "member": "uint64",
           "name": "Definition",
@@ -17388,7 +17851,7 @@
         },
         {
           "disabled": false,
-          "document": "Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -17399,7 +17862,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path of a captured sprite image file, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.",
+          "document": "<p>Output path of the sprite screenshot image file after the sprite screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href=\"https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1\">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}_{number}.{format}</code>.",
           "example": "xxx_imageSprite_10001_0.png",
           "member": "string",
           "name": "OutputObjectPath",
@@ -17410,7 +17873,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.",
+          "document": "<p>Output path of the Web VTT file after the sprite screenshot is taken, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}.{format}</code>.</p>",
           "example": "xxx_imageSprite_10001_0.vtt",
           "member": "string",
           "name": "WebVttObjectName",
@@ -17421,7 +17884,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule of the `{number}` variable in the image sprite output path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NumberFormat",
           "name": "ObjectNumberFormat",
@@ -17429,6 +17892,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"image\":\"\"}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -19542,7 +20016,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
+          "document": "Notification type:\nTDMQ-CMQ: message queue.\n\"URL\": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.com/document/product/862/39229?from_cn_redirect=1).\n<Font color=\"red\"> Note: if it is unspecified or left blank, no callback will be sent. To send a callback, fill in the corresponding type value. </font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
@@ -23256,6 +23730,24 @@
           "name": "SubtitleEmbedId",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speaker identification switch. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerLabel",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -25143,7 +25635,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href=\"https://www.tencentcloud.com/product/leb?from_cn_redirect=1\">LEB</a>. To obtain the address, <a href=\"https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1\">see</a>.</p><p>For SRT-supported addresses, <a href=\"https://ffmpeg.org/ffmpeg-protocols.html#srt\">refer</a>.</p>",
+          "document": "<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href=\"https://www.tencentcloud.com/products/css?from_qcintl=topnav&lang=en&pg=\">CSS</a>. To obtain the address, <a href=\"https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1\">see</a>.</p><p>For SRT-supported addresses, <a href=\"https://ffmpeg.org/ffmpeg-protocols.html#srt\">refer</a>.</p>",
           "example": "http://www.adc.com/adc.m3u8",
           "member": "string",
           "name": "Url",
@@ -25669,6 +26161,89 @@
       ],
       "usage": "in"
     },
+    "Project": {
+      "document": "Episode project information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Project ID.</p>",
+          "example": "458f16b1-7da9-4a56-a841-78567c5bee48",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "斗破苍穹（第二季）",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project description.</p>",
+          "example": "玄幻题材有声剧",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project term base.</p>",
+          "example": "无",
+          "member": "TermBase",
+          "name": "TermBase",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of characters.</p>",
+          "example": "无",
+          "member": "Speakers",
+          "name": "Speakers",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time (Unix timestamp).</p>",
+          "example": "1775011251",
+          "member": "int64",
+          "name": "CreatedAt",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time (Unix timestamp).</p>",
+          "example": "1775014479",
+          "member": "int64",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PureSubtitleTransResult": {
       "document": "Translation result of pure subtitle files.",
       "members": [
@@ -25776,7 +26351,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "When this field is set to true, it indicates that the video has no audio track.",
+          "document": "<p>A value of true indicates that the video has no audio track.</p>",
           "example": "true",
           "member": "bool",
           "name": "NoAudio",
@@ -25786,7 +26361,7 @@
         },
         {
           "disabled": false,
-          "document": "When this field is set to true, it indicates that the video has no video track.",
+          "document": "<p>A value of true indicates that the video has no video track.</p>",
           "example": "true",
           "member": "bool",
           "name": "NoVideo",
@@ -25796,7 +26371,7 @@
         },
         {
           "disabled": false,
-          "document": "No-reference quality score of the video (100 points in total).",
+          "document": "<p>No-reference quality score of the video, on a scale of 0 to 100.</p>",
           "example": "95",
           "member": "int64",
           "name": "QualityEvaluationScore",
@@ -25806,7 +26381,7 @@
         },
         {
           "disabled": false,
-          "document": "No-reference quality score of the video (MOS).",
+          "document": "<p>No-reference quality score of the video (MOS).</p>",
           "example": "4.75",
           "member": "float",
           "name": "QualityEvaluationMeanOpinionScore",
@@ -25816,7 +26391,17 @@
         },
         {
           "disabled": false,
-          "document": "Exception items identified in content quality inspection.",
+          "document": "<p>Video aesthetic score. Value range: [0, 100].</p>",
+          "example": "80",
+          "member": "int64",
+          "name": "AestheticEvaluationScore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exception items detected in content quality inspection.</p>",
           "example": "无",
           "member": "QualityControlResult",
           "name": "QualityControlResultSet",
@@ -25826,7 +26411,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception items identified in format diagnosis.",
+          "document": "<p>Exception items detected in format diagnosis.</p>",
           "example": "无",
           "member": "ContainerDiagnoseResultItem",
           "name": "ContainerDiagnoseResultSet",
@@ -26095,6 +26680,80 @@
       ],
       "usage": "out"
     },
+    "QueryProjectRequest": {
+      "document": "QueryProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Project ID.</p>",
+          "example": "458f16b1-7da9-4a56-a841-78567c5bee48",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "斗破苍穹",
+          "member": "string",
+          "name": "ProjectName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number. Value range: starts from 1. Default value: 1.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Default value: 20.</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryProjectResponse": {
+      "document": "QueryProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of eligible items.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project data.</p>",
+          "example": "无",
+          "member": "Project",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RawImageWatermarkInput": {
       "document": "Input parameter of image watermark template",
       "members": [
@@ -26332,6 +26991,28 @@
           "example": "1011",
           "member": "int64",
           "name": "SubtitleEmbedId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerLabel",
           "output_required": false,
           "required": false,
           "type": "int",
@@ -26956,7 +27637,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sampled screenshot template ID.",
+          "document": "<p>Sampled screenshot template ID.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -26967,7 +27648,7 @@
         },
         {
           "disabled": false,
-          "document": "List of up to 10 image or text watermarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Watermark list. Up to 10 image or text watermarks are supported.</p>",
           "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
@@ -26978,7 +27659,7 @@
         },
         {
           "disabled": false,
-          "document": "Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -26989,7 +27670,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path of an image file after sampled screenshot taking, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.",
+          "document": "<p>Output path of the image file after the sampled screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href=\"https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1\">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>.",
           "example": "/{inputName}_snapshotByTimeOffsetTest_{definition}_{number}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -27000,7 +27681,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule of the `{number}` variable in the sampled screenshot output path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NumberFormat",
           "name": "ObjectNumberFormat",
@@ -27008,6 +27689,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"sample\":\"\"}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -27249,7 +27941,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
+          "document": "Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.",
           "example": " input",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28403,7 +29095,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28559,7 +29251,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Template creation time in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
@@ -28569,7 +29261,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "Last modification time of the template in [ISO datetime format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
           "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
@@ -28843,7 +29535,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task progress.",
+          "document": "<p>Task progress.</p>",
           "example": "100",
           "member": "uint64",
           "name": "Progress",
@@ -28853,7 +29545,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status, including PROCESSING, SUCCESS, and FAIL.",
+          "document": "<p>Task status. Valid values are PROCESSING, SUCCESS, WAITING, and FAIL.</p>",
           "example": "SUCCESS",
           "member": "string",
           "name": "Status",
@@ -28863,7 +29555,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "<p>Error code. An empty string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of <a href=\"https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81\">MPS error codes</a>.</p>",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28873,7 +29565,7 @@
         },
         {
           "disabled": false,
-          "document": "Error message.",
+          "document": "<p>Error message.</p>",
           "example": "task fail",
           "member": "string",
           "name": "Message",
@@ -28883,7 +29575,7 @@
         },
         {
           "disabled": false,
-          "document": "Translation task output information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Translation task output information.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SmartSubtitleTaskTransTextResultOutput",
           "name": "TransTextTask",
@@ -28893,7 +29585,7 @@
         },
         {
           "disabled": false,
-          "document": "Output information on the full speech recognition task.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Full speech recognition task output information.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SmartSubtitleTaskAsrFullTextResultOutput",
           "name": "AsrFullTextTask",
@@ -28919,7 +29611,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
+          "document": "Error code. A null string indicates that the task is successful, while other values indicate that the task has failed. For valid values, see the list of [MPS error codes](https://www.tencentcloud.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).",
           "example": "InvalidInput",
           "member": "string",
           "name": "ErrCodeExt",
@@ -28985,7 +29677,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Smart subtitle template ID.",
+          "document": "<p>Smart subtitle template ID.</p>",
           "example": "10",
           "member": "int64",
           "name": "Definition",
@@ -28995,13 +29687,23 @@
         },
         {
           "disabled": false,
-          "document": "Custom smart subtitle parameter. It takes effect when Definition is set to 0.\nThis parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "自定义参数",
+          "document": "<p>Custom smart subtitle parameter. It takes effect when Definition is set to 0.<br>This parameter is used in highly customized scenarios. We recommend that you use Definition to specify smart subtitle parameters.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "RawSmartSubtitleParameter",
           "name": "RawParameter",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"subtitle\":\"\"}",
+          "member": "string",
+          "name": "UserExtPara",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -29255,7 +29957,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Unique identifier of the smart subtitle template.",
+          "document": "<p>Unique identifier of the smart subtitle template.</p>",
           "example": "30",
           "member": "int64",
           "name": "Definition",
@@ -29265,7 +29967,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle template name.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Smart subtitle template name.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "模板1",
           "member": "string",
           "name": "Name",
@@ -29275,7 +29977,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle template description.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Smart subtitle template description.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "用于A的模板",
           "member": "string",
           "name": "Comment",
@@ -29285,7 +29987,7 @@
         },
         {
           "disabled": false,
-          "document": "Template type. Valid values:\n* Preset: system preset template\n* Custom: user-defined template\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Template type. Valid values:</p><ul><li>Preset: preset template.</li><li>Custom: custom template.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Preset",
           "member": "string",
           "name": "Type",
@@ -29295,7 +29997,7 @@
         },
         {
           "disabled": false,
-          "document": "ASR hotword lexicon parameter.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>ASR hotword lexicon parameters.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AsrHotWordsConfigure",
           "name": "AsrHotWordsConfigure",
@@ -29305,7 +30007,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the hotword lexicon associated with the template.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Name of the hotword lexicon associated with the template.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "HotwordsName1",
           "member": "string",
           "name": "AsrHotWordsLibraryName",
@@ -29315,7 +30017,7 @@
         },
         {
           "disabled": false,
-          "document": "List of source languages of the video with smart subtitles.\n`zh`: Simplified Chinese.\n`yue`: Cantonese.\n`zh-PY`: Chinese, English, and Cantonese.\n`zh_medical`: Chinese (medical scenario).\n`zh_dialect`: Chinese dialect.\n`prime_zh`: Chinese, English, and Chinese dialects.\n`zh_en`: Chinese and English.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n`auto`: automatic recognition (it is only supported in pure subtitle translation).",
+          "document": "<p>Video source language list for smart subtitle:</p><p><code>zh</code>: Simplified Chinese<br><code>yue</code>: Cantonese<br><code>zh-PY</code>: Chinese, English, and Cantonese<br><code>zh_medical</code>: Chinese healthcare<br><code>zh_dialect</code>: Chinese dialect<br><code>prime_zh</code>: Chinese and English dialects<br><code>zh_en</code>: Chinese and English<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino<br><code>auto</code>: Automatic identification (only supported for subtitle translation)</p>",
           "example": "zh",
           "member": "string",
           "name": "VideoSrcLanguage",
@@ -29325,7 +30027,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle file format.\n- vtt: WebVTT.- srt: SRT.- original: same as the source subtitle file (for subtitle translation templates).- Not specified or empty: no subtitle file generated.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Smart subtitle file format.</p><ul><li>vtt: WebVTT.</li><li>srt: SRT.</li><li>original: same as the source subtitle file (for subtitle translation templates).</li><li>Not specified or empty: no subtitle file generated.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vtt",
           "member": "string",
           "name": "SubtitleFormat",
@@ -29335,7 +30037,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart subtitle language type.\n0: source language1: target language\n2: source language + target language\nThe value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.",
+          "document": "<p>Smart subtitle language type.<br>0: source language.<br>1: target language.<br>2: source language and target language.<br>Only 0 is supported when TranslateSwitch is OFF.<br>Only 1 or 2 is supported when TranslateSwitch is ON.</p>",
           "example": "0",
           "member": "int64",
           "name": "SubtitleType",
@@ -29345,7 +30047,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle translation switch.\nON: enable translation\nOFF: disable translation\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Subtitle translation switch.<br>ON: enables translation.<br>OFF: disables translation.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ON",
           "member": "string",
           "name": "TranslateSwitch",
@@ -29355,7 +30057,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language for subtitle translation.\nThis field is valid when the value of TranslateSwitch is ON.\n`zh`: Simplified Chinese.\n`zh-TW`: Traditional Chinese.\n`en`: English.\n`ja`: Japanese.\n`ko`: Korean.\n`fr`: French.\n`es`: Spanish.\n`it`: Italian.\n`de`: German.\n`tr`: Turkish.\n`ru`: Russian.\n`pt`: Portuguese (Brazil).\n`pt-PT`: Portuguese (Portugal).\n`vi`: Vietnamese.\n`id`: Indonesian.\n`ms`: Malay.\n`th`: Thai.\n`ar`: Arabic.\n`hi`: Hindi.\n`fil`: Filipino.\n**Note**: Use `/` to separate multiple languages, such as `en/ja`, which indicates English and Japanese.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Target language for subtitle translation.<br>This parameter takes effect when TranslateSwitch is ON.<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>en</code>: English<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>fr</code>: French<br><code>es</code>: Spanish<br><code>it</code>: Italian<br><code>de</code>: German<br><code>tr</code>: Turkish<br><code>ru</code>: Russian<br><code>pt</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>vi</code>: Vietnamese<br><code>id</code>: Indonesian<br><code>ms</code>: Malay<br><code>th</code>: Thai<br><code>ar</code>: Arabic<br><code>hi</code>: Hindi<br><code>fil</code>: Filipino</p><p><strong>Note</strong>: Use <code>/</code> to separate multiple languages, such as <code>en/ja</code>, which indicates English and Japanese.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "en",
           "member": "string",
           "name": "TranslateDstLanguage",
@@ -29365,7 +30067,7 @@
         },
         {
           "disabled": false,
-          "document": "Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "<p>Template creation time, in <a href=\"https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52\">ISO date format</a>.</p>",
           "example": "2023-10-05T14:30:00Z",
           "member": "string",
           "name": "CreateTime",
@@ -29375,7 +30077,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "document": "<p>Last template modification time, in <a href=\"https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52\">ISO date format</a>.</p>",
           "example": "2024-10-05T14:32:00Z",
           "member": "string",
           "name": "UpdateTime",
@@ -29385,7 +30087,7 @@
         },
         {
           "disabled": false,
-          "document": "Alias of the preset smart subtitle template.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Preset template alias for smart subtitle.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "PresetTemplate1",
           "member": "string",
           "name": "AliasName",
@@ -29395,7 +30097,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle processing type:- 0: ASR subtitle recognition.- 1: subtitle translation.- 2: OCR subtitle recognition.",
+          "document": "<p>Subtitle processing type:</p><ul><li>0: ASR.</li><li>1: subtitle translation.</li><li>2: OCR.</li></ul>",
           "example": "0",
           "member": "uint64",
           "name": "ProcessType",
@@ -29405,13 +30107,43 @@
         },
         {
           "disabled": false,
-          "document": "Area configurations for the subtitle OCR extraction box.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Area configurations for the subtitle OCR extraction box.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SelectingSubtitleAreasConfig",
           "name": "SelectingSubtitleAreasConfig",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subtitle burn-in template ID.</p>",
+          "example": "1011",
+          "member": "int64",
+          "name": "SubtitleEmbedId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speaker identification mode. Valid values:<br>0: Speaker identification is disabled.<br>1: Speaker identification is enabled.<br>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerMode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to output the identified speaker to the subtitle file. Valid values:<br>0: The speaker is not output to the subtitle file.<br>1: The speaker is output to the VTT subtitle file.<br>Note: To use this parameter, the value of SpeakerMode cannot be 0.<br>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpeakerLabel",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -29538,7 +30270,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of a time point screenshot template.",
+          "document": "<p>Time point screenshot template ID.</p>",
           "example": "11028",
           "member": "uint64",
           "name": "Definition",
@@ -29549,7 +30281,7 @@
         },
         {
           "disabled": false,
-          "document": "List of screenshot time points in the format of `s` or `%`:\n<li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>\n<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>",
+          "document": "<p>List of screenshot time points. Time points support two formats: s and %.</p><li>The unit for a string that ends with s is second. For example, 3.5s means the time point is at 3.5 seconds.</li><li>The unit for a string that ends with % is a percentage of the video duration. For example, 10% means the time point is at 10% of the video's total duration.</li>",
           "example": "[\"3.5s\", \"50%\"]",
           "member": "string",
           "name": "ExtTimeOffsetSet",
@@ -29560,7 +30292,7 @@
         },
         {
           "disabled": false,
-          "document": "List of time points of screenshots in <font color=red>seconds</font>.",
+          "document": "<p>List of screenshot time points, in <font color=\"red\">seconds</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>",
           "example": "[7.5, 10]",
           "member": "float",
           "name": "TimeOffsetSet",
@@ -29571,7 +30303,7 @@
         },
         {
           "disabled": false,
-          "document": "List of up to 10 image or text watermarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Watermark list. Up to 10 image or text watermarks are supported.</p>",
           "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
@@ -29582,7 +30314,7 @@
         },
         {
           "disabled": false,
-          "document": "Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -29593,7 +30325,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path for an image file of screenshots taken at specific time points, which can be a relative or absolute path.\nIf you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).\nRelative path example:\n<li>Filename_{Variable name}.{format}.</li>\n<li>Filename.{format}.</li>\nAbsolute path example:\n<li>/Custom path/Filename_{Variable name}.{format}.</li>\nIf left empty, a relative path is used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.",
+          "document": "<p>Output path of the image file after the time point screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href=\"https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1\">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>.",
           "example": "/mps/output/{inputName}_test_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -29604,7 +30336,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule of the `{number}` variable in the time point screenshot output path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NumberFormat",
           "name": "ObjectNumberFormat",
@@ -29612,6 +30344,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameter.</p>",
+          "example": "{\"snapshot\":\"\"}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -30994,11 +31737,11 @@
       "usage": "in"
     },
     "SyncDubbingOutputOption": {
-      "document": "",
+      "document": "Output parameter setting for synchronous dubbing.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>data: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>",
           "example": "url",
           "member": "string",
           "name": "Type",
@@ -31013,7 +31756,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.",
+          "document": "<p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 characters in length.</p>",
           "example": "你好",
           "member": "string",
           "name": "Text",
@@ -31022,7 +31765,7 @@
         },
         {
           "disabled": false,
-          "document": "Text language. This defaults to zh (Chinese) if left empty.\nSupported languages:\nzh: Chinese.\nen: English.\nja: Japanese.\nde: German.\nfr: French.\nko: Korean.\nru: Russian.\nuk: Ukrainian.\npt: Portuguese.\nit: Italian.\nes: Spanish.\nid: Indonesian.\nnl: Dutch.\ntr: Turkish.\nfil: Filipino.\nms: Malay.\nel: Greek.\nfi: Finnish.\nhr: Croatian.\nsk: Slovak.\npl: Polish.\nsv: Swedish.\nhi: Hindi.\nbg: Bulgarian.\nro: Romanian.\nar: Arabic.\ncs: Czech.\nda: Danish.\nta: Tamil.\nhun: Hungarian.\nvi: Vietnamese.\nno: Norwegian.\nyue: Cantonese.\nth: Thai.\nhe: Hebrew.\nca: Catalan.\nnn: Nynorsk.\naf: Afrikaans.\nfa: Persian.\nsl: Slovenian.\n",
+          "document": "<p>Text language. This defaults to Chinese if left empty.<br>Supported languages:<br>zh    Chinese<br>en    English<br>ja    Japanese<br>de    German<br>fr    French<br>ko    Korean<br>ru    Russian<br>uk    Ukrainian<br>pt    Portuguese<br>it    Italian<br>es    Spanish<br>id    Indonesian<br>nl    Dutch<br>tr    Turkish<br>fil    Filipino<br>ms    Malay<br>el    Greek<br>fi    Finnish<br>hr    Croatian<br>sk    Slovak<br>pl    Polish<br>sv    Swedish<br>hi    Hindi<br>bg    Bulgarian<br>ro    Romanian<br>ar    Arabic<br>cs    Czech<br>da    Danish<br>ta    Tamil<br>hun    Hungarian<br>vi    Vietnamese<br>no    Norwegian<br>yue    Cantonese<br>th    Thai<br>he    Hebrew<br>ca    Catalan<br>nn    Nynorsk<br>af    Afrikaans<br>fa    Persian<br>sl    Slovenian</p>",
           "example": "zh",
           "member": "string",
           "name": "TextLang",
@@ -31031,7 +31774,7 @@
         },
         {
           "disabled": false,
-          "document": "Voice type ID. This is required for synthesis with a specific voice type. System voice types and voice type cloning are supported.",
+          "document": "<p>Voice ID. This is required for synthesis with a specific voice. System voice and voice cloning are supported.</p>",
           "example": "s1_2GSzVAf00hl7+A+LJTNvVI6nFJB0qliIvR8wntPeaniVSstd7Z4E4UL8Hky3azMHVlDSps1zWW4nJ7ll9w==",
           "member": "string",
           "name": "VoiceId",
@@ -31040,7 +31783,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64-encoded audio for cloning.",
+          "document": "<p>Base64-encoded audio for cloning.</p>",
           "example": "UklGRoxnAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YWhnAABBAEUAQwBFAEcARwBKAEsASABLAEsASQBNAEoASQBMAEwASwBNAE0ASwBLAEsATABKAEoASwBLAEwASgBLAEwA",
           "member": "string",
           "name": "AudioData",
@@ -31049,7 +31792,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Cloning audio URL. Valid when AudioData is empty.</p>",
           "example": "https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/dubbing/test/leleqihang/AI_voice.mp4",
           "member": "string",
           "name": "AudioUrl",
@@ -31058,7 +31801,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloning audio language. The default language is Chinese.\nSupported languages are the same as those for TextLang.",
+          "document": "<p>Cloning audio language. The default language is Chinese. <br>Supported languages are the same as those for TextLang.</p>",
           "example": "zh",
           "member": "string",
           "name": "AudioLang",
@@ -31067,7 +31810,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Output parameters.</p><p>Specifies the output format, etc.</p>",
           "example": "无",
           "member": "SyncDubbingOutputOption",
           "name": "Output",
@@ -31076,7 +31819,7 @@
         },
         {
           "disabled": false,
-          "document": "Extended parameters in the format of a JSON string.",
+          "document": "<p>Extended parameters in the format of a JSON string.</p><p>‑ synExt (Object): Speech synthesis extension parameter.<br>- duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>- sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br> pitch (Integer): -Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>‑ cloneExt (Object): Voice cloning extension parameter.<br>    - timeRanges (Float[][]): Specifies the time ranges for audio cloning. Default value: [[0, 20]]. Example: [[5.2, 10], [45, 59.8]].</p>",
           "example": "{\n    \"synExt\": {\n        \"duration\": 10\n    }\n}",
           "member": "string",
           "name": "ExtParam",
@@ -31091,7 +31834,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Error code. 0 is returned if the request is successful.",
+          "document": "<p>Error code. 0 is returned if the request is successful.</p>",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -31101,7 +31844,7 @@
         },
         {
           "disabled": false,
-          "document": "Error message. success is returned if the request is successful.",
+          "document": "<p>Error message. success is returned if the request is successful.</p>",
           "example": "success",
           "member": "string",
           "name": "Msg",
@@ -31111,7 +31854,7 @@
         },
         {
           "disabled": false,
-          "document": "Synthetic audio in Base64 encoding and WAV format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Synthetic audio in Base64 encoding and WAV format.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "UklGRuxnAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YchnAABBAEUAQwBFA",
           "member": "string",
           "name": "AudioData",
@@ -31121,7 +31864,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Synthetic audio URL. It is valid for 24 hours.</p>",
           "example": "https://laurie-tmp-1300828900.cos.ap-nanjing.myqcloud.com/sync_dubbing/1b753121-49fa-4ce2-9499-eef6d10ccdce.wav",
           "member": "string",
           "name": "AudioUrl",
@@ -31131,7 +31874,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloned voice type ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Cloned voice ID.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "s1_2GSzVAf00hl7+A+LJTNvVI6nFJB0qliIvR8wntPeaniVSstd7Z4E4UL8Hky3azMHVlDSps1zWW4nJ7ll9w==",
           "member": "string",
           "name": "VoiceId",
@@ -31141,7 +31884,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>",
           "example": "{\"duration\":15.000063}",
           "member": "string",
           "name": "ExtInfo",
@@ -31807,12 +32550,96 @@
       ],
       "usage": "in"
     },
+    "TextToSpeechAsyncRequest": {
+      "document": "TextToSpeechAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Text to convert to speech.</p>",
+          "example": "你好",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "s1_+DSBRZuGbfKlwsN1lV5OsriSYvOB3aSqqCsHH0LJ5BWHsmfmn13my4ki/QL+g+7RaRUWLhwPcEI6gtCTkA==",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text language. The default value is Chinese.</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "TextLang",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string.</p><p>synExt (Object): Extended text to speech parameter.<br>  duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>  sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br>  pitch (Integer): -Pitch. Default value: 0 (original voice output). Value range: [-12, 12].</p><p>transExt (Object): Extended translation parameter.<br>  transInfo (Object).<br>   transDst (String): Target language, such as en.<br>  transRequirement (String): Translation requirements.</p>",
+          "example": "{\n    \"transExt\": {\n        \"transInfo\": {\n            \"transDst\": \"en\"\n        },\n        \"transRequirement\": \"引号中（包括\\\"\\\",“”）的内容不翻译（是中文就是中文，是英文就是英文）\"\n    }\n}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechAsyncResponse": {
+      "document": "TextToSpeechAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Error code. 0 is returned if the request is successful.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrorCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message. success is returned if the request is successful.</p>",
+          "example": "success",
+          "member": "string",
+          "name": "Msg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID. Use this ID to query the result.</p>",
+          "example": "1300057393-DubbingAsync-0d810bb0-d78b-4545-b36e-eab983b40a6a",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TextTranslationRequest": {
       "document": "TextTranslation request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Text to be translated, which must be encoded in UTF-8 format. Characters not encoded in UTF-8 format cannot be translated. Input valid text. Unconventional content, such as HTML tags, may also cause translation failures. The text length per request must be less than 2,000 characters.",
+          "document": "<p>Text to be translated. The text must be encoded in UTF-8 format. Non-UTF-8 encoded characters may cause translation failures. Provide valid text. Unconventional text such as HTML tags may fail to translate. The text length per request cannot exceed 2,000 characters.</p>",
           "example": "hello",
           "member": "string",
           "name": "SourceText",
@@ -31821,8 +32648,8 @@
         },
         {
           "disabled": false,
-          "document": "Source language. Valid values:\n    \"auto\": \"automatic recognition (recognized as a language).\",\n    \"ab\": \"Abkhaz language.\",\n    \"ace\": Acehnese.\",\n    \"ach\": \"Acholi.\",\n    \"af\": \"Afrikaans.\",\n    \"ak\": \"Twi (Akan).\",\n    \"am\": \"Amharic\",\n    \"ar\": \"Arabic.\",\n    \"as\": \"Assamese.\",\n    \"ay\": \"Aymara.\",\n    \"az\": \"Azerbaijani.\",\n    \"ba\": \"Bashkir.\",\n    \"ban\": \"Balinese\",\n    \"bbc\": \"Batak Toba.\",\n    \"bem\": \"Bemba\",\n    \"bew\": \"Betawi\",\n    \"bg\": \"Bulgarian.\",\n    \"bho\": \"Bhojpuri.\",\n    \"bik\": \"Bikol\",\n    \"bm\": \"Bambara.\",\n    \"bn\": \"Bengali.\",\n    \"br\": \"Breton.\",\n    \"bs\": \"Bosnian.\",\n    \"btx\": \"Batak Karo.\",\n    \"bts\": \"Batak Simalungun.\",\n    \"bua\": \"Buryat.\",\n    \"ca\": \"Catalan.\",\n    \"ceb\": \"Cebuano.\",\n    \"cgg\": \"Kiga\",\n    \"chm\": \"Meadow Mari language.\",\n    \"ckb\": \"Kurdish (Sorani).\",\n    \"cnh\": \"Hakha Chin.\",\n    \"co\": \"Corsican.\",\n    \"crh\": \"Crimean Tatar.\",\n    \"crs\": \"Seychellois Creole.\",\n    \"cs\": \"Czech.\",\n    \"cv\": \"Chuvash.\",\n    \"cy\": \"Welsh.\",\n    \"da\": \"Danish.\",\n    \"de\": \"German.\",\n    \"din\": \"Dinka\",\n    \"doi\": \"Dogri.\",\n    \"dov\": \"Dombe.\",\n    \"dv\": \"Divehi.\",\n    \"dz\": \"Dzongkha.\",\n    \"ee\": \"Ewe\",\n    \"el\": \"Greek.\",\n    \"en\": \"English.\",\n    \"eo\": \"Esperanto.\",\n    \"es\": \"Spanish.\",\n    \"et\": \"Estonian.\",\n    \"eu\": \"Basque.\",\n    \"fa\": \"Persian.\",\n    \"ff\": \"Fula.\",\n    \"fi\": \"Finnish.\",\n    \"fil\": \"Filipino (Tagalog).\",\n    \"fj\": \"Fijian.\",\n    \"fr\": \"French.\",\n    \"fr-CA\": \"French (Canada).\",\n    \"fr-FR\": \"French (France).\",\n    \"fy\": \"Frisian.\",\n    \"ga\": \"Irish.\",\n    \"gaa\": \"Ga.\",\n    \"gd\": \"Scottish Gaelic.\",\n    \"gl\": \"Galician.\",\n    \"gn\": \"Guarani.\",\n    \"gom\": \"Goan Konkani.\",\n    \"gu\": \"Gujarati.\",\n    \"gv\": \"Manx.\",\n    \"ha\": \"Hausa\",\n    \"haw\": \"Hawaiian.\",\n    \"he\": \"Hebrew.\",\n    \"hi\": \"Hindi.\",\n    \"hil\": \"Hiligaynon.\",\n    \"hmn\": \"Hmong.\",\n    \"hr\": \"Croatian.\",\n    \"hrx\": \"Hunsrik.\",\n    \"ht\": \"Haitian Creole.\",\n    \"hu\": \"Hungarian.\",\n    \"hy\": \"Armenian.\",\n    \"id\": \"Indonesian.\",\n    \"ig\": \"Igbo\",\n    \"ilo\": \"Iloko.\",\n    \"is\": \"Icelandic.\",\n    \"it\": \"Italian.\",\n    \"iw\": \"Hebrew.\",\n    \"ja\": \"Japanese.\",\n    \"jv\": \"Javanese.\",\n    \"jw\": \"Javanese.\",\n    \"ka\": \"Georgian.\",\n    \"kk\": \"Kazakh.\",\n    \"km\": \"Khmer.\",\n    \"kn\": \"Kanada.\",\n    \"ko\": \"Korean.\",\n    \"kri\": \"Krio\",\n    \"ku\": \"Kurdish (Kurmanji).\",\n    \"ktu\": \"Kituba.\",\n    \"ky\": \"Kirghiz.\",\n    \"la\": \"Latin.\",\n    \"lb\": \"Luxembourgish.\",\n    \"lg\": \"Ganda (Luganda).\",\n    \"li\": \"Limburgish.\",\n    \"lij\": \"Ligurian.\",\n    \"lmo\": \"Lombard.\",\n    \"ln\": \"Lingala.\",\n    \"lo\": \"Lao.\",\n    \"lt\": \"Lithuanian.\",\n    \"ltg\": \"Latgalian.\",\n    \"luo\": \"Luo\",\n    \"lus\": \"Mizo.\",\n    \"lv\": \"Latvian.\",\n    \"mai\": \"Maithili.\",\n    \"mak\": \"Makassar.\",\n    \"mg\": \"Malagasy.\",\n    \"mi\": \"Maori.\",\n    \"min\": \"Minangkabau.\",\n    \"mk\": \"Macedonian.\",\n    \"ml\": \"Malayalam.\",\n    \"mn\": \"Mongolian.\",\n    \"mr\": \"Marathi.\",\n    \"ms\": \"Malay.\",\n    \"mt\": \"Maltese.\",\n    \"my\": \"Burmese.\",\n    \"ne\": \"Nepali.\",\n    \"new\": \"Nepali (Newar).\",\n    \"nl\": \"Dutch.\",\n    \"no\": \"Norwegian.\",\n    \"nr\": \"Ndebele (South).\",\n    \"nso\": \"Northern Sotho (Sepedi).\",\n    \"nus\": \"Nuer.\",\n    \"ny\": \"Chichewa (Nyanja).\",\n    \"oc\": \"Occitan.\",\n    \"om\": \"Oromo\",\n    \"or\": \"Odia (Oria).\",\n    \"pa\": \"Punjabi.\",\n    \"pag\": \"Pangasinan.\",\n    \"pam\": \"Kapampangan.\",\n    \"pap\": \"Papiamento\",\n    \"pl\": \"Polish.\",\n    \"ps\": \"Pashto\",\n    \"pt\": \"Portuguese.\",\n    \"pt-BR\": \"Portuguese (Brazil).\",\n    \"pt-PT\": \"Portuguese (Portugal).\",\n    \"qu\": \"Quechuan.\",\n    \"ro\": \"Romanian.\",\n    \"rom\": \"Romani.\",\n    \"rn\": \"Rundi\",\n    \"ru\": \"Russian.\",\n    \"rw\": \"Kinyarwanda.\",\n    \"sa\": \"Sanskrit.\",\n    \"scn\": \"Sicilian.\",\n    \"sd\": \"Sindhi.\",\n    \"sg\": \"Sango\",\n    \"shn\": \"Shan.\",\n    \"si\": \"Sinhalese.\",\n    \"sk\": \"Slovak.\",\n    \"sl\": \"Slovene.\",\n    \"sm\": \"Samoan.\",\n    \"sn\": \"Shona.\",\n    \"so\": \"Somali.\",\n    \"sq\": \"Albanian.\",\n    \"sr\": \"Serbian.\",\n    \"ss\": \"Swati.\",\n    \"st\": \"Sesotho.\",\n    \"su\": \"Sundanese.\",\n    \"sv\": \"Swedish.\",\n    \"sw\": \"Swahili.\",\n    \"szl\": \"Silesian.\",\n    \"ta\": \"Tamil.\",\n    \"te\": \"Telugu.\",\n    \"tet\": \"Tetum.\",\n    \"tg\": \"Tajik.\",\n    \"th\": \"Thai.\",\n    \"ti\": \"Tigrinya.\",\n    \"tk\": \"Turkmen.\",\n    \"tl\": \" Filipino (Tagalog).\",\n    \"tn\": \"Tswana.\",\n    \"tr\": \"Turkish.\",\n    \"ts\": \"Tsonga.\",\n    \"tt\": \"Tatar.\",\n    \"ug\": \"Uyghur.\",\n    \"uk\": \"Ukrainian.\",\n    \"ur\": \"Urdu.\",\n    \"uz\": \"Uzbek.\",\n    \"vi\": \"Vietnamese.\",\n    \"xh\": \"Xhosa.\",\n    \"yi\": \"Yiddish.\",\n    \"yo\": \"Yoruba.\",\n    \"yua\": \"Yucatec Maya.\",\n    \"yue\": \"Cantonese.\",\n    \"zh\": \"Simplified Chinese.\",\n    \"zh-TW\": \"Chinese (Traditional).\",\n    \"zu\": \"Zulu.\"",
-          "example": "en",
+          "document": "<p>Source language. Valid values:<br>    &quot;auto&quot;: &quot; Auto-detection (detects as one language)&quot;,<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>",
+          "example": "zh",
           "member": "string",
           "name": "Source",
           "required": true,
@@ -31830,8 +32657,8 @@
         },
         {
           "disabled": false,
-          "document": "Target language. Valid values:\n    \"ab\": \"Abkhaz language.\",\n    \"ace\": \"Acehnese.\",\n    \"ach\": \"Acholi.\",\n    \"af\": \"Afrikaans.\",\n    \"ak\": \"Twi (Akan).\",\n    \"am\": \"Amharic\",\n    \"ar\": \"Arabic.\",\n    \"as\": \"Assamese.\",\n    \"ay\": \"Aymara.\",\n    \"az\": \"Azerbaijani.\",\n    \"ba\": \"Bashkir.\",\n    \"ban\": \"Balinese\",\n    \"bbc\": \"Batak Toba.\",\n    \"bem\": \"Bemba\",\n    \"bew\": \"Betawi\",\n    \"bg\": \"Bulgarian.\",\n    \"bho\": \"Bhojpuri.\",\n    \"bik\": \"Bikol\",\n    \"bm\": \"Bambara.\",\n    \"bn\": \"Bengali.\",\n    \"br\": \"Breton.\",\n    \"bs\": \"Bosnian.\",\n    \"btx\": \"Batak Karo.\",\n    \"bts\": \"Batak Simalungun.\",\n    \"bua\": \"Buryat.\",\n    \"ca\": \"Catalan.\",\n    \"ceb\": \"Cebuano.\",\n    \"cgg\": \"Kiga\",\n    \"chm\": \"Meadow Mari language.\",\n    \"ckb\": \"Kurdish (Sorani).\",\n    \"cnh\": \"Hakha Chin.\",\n    \"co\": \"Corsican.\",\n    \"crh\": \"Crimean Tatar.\",\n    \"crs\": \"Seychellois Creole.\",\n    \"cs\": \"Czech.\",\n    \"cv\": \"Chuvash.\",\n    \"cy\": \"Welsh.\",\n    \"da\": \"Danish.\",\n    \"de\": \"German.\",\n    \"din\": \"Dinka\",\n    \"doi\": \"Dogri.\",\n    \"dov\": \"Dombe.\",\n    \"dv\": \"Divehi.\",\n    \"dz\": \"Dzongkha.\",\n    \"ee\": \"Ewe\",\n    \"el\": \"Greek.\",\n    \"en\": \"English.\",\n    \"eo\": \"Esperanto.\",\n    \"es\": \"Spanish.\",\n    \"et\": \"Estonian.\",\n    \"eu\": \"Basque.\",\n    \"fa\": \"Persian.\",\n    \"ff\": \"Fula.\",\n    \"fi\": \"Finnish.\",\n    \"fil\": \"Filipino (Tagalog).\",\n    \"fj\": \"Fijian.\",\n    \"fr\": \"French.\",\n    \"fr-CA\": \"French (Canada).\",\n    \"fr-FR\": \"French (France).\",\n    \"fy\": \"Frisian.\",\n    \"ga\": \"Irish.\",\n    \"gaa\": \"Ga.\",\n    \"gd\": \"Scottish Gaelic.\",\n    \"gl\": \"Galician.\",\n    \"gn\": \"Guarani.\",\n    \"gom\": \"Goan Konkani.\",\n    \"gu\": \"Gujarati.\",\n    \"gv\": \"Manx.\",\n    \"ha\": \"Hausa\",\n    \"haw\": \"Hawaiian.\",\n    \"he\": \"Hebrew.\",\n    \"hi\": \"Hindi.\",\n    \"hil\": \"Hiligaynon.\",\n    \"hmn\": \"Hmong.\",\n    \"hr\": \"Croatian.\",\n    \"hrx\": \"Hunsrik.\",\n    \"ht\": \"Haitian Creole.\",\n    \"hu\": \"Hungarian.\",\n    \"hy\": \"Armenian.\",\n    \"id\": \"Indonesian.\",\n    \"ig\": \"Igbo\",\n    \"ilo\": \"Iloko.\",\n    \"is\": \"Icelandic.\",\n    \"it\": \"Italian.\",\n    \"iw\": \"Hebrew.\",\n    \"ja\": \"Japanese.\",\n    \"jv\": \"Javanese.\",\n    \"jw\": \"Javanese.\",\n    \"ka\": \"Georgian.\",\n    \"kk\": \"Kazakh.\",\n    \"km\": \"Khmer.\",\n    \"kn\": \"Kanada.\",\n    \"ko\": \"Korean.\",\n    \"kri\": \"Krio\",\n    \"ku\": \"Kurdish (Kurmanji).\",\n    \"ktu\": \"Kituba.\",\n    \"ky\": \"Kirghiz.\",\n    \"la\": \"Latin.\",\n    \"lb\": \"Luxembourgish.\",\n    \"lg\": \"Ganda (Luganda).\",\n    \"li\": \"Limburgish.\",\n    \"lij\": \"Ligurian.\",\n    \"lmo\": \"Lombard.\",\n    \"ln\": \"Lingala.\",\n    \"lo\": \"Lao.\",\n    \"lt\": \"Lithuanian.\",\n    \"ltg\": \"Latgalian.\",\n    \"luo\": \"Luo\",\n    \"lus\": \"Mizo.\",\n    \"lv\": \"Latvian.\",\n    \"mai\": \"Maithili.\",\n    \"mak\": \"Makassar.\",\n    \"mg\": \"Malagasy.\",\n    \"mi\": \"Maori.\",\n    \"min\": \"Minangkabau.\",\n    \"mk\": \"Macedonian.\",\n    \"ml\": \"Malayalam.\",\n    \"mn\": \"Mongolian.\",\n    \"mr\": \"Marathi.\",\n    \"ms\": \"Malay.\",\n    \"mt\": \"Maltese.\",\n    \"my\": \"Burmese.\",\n    \"ne\": \"Nepali.\",\n    \"new\": \"Nepali (Newar).\",\n    \"nl\": \"Dutch.\",\n    \"no\": \"Norwegian.\",\n    \"nr\": \"Ndebele (South).\",\n    \"nso\": \"Northern Sotho (Sepedi).\",\n    \"nus\": \"Nuer.\",\n    \"ny\": \"Chichewa (Nyanja).\",\n    \"oc\": \"Occitan.\",\n    \"om\": \"Oromo\",\n    \"or\": \"Odia (Oria).\",\n    \"pa\": \"Punjabi.\",\n    \"pag\": \"Pangasinan.\",\n    \"pam\": \"Kapampangan.\",\n    \"pap\": \"Papiamento\",\n    \"pl\": \"Polish.\",\n    \"ps\": \"Pashto\",\n    \"pt\": \"Portuguese.\",\n    \"pt-BR\": \"Portuguese (Brazil).\",\n    \"pt-PT\": \"Portuguese (Portugal).\",\n    \"qu\": \"Quechuan.\",\n    \"ro\": \"Romanian.\",\n    \"rom\": \"Romani.\",\n    \"rn\": \"Rundi\",\n    \"ru\": \"Russian.\",\n    \"rw\": \"Kinyarwanda.\",\n    \"sa\": \"Sanskrit.\",\n    \"scn\": \"Sicilian.\",\n    \"sd\": \"Sindhi.\",\n    \"sg\": \"Sango\",\n    \"shn\": \"Shan.\",\n    \"si\": \"Sinhalese.\",\n    \"sk\": \"Slovak.\",\n    \"sl\": \"Slovene.\",\n    \"sm\": \"Samoan.\",\n    \"sn\": \"Shona.\",\n    \"so\": \"Somali.\",\n    \"sq\": \"Albanian.\",\n    \"sr\": \"Serbian.\",\n    \"ss\": \"Swati.\",\n    \"st\": \"Sesotho.\",\n    \"su\": \"Sundanese.\",\n    \"sv\": \"Swedish.\",\n    \"sw\": \"Swahili.\",\n    \"szl\": \"Silesian.\",\n    \"ta\": \"Tamil.\",\n    \"te\": \"Telugu.\",\n    \"tet\": \"Tetum.\",\n    \"tg\": \"Tajik.\",\n    \"th\": \"Thai.\",\n    \"ti\": \"Tigrinya.\",\n    \"tk\": \"Turkmen.\",\n    \"tl\": \" Filipino (Tagalog).\",\n    \"tn\": \"Tswana.\",\n    \"tr\": \"Turkish.\",\n    \"ts\": \"Tsonga.\",\n    \"tt\": \"Tatar.\",\n    \"ug\": \"Uyghur.\",\n    \"uk\": \"Ukrainian.\",\n    \"ur\": \"Urdu.\",\n    \"uz\": \"Uzbek.\",\n    \"vi\": \"Vietnamese.\",\n    \"xh\": \"Xhosa.\",\n    \"yi\": \"Yiddish.\",\n    \"yo\": \"Yoruba.\",\n    \"yua\": \"Yucatec Maya.\",\n    \"yue\": \"Cantonese.\",\n    \"zh\": \"Simplified Chinese.\",\n    \"zh-TW\": \"Chinese (Traditional).\",\n    \"zu\": \"Zulu.\"",
-          "example": "zh",
+          "document": "<p>Target language. Valid values:<br>    &quot;ab&quot;: &quot;Abkhaz&quot;,<br>    &quot;ace&quot;: &quot;Acehnese&quot;,<br>    &quot;ach&quot;: &quot;Acholi&quot;,<br>    &quot;af&quot;: &quot;Afrikaans&quot;,<br>    &quot;ak&quot;: &quot;Akan&quot;,<br>    &quot;am&quot;: &quot;Amharic&quot;,<br>    &quot;ar&quot;: &quot;Arabic&quot;,<br>    &quot;as&quot;: &quot;Assamese&quot;,<br>    &quot;ay&quot;: &quot;Aymara&quot;,<br>    &quot;az&quot;: &quot;Azerbaijani&quot;,<br>    &quot;ba&quot;: &quot;Bashkir&quot;,<br>    &quot;ban&quot;: &quot;Balinese&quot;,<br>    &quot;bbc&quot;: &quot;Batak Toba&quot;,<br>    &quot;bem&quot;: &quot;Bemba&quot;,<br>    &quot;bew&quot;: &quot;Betawi&quot;,<br>    &quot;bg&quot;: &quot;Bulgarian&quot;,<br>    &quot;bho&quot;: &quot;Bhojpuri&quot;,<br>    &quot;bik&quot;: &quot;Bikol&quot;,<br>    &quot;bm&quot;: &quot;Bambara&quot;,<br>    &quot;bn&quot;: &quot;Bengali&quot;,<br>    &quot;br&quot;: &quot;Breton&quot;,<br>    &quot;bs&quot;: &quot;Bosnian&quot;,<br>    &quot;btx&quot;: &quot;Batak Karo&quot;,<br>    &quot;bts&quot;: &quot;Batak Simalungun&quot;,<br>    &quot;bua&quot;: &quot;Buryat&quot;,<br>    &quot;ca&quot;: &quot;Catalan&quot;,<br>    &quot;ceb&quot;: &quot;Cebuano&quot;,<br>    &quot;cgg&quot;: &quot;Kiga&quot;,<br>    &quot;chm&quot;: &quot;Meadow Mari&quot;,<br>    &quot;ckb&quot;: &quot;Kurdish (Sorani)&quot;,<br>    &quot;cnh&quot;: &quot;Hakha Chin&quot;,<br>    &quot;co&quot;: &quot;Corsican&quot;,<br>    &quot;crh&quot;: &quot;Crimean Tatar&quot;,<br>    &quot;crs&quot;: &quot;Seychellois Creole&quot;,<br>    &quot;cs&quot;: &quot;Czech&quot;,<br>    &quot;cv&quot;: &quot;Chuvash&quot;,<br>    &quot;cy&quot;: &quot;Welsh&quot;,<br>    &quot;da&quot;: &quot;Danish&quot;,<br>    &quot;de&quot;: &quot;German&quot;,<br>    &quot;din&quot;: &quot;Dinka&quot;,<br>    &quot;doi&quot;: &quot;Dogri&quot;,<br>    &quot;dov&quot;: &quot;Dombe&quot;,<br>    &quot;dv&quot;: &quot;Dhivehi&quot;,<br>    &quot;dz&quot;: &quot;Dzongkha&quot;,<br>    &quot;ee&quot;: &quot;Ewe&quot;,<br>    &quot;el&quot;: &quot;Greek&quot;,<br>    &quot;en&quot;: &quot;English&quot;,<br>    &quot;eo&quot;: &quot;Esperanto&quot;,<br>    &quot;es&quot;: &quot;Spanish&quot;,<br>    &quot;et&quot;: &quot;Estonian&quot;,<br>    &quot;eu&quot;: &quot;Basque&quot;,<br>    &quot;fa&quot;: &quot;Persian&quot;,<br>    &quot;ff&quot;: &quot;Fula&quot;,<br>    &quot;fi&quot;: &quot;Finnish&quot;,<br>    &quot;fil&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;fj&quot;: &quot;Fijian&quot;,<br>    &quot;fr&quot;: &quot;French&quot;,<br>    &quot;fr-CA&quot;: &quot;French (Canada)&quot;,<br>    &quot;fr-FR&quot;: &quot;French (France)&quot;,<br>    &quot;fy&quot;: &quot;Frisian&quot;,<br>    &quot;ga&quot;: &quot;Irish&quot;,<br>    &quot;gaa&quot;: &quot;Ga&quot;,<br>    &quot;gd&quot;: &quot;Scottish Gaelic&quot;,<br>    &quot;gl&quot;: &quot;Galician&quot;,<br>    &quot;gn&quot;: &quot;Guarani&quot;,<br>    &quot;gom&quot;: &quot;Konkani&quot;,<br>    &quot;gu&quot;: &quot;Gujarati&quot;,<br>    &quot;gv&quot;: &quot;Manx&quot;,<br>    &quot;ha&quot;: &quot;Hausa&quot;,<br>    &quot;haw&quot;: &quot;Hawaiian&quot;,<br>    &quot;he&quot;: &quot;Hebrew&quot;,<br>    &quot;hi&quot;: &quot;Hindi&quot;,<br>    &quot;hil&quot;: &quot;Hiligaynon&quot;,<br>    &quot;hmn&quot;: &quot;Hmong&quot;,<br>    &quot;hr&quot;: &quot;Croatian&quot;,<br>    &quot;hrx&quot;: &quot;Hunsrik&quot;,<br>    &quot;ht&quot;: &quot;Haitian Creole&quot;,<br>    &quot;hu&quot;: &quot;Hungarian&quot;,<br>    &quot;hy&quot;: &quot;Armenian&quot;,<br>    &quot;id&quot;: &quot;Indonesian&quot;,<br>    &quot;ig&quot;: &quot;Igbo&quot;,<br>    &quot;ilo&quot;: &quot;Ilocano&quot;,<br>    &quot;is&quot;: &quot;Icelandic&quot;,<br>    &quot;it&quot;: &quot;Italian&quot;,<br>    &quot;iw&quot;: &quot;Hebrew&quot;,<br>    &quot;ja&quot;: &quot;Japanese&quot;,<br>    &quot;jv&quot;: &quot;Javanese&quot;,<br>    &quot;jw&quot;: &quot;Javanese&quot;,<br>    &quot;ka&quot;: &quot;Georgian&quot;,<br>    &quot;kk&quot;: &quot;Kazakh&quot;,<br>    &quot;km&quot;: &quot;Khmer&quot;,<br>    &quot;kn&quot;: &quot;Kannada&quot;,<br>    &quot;ko&quot;: &quot;Korean&quot;,<br>    &quot;kri&quot;: &quot;Krio&quot;,<br>    &quot;ku&quot;: &quot;Kurdish (Kurmanji)&quot;,<br>    &quot;ktu&quot;: &quot;Kituba&quot;,<br>    &quot;ky&quot;: &quot;Kyrgyz&quot;,<br>    &quot;la&quot;: &quot;Latin&quot;,<br>    &quot;lb&quot;: &quot;Luxembourgish&quot;,<br>    &quot;lg&quot;: &quot;Ganda (Luganda)&quot;,<br>    &quot;li&quot;: &quot;Limburgish&quot;,<br>    &quot;lij&quot;: &quot;Ligurian&quot;,<br>    &quot;lmo&quot;: &quot;Lombard&quot;,<br>    &quot;ln&quot;: &quot;Lingala&quot;,<br>    &quot;lo&quot;: &quot;Lao&quot;,<br>    &quot;lt&quot;: &quot;Lithuanian&quot;,<br>    &quot;ltg&quot;: &quot;Latgalian&quot;,<br>    &quot;luo&quot;: &quot;Luo&quot;,<br>    &quot;lus&quot;: &quot;Mizo&quot;,<br>    &quot;lv&quot;: &quot;Latvian&quot;,<br>    &quot;mai&quot;: &quot;Maithili&quot;,<br>    &quot;mak&quot;: &quot;Makassar&quot;,<br>    &quot;mg&quot;: &quot;Malagasy&quot;,<br>    &quot;mi&quot;: &quot;Maori&quot;,<br>    &quot;min&quot;: &quot;Minangkabau&quot;,<br>    &quot;mk&quot;: &quot;Macedonian&quot;,<br>    &quot;ml&quot;: &quot;Malayalam&quot;,<br>    &quot;mn&quot;: &quot;Mongolian&quot;,<br>    &quot;mr&quot;: &quot;Marathi&quot;,<br>    &quot;ms&quot;: &quot;Malay&quot;,<br>    &quot;mt&quot;: &quot;Maltese&quot;,<br>    &quot;my&quot;: &quot;Burmese&quot;,<br>    &quot;ne&quot;: &quot;Nepali&quot;,<br>    &quot;new&quot;: &quot;Newari&quot;,<br>    &quot;nl&quot;: &quot;Dutch&quot;,<br>    &quot;no&quot;: &quot;Norwegian&quot;,<br>    &quot;nr&quot;: &quot;Southern Ndebele&quot;,<br>    &quot;nso&quot;: &quot;Northern Sotho (Sepedi)&quot;,<br>    &quot;nus&quot;: &quot;Nuer&quot;,<br>    &quot;ny&quot;: &quot;Chichewa (Nyanja)&quot;,<br>    &quot;oc&quot;: &quot;Occitan&quot;,<br>    &quot;om&quot;: &quot;Oromo&quot;,<br>    &quot;or&quot;: &quot;Odia (Oriya)&quot;,<br>    &quot;pa&quot;: &quot;Punjabi&quot;,<br>    &quot;pag&quot;: &quot;Pangasinan&quot;,<br>    &quot;pam&quot;: &quot;Kapampangan&quot;,<br>    &quot;pap&quot;: &quot;Papiamento&quot;,<br>    &quot;pl&quot;: &quot;Polish&quot;,<br>    &quot;ps&quot;: &quot;Pashto&quot;,<br>    &quot;pt&quot;: &quot;Portuguese&quot;,<br>    &quot;pt-BR&quot;: &quot;Portuguese (Brazil)&quot;,<br>    &quot;pt-PT&quot;: &quot;Portuguese (Portugal)&quot;,<br>    &quot;qu&quot;: &quot;Quechua&quot;,<br>    &quot;ro&quot;: &quot;Romanian&quot;,<br>    &quot;rom&quot;: &quot;Romani&quot;,<br>    &quot;rn&quot;: &quot;Rundi&quot;,<br>    &quot;ru&quot;: &quot;Russian&quot;,<br>    &quot;rw&quot;: &quot;Kinyarwanda&quot;,<br>    &quot;sa&quot;: &quot;Sanskrit&quot;,<br>    &quot;scn&quot;: &quot;Sicilian&quot;,<br>    &quot;sd&quot;: &quot;Sindhi&quot;,<br>    &quot;sg&quot;: &quot;Sango&quot;,<br>    &quot;shn&quot;: &quot;Shan&quot;,<br>    &quot;si&quot;: &quot;Sinhala&quot;,<br>    &quot;sk&quot;: &quot;Slovak&quot;,<br>    &quot;sl&quot;: &quot;Slovenian&quot;,<br>    &quot;sm&quot;: &quot;Samoan&quot;,<br>    &quot;sn&quot;: &quot;Shona&quot;,<br>    &quot;so&quot;: &quot;Somali&quot;,<br>    &quot;sq&quot;: &quot;Albanian&quot;,<br>    &quot;sr&quot;: &quot;Serbian&quot;,<br>    &quot;ss&quot;: &quot;Swati&quot;,<br>    &quot;st&quot;: &quot;Sotho&quot;,<br>    &quot;su&quot;: &quot;Sundanese&quot;,<br>    &quot;sv&quot;: &quot;Swedish&quot;,<br>    &quot;sw&quot;: &quot;Swahili&quot;,<br>    &quot;szl&quot;: &quot;Silesian&quot;,<br>    &quot;ta&quot;: &quot;Tamil&quot;,<br>    &quot;te&quot;: &quot;Telugu&quot;,<br>    &quot;tet&quot;: &quot;Tetum&quot;,<br>    &quot;tg&quot;: &quot;Tajik&quot;,<br>    &quot;th&quot;: &quot;Thai&quot;,<br>    &quot;ti&quot;: &quot;Tigrinya&quot;,<br>    &quot;tk&quot;: &quot;Turkmen&quot;,<br>    &quot;tl&quot;: &quot;Filipino (Tagalog)&quot;,<br>    &quot;tn&quot;: &quot;Tswana&quot;,<br>    &quot;tr&quot;: &quot;Turkish&quot;,<br>    &quot;ts&quot;: &quot;Tsonga&quot;,<br>    &quot;tt&quot;: &quot;Tatar&quot;,<br>    &quot;ug&quot;: &quot;Uyghur&quot;,<br>    &quot;uk&quot;: &quot;Ukrainian&quot;,<br>    &quot;ur&quot;: &quot;Urdu&quot;,<br>    &quot;uz&quot;: &quot;Uzbek&quot;,<br>    &quot;vi&quot;: &quot;Vietnamese&quot;,<br>    &quot;xh&quot;: &quot;Xhosa&quot;,<br>    &quot;yi&quot;: &quot;Yiddish&quot;,<br>    &quot;yo&quot;: &quot;Yoruba&quot;,<br>    &quot;yua&quot;: &quot;Yucatec Maya&quot;,<br>    &quot;yue&quot;: &quot;Cantonese&quot;,<br>    &quot;zh&quot;: &quot;Simplified Chinese&quot;,<br>    &quot;zh-TW&quot;: &quot;Traditional Chinese&quot;,<br>    &quot;zu&quot;: &quot;Zulu&quot;</p>",
+          "example": "en",
           "member": "string",
           "name": "Target",
           "required": true,
@@ -31839,7 +32666,7 @@
         },
         {
           "disabled": false,
-          "document": "User extension parameter.",
+          "document": "<p>User extension parameter.</p>",
           "example": "用户扩展字段",
           "member": "string",
           "name": "UserExtPara",
@@ -31854,7 +32681,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Text after translation.",
+          "document": "<p>Translated text.</p>",
           "example": "你好",
           "member": "string",
           "name": "TargetText",
@@ -31864,8 +32691,8 @@
         },
         {
           "disabled": false,
-          "document": "Source language. See the input parameter Source.",
-          "example": "en",
+          "document": "<p>Source language. See the input parameter Source.</p>",
+          "example": "zh",
           "member": "string",
           "name": "Source",
           "output_required": false,
@@ -31874,8 +32701,8 @@
         },
         {
           "disabled": false,
-          "document": "Target language. See the input parameter Target.",
-          "example": "zh",
+          "document": "<p>Target language. See the input parameter Target.</p>",
+          "example": "en",
           "member": "string",
           "name": "Target",
           "output_required": false,
@@ -32435,6 +33262,69 @@
         }
       ],
       "usage": "both"
+    },
+    "UpdateProjectRequest": {
+      "document": "UpdateProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Project ID.</p>",
+          "example": "458f16b1-7da9-4a56-a841-78567c5bee48",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "斗破苍穹（第二季）",
+          "member": "string",
+          "name": "ProjectName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project term base.</p>",
+          "example": "无",
+          "member": "TermBase",
+          "name": "TermBase",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project description.</p>",
+          "example": "玄幻题材有声剧第二季",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of characters.</p>",
+          "example": "无",
+          "member": "Speakers",
+          "name": "Speakers",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateProjectResponse": {
+      "document": "UpdateProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateSmartErasePrivacyConfig": {
       "document": "Privacy protection configuration for the smart erasing template.",
@@ -33907,6 +34797,111 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "VoiceInfo": {
+      "document": "Voice information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "s1_NTEwPE5DPwpdXDH2X2CM/YFaeHm73AGz8NmUwRJti8zvCO0BmWRc+Rz4",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice name.</p>",
+          "example": "甜美女声",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "一位温柔甜美的青年女性声音，标准普通话。",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>",
+          "example": "system",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>",
+          "example": "male",
+          "member": "string",
+          "name": "Gender",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of supported languages. </p><p>For example: en.</p>",
+          "example": "[\"zh\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audition audio URL.</p>",
+          "example": "https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/lauriehuang/dubbing/voice/samples/s1_3NM2Z1I1O.wav",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of tags. </p><p>For example: gentle.</p>",
+          "example": "[\"温柔\"]",
+          "member": "string",
+          "name": "Labels",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recommended scenarios. </p><p>For example: education.</p>",
+          "example": "[\"教学\"]",
+          "member": "string",
+          "name": "Scenes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

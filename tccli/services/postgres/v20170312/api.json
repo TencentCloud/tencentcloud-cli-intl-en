@@ -1425,7 +1425,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "document": "The source instance ID to be cloned. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-ascg1724",
           "member": "string",
           "name": "DBInstanceId",
@@ -1506,7 +1506,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.comom/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.\n",
+          "document": "Security group to which an instance belongs. obtain this parameter by calling the SecurityGroupId field in the return value of [DescribeSecurityGroups](https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1). if not specified, the default security group is bound.\n",
           "example": "[\"sg-95hf6965\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -1533,7 +1533,7 @@
         },
         {
           "disabled": false,
-          "document": "Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.\nAZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.comom/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.",
+          "document": "Deployment information of instance nodes. the availability zone of primary and secondary nodes is required. when multi-availability zone deployment is supported, the availability zone information for each node must be specified.\nAZ information can be obtained by calling the DescribeZones api (https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1) and checking the Zone field in the returned value.",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -2737,7 +2737,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Primary AZ of an instance, such as \"ap-guangzhou-3\".\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "document": "<p>Primary availability zone of the instance, such as: ap-guangzhou-3.<br>The availability zone can be obtained from the returned Zone field of the <a href=\"https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1\">DescribeZones</a> API.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -2746,7 +2746,7 @@
         },
         {
           "disabled": false,
-          "document": "Primary instance ID of the read-only instance. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "document": "<p>Primary instance ID of the read-only instance, which can be obtained through the <a href=\"https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1\">DescribeDBInstances</a> API.</p>",
           "example": "postgres-efacxt00",
           "member": "string",
           "name": "MasterDBInstanceId",
@@ -2755,7 +2755,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
+          "document": "<p>Purchasable specification code. The value of this parameter can be obtained from the returned SpecCode field of the <a href=\"https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1\">DescribeClasses</a> API.</p>",
           "example": "pg.it.large8",
           "member": "string",
           "name": "SpecCode",
@@ -2764,7 +2764,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance disk capacity size in GB. specifies the step length for parameter settings as 10.",
+          "document": "<p>Instance disk capacity, in GB. The value for this parameter must be set in increments of 10.</p>",
           "example": "100",
           "member": "uint64",
           "name": "Storage",
@@ -2773,7 +2773,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances to purchase. value range: [1-6]. maximum allowed number is 6.",
+          "document": "<p>Number of instances to purchase. Value range: [1-6]. The maximum allowed number is 6.</p>",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -2782,7 +2782,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchase duration, in months.\n<Li>Prepaid: supports `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, and `36`.</li>.\n<li>Pay-as-you-go: Only supports `1`.</li>",
+          "document": "<p>Purchase duration, in months.</p><li>Prepaid: supports 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.</li><li>Postpaid: supports only 1.</li>",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -2791,7 +2791,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID, in the format of vpc-xxxxxxxx (this parameter is currently required). A valid VpcId can be obtained by logging into the console; it can also be obtained from the unVpcId field in the return value of calling of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
+          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href=\"https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1\">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>",
           "example": "vpc-e3t30r8t",
           "member": "string",
           "name": "VpcId",
@@ -2800,7 +2800,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID, in the format of subnet-xxxxxxxx (this parameter is currently required). A valid VPC subnet ID can be obtained by logging into the console; it can also be obtained from the unSubnetId field in the return value of calling of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "document": "<p>VPC subnet ID, such as subnet-xxxxxxxx (this parameter is required). A valid VPC subnet ID can be queried by logging in to the console. You can also call the <a href=\"https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1\">DescribeSubnets</a> API and obtain it from the unSubnetId field in the return value.</p>",
           "example": "subnet-jd9cvu0o",
           "member": "string",
           "name": "SubnetId",
@@ -2809,7 +2809,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing type, which currently supports:.\n<Li>PREPAID: prepaid, i.e., yearly/monthly subscription.</li>.\n<Li>POSTPAID_BY_HOUR: pay-as-you-go, i.e., pay by consumption.</li>.\nDefault value: PREPAID. if the primary instance is postpaid, the read-only instance must also be postpaid.",
+          "document": "<p>Instance billing type. Valid values:</p><li>PREPAID: prepaid (yearly/monthly subscription).</li><li>POSTPAID_BY_HOUR: postpaid (pay-as-you-go).</li>Default value: PREPAID. If the primary instance is postpaid, the read-only instance must also be postpaid.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2818,7 +2818,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to automatically use a voucher.\n<Li>0: no.</li>.\n<Li>`1`: yes.</li>.\nDefault value: 0",
+          "document": "<p>Indicates whether to use vouchers automatically:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.",
           "example": "1",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -2827,7 +2827,7 @@
         },
         {
           "disabled": false,
-          "document": "Voucher ID list. Currently, you can specify only one voucher.",
+          "document": "<p>Voucher ID list. Only one voucher can be specified.</p>",
           "example": "[     \"100\" ]",
           "member": "string",
           "name": "VoucherIds",
@@ -2836,7 +2836,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the auto-renewal flag.\n<Li>`0`: manual renewal.</li>.\n<Li>`1`: auto-renewal</li>.\nDefault value: 0",
+          "document": "<p>Renewal flag:</p><li>0: manual renewal.</li><li>1: auto-renewal.</li>Default value: 0.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2845,7 +2845,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID. default value is 0, means it belongs to the default project.",
+          "document": "<p>Project ID. The default value is 0, which means it belongs to the default project.</p>",
           "example": "1457",
           "member": "uint64",
           "name": "ProjectId",
@@ -2854,7 +2854,7 @@
         },
         {
           "disabled": false,
-          "document": "Special offer ID",
+          "document": "<p>Discount offer ID.</p>",
           "example": "1364",
           "member": "int64",
           "name": "ActivityId",
@@ -2863,7 +2863,7 @@
         },
         {
           "disabled": false,
-          "document": "RO group ID",
+          "document": "<p>Read-only group ID.</p>",
           "example": "pgrogrp-efacxt00",
           "member": "string",
           "name": "ReadOnlyGroupId",
@@ -2872,7 +2872,7 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
+          "document": "<p>Tags to be bound to the instance. This is empty by default. Tags can be obtained from the returned Tags field of the <a href=\"https://www.tencentcloud.com/document/api/651/35316?from_cn_redirect=1\">DescribeTags</a> API.</p>",
           "example": "无",
           "member": "Tag",
           "name": "TagList",
@@ -2881,7 +2881,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
+          "document": "<p>Security group to which the instance belongs. The value of this parameter can be obtained from the returned sgId field of the <a href=\"https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1\">DescribeSecurityGroups</a> API. If this parameter is not specified, the default security group is bound.</p>",
           "example": "[\"sg-95hf696p\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -2890,7 +2890,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to support Ipv6.\n<Li>0: no.</li>.\n<Li>`1`: yes.</li>.\nDefault value: 0",
+          "document": "<p>Indicates whether to support IPv6:</p><li>0: No.</li><li>1: Yes.</li>Default value: 0.",
           "example": "1",
           "member": "uint64",
           "name": "NeedSupportIpv6",
@@ -2899,7 +2899,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name. only chinese characters, letters, digits, underscores (_), and delimiters (-) are supported. the length must be less than 60 characters.",
+          "document": "<p>Instance name. The name can contain only Chinese characters, letters, digits, underscores (&quot;_&quot;), and hyphens (&quot;-&quot;), with a length of less than 60.</p>",
           "example": "Name",
           "member": "string",
           "name": "Name",
@@ -2908,7 +2908,7 @@
         },
         {
           "disabled": true,
-          "document": "Specifies the kernel version number should be consistent with the primary instance and no longer needed to be specified.",
+          "document": "<p>Not required anymore. The kernel version is consistent with that of the primary instance.</p>",
           "example": "DBVersion",
           "member": "string",
           "name": "DBVersion",
@@ -2917,7 +2917,7 @@
         },
         {
           "disabled": false,
-          "document": "CDC ID.",
+          "document": "<p>Dedicated cluster ID.</p>",
           "example": "dedicatedCluster-gz",
           "member": "string",
           "name": "DedicatedClusterId",
@@ -2926,7 +2926,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable deletion protection for the instance. valid values: true (enable deletion protection), false (disable deletion protection).",
+          "document": "<p>Indicates whether to enable deletion protection for the instance: true - enables deletion protection. false - disables deletion protection.</p>",
           "example": "true",
           "member": "bool",
           "name": "DeletionProtection",
@@ -2941,7 +2941,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Order number list. Each instance corresponds to an order number.",
+          "document": "<p>Order number list. Each instance corresponds to an order number.</p>",
           "example": "[\"20241205591002398481181\"]",
           "member": "string",
           "name": "DealNames",
@@ -2951,7 +2951,7 @@
         },
         {
           "disabled": false,
-          "document": "Bill ID of frozen fees",
+          "document": "<p>Frozen bill ID.</p>",
           "example": "20241204591002395368561",
           "member": "string",
           "name": "BillId",
@@ -2961,7 +2961,7 @@
         },
         {
           "disabled": false,
-          "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the pay-as-you-go billing mode is used.",
+          "document": "<p>ID set of successfully created instances. The return value is available only in postpaid scenarios.</p>",
           "example": "[\"pgro-kdkdkx68\"]",
           "member": "string",
           "name": "DBInstanceIdSet",
@@ -2971,7 +2971,7 @@
         },
         {
           "disabled": false,
-          "document": "BillingParameters specifies the parameters for product order placement. the output has a value only when billingparameters is provided.",
+          "document": "<p>The output parameter has a value only when the input parameter BillingParameters has a value. The value is the parameters for product order placement.</p>",
           "example": "andy",
           "member": "string",
           "name": "BillingParameters",
@@ -5630,7 +5630,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
@@ -7641,7 +7641,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.",
+          "document": "Instance ID list. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1). supports de-isolating multiple instances simultaneously.",
           "example": "[\"postgres-xxxxxxx\"]",
           "member": "string",
           "name": "DBInstanceIdSet",
@@ -7669,7 +7669,7 @@
         {
           "disabled": false,
           "document": "Voucher ID list",
-          "example": "[\"a\"]",
+          "example": "[\"voucherId\"]",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -8788,7 +8788,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "document": "Specifies the instance ID, such as postgres-6fego161. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-apzvwncr\t",
           "member": "string",
           "name": "DBInstanceId",
@@ -8861,7 +8861,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.comom/document/api/409/16773?from_cn_redirect=1).",
+          "document": "Instance ID. can be obtained through the DescribeDBInstances api (https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).",
           "example": "postgres-6bwgamo3",
           "member": "string",
           "name": "DBInstanceId",

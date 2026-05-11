@@ -122,16 +122,16 @@
     ],
     "CreateReadOnlyDBInstance": [
       {
-        "document": "This example shows you how to create a read-only instance, specify the primary instance as postgres-abcdef, and trigger the creation.",
+        "document": "This example shows you how to create a read-only instance, specify postgres-abcdef as the primary instance, and trigger the creation process.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyDBInstance\n<Common request parameters>\n\n{\n    \"DBVersion\": \"12.22\",\n    \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n    \"InstanceCount\": 1,\n    \"MasterDBInstanceId\": \"postgres-abcdef\",\n    \"Period\": 1,\n    \"ProjectId\": 1,\n    \"ReadOnlyGroupId\": \"\",\n    \"SecurityGroupIds\": [\n        \"sg-iwnfp51z\"\n    ],\n    \"SpecCode\": \"pg.it.small2\",\n    \"Storage\": 100,\n    \"SubnetId\": \"subnet-1i9huswn\",\n    \"VpcId\": \"vpc-8btfafeo\",\n    \"Zone\": \"ap-beijing-4\"\n}",
         "output": "{\n    \"Response\": {\n        \"BillId\": \"2701077795\",\n        \"DBInstanceIdSet\": [],\n        \"DealNames\": [\n            \"20251009929109544409421\"\n        ],\n        \"RequestId\": \"f3b13348-be76-4631-8d2f-0c8da1e07958\"\n    }\n}",
         "title": "Creating a Read-Only Instance"
       },
       {
-        "document": "This example shows you how to create a read-only instance, specify the primary instance as postgres-abcdef, and validate without actual initiation.",
+        "document": "This example shows you how to create a read-only instance, specify postgres-abcdef as the primary instance, and perform verification only without triggering the creation process.",
         "input": "POST / HTTP/1.1\nHost: postgres.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyDBInstance\n<Common request parameters>\n\n{\n    \"DBVersion\": \"12.22\",\n    \"InstanceChargeType\": \"POSTPAID_BY_HOUR\",\n    \"InstanceCount\": 1,\n    \"MasterDBInstanceId\": \"postgres-abcdef\",\n    \"Period\": 1,\n    \"ProjectId\": 1,\n    \"ReadOnlyGroupId\": \"\",\n    \"SecurityGroupIds\": [\n        \"sg-iwnfp51z\"\n    ],\n    \"SpecCode\": \"pg.it.small2\",\n    \"Storage\": 100,\n    \"SubnetId\": \"subnet-1i9huswn\",\n    \"VpcId\": \"vpc-8btfafeo\",\n    \"Zone\": \"ap-beijing-4\"\n}",
         "output": "{\n    \"Response\": {\n        \"BillId\": \"\",\n        \"DBInstanceIdSet\": [],\n        \"DealNames\": [],\n        \"RequestId\": \"e0726ee5-3f5f-414c-9976-17e94dd0023e\"\n    }\n}",
-        "title": "Creating a Read-Only Instance with Verification Mode"
+        "title": "Creating a Read-Only Instance Using Verification Mode"
       }
     ],
     "CreateReadOnlyGroup": [
