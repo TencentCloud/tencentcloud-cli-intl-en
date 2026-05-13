@@ -246,14 +246,6 @@
         "title": "Querying the List of CVM Custom Images and Sharing the Images to Lighthouse"
       }
     ],
-    "DescribeInstanceLoginKeyPairAttribute": [
-      {
-        "document": " ",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeInstanceLoginKeyPairAttribute\n&InstanceId=lhins-j4liwha8\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"PermitLogin\": \"NO\",\n        \"RequestId\": \"17a8c37b-0901-402a-b7b2-357998b2bcd8\"\n    }\n}",
-        "title": "Querying the attributes of default login key of instance"
-      }
-    ],
     "DescribeInstanceVncUrl": [
       {
         "document": "This example shows you how to query the VNC URL of an instance.",
@@ -328,10 +320,10 @@
     ],
     "DescribeResetInstanceBlueprints": [
       {
-        "document": " ",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=DescribeResetInstanceBlueprints\n&InstanceId=lhins-383nzmm1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ResetInstanceBlueprintSet\": [\n            {\n                \"BlueprintInfo\": {\n                    \"BlueprintId\": \"lhbp-kyfeje6z\",\n                    \"BlueprintName\": \"my-blueprint2\",\n                    \"DisplayTitle\": \"wordpress2\",\n                    \"DisplayVersion\": \"5.3.2\",\n                    \"Description\": \"Personal blog website construction\",\n                    \"OsName\": \"CentOS 7.4 64bit\",\n                    \"Platform\": \"CENTOS\",\n                    \"PlatformType\": \"LINUX_UNIX\",\n                    \"BlueprintType\": \"APP_OS\",\n                    \"ImageUrl\": \"http://www.wordpress.com/image\",\n                    \"RequiredSystemDiskSize\": 10,\n                    \"RequiredMemorySize\": 2,\n                    \"SupportAutomationTools\": true,\n                    \"BlueprintState\": \"NORMAL\",\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"ImageId\": \"\"\n                },\n                \"IsResettable\": false,\n                \"NonResettableMessage\": \"The current system disk size of instance does not match the system disk size requirements of the blueprint.\"\n            }\n        ],\n        \"RequestId\": \"a1768b80-f8f1-47c0-ad60-bb7e3318610b\"\n    }\n}",
-        "title": "Querying the reset images of an instance"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResetInstanceBlueprints\n<Common Request Parameter>\n\n{\n    \"InstanceId\": \"lhins-euqk4yut\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d085dd6e-fd50-426f-bb29-b0ed899ccdf7\",\n        \"ResetInstanceBlueprintSet\": [\n            {\n                \"BlueprintInfo\": {\n                    \"BlueprintId\": \"lhbp-m1g6ap11\",\n                    \"BlueprintName\": \"7_days_to_die_windows\",\n                    \"BlueprintState\": \"NORMAL\",\n                    \"BlueprintType\": \"APP_OS\",\n                    \"CommunityUrl\": \"\",\n                    \"CreatedTime\": \"2024-06-12T23:30:03Z\",\n                    \"Description\": \"7 Days to Die is a survival game.\",\n                    \"DisplayTitle\": \"7 Days to Die Windows\",\n                    \"DisplayVersion\": \" \",\n                    \"DockerVersion\": \"\",\n                    \"GuideUrl\": \"\",\n                    \"ImageId\": \"\",\n                    \"ImageUrl\": \"https://cloudcache.tencent-cloud.com/qcloud/ui/static/static_source_business/f1afb130-22a7-479d-a5a3-013e8f633b5a.svg\",\n                    \"OsName\": \"Windows Server 2022 DataCenter 64bit CN\",\n                    \"Platform\": \"WINDOWS\",\n                    \"PlatformType\": \"WINDOWS\",\n                    \"RequiredMemorySize\": 2,\n                    \"RequiredSystemDiskSize\": 50,\n                    \"SceneIdSet\": [],\n                    \"SupportAutomationTools\": true\n                },\n                \"IsResettable\": false,\n                \"NonResettableMessage\": \"Switching between Linux and Windows systems is not supported in non-Chinese mainland regions.\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Query Reinstallable Images of Instance"
       }
     ],
     "DescribeScenes": [
@@ -522,14 +514,6 @@
         "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: ModifyInstancesBundle \n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-1a2b3c\"\n    ],\n    \"BundleId\": \"bundle_gen_lin_01\",\n    \"AutoVoucher\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3964a892-5399-4eb7-a35b-8bddfe683ab4\"\n    }\n}",
         "title": "Changing the Lighthouse instance bundle"
-      }
-    ],
-    "ModifyInstancesLoginKeyPairAttribute": [
-      {
-        "document": " ",
-        "input": "https://lighthouse.tencentcloudapi.com/?Action=ModifyInstancesLoginKeyPairAttribute\n&InstanceIds.0=lhins-ruy9d2tw\n&PermitLogin=NO\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fb3c565c-1ce9-43de-9b4e-58855716b16d\"\n    }\n}",
-        "title": "Forbidding login to instance with default key pair"
       }
     ],
     "ModifyInstancesRenewFlag": [
