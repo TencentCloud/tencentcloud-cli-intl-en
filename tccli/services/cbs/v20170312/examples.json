@@ -16,6 +16,14 @@
         "title": "Rolling back a snapshot"
       }
     ],
+    "ApplySnapshotGroup": [
+      {
+        "document": "This example shows you how to roll back the specified snapshot group: csnap-gv9naz6b.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=ApplySnapshotGroup\n&SnapshotGroupId=csnap-gv9naz6b\n&ApplyDisks.0.SnapshotId=snap-cznei4gl\n&ApplyDisks.0.DiskId=disk-1ly0wu8c\n&ApplyDisks.1.SnapshotId=snap-0axttvv9\n&ApplyDisks.1.DiskId=disk-lt8ajfvk\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2fe82060-d27c-4b0a-8c73-50db42586d9c\"\n    }\n}",
+        "title": "Rollback Snapshot Group"
+      }
+    ],
     "AttachDisks": [
       {
         "document": "This example shows you how to attach cloud disk disk-lzrg2pwi to the CVM ins-dyzmimrw.",
@@ -42,10 +50,10 @@
     ],
     "CreateAutoSnapshotPolicy": [
       {
-        "document": "This example shows you how to create and bind a scheduled snapshot policy to a cloud disk, for which a snapshot will be created at 00:00 every Friday.",
+        "document": "This example shows you how to create a scheduled snapshot policy and bind it to cloud disks, which will create snapshots at 00:00 every Thursday.",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoSnapshotPolicy\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyName\": \"backup_data_friday\",\n    \"Policy\": [\n        {\n            \"DayOfWeek\": [\n                4\n            ],\n            \"Hour\": [\n                0\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicyId\": \"asp-1lebc9r3\",\n        \"NextTriggerTime\": \"2018-08-08 16:00:00\",\n        \"RequestId\": \"88d95732-c4e9-bd97-4a23-5a1f978d3b72\"\n    }\n}",
-        "title": "Creating a scheduled snapshot policy"
+        "title": "Creates a scheduled snapshot policy"
       }
     ],
     "CreateDiskBackup": [
@@ -58,22 +66,22 @@
     ],
     "CreateDisks": [
       {
-        "document": "This example shows you how to purchase a prepaid 50 GB HDD cloud disk in Guangzhou Zone 2 for one month, assign it to project 0, get a notification upon expiration, and enable automatic renewal for it.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_HSSD\",\n    \"ThroughputPerformance\": \"100\",\n    \"DiskSize\": \"500\",\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": \"1\"\n    }\n}",
+        "document": "This example shows you how to purchase a cloud disk with the following configuration: location is Guangzhou Zone 3, cloud disk size is 50GiB, type of cloud disk is ordinary cloud disk, project ID is 0, payment mode is prepaid, purchase duration is 1 month, notify and auto-renew on expiration.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": 0,\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": 1,\n    \"DiskType\": \"CLOUD_HSSD\",\n    \"ThroughputPerformance\": 100,\n    \"DiskSize\": 500,\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-lzrg2pwi\"\n        ],\n        \"RequestId\": \"6a57da9a-2049-7182-2de3-5a1f8014ccfd\"\n    }\n}",
-        "title": "Purchasing a cloud disk with basic parameters"
+        "title": "Purchasing with Basic Parameters"
       },
       {
-        "document": "This example shows you how to create an hourly pay-as-you-go 100 GB premium cloud disk in Guangzhou Zone 3.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"DiskName\": \"postPayDisk\",\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-3\"\n    },\n    \"DiskChargeType\": \"POSTPAID_BY_HOUR\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_PREMIUM\",\n    \"DiskSize\": \"100\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-ecjc4cpw\"\n        ],\n        \"RequestId\": \"fe2274fa-eaec-4009-807b-6ffc00963fec\"\n    }\n}",
-        "title": "Creating an hourly pay-as-you-go cloud disk"
-      },
-      {
-        "document": "This example shows you how to create a cloud disk by specifying a snapshot without specifying `DiskSize`. In this example, the size of the new cloud disk is the same as that of the snapshot, and the snapshot data will be copied to the new cloud disk.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": \"0\",\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": \"1\",\n    \"DiskType\": \"CLOUD_BASIC\",\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": \"1\"\n    },\n    \"SnapshotId\": \"snap-iepc4w3h\"\n}",
+        "document": "This example shows you how to create a cloud disk by importing a snapshot without specifying the DiskSize parameter. At this point, the newly purchased cloud disk size equals the snapshot size, and the cloud disk copies the snapshot data.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"Placement\": {\n        \"ProjectId\": 0,\n        \"Zone\": \"ap-guangzhou-2\"\n    },\n    \"DiskChargeType\": \"PREPAID\",\n    \"DiskCount\": 1,\n    \"DiskType\": \"CLOUD_HSSD\",\n    \"DiskChargePrepaid\": {\n        \"RenewFlag\": \"NOTIFY_AND_AUTO_RENEW\",\n        \"Period\": 1\n    },\n    \"SnapshotId\": \"snap-iepc4w3h\"\n}",
         "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-6rz0ilvu\"\n        ],\n        \"RequestId\": \"5e93a212-ca01-0fdc-eedd-5a1fce5e83e6\"\n    }\n}",
-        "title": "Creating a cloud disk by using a snapshot"
+        "title": "Creating a Cloud Disk Based on Snapshot"
+      },
+      {
+        "document": "This example shows you how to create a cloud disk in Guangzhou Zone 3 with the following configuration: high-performance cloud block storage, 100GiB size, and hourly postpaid payment type.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"DiskName\": \"postPayDisk\",\n    \"Placement\": {\n        \"ProjectId\": 0,\n        \"Zone\": \"ap-guangzhou-3\"\n    },\n    \"DiskChargeType\": \"POSTPAID_BY_HOUR\",\n    \"DiskCount\": 1,\n    \"DiskType\": \"CLOUD_PREMIUM\",\n    \"DiskSize\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"disk-ecjc4cpw\"\n        ],\n        \"RequestId\": \"fe2274fa-eaec-4009-807b-6ffc00963fec\"\n    }\n}",
+        "title": "Creating an Hourly Postpaid Cloud Disk"
       }
     ],
     "CreateSnapshot": [
@@ -82,6 +90,14 @@
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSnapshot\n<Common request parameters>\n\n{\n    \"SnapshotName\": \"snap_201711301015\",\n    \"Deadline\": \"2022-01-08T09:47:55+00:00\",\n    \"DiskId\": \"disk-lzrg2pwi\"\n}",
         "output": "{\n    \"Response\": {\n        \"SnapshotId\": \"snap-gybrif0z\",\n        \"RequestId\": \"1bd35eca-0c9a-6e0b-938a-5a1f80511c19\"\n    }\n}",
         "title": "Creating a snapshot"
+      }
+    ],
+    "CreateSnapshotGroup": [
+      {
+        "document": "This example shows you how to create a snapshot group.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=CreateSnapshotGroup\n&DiskIds.0=disk-lt8ajfvk\n&DiskIds.1=disk-1ly0wu8c\n&SnapshotGroupName=testSnapshotGroup\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c9f12982-0c74-4d7e-aaeb-dd965ff2c9dc\",\n        \"SnapshotGroupId\": \"csnap-oavcw09g\"\n    }\n}",
+        "title": "Creating a Snapshot Group"
       }
     ],
     "DeleteAutoSnapshotPolicies": [
@@ -98,6 +114,14 @@
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDiskBackups\n<Common request parameters>\n\n{\n    \"DiskBackupIds\": [\n        \"dbp-xxxxxxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a79a4333-ac8e-426c-8cfe-2923c4010d64\"\n    }\n}",
         "title": "Deleting the backup points of a cloud disk"
+      }
+    ],
+    "DeleteSnapshotGroup": [
+      {
+        "document": "This example shows you how to delete a snapshot group and the bound mirror at the same time.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=DeleteSnapshotGroup\n&SnapshotGroupId=csnap-gv9naz6b\n&DeleteBindImages=true\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d7c2dd0f-59b1-4243-af5f-8443a1527daa\"\n    }\n}",
+        "title": "Deleting a Snapshot Group"
       }
     ],
     "DeleteSnapshots": [
@@ -118,42 +142,34 @@
     ],
     "DescribeDiskAssociatedAutoSnapshotPolicy": [
       {
-        "document": "This example shows you how to query the scheduled snapshot policies associated with a cloud disk by cloud disk ID.",
+        "document": "This example shows you how to query the regular snapshot policy bound to a cloud disk by its ID.",
         "input": "https://cbs.tencentcloudapi.com/?Action=DescribeDiskAssociatedAutoSnapshotPolicy\r\n&DiskId=disk-dw0bbzws\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicySet\": [\n            {\n                \"DiskIdSet\": [],\n                \"IsActivated\": true,\n                \"AdvancedRetentionPolicy\": null,\n                \"IsCopyToRemote\": 0,\n                \"IsPermanent\": false,\n                \"AutoSnapshotPolicyState\": \"NORMAL\",\n                \"NextTriggerTime\": \"2023-02-24 23:00:00\",\n                \"AutoSnapshotPolicyName\": \"Orch-data-1h-3d\",\n                \"AutoSnapshotPolicyId\": \"asp-3drodm1k\",\n                \"CopyFromAccountUin\": null,\n                \"InstanceIdSet\": [],\n                \"RetentionAmount\": 0,\n                \"RetentionDays\": 3,\n                \"Policy\": [\n                    {\n                        \"DayOfWeek\": [\n                            0,\n                            1,\n                            2,\n                            3,\n                            4,\n                            5,\n                            6\n                        ],\n                        \"Hour\": [\n                            0,\n                            1,\n                            2,\n                            3,\n                            4,\n                            5,\n                            6,\n                            7,\n                            8,\n                            9,\n                            10,\n                            11,\n                            12,\n                            13,\n                            14,\n                            15,\n                            16,\n                            17,\n                            18,\n                            19,\n                            20,\n                            21,\n                            22,\n                            23\n                        ]\n                    }\n                ],\n                \"RetentionMonths\": 0,\n                \"CreateTime\": \"2023-02-15 16:56:04\",\n                \"CopyToAccountUin\": null\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"a9f6fd41-242f-4053-89c2-73ac5465ed9c\"\n    }\n}",
-        "title": "Querying the scheduled snapshot policies associated with a cloud disk whose ID is `disk-dw0bbzws`"
+        "output": "{\n    \"Response\": {\n        \"AutoSnapshotPolicySet\": [\n            {\n                \"DiskIdSet\": [],\n                \"IsActivated\": true,\n                \"AdvancedRetentionPolicy\": null,\n                \"IsCopyToRemote\": 0,\n                \"IsPermanent\": false,\n                \"AutoSnapshotPolicyState\": \"NORMAL\",\n                \"NextTriggerTime\": \"2023-02-24 23:00:00\",\n                \"AutoSnapshotPolicyName\": \"Orch-data-1h-3d\",\n                \"AutoSnapshotPolicyId\": \"asp-3drodm1k\",\n                \"CopyFromAccountUin\": null,\n                \"InstanceIdSet\": [],\n                \"RetentionAmount\": 0,\n                \"RetentionDays\": 3,\n                \"Tags\": [],\n                \"Policy\": [\n                    {\n                        \"IntervalDays\": 2,\n                        \"DayOfMonth\": [],\n                        \"DayOfWeek\": [\n                            0,\n                            1,\n                            2,\n                            3,\n                            4,\n                            5,\n                            6\n                        ],\n                        \"Hour\": [\n                            0,\n                            1,\n                            2,\n                            3,\n                            4,\n                            5,\n                            6,\n                            7,\n                            8,\n                            9,\n                            10,\n                            11,\n                            12,\n                            13,\n                            14,\n                            15,\n                            16,\n                            17,\n                            18,\n                            19,\n                            20,\n                            21,\n                            22,\n                            23\n                        ]\n                    }\n                ],\n                \"RetentionMonths\": 0,\n                \"CreateTime\": \"2023-02-15 16:56:04\",\n                \"CopyToAccountUin\": null\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"a9f6fd41-242f-4053-89c2-73ac5465ed9c\"\n    }\n}",
+        "title": "Querying the Regular Snapshot Policy Bound to Cloud disk disk-dw0bbzws"
       }
     ],
     "DescribeDiskBackups": [
       {
-        "document": "This example shows you how to query the list of backup points.",
+        "document": "This example shows you how to query the backup point list.",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskBackups\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskBackupSet\": [\n            {\n                \"DiskBackupName\": \"11111\",\n                \"Encrypt\": false,\n                \"Percent\": 100,\n                \"DiskBackupId\": \"dbp-xxxxxxxx\",\n                \"DiskSize\": 100,\n                \"DiskBackupState\": \"NORMAL\",\n                \"DiskUsage\": \"DATA_DISK\",\n                \"CreateTime\": \"2022-04-02T17:44:55+00:00\",\n                \"DiskId\": \"disk-xxxxxxxx\"\n            }\n        ],\n        \"RequestId\": \"6cd062f5-aa65-4477-a253-1ab41ab963fd\"\n    }\n}",
-        "title": "Querying the list of backup points"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DiskBackupSet\": [\n            {\n                \"DiskBackupName\": \"Diskbackup-20240101\",\n                \"Encrypt\": false,\n                \"Percent\": 100,\n                \"DiskBackupId\": \"dbp-xxxxxxxx\",\n                \"DiskSize\": 100,\n                \"DiskBackupState\": \"NORMAL\",\n                \"DiskUsage\": \"DATA_DISK\",\n                \"CreateTime\": \"2022-04-02T17:44:55+00:00\",\n                \"DiskId\": \"disk-xxxxxxxx\"\n            }\n        ],\n        \"RequestId\": \"6cd062f5-aa65-4477-a253-1ab41ab963fd\"\n    }\n}",
+        "title": "Querying the Backup Point List"
       }
     ],
     "DescribeDiskConfigQuota": [
       {
-        "document": "This example shows you how to query the purchasable specifications of Premium Cloud Disk in Shanghai Zone 5.",
+        "document": "This example shows you how to query the available specifications of high-performance cloud block storage in Shanghai Zone 5.",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskConfigQuota\n<Common request parameters>\n\n{\n    \"InquiryType\": \"INQUIRY_CBS_CONFIG\",\n    \"DiskChargeType\": \"POSTPAID_BY_HOUR\",\n    \"Zones\": [\n        \"ap-shanghai-5\"\n    ],\n    \"DiskTypes\": [\n        \"CLOUD_PREMIUM\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Available\": true,\n                \"MaxDiskSize\": 32000,\n                \"Zone\": \"ap-shanghai-5\",\n                \"InstanceFamily\": null,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"StepSize\": 1,\n                \"ExtraPerformanceRange\": null,\n                \"DeviceClass\": null,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"MinDiskSize\": 10,\n                \"DiskChargeType\": \"PREPAID\"\n            }\n        ],\n        \"RequestId\": \"50346458-c053-47f1-b60f-5507e7cc5b26\"\n    }\n}",
-        "title": "Querying the purchasable specifications of Premium Cloud Disk in Shanghai Zone 5"
-      }
-    ],
-    "DescribeDiskOperationLogs": [
-      {
-        "document": " ",
-        "input": "https://cbs.tencentcloudapi.com/?Action=DescribeDiskOperationLogs\r\n&Filters.0.Name=disk-id\r\n&Filters.0.Values.0=disk-ou4acu4i\r\n&<Common request parameters>",
-        "output": "{\r\n  \"DiskOperationLogSet\": [\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:20\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_MODIFY\",\r\n      \"EndTime\": \"2018-09-19 20:40:20\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:16\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_MODIFY\",\r\n      \"EndTime\": \"2018-09-19 20:40:16\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:40:13\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_EXPAND\",\r\n      \"EndTime\": \"2018-09-19 20:40:13\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    },\r\n    {\r\n      \"OperationState\": \"SUCCESS\",\r\n      \"StartTime\": \"2018-09-19 20:39:59\",\r\n      \"Operator\": \"100004375281\",\r\n      \"Operation\": \"CBS_OPERATION_CREATE\",\r\n      \"EndTime\": \"2018-09-19 20:39:59\",\r\n      \"DiskId\": \"disk-ou4acu4i\"\r\n    }\r\n  ]\r\n}",
-        "title": "Querying the operation logs of a cloud disk"
+        "output": "{\n    \"Response\": {\n        \"DiskConfigSet\": [\n            {\n                \"Available\": true,\n                \"MaxDiskSize\": 32000,\n                \"Zone\": \"ap-shanghai-5\",\n                \"InstanceFamily\": null,\n                \"DiskType\": \"CLOUD_PREMIUM\",\n                \"StepSize\": 1,\n                \"ExtraPerformanceRange\": null,\n                \"DeviceClass\": null,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"MinDiskSize\": 10,\n                \"DiskChargeType\": \"PREPAID\",\n                \"Price\": {\n                    \"DiscountPriceHigh\": \"81\",\n                    \"DiscountPrice\": 1.0,\n                    \"UnitPriceHigh\": \"1.00\",\n                    \"UnitPriceDiscountHigh\": \"1.00\",\n                    \"OriginalPriceHigh\": \"10\",\n                    \"ChargeUnit\": \"H\",\n                    \"OriginalPrice\": 1.0,\n                    \"UnitPriceDiscount\": 0.21,\n                    \"UnitPrice\": 0.21\n                }\n            }\n        ],\n        \"RequestId\": \"50346458-c053-47f1-b60f-5507e7cc5b26\"\n    }\n}",
+        "title": "Querying Available Specifications of High-Performance Cloud Block Storage in Shanghai Zone 5"
       }
     ],
     "DescribeDisks": [
       {
-        "document": "This example shows you how to query all attached data disks.",
+        "document": "This example shows you how to query all mounted data disks.",
         "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDisks\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"ATTACHED\"\n            ],\n            \"Name\": \"disk-state\"\n        },\n        {\n            \"Values\": [\n                \"DATA_DISK\"\n            ],\n            \"Name\": \"disk-usage\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"e2386a23-48c1-4c18-9a36-4e7354f333b2\",\n        \"DiskSet\": [\n            {\n                \"DeleteWithInstance\": false,\n                \"Encrypt\": false,\n                \"DiskType\": \"CLOUD_BASIC\",\n                \"AutoRenewFlagError\": false,\n                \"Rollbacking\": false,\n                \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",\n                \"DiskName\": \"test\",\n                \"Tags\": [],\n                \"InstanceId\": \"\",\n                \"DifferDaysOfDeadline\": 1,\n                \"DiskId\": \"disk-b94t5dzt\",\n                \"DiskState\": \"ATTACHED\",\n                \"Placement\": {\n                    \"ProjectId\": 0,\n                    \"Zone\": \"ap-guangzhou-2\"\n                },\n                \"IsReturnable\": false,\n                \"DeadlineTime\": \"2018-10-26 10:55:43\",\n                \"Attached\": true,\n                \"DiskSize\": 10,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"Portable\": true,\n                \"DiskChargeType\": \"PREPAID\",\n                \"SnapshotAbility\": true,\n                \"DeadlineError\": false,\n                \"RollbackPercent\": 100,\n                \"AutoSnapshotPolicyIds\": null,\n                \"ReturnFailCode\": 3,\n                \"CreateTime\": \"2018-09-26 17:36:07\",\n                \"ThroughputPerformance\": 1,\n                \"Migrating\": true,\n                \"InstanceIdList\": [\n                    \"ins-test1234\"\n                ],\n                \"Shareable\": true,\n                \"MigratePercent\": 100,\n                \"SnapshotSize\": 100,\n                \"SnapshotCount\": 0,\n                \"BackupDisk\": true,\n                \"AttachMode\": \"PF\",\n                \"DiskBackupQuota\": 1,\n                \"DiskBackupCount\": 1,\n                \"DeleteSnapshot\": 0,\n                \"InstanceType\": \"CVM\"\n            }\n        ]\n    }\n}",
-        "title": "Querying all attached data disks"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"e2386a23-48c1-4c18-9a36-4e7354f333b2\",\n        \"DiskSet\": [\n            {\n                \"DeleteWithInstance\": false,\n                \"Encrypt\": false,\n                \"DiskType\": \"CLOUD_BSSD\",\n                \"AutoRenewFlagError\": false,\n                \"Rollbacking\": false,\n                \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\",\n                \"DiskName\": \"my-data-disk\",\n                \"Tags\": [],\n                \"InstanceId\": \"\",\n                \"DifferDaysOfDeadline\": 1,\n                \"DiskId\": \"disk-b94t5dzt\",\n                \"DiskState\": \"ATTACHED\",\n                \"Placement\": {\n                    \"ProjectId\": 0,\n                    \"Zone\": \"ap-guangzhou-3\",\n                    \"ProjectName\": \"Default Project\",\n                    \"CageId\": \"cage-bdq5l1mx\",\n                    \"CdcName\": \"my-cloud-dedicated-cbs\",\n                    \"CdcId\": \"cdc-1648zauv\",\n                    \"DedicatedClusterId\": \"cluster-o42khj98\"\n                },\n                \"IsReturnable\": false,\n                \"DeadlineTime\": \"2018-10-26 10:55:43\",\n                \"Attached\": true,\n                \"DiskSize\": 10,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"Portable\": true,\n                \"DiskChargeType\": \"PREPAID\",\n                \"SnapshotAbility\": true,\n                \"DeadlineError\": false,\n                \"RollbackPercent\": 100,\n                \"AutoSnapshotPolicyIds\": null,\n                \"ReturnFailCode\": 3,\n                \"CreateTime\": \"2018-09-26 17:36:07\",\n                \"ThroughputPerformance\": 1,\n                \"Migrating\": true,\n                \"InstanceIdList\": [\n                    \"ins-agp4l0lx\"\n                ],\n                \"Shareable\": true,\n                \"MigratePercent\": 100,\n                \"SnapshotSize\": 100,\n                \"SnapshotCount\": 0,\n                \"BackupDisk\": true,\n                \"AttachMode\": \"PF\",\n                \"DiskBackupQuota\": 1,\n                \"DiskBackupCount\": 1,\n                \"DeleteSnapshot\": 0,\n                \"InstanceType\": \"CVM\",\n                \"BurstPerformance\": false,\n                \"ErrorPrompt\": \"Detach disk timeout, please retry later\",\n                \"LastAttachInsId\": \"ins-agp4l0lx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying All Mounted Data Disks"
       }
     ],
     "DescribeInstancesDiskNum": [
@@ -164,28 +180,36 @@
         "title": "Querying the number of cloud disks attached on multiple instances"
       }
     ],
-    "DescribeSnapshotOperationLogs": [
+    "DescribeSnapshotGroups": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshotOperationLogs\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"snap-0y61iiyj\"\n            ],\n            \"Name\": \"snapshot-id\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"SnapshotOperationLogSet\": [\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 17:52:37\",\n                \"Operator\": \"546816713\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"SNAP_OPERATION_ROLLBACK\",\n                \"EndTime\": \"2018-12-18 17:52:38\"\n            },\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 17:51:47\",\n                \"Operator\": \"546816713\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"SNAP_OPERATION_ROLLBACK\",\n                \"EndTime\": \"2018-12-18 17:51:48\"\n            },\n            {\n                \"OperationState\": \"SUCCESS\",\n                \"StartTime\": \"2018-12-18 11:57:46\",\n                \"Operator\": \"\",\n                \"SnapshotId\": \"snap-0y61iiyj\",\n                \"Operation\": \"ASP_OPERATION_CREATE_SNAP\",\n                \"EndTime\": \"2018-12-18 11:57:47\"\n            }\n        ],\n        \"RequestId\": \"0dc7b07a-5f6b-46c4-b1d9-048e37d1c33c\"\n    }\n}",
-        "title": "Querying the operation logs of a snapshot"
+        "document": "This example shows you how to query all snapshot group lists.",
+        "input": "https://cbs.tencentcloudapi.com/?Action=DescribeSnapshotGroups\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"8c068f14-5e4d-471a-ab1f-26890ada5952\",\n        \"SnapshotGroupSet\": [\n            {\n                \"SnapshotGroupId\": \"csnap-csoplz7u\",\n                \"SnapshotGroupType\": \"NORMAL\",\n                \"ContainRootSnapshot\": true,\n                \"SnapshotIdSet\": [\n                    \"snap-31gfd8na\",\n                    \"snap-patkqtz4\",\n                    \"snap-1yirzaum\"\n                ],\n                \"SnapshotGroupState\": \"ROLLBACKING\",\n                \"Percent\": 100,\n                \"SnapshotGroupName\": \"aubreyxu2\",\n                \"ModifyTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Images\": [],\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageCount\": 0,\n                \"DeadlineTime\": null,\n                \"IsPermanent\": true\n            },\n            {\n                \"SnapshotGroupId\": \"csnap-orard7la\",\n                \"SnapshotGroupType\": \"NORMAL\",\n                \"ContainRootSnapshot\": true,\n                \"SnapshotIdSet\": [\n                    \"snap-50j8l0o8\"\n                ],\n                \"SnapshotGroupState\": \"NORMAL\",\n                \"Percent\": 100,\n                \"SnapshotGroupName\": \"aubreyxu1\",\n                \"ModifyTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Images\": [\n                    {\n\"ImageName\": \"Snapshot Group Custom Image\"\n                        \"ImageId\": \"img-nmz7p8wt\"\n                    }\n                ],\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"ImageCount\": 1,\n                \"DeadlineTime\": null,\n                \"IsPermanent\": true\n            }\n        ]\n    }\n}",
+        "title": "Query All Snapshot Group List"
+      }
+    ],
+    "DescribeSnapshotOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshotOverview\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalNums\": 13,\n        \"TotalSize\": 92.45,\n        \"FreeQuota\": 50,\n        \"RealTradeSize\": 42.45,\n        \"RequestId\": \"6b5509c3-33dd-4121-835b-bfffd8c2a596\"\n    }\n}",
+        "title": "Querying User Snapshot Overview"
       }
     ],
     "DescribeSnapshotSharePermission": [
       {
-        "document": "This example shows you how to query the sharing information of a snapshot.",
+        "document": "This example shows you how to query the snapshot sharing information of a certain snapshot.",
         "input": "https://ecm.tencentcloudapi.com/?Action=DescribeSnapshotSharePermission\r\n&SnapshotId=snap-asxafa65                   \r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ab150b9-538d-48fb-8821-7fa185f1d07c\",\n        \"SharePermissionSet\": [\n            {\n                \"CreatedTime\": \"2019-07-08 00:00:06\",\n                \"AccountId\": \"123456789\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the sharing information of a snapshot"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ab150b9-538d-48fb-8821-7fa185f1d07c\",\n        \"SharePermissionSet\": [\n            {\n                \"CreatedTime\": \"2019-07-08 00:00:06\",\n                \"AccountId\": \"1044849112\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Snapshot Sharing Information"
       }
     ],
     "DescribeSnapshots": [
       {
-        "document": "This example shows you how to query snapshots in `NORMAL` status in Guangzhou Zone 2.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshots\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"snapshot-state\",\n            \"Values\": [\n                \"NORMAL\"\n            ]\n        },\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"ap-guangzhou-2\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"7974489b-8d50-4bbd-8dd2-b700bb98b8cf\",\n        \"SnapshotSet\": [\n            {\n                \"Tags\": [],\n                \"Placement\": {\n                    \"CageId\": \"\",\n                    \"Zone\": \"ap-guangzhou-2\",\n                    \"ProjectId\": 0,\n                    \"CdcName\": \"\",\n                    \"CdcId\": \"\",\n                    \"ProjectName\": \"\",\n                    \"DedicatedClusterId\": \"\"\n                },\n                \"CopyFromRemote\": false,\n                \"IsPermanent\": true,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"DeadlineTime\": \"2023-04-09 10:45:11\",\n                \"Percent\": 100,\n                \"SnapshotId\": \"snap-0jfkjwl1\",\n                \"ShareReference\": 0,\n                \"SnapshotType\": \"PRIVATE_SNAPSHOT\",\n                \"DiskSize\": 70,\n                \"DiskId\": \"disk-omp7wl2m\",\n                \"SnapshotName\": \"TEST\",\n                \"Images\": [],\n                \"CopyingToRegions\": [],\n                \"Encrypt\": false,\n                \"CreateTime\": \"2023-03-09 10:45:11\",\n                \"TimeStartShare\": \"2023-03-09\",\n                \"ImageCount\": 0,\n                \"SnapshotState\": \"NORMAL\"\n            },\n            {\n                \"Tags\": [],\n                \"Placement\": {\n                    \"CageId\": \"\",\n                    \"Zone\": \"ap-guangzhou-2\",\n                    \"ProjectId\": 0,\n                    \"CdcName\": \"\",\n                    \"CdcId\": \"\",\n                    \"ProjectName\": \"\",\n                    \"DedicatedClusterId\": \"\"\n                },\n                \"CopyFromRemote\": false,\n                \"IsPermanent\": true,\n                \"DiskUsage\": \"SYSTEM_DISK\",\n                \"DeadlineTime\": \"2023-04-09 10:45:11\",\n                \"Percent\": 100,\n                \"SnapshotId\": \"snap-obgelzpb\",\n                \"ShareReference\": 0,\n                \"SnapshotType\": \"PRIVATE_SNAPSHOT\",\n                \"DiskSize\": 50,\n                \"DiskId\": \"disk-1en5p0sq\",\n                \"SnapshotName\": \"test-stevenkli\",\n                \"Images\": [],\n                \"CopyingToRegions\": [],\n                \"Encrypt\": false,\n                \"CreateTime\": \"2023-03-08 17:12:42\",\n                \"ImageCount\": 0,\n                \"TimeStartShare\": \"2023-03-09\",\n                \"SnapshotState\": \"NORMAL\"\n            }\n        ]\n    }\n}",
-        "title": "Querying snapshots in `NORMAL` status in Guangzhou Zone 2"
+        "document": "This example shows you how to query snapshots with status NORMAL in Guangzhou Zone 3.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSnapshots\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"snapshot-state\",\n            \"Values\": [\n                \"NORMAL\"\n            ]\n        },\n        {\n            \"Name\": \"zone\",\n            \"Values\": [\n                \"ap-guangzhou-3\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"7974489b-8d50-4bbd-8dd2-b700bb98b8cf\",\n        \"SnapshotSet\": [\n            {\n                \"Tags\": [],\n                \"Placement\": {\n                    \"CageId\": \"\",\n                    \"Zone\": \"ap-guangzhou-3\",\n                    \"ProjectId\": 0,\n                    \"CdcName\": \"\",\n                    \"CdcId\": \"\",\n                    \"ProjectName\": \"\",\n                    \"DedicatedClusterId\": \"\"\n                },\n                \"CopyFromRemote\": false,\n                \"IsPermanent\": true,\n                \"DiskUsage\": \"DATA_DISK\",\n                \"DeadlineTime\": \"2023-04-09 10:45:11\",\n                \"Percent\": 100,\n                \"SnapshotId\": \"snap-0jfkjwl1\",\n                \"ShareReference\": 0,\n                \"SnapshotType\": \"PRIVATE_SNAPSHOT\",\n                \"DiskSize\": 70,\n                \"DiskId\": \"disk-omp7wl2m\",\n                \"SnapshotName\": \"TEST\",\n                \"Images\": [],\n                \"CopyingToRegions\": [],\n                \"Encrypt\": false,\n                \"CreateTime\": \"2023-03-09 10:45:11\",\n                \"TimeStartShare\": \"2023-03-09\",\n                \"ImageCount\": 0,\n                \"SnapshotState\": \"NORMAL\"\n            },\n            {\n                \"Tags\": [],\n                \"Placement\": {\n                    \"CageId\": \"\",\n                    \"Zone\": \"ap-guangzhou-3\",\n                    \"ProjectId\": 0,\n                    \"CdcName\": \"\",\n                    \"CdcId\": \"\",\n                    \"ProjectName\": \"\",\n                    \"DedicatedClusterId\": \"\"\n                },\n                \"CopyFromRemote\": false,\n                \"IsPermanent\": true,\n                \"DiskUsage\": \"SYSTEM_DISK\",\n                \"DeadlineTime\": \"2023-04-09 10:45:11\",\n                \"Percent\": 100,\n                \"SnapshotId\": \"snap-obgelzpb\",\n                \"ShareReference\": 0,\n                \"SnapshotType\": \"PRIVATE_SNAPSHOT\",\n                \"DiskSize\": 50,\n                \"DiskId\": \"disk-1en5p0sq\",\n                \"SnapshotName\": \"test-stevenkli\",\n                \"Images\": [],\n                \"CopyingToRegions\": [],\n                \"Encrypt\": false,\n                \"CreateTime\": \"2023-03-08 17:12:42\",\n                \"ImageCount\": 0,\n                \"TimeStartShare\": \"2023-03-09\",\n                \"SnapshotState\": \"NORMAL\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Snapshots with Status NORMAL in Guangzhou Zone 3"
       }
     ],
     "DetachDisks": [
@@ -215,9 +239,9 @@
     "InquirePriceModifyDiskBackupQuota": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceModifyDiskBackupQuota\n<Common request parameters>\n\n{\n    \"DiskId\": \"disk-xxxxxxxx\",\n    \"DiskBackupQuota\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquirePriceModifyDiskBackupQuota\n<Common request parameters>\n\n{\n    \"DiskId\": \"disk-l7mxexxc\",\n    \"DiskBackupQuota\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0195b2d8-fec5-490a-ace9-579f49435e69\",\n        \"DiskPrice\": {\n            \"UnitPriceDiscountHigh\": \"0.059\",\n            \"DiscountPrice\": null,\n            \"UnitPriceHigh\": \"0.059\",\n            \"OriginalPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\",\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.06,\n            \"DiscountPriceHigh\": null,\n            \"UnitPrice\": 0.06\n        }\n    }\n}",
-        "title": "Querying the price of a cloud disk after its backup point quota is modified"
+        "title": "Modifying the Cloud Disk Backup Point Quota Inquiry"
       }
     ],
     "InquirePriceModifyDiskExtraPerformance": [
@@ -242,26 +266,40 @@
         "title": "Querying Purchase of 1-Month 500G TSSD with 100M Additional Performance Inquiry"
       }
     ],
+    "InquiryPriceRenewDisks": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewDisks\n<Common request parameters>\n\n{\n    \"DiskChargePrepaids\": [\n        {\n            \"Period\": 1\n        }\n    ],\n    \"DiskIds\": [\n        \"disk-jwk0zvrg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2e7414a3-369f-4995-b708-80eb2e7414a3\",\n        \"DiskPrice\": {\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPrice\": 250.0,\n            \"DetailPrices\": [\n                {\n\"PriceTitle\": \"Cloud disk backup point quota\"\n                    \"DiscountPrice\": 0.0,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskBackupQuota\",\n                    \"OriginalPrice\": 0.0,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                },\n                {\n\"PriceTitle\": \"CBS space\"\n                    \"DiscountPrice\": 250.0,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginalPrice\": 500.0,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                }\n            ],\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": \"500\",\n            \"ChargeUnit\": null,\n            \"OriginalPrice\": 500.0,\n            \"UnitPriceDiscount\": null,\n            \"DiscountPriceHigh\": \"250\",\n            \"UnitPrice\": null\n        }\n    }\n}",
+        "title": "Querying the Price of 1-Month Cloud Disk Renewal"
+      },
+      {
+        "document": "This example shows you how to renew an instance with the current expiration time of 2018-03-17 15:15:03 for one month by calling this API to renew the mounted prepaid cloud disk, aligning the cloud disk expiration time with the instance.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewDisks\n<Common request parameters>\n\n{\n    \"DiskChargePrepaids\": [\n        {\n            \"CurInstanceDeadline\": \"2018-03-17 15:15:03\",\n            \"Period\": \"1\"\n        }\n    ],\n    \"DiskIds\": [\n        \"disk-jwk0zvrg\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2e7414a3-369f-4995-b708-80eb2e7414a3\",\n        \"DiskPrice\": {\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPrice\": 250,\n            \"DetailPrices\": [\n                {\n\"PriceTitle\": \"Cloud disk backup point quota\"\n                    \"DiscountPrice\": 0,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskBackupQuota\",\n                    \"OriginalPrice\": 0,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                },\n                {\n\"PriceTitle\": \"CBS space\"\n                    \"DiscountPrice\": 250,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginalPrice\": 500,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                }\n            ],\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": \"500\",\n            \"ChargeUnit\": null,\n            \"OriginalPrice\": 500,\n            \"UnitPriceDiscount\": null,\n            \"DiscountPriceHigh\": \"250\",\n            \"UnitPrice\": null\n        }\n    }\n}",
+        "title": "Renewing an Instance and Aligning the Expiration Time of Mounted Prepaid Cloud Disks"
+      }
+    ],
     "InquiryPriceResizeDisk": [
       {
-        "document": "This example shows you how to query the price for expanding a cloud disk to 200 GB.",
+        "document": "This example shows you how to query the price for scaling out a cloud disk to 200G.",
         "input": "https://cbs.tencentcloudapi.com/?Action=InquiryPriceResizeDisk\n&DiskId=disk-dw0bbzws\n&DiskSize=200\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c6088bc-15e6-42e5-9d73-d5e41593117e\",\n        \"DiskPrice\": {\n            \"DiscountPrice\": null,\n            \"UnitPrice\": 0.18,\n            \"UnitPriceHigh\": \"0.18\",\n            \"OriginalPriceHigh\": null,\n            \"OriginalPrice\": null,\n            \"UnitPriceDiscount\": 0.18,\n            \"UnitPriceDiscountHigh\": \"0.18\",\n            \"DiscountPriceHigh\": null,\n            \"ChargeUnit\": \"HOUR\"\n        }\n    }\n}",
-        "title": "Querying the price for expanding a cloud disk to 200 GB"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"138749c3-94a5-426e-8621-37c4b228951c\",\n        \"DiskPrice\": {\n            \"UnitPriceDiscountHigh\": null,\n            \"DiscountPrice\": 119.95,\n            \"DetailPrices\": [\n                {\n\"PriceTitle\": \"Cloud disk backup point quota\"\n                    \"DiscountPrice\": 0.0,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskBackupQuota\",\n                    \"OriginalPrice\": 0.0,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                },\n                {\n\"PriceTitle\": \"CBS space\"\n                    \"DiscountPrice\": 119.95,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskSpace\",\n                    \"OriginalPrice\": 428.42,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                },\n                {\n\"PriceTitle\": \"CBS performance package\"\n                    \"DiscountPrice\": 0.0,\n                    \"ChargeUnit\": null,\n                    \"UnitPriceHigh\": null,\n                    \"OriginalPriceHigh\": null,\n                    \"PriceName\": \"DiskExtraPerformance\",\n                    \"OriginalPrice\": 0.0,\n                    \"UnitPriceDiscountHigh\": null,\n                    \"UnitPriceDiscount\": null,\n                    \"DiscountPriceHigh\": null,\n                    \"UnitPrice\": null\n                }\n            ],\n            \"UnitPriceHigh\": null,\n            \"OriginalPriceHigh\": null,\n            \"ChargeUnit\": null,\n            \"OriginalPrice\": 428.42,\n            \"UnitPriceDiscount\": null,\n            \"DiscountPriceHigh\": null,\n            \"UnitPrice\": null\n        }\n    }\n}",
+        "title": "Querying the Price for Scaling Out a Cloud Disk to 200G"
       }
     ],
     "ModifyAutoSnapshotPolicyAttribute": [
       {
-        "document": "This example shows you how to rename a scheduled snapshot policy to `data_disk_auto_snapshot` and set the `IsPermanent` parameter to `TRUE` to permanently retain the snapshots created according to the scheduled snapshot policy.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoSnapshotPolicyAttribute\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-nqu08k2l\",\n    \"AutoSnapshotPolicyName\": \"data_disk_auto_snapshot\",\n    \"IsPermanent\": \"TRUE\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"384c1fa8-6973-9623-b6bf-5a1fa9a7ad88\"\n    }\n}",
-        "title": "Modifying the attributes of a scheduled snapshot policy"
+        "document": "This example shows you how to enable an automatic snapshot policy",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoSnapshotPolicyAttribute\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-01928374\",\n    \"IsActivated\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"88a4815c-4a09-4948-b0c9-fa6fdefe8e4a\"\n    }\n}",
+        "title": "Enabling an Automatic Snapshot Policy"
       },
       {
-        "document": "This example shows you how to enable automatic snapshot policies.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoSnapshotPolicyAttribute\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-01928374\",\n    \"IsActivated\": \"true\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"88a4815c-4a09-4948-b0c9-fa6fdefe8e4a\"\n    }\n}",
-        "title": "Enabling automatic snapshot policies"
+        "document": "This example shows you how to modify the scheduled snapshot policy named data_disk_auto_snapshot and set IsPermanent to true, so that snapshots created by the regular snapshot policy are retained permanently.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoSnapshotPolicyAttribute\n<Common request parameters>\n\n{\n    \"AutoSnapshotPolicyId\": \"asp-nqu08k2l\",\n    \"AutoSnapshotPolicyName\": \"data_disk_auto_snapshot\",\n    \"IsPermanent\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"384c1fa8-6973-9623-b6bf-5a1fa9a7ad88\"\n    }\n}",
+        "title": "Changing Scheduled Snapshot Policy Attributes"
       }
     ],
     "ModifyDiskAttributes": [
@@ -298,10 +336,10 @@
     ],
     "ModifySnapshotsSharePermission": [
       {
-        "document": "This example shows you how to share a snapshot with users.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySnapshotsSharePermission\n<Common request parameters>\n\n{\n    \"AccountIds\": [\n        \"123456789\"\n    ],\n    \"Permission\": \"SHARE\",\n    \"SnapshotIds\": [\n        \"snap-cgrmci8t\",\n        \"snap-124p95lf\"\n    ]\n}",
+        "document": "This example shows you how to share a specified snapshot with another user.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySnapshotsSharePermission\n<Common request parameters>\n\n{\n    \"AccountIds\": [\n        \"1044849112\"\n    ],\n    \"Permission\": \"SHARE\",\n    \"SnapshotIds\": [\n        \"snap-cgrmci8t\",\n        \"snap-124p95lf\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4ab150b9-538d-48fb-8821-7fa185f1d07c\"\n    }\n}",
-        "title": "Sharing a snapshot with users"
+        "title": "Sharing Snapshots to Users"
       }
     ],
     "RenewDisk": [
@@ -320,10 +358,10 @@
     ],
     "ResizeDisk": [
       {
-        "document": "This example shows you how to expand a cloud disk to 200 GB.",
-        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResizeDisk\n<Common request parameters>\n\n{\n    \"DiskSize\": \"200\",\n    \"DiskId\": \"disk-lzrg2pwi\"\n}",
+        "document": "This example shows you how to expand a cloud disk to 200G.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResizeDisk\n<Common request parameters>\n\n{\n    \"DiskSize\": 200,\n    \"DiskId\": \"disk-lzrg2pwi\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"adefc06d-2cf1-29f6-24a6-5a1f81b5c0ac\"\n    }\n}",
-        "title": "Expanding a cloud disk to 200 GB"
+        "title": "Expanding a CBS to 200G"
       }
     ],
     "TerminateDisks": [

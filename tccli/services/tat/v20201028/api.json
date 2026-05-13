@@ -662,7 +662,7 @@
         {
           "disabled": false,
           "document": "Custom parameter array.\nIf no parameter value is provided when invoking the command, the default value here will be used to replace it.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.\nAllow settings only when the EnableParameter parameter is true.\nCustom parameters can be up to 20.",
-          "example": "[ { \"ParameterName\": \"test01\",  \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test01\"         }, {  \"ParameterName\": \"test02\", \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test02\"}     ]",
+          "example": "无",
           "member": "DefaultParameterConf",
           "name": "DefaultParameterConfs",
           "required": false,
@@ -671,7 +671,7 @@
         {
           "disabled": false,
           "document": "Tags bound to the command. At most 10 tags are allowed.",
-          "example": "[     {       \"Key\": \"test\",       \"Value\": \"test\"     }   ]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -689,7 +689,7 @@
         {
           "disabled": false,
           "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
-          "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
+          "example": "https://BucketName-134654321.cos.ap-beijing.myqcloud.com",
           "member": "string",
           "name": "OutputCOSBucketUrl",
           "required": false,
@@ -3302,7 +3302,7 @@
         {
           "disabled": false,
           "document": "Custom parameter array. if Parameters is not provided, the default value here will be used to replace. up to 20 custom Parameters are allowed.\nIf Parameters is not provided, the default value here will be used to replace.\nThis parameter can be set only when the EnableParameter of the command is true.\nParameters must not be specified simultaneously `DefaultParameters` and `DefaultParameterConfs`.",
-          "example": "[ { \"ParameterName\": \"test01\",  \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test01\"         }, {  \"ParameterName\": \"test02\", \"ParameterValue\": \"12345\",  \"ParameterDescription\": \"for test02\"}     ]",
+          "example": "无",
           "member": "DefaultParameterConf",
           "name": "DefaultParameterConfs",
           "required": false,
@@ -3320,7 +3320,7 @@
         {
           "disabled": false,
           "document": "The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.",
-          "example": "[     {       \"Key\": \"test\",       \"Value\": \"test\"     }   ]",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
           "required": false,

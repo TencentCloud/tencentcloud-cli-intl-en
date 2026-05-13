@@ -24,14 +24,6 @@
         "title": "Clearing the message tags of subscriber"
       }
     ],
-    "CreateCluster": [
-      {
-        "document": " ",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=CreateCluster\n&ClusterName=devName\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ClusterId\": \"pulsar-5r59xd4vnx\",\n        \"RequestId\": \"c1e66353-c87b-4a30-804d-94c6c2c8bac5\"\n    }\n}",
-        "title": "Creating a Cluster"
-      }
-    ],
     "CreateCmqQueue": [
       {
         "document": "This example shows you how to create a queue.",
@@ -137,17 +129,25 @@
     "CreateRocketMQGroup": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQGroup\n<Common request parameters>\n\n{\n\"Remark\": \"Test creation\"\n    \"BroadcastEnable\": \"false\",\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RetryMaxTimes\": \"16\",\n    \"Namespaces\": [\n        \"test_namespace\"\n    ],\n    \"ReadEnable\": \"true\",\n    \"GroupType\": \"TCP\",\n    \"GroupId\": \"test_group\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQGroup\n<Common request parameters>\n\n{\n    \"Remark\": \"Test creation\",\n    \"BroadcastEnable\": false,\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RetryMaxTimes\": 16,\n    \"Namespaces\": [\n        \"test_namespace\"\n    ],\n    \"ReadEnable\": true,\n    \"GroupType\": \"TCP\",\n    \"GroupId\": \"test_group\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0604a303-6d5f-40e6-9dfe-6c4ddd8fe2df\"\n    }\n}",
-        "title": "Creating a Subscription Group"
+        "title": "Creating Subscription Group"
+      }
+    ],
+    "CreateRocketMQGroupV2": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQGroup\n<Common request parameters>\n\n{\n    \"Remark\": \"Test creation\",\n    \"BroadcastEnable\": \"false\",\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RetryMaxTimes\": \"16\",\n    \"Namespace\": \"test_namespace\",\n    \"ReadEnable\": \"true\",\n    \"GroupType\": \"TCP\",\n    \"GroupId\": \"test_group\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0604a303-6d5f-40e6-9dfe-6c4ddd8fe2df\"\n    }\n}",
+        "title": "Create consumer groups."
       }
     ],
     "CreateRocketMQNamespace": [
       {
-        "document": "This example shows you how to create a namespace.",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQNamespace\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"NamespaceId\": \"test_namespace\",\n    \"Ttl\": 259200000,\n    \"RetentionTime\": 259200000,\n    \"Remark\": \"Test namespace\"\n}",
+        "document": "create namespace",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQNamespace\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"NamespaceId\": \"test_ns\",\n    \"Ttl\": 259200000,\n    \"RetentionTime\": 259200000,\n    \"Remark\": \"test remark info.\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bf71e2ae-8b56-4231-87cf-0cbb6f421caa\"\n    }\n}",
-        "title": "Creating a Namespace"
+        "title": "Create Namespace"
       }
     ],
     "CreateRocketMQRole": [
@@ -162,6 +162,14 @@
       {
         "document": "Create topics.",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQTopic\n<Common request parameters>\n\n{\n    \"Topic\": \"test_topic\",\n    \"Namespaces\": [\n        \"test_namespace\"\n    ],\n    \"Type\": \"Normal\",\n    \"ClusterId\": \"rocketmq-xj8kr5apevj7\",\n    \"Remark\": \"Test topic\",\n    \"PartitionNum\": 3\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f844f173-93ed-4d89-979e-86e4e1d63b8a\"\n    }\n}",
+        "title": "Create topics."
+      }
+    ],
+    "CreateRocketMQTopicV2": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQTopic\n<Common request parameters>\n\n{\n    \"Topic\": \"test_topic\",\n    \"Namespace\": \"test_namespace\",\n    \"Type\": \"Normal\",\n    \"ClusterId\": \"rocketmq-xj8kr5apevj7\",\n    \"Remark\": \"Test topic\",\n    \"PartitionNum\": 3\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f844f173-93ed-4d89-979e-86e4e1d63b8a\"\n    }\n}",
         "title": "Create topics."
       }
@@ -192,10 +200,10 @@
     ],
     "CreateTopic": [
       {
-        "document": "Create topics.",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTopic\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"devNs\",\n    \"TopicName\": \"devTopic\",\n    \"Partitions\": 1,\n    \"Remark\": \"devTest\",\n    \"TopicType\": 1,\n    \"ClusterId\": \"pulsar-5r59xd4vnx\",\n    \"PulsarTopicType\": 0,\n    \"MsgTTL\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"default\",\n        \"TopicName\": \"test_topic\",\n        \"Partitions\": 2,\n        \"TopicType\": 0,\n\"Remark\": \"Ordinary message queue with 2 partitions\"\n        \"RequestId\": \"d9686bf9-8d7d-4e78-bb44-5140d70a1ffa\"\n    }\n}",
-        "title": "Create topics."
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTopic\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"felixsshi-ns\",\n    \"TopicName\": \"tp-3\",\n    \"Partitions\": 2,\n    \"ClusterId\": \"pulsar-n58wv32op7j2\",\n    \"PulsarTopicType\": 3,\n    \"DelayMessagePolicy\": \"timingwheelPolicy\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"felixsshi-ns\",\n        \"Partitions\": 2,\n        \"Remark\": \"\",\n        \"TopicName\": \"tp-3\",\n        \"TopicType\": 2,\n        \"RequestId\": \"5e554337-cfb5-486c-97a6-1fefcd531e71\"\n    }\n}",
+        "title": "New Theme"
       }
     ],
     "DeleteCluster": [
@@ -417,9 +425,9 @@
     "DescribeCmqQueues": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCmqQueues\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCmqQueues\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"730b0b3e-4c67-4a11-a15b-90e6f7c18402\",\n        \"TotalCount\": 1,\n        \"QueueList\": [\n            {\n                \"QueueId\": \"cmqq-bzgqn83nv\",\n                \"QueueName\": \"test0829\",\n                \"Qps\": 5000,\n                \"Bps\": 52428800,\n                \"MaxDelaySeconds\": 3600,\n                \"MaxMsgHeapNum\": 1000000,\n                \"PollingWaitSeconds\": 3,\n                \"MsgRetentionSeconds\": 7200,\n                \"VisibilityTimeout\": 30,\n                \"MaxMsgSize\": 1048576,\n                \"RewindSeconds\": 0,\n                \"RetentionSizeInMB\": 0,\n                \"CreateTime\": 1724918937000,\n                \"LastModifyTime\": 1724924966000,\n                \"ActiveMsgNum\": 0,\n                \"InactiveMsgNum\": 0,\n                \"DelayMsgNum\": null,\n                \"RewindMsgNum\": null,\n                \"MinMsgTime\": null,\n                \"MaxUnackedMsgNum\": 100000,\n                \"DeadLetterPolicy\": {\n                    \"DeadLetterQueue\": \"rmqbroker-nj\",\n                    \"Policy\": 0,\n                    \"MaxTimeToLive\": 0,\n                    \"MaxReceiveCount\": 22\n                },\n                \"DeadLetterSource\": null,\n                \"Transaction\": null,\n                \"TransactionPolicy\": null,\n                \"CreateUin\": null,\n                \"Trace\": null,\n                \"Tags\": null,\n                \"TenantId\": \"cmq-13179472\",\n                \"NamespaceName\": \"CMQ_QUEUE-test0829\",\n                \"Status\": 1,\n                \"MaxMsgBacklogSize\": 10737418240\n            }\n        ]\n    }\n}",
-        "title": "Enumerating Queue (Case-Insensitive User)"
+        "title": "Enumerating Queues (Not by User)"
       }
     ],
     "DescribeCmqSubscriptionDetail": [
@@ -441,17 +449,17 @@
     "DescribeCmqTopics": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCmqTopics\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCmqTopics\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3fe52209-a1e2-462c-a948-defb864d14e3\",\n        \"TotalCount\": 1,\n        \"TopicList\": [\n            {\n                \"TopicId\": \"cmqt-w4nb4zonn\",\n                \"TopicName\": \"rtopic\",\n                \"MaxMsgSize\": 1048576,\n                \"FilterType\": 1,\n                \"MsgRetentionSeconds\": 86400,\n                \"Qps\": 5000,\n                \"CreateTime\": 1692691276000,\n                \"LastModifyTime\": 1692691276000,\n                \"MsgCount\": 0,\n                \"CreateUin\": null,\n                \"Trace\": null,\n                \"Tags\": null,\n                \"TenantId\": \"cmq-1317947242\",\n                \"NamespaceName\": \"CMQ_TOPIC-rtopic\",\n                \"Status\": 1,\n                \"BrokerType\": 1,\n                \"SubscriptionCount\": 1\n            }\n        ]\n    }\n}",
-        "title": "Enumerate Topics (Case-Insensitive User)"
+        "title": "Enumerating Topics (Not by User)"
       }
     ],
     "DescribeEnvironmentAttributes": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironmentAttributes\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"devNs\",\n    \"ClusterId\": \"pulsar-5r59xd4vnx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"MsgTTL\": 2000,\n        \"RateInByte\": 0,\n        \"RateInSize\": 0,\n        \"Replicas\": 2,\n        \"RetentionHours\": 0,\n        \"RetentionSize\": 0,\n        \"EnvironmentId\": \"test1\",\n        \"Remark\": \"Remark\",\n        \"RequestId\": \"dec113a8-599a-4e70-b143-14425d48ffc4\"\n    }\n}",
-        "title": "Listing Specified Namespace Attributes"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironmentAttributes\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"felixsshi-ns\",\n    \"ClusterId\": \"pulsar-35mrz4xb3az\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"felixsshi-ns\",\n        \"MsgTTL\": 3600,\n        \"RateInByte\": 52428800,\n        \"RateInSize\": 0,\n        \"Remark\": \"\",\n        \"Replicas\": 2,\n        \"RetentionHours\": 24,\n        \"RetentionSize\": 10,\n        \"SubscriptionExpirationTime\": 1440,\n        \"SubscriptionExpirationTimeEnable\": true,\n        \"RequestId\": \"ded83ac0-49a9-4472-8a89-a05b193ead37\"\n    }\n}",
+        "title": "Query Namespace Details"
       }
     ],
     "DescribeEnvironmentRoles": [
@@ -489,9 +497,9 @@
     "DescribeMsgTrace": [
       {
         "document": " ",
-        "input": "https://tdmq.tencentcloudapi.com/?Action=DescribeMsgTrace\n&EnvironmentId=devNs\n&MsgId=16839:8:-1\n&ProduceTime=2020-08-1908:06:19\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ProducerLog\": {\n            \"MsgId\": \"16839:8:-1\",\n            \"ProducerName\": \"fisrtProducer\",\n            \"ProduceTime\": \"2020-08-19 08:06:19,211\",\n            \"ProducerAddr\": \"9.139.220.17:57234\",\n            \"ProduceUseTime\": 5309,\n            \"Status\": \"success\"\n        },\n        \"ServerLog\": {\n            \"SaveTime\": \"2020-08-19 08:06:19,211\",\n            \"Status\": \"success\"\n        },\n        \"ConsumerLogs\": {\n            \"TotalCount\": 1,\n            \"ConsumerLogSets\": [\n                {\n                    \"MsgId\": \"16839:8:-1\",\n                    \"ConsumerGroup\": \"sun_consumer\",\n                    \"ConsumerName\": \"7ef60\",\n                    \"ConsumeTime\": \"2020-08-19 08:06:22,563\",\n                    \"ConsumerAddr\": \"9.139.220.17:57241\",\n                    \"ConsumeUseTime\": 875,\n                    \"Status\": \"success\"\n                }\n            ]\n        },\n        \"RequestId\": \"msgs\"\n    }\n}",
-        "title": "Retrieving Message Trace"
+        "input": "https://tdmq.tencentcloudapi.com/?Action=DescribeMsgTrace\n&EnvironmentId=devNs\n&TopicName=topicName\n&MsgId=16839:8:-1\n&ProduceTime=2020-08-1908:06:19\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ProducerLog\": {\n            \"MsgId\": \"16839:8:-1\",\n            \"ProducerName\": \"fisrtProducer\",\n            \"ProduceTime\": \"2020-08-19 08:06:19,211\",\n            \"ProducerAddr\": \"9.139.220.17:57234\",\n            \"ProduceUseTime\": 5309,\n            \"Status\": \"success\"\n        },\n        \"ServerLog\": {\n            \"SaveTime\": \"2020-08-19 08:06:19,211\",\n            \"Status\": \"success\"\n        },\n        \"ConsumerLogs\": {\n            \"TotalCount\": 1,\n            \"ConsumerLogSets\": [\n                {\n                    \"MsgId\": \"16839:8:-1\",\n                    \"ConsumerGroup\": \"sun_consumer\",\n                    \"ConsumerName\": \"7ef60\",\n                    \"ConsumeTime\": \"2020-08-19 08:06:22,563\",\n                    \"ConsumerAddr\": \"9.139.220.17:57241\",\n                    \"ConsumeUseTime\": 875,\n                    \"Status\": \"success\"\n                }\n            ]\n        },\n        \"RequestId\": \"9dbc12b6-2463-4ab8-a1c2-018e99358aaa\"\n    }\n}",
+        "title": "Obtaining the Message Trace"
       }
     ],
     "DescribePublisherSummary": [
@@ -608,40 +616,48 @@
     ],
     "DescribeRocketMQCluster": [
       {
-        "document": "This example shows you how to get the details of a RocketMQ cluster.",
+        "document": "Retrieve RocketMQ cluster details",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQCluster\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-rd3545bkkj49\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c6d158b6-89b2-40d1-b1f6-5973f0f00cd5\",\n        \"ClusterInfo\": {\n            \"ClusterId\": \"rocketmq-rd3545bkkj49\",\n            \"ClusterName\": \"test-example\",\n            \"Region\": \"ap-beijing\",\n            \"CreateTime\": 1620321019000,\n            \"Remark\": \"modified\",\n            \"PublicEndPoint\": \"pulsar://xxxxx.com:6650\",\n            \"VpcEndPoint\": \"pulsar://xxxxx.com:6650\",\n            \"Vpcs\": [\n                {\n                    \"SubnetId\": \"subnet-123\",\n                    \"VpcId\": \"vpc-12333\"\n                }\n            ],\n            \"SupportNamespaceEndpoint\": true,\n            \"RocketMQFlag\": true,\n            \"IsVip\": true,\n            \"IsolateTime\": 0,\n            \"Status\": 1,\n            \"AclEnabled\": true,\n            \"InternalEndpoint\": \"\",\n            \"HttpInternalEndpoint\": \"\",\n            \"HttpVpcEndpoint\": \"\",\n            \"HttpPublicEndpoint\": \"\"\n        },\n        \"ClusterConfig\": {\n            \"MaxTpsPerNamespace\": 8000,\n            \"UsedNamespaceNum\": 1,\n            \"MaxTopicNum\": 1000,\n            \"UsedTopicNum\": 2,\n            \"MaxGroupNum\": 10000,\n            \"UsedGroupNum\": 1,\n            \"MaxRetentionTime\": 1296000000,\n            \"MaxLatencyTime\": 3456000000,\n            \"MaxNamespaceNum\": 10,\n            \"MaxQueuesPerTopic\": 1,\n            \"TopicDistribution\": []\n        },\n        \"ClusterStats\": {\n            \"TopicNum\": 2,\n            \"ProducedMsgNum\": 0,\n            \"ConsumedMsgNum\": 0,\n            \"AccumulativeMsgNum\": 0\n        }\n    }\n}",
-        "title": "Retrieving RocketMQ Cluster Details"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c6d158b6-89b2-40d1-b1f6-5973f0f00cd5\",\n        \"ClusterInfo\": {\n            \"ClusterId\": \"rocketmq-rd3545bkkj49\",\n            \"ClusterName\": \"test-name\",\n            \"Region\": \"ap-beijing\",\n            \"CreateTime\": 1620321019000,\n            \"Remark\": \"test remark info.\",\n            \"PublicEndPoint\": \"\",\n            \"VpcEndPoint\": \"http://MQ_INST_rocketmqrd3545bkkj49_test_ns.tdmq-rocketmq.qcloud.tencenttdmq.com:3000\",\n            \"Vpcs\": [\n                {\n                    \"SubnetId\": \"subnet-123\",\n                    \"VpcId\": \"vpc-12333\"\n                }\n            ],\n            \"SupportNamespaceEndpoint\": true,\n            \"RocketMQFlag\": true,\n            \"IsVip\": true,\n            \"IsolateTime\": 0,\n            \"Status\": 1,\n            \"AclEnabled\": true,\n            \"InternalEndpoint\": \"\",\n            \"HttpInternalEndpoint\": \"\",\n            \"HttpVpcEndpoint\": \"\",\n            \"HttpPublicEndpoint\": \"\"\n        },\n        \"ClusterConfig\": {\n            \"MaxTpsPerNamespace\": 8000,\n            \"MaxTpsLimit\": 8000,\n            \"UsedNamespaceNum\": 1,\n            \"MaxTopicNum\": 1000,\n            \"UsedTopicNum\": 2,\n            \"MaxGroupNum\": 10000,\n            \"UsedGroupNum\": 1,\n            \"MaxRetentionTime\": 1296000000,\n            \"MaxLatencyTime\": 3456000000,\n            \"MaxNamespaceNum\": 10,\n            \"MaxQueuesPerTopic\": 1,\n            \"TopicDistribution\": []\n        },\n        \"ClusterStats\": {\n            \"TopicNum\": 2,\n            \"ProducedMsgNum\": 0,\n            \"ConsumedMsgNum\": 0,\n            \"AccumulativeMsgNum\": 0\n        }\n    }\n}",
+        "title": "Retrieve RocketMQ cluster details"
       }
     ],
     "DescribeRocketMQClusters": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQClusters\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1faeceb2-eaa9-407e-bd9a-d3eff76ca882\",\n        \"TotalCount\": 1,\n        \"ClusterList\": [\n            {\n                \"Info\": {\n                    \"ClusterId\": \"rocketmq-a52qova7x97b\",\n                    \"ClusterName\": \"test_name\",\n                    \"Region\": \"ap-beijing\",\n                    \"Status\": 0,\n                    \"AclEnabled\": true,\n                    \"CreateTime\": 1620321019000,\n                    \"Remark\": \"remark info\",\n                    \"PublicEndPoint\": \"pulsar://rocketmq-xxxx1.xxxx.com:5678\",\n                    \"VpcEndPoint\": \"pulsar://rocketmq-xxxx1.xxxx.com:5678\",\n                    \"HttpPublicEndpoint\": \"http://rocketmq-c1.public.com:5678\",\n                    \"HttpVpcEndpoint\": \"http://rocketmq-c1.vpc.com:5678\",\n                    \"InternalEndpoint\": \"http://rocketmq-c1.internal.com:5678\",\n                    \"HttpInternalEndpoint\": \"\",\n                    \"Vpcs\": [\n                        {\n                            \"SubnetId\": \"mqsubnet32id\",\n                            \"VpcId\": \"vpcmqid62a\"\n                        }\n                    ],\n                    \"SupportNamespaceEndpoint\": true,\n                    \"RocketMQFlag\": true,\n                    \"IsolateTime\": 0,\n                    \"IsVip\": true\n                },\n                \"Config\": {\n                    \"MaxTpsPerNamespace\": 8000,\n                    \"UsedNamespaceNum\": 1,\n                    \"MaxTopicNum\": 1000,\n                    \"UsedTopicNum\": 2,\n                    \"MaxGroupNum\": 10000,\n                    \"UsedGroupNum\": 1,\n                    \"MaxRetentionTime\": 1296000000,\n                    \"MaxLatencyTime\": 3456000000,\n                    \"TopicDistribution\": [\n                        {\n                            \"TopicType\": \"Normal\",\n                            \"Count\": 1\n                        }\n                    ],\n                    \"MaxQueuesPerTopic\": 1,\n                    \"MaxNamespaceNum\": 10\n                }\n            }\n        ]\n    }\n}",
-        "title": "Obtaining the Cluster Information List Created by a User"
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQClusters\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1faeceb2-eaa9-407e-bd9a-d3eff76ca882\",\n        \"TotalCount\": 1,\n        \"ClusterList\": [\n            {\n                \"Info\": {\n                    \"ClusterId\": \"rocketmq-a52qova7x97b\",\n                    \"ClusterName\": \"test_name\",\n                    \"Region\": \"ap-beijing\",\n                    \"Status\": 0,\n                    \"AclEnabled\": true,\n                    \"CreateTime\": 1620321019000,\n                    \"Remark\": \"remark info\",\n                    \"PublicEndPoint\": \"http://rocketmq-a52qova7x97b.com:5678\",\n                    \"VpcEndPoint\": \"http://rocketmq-a52qova7x97b.com:5678\",\n                    \"HttpPublicEndpoint\": \"http://rocketmq-c1.public.com:5678\",\n                    \"HttpVpcEndpoint\": \"http://rocketmq-c1.vpc.com:5678\",\n                    \"InternalEndpoint\": \"http://rocketmq-c1.internal.com:5678\",\n                    \"HttpInternalEndpoint\": \"\",\n                    \"Vpcs\": [\n                        {\n                            \"SubnetId\": \"mqsubnet32id\",\n                            \"VpcId\": \"vpcmqid62a\"\n                        }\n                    ],\n                    \"SupportNamespaceEndpoint\": true,\n                    \"RocketMQFlag\": true,\n                    \"IsolateTime\": 0,\n                    \"IsVip\": true\n                },\n                \"Config\": {\n                    \"MaxTpsPerNamespace\": 8000,\n                    \"UsedNamespaceNum\": 1,\n                    \"MaxTopicNum\": 1000,\n                    \"UsedTopicNum\": 2,\n                    \"MaxGroupNum\": 10000,\n                    \"UsedGroupNum\": 1,\n                    \"MaxRetentionTime\": 1296000000,\n                    \"MaxLatencyTime\": 3456000000,\n                    \"TopicDistribution\": [\n                        {\n                            \"TopicType\": \"Normal\",\n                            \"Count\": 1\n                        }\n                    ],\n                    \"MaxQueuesPerTopic\": 1,\n                    \"MaxNamespaceNum\": 10\n                }\n            }\n        ]\n    }\n}",
+        "title": "Retrieving User-Created Cluster Information List"
       }
     ],
     "DescribeRocketMQEnvironmentRoles": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQEnvironmentRoles\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test_namespace\",\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RoleName\": \"test_role_name\",\n    \"Filters\": []\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"EnvironmentRoleSets\": [\n            {\n                \"EnvironmentId\": \"test_namespace\",\n                \"RoleName\": \"test_role_name\",\n                \"Permissions\": [\n                    \"produce\"\n                ],\n                \"RoleDescribe\": \"Test role\",\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"UpdateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\"\n    }\n}",
-        "title": "Retrieving RocketMQ Namespace Role List"
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQEnvironmentRoles\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test_ns\",\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RoleName\": \"test_role\",\n    \"Filters\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"EnvironmentRoleSets\": [\n            {\n                \"EnvironmentId\": \"test_ns\",\n                \"RoleName\": \"test_role\",\n                \"Permissions\": [\n                    \"produce\"\n                ],\n                \"RoleDescribe\": \"Test role\",\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"UpdateTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\"\n    }\n}",
+        "title": "Retrieve the RocketMQ namespace role list"
+      }
+    ],
+    "DescribeRocketMQGeneralSKUs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQGeneralSKUs\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Skus\": [\n            {\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Category\": \"v_tdmq_instance_specification\",\n                        \"Code\": \"sv_tdmq_pro_c_general\",\n                        \"Name\": \"tps\",\n                        \"Step\": 1\n                    }\n                ],\n                \"SkuCode\": \"general_8k\",\n                \"TopicNumLimit\": 400,\n                \"TopicNumUpperLimit\": 2000,\n                \"TpsLimit\": 8000\n            }\n        ],\n        \"RequestId\": \"2da7fbba-4ddc-4c64-9935-8e35ce825f5a\"\n    }\n}",
+        "title": "Query successful"
       }
     ],
     "DescribeRocketMQGroups": [
       {
         "document": "test",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQGroups\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-4k4orqgq\",\n    \"NamespaceId\": \"test_ns\",\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"FilterTopic\": \"test_topic\",\n    \"FilterGroup\": \"test_group\",\n    \"SortedBy\": \"tps\",\n    \"SortOrder\": \"asc\",\n    \"FilterOneGroup\": \"test_group\",\n    \"Types\": [\n        \"TCP\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c127300-fcdd-4087-b1d2-fd75a1cefbe4\",\n        \"TotalCount\": 1,\n        \"Groups\": [\n            {\n                \"InstanceId\": \"rocketmq-4k4orqgq\",\n                \"Namespace\": \"test_ns\",\n                \"Name\": \"test_group\",\n                \"ConsumerNum\": 1,\n                \"TotalAccumulative\": 380,\n                \"RetryMaxTimes\": 10,\n                \"ConsumptionMode\": -1,\n                \"BroadcastEnabled\": false,\n                \"ReadEnabled\": true,\n                \"RetryPartitionNum\": 1,\n                \"CreateTime\": 1621307489000,\n                \"UpdateTime\": 1621307706000,\n                \"ClientProtocol\": \"TCP\",\n                \"Remark\": \"Test consumption group\",\n                \"ConsumerType\": \"PUSH\",\n                \"TPS\": 20,\n                \"GroupType\": \"TCP\",\n                \"SubscribeTopicNum\": \"1\"\n            }\n        ]\n    }\n}",
-        "title": "Querying Subscription Group List"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1c127300-fcdd-4087-b1d2-fd75a1cefbe4\",\n        \"TotalCount\": 1,\n        \"Groups\": [\n            {\n                \"InstanceId\": \"rocketmq-4k4orqgq\",\n                \"Namespace\": \"test_ns\",\n                \"Name\": \"test_group\",\n                \"ConsumerNum\": 1,\n                \"TotalAccumulative\": 380,\n                \"RetryMaxTimes\": 10,\n                \"ConsumptionMode\": -1,\n                \"BroadcastEnabled\": false,\n                \"ReadEnabled\": true,\n                \"RetryPartitionNum\": 1,\n                \"CreateTime\": 1621307489000,\n                \"UpdateTime\": 1621307706000,\n                \"ClientProtocol\": \"TCP\",\n                \"Remark\": \"Test consumption group\",\n                \"ConsumerType\": \"PUSH\",\n                \"TPS\": 20,\n                \"GroupType\": \"TCP\",\n                \"SubscribeTopicNum\": 1\n            }\n        ]\n    }\n}",
+        "title": "Query Subscription Group List"
       }
     ],
     "DescribeRocketMQMsg": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQMsg\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test_namespace\",\n    \"ClusterId\": \"rocketmq-4k4orqgq\",\n    \"TopicName\": \"test_topic\",\n    \"PulsarMsgId\": \"092BAE5A1656070DEA4E276DF0760089\",\n    \"MsgId\": \"092BAE5A1656070DEA4E276DF0760023\",\n    \"QueryDlqMsg\": false\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQMsg\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"test_ns\",\n    \"ClusterId\": \"rocketmq-4k4orqgq\",\n    \"TopicName\": \"test_topic\",\n    \"PulsarMsgId\": \"092BAE5A1656070DEA4E276DF0760089\",\n    \"MsgId\": \"092BAE5A1656070DEA4E276DF0760023\",\n    \"QueryDlqMsg\": false\n}",
         "output": "{\n    \"Response\": {\n        \"Body\": \"order-id-2ksn3b23\",\n        \"MsgId\": \"092BAE5A1656070DEA4E276DF0760089\",\n        \"ProduceTime\": \"2021-11-23 21:21:26\",\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\",\n        \"Properties\": \"\",\n        \"ProducerAddr\": \"9.43.174.90\",\n        \"ShowTopicName\": \"test_topic\",\n        \"MessageTracks\": [\n            {\n                \"Group\": \"test_group\",\n                \"ConsumeStatus\": \"CONSUMED\",\n                \"TrackType\": \"CONSUMED\",\n                \"ExceptionDesc\": \"\"\n            }\n        ]\n    }\n}",
         "title": "Query message details."
       }
@@ -649,7 +665,7 @@
     "DescribeRocketMQMsgTrace": [
       {
         "document": "Queries message trajectory",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQMsgTrace\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-4k4orqgq\",\n    \"EnvironmentId\": \"test_namespace\",\n    \"TopicName\": \"test_topic\",\n    \"MsgId\": \"01963F0B14BAF0B5360728F44800000000\",\n    \"GroupName\": \"test_group\",\n    \"QueryDLQMsg\": true\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQMsgTrace\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-4k4orqgq\",\n    \"EnvironmentId\": \"test_ns\",\n    \"TopicName\": \"test_topic\",\n    \"MsgId\": \"01963F0B14BAF0B5360728F44800000000\",\n    \"GroupName\": \"test_group\",\n    \"QueryDLQMsg\": true\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": [\n            {\n                \"Stage\": \"produce\",\n                \"Data\": \"{\\\"MsgId\\\":\\\"01963F0B14BAF0B5360728F44800000000\\\",\\\"Status\\\":0,\\\"ProduceTime\\\":\\\"2024-10-22 15:54:49,124\\\",\\\"ProducerAddr\\\":\\\"111.206.94.148:47557\\\",\\\"MsgKey\\\":\\\"yourMessageKey-1c151062f96e\\\",\\\"MsgTags\\\":\\\"yourMessageTagA\\\",\\\"Duration\\\":10}\"\n            },\n            {\n                \"Stage\": \"persist\",\n                \"Data\": \"{\\\"MsgId\\\":\\\"01963F0B14BAF0B5360728F44800000000\\\",\\\"Status\\\":0,\\\"PersistTime\\\":\\\"2024-10-22 15:54:49,132\\\"}\"\n            },\n            {\n                \"Stage\": \"consume\",\n                \"Data\": \"{\\\"TotalCount\\\":1,\\\"RocketMqConsumeLogs\\\":[{\\\"MsgId\\\":\\\"01963F0B14BAF0B5360728F44800000000\\\",\\\"Status\\\":2,\\\"PushTime\\\":\\\"2024-10-22 15:55:00,122\\\",\\\"ConsumerAddr\\\":\\\"111.206.94.148:53792\\\",\\\"ConsumerGroup\\\":\\\"test_group\\\",\\\"RetryTimes\\\":1}]}\"\n            }\n        ],\n        \"ShowTopicName\": \"news-topic\",\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\"\n    }\n}",
         "title": "Queries message trajectory"
       }
@@ -673,17 +689,17 @@
     "DescribeRocketMQPublicAccessMonitorData": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQPublicAccessMonitorData\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rocketmq-a52qova7x97b\",\n    \"StartTime\": \"2024-12-04T15:06:49+08:00\",\n    \"EndTime\": \"2024-12-04T16:06:49+08:00\",\n    \"Period\": 60,\n    \"MetricName\": \"RocketmqPublicNetworkIntrafficVipRatio\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQPublicAccessMonitorData\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rocketmq-a52qova7x97b\",\n    \"StartTime\": \"2024-12-04T15:06:49+08:00\",\n    \"EndTime\": \"2024-12-04T16:06:49+08:00\",\n    \"Period\": 60,\n    \"MetricName\": \"ClientOuttraffic\"\n}",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"2024-12-04T15:06:00+08:00\",\n        \"EndTime\": \"2024-12-04T16:06:00+08:00\",\n        \"Period\": 60,\n        \"MetricName\": \"RocketmqPublicNetworkIntrafficVipRatio\",\n        \"DataPoints\": [\n            {\n                \"Timestamps\": [\n                    1733295960,\n                    1733296020,\n                    1733296080,\n                    1733296140,\n                    1733296200,\n                    1733296260,\n                    1733296320,\n                    1733296380,\n                    1733296440,\n                    1733296500,\n                    1733296560,\n                    1733296620,\n                    1733296680,\n                    1733296740,\n                    1733296800,\n                    1733296860,\n                    1733296920,\n                    1733296980,\n                    1733297040,\n                    1733297100,\n                    1733297160,\n                    1733297220,\n                    1733297280,\n                    1733297340,\n                    1733297400,\n                    1733297460,\n                    1733297520,\n                    1733297580,\n                    1733297640,\n                    1733297700,\n                    1733297760,\n                    1733297820,\n                    1733297880,\n                    1733297940,\n                    1733298000,\n                    1733298060,\n                    1733298120,\n                    1733298180,\n                    1733298240,\n                    1733298300,\n                    1733298360,\n                    1733298420,\n                    1733298480,\n                    1733298540,\n                    1733298600,\n                    1733298660,\n                    1733298720,\n                    1733298780,\n                    1733298840,\n                    1733298900,\n                    1733298960,\n                    1733299020,\n                    1733299080,\n                    1733299140,\n                    1733299200,\n                    1733299260\n                ],\n                \"Values\": [\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0,\n                    0\n                ]\n            }\n        ],\n        \"RequestId\": \"a6ebee33-5790-435a-a204-dda200d360af\",\n        \"Msg\": \"\"\n    }\n}",
-        "title": "Normal Response"
+        "title": "responds normally"
       }
     ],
     "DescribeRocketMQPublicAccessPoint": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQPublicAccessPoint\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rocketmq-jxj3wj5j8e7\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"086e9401-0674-41f1-a381-9c6a8ba702ea\",\n        \"Status\": 0,\n        \"PayStatus\": 1,\n        \"AccessUrl\": \"rocketmq-jxj3wj5j8e7.mock-test.com\",\n        \"PayMode\": 0,\n        \"Bandwidth\": 0,\n        \"Rules\": [\n            {\n                \"IpRule\": \"0.0.0.0/0\",\n                \"Allow\": true,\n                \"Remark\": \"remark info\"\n            }\n        ]\n    }\n}",
-        "title": "Retrieving Public Network Access Point Information"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"086e9401-0674-41f1-a381-9c6a8ba702ea\",\n        \"Status\": 0,\n        \"PayStatus\": 1,\n        \"AccessUrl\": \"rocketmq-jxj3wj5j8e7.mock-test.com\",\n        \"PayMode\": 0,\n        \"Bandwidth\": 2,\n        \"Rules\": [\n            {\n                \"IpRule\": \"0.0.0.0/0\",\n                \"Allow\": true,\n                \"Remark\": \"remark info\"\n            }\n        ]\n    }\n}",
+        "title": "Retrieve public network access point information"
       }
     ],
     "DescribeRocketMQRoles": [
@@ -697,9 +713,9 @@
     "DescribeRocketMQTopUsages": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQTopUsages\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-abc\",\n    \"MetricName\": \"consumeLag\",\n    \"Limit\": 1\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQTopUsages\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-vvqb9emabapx\",\n    \"MetricName\": \"consumeLag\",\n    \"Limit\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Dimensions\": [\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"tenant\",\n                        \"Value\": \"rocketmq-vvqb9emabapx\"\n                    },\n                    {\n                        \"Name\": \"namespace\",\n                        \"Value\": \"test_ns\"\n                    },\n                    {\n                        \"Name\": \"topic\",\n                        \"Value\": \"test_topic\"\n                    }\n                ]\n            },\n            {\n                \"Dimensions\": [\n                    {\n                        \"Name\": \"tenant\",\n                        \"Value\": \"rocketmq-vvqb9emabapx\"\n                    },\n                    {\n                        \"Name\": \"namespace\",\n                        \"Value\": \"test_ns\"\n                    },\n                    {\n                        \"Name\": \"topic\",\n                        \"Value\": \"test_topic2\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"f0288e86-ee7d-4a73-a788-81ca6680b06c\",\n        \"Values\": [\n            309,\n            0\n        ]\n    }\n}",
-        "title": "Retrieving Group Heaped Messages Sorting Order"
+        "title": "Retrieve Group Heaped Messages Sorting Order"
       }
     ],
     "DescribeRocketMQTopic": [
@@ -737,7 +753,7 @@
     "DescribeRocketMQTopicsByGroup": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQTopicsByGroup\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"NamespaceId\": \"test_namespace\",\n    \"GroupId\": \"test_group\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQTopicsByGroup\n<Common request parameters>\n\n{\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"NamespaceId\": \"test_ns\",\n    \"GroupId\": \"test_group\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4668f537-44f3-4aca-bd78-fc26fb8d86ff\",\n        \"TotalCount\": 1,\n        \"Topics\": [\n            \"test_topic\"\n        ]\n    }\n}",
         "title": "Obtains the list of topics subscribed under a specified consumer group"
       }
@@ -753,8 +769,8 @@
     "DescribeRocketMQVipInstances": [
       {
         "document": "This API is used to obtain instance lists.",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQVipInstances\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"rocketmq-1q23swe3\"\n            ],\n            \"Name\": \"order-instance\"\n        }\n    ],\n    \"Offset\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"remark-info\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"rocketmq-1233\",\n                \"NodeCount\": 1,\n                \"ExpireTime\": 1,\n                \"InstanceVersion\": \"4.9.3\",\n                \"MaxStorage\": 1,\n                \"MaxBandWidth\": 1,\n                \"SpecName\": \"rocket-vip-basic-1\",\n\"ConfigDisplay\": \"Basic\"\n                \"InstanceName\": \"order-instance\",\n                \"MaxTps\": 1,\n                \"AclEnabled\": true,\n                \"Retention\": 0,\n                \"MinRetention\": 0,\n                \"MaxRetention\": 0\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRocketMQVipInstances\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\",\n        \"Instances\": [\n            {\n                \"Status\": 1,\n                \"PayMode\": 1,\n                \"Remark\": \"remark-info\",\n                \"AutoRenewFlag\": 1,\n                \"InstanceId\": \"rocketmq-vvqb9emabapx\",\n                \"NodeCount\": 3,\n                \"ExpireTime\": 1730877758000,\n                \"InstanceVersion\": \"4.9.3\",\n                \"MaxStorage\": 200,\n                \"MaxBandWidth\": 10,\n                \"SpecName\": \"rocket-vip-basic-1\",\n\"ConfigDisplay\": \"Basic\"\n                \"InstanceName\": \"order-instance\",\n                \"MaxTps\": 4000,\n                \"AclEnabled\": true,\n                \"Retention\": 72,\n                \"MinRetention\": 72,\n                \"MaxRetention\": 960\n            }\n        ]\n    }\n}",
         "title": "This API is used to obtain instance lists."
       }
     ],
@@ -832,10 +848,10 @@
     ],
     "ModifyEnvironmentAttributes": [
       {
-        "document": "Modifies the attribute value of the specified namespace",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnvironmentAttributes\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"devNs\",\n    \"MsgTTL\": \"100\",\n    \"ClusterId\": \"pulsar-5r59xd4vnx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"devNs\",\n        \"NamespaceId\": \"namespace-5r59xen74x\",\n        \"MsgTTL\": 100,\n        \"Remark\": \"devRemark\",\n        \"RequestId\": \"7db00a30-933c-4f6f-bba9-79cdf6be7d8c\"\n    }\n}",
-        "title": "Modifies the attribute value of the specified namespace"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyEnvironmentAttributes\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"shanxuTest\",\n    \"MsgTTL\": 60,\n    \"ClusterId\": \"pulsar-zaxdmeegvgee\",\n    \"SubscriptionExpirationTime\": 1440,\n    \"SubscriptionExpirationTimeEnable\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"EnvironmentId\": \"shanxuTest\",\n        \"MsgTTL\": 60,\n        \"NamespaceId\": \"ns-jakba8kdbrno\",\n        \"Remark\": \"createSubscriptionExpirationtest\",\n        \"SubscriptionExpirationTime\": 1440,\n        \"SubscriptionExpirationTimeEnable\": true,\n        \"RequestId\": \"4664945f-0d01-4da7-8dd8-5274bb4d4c8a\"\n    }\n}",
+        "title": "Change namespace"
       }
     ],
     "ModifyEnvironmentRole": [
@@ -897,9 +913,9 @@
     "ModifyRocketMQGroup": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRocketMQGroup\n<Common request parameters>\n\n{\n    \"Remark\": \"Test modified consumer group\",\n    \"BroadcastEnable\": \"false\",\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"GroupId\": \"test_group\",\n    \"RetryMaxTimes\": \"16\",\n    \"ReadEnable\": \"true\",\n    \"NamespaceId\": \"test_namespace\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRocketMQGroup\n<Common request parameters>\n\n{\n    \"Remark\": \"Test modify consumer group\",\n    \"BroadcastEnable\": false,\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"GroupId\": \"test_group\",\n    \"RetryMaxTimes\": 16,\n    \"ReadEnable\": true,\n    \"NamespaceId\": \"test_namespace\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1f9e837c-aab9-4f93-a373-48e165758529\"\n    }\n}",
-        "title": "Modifying a Subscription Group"
+        "title": "Modify Subscription Group"
       }
     ],
     "ModifyRocketMQInstance": [
@@ -912,10 +928,10 @@
     ],
     "ModifyRocketMQInstanceSpec": [
       {
-        "document": "This example shows you how to perform scaling on an instance.",
+        "document": "Scale an instance",
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRocketMQInstanceSpec\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rocketmq-4k4orqgq\",\n    \"Specification\": \"rocket-vip-basic-1\",\n    \"NodeCount\": 2,\n    \"StorageSize\": 1000\n}",
-        "output": "{\n    \"Response\": {\n        \"OrderId\": \"TDMQ20121212312322\",\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\"\n    }\n}",
-        "title": "Modifying the RocketMQ Dedicated Instance Specification"
+        "output": "{\n    \"Response\": {\n        \"OrderId\": \"20230720073017608094121\",\n        \"RequestId\": \"23ca1a58-0388-4d2d-8465-653a53addda7\"\n    }\n}",
+        "title": "Modify RocketMQ Dedicated Instance Specification"
       }
     ],
     "ModifyRocketMQNamespace": [
@@ -1049,9 +1065,9 @@
     "SetRocketMQPublicAccessPoint": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetRocketMQPublicAccessPoint\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"Remark\": \"remark info\",\n            \"IpRule\": \"0.0.0.0/0\",\n            \"Allow\": \"true\"\n        }\n    ],\n    \"PayMode\": \"0\",\n    \"Bandwidth\": \"2\",\n    \"InstanceId\": \"rocketmq-jxj3wj5j8e7\",\n    \"Enabled\": \"true\"\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetRocketMQPublicAccessPoint\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"Remark\": \"remark info\",\n            \"IpRule\": \"0.0.0.0/0\",\n            \"Allow\": true\n        }\n    ],\n    \"PayMode\": 0,\n    \"Bandwidth\": 2,\n    \"InstanceId\": \"rocketmq-jxj3wj5j8e7\",\n    \"Enabled\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b28ad6c3-059f-4c38-8a97-a66b3b136a3e\"\n    }\n}",
-        "title": "Enabling Public Network Access Point"
+        "title": "Enable public network access point"
       }
     ],
     "UnbindCmqDeadLetter": [

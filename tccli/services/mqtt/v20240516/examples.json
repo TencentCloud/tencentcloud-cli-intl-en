@@ -16,6 +16,14 @@
         "title": "Example"
       }
     ],
+    "CreateDeviceIdentity": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDeviceIdentity\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-qzgaq8bk\",\n    \"DeviceId\": \"device-2\",\n    \"Status\": \"1\",\n    \"PrimaryKey\": \"pk1\",\n    \"SecondaryKey\": \"sk1\",\n    \"PropagatingProperties\": [\n        {\n            \"Key\": \"key-1\",\n            \"Value\": \"key-b\"\n        }\n    ]\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"30a1df4f-1a90-4241-8f77-9e568f5d0149\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "CreateInstance": [
       {
         "document": "This example shows you the example.",
@@ -53,6 +61,14 @@
         "document": "This example shows you the example.",
         "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMQTTClientSubscription\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-2vnk55xv\",\n    \"ClientId\": \"sub_client1\",\n    \"TopicFilter\": \"home/lyx\"\n}",
         "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"8f068485-7252-481d-bdf9-62fdda0229f2\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DeleteDeviceIdentity": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDeviceIdentity\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-25zezo7b\",\n    \"DeviceId\": \"device-1\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"4492b6a9-d565-4c80-9ed5-12584bf17a1b\"\n    }\n}",
         "title": "Example"
       }
     ],
@@ -104,27 +120,59 @@
         "title": "Example"
       }
     ],
+    "DescribeDeviceCertificates": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeviceCertificates\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-qgzaawn9\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientId\": \"client-1\",\n                \"DeviceCertificateSn\": \"0eef68a582b94254296e54ce754f94d707a59913\",\n                \"DeviceCertificateCn\": \"tx\",\n                \"DeviceCertificate\": \"-----BEGIN CERTIFICATE-----\\n-----END CERTIFICATE-----\\n\",\n                \"CaSn\": \"1b1e3bf3702110125887a3a721a7e66f05522513\",\n                \"OrganizationalUnit\": \"tx\",\n                \"Format\": \"PEM\",\n                \"Status\": \"ACTIVE\",\n                \"CertificateSource\": \"API\",\n                \"LastActivationTime\": 1742983099435,\n                \"LastInactivationTime\": 0,\n                \"CreatedTime\": 1742983115198,\n                \"UpdateTime\": 1742983115198,\n                \"NotBeforeTime\": 1734537600000,\n                \"NotAfterTime\": 1766073600000\n            }\n        ],\n        \"RequestId\": \"378f8c36-a6a1-406c-85ac-f2379386eed6\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeDeviceIdentities": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeviceIdentities\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-25zezo7b\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CreatedTime\": 1741708800000,\n                \"DeviceId\": \"device-1\",\n                \"InstanceId\": \"mqtt-25zezo7b\",\n                \"PrimaryKey\": \"pk2\",\n                \"SecondaryKey\": \"sk2\",\n                \"Status\": 2\n            },\n            {\n                \"CreatedTime\": 1741708800000,\n                \"DeviceId\": \"device-2\",\n                \"InstanceId\": \"mqtt-25zezo7b\",\n                \"PrimaryKey\": \"pk\",\n                \"SecondaryKey\": \"sk\",\n                \"Status\": 2\n            }\n        ],\n        \"RequestId\": \"bc9241dd-5fd3-4636-aa07-06eda06661a8\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeDeviceIdentity": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDeviceIdentity\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-25zezo7b\",\n    \"DeviceId\": \"device-1\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"CreatedTime\": 1741708800000,\n        \"DeviceId\": \"device-1\",\n        \"InstanceId\": \"mqtt-25zezo7b\",\n        \"PrimaryKey\": \"bcc0d6cae2a51e79723ce5e88547e214\",\n        \"RequestId\": \"c6a780ce-7850-41de-8be6-41e073cc6668\",\n        \"SecondaryKey\": \"sk1\",\n        \"Status\": 1\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeInstance": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-7peanr83\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AuthorizationPolicy\": false,\n        \"AuthorizationPolicyLimit\": 20,\n        \"AutoSubscriptionPolicyLimit\": 10,\n        \"AutomaticActivation\": true,\n        \"ClientNumLimit\": 4000,\n        \"CreatedTime\": 1756879989,\n        \"DestroyTime\": 0,\n        \"DeviceCertificateProvisionType\": \"API\",\n        \"ExpiryTime\": 1759471988911,\n        \"InstanceId\": \"mqtt-7peanr83\",\n        \"InstanceName\": \"instance-1\",\n        \"InstanceStatus\": \"RUNNING\",\n        \"InstanceType\": \"PRO\",\n        \"MaxCaNum\": 20,\n        \"MaxSubscription\": 120000,\n        \"MaxSubscriptionPerClient\": 30,\n        \"MaxTopicFilterPerAutoSubscriptionPolicy\": 20,\n        \"MaxTopicFilterPerSharedSubscriptionGroup\": 10,\n        \"MessageRate\": -1,\n        \"PayMode\": \"PREPAID\",\n        \"RegistrationCode\": \"client-test\",\n        \"Remark\": \"\",\n        \"RenewFlag\": 1,\n        \"ServerCertLimit\": 3,\n        \"SharedSubscriptionGroupLimit\": 20,\n        \"SkuCode\": \"pro_2k_2\",\n        \"TopicNum\": 0,\n        \"TopicNumLimit\": 300,\n        \"TopicPrefixSlashLimit\": 2,\n        \"TpsLimit\": 2000,\n        \"TransportLayerSecurity\": \"TLSv1.3,TLSv1.2,TLSv1.1,TLSv1\",\n        \"TrustedCaLimit\": 3,\n        \"UseDefaultServerCert\": true,\n        \"X509Mode\": \"BYOC\",\n        \"RequestId\": \"8a95a551-ca77-45f6-aa00-77a090cac898\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-3ja5wo5b\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AuthorizationPolicy\": true,\n        \"AuthorizationPolicyLimit\": 10,\n        \"AutoSubscriptionPolicyLimit\": 10,\n        \"AutomaticActivation\": false,\n        \"BlockRuleLimit\": 5,\n        \"ClientNumLimit\": 2000,\n        \"CreatedTime\": 1772163943,\n        \"DestroyTime\": 0,\n        \"DeviceCertificateProvisionType\": \"API\",\n        \"ExpiryTime\": 0,\n        \"InstanceId\": \"mqtt-3ja5wo5b\",\n        \"InstanceName\": \"mqtt-shared-test3\",\n        \"InstanceStatus\": \"RUNNING\",\n        \"InstanceType\": \"BASIC\",\n        \"MaxCaNum\": 20,\n        \"MaxSubscription\": 60000,\n        \"MaxSubscriptionPerClient\": 30,\n        \"MaxTopicFilterPerAutoSubscriptionPolicy\": 5,\n        \"MaxTopicFilterPerSharedSubscriptionGroup\": 10,\n        \"MessageEnrichmentRuleLimit\": 10,\n        \"MessageRate\": -1,\n        \"PayMode\": \"POSTPAID\",\n        \"RegistrationCode\": \"\",\n        \"Remark\": \"\",\n        \"RenewFlag\": 1,\n        \"ServerCertLimit\": 3,\n        \"SharedSubscriptionGroupLimit\": 20,\n        \"SkuCode\": \"basic_2k\",\n        \"TopicNum\": 0,\n        \"TopicNumLimit\": 20,\n        \"TopicPrefixSlashLimit\": 2,\n        \"TpsLimit\": 2000,\n        \"TransportLayerSecurity\": \"TLSv1.3,TLSv1.2,TLSv1.1,TLSv1\",\n        \"TrustedCaLimit\": 3,\n        \"UseDefaultServerCert\": true,\n        \"X509Mode\": \"TLS\",\n        \"RequestId\": \"2202b107-4def-4fa4-a487-0499c77620db\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeInstanceList": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMQTTInstanceList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"33a9cba9-f885-47aa-8235-8bdcbd9c90bf\",\n        \"TotalCount\": 2,\n        \"Data\": [\n            {\n                \"InstanceId\": \"mqtt-zxjwkr98\",\n                \"InstanceName\": \"mqtt-instance\",\n                \"Version\": \"1\",\n                \"InstanceType\": \"PRO\",\n                \"InstanceStatus\": \"RUNNING\",\n                \"PayMode\": \"POSTPAID\",\n                \"ExpiryTime\": 0,\n                \"Remark\": \"\",\n                \"TopicNum\": 1,\n                \"SkuCode\": \"pro_6k_1\",\n                \"TpsLimit\": 6000,\n                \"CreateTime\": 1741832627,\n                \"MaxSubscriptionPerClient\": 30,\n                \"MaxSubscription\": 180000,\n                \"AuthorizationPolicyLimit\": 20,\n                \"ClientNumLimit\": 6000,\n                \"MaxCaNum\": 20,\n                \"RenewFlag\": 1,\n                \"DestroyTime\": 0,\n                \"TopicNumLimit\": 300\n            },\n            {\n                \"InstanceId\": \"mqtt-w45zn79z\",\n                \"InstanceName\": \"mqtt-1226\",\n                \"Version\": \"1\",\n                \"InstanceType\": \"PRO\",\n                \"InstanceStatus\": \"RUNNING\",\n                \"PayMode\": \"PREPAID\",\n                \"ExpiryTime\": 1742972038844,\n                \"Remark\": \"\",\n                \"TopicNum\": 2,\n                \"SkuCode\": \"pro_10k_1\",\n                \"TpsLimit\": 10000,\n                \"CreateTime\": 1735196039,\n                \"MaxSubscriptionPerClient\": 30,\n                \"MaxSubscription\": 300000,\n                \"AuthorizationPolicyLimit\": 20,\n                \"ClientNumLimit\": 10000,\n                \"MaxCaNum\": 20,\n                \"RenewFlag\": 1,\n                \"DestroyTime\": 0,\n                \"TopicNumLimit\": 300\n            }\n        ]\n    },\n    \"Error\": null\n}",
         "title": "Example"
       }
     ],
     "DescribeMessageByTopic": [
       {
         "document": "This example shows you the example.",
-        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageByTopic\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-g839agr2\",\n    \"Topic\": \"home/room3\",\n    \"StartTime\": 1745828681259\n}",
-        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientId\": \"mqttxxxxxx\",\n                \"MessageId\": \"15397032005D639FEE48935F932F004D\",\n                \"OriginTopic\": \"home/room3\",\n                \"Qos\": \"1\",\n                \"StoreTimestamp\": \"2025-04-29 14:48:34\"\n            },\n            {\n                \"ClientId\": \"mqttxxxxxx\",\n                \"MessageId\": \"15397032005D639FEE48935FA6B80050\",\n                \"OriginTopic\": \"home/room3\",\n                \"Qos\": \"1\",\n                \"StoreTimestamp\": \"2025-04-29 14:48:39\"\n            },\n            {\n                \"ClientId\": \"mqttxxxxxx\",\n                \"MessageId\": \"15397032005D639FEE48935FBA410057\",\n                \"OriginTopic\": \"home/room3\",\n                \"Qos\": \"1\",\n                \"StoreTimestamp\": \"2025-04-29 14:48:44\"\n            },\n            {\n                \"ClientId\": \"mqttxxxxxx\",\n                \"MessageId\": \"15397032005D639FEE4893603732005C\",\n                \"OriginTopic\": \"home/room3\",\n                \"Qos\": \"1\",\n                \"StoreTimestamp\": \"2025-04-29 14:49:16\"\n            }\n        ],\n        \"RequestId\": \"6af56edc-5085-4583-8366-7f125c973603\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageByTopic\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-mwe5jvvr\",\n    \"Topic\": \"abc/1\",\n    \"StartTime\": 1769419861944\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientId\": \"client-1\",\n                \"MessageId\": \"1539703B00486587524C8485D83769D5\",\n                \"OriginTopic\": \"abc/1\",\n                \"Qos\": \"1\",\n                \"StoreTimestamp\": 1769420164152\n            }\n        ],\n        \"RequestId\": \"242a41d4-65f2-4a6d-863e-8d8b7b00f0fb\"\n    }\n}",
         "title": "Example"
       }
     ],
     "DescribeMessageDetails": [
       {
         "document": "This example shows you the example.",
-        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageDetails\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-g839agr2\",\n    \"MessageId\": \"15397032005D639FEE4893603732005C\"\n}",
-        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Body\": \"this is body\",\n        \"ClientId\": \"client1\",\n        \"MessageId\": \"15397032005D639FEE4893603732005C\",\n        \"OriginTopic\": \"home/room3\",\n        \"Qos\": \"1\",\n        \"RequestId\": \"ba5d5d6a-64c9-40cf-8889-21efed76389d\",\n        \"StoreTimestamp\": \"1745828681259\",\n        \"UserProperties\": [\n            {\n                \"Key\": \"key1\",\n                \"Value\": \"value-1\"\n            },\n            {\n                \"Key\": \"key2\",\n                \"Value\": \"value-2\"\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageDetails\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-mwe5jvvr\",\n    \"MessageId\": \"1539703B00486587524C8485D83769D5\",\n    \"Subscription\": \"abc/1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Body\": \"{\\n  \\\"msg\\\": \\\"hello\\\"\\n}\",\n        \"ClientId\": \"client-1\",\n        \"ContentType\": \"\",\n        \"CorrelationData\": \"\",\n        \"MessageExpiryInterval\": 0,\n        \"MessageId\": \"1539703B00486587524C8485D83769D5\",\n        \"OriginTopic\": \"abc/1\",\n        \"PayloadFormatIndicator\": 0,\n        \"Qos\": \"1\",\n        \"ResponseTopic\": \"\",\n        \"StoreTimestamp\": 1769420164152,\n        \"SubscriptionIdentifier\": \"\",\n        \"UserProperties\": [],\n        \"RequestId\": \"6e12518d-ea5e-47e5-b837-73fe1616bbf7\"\n    }\n}",
         "title": "Example"
       }
     ],
@@ -133,6 +181,38 @@
         "document": "This example shows you the example.",
         "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMessageEnrichmentRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-g4r4wpne\"\n}",
         "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Actions\": \"eyJ1c2VyUHJvcGVydHkiOiBbeyJrZXkiOiAidHJhY2UtaWQiLCAidmFsdWUiOiAiJHt0cmFjZWlkfSJ9XSwgInJlc3BvbnNlVG9waWMiOiAicmVwbGllcy9kZXZpY2VzLyR7Y2xpZW50aWR9IiwgImNvcnJlbGF0aW9uRGF0YSI6ICIke3RyYWNlaWR9IiwgIm1lc3NhZ2VFeHBpcnlJbnRlcnZhbCI6IDM2MH0=\",\n                \"Condition\": \"eyJ0b3BpYyI6ICJob21lL3Jvb20xIiwgImNsaWVudElkIjogImNsaWVudC0xIiwgInVzZXJuYW1lIjogImNsaWVudC0xIn0=\",\n                \"CreatedTime\": 1763347106093,\n                \"Id\": 5,\n                \"InstanceId\": \"mqtt-g4r4wpne\",\n                \"Priority\": 1,\n                \"Remark\": \"remark\",\n                \"RuleName\": \"rule1\",\n                \"Status\": 1,\n                \"UpdateTime\": 1763347106093\n            },\n            {\n                \"Actions\": \"eyJ1c2VyUHJvcGVydHkiOiBbeyJrZXkiOiAidHJhY2UtaWQiLCAidmFsdWUiOiAiJHt0cmFjZWlkfSJ9XSwgInJlc3BvbnNlVG9waWMiOiAicmVwbGllcy9kZXZpY2VzLyR7Y2xpZW50aWR9IiwgImNvcnJlbGF0aW9uRGF0YSI6ICIke3RyYWNlaWR9IiwgIm1lc3NhZ2VFeHBpcnlJbnRlcnZhbCI6IDM2MH0=\",\n                \"Condition\": \"eyJ0b3BpYyI6ICJob21lL3Jvb20xIiwgImNsaWVudElkIjogImNsaWVudC0xIiwgInVzZXJuYW1lIjogImNsaWVudC0xIn0=\",\n                \"CreatedTime\": 1763347249927,\n                \"Id\": 6,\n                \"InstanceId\": \"mqtt-g4r4wpne\",\n                \"Priority\": 2,\n                \"Remark\": \"remark\",\n                \"RuleName\": \"rule2\",\n                \"Status\": 1,\n                \"UpdateTime\": 1763347388148\n            }\n        ],\n        \"RequestId\": \"6e898343-e911-49de-8491-f23108edd157\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeProductSKUList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProductSKUList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"MQTTProductSkuList\": [\n            {\n                \"AuthorizationPolicyLimit\": 10,\n                \"ClientNumLimit\": 2000,\n                \"InstanceType\": \"BASIC\",\n                \"MaxSubscriptionPerClient\": 30,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Category\": \"v_tdmq_mqtt_instance_specification\",\n                        \"Code\": \"sv_tdmq_mqtt_instance_specification_basic_config\",\n                        \"Name\": \"tps\",\n                        \"Step\": 1\n                    },\n                    {\n                        \"Category\": \"v_tdmq_instance_specification\",\n                        \"Code\": \"sv_tdmq_mqtt_instance_specification_basic_tps\",\n                        \"Name\": \"stepTps\",\n                        \"Step\": 2\n                    }\n                ],\n                \"SkuCode\": \"basic_2k\",\n                \"TopicNumLimit\": 100,\n                \"TpsLimit\": 2000\n            },\n            {\n                \"AuthorizationPolicyLimit\": 10,\n                \"ClientNumLimit\": 5000,\n                \"InstanceType\": \"BASIC\",\n                \"MaxSubscriptionPerClient\": 30,\n                \"OnSale\": true,\n                \"PriceTags\": [\n                    {\n                        \"Category\": \"v_tdmq_mqtt_instance_specification\",\n                        \"Code\": \"sv_tdmq_mqtt_instance_specification_basic_config\",\n                        \"Name\": \"tps\",\n                        \"Step\": 1\n                    },\n                    {\n                        \"Category\": \"v_tdmq_instance_specification\",\n                        \"Code\": \"sv_tdmq_mqtt_instance_specification_basic_tps\",\n                        \"Name\": \"stepTps\",\n                        \"Step\": 5\n                    }\n                ],\n                \"SkuCode\": \"basic_5k\",\n                \"TopicNumLimit\": 100,\n                \"TpsLimit\": 5000\n            }\n        ],\n        \"RequestId\": \"590f4a66-aa96-49d7-9572-0e01e90dc85c\",\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeSharedSubscriptionClient": [
+      {
+        "document": "Query shared subscription group clients",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSharedSubscriptionClient\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-zj944d74\",\n    \"SharedName\": \"mock-name\",\n    \"TopicFilter\": \"mock-topic\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ClientId\": \"mock-1\",\n                \"Online\": true,\n                \"SharedName\": \"mock-name\",\n                \"TopicFilter\": \"mock-topic\"\n            },\n            {\n                \"ClientId\": \"mock-2\",\n                \"Online\": false,\n                \"SharedName\": \"mock-name\",\n                \"TopicFilter\": \"mock-topic\"\n            }\n        ],\n        \"RequestId\": \"e1ff6dcf-d154-4bdc-acb9-22eaa384d07e\",\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Query shared subscription group clients"
+      }
+    ],
+    "DescribeSharedSubscriptionGroups": [
+      {
+        "document": "Query the subscription group list",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSharedSubscriptionGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-zj944d74\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"CreateTime\": 1749468454000,\n                \"ExpiryInterval\": 10,\n                \"InstanceId\": \"mqtt-zj944d74\",\n                \"LbStrategy\": 1,\n                \"Remark\": \"helklo2\",\n                \"SharedName\": \"test-aa\",\n                \"UpdateTime\": 1749798776000\n            },\n            {\n                \"CreateTime\": 1749398400000,\n                \"ExpiryInterval\": 10,\n                \"InstanceId\": \"mqtt-zj944d74\",\n                \"LbStrategy\": 1,\n                \"Remark\": null,\n                \"SharedName\": \"test-bb\",\n                \"UpdateTime\": 1749398400000\n            },\n            {\n                \"CreateTime\": 1749475014000,\n                \"ExpiryInterval\": 10,\n                \"InstanceId\": \"mqtt-zj944d74\",\n                \"LbStrategy\": 1,\n                \"Remark\": null,\n                \"SharedName\": \"test-cc\",\n                \"UpdateTime\": 1749475016000\n            },\n            {\n                \"CreateTime\": 1749475039000,\n                \"ExpiryInterval\": 15,\n                \"InstanceId\": \"mqtt-zj944d74\",\n                \"LbStrategy\": 1,\n                \"Remark\": null,\n                \"SharedName\": \"test-dd\",\n                \"UpdateTime\": 1749475041000\n            },\n            {\n                \"CreateTime\": 1749798707000,\n                \"ExpiryInterval\": 10,\n                \"InstanceId\": \"mqtt-zj944d74\",\n                \"LbStrategy\": 1,\n                \"Remark\": \"hello\",\n                \"SharedName\": \"test-ee\",\n                \"UpdateTime\": 1749798707000\n            }\n        ],\n        \"RequestId\": \"f320bebc-c033-4cc5-ab39-72c477e98b24\",\n        \"TotalCount\": 5\n    }\n}",
+        "title": "Querying the subscription group list"
+      }
+    ],
+    "DescribeSharedSubscriptions": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSharedSubscriptions\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-44kmpnaz\",\n    \"SharedName\": \"shared1\"\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"InstanceId\": \"mqtt-44kmpnaz\",\n        \"RequestId\": \"fa91b916-cb5c-4710-930a-3fc495d3159e\",\n        \"SharedName\": \"shared1\",\n        \"TopicFilter\": [\n            \"home/room\"\n        ]\n    }\n}",
         "title": "Example"
       }
     ],
@@ -165,6 +245,14 @@
         "document": "This example shows you the example.",
         "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAuthorizationPolicy\n<Common request parameters>\n\n{\n    \"Id\": 18,\n    \"InstanceId\": \"mqtt-jeredv33\",\n    \"PolicyName\": \"policy-1\"\n}",
         "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"657a771d-a70e-4c0d-a70a-eb7f82471000\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ModifyDeviceIdentity": [
+      {
+        "document": "Example",
+        "input": "POST / HTTP/1.1\nHost: mqtt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDeviceIdentity\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mqtt-qzgaq8bk\",\n    \"DeviceId\": \"device-1\",\n    \"PropagatingProperties\": [\n        {\n            \"Key\": \"key1\",\n            \"Value\": \"value1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"RequestId\": \"dbe406c9-8d46-4b54-b12f-b58be26d0e96\"\n    }\n}",
         "title": "Example"
       }
     ],

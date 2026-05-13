@@ -1380,7 +1380,7 @@
         {
           "disabled": false,
           "document": "GPU type. Empty string if no GPU is available.",
-          "example": "",
+          "example": "NVIDIA H20*8",
           "member": "string",
           "name": "GpuType",
           "output_required": false,

@@ -1612,6 +1612,18 @@
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&RefererAuthPolicy.Status=Enabled\n&RefererAuthPolicy.AuthType=Black\n&RefererAuthPolicy.Referers.0=example.com\n&RefererAuthPolicy.BlankRefererAllowed=Yes\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
         "title": "Enabling referer hotlink protection for a domain"
+      },
+      {
+        "document": "Set up an IP blacklist for a domain and intercept requests from the blacklist to access accelerated domain names.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&IPFilterPolicy.Status=Enabled\n&IPFilterPolicy.FilterType=Black\n&IPFilterPolicy.IPList.0=1.1.1.1\n&IPFilterPolicy.IPList.1=2.3.4.5\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-55941457e1\"\n    }\n}",
+        "title": "Set up IP blacklist for domain a domain"
+      },
+      {
+        "document": "Set up an IP whitelist for a domain and allow requests from the whitelist to access accelerated domain names.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainConfig\n&Domain=myexample.com\n&IPFilterPolicy.Status=Enabled\n&IPFilterPolicy.FilterType=White\n&IPFilterPolicy.IPList.0=1.2.3.4\n&IPFilterPolicy.IPList.1=2.3.4.5\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1536ae8d8e-dce3-4551-9d4b-55f78201\"\n    }\n}",
+        "title": "Set up IP whitelist for a domain"
       }
     ],
     "ModifyWatermarkTemplate": [

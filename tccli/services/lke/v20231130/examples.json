@@ -18,10 +18,10 @@
     ],
     "CreateApp": [
       {
-        "document": "Create an application",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApp\n<Common request parameters>\n\n{\n    \"AppType\": \"knowledge_qa\",\n    \"BaseConfig\": {\n        \"Name\": \"Knowledge Q&A\n        \"Avatar\": \"Avatar\"        \n        \"Desc\": \"The first application\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"AppBizId\": \"198848848484848\",\n        \"RequestId\": \"dwec-adsdsdsd-sfsfdsfsf\"\n    }\n}",
-        "title": "Application Creation"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApp\n<Public Request Parameters>\n\n{\n    \"AppType\": \"knowledge_qa\",\n    \"BaseConfig\": {\n        \"Name\": \"My Agent Application\",\n        \"Avatar\": \"https://cdn.xiaowei.qq.com/static/adp/app-default-avatar.png\",\n        \"Desc\": \"Application description information\"\n    },\n    \"Pattern\": \"ClawAgent\",\n    \"AgentType\": \"dialogue\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AppBizId\": \"2049767047020830336\",\n        \"IsCustomList\": false,\n        \"RequestId\": \"7c04aa7f-45ce-41fc-91a9-0743aa65104d\"\n    }\n}",
+        "title": "CreateApp"
       }
     ],
     "CreateAttributeLabel": [
@@ -30,14 +30,6 @@
         "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAttributeLabel\n<Common request parameter>\n\n{\n    \"BotBizId\": \"1826933901291945900\",\n    \"AttrName\": \"Vehicle type\",\n    \"Labels\": [\n        {\n            \"LabelName\": \"SUV\",\n            \"SimilarLabels\": [\n                \"Sport Utility Vehicle\",\n                \"SUV\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AttrBizId\": \"1856169972235990080\",\n        \"RequestId\": \"044de4f1-8d88-4779-b9f7-b8c0e9f81752\"\n    }\n}",
         "title": "Label Creation"
-      }
-    ],
-    "CreateCorp": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCorp\n<Common request parameters>\n\n{\n    FullName\": \"Test Corporate\",\n    ContactName\": \"Mr. Wang\",\n    \"Email\": \"\",\n    \"Telephone\": \"\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CorpBizId\": \"1744209203680903168\",\n        \"RequestId\": \"1bab38dd-f17d-4c48-88b6-608ed51edf74\"\n    }\n}",
-        "title": "Integrator Creating a Corporate"
       }
     ],
     "CreateDocCate": [
@@ -62,14 +54,6 @@
         "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateQACate\n<Common request parameters>\n\n{\n    \"BotBizId\": \"1714970520775950336\",\n    \"ParentBizId\": \"1733053612030808064\",\n    \"Name\": \"Hahaha\"\n}",
         "output": "{\n    \"Response\": {\n        \"CanAdd\": true,\n        \"CanDelete\": true,\n        \"CanEdit\": true,\n        \"CateBizId\": \"1734144647474577408\",\n        \"RequestId\": \"39db6689-ceab-4ae7-87a9-f926774255d7\"\n    }\n}",
         "title": "Q&A Category Creation"
-      }
-    ],
-    "CreateReconstructDocumentFlow": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReconstructDocumentFlow\n<Common request parameters>\n\n{\n    \"FileStartPageNumber\": 1,\n    \"FileEndPageNumber\": 1,\n    \"Config\": {\n        \"TableResultType\": \"1\"\n    },\n    \"FileBase64\": \"data:application/pdf;base64,JVBERi0xLjcKXXX...\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1d569fb4-4c9d-4141-bbd7-e1d8735bd1a9\",\n        \"TaskId\": \"9e28e561e9a04ef096768d13deffe963\"\n    }\n}",
-        "title": "Successful API Request Example"
       }
     ],
     "CreateRejectedQuestion": [
@@ -162,10 +146,10 @@
     ],
     "DescribeCallStatsGraph": [
       {
-        "document": "Show line chart of API calls.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCallStatsGraph\n<Common request parameters>\n\n{\n    \"ModelName\": \"cs-normal\",\n    \"StartTime\": \"1726070400\",\n    \"EndTime\": \"1726156799\"\n}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"X\": \"202411190930\",\n                \"Y\": 12\n            },\n            {\n                \"X\": \"202411190915\",\n                \"Y\": 11\n            }\n        ],\n        \"RequestId\": \"85e7259e-7810-4301-8f44-cf2d94ec0a0f\"\n    }\n}",
-        "title": "Line Chart of API Calls"
+        "document": "Example of Interface Call Line Chart",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCallStatsGraph\n<Common Request Parameter>\n\n{\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1758988800\",\n    \"EndTime\": \"1759075199\",\n    \"UinAccount\": [],\n    \"AppBizIds\": [],\n    \"SubScenes\": [],\n    \"AppType\": \"knowledge_qa\",\n    \"SpaceId\": \"default_space\",\n    \"StatStartTime\": 1758988800,\n    \"StatEndTime\": 1759075199\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"X\": \"202509281730\",\n                \"Y\": 1078\n            },\n            {\n                \"X\": \"202509281710\",\n                \"Y\": 9\n            },\n            {\n                \"X\": \"202509281310\",\n                \"Y\": 1\n            },\n            {\n                \"X\": \"202509281155\",\n                \"Y\": 5\n            },\n            {\n                \"X\": \"202509281140\",\n                \"Y\": 5\n            },\n            {\n                \"X\": \"202509281120\",\n                \"Y\": 12\n            },\n            {\n                \"X\": \"202509281110\",\n                \"Y\": 8\n            },\n            {\n                \"X\": \"202509280030\",\n                \"Y\": 1\n            },\n            {\n                \"X\": \"202509281840\",\n                \"Y\": 16\n            },\n            {\n                \"X\": \"202509281805\",\n                \"Y\": 1\n            },\n            {\n                \"X\": \"202509281725\",\n                \"Y\": 1356\n            },\n            {\n                \"X\": \"202509281430\",\n                \"Y\": 4\n            },\n            {\n                \"X\": \"202509281210\",\n                \"Y\": 5\n            },\n            {\n                \"X\": \"202509281145\",\n                \"Y\": 9\n            },\n            {\n                \"X\": \"202509281130\",\n                \"Y\": 1\n            },\n            {\n                \"X\": \"202509281055\",\n                \"Y\": 5\n            },\n            {\n                \"X\": \"202509281915\",\n                \"Y\": 1\n            },\n            {\n                \"X\": \"202509281905\",\n                \"Y\": 3\n            },\n            {\n                \"X\": \"202509281900\",\n                \"Y\": 958\n            },\n            {\n                \"X\": \"202509281845\",\n                \"Y\": 827\n            },\n            {\n                \"X\": \"202509281200\",\n                \"Y\": 7\n            },\n            {\n                \"X\": \"202509281150\",\n                \"Y\": 5\n            },\n            {\n                \"X\": \"202509281030\",\n                \"Y\": 11\n            }\n        ],\n        \"RequestId\": \"cee3d1f4-ee89-4e7b-9918-76a197ec53e0\"\n    }\n}",
+        "title": "Example of Interface Call Line Chart"
       }
     ],
     "DescribeConcurrencyUsage": [
@@ -178,18 +162,10 @@
     ],
     "DescribeConcurrencyUsageGraph": [
       {
-        "document": "Example of line chart of concurrent calls.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConcurrencyUsageGraph\n<Common request parameters>\n\n{\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1724688000\",\n    \"EndTime\": \"1724774400\",\n    \"AppBizIds\": [\n        \"1812732010083385344\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"AvailableY\": [\n            5,\n            4,\n            3\n        ],\n        \"RequestId\": \"ad439868-ed56-44f5-a716-81cc7402e83e\",\n        \"SuccessCallY\": [\n            1,\n            2,\n            3\n        ],\n        \"X\": [\n            \"2024082700\",\n            \"2024082701\",\n            \"2024082702\"\n        ]\n    }\n}",
-        "title": "Concurrent Call Line Chart Example"
-      }
-    ],
-    "DescribeCorp": [
-      {
-        "document": "Get corporate information",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCorp\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"CorpBizId\": \"18485034430310\",\n        \"FullName\": \"My Corporate\"\n        \"RequestId\": \"669edde9-e9ec-40c6-bf31-5e9402fb26fb\",\n        \"RobotQuota\": 10,\n        \"IsTrial\": false,\n        \"IsTrialExpired\": false,\n        \"AvailableAppQuota\": 10\n    }\n}",
-        "title": "Get Corporate Information"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConcurrencyUsageGraph\n<Common Request Parameter>\n\n{\n    \"ModelName\": \"lke-deepseek-r1-vip\",\n    \"SpaceId\": \"default-space\",\n    \"StatStartTime\": 1758988800,\n    \"StatEndTime\": 1759075199\n}",
+        "output": "{\n    \"Response\": {\n        \"AvailableY\": [],\n        \"SuccessCallY\": [],\n        \"X\": [],\n        \"RequestId\": \"3c427973-6a12-443b-aa63-ca3df61cd402\"\n    }\n}",
+        "title": "DescribeConcurrencyUsageGraph"
       }
     ],
     "DescribeDoc": [
@@ -258,10 +234,10 @@
     ],
     "DescribeSearchStatsGraph": [
       {
-        "document": "Detailed information of search service line chart.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSearchStatsGraph\n<Common request parameters>\n\n{\n    \"ModelName\": \"cs-normal\",\n    \"StartTime\": \"1726070400\",\n    \"EndTime\": \"1726156799\"\n}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"X\": \"202411190930\",\n                \"Y\": 23\n            },\n            {\n                \"X\": \"202411190915\",\n                \"Y\": 41\n            }\n        ],\n        \"RequestId\": \"b547fd5a-4d82-4fcc-adb8-899e63c166fc\"\n    }\n}",
-        "title": "Detailed Information of Search Service Line Chart"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMinuteDosageUsageGraph\n<Common Request Parameter>\n\n{\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1758988800\",\n    \"EndTime\": \"1759075199\",\n    \"UinAccount\": [],\n    \"AppBizIds\": [],\n    \"SpaceId\": \"default_space\",\n    \"StatStartTime\": 1758988800,\n    \"StatEndTime\": 1759075199\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [],\n        \"RequestId\": \"cef68b22-98ba-435a-be50-c57d936949f2\"\n    }\n}",
+        "title": "Example of Search Service Call Line Chart"
       }
     ],
     "DescribeSegments": [
@@ -288,10 +264,10 @@
     ],
     "DescribeTokenUsage": [
       {
-        "document": "Get call statistics.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTokenUsage\n<Common request parameters>\n\n{\n    \"UinAccount\": [\n        \"700001187441\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"ApiCallStats\": 10,\n        \"InputTokenUsage\": 1120,\n        \"OutputTokenUsage\": 101,\n        \"RequestId\": \"716109cc-ee93-423a-85f0-a21fb7afcc4f\",\n        \"SearchUsage\": 10,\n        \"TotalTokenUsage\": 1221\n    }\n}",
-        "title": "Get Call Statistics"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTokenUsage\n<Common Request Parameter>\n\n{\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1758988800\",\n    \"EndTime\": \"1759075199\",\n    \"UinAccount\": [],\n    \"AppBizIds\": [],\n    \"SubScenes\": [],\n    \"AppType\": \"knowledge_qa\",\n    \"SpaceId\": \"default_space\",\n    \"StatStartTime\": 1758988800,\n    \"StatEndTime\": 1759075199\n}",
+        "output": "{\n    \"Response\": {\n        \"ApiCallStats\": 4909,\n        \"DosageTypeCurr\": 0,\n        \"DosageTypeLimit\": 0,\n        \"InputTokenUsage\": 3178475,\n        \"InternetSearchUsage\": 0,\n        \"OutputTokenUsage\": 439374,\n        \"PageUsage\": 0,\n        \"RagSearchUsage\": 0,\n        \"RequestId\": \"a35fa69b-118b-4b25-8f1d-e5478f2b7159\",\n        \"SearchUsage\": 0,\n        \"SplitTokenUsage\": 0,\n        \"TotalTokenUsage\": 3617849\n    }\n}",
+        "title": "Example of Interface Call Token Details"
       }
     ],
     "DescribeTokenUsageGraph": [
@@ -390,14 +366,6 @@
         "title": "Conversation Record"
       }
     ],
-    "GetReconstructDocumentResult": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetReconstructDocumentResult\n<Common request parameters>\n\n{\n    \"TaskId\": \"123123123\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DocumentRecognizeResultUrl\": \"https://document-restruction-1258344699.cos.ap-guangzhou.myqcloud.com/doc_parse/output_files/a9c6a9482c72412fa84445a44ss125531.zip?q-sign-algorithm=sha1&q-ak=*******l&q-sign-time=1715503711%3B1718804311&q-key-time=1718855711%3B1718804311&q-header-list=host&q-url-param-list=&q-signature=71b568b8632d7e45gertdc3d235ef68d41fdfe7f8\",\n        \"FailedPages\": [],\n        \"RequestId\": \"a37b0d0b-c3af-44bd-iuiu-632442644a80\",\n        \"Status\": \"Success\"\n    }\n}",
-        "title": "Successful API Call Example"
-      }
-    ],
     "GetTaskStatus": [
       {
         "document": "Get the status of tasks.",
@@ -438,20 +406,20 @@
         "title": "Ignore Dissatisfied Responses"
       }
     ],
+    "IsTransferIntent": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsTransferIntent\n<Common request parameters>\n\n{\n    Content\": \"Transfer to human service\",\n    \"BotAppKey\": \"your botAppKey\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Hit\": true,\n        \"RequestId\": \"13eec622-226b-47f0-89d7-1a2aa9f8adad\"\n    }\n}",
+        "title": "Whether to Transfer to Human Service"
+      }
+    ],
     "ListApp": [
       {
         "document": "Get application list under the corporate.",
         "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListApp\n<Common request parameters>\n\n{\n    \"AppType\": \"knowledge_qa\"\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": \"1\",\n        \"List\": [\n            {\n                \"AppType\": \"knowledge_qa\",\n                AppTypeDesc\": \"Knowledge base Q&A\",\n                \"AppBizId\": \"1801166480814637052\",\n                Name\": \"My application\",\n                \"Avatar\": \"https://qidian-qbot-xxxxxxx.cos.ap-guangzhou.myqcloud.com/public/174434244193038090240/1801166482343244637056/image/jNVJvoXsTsBzo2324324121HZdgd-1816016475183120384.png\",\n\"Desc\": \"Description\"                \"AppStatus\": 2,\n                AppStatusDesc\": \"running\n                \"UpdateTime\": \"1731407395\",\n\"Operator\": \"Operator.\"                ModelName\": \"Fine-tuned Knowledge Large Model - Standard\",\n                \"Pattern\": \"standard\",\n                \"ThoughtModelAliasName\": \"Intent Recognition Model - Premium\"\n            }\n        ],\n        \"RequestId\": \"143a9f30-a21c-4eb3-af82-ccacd4cdcbfd\"\n    }\n}",
         "title": "ListApp"
-      }
-    ],
-    "ListAppCategory": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAppCategory\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Text\":  \"Knowledge base Q&A\"\n                \"Value\": \"knowledge_qa\",\n                \"Logo\": \"https://cdn.xiaowei.qq.com/static/lke/app-icon-knowledge_qa.png\"\n            }\n        ],\n        \"RequestId\": \"ee325589-ef62-4aab-8070-01792336d02a\"\n    }\n}",
-        "title": "Get Application Type List"
       }
     ],
     "ListAppKnowledgeDetail": [
@@ -518,10 +486,10 @@
     ],
     "ListRejectedQuestion": [
       {
-        "document": "Get the rejected question list.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRejectedQuestion\n<Common request parameters>\n\n{\n    \"BotBizId\": \"1714970520775950336\",\n    \"PageNumber\": 1,\n    \"PageSize\": 20\n}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"IsAllowDelete\": false,\n                \"IsAllowEdit\": false,\n                 \"Question\": \"What's the weather in Beijing?\"                \n                 \"RejectedBizId\": \"0\",\n                \"Status\": 2,\n                StatusDesc\": \"Releasing\",\n                \"UpdateTime\": \"1698930291\"\n            },\n            {\n                \"IsAllowDelete\": false,\n                \"IsAllowEdit\": false,\n                \"Question\": \"55555569\",\n                \"RejectedBizId\": \"0\",\n                \"Status\": 2,\n                \"StatusDesc\": \"Releasing\"                \n                \"UpdateTime\": \"1693407323\"\n            },\n            {\n                \"IsAllowDelete\": true,\n                \"IsAllowEdit\": true,\n                \"Question\": \"55555568\",\n                \"RejectedBizId\": \"0\",\n                \"Status\": 1,\n                StatusDesc\": \"Pending release\",\n                \"UpdateTime\": \"1693407323\"\n            }\n        ],\n        \"RequestId\": \"bdc74947-8606-41e1-9a97-72690bf06bdd\",\n        \"Total\": \"3\"\n    }\n}",
-        "title": "Get Rejected Question List"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRejectedQuestion\n<Common Request Parameter>\n\n{\n    \"BotBizId\": \"2003116222155701696\",\n    \"Query\": \"\",\n    \"PageNumber\": 1,\n    \"PageSize\": 15\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [],\n        \"RequestId\": \"f5868e30-fb21-47ca-88d3-da240a5cbebf\",\n        \"Total\": \"0\"\n    }\n}",
+        "title": "ListRejectedQuestion"
       }
     ],
     "ListRejectedQuestionPreview": [
@@ -582,10 +550,10 @@
     ],
     "ListUsageCallDetail": [
       {
-        "document": "Query single call details in a list.",
-        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListUsageCallDetail\n<Common request parameters>\n\n{\n    \"CallType\": \"AllCallType\",\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1723564800\",\n    \"EndTime\": \"1726156799\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10\n}",
-        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppName\": \"\",\n                \"CallTime\": \"1724946200\",\n                \"CallType\": \"Dialogue call\"\n                \"Id\": \"e8h_20240701_194330_474_XRMUA92T\",\n                \"InputTokenUsage\": 471,\n                \"ModelName\": \"Fine-tuned Knowledge Large Model - Premium\",\n                \"OutputTokenUsage\": 886,\n                \"SearchUsage\": 0,\n                \"TotalTokenUsage\": 1357,\n                \"UinAccount\": \"600000562455\"\n            }\n        ],\n        \"RequestId\": \"9332ab9b-dec8-481e-87a8-af6983ac9fe7\",\n        \"Total\": 1\n    }\n}",
-        "title": "Query Single Call Details"
+        "document": "Example of Single Call Detail List Query",
+        "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListUsageCallDetail\n<Common Request Parameter>\n\n{\n    \"AppBizIds\": [],\n    \"ModelName\": \"cs-normal-70b\",\n    \"StartTime\": \"1758988800\",\n    \"EndTime\": \"1759075199\",\n    \"CallType\": \"AllCallType\",\n    \"PageNumber\": 1,\n    \"PageSize\": 10,\n    \"SubScenes\": [],\n    \"AppType\": \"knowledge_qa\",\n    \"SpaceId\": \"default_space\",\n    \"StatStartTime\": 1758988800,\n    \"StatEndTime\": 1759075199\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppName\": \"jacobs-0926\",\n                \"CallTime\": \"1759057890\",\n                \"CallType\": \"Dialogue Call - Shared Client Dialogue\",\n                \"Id\": \"Bd4_20250928_191127_831_tlwHTOyB\",\n                \"InputTokenUsage\": 168,\n                \"ModelName\": \"youtu-mrc-pro\",\n                \"OutputTokenUsage\": 15,\n                \"PageUsage\": 183,\n                \"SearchUsage\": 0,\n                \"SubScene\": \"\",\n                \"TotalTokenUsage\": 183,\n                \"UinAccount\": \"700000963993\"\n            },\n            {\n                \"AppName\": \"jacobs-0926\",\n                \"CallTime\": \"1759057441\",\n                \"CallType\": \"Dialogue Call - Shared Client Dialogue\",\n                \"Id\": \"M2B_20250928_190357_441_Uyk4R1tn\",\n                \"InputTokenUsage\": 145,\n                \"ModelName\": \"youtu-mrc-pro\",\n                \"OutputTokenUsage\": 15,\n                \"PageUsage\": 160,\n                \"SearchUsage\": 0,\n                \"SubScene\": \"\",\n                \"TotalTokenUsage\": 160,\n                \"UinAccount\": \"700000963993\"\n            }\n        ],\n        \"RequestId\": \"e8d2fc9c-0cbd-4ca6-87cf-01fa5d8bd6bf\",\n        \"Total\": 2\n    }\n}",
+        "title": "Example of Single Call Detail List Query"
       }
     ],
     "ModifyApp": [
@@ -705,7 +673,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: lke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SaveDoc\n<Common request parameters>\n\n{\n    \"BotBizId\": \"1727231073371148288\",\n    \"FileName\": \"test.docx\",\n    \"FileType\": \"docx\",\n    \"CosUrl\": \"/corp/23432432/233432/doc/zeSOHIBjwcWoEmlMMXOp-1796022574489010176.docx\",\n    \"ETag\": \"\\\"58e88ad7665f11c4f66eba0eada383a5\\\"\",\n    \"CosHash\": \"xxxxxxxxx\",\n    \"Size\": \"643000\",\n    \"Source\": 0,\n    \"WebUrl\": \"\",\n    \"AttrRange\": 1,\n    \"AttrLabels\": [],\n    \"ReferUrlType\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"DocBizId\": \"1694921462777761792\",\n        \"ErrorMsg\": \"\",\n        \"ErrorLink\": \"\",\n        \"ErrorLinkText\": \"\",\n        \"RequestId\": \"e3338103-3165-49c0-b218-245be865cca5\"\n    }\n}",
-        "title": ""
+        "title": "Knowledge Base Document Entry"
       }
     ],
     "StopDocParse": [
@@ -732,5 +700,6 @@
         "title": "Verify Q&A"
       }
     ]
-  }
+  },
+  "version": "1.0"
 }

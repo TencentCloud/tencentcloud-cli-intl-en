@@ -14,6 +14,13 @@
       "output": "CreateAuthorizationPolicyResponse",
       "status": "online"
     },
+    "CreateDeviceIdentity": {
+      "document": "Create a device signature for per-device secret",
+      "input": "CreateDeviceIdentityRequest",
+      "name": "Create a device identifier",
+      "output": "CreateDeviceIdentityResponse",
+      "status": "online"
+    },
     "CreateInstance": {
       "document": "This API is used to purchase a new MQTT instance.",
       "input": "CreateInstanceRequest",
@@ -47,6 +54,13 @@
       "input": "DeleteClientSubscriptionRequest",
       "name": "Delete a subscription for an MQTT client",
       "output": "DeleteClientSubscriptionResponse",
+      "status": "online"
+    },
+    "DeleteDeviceIdentity": {
+      "document": "Delete a device signature",
+      "input": "DeleteDeviceIdentityRequest",
+      "name": "Delete device identification",
+      "output": "DeleteDeviceIdentityResponse",
       "status": "online"
     },
     "DeleteInstance": {
@@ -91,11 +105,39 @@
       "output": "DescribeClientListResponse",
       "status": "online"
     },
+    "DescribeDeviceCertificates": {
+      "document": "Query device certificates with paging",
+      "input": "DescribeDeviceCertificatesRequest",
+      "name": "Query a device certificate",
+      "output": "DescribeDeviceCertificatesResponse",
+      "status": "online"
+    },
+    "DescribeDeviceIdentities": {
+      "document": "Query the list of device identifiers in a cluster",
+      "input": "DescribeDeviceIdentitiesRequest",
+      "name": "Query a device identifier list",
+      "output": "DescribeDeviceIdentitiesResponse",
+      "status": "online"
+    },
+    "DescribeDeviceIdentity": {
+      "document": "Query device identification",
+      "input": "DescribeDeviceIdentityRequest",
+      "name": "Query a device identifier",
+      "output": "DescribeDeviceIdentityResponse",
+      "status": "online"
+    },
     "DescribeInstance": {
       "document": "This API is used to query instance information.",
       "input": "DescribeInstanceRequest",
       "name": "Query MQTT instance details",
       "output": "DescribeInstanceResponse",
+      "status": "online"
+    },
+    "DescribeInstanceList": {
+      "document": "Get instance list. Description of the Filters parameter use is as follows:\n1. InstanceName, fuzzy search by name\n2. InstanceId, query by instance ID\n3. InstanceStatus, instance status query, supports multiple selections\n\nWhen using the TagFilters parameter for search, the filters parameter is invalid.",
+      "input": "DescribeInstanceListRequest",
+      "name": "Retrieve the MQTT instance list",
+      "output": "DescribeInstanceListResponse",
       "status": "online"
     },
     "DescribeMessageByTopic": {
@@ -117,6 +159,34 @@
       "input": "DescribeMessageEnrichmentRulesRequest",
       "name": "Query message enrichment rules",
       "output": "DescribeMessageEnrichmentRulesResponse",
+      "status": "online"
+    },
+    "DescribeProductSKUList": {
+      "document": "This API is used to obtain product sales specifications.",
+      "input": "DescribeProductSKUListRequest",
+      "name": "Query MQTT product sales specs",
+      "output": "DescribeProductSKUListResponse",
+      "status": "online"
+    },
+    "DescribeSharedSubscriptionClient": {
+      "document": "Query shared subscription group detailed information",
+      "input": "DescribeSharedSubscriptionClientRequest",
+      "name": "Query a shared subscription group client",
+      "output": "DescribeSharedSubscriptionClientResponse",
+      "status": "online"
+    },
+    "DescribeSharedSubscriptionGroups": {
+      "document": "This API is used to query the subscription group list shared within the cluster.",
+      "input": "DescribeSharedSubscriptionGroupsRequest",
+      "name": "Query the subscription group list",
+      "output": "DescribeSharedSubscriptionGroupsResponse",
+      "status": "online"
+    },
+    "DescribeSharedSubscriptions": {
+      "document": "Query the subscription list of a shared subscription group",
+      "input": "DescribeSharedSubscriptionsRequest",
+      "name": "Query the subscription list of a shared subscription group",
+      "output": "DescribeSharedSubscriptionsResponse",
       "status": "online"
     },
     "DescribeTopic": {
@@ -145,6 +215,13 @@
       "input": "ModifyAuthorizationPolicyRequest",
       "name": "Modify an authorization policy",
       "output": "ModifyAuthorizationPolicyResponse",
+      "status": "online"
+    },
+    "ModifyDeviceIdentity": {
+      "document": "Modify the device signature",
+      "input": "ModifyDeviceIdentityRequest",
+      "name": "Modify a device identifier",
+      "output": "ModifyDeviceIdentityResponse",
       "status": "online"
     },
     "ModifyInstance": {
@@ -592,6 +669,78 @@
       ],
       "type": "object"
     },
+    "CreateDeviceIdentityRequest": {
+      "document": "CreateDeviceIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "1:ENABLED - Available (default)\n2: DISABLED - Unavailable",
+          "example": "1",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Primary signature key. Automatically generated by the system if not provided. base64 encode is required.",
+          "example": "pk",
+          "member": "string",
+          "name": "PrimaryKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary signature key. Automatically generated by the system if not passed. base64 encoding is required.",
+          "example": "sk",
+          "member": "string",
+          "name": "SecondaryKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id propagating properties setting",
+          "example": "无",
+          "member": "PropagatingProperty",
+          "name": "PropagatingProperties",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDeviceIdentityResponse": {
+      "document": "CreateDeviceIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateInstanceRequest": {
       "document": "CreateInstance request structure.",
       "members": [
@@ -964,6 +1113,42 @@
       ],
       "type": "object"
     },
+    "DeleteDeviceIdentityRequest": {
+      "document": "DeleteDeviceIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceIdentityResponse": {
+      "document": "DeleteDeviceIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteInstanceRequest": {
       "document": "DeleteInstance request structure.",
       "members": [
@@ -1191,12 +1376,330 @@
       ],
       "type": "object"
     },
+    "DescribeDeviceCertificatesRequest": {
+      "document": "DescribeDeviceCertificates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Support search parameter\nClient id: Client id, obtained based on actual business operations.\nCaSn: The SN serial number of the CA certificate belonging to it can be obtained by querying the cluster CA certificate list (https://www.tencentcloud.com/document/api/1778/116206?from_cn_redirect=1) or through business operations.\nDeviceCertificateSn: SN serial number of the device certificate. Can be obtained from [Query Device Certificate Detail](https://www.tencentcloud.com/document/api/1778/113748?from_cn_redirect=1).\nDeviceCertificateCn: The device certificate CN.\nOrganizationalUnit: Cert OU\nNotAfterEnd: Certificates with expiration time less than or equal to the specified time\nNotAfterStart: Cert with expiration time equal to or greater than the specified time\nStatus: Device certificate status. ACTIVE (activated); INACTIVE (inactive); REVOKED (revoked); PENDING_ACTIVATION (to be activated).\n",
+          "example": "[{\"Name\":\"ClientId\",\"Values\":[\"client-1\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit. Default 20. Maximum 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset, default 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting rule\nCREATE_TIME_DESC, descending order by creation time\nCREATE_TIME_ASC, sort by creation time in ascending order\nUPDATE_TIME_DESC, descending order by update time\nUPDATE_TIME_ASC, update time in ascending order",
+          "example": "CREATE_TIME_DESC",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceCertificatesResponse": {
+      "document": "DescribeDeviceCertificates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device certificate list",
+          "example": "无",
+          "member": "DeviceCertificateItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceIdentitiesRequest": {
+      "document": "DescribeDeviceIdentities request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start position",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query result limit count",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceIdentitiesResponse": {
+      "document": "DescribeDeviceIdentities response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of returned device identifiers",
+          "example": "无",
+          "member": "DeviceIdentityItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceIdentityRequest": {
+      "document": "DescribeDeviceIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-1234",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeviceIdentityResponse": {
+      "document": "DescribeDeviceIdentity response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-1234",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "1:ENABLED-Available\n2: DISABLED - Unavailable",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Main signature key",
+          "example": "pk",
+          "member": "string",
+          "name": "PrimaryKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "minor signature key",
+          "example": "sk",
+          "member": "string",
+          "name": "SecondaryKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "1711955420",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device id spread attribute",
+          "example": "无",
+          "member": "PropagatingProperty",
+          "name": "PropagatingProperties",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceListRequest": {
+      "document": "DescribeInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query criteria list, support the following fields\nInstanceName: Fuzzy search for cluster name\nInstanceId: Cluster id for exact search\nInstanceStatus: Cluster status search (RUNNING - running, CREATING - creating, MODIFYING - modifying, DELETING - deleting)\nNote: The query condition is not effective when TagFilters is configured.",
+          "example": "[{\"Name\":\"InstanceName\",\"Values\":[\"instance1\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query start position, default 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query result limit count. Default 20. Maximum 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag filter",
+          "example": "[{\"TagKey\":\"tag1-key\",\"TagValue\":[\"tag1-value\"]}]",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceListResponse": {
+      "document": "DescribeInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance list",
+          "example": "无",
+          "member": "MQTTInstanceItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceRequest": {
       "document": "DescribeInstance request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "tencent cloud MQTT instance ID, obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or console.",
+          "document": "<p>Tencent Cloud MQTT instance ID can be obtained from the api or the console.</p>",
           "example": "mqtt-xxxx",
           "member": "string",
           "name": "InstanceId",
@@ -1211,7 +1714,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance type\nBASIC: basic edition.\nPRO edition.\nPLATINUM edition.",
+          "document": "<p>Instance type<br>BASIC Basic version<br>PRO Professional Edition<br>PLATINUM Platinum version</p>",
           "example": "PRO",
           "member": "string",
           "name": "InstanceType",
@@ -1221,7 +1724,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "<p>Instance ID</p>",
           "example": "mqtt-mwmdg9dm",
           "member": "string",
           "name": "InstanceId",
@@ -1231,7 +1734,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "<p>Instance name</p>",
           "example": "name",
           "member": "string",
           "name": "InstanceName",
@@ -1241,7 +1744,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of topics",
+          "document": "<p>Number of topics</p>",
           "example": "2",
           "member": "int64",
           "name": "TopicNum",
@@ -1251,7 +1754,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of topics per instance",
+          "document": "<p>Maximum number of topics per instance</p>",
           "example": "1000",
           "member": "int64",
           "name": "TopicNumLimit",
@@ -1261,7 +1764,7 @@
         },
         {
           "disabled": false,
-          "document": "TPS throttle value",
+          "document": "<p>TPS throttle value</p>",
           "example": "1000",
           "member": "int64",
           "name": "TpsLimit",
@@ -1271,7 +1774,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time, in seconds",
+          "document": "<p>createTime, in seconds</p>",
           "example": "1711955420",
           "member": "int64",
           "name": "CreatedTime",
@@ -1281,7 +1784,7 @@
         },
         {
           "disabled": false,
-          "document": "Remarks",
+          "document": "<p>Remarks</p>",
           "example": "remark",
           "member": "string",
           "name": "Remark",
@@ -1291,7 +1794,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. RUNNING: running; MAINTAINING: maintaining; ABNORMAL: abnormal; OVERDUE: in arrears; DESTROYED: deleted; CREATING: creating; MODIFYING: adjusting the configuration; CREATE_FAILURE: creation failed; MODIFY_FAILURE: configuration adjustment failed; DELETING: deleting.",
+          "document": "<p>Instance status, RUNNING, running MAINTAINING, maintaining ABNORMAL, abnormal OVERDUE, arrears DESTROYED, deleted CREATING, creating MODIFYING, modifying CREATE_FAILURE, creation failure MODIFY_FAILURE, configuration change failed DELETING, deleting</p>",
           "example": "RUNNING",
           "member": "string",
           "name": "InstanceStatus",
@@ -1301,7 +1804,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the instance specification.",
+          "document": "<p>Instance specification</p>",
           "example": "pro_10k_1",
           "member": "string",
           "name": "SkuCode",
@@ -1311,7 +1814,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of subscriptions for a single client.",
+          "document": "<p>Maximum number of subscriptions for a single client</p>",
           "example": "30",
           "member": "int64",
           "name": "MaxSubscriptionPerClient",
@@ -1321,7 +1824,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of authorization rules.",
+          "document": "<p>Number of authorization rule entries</p>",
           "example": "10",
           "member": "int64",
           "name": "AuthorizationPolicyLimit",
@@ -1331,7 +1834,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of clients.",
+          "document": "<p>Number of clients cap</p>",
           "example": "1000",
           "member": "int64",
           "name": "ClientNumLimit",
@@ -1341,7 +1844,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the registration method for the client certificate.\nJITP: automatically register.\nAPI: register manually through api.",
+          "document": "<p>Client certificate registration method:<br>JITP: Automatic sign-up<br>API: Manually register through API</p>",
           "example": "API",
           "member": "string",
           "name": "DeviceCertificateProvisionType",
@@ -1351,7 +1854,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to automatically activate the device certificate during automatic registration.",
+          "document": "<p>Whether to automatically activate when automatically registering a device certificate</p>",
           "example": "false",
           "member": "bool",
           "name": "AutomaticActivation",
@@ -1361,7 +1864,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the instance is automatically renewed. this parameter is valid only for monthly subscription clusters. valid values: 1 (auto-renewal), 0 (non-automatic renewal).",
+          "document": "<p>Whether it is automatically renewed. Only applicable to monthly subscription clusters. 1: Automatic renewal 0: Non-automatic renewal</p>",
           "example": "1",
           "member": "int64",
           "name": "RenewFlag",
@@ -1371,7 +1874,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. POSTPAID: pay-as-you-go billing. PREPAID: monthly subscription.",
+          "document": "<p>Billing mode, POSTPAID, pay-as-you-go PREPAID, annual/monthly subscription</p>",
           "example": "POSTPAID",
           "member": "string",
           "name": "PayMode",
@@ -1381,7 +1884,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiry time. millisecond-level timestamp.",
+          "document": "<p>Expiry time, millisecond-level timestamp</p>",
           "example": "1713164969433",
           "member": "int64",
           "name": "ExpiryTime",
@@ -1391,7 +1894,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled destruction time. millisecond-level timestamp.",
+          "document": "<p>Predestruction time, millisecond-level timestamp</p>",
           "example": "1713164969433",
           "member": "int64",
           "name": "DestroyTime",
@@ -1401,7 +1904,7 @@
         },
         {
           "disabled": false,
-          "document": "TLS, one-way authentication. mTLS, mutual authentication. BYOC, one certificate per device.",
+          "document": "<p>TLS, one-way authentication    mTLS, mutual authentication    BYOC; one certificate per device</p>",
           "example": "TLS",
           "member": "string",
           "name": "X509Mode",
@@ -1411,7 +1914,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum Ca quota.",
+          "document": "<p>Maximum Ca quota</p>",
           "example": "1",
           "member": "int64",
           "name": "MaxCaNum",
@@ -1421,7 +1924,7 @@
         },
         {
           "disabled": false,
-          "document": "FPS cert registration code.",
+          "document": "<p>FPS Cert Registration Code</p>",
           "example": "2140c1c2-e26d-47f6-9048-0573f91b219b",
           "member": "string",
           "name": "RegistrationCode",
@@ -1431,7 +1934,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of subscriptions for a cluster.",
+          "document": "<p>Maximum number of subscriptions for a cluster</p>",
           "example": "120000",
           "member": "int64",
           "name": "MaxSubscription",
@@ -1441,7 +1944,7 @@
         },
         {
           "disabled": false,
-          "document": "Authorization policy switch.",
+          "document": "<p>Authorization policy switch</p>",
           "example": "false",
           "member": "bool",
           "name": "AuthorizationPolicy",
@@ -1451,7 +1954,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum limit of shared subscription groups.",
+          "document": "<p>Maximum limit of shared subscription groups</p>",
           "example": "20",
           "member": "int64",
           "name": "SharedSubscriptionGroupLimit",
@@ -1460,8 +1963,8 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
-          "document": "Specifies the topic filter number limit for each shared subscription group.",
+          "disabled": true,
+          "document": "<p>Number limit of TopicFilter in one shared subscription group</p>",
           "example": "10",
           "member": "int64",
           "name": "MaxTopicFilterPerSharedSubscriptionGroup",
@@ -1471,7 +1974,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the limit on number of auto-subscription rules.",
+          "document": "<p>Limit on number of auto subscription rules</p>",
           "example": "10",
           "member": "int64",
           "name": "AutoSubscriptionPolicyLimit",
@@ -1481,7 +1984,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the number limit of TopicFilter in a single auto-subscription rule.",
+          "document": "<p>Number limit of TopicFilter in a single auto subscription rule</p>",
           "example": "5",
           "member": "int64",
           "name": "MaxTopicFilterPerAutoSubscriptionPolicy",
@@ -1491,7 +1994,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to use the default server certificate.",
+          "document": "<p>Whether to use the default server certificate</p>",
           "example": "false",
           "member": "bool",
           "name": "UseDefaultServerCert",
@@ -1501,7 +2004,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum allowed number of server cas.",
+          "document": "<p>Maximum number of server CAs</p>",
           "example": "3",
           "member": "int64",
           "name": "TrustedCaLimit",
@@ -1511,7 +2014,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum allowed number of server certificates.",
+          "document": "<p>Maximum number of server certificates</p>",
           "example": "3",
           "member": "int64",
           "name": "ServerCertLimit",
@@ -1521,7 +2024,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the max level of the topic prefix.",
+          "document": "<p>Max level of topic prefix</p>",
           "example": "3",
           "member": "int64",
           "name": "TopicPrefixSlashLimit",
@@ -1531,7 +2034,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the speed limit for sending messages by a single client in messages per second.",
+          "document": "<p>Single client send message rate limiting, unit messages/second</p>",
           "example": "10",
           "member": "int64",
           "name": "MessageRate",
@@ -1541,7 +2044,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the protocols supported by the server tls, separated by \",\". example: TLSv1.3,TLSv1.2,TLSv1.1,TLSv1.",
+          "document": "<p>Server-side tls supported protocols, separated by \",\". Example: TLSv1.3,TLSv1.2,TLSv1.1,TLSv1</p>",
           "example": "TLSv1.3,TLSv1.2,TLSv1.1,TLSv1",
           "member": "string",
           "name": "TransportLayerSecurity",
@@ -1551,10 +2054,20 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the message property enrichment rule quota.",
+          "document": "<p>Message property enhancement rule quota</p>",
           "example": "10",
           "member": "int64",
           "name": "MessageEnrichmentRuleLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum allowed number of blocking rules</p>",
+          "example": "5",
+          "member": "int64",
+          "name": "BlockRuleLimit",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1844,6 +2357,221 @@
       ],
       "type": "object"
     },
+    "DescribeProductSKUListRequest": {
+      "document": "DescribeProductSKUList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeProductSKUListResponse": {
+      "document": "DescribeProductSKUList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MQTT product configuration information.",
+          "example": "无",
+          "member": "ProductSkuItem",
+          "name": "MQTTProductSkuList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionClientRequest": {
+      "document": "DescribeSharedSubscriptionClient request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared subscription group name",
+          "example": "group1",
+          "member": "string",
+          "name": "SharedName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subscription expression.",
+          "example": "share/group1/home",
+          "member": "string",
+          "name": "TopicFilter",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionClientResponse": {
+      "document": "DescribeSharedSubscriptionClient response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared subscription group Client info",
+          "example": "无",
+          "member": "SharedSubscriptionClient",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionGroupsRequest": {
+      "document": "DescribeSharedSubscriptionGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the DescribeInstanceList api or the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionGroupsResponse": {
+      "document": "DescribeSharedSubscriptionGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subscription group list shared within the cluster",
+          "example": "无",
+          "member": "SharedGroup",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "\tTotal query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionsRequest": {
+      "document": "DescribeSharedSubscriptions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shared subscription group name",
+          "example": "group1",
+          "member": "string",
+          "name": "SharedName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSharedSubscriptionsResponse": {
+      "document": "DescribeSharedSubscriptions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared group name",
+          "example": "group1",
+          "member": "string",
+          "name": "SharedName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expression list of subscriptions under the shared group",
+          "example": "share/group1/home",
+          "member": "string",
+          "name": "TopicFilter",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTopicRequest": {
       "document": "DescribeTopic request structure.",
       "members": [
@@ -1993,6 +2721,238 @@
         }
       ],
       "type": "object"
+    },
+    "DeviceCertificateItem": {
+      "document": "Device certificate information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client ID.",
+          "example": "device1",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device certificate",
+          "example": "-----BEGIN CERTIFICATE-----END CERTIFICATE-----\\r\\n",
+          "member": "string",
+          "name": "DeviceCertificate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device certificate SN serial number, used for unique identification of a device certificate",
+          "example": "181cf3245523979e",
+          "member": "string",
+          "name": "DeviceCertificateSn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device certificate Cn",
+          "example": "***.cloud.tencent.com",
+          "member": "string",
+          "name": "DeviceCertificateCn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Serial number of the CA cert that issued the cert",
+          "example": "40597e878dc36d4dd13a25da70271f7b4ba6fe63",
+          "member": "string",
+          "name": "CaSn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate format, currently only support PEM",
+          "example": "PEM",
+          "member": "string",
+          "name": "Format",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device certificate status\nACTIVE: Activate\nINACTIVE: Inactive\nREVOKED: Revoked\nPENDING_ACTIVATION: To be activated.",
+          "example": "ACTIVE",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Organization unit",
+          "example": "Development-Department",
+          "member": "string",
+          "name": "OrganizationalUnit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last activation time, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "LastActivationTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last cancellation activation time, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "LastInactivationTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "createTime, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate source:\nAPI, Manual Registration   \nAutomatic JITP registration",
+          "example": "JITP",
+          "member": "string",
+          "name": "CertificateSource",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate expiration date, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "NotAfterTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start date when the certificate takes effect, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "NotBeforeTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeviceIdentityItem": {
+      "document": "Device identifier list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "mqtt-1234",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "1: ENABLED - Available 2: DISABLED - Unavailable",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary signature key. Automatically generated by the system if not provided.",
+          "example": "pk",
+          "member": "string",
+          "name": "PrimaryKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Secondary signature key. Automatically generated by the system if not passed.",
+          "example": "sk",
+          "member": "string",
+          "name": "SecondaryKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "1711955420",
+          "member": "int64",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Spread attribute list",
+          "example": "[key1,value1]",
+          "member": "PropagatingProperty",
+          "name": "PropagatingProperties",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "Filter": {
       "document": "Query filter.",
@@ -2240,6 +3200,252 @@
           "name": "UserProperties",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MQTTInstanceItem": {
+      "document": "MQTT instance information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "instance-poc",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance version",
+          "example": "5.0",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance type\nBASIC, basic version\nPRO, Professional Edition\nPLATINUM, platinum version",
+          "example": "PRO",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance status\nRUNNING: running.\nMAINTAINING\nABNORMAL\nOVERDUE, arrears\nCREATING\nMODIFYING, Modifying configuration in progress\nCreation failed\nMODIFY_FAILURE, configuration change failed\nDELETING: Deleting",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "InstanceStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of instance topics",
+          "example": "100",
+          "member": "int64",
+          "name": "TopicNumLimit",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "this is remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of topics",
+          "example": "2",
+          "member": "int64",
+          "name": "TopicNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product specification",
+          "example": "pro_10k_1",
+          "member": "string",
+          "name": "SkuCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Elastic TPS throttle value",
+          "example": "100",
+          "member": "int64",
+          "name": "TpsLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, with a millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of subscriptions for a single client",
+          "example": "30",
+          "member": "int64",
+          "name": "MaxSubscriptionPerClient",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of client connections.",
+          "example": "1000",
+          "member": "int64",
+          "name": "ClientNumLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is automatically renewed. Only applicable to monthly subscription clusters.\n1: Automatic renewal\nNon-automatic renewal",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode, POSTPAID, pay-as-you-go PREPAID, annual/monthly subscription",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time, millisecond-level timestamp",
+          "example": "1742455643000",
+          "member": "int64",
+          "name": "ExpiryTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Predestruction time, millisecond-level timestamp",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "DestroyTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of authorization rule entries limit",
+          "example": "10",
+          "member": "int64",
+          "name": "AuthorizationPolicyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum ca quota",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxCaNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of subscriptions",
+          "example": "12000",
+          "member": "int64",
+          "name": "MaxSubscription",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum limit of shared subscription groups",
+          "example": "20",
+          "member": "int64",
+          "name": "SharedSubscriptionGroupLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number limit of TopicFilter in one shared subscription group",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxTopicFilterPerSharedSubscriptionGroup",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Limit on number of auto subscription rules",
+          "example": "10",
+          "member": "int64",
+          "name": "AutoSubscriptionPolicyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number limit of TopicFilter in a single auto subscription rule",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxTopicFilterPerAutoSubscriptionPolicy",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2631,6 +3837,78 @@
       ],
       "type": "object"
     },
+    "ModifyDeviceIdentityRequest": {
+      "document": "ModifyDeviceIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID can be obtained from the [DescribeInstanceList](https://www.tencentcloud.com/document/api/1778/111029?from_cn_redirect=1) api or the console.",
+          "example": "mqtt-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "device-1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "1:ENABLED-Available\n2: DISABLED - Unavailable",
+          "example": "1",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Primary signature key, Base64 encode is required.",
+          "example": "pk",
+          "member": "string",
+          "name": "PrimaryKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary signature key, must be Base64 encoded.",
+          "example": "sk",
+          "member": "string",
+          "name": "SecondaryKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device id spread attribute setting\t",
+          "example": "无",
+          "member": "PropagatingProperty",
+          "name": "PropagatingProperties",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDeviceIdentityResponse": {
+      "document": "ModifyDeviceIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyInstanceRequest": {
       "document": "ModifyInstance request structure.",
       "members": [
@@ -2874,6 +4152,298 @@
       ],
       "type": "object"
     },
+    "PriceTag": {
+      "document": "Price tag information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Billing name refers to the category of billable items for specifications. The pricing name for specific specifications can be found in the returned results of the DescribeProductSKUList API.",
+          "example": "tps",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing category, pricing name subclass. For the billing category of specific specifications, see the returned results in DescribeProductSKUList API.",
+          "example": "v_tdmq_instance_specification",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing item tag is a subproject of the billing Category under the pricing Name (Name), representing a specific charge. For the billing item tag of the specification, see \nDescribeProductSKUList API returned results.",
+          "example": "sv_tdmq_instance_specification_test_500",
+          "member": "string",
+          "name": "Code",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing step length indicates the billing quantity of the billing item tag (Code) under the billing category (Category) for the pricing name (Name). For the field value of specific specifications, refer to DescribeProductSKUList API.",
+          "example": "1",
+          "member": "int64",
+          "name": "Step",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProductSkuItem": {
+      "document": "MQTT ProductSkuItem",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specification type\nBASIC: Basic Edition.\nPRO: Professional Edition\nPLATINUM: Platinum version",
+          "example": "BASIC",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specification code",
+          "example": "pro_10k_1",
+          "member": "string",
+          "name": "SkuCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "whether required or not\n1: available for sale\n0: unsellable",
+          "example": "1",
+          "member": "bool",
+          "name": "OnSale",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Limit on the number of topics.",
+          "example": "100",
+          "member": "int64",
+          "name": "TopicNumLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sum of the quantity of messages produced and consumed per second in an MQTT cluster.",
+          "example": "1000",
+          "member": "int64",
+          "name": "TpsLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of client connections",
+          "example": "1000",
+          "member": "int64",
+          "name": "ClientNumLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of subscriptions for a single client",
+          "example": "30",
+          "member": "int64",
+          "name": "MaxSubscriptionPerClient",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of authorization rules",
+          "example": "10",
+          "member": "int64",
+          "name": "AuthorizationPolicyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing item information",
+          "example": "无",
+          "member": "PriceTag",
+          "name": "PriceTags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PropagatingProperty": {
+      "document": "undefined",
+      "members": [
+        {
+          "disabled": false,
+          "document": "propagating properties key",
+          "example": "property-key",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "propagating properties value",
+          "example": "property-value",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SharedGroup": {
+      "document": "Shared subscription group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tencent Cloud MQTT instance ID",
+          "example": "mqtt-zj944d74",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared subscription group name",
+          "example": "group1",
+          "member": "string",
+          "name": "SharedName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared group load balancing strategy 1.RANDOM 2.HASH_PARTITION",
+          "example": "1",
+          "member": "int64",
+          "name": "LbStrategy",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Takes effect under the HASH_PARTITION policy. It indicates the delay time when a Client disconnects or a new Client comes online to join the subscription group for consumption.\nRange: 0–600 seconds",
+          "example": "10",
+          "member": "int64",
+          "name": "ExpiryInterval",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remark, length not exceeding 128 characters.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "createTime, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time, millisecond-level timestamp.",
+          "example": "1713164969433",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SharedSubscriptionClient": {
+      "document": "Shared subscription group client",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client ID",
+          "example": "client-1",
+          "member": "string",
+          "name": "ClientId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Shared subscription group name",
+          "example": "group1",
+          "member": "string",
+          "name": "SharedName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expression list of subscriptions under the shared group",
+          "example": "share/group1/home",
+          "member": "string",
+          "name": "TopicFilter",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Online status",
+          "example": "false",
+          "member": "bool",
+          "name": "Online",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SubscriptionUserProperty": {
       "document": "Subscribed UserProperty structure.",
       "members": [
@@ -2927,6 +4497,30 @@
         }
       ],
       "usage": "both"
+    },
+    "TagFilter": {
+      "document": "Tag filter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key name",
+          "example": "key1",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag key name",
+          "example": "value1",
+          "member": "string",
+          "name": "TagValues",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     },
     "UpdateAuthorizationPolicyPriorityRequest": {
       "document": "UpdateAuthorizationPolicyPriority request structure.",

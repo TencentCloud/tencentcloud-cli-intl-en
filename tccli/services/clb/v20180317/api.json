@@ -936,6 +936,45 @@
       ],
       "type": "object"
     },
+    "AvailableZoneAffinityInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "65",
+          "member": "uint64",
+          "name": "ExitRatio",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "80",
+          "member": "uint64",
+          "name": "ReentryRatio",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Backend": {
       "document": "Details of a real server bound to a listener",
       "members": [
@@ -982,7 +1021,7 @@
         {
           "disabled": false,
           "document": "Public IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1.1.1.1",
+          "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "PublicIpAddresses",
           "output_required": true,
@@ -992,7 +1031,7 @@
         {
           "disabled": false,
           "document": "Private network IP of the real server",
-          "example": "10.0.0.1",
+          "example": "[\"10.0.0.1\"]",
           "member": "string",
           "name": "PrivateIpAddresses",
           "output_required": true,
@@ -2847,7 +2886,7 @@
         },
         {
           "disabled": false,
-          "document": "Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
@@ -3000,7 +3039,7 @@
         },
         {
           "disabled": false,
-          "document": "Prepayment-related attributes of a CLB instance. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
           "example": "无",
           "member": "LBChargePrepaid",
           "name": "LBChargePrepaid",
@@ -3009,7 +3048,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "LBChargeType",
@@ -3297,6 +3336,15 @@
           "name": "IpVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "SnatEnable",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -6370,7 +6418,7 @@
         },
         {
           "disabled": false,
-          "document": "Specification of the LCU-supported instance, which is input to query the monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.",
+          "document": "Specification of the LCU-supported instance, which is input to query the yearly/monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.",
           "example": "clb.c3.small",
           "member": "string",
           "name": "SlaType",
@@ -6655,7 +6703,7 @@
       "usage": "out"
     },
     "LBChargePrepaid": {
-      "document": "Monthly subscription configuration of a CLB instance",
+      "document": "Yearly/monthly subscription configuration of a CLB instance",
       "members": [
         {
           "disabled": false,
@@ -7379,7 +7427,7 @@
         {
           "disabled": false,
           "document": "List of VIPs of a CLB instance.",
-          "example": "[43.123.xx.xxx]",
+          "example": "[\"172.16.0.9\"]",
           "member": "string",
           "name": "LoadBalancerVips",
           "output_required": true,
@@ -7478,7 +7526,7 @@
         {
           "disabled": true,
           "document": "Log information. Only the public network CLB that have HTTP or HTTPS listeners can generate logs.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": " null",
+          "example": "null",
           "member": "string",
           "name": "Log",
           "output_required": true,
@@ -7511,7 +7559,7 @@
         {
           "disabled": false,
           "document": "Security group of the CLB instance",
-          "example": "sg-hx6dxxxx",
+          "example": "[\"sg-3ygfv5c5\"]",
           "member": "string",
           "name": "SecureGroups",
           "output_required": true,
@@ -7533,7 +7581,7 @@
         {
           "disabled": false,
           "document": "Anycast CLB release domain. For non-anycast CLB, this field returns an empty string.",
-          "example": " null",
+          "example": "null",
           "member": "string",
           "name": "AnycastZone",
           "output_required": true,
@@ -7620,7 +7668,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode of CLB instance. Valid values: PREPAID (monthly subscription), POSTPAID_BY_HOUR (pay as you go).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Billing mode of CLB instance. Valid values: PREPAID (yearly/monthly subscription), POSTPAID_BY_HOUR (pay as you go).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
@@ -7775,7 +7823,7 @@
         {
           "disabled": false,
           "document": "Performance capacity specification. <ul><li> clb.c1.small: minimalist specification </li> <li> clb.c2.medium: standard specification </li> <li> clb.c3.small: advanced type 1 specification </li> <li> clb.c3.medium: advanced type 2 specification </li> <li> clb.c4.small: super type 1 specification </li> <li> clb.c4.medium: super type 2 specification </li> <li> clb.c4.large: super type 3 specification </li> <li> clb.c4.xlarge: super type 4 specification </li> <li>\"\" : non-performance capacity instance</li></ul>.",
-          "example": " null",
+          "example": "null",
           "member": "string",
           "name": "SlaType",
           "output_required": true,
@@ -7841,7 +7889,7 @@
         {
           "disabled": false,
           "document": "Availability zone of a VPC-based private network CLB instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "[\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
           "output_required": true,
@@ -7885,7 +7933,7 @@
         {
           "disabled": false,
           "document": "Cluster ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "cluster-1234xxxx",
+          "example": "[\"cluster-1234xxxx\"]",
           "member": "string",
           "name": "ClusterIds",
           "output_required": true,
@@ -7957,6 +8005,17 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AvailableZoneAffinityInfo",
+          "name": "AvailableZoneAffinityInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -8108,7 +8167,7 @@
         {
           "disabled": false,
           "document": "CLB instance network attribute.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "InternetAccessible",
           "name": "NetworkAttributes",
           "output_required": true,
@@ -8118,7 +8177,7 @@
         {
           "disabled": false,
           "document": "Pay-as-you-go attribute of the CLB instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "null",
+          "example": "无",
           "member": "LBChargePrepaid",
           "name": "PrepaidAttributes",
           "output_required": true,
@@ -8128,7 +8187,7 @@
         {
           "disabled": false,
           "document": "Reserved field, which can be ignored generally.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "{\"ZhitTong\":false,\"TgwGroupName\":null}",
+          "example": "无",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
           "output_required": true,
@@ -8148,7 +8207,7 @@
         {
           "disabled": false,
           "document": "CLB instance tag information.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "[{\"TagKey\":\"1\",\"TagValue\":\"2\"}]",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "output_required": true,
@@ -8358,7 +8417,7 @@
         {
           "disabled": false,
           "document": "Specifies the attributes of cloud load balancer.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "DeleteProtect",
+          "example": "[\"DeleteProtect\"]",
           "member": "string",
           "name": "AttributeFlags",
           "output_required": false,
@@ -9118,7 +9177,7 @@
         {
           "disabled": false,
           "document": "Data compression mode.",
-          "example": "transparent/compatibility",
+          "example": "transparent",
           "member": "string",
           "name": "DataCompressMode",
           "required": false,
@@ -9234,6 +9293,15 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "SwitchFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.",
           "example": "false",
           "member": "bool",
@@ -9320,6 +9388,16 @@
     "ModifyLoadBalancerSlaResponse": {
       "document": "ModifyLoadBalancerSla response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2022XXXX",
+          "member": "string",
+          "name": "DealName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -9565,6 +9643,15 @@
           "name": "SessionExpireTime",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "SnatEnable",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10385,7 +10472,7 @@
         {
           "disabled": false,
           "document": "CLB listener ID.",
-          "example": "lis-cuxw****",
+          "example": "lbl-cuxw****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -11132,7 +11219,7 @@
         },
         {
           "disabled": false,
-          "document": "Log set ID of cloud log service (CLS).\n<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/58624?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
+          "document": "Log set ID of cloud log service (CLS).\n<li>Specifies the logset ID that can be obtained by calling the [DescribeLogsets](https://www.tencentcloud.com/document/product/614/42778?from_cn_redirect=1) API when adding or updating a log topic.</li>.\n<Li>When deleting a log topic, set this parameter to an empty string.</li>.",
           "example": "ac251c08-778c-4fbc-981b-4898dd48d928",
           "member": "string",
           "name": "LogSetId",

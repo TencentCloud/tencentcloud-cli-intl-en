@@ -253,9 +253,9 @@
       "status": "online"
     },
     "DescribeDBBackups": {
-      "document": "This API is used to query the backup list of an instance. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.",
+      "document": "This api is used to query instance backup list. This interface belongs to early stage and stopped feature iteration. We recommend using api [DescribeBaseBackups](https://www.tencentcloud.com/document/product/409/54343) as an alternative.",
       "input": "DescribeDBBackupsRequest",
-      "name": "(Disused) Queries u200cthe backup list of an instance",
+      "name": "Query an instance backup list",
       "output": "DescribeDBBackupsResponse",
       "status": "online"
     },
@@ -1470,7 +1470,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
+          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the DescribeVpcEx API.",
           "example": "vpc-2ot3acw1",
           "member": "string",
           "name": "VpcId",
@@ -2328,15 +2328,6 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href=\"https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1\">DescribeZones</a> api and checking the Zone field in the returned value.</p>",
-          "example": "ap-guangzhou-6",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
           "document": "<p>Purchasable specification code. Obtain this parameter by calling the `SpecCode` field in the return value of <a href=\"https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1\">DescribeClasses</a>.</p>",
           "example": "pg.it.2xlarge16",
           "member": "string",
@@ -2400,6 +2391,15 @@
         },
         {
           "disabled": false,
+          "document": "<p>The primary availability zone of the instance, for example: ap-guangzhou-3. If needed to support multiple AZs, add primary and secondary AZ information in the DBNodeSet.N field.<br>AZ information can be obtained by calling the <a href=\"https://www.tencentcloud.com/document/api/409/16769?from_cn_redirect=1\">DescribeZones</a> api and checking the Zone field in the returned value.</p>",
+          "example": "ap-guangzhou-6",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "<p>PostgreSQL major version number (this parameter is currently required). Version information can be obtained from <a href=\"https://www.tencentcloud.com/document/api/409/89018?from_cn_redirect=1\">DescribeDBVersions</a>. Currently supports major versions 10, 11, 12, 13, 14, and 15. For details, see <a href=\"https://www.tencentcloud.com/document/product/409/67018?from_cn_redirect=1\">kernel version overview</a>.<br>When this parameter is entered, an instance running the latest kernel version of the latest minor version will be created based on this major version number.</p>",
           "example": "12",
           "member": "string",
@@ -2436,7 +2436,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API <a href=\"https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1\">DescribeVpcEx</a> and acquiring the unVpcId field in the API return.</p>",
+          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is currently required). A valid VPC ID can be obtained by logging in to the console to query or by calling the API DescribeVpcEx and acquiring the unVpcId field in the API return.</p>",
           "example": "vpc-8e0ypm3z",
           "member": "string",
           "name": "VpcId",
@@ -2791,7 +2791,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the <a href=\"https://www.tencentcloud.com/document/api/215/1372?from_cn_redirect=1\">DescribeVpcEx</a> API to obtain it from the unVpcId field in the return value.</p>",
+          "document": "<p>VPC ID, such as vpc-xxxxxxxx (this parameter is required). A valid VPC ID can be queried by logging in to the console. You can also call the DescribeVpcEx API to obtain it from the unVpcId field in the return value.</p>",
           "example": "vpc-e3t30r8t",
           "member": "string",
           "name": "VpcId",
@@ -3314,122 +3314,122 @@
         {
           "disabled": false,
           "document": "Unique backup file ID",
-          "example": "无",
+          "example": "450",
           "member": "int64",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File generation start time",
-          "example": "无",
+          "example": "2018-06-21 01:55:04.199169",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File generation end time",
-          "example": "无",
+          "example": "2018-06-21 01:55:58.477232",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File size in KB",
-          "example": "无",
+          "example": "3654991",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Policy (0: instance backup, 1: multi-database backup)",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Strategy",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Type (0: scheduled)",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Way",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Backup mode (1: full)",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Status (1: creating, 2: success, 3: failure)",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "DB list",
-          "example": "无",
+          "example": "[     \"db2\" ]",
           "member": "string",
           "name": "DbList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Download address on private network",
-          "example": "无",
+          "example": "http://172.16.16.30:8366/download/20180621015515.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIse2MDEI7vd/CuyMUMMyDXAd4ld69sCMdEKwkpFWIVcfE+PZ0+MYTbsBHzW84KtSGw8=",
           "member": "string",
           "name": "InternalAddr",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Download address on public network",
-          "example": "无",
+          "example": "https://gz-dl-postgres.cloud.tencent.com/download/20180621015515.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIse2MDEI7vd/CuyMUMMyDXAd4ld69sCMdEKwkpFWIVcfE+PZ0+MYTbsBHzW84KtSGw8=",
           "member": "string",
           "name": "ExternalAddr",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Backup set ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Backup set ID.",
+          "example": "f6yecd1a-087c-5c66-cdas-95c835d7ec24",
           "member": "string",
           "name": "SetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5438,7 +5438,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv.",
-          "example": "",
+          "example": "postgres-6fego161",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -5447,7 +5447,7 @@
         {
           "disabled": false,
           "document": "Backup mode (1: full). Currently, only full backup is supported. The value is 1.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -5456,7 +5456,7 @@
         {
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
-          "example": "",
+          "example": "2018-06-10 17:06:38",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -5465,7 +5465,7 @@
         {
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
-          "example": "",
+          "example": "2018-06-11 17:06:38",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -5474,7 +5474,7 @@
         {
           "disabled": false,
           "document": "Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)",
-          "example": "",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5483,7 +5483,7 @@
         {
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5508,7 +5508,7 @@
         {
           "disabled": false,
           "document": "Backup list",
-          "example": "[     {         \"SetId\": \"f77ecd1a-087c-5c66-8c35-95c835d7ec24\",         \"Status\": 2,         \"InternalAddr\": \"http://172.16.16.30:8366/download/20180622015612.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIsdfgfJdfs+89qfhuYQ5wC0ooTcDIdUwB4iJlL1by8xfKkcMAv8nr8g67P6hhg5YOnk=\",         \"StartTime\": \"2018-06-22 01:56:01.181971\",         \"ExternalAddr\": \"https://gz-dl-postgres.cloud.tencent.com/download/20180622015612.tar.gz?giz7Z4LlMjascFkshSSB4+B1gaI0F3HAQIZcFPDbIsdfgfJdfs+89qfhuYQ5wC0ooTcDIdUwB4iJlL1by8xfKkcMAv8nr8g67P6hhg5YOnk=\",         \"Strategy\": 1,         \"DbList\": [             \"db1\"         ],         \"Way\": 1,         \"EndTime\": \"2018-06-22 01:56:55.071181\",         \"Type\": 1,         \"Id\": 450,         \"Size\": 3654968     } ]",
+          "example": "无",
           "member": "DBBackup",
           "name": "BackupList",
           "output_required": true,
@@ -9451,7 +9451,7 @@
         },
         {
           "disabled": false,
-          "document": "Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/api/409/43353?from_cn_redirect=1).",
+          "document": "Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/product/409/37118).",
           "example": "alice_database",
           "member": "string",
           "name": "DatabaseName",
